@@ -54,7 +54,7 @@ function AuthUI({ onAuth, showInfo }) {
   );
 }
 
-function WorkoutSaver({ user, showLogin }) {
+function WorkoutSaver({ user, showLogin, visible }) {
   const [name, setName] = useState(''); // Titolo allenamento
   const [date, setDate] = useState('');
   const [data, setData] = useState('');
@@ -95,6 +95,8 @@ function WorkoutSaver({ user, showLogin }) {
     }
   };
 
+  if (!visible) return null;
+
   return (
     <div style={{margin:'2em'}}>
       <h2>Salva allenamento</h2>
@@ -114,11 +116,19 @@ function WorkoutSaver({ user, showLogin }) {
           <li key={w.id}>{w.name} - {w.date} - {w.data}</li>
         ))}
       </ul>
-      {showLogin && !user && (
-        <button style={{padding:'1em 2em', borderRadius:'8px', background:'#1a5a8a', color:'#fff', border:'none', fontWeight:'bold', fontSize:'1.1em'}} onClick={() => setShowLogin(true)}>
-          Vuoi salvare un allenamento? Accedi!
-        </button>
-      )}
+    </div>
+  );
+}
+
+function HomeScreen({ onSaveClick }) {
+  return (
+    <div style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', minHeight:'100vh', background:'#fff'}}>
+      <h1 style={{color:'#1a5a8a', fontSize:'2.5em', margin:'1em'}}>Workout Tracker</h1>
+      <img src="/images/exercises/goodmorning.png" alt="Workout" style={{width:'180px', margin:'1em', borderRadius:'12px', boxShadow:'0 2px 8px #0002'}} />
+      <p style={{maxWidth:'500px', fontSize:'1.2em', color:'#333', margin:'1em'}}>Benvenuto! Qui puoi consultare esercizi, video e salvare i tuoi allenamenti.</p>
+      <button style={{padding:'1em 2em', borderRadius:'8px', background:'#1a5a8a', color:'#fff', border:'none', fontWeight:'bold', fontSize:'1.1em'}} onClick={onSaveClick}>
+        Salva un allenamento
+      </button>
     </div>
   );
 }
@@ -126,6 +136,7 @@ function WorkoutSaver({ user, showLogin }) {
 function App() {
   const [user, setUser] = useState(null);
   const [showLogin, setShowLogin] = useState(false);
+  const [showWorkoutForm, setShowWorkoutForm] = useState(false);
 
   useEffect(() => {
     getCurrentUser().then(res => {
@@ -138,12 +149,22 @@ function App() {
     setUser(null);
   };
 
-  // Mostra subito l'app completa (WorkoutSaver, lista, ecc.)
-  // Login compare solo se si tenta di salvare un allenamento
+  // Prima schermata: HomeScreen con pulsante "Salva un allenamento"
+  // Se clicca, mostra WorkoutSaver
+  if (!showWorkoutForm) {
+    return (
+      <div>
+        <HomeScreen onSaveClick={() => setShowWorkoutForm(true)} />
+      </div>
+    );
+  }
+
+  // Dopo aver cliccato "Salva un allenamento", mostra WorkoutSaver
   return (
     <div>
       {user && <button onClick={handleLogout} style={{margin:'2em', padding:'0.7em 2em', borderRadius:'8px', background:'#fff', color:'#1a5a8a', border:'1px solid #1a5a8a', fontWeight:'bold'}}>Logout</button>}
-      <WorkoutSaver user={user} showLogin={() => setShowLogin(true)} />
+      <button onClick={() => setShowWorkoutForm(false)} style={{margin:'2em', padding:'0.7em 2em', borderRadius:'8px', background:'#fff', color:'#1a5a8a', border:'1px solid #1a5a8a', fontWeight:'bold'}}>Indietro</button>
+      <WorkoutSaver user={user} showLogin={() => setShowLogin(true)} visible={true} />
       {showLogin && !user && (
         <AuthUI onAuth={() => {
           getCurrentUser().then(res => {
