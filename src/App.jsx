@@ -450,6 +450,39 @@ export default function App() {
   function getLog(en, di) { return logs[todayStr() + "_d" + di + "_m" + month + "_" + en]; }
   function getHist(en) { return Object.values(logs).filter(function(l) { return l.exercise === en; }).sort(function(a,b) { return b.date.localeCompare(a.date); }).slice(0, 10); }
 
+
+  function exportData() {
+    var dataStr = JSON.stringify(logs, null, 2);
+    var dataBlob = new Blob([dataStr], {type: 'application/json'});
+    var url = URL.createObjectURL(dataBlob);
+    var link = document.createElement('a');
+    link.href = url;
+    link.download = 'workout-backup-' + todayStr() + '.json';
+    link.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function importData() {
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = function(e) {
+      var file = e.target.files[0];
+      var reader = new FileReader();
+      reader.onload = function(evt) {
+        try {
+          var imported = JSON.parse(evt.target.result);
+          setLogs(imported);
+          try { localStorage.setItem(SK, JSON.stringify(imported)); } catch(e2) {}
+          alert('Dati importati con successo!');
+        } catch(e) {
+          alert('Errore: file non valido');
+        }
+      };
+      reader.readAsText(file);
+    };
+    input.click();
+  }
   if (!ready) return <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Caricamento...</div>;
 
   // Timer preset buttons helper
@@ -566,6 +599,8 @@ export default function App() {
           <div style={{ display: "flex", gap: 5 }}>
             <button onClick={function() { setGlossOpen(true); }} style={{ background: "rgba(255,255,255,0.12)", border: "none", color: T.htx, padding: "0 8px", height: 32, borderRadius: 8, cursor: "pointer", fontSize: 10, fontWeight: 700 }}>&#128214;</button>
             <button onClick={function() { setThemeOpen(true); }} style={{ background: "rgba(255,255,255,0.12)", border: "none", color: T.htx, width: 32, height: 32, borderRadius: 8, cursor: "pointer", fontSize: 15 }}>&#127912;</button>
+            <button onClick={function() { exportData(); }} style={{ background: "rgba(255,255,255,0.12)", border: "none", color: T.htx, padding: "0 8px", height: 32, borderRadius: 8, cursor: "pointer", fontSize: 10, fontWeight: 700 }}>⬇️</button>
+            <button onClick={function() { importData(); }} style={{ background: "rgba(255,255,255,0.12)", border: "none", color: T.htx, padding: "0 8px", height: 32, borderRadius: 8, cursor: "pointer", fontSize: 10, fontWeight: 700 }}>⬆️</button>
             <button onClick={function() { setResetOpen(true); }} style={{ background: "rgba(255,255,255,0.06)", border: "none", color: T.htx, padding: "0 8px", height: 32, borderRadius: 8, cursor: "pointer", fontSize: 10, opacity: 0.5 }}>Reset</button>
           </div>
         </div>
