@@ -1,4 +1,3 @@
-// ...existing code...
 import { saveWorkout, getWorkouts } from './supabaseWorkout';
 
 // Esempio di form React per salvare un allenamento
@@ -42,4 +41,4 @@ function WorkoutSaver() {
   );
 }
 
-// ...existing code...
+export default App;
