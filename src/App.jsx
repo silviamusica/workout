@@ -29,14 +29,13 @@ function AuthUI({ onAuth, showInfo }) {
   };
 
   return (
-    <div style={{
-      display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', minHeight:'100vh', background:'#f7f7fa', borderRadius:'16px', boxShadow:'0 4px 24px #0001', maxWidth:'400px', margin:'auto', padding:'2em'}}>
+    <div style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', minHeight:'100vh', background:'#f7f7fa', borderRadius:'16px', boxShadow:'0 4px 24px #0001', maxWidth:'400px', margin:'auto', padding:'2em'}}>
       <h2 style={{color:'#2d2d2d', marginBottom:'1em'}}>{mode === 'login' ? 'Login' : 'Registrazione'}</h2>
       {showInfo && (
         <div style={{background:'#eaf6ff', color:'#1a5a8a', borderRadius:'8px', padding:'1em', marginBottom:'1em', fontSize:'1em'}}>
-          Per registrare i tuoi allenamenti è necessario un login personalizzato.<br />
-          I tuoi dati sono protetti e non vengono diffusi, come previsto da Supabase.<br />
-          Riceverai una mail per confermare la registrazione.
+          <div>Per registrare i tuoi allenamenti è necessario un login personalizzato.</div>
+          <div>I tuoi dati sono protetti e non vengono diffusi, come previsto da Supabase.</div>
+          <div>Riceverai una mail per confermare la registrazione.</div>
         </div>
       )}
       <input style={{margin:'0.5em', padding:'0.7em', borderRadius:'8px', border:'1px solid #ccc', width:'100%'}} placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
@@ -47,8 +46,70 @@ function AuthUI({ onAuth, showInfo }) {
       <button style={{margin:'0.5em', padding:'0.7em 2em', borderRadius:'8px', background:'#fff', color:'#1a5a8a', border:'1px solid #1a5a8a', fontWeight:'bold'}} onClick={() => { setMode(mode === 'login' ? 'signup' : 'login'); setSuccess(''); setError(''); }} disabled={loading}>
         {mode === 'login' ? 'Registrati' : 'Login'}
       </button>
-      {error && <div style={{color:'red', marginTop:'1em'}}>{error}</div>}
-      {success && <div style={{color:'green',marginTop:'1em'}}>{success}</div>}
+      <div>
+        {error && <div style={{color:'red', marginTop:'1em'}}>{error}</div>}
+        {success && <div style={{color:'green',marginTop:'1em'}}>{success}</div>}
+      </div>
+    </div>
+  );
+}
+
+function WorkoutSaver({ user }) {
+  const [name, setName] = useState(''); // Titolo allenamento
+  const [date, setDate] = useState('');
+  const [data, setData] = useState('');
+  const [workouts, setWorkouts] = useState([]);
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (user) {
+      getWorkouts(user.id).then(res => {
+        if (res.data) setWorkouts(res.data);
+      });
+    }
+  }, [user]);
+
+  const handleSave = async () => {
+    setMessage('');
+    setError('');
+    if (!name || !date || !data) {
+      setError('Compila tutti i campi!');
+      return;
+    }
+    const err = await saveWorkout({ name, date, data, user_id: user.id });
+    if (err) {
+      setError('Errore nel salvataggio.');
+    } else {
+      setMessage('Allenamento salvato con successo!');
+      setName('');
+      setDate('');
+      setData('');
+      getWorkouts(user.id).then(res => {
+        if (res.data) setWorkouts(res.data);
+      });
+    }
+  };
+
+  return (
+    <div style={{margin:'2em'}}>
+      <h2>Salva allenamento</h2>
+      <div style={{display:'flex', gap:'0.5em', marginBottom:'1em'}}>
+        <input placeholder="Titolo allenamento" value={name} onChange={e => setName(e.target.value)} />
+        <input type="date" value={date} onChange={e => setDate(e.target.value)} />
+        <textarea placeholder="Dettagli" value={data} onChange={e => setData(e.target.value)} style={{minWidth:'180px'}} />
+        <button onClick={handleSave}>Salva</button>
+      </div>
+      <div>
+        {error && <div style={{color:'red',marginTop:'1em'}}>{error}</div>}
+        {message && <div style={{color:'green',marginTop:'1em'}}>{message}</div>}
+      </div>
+      <h3>Allenamenti salvati</h3>
+      <ul>
+        {workouts.map(w => (
+          <li key={w.id}>{w.name} - {w.date} - {w.data}</li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -66,6 +127,7 @@ function HomeUI() {
 function App() {
   const [user, setUser] = useState(null);
   const [showLogin, setShowLogin] = useState(false);
+  const [pendingWorkout, setPendingWorkout] = useState(null);
 
   useEffect(() => {
     getCurrentUser().then(res => {
@@ -84,7 +146,7 @@ function App() {
         <HomeUI />
         <div style={{display:'flex', justifyContent:'center', margin:'2em'}}>
           <button style={{padding:'1em 2em', borderRadius:'8px', background:'#1a5a8a', color:'#fff', border:'none', fontWeight:'bold', fontSize:'1.1em'}} onClick={() => setShowLogin(true)}>
-            Registrare allenamenti
+            Accedi / Registrati
           </button>
         </div>
       </div>
@@ -100,10 +162,21 @@ function App() {
     }} showInfo={true} />;
   }
 
+  // App accesso libero: mostra esercizi, video ecc
+  // Mostra il salvataggio solo se loggato
   return (
     <div>
-      <button onClick={handleLogout} style={{margin:'2em', padding:'0.7em 2em', borderRadius:'8px', background:'#fff', color:'#1a5a8a', border:'1px solid #1a5a8a', fontWeight:'bold'}}>Logout</button>
-      <WorkoutSaver user={user} />
+      {user && <button onClick={handleLogout} style={{margin:'2em', padding:'0.7em 2em', borderRadius:'8px', background:'#fff', color:'#1a5a8a', border:'1px solid #1a5a8a', fontWeight:'bold'}}>Logout</button>}
+      <HomeUI />
+      {user ? (
+        <WorkoutSaver user={user} />
+      ) : (
+        <div style={{display:'flex', justifyContent:'center', margin:'2em'}}>
+          <button style={{padding:'1em 2em', borderRadius:'8px', background:'#1a5a8a', color:'#fff', border:'none', fontWeight:'bold', fontSize:'1.1em'}} onClick={() => setShowLogin(true)}>
+            Vuoi salvare un allenamento? Accedi!
+          </button>
+        </div>
+      )}
     </div>
   );
 }
