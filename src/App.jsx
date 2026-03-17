@@ -114,11 +114,6 @@ function WorkoutSaver({ user, showLogin }) {
           <li key={w.id}>{w.name} - {w.date} - {w.data}</li>
         ))}
       </ul>
-      {showLogin && !user && (
-        <button style={{padding:'1em 2em', borderRadius:'8px', background:'#1a5a8a', color:'#fff', border:'none', fontWeight:'bold', fontSize:'1.1em'}} onClick={() => setShowLogin(true)}>
-          Vuoi salvare un allenamento? Accedi!
-        </button>
-      )}
     </div>
   );
 }
