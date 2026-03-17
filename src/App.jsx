@@ -7,17 +7,21 @@ function AuthUI({ onAuth }) {
   const [password, setPassword] = useState('');
   const [mode, setMode] = useState('login');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const handleAuth = async () => {
     setError('');
+    setSuccess('');
     let res;
     if (mode === 'login') {
       res = await signIn(email, password);
+      if (res.error) setError(res.error.message);
+      else onAuth();
     } else {
       res = await signUp(email, password);
+      if (res.error) setError(res.error.message);
+      else setSuccess('Registrazione avvenuta! Controlla la tua email per confermare e completare l’accesso.');
     }
-    if (res.error) setError(res.error.message);
-    else onAuth();
   };
 
   return (
@@ -26,10 +30,11 @@ function AuthUI({ onAuth }) {
       <input placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
       <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
       <button onClick={handleAuth}>{mode === 'login' ? 'Login' : 'Registrati'}</button>
-      <button onClick={() => setMode(mode === 'login' ? 'signup' : 'login')} style={{marginLeft:'1em'}}>
+      <button onClick={() => { setMode(mode === 'login' ? 'signup' : 'login'); setSuccess(''); setError(''); }} style={{marginLeft:'1em'}}>
         {mode === 'login' ? 'Registrati' : 'Login'}
       </button>
       {error && <div style={{color:'red'}}>{error}</div>}
+      {success && <div style={{color:'green',marginTop:'1em'}}>{success}</div>}
     </div>
   );
 }
