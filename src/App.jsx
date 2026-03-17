@@ -54,7 +54,7 @@ function AuthUI({ onAuth, showInfo }) {
   );
 }
 
-function WorkoutSaver({ user }) {
+function WorkoutSaver({ user, showLogin }) {
   const [name, setName] = useState(''); // Titolo allenamento
   const [date, setDate] = useState('');
   const [data, setData] = useState('');
@@ -73,6 +73,10 @@ function WorkoutSaver({ user }) {
   const handleSave = async () => {
     setMessage('');
     setError('');
+    if (!user) {
+      showLogin();
+      return;
+    }
     if (!name || !date || !data) {
       setError('Compila tutti i campi!');
       return;
@@ -110,16 +114,11 @@ function WorkoutSaver({ user }) {
           <li key={w.id}>{w.name} - {w.date} - {w.data}</li>
         ))}
       </ul>
-    </div>
-  );
-}
-
-function HomeUI() {
-  return (
-    <div style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', minHeight:'100vh', background:'#fff'}}>
-      <h1 style={{color:'#1a5a8a', fontSize:'2.5em', margin:'1em'}}>Workout Tracker</h1>
-      <img src="/images/exercises/goodmorning.png" alt="Workout" style={{width:'180px', margin:'1em', borderRadius:'12px', boxShadow:'0 2px 8px #0002'}} />
-      <p style={{maxWidth:'500px', fontSize:'1.2em', color:'#333', margin:'1em'}}>Benvenuto! Qui puoi consultare esercizi, video e salvare i tuoi allenamenti. Per registrare i tuoi allenamenti, è necessario effettuare il login.</p>
+      {showLogin && !user && (
+        <button style={{padding:'1em 2em', borderRadius:'8px', background:'#1a5a8a', color:'#fff', border:'none', fontWeight:'bold', fontSize:'1.1em'}} onClick={() => setShowLogin(true)}>
+          Vuoi salvare un allenamento? Accedi!
+        </button>
+      )}
     </div>
   );
 }
@@ -139,21 +138,12 @@ function App() {
     setUser(null);
   };
 
-  // Accesso libero: mostra HomeUI sempre
-  // Login solo se si vuole salvare un allenamento
+  // Mostra subito l'app completa (WorkoutSaver, lista, ecc.)
+  // Login compare solo se si tenta di salvare un allenamento
   return (
     <div>
       {user && <button onClick={handleLogout} style={{margin:'2em', padding:'0.7em 2em', borderRadius:'8px', background:'#fff', color:'#1a5a8a', border:'1px solid #1a5a8a', fontWeight:'bold'}}>Logout</button>}
-      <HomeUI />
-      {user ? (
-        <WorkoutSaver user={user} />
-      ) : (
-        <div style={{display:'flex', justifyContent:'center', margin:'2em'}}>
-          <button style={{padding:'1em 2em', borderRadius:'8px', background:'#1a5a8a', color:'#fff', border:'none', fontWeight:'bold', fontSize:'1.1em'}} onClick={() => setShowLogin(true)}>
-            Vuoi salvare un allenamento? Accedi!
-          </button>
-        </div>
-      )}
+      <WorkoutSaver user={user} showLogin={() => setShowLogin(true)} />
       {showLogin && !user && (
         <AuthUI onAuth={() => {
           getCurrentUser().then(res => {
