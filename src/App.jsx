@@ -127,7 +127,6 @@ function HomeUI() {
 function App() {
   const [user, setUser] = useState(null);
   const [showLogin, setShowLogin] = useState(false);
-  const [pendingWorkout, setPendingWorkout] = useState(null);
 
   useEffect(() => {
     getCurrentUser().then(res => {
@@ -140,30 +139,8 @@ function App() {
     setUser(null);
   };
 
-  if (!user && !showLogin) {
-    return (
-      <div>
-        <HomeUI />
-        <div style={{display:'flex', justifyContent:'center', margin:'2em'}}>
-          <button style={{padding:'1em 2em', borderRadius:'8px', background:'#1a5a8a', color:'#fff', border:'none', fontWeight:'bold', fontSize:'1.1em'}} onClick={() => setShowLogin(true)}>
-            Accedi / Registrati
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  if (!user && showLogin) {
-    return <AuthUI onAuth={() => {
-      getCurrentUser().then(res => {
-        if (res.data && res.data.user) setUser(res.data.user);
-      });
-      setShowLogin(false);
-    }} showInfo={true} />;
-  }
-
-  // App accesso libero: mostra esercizi, video ecc
-  // Mostra il salvataggio solo se loggato
+  // Accesso libero: mostra HomeUI sempre
+  // Login solo se si vuole salvare un allenamento
   return (
     <div>
       {user && <button onClick={handleLogout} style={{margin:'2em', padding:'0.7em 2em', borderRadius:'8px', background:'#fff', color:'#1a5a8a', border:'1px solid #1a5a8a', fontWeight:'bold'}}>Logout</button>}
@@ -176,6 +153,14 @@ function App() {
             Vuoi salvare un allenamento? Accedi!
           </button>
         </div>
+      )}
+      {showLogin && !user && (
+        <AuthUI onAuth={() => {
+          getCurrentUser().then(res => {
+            if (res.data && res.data.user) setUser(res.data.user);
+          });
+          setShowLogin(false);
+        }} showInfo={true} />
       )}
     </div>
   );
