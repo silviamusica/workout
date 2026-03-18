@@ -293,6 +293,39 @@ var INTRO_BASICS = [
     ]
   },
   {
+    icon: "🫁",
+    title: "La respirazione: la tecnica più trascurata",
+    summary: "Respirare nel modo sbagliato durante l'esercizio non è solo inefficiente — può essere pericoloso. Dipende dall'esercizio.",
+    body: [
+      { type: "p", content: "La gestione del respiro si divide in due categorie principali, a seconda dell'intensità dello sforzo e delle forze che agiscono sulla colonna vertebrale." },
+      { type: "section", label: "1. Corrispondenza Anatomica — esercizi senza carico spinale elevato" },
+      { type: "p", content: "La regola d'oro: inspira quando il movimento amplia il volume della gabbia toracica, espira quando lo riduce." },
+      { type: "bold-list", content: [
+        ["Lat Machine / Pulley", "Inspira in eccentrica (braccia che salgono, torace che si apre). Espira in concentrica (quando tiri verso il basso)."],
+        ["Alzate laterali / Military Press", "Al contrario: inspira in concentrica (braccia che salgono e aprono il petto). Espira in eccentrica (braccia che scendono)."],
+        ["Panca / Push-Up", "Inspira scendendo (torace si allarga). Espira spingendo su."],
+        ["Curl bicipiti / Croci", "Inspira aprendo il movimento. Espira chiudendolo."],
+      ]},
+      { type: "section", label: "2. Manovra di Valsalva — esercizi pesanti con compressione lombare" },
+      { type: "p", content: "Per Squat, Stacco e Good Morning il respiro non segue l'anatomia — ha un ruolo protettivo. Si esegue in apnea durante lo sforzo:" },
+      { type: "bold-list", content: [
+        ["1. Inspira profondo", "Prima di iniziare, riempi la pancia d'aria (non il petto). Blocca il respiro."],
+        ["2. Esegui in apnea", "Tutto lo sforzo avviene con il respiro trattenuto. Questo crea pressione intra-addominale (IAP)."],
+        ["3. Espira a movimento chiuso", "Solo al termine della fase concentrica, prima della prossima ripetizione."],
+        ["Perché funziona", "La pressione intra-addominale crea un 'cuscinetto pneumatico' interno che protegge le vertebre lombari dalle forze di taglio e compressione."],
+        ["Attenzione", "Sconsigliata a persone anziane o con problemi cardiovascolari: aumenta la pressione toracica e altera il ritorno venoso."],
+      ]},
+      { type: "section", label: "3. Respirazione di gestione — esercizi isometrici (Plank, Hollow)" },
+      { type: "p", content: "Nessuna fase concentrica/eccentrica: respira lento e profondo a livello toracico, senza mai trattenere il fiato. Mantieni l'addome contratto indipendentemente dal respiro." },
+      { type: "table", rows: [
+        { cat: "Basso/medio carico", metodo: "Corrispondenza Anatomica", regola: "Inspira quando il petto si apre · Espira quando si chiude", esempi: "Lat Machine · Panca · Alzate · Curl" },
+        { cat: "Multiarticolari pesanti", metodo: "Manovra di Valsalva", regola: "Inspira (gonfia l'addome) → apnea durante lo sforzo → espira a fine alzata", esempi: "Squat · Stacco da Terra · Good Morning" },
+        { cat: "Isometrici / Core", metodo: "Respirazione di Gestione", regola: "Respiro lento e profondo, addome sempre contratto, mai in apnea", esempi: "Plank · Hollow Body · L-Sit" },
+      ]},
+      { type: "link", label: "Wikipedia: manovra di Valsalva →", url: "https://it.wikipedia.org/wiki/Manovra_di_Valsalva" },
+    ]
+  },
+  {
     icon: "💤",
     title: "Il recupero è parte del programma",
     color: null,
@@ -1455,6 +1488,33 @@ export default function App() {
                             <div style={{ fontSize: 12, lineHeight: 1.65, color: T.sub }}>{item[1]}</div>
                           </div>;
                         })}
+                      </div>;
+                    }
+                    if (block.type === "section") {
+                      return <div key={bi} style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.8, color: dc, marginTop: 4, paddingBottom: 4, borderBottom: "1px solid " + dc + "20" }}>{block.label}</div>;
+                    }
+                    if (block.type === "table") {
+                      var cols = [
+                        { key: "cat", label: "Categoria" },
+                        { key: "metodo", label: "Metodo" },
+                        { key: "regola", label: "Regola pratica" },
+                        { key: "esempi", label: "Esercizi" },
+                      ];
+                      return <div key={bi} style={{ overflowX: "auto", marginTop: 4 }}>
+                        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 11, tableLayout: "fixed" }}>
+                          <thead>
+                            <tr>
+                              {cols.map(function(c) { return <th key={c.key} style={{ padding: "6px 8px", textAlign: "left", fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.6, color: dc, borderBottom: "2px solid " + dc + "30", background: dc + "08" }}>{c.label}</th>; })}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {block.rows.map(function(row, ri) {
+                              return <tr key={ri} style={{ background: ri % 2 === 0 ? "transparent" : dc + "05" }}>
+                                {cols.map(function(c) { return <td key={c.key} style={{ padding: "7px 8px", fontSize: 11, lineHeight: 1.55, color: T.sub, borderBottom: "1px solid " + T.bg, verticalAlign: "top" }}>{c.key === "cat" ? <span style={{ fontWeight: 700, color: T.tx }}>{row[c.key]}</span> : row[c.key]}</td>; })}
+                              </tr>;
+                            })}
+                          </tbody>
+                        </table>
                       </div>;
                     }
                     if (block.type === "link") {
