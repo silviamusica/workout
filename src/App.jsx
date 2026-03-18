@@ -1090,36 +1090,36 @@ export default function App() {
           {/* Body scrollabile */}
           <div style={{ overflowY: "auto", flex: 1, padding: "0 20px" }}>
             {glossTab === "principi" && <div>
-              {/* Intro narrativa a blocchi */}
-              {[
-                { emoji: "⚙️", title: "Come funziona l'allenamento", text: ["Ogni scheda bilancia tre variabili: ", "pd0", "Volume, Intensità e Densità", ". Per crescere nel tempo devi applicare il ", "pd1", "Sovraccarico progressivo", " — lo stimolo deve sempre aumentare, altrimenti il corpo si adatta e smette di rispondere."] },
-                { emoji: "📅", title: "Come strutturare la settimana", text: ["Allena ogni muscolo almeno 2-3 volte a settimana: è la ", "pd3", "multifrequenza", ", il principio più importante per la crescita. Lavora sempre a ", "pd2", "buffer", " (non a cedimento) per accumulare più volume senza esaurirti."] },
-                { emoji: "🏋️", title: "Come strutturare ogni seduta", text: ["Prima gli ", "pd4", "esercizi multiarticolari", " (squat, stacco, panca, trazioni) quando sei fresca. Poi gli isolamenti. Misura sempre ", "pd5", "kg, ripetizioni e RPE", " — senza dati non sai se stai progredendo."] },
-                { emoji: "😴", title: "Il recupero è parte dell'allenamento", text: ["Il corpo cresce nel riposo, non durante l'esercizio. Ogni 4-8 settimane inserisci una ", "pd6", "settimana di scarico", " per dissipare la fatica del ", "pd7", "Sistema Nervoso Centrale", "."] },
-                { emoji: "🦴", title: "Tecnica: proteggiti sotto carico", text: ["Nei carichi pesanti usa la ", "pd8", "Manovra di Valsalva", " per proteggere la colonna. In core e plank mantieni la ", "pd9", "retroversione del bacino", ". In trazioni e push-up usa l'", "pd10", "Assetto Hollow", "."] },
-                { emoji: "🎯", title: "Scegli il muscolo giusto", text: ["Ogni esercizio può lavorare muscoli diversi in base all'esecuzione: capire la differenza tra ", "pd11", "Hip Dominant e Knee Dominant", " e come ", "pd12", "cambiare il target", " senza cambiare esercizio ti dà un vantaggio enorme."] },
-                { emoji: "🔬", title: "Massimizza gli isolamenti", text: ["Negli esercizi di isolamento conta più il ", "pd13", "Tempo sotto tensione", " che il peso. Aggiungi un ", "pd14", "picco isometrico", " di 2-3s al massimo sforzo. Scegli gli esercizi complementari per rinforzare i tuoi ", "pd15", "punti deboli", "."] },
-              ].map(function(block, bi) {
-                var parts = block.text;
-                var rendered = [];
-                for (var pi = 0; pi < parts.length; pi++) {
-                  if (pi + 2 < parts.length && typeof parts[pi+1] === "string" && parts[pi+1].startsWith("pd")) {
-                    rendered.push(<span key={pi}>{parts[pi]}</span>);
-                    var pid = parts[pi+1]; var label = parts[pi+2];
-                    rendered.push(<span key={pi+"l"} onClick={(function(id) { return function() { var el = document.getElementById(id); if (el) { el.setAttribute("open",""); el.scrollIntoView({behavior:"smooth",block:"center"}); } }; })(pid)} style={{ color: dc, fontWeight: 700, cursor: "pointer", textDecoration: "underline dotted", textUnderlineOffset: 2 }}>{label}</span>);
-                    pi += 2;
-                  } else {
-                    rendered.push(<span key={pi}>{parts[pi]}</span>);
-                  }
-                }
-                return <div key={bi} style={{ background: T.sb, borderRadius: 10, padding: "10px 14px", marginBottom: 8 }}>
-                  <div style={{ fontWeight: 800, fontSize: 12, color: T.tx, marginBottom: 4 }}>{block.emoji + " " + block.title}</div>
-                  <div style={{ fontSize: 12, lineHeight: 1.7, color: T.sub }}>{rendered}</div>
-                </div>;
-              })}
-              {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi} key={gi} style={{ marginBottom: 8, borderRadius: 12, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "14" }}><summary style={{ padding: "12px 13px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: 10, color: "#fff", minWidth: 20, height: 20, borderRadius: 999, background: dc, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{gi + 1}</span>{g.t}</summary><div style={{ padding: "10px 12px 14px" }}><RichBlocks blocks={g.d} accent={dc} /></div></details>; })}
-              <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.8, color: dc, margin: "16px 0 8px", paddingLeft: 2 }}>Come leggere la scheda</div>
-              {PRINCIPLES.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
+              <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, color: T.sub, marginBottom: 8 }}>Concetti fondamentali</div>
+              <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 16 }}>
+                {PRINCIPLES_DEEP.map(function(g, gi) {
+                  var isOpen = showPrinciples === gi;
+                  return <div key={gi} style={{ borderBottom: gi < PRINCIPLES_DEEP.length - 1 ? "1px solid " + T.bg : "none" }}>
+                    <div onClick={function() { setShowPrinciples(isOpen ? null : gi); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
+                      <span style={{ fontSize: 13, fontWeight: isOpen ? 700 : 600, color: isOpen ? dc : T.tx, lineHeight: 1.3 }}>{g.t}</span>
+                      <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+                    </div>
+                    {isOpen && <div style={{ padding: "4px 14px 14px", background: T.sb }}>
+                      <RichBlocks blocks={g.d} accent={dc} />
+                    </div>}
+                  </div>;
+                })}
+              </div>
+              <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, color: T.sub, marginBottom: 8 }}>Come leggere la scheda</div>
+              <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg }}>
+                {PRINCIPLES.map(function(g, gi) {
+                  var isOpen = showPrinciples === 100 + gi;
+                  return <div key={gi} style={{ borderBottom: gi < PRINCIPLES.length - 1 ? "1px solid " + T.bg : "none" }}>
+                    <div onClick={function() { setShowPrinciples(isOpen ? null : 100 + gi); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
+                      <span style={{ fontSize: 13, fontWeight: isOpen ? 700 : 600, color: isOpen ? dc : T.tx, lineHeight: 1.3 }}>{g.t}</span>
+                      <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+                    </div>
+                    {isOpen && <div style={{ padding: "4px 14px 14px", background: T.sb }}>
+                      <DetailText text={g.d} accent={dc} soft={true} />
+                    </div>}
+                  </div>;
+                })}
+              </div>
             </div>}
             {glossTab === "termini" && <div>
               {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
@@ -1232,33 +1232,38 @@ export default function App() {
           </div>
           <div style={{ padding: "0 16px 16px" }}>
             {glossTab === "principi" && <div>
-              {[
-                { emoji: "⚙️", title: "Come funziona l'allenamento", text: ["Ogni scheda bilancia tre variabili: ", "pd0", "Volume, Intensità e Densità", ". Per crescere nel tempo devi applicare il ", "pd1", "Sovraccarico progressivo", " — lo stimolo deve sempre aumentare, altrimenti il corpo si adatta e smette di rispondere."] },
-                { emoji: "📅", title: "Come strutturare la settimana", text: ["Allena ogni muscolo almeno 2-3 volte a settimana: è la ", "pd3", "multifrequenza", ", il principio più importante per la crescita. Lavora sempre a ", "pd2", "buffer", " (non a cedimento) per accumulare più volume senza esaurirti."] },
-                { emoji: "🏋️", title: "Come strutturare ogni seduta", text: ["Prima gli ", "pd4", "esercizi multiarticolari", " (squat, stacco, panca, trazioni) quando sei fresca. Poi gli isolamenti. Misura sempre ", "pd5", "kg, ripetizioni e RPE", " — senza dati non sai se stai progredendo."] },
-                { emoji: "😴", title: "Il recupero è parte dell'allenamento", text: ["Il corpo cresce nel riposo, non durante l'esercizio. Ogni 4-8 settimane inserisci una ", "pd6", "settimana di scarico", " per dissipare la fatica del ", "pd7", "Sistema Nervoso Centrale", "."] },
-                { emoji: "🦴", title: "Tecnica: proteggiti sotto carico", text: ["Nei carichi pesanti usa la ", "pd8", "Manovra di Valsalva", " per proteggere la colonna. In core e plank mantieni la ", "pd9", "retroversione del bacino", ". In trazioni e push-up usa l'", "pd10", "Assetto Hollow", "."] },
-                { emoji: "🎯", title: "Scegli il muscolo giusto", text: ["Capire la differenza tra ", "pd11", "Hip Dominant e Knee Dominant", " e come ", "pd12", "cambiare il target", " senza cambiare esercizio ti dà un vantaggio enorme."] },
-                { emoji: "🔬", title: "Massimizza gli isolamenti", text: ["Conta più il ", "pd13", "Tempo sotto tensione", " che il peso. Aggiungi un ", "pd14", "picco isometrico", " di 2-3s. Scegli gli esercizi complementari per i tuoi ", "pd15", "punti deboli", "."] },
-              ].map(function(block, bi) {
-                var parts = block.text; var rendered = [];
-                for (var pi = 0; pi < parts.length; pi++) {
-                  if (pi + 2 < parts.length && typeof parts[pi+1] === "string" && parts[pi+1].startsWith("pd")) {
-                    rendered.push(<span key={pi}>{parts[pi]}</span>);
-                    var pid = parts[pi+1]; var label = parts[pi+2];
-                    rendered.push(<span key={pi+"l"} onClick={(function(id) { return function() { setGlossTab("principi"); var el = document.getElementById(id + "t"); if (el) { el.setAttribute("open",""); el.scrollIntoView({behavior:"smooth",block:"center"}); } }; })(pid)} style={{ color: dc, fontWeight: 700, cursor: "pointer", textDecoration: "underline dotted", textUnderlineOffset: 2 }}>{label}</span>);
-                    pi += 2;
-                  } else { rendered.push(<span key={pi}>{parts[pi]}</span>); }
-                }
-                return <div key={bi} style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 10, border: "1px solid " + dc + "10" }}>
-                  <div style={{ fontWeight: 800, fontSize: 12, color: T.tx, marginBottom: 6 }}>{block.emoji + " " + block.title}</div>
-                  <div style={{ fontSize: 12, lineHeight: 1.85, color: T.sub }}>{rendered}</div>
-                </div>;
-              })}
-              <div style={{ fontSize: 11, color: T.sub, textAlign: "center", margin: "4px 0 8px", opacity: 0.7 }}>Tap su ogni principio per il dettaglio completo</div>
-              {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi + "t"} key={gi} style={{ marginBottom: 8, borderRadius: 12, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "14" }}><summary style={{ padding: "12px 13px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: 10, color: "#fff", minWidth: 20, height: 20, borderRadius: 999, background: dc, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{gi + 1}</span>{g.t}</summary><div style={{ padding: "10px 12px 14px" }}><RichBlocks blocks={g.d} accent={dc} /></div></details>; })}
-              <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.8, color: dc, margin: "16px 0 8px", paddingLeft: 2 }}>Come leggere la scheda</div>
-              {PRINCIPLES.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
+              {/* Sezione: Concetti fondamentali */}
+              <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, color: T.sub, marginBottom: 8 }}>Concetti fondamentali</div>
+              <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 16 }}>
+                {PRINCIPLES_DEEP.map(function(g, gi) {
+                  var isOpen = showPrinciples === gi;
+                  return <div key={gi} style={{ borderBottom: gi < PRINCIPLES_DEEP.length - 1 ? "1px solid " + T.bg : "none" }}>
+                    <div onClick={function() { setShowPrinciples(isOpen ? null : gi); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
+                      <span style={{ fontSize: 13, fontWeight: isOpen ? 700 : 600, color: isOpen ? dc : T.tx, lineHeight: 1.3 }}>{g.t}</span>
+                      <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+                    </div>
+                    {isOpen && <div style={{ padding: "4px 14px 14px", background: T.sb }}>
+                      <RichBlocks blocks={g.d} accent={dc} />
+                    </div>}
+                  </div>;
+                })}
+              </div>
+              {/* Sezione: Come leggere la scheda */}
+              <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, color: T.sub, marginBottom: 8 }}>Come leggere la scheda</div>
+              <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg }}>
+                {PRINCIPLES.map(function(g, gi) {
+                  var isOpen = showPrinciples === 100 + gi;
+                  return <div key={gi} style={{ borderBottom: gi < PRINCIPLES.length - 1 ? "1px solid " + T.bg : "none" }}>
+                    <div onClick={function() { setShowPrinciples(isOpen ? null : 100 + gi); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
+                      <span style={{ fontSize: 13, fontWeight: isOpen ? 700 : 600, color: isOpen ? dc : T.tx, lineHeight: 1.3 }}>{g.t}</span>
+                      <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+                    </div>
+                    {isOpen && <div style={{ padding: "4px 14px 14px", background: T.sb }}>
+                      <DetailText text={g.d} accent={dc} soft={true} />
+                    </div>}
+                  </div>;
+                })}
+              </div>
             </div>}
             {glossTab === "termini" && <div>
               {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
