@@ -1772,18 +1772,21 @@ export default function App() {
         {/* Come funziona */}
         <div style={{ background: T.cd, borderRadius: 14, padding: "18px 18px 14px", marginBottom: 10 }}>
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 14 }}>Come funziona</div>
-          <div style={{ display: "grid", gap: 10 }}>
+          <div style={{ display: "grid", gap: 8 }}>
             {[
-              { icon: "📚", tab: "Teoria", desc: "Principi dell'allenamento: ipertrofia, multifrequenza, progressione, respirazione. Ideale per capire il perché di ogni scelta." },
-              { icon: "💪", tab: "Muscoli", desc: "Mappa interattiva dei gruppi muscolari: scopri quali muscoli compongono ogni catena e perché è importante allenarli in armonia." },
-              { icon: "📋", tab: "Scheda", desc: "La scheda settimanale giorno per giorno. Ogni esercizio con foto, indicazioni tecniche, badge respirazione 🫁 e timer di recupero integrato." },
-              { icon: "🏃", tab: "Esercizi", desc: "Biblioteca completa: riscaldamento dinamico, esercizi fondamentali con approfondimenti e stretching finale." },
-            ].map(function(item, i) {
-              return <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                <div style={{ width: 40, height: 40, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>{item.icon}</div>
+              { icon: "📚", label: "Teoria", key: "teoria", chips: ["Ipertrofia","Multifrequenza","Progressione","Respirazione"], desc: "Principi fondamentali dell'allenamento spiegati con chiarezza." },
+              { icon: "💪", label: "Muscoli", key: "muscles", chips: ["Grande dorsale","Quadricipite","Grande gluteo","Pettorali"], desc: "Mappa dei gruppi muscolari: dove sono, perché allenarli, quali esercizi li coinvolgono." },
+              { icon: "📋", label: "Scheda", key: "workout", chips: ["Principiante","Intermedio","Avanzato"], desc: "Scheda settimanale con esercizi, foto, badge respirazione 🫁 e timer di recupero." },
+              { icon: "🏃", label: "Esercizi", key: "exercises", chips: ["Riscaldamento","Fondamentali","Stretching"], desc: "Biblioteca completa di esercizi con approfondimenti e video." },
+            ].map(function(item) {
+              return <div key={item.key} onClick={function() { setTab(item.key); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "12px 12px", borderRadius: 10, background: T.bg, cursor: "pointer" }}>
+                <div style={{ width: 38, height: 38, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>{item.icon}</div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: dc, marginBottom: 2 }}>{item.tab}</div>
-                  <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55 }}>{item.desc}</div>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: dc, marginBottom: 3 }}>{item.label} →</div>
+                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginBottom: 6 }}>{item.desc}</div>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                    {item.chips.map(function(c) { return <span key={c} style={{ fontSize: 10, background: dc + "14", color: dc, padding: "2px 7px", borderRadius: 5, fontWeight: 600 }}>{c}</span>; })}
+                  </div>
                 </div>
               </div>;
             })}
@@ -1793,19 +1796,19 @@ export default function App() {
         {/* Funzionalità speciali */}
         <div style={{ background: T.cd, borderRadius: 14, padding: "18px 18px 14px", marginBottom: 10 }}>
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Funzionalità speciali</div>
-          <div style={{ display: "grid", gap: 10 }}>
+          <div style={{ display: "grid", gap: 8 }}>
             {[
-              { icon: "⏱️", title: "Cronometro di recupero", desc: "Nella Scheda, ogni esercizio ha un timer di recupero. Toccalo per avviarlo: suona con un beep alla fine del riposo." },
-              { icon: "📊", title: "Registra i tuoi pesi", desc: "Apri un esercizio nella Scheda e usa il campo note per annotare i carichi usati. I dati vengono salvati localmente sul dispositivo." },
-              { icon: "💾", title: "Backup e ripristino", desc: "Dalle Impostazioni (⚙️) puoi esportare tutti i tuoi dati in un file JSON e reimportarli in qualsiasi momento." },
-              { icon: "🫁", title: "Guida alla respirazione", desc: "Ogni esercizio ha un badge respirazione che mostra quando inspirare ed espirare, con le diverse tecniche (Valsalva, anatomica, isometrica)." },
-              { icon: "📖▶", title: "Approfondimenti integrati", desc: "I link aprono Wikipedia e video YouTube direttamente nell'app, senza uscire dalla schermata di allenamento." },
+              { icon: "⏱️", title: "Cronometro di recupero", desc: "Nella Scheda, ogni esercizio ha un timer di recupero. Toccalo per avviarlo: suona con un beep alla fine del riposo.", key: "workout" },
+              { icon: "📊", title: "Registra i tuoi pesi", desc: "Apri un esercizio nella Scheda e usa il campo note per annotare i carichi. I dati vengono salvati localmente sul dispositivo.", key: "workout" },
+              { icon: "💾", title: "Backup e ripristino", desc: "Dalle Impostazioni ⚙️ esporta tutti i tuoi dati in JSON e reimportali quando vuoi.", key: null },
+              { icon: "🫁", title: "Guida alla respirazione", desc: "Badge respirazione su ogni esercizio: mostra quando inspirare ed espirare (Valsalva, anatomica, isometrica).", key: "workout" },
+              { icon: "📖 ▶", title: "Approfondimenti integrati", desc: "Link Wikipedia e video YouTube si aprono direttamente nell'app, senza uscire.", key: "teoria" },
             ].map(function(item, i) {
-              return <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                <div style={{ width: 40, height: 40, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, flexShrink: 0 }}>{item.icon}</div>
+              return <div key={i} onClick={item.key ? function() { setTab(item.key); window.scrollTo({ top: 0, behavior: "smooth" }); } : undefined} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "10px 12px", borderRadius: 10, background: T.bg, cursor: item.key ? "pointer" : "default" }}>
+                <div style={{ width: 38, height: 38, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, flexShrink: 0 }}>{item.icon}</div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 2 }}>{item.title}</div>
-                  <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55 }}>{item.desc}</div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: item.key ? dc : T.tx, marginBottom: 2 }}>{item.title}{item.key ? " →" : ""}</div>
+                  <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.5 }}>{item.desc}</div>
                 </div>
               </div>;
             })}
@@ -1815,20 +1818,22 @@ export default function App() {
         {/* Livelli */}
         <div style={{ background: T.cd, borderRadius: 14, padding: "18px 18px 14px", marginBottom: 10 }}>
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Scegli il tuo livello</div>
-          <div style={{ display: "grid", gap: 10 }}>
+          <div style={{ display: "grid", gap: 8 }}>
             {[
-              { icon: "🌱", label: "Principiante", sub: "3 giorni a settimana · ~40 min", desc: "Parti da zero con 3 allenamenti full body a settimana. Corpo libero o manubri leggeri, 3 serie per esercizio, ritmo lento. Costruisce le basi motorie e la resistenza senza sovraccaricare." },
-              { icon: "🔥", label: "Intermedio", sub: "4 giorni a settimana · ~55 min", desc: "Hai già una base solida. 4 giorni con split upper/lower, introduce bilanciere e progressione di carico. Più volume e intensità rispetto al principiante." },
-              { icon: "⚡", label: "Avanzato", sub: "4-5 giorni a settimana · 55-80 min", desc: "Programma completo con 4 mesi di progressione. Compound pesanti, alto volume, varianti mensili che aumentano carico e complessità. Per chi si allena da almeno 1 anno con costanza." },
-            ].map(function(item, i) {
-              return <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "10px 12px", borderRadius: 10, background: T.bg }}>
+              { icon: "🌱", label: "Principiante", lv: "beginner", sub: "3 giorni · ~40 min", desc: "Full body a corpo libero. Costruisce le basi motorie senza sovraccaricare." },
+              { icon: "🔥", label: "Intermedio", lv: "intermediate", sub: "4 giorni · ~55 min", desc: "Split upper/lower. Introduce bilanciere e progressione di carico." },
+              { icon: "⚡", label: "Avanzato", lv: "advanced", sub: "4-5 giorni · 55-80 min", desc: "4 mesi di progressione, compound pesanti, alto volume." },
+            ].map(function(item) {
+              var isActive = level === item.lv;
+              return <div key={item.lv} onClick={function() { setLevel(item.lv); setDayIdx(0); setTab("workout"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "10px 12px", borderRadius: 10, background: isActive ? dc + "18" : T.bg, border: "1px solid " + (isActive ? dc + "40" : "transparent"), cursor: "pointer" }}>
                 <div style={{ width: 38, height: 38, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>{item.icon}</div>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 2 }}>
-                    <span style={{ fontSize: 13, fontWeight: 800, color: T.tx }}>{item.label}</span>
+                    <span style={{ fontSize: 13, fontWeight: 800, color: isActive ? dc : T.tx }}>{item.label}</span>
                     <span style={{ fontSize: 11, color: dc, fontWeight: 600 }}>{item.sub}</span>
+                    {isActive && <span style={{ fontSize: 10, background: dc, color: "#fff", padding: "1px 6px", borderRadius: 4, fontWeight: 700 }}>attivo</span>}
                   </div>
-                  <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55 }}>{item.desc}</div>
+                  <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.5 }}>{item.desc}</div>
                 </div>
               </div>;
             })}
@@ -1840,15 +1845,15 @@ export default function App() {
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Consigli d'uso</div>
           <div style={{ display: "grid", gap: 8 }}>
             {[
-              "Prima volta? Inizia dalla tab Teoria per capire i fondamenti.",
-              "Durante l'allenamento usa la tab Scheda: trova il giorno, apri l'esercizio e segui le indicazioni.",
-              "Tocca il badge 🫁 per vedere come respirare su ogni esercizio.",
-              "I link 📖 e ▶ aprono approfondimenti e video direttamente nell'app.",
-              "In Impostazioni ⚙️ puoi cambiare tema, salvare il nome e fare il backup dei dati.",
-            ].map(function(tip, i) {
-              return <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+              { tip: "Prima volta? Inizia dalla tab Teoria per capire i fondamenti.", key: "teoria" },
+              { tip: "Durante l'allenamento usa la Scheda: trova il giorno, apri l'esercizio e segui le indicazioni.", key: "workout" },
+              { tip: "Tocca il badge 🫁 su ogni esercizio per vedere come respirare correttamente.", key: "workout" },
+              { tip: "I link 📖 e ▶ aprono approfondimenti e video direttamente nell'app.", key: "teoria" },
+              { tip: "In Impostazioni ⚙️ puoi cambiare tema, salvare il nome e fare il backup dei dati.", key: null },
+            ].map(function(item, i) {
+              return <div key={i} onClick={item.key ? function() { setTab(item.key); window.scrollTo({ top: 0, behavior: "smooth" }); } : undefined} style={{ display: "flex", gap: 10, alignItems: "flex-start", cursor: item.key ? "pointer" : "default" }}>
                 <div style={{ width: 22, height: 22, borderRadius: "50%", background: dc + "22", color: dc, fontSize: 11, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>{i + 1}</div>
-                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55 }}>{tip}</div>
+                <div style={{ fontSize: 12, color: item.key ? dc : T.sub, lineHeight: 1.55, textDecoration: item.key ? "underline dotted" : "none", textDecorationColor: dc + "60" }}>{item.tip}</div>
               </div>;
             })}
           </div>
@@ -2019,31 +2024,47 @@ export default function App() {
           </div>
         </div>
 
-        <div style={{ background: T.cd, borderRadius: 12, padding: 12, marginBottom: 10, textAlign: "center" }}>
-          <img onClick={function() { setImgZoomOpen(true); }} src={MUSCLE_IMG} alt="Muscoli" style={{ width: "100%", maxWidth: 420, borderRadius: 8, marginBottom: 8, cursor: "zoom-in" }} />
-          <div style={{ fontSize: 11, color: T.sub, fontStyle: "italic" }}>Tap per ingrandire · scorri per dettagli muscoli</div>
+        {/* Mappa + selettore muscoli */}
+        <div style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 10 }}>
+          <div style={{ padding: 12, textAlign: "center", borderBottom: "1px solid " + T.bg }}>
+            <img onClick={function() { setImgZoomOpen(true); }} src={MUSCLE_IMG} alt="Muscoli" style={{ width: "100%", maxWidth: 420, borderRadius: 8, marginBottom: 6, cursor: "zoom-in" }} />
+            <div style={{ fontSize: 11, color: T.sub, fontStyle: "italic" }}>Tap per ingrandire</div>
+          </div>
+          {/* Griglia muscoli cliccabili */}
+          <div style={{ padding: "12px 12px 14px" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 8, textTransform: "uppercase", letterSpacing: 0.8 }}>Tocca un muscolo per i dettagli</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+              {MUSC.map(function(m, mi) {
+                var isO = openMuscle === mi;
+                return <button key={mi} onClick={function() { setOpenMuscle(isO ? null : mi); }} style={{ padding: "6px 12px", border: "1px solid " + (isO ? dc : dc + "30"), borderRadius: 20, background: isO ? dc : dc + "0E", color: isO ? "#fff" : dc, fontSize: 12, fontWeight: isO ? 700 : 600, cursor: "pointer" }}>{m.n}</button>;
+              })}
+            </div>
+          </div>
         </div>
+
         {imgZoomOpen && <div onClick={function() { setImgZoomOpen(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.92)", zIndex: 300, display: "flex", alignItems: "center", justifyContent: "center", padding: 8, cursor: "zoom-out" }}>
           <img src={MUSCLE_IMG} alt="Muscoli" style={{ maxWidth: "100%", maxHeight: "95vh", borderRadius: 10, objectFit: "contain" }} />
         </div>}
-        {MUSC.map(function(m, mi) { var isO = openMuscle === mi; return <div key={mi} style={{ background: T.cd, borderRadius: 10, marginBottom: 4, overflow: "hidden" }}>
-          <div onClick={function() { setOpenMuscle(isO ? null : mi); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}>
+
+        {/* Dettaglio muscolo selezionato */}
+        {MUSC.map(function(m, mi) { var isO = openMuscle === mi; if (!isO) return null; return <div key={mi} style={{ background: T.cd, borderRadius: 10, marginBottom: 4, overflow: "hidden" }}>
+          <div style={{ padding: "12px 14px 4px", display: "flex", alignItems: "center", gap: 10 }}>
             <div style={{ width: 34, height: 34, borderRadius: 9, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: dc }}>{mi+1}</div>
-            <div style={{ flex: 1 }}><div style={{ fontWeight: 700, fontSize: 13 }}>{m.n}</div><div style={{ fontSize: 11, color: T.sub }}>{m.z}</div></div>
-            <div style={{ fontSize: 14, color: T.sub, transform: isO ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
+            <div style={{ flex: 1 }}><div style={{ fontWeight: 700, fontSize: 14, color: dc }}>{m.n}</div><div style={{ fontSize: 11, color: T.sub }}>{m.z}</div></div>
+            <button onClick={function() { setOpenMuscle(null); }} style={{ background: "none", border: "none", color: T.sub, fontSize: 18, cursor: "pointer", padding: 4 }}>✕</button>
           </div>
-          {isO && <div style={{ padding: "0 14px 14px" }}>
+          <div style={{ padding: "0 14px 14px" }}>
             <div style={{ background: T.sb, borderRadius: 8, padding: 12, marginBottom: 8 }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 4 }}>Dove</div>
               <DetailText text={m.w} accent={dc} />
-              <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 4 }}>Perche allenarlo</div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 4, marginTop: 8 }}>Perché allenarlo</div>
               <DetailText text={m.y} accent={dc} />
             </div>
             <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 6 }}>Esercizi (tap per dettagli)</div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
               {m.ex.map(function(e, ei) { return <span key={ei} onClick={function() { setExInfoOpen(e); }} style={{ fontSize: 11, background: dc + "12", color: dc, padding: "4px 10px", borderRadius: 6, fontWeight: 600, cursor: "pointer", textDecoration: "underline dotted", textDecorationColor: dc + "50" }}>{e}</span>; })}
             </div>
-          </div>}
+          </div>
         </div>; })}
       </div>}
 
