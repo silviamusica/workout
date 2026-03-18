@@ -69,6 +69,11 @@ import img_w_Inchworm from "./images/warmup_stretch/w_Inchworm.jpg";
 import img_w_JumpingJacks from "./images/warmup_stretch/w_JumpingJacks.jpg";
 import img_w_MilitaryPress from "./images/warmup_stretch/w_MilitaryPress.jpg";
 import img_w_SquatBL from "./images/warmup_stretch/w_SquatBL.jpg";
+import img_w_CerchiBraccia from "./images/warmup_stretch/cerchi con le braccia.jpeg";
+import img_w_WorldsGreatestStretch from "./images/warmup_stretch/winnie-worlds-greatest-stretch.gif";
+import img_w_AffondiCorpoLibero from "./images/warmup_stretch/affondi corpo libero.jpg";
+import img_w_MarciaGinocchiaAlte from "./images/warmup_stretch/ginocchia-alte.jpeg";
+import img_w_GoodMorningSenzaPeso from "./images/warmup_stretch/goodmorning senza peso.jpg";
 
 // Muscle map
 import img_muscle_map from "./images/muscle_map.jpg";
@@ -354,16 +359,16 @@ var DAYS = [
     warmup: [
       { n: "Jumping jacks", img: "w_JumpingJacks", d: "5 minuti continui a intensita moderata. Obiettivo: alzare la frequenza cardiaca e la temperatura muscolare.", lk: "https://www.youtube.com/results?search_query=jumping+jacks+tutorial", tm: 300, alt: [
         { n: "Burpees", img: "w_Burpees", d: "3-5 minuti a ritmo moderato. Alternativa piu intensa ai jumping jacks.", lk: "https://www.youtube.com/results?search_query=beginner+burpees+tutorial", tm: 300 },
-        { n: "Marcia con ginocchia alte", d: "5 minuti. Ginocchia al petto ad ogni passo. Opzione a basso impatto.", lk: "https://www.youtube.com/results?search_query=high+knees+march+warmup", tm: 300 },
+        { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "5 minuti. Ginocchia al petto ad ogni passo. Opzione a basso impatto.", lk: "https://www.youtube.com/results?search_query=high+knees+march+warmup", tm: 300 },
       ]},
-      { n: "Cerchi con le braccia", d: "In piedi, braccia tese ai lati. Fai cerchi ampi in avanti per 10 rip, poi 10 indietro. Scalda la cuffia dei rotatori e le spalle.", lk: "https://www.youtube.com/results?search_query=arm+circles+warmup", alt: [
+      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "In piedi, braccia tese ai lati. Fai cerchi ampi in avanti per 10 rip, poi 10 indietro. Scalda la cuffia dei rotatori e le spalle.", lk: "https://www.youtube.com/results?search_query=arm+circles+warmup", alt: [
         { n: "Shoulder rolls + apertura petto", d: "10 rotazioni delle spalle avanti e indietro, poi apri le braccia tese lateralmente e porta i palmi in alto. 2 serie." },
       ]},
       { n: "Cat-Cow", img: "w_CatCow", d: "A quattro zampe: inspira e inarca (pancia giu, testa su), espira e arrotonda (mento al petto, schiena su). 10 ripetizioni lente. Mobilizza tutta la colonna.", lk: "https://www.youtube.com/results?search_query=cat+cow+warmup", alt: [
         { n: "Child's pose + cobra", d: "Posizione del bambino 20s, poi scivola in cobra. 5 ripetizioni lente. Stesso effetto mobilizzante." },
       ]},
       { n: "Inchworm", img: "w_Inchworm", d: "In piedi, piegati e cammina avanti con le mani fino al plank. Push-up facoltativo, poi torna indietro. 2 serie da 5. Attiva core, spalle e femorali.", lk: "https://www.youtube.com/results?search_query=inchworm+exercise+warmup", alt: [
-        { n: "World's Greatest Stretch", d: "5 per lato. Affondo, mano a terra, ruota il busto verso l'alto. Allunga flessori anca, torace, femorali.", lk: "https://www.youtube.com/results?search_query=worlds+greatest+stretch+tutorial" },
+        { n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "5 per lato. Affondo, mano a terra, ruota il busto verso l'alto. Allunga flessori anca, torace, femorali.", lk: "https://www.youtube.com/results?search_query=worlds+greatest+stretch+tutorial" },
       ]},
     ],
     ex: [
@@ -385,7 +390,7 @@ var DAYS = [
     warmup: [
       { n: "Burpees", img: "w_Burpees", d: "5 minuti. Ritmo moderato. Attiva tutta la catena cinetica.", lk: "https://www.youtube.com/results?search_query=beginner+burpees+tutorial", tm: 300, alt: [
         { n: "Jumping jacks", img: "w_JumpingJacks", d: "5 minuti a ritmo sostenuto. Alternativa piu leggera ai burpees.", lk: "https://www.youtube.com/results?search_query=jumping+jacks+tutorial", tm: 300 },
-        { n: "Marcia con ginocchia alte", d: "5 minuti. Opzione a basso impatto per giorni di affaticamento.", lk: "https://www.youtube.com/results?search_query=high+knees+march+warmup", tm: 300 },
+        { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "5 minuti. Opzione a basso impatto per giorni di affaticamento.", lk: "https://www.youtube.com/results?search_query=high+knees+march+warmup", tm: 300 },
       ]},
       { n: "Squat a corpo libero", img: "w_SquatBL", d: "2 serie da 8. Lento, concentrati sulla profondita e busto eretto. Prepara quadricipiti e glutei.", lk: "https://www.youtube.com/results?search_query=bodyweight+squat+warmup", alt: [
         { n: "Squat con pausa 2s in basso", d: "2 serie da 6. Scendi lento, tieni 2 secondi in fondo. Mobilita anca e caviglia." },
@@ -393,7 +398,7 @@ var DAYS = [
       { n: "Military press con bilanciere scarico", img: "w_MilitaryPress", d: "2 serie da 8. Bilanciere vuoto o bastone. Movimento completo: clavicole a sopra la testa. Scalda deltoidi e stabilizzatori.", lk: "https://www.youtube.com/results?search_query=overhead+press+empty+bar+warmup", alt: [
         { n: "Cerchi con le braccia + apertura", d: "10 cerchi avanti, 10 indietro, poi 10 aperture laterali lente. Scalda cuffia dei rotatori e deltoidi." },
       ]},
-      { n: "Plank", d: "30 secondi. Attiva il core prima di caricare.", lk: "https://www.youtube.com/results?search_query=plank+warmup", tm: 30, alt: [
+      { n: "Plank", img: "w_Plank", d: "30 secondi. Attiva il core prima di caricare.", lk: "https://www.youtube.com/results?search_query=plank+warmup", tm: 30, alt: [
         { n: "Hollow Position Tuck", d: "30 secondi. Lombare a terra, ginocchia al petto. Core attivo, stessa funzione del plank.", tm: 30 },
       ]},
     ],
@@ -424,13 +429,13 @@ var DAYS = [
       { n: "Cat-Cow", img: "w_CatCow", d: "10 ripetizioni lente. Mobilizza la colonna prima di caricarla con stacco e panca.", lk: "https://www.youtube.com/results?search_query=cat+cow+warmup", alt: [
         { n: "Rotazioni toraciche", d: "In posizione quadrupedica, una mano dietro la testa. Ruota il gomito verso il soffitto per 8 rip per lato. Mobilita toracica specifica per stacco." },
       ]},
-      { n: "World's Greatest Stretch", d: "5 per lato. Parti in affondo, mano a terra, ruota il busto aprendo l'altro braccio verso il soffitto. Allunga flessori anca, torace, anche, femorali.", lk: "https://www.youtube.com/results?search_query=worlds+greatest+stretch+tutorial", alt: [
+      { n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "5 per lato. Parti in affondo, mano a terra, ruota il busto aprendo l'altro braccio verso il soffitto. Allunga flessori anca, torace, anche, femorali.", lk: "https://www.youtube.com/results?search_query=worlds+greatest+stretch+tutorial", alt: [
         { n: "Affondo con rotazione", d: "Passo avanti largo, mani a terra, poi ruota il braccio interno verso l'alto. 5 per lato. Simile ma piu semplice." },
       ]},
-      { n: "Stacco con bilanciere scarico", d: "2 serie da 5. Bilanciere vuoto. Simula lo schema motorio, attiva la catena posteriore.", lk: "https://www.youtube.com/results?search_query=deadlift+warmup+light+weight", alt: [
+      { n: "Stacco con bilanciere scarico", img: "w_StaccoBilanciere", d: "2 serie da 5. Bilanciere vuoto. Simula lo schema motorio, attiva la catena posteriore.", lk: "https://www.youtube.com/results?search_query=deadlift+warmup+light+weight", alt: [
         { n: "Romanian deadlift con bastone", d: "2 serie da 8. Bastone o manico di scopa. Attiva femorali e glutei nello stesso piano di movimento." },
       ]},
-      { n: "Plank", d: "30 secondi. Core attivo prima di caricare.", lk: "https://www.youtube.com/results?search_query=plank+warmup", tm: 30, alt: [
+      { n: "Plank", img: "w_Plank", d: "30 secondi. Core attivo prima di caricare.", lk: "https://www.youtube.com/results?search_query=plank+warmup", tm: 30, alt: [
         { n: "Dead bug", d: "8 rip per lato. Sdraiata, gambe a 90 gradi, abbassa braccio e gamba opposta verso il pavimento. Core stabilizzato.", tm: 30 },
       ]},
     ],
@@ -453,16 +458,16 @@ var DAYS = [
         { n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti. Alternativa leggera ai burpees.", lk: "https://www.youtube.com/results?search_query=jumping+jacks+tutorial", tm: 180 },
         { n: "Step touch laterale", d: "3 minuti. Passo laterale ampio alternando i lati, tocca il piede che arriva. Basso impatto per le ginocchia.", tm: 180 },
       ]},
-      { n: "Marcia con ginocchia alte", d: "2 minuti. Ginocchia al petto ad ogni passo. Scalda flessori anca e quadricipiti.", lk: "https://www.youtube.com/results?search_query=high+knees+march+warmup", tm: 120, alt: [
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 minuti. Ginocchia al petto ad ogni passo. Scalda flessori anca e quadricipiti.", lk: "https://www.youtube.com/results?search_query=high+knees+march+warmup", tm: 120, alt: [
         { n: "Squat a corpo libero", img: "w_SquatBL", d: "2 serie da 10. Lento. Attiva quadricipiti e glutei.", lk: "https://www.youtube.com/results?search_query=bodyweight+squat+warmup" },
       ]},
-      { n: "Clamshell a corpo libero", d: "10 per lato. Su un fianco, ginocchia piegate, apri il ginocchio superiore. Attiva gluteo medio prima degli affondi.", lk: "https://www.youtube.com/results?search_query=clamshell+warmup+glute+activation", alt: [
+      { n: "Clamshell a corpo libero", img: "w_ClamshellCorpoLibero", d: "10 per lato. Su un fianco, ginocchia piegate, apri il ginocchio superiore. Attiva gluteo medio prima degli affondi.", lk: "https://www.youtube.com/results?search_query=clamshell+warmup+glute+activation", alt: [
         { n: "Fire hydrant", d: "10 per lato. A quattro zampe, solleva il ginocchio verso il lato. Stessa attivazione del gluteo medio.", lk: "https://www.youtube.com/results?search_query=fire+hydrant+glute+activation" },
       ]},
-      { n: "Affondi a corpo libero", d: "10 totali (5 per gamba). Lenti, senza peso. Prepara quadricipiti e glutei.", lk: "https://www.youtube.com/results?search_query=bodyweight+lunge+warmup", alt: [
+      { n: "Affondi a corpo libero", img: "w_AffondiCorpoLibero", d: "10 totali (5 per gamba). Lenti, senza peso. Prepara quadricipiti e glutei.", lk: "https://www.youtube.com/results?search_query=bodyweight+lunge+warmup", alt: [
         { n: "Squat bulgaro corpo libero", d: "6 per gamba. Piede posteriore su sedia bassa. Simula il pattern dell'affondo con piu stabilita." },
       ]},
-      { n: "Good morning senza peso", d: "10 ripetizioni. Mani dietro la testa, piega avanti spingendo il bacino indietro. Attiva erettori e femorali.", lk: "https://www.youtube.com/results?search_query=good+morning+bodyweight+warmup", alt: [
+      { n: "Good morning senza peso", img: "w_GoodMorningSenzaPeso", d: "10 ripetizioni. Mani dietro la testa, piega avanti spingendo il bacino indietro. Attiva erettori e femorali.", lk: "https://www.youtube.com/results?search_query=good+morning+bodyweight+warmup", alt: [
         { n: "Hip hinge con bastone", d: "Metti un bastone lungo la schiena (deve toccare testa, dorsali e sacro). Piega il bacino indietro. 10 rip. Impara lo schema senza caricare." },
       ]},
     ],
@@ -581,6 +586,15 @@ var WS_IMG = {
   "w_JumpingJacks": img_w_JumpingJacks,
   "w_MilitaryPress": img_w_MilitaryPress,
   "w_SquatBL": img_w_SquatBL,
+  "w_CerchiBraccia": img_w_CerchiBraccia,
+  "w_WorldsGreatestStretch": img_w_WorldsGreatestStretch,
+  "w_AffondiCorpoLibero": img_w_AffondiCorpoLibero,
+  "w_MarciaGinocchiaAlte": img_w_MarciaGinocchiaAlte,
+  "w_GoodMorningSenzaPeso": img_w_GoodMorningSenzaPeso,
+  "w_Plank": img_Plank,
+  "w_StaccoBilanciere": img_Stacco_da_Terra,
+  "w_ClamshellCorpoLibero": img_Clamshell,
+  "w_AffondiWarmup": img_Affondi,
 };
 var SK = "wt-v5";
 
