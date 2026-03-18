@@ -352,10 +352,19 @@ var DAYS = [
       ritmo: "Recuperi 2 min sui compound (trazioni, rematore), 90s sugli accessori, 30s sul core."
     },
     warmup: [
-      { n: "Jumping jacks", img: "w_JumpingJacks", d: "5 minuti continui a intensita moderata. Obiettivo: alzare la frequenza cardiaca e la temperatura muscolare.", lk: "https://www.youtube.com/results?search_query=jumping+jacks+tutorial", tm: 300 },
-      { n: "Cerchi con le braccia", d: "In piedi, braccia tese ai lati. Fai cerchi ampi in avanti per 10 rip, poi 10 indietro. Scalda la cuffia dei rotatori e le spalle.", lk: "https://www.youtube.com/results?search_query=arm+circles+warmup" },
-      { n: "Cat-Cow", img: "w_CatCow", d: "A quattro zampe: inspira e inarca (pancia giu, testa su), espira e arrotonda (mento al petto, schiena su). 10 ripetizioni lente. Mobilizza tutta la colonna.", lk: "https://www.youtube.com/results?search_query=cat+cow+warmup" },
-      { n: "Inchworm", img: "w_Inchworm", d: "In piedi, piegati e cammina avanti con le mani fino al plank. Push-up facoltativo, poi torna indietro. 2 serie da 5. Attiva core, spalle e femorali.", lk: "https://www.youtube.com/results?search_query=inchworm+exercise+warmup" },
+      { n: "Jumping jacks", img: "w_JumpingJacks", d: "5 minuti continui a intensita moderata. Obiettivo: alzare la frequenza cardiaca e la temperatura muscolare.", lk: "https://www.youtube.com/results?search_query=jumping+jacks+tutorial", tm: 300, alt: [
+        { n: "Burpees", img: "w_Burpees", d: "3-5 minuti a ritmo moderato. Alternativa piu intensa ai jumping jacks.", lk: "https://www.youtube.com/results?search_query=beginner+burpees+tutorial", tm: 300 },
+        { n: "Marcia con ginocchia alte", d: "5 minuti. Ginocchia al petto ad ogni passo. Opzione a basso impatto.", lk: "https://www.youtube.com/results?search_query=high+knees+march+warmup", tm: 300 },
+      ]},
+      { n: "Cerchi con le braccia", d: "In piedi, braccia tese ai lati. Fai cerchi ampi in avanti per 10 rip, poi 10 indietro. Scalda la cuffia dei rotatori e le spalle.", lk: "https://www.youtube.com/results?search_query=arm+circles+warmup", alt: [
+        { n: "Shoulder rolls + apertura petto", d: "10 rotazioni delle spalle avanti e indietro, poi apri le braccia tese lateralmente e porta i palmi in alto. 2 serie." },
+      ]},
+      { n: "Cat-Cow", img: "w_CatCow", d: "A quattro zampe: inspira e inarca (pancia giu, testa su), espira e arrotonda (mento al petto, schiena su). 10 ripetizioni lente. Mobilizza tutta la colonna.", lk: "https://www.youtube.com/results?search_query=cat+cow+warmup", alt: [
+        { n: "Child's pose + cobra", d: "Posizione del bambino 20s, poi scivola in cobra. 5 ripetizioni lente. Stesso effetto mobilizzante." },
+      ]},
+      { n: "Inchworm", img: "w_Inchworm", d: "In piedi, piegati e cammina avanti con le mani fino al plank. Push-up facoltativo, poi torna indietro. 2 serie da 5. Attiva core, spalle e femorali.", lk: "https://www.youtube.com/results?search_query=inchworm+exercise+warmup", alt: [
+        { n: "World's Greatest Stretch", d: "5 per lato. Affondo, mano a terra, ruota il busto verso l'alto. Allunga flessori anca, torace, femorali.", lk: "https://www.youtube.com/results?search_query=worlds+greatest+stretch+tutorial" },
+      ]},
     ],
     ex: [
       { n: "Ab Wheel", s: "8x4", rpe: "", note: "" },
@@ -374,10 +383,19 @@ var DAYS = [
       ritmo: "Seduta piu lunga della settimana. Recuperi 2 min su squat e military, 90s sugli accessori, 60s sulle braccia."
     },
     warmup: [
-      { n: "Burpees leggeri o skip sul posto", img: "w_Burpees", d: "5 minuti. Burpees: scendi in squat, mani a terra, salta in plank, torna su. Skip: corri sul posto ginocchia al petto. Ritmo moderato.", lk: "https://www.youtube.com/results?search_query=beginner+burpees+tutorial", tm: 300 },
-      { n: "Squat a corpo libero", img: "w_SquatBL", d: "2 serie da 8. Lento, concentrati sulla profondita e busto eretto. Prepara quadricipiti e glutei.", lk: "https://www.youtube.com/results?search_query=bodyweight+squat+warmup" },
-      { n: "Military press con bilanciere scarico", img: "w_MilitaryPress", d: "2 serie da 8. Bilanciere vuoto o bastone. Movimento completo: clavicole a sopra la testa. Scalda deltoidi e stabilizzatori.", lk: "https://www.youtube.com/results?search_query=overhead+press+empty+bar+warmup" },
-      { n: "Plank", d: "30 secondi. Attiva il core prima di caricare.", lk: "https://www.youtube.com/results?search_query=plank+warmup", tm: 30 },
+      { n: "Burpees", img: "w_Burpees", d: "5 minuti. Ritmo moderato. Attiva tutta la catena cinetica.", lk: "https://www.youtube.com/results?search_query=beginner+burpees+tutorial", tm: 300, alt: [
+        { n: "Jumping jacks", img: "w_JumpingJacks", d: "5 minuti a ritmo sostenuto. Alternativa piu leggera ai burpees.", lk: "https://www.youtube.com/results?search_query=jumping+jacks+tutorial", tm: 300 },
+        { n: "Marcia con ginocchia alte", d: "5 minuti. Opzione a basso impatto per giorni di affaticamento.", lk: "https://www.youtube.com/results?search_query=high+knees+march+warmup", tm: 300 },
+      ]},
+      { n: "Squat a corpo libero", img: "w_SquatBL", d: "2 serie da 8. Lento, concentrati sulla profondita e busto eretto. Prepara quadricipiti e glutei.", lk: "https://www.youtube.com/results?search_query=bodyweight+squat+warmup", alt: [
+        { n: "Squat con pausa 2s in basso", d: "2 serie da 6. Scendi lento, tieni 2 secondi in fondo. Mobilita anca e caviglia." },
+      ]},
+      { n: "Military press con bilanciere scarico", img: "w_MilitaryPress", d: "2 serie da 8. Bilanciere vuoto o bastone. Movimento completo: clavicole a sopra la testa. Scalda deltoidi e stabilizzatori.", lk: "https://www.youtube.com/results?search_query=overhead+press+empty+bar+warmup", alt: [
+        { n: "Cerchi con le braccia + apertura", d: "10 cerchi avanti, 10 indietro, poi 10 aperture laterali lente. Scalda cuffia dei rotatori e deltoidi." },
+      ]},
+      { n: "Plank", d: "30 secondi. Attiva il core prima di caricare.", lk: "https://www.youtube.com/results?search_query=plank+warmup", tm: 30, alt: [
+        { n: "Hollow Position Tuck", d: "30 secondi. Lombare a terra, ginocchia al petto. Core attivo, stessa funzione del plank.", tm: 30 },
+      ]},
     ],
     ex: [
       { n: "Addominali Obliqui", s: "3x15", rpe: "", note: "Russian twist o crunch laterale" },
@@ -399,11 +417,22 @@ var DAYS = [
       ritmo: "Seduta corta. Recuperi 2-3 min su panca e stacco (carichi pesanti), 90s sul rematore."
     },
     warmup: [
-      { n: "Burpees", img: "w_Burpees", d: "3 minuti a ritmo moderato. Alza la frequenza cardiaca e attiva tutta la catena cinetica prima di caricare con stacco e panca.", lk: "https://www.youtube.com/results?search_query=beginner+burpees+tutorial", tm: 180 },
-      { n: "Cat-Cow", img: "w_CatCow", d: "10 ripetizioni lente. Mobilizza la colonna prima di caricarla con stacco e panca.", lk: "https://www.youtube.com/results?search_query=cat+cow+warmup" },
-      { n: "World's Greatest Stretch", d: "5 per lato. Parti in affondo, mano a terra, ruota il busto aprendo l'altro braccio verso il soffitto. Allunga flessori anca, torace, anche, femorali.", lk: "https://www.youtube.com/results?search_query=worlds+greatest+stretch+tutorial" },
-      { n: "Stacco con bilanciere scarico", d: "2 serie da 5. Bilanciere vuoto. Simula lo schema motorio, attiva la catena posteriore.", lk: "https://www.youtube.com/results?search_query=deadlift+warmup+light+weight" },
-      { n: "Plank", d: "30 secondi. Core attivo prima di caricare.", lk: "https://www.youtube.com/results?search_query=plank+warmup", tm: 30 },
+      { n: "Burpees", img: "w_Burpees", d: "3 minuti a ritmo moderato. Alza la frequenza cardiaca e attiva tutta la catena cinetica prima di caricare con stacco e panca.", lk: "https://www.youtube.com/results?search_query=beginner+burpees+tutorial", tm: 180, alt: [
+        { n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti. Alternativa piu leggera.", lk: "https://www.youtube.com/results?search_query=jumping+jacks+tutorial", tm: 180 },
+        { n: "Skipping sul posto", d: "3 minuti. Corri sul posto alzando le ginocchia. Intensita media.", tm: 180 },
+      ]},
+      { n: "Cat-Cow", img: "w_CatCow", d: "10 ripetizioni lente. Mobilizza la colonna prima di caricarla con stacco e panca.", lk: "https://www.youtube.com/results?search_query=cat+cow+warmup", alt: [
+        { n: "Rotazioni toraciche", d: "In posizione quadrupedica, una mano dietro la testa. Ruota il gomito verso il soffitto per 8 rip per lato. Mobilita toracica specifica per stacco." },
+      ]},
+      { n: "World's Greatest Stretch", d: "5 per lato. Parti in affondo, mano a terra, ruota il busto aprendo l'altro braccio verso il soffitto. Allunga flessori anca, torace, anche, femorali.", lk: "https://www.youtube.com/results?search_query=worlds+greatest+stretch+tutorial", alt: [
+        { n: "Affondo con rotazione", d: "Passo avanti largo, mani a terra, poi ruota il braccio interno verso l'alto. 5 per lato. Simile ma piu semplice." },
+      ]},
+      { n: "Stacco con bilanciere scarico", d: "2 serie da 5. Bilanciere vuoto. Simula lo schema motorio, attiva la catena posteriore.", lk: "https://www.youtube.com/results?search_query=deadlift+warmup+light+weight", alt: [
+        { n: "Romanian deadlift con bastone", d: "2 serie da 8. Bastone o manico di scopa. Attiva femorali e glutei nello stesso piano di movimento." },
+      ]},
+      { n: "Plank", d: "30 secondi. Core attivo prima di caricare.", lk: "https://www.youtube.com/results?search_query=plank+warmup", tm: 30, alt: [
+        { n: "Dead bug", d: "8 rip per lato. Sdraiata, gambe a 90 gradi, abbassa braccio e gamba opposta verso il pavimento. Core stabilizzato.", tm: 30 },
+      ]},
     ],
     ex: [
       { n: "Plank", s: "3x45s", rpe: "", note: "" },
@@ -420,11 +449,22 @@ var DAYS = [
       ritmo: "Seduta ad alto volume metabolico. Recuperi brevi: 60-90s su affondi e clamshell, 90s su croci e arnold."
     },
     warmup: [
-      { n: "Burpees", img: "w_Burpees", d: "3 minuti a ritmo moderato. Attiva tutta la catena cinetica, riscalda glutei e gambe prima del lavoro pesante.", lk: "https://www.youtube.com/results?search_query=beginner+burpees+tutorial", tm: 180 },
-      { n: "Marcia con ginocchia alte", d: "2 minuti. Ginocchia al petto ad ogni passo. Scalda flessori anca e quadricipiti.", lk: "https://www.youtube.com/results?search_query=high+knees+march+warmup", tm: 120 },
-      { n: "Clamshell a corpo libero", d: "10 per lato. Su un fianco, ginocchia piegate, apri il ginocchio superiore. Attiva gluteo medio prima degli affondi.", lk: "https://www.youtube.com/results?search_query=clamshell+warmup+glute+activation" },
-      { n: "Affondi a corpo libero", d: "10 totali (5 per gamba). Lenti, senza peso. Prepara quadricipiti e glutei.", lk: "https://www.youtube.com/results?search_query=bodyweight+lunge+warmup" },
-      { n: "Good morning senza peso", d: "10 ripetizioni. Mani dietro la testa, piega avanti spingendo il bacino indietro. Attiva erettori e femorali.", lk: "https://www.youtube.com/results?search_query=good+morning+bodyweight+warmup" },
+      { n: "Burpees", img: "w_Burpees", d: "3 minuti a ritmo moderato. Attiva tutta la catena cinetica, riscalda glutei e gambe prima del lavoro pesante.", lk: "https://www.youtube.com/results?search_query=beginner+burpees+tutorial", tm: 180, alt: [
+        { n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti. Alternativa leggera ai burpees.", lk: "https://www.youtube.com/results?search_query=jumping+jacks+tutorial", tm: 180 },
+        { n: "Step touch laterale", d: "3 minuti. Passo laterale ampio alternando i lati, tocca il piede che arriva. Basso impatto per le ginocchia.", tm: 180 },
+      ]},
+      { n: "Marcia con ginocchia alte", d: "2 minuti. Ginocchia al petto ad ogni passo. Scalda flessori anca e quadricipiti.", lk: "https://www.youtube.com/results?search_query=high+knees+march+warmup", tm: 120, alt: [
+        { n: "Squat a corpo libero", img: "w_SquatBL", d: "2 serie da 10. Lento. Attiva quadricipiti e glutei.", lk: "https://www.youtube.com/results?search_query=bodyweight+squat+warmup" },
+      ]},
+      { n: "Clamshell a corpo libero", d: "10 per lato. Su un fianco, ginocchia piegate, apri il ginocchio superiore. Attiva gluteo medio prima degli affondi.", lk: "https://www.youtube.com/results?search_query=clamshell+warmup+glute+activation", alt: [
+        { n: "Fire hydrant", d: "10 per lato. A quattro zampe, solleva il ginocchio verso il lato. Stessa attivazione del gluteo medio.", lk: "https://www.youtube.com/results?search_query=fire+hydrant+glute+activation" },
+      ]},
+      { n: "Affondi a corpo libero", d: "10 totali (5 per gamba). Lenti, senza peso. Prepara quadricipiti e glutei.", lk: "https://www.youtube.com/results?search_query=bodyweight+lunge+warmup", alt: [
+        { n: "Squat bulgaro corpo libero", d: "6 per gamba. Piede posteriore su sedia bassa. Simula il pattern dell'affondo con piu stabilita." },
+      ]},
+      { n: "Good morning senza peso", d: "10 ripetizioni. Mani dietro la testa, piega avanti spingendo il bacino indietro. Attiva erettori e femorali.", lk: "https://www.youtube.com/results?search_query=good+morning+bodyweight+warmup", alt: [
+        { n: "Hip hinge con bastone", d: "Metti un bastone lungo la schiena (deve toccare testa, dorsali e sacro). Piega il bacino indietro. 10 rip. Impara lo schema senza caricare." },
+      ]},
     ],
     ex: [
       { n: "Addominali Obliqui", s: "3x15", rpe: "", note: "" },
@@ -443,8 +483,13 @@ var DAYS = [
       ritmo: "Seduta leggera. Recuperi brevi: 45-60s. Deve lasciarti piu attiva, non piu stanca."
     },
     warmup: [
-      { n: "Jumping jacks", img: "w_JumpingJacks", d: "2 minuti. Alza la frequenza cardiaca. Sessione opzionale — ritmo leggero.", lk: "https://www.youtube.com/results?search_query=jumping+jacks+tutorial", tm: 120 },
-      { n: "Squat a corpo libero", img: "w_SquatBL", d: "10 ripetizioni lente.", lk: "https://www.youtube.com/results?search_query=bodyweight+squat+warmup" },
+      { n: "Jumping jacks", img: "w_JumpingJacks", d: "2 minuti. Alza la frequenza cardiaca. Sessione opzionale — ritmo leggero.", lk: "https://www.youtube.com/results?search_query=jumping+jacks+tutorial", tm: 120, alt: [
+        { n: "Burpees leggeri", img: "w_Burpees", d: "2 minuti. Solo se ti senti in forma.", lk: "https://www.youtube.com/results?search_query=beginner+burpees+tutorial", tm: 120 },
+        { n: "Marcia sul posto", d: "2 minuti a ritmo lento. Opzione minima per giorni di recupero.", tm: 120 },
+      ]},
+      { n: "Squat a corpo libero", img: "w_SquatBL", d: "10 ripetizioni lente.", lk: "https://www.youtube.com/results?search_query=bodyweight+squat+warmup", alt: [
+        { n: "Affondi a corpo libero", d: "5 per gamba. Lenti, senza peso." },
+      ]},
     ],
     ex: [
       { n: "Hollow Position", s: "4x30s", rpe: "", note: "Progressione: Tuck → Advanced Tuck → One Leg → Full" },
@@ -581,6 +626,7 @@ export default function App() {
   var [openEx, setOpenEx] = useState(null);
   var [openMuscle, setOpenMuscle] = useState(null);
   var [showIntro, setShowIntro] = useState(false);
+  var [warmupAlt, setWarmupAlt] = useState({});
   var [showStr, setShowStr] = useState(false);
   var [showImg, setShowImg] = useState(null);
   var [showExSection, setShowExSection] = useState(false);
@@ -1412,21 +1458,32 @@ export default function App() {
                 <div style={{ fontSize: 13, color: dc, transform: showIntro ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
               {showIntro && <div style={{ padding: "0 14px 14px" }}><div style={{ background: T.sb, borderRadius: 10, padding: 12 }}>
-                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                   {dayData.warmup.map(function(w, wi) {
-                    return <div key={wi} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
-                      <div style={{ width: 22, height: 22, borderRadius: 6, background: dc + "20", color: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, flexShrink: 0, marginTop: 1 }}>{wi + 1}</div>
-                      <div style={{ flex: 1 }}>
-                        <div style={{ fontSize: 12, fontWeight: 700, color: T.tx, marginBottom: 2 }}>{w.n}</div>
-                        {w.img && WS_IMG[w.img] && <div>
-                          <button onClick={function() { setShowImg(showImg === "w" + wi ? null : "w" + wi); }} style={{ fontSize: 10, color: dc, fontWeight: 600, background: "none", border: "1px solid " + dc + "30", borderRadius: 5, padding: "2px 8px", cursor: "pointer", marginBottom: 4 }}>{showImg === "w" + wi ? "nascondi" : "vedi foto"}</button>
-                          {showImg === "w" + wi && <img src={WS_IMG[w.img]} style={{ width: "100%", borderRadius: 8, marginBottom: 6 }} />}
+                    var altKey = dayIdx + "-" + wi;
+                    var chosenAlt = warmupAlt[altKey]; // undefined = default, number = index in w.alt
+                    var active = chosenAlt != null ? w.alt[chosenAlt] : w;
+                    return <div key={wi} style={{ borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "20" }}>
+                      {/* Header row with number + name + alt toggle */}
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px", background: dc + "08" }}>
+                        <div style={{ width: 20, height: 20, borderRadius: 5, background: dc, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, flexShrink: 0 }}>{wi + 1}</div>
+                        <div style={{ flex: 1, fontSize: 12, fontWeight: 700, color: T.tx }}>{active.n}</div>
+                        {w.alt && w.alt.length > 0 && <div style={{ display: "flex", gap: 3 }}>
+                          <button onClick={function() { setWarmupAlt(function(prev) { var n = Object.assign({}, prev); delete n[altKey]; return n; }); }} style={{ fontSize: 9, padding: "2px 6px", border: "none", borderRadius: 4, cursor: "pointer", fontWeight: 700, background: chosenAlt == null ? dc : T.bg, color: chosenAlt == null ? "#fff" : T.sub }}>base</button>
+                          {w.alt.map(function(a, ai) { return <button key={ai} onClick={function() { setWarmupAlt(function(prev) { var n = Object.assign({}, prev); n[altKey] = ai; return n; }); }} style={{ fontSize: 9, padding: "2px 6px", border: "none", borderRadius: 4, cursor: "pointer", fontWeight: 700, background: chosenAlt === ai ? dc : T.bg, color: chosenAlt === ai ? "#fff" : T.sub }}>{"alt" + (w.alt.length > 1 ? " " + (ai + 1) : "")}</button>; })}
                         </div>}
-                        <DetailText text={w.d} accent={dc} size={11} soft={true} />
-                        <div style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 4 }}>
-                          {w.lk && <a href={w.lk} target="_blank" rel="noopener noreferrer" style={{ fontSize: 10, color: dc, fontWeight: 600, textDecoration: "none" }}>video &rarr;</a>}
-                          {w.tm && w.tm >= 120 ? <button onClick={function() { quickStopwatch(); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"\u25B6 " + fmtLabel(w.tm)}</button> : null}
-                          {w.tm && w.tm < 120 ? <button onClick={function() { quickTimer(w.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"\u23F1 " + fmtLabel(w.tm)}</button> : null}
+                      </div>
+                      {/* Content */}
+                      <div style={{ padding: "8px 10px 10px" }}>
+                        {active.img && WS_IMG[active.img] && <div>
+                          <button onClick={function() { setShowImg(showImg === "w" + wi ? null : "w" + wi); }} style={{ fontSize: 10, color: dc, fontWeight: 600, background: "none", border: "1px solid " + dc + "30", borderRadius: 5, padding: "2px 8px", cursor: "pointer", marginBottom: 4 }}>{showImg === "w" + wi ? "nascondi" : "vedi foto"}</button>
+                          {showImg === "w" + wi && <img src={WS_IMG[active.img]} style={{ width: "100%", borderRadius: 8, marginBottom: 6 }} />}
+                        </div>}
+                        <DetailText text={active.d} accent={dc} size={11} soft={true} />
+                        <div style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 6 }}>
+                          {active.lk && <a href={active.lk} target="_blank" rel="noopener noreferrer" style={{ fontSize: 10, color: dc, fontWeight: 600, textDecoration: "none" }}>video →</a>}
+                          {active.tm && active.tm >= 120 ? <button onClick={function() { quickStopwatch(); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"▶ " + fmtLabel(active.tm)}</button> : null}
+                          {active.tm && active.tm < 120 ? <button onClick={function() { quickTimer(active.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"⏱ " + fmtLabel(active.tm)}</button> : null}
                         </div>
                       </div>
                     </div>;
@@ -1564,7 +1621,7 @@ export default function App() {
                     <span style={{ fontSize: 10, color: T.sub, fontStyle: "italic" }}>{sd.t}</span>
                     <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
                       {sd.lk && <a href={sd.lk} target="_blank" rel="noopener noreferrer" style={{ fontSize: 10, color: dc, fontWeight: 600, textDecoration: "none" }}>video &rarr;</a>}
-                      {sd.tm && <button onClick={function() { quickTimer(sd.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: T.st, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"\u23F1 " + fmtLabel(sd.tm)}</button>}
+                      {sd.tm && <button onClick={function() { quickTimer(sd.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"\u23F1 " + fmtLabel(sd.tm)}</button>}
                     </div>
                   </div>
                 </div>; })}
