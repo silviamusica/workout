@@ -393,12 +393,60 @@ var INTRO_MUSCLES = {
 var INTRO_ESERCIZI = [
   {
     icon: "🏛️",
-    title: "I fondamentali: cosa sono e perché contano",
-    summary: "Squat, Stacco, Panca, Trazioni, Military Press, Rematore. Questi 6 movimenti costruiscono il 90% della forza e della massa muscolare.",
+    title: "I fondamentali: i 6 movimenti base",
+    summary: "Squat · Stacco · Panca · Trazioni · Military Press · Rematore. Tutto il resto è accessorio.",
     body: [
-      { type: "p", content: "I fondamentali sono esercizi multiarticolari che coinvolgono grandi catene cinetiche — più muscoli, più articolazioni, più sistema nervoso. Sono inefficienti se vuoi allenare un singolo muscolo, ma insostituibili se vuoi costruire forza reale e massa complessiva." },
-      { type: "p", content: "Ogni fondamentale ha una curva di apprendimento: ci vogliono settimane per imparare lo schema motorio corretto. Ma una volta acquisito, il miglioramento è esponenziale. Non saltare questa fase." },
-      { type: "link", label: "Wikipedia: powerlifting (squat, panca, stacco) →", url: "https://it.wikipedia.org/wiki/Powerlifting" },
+      { type: "p", content: "I fondamentali sono movimenti che coinvolgono più articolazioni e grandi catene muscolari insieme. Sono la base di ogni programma serio perché danno il massimo stimolo con il minimo numero di esercizi." },
+      { type: "fondamentali-list", content: [
+        {
+          nome: "Squat",
+          pattern: "Spinta verticale — lower body",
+          muscoli: "Quadricipiti · Glutei · Femorali · Core · Erettori",
+          perche: "Il movimento più completo per la parte inferiore del corpo. Insegna al corpo a generare forza dal basso verso l'alto con tutto il peso sulle spalle. Migliora postura, equilibrio e forza funzionale.",
+          varianti: "Front Squat (più quad), Pause Squat (forza nel punto critico), Squat Bulgaro (lavoro unilaterale)",
+          errore: "Non scendere abbastanza. Il parallelo è il minimo — sotto il parallelo attivi meglio i glutei.",
+        },
+        {
+          nome: "Stacco da Terra",
+          pattern: "Trazione verticale — catena posteriore",
+          muscoli: "Glutei · Femorali · Erettori · Dorsali · Trapezi · Core",
+          perche: "L'esercizio con il maggior reclutamento muscolare in assoluto. Nessun altro movimento allena la catena posteriore completa in modo così efficace. Fondamentale per la salute della schiena.",
+          varianti: "Stacco Rumeno (enfasi femorali), Stacco Sumo (più quad, meno schiena), Single Leg Deadlift (equilibrio)",
+          errore: "Tirare con la schiena invece di spingere con le gambe. La schiena deve rimanere neutra per tutta la durata.",
+        },
+        {
+          nome: "Panca Piana",
+          pattern: "Spinta orizzontale — upper body",
+          muscoli: "Pettorali · Deltoidi anteriori · Tricipiti",
+          perche: "Lo standard universale per la forza della parte superiore. Sviluppa massa e forza nei pettorali in modo bilaterale. Complementare alle trazioni per bilanciare il lavoro di spinta/trazione.",
+          varianti: "Floor Press (range ridotto, sicura), Push-Up (corpo libero), Push-Up Declino (petto alto)",
+          errore: "Scapole non retratte. Le spalle vanno tenute indietro e in basso per proteggere le articolazioni.",
+        },
+        {
+          nome: "Trazioni",
+          pattern: "Trazione verticale — upper body",
+          muscoli: "Gran Dorsale · Romboidi · Bicipiti · Core",
+          perche: "Il contrario della panca: mentre la panca spinge, le trazioni tirano. Costruisce la 'V' della schiena, migliora postura e corregge gli squilibri tipici di chi fa solo panca. Se non riesci ancora, usa le negative.",
+          varianti: "Trazioni supine (più bicipiti), Lat Machine (assistita), Rematore Manubri (orizzontale)",
+          errore: "Salire con lo slancio o senza attivare le scapole. La tirata parte dalla depressione scapolare, non dal braccio.",
+        },
+        {
+          nome: "Military Press",
+          pattern: "Spinta verticale — upper body",
+          muscoli: "Deltoidi (tutti e 3 i fasci) · Tricipiti · Trapezio · Core stabilizzatore",
+          perche: "Il test della forza delle spalle. Allena i deltoidi in modo completo e richiede core e glutei contratti per stabilizzare la colonna sotto carico verticale. Difficile, ma insostituibile per spalle forti.",
+          varianti: "Push Press (con aiuto delle gambe per più carico), Arnold Press (rotazione = più fasci), Alzate Laterali (isolamento del fascio laterale)",
+          errore: "Inarcare la schiena per completare il movimento. Se la schiena si incurva, il peso è troppo.",
+        },
+        {
+          nome: "Rematore",
+          pattern: "Trazione orizzontale — upper body",
+          muscoli: "Gran Dorsale · Romboidi · Bicipiti · Posteriore della spalla · Trapezio medio",
+          perche: "Contrappeso diretto alla panca piana: mentre la panca spinge in orizzontale, il rematore tira. Senza di esso si creano squilibri che portano le spalle in avanti e causano dolori. Fondamentale per la postura.",
+          varianti: "Rematore Manubri (unilaterale), Rematore Bilanciere (bilaterale pesante), Pendlay Row (esplosivo da terra), Pulley (carrucola bassa)",
+          errore: "Alzare il busto per completare la ripetizione. Il busto deve rimanere fermo — solo il gomito si muove.",
+        },
+      ]},
     ]
   },
   {
@@ -1778,6 +1826,30 @@ export default function App() {
                         return <div key={ii} style={{ background: dc + "0A", border: "1px solid " + dc + "18", borderRadius: 8, padding: "8px 11px" }}>
                           <div style={{ fontSize: 12, fontWeight: 800, color: dc, marginBottom: 2 }}>{item[0]}</div>
                           <div style={{ fontSize: 12, lineHeight: 1.65, color: T.sub }}>{item[1]}</div>
+                        </div>;
+                      })}
+                    </div>;
+                    if (block.type === "fondamentali-list") return <div key={bi} style={{ display: "grid", gap: 8 }}>
+                      {block.content.map(function(ex, ei) {
+                        return <div key={ei} style={{ borderRadius: 10, border: "1px solid " + dc + "20", overflow: "hidden" }}>
+                          <div style={{ padding: "9px 12px 7px", background: dc + "0E" }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 3 }}>
+                              <span style={{ fontSize: 14, fontWeight: 800, color: dc }}>{ex.nome}</span>
+                              <span style={{ fontSize: 10, background: dc + "20", color: dc, padding: "1px 7px", borderRadius: 10, fontWeight: 700 }}>{ex.pattern}</span>
+                            </div>
+                            <div style={{ fontSize: 10, color: T.sub, fontWeight: 600, letterSpacing: 0.2 }}>{ex.muscoli}</div>
+                          </div>
+                          <div style={{ padding: "8px 12px 10px", display: "grid", gap: 6 }}>
+                            <p style={{ margin: 0, fontSize: 11, lineHeight: 1.65, color: T.sub }}>{ex.perche}</p>
+                            <div style={{ display: "flex", gap: 6, alignItems: "flex-start" }}>
+                              <span style={{ fontSize: 10, fontWeight: 800, color: dc, flexShrink: 0, marginTop: 1 }}>↔</span>
+                              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5 }}><span style={{ fontWeight: 700, color: T.tx }}>Varianti: </span>{ex.varianti}</div>
+                            </div>
+                            <div style={{ display: "flex", gap: 6, alignItems: "flex-start", background: "#E07848" + "0A", borderRadius: 6, padding: "5px 8px" }}>
+                              <span style={{ fontSize: 10, flexShrink: 0, marginTop: 1 }}>⚠️</span>
+                              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5 }}><span style={{ fontWeight: 700, color: "#E07848" }}>Errore comune: </span>{ex.errore}</div>
+                            </div>
+                          </div>
                         </div>;
                       })}
                     </div>;
