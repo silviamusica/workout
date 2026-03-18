@@ -352,7 +352,7 @@ var DAYS = [
       ritmo: "Recuperi 2 min sui compound (trazioni, rematore), 90s sugli accessori, 30s sul core."
     },
     warmup: [
-      { n: "Corsa sul posto o jumping jacks", img: "w_JumpingJacks", d: "5 minuti continui a intensita moderata. Obiettivo: alzare la frequenza cardiaca e la temperatura muscolare.", lk: "https://www.youtube.com/results?search_query=jumping+jacks+tutorial", tm: 300 },
+      { n: "Jumping jacks", img: "w_JumpingJacks", d: "5 minuti continui a intensita moderata. Obiettivo: alzare la frequenza cardiaca e la temperatura muscolare.", lk: "https://www.youtube.com/results?search_query=jumping+jacks+tutorial", tm: 300 },
       { n: "Cerchi con le braccia", d: "In piedi, braccia tese ai lati. Fai cerchi ampi in avanti per 10 rip, poi 10 indietro. Scalda la cuffia dei rotatori e le spalle.", lk: "https://www.youtube.com/results?search_query=arm+circles+warmup" },
       { n: "Cat-Cow", img: "w_CatCow", d: "A quattro zampe: inspira e inarca (pancia giu, testa su), espira e arrotonda (mento al petto, schiena su). 10 ripetizioni lente. Mobilizza tutta la colonna.", lk: "https://www.youtube.com/results?search_query=cat+cow+warmup" },
       { n: "Inchworm", img: "w_Inchworm", d: "In piedi, piegati e cammina avanti con le mani fino al plank. Push-up facoltativo, poi torna indietro. 2 serie da 5. Attiva core, spalle e femorali.", lk: "https://www.youtube.com/results?search_query=inchworm+exercise+warmup" },
@@ -441,8 +441,7 @@ var DAYS = [
       ritmo: "Seduta leggera. Recuperi brevi: 45-60s. Deve lasciarti piu attiva, non piu stanca."
     },
     warmup: [
-      { n: "Corsa sul posto", img: "w_JumpingJacks", d: "2 minuti a ritmo leggero. Sessione opzionale.", lk: "https://www.youtube.com/results?search_query=jogging+in+place+warmup", tm: 120 },
-      { n: "Jumping jacks", img: "w_JumpingJacks", d: "10 ripetizioni. Alza la frequenza cardiaca.", lk: "https://www.youtube.com/results?search_query=jumping+jacks+tutorial" },
+      { n: "Jumping jacks", img: "w_JumpingJacks", d: "2 minuti. Alza la frequenza cardiaca. Sessione opzionale — ritmo leggero.", lk: "https://www.youtube.com/results?search_query=jumping+jacks+tutorial", tm: 120 },
       { n: "Squat a corpo libero", img: "w_SquatBL", d: "10 ripetizioni lente.", lk: "https://www.youtube.com/results?search_query=bodyweight+squat+warmup" },
     ],
     ex: [
@@ -613,7 +612,7 @@ export default function App() {
 
   var T = TH[theme];
   var dayData = DAYS[dayIdx];
-  var dc = T.dy[dayIdx] || T.dy[0];
+  var dc = T.ok;
 
   function getExForMonth(raw) {
     if (month === 1) return { n: raw.n, s: raw.s, rpe: raw.rpe, note: raw.note || "" };
@@ -945,7 +944,17 @@ export default function App() {
               allowFullScreen
             />
           </div>}
-          {db.lk && <a href={db.lk} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", fontSize: 12, color: dc, fontWeight: 600, textDecoration: "none", padding: "6px 12px", background: dc + "15", borderRadius: 8, marginBottom: 12 }}>Video tutorial</a>}
+          {db.deep && <details style={{ marginBottom: 12, borderRadius: 10, overflow: "hidden", background: T.bg }} open>
+            <summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 11, fontWeight: 800, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 6, textTransform: "uppercase", letterSpacing: 0.6 }}>
+              <span>📖</span> Approfondimento tecnico
+            </summary>
+            <div style={{ padding: "0 12px 12px" }}>
+              <RichBlocks blocks={db.deep} accent={dc} />
+              {(exInfoOpen === "Trazioni" || exInfoOpen === "Plank" || exInfoOpen === "Push-Up" || exInfoOpen === "Ab Wheel") && <button onClick={function() { setExInfoOpen("Hollow Position"); }} style={{ marginTop: 10, fontSize: 11, color: dc, fontWeight: 700, background: dc + "12", border: "1px solid " + dc + "30", borderRadius: 8, padding: "6px 12px", cursor: "pointer" }}>→ Vedi Hollow Position</button>}
+            </div>
+          </details>}
+          {db.lk && !ytEmbedUrl(db.lk) && <a href={db.lk} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", fontSize: 12, color: dc, fontWeight: 600, textDecoration: "none", padding: "6px 12px", background: dc + "15", borderRadius: 8, marginBottom: 12 }}>Video tutorial →</a>}
+          {db.lk && ytEmbedUrl(db.lk) && <a href={db.lk} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", fontSize: 12, color: dc, fontWeight: 600, textDecoration: "none", padding: "6px 12px", background: dc + "15", borderRadius: 8, marginBottom: 12 }}>Apri video →</a>}
           <button onClick={function() { setExInfoOpen(null); }} style={{ width: "100%", padding: 10, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", marginTop: 4 }}>Chiudi</button>
         </div>
       </div>
@@ -1132,8 +1141,8 @@ export default function App() {
               {userPhoto ? <img src={userPhoto} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : "👤"}
             </div>
             <div>
-              <div style={{ fontSize: 16, fontWeight: 800 }}>{userName ? "Ciao, " + userName + "!" : "Home Work-out"}</div>
-              <div style={{ fontSize: 11, opacity: 0.5, marginTop: 1 }}>Home Work-out</div>
+              <div style={{ fontSize: 16, fontWeight: 800 }}>{userName ? "Ciao, " + userName + "!" : "HomeWorkout"}</div>
+              <div style={{ fontSize: 11, opacity: 0.5, marginTop: 1 }}>HomeWorkout</div>
             </div>
           </div>
           {/* Rotellina impostazioni */}
