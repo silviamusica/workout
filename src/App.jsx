@@ -1370,8 +1370,8 @@ export default function App() {
             })()}
 
             {/* Warmup - collapsed */}
-            <div style={{ borderBottom: "1px solid " + T.bg }}>
-              <div onClick={function() { setShowIntro(!showIntro); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showIntro ? dc + "08" : "transparent" }}>
+            <div ref={function(el) { if (el) el._sectionKey = "intro"; }} id="section-warmup" style={{ borderBottom: "1px solid " + T.bg }}>
+              <div onClick={function() { var opening = !showIntro; setShowIntro(opening); if (opening) { setShowExSection(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-warmup"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showIntro ? dc + "08" : "transparent" }}>
                 <div style={{ width: 34, height: 34, borderRadius: 9, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, color: "#fff", flexShrink: 0 }}>&#128293;</div>
                 <div style={{ flex: 1 }}><div style={{ fontWeight: 700, fontSize: 13, color: dc }}>Riscaldamento</div><div style={{ fontSize: 11, color: T.sub }}>{dayData.warmup.length + " esercizi · " + dayData.dur}</div></div>
                 <div style={{ fontSize: 14, color: T.sub, transform: showIntro ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
@@ -1401,8 +1401,8 @@ export default function App() {
             </div>
 
             {/* Exercises - collapsed */}
-            <div style={{ borderBottom: "1px solid " + T.bg }}>
-              <div onClick={function() { setShowExSection(!showExSection); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showExSection ? dc + "08" : "transparent" }}>
+            <div id="section-esercizi" style={{ borderBottom: "1px solid " + T.bg }}>
+              <div onClick={function() { var opening = !showExSection; setShowExSection(opening); if (opening) { setShowIntro(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-esercizi"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showExSection ? dc + "08" : "transparent" }}>
                 <div style={{ width: 34, height: 34, borderRadius: 9, background: dc + "22", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, flexShrink: 0 }}>&#128170;</div>
                 <div style={{ flex: 1 }}><div style={{ fontWeight: 700, fontSize: 13 }}>Esercizi</div><div style={{ fontSize: 11, color: T.sub }}>{dayData.ex.length + " esercizi"}</div></div>
                 <div style={{ fontSize: 14, color: T.sub, transform: showExSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
@@ -1428,8 +1428,8 @@ export default function App() {
               var workSec = getWorkTime(ex.n, ex.s);
               var showTimerBtns = restSec || workSec;
 
-              return <div key={i} style={{ borderBottom: "1px solid " + T.bg }}>
-                <div onClick={function(e) { var y = window.scrollY; setOpenEx(isX ? null : i); setHistIdx(null); setEditing(null); setShowReg(null); requestAnimationFrame(function() { window.scrollTo(0, y); }); }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
+              return <div key={i} id={"ex-row-" + i} style={{ borderBottom: "1px solid " + T.bg }}>
+                <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); if (opening) { requestAnimationFrame(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
                   <div style={{ width: 34, height: 34, borderRadius: 9, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: dc, flexShrink: 0 }}>{i + 1}</div>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ fontWeight: 600, fontSize: 13, display: "flex", alignItems: "center", gap: 4 }}>
@@ -1511,8 +1511,8 @@ export default function App() {
             </div>
 
             {/* Stretching */}
-            <div>
-              <div onClick={function() { setShowStr(!showStr); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showStr ? T.st + "08" : "transparent" }}>
+            <div id="section-stretching">
+              <div onClick={function() { var opening = !showStr; setShowStr(opening); if (opening) { setShowIntro(false); setShowExSection(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-stretching"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showStr ? T.st + "08" : "transparent" }}>
                 <div style={{ width: 34, height: 34, borderRadius: 9, background: T.ac + "22", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, flexShrink: 0 }}>&#129495;</div>
                 <div style={{ flex: 1 }}><div style={{ fontWeight: 700, fontSize: 13, color: T.st }}>Stretching finale</div><div style={{ fontSize: 11, color: T.sub }}>{dayData.str.length + " esercizi · 5-8 min"}</div></div>
                 <div style={{ fontSize: 14, color: T.sub, transform: showStr ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
