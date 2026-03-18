@@ -231,7 +231,7 @@ var INTRO_BASICS = [
         ["Recupero", "La crescita avviene a riposo, non in palestra. Sonno, alimentazione e giorni di riposo non sono optional — sono parte del programma."],
         ["Progressione", "Il corpo si adatta. Uno stimolo costante smette di funzionare. Devi aumentare gradualmente il carico, le ripetizioni o la difficoltà."],
       ]},
-      { type: "link", label: "Approfondimento: come funziona l'ipertrofia muscolare →", url: "https://www.ncbi.nlm.nih.gov/books/NBK537012/" },
+      { type: "link", label: "Wikipedia: ipertrofia muscolare →", url: "https://it.wikipedia.org/wiki/Ipertrofia_muscolare" },
     ]
   },
   {
@@ -247,7 +247,7 @@ var INTRO_BASICS = [
         ["4x12-10-8-8", "Le ripetizioni scalano ad ogni serie: inizi più leggera e aumenti il carico man mano."],
       ]},
       { type: "p", content: "Recupero: 90-120 secondi per esercizi pesanti (squat, stacco, panca), 60 secondi per gli isolamenti. Recupero corto → più stress metabolico; recupero lungo → più forza disponibile." },
-      { type: "link", label: "Guida ai parametri di allenamento (Stronger By Science) →", url: "https://www.strongerbyscience.com/hypertrophy-range-fact-fiction/" },
+      { type: "link", label: "Wikipedia: volume di allenamento e ipertrofia →", url: "https://it.wikipedia.org/wiki/Allenamento_con_i_pesi" },
     ]
   },
   {
@@ -263,7 +263,7 @@ var INTRO_BASICS = [
         ["RPE 10", "Cedimento muscolare. Non puoi completare un'altra ripetizione. Da usare con parsimonia."],
       ]},
       { type: "p", content: "Nella scheda trovi gli RPE suggeriti per ogni esercizio. All'inizio sovrastimi sempre: è normale. Con l'esperienza impari a sentirti meglio." },
-      { type: "link", label: "Come usare l'RPE nell'allenamento →", url: "https://www.strongerbyscience.com/rpe/" },
+      { type: "link", label: "Wikipedia: scala di Borg (sforzo percepito) →", url: "https://it.wikipedia.org/wiki/Scala_di_Borg" },
     ]
   },
   {
@@ -277,7 +277,7 @@ var INTRO_BASICS = [
       { type: "bold-list", content: [
         ["Regola aurea", "Mai pre-affaticare un muscolo con un isolamento prima del compound. Esempio: fare curl prima delle trazioni brucia i bicipiti prima che li usi dove contano davvero."],
       ]},
-      { type: "link", label: "Perché l'ordine degli esercizi conta →", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4592765/" },
+      { type: "link", label: "Wikipedia: esercizi multiarticolari →", url: "https://it.wikipedia.org/wiki/Esercizi_composti" },
     ]
   },
   {
@@ -289,7 +289,7 @@ var INTRO_BASICS = [
       { type: "p", content: "Dopo uno stimolo, la sintesi proteica (riparazione e crescita muscolare) dura circa 36-72 ore. Se aspetti 7 giorni, il muscolo ha già finito di crescere e stai 'sprecando' tempo." },
       { type: "p", content: "La multifrequenza non significa fare lo stesso esercizio ogni giorno: significa distribuire il volume settimanale su più sessioni, così ogni sessione è gestibile e ogni muscolo viene stimolato più spesso." },
       { type: "p", content: "Questa scheda è costruita su questo principio: dorsali, core e glutei compaiono in ogni giornata, con esercizi diversi e angolazioni diverse." },
-      { type: "link", label: "Meta-analisi: frequenza e ipertrofia muscolare →", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5605166/" },
+      { type: "link", label: "Wikipedia: sintesi proteica muscolare →", url: "https://it.wikipedia.org/wiki/Sintesi_proteica" },
     ]
   },
   {
@@ -304,7 +304,7 @@ var INTRO_BASICS = [
         ["Nutrizione", "Le proteine forniscono i mattoni per ricostruire il muscolo. Obiettivo indicativo: 1.6-2.2g di proteine per kg di peso corporeo."],
         ["Giorni di riposo", "Non sono giorni sprecati. Sono giorni di crescita. Un giorno di pausa dopo una sessione intensa non è debolezza — è strategia."],
       ]},
-      { type: "link", label: "Nutrizione e recupero per l'ipertrofia →", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6950543/" },
+      { type: "link", label: "Wikipedia: supercompensazione →", url: "https://it.wikipedia.org/wiki/Supercompensazione" },
     ]
   },
 ];
@@ -318,40 +318,40 @@ var INTRO_MUSCLES = {
       title: "Catena anteriore",
       muscles: "Quadricipiti · Pettorali · Deltoidi anteriori · Bicipiti · Retto addominale",
       desc: "Governa la spinta: spingerti in piedi, spingere un oggetto davanti a te, salire le scale. Tende a essere dominante nelle persone sedentarie — si accorcia e si irrigidisce.",
-      link: "https://www.ncbi.nlm.nih.gov/books/NBK537258/",
-      linkLabel: "Anatomia delle catene muscolari →"
+      link: "https://it.wikipedia.org/wiki/Catena_cinematica_(biomeccanica)",
+      linkLabel: "Wikipedia: catene cinetiche →"
     },
     {
       icon: "⬇️",
       title: "Catena posteriore",
       muscles: "Glutei · Femorali · Erettori spinali · Dorsali · Romboidi · Deltoidi posteriori",
       desc: "Governa la trazione e la stabilità della colonna. È la catena più trascurata — debolezza qui è la causa principale di dolori lombari e infortuni al ginocchio.",
-      link: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7039168/",
-      linkLabel: "Perché la catena posteriore è fondamentale →"
+      link: "https://it.wikipedia.org/wiki/Stacco_da_terra",
+      linkLabel: "Wikipedia: stacco da terra (catena posteriore) →"
     },
     {
       icon: "🔲",
       title: "Core: il centro di tutto",
       muscles: "Retto addominale · Obliqui · Trasverso · Multifido · Diaframma",
       desc: "Non è solo 'fare gli addominali'. Il core è la cintura di stabilità tra parte superiore e inferiore del corpo. Ogni alzata pesante parte da qui. Un core debole significa perdita di forza e rischio di infortuni in tutti gli altri esercizi.",
-      link: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4677109/",
-      linkLabel: "Core stability e performance atletica →"
+      link: "https://it.wikipedia.org/wiki/Core_(anatomia)",
+      linkLabel: "Wikipedia: core muscolare →"
     },
     {
       icon: "⚖️",
       title: "Equilibrio tra agonisti e antagonisti",
       muscles: "Pettorali ↔ Dorsali · Quadricipiti ↔ Femorali · Bicipiti ↔ Tricipiti · Deltoidi anteriori ↔ posteriori",
       desc: "Ogni muscolo ha un antagonista che esegue il movimento opposto. Se alleni solo il 'davanti' (panca, curl) senza il 'dietro' (trazioni, rematore), il corpo si chiude in avanti: spalle proiettate in avanti, postura cadente, rischio di infiammazioni alla spalla.",
-      link: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6728252/",
-      linkLabel: "Squilibri muscolari e postura →"
+      link: "https://it.wikipedia.org/wiki/Postura",
+      linkLabel: "Wikipedia: postura e squilibri muscolari →"
     },
     {
       icon: "🦵",
       title: "Gluteo: il motore del corpo",
       muscles: "Grande gluteo · Medio gluteo · Piccolo gluteo",
       desc: "Il grande gluteo è il muscolo più potente del corpo umano. È responsabile dell'estensione dell'anca — il gesto alla base di camminare, correre, saltare, sollevare. Il medio gluteo stabilizza il bacino ad ogni passo. Un gluteo debole porta ginocchia che collassano verso l'interno nello squat e negli affondi.",
-      link: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4552396/",
-      linkLabel: "Ruolo del gluteo nella stabilità del ginocchio →"
+      link: "https://it.wikipedia.org/wiki/Grande_gluteo",
+      linkLabel: "Wikipedia: grande gluteo →"
     },
   ]
 };
@@ -365,7 +365,7 @@ var INTRO_ESERCIZI = [
     body: [
       { type: "p", content: "I fondamentali sono esercizi multiarticolari che coinvolgono grandi catene cinetiche — più muscoli, più articolazioni, più sistema nervoso. Sono inefficienti se vuoi allenare un singolo muscolo, ma insostituibili se vuoi costruire forza reale e massa complessiva." },
       { type: "p", content: "Ogni fondamentale ha una curva di apprendimento: ci vogliono settimane per imparare lo schema motorio corretto. Ma una volta acquisito, il miglioramento è esponenziale. Non saltare questa fase." },
-      { type: "link", label: "Perché i fondamentali sono insostituibili →", url: "https://www.strongerbyscience.com/the-big-three/" },
+      { type: "link", label: "Wikipedia: powerlifting (squat, panca, stacco) →", url: "https://it.wikipedia.org/wiki/Powerlifting" },
     ]
   },
   {
@@ -382,7 +382,7 @@ var INTRO_ESERCIZI = [
         ["Military Press", "La spinta verticale. Deltoidi, tricipiti, core stabilizzatore. Il test della forza delle spalle."],
         ["Rematore", "La trazione orizzontale. Dorsali, romboidi, bicipiti. Fondamentale per il bilanciamento posturale con la panca."],
       ]},
-      { type: "link", label: "Multiarticolari vs isolamenti: quando usarli →", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4592765/" },
+      { type: "link", label: "Wikipedia: esercizi di isolamento →", url: "https://it.wikipedia.org/wiki/Esercizi_di_isolamento" },
     ]
   },
   {
@@ -413,7 +413,7 @@ var INTRO_ESERCIZI = [
         ["Variante più difficile", "Da Push-Up normale a Push-Up declino a Push-Up con pausa. Stesso pattern, più difficile."],
       ]},
       { type: "p", content: "La scheda è strutturata su 4 mesi (M1→M4) con progressione automatica delle varianti. Ogni mese aumenta la difficoltà o il carico dello stesso schema motorio." },
-      { type: "link", label: "Sovraccarico progressivo: la scienza dietro →", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6950543/" },
+      { type: "link", label: "Wikipedia: principio del sovraccarico progressivo →", url: "https://it.wikipedia.org/wiki/Sovraccarico_progressivo" },
     ]
   },
 ];
