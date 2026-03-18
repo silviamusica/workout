@@ -198,22 +198,101 @@ var GLOSS_LINKS = [
 
 /* === TRAINING PRINCIPLES === */
 var PRINCIPLES_DEEP = [
-  { t: "Volume, Intensita e Densita: i Fantastici 3", d: "Ogni scheda si basa sull'equilibrio di tre parametri interconnessi. Il Volume e la mole di lavoro totale (serie x ripetizioni x kg, o numero totale di serie per gruppo muscolare): e il parametro con la maggiore correlazione ai guadagni ipertrofici. L'Intensita e il carico sul bilanciere o la percezione dello sforzo: carichi sopra l'80% del massimale garantiscono il massimo reclutamento delle fibre fin dalla prima ripetizione. La Densita e il legame tra tempo sotto tensione e durata dell'allenamento: recuperi piu brevi aumentano lo stress metabolico, recuperi piu ampi permettono carichi maggiori. Non si puo massimizzare tutto insieme — ogni scheda fa una scelta su quale parametro privilegiare." },
-  { t: "Sovraccarico progressivo", d: "Il corpo umano segue la Legge dell'accomodamento: la risposta biologica a uno stimolo costante diminuisce nel tempo. Se fai sempre la stessa cosa, smetti di migliorare. Lo stimolo allenante deve sempre incrementare di settimana in settimana o di mese in mese: piu carico, piu ripetizioni, piu serie, o recuperi piu brevi. La progressione mensile di questa scheda (varianti M1-M4) e costruita esattamente su questo principio." },
-  { t: "Lavorare a buffer, non a cedimento", d: "Il cedimento muscolare (incapacita di completare una ripetizione) non e sempre necessario e, se abusato, sovraccarica il Sistema Nervoso Centrale prolungando i tempi di recupero. L'approccio migliore — specialmente per la forza — e lavorare a buffer: se puoi fare 10 ripetizioni, fermati a 8 (buffer di 2). Questo permette di accumulare piu volume totale nella settimana mantenendo la tecnica perfetta. Il cedimento ha senso solo con carichi leggeri (sotto il 60% del massimale), per forzare il reclutamento di tutte le fibre." },
-  { t: "Multifrequenza: allena ogni muscolo 2-3 volte a settimana", d: "Allenare un gruppo muscolare una sola volta a settimana (monofrequenza) e un approccio superato. La regola d'oro e la multifrequenza: ogni muscolo o schema motorio va allenato almeno 2-3 volte a settimana. Questo permette di stimolare la sintesi proteica piu frequentemente (si esaurisce dopo 36-72 ore dall'allenamento) e di imparare meglio gli schemi motori, migliorando coordinazione e tecnica." },
-  { t: "Priorita agli esercizi multiarticolari", d: "Un buon programma si basa sugli esercizi fondamentali (Squat, Panca, Stacco, Trazioni, Military Press, Rematore) che coinvolgono ampie catene cinetiche e garantiscono il miglior impatto sistemico. Gli esercizi di isolamento (curl, alzate laterali, clamshell) hanno un ruolo di assistenza: arrivano dopo i compound, non prima. I multiarticolari vanno eseguiti all'inizio della seduta quando sei fresca e il sistema nervoso e riposato." },
-  { t: "Misurare i progressi", d: "Non ci si allena a sensazione. Un buon allenamento parte dalla raccolta dei dati: se non misuri i progressi, non puoi sapere se il piano sta funzionando. Tieni traccia dei carichi sollevati, delle ripetizioni eseguite e dell'RPE percepito. Solo monitorando i dati puoi capire quando aumentare il carico, quando scaricare, e quando e il momento di cambiare scheda." },
-  { t: "Gestione della fatica e settimana di scarico", d: "L'allenamento crea danno muscolare (fase di stress); il corpo si ricostruisce piu forte durante il riposo (supercompensazione). Se lo stress e continuo senza recupero si va in overtraining: infortuni, stagnazione, calo delle performance. Per questo ogni 4-8 settimane va inserita una settimana di scarico in cui si dimezza il volume o si abbassano i carichi, permettendo a muscoli, tendini e sistema nervoso di dissipare la fatica accumulata." },
-  { t: "Sistema Nervoso Centrale (SNC) e fatica", d: "I grandi multiarticolari pesanti (squat, stacco, panca) tassano molto il SNC oltre che i muscoli. Gli esercizi di isolamento (curl, clamshell, nordic curl) lo tassano pochissimo. Per questo i compound vanno messi all'inizio della seduta e non si accumula volume eccessivo su di essi: la fatica del SNC compromette la tecnica e aumenta il rischio infortuni." },
-  { t: "Manovra di Valsalva", d: "Tecnica respiratoria fondamentale per i grandi esercizi sotto carico (squat, stacco, good morning). Inspira profondamente, blocca il respiro e gonfia la pancia prima di eseguire il movimento. Questo crea pressione intra-addominale che forma un cuscinetto di supporto attorno alle vertebre lombari, proteggendole dalle forze di taglio che si generano sotto carico elevato. Si espira solo dopo aver superato il punto critico del movimento." },
-  { t: "Retroversione del bacino", d: "Il segreto per un lavoro addominale sicuro ed efficace. Da sdraiata o in plank, annulla lo spazio tra la schiena e il pavimento appiattendo la curva lombare. Questo evita che i muscoli flessori dell'anca (ileopsoas) tirino la bassa schiena, causa principale di dolori lombari negli esercizi di core. Vale per plank, ab wheel, crunch e qualsiasi esercizio a terra." },
-  { t: "Assetto Hollow (scapolare)", d: "Usato in plank, push-up e trazioni. Le spalle devono essere protratte (spinte in avanti) e depresse (verso il basso). Pensa di doverti spingere costantemente il piu lontano possibile dal pavimento. Crea stabilita dell'articolazione scapolo-toracica e riduce il rischio di impingement alla spalla." },
-  { t: "Hip Dominant vs Knee Dominant", d: "I movimenti Hip Dominant (anca che spinge indietro, busto che si piega) lavorano glutei, femorali ed erettori: stacco, good morning, stacco rumeno, hip thrust. I movimenti Knee Dominant (ginocchio che flette, busto verticale) lavorano i quadricipiti: squat, affondi, step up. La maggior parte degli esercizi compound include entrambi, con enfasi diversa in base alla posizione del busto e alla lunghezza del passo." },
-  { t: "Focus muscolare: cambiare target senza cambiare esercizio", d: "In affondi, squat bulgaro e walking lunge puoi spostare il focus muscolare senza cambiare esercizio. Passo corto e busto verticale = piu quadricipiti. Passo piu lungo e busto leggermente inclinato in avanti = piu glutei e femorali. Lo stesso vale per lo squat: busto verticale = quadricipiti; sedere piu indietro = glutei." },
-  { t: "Tempo sotto tensione (TUT) e tensione continua", d: "Negli esercizi di isolamento (nordic curl, clamshell, curl bicipiti) il TUT e piu importante del carico massimo. Rallentare la fase eccentrica (discesa/allungamento) di 3-5 secondi massimizza il danno muscolare e l'ipertrofia. La tensione continua — senza rilasciare il muscolo a fine movimento — aumenta ulteriormente lo stimolo. Nei compound pesanti invece il TUT si mantiene moderato per preservare il SNC." },
-  { t: "Picco di contrazione isometrica", d: "Negli esercizi di isolamento per i glutei (clamshell, abduzione, hip thrust) il lavoro ottimale non si basa su carichi massimali, ma sulla pausa isometrica nel punto di massima contrazione: 2-3 secondi ferma al massimo sforzo moltiplicano lo stimolo al gluteo piu che aggiungere peso. Vale anche per trazioni (1s sopra la sbarra) e rematori (1s con scapola stretta)." },
-  { t: "Sticking point e esercizi complementari", d: "Lo sticking point e il punto piu debole di un'alzata, dove il movimento si blocca sotto fatica. Gli esercizi complementari servono a rinforzare quell'anello debole: il good morning rafforza lombari e femorali per squat e stacco; le trazioni rafforzano i dorsali per il rematore. Regola aurea: ogni esercizio complementare deve avere uno scopo preciso — rafforzare un punto debole, costruire massa in un distretto specifico, o prevenire squilibri. Se un esercizio non serve a nessuno di questi obiettivi, non farlo." },
+  { t: "Volume, Intensita e Densita: i Fantastici 3", d: [
+    {type:"p", content:"Ogni scheda si basa sull'equilibrio di tre parametri. Non si possono massimizzare tutti insieme: ogni programma fa una scelta su quale privilegiare."},
+    {type:"bold-list", content:[
+      ["Volume", "mole di lavoro totale (serie × rip × kg). E il parametro con la maggiore correlazione ai guadagni ipertrofici."],
+      ["Intensita", "carico sul bilanciere o percezione dello sforzo. Sopra l'80% del massimale garantisce il massimo reclutamento delle fibre dalla prima rip."],
+      ["Densita", "legame tra tempo sotto tensione e durata: recuperi piu brevi aumentano lo stress metabolico, recuperi piu ampi permettono carichi maggiori."]
+    ]}
+  ]},
+  { t: "Sovraccarico progressivo", d: [
+    {type:"p", content:"Il corpo segue la Legge dell'accomodamento: la risposta biologica a uno stimolo costante diminuisce nel tempo. Se fai sempre la stessa cosa, smetti di migliorare."},
+    {type:"p", content:"Lo stimolo deve aumentare di settimana in settimana o mese in mese. Come?"},
+    {type:"ul", content:["Piu carico","Piu ripetizioni","Piu serie","Recuperi piu brevi"]},
+    {type:"p", content:"La progressione mensile di questa scheda (varianti M1→M4) e costruita esattamente su questo principio."}
+  ]},
+  { t: "Lavorare a buffer, non a cedimento", d: [
+    {type:"p", content:"Il cedimento muscolare (impossibilita di completare una rip) non e sempre necessario e, se abusato, sovraccarica il Sistema Nervoso Centrale allungando i tempi di recupero."},
+    {type:"p", content:"L'approccio migliore, soprattutto per la forza, e il buffer: se puoi fare 10 rip, fermati a 8 (buffer di 2). Questo permette di accumulare piu volume nella settimana con tecnica sempre pulita."},
+    {type:"ul", content:["Buffer di 2 rip → RPE 8","Buffer di 1 rip → RPE 9","Cedimento = RPE 10: usalo solo con carichi leggeri (sotto il 60%) per forzare il reclutamento di tutte le fibre"]}
+  ]},
+  { t: "Multifrequenza: allena ogni muscolo 2-3 volte a settimana", d: [
+    {type:"p", content:"Allenare un muscolo una sola volta a settimana (monofrequenza) e un approccio superato. La sintesi proteica dura 36-72 ore: dopo, il muscolo e pronto a ricevere un nuovo stimolo."},
+    {type:"p", content:"La multifrequenza (2-3 sessioni a settimana per muscolo) permette di:"},
+    {type:"ul", content:["Stimolare la sintesi proteica piu volte a settimana","Imparare meglio gli schemi motori","Migliorare coordinazione e tecnica piu rapidamente"]}
+  ]},
+  { t: "Priorita agli esercizi multiarticolari", d: [
+    {type:"p", content:"Un buon programma si basa sui fondamentali: Squat, Panca, Stacco, Trazioni, Military Press, Rematore. Coinvolgono ampie catene cinetiche e garantiscono il miglior impatto sistemico."},
+    {type:"ul", content:["Multiarticolari prima: all'inizio della seduta quando sei fresca e il SNC e riposato","Isolamento dopo: curl, alzate laterali, clamshell hanno un ruolo di assistenza e rifinimento","Mai invertire l'ordine: un isolamento pre-affaticato brucia il muscolo prima del compound"]}
+  ]},
+  { t: "Misurare i progressi", d: [
+    {type:"p", content:"Non ci si allena a sensazione. Se non misuri, non sai se il piano sta funzionando."},
+    {type:"p", content:"Tieni traccia di:"},
+    {type:"ul", content:["Carichi sollevati serie per serie","Ripetizioni eseguite","RPE percepito"]},
+    {type:"p", content:"Solo con i dati puoi capire quando aumentare il carico, quando scaricare e quando e il momento di cambiare scheda."}
+  ]},
+  { t: "Gestione della fatica e settimana di scarico", d: [
+    {type:"p", content:"L'allenamento crea danno muscolare (stress). Il corpo si ricostruisce piu forte durante il riposo: questa fase si chiama supercompensazione."},
+    {type:"p", content:"Se lo stress e continuo senza recupero si va in overtraining:"},
+    {type:"ul", content:["Infortuni","Stagnazione dei progressi","Calo delle performance"]},
+    {type:"p", content:"Ogni 4-8 settimane inserisci una settimana di scarico: dimezza il volume o abbassa i carichi. Muscoli, tendini e sistema nervoso possono dissipare la fatica accumulata."}
+  ]},
+  { t: "Sistema Nervoso Centrale (SNC) e fatica", d: [
+    {type:"p", content:"Non e solo il muscolo a stancarsi: i grandi esercizi pesanti tassano anche il Sistema Nervoso Centrale."},
+    {type:"bold-list", content:[
+      ["Alto impatto sul SNC", "squat, stacco, panca, military press — vanno messi all'inizio della seduta"],
+      ["Basso impatto sul SNC", "curl, clamshell, nordic curl, isolamenti — possono stare alla fine"]
+    ]},
+    {type:"p", content:"Non accumulare volume eccessivo sui compound: la fatica del SNC compromette la tecnica e aumenta il rischio di infortuni."}
+  ]},
+  { t: "Manovra di Valsalva", d: [
+    {type:"p", content:"Tecnica respiratoria fondamentale per tutti i grandi esercizi sotto carico: squat, stacco, good morning."},
+    {type:"p", content:"Come si fa:"},
+    {type:"ul", content:["Inspira profondamente a polmoni pieni","Blocca il respiro e gonfia la pancia","Esegui il movimento","Espira solo dopo aver superato il punto critico"]},
+    {type:"p", content:"Questo crea pressione intra-addominale che forma un cuscinetto attorno alle vertebre lombari, proteggendole dalle forze di taglio che si generano sotto carico."}
+  ]},
+  { t: "Retroversione del bacino", d: [
+    {type:"p", content:"Il segreto per un core sicuro ed efficace. Da sdraiata o in plank, annulla lo spazio tra la schiena e il pavimento appiattendo la curva lombare."},
+    {type:"p", content:"Senza questo, i flessori dell'anca (ileopsoas) tirano la bassa schiena: causa principale di dolori lombari negli esercizi di core."},
+    {type:"ul", content:["Plank: bacino in retroversione, glutei stretti","Ab wheel: glutei contratti prima ancora di muoversi","Crunch: schiena incollata al pavimento durante tutto il movimento"]}
+  ]},
+  { t: "Assetto Hollow (scapolare)", d: [
+    {type:"p", content:"Usato in plank, push-up e trazioni. Le spalle devono essere protratte (spinte in avanti) e depresse (verso il basso) — non tirate su verso le orecchie."},
+    {type:"p", content:"Come ottenerlo: immagina di doverti allontanare costantemente dal pavimento con le mani o gli avambracci."},
+    {type:"ul", content:["Crea stabilita dell'articolazione scapolo-toracica","Riduce il rischio di impingement alla spalla","Attiva correttamente il dentato anteriore e il gran dorsale"]}
+  ]},
+  { t: "Hip Dominant vs Knee Dominant", d: [
+    {type:"p", content:"Due grandi categorie di movimenti compound, con muscoli e meccanica diversa."},
+    {type:"bold-list", content:[
+      ["Hip Dominant", "anca che spinge indietro, busto che si inclina → glutei, femorali, erettori. Esempi: stacco, good morning, stacco rumeno, hip thrust."],
+      ["Knee Dominant", "ginocchio che flette, busto verticale → quadricipiti. Esempi: squat, affondi, step up."]
+    ]},
+    {type:"p", content:"La maggior parte degli esercizi compound include entrambi, con enfasi diversa in base alla posizione del busto e alla lunghezza del passo."}
+  ]},
+  { t: "Focus muscolare: cambiare target senza cambiare esercizio", d: [
+    {type:"p", content:"Puoi spostare il lavoro muscolare senza cambiare esercizio: basta modificare la posizione del corpo."},
+    {type:"bold-list", content:[
+      ["Passo corto + busto verticale", "piu quadricipiti (squat bulgaro, affondi, walking lunge)"],
+      ["Passo piu lungo + busto inclinato", "piu glutei e femorali"],
+      ["Squat con sedere indietro", "piu glutei; squat con busto verticale = piu quadricipiti"]
+    ]}
+  ]},
+  { t: "Tempo sotto tensione (TUT) e tensione continua", d: [
+    {type:"p", content:"Negli esercizi di isolamento il TUT e spesso piu importante del carico massimo."},
+    {type:"ul", content:["Rallenta la fase eccentrica di 3-5 secondi: massimizza il danno muscolare e l'ipertrofia","Tensione continua: non rilasciare il muscolo a fine movimento, mantienilo sempre sotto carico","Nei compound pesanti invece il TUT si mantiene moderato per non sovraccaricare il SNC"]},
+    {type:"p", content:"Esempi: nordic curl con negativa 5s, curl bicipiti con discesa lenta, clamshell con pausa isometrica."}
+  ]},
+  { t: "Picco di contrazione isometrica", d: [
+    {type:"p", content:"Negli esercizi di isolamento per i glutei, il lavoro ottimale non si basa su carichi massimali ma sulla pausa nel punto di massima contrazione."},
+    {type:"ul", content:["Clamshell, abduzione, hip thrust: 2-3 secondi ferma al massimo sforzo","Trazioni: 1 secondo sopra la sbarra con scapole strette","Rematore: 1 secondo con gomito indietro e scapola addotta"]},
+    {type:"p", content:"2-3 secondi di pausa isometrica moltiplicano lo stimolo al muscolo bersaglio piu che aggiungere peso."}
+  ]},
+  { t: "Sticking point e esercizi complementari", d: [
+    {type:"p", content:"Lo sticking point e il punto piu debole di un'alzata: dove il movimento rallenta o si blocca sotto fatica. Gli esercizi complementari servono a rinforzare esattamente quell'anello debole."},
+    {type:"ul", content:["Good morning → rinforza lombari e femorali per squat e stacco","Trazioni → rafforzano i dorsali per il rematore","Nordic curl → protegge il crociato e rinforza i femorali per tutti i movimenti con le gambe"]},
+    {type:"p", content:"Regola aurea: ogni esercizio complementare deve avere uno scopo preciso. Se non rinforza un punto debole, non costruisce massa in un distretto specifico e non previene squilibri — non farlo."}
+  ]},
 ];
 
 /* === MUSCLES === */
@@ -602,6 +681,40 @@ export default function App() {
     </div>;
   }
 
+  function RichBlocks(props) {
+    var blocks = props.blocks;
+    var ac = props.accent || dc;
+    if (!blocks || !Array.isArray(blocks)) return <DetailText text={blocks} accent={ac} soft={props.soft} />;
+    return <div style={{ display: "grid", gap: 10 }}>
+      {blocks.map(function(block, bi) {
+        if (block.type === "p") {
+          return <p key={bi} style={{ margin: 0, fontSize: 12, lineHeight: 1.7, color: T.sub }}>{block.content}</p>;
+        }
+        if (block.type === "ul") {
+          return <ul key={bi} style={{ margin: "0", paddingLeft: 0, listStyle: "none", display: "grid", gap: 5 }}>
+            {block.content.map(function(item, ii) {
+              return <li key={ii} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                <span style={{ color: ac, fontWeight: 700, fontSize: 13, lineHeight: 1.5, flexShrink: 0, marginTop: 1 }}>•</span>
+                <span style={{ fontSize: 12, lineHeight: 1.6, color: T.sub }}>{item}</span>
+              </li>;
+            })}
+          </ul>;
+        }
+        if (block.type === "bold-list") {
+          return <div key={bi} style={{ display: "grid", gap: 7 }}>
+            {block.content.map(function(item, ii) {
+              return <div key={ii} style={{ display: "flex", gap: 0, flexDirection: "column", background: ac + "0A", border: "1px solid " + ac + "18", borderRadius: 8, padding: "8px 11px" }}>
+                <span style={{ fontSize: 12, fontWeight: 800, color: ac, marginBottom: 2 }}>{item[0]}</span>
+                <span style={{ fontSize: 12, lineHeight: 1.6, color: T.sub }}>{item[1]}</span>
+              </div>;
+            })}
+          </div>;
+        }
+        return null;
+      })}
+    </div>;
+  }
+
   function getGlossByTerm(term) {
     return GLOSS.find(function(g) { return g.t === term; }) || null;
   }
@@ -832,7 +945,7 @@ export default function App() {
                   <div style={{ fontSize: 12, lineHeight: 1.7, color: T.sub }}>{rendered}</div>
                 </div>;
               })}
-              {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi} key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "14" }}><summary style={{ padding: "11px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: 10, color: "#fff", minWidth: 20, height: 20, borderRadius: 999, background: dc, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{gi + 1}</span>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
+              {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi} key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "14" }}><summary style={{ padding: "11px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: 10, color: "#fff", minWidth: 20, height: 20, borderRadius: 999, background: dc, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{gi + 1}</span>{g.t}</summary><div style={{ padding: "8px 12px 14px" }}><RichBlocks blocks={g.d} accent={dc} /></div></details>; })}
             </div>}
             {glossTab === "termini" && <div>
               {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
@@ -970,7 +1083,7 @@ export default function App() {
                 </div>;
               })}
               <div style={{ fontSize: 11, color: T.sub, textAlign: "center", margin: "4px 0 8px", opacity: 0.7 }}>Tap su ogni principio per il dettaglio completo</div>
-              {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi + "t"} key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "14" }}><summary style={{ padding: "11px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: 10, color: "#fff", minWidth: 20, height: 20, borderRadius: 999, background: dc, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{gi + 1}</span>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
+              {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi + "t"} key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "14" }}><summary style={{ padding: "11px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: 10, color: "#fff", minWidth: 20, height: 20, borderRadius: 999, background: dc, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{gi + 1}</span>{g.t}</summary><div style={{ padding: "8px 12px 14px" }}><RichBlocks blocks={g.d} accent={dc} /></div></details>; })}
             </div>}
             {glossTab === "termini" && <div>
               {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
