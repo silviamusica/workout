@@ -173,6 +173,29 @@ var GLOSS = [
   { t: "Presa neutra", d: "Palmi uno verso l'altro. Meno stress su polsi e gomiti." },
 ];
 
+var GLOSS_LINKS = [
+  { match: "concentrica", term: "Concentrica (positiva)" },
+  { match: "eccentrica", term: "Eccentrica (negativa)" },
+  { match: "isometrica", term: "Isometrica" },
+  { match: "rpe", term: "RPE (Rate of Perceived Exertion)" },
+  { match: "serie e ripetizione", term: "Serie e ripetizione" },
+  { match: "ripetizione", term: "Serie e ripetizione" },
+  { match: "multiarticolare", term: "Multiarticolare (compound)" },
+  { match: "compound", term: "Multiarticolare (compound)" },
+  { match: "monoarticolare", term: "Monoarticolare (isolamento)" },
+  { match: "isolamento", term: "Monoarticolare (isolamento)" },
+  { match: "catena posteriore", term: "Catena posteriore" },
+  { match: "sovraccarico progressivo", term: "Sovraccarico progressivo" },
+  { match: "deload", term: "Deload" },
+  { match: "tempo sotto tensione", term: "Tempo sotto tensione (TUT)" },
+  { match: "tut", term: "Tempo sotto tensione (TUT)" },
+  { match: "range of motion", term: "Range of Motion (ROM)" },
+  { match: "rom", term: "Range of Motion (ROM)" },
+  { match: "presa prona", term: "Presa prona" },
+  { match: "presa supina", term: "Presa supina" },
+  { match: "presa neutra", term: "Presa neutra" },
+];
+
 /* === TRAINING PRINCIPLES === */
 var PRINCIPLES_DEEP = [
   { t: "Volume, Intensita e Densita: i Fantastici 3", d: "Ogni scheda si basa sull'equilibrio di tre parametri interconnessi. Il Volume e la mole di lavoro totale (serie x ripetizioni x kg, o numero totale di serie per gruppo muscolare): e il parametro con la maggiore correlazione ai guadagni ipertrofici. L'Intensita e il carico sul bilanciere o la percezione dello sforzo: carichi sopra l'80% del massimale garantiscono il massimo reclutamento delle fibre fin dalla prima ripetizione. La Densita e il legame tra tempo sotto tensione e durata dell'allenamento: recuperi piu brevi aumentano lo stress metabolico, recuperi piu ampi permettono carichi maggiori. Non si puo massimizzare tutto insieme — ogni scheda fa una scelta su quale parametro privilegiare." },
@@ -427,6 +450,7 @@ export default function App() {
   var [themeOpen, setThemeOpen] = useState(false);
   var [rpeOpen, setRpeOpen] = useState(false);
   var [glossOpen, setGlossOpen] = useState(false);
+  var [glossTermOpen, setGlossTermOpen] = useState(null);
   var [glossTab, setGlossTab] = useState("principi");
   var [resetOpen, setResetOpen] = useState(false);
   var [exInfoOpen, setExInfoOpen] = useState(null);
@@ -550,6 +574,70 @@ export default function App() {
     return sets + " serie: " + parts.join(", ") + " rip (peso crescente)";
   }
 
+  function textChunks(text) {
+    if (!text) return [];
+    return text
+      .split(/\n+/)
+      .flatMap(function(block) {
+        return block
+          .split(/(?<=[.!?])\s+(?=[A-Z0-9])/)
+          .map(function(part) { return part.trim(); })
+          .filter(Boolean);
+      });
+  }
+
+  function DetailText(props) {
+    var items = textChunks(props.text);
+    var accentColor = props.accent || dc;
+    var size = props.size || 12;
+    var gap = props.gap || 6;
+    if (!items.length) return null;
+    return <div style={{ display: "grid", gap: gap }}>
+      {items.map(function(item, idx) {
+        return <div key={idx} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: props.soft ? accentColor + "08" : "transparent", border: props.soft ? "1px solid " + accentColor + "12" : "none", borderRadius: props.soft ? 8 : 0, padding: props.soft ? "8px 10px" : 0 }}>
+          <span style={{ color: accentColor, fontSize: size - 1, lineHeight: 1.6, marginTop: 1 }}>•</span>
+          <span style={{ fontSize: size, lineHeight: 1.6, color: T.sub }}>{renderGlossaryText(item, accentColor)}</span>
+        </div>;
+      })}
+    </div>;
+  }
+
+  function getGlossByTerm(term) {
+    return GLOSS.find(function(g) { return g.t === term; }) || null;
+  }
+
+  function findGlossMatch(text) {
+    var lower = text.toLowerCase();
+    var best = null;
+    GLOSS_LINKS.forEach(function(entry) {
+      var idx = lower.indexOf(entry.match.toLowerCase());
+      if (idx === -1) return;
+      if (!best || idx < best.idx || (idx === best.idx && entry.match.length > best.match.length)) {
+        best = { idx: idx, match: entry.match, term: entry.term };
+      }
+    });
+    return best;
+  }
+
+  function renderGlossaryText(text, accentColor) {
+    var match = findGlossMatch(text);
+    if (!match) return text;
+    var start = match.idx;
+    var end = start + match.match.length;
+    var gloss = getGlossByTerm(match.term);
+    if (!gloss) return text;
+    return <>
+      {text.slice(0, start)}
+      <span
+        onClick={function(e) { e.stopPropagation(); setGlossTermOpen(gloss); }}
+        style={{ color: accentColor, fontWeight: 700, textDecoration: "underline dotted", textUnderlineOffset: 2, cursor: "pointer" }}
+      >
+        {text.slice(start, end)}
+      </span>
+      {renderGlossaryText(text.slice(end), accentColor)}
+    </>;
+  }
+
   function getRestTime(exName, rpe) {
     var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","Front Squat","Pause Squat","Push Press","Stacco Sumo","Stacco Rumeno"];
     var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Squat Bulgaro","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino"];
@@ -626,12 +714,14 @@ export default function App() {
           <div style={{ fontSize: 12, color: dc, fontWeight: 600, marginBottom: 12 }}>{db.g}</div>
           {imgs.map(function(src, ii) { return <img key={ii} src={src} style={{ width: "100%", borderRadius: 10, marginBottom: 12 }} />; })}
           <div style={{ background: T.sb, borderRadius: 10, padding: 12, marginBottom: 10 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 4 }}>Come si esegue</div>
-            <p style={{ fontSize: 12, lineHeight: 1.5, color: T.sub, margin: "0 0 10px" }}>{db.c}</p>
-            <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 4 }}>Posizione</div>
-            <p style={{ fontSize: 12, lineHeight: 1.5, color: T.sub, margin: "0 0 10px" }}>{db.p}</p>
-            <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 4 }}>Trucchi</div>
-            {db.t.map(function(tip, ti) { return <div key={ti} style={{ fontSize: 12, lineHeight: 1.4, color: T.sub, paddingLeft: 14, position: "relative", marginBottom: 3 }}><span style={{ position: "absolute", left: 0, color: dc }}>→</span>{tip}</div>; })}
+            <div style={{ fontSize: 11, fontWeight: 800, color: dc, marginBottom: 6, textTransform: "uppercase", letterSpacing: 0.6 }}>Come si esegue</div>
+            <DetailText text={db.c} accent={dc} soft={true} />
+            <div style={{ fontSize: 11, fontWeight: 800, color: dc, margin: "12px 0 6px", textTransform: "uppercase", letterSpacing: 0.6 }}>Posizione</div>
+            <DetailText text={db.p} accent={dc} soft={true} />
+            <div style={{ fontSize: 11, fontWeight: 800, color: dc, margin: "12px 0 6px", textTransform: "uppercase", letterSpacing: 0.6 }}>Trucchi</div>
+            <div style={{ display: "grid", gap: 6 }}>
+              {db.t.map(function(tip, ti) { return <div key={ti} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: dc + "08", border: "1px solid " + dc + "12", borderRadius: 8, padding: "8px 10px" }}><span style={{ color: dc, fontSize: 11, lineHeight: 1.5 }}>→</span><span style={{ fontSize: 12, lineHeight: 1.5, color: T.sub }}>{tip}</span></div>; })}
+            </div>
           </div>
           {embed && <div style={{ marginBottom: 12, borderRadius: 10, overflow: "hidden", background: "#000" }}>
             <iframe
@@ -678,6 +768,18 @@ export default function App() {
       <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
       <ExPopup />
+
+      {glossTermOpen && <div onClick={function() { setGlossTermOpen(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 240, display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}>
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, padding: 18, maxWidth: 380, width: "100%", color: T.tx, boxShadow: "0 20px 60px rgba(0,0,0,0.18)" }}>
+          <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Glossario</div>
+          <h3 style={{ margin: "0 0 10px", fontSize: 17, fontWeight: 800 }}>{glossTermOpen.t}</h3>
+          <DetailText text={glossTermOpen.d} accent={dc} soft={true} />
+          <div style={{ display: "flex", gap: 8, marginTop: 14 }}>
+            <button onClick={function() { setGlossTermOpen(null); }} style={{ flex: 1, padding: 10, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Chiudi</button>
+            <button onClick={function() { setGlossTermOpen(null); setGlossOpen(true); setGlossTab("termini"); }} style={{ flex: 1, padding: 10, border: "1px solid " + dc + "24", borderRadius: 10, background: dc + "10", color: dc, fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Apri glossario</button>
+          </div>
+        </div>
+      </div>}
 
       {/* RPE Modal */}
       {rpeOpen && <div onClick={function() { setRpeOpen(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 200, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
@@ -730,10 +832,10 @@ export default function App() {
                   <div style={{ fontSize: 12, lineHeight: 1.7, color: T.sub }}>{rendered}</div>
                 </div>;
               })}
-              {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi} key={gi} style={{ marginBottom: 4, borderRadius: 8, overflow: "hidden", background: T.sb }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 6 }}><span style={{ fontSize: 10, color: T.sub, minWidth: 18 }}>{gi + 1 + "."}</span>{g.t}</summary><div style={{ padding: "0 12px 12px", fontSize: 12, lineHeight: 1.6, color: T.sub }}>{g.d}</div></details>; })}
+              {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi} key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "14" }}><summary style={{ padding: "11px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: 10, color: "#fff", minWidth: 20, height: 20, borderRadius: 999, background: dc, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{gi + 1}</span>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
             </div>}
             {glossTab === "termini" && <div>
-              {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 4, borderRadius: 8, overflow: "hidden", background: T.sb }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px", fontSize: 12, lineHeight: 1.6, color: T.sub }}>{g.d}</div></details>; })}
+              {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
             </div>}
           </div>
           {/* Footer fisso */}
@@ -868,10 +970,10 @@ export default function App() {
                 </div>;
               })}
               <div style={{ fontSize: 11, color: T.sub, textAlign: "center", margin: "4px 0 8px", opacity: 0.7 }}>Tap su ogni principio per il dettaglio completo</div>
-              {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi + "t"} key={gi} style={{ marginBottom: 4, borderRadius: 8, overflow: "hidden", background: T.sb }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 6 }}><span style={{ fontSize: 10, color: T.sub, minWidth: 18 }}>{gi + 1 + "."}</span>{g.t}</summary><div style={{ padding: "0 12px 12px", fontSize: 12, lineHeight: 1.6, color: T.sub }}>{g.d}</div></details>; })}
+              {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi + "t"} key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "14" }}><summary style={{ padding: "11px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: 10, color: "#fff", minWidth: 20, height: 20, borderRadius: 999, background: dc, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{gi + 1}</span>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
             </div>}
             {glossTab === "termini" && <div>
-              {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 4, borderRadius: 8, overflow: "hidden", background: T.sb }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px", fontSize: 12, lineHeight: 1.6, color: T.sub }}>{g.d}</div></details>; })}
+              {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
             </div>}
           </div>
         </div>
@@ -895,9 +997,9 @@ export default function App() {
           {isO && <div style={{ padding: "0 14px 14px" }}>
             <div style={{ background: T.sb, borderRadius: 8, padding: 12, marginBottom: 8 }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 4 }}>Dove</div>
-              <p style={{ fontSize: 12, lineHeight: 1.5, color: T.sub, margin: "0 0 8px" }}>{m.w}</p>
+              <DetailText text={m.w} accent={dc} />
               <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 4 }}>Perche allenarlo</div>
-              <p style={{ fontSize: 12, lineHeight: 1.5, color: T.sub, margin: 0 }}>{m.y}</p>
+              <DetailText text={m.y} accent={dc} />
             </div>
             <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 6 }}>Esercizi (tap per dettagli)</div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
@@ -962,7 +1064,7 @@ export default function App() {
                 </div>
                 {showImg === "wl" + wi && <div style={{ padding: "0 10px 10px" }}>
                   {hasImg && <img src={WS_IMG[w.img]} style={{ width: "100%", borderRadius: 8, marginBottom: 6 }} />}
-                  <div style={{ fontSize: 11, lineHeight: 1.5, color: T.sub }}>{w.d}</div>
+                  <DetailText text={w.d} accent={dc} size={11} soft={true} />
                   {w.lk && <a href={w.lk} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginTop: 4, fontSize: 10, color: dc, fontWeight: 600, textDecoration: "none", padding: "3px 8px", background: dc + "15", borderRadius: 5 }}>Video</a>}
                 </div>}
               </div>;
@@ -994,7 +1096,7 @@ export default function App() {
               </div>
               {showImg === "sl" + si && <div style={{ padding: "0 10px 10px" }}>
                 {hasImg && <img src={WS_IMG[sd.img]} style={{ width: "100%", maxWidth: 280, borderRadius: 8, marginBottom: 6 }} />}
-                <div style={{ fontSize: 11, lineHeight: 1.5, color: T.sub }}>{sd.h}</div>
+                <DetailText text={sd.h} accent={T.st} size={11} soft={true} />
                 <div style={{ fontSize: 10, color: T.sub, fontStyle: "italic", marginTop: 4 }}>{sd.t}</div>
                 {sd.lk && <a href={sd.lk} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginTop: 4, fontSize: 10, color: T.st, fontWeight: 600, textDecoration: "none", padding: "3px 8px", background: T.st + "15", borderRadius: 5 }}>Video</a>}
               </div>}
@@ -1015,7 +1117,7 @@ export default function App() {
 
             {/* Motivational intro */}
             <div style={{ padding: "14px 14px 10px", borderBottom: "1px solid " + T.bg }}>
-              <div style={{ fontSize: 13, lineHeight: 1.6, color: T.tx, fontStyle: "italic" }}>{dayData.intro}</div>
+              <DetailText text={dayData.intro} accent={dc} size={13} soft={true} />
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8 }}>
                 <span style={{ fontSize: 12, fontWeight: 700, color: dc }}>{dayData.focus}</span>
                 <span style={{ fontSize: 11, color: T.sub, fontWeight: 600 }}>~{dayData.tEst} min</span>
@@ -1032,12 +1134,12 @@ export default function App() {
               {showPrinciples && <div style={{ padding: "0 14px 14px" }}>
                 <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                   {PRINCIPLES.map(function(pr, pi) {
-                    return <div key={pi} onClick={function() { setShowImg(showImg === "pr" + pi ? null : "pr" + pi); }} style={{ background: T.sb, borderRadius: 8, padding: "8px 12px", cursor: "pointer" }}>
+                    return <div key={pi} onClick={function() { setShowImg(showImg === "pr" + pi ? null : "pr" + pi); }} style={{ background: T.sb, borderRadius: 10, padding: "10px 12px", cursor: "pointer", border: "1px solid " + dc + "12" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                         <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{pr.t}</span>
                         <span style={{ fontSize: 11, color: T.sub }}>{showImg === "pr" + pi ? "\u25B4" : "\u25BE"}</span>
                       </div>
-                      {showImg === "pr" + pi && <div style={{ fontSize: 12, lineHeight: 1.5, color: T.sub, marginTop: 6 }}>{pr.d}</div>}
+                      {showImg === "pr" + pi && <div style={{ marginTop: 8 }}><DetailText text={pr.d} accent={dc} soft={true} /></div>}
                     </div>;
                   })}
                 </div>
@@ -1062,7 +1164,7 @@ export default function App() {
                           <button onClick={function() { setShowImg(showImg === "w" + wi ? null : "w" + wi); }} style={{ fontSize: 10, color: dc, fontWeight: 600, background: "none", border: "1px solid " + dc + "30", borderRadius: 5, padding: "2px 8px", cursor: "pointer", marginBottom: 4 }}>{showImg === "w" + wi ? "nascondi" : "vedi foto"}</button>
                           {showImg === "w" + wi && <img src={WS_IMG[w.img]} style={{ width: "100%", borderRadius: 8, marginBottom: 6 }} />}
                         </div>}
-                        <div style={{ fontSize: 11, lineHeight: 1.5, color: T.sub }}>{w.d}</div>
+                        <DetailText text={w.d} accent={dc} size={11} soft={true} />
                         <div style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 4 }}>
                           {w.lk && <a href={w.lk} target="_blank" rel="noopener noreferrer" style={{ fontSize: 10, color: dc, fontWeight: 600, textDecoration: "none" }}>video &rarr;</a>}
                           {w.tm && w.tm >= 120 ? <button onClick={function() { quickStopwatch(); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"\u25B6 " + fmtLabel(w.tm)}</button> : null}
@@ -1134,16 +1236,16 @@ export default function App() {
                     {restSec && restSec > 60 ? <button onClick={function() { quickTimer(60); }} style={{ fontSize: 10, border: "1px solid " + T.sub + "30", borderRadius: 5, padding: "3px 8px", background: "transparent", color: T.sub, fontWeight: 600, cursor: "pointer" }}>{fmtLabel(60)}</button> : null}
                   </div>
                   {showImg === "ex" + i && exImgs(ex.n).map(function(src, si) { return <img key={si} src={src} style={{ width: "100%", borderRadius: 8, marginBottom: 8 }} />; })}
-                  <div style={{ fontSize: 11, lineHeight: 1.5, color: T.sub, marginBottom: 8 }}>{db.c}</div>
+                  <DetailText text={db.c} accent={dc} size={11} soft={true} />
                   {db.deep && <details style={{ marginBottom: 8, borderRadius: 8, overflow: "hidden", background: T.bg }}>
                     <summary style={{ padding: "8px 12px", cursor: "pointer", fontSize: 11, fontWeight: 700, color: T.sub, listStyle: "none", display: "flex", alignItems: "center", gap: 6 }}>
                       <span style={{ fontSize: 13 }}>📖</span> Approfondimento tecnico
                     </summary>
                     <div style={{ padding: "8px 12px 12px" }}>
                       {Array.isArray(db.deep) ? db.deep.map(function(block, bi) {
-                        if (block.type === "ul") return <ul key={bi} style={{ margin: "4px 0 8px", paddingLeft: 18 }}>{block.content.map(function(item, ii) { return <li key={ii} style={{ fontSize: 11, lineHeight: 1.6, color: T.sub, marginBottom: 2 }}>{item}</li>; })}</ul>;
-                        return <p key={bi} style={{ fontSize: 11, lineHeight: 1.7, color: T.sub, margin: "0 0 8px" }}>{block.content}</p>;
-                      }) : <p style={{ fontSize: 11, lineHeight: 1.7, color: T.sub, margin: 0 }}>{db.deep}</p>}
+                        if (block.type === "ul") return <div key={bi} style={{ display: "grid", gap: 6, marginBottom: 8 }}>{block.content.map(function(item, ii) { return <div key={ii} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: dc + "08", border: "1px solid " + dc + "12", borderRadius: 8, padding: "8px 10px" }}><span style={{ color: dc, fontSize: 10, lineHeight: 1.6 }}>•</span><span style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{item}</span></div>; })}</div>;
+                        return <DetailText key={bi} text={block.content} accent={dc} size={11} soft={true} />;
+                      }) : <DetailText text={db.deep} accent={dc} size={11} soft={true} />}
                     </div>
                   </details>}
                   {/* Registra - collapsible */}
@@ -1200,7 +1302,7 @@ export default function App() {
                     <button onClick={function() { setShowImg(showImg === "s" + si ? null : "s" + si); }} style={{ fontSize: 10, color: T.st, fontWeight: 600, background: "none", border: "1px solid " + T.st + "30", borderRadius: 5, padding: "2px 8px", cursor: "pointer", marginBottom: 4 }}>{showImg === "s" + si ? "nascondi" : "vedi foto"}</button>
                     {showImg === "s" + si && <img src={WS_IMG[sd.img]} style={{ width: "100%", maxWidth: 280, borderRadius: 8, marginBottom: 6 }} />}
                   </div>}
-                  <div style={{ fontSize: 11, lineHeight: 1.5, color: T.sub, marginBottom: 4 }}>{sd.h}</div>
+                  <DetailText text={sd.h} accent={T.st} size={11} soft={true} />
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <span style={{ fontSize: 10, color: T.sub, fontStyle: "italic" }}>{sd.t}</span>
                     <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
