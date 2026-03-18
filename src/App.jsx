@@ -351,8 +351,8 @@ var INTRO_MUSCLES = {
       title: "Catena anteriore",
       muscles: "Quadricipiti · Pettorali · Deltoidi anteriori · Bicipiti · Retto addominale",
       desc: "Governa la spinta: spingerti in piedi, spingere un oggetto davanti a te, salire le scale. Tende a essere dominante nelle persone sedentarie — si accorcia e si irrigidisce.",
-      link: "https://it.wikipedia.org/wiki/Catena_cinematica_(biomeccanica)",
-      linkLabel: "Wikipedia: catene cinetiche →"
+      link: null,
+      linkLabel: null
     },
     {
       icon: "⬇️",
@@ -367,8 +367,8 @@ var INTRO_MUSCLES = {
       title: "Core: il centro di tutto",
       muscles: "Retto addominale · Obliqui · Trasverso · Multifido · Diaframma",
       desc: "Non è solo 'fare gli addominali'. Il core è la cintura di stabilità tra parte superiore e inferiore del corpo. Ogni alzata pesante parte da qui. Un core debole significa perdita di forza e rischio di infortuni in tutti gli altri esercizi.",
-      link: "https://it.wikipedia.org/wiki/Core_(anatomia)",
-      linkLabel: "Wikipedia: core muscolare →"
+      link: null,
+      linkLabel: null
     },
     {
       icon: "⚖️",
@@ -463,7 +463,6 @@ var INTRO_ESERCIZI = [
         ["Military Press", "La spinta verticale. Deltoidi, tricipiti, core stabilizzatore. Il test della forza delle spalle."],
         ["Rematore", "La trazione orizzontale. Dorsali, romboidi, bicipiti. Fondamentale per il bilanciamento posturale con la panca."],
       ]},
-      { type: "link", label: "Wikipedia: esercizi di isolamento →", url: "https://it.wikipedia.org/wiki/Esercizi_di_isolamento" },
     ]
   },
   {
@@ -1761,7 +1760,7 @@ export default function App() {
                 </div>
                 {isOpen && <div style={{ padding: "4px 13px 14px", background: T.sb, display: "grid", gap: 10 }}>
                   <p style={{ margin: 0, fontSize: 12, lineHeight: 1.75, color: T.sub }}>{chain.desc}</p>
-                  <EmbedLink url={chain.link} label={chain.linkLabel} />
+                  {chain.link && <EmbedLink url={chain.link} label={chain.linkLabel} />}
                 </div>}
               </div>;
             })}
