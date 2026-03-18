@@ -1,0 +1,36 @@
+Giorno,Focus,Mese,#,Esercizio,Serie,RPE,Note,Alternativa Cavi,Alt. Cavi Serie,Alt. Libero,Alt. Libero Serie,Variante M2,Serie M2,Variante M3,Serie M3,Variante M4,Serie M4
+Lunedi,Tirata upper + core + catena posteriore,M1,1,Ab Wheel,8x4,,,,,,,,,,,
+Lunedi,Tirata upper + core + catena posteriore,M1,2,Trazioni,4xmax,,"Sett.1: 1 completa. Negativa se serve",,,,Rematore Bilanciere,4x8-6-6-5,Trazioni (presa larga),4xmax,Trazioni (zavorrate),4x6-5-4-4
+Lunedi,Tirata upper + core + catena posteriore,M1,3,Push-Up,4xmax,,"Tecnica: bacino che scende",,,,Floor Press Manubri,4x10-8-8-6,Push-Up Declino,4xmax,Push-Up (pausa 2s),4xmax
+Lunedi,Tirata upper + core + catena posteriore,M1,4,Rematore Manubri,4x12-10-8-8,9,"35-35-40-40 sett.1",Pulley,4x12-10-8-8,Rematore Manubri,4x12-10-8-8,Rematore Bilanciere,4x12-10-8-8,Rematore Manubri (pesante),4x8-6-6-5,Pendlay Row,4x8-6-6-5
+Lunedi,Tirata upper + core + catena posteriore,M1,5,Nordic Curl,4x12-10-8-8,9,"Sost. leg curl. Sett.1: 9-9-10-11kg",,,,Single Leg Deadlift,4x10,Nordic Curl (negativa 5s),4x8-6-6-5,Nordic Curl (negativa 5s),4x6-5-5-4
+Lunedi,Tirata upper + core + catena posteriore,M1,6,Hyperextension,4x15,9,5kg,,,,Stacco Rumeno,4x10-8-8-6,Hyperextension 10kg,4x12,Hyperextension 15kg,4x12
+Lunedi,Tirata upper + core + catena posteriore,M1,7,Good Morning,3x12,8,Aggiunta. Bilanciere leggero,,,,,,,,
+Martedi,Spinta lower + upper + braccia,M1,1,Addominali Obliqui,3x15,,"Russian twist o crunch laterale",,,,,,,,
+Martedi,Spinta lower + upper + braccia,M1,2,Plank,3x45s,,,,,,,,,,,
+Martedi,Spinta lower + upper + braccia,M1,3,Squat,4x8-6-6-5,8,,,,,Front Squat,4x8-6-6-5,Pause Squat,4x6-5-5-4,Squat (pesante),4x5-4-4-3
+Martedi,Spinta lower + upper + braccia,M1,4,Military Press,4x8-6-6-5,8,,,,,Push Press,4x6-5-5-4,Military Press (manubri),4x10-8-8-6,Military Press (pesante),4x5-4-4-3
+Martedi,Spinta lower + upper + braccia,M1,5,Lat Machine,4x12-10-8-8,9,"Sett.1: 30-30-35-35",Lat Machine,4x12-10-8-8,Trazioni Supine,4x12-10-8-8,Rematore Bilanciere,4x10-8-8-6,Rematore Manubri,4x10-8-8-6,Trazioni Supine (negativa 5s),4xmax
+Martedi,Spinta lower + upper + braccia,M1,6,Curl Bicipiti,4x12,9,Manubri,,,,Curl Martello,4x12,Curl Concentrato,4x10,Curl Bicipiti (pesante),4x8
+Martedi,Spinta lower + upper + braccia,M1,7,French Press Manubri,4x12,9,"Presa neutra. Sost. french press bil.",,,,Kick Back Manubri,4x12,Overhead Extension,4x12,French Press Manubri (pesante),4x8
+Martedi,Spinta lower + upper + braccia,M1,8,Tricipiti Cavo,3x12,8,Carrucola alta,Tricipiti Cavo,3x12,Dip su Panca,3x12,Push-Up Diamante,3xmax,Dip su Panca (piedi su rialzo),3xmax,Dip su Panca (disco sulle gambe),3xmax
+Martedi,Spinta lower + upper + braccia,M1,9,Squat Bulgaro,3x10,8,"Per gamba. Sost. leg extension",,,,Step Up,3x12,Squat Bulgaro (manubri pesanti),3x8,Walking Lunge,3x10
+Mercoledi,Spinta upper + lower + tirata,M1,1,Plank,3x45s,,,,,,,,,,,
+Mercoledi,Spinta upper + lower + tirata,M1,2,Panca,4x8-6-6-5,8,"Sett.1: 5kg",,,,Floor Press Manubri,4x10-8-8-6,Panca (pausa al petto),4x6-5-5-4,Panca (pesante),4x5-4-3-3
+Mercoledi,Spinta upper + lower + tirata,M1,3,Stacco da Terra,4x8-6-6-5,8,"Sett.1: 15-20-20kg",,,,Stacco Sumo,4x8-6-6-5,Stacco (pausa sotto ginocchio),4x6-5-5-4,Stacco (pesante),4x5-4-3-3
+Mercoledi,Spinta upper + lower + tirata,M1,4,Rematore Bilanciere,4x8-8-6-6,9,,,,,Rematore Bilanciere (presa supina),4x8-8-6-6,Pendlay Row,4x8-6-6-5,Rematore Bilanciere (pesante),5x5
+Mercoledi,Spinta upper + lower + tirata,M1,5,Squat,3x10,7,"A terra, ginocchia larghe. Con kb o bil. (5+2.5kg)",,,,,,,,
+Giovedi,Spinta lower + glutei + upper isolamento,M1,1,Addominali Obliqui,3x15,,,,,,,,,,,
+Giovedi,Spinta lower + glutei + upper isolamento,M1,2,Shoulder Tap,1x33,,,,,,,,,,,
+Giovedi,Spinta lower + glutei + upper isolamento,M1,3,Hyperextension,3x15,9,10kg,,,,Stacco Rumeno,3x10,Hyperextension 15kg,3x12,Hyperextension 20kg,3x10
+Giovedi,Spinta lower + glutei + upper isolamento,M1,4,Affondi,5x15,9,Manubri ai lati,,,,Walking Lunge,4x12,Affondi (indietro),5x12,Squat Bulgaro (pesante),4x10
+Giovedi,Spinta lower + glutei + upper isolamento,M1,5,Clamshell,5x15,9,"Per lato. Sost. abductor (40kg)",,,,Fire Hydrant,5x15,Clamshell (con elastico),5x15,Abduzione Laterale (cavigliera),5x15
+Giovedi,Spinta lower + glutei + upper isolamento,M1,6,Croci Manubri a Terra,4x12,9,"8kg. Usa fitball come panca inclinata",,,,Push-Up Declino,4xmax,Floor Press Manubri,4x10,Croci Manubri (pausa 2s),4x10
+Giovedi,Spinta lower + glutei + upper isolamento,M1,7,Arnold Press,4x12,9,8kg,,,,Alzate Laterali,4x15,Push Press,4x8,Arnold Press (pesante),4x8
+Giorno 5-6,Richiamo braccia + core + gambe,M1,1,Curl Bicipiti,3x12,,,,,,,,,,,
+Giorno 5-6,Richiamo braccia + core + gambe,M1,2,Dip su Panca,3xmax,,"Tricipiti",,,,,,,,,
+Giorno 5-6,Richiamo braccia + core + gambe,M1,3,Addominali Obliqui,3x15,,,,,,,,,,,
+Giorno 5-6,Richiamo braccia + core + gambe,M1,4,Step Up,3x12,,"Per gamba",,,,,,,,,
+Giorno 5-6,Richiamo braccia + core + gambe,M1,5,Trazioni,3xmax,,,,,,,,,,,
+Giorno 5-6,Richiamo braccia + core + gambe,M1,6,Push-Up,3xmax,,,,,,,,,,,
+Giorno 5-6,Richiamo braccia + core + gambe,M1,7,Affondi,3x12,,"Corpo libero o manubri",,,,,,,,,
