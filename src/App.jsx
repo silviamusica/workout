@@ -80,7 +80,7 @@ function beepEnd() { playTone(1047, 0.15, 0.5); setTimeout(function() { playTone
 
 /* === THEMES === */
 var TH = {
-  sage:    { n: "Sage",    bg: "#F4F6F2", cd: "#FAFBF9", tx: "#2C3325", sub: "#8A9E82", hd: "linear-gradient(135deg,#4A6741,#6B8F62)", htx: "#EEF4EC", dy: ["#5C7A52","#7B9E6E","#4A7C6B","#8C6D5A","#7A8A9E"], ok: "#5C7A52", ac: "#C8B97A", sb: "#EEF2EB", st: "#7A6B3A" },
+  sage:    { n: "Crimson", bg: "#0D0D0F", cd: "#17171B", tx: "#F4F4F6", sub: "#B4B4BE", hd: "linear-gradient(135deg,#08080A,#151519 44%,#2A1117)", htx: "#FFF7F8", dy: ["#B91C1C","#A1A1AA","#71717A","#52525B","#7F1D1D"], ok: "#DC2626", ac: "#F59E0B", sb: "#111115", st: "#D4D4D8" },
   petal:   { n: "Petal",   bg: "#FDF5F7", cd: "#FFFBFC", tx: "#3A1F28", sub: "#B08090", hd: "linear-gradient(135deg,#C2788A,#D4929E)", htx: "#FFF0F3", dy: ["#C47A8A","#9B6EA6","#6A96B0","#C28860","#A0A0B8"], ok: "#C47A8A", ac: "#9DB87A", sb: "#FAEAEE", st: "#9B6EA6" },
   mist:    { n: "Mist",    bg: "#F2F4F8", cd: "#FAFBFD", tx: "#222B3A", sub: "#7A8FA8", hd: "linear-gradient(135deg,#3D5470,#5C7A9E)", htx: "#E8EEF6", dy: ["#5C7A9E","#6A9E8C","#7A6EA8","#9E7A5C","#6A7A8A"], ok: "#5C7A9E", ac: "#C8A86A", sb: "#E8EDF5", st: "#5C7A9E" },
   night:   { n: "Notte",   bg: "#14151F", cd: "#1E1F2E", tx: "#DDE0F0", sub: "#7880AA", hd: "linear-gradient(135deg,#0C0D1A,#1E1F2E)", htx: "#C8CCEC", dy: ["#7B8EE8","#5CC8C0","#E87898","#E8B870","#8898B8"], ok: "#7B8EE8", ac: "#5CC8C0", sb: "#1A1B2C", st: "#7B8EE8" },
@@ -715,6 +715,28 @@ export default function App() {
     </div>;
   }
 
+  function PrincipleText(props) {
+    var items = textChunks(props.text);
+    var ac = props.accent || dc;
+    if (!items.length) return null;
+    var lead = items[0];
+    var rest = items.slice(1);
+    return <div style={{ display: "grid", gap: 10 }}>
+      <div style={{ background: T.sb, borderLeft: "3px solid " + ac, borderRadius: 10, padding: "10px 12px" }}>
+        <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 0.7, textTransform: "uppercase", color: ac, marginBottom: 5 }}>Idea Chiave</div>
+        <div style={{ fontSize: 13, lineHeight: 1.75, color: "#CFCFD6", fontWeight: 600 }}>{renderGlossaryText(lead, ac)}</div>
+      </div>
+      {rest.length > 0 && <div style={{ display: "grid", gap: 8 }}>
+        {rest.map(function(item, idx) {
+          return <div key={idx} style={{ display: "flex", gap: 9, alignItems: "flex-start", background: "#141418", border: "1px solid rgba(255,255,255,0.05)", borderRadius: 10, padding: "9px 11px" }}>
+            <span style={{ width: 22, height: 22, borderRadius: 999, background: "rgba(255,255,255,0.06)", color: ac, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 800, flexShrink: 0 }}>{idx + 1}</span>
+            <span style={{ fontSize: 12, lineHeight: 1.78, color: "#B7B7C0" }}>{renderGlossaryText(item, ac)}</span>
+          </div>;
+        })}
+      </div>}
+    </div>;
+  }
+
   function getGlossByTerm(term) {
     return GLOSS.find(function(g) { return g.t === term; }) || null;
   }
@@ -945,7 +967,7 @@ export default function App() {
                   <div style={{ fontSize: 12, lineHeight: 1.7, color: T.sub }}>{rendered}</div>
                 </div>;
               })}
-              {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi} key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "14" }}><summary style={{ padding: "11px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: 10, color: "#fff", minWidth: 20, height: 20, borderRadius: 999, background: dc, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{gi + 1}</span>{g.t}</summary><div style={{ padding: "8px 12px 14px" }}><RichBlocks blocks={g.d} accent={dc} /></div></details>; })}
+              {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi} key={gi} style={{ marginBottom: 8, borderRadius: 12, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "14" }}><summary style={{ padding: "12px 13px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: 10, color: "#fff", minWidth: 20, height: 20, borderRadius: 999, background: dc, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{gi + 1}</span>{g.t}</summary><div style={{ padding: "10px 12px 14px" }}><RichBlocks blocks={g.d} accent={dc} /></div></details>; })}
             </div>}
             {glossTab === "termini" && <div>
               {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
@@ -1077,13 +1099,13 @@ export default function App() {
                     pi += 2;
                   } else { rendered.push(<span key={pi}>{parts[pi]}</span>); }
                 }
-                return <div key={bi} style={{ background: T.sb, borderRadius: 10, padding: "10px 14px", marginBottom: 8 }}>
-                  <div style={{ fontWeight: 800, fontSize: 12, color: T.tx, marginBottom: 4 }}>{block.emoji + " " + block.title}</div>
-                  <div style={{ fontSize: 12, lineHeight: 1.7, color: T.sub }}>{rendered}</div>
+                return <div key={bi} style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 10, border: "1px solid " + dc + "10" }}>
+                  <div style={{ fontWeight: 800, fontSize: 12, color: T.tx, marginBottom: 6 }}>{block.emoji + " " + block.title}</div>
+                  <div style={{ fontSize: 12, lineHeight: 1.85, color: T.sub }}>{rendered}</div>
                 </div>;
               })}
               <div style={{ fontSize: 11, color: T.sub, textAlign: "center", margin: "4px 0 8px", opacity: 0.7 }}>Tap su ogni principio per il dettaglio completo</div>
-              {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi + "t"} key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "14" }}><summary style={{ padding: "11px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: 10, color: "#fff", minWidth: 20, height: 20, borderRadius: 999, background: dc, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{gi + 1}</span>{g.t}</summary><div style={{ padding: "8px 12px 14px" }}><RichBlocks blocks={g.d} accent={dc} /></div></details>; })}
+              {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi + "t"} key={gi} style={{ marginBottom: 8, borderRadius: 12, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "14" }}><summary style={{ padding: "12px 13px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: 10, color: "#fff", minWidth: 20, height: 20, borderRadius: 999, background: dc, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{gi + 1}</span>{g.t}</summary><div style={{ padding: "10px 12px 14px" }}><RichBlocks blocks={g.d} accent={dc} /></div></details>; })}
             </div>}
             {glossTab === "termini" && <div>
               {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
