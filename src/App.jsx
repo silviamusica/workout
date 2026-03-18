@@ -216,6 +216,99 @@ var GLOSS_LINKS = [
   { match: "presa neutra", term: "Presa neutra" },
 ];
 
+/* === INTRO BASI ALLENAMENTO === */
+var INTRO_BASICS = [
+  {
+    icon: "🏗️",
+    title: "Come funziona il muscolo",
+    color: null, // usa dc
+    summary: "Il muscolo cresce quando lo stress supera la sua capacità attuale — e poi gli dai il tempo di ripararsi.",
+    body: [
+      { type: "p", content: "Quando sollevi un peso, crei micro-rotture nelle fibre muscolari. Il corpo risponde riparandole più spesse e forti di prima: questo processo si chiama ipertrofia." },
+      { type: "p", content: "Per funzionare, il ciclo ha tre ingredienti:" },
+      { type: "bold-list", content: [
+        ["Stimolo", "L'allenamento deve essere abbastanza intenso da rompere l'equilibrio del muscolo. Troppo poco non stimola; troppo senza recupero logora."],
+        ["Recupero", "La crescita avviene a riposo, non in palestra. Sonno, alimentazione e giorni di riposo non sono optional — sono parte del programma."],
+        ["Progressione", "Il corpo si adatta. Uno stimolo costante smette di funzionare. Devi aumentare gradualmente il carico, le ripetizioni o la difficoltà."],
+      ]},
+      { type: "link", label: "Approfondimento: come funziona l'ipertrofia muscolare →", url: "https://www.ncbi.nlm.nih.gov/books/NBK537012/" },
+    ]
+  },
+  {
+    icon: "📐",
+    title: "Serie, ripetizioni e recupero",
+    color: null,
+    summary: "Le variabili fondamentali di ogni allenamento. Cambiarle cambia completamente l'effetto sul tuo corpo.",
+    body: [
+      { type: "p", content: "Una ripetizione è un movimento completo (su + giù). Una serie è un blocco di ripetizioni eseguito senza pausa. Il recupero è il tempo di riposo tra una serie e l'altra." },
+      { type: "bold-list", content: [
+        ["4x8", "4 serie da 8 ripetizioni. Il formato standard per forza e massa muscolare."],
+        ["4xmax", "4 serie al massimo delle tue possibilità — ti fermi quando non riesci più a fare una ripetizione pulita."],
+        ["4x12-10-8-8", "Le ripetizioni scalano ad ogni serie: inizi più leggera e aumenti il carico man mano."],
+      ]},
+      { type: "p", content: "Recupero: 90-120 secondi per esercizi pesanti (squat, stacco, panca), 60 secondi per gli isolamenti. Recupero corto → più stress metabolico; recupero lungo → più forza disponibile." },
+      { type: "link", label: "Guida ai parametri di allenamento (Stronger By Science) →", url: "https://www.strongerbyscience.com/hypertrophy-range-fact-fiction/" },
+    ]
+  },
+  {
+    icon: "⚖️",
+    title: "RPE: quanto duro stai spingendo?",
+    color: null,
+    summary: "RPE (Rate of Perceived Exertion) è una scala da 1 a 10 che misura quanto ti sei avvicinata al limite.",
+    body: [
+      { type: "bold-list", content: [
+        ["RPE 7", "Potresti fare ancora 3 ripetizioni. Ti stai riscaldando o è il primo mese."],
+        ["RPE 8", "Potresti fare ancora 2 ripetizioni. Il range ottimale per accumulare volume con tecnica pulita."],
+        ["RPE 9", "Solo 1 ripetizione in più. Stai lavorando duro — ok per le serie principali."],
+        ["RPE 10", "Cedimento muscolare. Non puoi completare un'altra ripetizione. Da usare con parsimonia."],
+      ]},
+      { type: "p", content: "Nella scheda trovi gli RPE suggeriti per ogni esercizio. All'inizio sovrastimi sempre: è normale. Con l'esperienza impari a sentirti meglio." },
+      { type: "link", label: "Come usare l'RPE nell'allenamento →", url: "https://www.strongerbyscience.com/rpe/" },
+    ]
+  },
+  {
+    icon: "🧱",
+    title: "Multiarticolari prima, isolamenti dopo",
+    color: null,
+    summary: "L'ordine degli esercizi non è casuale. I movimenti grandi vanno all'inizio, quando sei ancora fresca.",
+    body: [
+      { type: "p", content: "Gli esercizi multiarticolari (squat, stacco, panca, trazioni, military press) coinvolgono più muscoli contemporaneamente e richiedono coordinazione, forza e sistema nervoso al massimo." },
+      { type: "p", content: "Gli esercizi di isolamento (curl, alzate laterali, clamshell) lavorano su un singolo muscolo con carichi più leggeri — vanno alla fine, come rifinitura." },
+      { type: "bold-list", content: [
+        ["Regola aurea", "Mai pre-affaticare un muscolo con un isolamento prima del compound. Esempio: fare curl prima delle trazioni brucia i bicipiti prima che li usi dove contano davvero."],
+      ]},
+      { type: "link", label: "Perché l'ordine degli esercizi conta →", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4592765/" },
+    ]
+  },
+  {
+    icon: "🔁",
+    title: "Multifrequenza: allena spesso, non solo tanto",
+    color: null,
+    summary: "Allenare ogni muscolo 2-3 volte a settimana è più efficace che martellarlo una volta sola.",
+    body: [
+      { type: "p", content: "Dopo uno stimolo, la sintesi proteica (riparazione e crescita muscolare) dura circa 36-72 ore. Se aspetti 7 giorni, il muscolo ha già finito di crescere e stai 'sprecando' tempo." },
+      { type: "p", content: "La multifrequenza non significa fare lo stesso esercizio ogni giorno: significa distribuire il volume settimanale su più sessioni, così ogni sessione è gestibile e ogni muscolo viene stimolato più spesso." },
+      { type: "p", content: "Questa scheda è costruita su questo principio: dorsali, core e glutei compaiono in ogni giornata, con esercizi diversi e angolazioni diverse." },
+      { type: "link", label: "Meta-analisi: frequenza e ipertrofia muscolare →", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5605166/" },
+    ]
+  },
+  {
+    icon: "💤",
+    title: "Il recupero è parte del programma",
+    color: null,
+    summary: "Non cresci mentre ti alleni. Cresci mentre riposi. Ignorare il recupero annulla il lavoro fatto.",
+    body: [
+      { type: "p", content: "Durante l'allenamento crei danno muscolare e stress. La crescita avviene nella fase di supercompensazione — quando il corpo ripara le fibre e le ricostruisce più forti. Questo richiede:" },
+      { type: "bold-list", content: [
+        ["Sonno", "7-9 ore per notte. È durante il sonno che viene rilasciato l'ormone della crescita (GH). Dormire poco dimezza i guadagni."],
+        ["Nutrizione", "Le proteine forniscono i mattoni per ricostruire il muscolo. Obiettivo indicativo: 1.6-2.2g di proteine per kg di peso corporeo."],
+        ["Giorni di riposo", "Non sono giorni sprecati. Sono giorni di crescita. Un giorno di pausa dopo una sessione intensa non è debolezza — è strategia."],
+      ]},
+      { type: "link", label: "Nutrizione e recupero per l'ipertrofia →", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6950543/" },
+    ]
+  },
+];
+
 /* === TRAINING PRINCIPLES === */
 var PRINCIPLES_DEEP = [
   { t: "Volume, Intensita e Densita: i Fantastici 3", d: [
@@ -645,6 +738,7 @@ export default function App() {
   var [showImg, setShowImg] = useState(null);
   var [showExSection, setShowExSection] = useState(false);
   var [showPrinciples, setShowPrinciples] = useState(false);
+  var [showIntroCard, setShowIntroCard] = useState(null);
   var [showReg, setShowReg] = useState(null);
   var [catSec, setCatSec] = useState(null);
   var [logs, setLogs] = useState({});
@@ -1218,6 +1312,51 @@ export default function App() {
 
       {/* === TEORIA TAB === */}
       {tab === "teoria" && <div style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }}>
+
+        {/* Intro: Le basi dell'allenamento */}
+        <div style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 10 }}>
+          <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid " + T.bg }}>
+            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🔬 Le basi dell'allenamento</div>
+            <div style={{ fontSize: 12, color: T.sub }}>Parti da qui se non hai mai allenato prima</div>
+          </div>
+          <div style={{ padding: "12px 16px 16px", display: "grid", gap: 6 }}>
+            {INTRO_BASICS.map(function(card, ci) {
+              var isOpen = showIntroCard === ci;
+              return <div key={ci} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "30" : T.bg) }}>
+                <div onClick={function() { setShowIntroCard(isOpen ? null : ci); }} style={{ padding: "11px 13px", cursor: "pointer", display: "flex", alignItems: "flex-start", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
+                  <span style={{ fontSize: 20, lineHeight: 1, flexShrink: 0, marginTop: 1 }}>{card.icon}</span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: isOpen ? dc : T.tx, lineHeight: 1.3, marginBottom: 3 }}>{card.title}</div>
+                    <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5 }}>{card.summary}</div>
+                  </div>
+                  <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s", marginTop: 4 }}>▾</span>
+                </div>
+                {isOpen && <div style={{ padding: "4px 13px 14px", background: T.sb, display: "grid", gap: 10 }}>
+                  {card.body.map(function(block, bi) {
+                    if (block.type === "p") {
+                      return <p key={bi} style={{ margin: 0, fontSize: 12, lineHeight: 1.75, color: T.sub }}>{block.content}</p>;
+                    }
+                    if (block.type === "bold-list") {
+                      return <div key={bi} style={{ display: "grid", gap: 6 }}>
+                        {block.content.map(function(item, ii) {
+                          return <div key={ii} style={{ background: dc + "0A", border: "1px solid " + dc + "18", borderRadius: 8, padding: "8px 11px" }}>
+                            <div style={{ fontSize: 12, fontWeight: 800, color: dc, marginBottom: 2 }}>{item[0]}</div>
+                            <div style={{ fontSize: 12, lineHeight: 1.65, color: T.sub }}>{item[1]}</div>
+                          </div>;
+                        })}
+                      </div>;
+                    }
+                    if (block.type === "link") {
+                      return <a key={bi} href={block.url} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11, color: dc, fontWeight: 600, textDecoration: "none", background: dc + "10", borderRadius: 7, padding: "6px 10px", marginTop: 2 }}>{block.label}</a>;
+                    }
+                    return null;
+                  })}
+                </div>}
+              </div>;
+            })}
+          </div>
+        </div>
+
         <div style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 10 }}>
           <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
             <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>📚 Teoria e Glossario</div>
