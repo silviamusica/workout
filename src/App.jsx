@@ -616,17 +616,57 @@ export default function App() {
         </div>
       </div>}
 
-      {/* Glossary Modal */}
+      {/* Theory & Glossary Modal */}
       {glossOpen && <div onClick={function() { setGlossOpen(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 200, display: "flex", alignItems: "center", justifyContent: "center", padding: 12 }}>
-        <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, padding: 20, maxWidth: 440, width: "100%", color: T.tx, maxHeight: "85vh", overflowY: "auto", display: "flex", flexDirection: "column" }}>
-          <h3 style={{ margin: "0 0 12px", fontSize: 18, fontWeight: 800 }}>📚 Glossario & Principi</h3>
-          <div style={{ display: "flex", gap: 0, borderRadius: 10, overflow: "hidden", border: "1px solid " + dc + "30", marginBottom: 16, flexShrink: 0 }}>
-            <button onClick={function() { setGlossTab("termini"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>Termini base</button>
-            <button onClick={function() { setGlossTab("principi"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>Principi</button>
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, maxWidth: 440, width: "100%", color: T.tx, maxHeight: "88vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+          {/* Header fisso */}
+          <div style={{ padding: "18px 20px 0", flexShrink: 0 }}>
+            <h3 style={{ margin: "0 0 12px", fontSize: 18, fontWeight: 800 }}>📚 Teoria e Glossario</h3>
+            <div style={{ display: "flex", gap: 0, borderRadius: 10, overflow: "hidden", border: "1px solid " + dc + "30", marginBottom: 14 }}>
+              <button onClick={function() { setGlossTab("principi"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>Principi</button>
+              <button onClick={function() { setGlossTab("termini"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>Termini base</button>
+            </div>
           </div>
-          {glossTab === "termini" && GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 4, borderRadius: 8, overflow: "hidden", background: T.sb }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc }}>{g.t}</summary><div style={{ padding: "0 12px 12px", fontSize: 12, lineHeight: 1.6, color: T.sub }}>{g.d}</div></details>; })}
-          {glossTab === "principi" && PRINCIPLES_DEEP.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 4, borderRadius: 8, overflow: "hidden", background: T.sb }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc }}>{g.t}</summary><div style={{ padding: "0 12px 12px", fontSize: 12, lineHeight: 1.6, color: T.sub }}>{g.d}</div></details>; })}
-          <button onClick={function() { setGlossOpen(false); }} style={{ marginTop: 12, width: "100%", padding: 10, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>Chiudi</button>
+          {/* Body scrollabile */}
+          <div style={{ overflowY: "auto", flex: 1, padding: "0 20px" }}>
+            {glossTab === "principi" && <div>
+              {/* Intro narrativa a blocchi */}
+              {[
+                { emoji: "⚙️", title: "Come funziona l'allenamento", text: ["Ogni scheda bilancia tre variabili: ", "pd0", "Volume, Intensità e Densità", ". Per crescere nel tempo devi applicare il ", "pd1", "Sovraccarico progressivo", " — lo stimolo deve sempre aumentare, altrimenti il corpo si adatta e smette di rispondere."] },
+                { emoji: "📅", title: "Come strutturare la settimana", text: ["Allena ogni muscolo almeno 2-3 volte a settimana: è la ", "pd3", "multifrequenza", ", il principio più importante per la crescita. Lavora sempre a ", "pd2", "buffer", " (non a cedimento) per accumulare più volume senza esaurirti."] },
+                { emoji: "🏋️", title: "Come strutturare ogni seduta", text: ["Prima gli ", "pd4", "esercizi multiarticolari", " (squat, stacco, panca, trazioni) quando sei fresca. Poi gli isolamenti. Misura sempre ", "pd5", "kg, ripetizioni e RPE", " — senza dati non sai se stai progredendo."] },
+                { emoji: "😴", title: "Il recupero è parte dell'allenamento", text: ["Il corpo cresce nel riposo, non durante l'esercizio. Ogni 4-8 settimane inserisci una ", "pd6", "settimana di scarico", " per dissipare la fatica del ", "pd7", "Sistema Nervoso Centrale", "."] },
+                { emoji: "🦴", title: "Tecnica: proteggiti sotto carico", text: ["Nei carichi pesanti usa la ", "pd8", "Manovra di Valsalva", " per proteggere la colonna. In core e plank mantieni la ", "pd9", "retroversione del bacino", ". In trazioni e push-up usa l'", "pd10", "Assetto Hollow", "."] },
+                { emoji: "🎯", title: "Scegli il muscolo giusto", text: ["Ogni esercizio può lavorare muscoli diversi in base all'esecuzione: capire la differenza tra ", "pd11", "Hip Dominant e Knee Dominant", " e come ", "pd12", "cambiare il target", " senza cambiare esercizio ti dà un vantaggio enorme."] },
+                { emoji: "🔬", title: "Massimizza gli isolamenti", text: ["Negli esercizi di isolamento conta più il ", "pd13", "Tempo sotto tensione", " che il peso. Aggiungi un ", "pd14", "picco isometrico", " di 2-3s al massimo sforzo. Scegli gli esercizi complementari per rinforzare i tuoi ", "pd15", "punti deboli", "."] },
+              ].map(function(block, bi) {
+                var parts = block.text;
+                var rendered = [];
+                for (var pi = 0; pi < parts.length; pi++) {
+                  if (pi + 2 < parts.length && typeof parts[pi+1] === "string" && parts[pi+1].startsWith("pd")) {
+                    rendered.push(<span key={pi}>{parts[pi]}</span>);
+                    var pid = parts[pi+1]; var label = parts[pi+2];
+                    rendered.push(<span key={pi+"l"} onClick={(function(id) { return function() { var el = document.getElementById(id); if (el) { el.setAttribute("open",""); el.scrollIntoView({behavior:"smooth",block:"center"}); } }; })(pid)} style={{ color: dc, fontWeight: 700, cursor: "pointer", textDecoration: "underline dotted", textUnderlineOffset: 2 }}>{label}</span>);
+                    pi += 2;
+                  } else {
+                    rendered.push(<span key={pi}>{parts[pi]}</span>);
+                  }
+                }
+                return <div key={bi} style={{ background: T.sb, borderRadius: 10, padding: "10px 14px", marginBottom: 8 }}>
+                  <div style={{ fontWeight: 800, fontSize: 12, color: T.tx, marginBottom: 4 }}>{block.emoji + " " + block.title}</div>
+                  <div style={{ fontSize: 12, lineHeight: 1.7, color: T.sub }}>{rendered}</div>
+                </div>;
+              })}
+              {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi} key={gi} style={{ marginBottom: 4, borderRadius: 8, overflow: "hidden", background: T.sb }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 6 }}><span style={{ fontSize: 10, color: T.sub, minWidth: 18 }}>{gi + 1 + "."}</span>{g.t}</summary><div style={{ padding: "0 12px 12px", fontSize: 12, lineHeight: 1.6, color: T.sub }}>{g.d}</div></details>; })}
+            </div>}
+            {glossTab === "termini" && <div>
+              {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 4, borderRadius: 8, overflow: "hidden", background: T.sb }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px", fontSize: 12, lineHeight: 1.6, color: T.sub }}>{g.d}</div></details>; })}
+            </div>}
+          </div>
+          {/* Footer fisso */}
+          <div style={{ padding: "12px 20px", flexShrink: 0 }}>
+            <button onClick={function() { setGlossOpen(false); }} style={{ width: "100%", padding: 10, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Chiudi</button>
+          </div>
         </div>
       </div>}
 
