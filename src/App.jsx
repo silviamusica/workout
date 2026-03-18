@@ -788,6 +788,153 @@ var DAYS = [
     ], str: ["Femorali","Quadricipiti","Pettorali","Dorsali","Lombare"] },
 ];
 
+var DAYS_BEGINNER = [
+  { name: "Giorno A", focus: "Full body — Spinta + lower", dur: "5min", tEst: 40,
+    intro: {
+      muscoli: ["Pettorali, tricipiti (push-up)", "Quadricipiti, glutei (squat)", "Tricipiti (dip su panca)", "Glutei, quadricipiti (affondi)", "Core (plank)"],
+      obiettivi: ["Imparare la meccanica dei movimenti di spinta", "Costruire forza di base su petto, tricipiti e gambe", "Sviluppare stabilità del core"],
+      attenzione: ["Push-up: gomiti a 45°, non aperti — bacino non cede mai", "Squat: ginocchia fuori, sedere indietro come su una sedia", "Affondi: ginocchio anteriore non supera la punta del piede"],
+      ritmo: "Recuperi 90s tra le serie. Ritmo lento e controllato: conta 3s in discesa, 1s in cima."
+    },
+    warmup: [
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti. Ginocchia al petto ad ogni passo. Scalda gambe e flessori anca.", tm: 180 },
+      { n: "Squat a corpo libero", img: "w_SquatBL", d: "2 serie da 8. Lento, concentrati sulla profondità.", alt: [{ n: "Affondi a corpo libero", d: "5 per gamba. Lenti, senza peso." }] },
+      { n: "Cat-Cow", img: "w_CatCow", d: "10 ripetizioni lente. Mobilizza la colonna.", alt: [{ n: "Rotazioni spalle", d: "10 avanti e 10 indietro per sciogliere le spalle." }] },
+    ],
+    ex: [
+      { n: "Push-Up", s: "3x8", rpe: "", note: "Ginocchia a terra se serve. Eccentrica lenta." },
+      { n: "Squat", s: "3x12", rpe: "", note: "Corpo libero. Concentrati sulla forma." },
+      { n: "Dip su Panca", s: "3x10", rpe: "", note: "Gambe tese = più difficile. Flesse = più facile." },
+      { n: "Affondi", s: "3x10", rpe: "", note: "Per gamba. Corpo libero, senza peso." },
+      { n: "Plank", s: "3x30s", rpe: "", note: "Glutei contratti, bacino in retroversione." },
+    ], str: ["Quadricipiti","Flessori anca","Pettorali","Tricipiti"] },
+
+  { name: "Giorno B", focus: "Full body — Tirata + core", dur: "5min", tEst: 40,
+    intro: {
+      muscoli: ["Dorsali, bicipiti (rematore manubri)", "Femorali, glutei, erettori (hyperextension)", "Bicipiti (curl)", "Core (hollow tuck, addominali obliqui)"],
+      obiettivi: ["Imparare la meccanica dei movimenti di tirata", "Rinforzare la catena posteriore per proteggere la schiena", "Sviluppare controllo del core"],
+      attenzione: ["Rematore: schiena parallela al suolo, neutra — non arrotondata", "Hyperextension: non iperestendere in cima, sali solo fino alla linea del corpo", "Hollow tuck: lombare sempre incollata al pavimento — se si stacca regredisci"],
+      ritmo: "Recuperi 90s. Concentrati sulla contrazione muscolare a ogni ripetizione."
+    },
+    warmup: [
+      { n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti a ritmo moderato. Scalda tutto il corpo.", tm: 180 },
+      { n: "Cat-Cow", img: "w_CatCow", d: "10 rip lente. Mobilizza la colonna prima della tirata e dell'hyperextension.", alt: [{ n: "Child's pose", d: "30s. Distendi la schiena prima di caricarla." }] },
+      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "10 avanti e 10 indietro. Scalda le spalle.", alt: [{ n: "Rotazioni spalle", d: "10 rotazioni avanti e 10 indietro." }] },
+    ],
+    ex: [
+      { n: "Rematore Manubri", s: "3x12", rpe: "", note: "Manubri leggeri. Schiena parallela, scapole attive." },
+      { n: "Hyperextension", s: "3x12", rpe: "", note: "Corpo libero o 5kg. Non iperestendere in cima." },
+      { n: "Hollow Position", s: "3x20s", rpe: "", note: "Inizia con Tuck (ginocchia al petto). Lombare a terra." },
+      { n: "Curl Bicipiti", s: "3x12", rpe: "", note: "Manubri leggeri. Niente dondolio." },
+      { n: "Addominali Obliqui", s: "3x12", rpe: "", note: "Russian twist o crunch laterale." },
+    ], str: ["Dorsali","Femorali","Lombare","Flessori anca"] },
+
+  { name: "Giorno C", focus: "Full body — Misto + glutei", dur: "5min", tEst: 40,
+    intro: {
+      muscoli: ["Glutei, femorali (clamshell, step up)", "Pettorali, spalle (push-up)", "Dorsali (rematore manubri)", "Quadricipiti, glutei (squat)", "Core (shoulder tap)"],
+      obiettivi: ["Rinforzare il gluteo medio per stabilizzare ginocchio e anca", "Consolidare i pattern motori appresi nei giorni A e B", "Lavorare su equilibrio e coordinazione con lo step up"],
+      attenzione: ["Clamshell: il bacino non ruota indietro durante l'apertura — solo il ginocchio si solleva", "Step up: spingi col tallone, non con la punta del piede", "Shoulder tap: bacino fermo, non oscillare"],
+      ritmo: "Recuperi 60-90s. Seduta leggera, ritmo fluido."
+    },
+    warmup: [
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti. Scalda flessori anca e gambe.", tm: 180 },
+      { n: "Affondi a corpo libero", img: "w_AffondiCorpoLibero", d: "8 totali (4 per gamba). Lenti, senza peso.", alt: [{ n: "Squat a corpo libero", d: "10 rip lente." }] },
+      { n: "Cat-Cow", img: "w_CatCow", d: "10 rip. Mobilizza la colonna.", alt: [{ n: "Child's pose", d: "30s distensione." }] },
+    ],
+    ex: [
+      { n: "Squat", s: "3x12", rpe: "", note: "Corpo libero o manubri leggeri." },
+      { n: "Push-Up", s: "3x8", rpe: "", note: "Ginocchia a terra se serve." },
+      { n: "Clamshell", s: "3x15", rpe: "", note: "Per lato. Corpo libero." },
+      { n: "Rematore Manubri", s: "3x12", rpe: "", note: "Manubri leggeri. Schiena neutra." },
+      { n: "Step Up", s: "3x10", rpe: "", note: "Per gamba. Su scalino o sedia stabile." },
+      { n: "Shoulder Tap", s: "1x20", rpe: "", note: "10 per lato. Bacino fermo." },
+    ], str: ["Glutei","Flessori anca","Quadricipiti","Pettorali"] },
+];
+
+var DAYS_INTERMEDIATE = [
+  { name: "Lunedi", focus: "Tirata upper + core + catena posteriore", dur: "8min", tEst: 55,
+    intro: {
+      muscoli: ["Dorsali, romboidi, bicipiti (trazioni/rematore)", "Core (ab wheel, addominali)", "Catena posteriore (nordic curl, hyperextension)"],
+      obiettivi: ["Costruire forza nella tirata verticale e orizzontale", "Rinforzare la catena posteriore", "Imparare i compound a corpo libero pesanti"],
+      attenzione: ["Trazioni: scapole depresse prima di tirare — usa la negativa assistita se non riesci ancora", "Ab wheel: bacino in retroversione e glutei contratti sempre", "Nordic curl: eccentrica lenta è il lavoro reale — anche solo 20-30° di discesa va bene"],
+      ritmo: "Recuperi 2 min sui compound, 90s sugli accessori."
+    },
+    warmup: [
+      { n: "Jumping jacks", img: "w_JumpingJacks", d: "4 minuti a ritmo moderato.", tm: 240, alt: [{ n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "4 minuti.", tm: 240 }] },
+      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "10 avanti, 10 indietro. Scalda le spalle.", alt: [{ n: "Rotazioni spalle", d: "10 rotazioni avanti e indietro." }] },
+      { n: "Cat-Cow", img: "w_CatCow", d: "10 rip lente. Mobilizza la colonna.", alt: [{ n: "Child's pose + cobra", d: "5 ripetizioni lente." }] },
+      { n: "Inchworm", img: "w_Inchworm", d: "2 serie da 5. Attiva core, spalle e femorali.", alt: [{ n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "5 per lato." }] },
+    ],
+    ex: [
+      { n: "Ab Wheel", s: "3x6", rpe: "", note: "Range ridotto. Bacino in retroversione." },
+      { n: "Trazioni", s: "3x3-5", rpe: "", note: "Negativa assistita se serve. Qualità prima della quantità." },
+      { n: "Push-Up", s: "3x12", rpe: "", note: "Eccentrica 3s in discesa." },
+      { n: "Rematore Manubri", s: "3x12-10-10", rpe: "8", note: "Carico moderato, forma perfetta." },
+      { n: "Nordic Curl", s: "3x8", rpe: "8", note: "Eccentrica lentissima. Mani ammortizzano la caduta." },
+      { n: "Hyperextension", s: "3x12", rpe: "8", note: "5-8kg o corpo libero." },
+    ], str: ["Dorsali","Femorali","Lombare","Pettorali"] },
+
+  { name: "Martedi", focus: "Spinta lower + upper + braccia", dur: "8min", tEst: 60,
+    intro: {
+      muscoli: ["Quadricipiti, glutei (squat)", "Deltoidi, tricipiti (military press)", "Dorsali, bicipiti (lat machine/trazioni supine)", "Braccia (curl, dip su panca)"],
+      obiettivi: ["Introdurre squat e military press con tecnica corretta", "Costruire volume sulle braccia", "Alternare stimolo lower e upper nello stesso giorno"],
+      attenzione: ["Squat: Valsalva prima di scendere, ginocchia fuori, profondità almeno al parallelo", "Military press: core e glutei contratti, non inarcare la lombare", "Braccia: niente slancio — peso controllato"],
+      ritmo: "Recuperi 2 min su squat e military, 90s sulle braccia."
+    },
+    warmup: [
+      { n: "Burpees", img: "w_Burpees", d: "4 minuti a ritmo moderato.", tm: 240, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "4 minuti.", tm: 240 }] },
+      { n: "Squat a corpo libero", img: "w_SquatBL", d: "2 serie da 8. Lento, profondità completa.", alt: [{ n: "Squat con pausa 2s", d: "2 serie da 6. Tieni 2s in fondo." }] },
+      { n: "Military press con bilanciere scarico", img: "w_MilitaryPress", d: "2 serie da 8. Bilanciere vuoto.", alt: [{ n: "Cerchi con le braccia + apertura", d: "10 avanti, 10 indietro, 10 aperture." }] },
+    ],
+    ex: [
+      { n: "Squat", s: "3x10", rpe: "7", note: "Corpo libero o bilanciere leggero." },
+      { n: "Military Press", s: "3x10", rpe: "7", note: "Bilanciere leggero o manubri." },
+      { n: "Lat Machine", s: "3x12", rpe: "8", note: "Carico gestibile.", cable: { n: "Lat Machine", s: "3x12", rpe: "8" }, free: { n: "Trazioni Supine", s: "3x5-8", rpe: "8", note: "Negativa assistita se serve" } },
+      { n: "Curl Bicipiti", s: "3x12", rpe: "8", note: "Manubri. Niente dondolio." },
+      { n: "Dip su Panca", s: "3x12", rpe: "8", note: "Gambe flesse = più facile." },
+      { n: "Addominali Obliqui", s: "3x12", rpe: "", note: "Russian twist." },
+    ], str: ["Quadricipiti","Flessori anca","Spalle","Tricipiti"] },
+
+  { name: "Mercoledi", focus: "Spinta upper + stacco + tirata", dur: "8min", tEst: 50,
+    intro: {
+      muscoli: ["Pettorali, tricipiti (push-up/floor press)", "Catena posteriore completa (stacco)", "Dorsali, bicipiti (rematore bilanciere)"],
+      obiettivi: ["Introdurre lo stacco da terra con tecnica corretta e carichi leggeri", "Costruire forza nei fondamentali: panca e rematore pesante", "Seduta corta ad alta qualità"],
+      attenzione: ["Stacco: bilanciere vicino alle gambe, schiena neutra, Valsalva obbligatorio — inizia leggero", "Push-up o floor press: scapole retratte e depresse prima di spingere", "Rematore: busto a 45°, non oscillare"],
+      ritmo: "Recuperi 2-3 min su stacco, 90s sugli altri."
+    },
+    warmup: [
+      { n: "Burpees", img: "w_Burpees", d: "3 minuti.", tm: 180, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti.", tm: 180 }] },
+      { n: "Cat-Cow", img: "w_CatCow", d: "10 rip lente. Mobilizza la colonna.", alt: [{ n: "Rotazioni toraciche", d: "8 per lato in quadrupedica." }] },
+      { n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "5 per lato. Flessori anca, femorali, torace.", alt: [{ n: "Affondo con rotazione", d: "5 per lato." }] },
+    ],
+    ex: [
+      { n: "Push-Up", s: "3x12", rpe: "8", note: "Eccentrica 3s. Oppure floor press manubri 3x10." },
+      { n: "Stacco da Terra", s: "3x8", rpe: "7", note: "Carico leggero. Tecnica prima del peso." },
+      { n: "Rematore Bilanciere", s: "3x10", rpe: "8", note: "Busto a 45°. Scapole attive." },
+      { n: "Plank", s: "3x40s", rpe: "", note: "Glutei contratti, lombare neutra." },
+    ], str: ["Pettorali","Femorali","Lombare","Dorsali"] },
+
+  { name: "Giovedi", focus: "Lower + glutei + isolamento", dur: "8min", tEst: 55,
+    intro: {
+      muscoli: ["Glutei, femorali (hyperextension, clamshell)", "Quadricipiti, glutei (affondi, squat bulgaro)", "Pettorali (floor press)", "Deltoidi (arnold press)"],
+      obiettivi: ["Accumulare volume su glutei e gambe", "Introdurre lo squat bulgaro a corpo libero", "Lavoro di isolamento su petto e spalle"],
+      attenzione: ["Affondi: ginocchio anteriore non cede verso l'interno", "Clamshell: il bacino non ruota durante l'apertura", "Arnold press: non iperestendere la schiena sotto carico"],
+      ritmo: "Recuperi 90s. Volume metabolico — è normale sentire bruciore."
+    },
+    warmup: [
+      { n: "Burpees", img: "w_Burpees", d: "3 minuti.", tm: 180, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti.", tm: 180 }] },
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 minuti.", tm: 120, alt: [{ n: "Squat a corpo libero", d: "2 serie da 10." }] },
+      { n: "Affondi a corpo libero", img: "w_AffondiCorpoLibero", d: "10 totali (5 per gamba). Senza peso.", alt: [{ n: "Squat bulgaro corpo libero", d: "6 per gamba." }] },
+    ],
+    ex: [
+      { n: "Hyperextension", s: "3x12", rpe: "8", note: "Corpo libero o 5kg." },
+      { n: "Affondi", s: "3x12", rpe: "8", note: "Per gamba. Corpo libero o manubri leggeri." },
+      { n: "Clamshell", s: "3x15", rpe: "8", note: "Per lato. Corpo libero." },
+      { n: "Croci Manubri a Terra", s: "3x12", rpe: "8", note: "Manubri leggeri. ROM completo." },
+      { n: "Arnold Press", s: "3x12", rpe: "8", note: "Manubri leggeri." },
+    ], str: ["Glutei","Flessori anca","Quadricipiti","Pettorali","Spalle"] },
+];
+
 var PRINCIPLES = [
   { t: "Piramidale ascendente (4x8-6-6-5)", d: "La prima serie da 8 rip e il riscaldamento specifico col carico di lavoro. Le serie da 6 e 5 sono il lavoro vero: meno ripetizioni, piu carico, piu stimolo di forza. Il peso sale serie dopo serie. Si usa nei compound pesanti (squat, stacco, panca, military)." },
   { t: "Volume decrescente (4x12-10-8-8)", d: "Piu ripetizioni = piu volume = piu crescita muscolare. La discesa da 12 a 8 permette di aumentare il peso restando in un range produttivo. Si usa negli accessori (rematore, curl, french press, lat machine)." },
@@ -965,6 +1112,7 @@ function fmtTime(ms) { var s = Math.floor(ms / 1000); return (Math.floor(s/60) <
 
 export default function App() {
   var [tab, setTab] = useState("home");
+  var [level, setLevel] = useState("advanced");
   var [dayIdx, setDayIdx] = useState(0);
   var [month, setMonth] = useState(1);
   var [theme, setTheme] = useState("sage");
@@ -1016,7 +1164,9 @@ export default function App() {
   var lastSnd = useRef(-1);
 
   var T = TH[theme];
-  var dayData = DAYS[dayIdx];
+  var activeDays = level === "beginner" ? DAYS_BEGINNER : level === "intermediate" ? DAYS_INTERMEDIATE : DAYS;
+  var safeDayIdx = Math.min(dayIdx, activeDays.length - 1);
+  var dayData = activeDays[safeDayIdx];
   var dc = T.ok;
 
   function getExForMonth(raw) {
@@ -2043,21 +2193,28 @@ export default function App() {
 
       {/* === WORKOUT TAB === */}
       {tab === "workout" && <div>
-        {/* Day + Month selector bar */}
+        {/* Level + Day + Month selector bar */}
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "8px 12px 0" }}>
+          {/* Level selector */}
+          <div style={{ display: "flex", gap: 4, marginBottom: 6 }}>
+            {[["beginner","Principiante"],["intermediate","Intermedio"],["advanced","Avanzato"]].map(function(pair) {
+              var active = level === pair[0];
+              return <button key={pair[0]} onClick={function() { setLevel(pair[0]); setDayIdx(0); setOpenEx(null); setEditing(null); setHistIdx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false); }} style={{ flex: 1, padding: "7px 4px", border: "none", borderRadius: 8, cursor: "pointer", fontSize: 12, fontWeight: active ? 800 : 600, background: active ? dc : T.tx + "10", color: active ? "#fff" : T.sub }}>{pair[1]}</button>;
+            })}
+          </div>
           {/* Day tabs */}
           <div style={{ display: "flex", gap: 4, overflowX: "auto", paddingBottom: 0 }}>
-            {DAYS.map(function(d, i) { var active = dayIdx === i; return <button key={i} onClick={function() { setDayIdx(i); setOpenEx(null); setEditing(null); setHistIdx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false); setShowImg(null); }} style={{ flex: i < 4 ? 1 : "none", padding: "7px 8px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}>{d.name}</button>; })}
+            {activeDays.map(function(d, i) { var active = safeDayIdx === i; return <button key={i} onClick={function() { setDayIdx(i); setOpenEx(null); setEditing(null); setHistIdx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false); setShowImg(null); }} style={{ flex: i < 4 ? 1 : "none", padding: "7px 8px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}>{d.name}</button>; })}
           </div>
           {/* Month selector — compact strip inside card top */}
         </div>
 
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "0 12px 24px", paddingBottom: tPanel ? 200 : 100 }}>
           <div style={{ background: T.cd, borderRadius: "0 0 14px 14px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", overflow: "hidden" }}>
-            {/* Month strip */}
-            <div style={{ display: "flex", borderBottom: "1px solid " + T.bg }}>
+            {/* Month strip — solo avanzato */}
+            {level === "advanced" && <div style={{ display: "flex", borderBottom: "1px solid " + T.bg }}>
               {[1,2,3,4].map(function(m) { var active = month === m; return <button key={m} onClick={function() { setMonth(m); }} style={{ flex: 1, padding: "7px 0", border: "none", borderBottom: active ? "2px solid " + dc : "2px solid transparent", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: "transparent", color: active ? dc : T.sub, transition: "all 0.15s" }}>{"M" + m}</button>; })}
-            </div>
+            </div>}
 
             {/* Day intro schematic */}
             {(function() {
