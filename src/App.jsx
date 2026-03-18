@@ -1613,11 +1613,7 @@ export default function App() {
         {/* Hero */}
         <div style={{ background: T.hd, borderRadius: 16, padding: "28px 22px 24px", marginBottom: 14, color: T.htx, textAlign: "center" }}>
           <div style={{ fontSize: 40, marginBottom: 8 }}>🏋️</div>
-          <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 6 }}>HomeWorkout</div>
-          <div style={{ fontSize: 13, opacity: 0.75, lineHeight: 1.6, maxWidth: 380, margin: "0 auto" }}>
-            Il tuo programma di allenamento personale, sempre con te.<br/>
-            Tutto quello che ti serve in un'unica app — senza pubblicità, senza account.
-          </div>
+          <div style={{ fontSize: 22, fontWeight: 900 }}>HomeWorkout</div>
         </div>
 
         {/* Come funziona */}
@@ -1625,10 +1621,10 @@ export default function App() {
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 14 }}>Come funziona</div>
           <div style={{ display: "grid", gap: 10 }}>
             {[
-              { icon: "📚", tab: "Teoria", desc: "Scopri i principi dell'allenamento: ipertrofia, multifrequenza, progressione, respirazione e molto altro. Ideale per capire il perché di ogni scelta." },
-              { icon: "💪", tab: "Muscoli", desc: "Mappa interattiva dei gruppi muscolari. Scopri quali muscoli compongono ogni catena e perché è importante allenarli in armonia." },
-              { icon: "📋", tab: "Scheda", desc: "La tua scheda settimanale giorno per giorno. Ogni esercizio con foto, indicazioni tecniche, badge respirazione e timer di recupero integrato." },
-              { icon: "🏃", tab: "Esercizi", desc: "Biblioteca completa: riscaldamento, esercizi fondamentali con approfondimenti e stretching finale. Tutto accessibile in un tap." },
+              { icon: "📚", tab: "Teoria", desc: "Principi dell'allenamento: ipertrofia, multifrequenza, progressione, respirazione. Ideale per capire il perché di ogni scelta." },
+              { icon: "💪", tab: "Muscoli", desc: "Mappa interattiva dei gruppi muscolari: scopri quali muscoli compongono ogni catena e perché è importante allenarli in armonia." },
+              { icon: "📋", tab: "Scheda", desc: "La scheda settimanale giorno per giorno. Ogni esercizio con foto, indicazioni tecniche, badge respirazione 🫁 e timer di recupero integrato." },
+              { icon: "🏃", tab: "Esercizi", desc: "Biblioteca completa: riscaldamento dinamico, esercizi fondamentali con approfondimenti e stretching finale." },
             ].map(function(item, i) {
               return <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
                 <div style={{ width: 40, height: 40, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>{item.icon}</div>
@@ -1641,16 +1637,38 @@ export default function App() {
           </div>
         </div>
 
-        {/* Consigli d'uso */}
+        {/* Funzionalità speciali */}
         <div style={{ background: T.cd, borderRadius: 14, padding: "18px 18px 14px", marginBottom: 10 }}>
+          <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Funzionalità speciali</div>
+          <div style={{ display: "grid", gap: 10 }}>
+            {[
+              { icon: "⏱️", title: "Cronometro di recupero", desc: "Nella Scheda, ogni esercizio ha un timer di recupero preimpostato. Parte automaticamente e suona alla fine del riposo con un beep." },
+              { icon: "📊", title: "Registra i tuoi pesi", desc: "Apri un esercizio nella Scheda e usa il campo note per annotare i carichi usati. I dati vengono salvati localmente sul dispositivo." },
+              { icon: "💾", title: "Backup e ripristino", desc: "Dalle Impostazioni (⚙️) puoi esportare tutti i tuoi dati in un file JSON e reimportarli in qualsiasi momento." },
+              { icon: "🫁", title: "Guida alla respirazione", desc: "Ogni esercizio ha un badge respirazione che mostra quando inspirare ed espirare, con le diverse tecniche (Valsalva, anatomica, isometrica)." },
+              { icon: "📖▶", title: "Approfondimenti integrati", desc: "I link aprono Wikipedia e video YouTube direttamente nell'app, senza uscire dalla schermata di allenamento." },
+            ].map(function(item, i) {
+              return <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                <div style={{ width: 40, height: 40, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, flexShrink: 0 }}>{item.icon}</div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 2 }}>{item.title}</div>
+                  <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55 }}>{item.desc}</div>
+                </div>
+              </div>;
+            })}
+          </div>
+        </div>
+
+        {/* Consigli d'uso */}
+        <div style={{ background: T.cd, borderRadius: 14, padding: "18px 18px 14px", marginBottom: 14 }}>
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Consigli d'uso</div>
           <div style={{ display: "grid", gap: 8 }}>
             {[
               "Prima volta? Inizia dalla tab Teoria per capire i fondamenti.",
               "Durante l'allenamento usa la tab Scheda: trova il giorno, apri l'esercizio e segui le indicazioni.",
-              "Tocca il badge 🫁 su ogni esercizio per vedere come respirare correttamente.",
+              "Tocca il badge 🫁 per vedere come respirare su ogni esercizio.",
               "I link 📖 e ▶ aprono approfondimenti e video direttamente nell'app.",
-              "In Impostazioni (⚙️) puoi cambiare tema e salvare il tuo nome.",
+              "In Impostazioni ⚙️ puoi cambiare tema, salvare il nome e fare il backup dei dati.",
             ].map(function(tip, i) {
               return <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
                 <div style={{ width: 22, height: 22, borderRadius: "50%", background: dc + "22", color: dc, fontSize: 11, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>{i + 1}</div>
