@@ -358,7 +358,7 @@ var DAYS = [
       { n: "Inchworm", img: "w_Inchworm", d: "In piedi, piegati e cammina avanti con le mani fino al plank. Push-up facoltativo, poi torna indietro. 2 serie da 5. Attiva core, spalle e femorali.", lk: "https://www.youtube.com/results?search_query=inchworm+exercise+warmup" },
     ],
     ex: [
-      { n: "Ab Wheel", s: "8x4", rpe: "", note: "8 serie da 4 rip" },
+      { n: "Ab Wheel", s: "8x4", rpe: "", note: "" },
       { n: "Trazioni", s: "4xmax", rpe: "", note: "Sett.1: 1 completa. Negativa se serve", v2: { n: "Rematore Bilanciere", s: "4x8-6-6-5" }, v3: { n: "Trazioni", s: "4xmax", note: "Presa larga" }, v4: { n: "Trazioni", s: "4x6-5-4-4", note: "Zavorrate" } },
       { n: "Push-Up", s: "4xmax", rpe: "", note: "Tecnica: bacino che scende", v2: { n: "Floor Press Manubri", s: "4x10-8-8-6" }, v3: { n: "Push-Up Declino", s: "4xmax" }, v4: { n: "Push-Up", s: "4xmax", note: "Pausa 2s in basso" } },
       { n: "Rematore Manubri", s: "4x12-10-8-8", rpe: "9", note: "35-35-40-40 sett.1", defaultFree: true, cable: { n: "Pulley", s: "4x12-10-8-8", rpe: "9", note: "35-35-40-40 sett.1" }, free: { n: "Rematore Manubri", s: "4x12-10-8-8", rpe: "9", note: "35-35-40-40 sett.1" }, v2: { n: "Rematore Bilanciere", s: "4x12-10-8-8" }, v3: { n: "Rematore Manubri", s: "4x8-6-6-5", note: "Pesante" }, v4: { n: "Pendlay Row", s: "4x8-6-6-5" } },
@@ -1113,8 +1113,8 @@ export default function App() {
               {userPhoto ? <img src={userPhoto} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : "👤"}
             </div>
             <div>
-              <div style={{ fontSize: 16, fontWeight: 800 }}>{userName ? "Ciao, " + userName + "!" : "Workout Tracker"}</div>
-              <div style={{ fontSize: 11, opacity: 0.5, marginTop: 1 }}>Home Gym — Mese {month}</div>
+              <div style={{ fontSize: 16, fontWeight: 800 }}>{userName ? "Ciao, " + userName + "!" : "Home Work-out"}</div>
+              <div style={{ fontSize: 11, opacity: 0.5, marginTop: 1 }}>Home Work-out — Mese {month}</div>
             </div>
           </div>
           {/* Rotellina impostazioni */}
@@ -1327,21 +1327,19 @@ export default function App() {
                 { key: "attenzione", label: "Su cosa concentrarsi", icon: "⚡" },
               ];
               return <div style={{ borderBottom: "1px solid " + T.bg }}>
-                <div style={{ padding: "12px 14px 6px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                  <div>
-                    <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>{dayData.focus}</div>
-                    <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>~{dayData.tEst} min</div>
-                  </div>
+                <div style={{ padding: "12px 14px 8px" }}>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, lineHeight: 1.3 }}>{dayData.focus}</div>
+                  <div style={{ fontSize: 11, color: dc, fontWeight: 600, marginTop: 3 }}>~{dayData.tEst} min</div>
                 </div>
                 <div style={{ display: "grid", gap: 0 }}>
                   {sections.map(function(sec) {
                     var items = intro[sec.key];
                     if (!items || !items.length) return null;
-                    return <div key={sec.key} style={{ borderTop: "1px solid " + T.bg, padding: "10px 14px" }}>
-                      <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.8, color: dc, marginBottom: 7, display: "flex", alignItems: "center", gap: 5 }}>
-                        <span>{sec.icon}</span>{sec.label}
+                    return <div key={sec.key} style={{ borderTop: "1px solid " + T.bg, padding: "9px 14px" }}>
+                      <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.9, color: dc, marginBottom: 6, display: "flex", alignItems: "center", gap: 5 }}>
+                        <span style={{ fontSize: 11 }}>{sec.icon}</span>{sec.label}
                       </div>
-                      <div style={{ display: "grid", gap: 4 }}>
+                      <div style={{ display: "grid", gap: 5 }}>
                         {items.map(function(item, ii) {
                           var colonIdx = item.indexOf(": ");
                           var parenIdx = item.indexOf(" (");
@@ -1351,20 +1349,20 @@ export default function App() {
                             var sep = item[splitAt] === ":" ? ": " : " (";
                             var bold = item.slice(0, splitAt);
                             var rest = item.slice(splitAt + sep.length);
-                            rendered = <><strong style={{ color: T.tx, fontWeight: 700 }}>{bold}</strong>{sep === " (" ? " (" : ": "}{rest}</>;
+                            rendered = <><strong style={{ color: T.tx, fontWeight: 700, fontSize: 12 }}>{bold}</strong><span style={{ color: T.sub }}>{sep === " (" ? " (" : ": "}{rest}</span></>;
                           } else {
-                            rendered = item;
+                            rendered = <span style={{ color: T.sub }}>{item}</span>;
                           }
                           return <div key={ii} style={{ display: "flex", gap: 7, alignItems: "flex-start" }}>
-                            <span style={{ color: dc, fontSize: 10, lineHeight: 1.8, flexShrink: 0, fontWeight: 700 }}>→</span>
-                            <span style={{ fontSize: 12, lineHeight: 1.6, color: T.sub }}>{rendered}</span>
+                            <span style={{ color: dc, fontSize: 11, lineHeight: 1.7, flexShrink: 0, fontWeight: 700 }}>→</span>
+                            <span style={{ fontSize: 12, lineHeight: 1.7 }}>{rendered}</span>
                           </div>;
                         })}
                       </div>
                     </div>;
                   })}
-                  {intro.ritmo && <div style={{ borderTop: "1px solid " + T.bg, padding: "10px 14px 12px", display: "flex", gap: 7, alignItems: "flex-start", background: dc + "06" }}>
-                    <span style={{ fontSize: 13, lineHeight: 1.5, flexShrink: 0 }}>⏱</span>
+                  {intro.ritmo && <div style={{ borderTop: "1px solid " + T.bg, padding: "9px 14px 12px", display: "flex", gap: 8, alignItems: "flex-start", background: dc + "07" }}>
+                    <span style={{ fontSize: 12, lineHeight: 1.6, flexShrink: 0 }}>⏱</span>
                     <span style={{ fontSize: 12, lineHeight: 1.6, color: T.sub, fontStyle: "italic" }}>{intro.ritmo}</span>
                   </div>}
                 </div>
