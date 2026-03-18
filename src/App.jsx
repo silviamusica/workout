@@ -90,7 +90,7 @@ function beepEnd() { playTone(1047, 0.15, 0.5); setTimeout(function() { playTone
 
 /* === THEMES === */
 var TH = {
-  sage:    { n: "Crimson", bg: "#0D0D0F", cd: "#17171B", tx: "#F4F4F6", sub: "#B4B4BE", hd: "linear-gradient(135deg,#08080A,#151519 44%,#2A1117)", htx: "#FFF7F8", dy: ["#B91C1C","#A1A1AA","#71717A","#52525B","#7F1D1D"], ok: "#DC2626", ac: "#F59E0B", sb: "#111115", st: "#D4D4D8" },
+  sage:    { n: "Notte Calda", bg: "#0F0F12", cd: "#18181D", tx: "#EEEEF2", sub: "#9898A8", hd: "linear-gradient(135deg,#0A0A0D,#18181D 50%,#1E1A15)", htx: "#F5F0E8", dy: ["#C4834A","#9898A8","#7878A8","#887858","#788888"], ok: "#C4834A", ac: "#E8C080", sb: "#111116", st: "#A89878" },
   petal:   { n: "Petal",   bg: "#FDF5F7", cd: "#FFFBFC", tx: "#3A1F28", sub: "#B08090", hd: "linear-gradient(135deg,#C2788A,#D4929E)", htx: "#FFF0F3", dy: ["#C47A8A","#9B6EA6","#6A96B0","#C28860","#A0A0B8"], ok: "#C47A8A", ac: "#9DB87A", sb: "#FAEAEE", st: "#9B6EA6" },
   mist:    { n: "Mist",    bg: "#F2F4F8", cd: "#FAFBFD", tx: "#222B3A", sub: "#7A8FA8", hd: "linear-gradient(135deg,#3D5470,#5C7A9E)", htx: "#E8EEF6", dy: ["#5C7A9E","#6A9E8C","#7A6EA8","#9E7A5C","#6A7A8A"], ok: "#5C7A9E", ac: "#C8A86A", sb: "#E8EDF5", st: "#5C7A9E" },
   night:   { n: "Notte",   bg: "#14151F", cd: "#1E1F2E", tx: "#DDE0F0", sub: "#7880AA", hd: "linear-gradient(135deg,#0C0D1A,#1E1F2E)", htx: "#C8CCEC", dy: ["#7B8EE8","#5CC8C0","#E87898","#E8B870","#8898B8"], ok: "#7B8EE8", ac: "#5CC8C0", sb: "#1A1B2C", st: "#7B8EE8" },
@@ -1030,7 +1030,7 @@ export default function App() {
 
   // === FULLSCREEN TIMER ===
   if (tFull) return (
-    <div style={{ position: "fixed", inset: 0, zIndex: 999, background: tFlash ? "linear-gradient(135deg,#C62828,#E53935)" : tWarning ? "linear-gradient(135deg,#7A1800,#B83000)" : T.hd, color: T.htx, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "'Plus Jakarta Sans',sans-serif", transition: "background 0.4s" }}>
+    <div style={{ position: "fixed", inset: 0, zIndex: 999, background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "'Plus Jakarta Sans',sans-serif", transition: "background 0.4s" }}>
       <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
       <div style={{ fontSize: 11, opacity: 0.5, marginBottom: 8, fontWeight: 600, letterSpacing: 1, textTransform: "uppercase" }}>{tMode === "countdown" ? "Timer recupero" : "Cronometro"}</div>
       <div style={{ fontSize: 72, fontWeight: 800, letterSpacing: 2, fontVariantNumeric: "tabular-nums", marginBottom: 24, color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s" }}>{fmtTime(tMs)}</div>
@@ -1657,7 +1657,7 @@ export default function App() {
       </div>}
 
       {/* TIMER BAR */}
-      <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 100, background: tFlash ? "linear-gradient(135deg,#C62828,#E53935)" : tWarning ? "linear-gradient(135deg,#7A1800,#B83000)" : T.hd, color: T.htx, boxShadow: "0 -4px 20px rgba(0,0,0,0.2)", transition: "background 0.4s" }}>
+      <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 100, background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 -4px 20px rgba(0,0,0,0.2)", transition: "background 0.4s" }}>
         <div style={{ display: "flex", alignItems: "center", padding: "8px 14px", gap: 8, maxWidth: 600, margin: "0 auto" }}>
           <button onClick={function() { setTPanel(!tPanel); }} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 30, height: 30, borderRadius: 7, cursor: "pointer", fontSize: 13 }}>{tPanel ? "\u25BE" : "\u25B4"}</button>
           <div onClick={function() { setTFull(true); }} style={{ fontVariantNumeric: "tabular-nums", fontSize: 24, fontWeight: 800, letterSpacing: "0.5px", flex: 1, textAlign: "center", cursor: "pointer", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s" }}>{fmtTime(tMs)}</div>
