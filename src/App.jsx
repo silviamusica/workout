@@ -309,6 +309,115 @@ var INTRO_BASICS = [
   },
 ];
 
+/* === INTRO MUSCOLI === */
+var INTRO_MUSCLES = {
+  intro: "Il corpo non è una somma di parti separate. Ogni muscolo esiste in relazione agli altri: se alleni solo i pettorali e ignori i dorsali, crei squilibri posturali che portano a dolori e infortuni. La chiave è l'armonia tra catene muscolari opposte e complementari.",
+  chains: [
+    {
+      icon: "⬆️",
+      title: "Catena anteriore",
+      muscles: "Quadricipiti · Pettorali · Deltoidi anteriori · Bicipiti · Retto addominale",
+      desc: "Governa la spinta: spingerti in piedi, spingere un oggetto davanti a te, salire le scale. Tende a essere dominante nelle persone sedentarie — si accorcia e si irrigidisce.",
+      link: "https://www.ncbi.nlm.nih.gov/books/NBK537258/",
+      linkLabel: "Anatomia delle catene muscolari →"
+    },
+    {
+      icon: "⬇️",
+      title: "Catena posteriore",
+      muscles: "Glutei · Femorali · Erettori spinali · Dorsali · Romboidi · Deltoidi posteriori",
+      desc: "Governa la trazione e la stabilità della colonna. È la catena più trascurata — debolezza qui è la causa principale di dolori lombari e infortuni al ginocchio.",
+      link: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7039168/",
+      linkLabel: "Perché la catena posteriore è fondamentale →"
+    },
+    {
+      icon: "🔲",
+      title: "Core: il centro di tutto",
+      muscles: "Retto addominale · Obliqui · Trasverso · Multifido · Diaframma",
+      desc: "Non è solo 'fare gli addominali'. Il core è la cintura di stabilità tra parte superiore e inferiore del corpo. Ogni alzata pesante parte da qui. Un core debole significa perdita di forza e rischio di infortuni in tutti gli altri esercizi.",
+      link: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4677109/",
+      linkLabel: "Core stability e performance atletica →"
+    },
+    {
+      icon: "⚖️",
+      title: "Equilibrio tra agonisti e antagonisti",
+      muscles: "Pettorali ↔ Dorsali · Quadricipiti ↔ Femorali · Bicipiti ↔ Tricipiti · Deltoidi anteriori ↔ posteriori",
+      desc: "Ogni muscolo ha un antagonista che esegue il movimento opposto. Se alleni solo il 'davanti' (panca, curl) senza il 'dietro' (trazioni, rematore), il corpo si chiude in avanti: spalle proiettate in avanti, postura cadente, rischio di infiammazioni alla spalla.",
+      link: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6728252/",
+      linkLabel: "Squilibri muscolari e postura →"
+    },
+    {
+      icon: "🦵",
+      title: "Gluteo: il motore del corpo",
+      muscles: "Grande gluteo · Medio gluteo · Piccolo gluteo",
+      desc: "Il grande gluteo è il muscolo più potente del corpo umano. È responsabile dell'estensione dell'anca — il gesto alla base di camminare, correre, saltare, sollevare. Il medio gluteo stabilizza il bacino ad ogni passo. Un gluteo debole porta ginocchia che collassano verso l'interno nello squat e negli affondi.",
+      link: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4552396/",
+      linkLabel: "Ruolo del gluteo nella stabilità del ginocchio →"
+    },
+  ]
+};
+
+/* === INTRO ESERCIZI === */
+var INTRO_ESERCIZI = [
+  {
+    icon: "🏛️",
+    title: "I fondamentali: cosa sono e perché contano",
+    summary: "Squat, Stacco, Panca, Trazioni, Military Press, Rematore. Questi 6 movimenti costruiscono il 90% della forza e della massa muscolare.",
+    body: [
+      { type: "p", content: "I fondamentali sono esercizi multiarticolari che coinvolgono grandi catene cinetiche — più muscoli, più articolazioni, più sistema nervoso. Sono inefficienti se vuoi allenare un singolo muscolo, ma insostituibili se vuoi costruire forza reale e massa complessiva." },
+      { type: "p", content: "Ogni fondamentale ha una curva di apprendimento: ci vogliono settimane per imparare lo schema motorio corretto. Ma una volta acquisito, il miglioramento è esponenziale. Non saltare questa fase." },
+      { type: "link", label: "Perché i fondamentali sono insostituibili →", url: "https://www.strongerbyscience.com/the-big-three/" },
+    ]
+  },
+  {
+    icon: "🔗",
+    title: "Multiarticolari: tanti muscoli, un movimento",
+    summary: "Coinvolgono più articolazioni e più muscoli contemporaneamente. Sono il cuore di ogni programma efficace.",
+    body: [
+      { type: "p", content: "Un esercizio multiarticolare recluta molteplici gruppi muscolari in sinergia — esattamente come succede nei movimenti della vita reale. Sollevare qualcosa da terra, spingere sopra la testa, tirarsi su: tutto è multiarticolare." },
+      { type: "bold-list", content: [
+        ["Squat", "Il 'Re degli esercizi'. Quadricipiti, glutei, femorali, core e schiena lavorano insieme. Insegna al corpo a produrre forza dalla testa ai piedi."],
+        ["Stacco da terra", "L'esercizio con il maggior reclutamento muscolare in assoluto. Catena posteriore completa: glutei, femorali, erettori, dorsali, trapezi."],
+        ["Panca piana", "Pettorali, deltoidi anteriori e tricipiti. Lo standard universale per la forza della parte superiore."],
+        ["Trazioni", "Il complemento della panca. Dorsali, bicipiti, romboidi. Costruisce la 'V' della schiena e corregge la postura."],
+        ["Military Press", "La spinta verticale. Deltoidi, tricipiti, core stabilizzatore. Il test della forza delle spalle."],
+        ["Rematore", "La trazione orizzontale. Dorsali, romboidi, bicipiti. Fondamentale per il bilanciamento posturale con la panca."],
+      ]},
+      { type: "link", label: "Multiarticolari vs isolamenti: quando usarli →", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4592765/" },
+    ]
+  },
+  {
+    icon: "🎯",
+    title: "Isolamenti: rifinire, non costruire",
+    summary: "Lavorano su un singolo muscolo. Utili dopo i compound, mai al loro posto.",
+    body: [
+      { type: "p", content: "Un esercizio di isolamento isola un singolo muscolo o gruppo muscolare: curl per i bicipiti, alzate laterali per i deltoidi, clamshell per il gluteo medio. Non richiedono coordinazione complessa e stancano poco il sistema nervoso." },
+      { type: "p", content: "Sono utili per:" },
+      { type: "bold-list", content: [
+        ["Rifinire", "Aggiungere volume a un muscolo specifico dopo i compound."],
+        ["Correggere squilibri", "Se un muscolo è più debole del suo antagonista, un lavoro di isolamento mirato lo porta in linea."],
+        ["Attivazione", "Prima di un compound pesante, attivare il muscolo bersaglio con un isolamento leggero può migliorare la performance."],
+      ]},
+      { type: "p", content: "Errore comune: fare gli isolamenti prima dei compound. Significa arrivare all'esercizio più importante già stanca nel muscolo che serve di più." },
+    ]
+  },
+  {
+    icon: "📈",
+    title: "Come progredire: il principio del sovraccarico",
+    summary: "Il corpo si adatta. Se fai sempre la stessa cosa, smetti di migliorare. Devi aumentare lo stimolo nel tempo.",
+    body: [
+      { type: "p", content: "Il sovraccarico progressivo è il principio fondamentale di ogni programma di allenamento: lo stimolo deve aumentare nel tempo per continuare a produrre adattamenti." },
+      { type: "bold-list", content: [
+        ["Più peso", "La progressione più ovvia. Aggiunge 1-2kg quando riesci a completare tutte le serie con tecnica pulita."],
+        ["Più ripetizioni", "Se non puoi aggiungere peso, fai una ripetizione in più per serie."],
+        ["Meno recupero", "Stesso volume in meno tempo = più densità = più stimolo metabolico."],
+        ["Variante più difficile", "Da Push-Up normale a Push-Up declino a Push-Up con pausa. Stesso pattern, più difficile."],
+      ]},
+      { type: "p", content: "La scheda è strutturata su 4 mesi (M1→M4) con progressione automatica delle varianti. Ogni mese aumenta la difficoltà o il carico dello stesso schema motorio." },
+      { type: "link", label: "Sovraccarico progressivo: la scienza dietro →", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6950543/" },
+    ]
+  },
+];
+
 /* === TRAINING PRINCIPLES === */
 var PRINCIPLES_DEEP = [
   { t: "Volume, Intensita e Densita: i Fantastici 3", d: [
@@ -739,6 +848,8 @@ export default function App() {
   var [showExSection, setShowExSection] = useState(false);
   var [showPrinciples, setShowPrinciples] = useState(false);
   var [showIntroCard, setShowIntroCard] = useState(null);
+  var [showMuscleIntro, setShowMuscleIntro] = useState(null);
+  var [showExIntro, setShowExIntro] = useState(null);
   var [showReg, setShowReg] = useState(null);
   var [catSec, setCatSec] = useState(null);
   var [logs, setLogs] = useState({});
@@ -1317,7 +1428,7 @@ export default function App() {
         <div style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 10 }}>
           <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid " + T.bg }}>
             <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🔬 Le basi dell'allenamento</div>
-            <div style={{ fontSize: 12, color: T.sub }}>Parti da qui se non hai mai allenato prima</div>
+            <div style={{ fontSize: 12, color: T.sub }}>Parti da qui per conoscere le basi</div>
           </div>
           <div style={{ padding: "12px 16px 16px", display: "grid", gap: 6 }}>
             {INTRO_BASICS.map(function(card, ci) {
@@ -1413,6 +1524,34 @@ export default function App() {
 
       {/* === MUSCLES TAB === */}
       {tab === "muscles" && <div style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }}>
+
+        {/* Intro armonia muscolare */}
+        <div style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 10 }}>
+          <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid " + T.bg }}>
+            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🫀 Come funzionano i muscoli insieme</div>
+            <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.5 }}>{INTRO_MUSCLES.intro}</div>
+          </div>
+          <div style={{ padding: "12px 16px 16px", display: "grid", gap: 6 }}>
+            {INTRO_MUSCLES.chains.map(function(chain, ci) {
+              var isOpen = showMuscleIntro === ci;
+              return <div key={ci} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "30" : T.bg) }}>
+                <div onClick={function() { setShowMuscleIntro(isOpen ? null : ci); }} style={{ padding: "11px 13px", cursor: "pointer", display: "flex", alignItems: "flex-start", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
+                  <span style={{ fontSize: 18, lineHeight: 1, flexShrink: 0, marginTop: 2 }}>{chain.icon}</span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: isOpen ? dc : T.tx, marginBottom: 3 }}>{chain.title}</div>
+                    <div style={{ fontSize: 10, color: dc, fontWeight: 600, letterSpacing: 0.3 }}>{chain.muscles}</div>
+                  </div>
+                  <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s", marginTop: 4 }}>▾</span>
+                </div>
+                {isOpen && <div style={{ padding: "4px 13px 14px", background: T.sb, display: "grid", gap: 10 }}>
+                  <p style={{ margin: 0, fontSize: 12, lineHeight: 1.75, color: T.sub }}>{chain.desc}</p>
+                  <a href={chain.link} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11, color: dc, fontWeight: 600, textDecoration: "none", background: dc + "10", borderRadius: 7, padding: "6px 10px" }}>{chain.linkLabel}</a>
+                </div>}
+              </div>;
+            })}
+          </div>
+        </div>
+
         <div style={{ background: T.cd, borderRadius: 12, padding: 12, marginBottom: 10, textAlign: "center" }}>
           <img onClick={function() { setImgZoomOpen(true); }} src={MUSCLE_IMG} alt="Muscoli" style={{ width: "100%", maxWidth: 420, borderRadius: 8, marginBottom: 8, cursor: "zoom-in" }} />
           <div style={{ fontSize: 11, color: T.sub, fontStyle: "italic" }}>Tap per ingrandire · scorri per dettagli muscoli</div>
@@ -1445,6 +1584,44 @@ export default function App() {
       {/* === EXERCISES TAB === */}
       {tab === "exercises" && <div style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }}>
 
+        {/* Intro esercizi */}
+        <div style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 10 }}>
+          <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
+            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>💪 Come è strutturato l'allenamento</div>
+            <div style={{ fontSize: 12, color: T.sub }}>Fondamentali, multiarticolari, isolamenti e progressione</div>
+          </div>
+          <div style={{ padding: "12px 16px 16px", display: "grid", gap: 6 }}>
+            {INTRO_ESERCIZI.map(function(card, ci) {
+              var isOpen = showExIntro === ci;
+              return <div key={ci} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "30" : T.bg) }}>
+                <div onClick={function() { setShowExIntro(isOpen ? null : ci); }} style={{ padding: "11px 13px", cursor: "pointer", display: "flex", alignItems: "flex-start", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
+                  <span style={{ fontSize: 20, lineHeight: 1, flexShrink: 0, marginTop: 1 }}>{card.icon}</span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: isOpen ? dc : T.tx, lineHeight: 1.3, marginBottom: 3 }}>{card.title}</div>
+                    <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5 }}>{card.summary}</div>
+                  </div>
+                  <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s", marginTop: 4 }}>▾</span>
+                </div>
+                {isOpen && <div style={{ padding: "4px 13px 14px", background: T.sb, display: "grid", gap: 10 }}>
+                  {card.body.map(function(block, bi) {
+                    if (block.type === "p") return <p key={bi} style={{ margin: 0, fontSize: 12, lineHeight: 1.75, color: T.sub }}>{block.content}</p>;
+                    if (block.type === "bold-list") return <div key={bi} style={{ display: "grid", gap: 6 }}>
+                      {block.content.map(function(item, ii) {
+                        return <div key={ii} style={{ background: dc + "0A", border: "1px solid " + dc + "18", borderRadius: 8, padding: "8px 11px" }}>
+                          <div style={{ fontSize: 12, fontWeight: 800, color: dc, marginBottom: 2 }}>{item[0]}</div>
+                          <div style={{ fontSize: 12, lineHeight: 1.65, color: T.sub }}>{item[1]}</div>
+                        </div>;
+                      })}
+                    </div>;
+                    if (block.type === "link") return <a key={bi} href={block.url} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11, color: dc, fontWeight: 600, textDecoration: "none", background: dc + "10", borderRadius: 7, padding: "6px 10px", marginTop: 2 }}>{block.label}</a>;
+                    return null;
+                  })}
+                </div>}
+              </div>;
+            })}
+          </div>
+        </div>
+
         {/* Esercizi header */}
         <div onClick={function() { setCatSec(catSec === "ex" ? null : "ex"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -1473,7 +1650,11 @@ export default function App() {
         <div onClick={function() { setCatSec(catSec === "wu" ? null : "wu"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 16 }}>&#128293;</span>
-            <span style={{ fontSize: 14, fontWeight: 800, color: dc }}>Riscaldamento</span>
+            {(function() {
+              var seen = {}; var count = 0;
+              DAYS.forEach(function(d) { d.warmup.forEach(function(w) { if (!seen[w.n]) { seen[w.n] = true; count++; } }); });
+              return <span style={{ fontSize: 14, fontWeight: 800, color: dc }}>{"Riscaldamento (" + count + ")"}</span>;
+            })()}
           </div>
           <div style={{ fontSize: 14, color: T.sub, transform: catSec === "wu" ? "rotate(180deg)" : "none" }}>&#9662;</div>
         </div>
