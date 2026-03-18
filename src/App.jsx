@@ -80,11 +80,11 @@ function beepEnd() { playTone(1047, 0.15, 0.5); setTimeout(function() { playTone
 
 /* === THEMES === */
 var TH = {
-  forest: { n: "Forest", bg: "#F5F2EB", cd: "#FFF", tx: "#1a1a1a", sub: "#888", hd: "linear-gradient(135deg,#1a1a1a,#2d2d2d)", htx: "#F5F2EB", dy: ["#2D6A4F","#1B4965","#6B3FA0","#A4243B","#78909C"], ok: "#2D6A4F", ac: "#E9C46A", sb: "#faf8f4", st: "#B8860B" },
-  ocean: { n: "Ocean", bg: "#EBF2FA", cd: "#FFF", tx: "#102A43", sub: "#627D98", hd: "linear-gradient(135deg,#0A1628,#1B3A5C)", htx: "#E0E8F0", dy: ["#1565C0","#00838F","#5E35B1","#C62828","#607D8B"], ok: "#1565C0", ac: "#FF8F00", sb: "#E8F0FE", st: "#1565C0" },
-  ember: { n: "Ember", bg: "#FFF8F0", cd: "#FFF", tx: "#2C1810", sub: "#A1887F", hd: "linear-gradient(135deg,#2C1810,#5D3520)", htx: "#FFE0C8", dy: ["#BF360C","#E65100","#6D4C41","#AD1457","#8D6E63"], ok: "#BF360C", ac: "#F9A825", sb: "#FFF3E0", st: "#E65100" },
-  night: { n: "Notte", bg: "#12121F", cd: "#1A1A30", tx: "#E0E0F0", sub: "#7878AA", hd: "linear-gradient(135deg,#08081A,#1A1A30)", htx: "#C8C8F0", dy: ["#7B68EE","#26C6DA","#EC407A","#FFA726","#78909C"], ok: "#7B68EE", ac: "#26C6DA", sb: "#20203A", st: "#7B68EE" },
-  rose: { n: "Rose", bg: "#FDF2F4", cd: "#FFF", tx: "#3D1428", sub: "#B39DDB", hd: "linear-gradient(135deg,#3D1428,#880E4F)", htx: "#FFD6E0", dy: ["#C2185B","#7B1FA2","#00838F","#E65100","#9E9E9E"], ok: "#C2185B", ac: "#7CB342", sb: "#FCE4EC", st: "#C2185B" }
+  sage:    { n: "Sage",    bg: "#F4F6F2", cd: "#FAFBF9", tx: "#2C3325", sub: "#8A9E82", hd: "linear-gradient(135deg,#4A6741,#6B8F62)", htx: "#EEF4EC", dy: ["#5C7A52","#7B9E6E","#4A7C6B","#8C6D5A","#7A8A9E"], ok: "#5C7A52", ac: "#C8B97A", sb: "#EEF2EB", st: "#7A6B3A" },
+  petal:   { n: "Petal",   bg: "#FDF5F7", cd: "#FFFBFC", tx: "#3A1F28", sub: "#B08090", hd: "linear-gradient(135deg,#C2788A,#D4929E)", htx: "#FFF0F3", dy: ["#C47A8A","#9B6EA6","#6A96B0","#C28860","#A0A0B8"], ok: "#C47A8A", ac: "#9DB87A", sb: "#FAEAEE", st: "#9B6EA6" },
+  mist:    { n: "Mist",    bg: "#F2F4F8", cd: "#FAFBFD", tx: "#222B3A", sub: "#7A8FA8", hd: "linear-gradient(135deg,#3D5470,#5C7A9E)", htx: "#E8EEF6", dy: ["#5C7A9E","#6A9E8C","#7A6EA8","#9E7A5C","#6A7A8A"], ok: "#5C7A9E", ac: "#C8A86A", sb: "#E8EDF5", st: "#5C7A9E" },
+  night:   { n: "Notte",   bg: "#14151F", cd: "#1E1F2E", tx: "#DDE0F0", sub: "#7880AA", hd: "linear-gradient(135deg,#0C0D1A,#1E1F2E)", htx: "#C8CCEC", dy: ["#7B8EE8","#5CC8C0","#E87898","#E8B870","#8898B8"], ok: "#7B8EE8", ac: "#5CC8C0", sb: "#1A1B2C", st: "#7B8EE8" },
+  sand:    { n: "Sand",    bg: "#FAF7F2", cd: "#FFFEFB", tx: "#2E2820", sub: "#A0907A", hd: "linear-gradient(135deg,#7A6040,#A08060)", htx: "#F5EEE4", dy: ["#A07850","#8A9E6A","#6A8EA0","#B07888","#9A8A6A"], ok: "#A07850", ac: "#C0B060", sb: "#F4EFE6", st: "#8A7040" },
 };
 
 
@@ -359,14 +359,14 @@ function todayStr() { return new Date().toISOString().split("T")[0]; }
 function fmtTime(ms) { var s = Math.floor(ms / 1000); return (Math.floor(s/60) < 10 ? "0" : "") + Math.floor(s/60) + ":" + (s%60 < 10 ? "0" : "") + s%60 + "." + (Math.floor((ms%1000)/10) < 10 ? "0" : "") + Math.floor((ms%1000)/10); }
 
 export default function App() {
-  var [tab, setTab] = useState("workout");
+  var [tab, setTab] = useState("teoria");
   var [dayIdx, setDayIdx] = useState(0);
   var [month, setMonth] = useState(1);
   var [theme, setTheme] = useState("forest");
   var [themeOpen, setThemeOpen] = useState(false);
   var [rpeOpen, setRpeOpen] = useState(false);
   var [glossOpen, setGlossOpen] = useState(false);
-  var [glossTab, setGlossTab] = useState("termini");
+  var [glossTab, setGlossTab] = useState("principi");
   var [resetOpen, setResetOpen] = useState(false);
   var [exInfoOpen, setExInfoOpen] = useState(null);
   var [openEx, setOpenEx] = useState(null);
@@ -384,6 +384,10 @@ export default function App() {
   var [tmpR, setTmpR] = useState("");
   var [histIdx, setHistIdx] = useState(null);
   var [cableMode, setCableMode] = useState({});
+  var [settingsOpen, setSettingsOpen] = useState(false);
+  var [userName, setUserName] = useState("");
+  var [userPhoto, setUserPhoto] = useState(null);
+  var [imgZoomOpen, setImgZoomOpen] = useState(false);
   var [ready, setReady] = useState(false);
   var [tMode, setTMode] = useState("stopwatch");
   var [tRunning, setTRunning] = useState(false);
@@ -408,7 +412,13 @@ export default function App() {
     return { n: raw.n, s: raw.s, rpe: raw.rpe, note: raw.note || "" };
   }
 
-  useEffect(function() { try { var stored = localStorage.getItem(SK); if (stored) setLogs(JSON.parse(stored)); } catch(e) {} setReady(true); }, []);
+  useEffect(function() {
+    try { var stored = localStorage.getItem(SK); if (stored) setLogs(JSON.parse(stored)); } catch(e) {}
+    try { var n = localStorage.getItem("wt-username"); if (n) setUserName(n); } catch(e) {}
+    try { var p = localStorage.getItem("wt-userphoto"); if (p) setUserPhoto(p); } catch(e) {}
+    try { var th = localStorage.getItem("wt-theme"); if (th && TH[th]) setTheme(th); } catch(e) {}
+    setReady(true);
+  }, []);
   var saveData = useCallback(function(nl) { setLogs(nl); try { localStorage.setItem(SK, JSON.stringify(nl)); } catch(e) {} }, []);
 
   function checkSound(ms, mode) { var el = mode === "stopwatch" ? Math.floor(ms/1000) : Math.floor((tTarget*1000 - ms)/1000); if (el <= 0 || el === lastSnd.current) return; var prev = lastSnd.current; lastSnd.current = el; if (prev < 0) return; var pB = Math.floor(prev/30), cB = Math.floor(el/30); if (cB > pB && cB > 0) { (cB*30)%60 === 0 ? beep60() : beep30(); } }
@@ -683,45 +693,125 @@ export default function App() {
         </div>
       </div>}
 
-      {/* Theme Modal */}
-      {themeOpen && <div onClick={function() { setThemeOpen(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: 200, display: "flex", alignItems: "flex-start", justifyContent: "center", paddingTop: 80 }}>
-        <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, padding: 20, maxWidth: 320, width: "100%" }}>
-          <h3 style={{ margin: "0 0 14px", fontSize: 16, fontWeight: 800, color: T.tx }}>Tema</h3>
-          {Object.keys(TH).map(function(k) { var v = TH[k]; return <button key={k} onClick={function() { setTheme(k); setThemeOpen(false); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: 10, border: theme === k ? "2px solid " + v.dy[0] : "2px solid transparent", borderRadius: 10, background: v.bg, cursor: "pointer", width: "100%", marginBottom: 4 }}><div style={{ display: "flex", gap: 3 }}>{v.dy.slice(0,4).map(function(c,i) { return <div key={i} style={{ width: 16, height: 16, borderRadius: 4, background: c }} />; })}</div><span style={{ fontSize: 13, fontWeight: 600, color: v.tx }}>{v.n}</span></button>; })}
+      {/* Settings Modal */}
+      {settingsOpen && <div onClick={function() { setSettingsOpen(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 250, display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}>
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, maxWidth: 400, width: "100%", color: T.tx, maxHeight: "88vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+          <div style={{ padding: "18px 20px 0", flexShrink: 0 }}>
+            <h3 style={{ margin: "0 0 16px", fontSize: 18, fontWeight: 800 }}>⚙️ Impostazioni</h3>
+          </div>
+          <div style={{ overflowY: "auto", flex: 1, padding: "0 20px" }}>
+            {/* Profilo */}
+            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>Profilo</div>
+            <div style={{ display: "flex", alignItems: "center", gap: 14, background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
+              <div onClick={function() { var input = document.createElement("input"); input.type = "file"; input.accept = "image/*"; input.onchange = function(e) { var file = e.target.files[0]; if (!file) return; var reader = new FileReader(); reader.onload = function(ev) { setUserPhoto(ev.target.result); try { localStorage.setItem("wt-userphoto", ev.target.result); } catch(e2) {} }; reader.readAsDataURL(file); }; input.click(); }} style={{ width: 52, height: 52, borderRadius: "50%", background: userPhoto ? "transparent" : dc + "20", border: "2px dashed " + dc + "60", overflow: "hidden", cursor: "pointer", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>
+                {userPhoto ? <img src={userPhoto} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : "📷"}
+              </div>
+              <div style={{ flex: 1 }}>
+                <input value={userName} onChange={function(e) { setUserName(e.target.value); try { localStorage.setItem("wt-username", e.target.value); } catch(err) {} }} placeholder="Il tuo nome" style={{ width: "100%", padding: "8px 10px", border: "1px solid " + T.bg, borderRadius: 8, fontSize: 14, fontWeight: 600, background: T.cd, color: T.tx, boxSizing: "border-box" }} />
+                <div style={{ fontSize: 10, color: T.sub, marginTop: 4 }}>Tap sulla foto per cambiarla</div>
+              </div>
+            </div>
+            {/* Tema */}
+            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Tema</div>
+            {Object.keys(TH).map(function(k) { var v = TH[k]; return <button key={k} onClick={function() { setTheme(k); try { localStorage.setItem("wt-theme", k); } catch(e) {} }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", border: theme === k ? "2px solid " + v.dy[0] : "2px solid transparent", borderRadius: 10, background: v.bg, cursor: "pointer", width: "100%", marginBottom: 4 }}><div style={{ display: "flex", gap: 3 }}>{v.dy.slice(0,5).map(function(c,i) { return <div key={i} style={{ width: 14, height: 14, borderRadius: 4, background: c }} />; })}</div><span style={{ fontSize: 13, fontWeight: 600, color: v.tx }}>{v.n}</span>{theme === k && <span style={{ marginLeft: "auto", fontSize: 11, color: v.dy[0], fontWeight: 700 }}>✓ attivo</span>}</button>; })}
+            {/* Dati */}
+            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Dati</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 8 }}>
+              <button onClick={function() { exportData(); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬇️</span> Esporta dati (backup JSON)</button>
+              <button onClick={function() { importData(); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬆️</span> Importa dati (ripristino JSON)</button>
+              <button onClick={function() { setResetOpen(true); setSettingsOpen(false); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid #C6282820", background: "#C6282808", cursor: "pointer", fontSize: 13, fontWeight: 600, color: "#C62828" }}><span>🗑️</span> Cancella tutti i dati</button>
+            </div>
+          </div>
+          <div style={{ padding: "12px 20px", flexShrink: 0 }}>
+            <button onClick={function() { setSettingsOpen(false); }} style={{ width: "100%", padding: 10, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Chiudi</button>
+          </div>
         </div>
       </div>}
 
       {/* HEADER */}
       <div style={{ background: T.hd, padding: "18px 16px 10px", color: T.htx }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", maxWidth: 600, margin: "0 auto" }}>
-          <div>
-            <div style={{ fontSize: 20, fontWeight: 800 }}>Workout Tracker</div>
-            <div style={{ fontSize: 11, opacity: 0.5, marginTop: 2 }}>Home Gym — Mese {month}</div>
+          {/* Nome e foto utente */}
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <div onClick={function() { setSettingsOpen(true); }} style={{ width: 38, height: 38, borderRadius: "50%", background: userPhoto ? "transparent" : "rgba(255,255,255,0.18)", border: "2px solid rgba(255,255,255,0.3)", overflow: "hidden", cursor: "pointer", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>
+              {userPhoto ? <img src={userPhoto} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : "👤"}
+            </div>
+            <div>
+              <div style={{ fontSize: 16, fontWeight: 800 }}>{userName ? "Ciao, " + userName + "!" : "Workout Tracker"}</div>
+              <div style={{ fontSize: 11, opacity: 0.5, marginTop: 1 }}>Home Gym — Mese {month}</div>
+            </div>
           </div>
-          <div style={{ display: "flex", gap: 5 }}>
-            <button onClick={function() { setGlossOpen(true); }} style={{ background: "rgba(255,255,255,0.12)", border: "none", color: T.htx, padding: "0 8px", height: 32, borderRadius: 8, cursor: "pointer", fontSize: 10, fontWeight: 700 }}>&#128214;</button>
-            <button onClick={function() { setThemeOpen(true); }} style={{ background: "rgba(255,255,255,0.12)", border: "none", color: T.htx, width: 32, height: 32, borderRadius: 8, cursor: "pointer", fontSize: 15 }}>&#127912;</button>
-            <button onClick={function() { exportData(); }} style={{ background: "rgba(255,255,255,0.12)", border: "none", color: T.htx, padding: "0 8px", height: 32, borderRadius: 8, cursor: "pointer", fontSize: 10, fontWeight: 700 }}>⬇️</button>
-            <button onClick={function() { importData(); }} style={{ background: "rgba(255,255,255,0.12)", border: "none", color: T.htx, padding: "0 8px", height: 32, borderRadius: 8, cursor: "pointer", fontSize: 10, fontWeight: 700 }}>⬆️</button>
-            <button onClick={function() { setResetOpen(true); }} style={{ background: "rgba(255,255,255,0.06)", border: "none", color: T.htx, padding: "0 8px", height: 32, borderRadius: 8, cursor: "pointer", fontSize: 10, opacity: 0.5 }}>Reset</button>
-          </div>
+          {/* Rotellina impostazioni */}
+          <button onClick={function() { setSettingsOpen(true); }} style={{ background: "rgba(255,255,255,0.12)", border: "none", color: T.htx, width: 36, height: 36, borderRadius: 10, cursor: "pointer", fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center" }}>⚙️</button>
         </div>
         {/* Month tabs */}
-        <div style={{ display: "flex", gap: 4, maxWidth: 600, margin: "8px auto 0" }}>
+        <div style={{ display: "flex", gap: 4, maxWidth: 600, margin: "10px auto 0" }}>
           {[1,2,3,4].map(function(m) { return <button key={m} onClick={function() { setMonth(m); }} style={{ flex: 1, padding: "5px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 11, fontWeight: month === m ? 700 : 500, background: month === m ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: month === m ? "#fff" : "rgba(255,255,255,0.4)" }}>{"Mese " + m}</button>; })}
         </div>
         {/* View tabs */}
         <div style={{ display: "flex", gap: 4, maxWidth: 600, margin: "6px auto 0" }}>
-          {["Scheda", "Muscoli", "Esercizi"].map(function(t) { var keys = {"Scheda":"workout","Muscoli":"muscles","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); }} style={{ flex: 1, padding: "6px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, background: active ? "rgba(255,255,255,0.18)" : "rgba(255,255,255,0.04)", color: active ? "#fff" : "rgba(255,255,255,0.35)" }}>{t}</button>; })}
+          {["Teoria", "Scheda", "Muscoli", "Esercizi"].map(function(t) { var keys = {"Teoria":"teoria","Scheda":"workout","Muscoli":"muscles","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); }} style={{ flex: 1, padding: "6px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, background: active ? "rgba(255,255,255,0.18)" : "rgba(255,255,255,0.04)", color: active ? "#fff" : "rgba(255,255,255,0.35)" }}>{t}</button>; })}
         </div>
       </div>
+
+      {/* === TEORIA TAB === */}
+      {tab === "teoria" && <div style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }}>
+        <div style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 10 }}>
+          <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
+            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>📚 Teoria e Glossario</div>
+            <div style={{ fontSize: 12, color: T.sub }}>Principi di allenamento e termini tecnici</div>
+          </div>
+          {/* Tab interna Principi / Termini */}
+          <div style={{ padding: "10px 16px 0" }}>
+            <div style={{ display: "flex", gap: 0, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "30", marginBottom: 14 }}>
+              <button onClick={function() { setGlossTab("principi"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>Principi</button>
+              <button onClick={function() { setGlossTab("termini"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>Termini base</button>
+            </div>
+          </div>
+          <div style={{ padding: "0 16px 16px" }}>
+            {glossTab === "principi" && <div>
+              {[
+                { emoji: "⚙️", title: "Come funziona l'allenamento", text: ["Ogni scheda bilancia tre variabili: ", "pd0", "Volume, Intensità e Densità", ". Per crescere nel tempo devi applicare il ", "pd1", "Sovraccarico progressivo", " — lo stimolo deve sempre aumentare, altrimenti il corpo si adatta e smette di rispondere."] },
+                { emoji: "📅", title: "Come strutturare la settimana", text: ["Allena ogni muscolo almeno 2-3 volte a settimana: è la ", "pd3", "multifrequenza", ", il principio più importante per la crescita. Lavora sempre a ", "pd2", "buffer", " (non a cedimento) per accumulare più volume senza esaurirti."] },
+                { emoji: "🏋️", title: "Come strutturare ogni seduta", text: ["Prima gli ", "pd4", "esercizi multiarticolari", " (squat, stacco, panca, trazioni) quando sei fresca. Poi gli isolamenti. Misura sempre ", "pd5", "kg, ripetizioni e RPE", " — senza dati non sai se stai progredendo."] },
+                { emoji: "😴", title: "Il recupero è parte dell'allenamento", text: ["Il corpo cresce nel riposo, non durante l'esercizio. Ogni 4-8 settimane inserisci una ", "pd6", "settimana di scarico", " per dissipare la fatica del ", "pd7", "Sistema Nervoso Centrale", "."] },
+                { emoji: "🦴", title: "Tecnica: proteggiti sotto carico", text: ["Nei carichi pesanti usa la ", "pd8", "Manovra di Valsalva", " per proteggere la colonna. In core e plank mantieni la ", "pd9", "retroversione del bacino", ". In trazioni e push-up usa l'", "pd10", "Assetto Hollow", "."] },
+                { emoji: "🎯", title: "Scegli il muscolo giusto", text: ["Capire la differenza tra ", "pd11", "Hip Dominant e Knee Dominant", " e come ", "pd12", "cambiare il target", " senza cambiare esercizio ti dà un vantaggio enorme."] },
+                { emoji: "🔬", title: "Massimizza gli isolamenti", text: ["Conta più il ", "pd13", "Tempo sotto tensione", " che il peso. Aggiungi un ", "pd14", "picco isometrico", " di 2-3s. Scegli gli esercizi complementari per i tuoi ", "pd15", "punti deboli", "."] },
+              ].map(function(block, bi) {
+                var parts = block.text; var rendered = [];
+                for (var pi = 0; pi < parts.length; pi++) {
+                  if (pi + 2 < parts.length && typeof parts[pi+1] === "string" && parts[pi+1].startsWith("pd")) {
+                    rendered.push(<span key={pi}>{parts[pi]}</span>);
+                    var pid = parts[pi+1]; var label = parts[pi+2];
+                    rendered.push(<span key={pi+"l"} onClick={(function(id) { return function() { setGlossTab("principi"); var el = document.getElementById(id + "t"); if (el) { el.setAttribute("open",""); el.scrollIntoView({behavior:"smooth",block:"center"}); } }; })(pid)} style={{ color: dc, fontWeight: 700, cursor: "pointer", textDecoration: "underline dotted", textUnderlineOffset: 2 }}>{label}</span>);
+                    pi += 2;
+                  } else { rendered.push(<span key={pi}>{parts[pi]}</span>); }
+                }
+                return <div key={bi} style={{ background: T.sb, borderRadius: 10, padding: "10px 14px", marginBottom: 8 }}>
+                  <div style={{ fontWeight: 800, fontSize: 12, color: T.tx, marginBottom: 4 }}>{block.emoji + " " + block.title}</div>
+                  <div style={{ fontSize: 12, lineHeight: 1.7, color: T.sub }}>{rendered}</div>
+                </div>;
+              })}
+              <div style={{ fontSize: 11, color: T.sub, textAlign: "center", margin: "4px 0 8px", opacity: 0.7 }}>Tap su ogni principio per il dettaglio completo</div>
+              {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi + "t"} key={gi} style={{ marginBottom: 4, borderRadius: 8, overflow: "hidden", background: T.sb }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 6 }}><span style={{ fontSize: 10, color: T.sub, minWidth: 18 }}>{gi + 1 + "."}</span>{g.t}</summary><div style={{ padding: "0 12px 12px", fontSize: 12, lineHeight: 1.6, color: T.sub }}>{g.d}</div></details>; })}
+            </div>}
+            {glossTab === "termini" && <div>
+              {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 4, borderRadius: 8, overflow: "hidden", background: T.sb }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px", fontSize: 12, lineHeight: 1.6, color: T.sub }}>{g.d}</div></details>; })}
+            </div>}
+          </div>
+        </div>
+      </div>}
 
       {/* === MUSCLES TAB === */}
       {tab === "muscles" && <div style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }}>
         <div style={{ background: T.cd, borderRadius: 12, padding: 12, marginBottom: 10, textAlign: "center" }}>
-          <img src={MUSCLE_IMG} alt="Muscoli" style={{ width: "100%", maxWidth: 420, borderRadius: 8, marginBottom: 8 }} />
-          <div style={{ fontSize: 11, color: T.sub, fontStyle: "italic" }}>Tap su ogni muscolo per dettagli e esercizi</div>
+          <img onClick={function() { setImgZoomOpen(true); }} src={MUSCLE_IMG} alt="Muscoli" style={{ width: "100%", maxWidth: 420, borderRadius: 8, marginBottom: 8, cursor: "zoom-in" }} />
+          <div style={{ fontSize: 11, color: T.sub, fontStyle: "italic" }}>Tap per ingrandire · scorri per dettagli muscoli</div>
         </div>
+        {imgZoomOpen && <div onClick={function() { setImgZoomOpen(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.92)", zIndex: 300, display: "flex", alignItems: "center", justifyContent: "center", padding: 8, cursor: "zoom-out" }}>
+          <img src={MUSCLE_IMG} alt="Muscoli" style={{ maxWidth: "100%", maxHeight: "95vh", borderRadius: 10, objectFit: "contain" }} />
+        </div>}
         {MUSC.map(function(m, mi) { var isO = openMuscle === mi; return <div key={mi} style={{ background: T.cd, borderRadius: 10, marginBottom: 4, overflow: "hidden" }}>
           <div onClick={function() { setOpenMuscle(isO ? null : mi); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}>
             <div style={{ width: 34, height: 34, borderRadius: 9, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: dc }}>{mi+1}</div>
