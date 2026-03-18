@@ -362,7 +362,7 @@ export default function App() {
   var [tab, setTab] = useState("teoria");
   var [dayIdx, setDayIdx] = useState(0);
   var [month, setMonth] = useState(1);
-  var [theme, setTheme] = useState("forest");
+  var [theme, setTheme] = useState("sage");
   var [themeOpen, setThemeOpen] = useState(false);
   var [rpeOpen, setRpeOpen] = useState(false);
   var [glossOpen, setGlossOpen] = useState(false);
@@ -416,7 +416,7 @@ export default function App() {
     try { var stored = localStorage.getItem(SK); if (stored) setLogs(JSON.parse(stored)); } catch(e) {}
     try { var n = localStorage.getItem("wt-username"); if (n) setUserName(n); } catch(e) {}
     try { var p = localStorage.getItem("wt-userphoto"); if (p) setUserPhoto(p); } catch(e) {}
-    try { var th = localStorage.getItem("wt-theme"); if (th && TH[th]) setTheme(th); } catch(e) {}
+    try { var th = localStorage.getItem("wt-theme"); if (th && TH[th]) setTheme(th); else localStorage.removeItem("wt-theme"); } catch(e) {}
     setReady(true);
   }, []);
   var saveData = useCallback(function(nl) { setLogs(nl); try { localStorage.setItem(SK, JSON.stringify(nl)); } catch(e) {} }, []);
