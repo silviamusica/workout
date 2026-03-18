@@ -942,6 +942,7 @@ export default function App() {
   var [showMuscleIntro, setShowMuscleIntro] = useState(null);
   var [showExIntro, setShowExIntro] = useState(null);
   var [showBreath, setShowBreath] = useState(null);
+  var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"yt" }
   var [showReg, setShowReg] = useState(null);
   var [catSec, setCatSec] = useState(null);
   var [logs, setLogs] = useState({});
@@ -1096,6 +1097,19 @@ export default function App() {
         </div>;
       })}
     </div>;
+  }
+
+  function openEmbed(url, title) {
+    var isYt = url.includes("youtube.com") || url.includes("youtu.be");
+    setEmbedOpen({ url: url, title: title || url, type: isYt ? "yt" : "wiki" });
+  }
+
+  function EmbedLink(props) {
+    var isYt = props.url && (props.url.includes("youtube.com") || props.url.includes("youtu.be"));
+    return <button onClick={function(e) { e.stopPropagation(); openEmbed(props.url, props.label); }} style={Object.assign({ display: "inline-flex", alignItems: "center", gap: 5, fontSize: props.size || 11, color: props.color || dc, fontWeight: 600, textDecoration: "none", background: (props.color || dc) + "10", borderRadius: 7, padding: "6px 10px", border: "none", cursor: "pointer" }, props.style || {})}>
+      <span>{isYt ? "▶" : "📖"}</span>
+      <span>{props.label}</span>
+    </button>;
   }
 
   function RichBlocks(props) {
@@ -1312,8 +1326,7 @@ export default function App() {
               {(exInfoOpen === "Trazioni" || exInfoOpen === "Plank" || exInfoOpen === "Push-Up" || exInfoOpen === "Ab Wheel") && <button onClick={function() { setExInfoOpen("Hollow Position"); }} style={{ marginTop: 10, fontSize: 11, color: dc, fontWeight: 700, background: dc + "12", border: "1px solid " + dc + "30", borderRadius: 8, padding: "6px 12px", cursor: "pointer" }}>→ Vedi Hollow Position</button>}
             </div>
           </details>}
-          {db.lk && !ytEmbedUrl(db.lk) && <a href={db.lk} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", fontSize: 12, color: dc, fontWeight: 600, textDecoration: "none", padding: "6px 12px", background: dc + "15", borderRadius: 8, marginBottom: 12 }}>Video tutorial →</a>}
-          {db.lk && ytEmbedUrl(db.lk) && <a href={db.lk} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", fontSize: 12, color: dc, fontWeight: 600, textDecoration: "none", padding: "6px 12px", background: dc + "15", borderRadius: 8, marginBottom: 12 }}>Apri video →</a>}
+          {db.lk && <EmbedLink url={db.lk} label="▶ Video tutorial" size={12} style={{ marginBottom: 12 }} />}
           <button onClick={function() { setExInfoOpen(null); }} style={{ width: "100%", padding: 10, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", marginTop: 4 }}>Chiudi</button>
         </div>
       </div>
@@ -1426,6 +1439,42 @@ export default function App() {
           <div style={{ padding: "12px 20px", flexShrink: 0 }}>
             <button onClick={function() { setGlossOpen(false); }} style={{ width: "100%", padding: 10, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Chiudi</button>
           </div>
+        </div>
+      </div>}
+
+      {/* Embed modal (Wikipedia / YouTube) */}
+      {embedOpen && <div onClick={function() { setEmbedOpen(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.82)", zIndex: 400, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", padding: 0 }}>
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", maxWidth: 640, height: "88vh", background: T.cd, borderRadius: "16px 16px 0 0", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 16px", borderBottom: "1px solid " + T.bg, flexShrink: 0 }}>
+            <span style={{ fontSize: 16 }}>{embedOpen.type === "yt" ? "▶️" : "📖"}</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: T.tx, flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{embedOpen.title}</span>
+            <button onClick={function() { setEmbedOpen(null); }} style={{ border: "none", background: T.bg, color: T.sub, borderRadius: 8, padding: "5px 11px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>✕ Chiudi</button>
+          </div>
+          <iframe
+            src={embedOpen.type === "yt"
+              ? (function() {
+                  var u = embedOpen.url;
+                  var id = null;
+                  var m = u.match(/[?&]v=([^&#]+)/);
+                  if (m) id = m[1];
+                  else { m = u.match(/youtu\.be\/([^?#]+)/); if (m) id = m[1]; }
+                  return id ? "https://www.youtube-nocookie.com/embed/" + id + "?rel=0&modestbranding=1" : u;
+                })()
+              : (function() {
+                  // Wikipedia: convert to mobile embed
+                  var u = embedOpen.url;
+                  var m = u.match(/it\.wikipedia\.org\/wiki\/(.+)/);
+                  if (m) return "https://it.m.wikipedia.org/wiki/" + m[1];
+                  m = u.match(/en\.wikipedia\.org\/wiki\/(.+)/);
+                  if (m) return "https://en.m.wikipedia.org/wiki/" + m[1];
+                  return u;
+                })()
+            }
+            style={{ flex: 1, width: "100%", border: "none" }}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title={embedOpen.title}
+          />
         </div>
       </div>}
 
@@ -1577,7 +1626,7 @@ export default function App() {
                       </div>;
                     }
                     if (block.type === "link") {
-                      return <a key={bi} href={block.url} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11, color: dc, fontWeight: 600, textDecoration: "none", background: dc + "10", borderRadius: 7, padding: "6px 10px", marginTop: 2 }}>{block.label}</a>;
+                      return <EmbedLink key={bi} url={block.url} label={block.label} style={{ marginTop: 2 }} />;
                     }
                     return null;
                   })}
@@ -1664,7 +1713,7 @@ export default function App() {
                 </div>
                 {isOpen && <div style={{ padding: "4px 13px 14px", background: T.sb, display: "grid", gap: 10 }}>
                   <p style={{ margin: 0, fontSize: 12, lineHeight: 1.75, color: T.sub }}>{chain.desc}</p>
-                  <a href={chain.link} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11, color: dc, fontWeight: 600, textDecoration: "none", background: dc + "10", borderRadius: 7, padding: "6px 10px" }}>{chain.linkLabel}</a>
+                  <EmbedLink url={chain.link} label={chain.linkLabel} />
                 </div>}
               </div>;
             })}
@@ -1732,7 +1781,7 @@ export default function App() {
                         </div>;
                       })}
                     </div>;
-                    if (block.type === "link") return <a key={bi} href={block.url} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11, color: dc, fontWeight: 600, textDecoration: "none", background: dc + "10", borderRadius: 7, padding: "6px 10px", marginTop: 2 }}>{block.label}</a>;
+                    if (block.type === "link") return <EmbedLink key={bi} url={block.url} label={block.label} style={{ marginTop: 2 }} />;
                     return null;
                   })}
                 </div>}
@@ -1798,7 +1847,7 @@ export default function App() {
                   {hasImg && <img src={WS_IMG[w.img]} style={{ width: 130, height: 130, objectFit: "cover", borderRadius: 8, flexShrink: 0 }} />}
                   <div style={{ flex: 1 }}>
                     <DetailText text={w.d} accent={dc} size={11} soft={true} />
-                    {w.lk && <a href={w.lk} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginTop: 4, fontSize: 10, color: dc, fontWeight: 600, textDecoration: "none", padding: "3px 8px", background: dc + "15", borderRadius: 5 }}>Video</a>}
+                    {w.lk && <EmbedLink url={w.lk} label="Video" size={10} style={{ marginTop: 4 }} />}
                   </div>
                 </div>}
               </div>;
@@ -1833,7 +1882,7 @@ export default function App() {
                 <div style={{ flex: 1 }}>
                   <DetailText text={sd.h} accent={T.st} size={11} soft={true} />
                   <div style={{ fontSize: 10, color: T.sub, fontStyle: "italic", marginTop: 4 }}>{sd.t}</div>
-                  {sd.lk && <a href={sd.lk} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginTop: 4, fontSize: 10, color: T.st, fontWeight: 600, textDecoration: "none", padding: "3px 8px", background: T.st + "15", borderRadius: 5 }}>Video</a>}
+                  {sd.lk && <EmbedLink url={sd.lk} label="Video" size={10} color={T.st} style={{ marginTop: 4 }} />}
                 </div>
               </div>}
             </div>;
@@ -1943,7 +1992,7 @@ export default function App() {
                         </div>}
                         <DetailText text={active.d} accent={dc} size={11} soft={true} />
                         <div style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 6 }}>
-                          {active.lk && <a href={active.lk} target="_blank" rel="noopener noreferrer" style={{ fontSize: 10, color: dc, fontWeight: 600, textDecoration: "none" }}>video →</a>}
+                          {active.lk && <EmbedLink url={active.lk} label="video" size={10} />}
                           {active.tm && active.tm >= 120 ? <button onClick={function() { quickStopwatch(); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"▶ " + fmtLabel(active.tm)}</button> : null}
                           {active.tm && active.tm < 120 ? <button onClick={function() { quickTimer(active.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"⏱ " + fmtLabel(active.tm)}</button> : null}
                         </div>
@@ -2048,7 +2097,7 @@ export default function App() {
                       {exImgs(ex.n).slice(1).map(function(src, si) { return <img key={si} src={src} style={{ width: 64, height: 64, objectFit: "cover", borderRadius: 6, border: "1px solid " + T.bg }} />; })}
                     </div>}
                     <div style={{ display: "flex", flexDirection: "column", gap: 5, flex: 1 }}>
-                      {db.lk && <a href={db.lk} target="_blank" rel="noopener noreferrer" style={{ fontSize: 10, color: dc, fontWeight: 600, textDecoration: "none", border: "1px solid " + dc + "30", borderRadius: 5, padding: "3px 8px", alignSelf: "flex-start" }}>video</a>}
+                      {db.lk && <EmbedLink url={db.lk} label="video" size={10} style={{ alignSelf: "flex-start" }} />}
                       {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ fontSize: 10, border: "none", borderRadius: 5, padding: "3px 8px", background: dc, color: "#fff", fontWeight: 700, cursor: "pointer", alignSelf: "flex-start" }}>{"▶ Serie " + fmtLabel(workSec)}</button> : null}
                       {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ fontSize: 10, border: "none", borderRadius: 5, padding: "3px 8px", background: T.ok, color: "#fff", fontWeight: 700, cursor: "pointer", alignSelf: "flex-start" }}>{"⏱ Recupero " + fmtLabel(restSec)}</button> : null}
                     </div>
