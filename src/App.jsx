@@ -1557,13 +1557,20 @@ export default function App() {
                   </div>}
                   {ex.s && <div style={{ fontSize: 12, color: dc, fontWeight: 600, marginBottom: 6 }}>{fmtSerie(ex.s)}{ex.rpe ? " — RPE " + ex.rpe : ""}</div>}
                   {ex.note && <div style={{ fontSize: 11, color: T.sub, marginBottom: 6, fontStyle: "italic" }}>{ex.note}</div>}
-                  <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8 }}>
-                    {EX_IMG[ex.n] && <button onClick={function() { setShowImg(showImg === "ex" + i ? null : "ex" + i); }} style={{ fontSize: 10, color: dc, fontWeight: 600, background: "none", border: "1px solid " + dc + "30", borderRadius: 5, padding: "3px 8px", cursor: "pointer" }}>{showImg === "ex" + i ? "nascondi foto" : "foto"}</button>}
-                    {db.lk && <a href={db.lk} target="_blank" rel="noopener noreferrer" style={{ fontSize: 10, color: dc, fontWeight: 600, textDecoration: "none", border: "1px solid " + dc + "30", borderRadius: 5, padding: "3px 8px" }}>video</a>}
-                    {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ fontSize: 10, border: "none", borderRadius: 5, padding: "3px 8px", background: dc, color: "#fff", fontWeight: 700, cursor: "pointer" }}>{"▶ Serie " + fmtLabel(workSec)}</button> : null}
-                    {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ fontSize: 10, border: "none", borderRadius: 5, padding: "3px 8px", background: T.ok, color: "#fff", fontWeight: 700, cursor: "pointer" }}>{"⏱ Recupero " + fmtLabel(restSec)}</button> : null}
+                  {/* Foto thumbnail + azioni */}
+                  <div style={{ display: "flex", gap: 8, marginBottom: 10, alignItems: "flex-start" }}>
+                    {exImgs(ex.n).length > 0 && <div onClick={function(e) { e.stopPropagation(); setShowImg(showImg === "ex" + i ? null : "ex" + i); }} style={{ flexShrink: 0, cursor: "pointer", borderRadius: 8, overflow: "hidden", border: "2px solid " + (showImg === "ex" + i ? dc : T.bg), transition: "border-color 0.15s" }}>
+                      <img src={exImgs(ex.n)[0]} style={{ width: showImg === "ex" + i ? 180 : 64, height: showImg === "ex" + i ? "auto" : 64, objectFit: "cover", display: "block", transition: "width 0.2s" }} />
+                    </div>}
+                    {showImg === "ex" + i && exImgs(ex.n).length > 1 && <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                      {exImgs(ex.n).slice(1).map(function(src, si) { return <img key={si} src={src} style={{ width: 64, height: 64, objectFit: "cover", borderRadius: 6, border: "1px solid " + T.bg }} />; })}
+                    </div>}
+                    <div style={{ display: "flex", flexDirection: "column", gap: 5, flex: 1 }}>
+                      {db.lk && <a href={db.lk} target="_blank" rel="noopener noreferrer" style={{ fontSize: 10, color: dc, fontWeight: 600, textDecoration: "none", border: "1px solid " + dc + "30", borderRadius: 5, padding: "3px 8px", alignSelf: "flex-start" }}>video</a>}
+                      {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ fontSize: 10, border: "none", borderRadius: 5, padding: "3px 8px", background: dc, color: "#fff", fontWeight: 700, cursor: "pointer", alignSelf: "flex-start" }}>{"▶ Serie " + fmtLabel(workSec)}</button> : null}
+                      {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ fontSize: 10, border: "none", borderRadius: 5, padding: "3px 8px", background: T.ok, color: "#fff", fontWeight: 700, cursor: "pointer", alignSelf: "flex-start" }}>{"⏱ Recupero " + fmtLabel(restSec)}</button> : null}
+                    </div>
                   </div>
-                  {showImg === "ex" + i && exImgs(ex.n).map(function(src, si) { return <img key={si} src={src} style={{ width: "100%", borderRadius: 8, marginBottom: 8 }} />; })}
                   <DetailText text={db.c} accent={dc} size={11} soft={true} />
                   {db.deep && <details style={{ marginBottom: 8, borderRadius: 8, overflow: "hidden", background: T.bg }}>
                     <summary style={{ padding: "8px 12px", cursor: "pointer", fontSize: 11, fontWeight: 700, color: T.sub, listStyle: "none", display: "flex", alignItems: "center", gap: 6 }}>
