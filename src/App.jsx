@@ -399,6 +399,7 @@ var DAYS = [
       ritmo: "Seduta corta. Recuperi 2-3 min su panca e stacco (carichi pesanti), 90s sul rematore."
     },
     warmup: [
+      { n: "Burpees", img: "w_Burpees", d: "3 minuti a ritmo moderato. Alza la frequenza cardiaca e attiva tutta la catena cinetica prima di caricare con stacco e panca.", lk: "https://www.youtube.com/results?search_query=beginner+burpees+tutorial", tm: 180 },
       { n: "Cat-Cow", img: "w_CatCow", d: "10 ripetizioni lente. Mobilizza la colonna prima di caricarla con stacco e panca.", lk: "https://www.youtube.com/results?search_query=cat+cow+warmup" },
       { n: "World's Greatest Stretch", d: "5 per lato. Parti in affondo, mano a terra, ruota il busto aprendo l'altro braccio verso il soffitto. Allunga flessori anca, torace, anche, femorali.", lk: "https://www.youtube.com/results?search_query=worlds+greatest+stretch+tutorial" },
       { n: "Stacco con bilanciere scarico", d: "2 serie da 5. Bilanciere vuoto. Simula lo schema motorio, attiva la catena posteriore.", lk: "https://www.youtube.com/results?search_query=deadlift+warmup+light+weight" },
@@ -419,7 +420,8 @@ var DAYS = [
       ritmo: "Seduta ad alto volume metabolico. Recuperi brevi: 60-90s su affondi e clamshell, 90s su croci e arnold."
     },
     warmup: [
-      { n: "Marcia con ginocchia alte", d: "5 minuti. Ginocchia al petto ad ogni passo. Ritmo sostenuto. Scalda flessori anca e quadricipiti.", lk: "https://www.youtube.com/results?search_query=high+knees+march+warmup", tm: 300 },
+      { n: "Burpees", img: "w_Burpees", d: "3 minuti a ritmo moderato. Attiva tutta la catena cinetica, riscalda glutei e gambe prima del lavoro pesante.", lk: "https://www.youtube.com/results?search_query=beginner+burpees+tutorial", tm: 180 },
+      { n: "Marcia con ginocchia alte", d: "2 minuti. Ginocchia al petto ad ogni passo. Scalda flessori anca e quadricipiti.", lk: "https://www.youtube.com/results?search_query=high+knees+march+warmup", tm: 120 },
       { n: "Clamshell a corpo libero", d: "10 per lato. Su un fianco, ginocchia piegate, apri il ginocchio superiore. Attiva gluteo medio prima degli affondi.", lk: "https://www.youtube.com/results?search_query=clamshell+warmup+glute+activation" },
       { n: "Affondi a corpo libero", d: "10 totali (5 per gamba). Lenti, senza peso. Prepara quadricipiti e glutei.", lk: "https://www.youtube.com/results?search_query=bodyweight+lunge+warmup" },
       { n: "Good morning senza peso", d: "10 ripetizioni. Mani dietro la testa, piega avanti spingendo il bacino indietro. Attiva erettori e femorali.", lk: "https://www.youtube.com/results?search_query=good+morning+bodyweight+warmup" },
@@ -1334,18 +1336,21 @@ export default function App() {
 
       {/* === WORKOUT TAB === */}
       {tab === "workout" && <div>
-        {/* Month selector */}
-        <div style={{ display: "flex", gap: 6, padding: "10px 12px 4px", maxWidth: 624, margin: "0 auto", alignItems: "center" }}>
-          <span style={{ fontSize: 11, fontWeight: 700, color: T.sub, marginRight: 2, whiteSpace: "nowrap" }}>Mese</span>
-          {[1,2,3,4].map(function(m) { var active = month === m; return <button key={m} onClick={function() { setMonth(m); }} style={{ flex: 1, padding: "6px 0", border: active ? "2px solid " + dc : "2px solid transparent", borderRadius: 8, cursor: "pointer", fontSize: 12, fontWeight: active ? 800 : 500, background: active ? dc + "18" : T.tx + "06", color: active ? dc : T.sub, transition: "all 0.15s" }}>{"M" + m}</button>; })}
-        </div>
-        {/* Day tabs */}
-        <div style={{ display: "flex", gap: 5, padding: "0 12px 0", overflowX: "auto", maxWidth: 624, margin: "0 auto" }}>
-          {DAYS.map(function(d, i) { var active = dayIdx === i; return <button key={i} onClick={function() { setDayIdx(i); setOpenEx(null); setEditing(null); setHistIdx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false); setShowImg(null); }} style={{ flex: i < 4 ? 1 : "none", padding: "9px 10px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, background: active ? T.dy[i] : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}>{d.name}</button>; })}
+        {/* Day + Month selector bar */}
+        <div style={{ maxWidth: 600, margin: "0 auto", padding: "8px 12px 0" }}>
+          {/* Day tabs */}
+          <div style={{ display: "flex", gap: 4, overflowX: "auto", paddingBottom: 0 }}>
+            {DAYS.map(function(d, i) { var active = dayIdx === i; return <button key={i} onClick={function() { setDayIdx(i); setOpenEx(null); setEditing(null); setHistIdx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false); setShowImg(null); }} style={{ flex: i < 4 ? 1 : "none", padding: "7px 8px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}>{d.name}</button>; })}
+          </div>
+          {/* Month selector — compact strip inside card top */}
         </div>
 
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "0 12px 24px", paddingBottom: tPanel ? 200 : 100 }}>
           <div style={{ background: T.cd, borderRadius: "0 0 14px 14px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", overflow: "hidden" }}>
+            {/* Month strip */}
+            <div style={{ display: "flex", borderBottom: "1px solid " + T.bg }}>
+              {[1,2,3,4].map(function(m) { var active = month === m; return <button key={m} onClick={function() { setMonth(m); }} style={{ flex: 1, padding: "7px 0", border: "none", borderBottom: active ? "2px solid " + dc : "2px solid transparent", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: "transparent", color: active ? dc : T.sub, transition: "all 0.15s" }}>{"M" + m}</button>; })}
+            </div>
 
             {/* Day intro schematic */}
             {(function() {
@@ -1485,7 +1490,7 @@ export default function App() {
                     {EX_IMG[ex.n] && <button onClick={function() { setShowImg(showImg === "ex" + i ? null : "ex" + i); }} style={{ fontSize: 10, color: dc, fontWeight: 600, background: "none", border: "1px solid " + dc + "30", borderRadius: 5, padding: "3px 8px", cursor: "pointer" }}>{showImg === "ex" + i ? "nascondi foto" : "foto"}</button>}
                     {db.lk && <a href={db.lk} target="_blank" rel="noopener noreferrer" style={{ fontSize: 10, color: dc, fontWeight: 600, textDecoration: "none", border: "1px solid " + dc + "30", borderRadius: 5, padding: "3px 8px" }}>video</a>}
                     {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ fontSize: 10, border: "none", borderRadius: 5, padding: "3px 8px", background: dc, color: "#fff", fontWeight: 700, cursor: "pointer" }}>{"▶ Serie " + fmtLabel(workSec)}</button> : null}
-                    {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ fontSize: 10, border: "none", borderRadius: 5, padding: "3px 8px", background: T.ok + "22", color: T.ok, fontWeight: 700, cursor: "pointer" }}>{"⏱ Recupero " + fmtLabel(restSec)}</button> : null}
+                    {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ fontSize: 10, border: "none", borderRadius: 5, padding: "3px 8px", background: T.ok, color: "#fff", fontWeight: 700, cursor: "pointer" }}>{"⏱ Recupero " + fmtLabel(restSec)}</button> : null}
                   </div>
                   {showImg === "ex" + i && exImgs(ex.n).map(function(src, si) { return <img key={si} src={src} style={{ width: "100%", borderRadius: 8, marginBottom: 8 }} />; })}
                   <DetailText text={db.c} accent={dc} size={11} soft={true} />
