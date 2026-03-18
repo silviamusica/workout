@@ -604,6 +604,7 @@ export default function App() {
   var [tTarget, setTTarget] = useState(90);
   var [tFull, setTFull] = useState(false);
   var [tFlash, setTFlash] = useState(false);
+  var [tWarning, setTWarning] = useState(false);
   var [tPanel, setTPanel] = useState(false);
   var intv = useRef(null);
   var tStart = useRef(null);
@@ -631,14 +632,28 @@ export default function App() {
   }, []);
   var saveData = useCallback(function(nl) { setLogs(nl); try { localStorage.setItem(SK, JSON.stringify(nl)); } catch(e) {} }, []);
 
-  function checkSound(ms, mode) { var el = mode === "stopwatch" ? Math.floor(ms/1000) : Math.floor((tTarget*1000 - ms)/1000); if (el <= 0 || el === lastSnd.current) return; var prev = lastSnd.current; lastSnd.current = el; if (prev < 0) return; var pB = Math.floor(prev/30), cB = Math.floor(el/30); if (cB > pB && cB > 0) { (cB*30)%60 === 0 ? beep60() : beep30(); } }
+  function checkSound(ms, mode, target) {
+    if (mode === "countdown") {
+      var remSec = Math.ceil(ms / 1000);
+      if (remSec === lastSnd.current) return;
+      lastSnd.current = remSec;
+      if (remSec <= 10 && remSec > 0) { playTone(remSec === 3 ? 1100 : remSec <= 3 ? 1320 : 880, 0.12, remSec <= 3 ? 0.6 : 0.4); }
+    } else {
+      var el = Math.floor(ms/1000);
+      if (el <= 0 || el === lastSnd.current) return;
+      var prev = lastSnd.current; lastSnd.current = el;
+      if (prev < 0) return;
+      var pB = Math.floor(prev/30), cB = Math.floor(el/30);
+      if (cB > pB && cB > 0) { (cB*30)%60 === 0 ? beep60() : beep30(); }
+    }
+  }
 
-  useEffect(function() { if (tRunning) { tStart.current = Date.now(); intv.current = setInterval(function() { var el = Date.now() - tStart.current + tAcc.current; if (tMode === "countdown") { var rem = tTarget*1000 - el; if (rem <= 0) { setTMs(0); setTRunning(false); tAcc.current = 0; setTFlash(true); beepEnd(); setTimeout(function() { setTFlash(false); }, 3000); clearInterval(intv.current); } else { setTMs(rem); checkSound(rem, "countdown"); } } else { setTMs(el); checkSound(el, "stopwatch"); } }, 50); } else { clearInterval(intv.current); } return function() { clearInterval(intv.current); }; }, [tRunning, tMode, tTarget]);
+  useEffect(function() { if (tRunning) { tStart.current = Date.now(); intv.current = setInterval(function() { var el = Date.now() - tStart.current + tAcc.current; if (tMode === "countdown") { var rem = tTarget*1000 - el; if (rem <= 0) { setTMs(0); setTRunning(false); tAcc.current = 0; setTFlash(true); setTWarning(false); beepEnd(); setTimeout(function() { setTFlash(false); }, 3000); clearInterval(intv.current); } else { setTMs(rem); setTWarning(rem <= 10000); checkSound(rem, "countdown"); } } else { setTMs(el); setTWarning(false); checkSound(el, "stopwatch"); } }, 50); } else { clearInterval(intv.current); } return function() { clearInterval(intv.current); }; }, [tRunning, tMode, tTarget]);
 
   function timerGo() { try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {} if (tMode === "countdown" && tMs === 0 && !tRunning) { tAcc.current = 0; setTMs(tTarget * 1000); } lastSnd.current = tMode === "countdown" ? 0 : Math.floor(tMs/1000); tStart.current = Date.now(); setTRunning(true); setTFlash(false); setTFull(true); }
   function timerPause() { setTRunning(false); tAcc.current = tMode === "stopwatch" ? tMs : tTarget*1000 - tMs; }
-  function timerReset() { setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMs(tMode === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTFull(false); }
-  function timerSwitch(m) { setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMode(m); setTMs(m === "countdown" ? tTarget*1000 : 0); setTFlash(false); }
+  function timerReset() { setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMs(tMode === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); setTFull(false); }
+  function timerSwitch(m) { setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMode(m); setTMs(m === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); }
   function timerSetTarget(s) { setTTarget(s); if (!tRunning) { tAcc.current = 0; lastSnd.current = -1; setTMs(s * 1000); } }
 
   function quickTimer(secs) {
@@ -944,10 +959,11 @@ export default function App() {
 
   // === FULLSCREEN TIMER ===
   if (tFull) return (
-    <div style={{ position: "fixed", inset: 0, zIndex: 999, background: tFlash ? "linear-gradient(135deg,#C62828,#E53935)" : T.hd, color: T.htx, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "'Plus Jakarta Sans',sans-serif", transition: "background 0.3s" }}>
+    <div style={{ position: "fixed", inset: 0, zIndex: 999, background: tFlash ? "linear-gradient(135deg,#C62828,#E53935)" : tWarning ? "linear-gradient(135deg,#7A1800,#B83000)" : T.hd, color: T.htx, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "'Plus Jakarta Sans',sans-serif", transition: "background 0.4s" }}>
       <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
       <div style={{ fontSize: 11, opacity: 0.5, marginBottom: 8, fontWeight: 600, letterSpacing: 1, textTransform: "uppercase" }}>{tMode === "countdown" ? "Timer recupero" : "Cronometro"}</div>
-      <div style={{ fontSize: 72, fontWeight: 800, letterSpacing: 2, fontVariantNumeric: "tabular-nums", marginBottom: 24 }}>{fmtTime(tMs)}</div>
+      <div style={{ fontSize: 72, fontWeight: 800, letterSpacing: 2, fontVariantNumeric: "tabular-nums", marginBottom: 24, color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s" }}>{fmtTime(tMs)}</div>
+      {tWarning && !tFlash && <div style={{ fontSize: 14, fontWeight: 700, color: "#FFAAAA", marginBottom: 16, letterSpacing: 0.5 }}>⚡ Ultimi {Math.ceil(tMs/1000)}s</div>}
       {tFlash && <div style={{ fontSize: 16, fontWeight: 700, color: T.ac, marginBottom: 20 }}>Tempo scaduto</div>}
       <div style={{ display: "flex", gap: 12, marginBottom: 30 }}>
         {!tRunning ? <button onClick={timerGo} style={{ width: 64, height: 64, borderRadius: 20, border: "none", background: T.ok, color: "#fff", fontSize: 28, cursor: "pointer" }}>&#9654;</button> : <button onClick={timerPause} style={{ width: 64, height: 64, borderRadius: 20, border: "none", background: T.ac, color: "#000", fontSize: 22, fontWeight: 800, cursor: "pointer" }}>&#9646;&#9646;</button>}
@@ -957,7 +973,7 @@ export default function App() {
         {["stopwatch", "countdown"].map(function(m) { return <button key={m} onClick={function() { timerSwitch(m); }} style={{ padding: "8px 18px", border: "none", borderRadius: 8, cursor: "pointer", fontSize: 13, fontWeight: tMode === m ? 700 : 500, background: tMode === m ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: tMode === m ? "#fff" : "rgba(255,255,255,0.4)" }}>{m === "stopwatch" ? "Cronometro" : "Recupero"}</button>; })}
       </div>
       {tMode === "countdown" && <div style={{ display: "flex", gap: 8 }}>{timerBtns(true)}</div>}
-      <button onClick={function() { setTFull(false); }} style={{ position: "absolute", top: 20, right: 20, background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 40, height: 40, borderRadius: 10, cursor: "pointer", fontSize: 18 }}>&#10005;</button>
+      <button onClick={function() { timerReset(); }} style={{ position: "absolute", top: 20, right: 20, background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 40, height: 40, borderRadius: 10, cursor: "pointer", fontSize: 18 }}>&#10005;</button>
     </div>
   );
 
@@ -1376,10 +1392,10 @@ export default function App() {
 
             {/* Warmup - collapsed */}
             <div ref={function(el) { if (el) el._sectionKey = "intro"; }} id="section-warmup" style={{ borderBottom: "1px solid " + T.bg }}>
-              <div onClick={function() { var opening = !showIntro; setShowIntro(opening); if (opening) { setShowExSection(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-warmup"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showIntro ? dc + "08" : "transparent" }}>
-                <div style={{ width: 34, height: 34, borderRadius: 9, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, color: "#fff", flexShrink: 0 }}>&#128293;</div>
-                <div style={{ flex: 1 }}><div style={{ fontWeight: 700, fontSize: 13, color: dc }}>Riscaldamento</div><div style={{ fontSize: 11, color: T.sub }}>{dayData.warmup.length + " esercizi · " + dayData.dur}</div></div>
-                <div style={{ fontSize: 14, color: T.sub, transform: showIntro ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
+              <div onClick={function() { var opening = !showIntro; setShowIntro(opening); if (opening) { setShowExSection(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-warmup"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showIntro ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
+                <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#128293;</div>
+                <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Riscaldamento</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{dayData.warmup.length + " esercizi · " + dayData.dur}</div></div>
+                <div style={{ fontSize: 13, color: dc, transform: showIntro ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
               {showIntro && <div style={{ padding: "0 14px 14px" }}><div style={{ background: T.sb, borderRadius: 10, padding: 12 }}>
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -1407,10 +1423,10 @@ export default function App() {
 
             {/* Exercises - collapsed */}
             <div id="section-esercizi" style={{ borderBottom: "1px solid " + T.bg }}>
-              <div onClick={function() { var opening = !showExSection; setShowExSection(opening); if (opening) { setShowIntro(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-esercizi"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showExSection ? dc + "08" : "transparent" }}>
-                <div style={{ width: 34, height: 34, borderRadius: 9, background: dc + "22", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, flexShrink: 0 }}>&#128170;</div>
-                <div style={{ flex: 1 }}><div style={{ fontWeight: 700, fontSize: 13 }}>Esercizi</div><div style={{ fontSize: 11, color: T.sub }}>{dayData.ex.length + " esercizi"}</div></div>
-                <div style={{ fontSize: 14, color: T.sub, transform: showExSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
+              <div onClick={function() { var opening = !showExSection; setShowExSection(opening); if (opening) { setShowIntro(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-esercizi"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showExSection ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
+                <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#128170;</div>
+                <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Esercizi</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{dayData.ex.length + " esercizi"}</div></div>
+                <div style={{ fontSize: 13, color: dc, transform: showExSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
             {showExSection && <div>
             {/* Exercises list */}
@@ -1459,9 +1475,8 @@ export default function App() {
                   <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8 }}>
                     {EX_IMG[ex.n] && <button onClick={function() { setShowImg(showImg === "ex" + i ? null : "ex" + i); }} style={{ fontSize: 10, color: dc, fontWeight: 600, background: "none", border: "1px solid " + dc + "30", borderRadius: 5, padding: "3px 8px", cursor: "pointer" }}>{showImg === "ex" + i ? "nascondi foto" : "foto"}</button>}
                     {db.lk && <a href={db.lk} target="_blank" rel="noopener noreferrer" style={{ fontSize: 10, color: dc, fontWeight: 600, textDecoration: "none", border: "1px solid " + dc + "30", borderRadius: 5, padding: "3px 8px" }}>video</a>}
-                    {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ fontSize: 10, border: "none", borderRadius: 5, padding: "3px 8px", background: dc, color: "#fff", fontWeight: 700, cursor: "pointer" }}>{"\u25B6 " + fmtLabel(workSec)}</button> : null}
-                    {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ fontSize: 10, border: "none", borderRadius: 5, padding: "3px 8px", background: T.ok + "20", color: T.ok, fontWeight: 700, cursor: "pointer" }}>{"\u23F1 " + fmtLabel(restSec)}</button> : null}
-                    {restSec && restSec > 60 ? <button onClick={function() { quickTimer(60); }} style={{ fontSize: 10, border: "1px solid " + T.sub + "30", borderRadius: 5, padding: "3px 8px", background: "transparent", color: T.sub, fontWeight: 600, cursor: "pointer" }}>{fmtLabel(60)}</button> : null}
+                    {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ fontSize: 10, border: "none", borderRadius: 5, padding: "3px 8px", background: dc, color: "#fff", fontWeight: 700, cursor: "pointer" }}>{"▶ Serie " + fmtLabel(workSec)}</button> : null}
+                    {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ fontSize: 10, border: "none", borderRadius: 5, padding: "3px 8px", background: T.ok + "22", color: T.ok, fontWeight: 700, cursor: "pointer" }}>{"⏱ Recupero " + fmtLabel(restSec)}</button> : null}
                   </div>
                   {showImg === "ex" + i && exImgs(ex.n).map(function(src, si) { return <img key={si} src={src} style={{ width: "100%", borderRadius: 8, marginBottom: 8 }} />; })}
                   <DetailText text={db.c} accent={dc} size={11} soft={true} />
@@ -1517,10 +1532,10 @@ export default function App() {
 
             {/* Stretching */}
             <div id="section-stretching">
-              <div onClick={function() { var opening = !showStr; setShowStr(opening); if (opening) { setShowIntro(false); setShowExSection(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-stretching"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showStr ? T.st + "08" : "transparent" }}>
-                <div style={{ width: 34, height: 34, borderRadius: 9, background: T.ac + "22", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, flexShrink: 0 }}>&#129495;</div>
-                <div style={{ flex: 1 }}><div style={{ fontWeight: 700, fontSize: 13, color: T.st }}>Stretching finale</div><div style={{ fontSize: 11, color: T.sub }}>{dayData.str.length + " esercizi · 5-8 min"}</div></div>
-                <div style={{ fontSize: 14, color: T.sub, transform: showStr ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
+              <div onClick={function() { var opening = !showStr; setShowStr(opening); if (opening) { setShowIntro(false); setShowExSection(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-stretching"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showStr ? T.st + "22" : T.st + "0A", borderLeft: "3px solid " + T.st }}>
+                <div style={{ width: 30, height: 30, borderRadius: 8, background: T.st, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#129495;</div>
+                <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: T.st, textTransform: "uppercase", letterSpacing: 1 }}>Stretching finale</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{dayData.str.length + " esercizi · 5-8 min"}</div></div>
+                <div style={{ fontSize: 13, color: T.st, transform: showStr ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
               {showStr && <div style={{ padding: "0 14px 14px" }}><div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                 {dayData.str.map(function(sn, si) { var sd = STR[sn]; if (!sd) return null; return <div key={si} style={{ background: T.sb, borderRadius: 8, padding: 12, marginBottom: 2 }}>
@@ -1546,10 +1561,10 @@ export default function App() {
       </div>}
 
       {/* TIMER BAR */}
-      <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 100, background: T.hd, color: T.htx, boxShadow: "0 -4px 20px rgba(0,0,0,0.2)" }}>
+      <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 100, background: tFlash ? "linear-gradient(135deg,#C62828,#E53935)" : tWarning ? "linear-gradient(135deg,#7A1800,#B83000)" : T.hd, color: T.htx, boxShadow: "0 -4px 20px rgba(0,0,0,0.2)", transition: "background 0.4s" }}>
         <div style={{ display: "flex", alignItems: "center", padding: "8px 14px", gap: 8, maxWidth: 600, margin: "0 auto" }}>
           <button onClick={function() { setTPanel(!tPanel); }} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 30, height: 30, borderRadius: 7, cursor: "pointer", fontSize: 13 }}>{tPanel ? "\u25BE" : "\u25B4"}</button>
-          <div onClick={function() { setTFull(true); }} style={{ fontVariantNumeric: "tabular-nums", fontSize: 24, fontWeight: 800, letterSpacing: "0.5px", flex: 1, textAlign: "center", cursor: "pointer" }}>{fmtTime(tMs)}</div>
+          <div onClick={function() { setTFull(true); }} style={{ fontVariantNumeric: "tabular-nums", fontSize: 24, fontWeight: 800, letterSpacing: "0.5px", flex: 1, textAlign: "center", cursor: "pointer", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s" }}>{fmtTime(tMs)}</div>
           <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
             {!tRunning ? <button onClick={timerGo} style={{ background: T.ok, border: "none", color: "#fff", width: 36, height: 36, borderRadius: 9, cursor: "pointer", fontSize: 16 }}>&#9654;</button> : <button onClick={timerPause} style={{ background: T.ac, border: "none", color: "#000", width: 36, height: 36, borderRadius: 9, cursor: "pointer", fontSize: 13, fontWeight: 800 }}>&#9646;&#9646;</button>}
             <button onClick={timerReset} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 36, height: 36, borderRadius: 9, cursor: "pointer", fontSize: 12 }}>&#8634;</button>
