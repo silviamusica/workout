@@ -1351,7 +1351,7 @@ export default function App() {
                   <div style={{ paddingRight: 12, color: T.sub, fontSize: 12 }}>&#9662;</div>
                 </div>
                 {showImg === "wl" + wi && <div style={{ padding: "4px 10px 10px", display: "flex", gap: 8, alignItems: "flex-start" }}>
-                  {hasImg && <img src={WS_IMG[w.img]} style={{ width: 80, height: 80, objectFit: "cover", borderRadius: 8, flexShrink: 0 }} />}
+                  {hasImg && <img src={WS_IMG[w.img]} style={{ width: 130, height: 130, objectFit: "cover", borderRadius: 8, flexShrink: 0 }} />}
                   <div style={{ flex: 1 }}>
                     <DetailText text={w.d} accent={dc} size={11} soft={true} />
                     {w.lk && <a href={w.lk} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginTop: 4, fontSize: 10, color: dc, fontWeight: 600, textDecoration: "none", padding: "3px 8px", background: dc + "15", borderRadius: 5 }}>Video</a>}
@@ -1385,7 +1385,7 @@ export default function App() {
                 <div style={{ paddingRight: 12, color: T.sub, fontSize: 12 }}>&#9662;</div>
               </div>
               {showImg === "sl" + si && <div style={{ padding: "4px 10px 10px", display: "flex", gap: 8, alignItems: "flex-start" }}>
-                {hasImg && <img src={WS_IMG[sd.img]} style={{ width: 80, height: 80, objectFit: "cover", borderRadius: 8, flexShrink: 0 }} />}
+                {hasImg && <img src={WS_IMG[sd.img]} style={{ width: 130, height: 130, objectFit: "cover", borderRadius: 8, flexShrink: 0 }} />}
                 <div style={{ flex: 1 }}>
                   <DetailText text={sd.h} accent={T.st} size={11} soft={true} />
                   <div style={{ fontSize: 10, color: T.sub, fontStyle: "italic", marginTop: 4 }}>{sd.t}</div>
