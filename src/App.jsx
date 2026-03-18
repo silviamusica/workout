@@ -1339,9 +1339,21 @@ export default function App() {
                       </div>
                       <div style={{ display: "grid", gap: 4 }}>
                         {items.map(function(item, ii) {
+                          var colonIdx = item.indexOf(": ");
+                          var parenIdx = item.indexOf(" (");
+                          var splitAt = (colonIdx > 0 && colonIdx < 40) ? colonIdx : (parenIdx > 0 && parenIdx < 40) ? parenIdx : -1;
+                          var rendered;
+                          if (splitAt > 0) {
+                            var sep = item[splitAt] === ":" ? ": " : " (";
+                            var bold = item.slice(0, splitAt);
+                            var rest = item.slice(splitAt + sep.length);
+                            rendered = <><strong style={{ color: T.tx, fontWeight: 700 }}>{bold}</strong>{sep === " (" ? " (" : ": "}{rest}</>;
+                          } else {
+                            rendered = item;
+                          }
                           return <div key={ii} style={{ display: "flex", gap: 7, alignItems: "flex-start" }}>
                             <span style={{ color: dc, fontSize: 10, lineHeight: 1.8, flexShrink: 0, fontWeight: 700 }}>→</span>
-                            <span style={{ fontSize: 12, lineHeight: 1.6, color: T.sub }}>{item}</span>
+                            <span style={{ fontSize: 12, lineHeight: 1.6, color: T.sub }}>{rendered}</span>
                           </div>;
                         })}
                       </div>
