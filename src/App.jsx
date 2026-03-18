@@ -1031,6 +1031,8 @@ export default function App() {
                 </div>;
               })}
               {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi} key={gi} style={{ marginBottom: 8, borderRadius: 12, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "14" }}><summary style={{ padding: "12px 13px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: 10, color: "#fff", minWidth: 20, height: 20, borderRadius: 999, background: dc, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{gi + 1}</span>{g.t}</summary><div style={{ padding: "10px 12px 14px" }}><RichBlocks blocks={g.d} accent={dc} /></div></details>; })}
+              <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.8, color: dc, margin: "16px 0 8px", paddingLeft: 2 }}>Come leggere la scheda</div>
+              {PRINCIPLES.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
             </div>}
             {glossTab === "termini" && <div>
               {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
@@ -1169,6 +1171,8 @@ export default function App() {
               })}
               <div style={{ fontSize: 11, color: T.sub, textAlign: "center", margin: "4px 0 8px", opacity: 0.7 }}>Tap su ogni principio per il dettaglio completo</div>
               {PRINCIPLES_DEEP.map(function(g, gi) { return <details id={"pd" + gi + "t"} key={gi} style={{ marginBottom: 8, borderRadius: 12, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "14" }}><summary style={{ padding: "12px 13px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: 10, color: "#fff", minWidth: 20, height: 20, borderRadius: 999, background: dc, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{gi + 1}</span>{g.t}</summary><div style={{ padding: "10px 12px 14px" }}><RichBlocks blocks={g.d} accent={dc} /></div></details>; })}
+              <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.8, color: dc, margin: "16px 0 8px", paddingLeft: 2 }}>Come leggere la scheda</div>
+              {PRINCIPLES.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
             </div>}
             {glossTab === "termini" && <div>
               {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
@@ -1366,28 +1370,6 @@ export default function App() {
                 </div>
               </div>;
             })()}
-
-            {/* Principles */}
-            <div style={{ borderBottom: "1px solid " + T.bg }}>
-              <div onClick={function() { setShowPrinciples(!showPrinciples); }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showPrinciples ? T.tx + "05" : "transparent" }}>
-                <div style={{ width: 28, height: 28, borderRadius: 7, background: T.tx + "12", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, flexShrink: 0 }}>&#128218;</div>
-                <div style={{ flex: 1, fontWeight: 600, fontSize: 12, color: T.sub }}>Principi dell'allenamento</div>
-                <div style={{ fontSize: 12, color: T.sub, transform: showPrinciples ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
-              </div>
-              {showPrinciples && <div style={{ padding: "0 14px 14px" }}>
-                <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                  {PRINCIPLES.map(function(pr, pi) {
-                    return <div key={pi} onClick={function() { setShowImg(showImg === "pr" + pi ? null : "pr" + pi); }} style={{ background: T.sb, borderRadius: 10, padding: "10px 12px", cursor: "pointer", border: "1px solid " + dc + "12" }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                        <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{pr.t}</span>
-                        <span style={{ fontSize: 11, color: T.sub }}>{showImg === "pr" + pi ? "\u25B4" : "\u25BE"}</span>
-                      </div>
-                      {showImg === "pr" + pi && <div style={{ marginTop: 8 }}><DetailText text={pr.d} accent={dc} soft={true} /></div>}
-                    </div>;
-                  })}
-                </div>
-              </div>}
-            </div>
 
             {/* Warmup - collapsed */}
             <div style={{ borderBottom: "1px solid " + T.bg }}>
