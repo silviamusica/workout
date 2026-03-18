@@ -964,7 +964,7 @@ function getBreath(name) { return BREATH_RULES[name] || null; }
 function fmtTime(ms) { var s = Math.floor(ms / 1000); return (Math.floor(s/60) < 10 ? "0" : "") + Math.floor(s/60) + ":" + (s%60 < 10 ? "0" : "") + s%60 + "." + (Math.floor((ms%1000)/10) < 10 ? "0" : "") + Math.floor((ms%1000)/10); }
 
 export default function App() {
-  var [tab, setTab] = useState("teoria");
+  var [tab, setTab] = useState("home");
   var [dayIdx, setDayIdx] = useState(0);
   var [month, setMonth] = useState(1);
   var [theme, setTheme] = useState("sage");
@@ -1603,9 +1603,69 @@ export default function App() {
         </div>
         {/* View tabs */}
         <div style={{ display: "flex", gap: 4, maxWidth: 600, margin: "10px auto 0" }}>
-          {["Teoria", "Muscoli", "Scheda", "Esercizi"].map(function(t) { var keys = {"Teoria":"teoria","Scheda":"workout","Muscoli":"muscles","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ flex: 1, padding: "7px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, background: active ? "rgba(255,255,255,0.18)" : "rgba(255,255,255,0.04)", color: active ? "#fff" : "rgba(255,255,255,0.35)" }}>{t}</button>; })}
+          {["Home", "Teoria", "Muscoli", "Scheda", "Esercizi"].map(function(t) { var keys = {"Home":"home","Teoria":"teoria","Scheda":"workout","Muscoli":"muscles","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ flex: 1, padding: "7px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, background: active ? "rgba(255,255,255,0.18)" : "rgba(255,255,255,0.04)", color: active ? "#fff" : "rgba(255,255,255,0.35)" }}>{t}</button>; })}
         </div>
       </div>
+
+      {/* === HOME TAB === */}
+      {tab === "home" && <div style={{ maxWidth: 600, margin: "0 auto", padding: "20px 14px 100px" }}>
+
+        {/* Hero */}
+        <div style={{ background: T.hd, borderRadius: 16, padding: "28px 22px 24px", marginBottom: 14, color: T.htx, textAlign: "center" }}>
+          <div style={{ fontSize: 40, marginBottom: 8 }}>🏋️</div>
+          <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 6 }}>HomeWorkout</div>
+          <div style={{ fontSize: 13, opacity: 0.75, lineHeight: 1.6, maxWidth: 380, margin: "0 auto" }}>
+            Il tuo programma di allenamento personale, sempre con te.<br/>
+            Tutto quello che ti serve in un'unica app — senza pubblicità, senza account.
+          </div>
+        </div>
+
+        {/* Come funziona */}
+        <div style={{ background: T.cd, borderRadius: 14, padding: "18px 18px 14px", marginBottom: 10 }}>
+          <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 14 }}>Come funziona</div>
+          <div style={{ display: "grid", gap: 10 }}>
+            {[
+              { icon: "📚", tab: "Teoria", desc: "Scopri i principi dell'allenamento: ipertrofia, multifrequenza, progressione, respirazione e molto altro. Ideale per capire il perché di ogni scelta." },
+              { icon: "💪", tab: "Muscoli", desc: "Mappa interattiva dei gruppi muscolari. Scopri quali muscoli compongono ogni catena e perché è importante allenarli in armonia." },
+              { icon: "📋", tab: "Scheda", desc: "La tua scheda settimanale giorno per giorno. Ogni esercizio con foto, indicazioni tecniche, badge respirazione e timer di recupero integrato." },
+              { icon: "🏃", tab: "Esercizi", desc: "Biblioteca completa: riscaldamento, esercizi fondamentali con approfondimenti e stretching finale. Tutto accessibile in un tap." },
+            ].map(function(item, i) {
+              return <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                <div style={{ width: 40, height: 40, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>{item.icon}</div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: dc, marginBottom: 2 }}>{item.tab}</div>
+                  <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55 }}>{item.desc}</div>
+                </div>
+              </div>;
+            })}
+          </div>
+        </div>
+
+        {/* Consigli d'uso */}
+        <div style={{ background: T.cd, borderRadius: 14, padding: "18px 18px 14px", marginBottom: 10 }}>
+          <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Consigli d'uso</div>
+          <div style={{ display: "grid", gap: 8 }}>
+            {[
+              "Prima volta? Inizia dalla tab Teoria per capire i fondamenti.",
+              "Durante l'allenamento usa la tab Scheda: trova il giorno, apri l'esercizio e segui le indicazioni.",
+              "Tocca il badge 🫁 su ogni esercizio per vedere come respirare correttamente.",
+              "I link 📖 e ▶ aprono approfondimenti e video direttamente nell'app.",
+              "In Impostazioni (⚙️) puoi cambiare tema e salvare il tuo nome.",
+            ].map(function(tip, i) {
+              return <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                <div style={{ width: 22, height: 22, borderRadius: "50%", background: dc + "22", color: dc, fontSize: 11, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>{i + 1}</div>
+                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55 }}>{tip}</div>
+              </div>;
+            })}
+          </div>
+        </div>
+
+        {/* CTA */}
+        <button onClick={function() { setTab("workout"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ width: "100%", padding: "14px 0", border: "none", borderRadius: 12, background: dc, color: "#fff", fontSize: 14, fontWeight: 800, cursor: "pointer", letterSpacing: 0.3 }}>
+          Vai alla scheda di oggi →
+        </button>
+
+      </div>}
 
       {/* === TEORIA TAB === */}
       {tab === "teoria" && <div style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }}>
