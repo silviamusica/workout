@@ -47,6 +47,11 @@ import img_Trazioni from "./images/exercises/Trazioni.jpg";
 import img_Trazioni_Supine from "./images/exercises/Trazioni_Supine.jpg";
 import img_Walking_Lunge from "./images/exercises/Walking_Lunge.jpg";
 import img_Tricipiti_Cavo from "./images/exercises/cavi tricipiti.jpg";
+import img_Hollow_Position from "./images/exercises/Hollow-Position-Muscoli-Coinvolti-1 - -.jpeg";
+import img_Hollow_Tuck from "./images/exercises/Hollow-position-tuck-1 - -.jpeg";
+import img_Hollow_Tuck_Advanced from "./images/exercises/Hollow-position-tuck-advanced-1 - -.jpeg";
+import img_Hollow_One_Leg from "./images/exercises/Hollow-position-one-leg-1 - -.jpeg";
+import img_Hollow_Full from "./images/exercises/hollow full - -.jpeg";
 
 // Warmup & Stretching images
 import img_str_Dorsali from "./images/warmup_stretch/str_Dorsali.jpg";
@@ -97,7 +102,8 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"p","content":"Inizia da una posizione di sospensione attiva (active hang): abbassa le spalle deprimendo le scapole prima ancora di tirare. Prediligi la presa prona (palmi in avanti) o neutra per la salute delle articolazioni nel lungo periodo."},
   {"type":"p","content":"Inizia la tirata portando il petto verso la sbarra, con il torso leggermente inclinato in diagonale — non tirare dritto verso l'alto. Punta i gomiti verso il basso: le mani fungono solo da ganci, il lavoro lo fanno i dorsali. Supera la sbarra col mento."},
   {"type":"p","content":"Se non riesci ancora a fare trazioni complete, usa la negativa assistita:"},
-  {"type":"ul","content":["Sali con un salto o con un elastico","Scendi lentissima in 5 secondi","E' la tecnica piu efficace per costruire la forza necessaria"]}
+  {"type":"ul","content":["Sali con un salto o con un elastico","Scendi lentissima in 5 secondi","E' la tecnica piu efficace per costruire la forza necessaria"]},
+  {"type":"p","content":"Assetto Hollow: durante tutta la trazione mantieni il core compatto e il bacino in retroversione, esattamente come nella Hollow Position da terra. Questo evita che la schiena si inarchi e massimizza il lavoro dei dorsali."}
 ]}, "Push-Up": {"g": "Pettorali/Tricipiti/Deltoidi", "c": "Mani poco piu larghe delle spalle, corpo in linea. Scendi col petto, spingi su.", "p": "Core contratto, gomiti a 45 gradi, bacino non cade e non sale.", "t": ["Bacino scende col petto", "Ginocchia a terra se difficile", "Eccentrica lenta = piu stimolo"], "lk": "https://www.youtube.com/results?search_query=push+up+tutorial+form", "deep": [
   {"type":"p","content":"Tieni il bacino in retroversione come nel plank: annulla la curva lombare contraendo gli addominali."},
   {"type":"ul","content":["Mani larghe circa il 150% delle spalle — troppo larghe stressano i polsi, troppo strette diventano un esercizio per tricipiti","Gomiti a 45 gradi rispetto al busto, mai aperti a 90 gradi (comprime la spalla)","Scendi fino a sfiorare terra con il petto — massima ampiezza = massimo stimolo"]},
@@ -110,14 +116,23 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"p","content":"Il Good Morning e un esercizio di preparazione specifica per migliorare Squat e Stacco da terra. E un movimento Hip Dominant: il motore e il bacino che si spinge indietro, non la schiena che si piega."},
   {"type":"ul","content":["Mantieni le curve fisiologiche della colonna — non perdere mai la lordosi lombare","Inizia con bilanciere scarico o leggerissimo per imparare lo schema motorio","Questo esercizio rinforza i punti deboli (lombari e femorali) nel punto critico di squat e stacco"]},
   {"type":"p","content":"Manovra di Valsalva: inspira profondamente, blocca il respiro e gonfia la pancia prima di eseguire il movimento. Crea pressione intra-addominale che protegge le vertebre lombari sotto carico."}
-]}, "Hyperextension": {"g": "Erettori/Glutei/Femorali", "c": "Panca 45 gradi, piedi bloccati. Scendi col busto, risali contraendo glutei e erettori.", "p": "Schiena neutra, non iperestendere.", "t": ["Contrai glutei in alto 1s", "Disco al petto per piu carico"], "lk": "https://www.youtube.com/results?search_query=hyperextension+tutorial"}, "Addominali Obliqui": {"g": "Obliqui", "c": "Crunch laterale o russian twist (piedi sollevati, ruota il busto).", "p": "Lombare a terra nei crunch.", "t": ["Rotazione dal busto", "Espira quando ruoti"], "lk": "https://www.youtube.com/results?search_query=russian+twist+tutorial", "deep": [
+]}, "Hollow Position": {"g": "Core/Stabilizzazione", "c": "Da supina, schiaccia la zona lombare a terra, attiva addome e glutei, solleva scapole, braccia e piedi, poi stendi le gambe mantenendo il core sempre attivo.", "p": "Lombare incollata al pavimento. Core e glutei contratti per tutta la durata. Niente spazio tra schiena e terra.", "t": ["Inizia con Hollow Tuck (ginocchia al petto)", "Aumenta la difficolta allungando le gambe", "Se perdi la lombare, regredisci alla variante precedente"], "lk": "https://www.youtube.com/results?search_query=hollow+body+hold+tutorial", "deep": [
+  {"type":"p","content":"Esercizio base di core stability usato nel calisthenics per imparare a compattare il corpo e mantenere il bacino in retroversione. E' la fondamenta di plank, trazioni, push-up e di tutti i movimenti in sospensione."},
+  {"type":"p","content":"Muscoli coinvolti: retto dell'addome, trasverso, obliqui, glutei, gran dentato e flessori dell'anca."},
+  {"type":"p","content":"Progressioni (dalla piu facile alla piu difficile):"},
+  {"type":"ul","content":["Hollow Tuck — ginocchia rannicchiate al petto","Hollow Advanced Tuck — ginocchia oltre i 90° rispetto al busto","Hollow One Leg — una sola gamba stesa (alterna le gambe tra le serie)","Hollow Full — entrambe le gambe stese, braccia lungo i fianchi"]},
+  {"type":"p","content":"Per aumentare ulteriormente la difficolta: porta le braccia tese sopra la testa. Quando anche questa diventa facile oltre i 40'' di tenuta, tieni in mano un disco da 1-2 kg."},
+  {"type":"p","content":"Quando usarla: ottima per principianti per sviluppare controllo del core e consapevolezza corporea. A livelli avanzati e un esercizio di passaggio o da inserire in circuiti ad alta densita, lavori combinati o pre-attivazione prima di compound pesanti."}
+]},
+"Hyperextension": {"g": "Erettori/Glutei/Femorali", "c": "Panca 45 gradi, piedi bloccati. Scendi col busto, risali contraendo glutei e erettori.", "p": "Schiena neutra, non iperestendere.", "t": ["Contrai glutei in alto 1s", "Disco al petto per piu carico"], "lk": "https://www.youtube.com/results?search_query=hyperextension+tutorial"}, "Addominali Obliqui": {"g": "Obliqui", "c": "Crunch laterale o russian twist (piedi sollevati, ruota il busto).", "p": "Lombare a terra nei crunch.", "t": ["Rotazione dal busto", "Espira quando ruoti"], "lk": "https://www.youtube.com/results?search_query=russian+twist+tutorial", "deep": [
   {"type":"p","content":"Regola base: retroversione del bacino. Da sdraiata, annulla lo spazio tra la schiena e il pavimento prima di iniziare. Evita che i flessori dell'anca (ileopsoas) tirino la bassa schiena."},
   {"type":"p","content":"Varianti principali:"},
   {"type":"ul","content":["Plank laterale: gomito e avambraccio a terra, corpo in linea da testa a piedi — opponiti alla gravita impedendo al bacino di cedere verso il basso","Crunch incrociato: porta il gomito verso il ginocchio opposto — la rotazione parte dal busto, non dalle braccia","Russian twist: piedi sollevati = piu difficile; mantieni le braccia tese e ruota lentamente"]}
 ]}, "Plank": {"g": "Core completo", "c": "Avambracci a terra, gomiti sotto spalle, corpo in linea.", "p": "Glutei contratti, addome in dentro, collo neutro.", "t": ["Tira gomiti verso piedi senza muoverti", "Se tremi e normale"], "lk": "https://www.youtube.com/results?search_query=plank+esecuzione+corretta", "deep": [
   {"type":"p","content":"L'assetto corretto si chiama Hollow: spalle protratte e depresse (spinte in avanti e verso il basso). Immagina di doverti allontanare costantemente dal pavimento con gli avambracci."},
   {"type":"ul","content":["Bacino in retroversione: annulla la curva lombare","Glutei contratti: sono il pilastro della stabilita","Tensione attiva: tira mentalmente i gomiti verso i piedi senza muoverti"]},
-  {"type":"p","content":"Se tremi, e normale: stai lavorando. Se la schiena cede o il sedere si alza, fermati e riparti."}
+  {"type":"p","content":"Se tremi, e normale: stai lavorando. Se la schiena cede o il sedere si alza, fermati e riparti."},
+  {"type":"p","content":"Propedeutico: se fai fatica a trovare la posizione corretta, allena prima la Hollow Position da sdraiata — e lo stesso assetto riportato in verticale."}
 ]}, "Squat": {"g": "Quadricipiti/Glutei/Core", "c": "Bilanciere sulle spalle, piedi larghezza spalle. Scendi al parallelo, spingi su.", "p": "Petto fuori, schiena neutra, ginocchia seguono le punte.", "t": ["Inspira e blocca core prima di scendere", "Ginocchia oltre le punte = fisiologico"], "lk": "https://www.youtube.com/results?search_query=barbell+squat+tutorial", "deep": [
   {"type":"p","content":"Guarda dritto o leggermente sopra, schiena con curve fisiologiche, sedere spinto indietro."},
   {"type":"ul","content":["Piedi poco piu larghi delle spalle, punte a circa 30 gradi verso fuori","Ginocchia spinte fuori durante tutta la discesa — non lasciarle collassare","Talloni sempre ancorati a terra","Scendi sotto il parallelo: sedere sotto il livello delle ginocchia"]},
@@ -357,6 +372,7 @@ var DAYS = [
     ex: [
       { n: "Addominali Obliqui", s: "3x15", rpe: "", note: "Russian twist o crunch laterale" },
       { n: "Plank", s: "3x45s", rpe: "", note: "" },
+      { n: "Hollow Position", s: "3x30s", rpe: "", note: "Inizia con Hollow Tuck se serve. Lombare incollata a terra." },
       { n: "Squat", s: "4x8-6-6-5", rpe: "8", note: "", v2: { n: "Front Squat", s: "4x8-6-6-5" }, v3: { n: "Pause Squat", s: "4x6-5-5-4" }, v4: { n: "Squat", s: "4x5-4-4-3", note: "Pesante" } },
       { n: "Military Press", s: "4x8-6-6-5", rpe: "8", note: "", v2: { n: "Push Press", s: "4x6-5-5-4" }, v3: { n: "Military Press", s: "4x10-8-8-6", note: "Manubri" }, v4: { n: "Military Press", s: "4x5-4-4-3", note: "Pesante" } },
       { n: "Lat Machine", s: "4x12-10-8-8", rpe: "9", note: "Sett.1: 30-30-35-35", cable: { n: "Lat Machine", s: "4x12-10-8-8", rpe: "9", note: "Sett.1: 30-30-35-35" }, free: { n: "Trazioni Supine", s: "4x12-10-8-8", rpe: "9", note: "Sost. lat machine" }, v2: { n: "Rematore Bilanciere", s: "4x10-8-8-6" }, v3: { n: "Rematore Manubri", s: "4x10-8-8-6" }, v4: { n: "Trazioni Supine", s: "4xmax", note: "Negativa 5s" } },
@@ -405,6 +421,7 @@ var DAYS = [
       { n: "Squat a corpo libero", img: "w_SquatBL", d: "10 ripetizioni lente.", lk: "https://www.youtube.com/results?search_query=bodyweight+squat+warmup" },
     ],
     ex: [
+      { n: "Hollow Position", s: "4x30s", rpe: "", note: "Progressione: Tuck → Advanced Tuck → One Leg → Full" },
       { n: "Curl Bicipiti", s: "3x12", rpe: "", note: "" },
       { n: "Dip su Panca", s: "3xmax", rpe: "", note: "Tricipiti" },
       { n: "Addominali Obliqui", s: "3x15", rpe: "", note: "" },
@@ -445,6 +462,7 @@ var EX_IMG = {
   "Front Squat": img_Front_Squat,
   "Good Morning": img_Good_Morning,
   "Hip Thrust Singolo": img_Hip_Thrust_Singolo,
+  "Hollow Position": img_Hollow_Position,
   "Hyperextension": img_Hyperextension,
   "Kick Back Manubri": img_Kick_Back_Manubri,
   "Lat Machine": img_Lat_Machine,
@@ -497,6 +515,7 @@ var SK = "wt-v5";
 
 var EX_EXTRA_IMG = {
   "Ab Wheel": [img_Ab_Wheel_Corretto],
+  "Hollow Position": [img_Hollow_Tuck, img_Hollow_Tuck_Advanced, img_Hollow_One_Leg, img_Hollow_Full],
 };
 
 function exImgs(name) {
