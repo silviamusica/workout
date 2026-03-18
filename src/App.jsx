@@ -858,6 +858,64 @@ function parseSerie(str) {
   return { sets: parseInt(m[1]), reps: m[2] === "max" ? Array(parseInt(m[1])).fill("max") : m[2].split("-") };
 }
 function todayStr() { return new Date().toISOString().split("T")[0]; }
+
+/* === BREATHING RULES === */
+// type: "valsalva" | "anatomic-push" | "anatomic-pull" | "iso"
+// anatomic-push: inspira scendendo (eccentrica), espira spingendo (concentrica)
+// anatomic-pull: inspira salendo/aprendosi (eccentrica), espira tirando (concentrica) — es lat machine
+// anatomic-open: inspira concentrica (braccia salgono/aprono petto), espira eccentrica — es alzate laterali
+var BREATH_RULES = {
+  "Squat":              { type:"valsalva",      short:"Valsalva · apnea durante lo sforzo",           inhale:"Prima di scendere — gonfia l'addome", exhale:"A fine risalita, prima della prossima rip" },
+  "Pause Squat":        { type:"valsalva",      short:"Valsalva · apnea durante lo sforzo",           inhale:"Prima di scendere — gonfia l'addome", exhale:"A fine risalita, prima della prossima rip" },
+  "Front Squat":        { type:"valsalva",      short:"Valsalva · apnea durante lo sforzo",           inhale:"Prima di scendere — gonfia l'addome", exhale:"A fine risalita, prima della prossima rip" },
+  "Stacco da Terra":    { type:"valsalva",      short:"Valsalva · apnea durante lo sforzo",           inhale:"Prima di tirare — gonfia l'addome", exhale:"Dopo aver deposto il bilanciere" },
+  "Stacco Rumeno":      { type:"valsalva",      short:"Valsalva · apnea durante lo sforzo",           inhale:"Prima di scendere — gonfia l'addome", exhale:"In cima, prima della prossima rip" },
+  "Stacco Sumo":        { type:"valsalva",      short:"Valsalva · apnea durante lo sforzo",           inhale:"Prima di tirare — gonfia l'addome", exhale:"Dopo aver deposto il bilanciere" },
+  "Good Morning":       { type:"valsalva",      short:"Valsalva · apnea durante lo sforzo",           inhale:"Prima di piegarsi — gonfia l'addome", exhale:"In cima, prima della prossima rip" },
+  "Panca":              { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo (torace si allarga)", exhale:"Spingendo verso l'alto" },
+  "Floor Press Manubri":{ type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo (torace si allarga)", exhale:"Spingendo verso l'alto" },
+  "Push-Up":            { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo verso terra", exhale:"Spingendo verso l'alto" },
+  "Push-Up Declino":    { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo verso terra", exhale:"Spingendo verso l'alto" },
+  "Push-Up Diamante":   { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo verso terra", exhale:"Spingendo verso l'alto" },
+  "Dip su Panca":       { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo (gomiti a 90°)", exhale:"Spingendo verso l'alto" },
+  "Military Press":     { type:"anatomic-open", short:"Inspira spingendo · espira scendendo",         inhale:"Spingendo verso l'alto (petto si apre)", exhale:"Scendendo alle clavicole" },
+  "Push Press":         { type:"anatomic-open", short:"Inspira spingendo · espira scendendo",         inhale:"Spingendo verso l'alto (petto si apre)", exhale:"Scendendo alle clavicole" },
+  "Arnold Press":       { type:"anatomic-open", short:"Inspira spingendo · espira scendendo",         inhale:"Spingendo e ruotando verso l'alto", exhale:"Scendendo e ruotando verso di te" },
+  "Alzate Laterali":    { type:"anatomic-open", short:"Inspira alzando · espira abbassando",          inhale:"Alzando le braccia (petto si apre)", exhale:"Abbassando le braccia" },
+  "Croci Manubri a Terra":{ type:"anatomic-open",short:"Inspira aprendo · espira chiudendo",          inhale:"Aprendo le braccia lateralmente", exhale:"Chiudendo verso il centro" },
+  "Trazioni":           { type:"anatomic-pull", short:"Inspira scendendo · espira tirando",           inhale:"Scendendo (fase eccentrica)", exhale:"Tirando verso l'alto" },
+  "Trazioni Supine":    { type:"anatomic-pull", short:"Inspira scendendo · espira tirando",           inhale:"Scendendo (fase eccentrica)", exhale:"Tirando verso l'alto" },
+  "Lat Machine":        { type:"anatomic-pull", short:"Inspira braccia su · espira tirando",          inhale:"Braccia che salgono (eccentrica)", exhale:"Tirando verso il basso (concentrica)" },
+  "Pulley":             { type:"anatomic-pull", short:"Inspira braccia avanti · espira tirando",      inhale:"Braccia che si distendono (eccentrica)", exhale:"Tirando verso il petto (concentrica)" },
+  "Rematore Manubri":   { type:"anatomic-pull", short:"Inspira scendendo · espira tirando",           inhale:"Abbassando il manubrio (eccentrica)", exhale:"Tirando verso il fianco (concentrica)" },
+  "Rematore Bilanciere":{ type:"anatomic-pull", short:"Inspira scendendo · espira tirando",           inhale:"Abbassando il bilanciere (eccentrica)", exhale:"Tirando verso l'addome (concentrica)" },
+  "Pendlay Row":        { type:"anatomic-pull", short:"Inspira scendendo · espira tirando",           inhale:"Abbassando il bilanciere a terra", exhale:"Tirando esplosivamente verso l'addome" },
+  "Curl Bicipiti":      { type:"anatomic-pull", short:"Inspira scendendo · espira flettendo",         inhale:"Abbassando (eccentrica)", exhale:"Flettendo verso le spalle (concentrica)" },
+  "Curl Martello":      { type:"anatomic-pull", short:"Inspira scendendo · espira flettendo",         inhale:"Abbassando (eccentrica)", exhale:"Flettendo verso le spalle (concentrica)" },
+  "Curl Concentrato":   { type:"anatomic-pull", short:"Inspira scendendo · espira flettendo",         inhale:"Abbassando (eccentrica)", exhale:"Flettendo verso la spalla (concentrica)" },
+  "French Press Manubri":{ type:"anatomic-push",short:"Inspira scendendo · espira estendendo",        inhale:"Piegando i gomiti (eccentrica)", exhale:"Estendendo verso il soffitto (concentrica)" },
+  "Overhead Extension": { type:"anatomic-push", short:"Inspira scendendo · espira estendendo",        inhale:"Piegando i gomiti (eccentrica)", exhale:"Estendendo verso l'alto (concentrica)" },
+  "Kick Back Manubri":  { type:"anatomic-push", short:"Inspira piegando · espira estendendo",         inhale:"Piegando il gomito (eccentrica)", exhale:"Estendendo il braccio indietro (concentrica)" },
+  "Tricipiti Cavo":     { type:"anatomic-push", short:"Inspira piegando · espira estendendo",         inhale:"Risalendo (eccentrica)", exhale:"Estendendo verso il basso (concentrica)" },
+  "Hyperextension":     { type:"anatomic-push", short:"Inspira scendendo · espira risalendo",         inhale:"Scendendo (eccentrica)", exhale:"Risalendo contraendo glutei e dorsali" },
+  "Nordic Curl":        { type:"anatomic-push", short:"Inspira scendendo · espira risalendo",         inhale:"Scendendo (eccentrica controllata)", exhale:"Risalendo (concentrica)" },
+  "Squat Bulgaro":      { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo (eccentrica)", exhale:"Spingendo verso l'alto (concentrica)" },
+  "Affondi":            { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo (eccentrica)", exhale:"Spingendo verso l'alto (concentrica)" },
+  "Walking Lunge":      { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo ad ogni passo", exhale:"Spingendo verso l'alto" },
+  "Step Up":            { type:"anatomic-push", short:"Inspira preparandoti · espira salendo",        inhale:"Prima del passo sullo step", exhale:"Salendo e spingendo verso l'alto" },
+  "Single Leg Deadlift":{ type:"valsalva",      short:"Valsalva · apnea durante lo sforzo",           inhale:"Prima di scendere — stabilizzati", exhale:"Risalendo in posizione verticale" },
+  "Hip Thrust Singolo": { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo (eccentrica)", exhale:"Spingendo le anche verso l'alto" },
+  "Clamshell":          { type:"iso",           short:"Respirazione continua · addome contratto",     inhale:"Regolare, a ritmo costante", exhale:"Espira nell'apertura massima (concentrica)" },
+  "Abduzione Laterale": { type:"iso",           short:"Respirazione continua · addome contratto",     inhale:"Regolare, a ritmo costante", exhale:"Espira alzando la gamba (concentrica)" },
+  "Fire Hydrant":       { type:"iso",           short:"Respirazione continua · addome contratto",     inhale:"Regolare, a ritmo costante", exhale:"Espira alzando il ginocchio (concentrica)" },
+  "Ab Wheel":           { type:"anatomic-push", short:"Inspira avanzando · espira rientrando",        inhale:"Rotolando in avanti (apertura torace)", exhale:"Rientrando contraendo gli addominali" },
+  "Plank":              { type:"iso",           short:"Respiro lento e profondo · mai in apnea",      inhale:"Respiro toracico lento e profondo", exhale:"Espira lentamente, addome sempre contratto" },
+  "Shoulder Tap":       { type:"iso",           short:"Respiro lento e continuo · mai in apnea",      inhale:"Respiro regolare tra un tocco e l'altro", exhale:"Espira lentamente mantenendo il core contratto" },
+  "Addominali Obliqui": { type:"anatomic-push", short:"Inspira aprendo · espira ruotando",            inhale:"Tornando al centro (eccentrica)", exhale:"Ruotando/flettendo verso il lato (concentrica)" },
+};
+var BREATH_TYPE_COLOR = { valsalva: "#E07848", "anatomic-push": "#5C8FD0", "anatomic-pull": "#6DAD8C", "anatomic-open": "#9B7ED0", iso: "#A08878" };
+var BREATH_TYPE_LABEL = { valsalva: "Manovra di Valsalva", "anatomic-push": "Anatomica — Spinta", "anatomic-pull": "Anatomica — Trazione", "anatomic-open": "Anatomica — Apertura", iso: "Isometrica" };
+function getBreath(name) { return BREATH_RULES[name] || null; }
 function fmtTime(ms) { var s = Math.floor(ms / 1000); return (Math.floor(s/60) < 10 ? "0" : "") + Math.floor(s/60) + ":" + (s%60 < 10 ? "0" : "") + s%60 + "." + (Math.floor((ms%1000)/10) < 10 ? "0" : "") + Math.floor((ms%1000)/10); }
 
 export default function App() {
@@ -883,6 +941,7 @@ export default function App() {
   var [showIntroCard, setShowIntroCard] = useState(null);
   var [showMuscleIntro, setShowMuscleIntro] = useState(null);
   var [showExIntro, setShowExIntro] = useState(null);
+  var [showBreath, setShowBreath] = useState(null);
   var [showReg, setShowReg] = useState(null);
   var [catSec, setCatSec] = useState(null);
   var [logs, setLogs] = useState({});
@@ -1946,6 +2005,40 @@ export default function App() {
                   </div>}
                   {ex.s && <div style={{ fontSize: 12, color: dc, fontWeight: 600, marginBottom: 6 }}>{fmtSerie(ex.s)}{ex.rpe ? " — RPE " + ex.rpe : ""}</div>}
                   {ex.note && <div style={{ fontSize: 11, color: T.sub, marginBottom: 6, fontStyle: "italic" }}>{ex.note}</div>}
+                  {/* Respirazione badge */}
+                  {(function() {
+                    var br = getBreath(ex.n);
+                    if (!br) return null;
+                    var bColor = BREATH_TYPE_COLOR[br.type] || dc;
+                    var isBreathOpen = showBreath === i;
+                    return <div style={{ marginBottom: 8 }}>
+                      <button onClick={function(e) { e.stopPropagation(); setShowBreath(isBreathOpen ? null : i); }} style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 10, fontWeight: 700, border: "1px solid " + bColor + "40", borderRadius: 6, padding: "3px 9px", background: isBreathOpen ? bColor + "18" : bColor + "0A", color: bColor, cursor: "pointer" }}>
+                        <span>🫁</span>
+                        <span>{br.short}</span>
+                      </button>
+                      {isBreathOpen && <div style={{ marginTop: 6, borderRadius: 9, border: "1px solid " + bColor + "30", overflow: "hidden" }}>
+                        <div style={{ padding: "7px 11px 6px", background: bColor + "10", borderBottom: "1px solid " + bColor + "20", display: "flex", alignItems: "center", gap: 6 }}>
+                          <span style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.7, color: bColor }}>{BREATH_TYPE_LABEL[br.type]}</span>
+                        </div>
+                        <div style={{ padding: "8px 11px", background: T.sb, display: "grid", gap: 6 }}>
+                          <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                            <span style={{ fontSize: 16, lineHeight: 1, flexShrink: 0, marginTop: 1 }}>🌬️</span>
+                            <div>
+                              <div style={{ fontSize: 10, fontWeight: 800, color: bColor, marginBottom: 2 }}>INSPIRA</div>
+                              <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{br.inhale}</div>
+                            </div>
+                          </div>
+                          <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                            <span style={{ fontSize: 16, lineHeight: 1, flexShrink: 0, marginTop: 1 }}>💨</span>
+                            <div>
+                              <div style={{ fontSize: 10, fontWeight: 800, color: bColor, marginBottom: 2 }}>ESPIRA</div>
+                              <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{br.exhale}</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>}
+                    </div>;
+                  })()}
                   {/* Foto thumbnail + azioni */}
                   <div style={{ display: "flex", gap: 8, marginBottom: 10, alignItems: "flex-start" }}>
                     {exImgs(ex.n).length > 0 && <div onClick={function(e) { e.stopPropagation(); setShowImg(showImg === "ex" + i ? null : "ex" + i); }} style={{ flexShrink: 0, cursor: "pointer", borderRadius: 8, overflow: "hidden", border: "2px solid " + (showImg === "ex" + i ? dc : T.bg), transition: "border-color 0.15s" }}>
