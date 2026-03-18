@@ -192,7 +192,7 @@ var GLOSS_LINKS = [
   { match: "concentrica", term: "Concentrica (positiva)" },
   { match: "eccentrica", term: "Eccentrica (negativa)" },
   { match: "isometrica", term: "Isometrica" },
-  { match: "rpe", term: "RPE (Rate of Perceived Exertion)" },
+  { match: "rpe", term: "RPE (Rate of Perceived Exertion)", wholeWord: true },
   { match: "serie e ripetizione", term: "Serie e ripetizione" },
   { match: "ripetizione", term: "Serie e ripetizione" },
   { match: "multiarticolare", term: "Multiarticolare (compound)" },
@@ -203,9 +203,9 @@ var GLOSS_LINKS = [
   { match: "sovraccarico progressivo", term: "Sovraccarico progressivo" },
   { match: "deload", term: "Deload" },
   { match: "tempo sotto tensione", term: "Tempo sotto tensione (TUT)" },
-  { match: "tut", term: "Tempo sotto tensione (TUT)" },
+  { match: "tut", term: "Tempo sotto tensione (TUT)", wholeWord: true },
   { match: "range of motion", term: "Range of Motion (ROM)" },
-  { match: "rom", term: "Range of Motion (ROM)" },
+  { match: "rom", term: "Range of Motion (ROM)", wholeWord: true },
   { match: "presa prona", term: "Presa prona" },
   { match: "presa supina", term: "Presa supina" },
   { match: "presa neutra", term: "Presa neutra" },
@@ -345,7 +345,12 @@ var STR = {
 /* === WORKOUT PLAN WITH MONTHS === */
 var DAYS = [
   { name: "Lunedi", focus: "Tirata upper + core + catena posteriore", dur: "8-10min", tEst: 70,
-    intro: "Oggi lavori sulla schiena: la muscolatura che ti tiene dritta e ti da potenza. Trazioni e rematore costruiscono dorsali e romboidi; il core con l'ab wheel protegge la colonna; hyperextension e good morning blindano la catena posteriore. Ogni tirata che fai oggi migliora la tua postura di domani.",
+    intro: {
+      muscoli: ["Dorsali (gran dorsale, romboidi)", "Core (retto addominale, obliqui)", "Catena posteriore (glutei, femorali, erettori spinali)"],
+      obiettivi: ["Costruire forza e volume nella tirata orizzontale e verticale", "Rinforzare la catena posteriore che protegge la zona lombare", "Migliorare postura e capacita di trasmettere forza dal tronco"],
+      attenzione: ["Trazioni e rematore: conta la qualita del gesto, non la fretta — scapole attive prima di ogni tirata", "Ab wheel: bacino in retroversione e glutei contratti sempre, prima ancora di muoversi", "Good morning: inizia con bilanciere leggerissimo, mai perdere la curva lombare"],
+      ritmo: "Recuperi 2 min sui compound (trazioni, rematore), 90s sugli accessori, 30s sul core."
+    },
     warmup: [
       { n: "Corsa sul posto o jumping jacks", img: "w_JumpingJacks", d: "5 minuti continui a intensita moderata. Obiettivo: alzare la frequenza cardiaca e la temperatura muscolare.", lk: "https://www.youtube.com/results?search_query=jumping+jacks+tutorial", tm: 300 },
       { n: "Cerchi con le braccia", d: "In piedi, braccia tese ai lati. Fai cerchi ampi in avanti per 10 rip, poi 10 indietro. Scalda la cuffia dei rotatori e le spalle.", lk: "https://www.youtube.com/results?search_query=arm+circles+warmup" },
@@ -362,7 +367,12 @@ var DAYS = [
       { n: "Good Morning", s: "3x12", rpe: "8", note: "Aggiunta. Bilanciere leggero" },
     ], str: ["Dorsali","Femorali","Lombare","Pettorali"] },
   { name: "Martedi", focus: "Spinta lower + upper + braccia", dur: "8-10min", tEst: 80,
-    intro: "La giornata piu completa: squat per costruire gambe solide, military press per spalle forti, braccia con curl e french press. Core in apertura per attivare la stabilita. Ogni muscolo che spingi oggi reagisce crescendo nei giorni di riposo. Fidati del processo.",
+    intro: {
+      muscoli: ["Quadricipiti, glutei, femorali (squat, squat bulgaro)", "Deltoidi, tricipiti (military press)", "Dorsali, bicipiti (lat machine/trazioni supine)", "Bicipiti, tricipiti (curl, french press, tricipiti cavo)", "Core (plank, hollow position, addominali obliqui)"],
+      obiettivi: ["Sviluppare forza nella spinta verticale e nei multiarticolari lower", "Costruire volume su braccia e upper body con esercizi di isolamento", "Mantenere alta la frequenza di stimolo su dorsali con la tirata di servizio"],
+      attenzione: ["Squat: Valsalva prima di scendere, ginocchia fuori, sedere sotto il parallelo", "Military press: glutei e core contratti — evita di inarcare la lombare sotto carico", "Braccia: se dondoli o perdi la posizione, il peso e troppo alto — riduci e cura l'eccentrica"],
+      ritmo: "Seduta piu lunga della settimana. Recuperi 2 min su squat e military, 90s sugli accessori, 60s sulle braccia."
+    },
     warmup: [
       { n: "Burpees leggeri o skip sul posto", img: "w_Burpees", d: "5 minuti. Burpees: scendi in squat, mani a terra, salta in plank, torna su. Skip: corri sul posto ginocchia al petto. Ritmo moderato.", lk: "https://www.youtube.com/results?search_query=beginner+burpees+tutorial", tm: 300 },
       { n: "Squat a corpo libero", img: "w_SquatBL", d: "2 serie da 8. Lento, concentrati sulla profondita e busto eretto. Prepara quadricipiti e glutei.", lk: "https://www.youtube.com/results?search_query=bodyweight+squat+warmup" },
@@ -382,7 +392,12 @@ var DAYS = [
       { n: "Squat Bulgaro", s: "3x10", rpe: "8", note: "Per gamba. Sost. leg extension", v2: { n: "Step Up", s: "3x12" }, v3: { n: "Squat Bulgaro", s: "3x8", note: "Manubri pesanti" }, v4: { n: "Walking Lunge", s: "3x10" } },
     ], str: ["Quadricipiti","Flessori anca","Spalle","Tricipiti"] },
   { name: "Mercoledi", focus: "Spinta upper + lower + tirata", dur: "8-10min", tEst: 55,
-    intro: "Casa, bilanciere, essenziale. Panca per il petto, stacco per tutta la catena posteriore, rematore per la schiena, squat leggero per chiudere. Pochi esercizi, tutti fondamentali: oggi costruisci le fondamenta della forza reale.",
+    intro: {
+      muscoli: ["Pettorali, tricipiti, deltoidi anteriori (panca)", "Catena posteriore completa — glutei, femorali, erettori (stacco)", "Dorsali, trapezi, bicipiti (rematore bilanciere)", "Quadricipiti, glutei (squat leggero di chiusura)"],
+      obiettivi: ["Sviluppare forza massimale nei fondamentali: panca e stacco", "Rinforzare la tirata orizzontale pesante con il rematore bilanciere", "Seduta breve ma ad alta resa: pochi esercizi, tutti fondamentali"],
+      attenzione: ["Stacco: Valsalva obbligatorio, bilanciere sempre a contatto con le gambe, schiena neutra mai arrotondata", "Panca: scapole retratte e depresse prima ancora di staccare dal rack — mai senza questo assetto", "Rematore: se il busto si solleva a ogni rip, il peso e eccessivo — riduci e mantieni i 45 gradi"],
+      ritmo: "Seduta corta. Recuperi 2-3 min su panca e stacco (carichi pesanti), 90s sul rematore."
+    },
     warmup: [
       { n: "Cat-Cow", img: "w_CatCow", d: "10 ripetizioni lente. Mobilizza la colonna prima di caricarla con stacco e panca.", lk: "https://www.youtube.com/results?search_query=cat+cow+warmup" },
       { n: "World's Greatest Stretch", d: "5 per lato. Parti in affondo, mano a terra, ruota il busto aprendo l'altro braccio verso il soffitto. Allunga flessori anca, torace, anche, femorali.", lk: "https://www.youtube.com/results?search_query=worlds+greatest+stretch+tutorial" },
@@ -397,7 +412,12 @@ var DAYS = [
       { n: "Squat", s: "3x10", rpe: "7", note: "A terra, ginocchia larghe. Con kb o bil. (5+2.5kg)" },
     ], str: ["Pettorali","Femorali","Lombare","Cat-Cow","Dorsali"] },
   { name: "Giovedi", focus: "Spinta lower + glutei + upper isolamento", dur: "8-10min", tEst: 70,
-    intro: "Glutei, gambe, spalle: oggi il corpo lavora dal basso verso l'alto. Affondi e clamshell scolpiscono glutei e stabilizzatori dell'anca; croci e arnold press rifiniscono petto e deltoidi. Alto volume, brucia, ma e qui che cambia la forma.",
+    intro: {
+      muscoli: ["Grande gluteo, gluteo medio (affondi, clamshell, hyperextension)", "Quadricipiti, femorali (affondi, hyperextension)", "Pettorali (croci a terra)", "Deltoidi (arnold press)", "Core (addominali obliqui, shoulder tap)"],
+      obiettivi: ["Accumulare volume alto su glutei e gambe con tempo sotto tensione elevato", "Isolare e rinforzare il gluteo medio per stabilizzare il ginocchio nei compound", "Rifinire pettorali e spalle con lavoro di isolamento a fine seduta"],
+      attenzione: ["Affondi: ginocchio anteriore non cede verso l'interno — segnale che il gluteo medio e debole o il peso e troppo alto", "Clamshell: il bacino NON deve ruotare all'indietro durante l'apertura — se si muove stai compensando", "Croci: non usare pesi troppo alti, conta il ROM completo e la pausa in allungamento, non il carico"],
+      ritmo: "Seduta ad alto volume metabolico. Recuperi brevi: 60-90s su affondi e clamshell, 90s su croci e arnold."
+    },
     warmup: [
       { n: "Marcia con ginocchia alte", d: "5 minuti. Ginocchia al petto ad ogni passo. Ritmo sostenuto. Scalda flessori anca e quadricipiti.", lk: "https://www.youtube.com/results?search_query=high+knees+march+warmup", tm: 300 },
       { n: "Clamshell a corpo libero", d: "10 per lato. Su un fianco, ginocchia piegate, apri il ginocchio superiore. Attiva gluteo medio prima degli affondi.", lk: "https://www.youtube.com/results?search_query=clamshell+warmup+glute+activation" },
@@ -414,7 +434,12 @@ var DAYS = [
       { n: "Arnold Press", s: "4x12", rpe: "9", note: "8kg", v2: { n: "Alzate Laterali", s: "4x15" }, v3: { n: "Push Press", s: "4x8" }, v4: { n: "Arnold Press", s: "4x8", note: "Pesante" } },
     ], str: ["Glutei","Flessori anca","Quadricipiti","Pettorali","Spalle"] },
   { name: "Giorno 5-6", focus: "Richiamo braccia + core + gambe", dur: "5min", tEst: 45,
-    intro: "Sessione opzionale, a casa, senza pressione. Richiami braccia, core e gambe con volume leggero. Non serve spingere al limite: l'obiettivo e mantenere attivo il corpo e consolidare il lavoro della settimana. Se sei stanca, salta. Se hai energia, falla.",
+    intro: {
+      muscoli: ["Core (hollow position, addominali obliqui)", "Bicipiti, tricipiti (curl, dip su panca)", "Quadricipiti, glutei (step up, affondi)", "Dorsali (trazioni)", "Pettorali, tricipiti (push-up)"],
+      obiettivi: ["Mantenere alta la frequenza di stimolo su tutti i distretti principali", "Consolidare gli schemi motori appresi durante la settimana", "Portare sangue ai muscoli senza aggiungere fatica sistemica"],
+      attenzione: ["Sessione opzionale: se sei stanca o con dolori muscolari intensi, salta senza sensi di colpa", "Non inseguire la fatica: ritmo controllato, buon ROM, nessun ego sul carico", "Hollow position: usa la progressione giusta per te — meglio tuck perfetto che full storto"],
+      ritmo: "Seduta leggera. Recuperi brevi: 45-60s. Deve lasciarti piu attiva, non piu stanca."
+    },
     warmup: [
       { n: "Corsa sul posto", img: "w_JumpingJacks", d: "2 minuti a ritmo leggero. Sessione opzionale.", lk: "https://www.youtube.com/results?search_query=jogging+in+place+warmup", tm: 120 },
       { n: "Jumping jacks", img: "w_JumpingJacks", d: "10 ripetizioni. Alza la frequenza cardiaca.", lk: "https://www.youtube.com/results?search_query=jumping+jacks+tutorial" },
@@ -760,11 +785,30 @@ export default function App() {
     return GLOSS.find(function(g) { return g.t === term; }) || null;
   }
 
+  function isWordChar(ch) {
+    return /[\p{L}\p{N}]/u.test(ch);
+  }
+
+  function findEntryIndex(lower, entry) {
+    var needle = entry.match.toLowerCase();
+    var start = 0;
+    while (start < lower.length) {
+      var idx = lower.indexOf(needle, start);
+      if (idx === -1) return -1;
+      if (!entry.wholeWord) return idx;
+      var prev = idx > 0 ? lower[idx - 1] : "";
+      var next = idx + needle.length < lower.length ? lower[idx + needle.length] : "";
+      if (!isWordChar(prev) && !isWordChar(next)) return idx;
+      start = idx + 1;
+    }
+    return -1;
+  }
+
   function findGlossMatch(text) {
     var lower = text.toLowerCase();
     var best = null;
     GLOSS_LINKS.forEach(function(entry) {
-      var idx = lower.indexOf(entry.match.toLowerCase());
+      var idx = findEntryIndex(lower, entry);
       if (idx === -1) return;
       if (!best || idx < best.idx || (idx === best.idx && entry.match.length > best.match.length)) {
         best = { idx: idx, match: entry.match, term: entry.term };
@@ -1269,14 +1313,47 @@ export default function App() {
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "0 12px 24px", paddingBottom: tPanel ? 200 : 100 }}>
           <div style={{ background: T.cd, borderRadius: "0 0 14px 14px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", overflow: "hidden" }}>
 
-            {/* Motivational intro */}
-            <div style={{ padding: "14px 14px 10px", borderBottom: "1px solid " + T.bg }}>
-              <DetailText text={dayData.intro} accent={dc} size={13} soft={true} />
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8 }}>
-                <span style={{ fontSize: 12, fontWeight: 700, color: dc }}>{dayData.focus}</span>
-                <span style={{ fontSize: 11, color: T.sub, fontWeight: 600 }}>~{dayData.tEst} min</span>
-              </div>
-            </div>
+            {/* Day intro schematic */}
+            {(function() {
+              var intro = dayData.intro;
+              if (!intro || typeof intro === "string") return null;
+              var sections = [
+                { key: "muscoli", label: "Gruppi muscolari", icon: "💪" },
+                { key: "obiettivi", label: "Obiettivi", icon: "🎯" },
+                { key: "attenzione", label: "Su cosa concentrarsi", icon: "⚡" },
+              ];
+              return <div style={{ borderBottom: "1px solid " + T.bg }}>
+                <div style={{ padding: "12px 14px 6px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                  <div>
+                    <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>{dayData.focus}</div>
+                    <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>~{dayData.tEst} min</div>
+                  </div>
+                </div>
+                <div style={{ display: "grid", gap: 0 }}>
+                  {sections.map(function(sec) {
+                    var items = intro[sec.key];
+                    if (!items || !items.length) return null;
+                    return <div key={sec.key} style={{ borderTop: "1px solid " + T.bg, padding: "10px 14px" }}>
+                      <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.8, color: dc, marginBottom: 7, display: "flex", alignItems: "center", gap: 5 }}>
+                        <span>{sec.icon}</span>{sec.label}
+                      </div>
+                      <div style={{ display: "grid", gap: 4 }}>
+                        {items.map(function(item, ii) {
+                          return <div key={ii} style={{ display: "flex", gap: 7, alignItems: "flex-start" }}>
+                            <span style={{ color: dc, fontSize: 10, lineHeight: 1.8, flexShrink: 0, fontWeight: 700 }}>→</span>
+                            <span style={{ fontSize: 12, lineHeight: 1.6, color: T.sub }}>{item}</span>
+                          </div>;
+                        })}
+                      </div>
+                    </div>;
+                  })}
+                  {intro.ritmo && <div style={{ borderTop: "1px solid " + T.bg, padding: "10px 14px 12px", display: "flex", gap: 7, alignItems: "flex-start", background: dc + "06" }}>
+                    <span style={{ fontSize: 13, lineHeight: 1.5, flexShrink: 0 }}>⏱</span>
+                    <span style={{ fontSize: 12, lineHeight: 1.6, color: T.sub, fontStyle: "italic" }}>{intro.ritmo}</span>
+                  </div>}
+                </div>
+              </div>;
+            })()}
 
             {/* Principles */}
             <div style={{ borderBottom: "1px solid " + T.bg }}>
