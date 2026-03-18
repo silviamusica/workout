@@ -1053,7 +1053,7 @@ export default function App() {
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); try { localStorage.removeItem(SK); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); try { localStorage.removeItem(SK); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
           </div>
         </div>
       </div>}
@@ -1073,7 +1073,10 @@ export default function App() {
               </div>
               <div style={{ flex: 1 }}>
                 <input value={userName} onChange={function(e) { setUserName(e.target.value); try { localStorage.setItem("wt-username", e.target.value); } catch(err) {} }} placeholder="Il tuo nome" style={{ width: "100%", padding: "8px 10px", border: "1px solid " + T.bg, borderRadius: 8, fontSize: 14, fontWeight: 600, background: T.cd, color: T.tx, boxSizing: "border-box" }} />
-                <div style={{ fontSize: 10, color: T.sub, marginTop: 4 }}>Tap sulla foto per cambiarla</div>
+                <div style={{ display: "flex", gap: 8, marginTop: 5 }}>
+                  <div style={{ fontSize: 10, color: T.sub }}>Tap sulla foto per cambiarla</div>
+                  {userPhoto && <button onClick={function() { setUserPhoto(null); try { localStorage.removeItem("wt-userphoto"); } catch(e) {} }} style={{ fontSize: 10, color: "#C62828", background: "none", border: "none", padding: 0, cursor: "pointer", fontWeight: 600 }}>Rimuovi foto</button>}
+                </div>
               </div>
             </div>
             {/* Tema */}
@@ -1114,19 +1117,15 @@ export default function App() {
             </div>
             <div>
               <div style={{ fontSize: 16, fontWeight: 800 }}>{userName ? "Ciao, " + userName + "!" : "Home Work-out"}</div>
-              <div style={{ fontSize: 11, opacity: 0.5, marginTop: 1 }}>Home Work-out — Mese {month}</div>
+              <div style={{ fontSize: 11, opacity: 0.5, marginTop: 1 }}>Home Work-out</div>
             </div>
           </div>
           {/* Rotellina impostazioni */}
           <button onClick={function() { setSettingsOpen(true); }} style={{ background: "rgba(255,255,255,0.12)", border: "none", color: T.htx, width: 36, height: 36, borderRadius: 10, cursor: "pointer", fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center" }}>⚙️</button>
         </div>
-        {/* Month tabs */}
-        <div style={{ display: "flex", gap: 4, maxWidth: 600, margin: "10px auto 0" }}>
-          {[1,2,3,4].map(function(m) { return <button key={m} onClick={function() { setMonth(m); }} style={{ flex: 1, padding: "5px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 11, fontWeight: month === m ? 700 : 500, background: month === m ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: month === m ? "#fff" : "rgba(255,255,255,0.4)" }}>{"Mese " + m}</button>; })}
-        </div>
         {/* View tabs */}
-        <div style={{ display: "flex", gap: 4, maxWidth: 600, margin: "6px auto 0" }}>
-          {["Teoria", "Scheda", "Muscoli", "Esercizi"].map(function(t) { var keys = {"Teoria":"teoria","Scheda":"workout","Muscoli":"muscles","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); }} style={{ flex: 1, padding: "6px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, background: active ? "rgba(255,255,255,0.18)" : "rgba(255,255,255,0.04)", color: active ? "#fff" : "rgba(255,255,255,0.35)" }}>{t}</button>; })}
+        <div style={{ display: "flex", gap: 4, maxWidth: 600, margin: "10px auto 0" }}>
+          {["Teoria", "Muscoli", "Scheda", "Esercizi"].map(function(t) { var keys = {"Teoria":"teoria","Scheda":"workout","Muscoli":"muscles","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); }} style={{ flex: 1, padding: "7px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, background: active ? "rgba(255,255,255,0.18)" : "rgba(255,255,255,0.04)", color: active ? "#fff" : "rgba(255,255,255,0.35)" }}>{t}</button>; })}
         </div>
       </div>
 
@@ -1310,7 +1309,13 @@ export default function App() {
 
       {/* === WORKOUT TAB === */}
       {tab === "workout" && <div>
-        <div style={{ display: "flex", gap: 5, padding: "10px 12px 0", overflowX: "auto", maxWidth: 624, margin: "0 auto" }}>
+        {/* Month selector */}
+        <div style={{ display: "flex", gap: 6, padding: "10px 12px 4px", maxWidth: 624, margin: "0 auto", alignItems: "center" }}>
+          <span style={{ fontSize: 11, fontWeight: 700, color: T.sub, marginRight: 2, whiteSpace: "nowrap" }}>Mese</span>
+          {[1,2,3,4].map(function(m) { var active = month === m; return <button key={m} onClick={function() { setMonth(m); }} style={{ flex: 1, padding: "6px 0", border: active ? "2px solid " + dc : "2px solid transparent", borderRadius: 8, cursor: "pointer", fontSize: 12, fontWeight: active ? 800 : 500, background: active ? dc + "18" : T.tx + "06", color: active ? dc : T.sub, transition: "all 0.15s" }}>{"M" + m}</button>; })}
+        </div>
+        {/* Day tabs */}
+        <div style={{ display: "flex", gap: 5, padding: "0 12px 0", overflowX: "auto", maxWidth: 624, margin: "0 auto" }}>
           {DAYS.map(function(d, i) { var active = dayIdx === i; return <button key={i} onClick={function() { setDayIdx(i); setOpenEx(null); setEditing(null); setHistIdx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false); setShowImg(null); }} style={{ flex: i < 4 ? 1 : "none", padding: "9px 10px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, background: active ? T.dy[i] : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}>{d.name}</button>; })}
         </div>
 
