@@ -289,7 +289,6 @@ var INTRO_BASICS = [
       { type: "p", content: "Dopo uno stimolo, la sintesi proteica (riparazione e crescita muscolare) dura circa 36-72 ore. Se aspetti 7 giorni, il muscolo ha già finito di crescere e stai 'sprecando' tempo." },
       { type: "p", content: "La multifrequenza non significa fare lo stesso esercizio ogni giorno: significa distribuire il volume settimanale su più sessioni, così ogni sessione è gestibile e ogni muscolo viene stimolato più spesso." },
       { type: "p", content: "Questa scheda è costruita su questo principio: dorsali, core e glutei compaiono in ogni giornata, con esercizi diversi e angolazioni diverse." },
-      { type: "link", label: "Wikipedia: sintesi proteica muscolare →", url: "https://it.wikipedia.org/wiki/Sintesi_proteica" },
     ]
   },
   {
@@ -322,7 +321,6 @@ var INTRO_BASICS = [
         { cat: "Multiarticolari pesanti", metodo: "Manovra di Valsalva", regola: "Inspira (gonfia l'addome) → apnea durante lo sforzo → espira a fine alzata", esempi: "Squat · Stacco da Terra · Good Morning" },
         { cat: "Isometrici / Core", metodo: "Respirazione di Gestione", regola: "Respiro lento e profondo, addome sempre contratto, mai in apnea", esempi: "Plank · Hollow Body · L-Sit" },
       ]},
-      { type: "link", label: "Wikipedia: manovra di Valsalva →", url: "https://it.wikipedia.org/wiki/Manovra_di_Valsalva" },
     ]
   },
   {
@@ -1605,7 +1603,7 @@ export default function App() {
         </div>
         {/* View tabs */}
         <div style={{ display: "flex", gap: 4, maxWidth: 600, margin: "10px auto 0" }}>
-          {["Teoria", "Muscoli", "Scheda", "Esercizi"].map(function(t) { var keys = {"Teoria":"teoria","Scheda":"workout","Muscoli":"muscles","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); }} style={{ flex: 1, padding: "7px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, background: active ? "rgba(255,255,255,0.18)" : "rgba(255,255,255,0.04)", color: active ? "#fff" : "rgba(255,255,255,0.35)" }}>{t}</button>; })}
+          {["Teoria", "Muscoli", "Scheda", "Esercizi"].map(function(t) { var keys = {"Teoria":"teoria","Scheda":"workout","Muscoli":"muscles","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ flex: 1, padding: "7px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, background: active ? "rgba(255,255,255,0.18)" : "rgba(255,255,255,0.04)", color: active ? "#fff" : "rgba(255,255,255,0.35)" }}>{t}</button>; })}
         </div>
       </div>
 
