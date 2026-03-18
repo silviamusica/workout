@@ -1602,8 +1602,11 @@ export default function App() {
           <button onClick={function() { setSettingsOpen(true); }} style={{ background: "rgba(255,255,255,0.12)", border: "none", color: T.htx, width: 36, height: 36, borderRadius: 10, cursor: "pointer", fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center" }}>⚙️</button>
         </div>
         {/* View tabs */}
-        <div style={{ display: "flex", gap: 4, maxWidth: 600, margin: "10px auto 0" }}>
-          {["Home", "Teoria", "Muscoli", "Scheda", "Esercizi"].map(function(t) { var keys = {"Home":"home","Teoria":"teoria","Scheda":"workout","Muscoli":"muscles","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ flex: 1, padding: "7px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, background: active ? "rgba(255,255,255,0.18)" : "rgba(255,255,255,0.04)", color: active ? "#fff" : "rgba(255,255,255,0.35)" }}>{t}</button>; })}
+        <div style={{ display: "flex", gap: 4, maxWidth: 600, margin: "10px auto 0", alignItems: "stretch" }}>
+          {/* Home icon-only tab */}
+          <button onClick={function() { setTab("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ width: 34, flexShrink: 0, padding: "6px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 15, background: tab === "home" ? "rgba(255,255,255,0.18)" : "rgba(255,255,255,0.04)", color: tab === "home" ? "#fff" : "rgba(255,255,255,0.4)" }}>⌂</button>
+          {/* Main tabs */}
+          {["Teoria", "Muscoli", "Scheda", "Esercizi"].map(function(t) { var keys = {"Teoria":"teoria","Scheda":"workout","Muscoli":"muscles","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ flex: 1, padding: "8px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 13, fontWeight: active ? 800 : 500, background: active ? "rgba(255,255,255,0.22)" : "rgba(255,255,255,0.06)", color: active ? "#fff" : "rgba(255,255,255,0.5)", letterSpacing: active ? 0.2 : 0 }}>{t}</button>; })}
         </div>
       </div>
 
