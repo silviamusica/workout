@@ -1812,6 +1812,29 @@ export default function App() {
           </div>
         </div>
 
+        {/* Livelli */}
+        <div style={{ background: T.cd, borderRadius: 14, padding: "18px 18px 14px", marginBottom: 10 }}>
+          <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Scegli il tuo livello</div>
+          <div style={{ display: "grid", gap: 10 }}>
+            {[
+              { icon: "🌱", label: "Principiante", sub: "3 giorni a settimana · ~40 min", desc: "Parti da zero con 3 allenamenti full body a settimana. Corpo libero o manubri leggeri, 3 serie per esercizio, ritmo lento. Costruisce le basi motorie e la resistenza senza sovraccaricare." },
+              { icon: "🔥", label: "Intermedio", sub: "4 giorni a settimana · ~55 min", desc: "Hai già una base solida. 4 giorni con split upper/lower, introduce bilanciere e progressione di carico. Più volume e intensità rispetto al principiante." },
+              { icon: "⚡", label: "Avanzato", sub: "4-5 giorni a settimana · 55-80 min", desc: "Programma completo con 4 mesi di progressione. Compound pesanti, alto volume, varianti mensili che aumentano carico e complessità. Per chi si allena da almeno 1 anno con costanza." },
+            ].map(function(item, i) {
+              return <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "10px 12px", borderRadius: 10, background: T.bg }}>
+                <div style={{ width: 38, height: 38, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>{item.icon}</div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 2 }}>
+                    <span style={{ fontSize: 13, fontWeight: 800, color: T.tx }}>{item.label}</span>
+                    <span style={{ fontSize: 11, color: dc, fontWeight: 600 }}>{item.sub}</span>
+                  </div>
+                  <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55 }}>{item.desc}</div>
+                </div>
+              </div>;
+            })}
+          </div>
+        </div>
+
         {/* Consigli d'uso */}
         <div style={{ background: T.cd, borderRadius: 14, padding: "18px 18px 14px", marginBottom: 14 }}>
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Consigli d'uso</div>
