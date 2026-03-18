@@ -1604,9 +1604,9 @@ export default function App() {
         {/* View tabs */}
         <div style={{ display: "flex", gap: 4, maxWidth: 600, margin: "10px auto 0", alignItems: "stretch" }}>
           {/* Home icon-only tab */}
-          <button onClick={function() { setTab("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ width: 34, flexShrink: 0, padding: "6px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 15, background: tab === "home" ? "rgba(255,255,255,0.18)" : "rgba(255,255,255,0.04)", color: tab === "home" ? "#fff" : "rgba(255,255,255,0.4)" }}>⌂</button>
+          <button onClick={function() { setTab("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ width: 34, flexShrink: 0, padding: "6px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 15, background: tab === "home" ? "rgba(255,255,255,0.25)" : "transparent", color: tab === "home" ? "#fff" : "rgba(255,255,255,0.38)" }}>⌂</button>
           {/* Main tabs */}
-          {["Teoria", "Muscoli", "Scheda", "Esercizi"].map(function(t) { var keys = {"Teoria":"teoria","Scheda":"workout","Muscoli":"muscles","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ flex: 1, padding: "8px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 13, fontWeight: active ? 800 : 500, background: active ? "rgba(255,255,255,0.22)" : "rgba(255,255,255,0.06)", color: active ? "#fff" : "rgba(255,255,255,0.5)", letterSpacing: active ? 0.2 : 0 }}>{t}</button>; })}
+          {["Teoria", "Muscoli", "Scheda", "Esercizi"].map(function(t) { var keys = {"Teoria":"teoria","Scheda":"workout","Muscoli":"muscles","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ flex: 1, padding: "9px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 13, fontWeight: active ? 800 : 600, background: active ? "rgba(255,255,255,0.28)" : "rgba(255,255,255,0.10)", color: active ? "#fff" : "rgba(255,255,255,0.62)", letterSpacing: active ? 0.2 : 0 }}>{t}</button>; })}
         </div>
       </div>
 
@@ -1645,7 +1645,7 @@ export default function App() {
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Funzionalità speciali</div>
           <div style={{ display: "grid", gap: 10 }}>
             {[
-              { icon: "⏱️", title: "Cronometro di recupero", desc: "Nella Scheda, ogni esercizio ha un timer di recupero preimpostato. Parte automaticamente e suona alla fine del riposo con un beep." },
+              { icon: "⏱️", title: "Cronometro di recupero", desc: "Nella Scheda, ogni esercizio ha un timer di recupero. Toccalo per avviarlo: suona con un beep alla fine del riposo." },
               { icon: "📊", title: "Registra i tuoi pesi", desc: "Apri un esercizio nella Scheda e usa il campo note per annotare i carichi usati. I dati vengono salvati localmente sul dispositivo." },
               { icon: "💾", title: "Backup e ripristino", desc: "Dalle Impostazioni (⚙️) puoi esportare tutti i tuoi dati in un file JSON e reimportarli in qualsiasi momento." },
               { icon: "🫁", title: "Guida alla respirazione", desc: "Ogni esercizio ha un badge respirazione che mostra quando inspirare ed espirare, con le diverse tecniche (Valsalva, anatomica, isometrica)." },
