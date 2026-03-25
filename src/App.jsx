@@ -1625,9 +1625,9 @@ export default function App() {
   }
 
   function getRestTime(exName, rpe) {
-    var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","Front Squat","Pause Squat","Push Press","Stacco Sumo","Stacco Rumeno"];
-    var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Squat Bulgaro","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino"];
-    var core = ["Plank","Ab Wheel","Addominali Obliqui","Shoulder Tap"];
+    var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","Front Squat","Pause Squat","Push Press","Stacco Sumo","Stacco Rumeno","Hip Thrust Bilanciere","T-bar Row","Dip alle Parallele"];
+    var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Squat Bulgaro","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino","Hyperextension con Sacco","Fitball Hamstring Curl","Face Pull","Alzate Laterali","French Press Manubri"];
+    var core = ["Plank","Ab Wheel","Addominali Obliqui","Shoulder Tap","Woodchop","Slackline"];
     if (core.indexOf(exName) >= 0) return exName === "Plank" ? null : 30;
     if (heavy.indexOf(exName) >= 0) return 120;
     if (medium.indexOf(exName) >= 0) return 90;
@@ -2796,7 +2796,15 @@ export default function App() {
               var isH = histIdx === i;
               var hData = isH ? getHist(ex.n) : [];
               var hasV = month > 1 && rawEx["v" + month];
-              var restSec = getRestTime(ex.n, ex.rpe);
+              var restSec = (function() {
+                if (rawEx.rec) {
+                  var m = rawEx.rec.match(/(\d+(?:\.\d+)?)\s*min/i);
+                  if (m) return Math.round(parseFloat(m[1]) * 60);
+                  var s = rawEx.rec.match(/(\d+)\s*s/i);
+                  if (s) return parseInt(s[1]);
+                }
+                return getRestTime(ex.n, ex.rpe);
+              })();
               var workSec = getWorkTime(ex.n, ex.s);
               var showTimerBtns = restSec || workSec;
 
