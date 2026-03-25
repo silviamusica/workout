@@ -90,11 +90,11 @@ function beepEnd() { playTone(1047, 0.15, 0.5); setTimeout(function() { playTone
 
 /* === THEMES === */
 var TH = {
-  sage:    { n: "Notte Calda", bg: "#0F0F12", cd: "#18181D", tx: "#EEEEF2", sub: "#9898A8", hd: "linear-gradient(135deg,#0A0A0D,#18181D 50%,#1E1A15)", htx: "#F5F0E8", dy: ["#C4834A","#9898A8","#7878A8","#887858","#788888"], ok: "#C4834A", ac: "#E8C080", sb: "#111116", st: "#A89878" },
-  petal:   { n: "Petal",   bg: "#FDF5F7", cd: "#FFFBFC", tx: "#3A1F28", sub: "#B08090", hd: "linear-gradient(135deg,#C2788A,#D4929E)", htx: "#FFF0F3", dy: ["#C47A8A","#9B6EA6","#6A96B0","#C28860","#A0A0B8"], ok: "#C47A8A", ac: "#9DB87A", sb: "#FAEAEE", st: "#9B6EA6" },
-  mist:    { n: "Mist",    bg: "#F2F4F8", cd: "#FAFBFD", tx: "#222B3A", sub: "#7A8FA8", hd: "linear-gradient(135deg,#3D5470,#5C7A9E)", htx: "#E8EEF6", dy: ["#5C7A9E","#6A9E8C","#7A6EA8","#9E7A5C","#6A7A8A"], ok: "#5C7A9E", ac: "#C8A86A", sb: "#E8EDF5", st: "#5C7A9E" },
-  night:   { n: "Notte",   bg: "#14151F", cd: "#1E1F2E", tx: "#DDE0F0", sub: "#7880AA", hd: "linear-gradient(135deg,#0C0D1A,#1E1F2E)", htx: "#C8CCEC", dy: ["#7B8EE8","#5CC8C0","#E87898","#E8B870","#8898B8"], ok: "#7B8EE8", ac: "#5CC8C0", sb: "#1A1B2C", st: "#7B8EE8" },
-  sand:    { n: "Sand",    bg: "#FAF7F2", cd: "#FFFEFB", tx: "#2E2820", sub: "#A0907A", hd: "linear-gradient(135deg,#7A6040,#A08060)", htx: "#F5EEE4", dy: ["#A07850","#8A9E6A","#6A8EA0","#B07888","#9A8A6A"], ok: "#A07850", ac: "#C0B060", sb: "#F4EFE6", st: "#8A7040" },
+  sage:    { n: "Obsidian",  bg: "#000000", cd: "#1C1C1E", tx: "#FFFFFF",  sub: "#8E8E93", hd: "linear-gradient(180deg,#1C1C1E,#000000)", htx: "#FFFFFF", dy: ["#0A84FF","#32D74B","#FF9F0A","#FF375F","#BF5AF2"], ok: "#32D74B", ac: "#0A84FF", sb: "#2C2C2E", st: "#32D74B" },
+  night:   { n: "Grafite",   bg: "#0D0D0F", cd: "#1A1A1F", tx: "#E8E8ED", sub: "#6E6E73", hd: "linear-gradient(180deg,#1A1A1F,#0D0D0F)", htx: "#E8E8ED", dy: ["#636366","#48484A","#3A3A3C","#2C2C2E","#1C1C1E"], ok: "#48484A", ac: "#AEAEB2", sb: "#141416", st: "#636366" },
+  petal:   { n: "Aurora",    bg: "#FDF5F7", cd: "#FFFBFC", tx: "#3A1F28", sub: "#B08090", hd: "linear-gradient(135deg,#C2788A,#D4929E)", htx: "#FFF0F3", dy: ["#C47A8A","#9B6EA6","#6A96B0","#C28860","#A0A0B8"], ok: "#C47A8A", ac: "#9DB87A", sb: "#FAEAEE", st: "#9B6EA6" },
+  mist:    { n: "Ghiaccio",  bg: "#F2F4F8", cd: "#FAFBFD", tx: "#222B3A", sub: "#7A8FA8", hd: "linear-gradient(135deg,#3D5470,#5C7A9E)", htx: "#E8EEF6", dy: ["#5C7A9E","#6A9E8C","#7A6EA8","#9E7A5C","#6A7A8A"], ok: "#5C7A9E", ac: "#C8A86A", sb: "#E8EDF5", st: "#5C7A9E" },
+  sand:    { n: "Sabbia",    bg: "#FAF7F2", cd: "#FFFEFB", tx: "#2E2820", sub: "#A0907A", hd: "linear-gradient(135deg,#7A6040,#A08060)", htx: "#F5EEE4", dy: ["#A07850","#8A9E6A","#6A8EA0","#B07888","#9A8A6A"], ok: "#A07850", ac: "#C0B060", sb: "#F4EFE6", st: "#8A7040" },
 };
 
 
@@ -169,7 +169,48 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"p","content":"Usa un supporto alto circa come il tuo ginocchio — troppo basso non da stimolo, troppo alto mette a rischio il ginocchio."},
   {"type":"ul","content":["Rimani il piu verticale possibile e spingiti verso l'alto dalla gamba sullo step","Porta anche il secondo piede sul supporto prima di scendere","Controlla la discesa: la fase eccentrica e dove avviene gran parte del lavoro muscolare","Rialzo piu alto = piu glutei; rialzo piu basso = piu quadricipiti"]},
   {"type":"p","content":"Richiede meno equilibrio rispetto agli affondi: ottimo per costruire confidenza con il lavoro su singola gamba. Aggiungi i manubri solo a forma perfetta."}
-]}, "Floor Press Manubri": {"g": "Pettorali/Tricipiti", "c": "A terra, manubri sopra. Scendi fino a gomiti a terra, spingi.", "p": "Scapole addotte.", "t": ["Pausa 1s a terra"]}, "Push-Up Declino": {"g": "Pettorali sup./Tricipiti", "c": "Push-up con piedi su panca. Scendi col petto, spingi.", "p": "Corpo in linea. Core contratto.", "t": ["Gomiti a 45 gradi"]}, "Stacco Rumeno": {"g": "Femorali/Glutei/Erettori", "c": "Bilanciere davanti, spingi bacino indietro lungo gambe. Risali.", "p": "Schiena neutra. Ginocchia poco flesse.", "t": ["Senti allungamento femorali"]}, "Front Squat": {"g": "Quadricipiti/Core/Glutei", "c": "Bilanciere clavicole, gomiti alti. Scendi, busto verticale.", "p": "Gomiti alti, petto fuori.", "t": ["Piu quadricipiti, meno schiena"]}, "Pause Squat": {"g": "Quadricipiti/Glutei", "c": "Squat con 2-3s fermo in buca, poi esplosione.", "p": "Come squat classico.", "t": ["15-20% meno carico"]}, "Push Press": {"g": "Deltoidi/Tricipiti/Gambe", "c": "Military press con leggera spinta esplosiva delle gambe.", "p": "Dip breve, esplosivo.", "t": ["Piu carico del military"]}, "Curl Martello": {"g": "Brachiale/Brachioradiale", "c": "Curl con presa neutra (palmi uno verso l'altro).", "p": "Gomiti fissi.", "t": ["Da spessore al braccio"]}, "Curl Concentrato": {"g": "Bicipiti (picco)", "c": "Seduta, gomito su coscia. Fletti manubrio.", "p": "Gomito fermo, braccio isolato.", "t": ["Lento, senza slancio"]}, "Kick Back Manubri": {"g": "Tricipiti", "c": "Piegata avanti, gomito 90 gradi. Estendi indietro.", "p": "Gomito fermo, busto stabile.", "t": ["1s in estensione completa"]}, "Overhead Extension": {"g": "Tricipiti (capo lungo)", "c": "Un manubrio 2 mani sopra testa. Fletti dietro, estendi.", "p": "Gomiti vicini orecchie.", "t": ["Enfasi capo lungo"]}, "Push-Up Diamante": {"g": "Tricipiti/Pettorali int.", "c": "Push-up con mani a diamante. Scendi, spingi.", "p": "Gomiti vicini al corpo.", "t": ["Ginocchia a terra se difficile"]}, "Stacco Sumo": {"g": "Quadricipiti/Glutei/Adduttori", "c": "Piedi molto larghi, punte fuori. Presa stretta.", "p": "Busto piu verticale.", "t": ["Meno stress lombare"]}, "Pendlay Row": {"g": "Dorsali/Trapezi", "c": "Rematore ma bilanciere parte da terra ogni rip.", "p": "Busto parallelo.", "t": ["Esplosione, appoggio controllato"]}, "Walking Lunge": {"g": "Quadricipiti/Glutei", "c": "Affondo camminando avanti.", "p": "Come affondo classico.", "t": ["Piu impegnativo per stabilita"]}, "Alzate Laterali": {"g": "Deltoide laterale", "c": "Manubri ai lati. Alza lateralmente fino a parallele.", "p": "Gomiti flessi. Non alzare spalle.", "t": ["Peso leggero - isolamento"]}, "Fire Hydrant": {"g": "Gluteo medio", "c": "Quattro zampe, alza ginocchio lateralmente.", "p": "Ginocchio 90 gradi. Bacino fermo.", "t": ["20 rip/lato, lento"]}, "Hip Thrust Singolo": {"g": "Grande gluteo", "c": "Schiena su panca, un piede a terra. Spingi anca su.", "p": "Spalle sulla panca, mento al petto.", "t": ["Gluteo stretto 1s in alto"]}, "Single Leg Deadlift": {"g": "Femorali/Glutei/Equilibrio", "c": "Su una gamba, manubrio in mano opposta. Piegati avanti.", "p": "Schiena neutra, anca livellata.", "t": ["Tocca piede se perdi equilibrio"]}, "Pulley": {"g": "Dorsali/Tirata upper", "c": "Seduta davanti alla carrucola BASSA. Afferra la barra/maniglie, tira verso lo sterno portando i gomiti indietro e le scapole insieme. Controlla il ritorno. Richiede carrucola bassa — senza, usa Rematore Manubri.", "p": "Schiena dritta, petto fuori, piedi ben piantati. Non inarcare la lombare.", "t": ["Tira con i dorsali, non con le braccia", "Le scapole si devono avvicinare alla fine del movimento", "Controlla la fase eccentrica: 2-3 secondi per tornare su"], "lk": "https://www.youtube.com/watch?v=-wVifByDoe4"}, "Lat Machine": {"g": "Dorsali/Tirata upper", "c": "Seduta alla carrucola alta con barra larga. Tira la barra verso il petto alto, portando i gomiti verso il basso e indietro. Controlla il ritorno sopra la testa.", "p": "Petto fuori, schiena leggermente inclinata indietro (non troppo). Presa poco piu larga delle spalle.", "t": ["Non tirare dietro la nuca: sempre davanti al petto", "Immagina di spingere i gomiti verso il pavimento", "Contrai i dorsali in basso, poi controlla la risalita"]}, "Tricipiti Cavo": {"g": "Tricipiti/Spinta upper", "c": "In piedi davanti alla carrucola alta, afferra la corda o la barra. Gomiti fermi ai fianchi, estendi le braccia verso il basso fino a blocco. Torna su controllando.", "p": "Busto leggermente inclinato avanti, gomiti incollati ai fianchi. Non oscillare con il corpo.", "t": ["Solo gli avambracci si muovono, il resto e fermo", "Stringi i tricipiti a fine estensione per 1 secondo", "Se usi la corda, apri le mani ai lati a fine movimento"]}};
+]}, "Floor Press Manubri": {"g": "Pettorali/Tricipiti", "c": "A terra, manubri sopra. Scendi fino a gomiti a terra, spingi.", "p": "Scapole addotte.", "t": ["Pausa 1s a terra"]}, "Push-Up Declino": {"g": "Pettorali sup./Tricipiti", "c": "Push-up con piedi su panca. Scendi col petto, spingi.", "p": "Corpo in linea. Core contratto.", "t": ["Gomiti a 45 gradi"]}, "Stacco Rumeno": {"g": "Femorali/Glutei/Erettori", "c": "Bilanciere davanti, spingi bacino indietro lungo gambe. Risali.", "p": "Schiena neutra. Ginocchia poco flesse.", "t": ["Senti allungamento femorali"]}, "Front Squat": {"g": "Quadricipiti/Core/Glutei", "c": "Bilanciere clavicole, gomiti alti. Scendi, busto verticale.", "p": "Gomiti alti, petto fuori.", "t": ["Piu quadricipiti, meno schiena"]}, "Pause Squat": {"g": "Quadricipiti/Glutei", "c": "Squat con 2-3s fermo in buca, poi esplosione.", "p": "Come squat classico.", "t": ["15-20% meno carico"]}, "Push Press": {"g": "Deltoidi/Tricipiti/Gambe", "c": "Military press con leggera spinta esplosiva delle gambe.", "p": "Dip breve, esplosivo.", "t": ["Piu carico del military"]}, "Curl Martello": {"g": "Brachiale/Brachioradiale", "c": "Curl con presa neutra (palmi uno verso l'altro).", "p": "Gomiti fissi.", "t": ["Da spessore al braccio"]}, "Curl Concentrato": {"g": "Bicipiti (picco)", "c": "Seduta, gomito su coscia. Fletti manubrio.", "p": "Gomito fermo, braccio isolato.", "t": ["Lento, senza slancio"]}, "Kick Back Manubri": {"g": "Tricipiti", "c": "Piegata avanti, gomito 90 gradi. Estendi indietro.", "p": "Gomito fermo, busto stabile.", "t": ["1s in estensione completa"]}, "Overhead Extension": {"g": "Tricipiti (capo lungo)", "c": "Un manubrio 2 mani sopra testa. Fletti dietro, estendi.", "p": "Gomiti vicini orecchie.", "t": ["Enfasi capo lungo"]}, "Push-Up Diamante": {"g": "Tricipiti/Pettorali int.", "c": "Push-up con mani a diamante. Scendi, spingi.", "p": "Gomiti vicini al corpo.", "t": ["Ginocchia a terra se difficile"]}, "Stacco Sumo": {"g": "Quadricipiti/Glutei/Adduttori", "c": "Piedi molto larghi, punte fuori. Presa stretta.", "p": "Busto piu verticale.", "t": ["Meno stress lombare"]}, "Pendlay Row": {"g": "Dorsali/Trapezi", "c": "Rematore ma bilanciere parte da terra ogni rip.", "p": "Busto parallelo.", "t": ["Esplosione, appoggio controllato"]}, "Walking Lunge": {"g": "Quadricipiti/Glutei", "c": "Affondo camminando avanti.", "p": "Come affondo classico.", "t": ["Piu impegnativo per stabilita"]}, "Alzate Laterali": {"g": "Deltoide laterale", "c": "Manubri ai lati. Alza lateralmente fino a parallele.", "p": "Gomiti flessi. Non alzare spalle.", "t": ["Peso leggero - isolamento"]}, "Fire Hydrant": {"g": "Gluteo medio", "c": "Quattro zampe, alza ginocchio lateralmente.", "p": "Ginocchio 90 gradi. Bacino fermo.", "t": ["20 rip/lato, lento"]}, "Hip Thrust Singolo": {"g": "Grande gluteo", "c": "Schiena su panca, un piede a terra. Spingi anca su.", "p": "Spalle sulla panca, mento al petto.", "t": ["Gluteo stretto 1s in alto"]}, "Single Leg Deadlift": {"g": "Femorali/Glutei/Equilibrio", "c": "Su una gamba, manubrio in mano opposta. Piegati avanti.", "p": "Schiena neutra, anca livellata.", "t": ["Tocca piede se perdi equilibrio"]}, "Pulley": {"g": "Dorsali/Tirata upper", "c": "Seduta davanti alla carrucola BASSA. Afferra la barra/maniglie, tira verso lo sterno portando i gomiti indietro e le scapole insieme. Controlla il ritorno. Richiede carrucola bassa — senza, usa Rematore Manubri.", "p": "Schiena dritta, petto fuori, piedi ben piantati. Non inarcare la lombare.", "t": ["Tira con i dorsali, non con le braccia", "Le scapole si devono avvicinare alla fine del movimento", "Controlla la fase eccentrica: 2-3 secondi per tornare su"], "lk": "https://www.youtube.com/watch?v=-wVifByDoe4"}, "Lat Machine": {"g": "Dorsali/Tirata upper", "c": "Seduta alla carrucola alta con barra larga. Tira la barra verso il petto alto, portando i gomiti verso il basso e indietro. Controlla il ritorno sopra la testa.", "p": "Petto fuori, schiena leggermente inclinata indietro (non troppo). Presa poco piu larga delle spalle.", "t": ["Non tirare dietro la nuca: sempre davanti al petto", "Immagina di spingere i gomiti verso il pavimento", "Contrai i dorsali in basso, poi controlla la risalita"]}, "Tricipiti Cavo": {"g": "Tricipiti/Spinta upper", "c": "In piedi davanti alla carrucola alta, afferra la corda o la barra. Gomiti fermi ai fianchi, estendi le braccia verso il basso fino a blocco. Torna su controllando.", "p": "Busto leggermente inclinato avanti, gomiti incollati ai fianchi. Non oscillare con il corpo.", "t": ["Solo gli avambracci si muovono, il resto e fermo", "Stringi i tricipiti a fine estensione per 1 secondo", "Se usi la corda, apri le mani ai lati a fine movimento"]},
+"Hip Thrust Bilanciere": {"g": "Grande gluteo/Gluteo medio", "c": "Schiena sul bordo della panca, bilanciere sulle anche imbottito. Spingi le anche verso l'alto contraendo i glutei.", "p": "Mento al petto, spalle sulla panca, piedi a larghezza fianchi. Ginocchia a 90 gradi in cima.", "t": ["Gluteo stretto 1s in cima", "Non iperestendere la lombare", "Talloni premono sul pavimento"], "deep": [
+  {"type":"p","content":"L'Hip Thrust col bilanciere e l'esercizio con il maggior picco di attivazione del grande gluteo in assoluto, superiore allo squat e allo stacco. Il range completo (anca sotto parallelo → anca estesa) massimizza lo stimolo muscolare."},
+  {"type":"ul","content":["La panca deve essere a circa 40 cm di altezza — le spalle devono rimanere sul bordo, non scivolare","Imbottire il bilanciere con un cuscinetto o asciugamano per evitare pressione sull'osso iliaco","Piedi ben piantati, talloni premono attivamente verso il pavimento durante la spinta","Mento verso il petto per mantenere la colonna neutra — evita di alzare la testa"]},
+  {"type":"p","content":"Errore comune: iperestendere la lombare in cima invece di contrarre il gluteo. La colonna deve rimanere neutra anche al picco del movimento: se vedi la tua schiena arcuarsi, stai usando la lombare, non il gluteo."}
+]},
+"T-bar Row": {"g": "Dorsali/Romboidi/Trapezi", "c": "Busto inclinato 45 gradi, bilanciere fisso a terra. Impugna le maniglie e tira verso il petto.", "p": "Schiena neutra, scapole retratte in alto. Busto rigido durante tutto il movimento.", "t": ["Tira con i dorsali non con le braccia", "Scapole verso il centro 1s in alto", "Piega le ginocchia per proteggere la lombare"], "deep": [
+  {"type":"p","content":"Il T-bar Row e una delle trazioni orizzontali piu efficaci per costruire spessore dorsale. A differenza del rematore classico, la posizione fissa del bilanciere garantisce una traiettoria costante."},
+  {"type":"ul","content":["Inclinazione del busto a 45 gradi: piu verticale = piu trapezio; piu orizzontale = piu dorsale","Porta i gomiti il piu possibile verso il soffitto e indietro","Non usare lo slancio del busto: il movimento deve partire dalle scapole","Il petto puo appoggiarsi al supporto per isolare ancora di piu il dorsale"]},
+  {"type":"p","content":"Particolarmente utile come alternativa al rematore bilanciere per chi ha difficolta a mantenere la schiena neutra con carichi elevati."}
+]},
+"Face Pull": {"g": "Deltoidi posteriori/Romboidi/Cuffia rotatori", "c": "Carrucola alta, corda a due capi. Tira verso il viso aprendo le braccia verso l'esterno.", "p": "Busto eretto, gomiti alti paralleli al pavimento.", "t": ["Tira verso naso-fronte non verso il mento", "Apri le mani ai lati nel punto finale", "Movimento lento e controllato"], "deep": [
+  {"type":"p","content":"Il Face Pull e fondamentale per la salute delle spalle: rinforza i rotatori esterni e i deltoidi posteriori, muscoli spesso negletti e responsabili di postura curva e dolori alla spalla."},
+  {"type":"ul","content":["Usa carichi leggeri: non e un esercizio di forza, e di attivazione e riabilitazione","La corda deve essere tirata verso il viso — naso o fronte — non verso il collo o il petto","Il gesto di apertura a fine movimento (rotazione esterna delle spalle) e la parte piu importante","Mantieni i gomiti alti, paralleli al pavimento durante tutto il movimento"]},
+  {"type":"p","content":"Inseriscilo regolarmente come pre-attivazione prima della spinta (panca, military press) o come esercizio di chiusura della seduta upper. Salute della spalla a lungo termine."}
+]},
+"Dip alle Parallele": {"g": "Pettorali inf./Tricipiti/Deltoidi", "c": "Sulle parallele, scendi flettendo i gomiti fino a 90 gradi, spingi su.", "p": "Busto leggermente inclinato in avanti per enfatizzare il petto. Core contratto.", "t": ["Non scendere oltre 90 gradi", "Busto inclinato = piu petto; verticale = piu tricipiti", "Scapole depresse e addotte"], "deep": [
+  {"type":"p","content":"Il Dip alle parallele e un esercizio avanzato a corpo libero che coinvolge pettorali, tricipiti e deltoidi anteriori in un pattern di spinta verticale."},
+  {"type":"ul","content":["La profondita ottimale e 90 gradi al gomito — scendere di piu aumenta il rischio per la spalla","Busto inclinato in avanti 10-15 gradi = maggior coinvolgimento del pettorale","Busto perfettamente verticale = lavoro prevalentemente ai tricipiti","Scapole abbassate e avvicinate prima di scendere: proteggono l'articolazione della spalla"]},
+  {"type":"p","content":"Se ancora difficile, usa le parallele con un elastico di assistenza. Per aumentare la difficolta, appendi un disco alla cintura (Dip zavorrati)."}
+]},
+"Hyperextension con Sacco": {"g": "Erettori/Glutei/Femorali", "c": "Come hyperextension classica ma con un sacco/peso sulle spalle per aggiungere carico.", "p": "Schiena neutra. Non iperestendere oltre la linea del corpo.", "t": ["Il sacco distribuisce il peso uniformemente", "Ferma 1s quando il corpo e in linea", "Glutei contratti in cima"], "deep": [
+  {"type":"p","content":"La versione con sacco del weights permette di incrementare il carico in modo continuo sull'hyperextension, rendendo possibile la progressione oltre il proprio peso corporeo."},
+  {"type":"ul","content":["Sali solo fino alla linea orizzontale del corpo — iperestendere non aggiunge stimolo ai muscoli target e comprime le vertebre lombari","Tieni le scapole addotte durante il movimento per proteggere la schiena","Progressione: corpo libero → disco al petto → sacco sulle spalle"]},
+  {"type":"p","content":"Esercizio di rinforzo per la catena posteriore. Particolarmente efficace dopo lo Stacco da Terra come complemento di volume per la zona lombare."}
+]},
+"Fitball Hamstring Curl": {"g": "Femorali/Glutei/Core", "c": "Sdraiata supina, talloni sulla fitball. Solleva le anche e porta la palla verso i glutei flettendo le ginocchia.", "p": "Anche alte durante tutto il movimento. Core e glutei contratti.", "t": ["Non far scendere le anche durante la flessione", "Movimento lento e controllato", "Piu difficile su una sola gamba"], "deep": [
+  {"type":"p","content":"Il Fitball Hamstring Curl allena i femorali in modo eccellente combinando estensione dell'anca (come nello stacco) e flessione del ginocchio (come nel leg curl) nello stesso movimento."},
+  {"type":"ul","content":["Mantieni le anche estese e alte durante tutta la fase di flessione — abbassarle trasferisce il lavoro ai glutei e toglie stimolo ai femorali","La fitball crea instabilita: il core lavora isometricamente per tutta la durata dell'esercizio","Variante avanzata: unilaterale (una sola gamba sulla palla)"]},
+  {"type":"p","content":"E' un'alternativa efficace al Nordic Curl quando non si dispone di un supporto per bloccare i piedi. Bassa richiesta di attrezzatura, alto stimolo sui femorali."}
+]},
+"Woodchop": {"g": "Obliqui/Core/Deltoidi", "c": "Con carrucola alta o elastico, ruota il busto diagonalmente dall'alto verso il basso (o basso verso l'alto).", "p": "Piedi larghi, ginocchia flesse. La rotazione parte dal busto, non dalle braccia.", "t": ["Le braccia restano tese e seguono la rotazione", "Non ruotare le anche — solo il busto", "Controlla il ritorno"], "deep": [
+  {"type":"p","content":"Il Woodchop (boscaiolo) allena il core in rotazione, un pattern di movimento spesso trascurato nella programmazione standard. Gli obliqui lavorano in modo funzionale."},
+  {"type":"ul","content":["Versione high-to-low (dall'alto verso il basso): enfasi sul traverso e sull'obliquo esterno","Versione low-to-high (dal basso verso l'alto): enfasi sull'obliquo interno","La resistenza deve essere minima per imparare la tecnica — poi aumenta","Le braccia rimangono tese per tutto il movimento: la forza viene dalla rotazione del busto"]},
+  {"type":"p","content":"Esercizio ideale per atleti che vogliono migliorare la potenza rotazionale. Ottimo anche per chi pratica sport con gesti rotativi (tennis, golf, arti marziali)."}
+]},
+"Slackline": {"g": "Equilibrio/Stabilizzatori/Core", "c": "Cammina o mantieni l'equilibrio su una fettuccia tesa tra due punti.", "p": "Ginocchia flesse, sguardo fisso, braccia aperte per bilanciare.", "t": ["Inizia con la linea bassa e corta", "Un passo alla volta, senza fretta", "Usa un appoggio laterale all'inizio"], "deep": [
+  {"type":"p","content":"La slackline sviluppa propriocezione, equilibrio e stabilita delle caviglie — qualita che si trasferiscono direttamente alla qualita tecnica di squat, stacco e tutti i movimenti unilaterali."},
+  {"type":"ul","content":["Inizia con la fettuccia tesa bassa (30-40 cm dal suolo) e breve (5-6 metri)","Usa un corrimano laterale (albero o palo) per i primi tentativi","Porta il peso su una gamba alla volta, fletti il ginocchio della gamba di supporto","Lo sguardo fisso su un punto a circa 2 metri davanti a te e fondamentale per l'equilibrio"]},
+  {"type":"p","content":"Non e solo un esercizio: e un modo divertente per allenare sistemi propriocettivi che normalmente non ricevono stimolo. Si integra bene come warm-up o come attivita di recupero attivo."}
+]}
+};
 
 var MUSCLE_IMG = img_muscle_map;
 
@@ -179,7 +220,8 @@ var GLOSS = [
   { t: "Concentrica (positiva)", d: "Fase in cui il muscolo si accorcia contro la resistenza. Salire nello squat, spingere in panca, tirare nelle trazioni." },
   { t: "Eccentrica (negativa)", d: "Fase in cui il muscolo si allunga sotto carico frenando il peso. Scendere nello squat, abbassare il bilanciere. Genera piu stimolo della concentrica. Le negative lente (3-5s) sono una tecnica avanzata." },
   { t: "Isometrica", d: "Contrazione senza movimento: il muscolo lavora ma non cambia lunghezza. Plank, pausa in buca nel pause squat. Costruisce forza nel punto specifico." },
-  { t: "RPE (Rate of Perceived Exertion)", d: "Scala 1-10 dello sforzo percepito. RPE 8 = potresti fare altre 2 rip. RPE 9 = ne potresti fare 1. RPE 10 = massimale." },
+  { t: "RPE (Rate of Perceived Exertion)", d: "Scala 1-10 dello sforzo percepito. RPE 8 = potresti fare altre 2 rip. RPE 9 = ne potresti fare 1. RPE 10 = massimale. Usato per autoregolare il carico senza dover sempre andare a cedimento." },
+  { t: "RIR (Reps In Reserve)", d: "Ripetizioni in riserva: quante ne potresti fare ancora prima del cedimento. È l'altro lato dell'RPE: RIR 2 = RPE 8, RIR 1 = RPE 9, RIR 0 = cedimento (RPE 10). Esempio: se fai 10 rip e potresti farne altre 2, hai RIR 2. Lavorare a RIR 1-3 permette di accumulare volume senza esaurire il sistema nervoso." },
   { t: "Serie e ripetizione", d: "Una ripetizione = un movimento completo. Una serie = un blocco di ripetizioni. 4x8 = 4 serie da 8 rip con recupero tra serie." },
   { t: "Multiarticolare (compound)", d: "Coinvolge piu articolazioni: squat, stacco, panca, trazioni, military press. Vanno fatti PRIMA nella seduta quando sei fresca." },
   { t: "Monoarticolare (isolamento)", d: "Una sola articolazione: curl, croci, alzate laterali. Per rifinire dopo i compound." },
@@ -191,6 +233,11 @@ var GLOSS = [
   { t: "Presa prona", d: "Palmi in avanti (via da te). Trazioni prone = piu dorsali." },
   { t: "Presa supina", d: "Palmi verso di te. Trazioni supine = piu bicipiti." },
   { t: "Presa neutra", d: "Palmi uno verso l'altro. Meno stress su polsi e gomiti." },
+  { t: "MRV (Maximum Recoverable Volume)", d: "Volume massimo che riesci a recuperare in un mesociclo. Se superi l'MRV, l'allenamento diventa controproducente: non recuperi, ristagna o regredisci. Varia per muscolo e per atleta." },
+  { t: "MEV (Minimum Effective Volume)", d: "Volume minimo per stimolare la crescita muscolare. Al di sotto del MEV, fai lavoro inutile: non c'è adattamento. È il punto di partenza di ogni mesociclo." },
+  { t: "Double Progression", d: "Tecnica di progressione a doppio livello: prima aumenti le ripetizioni all'interno di un range (es. 6-8), poi quando arrivi al tetto del range aumenti il carico e ricomincia dal fondo. Esempio: settimana 1 → 3x6, settimana 2 → 3x7, settimana 3 → 3x8, settimana 4 → +2.5kg → 3x6 di nuovo." },
+  { t: "Mesociclo", d: "Blocco di allenamento strutturato, tipicamente 4-8 settimane, con volume e intensità progressivi. Termina con un deload. Ogni mesociclo ha un obiettivo preciso: accumulo, intensificazione o realizzazione." },
+  { t: "Deload (approfondito)", d: "Settimana con volume ridotto del 40-50% e carico mantenuto o leggermente ridotto. Non è una settimana sprecata: il corpo supera la fatica accumulata, consolida gli adattamenti e riparte più forte. Frequenza consigliata: ogni 4-6 settimane, o quando compaiono segnali di affaticamento sistemico (sonno compromesso, forza calante, motivazione bassa)." },
 ];
 
 var GLOSS_LINKS = [
@@ -214,6 +261,10 @@ var GLOSS_LINKS = [
   { match: "presa prona", term: "Presa prona" },
   { match: "presa supina", term: "Presa supina" },
   { match: "presa neutra", term: "Presa neutra" },
+  { match: "mrv", term: "MRV (Maximum Recoverable Volume)", wholeWord: true },
+  { match: "mev", term: "MEV (Minimum Effective Volume)", wholeWord: true },
+  { match: "double progression", term: "Double Progression" },
+  { match: "mesociclo", term: "Mesociclo" },
 ];
 
 /* === INTRO BASI ALLENAMENTO === */
@@ -593,6 +644,53 @@ var PRINCIPLES_DEEP = [
     {type:"ul", content:["Good morning → rinforza lombari e femorali per squat e stacco","Trazioni → rafforzano i dorsali per il rematore","Nordic curl → protegge il crociato e rinforza i femorali per tutti i movimenti con le gambe"]},
     {type:"p", content:"Regola aurea: ogni esercizio complementare deve avere uno scopo preciso. Se non rinforza un punto debole, non costruisce massa in un distretto specifico e non previene squilibri — non farlo."}
   ]},
+  { t: "Double Progression: come si usa", d: [
+    {type:"p", content:"La double progression e il metodo di progressione piu semplice ed efficace per l'ipertrofia. Funziona su un range di ripetizioni, non su un numero fisso."},
+    {type:"p", content:"Esempio con 3x6-8:"},
+    {type:"ul", content:["Settimana 1: 3x6 (fondo del range con buona tecnica)","Settimana 2: 3x7","Settimana 3: 3x8 (tetto del range)","Settimana 4: aggiungi 2.5kg e ricomincia da 3x6"]},
+    {type:"p", content:"Il vantaggio: non devi arrivare al cedimento ogni seduta. Quando raggiungi il tetto del range con tecnica pulita, hai guadagnato forza. Aggiungere peso e la conferma del progresso, non un salto nel vuoto."},
+    {type:"p", content:"Sui compound pesanti (Squat, Stacco, Trazioni) usa range stretti come 4-6 o 6-8. Sugli accessori range piu ampi come 8-12 o 10-15."}
+  ]},
+  { t: "Periodizzazione e mesociclo", d: [
+    {type:"p", content:"Un mesociclo e un blocco di 4-8 settimane con volume e intensita progressivi. Alla fine si inserisce un deload. Poi si ricomincia con carichi superiori."},
+    {type:"bold-list", content:[
+      ["MEV (Minimum Effective Volume)", "Il volume minimo per stimolare l'ipertrofia. E il punto di partenza del mesociclo."],
+      ["MRV (Maximum Recoverable Volume)", "Il volume massimo che riesci a recuperare. Se lo superi, regredisci."],
+      ["Deload", "Settimana con volume dimezzato. Non e facolativa: e dove consolidi gli adattamenti e dissipi la fatica accumulata."]
+    ]},
+    {type:"p", content:"La logica: ogni settimana aggiungi 1-2 serie per gruppo muscolare (accumulo). Quando la fatica supera il recupero, fai il deload e ricomincia piu forte (supercompensazione)."}
+  ]},
+  { t: "Cardio e ipertrofia: come conciliarli", d: [
+    {type:"p", content:"Il cardio non brucia i muscoli — se fatto con criterio. Il problema e l'interferenza: volume cardio elevato compromette il recupero e riduce le risorse per la crescita muscolare."},
+    {type:"bold-list", content:[
+      ["LISS (Low Intensity Steady State)", "Camminata, bici, ellittica a intensita bassa. Minima interferenza con i muscoli. Ideale nei giorni di recupero."],
+      ["HIIT (High Intensity Interval Training)", "Intervalli brevi ad alta intensita. Efficace per il condizionamento, ma tassante: non farlo il giorno prima di una sessione pesante."],
+      ["Recupero attivo", "Yoga, stretching, mobilita. Ripristina la circolazione senza caricare il SNC."]
+    ]},
+    {type:"p", content:"Regola pratica: il cardio va nei giorni di riposo dalla sala pesi o dopo la sessione (mai prima). Mantienilo a 2-3 sessioni a settimana e monitora se i tuoi carichi in sala continuano a crescere."}
+  ]},
+  { t: "Quando cambiare scheda", d: [
+    {type:"p", content:"Una scheda va cambiata quando smette di funzionare — non quando annoia. Questi sono i 6 segnali da cercare:"},
+    {type:"ul", content:[
+      "I carichi non crescono da 3-4 settimane nonostante tecnica e recupero corretti",
+      "Le performance in allenamento calano invece di migliorare",
+      "Dorme male, motivazione bassa, dolori articolari cronici (overtraining)",
+      "Hai completato tutti i 4 mesi di progressione della scheda attuale",
+      "Le tue priorita muscolari sono cambiate (vuoi piu enfasi su un distretto specifico)",
+      "Hai raggiunto un livello tecnico che richiede esercizi piu complessi"
+    ]},
+    {type:"p", content:"Se cambi scheda perche sei annoiata senza questi segnali, probabilmente stai perdendo progressi. La noia e normale: i risultati non lo sono."}
+  ]},
+  { t: "Ricomposizione corporea", d: [
+    {type:"p", content:"Perdere grasso e guadagnare muscolo allo stesso tempo e possibile — ma solo in condizioni specifiche: principianti, persone con elevata percentuale di grasso, chi ritorna all'allenamento dopo una pausa lunga."},
+    {type:"p", content:"Il meccanismo: un deficit calorico moderato (200-300 kcal/giorno) con alto apporto proteico (1.8-2.2g/kg) e allenamento con i pesi stimola la perdita di grasso usando il grasso esistente come carburante per la sintesi proteica."},
+    {type:"ul", content:[
+      "Progressione piu lenta di un bulk tradizionale — aspettati mesi, non settimane",
+      "Il peso sulla bilancia puo non muoversi anche se la composizione corporea migliora",
+      "Fondamentale misurare: circonferenze, foto mensili, performance in sala"
+    ]},
+    {type:"p", content:"Per chi e gia allenato e magro: la ricomposizione e difficile. In quel caso e meglio alternare fasi di bulk (leggero surplus) e cut (deficit controllato) in mesocicli dedicati."}
+  ]},
 ];
 
 /* === MUSCLES === */
@@ -629,7 +727,7 @@ var STR = {
 
 /* === WORKOUT PLAN WITH MONTHS === */
 var DAYS = [
-  { name: "Lunedi", focus: "Tirata upper + core + catena posteriore", dur: "8-10min", tEst: 70,
+  { name: "Lunedi", focus: "Tirata upper + core + catena posteriore", dur: "B1+B2: 8 esercizi", tEst: 70,
     intro: {
       muscoli: ["Dorsali (gran dorsale, romboidi)", "Core (retto addominale, obliqui)", "Catena posteriore (glutei, femorali, erettori spinali)"],
       obiettivi: ["Costruire forza e volume nella tirata orizzontale e verticale", "Rinforzare la catena posteriore che protegge la zona lombare", "Migliorare postura e capacita di trasmettere forza dal tronco"],
@@ -638,7 +736,6 @@ var DAYS = [
     },
     warmup: [
       { n: "Jumping jacks", img: "w_JumpingJacks", d: "5 minuti continui a intensita moderata. Obiettivo: alzare la frequenza cardiaca e la temperatura muscolare.", tm: 300, alt: [
-        { n: "Burpees", img: "w_Burpees", d: "3-5 minuti a ritmo moderato. Alternativa piu intensa ai jumping jacks.", tm: 300 },
         { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "5 minuti. Ginocchia al petto ad ogni passo. Opzione a basso impatto.", tm: 300 },
       ]},
       { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "In piedi, braccia tese ai lati. Fai cerchi ampi in avanti per 10 rip, poi 10 indietro. Scalda la cuffia dei rotatori e le spalle.", alt: [
@@ -650,17 +747,20 @@ var DAYS = [
       { n: "Inchworm", img: "w_Inchworm", d: "In piedi, piegati e cammina avanti con le mani fino al plank. Push-up facoltativo, poi torna indietro. 2 serie da 5. Attiva core, spalle e femorali.", alt: [
         { n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "5 per lato. Affondo, mano a terra, ruota il busto verso l'alto. Allunga flessori anca, torace, femorali." },
       ]},
+      { n: "Glute Bridge a corpo libero", img: "w_AffondiWarmup", d: "10 ripetizioni. Sdraiata, piedi a terra, spingi le anche verso l'alto contraendo i glutei. Attiva glutei prima del lavoro.", alt: [
+        { n: "Hip hinge con bastone", d: "10 rip. Mani a terra o bastone sulla schiena. Impara lo schema hip hinge." },
+      ]},
     ],
     ex: [
-      { n: "Ab Wheel", s: "8x4", rpe: "", note: "" },
-      { n: "Trazioni", s: "4xmax", rpe: "", note: "Sett.1: 1 completa. Negativa se serve", v2: { n: "Rematore Bilanciere", s: "4x8-6-6-5" }, v3: { n: "Trazioni", s: "4xmax", note: "Presa larga" }, v4: { n: "Trazioni", s: "4x6-5-4-4", note: "Zavorrate" } },
-      { n: "Push-Up", s: "4xmax", rpe: "", note: "Tecnica: bacino che scende", v2: { n: "Floor Press Manubri", s: "4x10-8-8-6" }, v3: { n: "Push-Up Declino", s: "4xmax" }, v4: { n: "Push-Up", s: "4xmax", note: "Pausa 2s in basso" } },
+      { n: "Trazioni", s: "4xmax", rpe: "", note: "Lascia 1-2 rip in riserva. Negativa se serve.", v2: { n: "Rematore Bilanciere", s: "4x8-6-6-5" }, v3: { n: "Trazioni", s: "4xmax", note: "Presa larga" }, v4: { n: "Trazioni", s: "4x6-5-4-4", note: "Zavorrate" } },
       { n: "Rematore Manubri", s: "4x12-10-8-8", rpe: "9", note: "35-35-40-40 sett.1", defaultFree: true, cable: { n: "Pulley", s: "4x12-10-8-8", rpe: "9", note: "35-35-40-40 sett.1" }, free: { n: "Rematore Manubri", s: "4x12-10-8-8", rpe: "9", note: "35-35-40-40 sett.1" }, v2: { n: "Rematore Bilanciere", s: "4x12-10-8-8" }, v3: { n: "Rematore Manubri", s: "4x8-6-6-5", note: "Pesante" }, v4: { n: "Pendlay Row", s: "4x8-6-6-5" } },
+      { n: "Push-Up", s: "4xmax", rpe: "", note: "Lascia 1-2 rip in riserva. Tecnica: bacino che scende.", v2: { n: "Floor Press Manubri", s: "4x10-8-8-6" }, v3: { n: "Push-Up Declino", s: "4xmax" }, v4: { n: "Push-Up", s: "4xmax", note: "Pausa 2s in basso" } },
       { n: "Nordic Curl", s: "4x12-10-8-8", rpe: "9", note: "Sost. leg curl. Sett.1: 9-9-10-11kg", v2: { n: "Single Leg Deadlift", s: "4x10" }, v3: { n: "Nordic Curl", s: "4x8-6-6-5", note: "Negativa 5s" }, v4: { n: "Nordic Curl", s: "4x6-5-5-4", note: "Negativa 5s" } },
       { n: "Hyperextension", s: "4x15", rpe: "9", note: "5kg", v2: { n: "Stacco Rumeno", s: "4x10-8-8-6" }, v3: { n: "Hyperextension", s: "4x12", note: "10kg" }, v4: { n: "Hyperextension", s: "4x12", note: "15kg" } },
       { n: "Good Morning", s: "3x12", rpe: "8", note: "Aggiunta. Bilanciere leggero" },
+      { n: "Ab Wheel", s: "8x4", rpe: "", note: "CORE ALLA FINE. Bacino in retroversione." },
     ], str: ["Dorsali","Femorali","Lombare","Pettorali"] },
-  { name: "Martedi", focus: "Spinta lower + upper + braccia", dur: "8-10min", tEst: 80,
+  { name: "Martedi", focus: "Spinta lower + upper + braccia", dur: "B1+B2+B3: 9 esercizi", tEst: 80,
     intro: {
       muscoli: ["Quadricipiti, glutei, femorali (squat, squat bulgaro)", "Deltoidi, tricipiti (military press)", "Dorsali, bicipiti (lat machine/trazioni supine)", "Bicipiti, tricipiti (curl, french press, tricipiti cavo)", "Core (plank, hollow position, addominali obliqui)"],
       obiettivi: ["Sviluppare forza nella spinta verticale e nei multiarticolari lower", "Costruire volume su braccia e upper body con esercizi di isolamento", "Mantenere alta la frequenza di stimolo su dorsali con la tirata di servizio"],
@@ -668,9 +768,8 @@ var DAYS = [
       ritmo: "Seduta piu lunga della settimana. Recuperi 2 min su squat e military, 90s sugli accessori, 60s sulle braccia."
     },
     warmup: [
-      { n: "Burpees", img: "w_Burpees", d: "5 minuti. Ritmo moderato. Attiva tutta la catena cinetica.", tm: 300, alt: [
-        { n: "Jumping jacks", img: "w_JumpingJacks", d: "5 minuti a ritmo sostenuto. Alternativa piu leggera ai burpees.", tm: 300 },
-        { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "5 minuti. Opzione a basso impatto per giorni di affaticamento.", tm: 300 },
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "5 minuti. Ginocchia al petto ad ogni passo. Attiva flessori anca e quadricipiti.", tm: 300, alt: [
+        { n: "Jumping jacks", img: "w_JumpingJacks", d: "5 minuti a ritmo sostenuto. Alternativa piu leggera.", tm: 300 },
       ]},
       { n: "Squat a corpo libero", img: "w_SquatBL", d: "2 serie da 8. Lento, concentrati sulla profondita e busto eretto. Prepara quadricipiti e glutei.", alt: [
         { n: "Squat con pausa 2s in basso", d: "2 serie da 6. Scendi lento, tieni 2 secondi in fondo. Mobilita anca e caviglia." },
@@ -678,14 +777,8 @@ var DAYS = [
       { n: "Military press con bilanciere scarico", img: "w_MilitaryPress", d: "2 serie da 8. Bilanciere vuoto o bastone. Movimento completo: clavicole a sopra la testa. Scalda deltoidi e stabilizzatori.", alt: [
         { n: "Cerchi con le braccia + apertura", d: "10 cerchi avanti, 10 indietro, poi 10 aperture laterali lente. Scalda cuffia dei rotatori e deltoidi." },
       ]},
-      { n: "Plank", img: "w_Plank", d: "30 secondi. Attiva il core prima di caricare.", tm: 30, alt: [
-        { n: "Hollow Position Tuck", d: "30 secondi. Lombare a terra, ginocchia al petto. Core attivo, stessa funzione del plank.", tm: 30 },
-      ]},
     ],
     ex: [
-      { n: "Addominali Obliqui", s: "3x15", rpe: "", note: "Russian twist o crunch laterale" },
-      { n: "Plank", s: "3x45s", rpe: "", note: "" },
-      { n: "Hollow Position", s: "3x30s", rpe: "", note: "Inizia con Hollow Tuck se serve. Lombare incollata a terra." },
       { n: "Squat", s: "4x8-6-6-5", rpe: "8", note: "", v2: { n: "Front Squat", s: "4x8-6-6-5" }, v3: { n: "Pause Squat", s: "4x6-5-5-4" }, v4: { n: "Squat", s: "4x5-4-4-3", note: "Pesante" } },
       { n: "Military Press", s: "4x8-6-6-5", rpe: "8", note: "", v2: { n: "Push Press", s: "4x6-5-5-4" }, v3: { n: "Military Press", s: "4x10-8-8-6", note: "Manubri" }, v4: { n: "Military Press", s: "4x5-4-4-3", note: "Pesante" } },
       { n: "Lat Machine", s: "4x12-10-8-8", rpe: "9", note: "Sett.1: 30-30-35-35", cable: { n: "Lat Machine", s: "4x12-10-8-8", rpe: "9", note: "Sett.1: 30-30-35-35" }, free: { n: "Trazioni Supine", s: "4x12-10-8-8", rpe: "9", note: "Sost. lat machine" }, v2: { n: "Rematore Bilanciere", s: "4x10-8-8-6" }, v3: { n: "Rematore Manubri", s: "4x10-8-8-6" }, v4: { n: "Trazioni Supine", s: "4xmax", note: "Negativa 5s" } },
@@ -693,18 +786,20 @@ var DAYS = [
       { n: "French Press Manubri", s: "4x12", rpe: "9", note: "Presa neutra. Sost. french press bil.", v2: { n: "Kick Back Manubri", s: "4x12" }, v3: { n: "Overhead Extension", s: "4x12" }, v4: { n: "French Press Manubri", s: "4x8", note: "Pesante" } },
       { n: "Tricipiti Cavo", s: "3x12", rpe: "8", note: "Carrucola alta", cable: { n: "Tricipiti Cavo", s: "3x12", rpe: "8", note: "Carrucola alta" }, free: { n: "Dip su Panca", s: "3x12", rpe: "8", note: "Sost. tricipiti cavo" }, v2: { n: "Push-Up Diamante", s: "3xmax" }, v3: { n: "Dip su Panca", s: "3xmax", note: "Piedi su rialzo" }, v4: { n: "Dip su Panca", s: "3xmax", note: "Disco sulle gambe" } },
       { n: "Squat Bulgaro", s: "3x10", rpe: "8", note: "Per gamba. Sost. leg extension", v2: { n: "Step Up", s: "3x12" }, v3: { n: "Squat Bulgaro", s: "3x8", note: "Manubri pesanti" }, v4: { n: "Walking Lunge", s: "3x10" } },
+      { n: "Addominali Obliqui", s: "3x15", rpe: "", note: "Russian twist o crunch laterale. CORE ALLA FINE." },
+      { n: "Plank", s: "3x45s", rpe: "", note: "CORE ALLA FINE." },
+      { n: "Hollow Position", s: "3x30s", rpe: "", note: "Inizia con Hollow Tuck se serve. Lombare incollata a terra. CORE ALLA FINE." },
     ], str: ["Quadricipiti","Flessori anca","Spalle","Tricipiti"] },
-  { name: "Mercoledi", focus: "Spinta upper + lower + tirata", dur: "8-10min", tEst: 55,
+  { name: "Mercoledi", focus: "Spinta upper + stacco + tirata", dur: "B1+B2+B3: 7 esercizi", tEst: 55,
     intro: {
-      muscoli: ["Pettorali, tricipiti, deltoidi anteriori (panca)", "Catena posteriore completa — glutei, femorali, erettori (stacco)", "Dorsali, trapezi, bicipiti (rematore bilanciere)", "Quadricipiti, glutei (squat leggero di chiusura)"],
+      muscoli: ["Pettorali, tricipiti, deltoidi anteriori (panca)", "Catena posteriore completa — glutei, femorali, erettori (stacco)", "Dorsali, trapezi, bicipiti (rematore bilanciere)", "Core (plank)"],
       obiettivi: ["Sviluppare forza massimale nei fondamentali: panca e stacco", "Rinforzare la tirata orizzontale pesante con il rematore bilanciere", "Seduta breve ma ad alta resa: pochi esercizi, tutti fondamentali"],
       attenzione: ["Stacco: Valsalva obbligatorio, bilanciere sempre a contatto con le gambe, schiena neutra mai arrotondata", "Panca: scapole retratte e depresse prima ancora di staccare dal rack — mai senza questo assetto", "Rematore: se il busto si solleva a ogni rip, il peso e eccessivo — riduci e mantieni i 45 gradi"],
       ritmo: "Seduta corta. Recuperi 2-3 min su panca e stacco (carichi pesanti), 90s sul rematore."
     },
     warmup: [
-      { n: "Burpees", img: "w_Burpees", d: "3 minuti a ritmo moderato. Alza la frequenza cardiaca e attiva tutta la catena cinetica prima di caricare con stacco e panca.", tm: 180, alt: [
-        { n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti. Alternativa piu leggera.", tm: 180 },
-        { n: "Skipping sul posto", d: "3 minuti. Corri sul posto alzando le ginocchia. Intensita media.", tm: 180 },
+      { n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti. Alternativa leggera. Alza la frequenza cardiaca.", tm: 180, alt: [
+        { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti. Ginocchia al petto ad ogni passo. Opzione a basso impatto.", tm: 180 },
       ]},
       { n: "Cat-Cow", img: "w_CatCow", d: "10 ripetizioni lente. Mobilizza la colonna prima di caricarla con stacco e panca.", alt: [
         { n: "Rotazioni toraciche", d: "In posizione quadrupedica, una mano dietro la testa. Ruota il gomito verso il soffitto per 8 rip per lato. Mobilita toracica specifica per stacco." },
@@ -715,18 +810,14 @@ var DAYS = [
       { n: "Stacco con bilanciere scarico", img: "w_StaccoBilanciere", d: "2 serie da 5. Bilanciere vuoto. Simula lo schema motorio, attiva la catena posteriore.", alt: [
         { n: "Romanian deadlift con bastone", d: "2 serie da 8. Bastone o manico di scopa. Attiva femorali e glutei nello stesso piano di movimento." },
       ]},
-      { n: "Plank", img: "w_Plank", d: "30 secondi. Core attivo prima di caricare.", tm: 30, alt: [
-        { n: "Dead bug", d: "8 rip per lato. Sdraiata, gambe a 90 gradi, abbassa braccio e gamba opposta verso il pavimento. Core stabilizzato.", tm: 30 },
-      ]},
     ],
     ex: [
-      { n: "Plank", s: "3x45s", rpe: "", note: "" },
       { n: "Panca", s: "4x8-6-6-5", rpe: "8", note: "Sett.1: 5kg", v2: { n: "Floor Press Manubri", s: "4x10-8-8-6" }, v3: { n: "Panca", s: "4x6-5-5-4", note: "Pausa al petto" }, v4: { n: "Panca", s: "4x5-4-3-3", note: "Pesante" } },
       { n: "Stacco da Terra", s: "4x8-6-6-5", rpe: "8", note: "Sett.1: 15-20-20kg", v2: { n: "Stacco Sumo", s: "4x8-6-6-5" }, v3: { n: "Stacco da Terra", s: "4x6-5-5-4", note: "Pausa sotto ginocchio" }, v4: { n: "Stacco da Terra", s: "4x5-4-3-3", note: "Pesante" } },
       { n: "Rematore Bilanciere", s: "4x8-8-6-6", rpe: "9", note: "", v2: { n: "Rematore Bilanciere", s: "4x8-8-6-6", note: "Presa supina" }, v3: { n: "Pendlay Row", s: "4x8-6-6-5" }, v4: { n: "Rematore Bilanciere", s: "5x5", note: "Pesante" } },
-      { n: "Squat", s: "3x10", rpe: "7", note: "A terra, ginocchia larghe. Con kb o bil. (5+2.5kg)" },
-    ], str: ["Pettorali","Femorali","Lombare","Cat-Cow","Dorsali"] },
-  { name: "Giovedi", focus: "Spinta lower + glutei + upper isolamento", dur: "8-10min", tEst: 70,
+      { n: "Plank", s: "3x45s", rpe: "", note: "CORE ALLA FINE." },
+    ], str: ["Pettorali","Femorali","Lombare","Dorsali"] },
+  { name: "Giovedi", focus: "Spinta lower + glutei + upper isolamento", dur: "B1+B2: 8 esercizi", tEst: 70,
     intro: {
       muscoli: ["Grande gluteo, gluteo medio (affondi, clamshell, hyperextension)", "Quadricipiti, femorali (affondi, hyperextension)", "Pettorali (croci a terra)", "Deltoidi (arnold press)", "Core (addominali obliqui, shoulder tap)"],
       obiettivi: ["Accumulare volume alto su glutei e gambe con tempo sotto tensione elevato", "Isolare e rinforzare il gluteo medio per stabilizzare il ginocchio nei compound", "Rifinire pettorali e spalle con lavoro di isolamento a fine seduta"],
@@ -734,10 +825,6 @@ var DAYS = [
       ritmo: "Seduta ad alto volume metabolico. Recuperi brevi: 60-90s su affondi e clamshell, 90s su croci e arnold."
     },
     warmup: [
-      { n: "Burpees", img: "w_Burpees", d: "3 minuti a ritmo moderato. Attiva tutta la catena cinetica, riscalda glutei e gambe prima del lavoro pesante.", tm: 180, alt: [
-        { n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti. Alternativa leggera ai burpees.", tm: 180 },
-        { n: "Step touch laterale", d: "3 minuti. Passo laterale ampio alternando i lati, tocca il piede che arriva. Basso impatto per le ginocchia.", tm: 180 },
-      ]},
       { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 minuti. Ginocchia al petto ad ogni passo. Scalda flessori anca e quadricipiti.", tm: 120, alt: [
         { n: "Squat a corpo libero", img: "w_SquatBL", d: "2 serie da 10. Lento. Attiva quadricipiti e glutei." },
       ]},
@@ -752,15 +839,15 @@ var DAYS = [
       ]},
     ],
     ex: [
-      { n: "Addominali Obliqui", s: "3x15", rpe: "", note: "" },
-      { n: "Shoulder Tap", s: "1x33", rpe: "", note: "" },
       { n: "Hyperextension", s: "3x15", rpe: "9", note: "10kg", v2: { n: "Stacco Rumeno", s: "3x10" }, v3: { n: "Hyperextension", s: "3x12", note: "15kg" }, v4: { n: "Hyperextension", s: "3x10", note: "20kg" } },
-      { n: "Affondi", s: "5x15", rpe: "9", note: "Manubri ai lati", v2: { n: "Walking Lunge", s: "4x12" }, v3: { n: "Affondi", s: "5x12", note: "Indietro" }, v4: { n: "Squat Bulgaro", s: "4x10", note: "Pesante" } },
-      { n: "Clamshell", s: "5x15", rpe: "9", note: "Per lato. Sost. abductor (40kg)", v2: { n: "Fire Hydrant", s: "5x15" }, v3: { n: "Clamshell", s: "5x15", note: "Con elastico" }, v4: { n: "Abduzione Laterale", s: "5x15", note: "Con cavigliera" } },
+      { n: "Affondi", s: "3x12", rpe: "8", note: "Manubri ai lati. Lascia 1-2 rip in riserva.", v2: { n: "Walking Lunge", s: "4x12" }, v3: { n: "Affondi", s: "3x10", note: "Indietro" }, v4: { n: "Squat Bulgaro", s: "4x10", note: "Pesante" } },
+      { n: "Clamshell", s: "2x15", rpe: "8", note: "Per lato. Corpo libero.", v2: { n: "Fire Hydrant", s: "3x15" }, v3: { n: "Clamshell", s: "3x15", note: "Con elastico" }, v4: { n: "Abduzione Laterale", s: "3x15", note: "Con cavigliera" } },
       { n: "Croci Manubri a Terra", s: "4x12", rpe: "9", note: "8kg. Usa fitball come panca inclinata", v2: { n: "Push-Up Declino", s: "4xmax" }, v3: { n: "Floor Press Manubri", s: "4x10" }, v4: { n: "Croci Manubri a Terra", s: "4x10", note: "Pausa 2s in basso" } },
       { n: "Arnold Press", s: "4x12", rpe: "9", note: "8kg", v2: { n: "Alzate Laterali", s: "4x15" }, v3: { n: "Push Press", s: "4x8" }, v4: { n: "Arnold Press", s: "4x8", note: "Pesante" } },
+      { n: "Addominali Obliqui", s: "3x15", rpe: "", note: "Russian twist o crunch laterale. CORE ALLA FINE." },
+      { n: "Shoulder Tap", s: "2x10", rpe: "", note: "Per lato. Bacino fermo. CORE ALLA FINE." },
     ], str: ["Glutei","Flessori anca","Quadricipiti","Pettorali","Spalle"] },
-  { name: "Giorno 5-6", focus: "Richiamo braccia + core + gambe", dur: "5min", tEst: 45,
+  { name: "Giorno 5-6", focus: "Richiamo braccia + core + gambe", dur: "B1+B2: 4 esercizi", tEst: 45,
     intro: {
       muscoli: ["Core (hollow position, addominali obliqui)", "Bicipiti, tricipiti (curl, dip su panca)", "Quadricipiti, glutei (step up, affondi)", "Dorsali (trazioni)", "Pettorali, tricipiti (push-up)"],
       obiettivi: ["Mantenere alta la frequenza di stimolo su tutti i distretti principali", "Consolidare gli schemi motori appresi durante la settimana", "Portare sangue ai muscoli senza aggiungere fatica sistemica"],
@@ -769,7 +856,6 @@ var DAYS = [
     },
     warmup: [
       { n: "Jumping jacks", img: "w_JumpingJacks", d: "2 minuti. Alza la frequenza cardiaca. Sessione opzionale — ritmo leggero.", tm: 120, alt: [
-        { n: "Burpees leggeri", img: "w_Burpees", d: "2 minuti. Solo se ti senti in forma.", tm: 120 },
         { n: "Marcia sul posto", d: "2 minuti a ritmo lento. Opzione minima per giorni di recupero.", tm: 120 },
       ]},
       { n: "Squat a corpo libero", img: "w_SquatBL", d: "10 ripetizioni lente.", alt: [
@@ -777,162 +863,278 @@ var DAYS = [
       ]},
     ],
     ex: [
-      { n: "Hollow Position", s: "4x30s", rpe: "", note: "Progressione: Tuck → Advanced Tuck → One Leg → Full" },
       { n: "Curl Bicipiti", s: "3x12", rpe: "", note: "" },
-      { n: "Dip su Panca", s: "3xmax", rpe: "", note: "Tricipiti" },
-      { n: "Addominali Obliqui", s: "3x15", rpe: "", note: "" },
-      { n: "Step Up", s: "3x12", rpe: "", note: "Per gamba" },
-      { n: "Trazioni", s: "3xmax", rpe: "", note: "" },
-      { n: "Push-Up", s: "3xmax", rpe: "", note: "" },
-      { n: "Affondi", s: "3x12", rpe: "", note: "Corpo libero o manubri" },
+      { n: "Dip su Panca", s: "3x10", rpe: "", note: "Tricipiti. Lascia 1-2 rip in riserva." },
+      { n: "Step Up", s: "3x12", rpe: "", note: "Per gamba." },
+      { n: "Affondi", s: "3x12", rpe: "", note: "Corpo libero o manubri." },
+      { n: "Trazioni", s: "2x5-6", rpe: "", note: "Leggero. Non al massimo, lascia 1-2 rip in riserva." },
+      { n: "Push-Up", s: "2x10", rpe: "", note: "Non al massimo. Lascia 1-2 rip in riserva." },
+      { n: "Hollow Position", s: "3x30s", rpe: "", note: "CORE ALLA FINE. Progressione: Tuck → Advanced Tuck → One Leg → Full" },
+      { n: "Addominali Obliqui", s: "2x12", rpe: "", note: "Russian twist o crunch laterale. CORE ALLA FINE." },
     ], str: ["Femorali","Quadricipiti","Pettorali","Dorsali","Lombare"] },
 ];
 
 var DAYS_BEGINNER = [
-  { name: "Giorno A", focus: "Full body — Spinta + lower", dur: "5min", tEst: 40,
+  { name: "Giorno A", focus: "Spinta + lower + glutei", dur: "B1+B2: 5 esercizi", tEst: 40,
     intro: {
-      muscoli: ["Pettorali, tricipiti (push-up)", "Quadricipiti, glutei (squat)", "Tricipiti (dip su panca)", "Glutei, quadricipiti (affondi)", "Core (plank)"],
-      obiettivi: ["Imparare la meccanica dei movimenti di spinta", "Costruire forza di base su petto, tricipiti e gambe", "Sviluppare stabilità del core"],
-      attenzione: ["Push-up: gomiti a 45°, non aperti — bacino non cede mai", "Squat: ginocchia fuori, sedere indietro come su una sedia", "Affondi: ginocchio anteriore non supera la punta del piede"],
-      ritmo: "Recuperi 90s tra le serie. Ritmo lento e controllato: conta 3s in discesa, 1s in cima."
+      muscoli: ["Quadricipiti glutei (squat affondi)", "Pettorali tricipiti (push-up)", "Glutei femorali (hip thrust)", "Core (plank)"],
+      obiettivi: ["Imparare la meccanica dei movimenti di spinta", "Costruire forza su petto e gambe", "Rinforzare glutei e core"],
+      attenzione: ["Push-up gomiti a 45° non aperti — bacino non cede mai", "Squat ginocchia fuori sedere indietro come su una sedia", "Hip thrust spingi col tallone contrai il gluteo in cima"],
+      ritmo: "Recuperi 90s tra le serie. Eccentrica lenta 3s in discesa."
     },
     warmup: [
-      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti. Ginocchia al petto ad ogni passo. Scalda gambe e flessori anca.", tm: 180 },
-      { n: "Squat a corpo libero", img: "w_SquatBL", d: "2 serie da 8. Lento, concentrati sulla profondità.", alt: [{ n: "Affondi a corpo libero", d: "5 per gamba. Lenti, senza peso." }] },
-      { n: "Cat-Cow", img: "w_CatCow", d: "10 ripetizioni lente. Mobilizza la colonna.", alt: [{ n: "Rotazioni spalle", d: "10 avanti e 10 indietro per sciogliere le spalle." }] },
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 giri da 2 min. Ginocchia al petto ad ogni passo. Scalda gambe e flessori anca.", tm: 240 },
+      { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente. Mobilizza tutta la colonna.", alt: [{ n: "Child's pose + cobra", d: "5 ripetizioni lente. Stesso effetto mobilizzante." }] },
+      { n: "Affondi a corpo libero", img: "w_AffondiCorpoLibero", d: "6 per gamba. Lenti, senza peso. Prepara quadricipiti e glutei.", alt: [{ n: "Squat a corpo libero", d: "10 rip lente." }] },
+      { n: "Glute Bridge a corpo libero", img: "w_AffondiWarmup", d: "10 ripetizioni. Sdraiata, piedi a terra, spingi le anche verso l'alto contraendo i glutei. Attiva glutei prima del lavoro.", alt: [{ n: "Hip hinge con bastone", d: "10 rip. Impara lo schema senza caricare." }] },
+      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "15 cerchi avanti + 15 indietro. Scalda la cuffia dei rotatori e le spalle.", alt: [{ n: "Shoulder rolls + apertura petto", d: "10 rotazioni avanti e indietro, poi 10 aperture laterali." }] },
     ],
     ex: [
-      { n: "Push-Up", s: "3x8", rpe: "", note: "Ginocchia a terra se serve. Eccentrica lenta." },
       { n: "Squat", s: "3x12", rpe: "", note: "Corpo libero. Concentrati sulla forma." },
-      { n: "Dip su Panca", s: "3x10", rpe: "", note: "Gambe tese = più difficile. Flesse = più facile." },
-      { n: "Affondi", s: "3x10", rpe: "", note: "Per gamba. Corpo libero, senza peso." },
-      { n: "Plank", s: "3x30s", rpe: "", note: "Glutei contratti, bacino in retroversione." },
-    ], str: ["Quadricipiti","Flessori anca","Pettorali","Tricipiti"] },
+      { n: "Push-Up", s: "3x8", rpe: "", note: "Ginocchia a terra se serve, gomiti a 45°." },
+      { n: "Affondi", s: "3x10", rpe: "", note: "Per gamba. Corpo libero." },
+      { n: "Hip Thrust Singolo", s: "3x12", rpe: "", note: "Per gamba. Corpo libero o manubrio leggero." },
+      { n: "Plank", s: "3x30s", rpe: "", note: "Glutei contratti, bacino in retroversione. CORE ALLA FINE." },
+    ], str: ["Quadricipiti","Flessori anca","Glutei","Pettorali"] },
 
-  { name: "Giorno B", focus: "Full body — Tirata + core", dur: "5min", tEst: 40,
+  { name: "Giorno B", focus: "Tirata + catena posteriore", dur: "B1+B2: 5 esercizi", tEst: 40,
     intro: {
-      muscoli: ["Dorsali, bicipiti (rematore manubri)", "Femorali, glutei, erettori (hyperextension)", "Bicipiti (curl)", "Core (hollow tuck, addominali obliqui)"],
-      obiettivi: ["Imparare la meccanica dei movimenti di tirata", "Rinforzare la catena posteriore per proteggere la schiena", "Sviluppare controllo del core"],
-      attenzione: ["Rematore: schiena parallela al suolo, neutra — non arrotondata", "Hyperextension: non iperestendere in cima, sali solo fino alla linea del corpo", "Hollow tuck: lombare sempre incollata al pavimento — se si stacca regredisci"],
+      muscoli: ["Dorsali bicipiti (rematore lat machine)", "Femorali erettori (hyperextension)", "Bicipiti (curl)", "Core (hollow)"],
+      obiettivi: ["Imparare la meccanica della tirata orizzontale e verticale", "Rinforzare la catena posteriore", "Sviluppare controllo del core"],
+      attenzione: ["Rematore schiena parallela al suolo neutra — non arrotondata", "Hyperextension non iperestendere in cima sali solo fino alla linea del corpo", "Hollow lombare sempre incollata al pavimento"],
       ritmo: "Recuperi 90s. Concentrati sulla contrazione muscolare a ogni ripetizione."
     },
     warmup: [
-      { n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti a ritmo moderato. Scalda tutto il corpo.", tm: 180 },
-      { n: "Cat-Cow", img: "w_CatCow", d: "10 rip lente. Mobilizza la colonna prima della tirata e dell'hyperextension.", alt: [{ n: "Child's pose", d: "30s. Distendi la schiena prima di caricarla." }] },
-      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "10 avanti e 10 indietro. Scalda le spalle.", alt: [{ n: "Rotazioni spalle", d: "10 rotazioni avanti e 10 indietro." }] },
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 giri da 2 min. Ginocchia al petto ad ogni passo. Opzione a basso impatto.", tm: 240 },
+      { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente. Mobilizza la colonna prima della tirata e dell'hyperextension.", alt: [{ n: "Child's pose", d: "30s. Distendi la schiena prima di caricarla." }] },
+      { n: "Inchworm", img: "w_Inchworm", d: "5 ripetizioni. Piegati, cammina avanti con le mani fino al plank, torna indietro. Attiva core, spalle e femorali.", alt: [{ n: "Cat-Cow extra", d: "5 rip lente aggiuntive." }] },
+      { n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "4 per lato. Affondo, mano a terra, ruota il busto verso l'alto. Allunga flessori anca, torace, femorali.", alt: [{ n: "Affondo con rotazione", d: "5 per lato. Simile ma piu semplice." }] },
+      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "15 cerchi avanti + 15 indietro. Scalda la cuffia dei rotatori.", alt: [{ n: "Shoulder rolls + apertura petto", d: "10 rotazioni avanti e indietro, poi 10 aperture laterali." }] },
     ],
     ex: [
-      { n: "Rematore Manubri", s: "3x12", rpe: "", note: "Manubri leggeri. Schiena parallela, scapole attive." },
-      { n: "Hyperextension", s: "3x12", rpe: "", note: "Corpo libero o 5kg. Non iperestendere in cima." },
-      { n: "Hollow Position", s: "3x20s", rpe: "", note: "Inizia con Tuck (ginocchia al petto). Lombare a terra." },
-      { n: "Curl Bicipiti", s: "3x12", rpe: "", note: "Manubri leggeri. Niente dondolio." },
-      { n: "Addominali Obliqui", s: "3x12", rpe: "", note: "Russian twist o crunch laterale." },
-    ], str: ["Dorsali","Femorali","Lombare","Flessori anca"] },
+      { n: "Rematore Manubri", s: "3x12", rpe: "", note: "Manubri leggeri, schiena parallela, scapole attive.", cable: { n: "Lat Machine", s: "3x12", rpe: "", note: "Carico leggero." }, free: { n: "Rematore Manubri", s: "3x12", rpe: "", note: "Manubri leggeri, schiena parallela, scapole attive." } },
+      { n: "Lat Machine", s: "3x12", rpe: "", note: "Carico leggero. ALT corpo libero: Australian Row su tavolo 3x10.", cable: { n: "Lat Machine", s: "3x12", rpe: "", note: "Carico leggero." }, free: { n: "Rematore Manubri", s: "3x10", rpe: "", note: "Australian Row su tavolo se possibile." } },
+      { n: "Hyperextension", s: "3x12", rpe: "", note: "Corpo libero, non iperestendere in cima." },
+      { n: "Curl Bicipiti", s: "3x12", rpe: "", note: "Manubri leggeri, niente dondolio." },
+      { n: "Hollow Position", s: "3x20s", rpe: "", note: "Inizia con Tuck, lombare a terra. CORE ALLA FINE." },
+    ], str: ["Dorsali","Femorali","Glutei"] },
 
-  { name: "Giorno C", focus: "Full body — Misto + glutei", dur: "5min", tEst: 40,
+  { name: "Giorno C", focus: "Glutei + full body integrato", dur: "B1+B2: 5 esercizi", tEst: 40,
     intro: {
-      muscoli: ["Glutei, femorali (clamshell, step up)", "Pettorali, spalle (push-up)", "Dorsali (rematore manubri)", "Quadricipiti, glutei (squat)", "Core (shoulder tap)"],
-      obiettivi: ["Rinforzare il gluteo medio per stabilizzare ginocchio e anca", "Consolidare i pattern motori appresi nei giorni A e B", "Lavorare su equilibrio e coordinazione con lo step up"],
-      attenzione: ["Clamshell: il bacino non ruota indietro durante l'apertura — solo il ginocchio si solleva", "Step up: spingi col tallone, non con la punta del piede", "Shoulder tap: bacino fermo, non oscillare"],
-      ritmo: "Recuperi 60-90s. Seduta leggera, ritmo fluido."
+      muscoli: ["Glutei femorali (stacco rumeno clamshell)", "Quadricipiti (squat step up)", "Dorsali (rematore)", "Core (shoulder tap)"],
+      obiettivi: ["Rinforzare il gluteo medio per stabilizzare ginocchio e anca", "Introdurre lo hip hinge con stacco rumeno", "Consolidare i pattern motori"],
+      attenzione: ["Stacco rumeno schiena neutra sempre — spingi il bacino indietro non piegare la schiena", "Clamshell il bacino non ruota durante l'apertura", "Step up spingi col tallone non con la punta"],
+      ritmo: "Recuperi 60-90s. Seduta bilanciata posterior chain e anterior."
     },
     warmup: [
-      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti. Scalda flessori anca e gambe.", tm: 180 },
-      { n: "Affondi a corpo libero", img: "w_AffondiCorpoLibero", d: "8 totali (4 per gamba). Lenti, senza peso.", alt: [{ n: "Squat a corpo libero", d: "10 rip lente." }] },
-      { n: "Cat-Cow", img: "w_CatCow", d: "10 rip. Mobilizza la colonna.", alt: [{ n: "Child's pose", d: "30s distensione." }] },
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 giri da 2 min. Scalda flessori anca e gambe.", tm: 240 },
+      { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente. Mobilizza la colonna.", alt: [{ n: "Child's pose + cobra", d: "5 ripetizioni lente." }] },
+      { n: "Affondi a corpo libero", img: "w_AffondiCorpoLibero", d: "6 per gamba. Lenti, senza peso.", alt: [{ n: "Squat a corpo libero", d: "10 rip lente." }] },
+      { n: "Glute Bridge a corpo libero", img: "w_AffondiWarmup", d: "10 ripetizioni. Sdraiata, piedi a terra, spingi le anche verso l'alto contraendo i glutei.", alt: [{ n: "Hip hinge con bastone", d: "10 rip. Impara lo schema hip hinge." }] },
+      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "15 cerchi avanti + 15 indietro.", alt: [{ n: "Shoulder rolls + apertura petto", d: "10 rotazioni avanti e indietro, poi 10 aperture laterali." }] },
     ],
     ex: [
       { n: "Squat", s: "3x12", rpe: "", note: "Corpo libero o manubri leggeri." },
-      { n: "Push-Up", s: "3x8", rpe: "", note: "Ginocchia a terra se serve." },
-      { n: "Clamshell", s: "3x15", rpe: "", note: "Per lato. Corpo libero." },
-      { n: "Rematore Manubri", s: "3x12", rpe: "", note: "Manubri leggeri. Schiena neutra." },
-      { n: "Step Up", s: "3x10", rpe: "", note: "Per gamba. Su scalino o sedia stabile." },
-      { n: "Shoulder Tap", s: "1x20", rpe: "", note: "10 per lato. Bacino fermo." },
-    ], str: ["Glutei","Flessori anca","Quadricipiti","Pettorali"] },
+      { n: "Rematore Manubri", s: "3x12", rpe: "", note: "Manubri leggeri, schiena neutra." },
+      { n: "Stacco Rumeno", s: "3x10", rpe: "", note: "Manubri leggeri, schiena neutra, spingi il bacino indietro." },
+      { n: "Clamshell", s: "3x15", rpe: "", note: "Per lato. Corpo libero, bacino fermo." },
+      { n: "Step Up", s: "3x10", rpe: "", note: "Per gamba. Su scalino o sedia stabile, spingi col tallone." },
+      { n: "Shoulder Tap", s: "2x10", rpe: "", note: "Per lato. Bacino fermo, non oscillare. CORE ALLA FINE." },
+    ], str: ["Femorali","Glutei","Flessori anca","Dorsali"] },
 ];
 
 var DAYS_INTERMEDIATE = [
-  { name: "Lunedi", focus: "Tirata upper + core + catena posteriore", dur: "8min", tEst: 55,
+  { name: "Lunedi", focus: "Tirata + catena posteriore", dur: "B1+B2+B3: 6 esercizi", tEst: 55,
     intro: {
-      muscoli: ["Dorsali, romboidi, bicipiti (trazioni/rematore)", "Core (ab wheel, addominali)", "Catena posteriore (nordic curl, hyperextension)"],
-      obiettivi: ["Costruire forza nella tirata verticale e orizzontale", "Rinforzare la catena posteriore", "Imparare i compound a corpo libero pesanti"],
-      attenzione: ["Trazioni: scapole depresse prima di tirare — usa la negativa assistita se non riesci ancora", "Ab wheel: bacino in retroversione e glutei contratti sempre", "Nordic curl: eccentrica lenta è il lavoro reale — anche solo 20-30° di discesa va bene"],
-      ritmo: "Recuperi 2 min sui compound, 90s sugli accessori."
+      muscoli: ["Dorsali romboidi bicipiti (trazioni rematore)", "Femorali erettori (nordic curl hyperextension)", "Core (ab wheel)"],
+      obiettivi: ["Costruire forza nella tirata verticale e orizzontale", "Rinforzare la catena posteriore", "Core intenso a fine seduta"],
+      attenzione: ["Trazioni scapole depresse prima di tirare — usa la negativa assistita se non riesci ancora", "Nordic curl eccentrica lenta è il lavoro reale — anche solo 20-30° di discesa va bene", "Ab wheel bacino in retroversione e glutei contratti sempre"],
+      ritmo: "Recuperi 2 min sui compound, 90s sugli accessori. Core alla fine."
     },
     warmup: [
-      { n: "Jumping jacks", img: "w_JumpingJacks", d: "4 minuti a ritmo moderato.", tm: 240, alt: [{ n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "4 minuti.", tm: 240 }] },
-      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "10 avanti, 10 indietro. Scalda le spalle.", alt: [{ n: "Rotazioni spalle", d: "10 rotazioni avanti e indietro." }] },
-      { n: "Cat-Cow", img: "w_CatCow", d: "10 rip lente. Mobilizza la colonna.", alt: [{ n: "Child's pose + cobra", d: "5 ripetizioni lente." }] },
-      { n: "Inchworm", img: "w_Inchworm", d: "2 serie da 5. Attiva core, spalle e femorali.", alt: [{ n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "5 per lato." }] },
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 giri da 2 min. Ginocchia al petto ad ogni passo. Opzione a basso impatto.", tm: 240, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "4 minuti a ritmo moderato.", tm: 240 }] },
+      { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente. Mobilizza tutta la colonna.", alt: [{ n: "Child's pose + cobra", d: "5 ripetizioni lente." }] },
+      { n: "Inchworm", img: "w_Inchworm", d: "5 ripetizioni. Cammina avanti con le mani fino al plank, torna indietro. Attiva core, spalle e femorali.", alt: [{ n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "4 per lato." }] },
+      { n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "4 per lato. Affondo, mano a terra, ruota il busto verso l'alto. Allunga flessori anca, torace, femorali.", alt: [{ n: "Affondo con rotazione", d: "5 per lato. Simile ma piu semplice." }] },
+      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "15 cerchi avanti + 15 indietro. Scalda la cuffia dei rotatori.", alt: [{ n: "Shoulder rolls + apertura petto", d: "10 rotazioni avanti e indietro, poi 10 aperture laterali." }] },
+      { n: "Trazioni con elastico o rematore leggero", img: "w_AffondiWarmup", d: "2 serie da 8. Carico leggero — serie di avvicinamento al primo esercizio.", alt: [{ n: "Rematore manubri leggero", d: "2x8. Carico leggero, attiva le scapole." }] },
     ],
     ex: [
-      { n: "Ab Wheel", s: "3x6", rpe: "", note: "Range ridotto. Bacino in retroversione." },
       { n: "Trazioni", s: "3x3-5", rpe: "", note: "Negativa assistita se serve. Qualità prima della quantità." },
-      { n: "Push-Up", s: "3x12", rpe: "", note: "Eccentrica 3s in discesa." },
       { n: "Rematore Manubri", s: "3x12-10-10", rpe: "8", note: "Carico moderato, forma perfetta." },
+      { n: "Push-Up", s: "3x12", rpe: "", note: "Eccentrica 3s in discesa." },
       { n: "Nordic Curl", s: "3x8", rpe: "8", note: "Eccentrica lentissima. Mani ammortizzano la caduta." },
       { n: "Hyperextension", s: "3x12", rpe: "8", note: "5-8kg o corpo libero." },
-    ], str: ["Dorsali","Femorali","Lombare","Pettorali"] },
+      { n: "Ab Wheel", s: "3x6", rpe: "", note: "Alla fine. Bacino in retroversione. CORE ALLA FINE." },
+    ], str: ["Dorsali","Femorali","Lombare","Spalle"] },
 
-  { name: "Martedi", focus: "Spinta lower + upper + braccia", dur: "8min", tEst: 60,
+  { name: "Martedi", focus: "Squat + spinta verticale + braccia", dur: "B1+B2+B3: 7 esercizi", tEst: 60,
     intro: {
-      muscoli: ["Quadricipiti, glutei (squat)", "Deltoidi, tricipiti (military press)", "Dorsali, bicipiti (lat machine/trazioni supine)", "Braccia (curl, dip su panca)"],
-      obiettivi: ["Introdurre squat e military press con tecnica corretta", "Costruire volume sulle braccia", "Alternare stimolo lower e upper nello stesso giorno"],
-      attenzione: ["Squat: Valsalva prima di scendere, ginocchia fuori, profondità almeno al parallelo", "Military press: core e glutei contratti, non inarcare la lombare", "Braccia: niente slancio — peso controllato"],
+      muscoli: ["Quadricipiti glutei (squat squat bulgaro)", "Deltoidi tricipiti (military press dip)", "Bicipiti (curl)", "Obliqui (core)"],
+      obiettivi: ["Sviluppare forza nella spinta verticale", "Costruire volume su braccia", "Core alla fine"],
+      attenzione: ["Squat Valsalva prima di scendere ginocchia fuori profondità almeno al parallelo", "Military press core e glutei contratti — non inarcare la lombare", "Squat bulgaro mantieni il busto eretto non spingere il ginocchio in avanti"],
       ritmo: "Recuperi 2 min su squat e military, 90s sulle braccia."
     },
     warmup: [
-      { n: "Burpees", img: "w_Burpees", d: "4 minuti a ritmo moderato.", tm: 240, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "4 minuti.", tm: 240 }] },
-      { n: "Squat a corpo libero", img: "w_SquatBL", d: "2 serie da 8. Lento, profondità completa.", alt: [{ n: "Squat con pausa 2s", d: "2 serie da 6. Tieni 2s in fondo." }] },
-      { n: "Military press con bilanciere scarico", img: "w_MilitaryPress", d: "2 serie da 8. Bilanciere vuoto.", alt: [{ n: "Cerchi con le braccia + apertura", d: "10 avanti, 10 indietro, 10 aperture." }] },
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 giri da 2 min. Ginocchia al petto ad ogni passo.", tm: 240, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "4 minuti a ritmo moderato.", tm: 240 }] },
+      { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente. Mobilizza la colonna.", alt: [{ n: "Child's pose + cobra", d: "5 ripetizioni lente." }] },
+      { n: "Squat a corpo libero", img: "w_SquatBL", d: "2 serie da 10 lente con pausa in fondo. Prepara quadricipiti e glutei.", alt: [{ n: "Squat con pausa 2s in basso", d: "2 serie da 6. Mobilita anca e caviglia." }] },
+      { n: "Affondi a corpo libero", img: "w_AffondiCorpoLibero", d: "6 per gamba. Lenti, senza peso.", alt: [{ n: "Step back lunge corpo libero", d: "6 per gamba." }] },
+      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "15 cerchi avanti + 15 indietro.", alt: [{ n: "Shoulder rolls + apertura petto", d: "10 rotazioni avanti e indietro, poi 10 aperture laterali." }] },
+      { n: "Military press bilanciere scarico", img: "w_MilitaryPress", d: "2 serie da 8. Bilanciere vuoto o bastone. Scalda deltoidi e stabilizzatori.", alt: [{ n: "Cerchi con le braccia + apertura", d: "10 cerchi avanti, 10 indietro, poi 10 aperture laterali lente." }] },
     ],
     ex: [
-      { n: "Squat", s: "3x10", rpe: "7", note: "Corpo libero o bilanciere leggero." },
-      { n: "Military Press", s: "3x10", rpe: "7", note: "Bilanciere leggero o manubri." },
-      { n: "Lat Machine", s: "3x12", rpe: "8", note: "Carico gestibile.", cable: { n: "Lat Machine", s: "3x12", rpe: "8" }, free: { n: "Trazioni Supine", s: "3x5-8", rpe: "8", note: "Negativa assistita se serve" } },
-      { n: "Curl Bicipiti", s: "3x12", rpe: "8", note: "Manubri. Niente dondolio." },
+      { n: "Squat", s: "3x10", rpe: "7", note: "Corpo libero o bilanciere leggero. Valsalva, ginocchia fuori." },
+      { n: "Military Press", s: "3x10", rpe: "7", note: "Bilanciere leggero o manubri. Core e glutei contratti." },
       { n: "Dip su Panca", s: "3x12", rpe: "8", note: "Gambe flesse = più facile." },
-      { n: "Addominali Obliqui", s: "3x12", rpe: "", note: "Russian twist." },
+      { n: "Curl Bicipiti", s: "3x12", rpe: "8", note: "Manubri. Niente dondolio." },
+      { n: "Squat Bulgaro", s: "3x8", rpe: "8", note: "Per gamba. Corpo libero o manubri leggeri." },
+      { n: "Addominali Obliqui", s: "3x12", rpe: "", note: "Russian twist. CORE ALLA FINE." },
     ], str: ["Quadricipiti","Flessori anca","Spalle","Tricipiti"] },
 
-  { name: "Mercoledi", focus: "Spinta upper + stacco + tirata", dur: "8min", tEst: 50,
+  { name: "Giovedi", focus: "Stacco + spinta orizzontale + tirata", dur: "B1+B2+B3: 5 esercizi", tEst: 55,
     intro: {
-      muscoli: ["Pettorali, tricipiti (push-up/floor press)", "Catena posteriore completa (stacco)", "Dorsali, bicipiti (rematore bilanciere)"],
-      obiettivi: ["Introdurre lo stacco da terra con tecnica corretta e carichi leggeri", "Costruire forza nei fondamentali: panca e rematore pesante", "Seduta corta ad alta qualità"],
-      attenzione: ["Stacco: bilanciere vicino alle gambe, schiena neutra, Valsalva obbligatorio — inizia leggero", "Push-up o floor press: scapole retratte e depresse prima di spingere", "Rematore: busto a 45°, non oscillare"],
+      muscoli: ["Catena posteriore completa (stacco)", "Pettorali tricipiti (push-up floor press)", "Dorsali bicipiti (rematore bilanciere)", "Core (plank)"],
+      obiettivi: ["Introdurre lo stacco da terra con tecnica corretta", "Costruire forza nei fondamentali", "Seduta corta ad alta qualità"],
+      attenzione: ["Stacco bilanciere vicino alle gambe schiena neutra Valsalva obbligatorio — inizia leggero", "Push-up scapole retratte e depresse prima di spingere", "Rematore busto a 45° non oscillare"],
       ritmo: "Recuperi 2-3 min su stacco, 90s sugli altri."
     },
     warmup: [
-      { n: "Burpees", img: "w_Burpees", d: "3 minuti.", tm: 180, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti.", tm: 180 }] },
-      { n: "Cat-Cow", img: "w_CatCow", d: "10 rip lente. Mobilizza la colonna.", alt: [{ n: "Rotazioni toraciche", d: "8 per lato in quadrupedica." }] },
-      { n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "5 per lato. Flessori anca, femorali, torace.", alt: [{ n: "Affondo con rotazione", d: "5 per lato." }] },
+      { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente. Mobilizza la colonna prima di caricarla con lo stacco.", alt: [{ n: "Rotazioni toraciche", d: "8 per lato in quadrupedica." }] },
+      { n: "Inchworm", img: "w_Inchworm", d: "5 ripetizioni. Attiva core, spalle e femorali.", alt: [{ n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "4 per lato." }] },
+      { n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "4 per lato. Parti in affondo, mano a terra, ruota il busto aprendo l'altro braccio verso il soffitto.", alt: [{ n: "Affondo con rotazione", d: "5 per lato." }] },
+      { n: "Affondi a corpo libero", img: "w_AffondiCorpoLibero", d: "6 per gamba. Lenti, senza peso. Prepara flessori anca e quadricipiti.", alt: [{ n: "Squat a corpo libero", d: "10 rip lente." }] },
+      { n: "Stacco bilanciere scarico", img: "w_StaccoBilanciere", d: "2 serie da 8. Bilanciere vuoto. Simula lo schema motorio, attiva la catena posteriore.", alt: [{ n: "Romanian deadlift con bastone", d: "2 serie da 8. Attiva femorali e glutei nello stesso piano di movimento." }] },
     ],
     ex: [
-      { n: "Push-Up", s: "3x12", rpe: "8", note: "Eccentrica 3s. Oppure floor press manubri 3x10." },
-      { n: "Stacco da Terra", s: "3x8", rpe: "7", note: "Carico leggero. Tecnica prima del peso." },
-      { n: "Rematore Bilanciere", s: "3x10", rpe: "8", note: "Busto a 45°. Scapole attive." },
-      { n: "Plank", s: "3x40s", rpe: "", note: "Glutei contratti, lombare neutra." },
-    ], str: ["Pettorali","Femorali","Lombare","Dorsali"] },
+      { n: "Stacco da Terra", s: "3x8", rpe: "7", note: "Carico leggero. Tecnica prima del peso. Valsalva obbligatorio.", v2: { n: "Stacco Sumo", s: "3x8" }, v3: { n: "Stacco da Terra", s: "3x6", note: "Pausa sotto ginocchio" }, v4: { n: "Stacco da Terra", s: "3x5", note: "Pesante" } },
+      { n: "Push-Up", s: "3x12", rpe: "8", note: "Eccentrica 3s. Oppure Floor Press Manubri 3x10.", v2: { n: "Floor Press Manubri", s: "3x10" }, v3: { n: "Push-Up Declino", s: "3x10" }, v4: { n: "Push-Up", s: "3x12", note: "Pausa 2s in basso" } },
+      { n: "Rematore Bilanciere", s: "3x10", rpe: "8", note: "Busto a 45°, scapole attive.", v2: { n: "Rematore Manubri", s: "3x12-10-10" }, v3: { n: "Rematore Bilanciere", s: "3x8", note: "Pesante" }, v4: { n: "Pendlay Row", s: "3x8" } },
+      { n: "Plank", s: "3x40s", rpe: "", note: "Glutei contratti, lombare neutra. CORE ALLA FINE." },
+    ], str: ["Femorali","Glutei","Dorsali","Pettorali"] },
 
-  { name: "Giovedi", focus: "Lower + glutei + isolamento", dur: "8min", tEst: 55,
+  { name: "Sabato", focus: "Glutei + accessori upper", dur: "B1+B2: 5 esercizi", tEst: 50,
     intro: {
-      muscoli: ["Glutei, femorali (hyperextension, clamshell)", "Quadricipiti, glutei (affondi, squat bulgaro)", "Pettorali (floor press)", "Deltoidi (arnold press)"],
-      obiettivi: ["Accumulare volume su glutei e gambe", "Introdurre lo squat bulgaro a corpo libero", "Lavoro di isolamento su petto e spalle"],
-      attenzione: ["Affondi: ginocchio anteriore non cede verso l'interno", "Clamshell: il bacino non ruota durante l'apertura", "Arnold press: non iperestendere la schiena sotto carico"],
-      ritmo: "Recuperi 90s. Volume metabolico — è normale sentire bruciore."
+      muscoli: ["Grande gluteo gluteo medio (affondi hip thrust clamshell)", "Pettorali (croci)", "Deltoidi (arnold press)", "Core (shoulder tap)"],
+      obiettivi: ["Accumulare volume su glutei e gambe", "Lavoro di isolamento su petto e spalle", "Finire la settimana con volume accessorio"],
+      attenzione: ["Affondi ginocchio anteriore non cede verso l'interno", "Clamshell il bacino non ruota durante l'apertura", "Arnold press non iperestendere la schiena sotto carico"],
+      ritmo: "Recuperi 90s. Volume metabolico."
     },
     warmup: [
-      { n: "Burpees", img: "w_Burpees", d: "3 minuti.", tm: 180, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti.", tm: 180 }] },
-      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 minuti.", tm: 120, alt: [{ n: "Squat a corpo libero", d: "2 serie da 10." }] },
-      { n: "Affondi a corpo libero", img: "w_AffondiCorpoLibero", d: "10 totali (5 per gamba). Senza peso.", alt: [{ n: "Squat bulgaro corpo libero", d: "6 per gamba." }] },
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 giri da 2 min. Scalda flessori anca e gambe.", tm: 240, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "4 minuti a ritmo moderato.", tm: 240 }] },
+      { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente. Mobilizza la colonna.", alt: [{ n: "Child's pose + cobra", d: "5 ripetizioni lente." }] },
+      { n: "Affondi a corpo libero", img: "w_AffondiCorpoLibero", d: "6 per gamba. Lenti, senza peso.", alt: [{ n: "Squat bulgaro corpo libero", d: "6 per gamba." }] },
+      { n: "Glute Bridge a corpo libero", img: "w_AffondiWarmup", d: "10 ripetizioni. Sdraiata, piedi a terra, spingi le anche verso l'alto contraendo i glutei. Attiva glutei prima degli affondi.", alt: [{ n: "Hip hinge con bastone", d: "10 rip. Impara lo schema hip hinge." }] },
+      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "15 cerchi avanti + 15 indietro.", alt: [{ n: "Shoulder rolls + apertura petto", d: "10 rotazioni avanti e indietro, poi 10 aperture laterali." }] },
     ],
     ex: [
-      { n: "Hyperextension", s: "3x12", rpe: "8", note: "Corpo libero o 5kg." },
       { n: "Affondi", s: "3x12", rpe: "8", note: "Per gamba. Corpo libero o manubri leggeri." },
+      { n: "Hip Thrust Singolo", s: "3x12", rpe: "8", note: "Per gamba. Corpo libero o con peso." },
       { n: "Clamshell", s: "3x15", rpe: "8", note: "Per lato. Corpo libero." },
       { n: "Croci Manubri a Terra", s: "3x12", rpe: "8", note: "Manubri leggeri. ROM completo." },
       { n: "Arnold Press", s: "3x12", rpe: "8", note: "Manubri leggeri." },
+      { n: "Shoulder Tap", s: "2x10", rpe: "", note: "Per lato. Bacino fermo. CORE ALLA FINE." },
     ], str: ["Glutei","Flessori anca","Quadricipiti","Pettorali","Spalle"] },
+];
+
+/* === IPERTROFIA V4 — Upper/Lower 4+2 Cardio === */
+var DAYS_V4 = [
+  { name: "Lun", focus: "Lower A — Squat dominante", dur: "5 esercizi", tEst: 65,
+    intro: {
+      muscoli: ["Quadricipiti (Squat, Leg Press)", "Femorali (Fitball Hamstring Curl)", "Glutei (Hip Thrust Bilanciere)", "Core (Plank)"],
+      obiettivi: ["Costruire forza e volume sui quadricipiti con progressione double progression", "Massimizzare il lavoro sul gluteo con Hip Thrust caricato", "Rinforzare la catena posteriore con curl femoral"],
+      attenzione: ["Squat: Valsalva prima di scendere, ginocchia fuori, scendi al parallelo o oltre", "Hip Thrust: mento al petto, non iperestendere la lombare, spingi dai talloni", "Fitball Curl: anche alte per tutta la durata — non farle scendere"],
+      ritmo: "Recuperi 2-3 min sui compound (Squat, Hip Thrust). 90s sugli accessori."
+    },
+    warmup: [
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "5 minuti. Scalda flessori anca e gambe.", tm: 300 },
+      { n: "Squat a corpo libero", img: "w_SquatBL", d: "2x10 lenti. Concentrati su profonditá e busto eretto.", alt: [{ n: "Affondi a corpo libero", d: "6 per gamba, lenti." }] },
+      { n: "Glute Bridge a corpo libero", img: "w_AffondiWarmup", d: "2x15. Attiva glutei prima dell'Hip Thrust.", alt: [{ n: "Hip hinge con bastone", d: "10 rip lente." }] },
+      { n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "4 per lato. Mobilita anca, torace, femorali.", alt: [{ n: "Cat-Cow", img: "w_CatCow", d: "10 ripetizioni lente." }] },
+    ],
+    ex: [
+      { n: "Squat", s: "4x6-8", rpe: "8", note: "Double progression. Rec 2-3 min.", priority: true, rec: "2-3 min", gear: "Bilanciere" },
+      { n: "Hip Thrust Bilanciere", s: "4x8-12", rpe: "8", note: "Imbottire il bilanciere. Rec 2 min.", priority: true, rec: "2 min", gear: "Bilanciere + panca" },
+      { n: "Squat Bulgaro", s: "3x8-10", rpe: "8", note: "Per gamba. Manubri ai lati.", rec: "90s", gear: "Manubri" },
+      { n: "Fitball Hamstring Curl", s: "3x10-12", rpe: "8", note: "Anche sempre alte. Lento.", rec: "90s", gear: "Fitball" },
+      { n: "Plank", s: "3x45-60s", rpe: "", note: "Core finale. Hollow position.", rec: "60s", gear: "Nessuno" },
+    ], str: ["Quadricipiti","Glutei","Femorali","Core"] },
+
+  { name: "Mar", focus: "Upper A — Spinta + Tirata", dur: "5 esercizi", tEst: 65,
+    intro: {
+      muscoli: ["Pettorali/Tricipiti (Panca, Dip)", "Dorsali/Bicipiti (Trazioni, T-bar Row)", "Spalle/Rotatori (Face Pull)"],
+      obiettivi: ["Costruire forza nella spinta orizzontale con Panca o Push-Up", "Sviluppare spessore dorsale con T-bar Row e Trazioni", "Rinforzare i rotatori della spalla con Face Pull"],
+      attenzione: ["Panca/Push-Up: scapole addotte e depresse prima di ogni serie", "Trazioni: scapole abbassate prima di tirare — qualita sulla quantita", "Face Pull: gomiti alti, tira verso il naso non verso il mento"],
+      ritmo: "Recuperi 2-3 min su Panca e Trazioni. 90s sugli accessori. 60s Face Pull."
+    },
+    warmup: [
+      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "15 avanti + 15 indietro. Scalda cuffia dei rotatori.", alt: [{ n: "Shoulder rolls", d: "10 avanti e 10 indietro." }] },
+      { n: "Military press con bilanciere scarico", img: "w_MilitaryPress", d: "2x8. Bilanciere vuoto. Scalda deltoidi.", alt: [{ n: "Cerchi con le braccia + apertura", d: "10 cerchi + 10 aperture." }] },
+      { n: "Inchworm", img: "w_Inchworm", d: "5 ripetizioni. Attiva core e spalle.", alt: [{ n: "Cat-Cow", img: "w_CatCow", d: "8 lente." }] },
+    ],
+    ex: [
+      { n: "Push-Up", s: "4x6-12", rpe: "8", note: "Double progression. Declino o diamante per variante.", priority: true, rec: "2-3 min", gear: "Nessuno (o panca per declino)" },
+      { n: "Trazioni", s: "4x4-8", rpe: "8", note: "Double progression. Negativa assistita se serve.", priority: true, rec: "2-3 min", gear: "Sbarra" },
+      { n: "T-bar Row", s: "3x8-10", rpe: "8", note: "Busto a 45 gradi. Scapole verso il centro.", rec: "90s", gear: "Bilanciere + supporto T-bar" },
+      { n: "Dip alle Parallele", s: "3x8-10", rpe: "8", note: "Busto inclinato per petto. Non oltre 90 gradi.", rec: "90s", gear: "Parallele" },
+      { n: "Face Pull", s: "3x12-15", rpe: "8", note: "Carrucola alta, corda. Gomiti alti.", rec: "60s", gear: "Carrucola + corda" },
+    ], str: ["Pettorali","Dorsali","Tricipiti","Bicipiti","Deltoidi posteriori"] },
+
+  { name: "Mer", focus: "Cardio A", cardio: true,
+    cardioOptions: [
+      { icon: "🏃", label: "LISS (Low Intensity)", desc: "30-45 min a frequenza cardiaca bassa (60-70% FC max). Camminata veloce, bici, ellittica. Non affatica i muscoli per la sessione di domani.", duration: "30-45 min" },
+      { icon: "⚡", label: "HIIT leggero", desc: "20 min: 30s impegno medio-alto + 90s recupero, ripeti 8-10 volte. Frequenza: 75-80% FC max negli intervalli.", duration: "20 min" },
+      { icon: "🧘", label: "Recupero attivo", desc: "20-30 min di mobilità o yoga leggero. Stretching dinamico, foam rolling. Ideale se i muscoli sono stanchi dalla settimana.", duration: "20-30 min" },
+    ]
+  },
+
+  { name: "Gio", focus: "Lower B — Stacco dominante", dur: "5 esercizi", tEst: 65,
+    intro: {
+      muscoli: ["Catena posteriore (Stacco da Terra)", "Femorali/Glutei (Hyperextension con Sacco, Stacco Rumeno)", "Glutei (Hip Thrust)", "Core"],
+      obiettivi: ["Sviluppare forza nella catena posteriore con Stacco da Terra", "Complementare con Stacco Rumeno per i femorali", "Alto volume sui glutei con Hyperextension caricata"],
+      attenzione: ["Stacco: bilanciere rasente alle gambe sempre, schiena neutra, Valsalva prima di staccare", "Stacco Rumeno: spingi il bacino indietro non piegare la schiena", "Hyperextension: sali solo fino alla linea del corpo, non oltre"],
+      ritmo: "Recuperi 3 min sullo Stacco. 2 min Stacco Rumeno. 90s sugli accessori."
+    },
+    warmup: [
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "5 minuti.", tm: 300 },
+      { n: "Good Morning senza peso", img: "w_GoodMorningSenzaPeso", d: "2x10 lenti. Impara lo schema hip hinge.", alt: [{ n: "Hip hinge con bastone", d: "10 rip lente." }] },
+      { n: "Glute Bridge a corpo libero", img: "w_AffondiWarmup", d: "2x15. Attiva glutei e femorali.", alt: [{ n: "Cat-Cow", img: "w_CatCow", d: "10 lente." }] },
+    ],
+    ex: [
+      { n: "Stacco da Terra", s: "4x4-6", rpe: "8", note: "Double progression. Rec 3 min. Bilanciere rasente.", priority: true, rec: "3 min", gear: "Bilanciere" },
+      { n: "Stacco Rumeno", s: "3x8-10", rpe: "8", note: "Manubri o bilanciere. Senti l'allungamento femorali.", rec: "2 min", gear: "Bilanciere o manubri" },
+      { n: "Hyperextension con Sacco", s: "3x10-12", rpe: "8", note: "Sacco sulle spalle. Non oltre la linea del corpo.", rec: "90s", gear: "Panca hyperextension + sacco" },
+      { n: "Hip Thrust Bilanciere", s: "3x10-15", rpe: "8", note: "Volume accessorio. Piu rip rispetto al Lundi.", rec: "90s", gear: "Bilanciere + panca" },
+      { n: "Ab Wheel", s: "3x8-10", rpe: "", note: "Core finale. Glutei e retroversione sempre.", rec: "60s", gear: "Ab wheel" },
+    ], str: ["Femorali","Glutei","Erettori","Core"] },
+
+  { name: "Ven", focus: "Upper B — Volume e accessori", dur: "5 esercizi", tEst: 65,
+    intro: {
+      muscoli: ["Spalle (Military Press, Alzate Laterali)", "Dorsali/Bicipiti (Trazioni Supine, Rematore)", "Tricipiti (French Press, Dip)"],
+      obiettivi: ["Volume accessorio su spalle e braccia", "Seconda frequenza su dorsali con Trazioni Supine", "Chiudere la settimana con lavoro di isolamento"],
+      attenzione: ["Military Press: glutei e core contratti, non inarcare la lombare", "Alzate laterali: peso leggero, non coinvolgere il trapezio", "Trazioni supine: piu bicipiti rispetto alle prone"],
+      ritmo: "Recuperi 2 min su Military e Trazioni. 90s sui rest. 60s sul lavoro di braccia."
+    },
+    warmup: [
+      { n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti. Scalda il sistema cardiovascolare.", tm: 180, alt: [{ n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti.", tm: 180 }] },
+      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "15 avanti + 15 indietro.", alt: [{ n: "Shoulder rolls", d: "10 in avanti e 10 indietro." }] },
+      { n: "Military press con bilanciere scarico", img: "w_MilitaryPress", d: "2x8. Scalda spalle.", alt: [{ n: "Cerchi con le braccia + apertura", d: "10 cerchi + 10 aperture laterali." }] },
+    ],
+    ex: [
+      { n: "Military Press", s: "4x6-8", rpe: "8", note: "Double progression. Bilanciere.", rec: "2 min", gear: "Bilanciere" },
+      { n: "Trazioni Supine", s: "4x4-8", rpe: "8", note: "Piu bicipiti. Negativa 3s.", rec: "2 min", gear: "Sbarra" },
+      { n: "Alzate Laterali", s: "4x12-15", rpe: "8", note: "Peso leggero. Deltoide laterale.", rec: "60s", gear: "Manubri" },
+      { n: "French Press Manubri", s: "3x10-12", rpe: "8", note: "Gomiti fermi verso soffitto.", rec: "90s", gear: "Manubri" },
+      { n: "Face Pull", s: "3x12-15", rpe: "8", note: "Salute delle spalle. Rotatori esterni.", rec: "60s", gear: "Carrucola + corda" },
+    ], str: ["Deltoidi","Dorsali","Bicipiti","Tricipiti"] },
+
+  { name: "Dom", focus: "Cardio B", cardio: true,
+    cardioOptions: [
+      { icon: "🚴", label: "Ciclismo / Bici", desc: "45-60 min in bici (indoor o outdoor) a intensita moderata. Ideale per recuperare le gambe dopo la settimana pesante senza accumular fatica.", duration: "45-60 min" },
+      { icon: "🏊", label: "Nuoto / Acqua", desc: "30 min di nuoto a ritmo moderato. Eccellente recupero attivo: scarica le articolazioni portando il battito cardiaco su.", duration: "30 min" },
+      { icon: "🧘", label: "Stretching + Mobilita", desc: "30-40 min di stretching globale e mobilita articolare. Foam rolling su femorali, glutei, dorsali. Prepara il corpo per la settimana successiva.", duration: "30-40 min" },
+    ]
+  },
 ];
 
 var PRINCIPLES = [
@@ -1126,6 +1328,7 @@ export default function App() {
   var [openEx, setOpenEx] = useState(null);
   var [openMuscle, setOpenMuscle] = useState(null);
   var [showIntro, setShowIntro] = useState(false);
+  var [showDayIntro, setShowDayIntro] = useState(false);
   var [warmupAlt, setWarmupAlt] = useState({});
   var [showStr, setShowStr] = useState(false);
   var [showImg, setShowImg] = useState(null);
@@ -1143,6 +1346,9 @@ export default function App() {
   var [tmpW, setTmpW] = useState("");
   var [tmpR, setTmpR] = useState("");
   var [histIdx, setHistIdx] = useState(null);
+  var [histPage, setHistPage] = useState({});
+  var [showTecnica, setShowTecnica] = useState(null);
+  var [progTooltip, setProgTooltip] = useState(null);
   var [cableMode, setCableMode] = useState({});
   var [fontScale, setFontScale] = useState(1.1);
   var [settingsOpen, setSettingsOpen] = useState(false);
@@ -1164,7 +1370,7 @@ export default function App() {
   var lastSnd = useRef(-1);
 
   var T = TH[theme];
-  var activeDays = level === "beginner" ? DAYS_BEGINNER : level === "intermediate" ? DAYS_INTERMEDIATE : DAYS;
+  var activeDays = level === "beginner" ? DAYS_BEGINNER : level === "intermediate" ? DAYS_INTERMEDIATE : level === "v4" ? DAYS_V4 : DAYS;
   var safeDayIdx = Math.min(dayIdx, activeDays.length - 1);
   var dayData = activeDays[safeDayIdx];
   var dc = T.ok;
@@ -1554,7 +1760,7 @@ export default function App() {
   );
 
   return (
-    <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", background: T.bg, minHeight: "100vh", color: T.tx, zoom: fontScale }}>
+    <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif", background: T.bg, minHeight: "100vh", color: T.tx, zoom: fontScale, WebkitFontSmoothing: "antialiased" }}>
       <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
       <ExPopup />
@@ -1736,27 +1942,24 @@ export default function App() {
       </div>}
 
       {/* HEADER */}
-      <div style={{ background: T.hd, padding: "18px 16px 10px", color: T.htx }}>
+      <div style={{ background: T.cd, borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "14px 16px 0", color: T.tx }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", maxWidth: 600, margin: "0 auto" }}>
           {/* Nome e foto utente */}
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div onClick={function() { setSettingsOpen(true); }} style={{ width: 38, height: 38, borderRadius: "50%", background: userPhoto ? "transparent" : "rgba(255,255,255,0.18)", border: "2px solid rgba(255,255,255,0.3)", overflow: "hidden", cursor: "pointer", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>
+            <div onClick={function() { setSettingsOpen(true); }} style={{ width: 34, height: 34, borderRadius: "50%", background: userPhoto ? "transparent" : "rgba(255,255,255,0.10)", border: "1.5px solid rgba(255,255,255,0.15)", overflow: "hidden", cursor: "pointer", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16 }}>
               {userPhoto ? <img src={userPhoto} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : "👤"}
             </div>
-            <div>
-              <div style={{ fontSize: 16, fontWeight: 800 }}>{userName ? "Ciao, " + userName + "!" : "HomeWorkout"}</div>
-              <div style={{ fontSize: 11, opacity: 0.5, marginTop: 1 }}>HomeWorkout</div>
-            </div>
+            <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: -0.3 }}>{userName ? userName : "HomeWorkout"}</div>
           </div>
-          {/* Rotellina impostazioni */}
-          <button onClick={function() { setSettingsOpen(true); }} style={{ background: "rgba(255,255,255,0.12)", border: "none", color: T.htx, width: 36, height: 36, borderRadius: 10, cursor: "pointer", fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center" }}>⚙️</button>
+          {/* Settings */}
+          <button onClick={function() { setSettingsOpen(true); }} style={{ background: "rgba(255,255,255,0.08)", border: "none", color: T.sub, width: 32, height: 32, borderRadius: 8, cursor: "pointer", fontSize: 14, display: "flex", alignItems: "center", justifyContent: "center" }}>⚙️</button>
         </div>
         {/* View tabs */}
-        <div style={{ display: "flex", gap: 4, maxWidth: 600, margin: "10px auto 0", alignItems: "stretch" }}>
+        <div style={{ display: "flex", gap: 1, maxWidth: 600, margin: "12px auto 0", alignItems: "stretch" }}>
           {/* Home icon-only tab */}
-          <button onClick={function() { setTab("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ width: 34, flexShrink: 0, padding: "6px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 15, background: tab === "home" ? "rgba(255,255,255,0.25)" : "transparent", color: tab === "home" ? "#fff" : "rgba(255,255,255,0.38)" }}>⌂</button>
+          <button onClick={function() { setTab("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 14, color: tab === "home" ? T.tx : T.sub, borderBottom: tab === "home" ? "2px solid " + dc : "2px solid transparent" }}>⌂</button>
           {/* Main tabs */}
-          {["Teoria", "Muscoli", "Scheda", "Esercizi"].map(function(t) { var keys = {"Teoria":"teoria","Scheda":"workout","Muscoli":"muscles","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ flex: 1, padding: "9px 0", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 13, fontWeight: active ? 800 : 600, background: active ? "rgba(255,255,255,0.28)" : "rgba(255,255,255,0.10)", color: active ? "#fff" : "rgba(255,255,255,0.62)", letterSpacing: active ? 0.2 : 0 }}>{t}</button>; })}
+          {["Scheda", "Progressi", "Teoria", "Esercizi"].map(function(t) { var keys = {"Scheda":"workout","Progressi":"progressi","Teoria":"teoria","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ flex: 1, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, color: active ? T.tx : T.sub, borderBottom: active ? "2px solid " + dc : "2px solid transparent", letterSpacing: active ? 0.1 : 0, transition: "color 0.15s" }}>{t}</button>; })}
         </div>
       </div>
 
@@ -1770,13 +1973,13 @@ export default function App() {
         </div>
 
         {/* Come funziona */}
-        <div style={{ background: T.cd, borderRadius: 14, padding: "18px 18px 14px", marginBottom: 10 }}>
+        <div style={{ background: T.cd, borderRadius: 16, padding: "18px 18px 16px", marginBottom: 10 }}>
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 14 }}>Come funziona</div>
           <div style={{ display: "grid", gap: 8 }}>
             {[
-              { icon: "📚", label: "Teoria", key: "teoria", chips: ["Ipertrofia","Multifrequenza","Progressione","Respirazione"], desc: "Principi fondamentali dell'allenamento spiegati con chiarezza." },
-              { icon: "💪", label: "Muscoli", key: "muscles", chips: ["Grande dorsale","Quadricipite","Grande gluteo","Pettorali"], desc: "Mappa dei gruppi muscolari: dove sono, perché allenarli, quali esercizi li coinvolgono." },
-              { icon: "📋", label: "Scheda", key: "workout", chips: ["Principiante","Intermedio","Avanzato"], desc: "Scheda settimanale con esercizi, foto, badge respirazione 🫁 e timer di recupero." },
+              { icon: "📋", label: "Scheda", key: "workout", chips: ["Principiante","Intermedio","Avanzato","Ipert."], desc: "Scheda settimanale con esercizi, foto, badge respirazione 🫁 e timer di recupero." },
+              { icon: "📊", label: "Progressi", key: "progressi", chips: ["Carichi","Settimane","Trend"], desc: "Tieni traccia dei tuoi miglioramenti settimana per settimana." },
+              { icon: "📚", label: "Teoria", key: "teoria", chips: ["Ipertrofia","Multifrequenza","Muscoli","Respirazione"], desc: "Principi fondamentali + mappa muscolare interattiva." },
               { icon: "🏃", label: "Esercizi", key: "exercises", chips: ["Riscaldamento","Fondamentali","Stretching"], desc: "Biblioteca completa di esercizi con approfondimenti e video." },
             ].map(function(item) {
               return <div key={item.key} onClick={function() { setTab(item.key); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "12px 12px", borderRadius: 10, background: T.bg, cursor: "pointer" }}>
@@ -1794,7 +1997,7 @@ export default function App() {
         </div>
 
         {/* Funzionalità speciali */}
-        <div style={{ background: T.cd, borderRadius: 14, padding: "18px 18px 14px", marginBottom: 10 }}>
+        <div style={{ background: T.cd, borderRadius: 16, padding: "18px 18px 16px", marginBottom: 10 }}>
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Funzionalità speciali</div>
           <div style={{ display: "grid", gap: 8 }}>
             {[
@@ -1816,13 +2019,14 @@ export default function App() {
         </div>
 
         {/* Livelli */}
-        <div style={{ background: T.cd, borderRadius: 14, padding: "18px 18px 14px", marginBottom: 10 }}>
+        <div style={{ background: T.cd, borderRadius: 16, padding: "18px 18px 16px", marginBottom: 10 }}>
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Scegli il tuo livello</div>
           <div style={{ display: "grid", gap: 8 }}>
             {[
               { icon: "🌱", label: "Principiante", lv: "beginner", sub: "3 giorni · ~40 min", desc: "Full body a corpo libero. Costruisce le basi motorie senza sovraccaricare." },
               { icon: "🔥", label: "Intermedio", lv: "intermediate", sub: "4 giorni · ~55 min", desc: "Split upper/lower. Introduce bilanciere e progressione di carico." },
               { icon: "⚡", label: "Avanzato", lv: "advanced", sub: "4-5 giorni · 55-80 min", desc: "4 mesi di progressione, compound pesanti, alto volume." },
+              { icon: "💥", label: "Ipertrofia V4", lv: "v4", sub: "6 giorni · ~65 min", desc: "Upper/Lower 4+2 cardio. Double progression, lift prioritari, mesociclo strutturato." },
             ].map(function(item) {
               var isActive = level === item.lv;
               return <div key={item.lv} onClick={function() { setLevel(item.lv); setDayIdx(0); setTab("workout"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "10px 12px", borderRadius: 10, background: isActive ? dc + "18" : T.bg, border: "1px solid " + (isActive ? dc + "40" : "transparent"), cursor: "pointer" }}>
@@ -1870,7 +2074,7 @@ export default function App() {
       {tab === "teoria" && <div style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }}>
 
         {/* Intro: Le basi dell'allenamento */}
-        <div style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 10 }}>
+        <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
           <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid " + T.bg }}>
             <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🔬 Le basi dell'allenamento</div>
             <div style={{ fontSize: 12, color: T.sub }}>Parti da qui per conoscere le basi</div>
@@ -1940,7 +2144,7 @@ export default function App() {
           </div>
         </div>
 
-        <div style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 10 }}>
+        <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
           <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
             <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>📚 Teoria e Glossario</div>
             <div style={{ fontSize: 12, color: T.sub }}>Principi di allenamento e termini tecnici</div>
@@ -1992,13 +2196,10 @@ export default function App() {
             </div>}
           </div>
         </div>
-      </div>}
 
-      {/* === MUSCLES TAB === */}
-      {tab === "muscles" && <div style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }}>
-
+        {/* === SEZIONE MUSCOLI (dentro Teoria) === */}
         {/* Intro armonia muscolare */}
-        <div style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 10 }}>
+        <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
           <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid " + T.bg }}>
             <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🫀 Come funzionano i muscoli insieme</div>
             <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.5 }}>{INTRO_MUSCLES.intro}</div>
@@ -2025,7 +2226,7 @@ export default function App() {
         </div>
 
         {/* Mappa + selettore muscoli */}
-        <div style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 10 }}>
+        <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
           <div style={{ padding: 12, textAlign: "center", borderBottom: "1px solid " + T.bg }}>
             <img onClick={function() { setImgZoomOpen(true); }} src={MUSCLE_IMG} alt="Muscoli" style={{ width: "100%", maxWidth: 420, borderRadius: 8, marginBottom: 6, cursor: "zoom-in" }} />
             <div style={{ fontSize: 11, color: T.sub, fontStyle: "italic" }}>Tap per ingrandire</div>
@@ -2066,14 +2267,207 @@ export default function App() {
             </div>
           </div>
         </div>; })}
+
+        {/* === SEZIONE ALIMENTAZIONE === */}
+        <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
+          <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
+            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🥗 Alimentazione</div>
+            <div style={{ fontSize: 12, color: T.sub }}>Principi base per supportare l'allenamento</div>
+          </div>
+          <div style={{ padding: "12px 16px 16px", display: "grid", gap: 8 }}>
+            {[
+              { t: "Proteine: la priorità assoluta", body: "Per l'ipertrofia servono 1.8–2.2g di proteine per kg di peso corporeo al giorno. Le proteine sono il mattone del muscolo: senza un apporto adeguato, l'allenamento non si traduce in crescita.\n\nFonti ottimali: pollo, tacchino, uova, pesce, legumi + cereali, yogurt greco. Distribuisci l'apporto in 3-5 pasti — la sintesi proteica si satura intorno ai 30-40g per pasto." },
+              { t: "Carboidrati: carburante per la performance", body: "I carboidrati riempiono il glicogeno muscolare — la riserva di energia usata durante l'allenamento pesante. Un apporto insufficiente compromette la forza e la qualità della seduta.\n\nConsumo pre-allenamento (1-2h prima): riso, pasta, pane, frutta — fonti a digestione moderata. Post-allenamento: una porzione di carboidrati accelera la ricarica del glicogeno. Totale giornaliero: 3-5g/kg in fase di mantenimento/bulk, 2-3g/kg in fase di cut." },
+              { t: "Grassi: ormoni e recupero", body: "I grassi sono fondamentali per la produzione di testosterone e ormoni anabolici. Non eliminarli.\n\nFonti ottimali: olio d'oliva, avocado, noci, pesce grasso (salmone, sgombro), uova intere. Obiettivo: 0.8–1.2g/kg al giorno. Meno di 0.6g/kg e gli ormoni ne risentono." },
+              { t: "Timing dei pasti", body: "Il timing ha meno impatto di quanto si pensi — la priorità è raggiungere i totali giornalieri. Detto questo:\n\n• Pre-workout (1-2h): pasto misto con proteine + carboidrati\n• Post-workout (entro 2h): proteine + carboidrati per avviare il recupero\n• Prima di dormire: proteine a lenta digestione (caseine: fiocchi di latte, yogurt greco) per limitare il catabolismo notturno\n\nNon esiste una 'finestra anabolica' di 30 minuti post-allenamento. Relax." },
+              { t: "Idratazione", body: "Il muscolo è composto per circa il 75% di acqua. Anche una disidratazione del 2% compromette la forza e la concentrazione.\n\nObjectivo minimo: 35ml per kg di peso corporeo al giorno. Aggiungi 500ml-1L nelle giornate di allenamento intenso. Monitora il colore dell'urina: giallo pallido = idratazione ottimale." },
+              { t: "Bulk e Cut: quando e come", body: "Bulk (surplus calorico): aggiungi 200-300 kcal al mantenimento. Permette la crescita muscolare massima ma porta anche un piccolo aumento del grasso corporeo. Adatto ai periodi di allenamento intenso.\n\nCut (deficit calorico): togli 300-500 kcal al mantenimento. Priorità: mantenere i carichi in palestra per preservare la massa muscolare. Un cut troppo aggressivo brucia anche il muscolo.\n\nRicomposizione: possibile con un deficit moderatissimo (100-200 kcal) e alto apporto proteico. Lenta ma evita i cicli bulk/cut." },
+              { t: "Integratori: cosa vale, cosa no", body: "La maggior parte degli integratori non ha prove solide. Quelli con evidenza robusta:\n\n• Creatina monoidrato: 3-5g/die. Aumenta la forza e la performance sulle serie pesanti. Uno degli integratori più studiati in assoluto.\n• Proteine whey: utili se difficile raggiungere il fabbisogno proteico dai cibi. Non sostituiscono il cibo reale.\n• Caffeina: 3-6mg/kg, 30-60 min pre-workout. Migliora la performance, la forza e la concentrazione.\n• Vitamina D3: se non prendi molto sole. Fondamentale per il testosterone e il recupero.\n\nTutto il resto (pre-workout complessi, BCAA se le proteine sono sufficienti, bruciagrassi) ha prove deboli o nulle." },
+            ].map(function(item, ii) {
+              var isOpen = showPrinciples === 200 + ii;
+              return <div key={ii} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "30" : T.bg) }}>
+                <div onClick={function() { setShowPrinciples(isOpen ? null : 200 + ii); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
+                  <span style={{ fontSize: 13, fontWeight: isOpen ? 700 : 600, color: isOpen ? dc : T.tx, lineHeight: 1.3 }}>{item.t}</span>
+                  <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+                </div>
+                {isOpen && <div style={{ padding: "4px 14px 14px", background: T.sb }}>
+                  <DetailText text={item.body} accent={dc} size={12} soft={true} />
+                </div>}
+              </div>;
+            })}
+          </div>
+        </div>
+
       </div>}
 
-      {/* === WORKOUT TAB === */}
+      {/* === PROGRESSI TAB === */}
+      {tab === "progressi" && (function() {
+        // Build weekly stats from logs
+        function getWeekKey(dateStr) {
+          var d = new Date(dateStr);
+          var day = d.getDay() || 7;
+          var mon = new Date(d); mon.setDate(d.getDate() - day + 1);
+          return mon.toISOString().split("T")[0];
+        }
+        function fmtWeek(weekKey) {
+          var d = new Date(weekKey);
+          var end = new Date(d); end.setDate(d.getDate() + 6);
+          var months = ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"];
+          return d.getDate() + " " + months[d.getMonth()] + " – " + end.getDate() + " " + months[end.getMonth()];
+        }
+        var allEntries = Object.values(logs);
+        // Per-exercise history (last best per week)
+        var exMap = {};
+        allEntries.forEach(function(entry) {
+          if (!exMap[entry.exercise]) exMap[entry.exercise] = [];
+          exMap[entry.exercise].push(entry);
+        });
+        // Weekly sessions
+        var weekMap = {};
+        allEntries.forEach(function(entry) {
+          var wk = getWeekKey(entry.date);
+          if (!weekMap[wk]) weekMap[wk] = { sessions: new Set(), volume: 0, days: [] };
+          weekMap[wk].sessions.add(entry.date + "_" + entry.day);
+          entry.sets.forEach(function(s) {
+            var r = s.r === "max" ? 10 : (parseInt(s.r) || 0);
+            weekMap[wk].volume += (parseFloat(s.w) || 0) * r;
+          });
+        });
+        var weeks = Object.keys(weekMap).sort(function(a,b) { return b.localeCompare(a); });
+        // Exercise progress: compute best set (max weight or max reps if BW)
+        var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Trazioni","Trazioni Supine","Dip su Panca","Plank","Hollow Position","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Fire Hydrant"];
+        var exProgress = Object.keys(exMap).map(function(name) {
+          var entries = exMap[name].sort(function(a,b) { return a.date.localeCompare(b.date); });
+          var isBW = BW_EX.indexOf(name) >= 0;
+          var byWeek = {};
+          entries.forEach(function(entry) {
+            var wk = getWeekKey(entry.date);
+            var best = entry.sets.reduce(function(acc, s) {
+              var val = isBW ? (s.r === "max" ? 20 : parseInt(s.r) || 0) : (parseFloat(s.w) || 0);
+              return val > acc ? val : acc;
+            }, 0);
+            if (!byWeek[wk] || best > byWeek[wk]) byWeek[wk] = best;
+          });
+          var wkKeys = Object.keys(byWeek).sort();
+          var last = wkKeys.length > 0 ? byWeek[wkKeys[wkKeys.length - 1]] : 0;
+          var prev = wkKeys.length > 1 ? byWeek[wkKeys[wkKeys.length - 2]] : null;
+          var trend = prev === null ? "new" : last > prev ? "up" : last < prev ? "down" : "flat";
+          var maxEver = Math.max.apply(null, Object.values(byWeek));
+          return { name: name, isBW: isBW, last: last, prev: prev, trend: trend, maxEver: maxEver, weeks: wkKeys.length };
+        }).filter(function(e) { return e.last > 0; }).sort(function(a,b) { return b.weeks - a.weeks; });
+
+        function Tooltip(props) {
+          if (progTooltip !== props.id) return null;
+          return <div style={{ margin: "4px 0 6px", padding: "9px 12px", borderRadius: 9, background: dc + "12", border: "1px solid " + dc + "25", fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
+            <span style={{ fontWeight: 700, color: dc, marginRight: 6 }}>ℹ</span>{props.text}
+          </div>;
+        }
+
+        return <div style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }} onClick={function() { setProgTooltip(null); }}>
+          <div style={{ fontSize: 18, fontWeight: 900, color: T.tx, marginBottom: 4, padding: "4px 0 8px" }}>📊 Progressi</div>
+
+          {allEntries.length === 0 ? <div style={{ background: T.cd, borderRadius: 12, padding: 24, textAlign: "center" }}>
+            <div style={{ fontSize: 32, marginBottom: 8 }}>🏋️</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: T.tx, marginBottom: 6 }}>Nessun dato ancora</div>
+            <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Registra le serie nella Scheda e qui vedrai i tuoi progressi settimana per settimana.</div>
+          </div> : <>
+
+            {/* Riepilogo settimane */}
+            <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
+              <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg, display: "flex", alignItems: "center", gap: 8 }}>
+                <div style={{ fontSize: 14, fontWeight: 800, color: T.tx, flex: 1 }}>Sessioni per settimana</div>
+                <button onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === "sess-help" ? null : "sess-help"); }} style={{ width: 22, height: 22, borderRadius: "50%", border: "1px solid " + dc + "40", background: progTooltip === "sess-help" ? dc : "transparent", color: progTooltip === "sess-help" ? "#fff" : dc, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}>?</button>
+              </div>
+              {progTooltip === "sess-help" && <div style={{ margin: "0 14px 10px", marginTop: 10, padding: "10px 12px", borderRadius: 9, background: dc + "10", border: "1px solid " + dc + "20", fontSize: 11, color: T.sub, lineHeight: 1.7 }} onClick={function(e) { e.stopPropagation(); }}>
+                <div style={{ fontWeight: 700, color: dc, marginBottom: 4 }}>Come leggere questa sezione</div>
+                <div><b>Barre colorate</b> — ogni barra = una sessione completata quella settimana. 5 barre = 5 allenamenti.</div>
+                <div style={{ marginTop: 4 }}><b>Numero a destra</b> — quante sessioni totali in quella settimana.</div>
+                <div style={{ marginTop: 4 }}><b>Volume kg·rip</b> — somma di (kg × rip) per ogni serie registrata. Misura quanto lavoro totale hai fatto. Cresce quando aumenti peso o ripetizioni.</div>
+              </div>}
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {weeks.slice(0,8).map(function(wk, wi) {
+                  var w = weekMap[wk];
+                  var sess = w.sessions.size;
+                  var vol = Math.round(w.volume);
+                  var volTipId = "vol-" + wk;
+                  return <div key={wk} style={{ flexDirection: "column", padding: "10px 14px", borderBottom: wi < weeks.length - 1 ? "1px solid " + T.bg : "none" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{fmtWeek(wk)}</div>
+                        {vol > 0 && <div onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === volTipId ? null : volTipId); }} style={{ fontSize: 10, color: dc, marginTop: 2, cursor: "pointer", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: 3 }}>
+                          Volume: {vol.toLocaleString()} kg·rip <span style={{ fontSize: 9, opacity: 0.7 }}>ℹ</span>
+                        </div>}
+                      </div>
+                      <div style={{ display: "flex", gap: 3 }}>
+                        {Array.from({length: 5}).map(function(_, di) {
+                          return <div key={di} style={{ width: 10, height: 28, borderRadius: 3, background: di < sess ? dc : T.bg }} />;
+                        })}
+                      </div>
+                      <div style={{ fontSize: 13, fontWeight: 800, color: dc, minWidth: 20, textAlign: "right" }}>{sess}</div>
+                    </div>
+                    {progTooltip === volTipId && <div style={{ marginTop: 6, padding: "8px 10px", borderRadius: 8, background: dc + "0E", border: "1px solid " + dc + "20", fontSize: 11, color: T.sub, lineHeight: 1.6 }} onClick={function(e) { e.stopPropagation(); }}>
+                      <b style={{ color: dc }}>Volume totale</b> = somma di (kg × rip) per ogni serie registrata questa settimana. Confrontalo con le settimane precedenti per vedere se stai progredendo nel lavoro complessivo.
+                    </div>}
+                  </div>;
+                })}
+              </div>
+            </div>
+
+            {/* Progressi per esercizio */}
+            <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
+              <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg, display: "flex", alignItems: "center", gap: 8 }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Progressi per esercizio</div>
+                </div>
+                <button onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === "ex-help" ? null : "ex-help"); }} style={{ width: 22, height: 22, borderRadius: "50%", border: "1px solid " + dc + "40", background: progTooltip === "ex-help" ? dc : "transparent", color: progTooltip === "ex-help" ? "#fff" : dc, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}>?</button>
+              </div>
+              {progTooltip === "ex-help" && <div style={{ margin: "10px 14px", padding: "10px 12px", borderRadius: 9, background: dc + "10", border: "1px solid " + dc + "20", fontSize: 11, color: T.sub, lineHeight: 1.7 }} onClick={function(e) { e.stopPropagation(); }}>
+                <div style={{ fontWeight: 700, color: dc, marginBottom: 4 }}>Come leggere questa sezione</div>
+                <div><b>Numero a destra</b> — il miglior risultato dell'ultima settimana (kg massimo sollevato, o rip massime per gli esercizi a corpo libero).</div>
+                <div style={{ marginTop: 4 }}><b style={{ color: T.ok }}>↑ verde</b> — hai fatto meglio rispetto alla settimana precedente.</div>
+                <div style={{ marginTop: 4 }}><b style={{ color: T.sub }}>→ grigio</b> — stesso livello della settimana scorsa.</div>
+                <div style={{ marginTop: 4 }}><b style={{ color: "#C62828" }}>↓ rosso</b> — risultato inferiore (può essere normale: affaticamento, variante diversa).</div>
+                <div style={{ marginTop: 4 }}><b>✦ nuovo</b> — prima volta registrata, nessun confronto disponibile.</div>
+                <div style={{ marginTop: 4 }}><b>Max</b> — il miglior risultato in assoluto da quando usi l'app.</div>
+                <div style={{ marginTop: 4 }}><b>Settimane</b> — da quante settimane registri quell'esercizio.</div>
+              </div>}
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {exProgress.map(function(ex, ei) {
+                  var trendColor = ex.trend === "up" ? T.ok : ex.trend === "down" ? "#C62828" : T.sub;
+                  var trendIcon = ex.trend === "up" ? "↑" : ex.trend === "down" ? "↓" : ex.trend === "new" ? "✦" : "→";
+                  var valLabel = ex.isBW ? ex.last + " rip" : ex.last + " kg";
+                  var maxLabel = ex.isBW ? ex.maxEver + " rip" : ex.maxEver + " kg";
+                  var exTipId = "ex-" + ei;
+                  var trendText = ex.trend === "up" ? ("Migliorato rispetto alla settimana scorsa" + (ex.prev !== null ? " (" + (ex.isBW ? ex.prev + " rip" : ex.prev + " kg") + " → " + valLabel + ")" : "")) :
+                    ex.trend === "down" ? ("Calato rispetto alla settimana scorsa" + (ex.prev !== null ? " (" + (ex.isBW ? ex.prev + " rip" : ex.prev + " kg") + " → " + valLabel + ")" : "") + ". Può essere normale: recupero, variante diversa, settimana pesante.") :
+                    ex.trend === "new" ? "Prima volta registrata — nessun confronto disponibile ancora." :
+                    "Stesso livello della settimana scorsa (" + valLabel + "). Prova ad aumentare il carico o le rip nella prossima sessione.";
+                  return <div key={ei} style={{ borderBottom: ei < exProgress.length - 1 ? "1px solid " + T.bg : "none" }}>
+                    <div onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === exTipId ? null : exTipId); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", cursor: "pointer" }}>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 2 }}>{ex.name}</div>
+                        <div style={{ fontSize: 10, color: T.sub }}>{ex.weeks} {ex.weeks === 1 ? "settimana" : "settimane"} · max: {maxLabel}</div>
+                      </div>
+                      <div style={{ fontSize: 15, fontWeight: 800, color: trendColor, minWidth: 64, textAlign: "right" }}>
+                        <span style={{ fontSize: 13, marginRight: 3 }}>{trendIcon}</span>{valLabel}
+                      </div>
+                    </div>
+                    {progTooltip === exTipId && <div style={{ margin: "0 14px 10px", padding: "8px 12px", borderRadius: 8, background: trendColor + "10", border: "1px solid " + trendColor + "30", fontSize: 11, color: T.sub, lineHeight: 1.6 }} onClick={function(e) { e.stopPropagation(); }}>
+                      <span style={{ fontWeight: 700, color: trendColor, marginRight: 5 }}>{trendIcon}</span>{trendText}
+                    </div>}
+                  </div>;
+                })}
+              </div>
+            </div>
+          </>}
+        </div>;
+      })()}
+
       {/* === EXERCISES TAB === */}
       {tab === "exercises" && <div style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }}>
 
         {/* Intro esercizi */}
-        <div style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 10 }}>
+        <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
           <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
             <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>💪 Come è strutturato l'allenamento</div>
             <div style={{ fontSize: 12, color: T.sub }}>Fondamentali, multiarticolari, isolamenti e progressione</div>
@@ -2241,14 +2635,14 @@ export default function App() {
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "8px 12px 0" }}>
           {/* Level selector */}
           <div style={{ display: "flex", gap: 4, marginBottom: 6 }}>
-            {[["beginner","Principiante"],["intermediate","Intermedio"],["advanced","Avanzato"]].map(function(pair) {
+            {[["beginner","Princ."],["intermediate","Interm."],["advanced","Avanz."],["v4","Ipert."]].map(function(pair) {
               var active = level === pair[0];
-              return <button key={pair[0]} onClick={function() { setLevel(pair[0]); setDayIdx(0); setOpenEx(null); setEditing(null); setHistIdx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false); }} style={{ flex: 1, padding: "7px 4px", border: "none", borderRadius: 8, cursor: "pointer", fontSize: 12, fontWeight: active ? 800 : 600, background: active ? dc : T.tx + "10", color: active ? "#fff" : T.sub }}>{pair[1]}</button>;
+              return <button key={pair[0]} onClick={function() { setLevel(pair[0]); setDayIdx(0); setOpenEx(null); setEditing(null); setHistIdx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false); }} style={{ flex: 1, padding: "7px 4px", border: "none", borderRadius: 8, cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 600, background: active ? dc : T.tx + "10", color: active ? "#fff" : T.sub }}>{pair[1]}</button>;
             })}
           </div>
           {/* Day tabs */}
           <div style={{ display: "flex", gap: 4, overflowX: "auto", paddingBottom: 0 }}>
-            {activeDays.map(function(d, i) { var active = safeDayIdx === i; return <button key={i} onClick={function() { setDayIdx(i); setOpenEx(null); setEditing(null); setHistIdx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false); setShowImg(null); }} style={{ flex: i < 4 ? 1 : "none", padding: "7px 8px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}>{d.name}</button>; })}
+            {activeDays.map(function(d, i) { var active = safeDayIdx === i; return <button key={i} onClick={function() { setDayIdx(i); setOpenEx(null); setEditing(null); setHistIdx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false); setShowImg(null); setShowDayIntro(false); }} style={{ flex: i < 4 ? 1 : "none", padding: "7px 8px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}>{d.name}</button>; })}
           </div>
           {/* Month selector — compact strip inside card top */}
         </div>
@@ -2265,16 +2659,19 @@ export default function App() {
               var intro = dayData.intro;
               if (!intro || typeof intro === "string") return null;
               var sections = [
-                { key: "muscoli", label: "Gruppi muscolari", icon: "💪" },
                 { key: "obiettivi", label: "Obiettivi", icon: "🎯" },
                 { key: "attenzione", label: "Su cosa concentrarsi", icon: "⚡" },
+                { key: "muscoli", label: "Gruppi muscolari", icon: "💪" },
               ];
               return <div style={{ borderBottom: "1px solid " + T.bg }}>
-                <div style={{ padding: "12px 14px 8px" }}>
-                  <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, lineHeight: 1.3 }}>{dayData.focus}</div>
-                  <div style={{ fontSize: 11, color: dc, fontWeight: 600, marginTop: 3 }}>~{dayData.tEst} min</div>
+                <div onClick={function() { setShowDayIntro(function(v) { return !v; }); }} style={{ padding: "12px 14px 10px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, lineHeight: 1.3 }}>{dayData.focus}</div>
+                    <div style={{ fontSize: 11, color: dc, fontWeight: 600, marginTop: 3 }}>~{dayData.tEst} min · tocca per dettagli</div>
+                  </div>
+                  <div style={{ fontSize: 13, color: dc, transform: showDayIntro ? "rotate(180deg)" : "none", transition: "transform 0.2s", flexShrink: 0 }}>&#9662;</div>
                 </div>
-                <div style={{ display: "grid", gap: 0 }}>
+                {showDayIntro && <div style={{ display: "grid", gap: 0 }}>
                   {sections.map(function(sec) {
                     var items = intro[sec.key];
                     if (!items || !items.length) return null;
@@ -2308,7 +2705,7 @@ export default function App() {
                     <span style={{ fontSize: 12, lineHeight: 1.6, flexShrink: 0 }}>⏱</span>
                     <span style={{ fontSize: 12, lineHeight: 1.6, color: T.sub, fontStyle: "italic" }}>{intro.ritmo}</span>
                   </div>}
-                </div>
+                </div>}
               </div>;
             })()}
 
@@ -2354,16 +2751,37 @@ export default function App() {
               </div></div>}
             </div>
 
-            {/* Exercises - collapsed */}
-            <div id="section-esercizi" style={{ borderBottom: "1px solid " + T.bg }}>
+            {/* Cardio day full renderer */}
+            {dayData.cardio && dayData.cardioOptions && <div style={{ padding: "16px 14px 20px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                <span style={{ fontSize: 22 }}>❤️</span>
+                <div style={{ fontSize: 15, fontWeight: 800, color: T.tx }}>{dayData.focus}</div>
+              </div>
+              <div style={{ fontSize: 12, color: T.sub, marginBottom: 16, lineHeight: 1.65 }}>Sessione cardio — nessun esercizio con bilanciere, nessun timer di recupero. Scegli l'opzione piu adatta a come ti senti oggi.</div>
+              {dayData.cardioOptions.map(function(opt, oi) {
+                return <div key={oi} style={{ background: T.sb, borderRadius: 12, padding: "14px 16px", marginBottom: 10, border: "1px solid " + dc + "20" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
+                    <span style={{ fontSize: 22 }}>{opt.icon}</span>
+                    <div>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: T.tx }}>{opt.label}</div>
+                      <div style={{ fontSize: 11, color: dc, fontWeight: 600 }}>{"❤️ " + opt.duration}</div>
+                    </div>
+                  </div>
+                  <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.65 }}>{opt.desc}</div>
+                </div>;
+              })}
+            </div>}
+
+            {/* Exercises - collapsed (solo giorni non-cardio) */}
+            {!dayData.cardio && <div id="section-esercizi" style={{ borderBottom: "1px solid " + T.bg }}>
               <div onClick={function() { var opening = !showExSection; setShowExSection(opening); if (opening) { setShowIntro(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-esercizi"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showExSection ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
                 <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#128170;</div>
-                <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Esercizi</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{dayData.ex.length + " esercizi"}</div></div>
+                <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Esercizi</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{dayData.ex ? dayData.ex.length + " esercizi" : ""}</div></div>
                 <div style={{ fontSize: 13, color: dc, transform: showExSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
             {showExSection && <div>
             {/* Exercises list */}
-            {dayData.ex.map(function(rawEx, i) {
+            {dayData.ex && dayData.ex.map(function(rawEx, i) {
               var cableKey = dayIdx + "_" + i;
               var hasCableToggle = rawEx.cable && rawEx.free;
               var isCable = hasCableToggle ? (cableKey in cableMode ? cableMode[cableKey] : !rawEx.defaultFree) : false;
@@ -2386,129 +2804,180 @@ export default function App() {
                 <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); if (opening) { requestAnimationFrame(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
                   <div style={{ width: 34, height: 34, borderRadius: 9, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: dc, flexShrink: 0 }}>{i + 1}</div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontWeight: 600, fontSize: 13, display: "flex", alignItems: "center", gap: 4 }}>
+                    <div style={{ fontWeight: 600, fontSize: 13, display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap" }}>
                       <ExName name={ex.n} />
+                      {rawEx.priority && <span style={{ fontSize: 9, background: "#FF9F0A20", color: "#FF9F0A", padding: "1px 6px", borderRadius: 4, fontWeight: 800, letterSpacing: 0.3 }}>★ PRIORITÀ</span>}
                       {hasV && <span style={{ fontSize: 9, background: dc + "20", color: dc, padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>{"M" + month}</span>}
                       {hasCableToggle && <span style={{ fontSize: 9, background: isCable ? dc + "20" : T.sub + "20", color: isCable ? dc : T.sub, padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>{isCable ? "🔌" : "💪"}</span>}
                     </div>
-                    <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{db ? db.g : ""}{ex.s ? " · " + ex.s : ""}{ex.rpe ? <span onClick={function(e) { e.stopPropagation(); setRpeOpen(true); }} style={{ cursor: "pointer", color: dc, fontWeight: 600, textDecoration: "underline dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2 }}>{" · RPE " + ex.rpe}</span> : ""}</div>
+                    <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>
+                      {db ? db.g : ""}{ex.s ? " · " + ex.s : ""}{ex.rpe ? <span onClick={function(e) { e.stopPropagation(); setRpeOpen(true); }} style={{ cursor: "pointer", color: dc, fontWeight: 600, textDecoration: "underline dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2 }}>{" · RPE " + ex.rpe}</span> : ""}
+                      {rawEx.rec ? <span style={{ color: T.sub }}>{" · ⏱ " + rawEx.rec}</span> : ""}
+                      {rawEx.gear ? <span style={{ color: T.sub }}>{" · 🏋️ " + rawEx.gear}</span> : ""}
+                    </div>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     {tLog && tLog.sets.length > 0 && <div style={{ background: T.ok, color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 8 }}>{tLog.sets.length + "/" + sc}</div>}
                     <div style={{ fontSize: 14, color: T.sub, transform: isX ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
                   </div>
                 </div>
-                {isX && db && <div style={{ padding: "0 14px 14px" }}>
-                  {hasCableToggle && <div style={{ display: "flex", gap: 0, marginBottom: 10, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "40", alignSelf: "flex-start", width: "fit-content" }} onClick={function(e) { e.stopPropagation(); }}>
-                    <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = true; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: isCable ? dc : "transparent", color: isCable ? "#fff" : T.sub, transition: "background 0.15s" }}>🔌 Cavi</button>
-                    <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = false; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: !isCable ? dc : "transparent", color: !isCable ? "#fff" : T.sub, transition: "background 0.15s" }}>💪 Libero</button>
-                  </div>}
-                  {ex.s && <div style={{ fontSize: 12, color: dc, fontWeight: 600, marginBottom: 6 }}>{fmtSerie(ex.s)}{ex.rpe ? " — RPE " + ex.rpe : ""}</div>}
-                  {ex.note && <div style={{ fontSize: 11, color: T.sub, marginBottom: 6, fontStyle: "italic" }}>{ex.note}</div>}
-                  {/* Respirazione badge */}
-                  {(function() {
-                    var br = getBreath(ex.n);
-                    if (!br) return null;
-                    var bColor = BREATH_TYPE_COLOR[br.type] || dc;
-                    var isBreathOpen = showBreath === i;
-                    return <div style={{ marginBottom: 8 }}>
-                      <button onClick={function(e) { e.stopPropagation(); setShowBreath(isBreathOpen ? null : i); }} style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 10, fontWeight: 700, border: "1px solid " + bColor + "40", borderRadius: 6, padding: "3px 9px", background: isBreathOpen ? bColor + "18" : bColor + "0A", color: bColor, cursor: "pointer" }}>
-                        <span>🫁</span>
-                        <span>{br.short}</span>
-                      </button>
-                      {isBreathOpen && <div style={{ marginTop: 6, borderRadius: 9, border: "1px solid " + bColor + "30", overflow: "hidden" }}>
-                        <div style={{ padding: "7px 11px 6px", background: bColor + "10", borderBottom: "1px solid " + bColor + "20", display: "flex", alignItems: "center", gap: 6 }}>
-                          <span style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.7, color: bColor }}>{BREATH_TYPE_LABEL[br.type]}</span>
-                        </div>
-                        <div style={{ padding: "8px 11px", background: T.sb, display: "grid", gap: 6 }}>
-                          <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
-                            <span style={{ fontSize: 16, lineHeight: 1, flexShrink: 0, marginTop: 1 }}>🌬️</span>
-                            <div>
-                              <div style={{ fontSize: 10, fontWeight: 800, color: bColor, marginBottom: 2 }}>INSPIRA</div>
-                              <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{br.inhale}</div>
-                            </div>
-                          </div>
-                          <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
-                            <span style={{ fontSize: 16, lineHeight: 1, flexShrink: 0, marginTop: 1 }}>💨</span>
-                            <div>
-                              <div style={{ fontSize: 10, fontWeight: 800, color: bColor, marginBottom: 2 }}>ESPIRA</div>
-                              <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{br.exhale}</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>}
-                    </div>;
-                  })()}
-                  {/* Foto thumbnail + azioni */}
-                  <div style={{ display: "flex", gap: 8, marginBottom: 10, alignItems: "flex-start" }}>
-                    {exImgs(ex.n).length > 0 && <div onClick={function(e) { e.stopPropagation(); setShowImg(showImg === "ex" + i ? null : "ex" + i); }} style={{ flexShrink: 0, cursor: "pointer", borderRadius: 8, overflow: "hidden", border: "2px solid " + (showImg === "ex" + i ? dc : T.bg), transition: "border-color 0.15s" }}>
-                      <img src={exImgs(ex.n)[0]} style={{ width: showImg === "ex" + i ? 180 : 64, height: showImg === "ex" + i ? "auto" : 64, objectFit: "cover", display: "block", transition: "width 0.2s" }} />
+                {isX && db && (function() {
+                  // bodyweight detection: no kg field needed
+                  var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Trazioni","Trazioni Supine","Dip su Panca","Plank","Hollow Position","Hollow Tuck","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Fire Hydrant","Cat-Cow","Inchworm","Dead bug","Glute Bridge"];
+                  var isBW = BW_EX.indexOf(ex.n) >= 0;
+                  // last session data for pre-fill
+                  var allHist = getHist(ex.n);
+                  var pastSessions = allHist.filter(function(h) { return h.date !== todayStr(); });
+                  var hPage = histPage[i] || 0;
+                  var lastSession = pastSessions[hPage] || null;
+                  // pre-fill helper: get suggested value for series si
+                  function getSuggested(si) {
+                    if (!lastSession) return { w: "", r: "" };
+                    var s = lastSession.sets.find(function(s) { return s.si === si; });
+                    if (s) return { w: s.w > 0 ? String(s.w) : "", r: String(s.r) };
+                    return { w: "", r: "" };
+                  }
+                  var br = getBreath(ex.n);
+                  var bColor = br ? (BREATH_TYPE_COLOR[br.type] || dc) : dc;
+                  var isBreathOpen = showBreath === i;
+                  var isTecnica = showTecnica === i;
+                  return <div style={{ padding: "0 14px 14px" }}>
+                    {/* Cable toggle */}
+                    {hasCableToggle && <div style={{ display: "flex", gap: 0, marginBottom: 10, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "40", alignSelf: "flex-start", width: "fit-content" }} onClick={function(e) { e.stopPropagation(); }}>
+                      <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = true; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: isCable ? dc : "transparent", color: isCable ? "#fff" : T.sub }}>🔌 Cavi</button>
+                      <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = false; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: !isCable ? dc : "transparent", color: !isCable ? "#fff" : T.sub }}>💪 Libero</button>
                     </div>}
-                    {showImg === "ex" + i && exImgs(ex.n).length > 1 && <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                      {exImgs(ex.n).slice(1).map(function(src, si) { return <img key={si} src={src} style={{ width: 64, height: 64, objectFit: "cover", borderRadius: 6, border: "1px solid " + T.bg }} />; })}
+
+                    {/* Serie + note */}
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                      {ex.s && <div style={{ fontSize: 13, color: dc, fontWeight: 700 }}>{fmtSerie(ex.s)}{ex.rpe ? " — RPE " + ex.rpe : ""}</div>}
+                      {br && <button onClick={function(e) { e.stopPropagation(); setShowBreath(isBreathOpen ? null : i); }} style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid " + bColor + "40", borderRadius: 6, padding: "3px 8px", background: isBreathOpen ? bColor + "18" : bColor + "0A", color: bColor, cursor: "pointer" }}>🫁 {br.short}</button>}
+                    </div>
+                    {ex.note && <div style={{ fontSize: 11, color: T.sub, marginBottom: 8, fontStyle: "italic" }}>{ex.note}</div>}
+
+                    {/* Breath panel */}
+                    {isBreathOpen && <div style={{ marginBottom: 10, borderRadius: 9, border: "1px solid " + bColor + "30", overflow: "hidden" }}>
+                      <div style={{ padding: "6px 11px", background: bColor + "10", borderBottom: "1px solid " + bColor + "20" }}>
+                        <span style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.7, color: bColor }}>{BREATH_TYPE_LABEL[br.type]}</span>
+                      </div>
+                      <div style={{ padding: "8px 11px", background: T.sb, display: "grid", gap: 6 }}>
+                        <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                          <span style={{ fontSize: 15, lineHeight: 1, flexShrink: 0 }}>🌬️</span>
+                          <div><div style={{ fontSize: 10, fontWeight: 800, color: bColor, marginBottom: 2 }}>INSPIRA</div><div style={{ fontSize: 11, lineHeight: 1.5, color: T.sub }}>{br.inhale}</div></div>
+                        </div>
+                        <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                          <span style={{ fontSize: 15, lineHeight: 1, flexShrink: 0 }}>💨</span>
+                          <div><div style={{ fontSize: 10, fontWeight: 800, color: bColor, marginBottom: 2 }}>ESPIRA</div><div style={{ fontSize: 11, lineHeight: 1.5, color: T.sub }}>{br.exhale}</div></div>
+                        </div>
+                      </div>
                     </div>}
-                    <div style={{ display: "flex", flexDirection: "column", gap: 5, flex: 1 }}>
-                      {db.lk && <EmbedLink url={db.lk} label="video" size={10} style={{ alignSelf: "flex-start" }} />}
-                      {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ fontSize: 10, border: "none", borderRadius: 5, padding: "3px 8px", background: dc, color: "#fff", fontWeight: 700, cursor: "pointer", alignSelf: "flex-start" }}>{"▶ Serie " + fmtLabel(workSec)}</button> : null}
-                      {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ fontSize: 10, border: "none", borderRadius: 5, padding: "3px 8px", background: T.ok, color: "#fff", fontWeight: 700, cursor: "pointer", alignSelf: "flex-start" }}>{"⏱ Recupero " + fmtLabel(restSec)}</button> : null}
+
+                    {/* Timer buttons — prominenti */}
+                    {showTimerBtns && <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
+                      {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ flex: 1, minHeight: 52, border: "none", borderRadius: 12, background: dc, color: "#fff", fontWeight: 800, fontSize: 14, cursor: "pointer" }}>{"▶ " + fmtLabel(workSec)}</button> : null}
+                      {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ flex: 1, minHeight: 52, border: "none", borderRadius: 12, background: T.ok, color: "#fff", fontWeight: 800, fontSize: 14, cursor: "pointer" }}>{"⏱ " + fmtLabel(restSec)}</button> : null}
+                    </div>}
+
+                    {/* === REGISTRA SERIE === */}
+                    <div style={{ marginBottom: 10 }}>
+                      <div style={{ fontSize: 11, fontWeight: 800, color: T.tx, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8, display: "flex", alignItems: "center", gap: 8 }}>
+                        Registra
+                        {tLog && tLog.sets.length > 0 && <span style={{ fontSize: 10, background: T.ok, color: "#fff", padding: "1px 7px", borderRadius: 8, fontWeight: 700 }}>{tLog.sets.length + "/" + sc + " serie"}</span>}
+                      </div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                        {Array.from({ length: sc }).map(function(_, si) {
+                          var lg = tLog ? tLog.sets.find(function(s) { return s.si === si; }) : null;
+                          var isE = editing === i + "-" + si;
+                          var tgt = p.reps[si] || p.reps[p.reps.length - 1];
+                          var sugg = getSuggested(si);
+                          var done = !!lg;
+                          return <div key={si} style={{ borderRadius: 10, border: "1px solid " + (done ? T.ok + "40" : T.bg), background: done ? T.ok + "0C" : T.sb, overflow: "hidden" }}>
+                            {/* Serie header */}
+                            <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px" }}>
+                              <div style={{ width: 26, height: 26, borderRadius: "50%", background: done ? T.ok : T.tx + "15", color: done ? "#fff" : T.sub, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0 }}>{done ? "✓" : si + 1}</div>
+                              <div style={{ flex: 1, fontSize: 12, color: T.sub, fontWeight: 600 }}>{tgt} rip{isBW ? "" : " · " + (sugg.w ? sugg.w + " kg sugg." : "inserisci kg")}</div>
+                              {done && !isE && <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(String(lg.w)); setTmpR(String(lg.r)); }} style={{ fontSize: 10, color: T.sub, background: "none", border: "none", cursor: "pointer", padding: "0 4px" }}>modifica</button>}
+                            </div>
+                            {/* Input or result */}
+                            {isE ? (
+                              <div style={{ display: "flex", gap: 6, padding: "0 10px 10px", alignItems: "center" }}>
+                                {!isBW && <><input type="number" inputMode="decimal" placeholder="kg" value={tmpW} onChange={function(e) { setTmpW(e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus /><span style={{ fontSize: 11, color: T.sub, flexShrink: 0 }}>kg</span></>}
+                                <input type={tgt === "max" ? "text" : "number"} inputMode="numeric" placeholder="rip" value={tmpR} onChange={function(e) { setTmpR(e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus={isBW} />
+                                <button onClick={function() { logSet(ex.n, dayIdx, si, isBW ? 0 : tmpW, tmpR); }} style={{ width: 44, height: 44, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 20, cursor: "pointer", flexShrink: 0, fontWeight: 700 }}>✓</button>
+                                <button onClick={function() { setEditing(null); setTmpW(""); setTmpR(""); }} style={{ width: 36, height: 44, background: T.bg, color: T.sub, border: "none", borderRadius: 8, fontSize: 16, cursor: "pointer", flexShrink: 0 }}>✕</button>
+                              </div>
+                            ) : done ? (
+                              <div style={{ padding: "0 10px 10px" }}>
+                                <div style={{ fontSize: 15, fontWeight: 800, color: T.ok }}>{isBW ? lg.r + " rip" : lg.w + " kg × " + lg.r + " rip"}</div>
+                              </div>
+                            ) : (
+                              <div style={{ padding: "0 10px 10px" }}>
+                                <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(sugg.w); setTmpR(sugg.r); }} style={{ width: "100%", minHeight: 44, border: "2px dashed " + dc + "40", borderRadius: 8, background: "transparent", color: dc, fontWeight: 700, fontSize: 13, cursor: "pointer" }}>
+                                  {sugg.r ? "▶ " + (isBW ? sugg.r + " rip" : sugg.w + " kg × " + sugg.r + " rip") : "+ registra"}
+                                </button>
+                              </div>
+                            )}
+                          </div>;
+                        })}
+                      </div>
                     </div>
-                  </div>
-                  <DetailText text={db.c} accent={dc} size={11} soft={true} />
-                  {db.deep && <details style={{ marginBottom: 8, borderRadius: 8, overflow: "hidden", background: T.bg }}>
-                    <summary style={{ padding: "8px 12px", cursor: "pointer", fontSize: 11, fontWeight: 700, color: T.sub, listStyle: "none", display: "flex", alignItems: "center", gap: 6 }}>
-                      <span style={{ fontSize: 13 }}>📖</span> Approfondimento tecnico
-                    </summary>
-                    <div style={{ padding: "8px 12px 12px" }}>
-                      {Array.isArray(db.deep) ? db.deep.map(function(block, bi) {
-                        if (block.type === "ul") return <div key={bi} style={{ display: "grid", gap: 6, marginBottom: 8 }}>{block.content.map(function(item, ii) { return <div key={ii} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: dc + "08", border: "1px solid " + dc + "12", borderRadius: 8, padding: "8px 10px" }}><span style={{ color: dc, fontSize: 10, lineHeight: 1.6 }}>•</span><span style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{item}</span></div>; })}</div>;
-                        return <DetailText key={bi} text={block.content} accent={dc} size={11} soft={true} />;
-                      }) : <DetailText text={db.deep} accent={dc} size={11} soft={true} />}
-                    </div>
-                  </details>}
-                  {/* Registra - collapsible */}
-                  <div onClick={function() { setShowReg(showReg === i ? null : i); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "6px 0", borderTop: "1px solid " + T.bg }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, display: "flex", alignItems: "center", gap: 6 }}>
-                      {"Registra — " + todayStr()}
-                      {tLog && tLog.sets.length > 0 && <span style={{ fontSize: 10, color: T.ok, fontWeight: 700 }}>{tLog.sets.length + "/" + sc}</span>}
-                    </div>
-                    <div style={{ fontSize: 12, color: T.sub, transform: showReg === i ? "rotate(180deg)" : "none" }}>&#9662;</div>
-                  </div>
-                  {showReg === i && <div style={{ display: "flex", flexDirection: "column", gap: 3, marginTop: 4 }}>
-                    {Array.from({ length: sc }).map(function(_, si) {
-                      var lg = tLog ? tLog.sets.find(function(s) { return s.si === si; }) : null;
-                      var isE = editing === i + "-" + si;
-                      var tgt = p.reps[si] || p.reps[p.reps.length - 1];
-                      return <div key={si} style={{ display: "flex", alignItems: "center", gap: 6, padding: "5px 8px", borderRadius: 6, background: lg ? T.ok + "12" : T.sb, border: "1px solid " + (lg ? T.ok + "30" : T.bg) }}>
-                        <div style={{ width: 20, height: 20, borderRadius: "50%", background: lg ? T.ok : T.tx + "20", color: lg ? "#fff" : T.sub, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, fontWeight: 700, flexShrink: 0 }}>{si + 1}</div>
-                        <div style={{ fontSize: 10, color: T.sub, minWidth: 36 }}>{tgt}</div>
-                        {isE ? <div style={{ display: "flex", gap: 3, flex: 1, alignItems: "center" }}>
-                          <input type="number" placeholder="kg" value={tmpW} onChange={function(e) { setTmpW(e.target.value); }} style={{ width: 44, padding: "3px 4px", border: "1px solid " + T.bg, borderRadius: 5, fontSize: 11, textAlign: "center", background: T.cd, color: T.tx }} autoFocus />
-                          <span style={{ fontSize: 9, color: T.sub }}>kg</span>
-                          <input type={tgt === "max" ? "text" : "number"} placeholder="rip" value={tmpR} onChange={function(e) { setTmpR(e.target.value); }} style={{ width: 44, padding: "3px 4px", border: "1px solid " + T.bg, borderRadius: 5, fontSize: 11, textAlign: "center", background: T.cd, color: T.tx }} />
-                          <button onClick={function() { logSet(ex.n, dayIdx, si, tmpW, tmpR); }} style={{ background: dc, color: "#fff", border: "none", borderRadius: 5, padding: "3px 7px", fontSize: 10, cursor: "pointer", fontWeight: 700 }}>&#10003;</button>
-                          <button onClick={function() { setEditing(null); setTmpW(""); setTmpR(""); }} style={{ background: T.bg, color: T.sub, border: "none", borderRadius: 5, padding: "3px 5px", fontSize: 10, cursor: "pointer" }}>&#10005;</button>
-                        </div> : lg ? <div style={{ flex: 1, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                          <span style={{ fontSize: 11, fontWeight: 700, color: T.ok }}>{lg.w + "kg x " + lg.r}</span>
-                          <button onClick={function() { setEditing(i + "-" + si); setTmpW(String(lg.w)); setTmpR(String(lg.r)); }} style={{ background: "none", border: "none", fontSize: 10, color: T.sub, cursor: "pointer" }}>modifica</button>
-                        </div> : <button onClick={function() { setEditing(i + "-" + si); setTmpW(""); setTmpR(""); }} style={{ flex: 1, background: "none", border: "1px dashed " + T.sub + "40", borderRadius: 5, padding: "3px 6px", fontSize: 10, color: T.sub, cursor: "pointer", textAlign: "left" }}>+ registra</button>}
+
+                    {/* === STORICO INLINE === */}
+                    {(function() {
+                      if (pastSessions.length === 0) return <div style={{ fontSize: 11, color: T.sub, padding: "6px 0", borderTop: "1px solid " + T.bg }}>Nessuno storico — prima sessione!</div>;
+                      var sess = pastSessions[hPage];
+                      return <div style={{ borderTop: "1px solid " + T.bg, paddingTop: 10 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                          <span style={{ fontSize: 11, fontWeight: 800, color: T.tx, textTransform: "uppercase", letterSpacing: 0.8 }}>Storico</span>
+                          <span style={{ fontSize: 11, color: T.sub }}>{sess.date}</span>
+                          {pastSessions.length > 1 && <div style={{ marginLeft: "auto", display: "flex", gap: 4 }}>
+                            <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.min(hPage + 1, pastSessions.length - 1); return n; }); }} disabled={hPage >= pastSessions.length - 1} style={{ width: 28, height: 28, border: "1px solid " + T.bg, borderRadius: 6, background: T.sb, color: hPage >= pastSessions.length - 1 ? T.sub + "40" : T.sub, cursor: hPage >= pastSessions.length - 1 ? "default" : "pointer", fontSize: 13, display: "flex", alignItems: "center", justifyContent: "center" }}>‹</button>
+                            <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.max(hPage - 1, 0); return n; }); }} disabled={hPage === 0} style={{ width: 28, height: 28, border: "1px solid " + T.bg, borderRadius: 6, background: T.sb, color: hPage === 0 ? T.sub + "40" : T.sub, cursor: hPage === 0 ? "default" : "pointer", fontSize: 13, display: "flex", alignItems: "center", justifyContent: "center" }}>›</button>
+                          </div>}
+                        </div>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                          {sess.sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) {
+                            return <div key={si} style={{ padding: "4px 10px", borderRadius: 8, background: T.bg, fontSize: 12, fontWeight: 600, color: T.tx }}>
+                              <span style={{ color: T.sub, fontSize: 10, fontWeight: 700, marginRight: 4 }}>{"S" + (s.si + 1)}</span>
+                              {isBW ? s.r + " rip" : (s.w > 0 ? s.w + " kg × " : "") + s.r + " rip"}
+                            </div>;
+                          })}
+                        </div>
                       </div>;
-                    })}
-                  </div>}
-                  <button onClick={function() { setHistIdx(isH ? null : i); }} style={{ background: "none", border: "none", color: dc, fontSize: 11, cursor: "pointer", marginTop: 6, padding: 0, fontWeight: 600 }}>{isH ? "Nascondi storico" : "Storico"}</button>
-                  {isH && <div style={{ marginTop: 6 }}>{hData.length === 0 ? <div style={{ fontSize: 11, color: T.sub }}>Nessun dato.</div> :
-                    <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>{hData.map(function(h, hi) { return <div key={hi} style={{ fontSize: 11, color: T.sub, padding: "4px 6px", background: T.sb, borderRadius: 5 }}><span style={{ fontWeight: 700, marginRight: 6 }}>{h.date}</span>{h.month && <span style={{ fontSize: 9, marginRight: 6, opacity: 0.6 }}>{"M" + h.month}</span>}{h.sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) { return <span key={si} style={{ marginRight: 6 }}>{"S" + (s.si+1) + ":" + s.w + "kg x" + s.r}</span>; })}</div>; })}</div>}
-                  </div>}
-                </div>}
+                    })()}
+
+                    {/* === TECNICA (collassata) === */}
+                    <div style={{ marginTop: 10, borderTop: "1px solid " + T.bg }}>
+                      <button onClick={function(e) { e.stopPropagation(); setShowTecnica(isTecnica ? null : i); }} style={{ width: "100%", padding: "8px 0", background: "none", border: "none", display: "flex", alignItems: "center", gap: 6, cursor: "pointer", color: T.sub, fontSize: 11, fontWeight: 700 }}>
+                        <span>📖</span> Tecnica e approfondimenti
+                        <span style={{ marginLeft: "auto", fontSize: 12, transform: isTecnica ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</span>
+                      </button>
+                      {isTecnica && <div style={{ paddingBottom: 8 }}>
+                        {exImgs(ex.n).length > 0 && <div style={{ display: "flex", gap: 6, marginBottom: 10, overflowX: "auto" }}>
+                          {exImgs(ex.n).map(function(src, si) { return <img key={si} src={src} style={{ height: 120, width: "auto", borderRadius: 8, flexShrink: 0, border: "1px solid " + T.bg }} />; })}
+                        </div>}
+                        {db.lk && <div style={{ marginBottom: 8 }}><EmbedLink url={db.lk} label="video" size={11} /></div>}
+                        <DetailText text={db.c} accent={dc} size={11} soft={true} />
+                        {db.deep && <div style={{ marginTop: 6 }}>
+                          {Array.isArray(db.deep) ? db.deep.map(function(block, bi) {
+                            if (block.type === "ul") return <div key={bi} style={{ display: "grid", gap: 5, marginBottom: 8 }}>{block.content.map(function(item, ii) { return <div key={ii} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: dc + "08", border: "1px solid " + dc + "12", borderRadius: 8, padding: "7px 10px" }}><span style={{ color: dc, fontSize: 10, lineHeight: 1.6 }}>•</span><span style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{item}</span></div>; })}</div>;
+                            return <DetailText key={bi} text={block.content} accent={dc} size={11} soft={true} />;
+                          }) : <DetailText text={db.deep} accent={dc} size={11} soft={true} />}
+                        </div>}
+                      </div>}
+                    </div>
+                  </div>;
+                })()}
               </div>;
             })}
             </div>}
-            </div>
+            </div>}
 
             {/* Stretching */}
-            <div id="section-stretching">
+            {!dayData.cardio && <div id="section-stretching">
               <div onClick={function() { var opening = !showStr; setShowStr(opening); if (opening) { setShowIntro(false); setShowExSection(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-stretching"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showStr ? T.st + "22" : T.st + "0A", borderLeft: "3px solid " + T.st }}>
                 <div style={{ width: 30, height: 30, borderRadius: 8, background: T.st, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#129495;</div>
-                <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: T.st, textTransform: "uppercase", letterSpacing: 1 }}>Stretching finale</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{dayData.str.length + " esercizi · 5-8 min"}</div></div>
+                <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: T.st, textTransform: "uppercase", letterSpacing: 1 }}>Stretching finale</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{dayData.str ? dayData.str.length + " esercizi · 5-8 min" : ""}</div></div>
                 <div style={{ fontSize: 13, color: T.st, transform: showStr ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
               {showStr && <div style={{ padding: "0 14px 14px" }}><div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -2529,7 +2998,8 @@ export default function App() {
                   </div>
                 </div>; })}
               </div></div>}
-            </div>
+            </div>}
+
           </div>
         </div>
       </div>}
