@@ -14,7 +14,9 @@ V4,Giorno 1,Lower A — Quadricipiti + Glutei,Stretching,3,Glutei,,5 min finali,
 V4,Giorno 2,Upper A — Tirata + Petto,Riscaldamento,1,Jumping jacks,,3 minuti,,,,
 V4,Giorno 2,Upper A — Tirata + Petto,Riscaldamento,2,Cerchi con le braccia,,15 avanti + 15 indietro,,,,
 V4,Giorno 2,Upper A — Tirata + Petto,Riscaldamento,3,Inchworm,,5 ripetizioni,,,,
-V4,Giorno 2,Upper A — Tirata + Petto,Riscaldamento,4,Serie avvicinamento trazioni,,2-3 serie,,Barra trazioni + elastico,,
+V4,Giorno 2,Upper A — Tirata + Petto,Riscaldamento,3b,Scapular pull-up,2x5,"Appesa alla barra braccia tese. Tira le scapole in basso senza piegare i gomiti. Il corpo sale di 3-5 cm. Tieni 2s in alto.",,Barra trazioni,,"Depressione scapolare: inspira in basso espira attivando"
+V4,Giorno 2,Upper A — Tirata + Petto,Riscaldamento,3c,Band pull-apart con elastico,2x15,"Elastico leggero braccia tese davanti. Apri fino al petto. Scapole addotte in fondo.",,Elastico leggero,,"Inspira tornando avanti espira aprendo"
+V4,Giorno 2,Upper A — Tirata + Petto,Riscaldamento,4,Serie avvicinamento trazioni,,2-3 serie,,Barra trazioni + elastico,,"Inspira in discesa espira tirando"
 V4,Giorno 2,Upper A — Tirata + Petto,Esercizio,1,Trazioni,4x5-8,"RPE 8-9, ultimo set a cedimento tecnico controllato",2-3 min,Barra trazioni (+ elastico assist.),"Kipping; mento che si protende senza tirare; spalle alle orecchie; ROM incompleto",Inspira in discesa espira tirando verso l'alto
 V4,Giorno 2,Upper A — Tirata + Petto,Esercizio,2,T-bar Row,4x8-10,RPE 8-9,2 min,T-bar + bumper,"Schiena arrotondata; slancio col busto; tirare con i bicipiti",Inspira nel ritorno espira quando tiri verso il busto
 V4,Giorno 2,Upper A — Tirata + Petto,Esercizio,3,Panca,4x8-10,"RPE 8-9, ultimo set a cedimento tecnico controllato",2-3 min,Bilanciere + panca + rack,"Rimbalzo sul petto; gomiti troppo aperti 90 gradi; sedere che si alza; polsi piegati",Valsalva
@@ -42,7 +44,9 @@ V4,Giorno 4,Lower B — Glutei + Femorali,Stretching,3,Lombare,,5 min finali,,,,
 V4,Giorno 4,Lower B — Glutei + Femorali,Stretching,4,Flessori anca,,5 min finali,,,,
 V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Riscaldamento,1,Jumping jacks + cerchi con le braccia,,3 minuti totali,,,,
 V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Riscaldamento,2,Cat-Cow,,8-10 rip lente,,,,
-V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Riscaldamento,3,Military press con bilanciere scarico,2x8,,,Bilanciere,,
+V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Riscaldamento,2b,Band pull-apart con elastico,2x15,"Elastico leggero braccia tese davanti. Apri fino al petto. Scapole addotte in fondo.",,Elastico leggero,,"Inspira tornando avanti espira aprendo"
+V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Riscaldamento,2c,Retrazione scapolare al muro,2x10,"Schiena al muro braccia a W. Premi gomiti e dorso mani al muro. Tira scapole insieme 3s.",,Parete libera,,"Respiro continuo lento, espira nella retrazione"
+V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Riscaldamento,3,Military press con bilanciere scarico,2x8,,,Bilanciere,,Valsalva leggera o respiro controllato
 V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Esercizio,1,Push-Up,4xmax-2,RPE 8,2 min,Corpo libero (rialzo se necessario),"Anche che cedono (banana); gomiti a 90 gradi; testa che penzola; ROM incompleto",Inspira scendendo espira spingendo su
 V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Esercizio,2,Trazioni Supine,3xmax-2,"RPE 8, presa neutra o supina",2-3 min,Barra trazioni,"Come trazioni Giorno 2; presa diversa per variazione angolare",Inspira in discesa espira tirando
 V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Esercizio,3,Military Press,4x6-8,"RPE 8-9, ultimo set a cedimento tecnico controllato",2-3 min,Bilanciere + rack,"Iperestensione lombare; barra davanti al viso; gomiti che svasano; testa che arretra",Valsalva

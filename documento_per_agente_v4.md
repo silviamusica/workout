@@ -359,7 +359,9 @@ Il tasso di guadagno muscolare rallenta e i progressi di forza diventano piu len
 | 1 | Jumping jacks | 3 minuti | |
 | 2 | Cerchi con le braccia | 15 avanti + 15 indietro | |
 | 3 | Inchworm | 5 ripetizioni | |
-| 4 | Serie avvicinamento trazioni | 2-3 serie | |
+| 3b | Scapular pull-up | 2x5 | Appesa alla barra, braccia tese. Tira le scapole in basso senza piegare i gomiti. Tieni 2 secondi in alto |
+| 3c | Band pull-apart con elastico | 2x15 | Elastico leggero, braccia tese davanti. Apri fino al petto. Scapole addotte in fondo |
+| 4 | Serie avvicinamento trazioni | 2-3 serie | Dopo l'attivazione scapolare |
 
 **Esercizi**
 
@@ -428,7 +430,9 @@ Il tasso di guadagno muscolare rallenta e i progressi di forza diventano piu len
 |---|---|---|---|
 | 1 | Jumping jacks + cerchi con le braccia | 3 minuti totali | |
 | 2 | Cat-Cow | 8-10 rip lente | |
-| 3 | Military press con bilanciere scarico | 2x8 | |
+| 2b | Band pull-apart con elastico | 2x15 | Elastico leggero, braccia tese davanti. Apri fino al petto. Scapole addotte in fondo |
+| 2c | Retrazione scapolare al muro | 2x10 | Schiena al muro, braccia a W. Premi gomiti e dorso delle mani al muro. Tieni 3 secondi |
+| 3 | Military press con bilanciere scarico | 2x8 | Dopo l'attivazione scapolare |
 
 **Esercizi**
 
