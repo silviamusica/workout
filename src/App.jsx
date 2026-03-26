@@ -103,7 +103,7 @@ var TH = {
 };
 
 
-var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in mano. Rotola avanti, torna contraendo.", "p": "Ginocchia a terra, core contratto, glutei attivi, schiena neutra.", "t": ["Range ridotto all'inizio", "Glutei stretti per la lombare", "Espira tornando indietro"], "lk": "https://www.youtube.com/watch?v=kISuoI7QCYk", "deep": [
+var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in mano. Rotola avanti, torna contraendo.", "p": "Ginocchia a terra, core contratto, glutei attivi, schiena neutra.", "t": ["Range ridotto all'inizio", "Glutei stretti per la lombare", "Core contratto anche nella fase di andata"], "lk": "https://www.youtube.com/watch?v=kISuoI7QCYk", "deep": [
   {"type":"p","content":"Inizia sempre da in ginocchio. Braccia e gambe vanno tenute sempre ben tese durante tutto il movimento."},
   {"type":"p","content":"Il segreto e tenere il bacino in retroversione (portato ben in avanti) e i glutei contratti: senza questo, se inarchi la schiena, l'esercizio diventa dannoso per la lombare. Tieni la schiena compatta e il mento basso per formare un blocco unico con tutto il tronco."},
   {"type":"p","content":"Avanza fino ad avere le braccia distese e il viso a pochi centimetri dal suolo, poi torna indietro in modo controllato."},
@@ -367,24 +367,25 @@ var INTRO_BASICS = [
       { type: "section", label: "1. Corrispondenza Anatomica — basso/medio carico" },
       { type: "p", content: "Regola: inspira quando il movimento apre la gabbia toracica, espira quando la chiude." },
       { type: "bold-list", content: [
-        ["Panca / Push-Up", "Inspira scendendo (torace si allarga). Espira spingendo su."],
+        ["Push-Up", "Inspira scendendo verso il pavimento. Espira spingendo su."],
         ["Trazioni / T-bar Row", "Inspira in eccentrica (braccia che salgono). Espira tirando."],
-        ["Military Press", "Inspira in eccentrica (barra che scende). Espira spingendo su."],
+        ["Hip Thrust", "Inspira in basso. Espira salendo e stringendo i glutei in alto. Core contratto, ma senza apnea."],
         ["Curl / Face Pull", "Inspira aprendo il movimento. Espira chiudendolo."],
       ]},
       { type: "section", label: "2. Manovra di Valsalva — compound pesanti" },
-      { type: "p", content: "Per Squat, Stacco e Hip Thrust il respiro ha un ruolo protettivo. Si esegue in apnea durante lo sforzo:" },
+      { type: "p", content: "Per Squat, Stacco, Military Press e Panca pesante il respiro ha un ruolo protettivo. Si esegue in apnea durante lo sforzo:" },
       { type: "bold-list", content: [
         ["1. Inspira profondo", "Riempi la pancia d'aria — non il petto. Contrai l'addome."],
         ["2. Esegui in apnea", "Tutto lo sforzo in apnea. Si crea pressione intra-addominale (IAP)."],
         ["3. Espira dopo il punto critico", "Solo dopo aver superato la fase più difficile (in salita nello squat, al lockout nello stacco)."],
+        ["Panca piana", "Inspira in alto e gonfia l'addome, mantieni l'apnea durante la discesa e la prima fase della spinta, espira solo dopo la meta della salita. Con carichi leggeri puoi usare la respirazione semplice."],
         ["Perché funziona", "La IAP forma un 'cuscinetto pneumatico' che protegge le vertebre lombari dalle forze di taglio."],
       ]},
       { type: "section", label: "3. Isometrici — Plank, Ab Wheel" },
       { type: "p", content: "Respira lento e profondo, addome contratto. Mai in apnea: stai sotto tensione per secondi, non frazioni di secondo." },
       { type: "table", rows: [
-        { cat: "Basso/medio carico", metodo: "Corrispondenza Anatomica", regola: "Inspira quando il petto si apre · Espira quando si chiude", esempi: "Panca · Push-Up · Military · Curl" },
-        { cat: "Compound pesanti", metodo: "Manovra di Valsalva", regola: "Inspira (gonfia l'addome) → apnea → espira dopo il punto critico", esempi: "Squat · Stacco · Hip Thrust" },
+        { cat: "Basso/medio carico", metodo: "Corrispondenza Anatomica", regola: "Inspira quando il petto si apre · Espira quando si chiude", esempi: "Push-Up · Hip Thrust · Curl" },
+        { cat: "Compound pesanti", metodo: "Manovra di Valsalva", regola: "Inspira (gonfia l'addome) → apnea → espira dopo il punto critico", esempi: "Squat · Stacco · Military Press · Panca" },
         { cat: "Isometrici / Core", metodo: "Respirazione di gestione", regola: "Respiro lento, addome contratto, mai in apnea", esempi: "Plank · Ab Wheel · Slackline" },
       ]},
     ]
@@ -632,7 +633,7 @@ var PRINCIPLES_DEEP = [
     {type:"p", content:"Segnale di troppo cardio: i carichi in sala smettono di crescere per 2+ settimane. In quel caso riduci prima durata o intensità del cardio, non il volume dei pesi."}
   ]},
   { t: "Manovra di Valsalva e respirazione sotto carico", d: [
-    {type:"p", content:"Per Squat, Stacco e Hip Thrust il respiro ha un ruolo protettivo, non segue l'anatomia. Si esegue in apnea durante lo sforzo:"},
+    {type:"p", content:"Per Squat, Stacco, Military Press e Panca pesante il respiro ha un ruolo protettivo, non segue semplicemente l'anatomia del movimento. In questi casi usa la manovra di Valsalva:"},
     {type:"ul", content:[
       "Inspira profondo gonfiando la pancia (non il petto) prima di iniziare",
       "Blocca il respiro — crea pressione intra-addominale",
@@ -640,7 +641,8 @@ var PRINCIPLES_DEEP = [
       "Espira solo dopo aver superato il punto critico (in salita nello squat, a lockout nello stacco)",
     ]},
     {type:"p", content:"La pressione intra-addominale forma un 'cuscinetto pneumatico' che protegge le vertebre lombari dalle forze di taglio. Senza questa tecnica, la schiena bassa è esposta sotto carichi elevati."},
-    {type:"p", content:"Per gli altri esercizi (Panca, Trazioni, Military, accessori): respira normalmente — espira nella fase di sforzo, inspira nella fase di allungamento."}
+    {type:"p", content:"Sulla Panca piana pesante: inspira in alto e gonfia l'addome, mantieni l'apnea durante la discesa e nella prima fase della spinta, espira solo dopo aver superato il punto piu difficile. Nei warm-up o con carichi leggeri puoi usare la respirazione semplice: inspira scendendo, espira salendo."},
+    {type:"p", content:"Per gli altri esercizi, compreso l'Hip Thrust, segui la corrispondenza anatomica: inspira nella fase di ritorno o allungamento, espira nella fase di spinta o chiusura, mantenendo comunque il core attivo."}
   ]},
   { t: "Retroversione del bacino e assetto hollow", d: [
     {type:"p", content:"Due concetti tecnici fondamentali che compaiono in più esercizi della scheda."},
@@ -900,26 +902,34 @@ var NUTRITION_PRINCIPLES = [
   {
     t: "Tabelle pratiche: legumi, cereali e macro",
     d: [
-      { type:"p", content:"Valori indicativi per alimenti cotti o pronti al consumo. Possono variare leggermente per marca e metodo di cottura, ma sono abbastanza precisi per orientarti." },
-      { type:"table", columns:["Alimento","Porzione","Kcal","Carb","Prot","Grassi"], rows:[
-        ["Lenticchie cotte","100 g","116","20 g","9 g","0.4 g"],
-        ["Ceci cotti","100 g","164","27 g","9 g","2.6 g"],
-        ["Fagioli borlotti cotti","100 g","127","23 g","8 g","0.5 g"],
-        ["Piselli cotti","100 g","81","14 g","5 g","0.4 g"],
-        ["Edamame","100 g","122","9 g","11 g","5 g"],
+      { type:"p", content:"Valori indicativi. Per renderli leggibili, ogni tabella separa chiaramente lo stato dell'alimento: crudo, cotto o pronto al consumo. I valori possono cambiare leggermente per marca e cottura, ma sono abbastanza precisi per orientarti." },
+      { type:"table", columns:["Alimento","Stato","Porzione","Kcal","Carb","Prot","Grassi"], rows:[
+        ["Lenticchie","Crude","100 g","353","60 g","25 g","1.1 g"],
+        ["Lenticchie","Cotte","100 g","116","20 g","9 g","0.4 g"],
+        ["Ceci","Crudi","100 g","364","61 g","19 g","6 g"],
+        ["Ceci","Cotti","100 g","164","27 g","9 g","2.6 g"],
+        ["Fagioli borlotti","Crudi","100 g","335","60 g","23 g","2 g"],
+        ["Fagioli borlotti","Cotti","100 g","127","23 g","8.7 g","0.5 g"],
+        ["Piselli","Cotti","100 g","81","14 g","5 g","0.4 g"],
+        ["Edamame","Cotti","100 g","122","9 g","11 g","5 g"],
       ]},
-      { type:"table", columns:["Alimento","Porzione","Kcal","Carb","Prot","Grassi"], rows:[
-        ["Riso cotto","100 g","130","28 g","2.5 g","0.3 g"],
-        ["Pasta cotta","100 g","157","31 g","5.8 g","0.9 g"],
-        ["Patate bollite","100 g","87","20 g","1.9 g","0.1 g"],
-        ["Pane","50 g","130","24 g","4 g","1.5 g"],
-        ["Avena secca","40 g","156","26 g","6.8 g","2.8 g"],
+      { type:"table", columns:["Alimento","Stato","Porzione","Kcal","Carb","Prot","Grassi"], rows:[
+        ["Riso","Crudo","100 g","360","79 g","7 g","0.6 g"],
+        ["Riso","Cotto","100 g","130","28 g","2.5 g","0.3 g"],
+        ["Pasta","Cruda","100 g","357","72 g","12 g","1.5 g"],
+        ["Pasta","Cotta","100 g","157","31 g","5.8 g","0.9 g"],
+        ["Avena","Cruda","40 g","156","26 g","6.8 g","2.8 g"],
+        ["Patate","Crude","100 g","77","17 g","2 g","0.1 g"],
+        ["Patate","Cotte","100 g","87","20 g","1.9 g","0.1 g"],
+        ["Pane bianco","Pronto","50 g","133","25 g","4 g","1.6 g"],
+        ["Pane integrale","Pronto","50 g","124","22 g","4.6 g","1.7 g"],
+        ["Pane ai cereali","Pronto","50 g","128","23 g","4.5 g","2 g"],
       ]},
       { type:"table", columns:["Combinazione utile","Porzione esempio","Kcal","Carb","Prot","Grassi"], rows:[
-        ["Lenticchie + riso","150 g lenticchie + 100 g riso","304","58 g","16 g","1 g"],
-        ["Ceci + pane","150 g ceci + 60 g pane","324","55 g","16 g","4.8 g"],
-        ["Tofu + riso","150 g tofu + 100 g riso","310","31 g","20 g","13 g"],
-        ["Yogurt greco + avena","170 g yogurt + 40 g avena","256","32 g","23 g","3 g"],
+        ["Lenticchie + riso","150 g lenticchie cotte + 100 g riso cotto","304","58 g","16 g","1 g"],
+        ["Ceci + pane","150 g ceci cotti + 60 g pane pronto","324","55 g","16 g","4.8 g"],
+        ["Tofu + riso","150 g tofu pronto + 100 g riso cotto","310","31 g","20 g","13 g"],
+        ["Yogurt greco + avena","170 g yogurt pronto + 40 g avena cruda","256","32 g","23 g","3 g"],
       ]},
       { type:"p", content:"Regola pratica: i legumi da soli sono ottimi, ma per alzare la quota proteica del pasto spesso conviene abbinarli a cereali, tofu, yogurt o altre fonti proteiche piu dense." },
     ]
@@ -1220,7 +1230,8 @@ var DAYS_V4 = [
 ];
 
 var PRINCIPLES = [
-  { t: "Come leggere un esercizio: 4x6-8 RPE 8", d: "4 serie da 6-8 ripetizioni a RPE 8 (ti restano 2 ripetizioni in riserva). Inizia dal fondo del range (4x6). Quando arrivi al tetto (4x8) con tecnica pulita, la settimana successiva aggiungi 2.5kg e ricomincia da 4x6. Questo è la double progression." },
+  { t: "Come leggere un esercizio: 4x6-8 RPE 8", d: "4 serie da 6 a 8 ripetizioni a RPE 8. Il peso resta uguale in tutte le serie: non aumentarlo tra una serie e l'altra. Il range 6-8 indica la progressione tra le settimane, non dentro la singola seduta. Esempio: settimana 1 fai 4x6 con 30 kg, settimana 2 fai 4x7 con 30 kg, settimana 3 fai 4x8 con 30 kg, poi aumenti a 32.5 kg e riparti da 4x6. Se nella pratica fai 8, 8, 7, 6 va bene: il peso resta lo stesso e aumenti solo quando riesci a fare il numero alto previsto in tutte le serie con tecnica pulita." },
+  { t: "Straight sets: stesso peso in tutte le serie", d: "Questa scheda non usa la piramide classica. Usa straight sets: stesso peso in tutte le serie dello stesso esercizio. Esempi: 4x6-8 = 4 serie con lo stesso peso; 3x12 = 3 serie con lo stesso peso; 3xRIR 1-2 = 3 serie con lo stesso peso fermandoti con 1-2 ripetizioni in riserva. Il carico cambia solo tra le settimane, quando hai raggiunto il numero alto previsto su tutte le serie. La vecchia logica piramidale tipo 12-10-8-8 qui non si usa." },
   { t: "Come leggere: 4xmax-2", d: "Fai quante ripetizioni riesci fermandoti 2 prima del cedimento (RIR 2). Non c'è un numero fisso: l'obiettivo è migliorare il numero di ripetizioni nel tempo. Si usa su Push-Up e Trazioni dove il carico è il peso corporeo." },
   { t: "RIR e RPE: che differenza c'e?", d: "Misurano la stessa cosa da due lati diversi: quanto sei vicina al cedimento. RIR guarda quante ripetizioni ti restano ancora. RPE guarda quanto e stata dura la serie su una scala da 1 a 10. In pratica: RIR 3 = RPE 7, RIR 2 = RPE 8, RIR 1 = RPE 9, RIR 0 = RPE 10. Quindi se il programma dice RIR 2, significa che devi fermarti quando senti di poter fare ancora 2 ripetizioni buone. Se dice RPE 8, il significato pratico e lo stesso. RIR e spesso piu intuitivo per chi segue una scheda, RPE e piu comodo per descrivere l'intensita in modo rapido." },
   { t: "Come leggere: 3xRIR 1-2", d: "Vuol dire che in ogni serie ti devi fermare con 1-2 ripetizioni ancora disponibili. Tradotto in pratica: stai lavorando vicino al limite, ma senza arrivare a cedimento. Corrisponde circa a RPE 8-9." },
@@ -1383,13 +1394,13 @@ var BREATH_RULES = {
   "Stacco Rumeno":      { type:"valsalva",      short:"Valsalva · apnea durante lo sforzo",           inhale:"Prima di scendere — gonfia l'addome", exhale:"In cima, prima della prossima rip" },
   "Stacco Sumo":        { type:"valsalva",      short:"Valsalva · apnea durante lo sforzo",           inhale:"Prima di tirare — gonfia l'addome", exhale:"Dopo aver deposto il bilanciere" },
   "Good Morning":       { type:"valsalva",      short:"Valsalva · apnea durante lo sforzo",           inhale:"Prima di piegarsi — gonfia l'addome", exhale:"In cima, prima della prossima rip" },
-  "Panca":              { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo (torace si allarga)", exhale:"Spingendo verso l'alto" },
+  "Panca":              { type:"valsalva",      short:"Valsalva · apnea su discesa e prima spinta",   inhale:"In alto, prima di scendere — gonfia l'addome", exhale:"Solo dopo aver superato la meta della salita" },
   "Floor Press Manubri":{ type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo (torace si allarga)", exhale:"Spingendo verso l'alto" },
   "Push-Up":            { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo verso terra", exhale:"Spingendo verso l'alto" },
   "Push-Up Declino":    { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo verso terra", exhale:"Spingendo verso l'alto" },
   "Push-Up Diamante":   { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo verso terra", exhale:"Spingendo verso l'alto" },
   "Dip su Panca":       { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo (gomiti a 90°)", exhale:"Spingendo verso l'alto" },
-  "Military Press":     { type:"anatomic-open", short:"Inspira spingendo · espira scendendo",         inhale:"Spingendo verso l'alto (petto si apre)", exhale:"Scendendo alle clavicole" },
+  "Military Press":     { type:"valsalva",      short:"Valsalva · apnea durante la spinta",            inhale:"Prima di spingere — gonfia l'addome", exhale:"Solo dopo che la barra ha superato la testa" },
   "Push Press":         { type:"anatomic-open", short:"Inspira spingendo · espira scendendo",         inhale:"Spingendo verso l'alto (petto si apre)", exhale:"Scendendo alle clavicole" },
   "Arnold Press":       { type:"anatomic-open", short:"Inspira spingendo · espira scendendo",         inhale:"Spingendo e ruotando verso l'alto", exhale:"Scendendo e ruotando verso di te" },
   "Alzate Laterali":    { type:"anatomic-open", short:"Inspira alzando · espira abbassando",          inhale:"Alzando le braccia (petto si apre)", exhale:"Abbassando le braccia" },
@@ -1419,13 +1430,35 @@ var BREATH_RULES = {
   "Clamshell":          { type:"iso",           short:"Respirazione continua · addome contratto",     inhale:"Regolare, a ritmo costante", exhale:"Espira nell'apertura massima (concentrica)" },
   "Abduzione Laterale": { type:"iso",           short:"Respirazione continua · addome contratto",     inhale:"Regolare, a ritmo costante", exhale:"Espira alzando la gamba (concentrica)" },
   "Fire Hydrant":       { type:"iso",           short:"Respirazione continua · addome contratto",     inhale:"Regolare, a ritmo costante", exhale:"Espira alzando il ginocchio (concentrica)" },
-  "Ab Wheel":           { type:"anatomic-push", short:"Inspira avanzando · espira rientrando",        inhale:"Rotolando in avanti (apertura torace)", exhale:"Rientrando contraendo gli addominali" },
+  "Hip Thrust Bilanciere": { type:"anatomic-push", short:"Inspira in basso · espira salendo",         inhale:"In basso, prima di partire", exhale:"Salendo e stringendo i glutei in alto" },
+  "Ab Wheel":           { type:"anatomic-push", short:"Inspira avanzando · espira rientrando",        inhale:"Controllando la discesa in avanti, core sempre attivo", exhale:"Tornando indietro senza perdere tensione addominale" },
   "Plank":              { type:"iso",           short:"Respiro lento e profondo · mai in apnea",      inhale:"Respiro toracico lento e profondo", exhale:"Espira lentamente, addome sempre contratto" },
   "Shoulder Tap":       { type:"iso",           short:"Respiro lento e continuo · mai in apnea",      inhale:"Respiro regolare tra un tocco e l'altro", exhale:"Espira lentamente mantenendo il core contratto" },
   "Addominali Obliqui": { type:"anatomic-push", short:"Inspira aprendo · espira ruotando",            inhale:"Tornando al centro (eccentrica)", exhale:"Ruotando/flettendo verso il lato (concentrica)" },
 };
 var BREATH_TYPE_COLOR = { valsalva: "#E07848", "anatomic-push": "#5C8FD0", "anatomic-pull": "#6DAD8C", "anatomic-open": "#9B7ED0", iso: "#A08878" };
 var BREATH_TYPE_LABEL = { valsalva: "Manovra di Valsalva", "anatomic-push": "Anatomica — Spinta", "anatomic-pull": "Anatomica — Trazione", "anatomic-open": "Anatomica — Apertura", iso: "Isometrica" };
+var BREATH_COMPARE_ROWS = [
+  ["Squat", "Valsalva", "Prima di scendere: gonfia l'addome", "Dopo il punto critico della risalita"],
+  ["Stacco da Terra", "Valsalva", "Prima di tirare: gonfia l'addome", "Dopo la ripetizione o dopo aver deposto il bilanciere"],
+  ["Stacco Rumeno", "Valsalva", "Prima della discesa: addome pieno e rigido", "In cima"],
+  ["Hip Thrust Bilanciere", "Corrispondenza anatomica", "In basso", "Salendo e stringendo i glutei in alto"],
+  ["Panca", "Valsalva", "In alto, prima di scendere: gonfia l'addome", "Solo dopo aver superato la meta della salita"],
+  ["Push-Up", "Corrispondenza anatomica", "Scendendo verso il pavimento", "Spingendo su"],
+  ["Military Press", "Valsalva", "Prima di spingere: gonfia l'addome", "Solo dopo che il bilanciere ha superato la testa"],
+  ["Trazioni", "Corrispondenza anatomica", "In discesa", "Tirando verso l'alto"],
+  ["Trazioni Supine", "Corrispondenza anatomica", "Scendendo", "Tirando"],
+  ["T-bar Row", "Corrispondenza anatomica", "Nel ritorno", "Tirando verso il busto"],
+  ["Curl Bicipiti", "Corrispondenza anatomica", "Abbassando il peso", "Flettendo"],
+  ["Tricipiti Cavo", "Corrispondenza anatomica", "Nel ritorno", "Nell'estensione"],
+  ["Dip alle Parallele", "Corrispondenza anatomica", "In discesa", "In spinta"],
+  ["Face Pull", "Corrispondenza anatomica", "Nel ritorno", "Tirando verso il viso"],
+  ["Affondi / Squat Bulgaro", "Corrispondenza anatomica", "In discesa", "Risalendo"],
+  ["Nordic Curl", "Corrispondenza anatomica", "Nella discesa controllata", "Nella risalita"],
+  ["Ab Wheel", "Corrispondenza anatomica + core continuo", "Controllando la discesa in avanti", "Tornando indietro, senza perdere tensione addominale"],
+  ["Woodchop", "Corrispondenza anatomica", "Nel ritorno", "Nella rotazione attiva"],
+  ["Slackline / Isometrici", "Isometrica", "Respiro continuo e lento", "Mai in apnea"],
+];
 function getBreath(name) { return BREATH_RULES[name] || null; }
 function fmtTime(ms) { var s = Math.floor(ms / 1000); return (Math.floor(s/60) < 10 ? "0" : "") + Math.floor(s/60) + ":" + (s%60 < 10 ? "0" : "") + s%60 + "." + (Math.floor((ms%1000)/10) < 10 ? "0" : "") + Math.floor((ms%1000)/10); }
 
@@ -1456,6 +1489,31 @@ export default function App() {
   var [showIntroCard, setShowIntroCard] = useState(null);
   var [showMuscleIntro, setShowMuscleIntro] = useState(null);
   var [showExIntro, setShowExIntro] = useState(null);
+
+  function openMainTab(nextTab) {
+    setTab(nextTab);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function goToTeoria(nextTeoriaTab, nextGlossTab) {
+    setTab("teoria");
+    if (nextTeoriaTab) setTeoriaTab(nextTeoriaTab);
+    if (nextGlossTab) setGlossTab(nextGlossTab);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function goToAlimentazione(nextAlimentazioneTab) {
+    setTab("teoria");
+    setTeoriaTab("alimentazione");
+    if (nextAlimentazioneTab) setAlimentazioneTab(nextAlimentazioneTab);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function goToExercises(nextSection) {
+    setTab("exercises");
+    if (nextSection) setCatSec(nextSection);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
   var [showBreath, setShowBreath] = useState(null);
   var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"yt" }
   var [showReg, setShowReg] = useState(null);
@@ -1638,10 +1696,10 @@ export default function App() {
     if (prog.label.indexOf("Sessione incompleta") >= 0) return "Manca almeno una serie registrata: completa la seduta per avere un consiglio affidabile.";
     if (prog.label.indexOf("Nessun dato") >= 0) return "Non c'e ancora una seduta registrata per questo esercizio.";
     if (prog.label.indexOf("Serve un'altra sessione") >= 0) return "Per questi esercizi serve almeno un confronto con la seduta precedente.";
-    if (prog.label.indexOf("Aumenta carico") >= 0 || prog.label.indexOf("Aumenta leggermente il carico") >= 0) return "Hai chiuso tutte le serie al tetto del range: la prossima volta puoi aumentare il peso.";
+    if (prog.label.indexOf("Aumenta carico") >= 0 || prog.label.indexOf("Aumenta leggermente il carico") >= 0) return "Hai fatto il numero alto di ripetizioni previsto in tutte le serie: la prossima volta puoi aumentare il peso.";
     if (prog.label.indexOf("Aumenta durata") >= 0) return "Hai completato tutto il tempo previsto: la prossima volta puoi aumentare la durata.";
     if (prog.label.indexOf("Aumenta ripetizioni") >= 0) return "Hai completato bene il target: la prossima volta puoi aggiungere ripetizioni.";
-    if (prog.label.indexOf("Aggiungi ripetizioni") >= 0 || prog.label.indexOf("Prova a chiudere il range") >= 0) return "Sei gia nel range giusto, ma non ancora al massimo su tutte le serie.";
+    if (prog.label.indexOf("Aggiungi ripetizioni") >= 0 || prog.label.indexOf("Prova a chiudere il target") >= 0 || prog.label.indexOf("Prova a chiudere il range") >= 0) return "Il peso va bene, ma non hai ancora raggiunto il numero alto di ripetizioni in tutte le serie.";
     if (prog.label.indexOf("Stai progredendo") >= 0) return "Rispetto alla seduta precedente hai fatto piu ripetizioni totali.";
     if (prog.label.indexOf("Stabile") >= 0) return "Sei simile alla seduta precedente: continua o prova ad aggiungere 1-2 ripetizioni totali.";
     if (prog.label.indexOf("Consolida") >= 0) return "Non aumentare ancora: prima rendi piu solide tecnica e ripetizioni con questo carico.";
@@ -1732,7 +1790,7 @@ export default function App() {
                 {block.rows.map(function(row, ri) {
                   return <tr key={ri} style={{ borderBottom: ri < block.rows.length - 1 ? "1px solid " + T.bg : "none" }}>
                     {row.map(function(cell, ci) {
-                      return <td key={ci} style={{ padding: "8px 10px", fontSize: 11, lineHeight: 1.5, color: ci === 0 ? T.tx : T.sub, textAlign: ci === 0 ? "left" : "center", fontWeight: ci === 0 ? 700 : 500, whiteSpace: ci === 0 ? "normal" : "nowrap" }}>{cell}</td>;
+                      return <td key={ci} style={{ padding: "8px 10px", fontSize: 11, lineHeight: 1.5, color: ci === 0 ? T.tx : T.sub, textAlign: ci === 0 ? "left" : "center", fontWeight: ci === 0 ? 700 : 500, whiteSpace: "normal", verticalAlign: "top" }}>{cell}</td>;
                     })}
                   </tr>;
                 })}
@@ -2072,7 +2130,7 @@ export default function App() {
     var latestSummary = formatSessionSummary(latest.sets, weights.length === 0, isTime);
     if (isCore) {
       if (allAtTop) {
-        return { tone: "up", label: isTime ? "🟢 Aumenta durata" : "🟢 Aumenta ripetizioni", detail: "Ultima: " + latestSummary + ". Hai chiuso tutto il target previsto.", short: isTime ? "Hai chiuso il tempo target" : "Hai chiuso il range target" };
+        return { tone: "up", label: isTime ? "🟢 Aumenta durata" : "🟢 Aumenta ripetizioni", detail: "Ultima: " + latestSummary + ". Hai completato tutto il target previsto.", short: isTime ? "Hai completato il tempo target" : "Hai completato il target di ripetizioni" };
       }
       if (allInRange) {
         return { tone: "mid", label: "🟡 Consolida", detail: "Ultima: " + latestSummary + ". Sei dentro il target ma non ancora al tetto su tutte le serie.", short: "Dentro il target" };
@@ -2080,10 +2138,10 @@ export default function App() {
       return { tone: "hold", label: "🟠 Consolida tecnica", detail: "Ultima: " + latestSummary + ". Prima chiudi il minimo previsto su tutte le serie.", short: "Sotto il minimo su una o piu serie" };
     }
     if (allAtTop) {
-      return { tone: "up", label: isAccessory ? "🟢 Aumenta leggermente il carico" : "🟢 Aumenta carico", detail: "Ultima: " + latestSummary + ". Hai chiuso tutto il range previsto.", short: "Hai chiuso tutto il range" };
+      return { tone: "up", label: isAccessory ? "🟢 Aumenta leggermente il carico" : "🟢 Aumenta carico", detail: "Ultima: " + latestSummary + ". Hai fatto il numero alto di ripetizioni previsto in tutte le serie.", short: "Hai raggiunto il numero alto in tutte le serie" };
     }
     if (allInRange) {
-      return { tone: "mid", label: isAccessory ? "🟡 Prova a chiudere il range" : "🟡 Aggiungi ripetizioni", detail: "Ultima: " + latestSummary + ". Sei nel range ma non ancora al tetto su tutte le serie.", short: "Nel range, ma non al tetto" };
+      return { tone: "mid", label: isAccessory ? "🟡 Prova a chiudere il target" : "🟡 Aggiungi ripetizioni", detail: "Ultima: " + latestSummary + ". Il peso va bene, ma non hai ancora fatto il numero alto di ripetizioni in tutte le serie.", short: "Peso giusto, ma non ancora al numero alto" };
     }
     return { tone: "hold", label: isAccessory ? "🟠 Consolida tecnica e rip" : "🟠 Consolida questo peso", detail: "Ultima: " + latestSummary + ". Almeno una serie e sotto il minimo previsto.", short: "Almeno una serie sotto il minimo" };
   }
@@ -2147,6 +2205,18 @@ export default function App() {
               {db.t.map(function(tip, ti) { return <div key={ti} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: dc + "08", border: "1px solid " + dc + "12", borderRadius: 8, padding: "8px 10px" }}><span style={{ color: dc, fontSize: 11, lineHeight: 1.5 }}>→</span><span style={{ fontSize: 12, lineHeight: 1.5, color: T.sub }}>{tip}</span></div>; })}
             </div>
           </div>
+          {getBreath(exInfoOpen) && <details style={{ marginBottom: 12, borderRadius: 10, overflow: "hidden", background: T.bg }}>
+            <summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 11, fontWeight: 800, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 6, textTransform: "uppercase", letterSpacing: 0.6 }}>
+              <span>🫁</span> Come respirare in questo esercizio
+            </summary>
+            <div style={{ padding: "0 12px 12px", display: "grid", gap: 10 }}>
+              <div style={{ background: dc + "0A", border: "1px solid " + dc + "18", borderRadius: 8, padding: "9px 10px" }}>
+                <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 5 }}>{BREATH_TYPE_LABEL[getBreath(exInfoOpen).type]}</div>
+                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}><b style={{ color: T.tx }}>Inspira:</b> {getBreath(exInfoOpen).inhale}</div>
+                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6, marginTop: 4 }}><b style={{ color: T.tx }}>Espira:</b> {getBreath(exInfoOpen).exhale}</div>
+              </div>
+            </div>
+          </details>}
           {embed && <div style={{ marginBottom: 12, borderRadius: 10, overflow: "hidden", background: "#000" }}>
             <iframe
               src={embed}
@@ -2272,6 +2342,25 @@ export default function App() {
                     </div>}
                   </div>;
                 })}
+              </div>
+
+              <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, color: T.sub, marginTop: 16, marginBottom: 8 }}>🫁 Respirazione esercizi</div>
+              <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg }}>
+                <div onClick={function() { setShowPrinciples(showPrinciples === 600 ? null : 600); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showPrinciples === 600 ? dc + "0A" : "transparent" }}>
+                  <span style={{ fontSize: 13, fontWeight: showPrinciples === 600 ? 700 : 600, color: showPrinciples === 600 ? dc : T.tx, lineHeight: 1.3 }}>Tabella unica: come respirare nei principali esercizi</span>
+                  <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showPrinciples === 600 ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+                </div>
+                {showPrinciples === 600 && <div style={{ padding: "6px 14px 14px", background: T.sb, display: "grid", gap: 10 }}>
+                  <p style={{ margin: 0, fontSize: 12, lineHeight: 1.7, color: T.sub }}>Usa questa tabella per confrontare rapidamente i pattern respiratori. Nei multiarticolari pesanti la priorita e la stabilita del tronco; negli esercizi piu semplici segui invece il ritmo del movimento.</p>
+                  <RichBlocks
+                    accent={dc}
+                    blocks={[{
+                      type: "table",
+                      columns: ["Esercizio", "Metodo", "Inspira", "Espira"],
+                      rows: BREATH_COMPARE_ROWS
+                    }]}
+                  />
+                </div>}
               </div>
             </div>}
             {glossTab === "termini" && <div>
@@ -2413,18 +2502,22 @@ export default function App() {
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 14 }}>Come funziona</div>
           <div style={{ display: "grid", gap: 8 }}>
             {[
-              { icon: "📋", label: "Scheda", key: "workout", chips: ["Principiante","Intermedio","Avanzato","Ipert."], desc: "Scheda settimanale con esercizi, foto, badge respirazione 🫁 e timer di recupero." },
-              { icon: "📊", label: "Progressi", key: "progressi", chips: ["Carichi","Settimane","Trend"], desc: "Tieni traccia dei tuoi miglioramenti settimana per settimana." },
-              { icon: "📚", label: "Teoria", key: "teoria", chips: ["Ipertrofia","Multifrequenza","Muscoli","Respirazione"], desc: "Principi fondamentali + mappa muscolare interattiva." },
-              { icon: "🏃", label: "Esercizi", key: "exercises", chips: ["Riscaldamento","Fondamentali","Stretching"], desc: "Biblioteca completa di esercizi con approfondimenti e video." },
+              { icon: "📋", label: "Scheda", key: "workout", chips: [{ label: "V4 attiva", onClick: function() { openMainTab("workout"); } }, { label: "6 giorni", onClick: function() { openMainTab("workout"); } }, { label: "Cardio", onClick: function() { openMainTab("workout"); } }, { label: "Timer", onClick: function() { openMainTab("workout"); } }], desc: "Scheda settimanale con esercizi, foto, badge respirazione 🫁 e timer di recupero." },
+              { icon: "📊", label: "Progressi", key: "progressi", chips: [{ label: "Carichi", onClick: function() { openMainTab("progressi"); } }, { label: "Settimane", onClick: function() { openMainTab("progressi"); } }, { label: "Trend", onClick: function() { openMainTab("progressi"); } }], desc: "Tieni traccia dei tuoi miglioramenti settimana per settimana." },
+              { icon: "📚", label: "Teoria", key: "teoria", chips: [{ label: "Basi", onClick: function() { goToTeoria("basi"); } }, { label: "Teoria", onClick: function() { goToTeoria("teoria", "principi"); } }, { label: "Muscoli", onClick: function() { goToTeoria("muscoli"); } }, { label: "Alimentazione", onClick: function() { goToAlimentazione("principi"); } }], desc: "Principi fondamentali, respirazione, mappa muscolare e alimentazione." },
+              { icon: "🏃", label: "Esercizi", key: "exercises", chips: [{ label: "Riscaldamento", onClick: function() { goToExercises("wu"); } }, { label: "Fondamentali", onClick: function() { goToExercises("ex"); } }, { label: "Stretching", onClick: function() { goToExercises("st"); } }], desc: "Biblioteca completa di esercizi con approfondimenti e video." },
             ].map(function(item) {
-              return <div key={item.key} onClick={function() { setTab(item.key); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "12px 12px", borderRadius: 10, background: T.bg, cursor: "pointer" }}>
+              return <div key={item.key} onClick={function() {
+                if (item.key === "teoria") { goToTeoria("basi"); return; }
+                if (item.key === "exercises") { goToExercises("ex"); return; }
+                openMainTab(item.key);
+              }} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "12px 12px", borderRadius: 10, background: T.bg, cursor: "pointer" }}>
                 <div style={{ width: 38, height: 38, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>{item.icon}</div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: 13, fontWeight: 800, color: dc, marginBottom: 3 }}>{item.label} →</div>
                   <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginBottom: 6 }}>{item.desc}</div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-                    {item.chips.map(function(c) { return <span key={c} style={{ fontSize: 10, background: dc + "14", color: dc, padding: "2px 7px", borderRadius: 5, fontWeight: 600 }}>{c}</span>; })}
+                    {item.chips.map(function(c) { return <button key={c.label} onClick={function(e) { e.stopPropagation(); c.onClick(); }} style={{ fontSize: 10, background: dc + "14", color: dc, padding: "2px 7px", borderRadius: 5, fontWeight: 600, border: "none", cursor: "pointer" }}>{c.label}</button>; })}
                   </div>
                 </div>
               </div>;
@@ -2437,16 +2530,16 @@ export default function App() {
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Funzionalità speciali</div>
           <div style={{ display: "grid", gap: 8 }}>
             {[
-              { icon: "⏱️", title: "Cronometro di recupero", desc: "Nella Scheda, ogni esercizio ha un timer di recupero. Toccalo per avviarlo: suona con un beep alla fine del riposo.", key: "workout" },
-              { icon: "📊", title: "Registra i tuoi pesi", desc: "Apri un esercizio nella Scheda e usa il campo note per annotare i carichi. I dati vengono salvati localmente sul dispositivo.", key: "workout" },
-              { icon: "💾", title: "Backup e ripristino", desc: "Dalle Impostazioni ⚙️ esporta tutti i tuoi dati in JSON e reimportali quando vuoi.", key: null },
-              { icon: "🫁", title: "Guida alla respirazione", desc: "Badge respirazione su ogni esercizio: mostra quando inspirare ed espirare (Valsalva, anatomica, isometrica).", key: "workout" },
-              { icon: "📖 ▶", title: "Approfondimenti integrati", desc: "Link Wikipedia e video YouTube si aprono direttamente nell'app, senza uscire.", key: "teoria" },
+              { icon: "⏱️", title: "Cronometro di recupero", desc: "Nella Scheda, ogni esercizio ha un timer di recupero. Toccalo per avviarlo: suona con un beep alla fine del riposo.", onClick: function() { openMainTab("workout"); } },
+              { icon: "📊", title: "Registra i tuoi carichi", desc: "Apri un esercizio nella Scheda e registra peso e ripetizioni set per set. I dati vengono salvati localmente sul dispositivo.", onClick: function() { openMainTab("workout"); } },
+              { icon: "💾", title: "Backup e ripristino", desc: "Dalle Impostazioni ⚙️ esporta tutti i tuoi dati in JSON e reimportali quando vuoi.", onClick: function() { setSettingsOpen(true); } },
+              { icon: "🫁", title: "Guida alla respirazione", desc: "Nella Teoria trovi una tabella unica per vedere subito quando inspirare, espirare o usare la Valsalva.", onClick: function() { goToTeoria("teoria", "principi"); setShowPrinciples(600); } },
+              { icon: "📖 ▶", title: "Approfondimenti integrati", desc: "Negli esercizi trovi tecnica, errori, immagini e video senza uscire dall'app.", onClick: function() { openMainTab("exercises"); } },
             ].map(function(item, i) {
-              return <div key={i} onClick={item.key ? function() { setTab(item.key); window.scrollTo({ top: 0, behavior: "smooth" }); } : undefined} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "10px 12px", borderRadius: 10, background: T.bg, cursor: item.key ? "pointer" : "default" }}>
+              return <div key={i} onClick={item.onClick} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "10px 12px", borderRadius: 10, background: T.bg, cursor: item.onClick ? "pointer" : "default" }}>
                 <div style={{ width: 38, height: 38, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, flexShrink: 0 }}>{item.icon}</div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: item.key ? dc : T.tx, marginBottom: 2 }}>{item.title}{item.key ? " →" : ""}</div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: item.onClick ? dc : T.tx, marginBottom: 2 }}>{item.title}{item.onClick ? " →" : ""}</div>
                   <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.5 }}>{item.desc}</div>
                 </div>
               </div>;
@@ -2454,9 +2547,9 @@ export default function App() {
           </div>
         </div>
 
-        {/* Livelli */}
+        {/* Programma attivo */}
         <div style={{ background: T.cd, borderRadius: 16, padding: "18px 18px 16px", marginBottom: 10 }}>
-          <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Scegli il tuo livello</div>
+          <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Programma attivo</div>
           <div style={{ display: "grid", gap: 8 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "10px 12px", borderRadius: 10, background: dc + "18", border: "1px solid " + dc + "40" }}>
               <div style={{ width: 38, height: 38, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>💥</div>
@@ -2477,22 +2570,22 @@ export default function App() {
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Consigli d'uso</div>
           <div style={{ display: "grid", gap: 8 }}>
             {[
-              { tip: "Prima volta? Inizia dalla tab Teoria per capire i fondamenti.", key: "teoria" },
-              { tip: "Durante l'allenamento usa la Scheda: trova il giorno, apri l'esercizio e segui le indicazioni.", key: "workout" },
-              { tip: "Tocca il badge 🫁 su ogni esercizio per vedere come respirare correttamente.", key: "workout" },
-              { tip: "I link 📖 e ▶ aprono approfondimenti e video direttamente nell'app.", key: "teoria" },
-              { tip: "In Impostazioni ⚙️ puoi cambiare tema, salvare il nome e fare il backup dei dati.", key: null },
+              { tip: "Prima volta? Inizia da Basi nella tab Teoria per capire come leggere la scheda.", onClick: function() { goToTeoria("basi"); } },
+              { tip: "Durante l'allenamento usa la Scheda: trova il giorno, apri l'esercizio e registra i set.", onClick: function() { openMainTab("workout"); } },
+              { tip: "Per la respirazione vai in Teoria: trovi una tabella unica da confrontare a colpo d'occhio.", onClick: function() { goToTeoria("teoria", "principi"); setShowPrinciples(600); } },
+              { tip: "Per capire multifrequenza, recupero e progressione vai in Teoria. Per la dieta vai in Alimentazione.", onClick: function() { goToTeoria("teoria", "principi"); } },
+              { tip: "In Impostazioni ⚙️ puoi cambiare tema, salvare il nome e fare il backup dei dati.", onClick: function() { setSettingsOpen(true); } },
             ].map(function(item, i) {
-              return <div key={i} onClick={item.key ? function() { setTab(item.key); window.scrollTo({ top: 0, behavior: "smooth" }); } : undefined} style={{ display: "flex", gap: 10, alignItems: "flex-start", cursor: item.key ? "pointer" : "default" }}>
+              return <div key={i} onClick={item.onClick} style={{ display: "flex", gap: 10, alignItems: "flex-start", cursor: item.onClick ? "pointer" : "default" }}>
                 <div style={{ width: 22, height: 22, borderRadius: "50%", background: dc + "22", color: dc, fontSize: 11, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>{i + 1}</div>
-                <div style={{ fontSize: 12, color: item.key ? dc : T.sub, lineHeight: 1.55, textDecoration: item.key ? "underline dotted" : "none", textDecorationColor: dc + "60" }}>{item.tip}</div>
+                <div style={{ fontSize: 12, color: item.onClick ? dc : T.sub, lineHeight: 1.55, textDecoration: item.onClick ? "underline dotted" : "none", textDecorationColor: dc + "60" }}>{item.tip}</div>
               </div>;
             })}
           </div>
         </div>
 
         {/* CTA */}
-        <button onClick={function() { setTab("workout"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ width: "100%", padding: "14px 0", border: "none", borderRadius: 12, background: dc, color: "#fff", fontSize: 14, fontWeight: 800, cursor: "pointer", letterSpacing: 0.3 }}>
+        <button onClick={function() { openMainTab("workout"); }} style={{ width: "100%", padding: "14px 0", border: "none", borderRadius: 12, background: dc, color: "#fff", fontSize: 14, fontWeight: 800, cursor: "pointer", letterSpacing: 0.3 }}>
           Vai alla scheda di oggi →
         </button>
 
@@ -3260,6 +3353,11 @@ export default function App() {
               </div>;
             })()}
 
+            {!dayData.cardio && <div style={{ margin: "10px 14px 0", padding: "10px 12px", borderRadius: 12, background: dc + "0A", border: "1px solid " + dc + "22" }}>
+              <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Come leggere le serie</div>
+              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Il peso resta uguale in tutte le serie dello stesso esercizio. Non aumentarlo tra una serie e l'altra: il numero di ripetizioni sale tra le settimane, non dentro la seduta.</div>
+            </div>}
+
             {/* Warmup - collapsed (solo giorni non-cardio) */}
             {!dayData.cardio && <div ref={function(el) { if (el) el._sectionKey = "intro"; }} id="section-warmup" style={{ borderBottom: "1px solid " + T.bg }}>
               <div onClick={function() { var opening = !showIntro; setShowIntro(opening); if (opening) { setShowExSection(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-warmup"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showIntro ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
@@ -3422,6 +3520,8 @@ export default function App() {
               var showTimerBtns = restSec || workSec;
               var repeatHint = rawEx.repeatHint || null;
               var repeatColor = repeatHint ? (repeatHint.tone === "up" ? "#2E7D32" : repeatHint.tone === "down" ? "#C62828" : dc) : dc;
+              var rowBreath = getBreath(ex.n);
+              var rowBreathColor = rowBreath ? (BREATH_TYPE_COLOR[rowBreath.type] || dc) : dc;
 
               return <div key={i} id={"ex-row-" + i} style={{ borderBottom: "1px solid " + T.bg }}>
                 <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); if (opening) { requestAnimationFrame(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
@@ -3438,6 +3538,12 @@ export default function App() {
                       {rawEx.rec ? <span style={{ color: T.sub }}>{" · ⏱ " + rawEx.rec}</span> : ""}
                       {rawEx.gear ? <span style={{ color: T.sub }}>{" · 🏋️ " + rawEx.gear}</span> : ""}
                     </div>
+                    {rowBreath && <div style={{ marginTop: 4, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid " + rowBreathColor + "40", borderRadius: 999, padding: "3px 8px", background: rowBreathColor + "10", color: rowBreathColor }}>
+                        <span>🫁</span>
+                        <span>{BREATH_TYPE_LABEL[rowBreath.type]}</span>
+                      </span>
+                    </div>}
                     {prog && <div style={{ marginTop: 4 }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                         <div style={{ fontSize: 10, color: prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub, fontWeight: 700 }}>{prog.label}</div>
@@ -3512,7 +3618,7 @@ export default function App() {
                       {progTooltip === ("ex-open-advice-" + i) && <div onClick={function(e) { e.stopPropagation(); }} style={{ marginTop: 7, paddingTop: 7, borderTop: "1px solid " + T.bg, fontSize: 11, lineHeight: 1.6, color: T.sub }}>
                         {prog.label.indexOf("Controlla tu") >= 0 ? "Succede quando nella stessa seduta cambi il peso tra una serie e l'altra. In questo caso l'app non puo dirti automaticamente se aumentare il carico." :
                          prog.label.indexOf("Sessione incompleta") >= 0 ? "Registra tutte le serie previste dalla scheda. Finche manca anche una sola serie, il consiglio resta prudente." :
-                         prog.label.indexOf("Aggiungi ripetizioni") >= 0 || prog.label.indexOf("Prova a chiudere il range") >= 0 ? "Tradotto: il peso va bene. Non aumentarlo ancora. Cerca di portare piu serie verso il numero alto del range." :
+                         prog.label.indexOf("Aggiungi ripetizioni") >= 0 || prog.label.indexOf("Prova a chiudere il target") >= 0 || prog.label.indexOf("Prova a chiudere il range") >= 0 ? "Tradotto: il peso va bene. Non aumentarlo ancora. Cerca di portare piu serie verso il numero alto di ripetizioni previsto." :
                          prog.label.indexOf("Consolida") >= 0 ? "Tradotto: sei ancora sotto il minimo su una o piu serie, oppure la tecnica non e ancora abbastanza solida per salire di carico." :
                          prog.label.indexOf("Stabile") >= 0 ? "Tradotto: stai tenendo lo stesso livello della volta scorsa. Non e un errore, ma non e ancora un progresso netto." :
                          "Questo consiglio e calcolato sull'ultima sessione completa registrata per questo esercizio."}
