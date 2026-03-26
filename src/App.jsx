@@ -272,14 +272,19 @@ var INTRO_BASICS = [
   {
     icon: "🏗️",
     title: "Come funziona il muscolo",
-    color: null, // usa dc
-    summary: "Il muscolo cresce quando lo stress supera la sua capacità attuale — e poi gli dai il tempo di ripararsi.",
+    color: null,
+    summary: "Il muscolo cresce in risposta a tre stimoli distinti. Capirli cambia il modo in cui ti alleni.",
     body: [
-      { type: "p", content: "Quando sollevi un peso, crei micro-rotture nelle fibre muscolari. Il corpo risponde riparandole più spesse e forti di prima: questo processo si chiama ipertrofia." },
+      { type: "p", content: "Quando sollevi un peso, il muscolo risponde a tre meccanismi che contribuiscono alla crescita (ipertrofia):" },
+      { type: "bold-list", content: [
+        ["Tensione meccanica", "Il fattore principale. La forza applicata al muscolo attiva le vie di segnalazione intracellulare (mTOR) che avviano la sintesi proteica. Più carico progressivo nel tempo = più crescita."],
+        ["Stress metabolico", "L'accumulo di metaboliti durante serie di media durata (8-12 rep) contribuisce allo stimolo ipertrofico. Sentire il 'bruciore' muscolare è il segnale che è attivo."],
+        ["Danno muscolare", "Le micro-lesioni alle fibre amplificano la risposta adattiva. Un grado moderato è sufficiente — il danno eccessivo ostacola la crescita invece di favorirla."],
+      ]},
       { type: "p", content: "Per funzionare, il ciclo ha tre ingredienti:" },
       { type: "bold-list", content: [
-        ["Stimolo", "L'allenamento deve essere abbastanza intenso da rompere l'equilibrio del muscolo. Troppo poco non stimola; troppo senza recupero logora."],
-        ["Recupero", "La crescita avviene a riposo, non in palestra. Sonno, alimentazione e giorni di riposo non sono optional — sono parte del programma."],
+        ["Stimolo", "L'allenamento deve superare la soglia a cui il muscolo è già adattato. Troppo poco non stimola; troppo senza recupero logora."],
+        ["Recupero", "La crescita avviene a riposo, non in palestra. Sonno, alimentazione e giorni di riposo sono parte del programma."],
         ["Progressione", "Il corpo si adatta. Uno stimolo costante smette di funzionare. Devi aumentare gradualmente il carico, le ripetizioni o la difficoltà."],
       ]},
       { type: "link", label: "Wikipedia: ipertrofia muscolare →", url: "https://it.wikipedia.org/wiki/Ipertrofia_muscolare" },
@@ -293,27 +298,33 @@ var INTRO_BASICS = [
     body: [
       { type: "p", content: "Una ripetizione è un movimento completo (su + giù). Una serie è un blocco di ripetizioni eseguito senza pausa. Il recupero è il tempo di riposo tra una serie e l'altra." },
       { type: "bold-list", content: [
-        ["4x8", "4 serie da 8 ripetizioni. Il formato standard per forza e massa muscolare."],
-        ["4xmax", "4 serie al massimo delle tue possibilità — ti fermi quando non riesci più a fare una ripetizione pulita."],
-        ["4x12-10-8-8", "Le ripetizioni scalano ad ogni serie: inizi più leggera e aumenti il carico man mano."],
+        ["4x8", "4 serie da 8 ripetizioni."],
+        ["4xmax-2", "4 serie al massimo, fermandoti 2 ripetizioni prima del cedimento (RIR 2)."],
+        ["4x6-8", "Range di ripetizioni: inizia dal fondo (6), aumenta ogni settimana fino al tetto (8), poi aggiungi peso. Questo è la double progression."],
       ]},
-      { type: "p", content: "Recupero: 90-120 secondi per esercizi pesanti (squat, stacco, panca), 60 secondi per gli isolamenti. Recupero corto → più stress metabolico; recupero lungo → più forza disponibile." },
+      { type: "p", content: "Recupero consigliato — la ricerca (Schoenfeld) mostra che recuperi più lunghi sui compound producono più ipertrofia preservando il volume nelle serie successive:" },
+      { type: "bold-list", content: [
+        ["Compound pesanti", "Squat, Stacco, Trazioni, Military, Panca: 2-3 minuti."],
+        ["Accessori medi", "Squat Bulgaro, Stacco Rumeno, Hip Thrust: 90s-2 min."],
+        ["Monoarticolari", "Curl, Tricipiti, Face Pull, Woodchop: 60-90 secondi."],
+      ]},
       { type: "link", label: "Wikipedia: volume di allenamento e ipertrofia →", url: "https://it.wikipedia.org/wiki/Allenamento_con_i_pesi" },
     ]
   },
   {
     icon: "⚖️",
-    title: "RPE: quanto duro stai spingendo?",
+    title: "RIR e RPE: quanto duro stai spingendo?",
     color: null,
-    summary: "RPE (Rate of Perceived Exertion) è una scala da 1 a 10 che misura quanto ti sei avvicinata al limite.",
+    summary: "La scala per misurare l'intensità senza andare a cedimento ogni volta. RIR = ripetizioni in riserva.",
     body: [
+      { type: "p", content: "Questa scheda usa la scala RIR (Repetitions In Reserve): quante ripetizioni potresti ancora fare alla fine di una serie. È correlata all'RPE (Rate of Perceived Exertion) ma più pratica da usare." },
       { type: "bold-list", content: [
-        ["RPE 7", "Potresti fare ancora 3 ripetizioni. Ti stai riscaldando o è il primo mese."],
-        ["RPE 8", "Potresti fare ancora 2 ripetizioni. Il range ottimale per accumulare volume con tecnica pulita."],
-        ["RPE 9", "Solo 1 ripetizione in più. Stai lavorando duro — ok per le serie principali."],
-        ["RPE 10", "Cedimento muscolare. Non puoi completare un'altra ripetizione. Da usare con parsimonia."],
+        ["RIR 3 = RPE 7", "Potresti fare ancora 3 ripetizioni. Settimane iniziali del mesociclo."],
+        ["RIR 2 = RPE 8", "Potresti fare ancora 2 ripetizioni. La zona ottimale per accumulare volume con tecnica pulita. Il range standard di questa scheda."],
+        ["RIR 1 = RPE 9", "Solo 1 ripetizione in più. Ok per gli accessori verso fine mesociclo."],
+        ["RIR 0 = RPE 10", "Cedimento. Solo sull'ultimo set dei monoarticolari, mai sui compound pesanti."],
       ]},
-      { type: "p", content: "Nella scheda trovi gli RPE suggeriti per ogni esercizio. All'inizio sovrastimi sempre: è normale. Con l'esperienza impari a sentirti meglio." },
+      { type: "p", content: "Il cedimento sistematico non è necessario per crescere e, se abusato, aumenta il rischio di overtraining soprattutto sui compound. La maggior parte dei set va eseguita a RIR 1-2." },
       { type: "link", label: "Wikipedia: scala di Borg (sforzo percepito) →", url: "https://it.wikipedia.org/wiki/Scala_di_Borg" },
     ]
   },
@@ -324,9 +335,9 @@ var INTRO_BASICS = [
     summary: "L'ordine degli esercizi non è casuale. I movimenti grandi vanno all'inizio, quando sei ancora fresca.",
     body: [
       { type: "p", content: "Gli esercizi multiarticolari (squat, stacco, panca, trazioni, military press) coinvolgono più muscoli contemporaneamente e richiedono coordinazione, forza e sistema nervoso al massimo." },
-      { type: "p", content: "Gli esercizi di isolamento (curl, alzate laterali, clamshell) lavorano su un singolo muscolo con carichi più leggeri — vanno alla fine, come rifinitura." },
+      { type: "p", content: "Gli esercizi di isolamento (curl, alzate laterali, face pull) lavorano su un singolo muscolo con carichi più leggeri — vanno alla fine, come rifinitura." },
       { type: "bold-list", content: [
-        ["Regola aurea", "Mai pre-affaticare un muscolo con un isolamento prima del compound. Esempio: fare curl prima delle trazioni brucia i bicipiti prima che li usi dove contano davvero."],
+        ["Regola aurea", "Mai pre-affaticare un muscolo con un isolamento prima del compound. Fare curl prima delle trazioni brucia i bicipiti prima che li usi dove contano davvero."],
       ]},
       { type: "link", label: "Wikipedia: esercizi multiarticolari →", url: "https://it.wikipedia.org/wiki/Esercizi_composti" },
     ]
@@ -335,42 +346,41 @@ var INTRO_BASICS = [
     icon: "🔁",
     title: "Multifrequenza: allena spesso, non solo tanto",
     color: null,
-    summary: "Allenare ogni muscolo 2-3 volte a settimana è più efficace che martellarlo una volta sola.",
+    summary: "Allenare ogni muscolo 2 volte a settimana è più efficace che concentrare tutto in una sessione.",
     body: [
-      { type: "p", content: "Dopo uno stimolo, la sintesi proteica (riparazione e crescita muscolare) dura circa 36-72 ore. Se aspetti 7 giorni, il muscolo ha già finito di crescere e stai 'sprecando' tempo." },
-      { type: "p", content: "La multifrequenza non significa fare lo stesso esercizio ogni giorno: significa distribuire il volume settimanale su più sessioni, così ogni sessione è gestibile e ogni muscolo viene stimolato più spesso." },
-      { type: "p", content: "Questa scheda è costruita su questo principio: dorsali, core e glutei compaiono in ogni giornata, con esercizi diversi e angolazioni diverse." },
+      { type: "p", content: "Nei soggetti allenati, la sintesi proteica dopo uno stimolo torna al basale entro circa 28 ore (nei principianti può durare 48+ ore). Se aspetti 7 giorni tra una sessione e l'altra, il muscolo ha già smesso di crescere da tempo." },
+      { type: "p", content: "La multifrequenza non significa fare lo stesso esercizio ogni giorno: significa distribuire il volume su più sessioni. Quando superi le 10 serie settimanali per gruppo muscolare, distribuirlo su almeno 2 sessioni produce risultati migliori rispetto a concentrarlo in una." },
+      { type: "p", content: "Questa scheda usa un Upper/Lower su 4 giorni: ogni gruppo muscolare viene stimolato 2 volte a settimana con esercizi e angolazioni diverse (Lower A quad + glutei / Lower B femorali + glutei; Upper A tirata / Upper B spinta)." },
     ]
   },
   {
     icon: "🫁",
     title: "La respirazione: la tecnica più trascurata",
-    summary: "Respirare nel modo sbagliato durante l'esercizio non è solo inefficiente — può essere pericoloso. Dipende dall'esercizio.",
+    summary: "Respirare nel modo sbagliato durante l'esercizio non è solo inefficiente — può essere pericoloso.",
     body: [
-      { type: "p", content: "La gestione del respiro si divide in due categorie principali, a seconda dell'intensità dello sforzo e delle forze che agiscono sulla colonna vertebrale." },
-      { type: "section", label: "1. Corrispondenza Anatomica — esercizi senza carico spinale elevato" },
-      { type: "p", content: "La regola d'oro: inspira quando il movimento amplia il volume della gabbia toracica, espira quando lo riduce." },
+      { type: "p", content: "La gestione del respiro si divide in tre categorie a seconda dell'intensità e del carico spinale." },
+      { type: "section", label: "1. Corrispondenza Anatomica — basso/medio carico" },
+      { type: "p", content: "Regola: inspira quando il movimento apre la gabbia toracica, espira quando la chiude." },
       { type: "bold-list", content: [
-        ["Lat Machine / Pulley", "Inspira in eccentrica (braccia che salgono, torace che si apre). Espira in concentrica (quando tiri verso il basso)."],
-        ["Alzate laterali / Military Press", "Al contrario: inspira in concentrica (braccia che salgono e aprono il petto). Espira in eccentrica (braccia che scendono)."],
         ["Panca / Push-Up", "Inspira scendendo (torace si allarga). Espira spingendo su."],
-        ["Curl bicipiti / Croci", "Inspira aprendo il movimento. Espira chiudendolo."],
+        ["Trazioni / T-bar Row", "Inspira in eccentrica (braccia che salgono). Espira tirando."],
+        ["Military Press", "Inspira in eccentrica (barra che scende). Espira spingendo su."],
+        ["Curl / Face Pull", "Inspira aprendo il movimento. Espira chiudendolo."],
       ]},
-      { type: "section", label: "2. Manovra di Valsalva — esercizi pesanti con compressione lombare" },
-      { type: "p", content: "Per Squat, Stacco e Good Morning il respiro non segue l'anatomia — ha un ruolo protettivo. Si esegue in apnea durante lo sforzo:" },
+      { type: "section", label: "2. Manovra di Valsalva — compound pesanti" },
+      { type: "p", content: "Per Squat, Stacco e Hip Thrust il respiro ha un ruolo protettivo. Si esegue in apnea durante lo sforzo:" },
       { type: "bold-list", content: [
-        ["1. Inspira profondo", "Prima di iniziare, riempi la pancia d'aria (non il petto). Blocca il respiro."],
-        ["2. Esegui in apnea", "Tutto lo sforzo avviene con il respiro trattenuto. Questo crea pressione intra-addominale (IAP)."],
-        ["3. Espira a movimento chiuso", "Solo al termine della fase concentrica, prima della prossima ripetizione."],
-        ["Perché funziona", "La pressione intra-addominale crea un 'cuscinetto pneumatico' interno che protegge le vertebre lombari dalle forze di taglio e compressione."],
-        ["Attenzione", "Sconsigliata a persone anziane o con problemi cardiovascolari: aumenta la pressione toracica e altera il ritorno venoso."],
+        ["1. Inspira profondo", "Riempi la pancia d'aria — non il petto. Contrai l'addome."],
+        ["2. Esegui in apnea", "Tutto lo sforzo in apnea. Si crea pressione intra-addominale (IAP)."],
+        ["3. Espira dopo il punto critico", "Solo dopo aver superato la fase più difficile (in salita nello squat, al lockout nello stacco)."],
+        ["Perché funziona", "La IAP forma un 'cuscinetto pneumatico' che protegge le vertebre lombari dalle forze di taglio."],
       ]},
-      { type: "section", label: "3. Respirazione di gestione — esercizi isometrici (Plank, Hollow)" },
-      { type: "p", content: "Nessuna fase concentrica/eccentrica: respira lento e profondo a livello toracico, senza mai trattenere il fiato. Mantieni l'addome contratto indipendentemente dal respiro." },
+      { type: "section", label: "3. Isometrici — Plank, Ab Wheel" },
+      { type: "p", content: "Respira lento e profondo, addome contratto. Mai in apnea: stai sotto tensione per secondi, non frazioni di secondo." },
       { type: "table", rows: [
-        { cat: "Basso/medio carico", metodo: "Corrispondenza Anatomica", regola: "Inspira quando il petto si apre · Espira quando si chiude", esempi: "Lat Machine · Panca · Alzate · Curl" },
-        { cat: "Multiarticolari pesanti", metodo: "Manovra di Valsalva", regola: "Inspira (gonfia l'addome) → apnea durante lo sforzo → espira a fine alzata", esempi: "Squat · Stacco da Terra · Good Morning" },
-        { cat: "Isometrici / Core", metodo: "Respirazione di Gestione", regola: "Respiro lento e profondo, addome sempre contratto, mai in apnea", esempi: "Plank · Hollow Body · L-Sit" },
+        { cat: "Basso/medio carico", metodo: "Corrispondenza Anatomica", regola: "Inspira quando il petto si apre · Espira quando si chiude", esempi: "Panca · Push-Up · Military · Curl" },
+        { cat: "Compound pesanti", metodo: "Manovra di Valsalva", regola: "Inspira (gonfia l'addome) → apnea → espira dopo il punto critico", esempi: "Squat · Stacco · Hip Thrust" },
+        { cat: "Isometrici / Core", metodo: "Respirazione di gestione", regola: "Respiro lento, addome contratto, mai in apnea", esempi: "Plank · Ab Wheel · Slackline" },
       ]},
     ]
   },
@@ -380,12 +390,13 @@ var INTRO_BASICS = [
     color: null,
     summary: "Non cresci mentre ti alleni. Cresci mentre riposi. Ignorare il recupero annulla il lavoro fatto.",
     body: [
-      { type: "p", content: "Durante l'allenamento crei danno muscolare e stress. La crescita avviene nella fase di supercompensazione — quando il corpo ripara le fibre e le ricostruisce più forti. Questo richiede:" },
+      { type: "p", content: "La crescita avviene durante la supercompensazione: il corpo ripara le fibre e le ricostruisce più forti. Questo richiede:" },
       { type: "bold-list", content: [
-        ["Sonno", "7-9 ore per notte. È durante il sonno che viene rilasciato l'ormone della crescita (GH). Dormire poco dimezza i guadagni."],
-        ["Nutrizione", "Le proteine forniscono i mattoni per ricostruire il muscolo. Obiettivo indicativo: 1.6-2.2g di proteine per kg di peso corporeo."],
-        ["Giorni di riposo", "Non sono giorni sprecati. Sono giorni di crescita. Un giorno di pausa dopo una sessione intensa non è debolezza — è strategia."],
+        ["Sonno", "7-9 ore per notte. Durante il sonno viene rilasciato l'ormone della crescita (GH). Dormire poco dimezza i guadagni."],
+        ["Proteine", "1.6-2.2g/kg al giorno. Il target del tuo piano nutrizionale è ~1.78 g/kg (100g). In deficit calorico, avvicinarsi a 2.0 g/kg (112g) preserva meglio la massa magra."],
+        ["Giorni di riposo", "Mer e Dom non sono giorni sprecati — sono giorni di crescita. Il tessuto connettivo (tendini, legamenti) recupera più lentamente del muscolo."],
       ]},
+      { type: "p", content: "Se dopo 2-3 settimane i carichi non crescono: controlla prima sonno e proteine prima di toccare il programma." },
       { type: "link", label: "Wikipedia: supercompensazione →", url: "https://it.wikipedia.org/wiki/Supercompensazione" },
     ]
   },
@@ -534,14 +545,13 @@ var INTRO_ESERCIZI = [
     title: "Come progredire: il principio del sovraccarico",
     summary: "Il corpo si adatta. Se fai sempre la stessa cosa, smetti di migliorare. Devi aumentare lo stimolo nel tempo.",
     body: [
-      { type: "p", content: "Il sovraccarico progressivo è il principio fondamentale di ogni programma di allenamento: lo stimolo deve aumentare nel tempo per continuare a produrre adattamenti." },
+      { type: "p", content: "Il sovraccarico progressivo è il principio fondamentale: lo stimolo deve aumentare nel tempo. Per l'ipertrofia, la priorità va all'aumento progressivo delle serie dure (volume) — il carico segue, non guida." },
+      { type: "p", content: "Questa scheda usa la double progression: ogni esercizio ha un range (es. 4x6-8). Parti dal fondo, aumenta le ripetizioni settimana dopo settimana. Quando arrivi al tetto su tutti i set con RIR 1-2, aggiungi 1-2.5 kg e ricomincia dal fondo." },
       { type: "bold-list", content: [
-        ["Più peso", "La progressione più ovvia. Aggiunge 1-2kg quando riesci a completare tutte le serie con tecnica pulita."],
-        ["Più ripetizioni", "Se non puoi aggiungere peso, fai una ripetizione in più per serie."],
-        ["Meno recupero", "Stesso volume in meno tempo = più densità = più stimolo metabolico."],
-        ["Variante più difficile", "Da Push-Up normale a Push-Up declino a Push-Up con pausa. Stesso pattern, più difficile."],
+        ["Più ripetizioni", "Prima aumenti le ripetizioni dentro il range. Solo quando raggiungi il tetto su tutti i set aggiungi peso."],
+        ["Più peso (+2.5 kg)", "Quando arrivi al tetto del range con tecnica pulita e RIR 1-2 su tutti i set."],
+        ["Più serie", "Aggiungere una serie per esercizio nel corso del mesociclo è un altro modo per aumentare il volume."],
       ]},
-      { type: "p", content: "La scheda è strutturata su 4 mesi (M1→M4) con progressione automatica delle varianti. Ogni mese aumenta la difficoltà o il carico dello stesso schema motorio." },
       { type: "link", label: "Wikipedia: principio del sovraccarico progressivo →", url: "https://it.wikipedia.org/wiki/Sovraccarico_progressivo" },
     ]
   },
@@ -549,147 +559,113 @@ var INTRO_ESERCIZI = [
 
 /* === TRAINING PRINCIPLES === */
 var PRINCIPLES_DEEP = [
-  { t: "Volume, Intensita e Densita: i Fantastici 3", d: [
-    {type:"p", content:"Ogni scheda si basa sull'equilibrio di tre parametri. Non si possono massimizzare tutti insieme: ogni programma fa una scelta su quale privilegiare."},
+  { t: "Double Progression: come funziona", d: [
+    {type:"p", content:"Il metodo di progressione di questa scheda. Ogni esercizio ha un range (es. 4x6-8): parti dal fondo, aumenta le ripetizioni settimana dopo settimana, poi quando raggiungi il tetto aggiungi 2.5kg e ricomincia."},
     {type:"bold-list", content:[
-      ["Volume", "mole di lavoro totale (serie × rip × kg). E il parametro con la maggiore correlazione ai guadagni ipertrofici."],
-      ["Intensita", "carico sul bilanciere o percezione dello sforzo. Sopra l'80% del massimale garantisce il massimo reclutamento delle fibre dalla prima rip."],
-      ["Densita", "legame tra tempo sotto tensione e durata: recuperi piu brevi aumentano lo stress metabolico, recuperi piu ampi permettono carichi maggiori."]
-    ]}
-  ]},
-  { t: "Sovraccarico progressivo", d: [
-    {type:"p", content:"Il corpo segue la Legge dell'accomodamento: la risposta biologica a uno stimolo costante diminuisce nel tempo. Se fai sempre la stessa cosa, smetti di migliorare."},
-    {type:"p", content:"Lo stimolo deve aumentare di settimana in settimana o mese in mese. Come?"},
-    {type:"ul", content:["Piu carico","Piu ripetizioni","Piu serie","Recuperi piu brevi"]},
-    {type:"p", content:"La progressione mensile di questa scheda (varianti M1→M4) e costruita esattamente su questo principio."}
+      ["Settimana 1", "4x6 — fondo del range, tecnica prioritaria"],
+      ["Settimana 2", "4x7 — una ripetizione in più per serie"],
+      ["Settimana 3", "4x8 — tetto del range raggiunto"],
+      ["Settimana 4", "+2.5kg, torna a 4x6 e ricomincia"],
+    ]},
+    {type:"p", content:"Il vantaggio: non devi andare a cedimento ogni seduta. La progressione è automatica e misurabile. Quando raggiungi il tetto del range con tecnica pulita, hai guadagnato forza — aggiungere peso è la conferma, non un salto nel vuoto."},
+    {type:"p", content:"Sui compound pesanti (Squat, Stacco, Trazioni, Military) usa range stretti come 5-8. Sugli accessori range più ampi come 10-12 o 12-15."}
   ]},
   { t: "Lavorare a buffer, non a cedimento", d: [
-    {type:"p", content:"Il cedimento muscolare (impossibilita di completare una rip) non e sempre necessario e, se abusato, sovraccarica il Sistema Nervoso Centrale allungando i tempi di recupero."},
-    {type:"p", content:"L'approccio migliore, soprattutto per la forza, e il buffer: se puoi fare 10 rip, fermati a 8 (buffer di 2). Questo permette di accumulare piu volume nella settimana con tecnica sempre pulita."},
-    {type:"ul", content:["Buffer di 2 rip → RPE 8","Buffer di 1 rip → RPE 9","Cedimento = RPE 10: usalo solo con carichi leggeri (sotto il 60%) per forzare il reclutamento di tutte le fibre"]}
-  ]},
-  { t: "Multifrequenza: allena ogni muscolo 2-3 volte a settimana", d: [
-    {type:"p", content:"Allenare un muscolo una sola volta a settimana (monofrequenza) e un approccio superato. La sintesi proteica dura 36-72 ore: dopo, il muscolo e pronto a ricevere un nuovo stimolo."},
-    {type:"p", content:"La multifrequenza (2-3 sessioni a settimana per muscolo) permette di:"},
-    {type:"ul", content:["Stimolare la sintesi proteica piu volte a settimana","Imparare meglio gli schemi motori","Migliorare coordinazione e tecnica piu rapidamente"]}
-  ]},
-  { t: "Priorita agli esercizi multiarticolari", d: [
-    {type:"p", content:"Un buon programma si basa sui fondamentali: Squat, Panca, Stacco, Trazioni, Military Press, Rematore. Coinvolgono ampie catene cinetiche e garantiscono il miglior impatto sistemico."},
-    {type:"ul", content:["Multiarticolari prima: all'inizio della seduta quando sei fresca e il SNC e riposato","Isolamento dopo: curl, alzate laterali, clamshell hanno un ruolo di assistenza e rifinimento","Mai invertire l'ordine: un isolamento pre-affaticato brucia il muscolo prima del compound"]}
-  ]},
-  { t: "Misurare i progressi", d: [
-    {type:"p", content:"Non ci si allena a sensazione. Se non misuri, non sai se il piano sta funzionando."},
-    {type:"p", content:"Tieni traccia di:"},
-    {type:"ul", content:["Carichi sollevati serie per serie","Ripetizioni eseguite","RPE percepito"]},
-    {type:"p", content:"Solo con i dati puoi capire quando aumentare il carico, quando scaricare e quando e il momento di cambiare scheda."}
-  ]},
-  { t: "Gestione della fatica e settimana di scarico", d: [
-    {type:"p", content:"L'allenamento crea danno muscolare (stress). Il corpo si ricostruisce piu forte durante il riposo: questa fase si chiama supercompensazione."},
-    {type:"p", content:"Se lo stress e continuo senza recupero si va in overtraining:"},
-    {type:"ul", content:["Infortuni","Stagnazione dei progressi","Calo delle performance"]},
-    {type:"p", content:"Ogni 4-8 settimane inserisci una settimana di scarico: dimezza il volume o abbassa i carichi. Muscoli, tendini e sistema nervoso possono dissipare la fatica accumulata."}
-  ]},
-  { t: "Sistema Nervoso Centrale (SNC) e fatica", d: [
-    {type:"p", content:"Non e solo il muscolo a stancarsi: i grandi esercizi pesanti tassano anche il Sistema Nervoso Centrale."},
+    {type:"p", content:"Il cedimento (non riuscire a completare una ripetizione) non è necessario per crescere e, se abusato, sovraccarica il sistema nervoso allungando i tempi di recupero."},
+    {type:"p", content:"Il buffer significa fermarsi con qualche ripetizione in riserva. Permette di accumulare più volume settimanale con tecnica sempre pulita."},
     {type:"bold-list", content:[
-      ["Alto impatto sul SNC", "squat, stacco, panca, military press — vanno messi all'inizio della seduta"],
-      ["Basso impatto sul SNC", "curl, clamshell, nordic curl, isolamenti — possono stare alla fine"]
+      ["RIR 2 → RPE 8", "Ti restano 2 ripetizioni. Il range standard per i compound di questa scheda."],
+      ["RIR 1 → RPE 9", "Ti resta 1 ripetizione. Ok per gli accessori verso fine mesociclo."],
+      ["RIR 0 → RPE 10", "Cedimento. Da usare raramente, mai sui compound pesanti."],
     ]},
-    {type:"p", content:"Non accumulare volume eccessivo sui compound: la fatica del SNC compromette la tecnica e aumenta il rischio di infortuni."}
   ]},
-  { t: "Manovra di Valsalva", d: [
-    {type:"p", content:"Tecnica respiratoria fondamentale per tutti i grandi esercizi sotto carico: squat, stacco, good morning."},
-    {type:"p", content:"Come si fa:"},
-    {type:"ul", content:["Inspira profondamente a polmoni pieni","Blocca il respiro e gonfia la pancia","Esegui il movimento","Espira solo dopo aver superato il punto critico"]},
-    {type:"p", content:"Questo crea pressione intra-addominale che forma un cuscinetto attorno alle vertebre lombari, proteggendole dalle forze di taglio che si generano sotto carico."}
-  ]},
-  { t: "Retroversione del bacino", d: [
-    {type:"p", content:"Il segreto per un core sicuro ed efficace. Da sdraiata o in plank, annulla lo spazio tra la schiena e il pavimento appiattendo la curva lombare."},
-    {type:"p", content:"Senza questo, i flessori dell'anca (ileopsoas) tirano la bassa schiena: causa principale di dolori lombari negli esercizi di core."},
-    {type:"ul", content:["Plank: bacino in retroversione, glutei stretti","Ab wheel: glutei contratti prima ancora di muoversi","Crunch: schiena incollata al pavimento durante tutto il movimento"]}
-  ]},
-  { t: "Assetto Hollow (scapolare)", d: [
-    {type:"p", content:"Usato in plank, push-up e trazioni. Le spalle devono essere protratte (spinte in avanti) e depresse (verso il basso) — non tirate su verso le orecchie."},
-    {type:"p", content:"Come ottenerlo: immagina di doverti allontanare costantemente dal pavimento con le mani o gli avambracci."},
-    {type:"ul", content:["Crea stabilita dell'articolazione scapolo-toracica","Riduce il rischio di impingement alla spalla","Attiva correttamente il dentato anteriore e il gran dorsale"]}
-  ]},
-  { t: "Hip Dominant vs Knee Dominant", d: [
-    {type:"p", content:"Due grandi categorie di movimenti compound, con muscoli e meccanica diversa."},
+  { t: "Mesociclo e deload", d: [
+    {type:"p", content:"Un mesociclo è un blocco di 4-8 settimane con volume e intensità progressivi. Ogni settimana puoi aggiungere una serie o aumentare le ripetizioni. Alla fine, la fatica accumulata supera la capacità di recupero: è il momento del deload."},
     {type:"bold-list", content:[
-      ["Hip Dominant", "anca che spinge indietro, busto che si inclina → glutei, femorali, erettori. Esempi: stacco, good morning, stacco rumeno, hip thrust."],
-      ["Knee Dominant", "ginocchio che flette, busto verticale → quadricipiti. Esempi: squat, affondi, step up."]
+      ["MEV", "Volume minimo per stimolare la crescita. È il punto di partenza del mesociclo."],
+      ["MRV", "Volume massimo recuperabile. Se lo superi, ristagna o regredisci."],
+      ["Deload", "Settimana con volume dimezzato, carichi mantenuti. Non è facoltativa: è dove consolidi gli adattamenti e riponi la fatica."],
     ]},
-    {type:"p", content:"La maggior parte degli esercizi compound include entrambi, con enfasi diversa in base alla posizione del busto e alla lunghezza del passo."}
+    {type:"p", content:"Segnali che è ora del deload: forza calante da 2+ settimane, sonno compromesso, motivazione bassa, dolori articolari persistenti."}
   ]},
-  { t: "Focus muscolare: cambiare target senza cambiare esercizio", d: [
-    {type:"p", content:"Puoi spostare il lavoro muscolare senza cambiare esercizio: basta modificare la posizione del corpo."},
+  { t: "Multifrequenza: perché alleni ogni muscolo due volte", d: [
+    {type:"p", content:"Dopo uno stimolo, la sintesi proteica (riparazione e crescita) dura 36-72 ore. Aspettare 7 giorni significa lasciare il muscolo inattivo per 4-5 giorni. Con 2 sessioni a settimana per gruppo muscolare, stimoli la crescita il doppio delle volte."},
+    {type:"p", content:"Questa scheda usa un Upper/Lower 4 giorni: ogni muscolo viene allenato due volte a settimana con esercizi e angolazioni diversi — stessa logica, stimolo diverso."},
+    {type:"ul", content:[
+      "Lower A (Lun) + Lower B (Gio): quadricipiti, glutei, femorali con priorità diverse",
+      "Upper A (Mar) + Upper B (Ven): spinta e tirata con distribuzione complementare",
+      "Mer e Dom: cardio — nessuna interferenza con il recupero muscolare",
+    ]},
+  ]},
+  { t: "Esercizi prioritari: cosa sono e come leggerli", d: [
+    {type:"p", content:"Gli esercizi con il badge ★ PRIORITÀ sono i fondamentali della sessione — quelli su cui si costruisce la progressione. Vanno fatti per primi, quando sei fresca, con la massima concentrazione."},
     {type:"bold-list", content:[
-      ["Passo corto + busto verticale", "piu quadricipiti (squat bulgaro, affondi, walking lunge)"],
-      ["Passo piu lungo + busto inclinato", "piu glutei e femorali"],
-      ["Squat con sedere indietro", "piu glutei; squat con busto verticale = piu quadricipiti"]
+      ["Squat (Lun)", "Priorità Lower A. Double progression 4x5-8. Il compound principale della settimana."],
+      ["Stacco da Terra (Gio)", "Priorità Lower B. Double progression 4x5-8. Sessione separata dal Squat per recupero completo."],
+      ["Trazioni (Mar)", "Priorità Upper A. Progressione su max-2 rip. Il compound di tirata verticale."],
+      ["Push-Up / Trazioni Supine (Ven)", "Priorità Upper B. Seconda frequenza con variante complementare."],
+    ]},
+    {type:"p", content:"Regola: se sei stanca e devi tagliare la sessione, completa almeno l'esercizio prioritario. Il resto è accessorio."},
+  ]},
+  { t: "Gestione della fatica e recupero", d: [
+    {type:"p", content:"L'allenamento crea danno muscolare. La crescita avviene durante il riposo (supercompensazione): il corpo ripara le fibre rendendole più forti. Per questo funziona:"},
+    {type:"bold-list", content:[
+      ["Sonno", "7-9 ore. È durante il sonno profondo che viene rilasciato l'ormone della crescita. Dormire poco dimezza i guadagni."],
+      ["Proteine", "1.8-2.2g/kg al giorno. Sono i mattoni per ricostruire il muscolo — senza di esse l'allenamento non si traduce in crescita."],
+      ["Giorni di recupero", "Mer e Dom non sono giorni sprecati. Sono giorni di crescita."],
+    ]},
+    {type:"p", content:"Se dopo 2-3 settimane i carichi non crescono: controlla prima il sonno e l'alimentazione prima di toccare il programma."}
+  ]},
+  { t: "Cardio e ipertrofia", d: [
+    {type:"p", content:"Il cardio riduce l'ipertrofia se mal gestito — l'interferenza è reale. La durata della sessione è il fattore con la correlazione negativa più forte (r = 0.75). Tieni le sessioni cardio a max 45-60 minuti, max 2 a settimana, su giorni separati dai pesi."},
+    {type:"p", content:"Tra i tipi di cardio, la corsa ha l'impatto negativo maggiore per la componente eccentrica elevata (danno muscolare aggiuntivo). Il rucking (cammino con zaino) è preferibile: cardio + lavoro isometrico sulla catena posteriore, senza eccesso eccentrico."},
+    {type:"bold-list", content:[
+      ["HIIT (Mer — settimane dispari)", "Intervalli brevi ad alta intensità. Efficace per il condizionamento. Non farlo la sera prima di Gio (Stacco da Terra)."],
+      ["Rucking (Mer — settimane pari)", "Zaino 15-20 kg, 45-60 min. L'opzione con meno interferenza sull'ipertrofia."],
+      ["Zona 2 (Dom)", "Corsa leggera o rucking a bassa intensità — puoi parlare senza fiatone. FC 120-140. Minima interferenza."],
+    ]},
+    {type:"p", content:"Segnale di troppo cardio: i carichi in sala smettono di crescere per 2+ settimane. In quel caso riduci prima durata o intensità del cardio, non il volume dei pesi."}
+  ]},
+  { t: "Manovra di Valsalva e respirazione sotto carico", d: [
+    {type:"p", content:"Per Squat, Stacco e Hip Thrust il respiro ha un ruolo protettivo, non segue l'anatomia. Si esegue in apnea durante lo sforzo:"},
+    {type:"ul", content:[
+      "Inspira profondo gonfiando la pancia (non il petto) prima di iniziare",
+      "Blocca il respiro — crea pressione intra-addominale",
+      "Esegui tutta la fase di sforzo in apnea",
+      "Espira solo dopo aver superato il punto critico (in salita nello squat, a lockout nello stacco)",
+    ]},
+    {type:"p", content:"La pressione intra-addominale forma un 'cuscinetto pneumatico' che protegge le vertebre lombari dalle forze di taglio. Senza questa tecnica, la schiena bassa è esposta sotto carichi elevati."},
+    {type:"p", content:"Per gli altri esercizi (Panca, Trazioni, Military, accessori): respira normalmente — espira nella fase di sforzo, inspira nella fase di allungamento."}
+  ]},
+  { t: "Retroversione del bacino e assetto hollow", d: [
+    {type:"p", content:"Due concetti tecnici fondamentali che compaiono in più esercizi della scheda."},
+    {type:"bold-list", content:[
+      ["Retroversione del bacino", "Appiattisci la curva lombare annullando lo spazio tra schiena e pavimento. Fondamentale in Ab Wheel e Plank: senza di essa i flessori dell'anca tirano la bassa schiena causando dolore."],
+      ["Assetto hollow (scapolare)", "In Push-Up e Trazioni: spalle protratte (in avanti) e depresse (verso il basso), non tirate su verso le orecchie. Attiva il dentato anteriore e protegge la spalla."],
+    ]},
+    {type:"ul", content:[
+      "Ab Wheel: glutei contratti e bacino in retroversione prima ancora di muoversi",
+      "Push-Up: corpo rigido come una tavola, spalle depresse, core contratto",
+      "Trazioni: la tirata parte dalla depressione scapolare, non dal braccio",
     ]}
   ]},
-  { t: "Tempo sotto tensione (TUT) e tensione continua", d: [
-    {type:"p", content:"Negli esercizi di isolamento il TUT e spesso piu importante del carico massimo."},
-    {type:"ul", content:["Rallenta la fase eccentrica di 3-5 secondi: massimizza il danno muscolare e l'ipertrofia","Tensione continua: non rilasciare il muscolo a fine movimento, mantienilo sempre sotto carico","Nei compound pesanti invece il TUT si mantiene moderato per non sovraccaricare il SNC"]},
-    {type:"p", content:"Esempi: nordic curl con negativa 5s, curl bicipiti con discesa lenta, clamshell con pausa isometrica."}
-  ]},
-  { t: "Picco di contrazione isometrica", d: [
-    {type:"p", content:"Negli esercizi di isolamento per i glutei, il lavoro ottimale non si basa su carichi massimali ma sulla pausa nel punto di massima contrazione."},
-    {type:"ul", content:["Clamshell, abduzione, hip thrust: 2-3 secondi ferma al massimo sforzo","Trazioni: 1 secondo sopra la sbarra con scapole strette","Rematore: 1 secondo con gomito indietro e scapola addotta"]},
-    {type:"p", content:"2-3 secondi di pausa isometrica moltiplicano lo stimolo al muscolo bersaglio piu che aggiungere peso."}
-  ]},
-  { t: "Sticking point e esercizi complementari", d: [
-    {type:"p", content:"Lo sticking point e il punto piu debole di un'alzata: dove il movimento rallenta o si blocca sotto fatica. Gli esercizi complementari servono a rinforzare esattamente quell'anello debole."},
-    {type:"ul", content:["Good morning → rinforza lombari e femorali per squat e stacco","Trazioni → rafforzano i dorsali per il rematore","Nordic curl → protegge il crociato e rinforza i femorali per tutti i movimenti con le gambe"]},
-    {type:"p", content:"Regola aurea: ogni esercizio complementare deve avere uno scopo preciso. Se non rinforza un punto debole, non costruisce massa in un distretto specifico e non previene squilibri — non farlo."}
-  ]},
-  { t: "Double Progression: come si usa", d: [
-    {type:"p", content:"La double progression e il metodo di progressione piu semplice ed efficace per l'ipertrofia. Funziona su un range di ripetizioni, non su un numero fisso."},
-    {type:"p", content:"Esempio con 3x6-8:"},
-    {type:"ul", content:["Settimana 1: 3x6 (fondo del range con buona tecnica)","Settimana 2: 3x7","Settimana 3: 3x8 (tetto del range)","Settimana 4: aggiungi 2.5kg e ricomincia da 3x6"]},
-    {type:"p", content:"Il vantaggio: non devi arrivare al cedimento ogni seduta. Quando raggiungi il tetto del range con tecnica pulita, hai guadagnato forza. Aggiungere peso e la conferma del progresso, non un salto nel vuoto."},
-    {type:"p", content:"Sui compound pesanti (Squat, Stacco, Trazioni) usa range stretti come 4-6 o 6-8. Sugli accessori range piu ampi come 8-12 o 10-15."}
-  ]},
-  { t: "Periodizzazione e mesociclo", d: [
-    {type:"p", content:"Un mesociclo e un blocco di 4-8 settimane con volume e intensita progressivi. Alla fine si inserisce un deload. Poi si ricomincia con carichi superiori."},
+  { t: "Hip Dominant vs Knee Dominant", d: [
+    {type:"p", content:"I compound lower di questa scheda si dividono in due categorie con meccanica e muscoli diversi."},
     {type:"bold-list", content:[
-      ["MEV (Minimum Effective Volume)", "Il volume minimo per stimolare l'ipertrofia. E il punto di partenza del mesociclo."],
-      ["MRV (Maximum Recoverable Volume)", "Il volume massimo che riesci a recuperare. Se lo superi, regredisci."],
-      ["Deload", "Settimana con volume dimezzato. Non e facolativa: e dove consolidi gli adattamenti e dissipi la fatica accumulata."]
+      ["Knee Dominant", "busto verticale, ginocchio che flette → quadricipiti. In questa scheda: Squat, Squat Bulgaro, Affondi camminati."],
+      ["Hip Dominant", "anca che spinge indietro, busto inclinato → glutei, femorali, erettori. In questa scheda: Stacco da Terra, Stacco Rumeno, Hip Thrust, Hyperextension."],
     ]},
-    {type:"p", content:"La logica: ogni settimana aggiungi 1-2 serie per gruppo muscolare (accumulo). Quando la fatica supera il recupero, fai il deload e ricomincia piu forte (supercompensazione)."}
-  ]},
-  { t: "Cardio e ipertrofia: come conciliarli", d: [
-    {type:"p", content:"Il cardio non brucia i muscoli — se fatto con criterio. Il problema e l'interferenza: volume cardio elevato compromette il recupero e riduce le risorse per la crescita muscolare."},
-    {type:"bold-list", content:[
-      ["LISS (Low Intensity Steady State)", "Camminata, bici, ellittica a intensita bassa. Minima interferenza con i muscoli. Ideale nei giorni di recupero."],
-      ["HIIT (High Intensity Interval Training)", "Intervalli brevi ad alta intensita. Efficace per il condizionamento, ma tassante: non farlo il giorno prima di una sessione pesante."],
-      ["Recupero attivo", "Yoga, stretching, mobilita. Ripristina la circolazione senza caricare il SNC."]
-    ]},
-    {type:"p", content:"Regola pratica: il cardio va nei giorni di riposo dalla sala pesi o dopo la sessione (mai prima). Mantienilo a 2-3 sessioni a settimana e monitora se i tuoi carichi in sala continuano a crescere."}
+    {type:"p", content:"Lower A è orientato al knee dominant (Squat come priorità). Lower B è orientato all'hip dominant (Stacco come priorità). La distribuzione garantisce equilibrio tra quadricipiti e catena posteriore."},
   ]},
   { t: "Quando cambiare scheda", d: [
-    {type:"p", content:"Una scheda va cambiata quando smette di funzionare — non quando annoia. Questi sono i 6 segnali da cercare:"},
+    {type:"p", content:"Una scheda va cambiata quando smette di funzionare — non quando annoia. Segnali concreti:"},
     {type:"ul", content:[
       "I carichi non crescono da 3-4 settimane nonostante tecnica e recupero corretti",
-      "Le performance in allenamento calano invece di migliorare",
-      "Dorme male, motivazione bassa, dolori articolari cronici (overtraining)",
-      "Hai completato tutti i 4 mesi di progressione della scheda attuale",
-      "Le tue priorita muscolari sono cambiate (vuoi piu enfasi su un distretto specifico)",
-      "Hai raggiunto un livello tecnico che richiede esercizi piu complessi"
+      "Le performance calano invece di migliorare",
+      "Hai completato 2-3 mesocicli completi con questa scheda",
+      "Le priorità muscolari sono cambiate (vuoi più enfasi su un distretto specifico)",
     ]},
-    {type:"p", content:"Se cambi scheda perche sei annoiata senza questi segnali, probabilmente stai perdendo progressi. La noia e normale: i risultati non lo sono."}
-  ]},
-  { t: "Ricomposizione corporea", d: [
-    {type:"p", content:"Perdere grasso e guadagnare muscolo allo stesso tempo e possibile — ma solo in condizioni specifiche: principianti, persone con elevata percentuale di grasso, chi ritorna all'allenamento dopo una pausa lunga."},
-    {type:"p", content:"Il meccanismo: un deficit calorico moderato (200-300 kcal/giorno) con alto apporto proteico (1.8-2.2g/kg) e allenamento con i pesi stimola la perdita di grasso usando il grasso esistente come carburante per la sintesi proteica."},
-    {type:"ul", content:[
-      "Progressione piu lenta di un bulk tradizionale — aspettati mesi, non settimane",
-      "Il peso sulla bilancia puo non muoversi anche se la composizione corporea migliora",
-      "Fondamentale misurare: circonferenze, foto mensili, performance in sala"
-    ]},
-    {type:"p", content:"Per chi e gia allenato e magro: la ricomposizione e difficile. In quel caso e meglio alternare fasi di bulk (leggero surplus) e cut (deficit controllato) in mesocicli dedicati."}
+    {type:"p", content:"Se cambi perché sei annoiata senza questi segnali, probabilmente stai perdendo progressi. La noia è normale: i risultati non lo sono."}
   ]},
 ];
 
@@ -976,13 +952,12 @@ var DAYS_V4 = [
 ];
 
 var PRINCIPLES = [
-  { t: "Piramidale ascendente (4x8-6-6-5)", d: "La prima serie da 8 rip e il riscaldamento specifico col carico di lavoro. Le serie da 6 e 5 sono il lavoro vero: meno ripetizioni, piu carico, piu stimolo di forza. Il peso sale serie dopo serie. Si usa nei compound pesanti (squat, stacco, panca, military)." },
-  { t: "Volume decrescente (4x12-10-8-8)", d: "Piu ripetizioni = piu volume = piu crescita muscolare. La discesa da 12 a 8 permette di aumentare il peso restando in un range produttivo. Si usa negli accessori (rematore, curl, french press, lat machine)." },
-  { t: "RPE (Rate of Perceived Exertion)", d: "Scala da 1 a 10 che misura quanto sei vicina al cedimento. RPE 8 = ti restano 2 rip in riserva; RPE 9 = 1 sola rip in riserva. I compound pesanti stanno a RPE 8 per proteggere articolazioni e sistema nervoso. Gli accessori a RPE 9 perche sono meno tassanti." },
-  { t: "Alto volume (5x15)", d: "Tante serie, tante ripetizioni. Si usa per glutei e gambe (affondi, clamshell). Lavoro metabolico intenso: brucia, ma costruisce resistenza muscolare e ipertrofia." },
-  { t: "Tante serie, poche rip (8x4)", d: "L'ab wheel e tecnicamente impegnativo e affatica velocemente. 4 rip per serie permettono di mantenere la forma perfetta per tutte le 8 serie senza compromettere la lombare." },
-  { t: "Recupero tra le serie", d: "Compound pesanti: 2 min. Accessori medi: 90s. Isolamento: 60s. Core: 30s. Rispettare i recuperi e tanto importante quanto l'esercizio: il muscolo ha bisogno di ricaricare ATP per dare il massimo nella serie successiva." },
-  { t: "Progressione mensile", d: "Ogni mese le varianti cambiano: piu carico, angoli diversi, tempi sotto tensione piu lunghi. Il corpo si adatta rapidamente: la progressione lo costringe a continuare a migliorare." },
+  { t: "Come leggere un esercizio: 4x6-8 RPE 8", d: "4 serie da 6-8 ripetizioni a RPE 8 (ti restano 2 ripetizioni in riserva). Inizia dal fondo del range (4x6). Quando arrivi al tetto (4x8) con tecnica pulita, la settimana successiva aggiungi 2.5kg e ricomincia da 4x6. Questo è la double progression." },
+  { t: "Come leggere: 4xmax-2", d: "Fai quante ripetizioni riesci fermandoti 2 prima del cedimento (RIR 2). Non c'è un numero fisso: l'obiettivo è migliorare il numero di ripetizioni nel tempo. Si usa su Push-Up e Trazioni dove il carico è il peso corporeo." },
+  { t: "Come leggere: 3xRIR 1-2", d: "RIR = Reps In Reserve. RIR 1-2 significa fermati quando ti restano 1-2 ripetizioni. Equivale a RPE 8-9. Si usa sugli accessori dove non c'è un range fisso ma si lavora vicino al limite senza cedimento." },
+  { t: "RPE (Rate of Perceived Exertion)", d: "Scala da 1 a 10 dello sforzo percepito. RPE 8 = ti restano 2 ripetizioni; RPE 9 = ne resta 1; RPE 10 = cedimento completo. I compound pesanti (Squat, Stacco, Military) stanno a RPE 8 per proteggere articolazioni e sistema nervoso. Gli accessori a RPE 8-9." },
+  { t: "Recupero tra le serie", d: "Compound pesanti (Squat, Stacco, Trazioni, Military, Panca, Hip Thrust): 2-3 minuti. Accessori (Squat Bulgaro, Rematori, Stacco Rumeno): 90s-2 min. Isolamenti (Curl, Woodchop, Tricipiti cavo): 60-90s. Rispettare i recuperi è importante quanto l'esercizio: il muscolo deve ricaricare ATP per performare nella serie successiva." },
+  { t: "★ PRIORITÀ: cosa significa", d: "L'esercizio contrassegnato con ★ è il fondamentale della sessione. Va fatto per primo, con la massima concentrazione. Se devi tagliare la sessione per mancanza di tempo o energia, completa almeno l'esercizio prioritario. Il resto è accessorio." },
 ];
 
 
@@ -2121,13 +2096,13 @@ export default function App() {
           </div>
           <div style={{ padding: "12px 16px 16px", display: "grid", gap: 8 }}>
             {[
-              { t: "Proteine: la priorità assoluta", body: "Per l'ipertrofia servono 1.8–2.2g di proteine per kg di peso corporeo al giorno. Le proteine sono il mattone del muscolo: senza un apporto adeguato, l'allenamento non si traduce in crescita.\n\nFonti ottimali: pollo, tacchino, uova, pesce, legumi + cereali, yogurt greco. Distribuisci l'apporto in 3-5 pasti — la sintesi proteica si satura intorno ai 30-40g per pasto." },
-              { t: "Carboidrati: carburante per la performance", body: "I carboidrati riempiono il glicogeno muscolare — la riserva di energia usata durante l'allenamento pesante. Un apporto insufficiente compromette la forza e la qualità della seduta.\n\nConsumo pre-allenamento (1-2h prima): riso, pasta, pane, frutta — fonti a digestione moderata. Post-allenamento: una porzione di carboidrati accelera la ricarica del glicogeno. Totale giornaliero: 3-5g/kg in fase di mantenimento/bulk, 2-3g/kg in fase di cut." },
-              { t: "Grassi: ormoni e recupero", body: "I grassi sono fondamentali per la produzione di testosterone e ormoni anabolici. Non eliminarli.\n\nFonti ottimali: olio d'oliva, avocado, noci, pesce grasso (salmone, sgombro), uova intere. Obiettivo: 0.8–1.2g/kg al giorno. Meno di 0.6g/kg e gli ormoni ne risentono." },
-              { t: "Timing dei pasti", body: "Il timing ha meno impatto di quanto si pensi — la priorità è raggiungere i totali giornalieri. Detto questo:\n\n• Pre-workout (1-2h): pasto misto con proteine + carboidrati\n• Post-workout (entro 2h): proteine + carboidrati per avviare il recupero\n• Prima di dormire: proteine a lenta digestione (caseine: fiocchi di latte, yogurt greco) per limitare il catabolismo notturno\n\nNon esiste una 'finestra anabolica' di 30 minuti post-allenamento. Relax." },
-              { t: "Idratazione", body: "Il muscolo è composto per circa il 75% di acqua. Anche una disidratazione del 2% compromette la forza e la concentrazione.\n\nObjectivo minimo: 35ml per kg di peso corporeo al giorno. Aggiungi 500ml-1L nelle giornate di allenamento intenso. Monitora il colore dell'urina: giallo pallido = idratazione ottimale." },
-              { t: "Bulk e Cut: quando e come", body: "Bulk (surplus calorico): aggiungi 200-300 kcal al mantenimento. Permette la crescita muscolare massima ma porta anche un piccolo aumento del grasso corporeo. Adatto ai periodi di allenamento intenso.\n\nCut (deficit calorico): togli 300-500 kcal al mantenimento. Priorità: mantenere i carichi in palestra per preservare la massa muscolare. Un cut troppo aggressivo brucia anche il muscolo.\n\nRicomposizione: possibile con un deficit moderatissimo (100-200 kcal) e alto apporto proteico. Lenta ma evita i cicli bulk/cut." },
-              { t: "Integratori: cosa vale, cosa no", body: "La maggior parte degli integratori non ha prove solide. Quelli con evidenza robusta:\n\n• Creatina monoidrato: 3-5g/die. Aumenta la forza e la performance sulle serie pesanti. Uno degli integratori più studiati in assoluto.\n• Proteine whey: utili se difficile raggiungere il fabbisogno proteico dai cibi. Non sostituiscono il cibo reale.\n• Caffeina: 3-6mg/kg, 30-60 min pre-workout. Migliora la performance, la forza e la concentrazione.\n• Vitamina D3: se non prendi molto sole. Fondamentale per il testosterone e il recupero.\n\nTutto il resto (pre-workout complessi, BCAA se le proteine sono sufficienti, bruciagrassi) ha prove deboli o nulle." },
+              { t: "Proteine: la priorità assoluta", body: "Range: 1.6-2.2 g/kg al giorno. Il tuo piano nutrizionale prevede ~1.78 g/kg (100 g/giorno a 56 kg). In deficit calorico, avvicinarsi a 2.0 g/kg (112 g) preserva meglio la massa magra.\n\nDistribuzione: almeno 4 pasti con 0.4-0.55 g/kg per pasto (22-31 g per pasto). L'effetto anabolico di un singolo pasto dura 5-6 ore — non serve mangiare ogni 2 ore.\n\nFonti ottimali: pollo, tacchino, uova, pesce, legumi + cereali, yogurt greco, ricotta, fiocchi di latte." },
+              { t: "Carboidrati: carburante per la performance", body: "Il glicogeno muscolare è il carburante principale dell'allenamento ipertrofico. 3 set da 12RM riducono il glicogeno del ~26%; 6 set del ~38%. Il ripristino completo avviene entro 24 ore con un'assunzione giornaliera adeguata — indipendentemente dal timing post-workout.\n\nIl tuo piano: ~3.24 g/kg (170-185 g/giorno). Minimo consigliato: 3 g/kg.\n\nFonti: riso, pasta, patate, pane, frutta, avena. Preferisci fonti integrali per fibra e sazietà." },
+              { t: "Grassi: equilibrio ormonale", body: "I grassi completano il bilancio calorico dopo proteine e carboidrati. Non scendere sotto 0.8 g/kg: livelli troppo bassi possono alterare il profilo ormonale.\n\nIl tuo piano: ~0.87 g/kg (~50 g), al limite basso ma adeguato. Privilegia fonti insature: olio EVO, frutta secca, pesce grasso (salmone, sgombro), avocado. Limita i grassi saturi (salumi, formaggi grassi)." },
+              { t: "Timing dei pasti", body: "La 'finestra anabolica' esiste, ma è molto più ampia di quanto si creda. Se hai consumato un pasto completo 2-3 ore prima dell'allenamento, la finestra post-workout si estende a 4-6 ore — non c'è urgenza di mangiare entro 30 minuti.\n\nSe ti alleni a digiuno, le proteine post-workout diventano urgenti (entro 45 minuti).\n\n• Pre-workout (1-2h): pasto con proteine + carboidrati\n• Post-workout (entro 4-6h dal pasto pre): proteine 0.4-0.5 g/kg di massa magra (~20-25 g)\n• Prima di dormire: 30-40 g di proteine a digestione lenta (caseine: fiocchi di latte, yogurt greco). Il beneficio principale è raggiungere il target proteico giornaliero." },
+              { t: "Idratazione", body: "Bevi quando hai sete — per la maggior parte delle persone è sufficiente. Non esiste un target universale di 'X ml al giorno'.\n\nMinimo: non scendere sotto 1.2-1.5 litri al giorno (come indicato dal tuo piano nutrizionale). Non bere quantità eccessive senza elettroliti: a lungo termine il rischio è iponatremia.\n\nMonitora il colore dell'urina: giallo chiaro = idratazione ottimale." },
+              { t: "Ricomposizione corporea: il tuo caso", body: "Con massa grassa al 20.9% e massa muscolare al 54.2% (BIA marzo 2026), sei nella posizione ideale per una ricomposizione corporea: perdere grasso e guadagnare muscolo simultaneamente.\n\nFunziona con deficit moderato (-300/-400 kcal), proteine alte (1.6-2.2 g/kg) e allenamento con i pesi. Il tuo deficit attuale (~475 kcal) è leggermente più aggressivo del range ideale — monitora la performance: se cala per 2 settimane consecutive, il deficit è troppo alto.\n\nTarget realistico: 0.5-0.7% del peso a settimana = 280-390 g/settimana. Perdere 2-3 kg di grasso ti porterebbe a ~16-17% di massa grassa. 5 kg ti porterebbe a ~12% — molto difficile da sostenere a lungo termine." },
+              { t: "Integratori: cosa vale, cosa no", body: "La maggior parte degli integratori non ha prove solide. Quelli con evidenza robusta:\n\n• Creatina monoidrato: 3-5 g/giorno tutti i giorni. Il tuo piano: 3 g/giorno. Migliora forza e ipertrofia in modo consistente. Possibile aumento di peso 1-3% da acqua intramuscolare (aspetto più tonico, non gonfio). La letteratura supporta l'uso continuativo oltre le 8 settimane.\n• Proteine whey: 20-30 g per dose quando i pasti non bastano. Già nel tuo piano (20 g a colazione).\n• Omega-3 (EPA + DHA): 1 g combinato/giorno. Già nel tuo piano. Benefici cognitivi e possibile supporto alla sintesi proteica.\n• Caffeina: 3-6 mg/kg pre-workout = 168-336 mg per te = 2-3 caffè. Attenzione: se assumi altri stimolanti per altri motivi, valuta con il medico la combinazione.\n• Multivitaminico: utile in deficit calorico quando la varietà alimentare è limitata.\n\nTutto il resto (BCAA se le proteine sono sufficienti, bruciagrassi, pre-workout complessi) ha prove deboli o nulle." },
             ].map(function(item, ii) {
               var isOpen = showPrinciples === 200 + ii;
               return <div key={ii} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "30" : T.bg) }}>
