@@ -3104,52 +3104,34 @@ export default function App() {
           </div>
         </div>
 
-        {/* Come funziona */}
+        {/* Accessi rapidi */}
         <div style={{ background: T.cd, borderRadius: 16, padding: "18px 18px 16px", marginBottom: 10 }}>
-          <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 14 }}>Come funziona</div>
-          <div style={{ display: "grid", gap: 8 }}>
+          <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Accessi rapidi</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2,minmax(0,1fr))", gap: 8, marginBottom: 10 }}>
             {[
-              { icon: "📋", label: "Scheda", key: "workout", chips: isBeginner ? [{ label: "Principiante", onClick: function() { openMainTab("workout"); } }, { label: "3 giorni", onClick: function() { openMainTab("workout"); } }, { label: "Full Body", onClick: function() { openMainTab("workout"); } }, { label: "Timer", onClick: function() { openMainTab("workout"); } }] : [{ label: "Avanzato", onClick: function() { openMainTab("workout"); } }, { label: "6 giorni", onClick: function() { openMainTab("workout"); } }, { label: "Cardio", onClick: function() { openMainTab("workout"); } }, { label: "Timer", onClick: function() { openMainTab("workout"); } }], desc: isBeginner ? "Scheda Full Body 3 giorni con esercizi meno intensi, foto, badge respirazione 🫁 e timer di recupero." : "Scheda settimanale avanzata con esercizi, foto, badge respirazione 🫁 e timer di recupero." },
-              { icon: "📊", label: "Progressi", key: "progressi", chips: [{ label: "Carichi", onClick: function() { openMainTab("progressi"); } }, { label: "Settimane", onClick: function() { openMainTab("progressi"); } }, { label: "Trend", onClick: function() { openMainTab("progressi"); } }], desc: "Tieni traccia dei tuoi miglioramenti settimana per settimana." },
-              { icon: "📚", label: "Teoria", key: "teoria", chips: isBeginner ? [{ label: "Basi", onClick: function() { goToTeoria("basi"); } }, { label: "Teoria", onClick: function() { goToTeoria("teoria", "principi"); } }, { label: "Alimentazione", onClick: function() { goToAlimentazione("principi"); } }] : [{ label: "Basi", onClick: function() { goToTeoria("basi"); } }, { label: "Teoria", onClick: function() { goToTeoria("teoria", "principi"); } }, { label: "Muscoli", onClick: function() { goToTeoria("muscoli"); } }, { label: "Alimentazione", onClick: function() { goToAlimentazione("principi"); } }], desc: isBeginner ? "Le poche cose che ti servono davvero per iniziare senza confusione." : "Principi fondamentali, respirazione, mappa muscolare e alimentazione." },
-              { icon: "🏃", label: "Esercizi", key: "exercises", chips: [{ label: "Riscaldamento", onClick: function() { goToExercises("wu"); } }, { label: "Fondamentali", onClick: function() { goToExercises("ex"); } }, { label: "Stretching", onClick: function() { goToExercises("st"); } }], desc: "Biblioteca completa di esercizi con approfondimenti e video." },
+              { icon: "📋", title: "Scheda", desc: isBeginner ? "Allenamento di oggi" : "Scheda e timer", onClick: function() { openMainTab("workout"); } },
+              { icon: "📊", title: "Progressi", desc: "Carichi e storico", onClick: function() { openMainTab("progressi"); } },
+              { icon: "📚", title: "Teoria", desc: isBeginner ? "Solo le basi utili" : "Principi e respirazione", onClick: function() { goToTeoria(isBeginner ? "basi" : "teoria", "principi"); } },
+              { icon: "🏃", title: "Esercizi", desc: "Tecnica e immagini", onClick: function() { goToExercises("ex"); } },
             ].map(function(item) {
-              return <div key={item.key} onClick={function() {
-                if (item.key === "teoria") { goToTeoria("basi"); return; }
-                if (item.key === "exercises") { goToExercises("ex"); return; }
-                openMainTab(item.key);
-              }} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "12px 12px", borderRadius: 10, background: T.bg, cursor: "pointer" }}>
-                <div style={{ width: 38, height: 38, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>{item.icon}</div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 800, color: dc, marginBottom: 3 }}>{item.label} →</div>
-                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginBottom: 6 }}>{item.desc}</div>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-                    {item.chips.map(function(c) { return <button key={c.label} onClick={function(e) { e.stopPropagation(); c.onClick(); }} style={{ fontSize: 10, background: dc + "14", color: dc, padding: "2px 7px", borderRadius: 5, fontWeight: 600, border: "none", cursor: "pointer" }}>{c.label}</button>; })}
-                  </div>
-                </div>
-              </div>;
+              return <button key={item.title} onClick={item.onClick} style={{ textAlign: "left", padding: "12px 12px", borderRadius: 12, border: "1px solid " + T.bg, background: T.bg, cursor: "pointer" }}>
+                <div style={{ fontSize: 18, marginBottom: 6 }}>{item.icon}</div>
+                <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, marginBottom: 2 }}>{item.title}</div>
+                <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.45 }}>{item.desc}</div>
+              </button>;
             })}
           </div>
-        </div>
-
-        {/* Funzionalità speciali */}
-        <div style={{ background: T.cd, borderRadius: 16, padding: "18px 18px 16px", marginBottom: 10 }}>
-          <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Funzionalità speciali</div>
-          <div style={{ display: "grid", gap: 8 }}>
-            {[
-              { icon: "⏱️", title: "Cronometro di recupero", desc: "Nella Scheda, ogni esercizio ha un timer di recupero. Toccalo per avviarlo: suona con un beep alla fine del riposo.", onClick: function() { openMainTab("workout"); } },
-              { icon: "📊", title: "Registra i tuoi carichi", desc: "Apri un esercizio nella Scheda e registra peso e ripetizioni set per set. I dati vengono salvati localmente sul dispositivo.", onClick: function() { openMainTab("workout"); } },
-              { icon: "💾", title: "Backup e ripristino", desc: "Dalle Impostazioni ⚙️ esporta tutti i tuoi dati in JSON e reimportali quando vuoi.", onClick: function() { setSettingsOpen(true); } },
-              { icon: "🫁", title: "Guida alla respirazione", desc: isBeginner ? "La respirazione giusta la trovi gia dentro ogni esercizio della scheda, senza dover studiare tutto prima." : "Nella Teoria trovi una tabella unica per vedere subito quando inspirare, espirare o usare la Valsalva.", onClick: function() { if (isBeginner) { openMainTab("workout"); return; } goToTeoria("teoria", "principi"); setShowPrinciples(600); } },
-              { icon: "📖 ▶", title: "Approfondimenti integrati", desc: "Negli esercizi trovi tecnica, errori, immagini e video senza uscire dall'app.", onClick: function() { openMainTab("exercises"); } },
-            ].map(function(item, i) {
-              return <div key={i} onClick={item.onClick} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "10px 12px", borderRadius: 10, background: T.bg, cursor: item.onClick ? "pointer" : "default" }}>
-                <div style={{ width: 38, height: 38, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, flexShrink: 0 }}>{item.icon}</div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: item.onClick ? dc : T.tx, marginBottom: 2 }}>{item.title}{item.onClick ? " →" : ""}</div>
-                  <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.5 }}>{item.desc}</div>
-                </div>
-              </div>;
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+            {(isBeginner ? [
+              { label: "Apri basi", onClick: function() { goToTeoria("basi"); } },
+              { label: "Proteine e dieta", onClick: function() { goToAlimentazione("principi"); } },
+              { label: "Backup dati", onClick: function() { setSettingsOpen(true); } },
+            ] : [
+              { label: "Respirazione", onClick: function() { goToTeoria("teoria", "principi"); setShowPrinciples(600); } },
+              { label: "Riscaldamento", onClick: function() { goToExercises("wu"); } },
+              { label: "Backup dati", onClick: function() { setSettingsOpen(true); } },
+            ]).map(function(action) {
+              return <button key={action.label} onClick={action.onClick} style={{ fontSize: 11, background: dc + "14", color: dc, padding: "6px 10px", borderRadius: 8, fontWeight: 700, border: "none", cursor: "pointer" }}>{action.label}</button>;
             })}
           </div>
         </div>
@@ -3172,26 +3154,20 @@ export default function App() {
           </div>
         </div>
 
-        {/* Consigli d'uso */}
-        <div style={{ background: T.cd, borderRadius: 14, padding: "18px 18px 14px", marginBottom: 14 }}>
-          <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Consigli d'uso</div>
+        {/* Inizia da qui */}
+        <div style={{ background: T.cd, borderRadius: 14, padding: "16px 18px 14px", marginBottom: 14 }}>
+          <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 10 }}>Inizia da qui</div>
           <div style={{ display: "grid", gap: 8 }}>
             {(isBeginner ? [
-              { tip: "Prima volta? Parti da Basi: trovi solo le regole davvero utili per iniziare.", onClick: function() { goToTeoria("basi"); } },
-              { tip: "Durante l'allenamento usa la Scheda: apri il giorno e segui gli esercizi nell'ordine.", onClick: function() { openMainTab("workout"); } },
-              { tip: "La respirazione e gia scritta dentro ogni esercizio: non devi studiarla tutta prima.", onClick: function() { openMainTab("workout"); } },
-              { tip: "Per dieta e proteine vai in Alimentazione: ti basta capire le basi, non tutto insieme.", onClick: function() { goToAlimentazione("principi"); } },
+              "1. Apri Basi e leggi solo le regole essenziali.",
+              "2. Vai nella Scheda e segui il giorno selezionato.",
+              "3. Registra i pesi e mantieni il buffer: non serve spingere al massimo.",
             ] : [
-              { tip: "Prima volta? Inizia da Basi nella tab Teoria per capire come leggere la scheda.", onClick: function() { goToTeoria("basi"); } },
-              { tip: "Durante l'allenamento usa la Scheda: trova il giorno, apri l'esercizio e registra i set.", onClick: function() { openMainTab("workout"); } },
-              { tip: "Per la respirazione vai in Teoria: trovi una tabella unica da confrontare a colpo d'occhio.", onClick: function() { goToTeoria("teoria", "principi"); setShowPrinciples(600); } },
-              { tip: "Per capire multifrequenza, recupero e progressione vai in Teoria. Per la dieta vai in Alimentazione.", onClick: function() { goToTeoria("teoria", "principi"); } },
-              { tip: "In Impostazioni ⚙️ puoi cambiare tema, salvare il nome e fare il backup dei dati.", onClick: function() { setSettingsOpen(true); } },
-            ]).map(function(item, i) {
-              return <div key={i} onClick={item.onClick} style={{ display: "flex", gap: 10, alignItems: "flex-start", cursor: item.onClick ? "pointer" : "default" }}>
-                <div style={{ width: 22, height: 22, borderRadius: "50%", background: dc + "22", color: dc, fontSize: 11, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>{i + 1}</div>
-                <div style={{ fontSize: 12, color: item.onClick ? dc : T.sub, lineHeight: 1.55, textDecoration: item.onClick ? "underline dotted" : "none", textDecorationColor: dc + "60" }}>{item.tip}</div>
-              </div>;
+              "1. Guarda la panoramica e poi apri la Scheda del giorno.",
+              "2. Usa timer, respirazione e progressione direttamente negli esercizi.",
+              "3. Controlla Progressi e Teoria solo quando ti servono.",
+            ]).map(function(line, i) {
+              return <div key={i} style={{ fontSize: 12, color: T.sub, lineHeight: 1.6, background: T.bg, borderRadius: 10, padding: "10px 12px" }}>{line}</div>;
             })}
           </div>
         </div>
