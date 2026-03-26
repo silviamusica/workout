@@ -98,7 +98,6 @@ function beepEnd() { playTone(1047, 0.15, 0.5); setTimeout(function() { playTone
 var TH = {
   sage:    { n: "Obsidian",  bg: "#000000", cd: "#1C1C1E", tx: "#FFFFFF",  sub: "#8E8E93", hd: "linear-gradient(180deg,#1C1C1E,#000000)", htx: "#FFFFFF", dy: ["#0A84FF","#32D74B","#FF9F0A","#FF375F","#BF5AF2"], ok: "#32D74B", ac: "#0A84FF", sb: "#2C2C2E", st: "#32D74B" },
   night:   { n: "Grafite",   bg: "#0D0D0F", cd: "#1A1A1F", tx: "#E8E8ED", sub: "#6E6E73", hd: "linear-gradient(180deg,#1A1A1F,#0D0D0F)", htx: "#E8E8ED", dy: ["#636366","#48484A","#3A3A3C","#2C2C2E","#1C1C1E"], ok: "#48484A", ac: "#AEAEB2", sb: "#141416", st: "#636366" },
-  petal:   { n: "Aurora",    bg: "#FDF5F7", cd: "#FFFBFC", tx: "#3A1F28", sub: "#B08090", hd: "linear-gradient(135deg,#C2788A,#D4929E)", htx: "#FFF0F3", dy: ["#C47A8A","#9B6EA6","#6A96B0","#C28860","#A0A0B8"], ok: "#C47A8A", ac: "#9DB87A", sb: "#FAEAEE", st: "#9B6EA6" },
   mist:    { n: "Ghiaccio",  bg: "#F2F4F8", cd: "#FAFBFD", tx: "#222B3A", sub: "#7A8FA8", hd: "linear-gradient(135deg,#3D5470,#5C7A9E)", htx: "#E8EEF6", dy: ["#5C7A9E","#6A9E8C","#7A6EA8","#9E7A5C","#6A7A8A"], ok: "#5C7A9E", ac: "#C8A86A", sb: "#E8EDF5", st: "#5C7A9E" },
   sand:    { n: "Sabbia",    bg: "#FAF7F2", cd: "#FFFEFB", tx: "#2E2820", sub: "#A0907A", hd: "linear-gradient(135deg,#7A6040,#A08060)", htx: "#F5EEE4", dy: ["#A07850","#8A9E6A","#6A8EA0","#B07888","#9A8A6A"], ok: "#A07850", ac: "#C0B060", sb: "#F4EFE6", st: "#8A7040" },
 };
@@ -400,7 +399,7 @@ var INTRO_BASICS = [
       { type: "bold-list", content: [
         ["Sonno", "7-9 ore per notte. Durante il sonno viene rilasciato l'ormone della crescita (GH). Dormire poco dimezza i guadagni."],
         ["Proteine", "1.6-2.2g/kg al giorno. Il target del tuo piano nutrizionale è ~1.78 g/kg (100g). In deficit calorico, avvicinarsi a 2.0 g/kg (112g) preserva meglio la massa magra."],
-        ["Giorni di riposo", "Mer e Dom non sono giorni sprecati — sono giorni di crescita. Il tessuto connettivo (tendini, legamenti) recupera più lentamente del muscolo."],
+        ["Giorno 3 e Giorno 7", "Non sono giorni sprecati. Sono giornate con meno stress dei pesi, dedicate a cardio leggero o condizionamento e al recupero generale. Il tessuto connettivo recupera più lentamente del muscolo."],
       ]},
       { type: "p", content: "Se dopo 2-3 settimane i carichi non crescono: controlla prima sonno e proteine prima di toccare il programma." },
       { type: "link", label: "Wikipedia: supercompensazione →", url: "https://it.wikipedia.org/wiki/Supercompensazione" },
@@ -598,18 +597,18 @@ var PRINCIPLES_DEEP = [
     {type:"p", content:"Dopo uno stimolo, la sintesi proteica (riparazione e crescita) dura 36-72 ore. Aspettare 7 giorni significa lasciare il muscolo inattivo per 4-5 giorni. Con 2 sessioni a settimana per gruppo muscolare, stimoli la crescita il doppio delle volte."},
     {type:"p", content:"Questa scheda usa un Upper/Lower 4 giorni: ogni muscolo viene allenato due volte a settimana con esercizi e angolazioni diversi — stessa logica, stimolo diverso."},
     {type:"ul", content:[
-      "Lower A (Lun) + Lower B (Gio): quadricipiti, glutei, femorali con priorità diverse",
-      "Upper A (Mar) + Upper B (Ven): spinta e tirata con distribuzione complementare",
-      "Mer e Dom: cardio — nessuna interferenza con il recupero muscolare",
+      "Lower A (Giorno 1) + Lower B (Giorno 4): quadricipiti, glutei, femorali con priorità diverse",
+      "Upper A (Giorno 2) + Upper B (Giorno 5): spinta e tirata con distribuzione complementare",
+      "Giorno 3 e Giorno 7: cardio — nessuna interferenza con il recupero muscolare",
     ]},
   ]},
   { t: "Esercizi prioritari: cosa sono e come leggerli", d: [
     {type:"p", content:"Gli esercizi con il badge ★ PRIORITÀ sono i fondamentali della sessione — quelli su cui si costruisce la progressione. Vanno fatti per primi, quando sei fresca, con la massima concentrazione."},
     {type:"bold-list", content:[
-      ["Squat (Lun)", "Priorità Lower A. Double progression 4x5-8. Il compound principale della settimana."],
-      ["Stacco da Terra (Gio)", "Priorità Lower B. Double progression 4x5-8. Sessione separata dal Squat per recupero completo."],
-      ["Trazioni (Mar)", "Priorità Upper A. Progressione su max-2 rip. Il compound di tirata verticale."],
-      ["Push-Up / Trazioni Supine (Ven)", "Priorità Upper B. Seconda frequenza con variante complementare."],
+      ["Squat (Giorno 1)", "Priorità Lower A. Double progression 4x5-8. Il compound principale della settimana."],
+      ["Stacco da Terra (Giorno 4)", "Priorità Lower B. Double progression 4x5-8. Sessione separata dallo Squat per recupero completo."],
+      ["Trazioni (Giorno 2)", "Priorità Upper A. Progressione su max-2 rip. Il compound di tirata verticale."],
+      ["Push-Up / Trazioni Supine (Giorno 5)", "Priorità Upper B. Seconda frequenza con variante complementare."],
     ]},
     {type:"p", content:"Regola: se sei stanca e devi tagliare la sessione, completa almeno l'esercizio prioritario. Il resto è accessorio."},
   ]},
@@ -618,7 +617,7 @@ var PRINCIPLES_DEEP = [
     {type:"bold-list", content:[
       ["Sonno", "7-9 ore. È durante il sonno profondo che viene rilasciato l'ormone della crescita. Dormire poco dimezza i guadagni."],
       ["Proteine", "1.8-2.2g/kg al giorno. Sono i mattoni per ricostruire il muscolo — senza di esse l'allenamento non si traduce in crescita."],
-      ["Giorni di recupero", "Mer e Dom non sono giorni sprecati. Sono giorni di crescita."],
+      ["Giorno 3 e Giorno 7", "Non sono giorni di pesi e non sono tempo perso: servono a gestire il cardio, recuperare meglio e arrivare piu fresca alle sedute con i carichi."],
     ]},
     {type:"p", content:"Se dopo 2-3 settimane i carichi non crescono: controlla prima il sonno e l'alimentazione prima di toccare il programma."}
   ]},
@@ -626,9 +625,9 @@ var PRINCIPLES_DEEP = [
     {type:"p", content:"Il cardio riduce l'ipertrofia se mal gestito — l'interferenza è reale. La durata della sessione è il fattore con la correlazione negativa più forte (r = 0.75). Tieni le sessioni cardio a max 45-60 minuti, max 2 a settimana, su giorni separati dai pesi."},
     {type:"p", content:"Tra i tipi di cardio, la corsa ha l'impatto negativo maggiore per la componente eccentrica elevata (danno muscolare aggiuntivo). Il rucking (cammino con zaino) è preferibile: cardio + lavoro isometrico sulla catena posteriore, senza eccesso eccentrico."},
     {type:"bold-list", content:[
-      ["HIIT (Mer — settimane dispari)", "Intervalli brevi ad alta intensità. Efficace per il condizionamento. Non farlo la sera prima di Gio (Stacco da Terra)."],
-      ["Rucking (Mer — settimane pari)", "Zaino 15-20 kg, 45-60 min. L'opzione con meno interferenza sull'ipertrofia."],
-      ["Zona 2 (Dom)", "Corsa leggera o rucking a bassa intensità — puoi parlare senza fiatone. FC 120-140. Minima interferenza."],
+      ["HIIT (Giorno 3 — settimane dispari)", "Intervalli brevi ad alta intensità. Efficace per il condizionamento. Non farlo la sera prima di Giorno 4 (Stacco da Terra)."],
+      ["Rucking (Giorno 3 — settimane pari)", "Zaino 15-20 kg, 45-60 min. L'opzione con meno interferenza sull'ipertrofia."],
+      ["Zona 2 (Giorno 7)", "Corsa leggera o rucking a bassa intensità — puoi parlare senza fiatone. FC 120-140. Minima interferenza."],
     ]},
     {type:"p", content:"Segnale di troppo cardio: i carichi in sala smettono di crescere per 2+ settimane. In quel caso riduci prima durata o intensità del cardio, non il volume dei pesi."}
   ]},
@@ -673,6 +672,137 @@ var PRINCIPLES_DEEP = [
     ]},
     {type:"p", content:"Se cambi perché sei annoiata senza questi segnali, probabilmente stai perdendo progressi. La noia è normale: i risultati non lo sono."}
   ]},
+  { t: "Perche questo programma e fatto cosi", d: [
+    {type:"p", content:"Questa parte raccoglie la logica generale del programma usando le fonti del progetto. Dove non ci sono dati diretti per prevedere il tuo caso individuale, il testo lo dichiara in modo esplicito."},
+    {type:"bold-list", content:[
+      ["Struttura", "Upper/Lower su 4 giorni per dare a ogni muscolo 2 stimoli settimanali con recupero sufficiente."],
+      ["Priorita", "Multiarticolari per primi, accessori dopo, buffer quasi sempre presente e cedimento usato solo dove serve."],
+      ["Cardio", "Poco, breve e separato dai pesi per limitare l'interferenza con l'ipertrofia."],
+      ["Aspettative", "Risultati reali in mesi, con target di ricomposizione realistici e sostenibili."],
+    ]},
+  ]},
+  { t: "La struttura: Upper/Lower su 4 giorni", d: [
+    {type:"p", content:"Ogni muscolo viene allenato 2 volte a settimana."},
+    {type:"p", content:"Nei soggetti allenati, la sintesi proteica muscolare raggiunge il picco nelle ore successive all'allenamento e torna al basale entro circa 28 ore. Se alleni un muscolo solo 1 volta a settimana, hai 6 giorni in cui quel muscolo non sta crescendo. Con 2 stimoli a settimana, la finestra di crescita si raddoppia."},
+    {type:"p", content:"La divisione Upper/Lower separa i gruppi muscolari in modo che Giorno 1 e Giorno 2 non si sovrappongano, e lo stesso tra Giorno 4 e Giorno 5. Ogni muscolo ha almeno 48-72 ore di recupero prima di essere stimolato di nuovo — il tempo minimo per la riparazione e l'adattamento del tessuto muscolare e connettivo."},
+    {type:"p", content:"Quando il volume supera 10 serie per muscolo a settimana, distribuirlo su almeno 2 sessioni tende a produrre risultati migliori rispetto a concentrarlo in una sola. Dividere le sessioni per regione corporea consente frequenze piu alte con sessioni piu corte e recupero migliore tra le sedute."},
+  ]},
+  { t: "Perche 4 lift prioritari", d: [
+    {type:"p", content:"Squat, stacco, trazioni e push-up sono tutti multiarticolari: coinvolgono piu articolazioni e grandi catene muscolari contemporaneamente. Sono i movimenti che danno il massimo stimolo con il minimo numero di esercizi."},
+    {type:"bold-list", content:[
+      ["Squat", "Giorno 1 pesante (4x6-8), con squat bulgaro come variante di volume (3x10-12 per gamba)."],
+      ["Stacco", "Giorno 4 pesante (4x5-8), con stacco rumeno come accessorio per femorali (3x10-12)."],
+      ["Trazioni", "Giorno 2 presa prona per forza (4x5-8), Giorno 5 presa neutra o supina per volume (3xmax-2). Due prese diverse stimolano angolazioni diverse dello stesso pattern di tirata."],
+      ["Push-up", "Giorno 5 a corpo libero (4xmax-2), Giorno 2 panca con bilanciere (4x8-10). Stesso pattern di spinta, carico diverso."],
+    ]},
+    {type:"p", content:"Sono evidenziati per un motivo: vanno fatti sempre per primi nella sessione, quando il sistema nervoso e fresco e la tecnica e al massimo. Oltre un certo volume per sessione la tecnica peggiora e l'allenamento diventa volume spazzatura — serie che producono fatica senza vero stimolo di crescita."},
+  ]},
+  { t: "Perche non vai a cedimento su tutto", d: [
+    {type:"p", content:"La maggior parte dei set va eseguita a RIR 1-2 (1-2 ripetizioni lontano dal cedimento). Il cedimento sistematico su tutti i set aumenta il rischio di overtraining e burnout, soprattutto sui multiarticolari che coinvolgono il sistema nervoso centrale."},
+    {type:"p", content:"Il cedimento e riservato all'ultimo set dei compound prioritari (squat, stacco, panca, trazioni) e puo essere usato piu liberamente sui monoarticolari come curl, tricipiti e face pull perche sono meno impattanti sul recupero."},
+    {type:"p", content:"Se porti trazioni e push-up a cedimento su 4 set consecutivi, la fatica generata e sproporzionata rispetto allo stimolo di crescita. I primi 2-3 set producono la quasi totalita dello stimolo; il quarto set a cedimento serve come picco controllato, non come regola."},
+  ]},
+  { t: "Perche il volume e quello e non di piu", d: [
+    {type:"p", content:"Le fonti concordano su un range di 10-20 serie per muscolo a settimana come raccomandazione generale per massimizzare l'ipertrofia. Ferlito specifica che le donne, per fattori ormonali e per dimensioni delle fibre muscolari, possono reggere piu volume degli uomini — range di partenza 15-25 serie."},
+    {type:"p", content:"Israetel introduce il concetto di MRV intra-sessione. Puoi avere il volume settimanale giusto, ma se lo concentri in sessioni troppo lunghe, gli ultimi esercizi diventano volume spazzatura. La tecnica degrada, la connessione mente-muscolo si perde e la fatica sistemica supera lo stimolo di crescita. Per questo ogni sessione ha massimo 6 esercizi."},
+  ]},
+  { t: "Essere donna cambia qualcosa", d: [
+    {type:"bold-list", content:[
+      ["Recuperi piu rapidi", "Le donne eliminano i metaboliti piu velocemente e recuperano la capacita di forza prima degli uomini. Beneficiano in media di frequenze piu alte."],
+      ["MRV piu alti", "A parita di allenamento, le donne possono tollerare piu volume prima di superare la soglia di sovrallenamento. Non significa che serve piu volume per crescere — significa che il margine di errore e piu ampio."],
+      ["Crescita relativa simile, assoluta inferiore", "In percentuale uomini e donne aumentano la massa muscolare in modo simile. In termini assoluti gli uomini guadagnano in media di piu per livelli di testosterone piu alti e maggior numero totale di fibre muscolari."],
+      ["Gli estrogeni proteggono", "Gli estrogeni riducono la proteolisi muscolare. A 43 anni, prima della menopausa, hai ancora questo vantaggio."],
+    ]},
+  ]},
+  { t: "Il cardio: perche poco e su giorni separati", d: [
+    {type:"p", content:"L'aggiunta di cardio a un programma di pesi puo ridurre l'ipertrofia se gestita male. L'entita dell'interferenza dipende da volume, intensita, modalita e scheduling."},
+    {type:"bold-list", content:[
+      ["Volume e durata", "Sono i fattori con la correlazione negativa piu forte. Piu lungo il cardio, peggio e per la crescita muscolare."],
+      ["La corsa", "Ha un impatto negativo maggiore del ciclismo o della camminata, per la componente eccentrica elevata che produce danno muscolare aggiuntivo. Il rucking non ha questa componente."],
+      ["L'HIIT", "Puo sopprimere la segnalazione anabolica piu del cardio a bassa intensita. Per questo e limitato a 1 volta a settimana."],
+      ["Giorni separati", "Cardio e pesi su giorni separati minimizzano l'interferenza e tendono a produrre piu ipertrofia rispetto alla stessa sessione."],
+    ]},
+    {type:"p", content:"C'e un vantaggio: il cardio moderato aumenta l'angiogenesi, cioe la formazione di nuovi capillari. Piu capillari significa miglior trasporto di ossigeno, nutrienti e fattori di crescita ai muscoli. Per le donne sopra i 40 questo e particolarmente rilevante."},
+  ]},
+  { t: "La ricomposizione corporea: cosa aspettarsi realisticamente", d: [
+    {type:"p", content:"La tua BIA del 2 marzo 2026 a 57 kg indica 20.9% di massa grassa, cioe circa 11.9 kg di grasso. Il tuo somatotipo e mesomorfo dominante con componente endomorfa moderata: buona base muscolare con una predisposizione costituzionale ad accumulare grasso che richiede attenzione all'alimentazione, non restrizioni estreme."},
+    {type:"bold-list", content:[
+      ["Perdere 5 kg di solo grasso", "Ti porterebbe a circa 12-13% di massa grassa. Per una donna e un livello da competizione, molto difficile da raggiungere e impossibile da sostenere a lungo."],
+      ["Target realistico", "2-3 kg di grasso in 3-4 mesi, per arrivare a circa 16-17% di massa grassa. Livello da donna sportiva lean, sostenibile."],
+      ["Velocita", "Massimo 0.5-0.7% del peso corporeo a settimana: per te circa 285-400 g a settimana."],
+      ["Bilancia", "Il peso potrebbe non scendere nei primi 2 mesi. Creatina, acqua intramuscolare e aumento di muscolo possono mascherare la perdita di grasso."],
+    ]},
+  ]},
+  { t: "Cosa aspettarti nel tempo", d: [
+    {type:"bold-list", content:[
+      ["Prime 2-4 settimane", "Adattamento neuromuscolare: diventi piu forte anche senza crescita muscolare visibile."],
+      ["Settimane 4-8", "Prime modifiche visibili: piu tono, linee piu definite, vestiti che cambiano vestibilita."],
+      ["Settimane 8-12", "La forza continua ma piu lentamente. Deload e variazioni diventano piu importanti."],
+      ["Mese 4 in poi", "Hai abbastanza dati per confrontare misure, BIA, prestazioni e riprogrammare con piu precisione."],
+    ]},
+  ]},
+  { t: "Cosa NON aspettarti", d: [
+    {type:"ul", content:[
+      "Non diventerai grossa: l'ipertrofia femminile naturale tende a dare un aspetto tonico e atletico, non da bodybuilder professionista.",
+      "Non vedrai risultati strutturali in 2 settimane: i cambiamenti veri richiedono almeno 6-8 settimane.",
+      "Non tutti i muscoli crescono alla stessa velocita: alcuni rispondono prima, altri richiedono piu tempo o variazioni.",
+      "Il ciclo mestruale puo influenzare la singola giornata, ma conta la tendenza su 2-3 settimane, non il singolo allenamento.",
+    ]},
+  ]},
+];
+
+var PERSONAL_DATA_SECTIONS = [
+  {
+    t: "La tua composizione corporea (BIA 2 marzo 2026)",
+    d: [
+      {type:"p", content:"La BIA misura resistenza e reattanza del corpo al passaggio di una corrente elettrica a bassa intensita. Non e una TAC e non e perfetta, ma e uno degli strumenti piu pratici e ripetibili per monitorare i cambiamenti nel tempo."},
+      {type:"p", content:"Il dato piu importante non e il singolo valore: e il confronto con la BIA successiva, fatta nelle stesse condizioni, alla stessa ora, con lo stesso stato di idratazione e lo stesso strumento."},
+      {type:"bold-list", content:[
+        ["Peso / altezza / BMI", "57 kg, 158 cm, BMI 22.8. Normopeso, ma il BMI da solo conta poco per chi si allena con i pesi."],
+        ["Massa grassa", "11.9 kg = 20.9%. Profilo da persona attiva/sportiva, molto sotto il valore medio di riferimento del referto."],
+        ["Massa magra (FFM)", "45.1 kg = 79.1%. Tutto cio che non e grasso."],
+        ["Massa muscolare totale", "30.9 kg = 54.2%. Classificata dal referto come persona attiva."],
+        ["Massa muscolo-scheletrica (SMM)", "21.3 kg = 37.4%. E il muscolo che alleni davvero. E il dato piu utile da confrontare alla prossima BIA."],
+        ["Massa muscolare appendicolare (ASMM)", "17.0 kg. Sopra il riferimento, molto lontana dalle soglie di rischio sarcopenia."],
+        ["Angolo di fase", "6.5 gradi. Nella parte alta del range di riferimento: buon indicatore di integrita cellulare e stato nutrizionale."],
+        ["Acqua totale", "33.0 L = 57.9%. Nella norma, senza segni di ritenzione anomala."],
+        ["Acqua intra vs extra", "18.6 L intracellulari contro 14.4 L extracellulari: rapporto equilibrato."],
+        ["BMR / TDEE", "1484 kcal di metabolismo basale e circa 2077 kcal di dispendio giornaliero totale. Dati coerenti con la stima nutrizionale."],
+      ]},
+      {type:"bold-list", content:[
+        ["Somatotipo", "Mesomorfia 5.8, endomorfia 3.9, ectomorfia 1.5. Costituzione robusta con buona risposta all'allenamento con i pesi."],
+        ["Cosa significa", "La base di partenza e migliore della media: massa muscolare sopra il riferimento, massa grassa da sportiva, idratazione nella norma e angolo di fase alto."],
+        ["Aspettativa realistica", "Hai gia una base solida, quindi i progressi saranno reali ma graduali. Dopo una certa esperienza il tasso di crescita rallenta."],
+        ["Valore strategico", "A 43 anni costruire forza e muscolo adesso e un investimento per la fase che precede la menopausa e per gli anni successivi."],
+      ]},
+    ]
+  },
+  {
+    t: "Il tuo piano alimentare (dott. Merlini, marzo 2026)",
+    d: [
+      {type:"bold-list", content:[
+        ["Calorie totali", "Circa 1600 kcal al giorno, pari a circa 28 kcal/kg su 57 kg."],
+        ["Carboidrati", "170-185 g al giorno, circa 2.98-3.25 g/kg."],
+        ["Proteine", "95-102 g al giorno, circa 1.67-1.79 g/kg."],
+        ["Lipidi", "Circa 50 g al giorno, circa 0.88 g/kg."],
+        ["Fibre", "Circa 30 g al giorno."],
+      ]},
+      {type:"p", content:"La distribuzione percentuale e circa 46% carboidrati, 26% proteine, 28% grassi. Rispetto a un piano standard e piu proteica e leggermente piu orientata alla ricomposizione corporea."},
+      {type:"bold-list", content:[
+        ["Proteine", "Sei nel range valido ma nella zona bassa. In deficit calorico sarebbe ideale stare piu vicina a 2.0-2.2 g/kg per proteggere meglio la massa magra."],
+        ["Distribuzione proteica", "L'obiettivo ideale sarebbe dividere le proteine in almeno 4 momenti giornalieri. Se non aggiungi uno spuntino proteico, rischi di concentrare troppo in pochi pasti."],
+        ["Metilfenidato", "Se riduce l'appetito, raggiungere il target proteico diventa piu difficile. Nei giorni peggiori un secondo shake puo aiutare senza richiedere un pasto solido."],
+        ["Carboidrati", "Sei al limite basso. Nei giorni con i pesi usa il lato alto del range per sostenere il glicogeno e la performance."],
+        ["Grassi", "0.88 g/kg: appena sopra la soglia di sicurezza. Non ridurli."],
+        ["Deficit", "Con un TDEE di circa 2077 kcal, il deficit e circa 475 kcal al giorno: leggermente aggressivo ma ancora gestibile se le prestazioni restano stabili."],
+        ["Creatina", "3 g al giorno e un dosaggio funzionale, anche se nella parte bassa del range ideale. Puo far salire il peso di 0.6-1.7 kg per acqua intramuscolare senza essere grasso."],
+        ["Omega-3", "Va verificato che la capsula fornisca davvero almeno 1 g combinato di EPA + DHA, non solo 1 g di olio totale."],
+        ["Dieta flexitariana", "Compatibile con l'ipertrofia. Quando scegli fonti vegetali serve piu attenzione alla quota proteica totale e per pasto."],
+        ["Giorno libero", "Utile per l'aderenza. Costanza imperfetta ma sostenibile batte perfezione insostenibile."],
+      ]},
+      {type:"p", content:"Gli indicatori piu utili da monitorare non sono solo il peso: BIA ripetuta, misure antropometriche, pliche se disponibili e performance in palestra."},
+    ]
+  },
 ];
 
 /* === MUSCLES === */
@@ -858,8 +988,9 @@ var DAYS = [
 
 /* === IPERTROFIA V4 — Upper/Lower 4+2 Cardio (da CSV programma) === */
 var DAYS_V4 = [
-  { name: "Lun", focus: "Lower A — Quadricipiti + Glutei", dur: "6 esercizi", tEst: 70,
+  { name: "Giorno 1", focus: "Lower A — Quadricipiti + Glutei", dur: "6 esercizi", tEst: 70,
     intro: {
+      attrezzi: ["Bilanciere + rack + bumper", "Manubri", "Panca", "Elastico", "Slackline board", "Ab wheel"],
       muscoli: ["Quadricipiti (Squat, Squat bulgaro)", "Glutei (Hip thrust, Nordic curl)", "Femorali (Nordic curl, Slackline)", "Core (Ab wheel, Slackline)"],
       obiettivi: ["Costruire forza sullo Squat con double progression", "Massimizzare il volume sui glutei con Hip thrust caricato", "Rinforzare i femorali con Nordic curl eccentrico"],
       attenzione: ["Squat: ginocchia FUORI, manovra di Valsalva, parallelo minimo — non fermarti prima", "Hip thrust: mento al petto, NON iperestendere la lombare in alto — squeeze glutei 1s", "Nordic curl: fase eccentrica lentissima 3-4s — anche il minimo ROM vale"],
@@ -868,19 +999,20 @@ var DAYS_V4 = [
     warmup: [
       { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti. Attiva flessori anca e gambe.", tm: 180, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti.", tm: 180 }] },
       { n: "Cat-Cow", img: "w_CatCow", d: "Cat-Cow + World's Greatest Stretch per 2 minuti totali. Mobilizza colonna, anche e caviglie prima dello squat.", tm: 120, alt: [{ n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "4 per lato + 8 Cat-Cow lente." }] },
-      { n: "Squat a corpo libero", img: "w_SquatBL", d: "3-4 serie di avvicinamento: barra 40% → 60% → 80%. Imposta la traiettoria prima del carico pesante.", alt: [{ n: "Affondi a corpo libero", d: "6 per gamba, lenti." }] },
+      { n: "Serie avvicinamento squat con bilanciere", img: "w_SquatBL", d: "3-4 serie con bilanciere: 40% → 60% → 80%. Imposta la traiettoria prima del carico pesante.", alt: [{ n: "Affondi a corpo libero", d: "6 per gamba, lenti." }] },
     ],
     ex: [
       { n: "Squat", s: "4x6-8", rpe: "8-9", note: "Double progression. Piedi ruotati 15-30 gradi, ginocchia fuori, parallelo min. Valsalva. Ultimo set a cedimento tecnico controllato.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper + rack", errori: "Ginocchia che collassano dentro; busto che cade avanti in risalita; talloni che si alzano; schiena che si arrotonda in buca" },
       { n: "Squat Bulgaro", s: "3x10-12", rpe: "8", note: "Per gamba. Piede post sul dorso della panca. Discesa verticale, ginocchio ant verso 2-3 dito.", rec: "90s-2 min", gear: "Manubri + panca", errori: "Ginocchio ant che supera la punta; piede post troppo lontano; tronco che oscilla" },
-      { n: "Hip Thrust Bilanciere", s: "4x10-12", rpe: "8-9", note: "Scapole sul bordo panca. Mento al petto. Squeeze glutei 1s in alto. Piedi larghezza spalle.", rec: "2 min", gear: "Bilanciere + bumper + panca", errori: "Iperestensione lombare in alto; appoggio scapole troppo basso; piedi troppo vicini" },
-      { n: "Nordic Curl", s: "3x5-8", rpe: "8", note: "Eccentrica 3-4s. Elastico al petto se necessario. Corpo rigido, glutei contratti.", rec: "2 min", gear: "Elastico + rack", errori: "Cedere col busto; fase eccentrica troppo veloce" },
-      { n: "Slackline", s: "2x45s", rpe: "", note: "Sguardo avanti. Ginocchia leggermente flesse. Core attivo.", rec: "60s", gear: "Slackline board", errori: "Guardare i piedi; irrigidire le caviglie" },
-      { n: "Ab Wheel", s: "3x8-10", rpe: "8", note: "Core contratto tutto il tempo. Estendi il piu possibile senza cedere la lombare.", rec: "90s", gear: "Ab wheel", errori: "Lombare che si inarca; anche che non si estendono; range troppo corto" },
+      { n: "Hip Thrust Bilanciere", s: "4x10-12", rpe: "8-9", note: "Scapole sul bordo panca. Mento al petto. Squeeze glutei 1s in alto. Piedi larghezza spalle.", repeatHint: { tone: "up", short: "Versione piu pesante", detail: "Questo e l'Hip Thrust pesante della settimana. Quando lo ritrovi il giovedi, usa meno carico e piu controllo." }, rec: "2 min", gear: "Bilanciere + bumper + panca", errori: "Iperestensione lombare in alto; appoggio scapole troppo basso; piedi troppo vicini" },
+      { n: "Nordic Curl", s: "3x5-8", rpe: "8", note: "Eccentrica 3-4s. Assistito con elastico se necessario. Corpo rigido, glutei contratti.", rec: "2 min", gear: "Elastico + rack", errori: "Cedere col busto; fase eccentrica troppo veloce" },
+      { n: "Slackline", s: "2x45s", rpe: "", note: "Bipodalica. Sguardo avanti. Ginocchia leggermente flesse. Core attivo.", rec: "60s", gear: "Slackline board", errori: "Guardare i piedi; irrigidire le caviglie" },
+      { n: "Ab Wheel", s: "3x8-10", rpe: "8", note: "Dalle ginocchia. Core contratto tutto il tempo. Estendi il piu possibile senza cedere la lombare.", rec: "90s", gear: "Ab wheel", errori: "Lombare che si inarca; anche che non si estendono; range troppo corto" },
     ], str: ["Quadricipiti","Flessori anca","Glutei"] },
 
-  { name: "Mar", focus: "Upper A — Tirata + Petto", dur: "5 esercizi", tEst: 65,
+  { name: "Giorno 2", focus: "Upper A — Tirata + Petto", dur: "5 esercizi", tEst: 65,
     intro: {
+      attrezzi: ["Barra trazioni", "T-bar", "Bilanciere + panca + rack", "Cavo alto + corda", "Manubri"],
       muscoli: ["Dorsali/Bicipiti (Trazioni, T-bar row)", "Pettorali/Tricipiti (Panca piana)", "Deltoidi posteriori (Face pull)", "Bicipiti (Curl)"],
       obiettivi: ["Costruire forza nelle Trazioni con double progression — priorita assoluta", "Sviluppare spessore dorsale con T-bar row", "Aggiungere volume su petto con Panca piana"],
       attenzione: ["Trazioni: parti da braccia TESE, scapole depresse PRIMA di tirare, mento sopra la sbarra, discesa controllata 2-3s", "T-bar: busto fisso a 45 gradi, tira verso l'ombelico, scapole addotte 1s in alto", "Face pull: tira verso le orecchie, rotazione esterna in alto, gomiti sempre alti"],
@@ -889,7 +1021,8 @@ var DAYS_V4 = [
     warmup: [
       { n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti.", tm: 180, alt: [{ n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti.", tm: 180 }] },
       { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "15 avanti + 15 indietro. Scalda cuffia dei rotatori.", alt: [{ n: "Shoulder rolls + apertura petto", d: "10 rotazioni + 10 aperture." }] },
-      { n: "Inchworm", img: "w_Inchworm", d: "Inchworm per 3 minuti + 2-3 serie di avvicinamento alle trazioni (1-2 rep, poi 3, poi 4-5). Non affaticarsi.", tm: 180, alt: [{ n: "Cat-Cow", img: "w_CatCow", d: "8 lente + sospensione attiva alla sbarra." }] },
+      { n: "Inchworm", img: "w_Inchworm", d: "5 ripetizioni. Attiva core, spalle e femorali.", alt: [{ n: "Cat-Cow", img: "w_CatCow", d: "8 lente." }] },
+      { n: "Serie avvicinamento trazioni", img: "w_Inchworm", d: "2-3 serie: 1-2 rep, poi 3, poi 4-5. Non affaticarti.", alt: [{ n: "Sospensione attiva alla sbarra", d: "2-3 serie brevi di attivazione scapolare." }] },
     ],
     ex: [
       { n: "Trazioni", s: "4x5-8", rpe: "8-9", note: "Double progression. Presa prona. Parti da braccia tese. Mento sopra sbarra. Discesa 2-3s. Ultimo set a cedimento tecnico controllato.", priority: true, rec: "2-3 min", gear: "Barra trazioni (+ elastico assist.)", errori: "Kipping/slancio; mento che si protende senza tirare; spalle alle orecchie; ROM incompleto" },
@@ -899,37 +1032,42 @@ var DAYS_V4 = [
       { n: "Curl Bicipiti", s: "3x10-12", rpe: "9", note: "Gomiti fissi ai fianchi. Supinazione. Eccentrica 2-3s.", rec: "90s", gear: "Manubri", errori: "Slancio col busto; gomiti che avanzano; fase eccentrica troppo veloce" },
     ], str: ["Dorsali","Pettorali","Bicipiti","Spalle"] },
 
-  { name: "Mer", focus: "Cardio A ❤️", cardio: true,
+  { name: "Giorno 3", focus: "Cardio A — scegli UN'opzione in base alla settimana", cardio: true,
+    cardioIntro: "Alterna intensita alta e bassa tra Giorno 3 e Giorno 7. Se oggi fai HIIT, nel Giorno 7 fai corsa leggera o rucking. Se oggi fai rucking, nel Giorno 7 fai corsa leggera.",
+    cardioGear: ["Tapis roulant oppure sacco + corde", "Zaino da rucking 15-20 kg", "Slackline"],
+    cardioWhy: "Il cardio e limitato a 2 sessioni a settimana su giorni separati dai pesi per minimizzare l'interferenza con la crescita muscolare. La corsa ha un impatto negativo maggiore sull'ipertrofia rispetto al rucking per la componente eccentrica elevata: per questo il rucking e l'opzione preferita. L'HIIT e limitato a 1 volta a settimana perche puo sopprimere le vie di segnalazione anabolica (mTOR). Alternare alta e bassa intensita tra le due sessioni garantisce stimolo cardiovascolare senza compromettere il recupero dai pesi.",
     cardioOptions: [
-      { icon: "🏃", label: "HIIT tapis roulant", desc: "5 min warmup + 8x(30s sprint RPE 8-9 / 60s cammino) + 5 min cooldown. Settimane dispari.", duration: "25 min" },
-      { icon: "🎒", label: "Rucking con zaino 15-20 kg", desc: "Salite e discese. Busto eretto, zaino alto e aderente alla schiena. +1 kg ogni 2 settimane. Settimane pari.", duration: "45-60 min" },
-      { icon: "💪", label: "Circuito sacco + corde + slackline", desc: "3 round sacco 3 min + 4×30s battle rope + slackline 3×30s. RPE 7-8. Opzione bonus.", duration: "25-30 min" },
+      { icon: "🏃", label: "HIIT tapis roulant — 25 min", desc: "5 min camminata di riscaldamento → 8 ripetizioni di 30s sprint + 60s camminata → 5 min camminata di defaticamento. Intensita sprint: RPE 8-9 (non riesci a parlare). Settimane dispari. In alternativa: circuito sacco + corde.", duration: "25 min" },
+      { icon: "🎒", label: "Rucking con zaino — 45-60 min", desc: "Zaino 15-20 kg, alto e aderente alla schiena. Salite e discese. Intensita: zona 2 (puoi parlare senza fiatone). Progressione: aumenta il peso di 1 kg ogni 2 settimane OPPURE la durata di 5 minuti. Mai entrambi insieme. Settimane pari.", duration: "45-60 min" },
+      { icon: "💪", label: "Circuito sacco + corde + slackline — 25-30 min", desc: "3 round da 3 min al sacco (1 min riposo tra i round) + 4x30s battle rope (30s riposo) + slackline 3x30s. Usalo al posto dell'HIIT quando vuoi variare. Conta come sessione ad alta intensita.", duration: "25-30 min" },
     ]
   },
 
-  { name: "Gio", focus: "Lower B — Glutei + Femorali", dur: "6 esercizi", tEst: 70,
+  { name: "Giorno 4", focus: "Lower B — Glutei + Femorali", dur: "6 esercizi", tEst: 70,
     intro: {
+      attrezzi: ["Bilanciere + bumper", "Manubri", "Panca", "Panca romana + sacco sabbia", "Fitball", "Elastico"],
       muscoli: ["Femorali (Stacco, Stacco rumeno, Fitball curl)", "Glutei (Hip thrust, Affondi camminati, Hyperextension)", "Core (stabilizzazione durante stacco)"],
-      obiettivi: ["Costruire forza nello Stacco da terra con double progression — priorita assoluta", "Volume accessorio su femorali con Stacco rumeno e Fitball curl", "Glutei: frequenza alta con Hip thrust (peso inferiore al lunedi)"],
+      obiettivi: ["Costruire forza nello Stacco da terra con double progression — priorita assoluta", "Volume accessorio su femorali con Stacco rumeno e Fitball curl", "Glutei: frequenza alta con Hip thrust (peso inferiore al Giorno 1)"],
       attenzione: ["Stacco: barra SEMPRE a contatto con le tibie, anche e spalle salgono INSIEME, lombare neutra mai arrotondata", "Stacco rumeno: ginocchia leggermente flesse e FISSE, senti lo stretch dei femorali", "Affondi camminati: passo lungo per enfatizzare i glutei, ginocchio posteriore sfiora il pavimento"],
       ritmo: "Recuperi 2-3 min su Stacco. 2 min su Stacco rumeno. 90-120s sugli altri."
     },
     warmup: [
       { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "Marcia sul posto + affondi a corpo libero per 3 minuti totali. Attiva anche, quadricipiti e glutei.", tm: 180, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti.", tm: 180 }] },
       { n: "Good Morning senza peso", img: "w_GoodMorningSenzaPeso", d: "Good morning senza peso + clamshell con elastico. 2 min. Attiva glutei e femorali.", tm: 120, alt: [{ n: "Cat-Cow", img: "w_CatCow", d: "8 lente." }] },
-      { n: "Squat a corpo libero", img: "w_SquatBL", d: "3-4 serie di avvicinamento allo stacco: barra 40% → 60% → 80%.", alt: [{ n: "Hip hinge con bastone", d: "10 rip lente." }] },
+      { n: "Serie avvicinamento stacco con bilanciere", img: "w_SquatBL", d: "3-4 serie con bilanciere: 40% → 60% → 80%.", alt: [{ n: "Hip hinge con bastone", d: "10 rip lente." }] },
     ],
     ex: [
       { n: "Stacco da Terra", s: "4x5-8", rpe: "8-9", note: "Double progression. Piedi larghezza anche. Barra a contatto tibie. Spingi il pavimento. Anche e spalle salgono insieme. Ultimo set a cedimento tecnico controllato.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata/cifotica; barra lontana dal corpo; anche che salgono prima delle spalle; collo iperesteso" },
       { n: "Stacco Rumeno", s: "3x10-12", rpe: "8-9", note: "Manubri lungo le cosce. Ginocchia flesse e fisse. Senti lo stretch femorali. Spingi il sedere indietro.", rec: "2 min", gear: "Manubri", errori: "Ginocchia troppo flesse; schiena arrotondata; manubri lontani dal corpo" },
-      { n: "Hip Thrust Bilanciere", s: "3x12-15", rpe: "9", note: "Peso INFERIORE rispetto al lunedi. Focus su squeeze glutei. Stesse indicazioni tecniche.", rec: "90s-2 min", gear: "Bilanciere + bumper + panca", errori: "Vedi lunedi" },
+      { n: "Hip Thrust Bilanciere", s: "3x12-15", rpe: "9", note: "Peso INFERIORE rispetto al Giorno 1. Focus su squeeze glutei. Stesse indicazioni tecniche.", repeatHint: { tone: "down", short: "Usa meno peso del Giorno 1", detail: "Questo Hip Thrust e la versione piu leggera della settimana: rispetto al Giorno 1 abbassa il carico e punta a piu ripetizioni e piu squeeze dei glutei." }, rec: "90s-2 min", gear: "Bilanciere + bumper + panca", errori: "Vedi Giorno 1" },
       { n: "Affondi", s: "3x12 per gamba", rpe: "8-9", note: "Affondi camminati con manubri. Passo lungo per enfatizzare glutei. Ginocchio post sfiora il pavimento. Busto eretto.", rec: "2 min", gear: "Manubri", errori: "Passo troppo corto; ginocchio post che non scende; busto che oscilla" },
       { n: "Hyperextension con Sacco", s: "3x12-15", rpe: "9", note: "Sacco sabbia 5kg al petto. Sali solo fino alla linea del corpo. Squeeze glutei in alto. Collo neutro.", rec: "90s", gear: "Panca romana + sacco sabbia", errori: "Iperestensione lombare in alto; velocita eccessiva; collo iperesteso" },
       { n: "Fitball Hamstring Curl", s: "3x12", rpe: "9", note: "Bacino alto tutto il tempo. Talloni sulla fitball. Curl lento e controllato.", rec: "90s", gear: "Fitball", errori: "Bacino che cade; piedi che scivolano; range incompleto" },
     ], str: ["Femorali","Glutei","Lombare","Flessori anca"] },
 
-  { name: "Ven", focus: "Upper B — Spinta + Trazioni + Tricipiti", dur: "6 esercizi", tEst: 65,
+  { name: "Giorno 5", focus: "Upper B — Spinta + Trazioni + Tricipiti", dur: "6 esercizi", tEst: 65,
     intro: {
+      attrezzi: ["Barra trazioni", "Bilanciere + rack", "Barra dip", "Cavo alto + corda", "Elastico o cavo alto"],
       muscoli: ["Pettorali/Core (Push-up)", "Dorsali/Bicipiti (Trazioni neutra/supina)", "Deltoidi (Military press)", "Tricipiti (Dip, Tricipiti cavo)", "Obliqui (Woodchop)"],
       obiettivi: ["Seconda frequenza su Push-up e Trazioni con variante diversa", "Costruire forza sulla Military press con double progression", "Volume accessorio su tricipiti e obliqui"],
       attenzione: ["Push-up: corpo RIGIDO come una tavola, gomiti a 45 gradi, petto tocca terra, core contratto", "Military press: core rigido, barra parte dalle clavicole, testa si sposta avanti al passaggio", "Dip: busto inclinato in avanti, scendi fino a gomiti a 90 gradi, controlla la salita"],
@@ -942,17 +1080,20 @@ var DAYS_V4 = [
     ],
     ex: [
       { n: "Push-Up", s: "4xmax-2", rpe: "8", note: "Fermati 2 rep prima del cedimento. Corpo rigido, gomiti 45 gradi, petto tocca terra. Core contratto.", priority: true, rec: "2 min", gear: "Corpo libero (o rialzo)", errori: "Anche che cedono (banana); gomiti a 90 gradi; testa che penzola; ROM incompleto" },
-      { n: "Trazioni Supine", s: "3xmax-2", rpe: "8", note: "Presa neutra o supina. Stesso standard tecnico di martedi. Piu stimolo su bicipiti.", priority: true, rec: "2 min", gear: "Barra trazioni", errori: "Vedi martedi — presa diversa per variazione angolare" },
+      { n: "Trazioni Supine", s: "3xmax-2", rpe: "8", note: "Presa neutra o supina. Stesso standard tecnico di Giorno 2. Piu stimolo su bicipiti.", priority: true, rec: "2 min", gear: "Barra trazioni", errori: "Vedi Giorno 2 — presa diversa per variazione angolare" },
       { n: "Military Press", s: "4x6-8", rpe: "8-9", note: "Double progression. Core rigido. Barra dalle clavicole. Spingi verticale. Testa si sposta avanti dopo il passaggio. Ultimo set a cedimento tecnico controllato.", rec: "2 min", gear: "Bilanciere + rack", errori: "Iperestensione lombare; barra davanti al viso; gomiti che svasano; testa che arretra" },
-      { n: "Dip alle Parallele", s: "3xRIR 1-2", rpe: "8", note: "Busto inclinato avanti per petto. Gomiti indietro. Scendi a 90 gradi. Controlla la salita.", rec: "2 min", gear: "Barra dip", errori: "Spalle che salgono; oscillazione del corpo; discesa eccessiva oltre 90 gradi" },
+      { n: "Dip alle Parallele", s: "3xRIR 1-2", rpe: "8-9", note: "Busto inclinato avanti per petto. Gomiti indietro. Scendi a 90 gradi. Controlla la salita.", rec: "2 min", gear: "Barra dip", errori: "Spalle che salgono; oscillazione del corpo; discesa eccessiva oltre 90 gradi" },
       { n: "Tricipiti Cavo", s: "3x12", rpe: "9", note: "Corda. Gomiti fissi ai fianchi. Apri la corda in basso. Estensione completa. Eccentrica lenta.", rec: "60-90s", gear: "Cavo alto + corda", errori: "Gomiti che si muovono; busto che si inclina; usare lo slancio" },
       { n: "Woodchop", s: "3x12", rpe: "8-9", note: "Per lato. Cavo alto o elastico. Rotazione dal core, braccia tese. Movimento controllato.", rec: "60-90s", gear: "Cavo alto o elastico", errori: "Ruotare con le braccia invece che dal core; peso eccessivo" },
     ], str: ["Pettorali","Spalle","Tricipiti","Dorsali"] },
 
-  { name: "Dom", focus: "Cardio B ❤️", cardio: true,
+  { name: "Giorno 7", focus: "Cardio B — bassa intensita", cardio: true,
+    cardioIntro: "Oggi lavori a bassa intensita indipendentemente dal Giorno 3. Scegli tra corsa leggera e rucking in base a come ti senti.",
+    cardioGear: ["Scarpe da corsa", "Zaino da rucking 15-20 kg"],
+    cardioWhy: "Il cardio e limitato a 2 sessioni a settimana su giorni separati dai pesi per minimizzare l'interferenza con la crescita muscolare. La corsa ha un impatto negativo maggiore sull'ipertrofia rispetto al rucking per la componente eccentrica elevata: per questo il rucking e l'opzione preferita. L'HIIT e limitato a 1 volta a settimana perche puo sopprimere le vie di segnalazione anabolica (mTOR). Alternare alta e bassa intensita tra le due sessioni garantisce stimolo cardiovascolare senza compromettere il recupero dai pesi.",
     cardioOptions: [
-      { icon: "🏃", label: "Corsa leggera — Zona 2", desc: "30 min. Zona 2: puoi parlare senza fiatone. Cadenza 170+ passi/min. FC 120-140. Se mercoledi hai fatto HIIT.", duration: "30 min" },
-      { icon: "🎒", label: "Rucking con zaino 15-20 kg", desc: "+5 min ogni 2 settimane. Zona 2. Stesse indicazioni tecniche del mercoledi. Se mercoledi hai fatto HIIT.", duration: "45-75 min" },
+      { icon: "🏃", label: "Corsa leggera zona 2 — 30 min", desc: "Ritmo costante a cui puoi parlare senza fiatone. FC 120-140 bpm. Cadenza: 170+ passi al minuto. Non partire troppo veloce. I primi 5 minuti servono a trovare il ritmo.", duration: "30 min" },
+      { icon: "🎒", label: "Rucking con zaino — 45-75 min", desc: "Stesse regole del Giorno 3. Se nel Giorno 3 hai gia fatto rucking, oggi fai corsa leggera per variare lo stimolo. Progressione: aumenta la durata di 5 minuti ogni 2 settimane.", duration: "45-75 min" },
     ]
   },
 ];
@@ -960,8 +1101,9 @@ var DAYS_V4 = [
 var PRINCIPLES = [
   { t: "Come leggere un esercizio: 4x6-8 RPE 8", d: "4 serie da 6-8 ripetizioni a RPE 8 (ti restano 2 ripetizioni in riserva). Inizia dal fondo del range (4x6). Quando arrivi al tetto (4x8) con tecnica pulita, la settimana successiva aggiungi 2.5kg e ricomincia da 4x6. Questo è la double progression." },
   { t: "Come leggere: 4xmax-2", d: "Fai quante ripetizioni riesci fermandoti 2 prima del cedimento (RIR 2). Non c'è un numero fisso: l'obiettivo è migliorare il numero di ripetizioni nel tempo. Si usa su Push-Up e Trazioni dove il carico è il peso corporeo." },
-  { t: "Come leggere: 3xRIR 1-2", d: "RIR = Reps In Reserve. RIR 1-2 significa fermati quando ti restano 1-2 ripetizioni. Equivale a RPE 8-9. Si usa sugli accessori dove non c'è un range fisso ma si lavora vicino al limite senza cedimento." },
-  { t: "RPE (Rate of Perceived Exertion)", d: "Scala da 1 a 10 dello sforzo percepito. RPE 8 = ti restano 2 ripetizioni; RPE 9 = ne resta 1; RPE 10 = cedimento completo. I compound pesanti (Squat, Stacco, Military) stanno a RPE 8 per proteggere articolazioni e sistema nervoso. Gli accessori a RPE 8-9." },
+  { t: "RIR e RPE: che differenza c'e?", d: "Misurano la stessa cosa da due lati diversi: quanto sei vicina al cedimento. RIR guarda quante ripetizioni ti restano ancora. RPE guarda quanto e stata dura la serie su una scala da 1 a 10. In pratica: RIR 3 = RPE 7, RIR 2 = RPE 8, RIR 1 = RPE 9, RIR 0 = RPE 10. Quindi se il programma dice RIR 2, significa che devi fermarti quando senti di poter fare ancora 2 ripetizioni buone. Se dice RPE 8, il significato pratico e lo stesso. RIR e spesso piu intuitivo per chi segue una scheda, RPE e piu comodo per descrivere l'intensita in modo rapido." },
+  { t: "Come leggere: 3xRIR 1-2", d: "Vuol dire che in ogni serie ti devi fermare con 1-2 ripetizioni ancora disponibili. Tradotto in pratica: stai lavorando vicino al limite, ma senza arrivare a cedimento. Corrisponde circa a RPE 8-9." },
+  { t: "Come leggere: RPE 8-9", d: "RPE 8 significa che potresti fare ancora 2 ripetizioni; RPE 9 che potresti farne ancora 1. In questa scheda i fondamentali stanno di solito a RPE 8-9 per stimolare bene il muscolo senza distruggere tecnica e recupero." },
   { t: "Recupero tra le serie", d: "Compound pesanti (Squat, Stacco, Trazioni, Military, Panca, Hip Thrust): 2-3 minuti. Accessori (Squat Bulgaro, Rematori, Stacco Rumeno): 90s-2 min. Isolamenti (Curl, Woodchop, Tricipiti cavo): 60-90s. Rispettare i recuperi è importante quanto l'esercizio: il muscolo deve ricaricare ATP per performare nella serie successiva." },
   { t: "★ PRIORITÀ: cosa significa", d: "L'esercizio contrassegnato con ★ è il fondamentale della sessione. Va fatto per primo, con la massima concentrazione. Se devi tagliare la sessione per mancanza di tempo o energia, completa almeno l'esercizio prioritario. Il resto è accessorio." },
 ];
@@ -1051,6 +1193,7 @@ var WS_IMG = {
   "w_AffondiWarmup": img_Affondi,
 };
 var SK = "wt-v5";
+var SK_SHADOW = SK + "-shadow";
 
 var EX_EXTRA_IMG = {
   "Ab Wheel": [img_Ab_Wheel_Corretto],
@@ -1080,6 +1223,31 @@ function todayStr() { return new Date().toISOString().split("T")[0]; }
 var MAX_PROGRESS_EX = ["Push-Up","Trazioni Supine"];
 var ACCESSORY_PROGRESS_EX = ["Squat Bulgaro","Face Pull","Curl Bicipiti","Hyperextension con Sacco","Fitball Hamstring Curl","Tricipiti Cavo"];
 var CORE_PROGRESS_EX = ["Slackline","Ab Wheel"];
+var CARDIO_KIND_LABEL = { run: "Corsa", ruck: "Rucking", hiit: "HIIT", circuit: "Circuito" };
+
+function cardioOptionKind(opt) {
+  var label = (opt && opt.label ? opt.label : "").toLowerCase();
+  if (label.indexOf("rucking") >= 0) return "ruck";
+  if (label.indexOf("corsa") >= 0) return "run";
+  if (label.indexOf("hiit") >= 0) return "hiit";
+  if (label.indexOf("circuito") >= 0) return "circuit";
+  return "cardio";
+}
+
+function cardioFieldConfig(kind) {
+  if (kind === "ruck") return [
+    { key: "minutes", label: "Min", placeholder: "60", inputMode: "numeric" },
+    { key: "km", label: "Km", placeholder: "5.2", inputMode: "decimal" },
+    { key: "kg", label: "Kg zaino", placeholder: "16", inputMode: "decimal" },
+  ];
+  if (kind === "run") return [
+    { key: "minutes", label: "Min", placeholder: "30", inputMode: "numeric" },
+    { key: "km", label: "Km", placeholder: "5.0", inputMode: "decimal" },
+  ];
+  return [
+    { key: "minutes", label: "Min", placeholder: "25", inputMode: "numeric" },
+  ];
+}
 
 /* === BREATHING RULES === */
 // type: "valsalva" | "anatomic-push" | "anatomic-pull" | "iso"
@@ -1171,9 +1339,11 @@ export default function App() {
   var [showReg, setShowReg] = useState(null);
   var [catSec, setCatSec] = useState(null);
   var [logs, setLogs] = useState({});
+  var [cardioLogs, setCardioLogs] = useState({});
   var [editing, setEditing] = useState(null);
   var [tmpW, setTmpW] = useState("");
   var [tmpR, setTmpR] = useState("");
+  var [cardioDrafts, setCardioDrafts] = useState({});
   var [histIdx, setHistIdx] = useState(null);
   var [histPage, setHistPage] = useState({});
   var [showTecnica, setShowTecnica] = useState(null);
@@ -1183,6 +1353,9 @@ export default function App() {
   var [settingsOpen, setSettingsOpen] = useState(false);
   var [userName, setUserName] = useState("");
   var [userPhoto, setUserPhoto] = useState(null);
+  var [privateCodeInput, setPrivateCodeInput] = useState("");
+  var [privateUnlocked, setPrivateUnlocked] = useState(false);
+  var [privateCodeError, setPrivateCodeError] = useState("");
   var [imgZoomOpen, setImgZoomOpen] = useState(false);
   var [ready, setReady] = useState(false);
   var [tMode, setTMode] = useState("stopwatch");
@@ -1193,6 +1366,7 @@ export default function App() {
   var [tFlash, setTFlash] = useState(false);
   var [tWarning, setTWarning] = useState(false);
   var [tPanel, setTPanel] = useState(false);
+  var [autoBackupMsg, setAutoBackupMsg] = useState("");
   var intv = useRef(null);
   var tStart = useRef(null);
   var tAcc = useRef(0);
@@ -1212,14 +1386,40 @@ export default function App() {
   }
 
   useEffect(function() {
-    try { var stored = localStorage.getItem(SK); if (stored) setLogs(JSON.parse(stored)); } catch(e) {}
+    try {
+      var stored = localStorage.getItem(SK) || localStorage.getItem(SK_SHADOW);
+      if (stored) {
+        var parsed = JSON.parse(stored);
+        if (parsed && parsed.logs && typeof parsed.logs === "object") {
+          setLogs(parsed.logs || {});
+          setCardioLogs(parsed.cardioLogs || {});
+        } else if (parsed && typeof parsed === "object") {
+          setLogs(parsed);
+        }
+      }
+    } catch(e) {}
     try { var n = localStorage.getItem("wt-username"); if (n) setUserName(n); } catch(e) {}
     try { var p = localStorage.getItem("wt-userphoto"); if (p) setUserPhoto(p); } catch(e) {}
     try { var th = localStorage.getItem("wt-theme"); if (th && TH[th]) setTheme(th); else localStorage.removeItem("wt-theme"); } catch(e) {}
     try { var fs = parseFloat(localStorage.getItem("wt-fontscale")); if (fs >= 0.9 && fs <= 1.5) setFontScale(fs); } catch(e) {}
     setReady(true);
   }, []);
-  var saveData = useCallback(function(nl) { setLogs(nl); try { localStorage.setItem(SK, JSON.stringify(nl)); } catch(e) {} }, []);
+  useEffect(function() {
+    if (!autoBackupMsg) return;
+    var tm = setTimeout(function() { setAutoBackupMsg(""); }, 5000);
+    return function() { clearTimeout(tm); };
+  }, [autoBackupMsg]);
+  var saveData = useCallback(function(nl, nc) {
+    var nextLogs = nl || {};
+    var nextCardioLogs = nc || {};
+    setLogs(nextLogs);
+    setCardioLogs(nextCardioLogs);
+    try {
+      var raw = JSON.stringify({ logs: nextLogs, cardioLogs: nextCardioLogs });
+      localStorage.setItem(SK, raw);
+      localStorage.setItem(SK_SHADOW, raw);
+    } catch(e) {}
+  }, []);
 
   function checkSound(ms, mode, target) {
     if (mode === "countdown") {
@@ -1290,15 +1490,40 @@ export default function App() {
 
   function fmtSerie(str) {
     if (!str) return "";
-    var m = str.replace(/\s/g, "").match(/(\d+)[xX](.+)/);
+    var clean = String(str).trim();
+    var m = clean.match(/(\d+)\s*[xX]\s*(.+)/);
     if (!m) return str;
     var sets = m[1];
-    var reps = m[2];
-    if (reps === "max") return sets + " serie al massimo delle ripetizioni";
-    if (reps.indexOf("s") >= 0) return sets + " serie da " + reps + " ciascuna";
-    var parts = reps.split("-");
-    if (parts.length === 1) return sets + " serie da " + parts[0] + " ripetizioni";
-    return sets + " serie: " + parts.join(", ") + " rip (peso crescente)";
+    var reps = m[2].trim();
+    var lower = reps.toLowerCase();
+    var perSide = /per\s+gamba|per\s+lato/.test(lower);
+    var suffix = lower.indexOf("per gamba") >= 0 ? " per gamba" : lower.indexOf("per lato") >= 0 ? " per lato" : "";
+    var main = reps.replace(/\s*per\s+(gamba|lato)\s*/i, "").trim();
+    if (/^max(?:-\d+)?$/i.test(main)) {
+      if (/^max$/i.test(main)) return sets + " serie al massimo delle ripetizioni" + suffix;
+      var reserve = (main.match(/^max-(\d+)$/i) || [])[1];
+      return sets + " serie quasi a cedimento" + (reserve ? " (" + reserve + " ripetizioni in riserva)" : "") + suffix;
+    }
+    if (/^\d+(?:-\d+)?s$/i.test(main)) return sets + " serie da " + main + " ciascuna" + suffix;
+    var parts = main.split("-").map(function(x) { return x.trim(); }).filter(Boolean);
+    if (parts.length === 1) return sets + " serie da " + parts[0] + " ripetizioni" + suffix;
+    return sets + " serie da " + parts[0] + " a " + parts[1] + " ripetizioni" + suffix;
+  }
+
+  function getProgressShortHelp(prog) {
+    if (!prog) return "";
+    if (prog.label.indexOf("Valuta manualmente") >= 0 || prog.label.indexOf("Controlla tu") >= 0) return "Hai usato carichi diversi nella stessa seduta: l'app non decide automaticamente se aumentare.";
+    if (prog.label.indexOf("Sessione incompleta") >= 0) return "Manca almeno una serie registrata: completa la seduta per avere un consiglio affidabile.";
+    if (prog.label.indexOf("Nessun dato") >= 0) return "Non c'e ancora una seduta registrata per questo esercizio.";
+    if (prog.label.indexOf("Serve un'altra sessione") >= 0) return "Per questi esercizi serve almeno un confronto con la seduta precedente.";
+    if (prog.label.indexOf("Aumenta carico") >= 0 || prog.label.indexOf("Aumenta leggermente il carico") >= 0) return "Hai chiuso tutte le serie al tetto del range: la prossima volta puoi aumentare il peso.";
+    if (prog.label.indexOf("Aumenta durata") >= 0) return "Hai completato tutto il tempo previsto: la prossima volta puoi aumentare la durata.";
+    if (prog.label.indexOf("Aumenta ripetizioni") >= 0) return "Hai completato bene il target: la prossima volta puoi aggiungere ripetizioni.";
+    if (prog.label.indexOf("Aggiungi ripetizioni") >= 0 || prog.label.indexOf("Prova a chiudere il range") >= 0) return "Sei gia nel range giusto, ma non ancora al massimo su tutte le serie.";
+    if (prog.label.indexOf("Stai progredendo") >= 0) return "Rispetto alla seduta precedente hai fatto piu ripetizioni totali.";
+    if (prog.label.indexOf("Stabile") >= 0) return "Sei simile alla seduta precedente: continua o prova ad aggiungere 1-2 ripetizioni totali.";
+    if (prog.label.indexOf("Consolida") >= 0) return "Non aumentare ancora: prima rendi piu solide tecnica e ripetizioni con questo carico.";
+    return prog.detail || "";
   }
 
   function textChunks(text) {
@@ -1469,10 +1694,163 @@ export default function App() {
     return null;
   }
 
-  function logSet(en, di, si, w, r) { var t = todayStr(); var k = t + "_d" + di + "_m" + month + "_" + en; var nl = Object.assign({}, logs); if (!nl[k]) nl[k] = { date: t, day: di, month: month, exercise: en, sets: [] }; var x = nl[k].sets.findIndex(function(s) { return s.si === si; }); var entry = { si: si, w: parseFloat(w) || 0, r: r === "max" ? r : (parseInt(r) || 0) }; if (x >= 0) nl[k].sets[x] = entry; else nl[k].sets.push(entry); saveData(nl); setEditing(null); setTmpW(""); setTmpR(""); }
+  function buildBackupPayload(sourceLogs, sourceCardioLogs, meta) {
+    return {
+      exportedAt: new Date().toISOString(),
+      month: month,
+      meta: meta || null,
+      logs: sourceLogs,
+      cardioLogs: sourceCardioLogs || {},
+    };
+  }
+
+  function downloadBackupPayload(payload, filename) {
+    var dataStr = JSON.stringify(payload, null, 2);
+    var dataBlob = new Blob([dataStr], { type: "application/json" });
+    var url = URL.createObjectURL(dataBlob);
+    var link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    link.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function isExerciseCompleteInLogs(sourceLogs, di, exName, expectedSets) {
+    var key = todayStr() + "_d" + di + "_m" + month + "_" + exName;
+    var entry = sourceLogs[key];
+    if (!entry || !expectedSets) return false;
+    return normalizeSessionSets(entry, expectedSets).length === expectedSets;
+  }
+
+  function isDayWorkoutComplete(sourceLogs, di) {
+    var day = activeDays[di];
+    if (!day || !day.ex || !day.ex.length) return false;
+    return day.ex.every(function(rawEx) {
+      var ex = getExForMonth(rawEx);
+      var spec = parseProgressSpec(ex.s);
+      return spec && isExerciseCompleteInLogs(sourceLogs, di, ex.n, spec.sets);
+    });
+  }
+
+  function autoExportCompletedSession(sourceLogs, di) {
+    var day = activeDays[di];
+    if (!day) return;
+    var payload = buildBackupPayload(sourceLogs, cardioLogs, {
+      type: "auto-session-complete",
+      date: todayStr(),
+      day: day.name,
+      focus: day.focus,
+    });
+    downloadBackupPayload(payload, "workout-session-" + todayStr() + "-" + String(day.name || "giorno").toLowerCase() + "-m" + month + ".json");
+    setAutoBackupMsg("Backup automatico creato: sessione completata ed esportata in JSON.");
+  }
+
+  function logSet(en, di, si, w, r) {
+    var t = todayStr();
+    var k = t + "_d" + di + "_m" + month + "_" + en;
+    var wasComplete = isDayWorkoutComplete(logs, di);
+    var nl = Object.assign({}, logs);
+    if (!nl[k]) nl[k] = { date: t, day: di, month: month, exercise: en, sets: [] };
+    var x = nl[k].sets.findIndex(function(s) { return s.si === si; });
+    var entry = { si: si, w: parseFloat(w) || 0, r: r === "max" ? r : (parseInt(r) || 0) };
+    if (x >= 0) nl[k].sets[x] = entry; else nl[k].sets.push(entry);
+    saveData(nl, cardioLogs);
+    if (!wasComplete && isDayWorkoutComplete(nl, di)) autoExportCompletedSession(nl, di);
+    setEditing(null);
+    setTmpW("");
+    setTmpR("");
+  }
   function getLog(en, di) { return logs[todayStr() + "_d" + di + "_m" + month + "_" + en]; }
   function getHist(en) { return Object.values(logs).filter(function(l) { return l.exercise === en; }).sort(function(a,b) { return b.date.localeCompare(a.date); }).slice(0, 10); }
   function getAllHist(en) { return Object.values(logs).filter(function(l) { return l.exercise === en && l.month === month; }).sort(function(a,b) { var c = b.date.localeCompare(a.date); return c || ((b.day || 0) - (a.day || 0)); }); }
+  function getCardioKey(di, label, dateStr) {
+    return (dateStr || todayStr()) + "_d" + di + "_m" + month + "_cardio_" + label;
+  }
+  function getCardioLog(di, label, dateStr) {
+    return cardioLogs[getCardioKey(di, label, dateStr)] || null;
+  }
+  function getAllCardioHist(di, label) {
+    return Object.values(cardioLogs)
+      .filter(function(entry) { return entry && entry.day === di && entry.label === label && entry.month === month; })
+      .sort(function(a, b) {
+        var c = b.date.localeCompare(a.date);
+        return c || ((b.day || 0) - (a.day || 0));
+      });
+  }
+  function fmtNum(n) {
+    var num = parseFloat(n);
+    if (!isFinite(num)) return "";
+    return Math.round(num * 10) / 10 === Math.round(num) ? String(Math.round(num)) : String(Math.round(num * 10) / 10);
+  }
+  function formatCardioSummary(entry) {
+    if (!entry) return "";
+    var bits = [];
+    if (entry.minutes) bits.push(fmtNum(entry.minutes) + " min");
+    if (entry.km) bits.push(fmtNum(entry.km) + " km");
+    if (entry.kg) bits.push(fmtNum(entry.kg) + " kg");
+    return bits.join(" · ");
+  }
+  function cardioScore(entry) {
+    if (!entry) return 0;
+    return (parseFloat(entry.minutes) || 0) + ((parseFloat(entry.km) || 0) * 10) + ((parseFloat(entry.kg) || 0) * 4);
+  }
+  function getCardioProgress(di, label) {
+    var hist = getAllCardioHist(di, label);
+    if (!hist.length) return null;
+    var latest = hist[0];
+    var prev = hist[1] || null;
+    if (!prev) {
+      return {
+        tone: "empty",
+        label: "⚪ Primo dato",
+        short: formatCardioSummary(latest),
+        detail: "Hai registrato la prima sessione di " + label + ". Dalla prossima l'app potra confrontarla."
+      };
+    }
+    var latestScore = cardioScore(latest);
+    var prevScore = cardioScore(prev);
+    var latestSummary = formatCardioSummary(latest);
+    var prevSummary = formatCardioSummary(prev);
+    if (latestScore > prevScore) {
+      return { tone: "up", label: "🟢 In aumento", short: latestSummary, detail: "Ultima: " + latestSummary + ". Prima: " + prevSummary + "." };
+    }
+    if (latestScore < prevScore) {
+      return { tone: "hold", label: "🟠 Più leggera", short: latestSummary, detail: "Ultima: " + latestSummary + ". Prima: " + prevSummary + ". Va bene se era una seduta di scarico o recupero." };
+    }
+    return { tone: "mid", label: "🟡 Stabile", short: latestSummary, detail: "Ultima: " + latestSummary + ". Molto simile alla precedente." };
+  }
+  function saveCardioSession(di, opt) {
+    var kind = cardioOptionKind(opt);
+    var draftKey = di + "_" + opt.label;
+    var draft = cardioDrafts[draftKey] || {};
+    var minutes = parseFloat(draft.minutes);
+    var km = parseFloat(draft.km);
+    var kg = parseFloat(draft.kg);
+    if (!(minutes > 0)) return;
+    if (kind === "ruck" && !(kg > 0)) return;
+    var key = getCardioKey(di, opt.label);
+    var next = Object.assign({}, cardioLogs);
+    next[key] = {
+      date: todayStr(),
+      day: di,
+      month: month,
+      label: opt.label,
+      kind: kind,
+      minutes: minutes,
+      km: km > 0 ? km : 0,
+      kg: kg > 0 ? kg : 0,
+    };
+    saveData(logs, next);
+  }
+  function unlockPrivateSection() {
+    if (String(privateCodeInput).trim() === "7792") {
+      setPrivateUnlocked(true);
+      setPrivateCodeError("");
+      return;
+    }
+    setPrivateUnlocked(false);
+    setPrivateCodeError("Codice non corretto.");
+  }
   function parseProgressSpec(str) {
     if (!str) return null;
     var clean = str.toLowerCase().replace(/\s+/g, "").replace(/pergamba/g, "");
@@ -1543,7 +1921,7 @@ export default function App() {
     if (!isCore && weights.length > 1) {
       var firstW = weights[0];
       var mixed = weights.some(function(w) { return w !== firstW; });
-      if (mixed) return { tone: "empty", label: "⚪ Valuta manualmente", detail: "Ultima sessione non uniforme: " + formatSessionSummary(latest.sets, false, isTime) + ".", short: "Carichi diversi nella stessa seduta" };
+      if (mixed) return { tone: "empty", label: "⚪ Controlla tu", detail: "Ultima sessione non uniforme: " + formatSessionSummary(latest.sets, false, isTime) + ".", short: "Carichi diversi nella stessa seduta" };
     }
     var allAtTop = reps.every(function(r) { return r >= spec.max; });
     var allInRange = reps.every(function(r) { return r >= spec.min; });
@@ -1568,14 +1946,7 @@ export default function App() {
 
 
   function exportData() {
-    var dataStr = JSON.stringify(logs, null, 2);
-    var dataBlob = new Blob([dataStr], {type: 'application/json'});
-    var url = URL.createObjectURL(dataBlob);
-    var link = document.createElement('a');
-    link.href = url;
-    link.download = 'workout-backup-' + todayStr() + '.json';
-    link.click();
-    URL.revokeObjectURL(url);
+    downloadBackupPayload(buildBackupPayload(logs, cardioLogs, { type: "manual-backup" }), 'workout-backup-' + todayStr() + '.json');
   }
 
   function importData() {
@@ -1588,8 +1959,9 @@ export default function App() {
       reader.onload = function(evt) {
         try {
           var imported = JSON.parse(evt.target.result);
-          setLogs(imported);
-          try { localStorage.setItem(SK, JSON.stringify(imported)); } catch(e2) {}
+          var importedLogs = imported && imported.logs && typeof imported.logs === "object" ? imported.logs : imported;
+          var importedCardioLogs = imported && imported.cardioLogs && typeof imported.cardioLogs === "object" ? imported.cardioLogs : {};
+          saveData(importedLogs || {}, importedCardioLogs || {});
           alert('Dati importati con successo!');
         } catch(e) {
           alert('Errore: file non valido');
@@ -1684,6 +2056,10 @@ export default function App() {
   return (
     <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif", background: T.bg, minHeight: "100vh", color: T.tx, zoom: fontScale, WebkitFontSmoothing: "antialiased" }}>
       <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+      {autoBackupMsg && <div style={{ position: "fixed", left: 12, right: 12, bottom: tPanel ? 210 : 110, zIndex: 260, maxWidth: 600, margin: "0 auto", background: T.ok, color: "#fff", borderRadius: 12, padding: "12px 14px", boxShadow: "0 10px 30px rgba(0,0,0,0.18)", fontSize: 12, fontWeight: 700, lineHeight: 1.5 }}>
+        💾 {autoBackupMsg}
+      </div>}
 
       <ExPopup />
 
@@ -1809,7 +2185,7 @@ export default function App() {
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); try { localStorage.removeItem(SK); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setCardioLogs({}); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
           </div>
         </div>
       </div>}
@@ -1990,7 +2366,7 @@ export default function App() {
         {/* Tab bar Teoria */}
         <div style={{ position: "sticky", top: 0, zIndex: 10, background: T.bg, padding: "10px 12px 8px", borderBottom: "1px solid " + T.cd }}>
           <div style={{ display: "flex", gap: 0, borderRadius: 10, overflow: "hidden", border: "1px solid " + dc + "30" }}>
-            {[["basi","Basi"],["teoria","Teoria"],["muscoli","Muscoli"],["alimentazione","Alimentazione"]].map(function(pair) {
+            {[["basi","🧱 Basi"],["teoria","📚 Teoria"],["muscoli","💪 Muscoli"],["alimentazione","🥗 Alimentazione"]].map(function(pair) {
               var k = pair[0], label = pair[1];
               var active = teoriaTab === k;
               return <button key={k} onClick={function() { setTeoriaTab(k); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: active ? dc : "transparent", color: active ? "#fff" : T.sub, transition: "background 0.15s" }}>{label}</button>;
@@ -2079,14 +2455,14 @@ export default function App() {
           {/* Tab interna Principi / Termini */}
           <div style={{ padding: "10px 16px 0" }}>
             <div style={{ display: "flex", gap: 0, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "30", marginBottom: 14 }}>
-              <button onClick={function() { setGlossTab("principi"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>Principi</button>
-              <button onClick={function() { setGlossTab("termini"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>Termini base</button>
+              <button onClick={function() { setGlossTab("principi"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>🧠 Principi</button>
+              <button onClick={function() { setGlossTab("termini"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>🔤 Termini base</button>
             </div>
           </div>
           <div style={{ padding: "0 16px 16px" }}>
             {glossTab === "principi" && <div>
               {/* Sezione: Concetti fondamentali */}
-              <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, color: T.sub, marginBottom: 8 }}>Concetti fondamentali</div>
+              <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, color: T.sub, marginBottom: 8 }}>🧠 Concetti fondamentali</div>
               <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 16 }}>
                 {PRINCIPLES_DEEP.map(function(g, gi) {
                   var isOpen = showPrinciples === gi;
@@ -2102,7 +2478,7 @@ export default function App() {
                 })}
               </div>
               {/* Sezione: Come leggere la scheda */}
-              <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, color: T.sub, marginBottom: 8 }}>Come leggere la scheda</div>
+              <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, color: T.sub, marginBottom: 8 }}>🗂️ Come leggere la scheda</div>
               <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg }}>
                 {PRINCIPLES.map(function(g, gi) {
                   var isOpen = showPrinciples === 100 + gi;
@@ -2122,6 +2498,46 @@ export default function App() {
               {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
             </div>}
           </div>
+        </div>}
+
+        {teoriaTab === "teoria" && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
+          <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
+            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🔒 Dati personali</div>
+            <div style={{ fontSize: 12, color: T.sub }}>BIA, composizione corporea e piano alimentare in una sezione separata.</div>
+          </div>
+          {!privateUnlocked ? <div style={{ padding: "14px 16px 16px" }}>
+            <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.65, marginBottom: 10 }}>Inserisci il codice per aprire questa sezione.</div>
+            <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+              <input
+                type="password"
+                inputMode="numeric"
+                placeholder="Codice"
+                value={privateCodeInput}
+                onChange={function(e) { setPrivateCodeInput(e.target.value); setPrivateCodeError(""); }}
+                onKeyDown={function(e) { if (e.key === "Enter") unlockPrivateSection(); }}
+                style={{ flex: 1, padding: "11px 12px", border: "1px solid " + dc + "28", borderRadius: 10, fontSize: 14, fontWeight: 700, background: T.sb, color: T.tx, boxSizing: "border-box" }}
+              />
+              <button onClick={unlockPrivateSection} style={{ minHeight: 44, padding: "0 14px", border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Apri</button>
+            </div>
+            {privateCodeError && <div style={{ marginTop: 8, fontSize: 11, color: "#C62828", fontWeight: 700 }}>{privateCodeError}</div>}
+          </div> : <div style={{ padding: "12px 16px 16px", display: "grid", gap: 8 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 2 }}>
+              <div style={{ fontSize: 11, fontWeight: 800, color: T.ok }}>Sezione sbloccata</div>
+              <button onClick={function() { setPrivateUnlocked(false); setPrivateCodeInput(""); }} style={{ marginLeft: "auto", border: "1px solid " + dc + "24", background: dc + "10", color: dc, borderRadius: 8, padding: "6px 10px", fontSize: 11, fontWeight: 700, cursor: "pointer" }}>Richiudi</button>
+            </div>
+            {PERSONAL_DATA_SECTIONS.map(function(section, si) {
+              var isOpen = showPrinciples === 300 + si;
+              return <div key={si} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "30" : T.bg) }}>
+                <div onClick={function() { setShowPrinciples(isOpen ? null : 300 + si); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
+                  <span style={{ fontSize: 13, fontWeight: isOpen ? 700 : 600, color: isOpen ? dc : T.tx, lineHeight: 1.3 }}>{section.t}</span>
+                  <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+                </div>
+                {isOpen && <div style={{ padding: "4px 14px 14px", background: T.sb }}>
+                  <RichBlocks blocks={section.d} accent={dc} />
+                </div>}
+              </div>;
+            })}
+          </div>}
         </div>}
 
         {/* === SEZIONE MUSCOLI (dentro Teoria) === */}
@@ -2189,7 +2605,7 @@ export default function App() {
               <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 4, marginTop: 8 }}>Perché allenarlo</div>
               <DetailText text={m.y} accent={dc} />
             </div>
-            <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 6 }}>Esercizi (tap per dettagli)</div>
+            <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 6 }}>Esercizi</div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
               {m.ex.map(function(e, ei) { return <span key={ei} onClick={function() { setExInfoOpen(e); }} style={{ fontSize: 11, background: dc + "12", color: dc, padding: "4px 10px", borderRadius: 6, fontWeight: 600, cursor: "pointer", textDecoration: "underline dotted", textDecorationColor: dc + "50" }}>{e}</span>; })}
             </div>
@@ -2204,12 +2620,12 @@ export default function App() {
           </div>
           <div style={{ padding: "12px 16px 16px", display: "grid", gap: 8 }}>
             {[
-              { t: "Proteine: la priorità assoluta", body: "Range: 1.6-2.2 g/kg al giorno. Il tuo piano nutrizionale prevede ~1.78 g/kg (100 g/giorno a 56 kg). In deficit calorico, avvicinarsi a 2.0 g/kg (112 g) preserva meglio la massa magra.\n\nDistribuzione: almeno 4 pasti con 0.4-0.55 g/kg per pasto (22-31 g per pasto). L'effetto anabolico di un singolo pasto dura 5-6 ore — non serve mangiare ogni 2 ore.\n\nFonti ottimali: pollo, tacchino, uova, pesce, legumi + cereali, yogurt greco, ricotta, fiocchi di latte." },
-              { t: "Carboidrati: carburante per la performance", body: "Il glicogeno muscolare è il carburante principale dell'allenamento ipertrofico. 3 set da 12RM riducono il glicogeno del ~26%; 6 set del ~38%. Il ripristino completo avviene entro 24 ore con un'assunzione giornaliera adeguata — indipendentemente dal timing post-workout.\n\nIl tuo piano: ~3.30 g/kg (185 g/giorno). Minimo consigliato: 3 g/kg.\n\nFonti: riso, pasta, patate, pane, frutta, avena. Preferisci fonti integrali per fibra e sazietà." },
-              { t: "Grassi: equilibrio ormonale", body: "I grassi completano il bilancio calorico dopo proteine e carboidrati. Non scendere sotto 0.8 g/kg: livelli troppo bassi possono alterare il profilo ormonale.\n\nIl tuo piano: ~0.89 g/kg (~50 g), al limite basso ma adeguato. Privilegia fonti insature: olio EVO, frutta secca, pesce grasso (salmone, sgombro), avocado. Limita i grassi saturi (salumi, formaggi grassi)." },
+              { t: "Proteine: la priorità assoluta", body: "Range: 1.6-2.2 g/kg al giorno. Il tuo piano nutrizionale prevede ~1.67-1.79 g/kg (95-102 g/giorno a 57 kg). In deficit calorico, avvicinarsi a 2.0 g/kg (114 g) preserva meglio la massa magra.\n\nDistribuzione: almeno 4 pasti con 0.4-0.55 g/kg per pasto (23-31 g per pasto). L'effetto anabolico di un singolo pasto dura 5-6 ore — non serve mangiare ogni 2 ore.\n\nFonti ottimali: pollo, tacchino, uova, pesce, legumi + cereali, yogurt greco, ricotta, fiocchi di latte." },
+              { t: "Carboidrati: carburante per la performance", body: "Il glicogeno muscolare è il carburante principale dell'allenamento ipertrofico. 3 set da 12RM riducono il glicogeno del ~26%; 6 set del ~38%. Il ripristino completo avviene entro 24 ore con un'assunzione giornaliera adeguata — indipendentemente dal timing post-workout.\n\nIl tuo piano: ~2.98-3.25 g/kg (170-185 g/giorno). Minimo consigliato: 3 g/kg.\n\nFonti: riso, pasta, patate, pane, frutta, avena. Preferisci fonti integrali per fibra e sazietà." },
+              { t: "Grassi: equilibrio ormonale", body: "I grassi completano il bilancio calorico dopo proteine e carboidrati. Non scendere sotto 0.8 g/kg: livelli troppo bassi possono alterare il profilo ormonale.\n\nIl tuo piano: ~0.88 g/kg (~50 g), al limite basso ma adeguato. Privilegia fonti insature: olio EVO, frutta secca, pesce grasso (salmone, sgombro), avocado. Limita i grassi saturi (salumi, formaggi grassi)." },
               { t: "Timing dei pasti", body: "La 'finestra anabolica' esiste, ma è molto più ampia di quanto si creda. Se hai consumato un pasto completo 2-3 ore prima dell'allenamento, la finestra post-workout si estende a 4-6 ore — non c'è urgenza di mangiare entro 30 minuti.\n\nSe ti alleni a digiuno, le proteine post-workout diventano urgenti (entro 45 minuti).\n\n• Pre-workout (1-2h): pasto con proteine + carboidrati\n• Post-workout (entro 4-6h dal pasto pre): proteine 0.4-0.5 g/kg di massa magra (~20-25 g)\n• Prima di dormire: 30-40 g di proteine a digestione lenta (caseine: fiocchi di latte, yogurt greco). Il beneficio principale è raggiungere il target proteico giornaliero." },
               { t: "Idratazione", body: "Bevi quando hai sete — per la maggior parte delle persone è sufficiente. Non esiste un target universale di 'X ml al giorno'.\n\nMinimo: non scendere sotto 1.2-1.5 litri al giorno (come indicato dal tuo piano nutrizionale). Non bere quantità eccessive senza elettroliti: a lungo termine il rischio è iponatremia.\n\nMonitora il colore dell'urina: giallo chiaro = idratazione ottimale." },
-              { t: "Ricomposizione corporea: il tuo caso", body: "Con massa grassa al 20.9% e massa muscolare al 54.2% (BIA marzo 2026), sei nella posizione ideale per una ricomposizione corporea: perdere grasso e guadagnare muscolo simultaneamente.\n\nFunziona con deficit moderato (-300/-400 kcal), proteine alte (1.6-2.2 g/kg) e allenamento con i pesi. Con un TDEE stimato di ~2050 kcal e un piano da 1600 kcal, il deficit attuale è ~450 kcal: leggermente aggressivo ma ancora gestibile. Monitora la performance: se cala per 2 settimane consecutive, il deficit è troppo alto.\n\nTarget realistico: 0.5-0.7% del peso a settimana = 280-390 g/settimana. Perdere 2-3 kg di grasso ti porterebbe a ~16-17% di massa grassa. 5 kg ti porterebbe a ~12% — molto difficile da sostenere a lungo termine." },
+              { t: "Ricomposizione corporea: il tuo caso", body: "Con massa grassa al 20.9% e massa muscolare al 54.2% (BIA marzo 2026), sei nella posizione ideale per una ricomposizione corporea: perdere grasso e guadagnare muscolo simultaneamente.\n\nFunziona con deficit moderato (-300/-400 kcal), proteine alte (1.6-2.2 g/kg) e allenamento con i pesi. Con un TDEE stimato di ~2077 kcal e un piano da 1600 kcal, il deficit attuale è ~475 kcal: leggermente aggressivo ma ancora gestibile. Monitora la performance: se cala per 2 settimane consecutive, il deficit è troppo alto.\n\nTarget realistico: 0.5-0.7% del peso a settimana = 285-400 g/settimana. Perdere 2-3 kg di grasso ti porterebbe a ~16-17% di massa grassa. 5 kg ti porterebbe a ~12% — molto difficile da sostenere a lungo termine." },
               { t: "Integratori: cosa vale, cosa no", body: "La maggior parte degli integratori non ha prove solide. Quelli con evidenza robusta:\n\n• Creatina monoidrato: 3-5 g/giorno tutti i giorni. Il tuo piano: 3 g/giorno. Migliora forza e ipertrofia in modo consistente. Possibile aumento di peso 1-3% da acqua intramuscolare (aspetto più tonico, non gonfio). La letteratura supporta l'uso continuativo oltre le 8 settimane.\n• Proteine whey: 20-30 g per dose quando i pasti non bastano. Già nel tuo piano (20 g a colazione).\n• Omega-3 (EPA + DHA): 1 g combinato/giorno. Già nel tuo piano. Benefici cognitivi e possibile supporto alla sintesi proteica.\n• Caffeina: 3-6 mg/kg pre-workout = 168-336 mg per te = 2-3 caffè. Attenzione: se assumi altri stimolanti per altri motivi, valuta con il medico la combinazione.\n• Multivitaminico: utile in deficit calorico quando la varietà alimentare è limitata.\n\nTutto il resto (BCAA se le proteine sono sufficienti, bruciagrassi, pre-workout complessi) ha prove deboli o nulle." },
             ].map(function(item, ii) {
               var isOpen = showPrinciples === 200 + ii;
@@ -2244,7 +2660,8 @@ export default function App() {
           var months = ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"];
           return d.getDate() + " " + months[d.getMonth()] + " – " + end.getDate() + " " + months[end.getMonth()];
         }
-        var allEntries = Object.values(logs);
+        var allEntries = Object.values(logs).filter(function(entry) { return entry.month === month; });
+        var cardioEntries = Object.values(cardioLogs).filter(function(entry) { return entry.month === month; });
         // Per-exercise history (last best per week)
         var exMap = {};
         allEntries.forEach(function(entry) {
@@ -2261,6 +2678,11 @@ export default function App() {
             var r = s.r === "max" ? 10 : (parseInt(s.r) || 0);
             weekMap[wk].volume += (parseFloat(s.w) || 0) * r;
           });
+        });
+        cardioEntries.forEach(function(entry) {
+          var wk = getWeekKey(entry.date);
+          if (!weekMap[wk]) weekMap[wk] = { sessions: new Set(), volume: 0, days: [] };
+          weekMap[wk].sessions.add(entry.date + "_" + entry.day + "_cardio");
         });
         var weeks = Object.keys(weekMap).sort(function(a,b) { return b.localeCompare(a); });
         // Exercise progress: compute best set (max weight or max reps if BW)
@@ -2284,6 +2706,26 @@ export default function App() {
           var maxEver = Math.max.apply(null, Object.values(byWeek));
           return { name: name, isBW: isBW, last: last, prev: prev, trend: trend, maxEver: maxEver, weeks: wkKeys.length };
         }).filter(function(e) { return e.last > 0; }).sort(function(a,b) { return b.weeks - a.weeks; });
+        var cardioMap = {};
+        cardioEntries.forEach(function(entry) {
+          if (!cardioMap[entry.label]) cardioMap[entry.label] = [];
+          cardioMap[entry.label].push(entry);
+        });
+        var cardioProgress = Object.keys(cardioMap).map(function(name) {
+          var entries = cardioMap[name].sort(function(a, b) { return a.date.localeCompare(b.date); });
+          var last = entries[entries.length - 1];
+          var prev = entries.length > 1 ? entries[entries.length - 2] : null;
+          var lastScore = cardioScore(last);
+          var prevScore = prev ? cardioScore(prev) : null;
+          var trend = prev === null ? "new" : lastScore > prevScore ? "up" : lastScore < prevScore ? "down" : "flat";
+          return {
+            name: name,
+            last: last,
+            prev: prev,
+            trend: trend,
+            weeks: Array.from(new Set(entries.map(function(entry) { return getWeekKey(entry.date); }))).length
+          };
+        }).sort(function(a, b) { return b.weeks - a.weeks; });
 
         function Tooltip(props) {
           if (progTooltip !== props.id) return null;
@@ -2294,8 +2736,20 @@ export default function App() {
 
         return <div style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }} onClick={function() { setProgTooltip(null); }}>
           <div style={{ fontSize: 18, fontWeight: 900, color: T.tx, marginBottom: 4, padding: "4px 0 8px" }}>📊 Progressi</div>
+          <details style={{ background: T.cd, borderRadius: 16, marginBottom: 10, border: "1px solid " + dc + "18", overflow: "hidden" }}>
+            <summary style={{ cursor: "pointer", listStyle: "none", padding: "14px 16px", fontSize: 14, fontWeight: 800, color: T.tx }}>
+              ℹ️ Come usare Progressi
+            </summary>
+            <div style={{ padding: "0 16px 14px", display: "grid", gap: 5, fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
+              <div><b style={{ color: dc }}>Ti dice se stai andando avanti</b> nel mese corrente: continuita, volume totale e andamento degli esercizi.</div>
+              <div><b style={{ color: dc }}>Sessioni per settimana</b> ti mostra quante sedute hai fatto e quanto lavoro hai accumulato.</div>
+              <div><b style={{ color: dc }}>Andamento esercizi</b> confronta l'ultima settimana con quella precedente: meglio, stabile o peggio.</div>
+              <div><b style={{ color: dc }}>Andamento cardio</b> riassume l'ultima uscita registrata di corsa, rucking o HIIT con confronto sulla precedente.</div>
+              <div><b style={{ color: dc }}>Importante</b>: per sapere se aumentare peso o ripetizioni, guarda il consiglio dentro il singolo esercizio nella Scheda.</div>
+            </div>
+          </details>
 
-          {allEntries.length === 0 ? <div style={{ background: T.cd, borderRadius: 12, padding: 24, textAlign: "center" }}>
+          {allEntries.length === 0 && cardioEntries.length === 0 ? <div style={{ background: T.cd, borderRadius: 12, padding: 24, textAlign: "center" }}>
             <div style={{ fontSize: 32, marginBottom: 8 }}>🏋️</div>
             <div style={{ fontSize: 14, fontWeight: 700, color: T.tx, marginBottom: 6 }}>Nessun dato ancora</div>
             <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Registra le serie nella Scheda e qui vedrai i tuoi progressi settimana per settimana.</div>
@@ -2309,9 +2763,9 @@ export default function App() {
               </div>
               {progTooltip === "sess-help" && <div style={{ margin: "0 14px 10px", marginTop: 10, padding: "10px 12px", borderRadius: 9, background: dc + "10", border: "1px solid " + dc + "20", fontSize: 11, color: T.sub, lineHeight: 1.7 }} onClick={function(e) { e.stopPropagation(); }}>
                 <div style={{ fontWeight: 700, color: dc, marginBottom: 4 }}>Come leggere questa sezione</div>
-                <div><b>Barre colorate</b> — ogni barra = una sessione completata quella settimana. 5 barre = 5 allenamenti.</div>
-                <div style={{ marginTop: 4 }}><b>Numero a destra</b> — quante sessioni totali in quella settimana.</div>
-                <div style={{ marginTop: 4 }}><b>Volume kg·rip</b> — somma di (kg × rip) per ogni serie registrata. Misura quanto lavoro totale hai fatto. Cresce quando aumenti peso o ripetizioni.</div>
+                <div><b>Barre colorate</b> — ogni barra = un allenamento completato in quella settimana.</div>
+                <div style={{ marginTop: 4 }}><b>Numero a destra</b> — quanti allenamenti hai fatto in totale.</div>
+                <div style={{ marginTop: 4 }}><b>Volume kg·rip</b> — lavoro totale della settimana. Se sale nel tempo, in generale stai facendo piu lavoro.</div>
               </div>}
               <div style={{ display: "flex", flexDirection: "column" }}>
                 {weeks.slice(0,8).map(function(wk, wi) {
@@ -2321,10 +2775,14 @@ export default function App() {
                   var volTipId = "vol-" + wk;
                   return <div key={wk} style={{ flexDirection: "column", padding: "10px 14px", borderBottom: wi < weeks.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                      <div style={{ flex: 1 }}>
+                      <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{fmtWeek(wk)}</div>
-                        {vol > 0 && <div onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === volTipId ? null : volTipId); }} style={{ fontSize: 10, color: dc, marginTop: 2, cursor: "pointer", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: 3 }}>
-                          Volume: {vol.toLocaleString()} kg·rip <span style={{ fontSize: 9, opacity: 0.7 }}>ℹ</span>
+                        {vol > 0 && <div onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === volTipId ? null : volTipId); }} style={{ fontSize: 10, color: dc, marginTop: 4, cursor: "pointer", fontWeight: 600, display: "grid", gap: 1, lineHeight: 1.35 }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap" }}>
+                            <span style={{ fontSize: 9, textTransform: "uppercase", letterSpacing: 0.4, opacity: 0.85 }}>Volume totale</span>
+                            <span style={{ fontSize: 9, opacity: 0.7, flexShrink: 0 }}>ℹ</span>
+                          </div>
+                          <div style={{ fontSize: 11, fontWeight: 800, color: dc, wordBreak: "break-word" }}>{vol.toLocaleString()} kg·rip</div>
                         </div>}
                       </div>
                       <div style={{ display: "flex", gap: 3 }}>
@@ -2335,30 +2793,54 @@ export default function App() {
                       <div style={{ fontSize: 13, fontWeight: 800, color: dc, minWidth: 20, textAlign: "right" }}>{sess}</div>
                     </div>
                     {progTooltip === volTipId && <div style={{ marginTop: 6, padding: "8px 10px", borderRadius: 8, background: dc + "0E", border: "1px solid " + dc + "20", fontSize: 11, color: T.sub, lineHeight: 1.6 }} onClick={function(e) { e.stopPropagation(); }}>
-                      <b style={{ color: dc }}>Volume totale</b> = somma di (kg × rip) per ogni serie registrata questa settimana. Confrontalo con le settimane precedenti per vedere se stai progredendo nel lavoro complessivo.
+                      <b style={{ color: dc }}>Volume totale</b> = somma di (kg × rip) di tutte le serie registrate questa settimana. Serve per capire se il lavoro complessivo sta salendo, scendendo o restando stabile.
                     </div>}
                   </div>;
                 })}
               </div>
             </div>
 
+            {cardioProgress.length > 0 && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
+              <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg, display: "flex", alignItems: "center", gap: 8 }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Andamento cardio</div>
+                </div>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {cardioProgress.map(function(item, ii) {
+                  var trendColor = item.trend === "up" ? T.ok : item.trend === "down" ? "#C62828" : T.sub;
+                  var trendIcon = item.trend === "up" ? "↑" : item.trend === "down" ? "↓" : item.trend === "new" ? "✦" : "→";
+                  return <div key={ii} style={{ padding: "10px 14px", borderBottom: ii < cardioProgress.length - 1 ? "1px solid " + T.bg : "none" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 2 }}>{item.name}</div>
+                        <div style={{ fontSize: 10, color: T.sub }}>{item.weeks} {item.weeks === 1 ? "settimana" : "settimane"} · ultima: {formatCardioSummary(item.last)}</div>
+                        {item.prev && <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>prima: {formatCardioSummary(item.prev)}</div>}
+                      </div>
+                      <div style={{ fontSize: 14, fontWeight: 800, color: trendColor, minWidth: 28, textAlign: "right" }}>{trendIcon}</div>
+                    </div>
+                  </div>;
+                })}
+              </div>
+            </div>}
+
             {/* Progressi per esercizio */}
             <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
               <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg, display: "flex", alignItems: "center", gap: 8 }}>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Progressi per esercizio</div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Andamento esercizi</div>
                 </div>
                 <button onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === "ex-help" ? null : "ex-help"); }} style={{ width: 22, height: 22, borderRadius: "50%", border: "1px solid " + dc + "40", background: progTooltip === "ex-help" ? dc : "transparent", color: progTooltip === "ex-help" ? "#fff" : dc, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}>?</button>
               </div>
               {progTooltip === "ex-help" && <div style={{ margin: "10px 14px", padding: "10px 12px", borderRadius: 9, background: dc + "10", border: "1px solid " + dc + "20", fontSize: 11, color: T.sub, lineHeight: 1.7 }} onClick={function(e) { e.stopPropagation(); }}>
                 <div style={{ fontWeight: 700, color: dc, marginBottom: 4 }}>Come leggere questa sezione</div>
-                <div><b>Numero a destra</b> — il miglior risultato dell'ultima settimana (kg massimo sollevato, o rip massime per gli esercizi a corpo libero).</div>
-                <div style={{ marginTop: 4 }}><b style={{ color: T.ok }}>↑ verde</b> — hai fatto meglio rispetto alla settimana precedente.</div>
-                <div style={{ marginTop: 4 }}><b style={{ color: T.sub }}>→ grigio</b> — stesso livello della settimana scorsa.</div>
-                <div style={{ marginTop: 4 }}><b style={{ color: "#C62828" }}>↓ rosso</b> — risultato inferiore (può essere normale: affaticamento, variante diversa).</div>
-                <div style={{ marginTop: 4 }}><b>✦ nuovo</b> — prima volta registrata, nessun confronto disponibile.</div>
-                <div style={{ marginTop: 4 }}><b>Max</b> — il miglior risultato in assoluto da quando usi l'app.</div>
-                <div style={{ marginTop: 4 }}><b>Settimane</b> — da quante settimane registri quell'esercizio.</div>
+                <div><b>Numero a destra</b> — il risultato migliore dell'ultima settimana per quell'esercizio.</div>
+                <div style={{ marginTop: 4 }}><b style={{ color: T.ok }}>↑ verde</b> — meglio della settimana prima.</div>
+                <div style={{ marginTop: 4 }}><b style={{ color: T.sub }}>→ grigio</b> — simile alla settimana prima.</div>
+                <div style={{ marginTop: 4 }}><b style={{ color: "#C62828" }}>↓ rosso</b> — peggio della settimana prima. Non e sempre un problema: puo dipendere da fatica o recupero.</div>
+                <div style={{ marginTop: 4 }}><b>✦ nuovo</b> — hai appena iniziato a registrarlo, quindi non c'e ancora confronto.</div>
+                <div style={{ marginTop: 4 }}><b>Massimo</b> — il miglior risultato registrato in questo mese.</div>
+                <div style={{ marginTop: 4 }}><b>Settimane</b> — da quante settimane stai registrando quell'esercizio in questo mese.</div>
               </div>}
               <div style={{ display: "flex", flexDirection: "column" }}>
                 {exProgress.map(function(ex, ei) {
@@ -2367,10 +2849,10 @@ export default function App() {
                   var valLabel = ex.isBW ? ex.last + " rip" : ex.last + " kg";
                   var maxLabel = ex.isBW ? ex.maxEver + " rip" : ex.maxEver + " kg";
                   var exTipId = "ex-" + ei;
-                  var trendText = ex.trend === "up" ? ("Migliorato rispetto alla settimana scorsa" + (ex.prev !== null ? " (" + (ex.isBW ? ex.prev + " rip" : ex.prev + " kg") + " → " + valLabel + ")" : "")) :
-                    ex.trend === "down" ? ("Calato rispetto alla settimana scorsa" + (ex.prev !== null ? " (" + (ex.isBW ? ex.prev + " rip" : ex.prev + " kg") + " → " + valLabel + ")" : "") + ". Può essere normale: recupero, variante diversa, settimana pesante.") :
-                    ex.trend === "new" ? "Prima volta registrata — nessun confronto disponibile ancora." :
-                    "Stesso livello della settimana scorsa (" + valLabel + "). Prova ad aumentare il carico o le rip nella prossima sessione.";
+                  var trendText = ex.trend === "up" ? ("Ultima settimana meglio della precedente" + (ex.prev !== null ? " (" + (ex.isBW ? ex.prev + " rip" : ex.prev + " kg") + " → " + valLabel + ")" : "")) :
+                    ex.trend === "down" ? ("Ultima settimana sotto la precedente" + (ex.prev !== null ? " (" + (ex.isBW ? ex.prev + " rip" : ex.prev + " kg") + " → " + valLabel + ")" : "") + ". Puo succedere per fatica, recupero o settimana piu pesante.") :
+                    ex.trend === "new" ? "Hai appena iniziato a registrarlo: serve ancora uno storico per confrontarlo." :
+                    "Ultima settimana molto simile alla precedente. Sei stabile.";
                   return <div key={ei} style={{ borderBottom: ei < exProgress.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === exTipId ? null : exTipId); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", cursor: "pointer" }}>
                       <div style={{ flex: 1, minWidth: 0 }}>
@@ -2564,7 +3046,7 @@ export default function App() {
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "8px 12px 0" }}>
           {/* Day tabs */}
           <div style={{ display: "flex", gap: 4, overflowX: "auto", paddingBottom: 0 }}>
-            {activeDays.map(function(d, i) { var active = safeDayIdx === i; return <button key={i} onClick={function() { setDayIdx(i); setOpenEx(null); setEditing(null); setHistIdx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false); setShowImg(null); setShowDayIntro(false); }} style={{ flex: i < 4 ? 1 : "none", padding: "7px 8px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}>{d.name}</button>; })}
+            {activeDays.map(function(d, i) { var active = safeDayIdx === i; return <button key={i} onClick={function() { setDayIdx(i); setOpenEx(null); setEditing(null); setHistIdx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false); setShowImg(null); setShowDayIntro(false); }} style={{ flex: i < 4 ? 1 : "none", padding: "7px 8px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}>{d.name + (d.cardio ? " ❤️" : "")}</button>; })}
           </div>
           {/* Month selector — compact strip inside card top */}
         </div>
@@ -2577,6 +3059,7 @@ export default function App() {
               var intro = dayData.intro;
               if (!intro || typeof intro === "string") return null;
               var sections = [
+                { key: "attrezzi", label: "Attrezzi utilizzati", icon: "🏋️" },
                 { key: "obiettivi", label: "Obiettivi", icon: "🎯" },
                 { key: "attenzione", label: "Su cosa concentrarsi", icon: "⚡" },
                 { key: "muscoli", label: "Gruppi muscolari", icon: "💪" },
@@ -2585,7 +3068,7 @@ export default function App() {
                 <div onClick={function() { setShowDayIntro(function(v) { return !v; }); }} style={{ padding: "12px 14px 10px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, lineHeight: 1.3 }}>{dayData.focus}</div>
-                    <div style={{ fontSize: 11, color: dc, fontWeight: 600, marginTop: 3 }}>~{dayData.tEst} min · tocca per dettagli</div>
+                    <div style={{ fontSize: 11, color: dc, fontWeight: 600, marginTop: 3 }}>~{dayData.tEst} min</div>
                   </div>
                   <div style={{ fontSize: 13, color: dc, transform: showDayIntro ? "rotate(180deg)" : "none", transition: "transform 0.2s", flexShrink: 0 }}>&#9662;</div>
                 </div>
@@ -2675,17 +3158,78 @@ export default function App() {
                 <span style={{ fontSize: 22 }}>❤️</span>
                 <div style={{ fontSize: 15, fontWeight: 800, color: T.tx }}>{dayData.focus}</div>
               </div>
-              <div style={{ fontSize: 12, color: T.sub, marginBottom: 16, lineHeight: 1.65 }}>Sessione cardio — nessun esercizio con bilanciere, nessun timer di recupero. Scegli l'opzione piu adatta a come ti senti oggi.</div>
+              {dayData.cardioIntro && <div style={{ fontSize: 12, color: T.sub, marginBottom: 12, lineHeight: 1.65 }}>{dayData.cardioIntro}</div>}
+              {dayData.cardioGear && dayData.cardioGear.length > 0 && <div style={{ marginBottom: 12, padding: "10px 12px", borderRadius: 12, background: dc + "08", border: "1px solid " + dc + "18" }}>
+                <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Attrezzi utilizzati</div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  {dayData.cardioGear.map(function(item, gi) { return <span key={gi} style={{ fontSize: 11, fontWeight: 600, color: T.tx, background: T.sb, border: "1px solid " + dc + "18", borderRadius: 999, padding: "5px 9px" }}>{item}</span>; })}
+                </div>
+              </div>}
+              {dayData.cardioWhy && <details style={{ marginBottom: 16, background: T.sb, border: "1px solid " + dc + "20", borderRadius: 12, padding: "10px 12px" }}>
+                <summary style={{ cursor: "pointer", fontSize: 12, fontWeight: 700, color: dc, listStyle: "none" }}>Perche questo schema</summary>
+                <div style={{ fontSize: 12, color: T.sub, marginTop: 8, lineHeight: 1.65 }}>{dayData.cardioWhy}</div>
+              </details>}
               {dayData.cardioOptions.map(function(opt, oi) {
+                var kind = cardioOptionKind(opt);
+                var fieldCfg = cardioFieldConfig(kind);
+                var draftKey = dayIdx + "_" + opt.label;
+                var draft = cardioDrafts[draftKey] || {};
+                var log = getCardioLog(dayIdx, opt.label);
+                var cardioProg = getCardioProgress(dayIdx, opt.label);
+                var canSave = (parseFloat(draft.minutes) || 0) > 0 && (kind !== "ruck" || (parseFloat(draft.kg) || 0) > 0);
                 return <div key={oi} style={{ background: T.sb, borderRadius: 12, padding: "14px 16px", marginBottom: 10, border: "1px solid " + dc + "20" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
                     <span style={{ fontSize: 22 }}>{opt.icon}</span>
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 700, color: T.tx }}>{opt.label}</div>
-                      <div style={{ fontSize: 11, color: dc, fontWeight: 600 }}>{"❤️ " + opt.duration}</div>
+                      <div style={{ fontSize: 11, color: dc, fontWeight: 600 }}>{opt.duration}</div>
                     </div>
                   </div>
                   <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.65 }}>{opt.desc}</div>
+                  <div style={{ marginTop: 12, paddingTop: 12, borderTop: "1px solid " + T.bg }}>
+                    <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>
+                      Registra sessione
+                    </div>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(92px,1fr))", gap: 8, marginBottom: 8 }}>
+                      {fieldCfg.map(function(field) {
+                        return <label key={field.key} style={{ display: "grid", gap: 4 }}>
+                          <span style={{ fontSize: 10, fontWeight: 700, color: T.sub }}>{field.label}</span>
+                          <input
+                            type="number"
+                            inputMode={field.inputMode}
+                            step={field.inputMode === "decimal" ? "0.1" : "1"}
+                            placeholder={field.placeholder}
+                            value={draft[field.key] || ""}
+                            onChange={function(e) {
+                              var value = e.target.value;
+                              setCardioDrafts(function(prev) {
+                                var next = Object.assign({}, prev);
+                                next[draftKey] = Object.assign({}, next[draftKey] || {}, { [field.key]: value });
+                                return next;
+                              });
+                            }}
+                            style={{ width: "100%", padding: "10px 9px", border: "1px solid " + dc + "28", borderRadius: 9, fontSize: 14, fontWeight: 700, background: T.cd, color: T.tx, boxSizing: "border-box" }}
+                          />
+                        </label>;
+                      })}
+                    </div>
+                    <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+                      <button
+                        onClick={function() { saveCardioSession(dayIdx, opt); }}
+                        disabled={!canSave}
+                        style={{ minHeight: 42, padding: "0 14px", border: "none", borderRadius: 10, background: canSave ? dc : T.bg, color: canSave ? "#fff" : T.sub, fontSize: 12, fontWeight: 800, cursor: canSave ? "pointer" : "default" }}
+                      >
+                        Salva sessione
+                      </button>
+                      {log && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5 }}>
+                        <span style={{ fontWeight: 700, color: T.tx }}>Oggi:</span> {formatCardioSummary(log)}
+                      </div>}
+                    </div>
+                    {cardioProg && <div style={{ marginTop: 9, padding: "8px 10px", borderRadius: 9, background: (cardioProg.tone === "up" ? T.ok : cardioProg.tone === "mid" ? dc : cardioProg.tone === "hold" ? "#C62828" : T.bg) + "12", border: "1px solid " + (cardioProg.tone === "up" ? T.ok : cardioProg.tone === "mid" ? dc : cardioProg.tone === "hold" ? "#C62828" : T.sub) + "20" }}>
+                      <div style={{ fontSize: 11, fontWeight: 800, color: cardioProg.tone === "up" ? T.ok : cardioProg.tone === "mid" ? dc : cardioProg.tone === "hold" ? "#C62828" : T.sub, marginBottom: 3 }}>{cardioProg.label}</div>
+                      <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{cardioProg.detail}</div>
+                    </div>}
+                  </div>
                 </div>;
               })}
             </div>}
@@ -2726,6 +3270,8 @@ export default function App() {
               })();
               var workSec = getWorkTime(ex.n, ex.s);
               var showTimerBtns = restSec || workSec;
+              var repeatHint = rawEx.repeatHint || null;
+              var repeatColor = repeatHint ? (repeatHint.tone === "up" ? "#2E7D32" : repeatHint.tone === "down" ? "#C62828" : dc) : dc;
 
               return <div key={i} id={"ex-row-" + i} style={{ borderBottom: "1px solid " + T.bg }}>
                 <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); if (opening) { requestAnimationFrame(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
@@ -2742,7 +3288,20 @@ export default function App() {
                       {rawEx.rec ? <span style={{ color: T.sub }}>{" · ⏱ " + rawEx.rec}</span> : ""}
                       {rawEx.gear ? <span style={{ color: T.sub }}>{" · 🏋️ " + rawEx.gear}</span> : ""}
                     </div>
-                    {prog && <div style={{ fontSize: 10, color: prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub, marginTop: 4, fontWeight: 700 }}>{prog.label}</div>}
+                    {prog && <div style={{ marginTop: 4 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                        <div style={{ fontSize: 10, color: prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub, fontWeight: 700 }}>{prog.label}</div>
+                        <button
+                          onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === ("ex-advice-" + i) ? null : ("ex-advice-" + i)); }}
+                          title={getProgressShortHelp(prog)}
+                          style={{ width: 18, height: 18, borderRadius: "50%", border: "1px solid " + ((prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) + "40"), background: "transparent", color: prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub, fontSize: 10, fontWeight: 800, cursor: "pointer", padding: 0, lineHeight: "16px" }}
+                        >?</button>
+                      </div>
+                      <div style={{ fontSize: 10, color: T.sub, marginTop: 2, lineHeight: 1.45 }}>{prog.short}</div>
+                      {progTooltip === ("ex-advice-" + i) && <div onClick={function(e) { e.stopPropagation(); }} style={{ marginTop: 6, padding: "8px 10px", borderRadius: 8, background: (prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) + "10", border: "1px solid " + (prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) + "28", fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
+                        {getProgressShortHelp(prog)}
+                      </div>}
+                    </div>}
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     {tLog && tLog.sets.length > 0 && <div style={{ background: T.ok, color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 8 }}>{tLog.sets.length + "/" + sc}</div>}
@@ -2769,6 +3328,7 @@ export default function App() {
                   var bColor = br ? (BREATH_TYPE_COLOR[br.type] || dc) : dc;
                   var isBreathOpen = showBreath === i;
                   var isTecnica = showTecnica === i;
+                  var errorList = (mergedEx.errori || "").split(/\s*;\s*/).filter(Boolean);
                   return <div style={{ padding: "0 14px 14px" }}>
                     {/* Cable toggle */}
                     {hasCableToggle && <div style={{ display: "flex", gap: 0, marginBottom: 10, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "40", alignSelf: "flex-start", width: "fit-content" }} onClick={function(e) { e.stopPropagation(); }}>
@@ -2781,10 +3341,32 @@ export default function App() {
                       {ex.s && <div style={{ fontSize: 13, color: dc, fontWeight: 700 }}>{fmtSerie(ex.s)}{ex.rpe ? " — RPE " + ex.rpe : ""}</div>}
                       {br && <button onClick={function(e) { e.stopPropagation(); setShowBreath(isBreathOpen ? null : i); }} style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid " + bColor + "40", borderRadius: 6, padding: "3px 8px", background: isBreathOpen ? bColor + "18" : bColor + "0A", color: bColor, cursor: "pointer" }}>🫁 {br.short}</button>}
                     </div>
+                    {repeatHint && <div style={{ marginBottom: 8, borderRadius: 10, padding: "10px 11px", background: repeatColor + "12", border: "1px solid " + repeatColor + "30" }}>
+                      <div style={{ fontSize: 11, fontWeight: 800, color: repeatColor, marginBottom: 4 }}>
+                        {repeatHint.tone === "down" ? "↓ Carico piu basso rispetto all'altro giorno" : repeatHint.tone === "up" ? "↑ Carico piu alto rispetto all'altro giorno" : "↔ Stesso esercizio nella settimana"}
+                      </div>
+                      <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{repeatHint.detail}</div>
+                    </div>}
                     {ex.note && <div style={{ fontSize: 11, color: T.sub, marginBottom: 8, fontStyle: "italic" }}>{ex.note}</div>}
                     {prog && <div style={{ marginBottom: 10, borderRadius: 9, padding: "9px 11px", background: (prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) + "12", border: "1px solid " + (prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) + "28" }}>
-                      <div style={{ fontSize: 11, fontWeight: 800, color: prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub, marginBottom: 3 }}>{prog.label}</div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 3 }}>
+                        <div style={{ fontSize: 11, fontWeight: 800, color: prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub }}>{prog.label}</div>
+                        <button
+                          onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === ("ex-open-advice-" + i) ? null : ("ex-open-advice-" + i)); }}
+                          title={getProgressShortHelp(prog)}
+                          style={{ width: 18, height: 18, borderRadius: "50%", border: "1px solid " + ((prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) + "40"), background: "transparent", color: prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub, fontSize: 10, fontWeight: 800, cursor: "pointer", padding: 0, lineHeight: "16px" }}
+                        >?</button>
+                      </div>
+                      <div style={{ fontSize: 10, color: T.sub, marginBottom: 5, lineHeight: 1.45 }}>{getProgressShortHelp(prog)}</div>
                       <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{prog.detail}</div>
+                      {progTooltip === ("ex-open-advice-" + i) && <div onClick={function(e) { e.stopPropagation(); }} style={{ marginTop: 7, paddingTop: 7, borderTop: "1px solid " + T.bg, fontSize: 11, lineHeight: 1.6, color: T.sub }}>
+                        {prog.label.indexOf("Controlla tu") >= 0 ? "Succede quando nella stessa seduta cambi il peso tra una serie e l'altra. In questo caso l'app non puo dirti automaticamente se aumentare il carico." :
+                         prog.label.indexOf("Sessione incompleta") >= 0 ? "Registra tutte le serie previste dalla scheda. Finche manca anche una sola serie, il consiglio resta prudente." :
+                         prog.label.indexOf("Aggiungi ripetizioni") >= 0 || prog.label.indexOf("Prova a chiudere il range") >= 0 ? "Tradotto: il peso va bene. Non aumentarlo ancora. Cerca di portare piu serie verso il numero alto del range." :
+                         prog.label.indexOf("Consolida") >= 0 ? "Tradotto: sei ancora sotto il minimo su una o piu serie, oppure la tecnica non e ancora abbastanza solida per salire di carico." :
+                         prog.label.indexOf("Stabile") >= 0 ? "Tradotto: stai tenendo lo stesso livello della volta scorsa. Non e un errore, ma non e ancora un progresso netto." :
+                         "Questo consiglio e calcolato sull'ultima sessione completa registrata per questo esercizio."}
+                      </div>}
                     </div>}
 
                     {/* Breath panel */}
@@ -2854,49 +3436,83 @@ export default function App() {
                       </div>
                     </div>
 
-                    {/* === STORICO INLINE === */}
-                    {(function() {
-                      if (pastSessions.length === 0) return <div style={{ fontSize: 11, color: T.sub, padding: "6px 0", borderTop: "1px solid " + T.bg }}>Nessuno storico — prima sessione!</div>;
-                      var sess = pastSessions[hPage];
-                      return <div style={{ borderTop: "1px solid " + T.bg, paddingTop: 10 }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-                          <span style={{ fontSize: 11, fontWeight: 800, color: T.tx, textTransform: "uppercase", letterSpacing: 0.8 }}>Storico</span>
-                          <span style={{ fontSize: 11, color: T.sub }}>{sess.date}</span>
-                          {pastSessions.length > 1 && <div style={{ marginLeft: "auto", display: "flex", gap: 4 }}>
-                            <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.min(hPage + 1, pastSessions.length - 1); return n; }); }} disabled={hPage >= pastSessions.length - 1} style={{ width: 28, height: 28, border: "1px solid " + T.bg, borderRadius: 6, background: T.sb, color: hPage >= pastSessions.length - 1 ? T.sub + "40" : T.sub, cursor: hPage >= pastSessions.length - 1 ? "default" : "pointer", fontSize: 13, display: "flex", alignItems: "center", justifyContent: "center" }}>‹</button>
-                            <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.max(hPage - 1, 0); return n; }); }} disabled={hPage === 0} style={{ width: 28, height: 28, border: "1px solid " + T.bg, borderRadius: 6, background: T.sb, color: hPage === 0 ? T.sub + "40" : T.sub, cursor: hPage === 0 ? "default" : "pointer", fontSize: 13, display: "flex", alignItems: "center", justifyContent: "center" }}>›</button>
-                          </div>}
+                    {/* === LETTURA RAPIDA === */}
+                    <div style={{ marginTop: 10, paddingTop: 10, borderTop: "1px solid " + T.bg, display: "grid", gap: 10 }}>
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 8 }}>
+                        <div style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
+                          <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Ultima Sessione</div>
+                          {pastSessions.length === 0 ? <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Nessuno storico ancora. Dopo la prima registrazione qui vedrai subito l'ultima seduta utile.</div> : (function() {
+                            var sess = pastSessions[hPage];
+                            return <>
+                              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 7 }}>
+                                <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{sess.date}</div>
+                                {pastSessions.length > 1 && <div style={{ marginLeft: "auto", display: "flex", gap: 4 }}>
+                                  <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.min(hPage + 1, pastSessions.length - 1); return n; }); }} disabled={hPage >= pastSessions.length - 1} style={{ width: 26, height: 26, border: "1px solid " + T.bg, borderRadius: 6, background: T.cd, color: hPage >= pastSessions.length - 1 ? T.sub + "40" : T.sub, cursor: hPage >= pastSessions.length - 1 ? "default" : "pointer", fontSize: 13 }}>‹</button>
+                                  <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.max(hPage - 1, 0); return n; }); }} disabled={hPage === 0} style={{ width: 26, height: 26, border: "1px solid " + T.bg, borderRadius: 6, background: T.cd, color: hPage === 0 ? T.sub + "40" : T.sub, cursor: hPage === 0 ? "default" : "pointer", fontSize: 13 }}>›</button>
+                                </div>}
+                              </div>
+                              <div style={{ display: "grid", gap: 5 }}>
+                                {sess.sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) {
+                                  return <div key={si} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, borderRadius: 8, background: T.cd, padding: "6px 9px" }}>
+                                    <span style={{ fontSize: 10, fontWeight: 800, color: dc }}>{"SERIE " + (s.si + 1)}</span>
+                                    <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{isBW ? s.r + " rip" : (s.w > 0 ? s.w + " kg × " : "") + s.r + " rip"}</span>
+                                  </div>;
+                                })}
+                              </div>
+                            </>;
+                          })()}
                         </div>
-                        <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
-                          {sess.sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) {
-                            return <div key={si} style={{ padding: "4px 10px", borderRadius: 8, background: T.bg, fontSize: 12, fontWeight: 600, color: T.tx }}>
-                              <span style={{ color: T.sub, fontSize: 10, fontWeight: 700, marginRight: 4 }}>{"S" + (s.si + 1)}</span>
-                              {isBW ? s.r + " rip" : (s.w > 0 ? s.w + " kg × " : "") + s.r + " rip"}
-                            </div>;
-                          })}
-                        </div>
-                      </div>;
-                    })()}
 
-                    {/* === TECNICA (collassata) === */}
-                    <div style={{ marginTop: 10, borderTop: "1px solid " + T.bg }}>
-                      <button onClick={function(e) { e.stopPropagation(); setShowTecnica(isTecnica ? null : i); }} style={{ width: "100%", padding: "8px 0", background: "none", border: "none", display: "flex", alignItems: "center", gap: 6, cursor: "pointer", color: T.sub, fontSize: 11, fontWeight: 700 }}>
-                        <span>📖</span> Tecnica e approfondimenti
-                        <span style={{ marginLeft: "auto", fontSize: 12, transform: isTecnica ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</span>
-                      </button>
-                      {isTecnica && <div style={{ paddingBottom: 8 }}>
-                        {exImgs(ex.n).length > 0 && <div style={{ display: "flex", gap: 6, marginBottom: 10, overflowX: "auto" }}>
-                          {exImgs(ex.n).map(function(src, si) { return <img key={si} src={src} style={{ height: 120, width: "auto", borderRadius: 8, flexShrink: 0, border: "1px solid " + T.bg }} />; })}
+                        <div style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
+                          <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Come Si Fa</div>
+                          <div style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{renderGlossaryText(db.c || "", dc)}</div>
+                        </div>
+                      </div>
+
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 8 }}>
+                        {db.t && db.t.length > 0 && <div style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
+                          <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Cue Chiave</div>
+                          <div style={{ display: "grid", gap: 5 }}>
+                            {db.t.map(function(tip, ti) { return <div key={ti} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: dc + "08", border: "1px solid " + dc + "12", borderRadius: 8, padding: "7px 9px" }}>
+                              <span style={{ color: dc, fontSize: 10, lineHeight: 1.6 }}>•</span>
+                              <span style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{tip}</span>
+                            </div>; })}
+                          </div>
                         </div>}
-                        {db.lk && <div style={{ marginBottom: 8 }}><EmbedLink url={db.lk} label="video" size={11} /></div>}
-                        <DetailText text={db.c} accent={dc} size={11} soft={true} />
-                        {db.deep && <div style={{ marginTop: 6 }}>
-                          {Array.isArray(db.deep) ? db.deep.map(function(block, bi) {
-                            if (block.type === "ul") return <div key={bi} style={{ display: "grid", gap: 5, marginBottom: 8 }}>{block.content.map(function(item, ii) { return <div key={ii} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: dc + "08", border: "1px solid " + dc + "12", borderRadius: 8, padding: "7px 10px" }}><span style={{ color: dc, fontSize: 10, lineHeight: 1.6 }}>•</span><span style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{item}</span></div>; })}</div>;
-                            return <DetailText key={bi} text={block.content} accent={dc} size={11} soft={true} />;
-                          }) : <DetailText text={db.deep} accent={dc} size={11} soft={true} />}
+
+                        {errorList.length > 0 && <div style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
+                          <div style={{ fontSize: 10, fontWeight: 800, color: "#C62828", textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Errori Da Evitare</div>
+                          <div style={{ display: "grid", gap: 5 }}>
+                            {errorList.map(function(err, ei) { return <div key={ei} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: "#C6282810", border: "1px solid #C6282820", borderRadius: 8, padding: "7px 9px" }}>
+                              <span style={{ color: "#C62828", fontSize: 10, lineHeight: 1.6 }}>•</span>
+                              <span style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{err}</span>
+                            </div>; })}
+                          </div>
                         </div>}
-                      </div>}
+                      </div>
+
+                      <div style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, overflow: "hidden" }}>
+                        <button onClick={function(e) { e.stopPropagation(); setShowTecnica(isTecnica ? null : i); }} style={{ width: "100%", padding: "10px 11px", background: "transparent", border: "none", display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }}>
+                          <span style={{ fontSize: 13 }}>📚</span>
+                          <div style={{ textAlign: "left" }}>
+                            <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Approfondisci</div>
+                            <div style={{ fontSize: 11, color: T.sub }}>Foto, video e spiegazioni complete</div>
+                          </div>
+                          <span style={{ marginLeft: "auto", fontSize: 12, color: T.sub, transform: isTecnica ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</span>
+                        </button>
+                        {isTecnica && <div style={{ padding: "0 11px 11px" }}>
+                          {exImgs(ex.n).length > 0 && <div style={{ display: "flex", gap: 6, marginBottom: 10, overflowX: "auto" }}>
+                            {exImgs(ex.n).map(function(src, si) { return <img key={si} src={src} style={{ height: 120, width: "auto", borderRadius: 8, flexShrink: 0, border: "1px solid " + T.bg }} />; })}
+                          </div>}
+                          {db.lk && <div style={{ marginBottom: 8 }}><EmbedLink url={db.lk} label="video" size={11} /></div>}
+                          {db.deep && <div style={{ marginTop: 6 }}>
+                            {Array.isArray(db.deep) ? db.deep.map(function(block, bi) {
+                              if (block.type === "ul") return <div key={bi} style={{ display: "grid", gap: 5, marginBottom: 8 }}>{block.content.map(function(item, ii) { return <div key={ii} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: dc + "08", border: "1px solid " + dc + "12", borderRadius: 8, padding: "7px 10px" }}><span style={{ color: dc, fontSize: 10, lineHeight: 1.6 }}>•</span><span style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{item}</span></div>; })}</div>;
+                              return <DetailText key={bi} text={block.content} accent={dc} size={11} soft={true} />;
+                            }) : <DetailText text={db.deep} accent={dc} size={11} soft={true} />}
+                          </div>}
+                        </div>}
+                      </div>
                     </div>
                   </div>;
                 })()}
