@@ -1805,6 +1805,8 @@ export default function App() {
         } else if (parsed && typeof parsed === "object") {
           setLogs(parsed);
         }
+      } else {
+        setCalibrationMode(true);
       }
     } catch(e) {}
     try { var n = localStorage.getItem("wt-username"); if (n) setUserName(n); } catch(e) {}
@@ -2315,10 +2317,10 @@ export default function App() {
     if (type === "none") return { needed: false, reason: "" };
     var hist = Object.values(logs).filter(function(l) { return l.exercise === exName; }).sort(function(a,b) { return b.date.localeCompare(a.date); });
     var last = hist[0] || null;
-    if (!last) return { needed: true, reason: "Non hai ancora un riferimento salvato per questo esercizio." };
+    if (!last) return { needed: true, initial: true, reason: "Non hai ancora un riferimento salvato per questo esercizio: questa e una calibrazione iniziale." };
     var gap = daysBetweenISO(last.date, todayStr());
-    if (gap !== null && gap > 14) return { needed: true, reason: "Sono passati piu di 14 giorni dall'ultima registrazione: conviene ricalibrare." };
-    return { needed: false, reason: "" };
+    if (gap !== null && gap > 14) return { needed: true, initial: false, reason: "Sono passati piu di 14 giorni dall'ultima registrazione: conviene ricalibrare." };
+    return { needed: false, initial: false, reason: "" };
   }
   function getDayCalibrationSuggestion(di) {
     var day = activeDays[di];
@@ -2776,7 +2778,7 @@ export default function App() {
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(false); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
           </div>
         </div>
       </div>}
@@ -3751,16 +3753,19 @@ export default function App() {
             {!dayData.cardio && (function() {
               var dayCalibration = getDayCalibrationSuggestion(safeDayIdx);
               if (!calibrationMode && !dayCalibration) return null;
+              var initialCalibration = dayCalibration && dayCalibration.some(function(item) { return item.reason.indexOf("calibrazione iniziale") >= 0; });
               return <div style={{ margin: "10px 14px 0", padding: "11px 12px", borderRadius: 12, background: calibrationMode ? "#FFB30012" : "#C6282810", border: "1px solid " + (calibrationMode ? "#FFB30033" : "#C6282828") }}>
                 <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
                   <div style={{ fontSize: 15, lineHeight: 1.3 }}>🎯</div>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontSize: 11, fontWeight: 800, color: calibrationMode ? "#A66A00" : "#C62828", textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>
-                      {calibrationMode ? "Settimana di calibrazione attiva" : "Ricalibrazione consigliata"}
+                      {calibrationMode ? (initialCalibration ? "Calibrazione iniziale attiva" : "Settimana di calibrazione attiva") : (initialCalibration ? "Calibrazione iniziale disponibile" : "Ricalibrazione consigliata")}
                     </div>
                     <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
                       {calibrationMode
-                        ? "Questa settimana serve a trovare o ricalibrare i tuoi pesi di riferimento. Dopo ogni serie l'app ti chiede quante ripetizioni pulite ti restavano e ti suggerisce se tenere, alzare o abbassare il carico."
+                        ? (initialCalibration
+                            ? "Stai iniziando senza riferimenti salvati: questa settimana serve a trovare i tuoi pesi di partenza. Dopo ogni serie l'app ti guida e ti aiuta a capire se il carico e giusto."
+                            : "Questa settimana serve a trovare o ricalibrare i tuoi pesi di riferimento. Dopo ogni serie l'app ti chiede quante ripetizioni pulite ti restavano e ti suggerisce se tenere, alzare o abbassare il carico.")
                         : dayCalibration.length === 1
                           ? dayCalibration[0].reason
                           : "Alcuni esercizi di oggi non hanno ancora un riferimento affidabile oppure non li fai da piu di 2 settimane."}
@@ -3778,6 +3783,12 @@ export default function App() {
                   >
                     {calibrationMode ? "Disattiva" : "Attiva"}
                   </button>
+                  {!calibrationMode && initialCalibration && <button
+                    onClick={function() { saveData(logs, cardioLogs, calibrationProfiles, false); }}
+                    style={{ minHeight: 34, padding: "0 10px", border: "1px solid " + T.bg, borderRadius: 9, background: T.sb, color: T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
+                  >
+                    Salta per ora
+                  </button>}
                 </div>
               </div>;
             })()}
@@ -3991,7 +4002,7 @@ export default function App() {
                     <div style={{ marginTop: 5, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                     {(calibrationMode || calibrationNeed.needed || calibrationProfile) && <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid " + (calibrationMode ? "#FFB30044" : calibrationNeed.needed ? "#C6282840" : T.ok + "40"), borderRadius: 999, padding: "3px 8px", background: calibrationMode ? "#FFB30010" : calibrationNeed.needed ? "#C6282810" : T.ok + "10", color: calibrationMode ? "#A66A00" : calibrationNeed.needed ? "#C62828" : T.ok }}>
                       <span>🎯</span>
-                      <span>{calibrationMode ? "Calibrazione" : calibrationNeed.needed ? "Ricalibra" : "Punto zero salvato"}</span>
+                      <span>{calibrationMode ? "Calibrazione" : calibrationNeed.needed ? (calibrationNeed.initial ? "Calibrazione" : "Ricalibra") : "Punto zero salvato"}</span>
                     </span>}
                     {rowBreath && <>
                       <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid " + rowBreathColor + "40", borderRadius: 999, padding: "3px 8px", background: rowBreathColor + "10", color: rowBreathColor }}>
@@ -4075,7 +4086,7 @@ export default function App() {
                         {(calibrationMode || calibrationNeed.needed || calibrationProfile) && <div style={{ borderRadius: 9, padding: "9px 10px", background: calibrationMode ? "#FFB30010" : calibrationNeed.needed ? "#C6282810" : T.ok + "10", border: "1px solid " + (calibrationMode ? "#FFB30024" : calibrationNeed.needed ? "#C6282824" : T.ok + "24") }}>
                           <div style={{ fontSize: 10, fontWeight: 800, color: calibrationMode ? "#A66A00" : calibrationNeed.needed ? "#C62828" : T.ok, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 5 }}>Calibrazione</div>
                           <div style={{ fontSize: 12, fontWeight: 700, color: T.tx, marginBottom: 4 }}>
-                            {calibrationMode ? "Modalita attiva" : calibrationNeed.needed ? "Ricalibrazione consigliata" : "Punto zero gia salvato"}
+                            {calibrationMode ? "Modalita attiva" : calibrationNeed.needed ? (calibrationNeed.initial ? "Calibrazione iniziale consigliata" : "Ricalibrazione consigliata") : "Punto zero gia salvato"}
                           </div>
                           <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>
                             {calibrationMode
