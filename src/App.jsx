@@ -47,6 +47,7 @@ import img_Trazioni from "./images/exercises/Trazioni.jpg";
 import img_Trazioni_Supine from "./images/exercises/Trazioni_Supine.jpg";
 import img_Walking_Lunge from "./images/exercises/Walking_Lunge.jpg";
 import img_Woodchop from "./images/exercises/Cable-wood-chop-resized .jpeg";
+import img_Dip_alle_Parallele from "./images/exercises/dip tricipiti parallele.jpg";
 import img_Tricipiti_Cavo from "./images/exercises/cavi tricipiti.jpg";
 import img_Hollow_Position from "./images/exercises/Hollow-Position-Muscoli-Coinvolti-1 - -.jpeg";
 import img_Hollow_Tuck from "./images/exercises/Hollow-position-tuck-1 - -.jpeg";
@@ -1012,6 +1013,7 @@ var EX_IMG = {
   "Tricipiti Cavo": img_Tricipiti_Cavo,
   "Walking Lunge": img_Walking_Lunge,
   "Woodchop": img_Woodchop,
+  "Dip alle Parallele": img_Dip_alle_Parallele,
 };
 
 var WS_IMG = {
