@@ -30,7 +30,7 @@ import img_Pendlay_Row from "./images/exercises/Pendlay_Row.jpg";
 import img_Plank from "./images/exercises/Plank.jpg";
 import img_Pulley from "./images/exercises/Pulley-basso.jpeg";
 import img_Push_Press from "./images/exercises/Push_Press.jpg";
-import img_Push_Up from "./images/exercises/Push_Up.jpg";
+import img_Push_Up from "./images/exercises/Push-Up.gif";
 import img_Push_Up_Declino from "./images/exercises/Push_Up_Declino.jpg";
 import img_Push_Up_Diamante from "./images/exercises/Push_Up_Diamante.jpg";
 import img_Rematore_Bilanciere from "./images/exercises/Rematore_Bilanciere.jpg";
