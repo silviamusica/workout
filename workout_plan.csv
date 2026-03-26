@@ -1,0 +1,58 @@
+Programma,Giorno,Focus,Tipo,#,Esercizio,Serie,Note,Recupero,Attrezzi,Errori_comuni,Respirazione
+V4,Giorno 1,Lower A — Quadricipiti + Glutei,Riscaldamento,1,Marcia con ginocchia alte,,3 minuti,,,, 
+V4,Giorno 1,Lower A — Quadricipiti + Glutei,Riscaldamento,2,Cat-Cow + World's Greatest Stretch,,2 minuti totali,,,,
+V4,Giorno 1,Lower A — Quadricipiti + Glutei,Riscaldamento,3,Serie avvicinamento squat con bilanciere,,3-4 serie 40% → 60% → 80%,,Bilanciere + rack,,Valsalva sulle ultime serie
+V4,Giorno 1,Lower A — Quadricipiti + Glutei,Esercizio,1,Squat,4x6-8,"RPE 8-9, ultimo set a cedimento tecnico controllato",2-3 min,Bilanciere + bumper + rack,"Ginocchia che collassano dentro; busto che cade avanti in risalita; talloni che si alzano; schiena che si arrotonda in buca",Valsalva
+V4,Giorno 1,Lower A — Quadricipiti + Glutei,Esercizio,2,Squat Bulgaro,3x10-12,"RPE 8, per gamba",90s-2 min,Manubri + panca,"Ginocchio ant. che supera punta piede; piede post. troppo lontano; tronco che oscilla",Inspira in discesa espira risalendo
+V4,Giorno 1,Lower A — Quadricipiti + Glutei,Esercizio,3,Hip Thrust Bilanciere,4x10-12,RPE 8-9,2 min,Bilanciere + bumper + panca,"Iperestensione lombare in alto; appoggio scapole troppo basso; piedi troppo vicini",Inspira in basso espira salendo e stringendo glutei
+V4,Giorno 1,Lower A — Quadricipiti + Glutei,Esercizio,4,Nordic Curl,3x5-8,"RPE 8, assistito con elastico se necessario",2 min,Elastico + rack,"Cedere col busto; fase eccentrica troppo veloce",Inspira in discesa controllata espira nella risalita
+V4,Giorno 1,Lower A — Quadricipiti + Glutei,Esercizio,5,Slackline bipodalica,2x45s,"Stabilita bipodalica, sguardo avanti, ginocchia flesse",60s,Slackline board,"Guardare i piedi; irrigidire le caviglie",Respiro continuo lento mai in apnea
+V4,Giorno 1,Lower A — Quadricipiti + Glutei,Esercizio,6,Ab Wheel dalle ginocchia,3x8-10,RPE 8,90s,Ab wheel,"Lombare che si inarica; anche che non si estendono; range troppo corto",Inspira in avanti espira tornando indietro. Core contratto in entrambe le direzioni
+V4,Giorno 1,Lower A — Quadricipiti + Glutei,Stretching,1,Quadricipiti,,5 min finali,,,,
+V4,Giorno 1,Lower A — Quadricipiti + Glutei,Stretching,2,Flessori anca,,5 min finali,,,,
+V4,Giorno 1,Lower A — Quadricipiti + Glutei,Stretching,3,Glutei,,5 min finali,,,,
+V4,Giorno 2,Upper A — Tirata + Petto,Riscaldamento,1,Jumping jacks,,3 minuti,,,,
+V4,Giorno 2,Upper A — Tirata + Petto,Riscaldamento,2,Cerchi con le braccia,,15 avanti + 15 indietro,,,,
+V4,Giorno 2,Upper A — Tirata + Petto,Riscaldamento,3,Inchworm,,5 ripetizioni,,,,
+V4,Giorno 2,Upper A — Tirata + Petto,Riscaldamento,4,Serie avvicinamento trazioni,,2-3 serie,,Barra trazioni + elastico,,
+V4,Giorno 2,Upper A — Tirata + Petto,Esercizio,1,Trazioni,4x5-8,"RPE 8-9, ultimo set a cedimento tecnico controllato",2-3 min,Barra trazioni (+ elastico assist.),"Kipping; mento che si protende senza tirare; spalle alle orecchie; ROM incompleto",Inspira in discesa espira tirando verso l'alto
+V4,Giorno 2,Upper A — Tirata + Petto,Esercizio,2,T-bar Row,4x8-10,RPE 8-9,2 min,T-bar + bumper,"Schiena arrotondata; slancio col busto; tirare con i bicipiti",Inspira nel ritorno espira quando tiri verso il busto
+V4,Giorno 2,Upper A — Tirata + Petto,Esercizio,3,Panca,4x8-10,"RPE 8-9, ultimo set a cedimento tecnico controllato",2-3 min,Bilanciere + panca + rack,"Rimbalzo sul petto; gomiti troppo aperti 90 gradi; sedere che si alza; polsi piegati",Valsalva
+V4,Giorno 2,Upper A — Tirata + Petto,Esercizio,4,Face Pull,3x15,RPE 9,60-90s,Cavo alto + corda,"Corpo che si inclina avanti; gomiti che scendono; nessuna rotazione esterna",Inspira nel ritorno espira quando tiri verso il viso
+V4,Giorno 2,Upper A — Tirata + Petto,Esercizio,5,Curl Bicipiti,3x10-12,RPE 9,90s,Manubri,"Slancio col busto; gomiti che avanzano; eccentrica troppo veloce",Inspira abbassando il peso espira flettendo
+V4,Giorno 2,Upper A — Tirata + Petto,Stretching,1,Dorsali,,5 min finali,,,,
+V4,Giorno 2,Upper A — Tirata + Petto,Stretching,2,Pettorali,,5 min finali,,,,
+V4,Giorno 2,Upper A — Tirata + Petto,Stretching,3,Bicipiti,,5 min finali,,,,
+V4,Giorno 2,Upper A — Tirata + Petto,Stretching,4,Spalle,,5 min finali,,,,
+V4,Giorno 3,Cardio A,Cardio,1,HIIT tapis roulant,25 min,"SETTIMANE DISPARI. 5 min warmup + 8x(30s sprint / 60s cammino) + 5 min cooldown. RPE 8-9 sprint. Conta come sessione ALTA intensita.",,,, 
+V4,Giorno 3,Cardio A,Cardio,2,Rucking con zaino 15-20 kg,45-60 min,"SETTIMANE PARI. Salite e discese. Zaino alto e aderente. Zona 2. Progressione: +1 kg ogni 2 sett OPPURE +5 min. Mai entrambi. Conta come sessione BASSA intensita.",,Zaino + bumper/sabbia,,
+V4,Giorno 3,Cardio A,Cardio,3,Circuito sacco + corde + slackline,25-30 min,"BONUS: sostituisce HIIT quando vuoi variare. 3 round sacco 3 min + 4x30s battle rope + slackline 3x30s. Conta come sessione ALTA intensita.",,Sacco + guantoni + corde + slackline board,,
+V4,Giorno 4,Lower B — Glutei + Femorali,Riscaldamento,1,Marcia sul posto + affondi a corpo libero,,3 minuti totali,,,,
+V4,Giorno 4,Lower B — Glutei + Femorali,Riscaldamento,2,Good Morning senza peso + clamshell con elastico,,2 minuti,,Elastico anche,,
+V4,Giorno 4,Lower B — Glutei + Femorali,Riscaldamento,3,Serie avvicinamento stacco con bilanciere,,3-4 serie 40% → 60% → 80%,,Bilanciere + bumper,,Valsalva sulle ultime serie
+V4,Giorno 4,Lower B — Glutei + Femorali,Esercizio,1,Stacco da Terra,4x5-8,"RPE 8-9, ultimo set a cedimento tecnico controllato",2-3 min,Bilanciere + bumper,"Schiena arrotondata (cifosi); barra lontana dal corpo; anche che salgono prima delle spalle; collo iperesteso",Valsalva
+V4,Giorno 4,Lower B — Glutei + Femorali,Esercizio,2,Stacco Rumeno,3x10-12,RPE 8-9,2 min,Manubri,"Ginocchia troppo flesse; schiena arrotondata; manubri lontani dal corpo",Valsalva
+V4,Giorno 4,Lower B — Glutei + Femorali,Esercizio,3,Hip Thrust Bilanciere,3x12-15,RPE 9,90s-2 min,Bilanciere + bumper + panca,"Vedi Giorno 1",Inspira in basso espira salendo
+V4,Giorno 4,Lower B — Glutei + Femorali,Esercizio,4,Affondi,3x12 per gamba,RPE 8-9,2 min,Manubri,"Passo troppo corto; ginocchio post. non scende; busto che oscilla",Inspira in discesa espira risalendo
+V4,Giorno 4,Lower B — Glutei + Femorali,Esercizio,5,Hyperextension con Sacco,3x12-15,RPE 9,90s,Panca romana + sacco sabbia 5kg,"Iperestensione lombare in alto; velocita eccessiva; collo iperesteso",Inspira in discesa espira salendo
+V4,Giorno 4,Lower B — Glutei + Femorali,Esercizio,6,Fitball Hamstring Curl,3x12,RPE 9,90s,Fitball,"Bacino che cade; piedi che scivolano; range incompleto",Inspira estendendo le gambe espira nel curl
+V4,Giorno 4,Lower B — Glutei + Femorali,Stretching,1,Femorali,,5 min finali,,,,
+V4,Giorno 4,Lower B — Glutei + Femorali,Stretching,2,Glutei,,5 min finali,,,,
+V4,Giorno 4,Lower B — Glutei + Femorali,Stretching,3,Lombare,,5 min finali,,,,
+V4,Giorno 4,Lower B — Glutei + Femorali,Stretching,4,Flessori anca,,5 min finali,,,,
+V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Riscaldamento,1,Jumping jacks + cerchi con le braccia,,3 minuti totali,,,,
+V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Riscaldamento,2,Cat-Cow,,8-10 rip lente,,,,
+V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Riscaldamento,3,Military press con bilanciere scarico,2x8,,,Bilanciere,,
+V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Esercizio,1,Push-Up,4xmax-2,RPE 8,2 min,Corpo libero (rialzo se necessario),"Anche che cedono (banana); gomiti a 90 gradi; testa che penzola; ROM incompleto",Inspira scendendo espira spingendo su
+V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Esercizio,2,Trazioni Supine,3xmax-2,"RPE 8, presa neutra o supina",2-3 min,Barra trazioni,"Come trazioni Giorno 2; presa diversa per variazione angolare",Inspira in discesa espira tirando
+V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Esercizio,3,Military Press,4x6-8,"RPE 8-9, ultimo set a cedimento tecnico controllato",2-3 min,Bilanciere + rack,"Iperestensione lombare; barra davanti al viso; gomiti che svasano; testa che arretra",Valsalva
+V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Esercizio,4,Dip alle Parallele,3xRIR 1-2,RPE 8-9,2 min,Barra dip (parallele),"Spalle che salgono; oscillazione del corpo; discesa eccessiva",Inspira in discesa espira in spinta
+V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Esercizio,5,Tricipiti Cavo,3x12,RPE 9,60-90s,Cavo alto + corda,"Gomiti che si muovono; busto che si inclina; usare lo slancio",Inspira nel ritorno espira nell'estensione
+V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Esercizio,6,Woodchop,3x12,"RPE 8-9, per lato",60-90s,Cavo alto o elastico,"Ruotare con le braccia anziche col tronco; peso eccessivo",Inspira nel ritorno espira nella rotazione attiva
+V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Stretching,1,Pettorali,,5 min finali,,,,
+V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Stretching,2,Spalle,,5 min finali,,,,
+V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Stretching,3,Tricipiti,,5 min finali,,,,
+V4,Giorno 5,Upper B — Spinta + Trazioni + Tricipiti,Stretching,4,Dorsali,,5 min finali,,,,
+V4,Giorno 6,Riposo,Riposo,0,Riposo completo,,Camminate leggere ok. No allenamento.,,,,
+V4,Giorno 7,Cardio B,Cardio,1,Corsa leggera zona 2,30 min,"BASSA intensita. FC 120-140. Cadenza 170+ passi/min. Puoi parlare senza fiatone.",,,,"Respiro naturale ritmico"
+V4,Giorno 7,Cardio B,Cardio,2,Rucking con zaino 15-20 kg,45-75 min,"BASSA intensita. Zona 2. Progressione: +5 min ogni 2 sett. Se nel Giorno 3 hai fatto rucking preferisci la corsa.",,Zaino + pesi,,"Respiro naturale ritmico"

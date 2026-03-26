@@ -247,7 +247,7 @@ var GLOSS = [
   { t: "Presa neutra", d: "Palmi uno verso l'altro. Meno stress su polsi e gomiti." },
   { t: "MRV (Maximum Recoverable Volume)", d: "Volume massimo che riesci a recuperare in un mesociclo. Se superi l'MRV, l'allenamento diventa controproducente: non recuperi, ristagna o regredisci. Varia per muscolo e per atleta." },
   { t: "MEV (Minimum Effective Volume)", d: "Volume minimo per stimolare la crescita muscolare. Al di sotto del MEV, fai lavoro inutile: non c'è adattamento. È il punto di partenza di ogni mesociclo." },
-  { t: "Double Progression", d: "Tecnica di progressione a doppio livello: prima aumenti le ripetizioni all'interno di un range (es. 6-8), poi quando arrivi al tetto del range aumenti il carico e ricomincia dal fondo. Esempio: settimana 1 → 3x6, settimana 2 → 3x7, settimana 3 → 3x8, settimana 4 → +2.5kg → 3x6 di nuovo." },
+  { t: "Double Progression", d: "Tecnica di progressione a doppio livello: prima aumenti le ripetizioni dentro un range (es. 6-8), poi quando arrivi al numero piu alto previsto in tutte le serie aumenti il carico e riparti dal numero piu basso. Esempio: settimana 1 → 3x6, settimana 2 → 3x7, settimana 3 → 3x8, settimana 4 → +2.5 kg → 3x6 di nuovo." },
   { t: "Mesociclo", d: "Blocco di allenamento strutturato, tipicamente 4-8 settimane, con volume e intensità progressivi. Termina con un deload. Ogni mesociclo ha un obiettivo preciso: accumulo, intensificazione o realizzazione." },
   { t: "Deload (approfondito)", d: "Settimana con volume ridotto del 40-50% e carico mantenuto o leggermente ridotto. Non è una settimana sprecata: il corpo supera la fatica accumulata, consolida gli adattamenti e riparte più forte. Frequenza consigliata: ogni 4-6 settimane, o quando compaiono segnali di affaticamento sistemico (sonno compromesso, forza calante, motivazione bassa)." },
 ];
@@ -299,7 +299,6 @@ var INTRO_BASICS = [
         ["Recupero", "La crescita avviene a riposo, non in palestra. Sonno, alimentazione e giorni di riposo sono parte del programma."],
         ["Progressione", "Il corpo si adatta. Uno stimolo costante smette di funzionare. Devi aumentare gradualmente il carico, le ripetizioni o la difficoltà."],
       ]},
-      { type: "link", label: "Wikipedia: ipertrofia muscolare →", url: "https://it.wikipedia.org/wiki/Ipertrofia_muscolare" },
     ]
   },
   {
@@ -312,7 +311,7 @@ var INTRO_BASICS = [
       { type: "bold-list", content: [
         ["4x8", "4 serie da 8 ripetizioni."],
         ["4xmax-2", "4 serie al massimo, fermandoti 2 ripetizioni prima del cedimento (RIR 2)."],
-        ["4x6-8", "Range di ripetizioni: inizia dal fondo (6), aumenta ogni settimana fino al tetto (8), poi aggiungi peso. Questo è la double progression."],
+        ["4x6-8", "Range di ripetizioni: inizia da 6, poi prova a salire a 7 e a 8 nelle settimane successive. Quando fai 8 in tutte le serie, aggiungi peso. Questo e la double progression."],
       ]},
       { type: "p", content: "Recupero consigliato — la ricerca (Schoenfeld) mostra che recuperi più lunghi sui compound producono più ipertrofia preservando il volume nelle serie successive:" },
       { type: "bold-list", content: [
@@ -320,7 +319,6 @@ var INTRO_BASICS = [
         ["Accessori medi", "Squat Bulgaro, Stacco Rumeno, Hip Thrust: 90s-2 min."],
         ["Monoarticolari", "Curl, Tricipiti, Face Pull, Woodchop: 60-90 secondi."],
       ]},
-      { type: "link", label: "Wikipedia: volume di allenamento e ipertrofia →", url: "https://it.wikipedia.org/wiki/Allenamento_con_i_pesi" },
     ]
   },
   {
@@ -337,7 +335,6 @@ var INTRO_BASICS = [
         ["RIR 0 = RPE 10", "Cedimento. Solo sull'ultimo set dei monoarticolari, mai sui compound pesanti."],
       ]},
       { type: "p", content: "Il cedimento sistematico non è necessario per crescere e, se abusato, aumenta il rischio di overtraining soprattutto sui compound. La maggior parte dei set va eseguita a RIR 1-2." },
-      { type: "link", label: "Wikipedia: scala di Borg (sforzo percepito) →", url: "https://it.wikipedia.org/wiki/Scala_di_Borg" },
     ]
   },
   {
@@ -351,7 +348,6 @@ var INTRO_BASICS = [
       { type: "bold-list", content: [
         ["Regola aurea", "Mai pre-affaticare un muscolo con un isolamento prima del compound. Fare curl prima delle trazioni brucia i bicipiti prima che li usi dove contano davvero."],
       ]},
-      { type: "link", label: "Wikipedia: esercizi multiarticolari →", url: "https://it.wikipedia.org/wiki/Esercizi_composti" },
     ]
   },
   {
@@ -410,7 +406,6 @@ var INTRO_BASICS = [
         ["Giorno 3 e Giorno 7", "Non sono giorni sprecati. Sono giornate con meno stress dei pesi, dedicate a cardio leggero o condizionamento e al recupero generale. Il tessuto connettivo recupera più lentamente del muscolo."],
       ]},
       { type: "p", content: "Se dopo 2-3 settimane i carichi non crescono: controlla prima sonno e proteine prima di toccare il programma." },
-      { type: "link", label: "Wikipedia: supercompensazione →", url: "https://it.wikipedia.org/wiki/Supercompensazione" },
     ]
   },
 ];
@@ -432,8 +427,8 @@ var INTRO_MUSCLES = {
       title: "Catena posteriore",
       muscles: "Glutei · Femorali · Erettori spinali · Dorsali · Romboidi · Deltoidi posteriori",
       desc: "Governa la trazione e la stabilità della colonna. È la catena più trascurata — debolezza qui è la causa principale di dolori lombari e infortuni al ginocchio.",
-      link: "https://it.wikipedia.org/wiki/Stacco_da_terra",
-      linkLabel: "Wikipedia: stacco da terra (catena posteriore) →"
+      link: null,
+      linkLabel: null
     },
     {
       icon: "🔲",
@@ -448,16 +443,16 @@ var INTRO_MUSCLES = {
       title: "Equilibrio tra agonisti e antagonisti",
       muscles: "Pettorali ↔ Dorsali · Quadricipiti ↔ Femorali · Bicipiti ↔ Tricipiti · Deltoidi anteriori ↔ posteriori",
       desc: "Ogni muscolo ha un antagonista che esegue il movimento opposto. Se alleni solo il 'davanti' (panca, curl) senza il 'dietro' (trazioni, rematore), il corpo si chiude in avanti: spalle proiettate in avanti, postura cadente, rischio di infiammazioni alla spalla.",
-      link: "https://it.wikipedia.org/wiki/Postura",
-      linkLabel: "Wikipedia: postura e squilibri muscolari →"
+      link: null,
+      linkLabel: null
     },
     {
       icon: "🦵",
       title: "Gluteo: il motore del corpo",
       muscles: "Grande gluteo · Medio gluteo · Piccolo gluteo",
       desc: "Il grande gluteo è il muscolo più potente del corpo umano. È responsabile dell'estensione dell'anca — il gesto alla base di camminare, correre, saltare, sollevare. Il medio gluteo stabilizza il bacino ad ogni passo. Un gluteo debole porta ginocchia che collassano verso l'interno nello squat e negli affondi.",
-      link: "https://it.wikipedia.org/wiki/Grande_gluteo",
-      linkLabel: "Wikipedia: grande gluteo →"
+      link: null,
+      linkLabel: null
     },
   ]
 };
@@ -559,13 +554,12 @@ var INTRO_ESERCIZI = [
     summary: "Il corpo si adatta. Se fai sempre la stessa cosa, smetti di migliorare. Devi aumentare lo stimolo nel tempo.",
     body: [
       { type: "p", content: "Il sovraccarico progressivo è il principio fondamentale: lo stimolo deve aumentare nel tempo. Per l'ipertrofia, la priorità va all'aumento progressivo delle serie dure (volume) — il carico segue, non guida." },
-      { type: "p", content: "Questa scheda usa la double progression: ogni esercizio ha un range (es. 4x6-8). Parti dal fondo, aumenta le ripetizioni settimana dopo settimana. Quando arrivi al tetto su tutti i set con RIR 1-2, aggiungi 1-2.5 kg e ricomincia dal fondo." },
+    { type: "p", content: "Questa scheda usa la double progression: ogni esercizio ha un range (es. 4x6-8). Parti dal numero piu basso del range, aumenta le ripetizioni settimana dopo settimana. Quando arrivi al numero piu alto in tutti i set con RIR 1-2, aggiungi 1-2.5 kg e riparti dal numero piu basso." },
       { type: "bold-list", content: [
-        ["Più ripetizioni", "Prima aumenti le ripetizioni dentro il range. Solo quando raggiungi il tetto su tutti i set aggiungi peso."],
-        ["Più peso (+2.5 kg)", "Quando arrivi al tetto del range con tecnica pulita e RIR 1-2 su tutti i set."],
+      ["Più ripetizioni", "Prima aumenti le ripetizioni dentro il range. Solo quando raggiungi il numero piu alto su tutti i set aggiungi peso."],
+      ["Più peso (+2.5 kg)", "Quando arrivi al numero piu alto del range con tecnica pulita e RIR 1-2 su tutti i set."],
         ["Più serie", "Aggiungere una serie per esercizio nel corso del mesociclo è un altro modo per aumentare il volume."],
       ]},
-      { type: "link", label: "Wikipedia: principio del sovraccarico progressivo →", url: "https://it.wikipedia.org/wiki/Sovraccarico_progressivo" },
     ]
   },
 ];
@@ -573,7 +567,7 @@ var INTRO_ESERCIZI = [
 /* === TRAINING PRINCIPLES === */
 var PRINCIPLES_DEEP = [
   { t: "Double Progression: come funziona", d: [
-    {type:"p", content:"Il metodo di progressione di questa scheda. Ogni esercizio ha un range (es. 4x6-8): parti dal fondo, aumenta le ripetizioni settimana dopo settimana, poi quando raggiungi il tetto aggiungi 2.5kg e ricomincia."},
+    {type:"p", content:"Il metodo di progressione di questa scheda. Ogni esercizio ha un range di ripetizioni (es. 6-8). Il peso resta lo stesso in tutte le serie e in tutta la settimana. La progressione funziona cosi: parti dal numero piu basso del range (6) e provi ad aggiungere 1 ripetizione per serie ogni settimana. Quando riesci a completare tutte le serie al numero piu alto del range (8) sentendo che ne avresti ancora 1-2 in riserva, aumenti il peso di 2.5 kg e riparti dal numero piu basso (6). Non aumentare mai peso e ripetizioni nella stessa settimana."},
     {type:"bold-list", content:[
       ["Settimana 1", "4x6 — fondo del range, tecnica prioritaria"],
       ["Settimana 2", "4x7 — una ripetizione in più per serie"],
@@ -583,11 +577,26 @@ var PRINCIPLES_DEEP = [
     {type:"p", content:"Il vantaggio: non devi andare a cedimento ogni seduta. La progressione è automatica e misurabile. Quando raggiungi il tetto del range con tecnica pulita, hai guadagnato forza — aggiungere peso è la conferma, non un salto nel vuoto."},
     {type:"p", content:"Sui compound pesanti (Squat, Stacco, Trazioni, Military) usa range stretti come 5-8. Sugli accessori range più ampi come 10-12 o 12-15."}
   ]},
+  { t: "Come iniziare davvero: settimana di calibrazione", d: [
+    {type:"p", content:"La prima settimana con questa scheda non e una settimana normale: e una settimana di calibrazione. L'obiettivo non e spingere al massimo, ma trovare il peso giusto per ogni esercizio e scriverlo."},
+    {type:"p", content:"Allena tutti i giorni come da scheda: riscaldamento, serie di avvicinamento, esercizi nell'ordine corretto, stretching finale. L'unica differenza e che in ogni esercizio cerchi il carico giusto invece di darlo per scontato."},
+    {type:"bold-list", content:[
+      ["Passo 1", "Fai il riscaldamento e le serie di avvicinamento del giorno."],
+      ["Passo 2", "Carica un peso che pensi di poter usare nel range previsto e fai una serie di test."],
+      ["Passo 3", "Valuta quante ripetizioni pulite ti restavano davvero."],
+      ["Passo 4", "Se eri troppo lontana dal target, aggiusta il peso e riprova dopo il recupero."],
+      ["Passo 5", "Quando trovi il peso giusto, completa le serie rimanenti e scrivi tutto."],
+    ]},
+    {type:"p", content:"Alla fine della settimana hai un numero scritto accanto a ogni esercizio. Da quel momento parte la progressione vera."},
+  ]},
   { t: "Serie di avvicinamento: a cosa servono", d: [
     {type:"p", content:"Le serie di avvicinamento sono le serie che fai prima delle serie di lavoro per preparare il corpo al carico reale. Non sono allenamento e non devono affaticarti: sono il ponte tra il riscaldamento generale e la prima serie vera."},
+    {type:"p", content:"Il dubbio piu comune e: 'ma non sono troppe?'. No, perche non fai tutta la rampa su ogni esercizio. La rampa completa serve soprattutto sul primo esercizio pesante multiarticolare della seduta. Sugli esercizi successivi, se i muscoli e le articolazioni sono gia caldi, spesso non serve nulla o basta 1 sola serie leggera per sentire il gesto."},
     {type:"bold-list", content:[
-      ["Perche servono", "Aumentano gradualmente la temperatura muscolare sotto carico specifico, ricordano al sistema nervoso il pattern motorio esatto e preparano tendini e articolazioni alla compressione o trazione che subiranno."],
-      ["Come si fanno", "Poche ripetizioni, carichi crescenti, recuperi brevi. Piu ti avvicini al carico di lavoro, meno ripetizioni fai."],
+      ["Primo esercizio pesante", "Qui investi tempo: di solito 3-5 serie di avvicinamento, o anche di piu se il carico target e alto."],
+      ["Esercizi successivi", "Se passano su muscoli o pattern simili, non servono oppure basta 1 serie leggera per prendere confidenza col gesto."],
+      ["Corpo libero", "Su trazioni o esercizi simili l'avvicinamento si fa con mini-serie facili: 1 rip, poi 2, poi 3, fermandoti molto prima della fatica."],
+      ["Perche non stancano", "Le ripetizioni sono volutamente basse rispetto a quelle che potresti fare davvero con quei pesi. Servono a svegliare il corpo, non a mandarlo in lattato."],
       ["Regola pratica", "L'ultima serie di avvicinamento deve farti sentire pronta, non stanca."],
     ]},
     {type:"table", columns:["Serie","Carico","Ripetizioni","Scopo"], rows:[
@@ -603,7 +612,32 @@ var PRINCIPLES_DEEP = [
       ["Trazioni come primo esercizio","Si, 2-3 mini-serie progressive"],
       ["Panca dopo tirata","Spesso basta 1-2 serie leggere per attivare il pattern di spinta"],
     ]},
+    {type:"p", content:"Esempio pratico: se il tuo squat di lavoro oggi e 80 kg, puoi fare 30x10, 40x8, 50x5, 60x5, 70x5, 75x5 e poi iniziare con 80 kg. Sembra tanto sulla carta, ma non ti stanca davvero perche le ripetizioni restano basse e i carichi intermedi sono ancora facili per quel numero di ripetizioni."},
     {type:"p", content:"Differenza con la piramide: le serie di avvicinamento servono solo a prepararti e producono fatica minima. Nella piramide, invece, le serie iniziali fanno gia parte dell'allenamento e ti affaticano prima di arrivare al carico produttivo."},
+  ]},
+  { t: "Come scegliere il peso giusto nella settimana di calibrazione", d: [
+    {type:"table", columns:["Cosa e successo","Cosa significa","Cosa fare"], rows:[
+      ["Hai fatto 8 ripetizioni e ne avevi ancora 4-5","Peso troppo leggero","Aggiungi 2.5-5 kg, riposa 3 minuti e rifai la serie di test"],
+      ["Hai fatto 8 ripetizioni e ne avevi ancora 3","Peso leggermente leggero","Aggiungi 2.5 kg, riposa 3 minuti e rifai la serie di test"],
+      ["Hai fatto 6-8 ripetizioni e ne avevi ancora 2","Peso giusto","Questo e il tuo carico di lavoro. Completa le serie rimanenti"],
+      ["Hai fatto 6-8 ripetizioni e ne avevi ancora 1","Peso giusto ma alto","Va bene per iniziare: nelle serie successive potresti fare meno ripetizioni"],
+      ["Hai fatto meno di 6 ripetizioni","Peso troppo pesante","Togli 2.5 kg, riposa 3 minuti e rifai la serie di test"],
+      ["Hai fatto 6 ripetizioni ma l'ultima era brutta","Peso al limite","Meglio restare piu conservativa: il carico e alto per partire"],
+    ]},
+    {type:"p", content:"Dopo aver trovato il peso, usa quel carico per tutte le serie rimanenti. Se fai 8, 8, 7, 6 non e un fallimento: e spesso il segno che il peso e calibrato bene."},
+  ]},
+  { t: "Cosa conta come ripetizione pulita", d: [
+    {type:"p", content:"Una ripetizione conta solo se raggiunge la stessa profondita e la stessa estensione della prima ripetizione della serie. Se per completare l'ultima ripetizione accorci il movimento, usi slancio o cambi posizione, quella ripetizione non conta."},
+    {type:"table", columns:["Esercizio","ROM minimo","La ripetizione non conta se"], rows:[
+      ["Squat","Piega dell'anca all'altezza del ginocchio","Scendi meno delle prime ripetizioni, la schiena si arrotonda, i talloni si alzano"],
+      ["Stacco","Parti da terra e arrivi completamente eretta","La schiena si arrotonda o non arrivi con anche e ginocchia estese"],
+      ["Panca","La barra tocca il petto senza rimbalzo e risale a braccia tese","Non tocchi il petto, rimbalzi o alzi il sedere"],
+      ["Trazioni","Parti da braccia tese e arrivi col mento sopra la sbarra","Non parti distesa, non superi la sbarra o usi slancio"],
+      ["Push-Up","Petto a terra o molto vicino e ritorno a braccia tese","Il petto non arriva giu, le anche cedono o non estendi le braccia"],
+      ["Military Press","La barra parte dalle clavicole e finisce sopra la testa a braccia tese","Non parti dal petto, non estendi del tutto o iperestendi la schiena"],
+      ["Hip Thrust","Anche completamente estese con squeeze dei glutei","Non arrivi in alto o usi la lombare invece dei glutei"],
+    ]},
+    {type:"p", content:"Regola pratica: la prima ripetizione della serie stabilisce lo standard. Se una delle successive non raggiunge lo stesso standard, fermati a quella precedente."},
   ]},
   { t: "Lavorare a buffer, non a cedimento", d: [
     {type:"p", content:"Il cedimento (non riuscire a completare una ripetizione) non è necessario per crescere e, se abusato, sovraccarica il sistema nervoso allungando i tempi di recupero."},
@@ -704,13 +738,8 @@ var PRINCIPLES_DEEP = [
     {type:"p", content:"Se cambi perché sei annoiata senza questi segnali, probabilmente stai perdendo progressi. La noia è normale: i risultati non lo sono."}
   ]},
   { t: "Perche questo programma e fatto cosi", d: [
-    {type:"p", content:"Questa parte raccoglie la logica generale del programma usando le fonti del progetto. Dove non ci sono dati diretti per prevedere il tuo caso individuale, il testo lo dichiara in modo esplicito."},
-    {type:"bold-list", content:[
-      ["Struttura", "Upper/Lower su 4 giorni per dare a ogni muscolo 2 stimoli settimanali con recupero sufficiente."],
-      ["Priorita", "Multiarticolari per primi, accessori dopo, buffer quasi sempre presente e cedimento usato solo dove serve."],
-      ["Cardio", "Poco, breve e separato dai pesi per limitare l'interferenza con l'ipertrofia."],
-      ["Aspettative", "Risultati reali in mesi, con target di ricomposizione realistici e sostenibili."],
-    ]},
+    {type:"p", content:"Qui trovi una panoramica chiara del lavoro che stai facendo adesso: perche la scheda e costruita cosi, quali qualita stai allenando, perche i fondamentali vengono prima e come si inseriscono cardio, recupero e alimentazione."},
+    {type:"p", content:"In sintesi: la scheda attuale punta soprattutto all'ipertrofia, ma usa fondamentali abbastanza pesanti da costruire anche forza. Non e una scheda di forza pura e non e una fase di definizione separata: e un lavoro ibrido pensato per farti ricostruire base, massa muscolare e performance in modo sostenibile."},
   ]},
   { t: "La struttura: Upper/Lower su 4 giorni", d: [
     {type:"p", content:"Ogni muscolo viene allenato 2 volte a settimana."},
@@ -718,31 +747,48 @@ var PRINCIPLES_DEEP = [
     {type:"p", content:"La divisione Upper/Lower separa i gruppi muscolari in modo che Giorno 1 e Giorno 2 non si sovrappongano, e lo stesso tra Giorno 4 e Giorno 5. Ogni muscolo ha almeno 48-72 ore di recupero prima di essere stimolato di nuovo — il tempo minimo per la riparazione e l'adattamento del tessuto muscolare e connettivo."},
     {type:"p", content:"Quando il volume supera 10 serie per muscolo a settimana, distribuirlo su almeno 2 sessioni tende a produrre risultati migliori rispetto a concentrarlo in una sola. Dividere le sessioni per regione corporea consente frequenze piu alte con sessioni piu corte e recupero migliore tra le sedute."},
   ]},
+  { t: "Il programma attuale: ipertrofia con forte componente di forza", d: [
+    {type:"p", content:"Il programma attuale e un blocco di ipertrofia con forte componente di forza applicata sui fondamentali."},
+    {type:"p", content:"I 4 lift prioritari (Squat, Stacco, Trazioni, Push-Up) lavorano nel range 5-8 ripetizioni: abbastanza pesante da costruire forza, abbastanza ripetizioni da accumulare volume ipertrofico. Gli accessori lavorano nel range 10-15 ripetizioni: volume puro, stress metabolico e lavoro sui muscoli che i compound non raggiungono completamente."},
+    {type:"p", content:"Questa non e una scheda di forza pura, che userebbe 1-5 ripetizioni, recuperi molto lunghi e pochissimi esercizi. Non e neanche una scheda di ipertrofia pura da bodybuilding, che userebbe 8-12 ripetizioni quasi su tutto con piu isolamenti e piu volume. E un ibrido che costruisce entrambe le qualita simultaneamente — l'approccio piu efficiente per chi ha gia esperienza ma sta ricostruendo la base dopo una pausa."},
+  ]},
+  { t: "I 7 fondamentali classici: ci sono tutti?", d: [
+    {type:"p", content:"Si. Ferlito identifica 7 fondamentali classici: Panca, Squat, Stacco, Trazioni, Military Press, Dip e Rematore. Il programma attuale li copre tutti."},
+    {type:"table", columns:["Fondamentale","Linea di azione","Presente?","Dove"], rows:[
+      ["Panca","Spinta orizzontale","Si","Giorno 2: Panca 4x8-10"],
+      ["Squat","Dominante ginocchio","Si","Giorno 1: Squat 4x6-8"],
+      ["Stacco","Estensione d'anca","Si","Giorno 4: Stacco 4x5-8"],
+      ["Trazioni","Tirata verticale","Si","Giorno 2 e Giorno 5"],
+      ["Military Press","Spinta verticale","Si","Giorno 5: Military Press 4x6-8"],
+      ["Dip","Spinta complementare","Si","Giorno 5: Dip alle Parallele 3xRIR 1-2"],
+      ["Rematore","Tirata orizzontale","Si","Giorno 2: T-bar Row 4x8-10"],
+    ]},
+    {type:"p", content:"In piu hai i Push-Up come lift prioritario. Sono la versione a corpo libero della spinta orizzontale: stessa linea d'azione della Panca, ma con carico e progressione diversi."},
+  ]},
   { t: "Perche 4 lift prioritari", d: [
-    {type:"p", content:"Squat, stacco, trazioni e push-up sono tutti multiarticolari: coinvolgono piu articolazioni e grandi catene muscolari contemporaneamente. Sono i movimenti che danno il massimo stimolo con il minimo numero di esercizi."},
+    {type:"p", content:"Squat, Stacco, Trazioni e Push-Up sono tutti multiarticolari: coinvolgono piu articolazioni e grandi catene muscolari contemporaneamente. Sono i movimenti che danno il massimo stimolo con il minimo numero di esercizi."},
     {type:"bold-list", content:[
-      ["Squat", "Giorno 1 pesante (4x6-8), con squat bulgaro come variante di volume (3x10-12 per gamba)."],
-      ["Stacco", "Giorno 4 pesante (4x5-8), con stacco rumeno come accessorio per femorali (3x10-12)."],
-      ["Trazioni", "Giorno 2 presa prona per forza (4x5-8), Giorno 5 presa neutra o supina per volume (3xmax-2). Due prese diverse stimolano angolazioni diverse dello stesso pattern di tirata."],
-      ["Push-up", "Giorno 5 a corpo libero (4xmax-2), Giorno 2 panca con bilanciere (4x8-10). Stesso pattern di spinta, carico diverso."],
+      ["Squat", "Giorno 1 pesante, con Squat Bulgaro come variante di volume unilaterale."],
+      ["Stacco", "Giorno 4 pesante, con Stacco Rumeno come accessorio per femorali e catena posteriore."],
+      ["Trazioni", "Giorno 2 presa prona per forza, Giorno 5 presa neutra o supina per volume."],
+      ["Push-Up", "Giorno 5 a corpo libero, con la Panca nel Giorno 2 come variante bilanciere dello stesso pattern di spinta."],
     ]},
     {type:"p", content:"Sono evidenziati per un motivo: vanno fatti sempre per primi nella sessione, quando il sistema nervoso e fresco e la tecnica e al massimo. Oltre un certo volume per sessione la tecnica peggiora e l'allenamento diventa volume spazzatura — serie che producono fatica senza vero stimolo di crescita."},
   ]},
   { t: "Perche non vai a cedimento su tutto", d: [
-    {type:"p", content:"La maggior parte dei set va eseguita a RIR 1-2 (1-2 ripetizioni lontano dal cedimento). Il cedimento sistematico su tutti i set aumenta il rischio di overtraining e burnout, soprattutto sui multiarticolari che coinvolgono il sistema nervoso centrale."},
-    {type:"p", content:"Il cedimento e riservato all'ultimo set dei compound prioritari (squat, stacco, panca, trazioni) e puo essere usato piu liberamente sui monoarticolari come curl, tricipiti e face pull perche sono meno impattanti sul recupero."},
-    {type:"p", content:"Se porti trazioni e push-up a cedimento su 4 set consecutivi, la fatica generata e sproporzionata rispetto allo stimolo di crescita. I primi 2-3 set producono la quasi totalita dello stimolo; il quarto set a cedimento serve come picco controllato, non come regola."},
+    {type:"p", content:"Il lavoro a buffer e fondamentale. La maggior parte dei set va eseguita a RIR 1-2. Il cedimento sistematico su tutti i set aumenta il rischio di peggiorare la tecnica, stressare eccessivamente il sistema nervoso e allungare i tempi di recupero, soprattutto sui multiarticolari."},
+    {type:"p", content:"Il cedimento e riservato all'ultimo set dei compound prioritari e puo essere usato piu liberamente sui monoarticolari come Curl, Tricipiti, Croci e Face Pull perche sono meno impattanti sul recupero."},
   ]},
   { t: "Perche il volume e quello e non di piu", d: [
-    {type:"p", content:"Le fonti concordano su un range di 10-20 serie per muscolo a settimana come raccomandazione generale per massimizzare l'ipertrofia. Ferlito specifica che le donne, per fattori ormonali e per dimensioni delle fibre muscolari, possono reggere piu volume degli uomini — range di partenza 15-25 serie."},
-    {type:"p", content:"Israetel introduce il concetto di MRV intra-sessione. Puoi avere il volume settimanale giusto, ma se lo concentri in sessioni troppo lunghe, gli ultimi esercizi diventano volume spazzatura. La tecnica degrada, la connessione mente-muscolo si perde e la fatica sistemica supera lo stimolo di crescita. Per questo ogni sessione ha massimo 6 esercizi."},
+    {type:"p", content:"Le fonti concordano su un range di 10-20 serie per muscolo a settimana come raccomandazione generale per massimizzare l'ipertrofia. Ferlito specifica che le donne possono reggere piu volume degli uomini — range di partenza 15-25 serie — per fattori ormonali e per dimensioni delle fibre muscolari."},
+    {type:"p", content:"Israetel introduce il concetto di MRV intra-sessione. Puoi avere il volume settimanale giusto, ma se lo concentri in sessioni troppo lunghe, gli ultimi esercizi diventano volume spazzatura. Per questo ogni sessione ha massimo 6 esercizi."},
   ]},
   { t: "Essere donna cambia qualcosa", d: [
     {type:"bold-list", content:[
       ["Recuperi piu rapidi", "Le donne eliminano i metaboliti piu velocemente e recuperano la capacita di forza prima degli uomini. Beneficiano in media di frequenze piu alte."],
-      ["MRV piu alti", "A parita di allenamento, le donne possono tollerare piu volume prima di superare la soglia di sovrallenamento. Non significa che serve piu volume per crescere — significa che il margine di errore e piu ampio."],
-      ["Crescita relativa simile, assoluta inferiore", "In percentuale uomini e donne aumentano la massa muscolare in modo simile. In termini assoluti gli uomini guadagnano in media di piu per livelli di testosterone piu alti e maggior numero totale di fibre muscolari."],
-      ["Gli estrogeni proteggono", "Gli estrogeni riducono la proteolisi muscolare. A 43 anni, prima della menopausa, hai ancora questo vantaggio."],
+      ["MRV piu alti", "A parita di allenamento, le donne possono tollerare piu volume prima di superare la soglia di sovrallenamento."],
+      ["Crescita relativa simile, assoluta inferiore", "In percentuale, uomini e donne aumentano la massa muscolare in modo simile. In termini assoluti gli uomini guadagnano circa il doppio, per livelli di testosterone piu alti e un maggior numero totale di fibre muscolari."],
+      ["Gli estrogeni proteggono", "Riducono la proteolisi muscolare. A 43 anni, prima della menopausa, hai ancora questo vantaggio. Costruire una base solida adesso e un investimento per gli anni successivi."],
     ]},
   ]},
   { t: "Il cardio: perche poco e su giorni separati", d: [
@@ -755,6 +801,46 @@ var PRINCIPLES_DEEP = [
     ]},
     {type:"p", content:"C'e un vantaggio: il cardio moderato aumenta l'angiogenesi, cioe la formazione di nuovi capillari. Piu capillari significa miglior trasporto di ossigeno, nutrienti e fattori di crescita ai muscoli. Per le donne sopra i 40 questo e particolarmente rilevante."},
   ]},
+  { t: "Dove sei ora", d: [
+    {type:"p", content:"Stai lavorando soprattutto in ottica ipertrofia, con fondamentali abbastanza pesanti da costruire anche forza. Dopo mesi di pausa e circa un mese di ripresa, sei in una fase favorevole: la muscle memory fa si che il muscolo ricostruisca piu velocemente di chi parte da zero."},
+    {type:"p", content:"Questo non significa che basta fare di piu a ogni seduta senza criterio. Dopo una pausa il corpo risponde molto bene, ma il programma sfrutta questa finestra con buffer, progressione e fondamentali stabili, non con massimali continui."},
+  ]},
+  { t: "Forza, ipertrofia, definizione: come funzionano", d: [
+    {type:"p", content:"Sono tre obiettivi diversi che richiedono approcci diversi. Non sono fasi rigide che si susseguono per forza: sono strumenti che si usano in base all'obiettivo del momento."},
+    {type:"bold-list", content:[
+      ["Forza", "Obiettivo: diventare piu forte nei movimenti fondamentali. Carichi alti, 3-6 ripetizioni, buffer, recuperi lunghi e pochi esercizi per sessione."],
+      ["Ipertrofia", "Obiettivo: far crescere il muscolo. Carichi moderati-alti, piu volume, mix di compound e isolamenti, recuperi moderati."],
+      ["Definizione", "Obiettivo: perdere grasso mantenendo la massa muscolare. Il carico resta alto, mentre il volume si riduce se il recupero cala."],
+    ]},
+    {type:"p", content:"Il programma attuale e impostato principalmente sull'ipertrofia, ma include una forte componente di forza applicata sui fondamentali. La definizione, invece, non e una fase separata gia presente nella scheda: dipende soprattutto dal deficit calorico, dalle proteine e dall'eventuale riduzione del volume se il recupero peggiora."},
+  ]},
+  { t: "Quando e come cambiare qualcosa", d: [
+    {type:"p", content:"Non serve aspettare una data precisa. Servono segnali concreti."},
+    {type:"bold-list", content:[
+      ["Performance in calo per 2 settimane consecutive", "Fai 1 settimana di deload con meno serie e carichi ridotti."],
+      ["Dopo il deload la performance non torna", "Riduci il volume di 1-2 serie per sessione."],
+      ["Completi i set al top del range con ampio margine", "Aumenta il carico secondo la double progression."],
+      ["Noia e motivazione bassa dopo molto lavoro continuo", "Cambia 2-3 accessori, non i lift prioritari."],
+      ["Dolore articolare persistente", "Sostituisci l'esercizio con una variante che lavori lo stesso distretto senza dolore."],
+    ]},
+    {type:"p", content:"Segnali che non richiedono cambio immediato: DOMS normali, una singola seduta brutta, risultati non visibili dopo solo 2 settimane, o la sensazione soggettiva di fare poco se la performance continua a salire."},
+  ]},
+  { t: "Il test iniziale: sapere da dove parti", d: [
+    {type:"p", content:"Per sapere se stai migliorando davvero ti serve un punto di partenza misurabile. Non serve un 1RM e non devi fare test massimali puri."},
+    {type:"table", columns:["Lift","Test"], rows:[
+      ["Squat","Trova il carico con cui fai 8 ripetizioni a RIR 2"],
+      ["Stacco","Stessa logica"],
+      ["Panca","Stessa logica"],
+      ["Trazioni","Massimo ripetizioni pulite in una serie"],
+      ["Push-Up","Massimo ripetizioni pulite in una serie"],
+    ]},
+    {type:"p", content:"Scrivi questi numeri e ritestali dopo un blocco di lavoro o dopo un deload. Senza un punto zero, non sai se stai davvero migliorando. Nelle prime 2-3 settimane la stima delle ripetizioni in riserva sara imprecisa: e normale, fa parte dell'apprendimento."},
+  ]},
+  { t: "La periodizzazione: cos'e e come si applica in futuro", d: [
+    {type:"p", content:"La periodizzazione e l'alternanza pianificata di enfasi diverse nel tempo. Non e qualcosa gia codificato in questa scheda attiva: e un principio che guida la scelta del passo successivo."},
+    {type:"p", content:"Il concetto di base e: stimolo → fatica → recupero → adattamento → nuovo stimolo. Se lo stimolo e sempre uguale, il corpo smette di adattarsi. Se e troppo forte, il corpo non recupera."},
+    {type:"p", content:"In pratica, dopo un periodo di lavoro continuo con questa scheda potresti beneficiare di un cambio di enfasi: piu forza pura, piu volume, o una selezione esercizi diversa. Questa decisione si prende in base ai test, alla BIA successiva e a come il corpo ha risposto al blocco attuale."},
+  ]},
   { t: "La ricomposizione corporea: cosa aspettarsi realisticamente", d: [
     {type:"p", content:"La tua BIA del 2 marzo 2026 a 57 kg indica 20.9% di massa grassa, cioe circa 11.9 kg di grasso. Il tuo somatotipo e mesomorfo dominante con componente endomorfa moderata: buona base muscolare con una predisposizione costituzionale ad accumulare grasso che richiede attenzione all'alimentazione, non restrizioni estreme."},
     {type:"bold-list", content:[
@@ -766,10 +852,9 @@ var PRINCIPLES_DEEP = [
   ]},
   { t: "Cosa aspettarti nel tempo", d: [
     {type:"bold-list", content:[
-      ["Prime 2-4 settimane", "Adattamento neuromuscolare: diventi piu forte anche senza crescita muscolare visibile."],
-      ["Settimane 4-8", "Prime modifiche visibili: piu tono, linee piu definite, vestiti che cambiano vestibilita."],
-      ["Settimane 8-12", "La forza continua ma piu lentamente. Deload e variazioni diventano piu importanti."],
-      ["Mese 4 in poi", "Hai abbastanza dati per confrontare misure, BIA, prestazioni e riprogrammare con piu precisione."],
+      ["Nelle prime settimane", "Adattamento neuromuscolare: diventi piu forte senza che il muscolo cresca visibilmente. I carichi salgono velocemente e i DOMS tendono a diminuire con la costanza."],
+      ["Dopo alcune settimane di lavoro continuo", "I primi cambiamenti visibili iniziano a comparire: piu tono, linee piu definite, vestiti che vestono in modo diverso."],
+      ["Dopo 8-12 settimane", "Il tasso di guadagno muscolare rallenta e i progressi di forza diventano piu lenti ma piu solidi. Qui i segnali del corpo diventano decisivi per capire se continuare, fare deload o cambiare qualcosa."],
     ]},
   ]},
   { t: "Cosa NON aspettarti", d: [
@@ -778,6 +863,7 @@ var PRINCIPLES_DEEP = [
       "Non vedrai risultati strutturali in 2 settimane: i cambiamenti veri richiedono almeno 6-8 settimane.",
       "Non tutti i muscoli crescono alla stessa velocita: alcuni rispondono prima, altri richiedono piu tempo o variazioni.",
       "Il ciclo mestruale puo influenzare la singola giornata, ma conta la tendenza su 2-3 settimane, non il singolo allenamento.",
+      "Il peso sulla bilancia potrebbe non scendere nei primi mesi: creatina, acqua intramuscolare e aumento di muscolo possono mascherare la perdita di grasso. Misure, BIA e performance valgono di piu.",
     ]},
   ]},
 ];
@@ -906,7 +992,7 @@ var NUTRITION_PRINCIPLES = [
       { type:"p", content:"La finestra anabolica esiste, ma e molto piu ampia di quanto si creda. Se hai mangiato 2-3 ore prima dell'allenamento, non c'e urgenza di mangiare entro 30 minuti." },
       { type:"bold-list", content:[
         ["Pre-workout", "1-2 ore prima: pasto con proteine + carboidrati."],
-        ["Post-workout", "Entro 4-6 ore dal pasto pre: proteine 0.4-0.5 g/kg di massa magra, circa 20-25 g nel tuo caso."],
+        ["Post-workout", "Se hai mangiato poco prima di allenarti, non devi correre a mangiare subito: ti basta fare un pasto normale entro 3-4 ore con proteine + carboidrati. Se invece ti alleni a digiuno o sono gia passate molte ore dall'ultimo pasto, conviene mangiare prima: 20-30 g di proteine e una quota di carboidrati facili da gestire. In pratica: yogurt greco + frutta, shake + banana, oppure pranzo/cena completa se capita in quella finestra."],
         ["Prima di dormire", "30-40 g di proteine lente come yogurt greco, skyr o fiocchi di latte se ti aiutano a raggiungere il totale giornaliero."],
       ]},
     ]
@@ -922,9 +1008,11 @@ var NUTRITION_PRINCIPLES = [
     t: "Integratori: cosa vale davvero",
     d: [
       { type:"p", content:"La maggior parte degli integratori non cambia i risultati in modo rilevante. I pochi davvero utili vanno letti come strumenti semplici, non come scorciatoie." },
-      { type:"p", content:"La creatina monoidrato resta il supplemento piu solido: 3-5 g al giorno, tutti i giorni. Nel tuo piano sono previsti 3 g, un dosaggio funzionale. Puo far salire il peso di 1-3% per acqua intramuscolare, ma e un aumento 'utile', non grasso." },
-      { type:"p", content:"Le proteine whey servono soprattutto quando il cibo non basta. Una dose da 20-30 g e pratica a colazione o nei giorni in cui l'appetito e basso." },
-      { type:"p", content:"Gli omega-3 hanno senso se la capsula apporta davvero circa 1 g combinato di EPA + DHA. La caffeina puo aiutare la performance, ma va usata con cautela se assumi gia altri stimolanti. Un multivitaminico puo essere ragionevole in deficit calorico o se la dieta e poco varia." },
+      { type:"p", content:"**Creatina monoidrato.** Resta il supplemento piu solido: 3-5 g al giorno, tutti i giorni. Nel tuo piano sono previsti 3 g, un dosaggio funzionale. Puo far salire il peso di 1-3% per acqua intramuscolare, ma e un aumento utile, non grasso." },
+      { type:"p", content:"**Proteine whey.** Servono soprattutto quando il cibo non basta. Una dose da 20-30 g e pratica a colazione o nei giorni in cui l'appetito e basso." },
+      { type:"p", content:"**Omega-3.** Hanno senso se la capsula apporta davvero circa 1 g combinato di EPA + DHA." },
+      { type:"p", content:"**Caffeina.** Puo aiutare la performance, ma va usata con cautela se assumi gia altri stimolanti." },
+      { type:"p", content:"**Multivitaminico.** Puo essere ragionevole in deficit calorico o se la dieta e poco varia." },
       { type:"p", content:"Il resto, come BCAA, bruciagrassi o pre-workout complessi, ha prove deboli o nulle quando le basi della dieta sono gia a posto." },
     ]
   },
@@ -936,13 +1024,20 @@ var NUTRITION_PRINCIPLES = [
         ["Tofu compatto","Pronto","100 g","144","1.8 g","15 g","8.7 g"],
         ["Tempeh","Pronto","100 g","193","9 g","19 g","11 g"],
         ["Seitan","Pronto","100 g","141","6 g","28 g","2 g"],
+        ["Lenticchie","Cotte","150 g","174","30 g","13.5 g","0.6 g"],
+        ["Ceci","Cotti","150 g","246","40 g","13.5 g","3.9 g"],
+        ["Edamame","Cotti","150 g","183","13.5 g","16.5 g","7.5 g"],
         ["Edamame","Cotti","100 g","122","9 g","11 g","5 g"],
         ["Yogurt greco 0%","Pronto","170 g","100","6 g","17 g","0 g"],
         ["Skyr","Pronto","170 g","108","7 g","18 g","0.2 g"],
         ["Fiocchi di latte","Pronto","100 g","98","3 g","11 g","4 g"],
         ["Uova intere","Pronto","2 uova medie","140","1 g","12 g","10 g"],
         ["Tonno al naturale","Sgocciolato","100 g","116","0 g","26 g","1 g"],
+        ["Sgombro","Pronto","100 g","189","0 g","19 g","13 g"],
         ["Salmone","Pronto","100 g","208","0 g","20 g","13 g"],
+        ["Merluzzo","Pronto","100 g","82","0 g","18 g","0.7 g"],
+        ["Orata","Pronto","100 g","121","0 g","20 g","4 g"],
+        ["Gamberi","Pronto","100 g","99","0.2 g","24 g","0.3 g"],
       ]},
       { type:"table", columns:["Alimento","Stato","Porzione","Kcal","Carb","Prot","Grassi"], rows:[
         ["Lenticchie","Crude","100 g","353","60 g","25 g","1.1 g"],
@@ -979,20 +1074,20 @@ var NUTRITION_PRINCIPLES = [
 
 /* === MUSCLES === */
 var MUSC = [
-  { n: "Grande pettorale", z: "Anteriore", w: "Petto, dalla clavicola all'omero", y: "Spinta orizzontale e adduzione braccio.", ex: ["Panca","Push-Up","Croci Manubri a Terra","Floor Press Manubri"] },
-  { n: "Deltoide", z: "Anteriore/Laterale", w: "Spalla - tre fasci", y: "Stabilizza e muove la spalla. Ogni spinta sopra la testa.", ex: ["Military Press","Arnold Press","Push Press","Alzate Laterali"] },
-  { n: "Trapezio", z: "Posteriore", w: "Dal cranio a meta schiena", y: "Stabilizza scapole e postura.", ex: ["Stacco da Terra","Rematore Bilanciere","Trazioni"] },
-  { n: "Grande dorsale", z: "Posteriore", w: "Dalla zona lombare all'omero", y: "Il muscolo piu grande della schiena. Forma la V.", ex: ["Trazioni","Trazioni Supine","Rematore Bilanciere","Rematore Manubri"] },
-  { n: "Erettori spinali", z: "Posteriore", w: "Due colonne lungo la colonna vertebrale", y: "Schiena eretta. Senza erettori forti ogni carico diventa pericoloso.", ex: ["Stacco da Terra","Good Morning","Hyperextension","Stacco Rumeno"] },
-  { n: "Retto addominale", z: "Anteriore", w: "Dal pube allo sterno", y: "Stabilizzatore core. Protegge la colonna.", ex: ["Ab Wheel","Plank","Shoulder Tap"] },
-  { n: "Obliqui", z: "Laterale", w: "Ai lati dell'addome", y: "Rotazione e anti-rotazione del tronco.", ex: ["Addominali Obliqui","Plank","Shoulder Tap"] },
-  { n: "Bicipite braccio", z: "Anteriore", w: "Parte anteriore braccio", y: "Flessione gomito. Coinvolto in ogni tirata.", ex: ["Curl Bicipiti","Curl Martello","Trazioni Supine","Rematore Manubri"] },
-  { n: "Tricipite braccio", z: "Posteriore", w: "Parte posteriore braccio - 3 capi", y: "Estensione gomito. 2/3 del volume del braccio.", ex: ["French Press Manubri","Dip su Panca","Push-Up Diamante","Panca","Military Press"] },
-  { n: "Quadricipite", z: "Anteriore", w: "Parte anteriore coscia - 4 capi", y: "Estensione ginocchio. Motore di squat, affondi, scale.", ex: ["Squat","Front Squat","Squat Bulgaro","Affondi","Step Up"] },
-  { n: "Bicipite femorale", z: "Posteriore", w: "Parte posteriore coscia", y: "Flessione ginocchio. Protegge il crociato.", ex: ["Nordic Curl","Stacco da Terra","Stacco Rumeno","Good Morning"] },
-  { n: "Grande gluteo", z: "Posteriore", w: "Massa principale del sedere", y: "Il muscolo piu potente del corpo. Postura, corsa, salto.", ex: ["Squat","Stacco da Terra","Affondi","Hip Thrust Singolo","Good Morning","Hyperextension"] },
-  { n: "Medio gluteo", z: "Laterale", w: "Lato esterno anca", y: "Abduzione e stabilizzazione anca. Previene collasso ginocchio.", ex: ["Clamshell","Abduzione Laterale","Fire Hydrant","Affondi"] },
-  { n: "Soleo/Gemelli", z: "Posteriore", w: "Polpaccio", y: "Flessione plantare. Stabilita in squat e camminata.", ex: ["Squat","Affondi","Step Up"] },
+  { n: "Grande pettorale", z: "Anteriore", w: "Petto, dalla clavicola all'omero", y: "Spinta orizzontale e adduzione braccio.", mv: "Spinge il braccio in avanti, avvicina il braccio al tronco e aiuta a portarlo verso il centro del corpo.", ex: ["Panca","Push-Up","Croci Manubri a Terra","Floor Press Manubri"] },
+  { n: "Deltoide", z: "Anteriore/Laterale", w: "Spalla - tre fasci", y: "Stabilizza e muove la spalla. Ogni spinta sopra la testa.", mv: "Alza il braccio di lato e in avanti, aiuta la spinta sopra la testa e stabilizza la spalla durante i movimenti di spinta e tirata.", ex: ["Military Press","Arnold Press","Push Press","Alzate Laterali"] },
+  { n: "Trapezio", z: "Posteriore", w: "Dal cranio a meta schiena", y: "Stabilizza scapole e postura.", mv: "Solleva, abbassa e avvicina le scapole. Aiuta a mantenere petto aperto e spalle stabili.", ex: ["Stacco da Terra","Rematore Bilanciere","Trazioni"] },
+  { n: "Grande dorsale", z: "Posteriore", w: "Dalla zona lombare all'omero", y: "Il muscolo piu grande della schiena. Forma la V.", mv: "Tira il braccio verso il basso e verso il busto. Estende e adduce l'omero nelle tirate verticali e orizzontali.", ex: ["Trazioni","Trazioni Supine","Rematore Bilanciere","Rematore Manubri"] },
+  { n: "Erettori spinali", z: "Posteriore", w: "Due colonne lungo la colonna vertebrale", y: "Schiena eretta. Senza erettori forti ogni carico diventa pericoloso.", mv: "Mantengono la colonna estesa e stabile contro il carico. Resistono alla flessione del busto.", ex: ["Stacco da Terra","Good Morning","Hyperextension","Stacco Rumeno"] },
+  { n: "Retto addominale", z: "Anteriore", w: "Dal pube allo sterno", y: "Stabilizzatore core. Protegge la colonna.", mv: "Flette il busto e soprattutto stabilizza il tronco impedendo che la lombare perda posizione sotto sforzo.", ex: ["Ab Wheel","Plank","Shoulder Tap"] },
+  { n: "Obliqui", z: "Laterale", w: "Ai lati dell'addome", y: "Rotazione e anti-rotazione del tronco.", mv: "Ruotano il busto, lo inclinano lateralmente e resistono alle rotazioni indesiderate.", ex: ["Addominali Obliqui","Plank","Shoulder Tap"] },
+  { n: "Bicipite braccio", z: "Anteriore", w: "Parte anteriore braccio", y: "Flessione gomito. Coinvolto in ogni tirata.", mv: "Piega il gomito e aiuta la supinazione dell'avambraccio. Lavora in tutte le tirate dove il braccio si chiude.", ex: ["Curl Bicipiti","Curl Martello","Trazioni Supine","Rematore Manubri"] },
+  { n: "Tricipite braccio", z: "Posteriore", w: "Parte posteriore braccio - 3 capi", y: "Estensione gomito. 2/3 del volume del braccio.", mv: "Estende il gomito e aiuta a bloccare il braccio in tutte le spinte.", ex: ["French Press Manubri","Dip su Panca","Push-Up Diamante","Panca","Military Press"] },
+  { n: "Quadricipite", z: "Anteriore", w: "Parte anteriore coscia - 4 capi", y: "Estensione ginocchio. Motore di squat, affondi, scale.", mv: "Estende il ginocchio e controlla la discesa in squat, affondi e step-up.", ex: ["Squat","Front Squat","Squat Bulgaro","Affondi","Step Up"] },
+  { n: "Bicipite femorale", z: "Posteriore", w: "Parte posteriore coscia", y: "Flessione ginocchio. Protegge il crociato.", mv: "Flette il ginocchio ed estende l'anca insieme ai glutei. Frena la discesa nei movimenti hip hinge.", ex: ["Nordic Curl","Stacco da Terra","Stacco Rumeno","Good Morning"] },
+  { n: "Grande gluteo", z: "Posteriore", w: "Massa principale del sedere", y: "Il muscolo piu potente del corpo. Postura, corsa, salto.", mv: "Estende l'anca, spinge il bacino in avanti e produce forza in salita, corsa, salto e hip hinge.", ex: ["Squat","Stacco da Terra","Affondi","Hip Thrust Singolo","Good Morning","Hyperextension"] },
+  { n: "Medio gluteo", z: "Laterale", w: "Lato esterno anca", y: "Abduzione e stabilizzazione anca. Previene collasso ginocchio.", mv: "Porta la gamba verso l'esterno e stabilizza il bacino quando stai su una gamba sola o cammini.", ex: ["Clamshell","Abduzione Laterale","Fire Hydrant","Affondi"] },
+  { n: "Soleo/Gemelli", z: "Posteriore", w: "Polpaccio", y: "Flessione plantare. Stabilita in squat e camminata.", mv: "Spingono il piede verso il basso e aiutano spinta, camminata, corsa ed equilibrio.", ex: ["Squat","Affondi","Step Up"] },
 ];
 
 /* === STRETCHING === */
@@ -1274,11 +1369,15 @@ var DAYS_V4 = [
 var PRINCIPLES = [
   { t: "Come leggere un esercizio: 4x6-8 RPE 8", d: "4 serie da 6 a 8 ripetizioni a RPE 8. Le serie di lavoro si eseguono tutte con lo stesso peso: non aumentarlo tra una serie e l'altra. Il range 6-8 indica la progressione tra le settimane, non dentro la singola seduta. Esempio: settimana 1 fai 4x6 con 30 kg, settimana 2 fai 4x7 con 30 kg, settimana 3 fai 4x8 con 30 kg, poi aumenti a 32.5 kg e riparti da 4x6. Se nella pratica fai 8, 8, 7, 6 va bene: il carico e corretto, la fatica accumulata e normale. Aumenti solo quando riesci a fare il numero alto previsto in tutte le serie con tecnica pulita." },
   { t: "Straight sets: stesso peso in tutte le serie", d: "Questa scheda non usa la piramide classica. Usa straight sets: stesso peso in tutte le serie dello stesso esercizio. Esempi: 4x6-8 = 4 serie con lo stesso peso; 3x12 = 3 serie con lo stesso peso; 3xRIR 1-2 = 3 serie con lo stesso peso fermandoti con 1-2 ripetizioni in riserva. Il carico cambia solo tra le settimane, quando hai raggiunto il numero alto previsto su tutte le serie. La vecchia logica piramidale tipo 12-10-8-8 qui non si usa." },
-  { t: "Serie di avvicinamento: cosa sono", d: "Prima delle serie di lavoro, esegui 3-4 serie di avvicinamento per prepararti al carico. Sono serie leggere con poche ripetizioni: non devono stancarti, devono farti sentire pronta. Parti dalla barra scarica, poi sali circa al 60%, 80% e, se serve, 90% del tuo carico di lavoro, riducendo le ripetizioni man mano che il peso sale (8 → 5 → 3 → 1-2). Le serie di avvicinamento si fanno solo sul primo esercizio pesante della sessione o quando cambi pattern motorio in modo importante. Non contarle come serie di lavoro: servono solo a scaldare sotto carico, richiamare il pattern e preparare articolazioni e tendini." },
+  { t: "Serie di avvicinamento: cosa sono", d: "Non devi fare una lunga rampa per ogni esercizio. La rampa completa serve soprattutto sul primo esercizio pesante della seduta, come Squat, Panca o Stacco. Sugli esercizi successivi spesso non serve nulla, oppure basta 1 serie leggera per abituarti al gesto. Servono a prepararti, non ad allenarti: poche ripetizioni, carichi che salgono poco alla volta, recuperi brevi. Se fatte bene non ti stancano, perche i pesi intermedi restano lontani dalla fatica vera. Più ti avvicini al carico di lavoro, più i salti di peso diventano piccoli e le ripetizioni restano basse." },
+  { t: "Come iniziare: settimana di calibrazione", d: "La prima settimana con questa scheda serve a trovare il peso giusto per ogni esercizio. Non e una settimana persa: senza un peso calibrato, la progressione non funziona. Allena tutti i giorni come da scheda, ma su ogni esercizio cerca il carico con cui riesci a fare il numero piu basso del range sentendo che ne avresti ancora 2 con la stessa tecnica e la stessa profondita. Scrivi quel peso: e il tuo punto di partenza." },
+  { t: "Cosa conta come ripetizione", d: "Una ripetizione conta solo se raggiunge la stessa profondita e la stessa estensione della prima ripetizione della serie. Se per completare l'ultima ripetizione scendi meno, accorci il movimento, usi slancio, o la schiena cambia posizione: fermati alla ripetizione precedente. Non barare col range di movimento per aggiungere numeri: i numeri devono essere onesti altrimenti la progressione non funziona." },
   { t: "Come leggere: 4xmax-2", d: "Fai quante ripetizioni riesci fermandoti 2 prima del cedimento (RIR 2). Non c'è un numero fisso: l'obiettivo è migliorare il numero di ripetizioni nel tempo. Si usa su Push-Up e Trazioni dove il carico è il peso corporeo." },
   { t: "RIR e RPE: che differenza c'e?", d: "Misurano la stessa cosa da due lati diversi: quanto sei vicina al cedimento. RIR guarda quante ripetizioni ti restano ancora. RPE guarda quanto e stata dura la serie su una scala da 1 a 10. In pratica: RIR 3 = RPE 7, RIR 2 = RPE 8, RIR 1 = RPE 9, RIR 0 = RPE 10. Quindi se il programma dice RIR 2, significa che devi fermarti quando senti di poter fare ancora 2 ripetizioni buone. Se dice RPE 8, il significato pratico e lo stesso. RIR e spesso piu intuitivo per chi segue una scheda, RPE e piu comodo per descrivere l'intensita in modo rapido." },
-  { t: "Come leggere: 3xRIR 1-2", d: "Vuol dire che in ogni serie ti devi fermare con 1-2 ripetizioni ancora disponibili. Tradotto in pratica: stai lavorando vicino al limite, ma senza arrivare a cedimento. Corrisponde circa a RPE 8-9." },
+  { t: "Come leggere: 3xRIR 1-2", d: "Vuol dire che in ogni serie ti devi fermare con 1-2 ripetizioni ancora disponibili. Tradotto in pratica: stai lavorando vicino al limite, ma senza arrivare a cedimento. Il numero di ripetizioni puo variare da un giorno all'altro: conta fermarti quando senti che ne avresti ancora 1-2 pulite." },
   { t: "Come leggere: RPE 8-9", d: "RPE 8 significa che potresti fare ancora 2 ripetizioni; RPE 9 che potresti farne ancora 1. In questa scheda i fondamentali stanno di solito a RPE 8-9 per stimolare bene il muscolo senza distruggere tecnica e recupero." },
+  { t: "Come progredire settimana dopo settimana", d: "Stesso peso per tutta la settimana e per tutte le serie. Ogni settimana prova a fare 1 ripetizione in piu per serie. Quando completi tutte le serie al numero piu alto del range sentendo di averne ancora 1-2, aggiungi 2.5 kg e riparti dal numero piu basso. Non aumentare mai peso e ripetizioni nella stessa settimana." },
+  { t: "Quando rifare la calibrazione", d: "La calibrazione non si fa una volta sola per sempre. Va rifatta la prima volta con la scheda, dopo uno stop di piu di 2 settimane, dopo un deload sui fondamentali e quando cambi un esercizio. Se i riferimenti non sono piu attuali, l'app ti suggerisce di ricalibrare." },
   { t: "Recupero tra le serie", d: "Compound pesanti (Squat, Stacco, Trazioni, Military, Panca, Hip Thrust): 2-3 minuti. Accessori (Squat Bulgaro, Rematori, Stacco Rumeno): 90s-2 min. Isolamenti (Curl, Woodchop, Tricipiti cavo): 60-90s. Rispettare i recuperi è importante quanto l'esercizio: il muscolo deve ricaricare ATP per performare nella serie successiva." },
   { t: "★ PRIORITÀ: cosa significa", d: "L'esercizio contrassegnato con ★ è il fondamentale della sessione. Va fatto per primo, con la massima concentrazione. Se devi tagliare la sessione per mancanza di tempo o energia, completa almeno l'esercizio prioritario. Il resto è accessorio." },
 ];
@@ -1414,6 +1513,51 @@ var MAX_PROGRESS_EX = ["Push-Up","Trazioni Supine"];
 var ACCESSORY_PROGRESS_EX = ["Squat Bulgaro","Face Pull","Curl Bicipiti","Hyperextension con Sacco","Fitball Hamstring Curl","Tricipiti Cavo"];
 var CORE_PROGRESS_EX = ["Slackline","Ab Wheel"];
 var CARDIO_KIND_LABEL = { run: "Corsa", ruck: "Rucking", hiit: "HIIT", circuit: "Circuito" };
+var CALIBRATION_BODYWEIGHT_EX = ["Push-Up","Trazioni","Trazioni Supine","Dip alle Parallele","Nordic Curl","Slackline","Ab Wheel","Fitball Hamstring Curl"];
+var CALIBRATION_SKIP_EX = ["HIIT tapis roulant","Rucking con zaino 15-20 kg","Circuito sacco + corde + slackline","Corsa leggera zona 2"];
+
+function daysBetweenISO(a, b) {
+  if (!a || !b) return null;
+  var da = new Date(a + "T00:00:00");
+  var db = new Date(b + "T00:00:00");
+  return Math.round((db - da) / 86400000);
+}
+
+function getCalibrationType(exName, serie) {
+  if (CALIBRATION_SKIP_EX.indexOf(exName) >= 0) return "none";
+  if (exName === "Slackline") return "tempo";
+  if (exName === "Nordic Curl") return "assistito";
+  if (exName === "Ab Wheel" || exName === "Fitball Hamstring Curl") return "body-control";
+  if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || (serie || "").toLowerCase().indexOf("max") >= 0) return "bodyweight";
+  if (exName.indexOf("Cavo") >= 0 || exName === "Face Pull" || exName === "Woodchop") return "cable";
+  if (exName === "Squat Bulgaro" || exName === "Stacco Rumeno" || exName === "Affondi" || exName === "Curl Bicipiti") return "dumbbell";
+  return "weighted";
+}
+
+function getCalibrationQuickInstruction(exName, serie) {
+  var type = getCalibrationType(exName, serie);
+  if (type === "none") return "Questo esercizio non richiede calibrazione del peso.";
+  if (type === "bodyweight") return "Segna quante ripetizioni pulite fai fermandoti con circa 1-2 ripetizioni in riserva. Questo numero diventa il tuo punto zero.";
+  if (type === "assistito") return "Trova il livello di assistenza con cui controlli bene il movimento. Se la discesa e incontrollata, aumenta l'assistenza.";
+  if (type === "tempo") return "Verifica se riesci a completare il tempo previsto con controllo. Se e facile, annotalo e aumenta la difficolta in futuro.";
+  if (type === "body-control") return "Trova il range di movimento o la variante che riesci a controllare bene. Conta solo le ripetizioni pulite.";
+  return "Fai una prima serie di test e valuta quante ripetizioni pulite ti restavano. Se erano 2, hai trovato il peso giusto.";
+}
+
+function getCalibrationDecision(type, reserve) {
+  var val = reserve === "4+" ? 4 : parseInt(reserve);
+  if (type === "bodyweight" || type === "assistito" || type === "tempo" || type === "body-control") {
+    if (val >= 3) return { tone: "mid", title: "Un po' troppo facile", detail: "La prossima volta puoi spingere 1-2 ripetizioni in piu o aumentare leggermente la difficolta." };
+    if (val === 2) return { tone: "up", title: "Punto zero corretto", detail: "Salva questo numero: e il tuo riferimento di partenza." };
+    if (val === 1) return { tone: "up", title: "Punto zero valido", detail: "Va bene anche cosi. Sei nella zona alta, ma il riferimento e utile." };
+    return { tone: "hold", title: "Troppo vicino al cedimento", detail: "La prossima volta fermati 1 ripetizione prima o usa una variante piu facile." };
+  }
+  if (reserve === "4+") return { tone: "hold", title: "Peso troppo leggero", detail: "Aggiungi 2.5-5 kg, riposa 3 minuti e rifai la serie di test." };
+  if (val === 3) return { tone: "mid", title: "Leggermente leggero", detail: "Aggiungi circa 2.5 kg, riposa 3 minuti e rifai." };
+  if (val === 2) return { tone: "up", title: "Peso giusto", detail: "Completa le serie rimanenti con questo peso. Questo e il tuo punto di partenza." };
+  if (val === 1) return { tone: "up", title: "Peso giusto, zona alta", detail: "Va bene per iniziare. Tieni questo peso e completa le serie rimanenti." };
+  return { tone: "hold", title: "Peso troppo pesante", detail: "Togli circa 2.5 kg, riposa 3 minuti e rifai la serie di test." };
+}
 
 function cardioOptionKind(opt) {
   var label = (opt && opt.label ? opt.label : "").toLowerCase();
@@ -1550,33 +1694,60 @@ export default function App() {
 
   function openMainTab(nextTab) {
     setTab(nextTab);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        scrollToAnchor(nextTab + "-top");
+      });
+    });
+  }
+
+  function scrollToAnchor(id) {
+    var el = document.getElementById(id);
+    if (!el) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    var top = window.scrollY + el.getBoundingClientRect().top - 8;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  }
+
+  function scrollTopSoon(id) {
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        scrollToAnchor(id || (tab + "-top"));
+      });
+    });
   }
 
   function goToTeoria(nextTeoriaTab, nextGlossTab) {
     setTab("teoria");
     if (nextTeoriaTab) setTeoriaTab(nextTeoriaTab);
     if (nextGlossTab) setGlossTab(nextGlossTab);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollTopSoon("teoria-top");
   }
 
   function goToAlimentazione(nextAlimentazioneTab) {
     setTab("teoria");
     setTeoriaTab("alimentazione");
     if (nextAlimentazioneTab) setAlimentazioneTab(nextAlimentazioneTab);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollTopSoon("teoria-top");
   }
 
   function goToExercises(nextSection) {
     setTab("exercises");
     if (nextSection) setCatSec(nextSection);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollTopSoon("exercises-top");
   }
   var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"yt" }
   var [showReg, setShowReg] = useState(null);
   var [catSec, setCatSec] = useState(null);
   var [logs, setLogs] = useState({});
   var [cardioLogs, setCardioLogs] = useState({});
+  var [calibrationMode, setCalibrationMode] = useState(false);
+  var [calibrationProfiles, setCalibrationProfiles] = useState({});
+  var [calibrationPrompt, setCalibrationPrompt] = useState(null);
+  var [calibrationAnswers, setCalibrationAnswers] = useState({ reps: "", cleanSame: "yes", cleanReps: "", reserve: "2" });
+  var [calibrationFeedback, setCalibrationFeedback] = useState("");
   var [editing, setEditing] = useState(null);
   var [tmpW, setTmpW] = useState("");
   var [tmpR, setTmpR] = useState("");
@@ -1629,6 +1800,8 @@ export default function App() {
         if (parsed && parsed.logs && typeof parsed.logs === "object") {
           setLogs(parsed.logs || {});
           setCardioLogs(parsed.cardioLogs || {});
+          setCalibrationProfiles(parsed.calibrationProfiles || {});
+          setCalibrationMode(!!parsed.calibrationMode);
         } else if (parsed && typeof parsed === "object") {
           setLogs(parsed);
         }
@@ -1645,13 +1818,22 @@ export default function App() {
     var tm = setTimeout(function() { setAutoBackupMsg(""); }, 5000);
     return function() { clearTimeout(tm); };
   }, [autoBackupMsg]);
-  var saveData = useCallback(function(nl, nc) {
+  useEffect(function() {
+    if (!calibrationFeedback) return;
+    var tm = setTimeout(function() { setCalibrationFeedback(""); }, 5000);
+    return function() { clearTimeout(tm); };
+  }, [calibrationFeedback]);
+  var saveData = useCallback(function(nl, nc, np, nm) {
     var nextLogs = nl || {};
     var nextCardioLogs = nc || {};
+    var nextProfiles = np || {};
+    var nextMode = typeof nm === "boolean" ? nm : false;
     setLogs(nextLogs);
     setCardioLogs(nextCardioLogs);
+    setCalibrationProfiles(nextProfiles);
+    setCalibrationMode(nextMode);
     try {
-      var raw = JSON.stringify({ logs: nextLogs, cardioLogs: nextCardioLogs });
+      var raw = JSON.stringify({ logs: nextLogs, cardioLogs: nextCardioLogs, calibrationProfiles: nextProfiles, calibrationMode: nextMode });
       localStorage.setItem(SK, raw);
       localStorage.setItem(SK_SHADOW, raw);
     } catch(e) {}
@@ -1803,41 +1985,41 @@ export default function App() {
       return {
         needed: true,
         title: "Si, 3-4 serie",
-        detail: "Barra scarica x 8-10, poi circa 60% x 5 e 80% x 3. Se oggi il carico e alto per te, aggiungi 90% x 1-2."
+        detail: "Questa e la rampa completa del primo esercizio pesante: barra scarica x 8-10, poi circa 60% x 5 e 80% x 3. Se oggi il carico e alto per te, aggiungi 90% x 1-2. Non devi rifare una rampa cosi lunga sugli esercizi dopo."
       };
     }
     if (exName === "Trazioni") {
       return {
         needed: true,
         title: "Si, 2-3 mini-serie",
-        detail: "Fai 1-2 rip pulite, poi 3, poi 4-5 solo se restano facili. Recupero completo: servono ad attivarti, non a stancarti."
+        detail: "Fai 1-2 rip pulite, poi 2-3, poi 3-4 solo se restano facili. Recupero completo. Qui l'avvicinamento si fa aumentando piano le ripetizioni, ma fermandoti molto prima della fatica."
       };
     }
     if (exName === "Panca") {
       return {
         needed: true,
         title: "Si, 1-2 serie leggere",
-        detail: "Dopo le tirate attiva il pattern di spinta con barra scarica o carico leggero per 5-8 ripetizioni, senza arrivare a fatica."
+        detail: "Dopo le tirate petto e spalle non sono ancora nel gesto di spinta. Ti basta 1-2 serie leggere con barra scarica o poco peso per sentire il movimento, senza arrivare a fatica."
       };
     }
     if (exName === "Stacco da Terra") {
       return {
         needed: true,
         title: "Si, 3-4 serie",
-        detail: "Bilanciere scarico x 5-8, poi circa 60% x 5 e 80% x 3. Se serve aggiungi 90% x 1-2 prima della prima serie vera."
+        detail: "Anche qui e la rampa completa del primo esercizio pesante: bilanciere scarico x 5-8, poi circa 60% x 5 e 80% x 3. Se serve aggiungi 90% x 1-2. Lo scopo e preparare schiena, anche e sistema nervoso, non stancarti."
       };
     }
     if (exName === "Military Press") {
       return {
         needed: true,
         title: "Gia previste nel riscaldamento",
-        detail: "Fai 2x8 con bilanciere scarico. Se oggi il carico di lavoro e alto, aggiungi 1 serie al 70-80% prima delle serie di lavoro."
+        detail: "Fai 2x8 con bilanciere scarico. Se oggi il carico di lavoro e alto, aggiungi 1 serie al 70-80% prima delle serie vere. Non serve costruire una rampa lunga come nello squat o nello stacco."
       };
     }
     return {
       needed: false,
       title: "No, non servono",
-      detail: "Arrivi gia calda dagli esercizi precedenti o dal riscaldamento specifico del giorno: parti direttamente con le serie di lavoro."
+      detail: "Arrivi gia calda dagli esercizi precedenti o dal riscaldamento specifico del giorno. Qui non serve rifare una rampa completa: parti direttamente con le serie di lavoro, oppure fai al massimo 1 serie molto leggera se vuoi sentire il gesto."
     };
   }
 
@@ -2034,6 +2216,8 @@ export default function App() {
       meta: meta || null,
       logs: sourceLogs,
       cardioLogs: sourceCardioLogs || {},
+      calibrationProfiles: calibrationProfiles || {},
+      calibrationMode: calibrationMode,
     };
   }
 
@@ -2078,7 +2262,7 @@ export default function App() {
     setAutoBackupMsg("Backup automatico creato: sessione completata ed esportata in JSON.");
   }
 
-  function logSet(en, di, si, w, r) {
+  function saveSetEntry(en, di, si, w, r, customProfiles) {
     var t = todayStr();
     var k = t + "_d" + di + "_m" + month + "_" + en;
     var wasComplete = isDayWorkoutComplete(logs, di);
@@ -2087,15 +2271,66 @@ export default function App() {
     var x = nl[k].sets.findIndex(function(s) { return s.si === si; });
     var entry = { si: si, w: parseFloat(w) || 0, r: r === "max" ? r : (parseInt(r) || 0) };
     if (x >= 0) nl[k].sets[x] = entry; else nl[k].sets.push(entry);
-    saveData(nl, cardioLogs);
+    saveData(nl, cardioLogs, customProfiles || calibrationProfiles, calibrationMode);
     if (!wasComplete && isDayWorkoutComplete(nl, di)) autoExportCompletedSession(nl, di);
     setEditing(null);
     setTmpW("");
     setTmpR("");
+    return nl;
+  }
+  function beginLogSet(exObj, di, si, w, r, isBW) {
+    if (!calibrationMode) return saveSetEntry(exObj.n, di, si, w, r);
+    var calType = getCalibrationType(exObj.n, exObj.s);
+    if (calType === "none") return saveSetEntry(exObj.n, di, si, w, r);
+    setCalibrationAnswers({ reps: String(r || ""), cleanSame: "yes", cleanReps: String(r || ""), reserve: calType === "weighted" || calType === "dumbbell" || calType === "cable" ? "2" : "2" });
+    setCalibrationPrompt({ exName: exObj.n, serie: exObj.s, di: di, si: si, w: isBW ? 0 : w, r: r, isBW: isBW, type: calType });
+  }
+  function confirmCalibrationPrompt() {
+    if (!calibrationPrompt) return;
+    var repsDone = parseInt(calibrationAnswers.reps) || parseInt(calibrationPrompt.r) || 0;
+    var cleanReps = calibrationAnswers.cleanSame === "yes" ? repsDone : (parseInt(calibrationAnswers.cleanReps) || 0);
+    var reserve = calibrationAnswers.reserve || "2";
+    var nextProfiles = calibrationProfiles;
+    if (reserve === "1" || reserve === "2") {
+      nextProfiles = Object.assign({}, calibrationProfiles, {});
+      nextProfiles[calibrationPrompt.exName] = {
+        exercise: calibrationPrompt.exName,
+        date: todayStr(),
+        type: calibrationPrompt.type,
+        startWeight: parseFloat(calibrationPrompt.w) || 0,
+        reps: cleanReps,
+        reserve: reserve,
+      };
+    }
+    saveSetEntry(calibrationPrompt.exName, calibrationPrompt.di, calibrationPrompt.si, calibrationPrompt.w, cleanReps, nextProfiles);
+    var decision = getCalibrationDecision(calibrationPrompt.type, reserve);
+    setCalibrationFeedback(decision.title + ". " + decision.detail);
+    setCalibrationPrompt(null);
   }
   function getLog(en, di) { return logs[todayStr() + "_d" + di + "_m" + month + "_" + en]; }
   function getHist(en) { return Object.values(logs).filter(function(l) { return l.exercise === en; }).sort(function(a,b) { return b.date.localeCompare(a.date); }).slice(0, 10); }
   function getAllHist(en) { return Object.values(logs).filter(function(l) { return l.exercise === en && l.month === month; }).sort(function(a,b) { var c = b.date.localeCompare(a.date); return c || ((b.day || 0) - (a.day || 0)); }); }
+  function getCalibrationNeed(exName, serie) {
+    var type = getCalibrationType(exName, serie);
+    if (type === "none") return { needed: false, reason: "" };
+    var hist = Object.values(logs).filter(function(l) { return l.exercise === exName; }).sort(function(a,b) { return b.date.localeCompare(a.date); });
+    var last = hist[0] || null;
+    if (!last) return { needed: true, reason: "Non hai ancora un riferimento salvato per questo esercizio." };
+    var gap = daysBetweenISO(last.date, todayStr());
+    if (gap !== null && gap > 14) return { needed: true, reason: "Sono passati piu di 14 giorni dall'ultima registrazione: conviene ricalibrare." };
+    return { needed: false, reason: "" };
+  }
+  function getDayCalibrationSuggestion(di) {
+    var day = activeDays[di];
+    if (!day || !day.ex) return null;
+    var needed = day.ex.map(function(rawEx) {
+      var ex = getExForMonth(rawEx);
+      var check = getCalibrationNeed(ex.n, ex.s);
+      return check.needed ? { name: ex.n, reason: check.reason } : null;
+    }).filter(Boolean);
+    if (!needed.length) return null;
+    return needed;
+  }
   function getCardioKey(di, label, dateStr) {
     return (dateStr || todayStr()) + "_d" + di + "_m" + month + "_cardio_" + label;
   }
@@ -2173,7 +2408,7 @@ export default function App() {
       km: km > 0 ? km : 0,
       kg: kg > 0 ? kg : 0,
     };
-    saveData(logs, next);
+    saveData(logs, next, calibrationProfiles, calibrationMode);
   }
   function unlockPrivateSection() {
     if (String(privateCodeInput).trim() === "7792") {
@@ -2294,7 +2529,7 @@ export default function App() {
           var imported = JSON.parse(evt.target.result);
           var importedLogs = imported && imported.logs && typeof imported.logs === "object" ? imported.logs : imported;
           var importedCardioLogs = imported && imported.cardioLogs && typeof imported.cardioLogs === "object" ? imported.cardioLogs : {};
-          saveData(importedLogs || {}, importedCardioLogs || {});
+          saveData(importedLogs || {}, importedCardioLogs || {}, imported && imported.calibrationProfiles && typeof imported.calibrationProfiles === "object" ? imported.calibrationProfiles : {}, !!(imported && imported.calibrationMode));
           alert('Dati importati con successo!');
         } catch(e) {
           alert('Errore: file non valido');
@@ -2415,7 +2650,7 @@ export default function App() {
           <DetailText text={glossTermOpen.d} accent={dc} soft={true} />
           <div style={{ display: "flex", gap: 8, marginTop: 14 }}>
             <button onClick={function() { setGlossTermOpen(null); }} style={{ flex: 1, padding: 10, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Chiudi</button>
-            <button onClick={function() { setGlossTermOpen(null); setGlossOpen(true); setGlossTab("termini"); }} style={{ flex: 1, padding: 10, border: "1px solid " + dc + "24", borderRadius: 10, background: dc + "10", color: dc, fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Apri glossario</button>
+            <button onClick={function() { setGlossTermOpen(null); setGlossOpen(true); setGlossTab("termini"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: 10, border: "1px solid " + dc + "24", borderRadius: 10, background: dc + "10", color: dc, fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Apri glossario</button>
           </div>
         </div>
       </div>}
@@ -2437,8 +2672,8 @@ export default function App() {
           <div style={{ padding: "18px 20px 0", flexShrink: 0 }}>
             <h3 style={{ margin: "0 0 12px", fontSize: 18, fontWeight: 800 }}>📚 Teoria e Glossario</h3>
             <div style={{ display: "flex", gap: 0, borderRadius: 10, overflow: "hidden", border: "1px solid " + dc + "30", marginBottom: 14 }}>
-              <button onClick={function() { setGlossTab("principi"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>Principi</button>
-              <button onClick={function() { setGlossTab("termini"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>Termini base</button>
+              <button onClick={function() { setGlossTab("principi"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>Principi</button>
+              <button onClick={function() { setGlossTab("termini"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>Termini base</button>
             </div>
           </div>
           {/* Body scrollabile */}
@@ -2505,7 +2740,7 @@ export default function App() {
         </div>
       </div>}
 
-      {/* Embed modal (Wikipedia / YouTube) */}
+      {/* Embed modal */}
       {embedOpen && <div onClick={function() { setEmbedOpen(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.82)", zIndex: 400, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", padding: 0 }}>
         <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", maxWidth: 640, height: "88vh", background: T.cd, borderRadius: "16px 16px 0 0", display: "flex", flexDirection: "column", overflow: "hidden" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 16px", borderBottom: "1px solid " + T.bg, flexShrink: 0 }}>
@@ -2523,15 +2758,7 @@ export default function App() {
                   else { m = u.match(/youtu\.be\/([^?#]+)/); if (m) id = m[1]; }
                   return id ? "https://www.youtube-nocookie.com/embed/" + id + "?rel=0&modestbranding=1" : u;
                 })()
-              : (function() {
-                  // Wikipedia: convert to mobile embed
-                  var u = embedOpen.url;
-                  var m = u.match(/it\.wikipedia\.org\/wiki\/(.+)/);
-                  if (m) return "https://it.m.wikipedia.org/wiki/" + m[1];
-                  m = u.match(/en\.wikipedia\.org\/wiki\/(.+)/);
-                  if (m) return "https://en.m.wikipedia.org/wiki/" + m[1];
-                  return u;
-                })()
+              : embedOpen.url
             }
             style={{ flex: 1, width: "100%", border: "none" }}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -2549,7 +2776,7 @@ export default function App() {
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); setCardioLogs({}); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(false); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
           </div>
         </div>
       </div>}
@@ -2619,14 +2846,43 @@ export default function App() {
         {/* View tabs */}
         <div style={{ display: "flex", gap: 1, maxWidth: 600, margin: "12px auto 0", alignItems: "stretch" }}>
           {/* Home icon-only tab */}
-          <button onClick={function() { setTab("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 14, color: tab === "home" ? T.tx : T.sub, borderBottom: tab === "home" ? "2px solid " + dc : "2px solid transparent" }}>⌂</button>
+          <button onClick={function() { setTab("home"); scrollTopSoon("home-top"); }} style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 14, color: tab === "home" ? T.tx : T.sub, borderBottom: tab === "home" ? "2px solid " + dc : "2px solid transparent" }}>⌂</button>
           {/* Main tabs */}
-          {["Scheda", "Progressi", "Teoria", "Esercizi"].map(function(t) { var keys = {"Scheda":"workout","Progressi":"progressi","Teoria":"teoria","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ flex: 1, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, color: active ? T.tx : T.sub, borderBottom: active ? "2px solid " + dc : "2px solid transparent", letterSpacing: active ? 0.1 : 0, transition: "color 0.15s" }}>{t}</button>; })}
+          {["Scheda", "Progressi", "Teoria", "Esercizi"].map(function(t) { var keys = {"Scheda":"workout","Progressi":"progressi","Teoria":"teoria","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); scrollTopSoon(keys[t] + "-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, color: active ? T.tx : T.sub, borderBottom: active ? "2px solid " + dc : "2px solid transparent", letterSpacing: active ? 0.1 : 0, transition: "color 0.15s" }}>{t}</button>; })}
         </div>
       </div>
 
       {/* === HOME TAB === */}
-      {tab === "home" && <div style={{ maxWidth: 600, margin: "0 auto", padding: "20px 14px 100px" }}>
+      {tab === "home" && <div id="home-top" style={{ maxWidth: 600, margin: "0 auto", padding: "20px 14px 100px" }}>
+
+        {/* Panoramica programma */}
+        <div style={{ background: T.cd, borderRadius: 16, padding: "18px 18px 16px", marginBottom: 10 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+            <div style={{ width: 34, height: 34, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, color: dc, flexShrink: 0 }}>🧭</div>
+            <div>
+              <div style={{ fontSize: 15, fontWeight: 800, color: T.tx }}>Panoramica del programma</div>
+              <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>Cosa stai allenando e perche la scheda e fatta cosi</div>
+            </div>
+          </div>
+          <div style={{ display: "grid", gap: 8 }}>
+            <div style={{ padding: "10px 12px", borderRadius: 10, background: T.bg }}>
+              <div style={{ fontSize: 12, fontWeight: 800, color: dc, marginBottom: 3 }}>Che lavoro stai facendo ora</div>
+              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Stai facendo soprattutto ipertrofia, ma con fondamentali abbastanza pesanti da costruire anche forza. Non e una scheda di forza pura e non e una fase di definizione separata.</div>
+            </div>
+            <div style={{ padding: "10px 12px", borderRadius: 10, background: T.bg }}>
+              <div style={{ fontSize: 12, fontWeight: 800, color: dc, marginBottom: 3 }}>Come e organizzata</div>
+              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Upper/Lower su 4 giorni pesi piu 2 giorni cardio. Ogni muscolo riceve 2 stimoli a settimana, con recupero sufficiente tra una seduta e l'altra.</div>
+            </div>
+            <div style={{ padding: "10px 12px", borderRadius: 10, background: T.bg }}>
+              <div style={{ fontSize: 12, fontWeight: 800, color: dc, marginBottom: 3 }}>Cosa conta davvero</div>
+              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Fondamentali prima, accessori dopo, progressione graduale, buffer quasi sempre presente, cardio separato dai pesi e dieta impostata per ricomposizione corporea. La prima settimana, e ogni ricalibrazione dopo stop o deload, serve anche a ritrovare i pesi giusti.</div>
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 10 }}>
+            <button onClick={function() { goToTeoria("teoria", "principi"); }} style={{ fontSize: 11, background: dc + "14", color: dc, padding: "6px 10px", borderRadius: 8, fontWeight: 700, border: "none", cursor: "pointer" }}>Apri teoria del programma</button>
+            <button onClick={function() { openMainTab("workout"); }} style={{ fontSize: 11, background: T.bg, color: T.tx, padding: "6px 10px", borderRadius: 8, fontWeight: 700, border: "1px solid " + T.bg, cursor: "pointer" }}>Vai alla scheda</button>
+          </div>
+        </div>
 
         {/* Come funziona */}
         <div style={{ background: T.cd, borderRadius: 16, padding: "18px 18px 16px", marginBottom: 10 }}>
@@ -2731,12 +2987,12 @@ export default function App() {
             {[["basi","🧱 Basi"],["teoria","📚 Teoria"],["muscoli","💪 Muscoli"],["alimentazione","🥗 Alimentazione"]].map(function(pair) {
               var k = pair[0], label = pair[1];
               var active = teoriaTab === k;
-              return <button key={k} onClick={function() { setTeoriaTab(k); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: active ? dc : "transparent", color: active ? "#fff" : T.sub, transition: "background 0.15s" }}>{label}</button>;
+              return <button key={k} onClick={function() { setTeoriaTab(k); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: active ? dc : "transparent", color: active ? "#fff" : T.sub, transition: "background 0.15s" }}>{label}</button>;
             })}
           </div>
         </div>
 
-        <div style={{ padding: "12px 12px 0" }}>
+        <div id="teoria-top" style={{ padding: "12px 12px 0" }}>
 
         {/* Intro: Le basi dell'allenamento */}
         {teoriaTab === "basi" && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
@@ -2817,8 +3073,8 @@ export default function App() {
           {/* Tab interna Principi / Termini */}
           <div style={{ padding: "10px 16px 0" }}>
             <div style={{ display: "flex", gap: 0, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "30", marginBottom: 14 }}>
-              <button onClick={function() { setGlossTab("principi"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>🧠 Principi</button>
-              <button onClick={function() { setGlossTab("termini"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>🔤 Termini base</button>
+              <button onClick={function() { setGlossTab("principi"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>🧠 Principi</button>
+              <button onClick={function() { setGlossTab("termini"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>🔤 Termini base</button>
             </div>
           </div>
           <div style={{ padding: "0 16px 16px" }}>
@@ -2964,6 +3220,8 @@ export default function App() {
             <div style={{ background: T.sb, borderRadius: 8, padding: 12, marginBottom: 8 }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 4 }}>Dove</div>
               <DetailText text={m.w} accent={dc} />
+              <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 4, marginTop: 8 }}>Movimenti che fa</div>
+              <DetailText text={m.mv} accent={dc} />
               <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 4, marginTop: 8 }}>Perché allenarlo</div>
               <DetailText text={m.y} accent={dc} />
             </div>
@@ -2982,8 +3240,8 @@ export default function App() {
           </div>
           <div style={{ padding: "10px 16px 0" }}>
             <div style={{ display: "flex", gap: 0, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "30", marginBottom: 14 }}>
-              <button onClick={function() { setAlimentazioneTab("principi"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: alimentazioneTab === "principi" ? dc : "transparent", color: alimentazioneTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>Principi</button>
-              <button onClick={function() { setAlimentazioneTab("dieta"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: alimentazioneTab === "dieta" ? dc : "transparent", color: alimentazioneTab === "dieta" ? "#fff" : T.sub, transition: "background 0.15s" }}>Dieta attuale</button>
+              <button onClick={function() { setAlimentazioneTab("principi"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: alimentazioneTab === "principi" ? dc : "transparent", color: alimentazioneTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>Principi</button>
+              <button onClick={function() { setAlimentazioneTab("dieta"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: alimentazioneTab === "dieta" ? dc : "transparent", color: alimentazioneTab === "dieta" ? "#fff" : T.sub, transition: "background 0.15s" }}>Dieta attuale</button>
             </div>
           </div>
           {alimentazioneTab === "principi" && <div style={{ padding: "0 16px 16px", display: "grid", gap: 8 }}>
@@ -3108,7 +3366,7 @@ export default function App() {
           </div>;
         }
 
-        return <div style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }} onClick={function() { setProgTooltip(null); }}>
+        return <div id="progressi-top" style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }} onClick={function() { setProgTooltip(null); }}>
           <div style={{ fontSize: 18, fontWeight: 900, color: T.tx, marginBottom: 4, padding: "4px 0 8px" }}>📊 Progressi</div>
           <details style={{ background: T.cd, borderRadius: 16, marginBottom: 10, border: "1px solid " + dc + "18", overflow: "hidden" }}>
             <summary style={{ cursor: "pointer", listStyle: "none", padding: "14px 16px", fontSize: 14, fontWeight: 800, color: T.tx }}>
@@ -3249,7 +3507,7 @@ export default function App() {
       })()}
 
       {/* === EXERCISES TAB === */}
-      {tab === "exercises" && <div style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }}>
+      {tab === "exercises" && <div id="exercises-top" style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }}>
 
         {/* Intro esercizi */}
         <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
@@ -3314,7 +3572,7 @@ export default function App() {
         </div>
 
         {/* Esercizi header */}
-        <div onClick={function() { setCatSec(catSec === "ex" ? null : "ex"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
+        <div onClick={function() { setCatSec(catSec === "ex" ? null : "ex"); scrollTopSoon("exercises-top"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 16 }}>{"\uD83D\uDCAA"}</span>
             <span style={{ fontSize: 14, fontWeight: 800, color: dc }}>{"Esercizi (" + Object.keys(EX).length + ")"}</span>
@@ -3338,7 +3596,7 @@ export default function App() {
         </div>}
 
         {/* Riscaldamento header */}
-        <div onClick={function() { setCatSec(catSec === "wu" ? null : "wu"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
+        <div onClick={function() { setCatSec(catSec === "wu" ? null : "wu"); scrollTopSoon("exercises-top"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 16 }}>&#128293;</span>
             {(function() {
@@ -3380,7 +3638,7 @@ export default function App() {
         </div>}
 
         {/* Stretching header */}
-        <div onClick={function() { setCatSec(catSec === "st" ? null : "st"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
+        <div onClick={function() { setCatSec(catSec === "st" ? null : "st"); scrollTopSoon("exercises-top"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 16 }}>&#129495;</span>
             <span style={{ fontSize: 14, fontWeight: 800, color: T.st }}>{"Stretching (" + Object.keys(STR).length + ")"}</span>
@@ -3421,12 +3679,12 @@ export default function App() {
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "8px 12px 0" }}>
           {/* Day tabs */}
           <div style={{ display: "flex", gap: 4, overflowX: "auto", paddingBottom: 0 }}>
-            {activeDays.map(function(d, i) { var active = safeDayIdx === i; return <button key={i} onClick={function() { setDayIdx(i); setOpenEx(null); setEditing(null); setHistIdx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false); setShowImg(null); setShowDayIntro(false); }} style={{ flex: i < 4 ? 1 : "none", padding: "7px 8px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}>{d.name + (d.cardio ? " ❤️" : "")}</button>; })}
+            {activeDays.map(function(d, i) { var active = safeDayIdx === i; return <button key={i} onClick={function() { setDayIdx(i); setOpenEx(null); setEditing(null); setHistIdx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false); setShowImg(null); setShowDayIntro(false); scrollTopSoon("workout-top"); }} style={{ flex: i < 4 ? 1 : "none", padding: "7px 8px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}>{d.name + (d.cardio ? " ❤️" : "")}</button>; })}
           </div>
           {/* Month selector — compact strip inside card top */}
         </div>
 
-        <div style={{ maxWidth: 600, margin: "0 auto", padding: "0 12px 24px", paddingBottom: tPanel ? 200 : 100 }}>
+        <div id="workout-top" style={{ maxWidth: 600, margin: "0 auto", padding: "0 12px 24px", paddingBottom: tPanel ? 200 : 100 }}>
           <div style={{ background: T.cd, borderRadius: "0 0 14px 14px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", overflow: "hidden" }}>
 
             {/* Day intro schematic */}
@@ -3489,6 +3747,40 @@ export default function App() {
               <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Come leggere le serie</div>
               <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Il peso resta uguale in tutte le serie dello stesso esercizio. Non aumentarlo tra una serie e l'altra: il numero di ripetizioni sale tra le settimane, non dentro la seduta.</div>
             </div>}
+
+            {!dayData.cardio && (function() {
+              var dayCalibration = getDayCalibrationSuggestion(safeDayIdx);
+              if (!calibrationMode && !dayCalibration) return null;
+              return <div style={{ margin: "10px 14px 0", padding: "11px 12px", borderRadius: 12, background: calibrationMode ? "#FFB30012" : "#C6282810", border: "1px solid " + (calibrationMode ? "#FFB30033" : "#C6282828") }}>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                  <div style={{ fontSize: 15, lineHeight: 1.3 }}>🎯</div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 11, fontWeight: 800, color: calibrationMode ? "#A66A00" : "#C62828", textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>
+                      {calibrationMode ? "Settimana di calibrazione attiva" : "Ricalibrazione consigliata"}
+                    </div>
+                    <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
+                      {calibrationMode
+                        ? "Questa settimana serve a trovare o ricalibrare i tuoi pesi di riferimento. Dopo ogni serie l'app ti chiede quante ripetizioni pulite ti restavano e ti suggerisce se tenere, alzare o abbassare il carico."
+                        : dayCalibration.length === 1
+                          ? dayCalibration[0].reason
+                          : "Alcuni esercizi di oggi non hanno ancora un riferimento affidabile oppure non li fai da piu di 2 settimane."}
+                    </div>
+                    {!calibrationMode && dayCalibration.length > 0 && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55, marginTop: 6 }}>
+                      {"Da rivedere: " + dayCalibration.map(function(item) { return item.name; }).join(", ")}
+                    </div>}
+                  </div>
+                  <button
+                    onClick={function() {
+                      var nextMode = !calibrationMode;
+                      saveData(logs, cardioLogs, calibrationProfiles, nextMode);
+                    }}
+                    style={{ minHeight: 34, padding: "0 10px", border: "none", borderRadius: 9, background: calibrationMode ? T.bg : dc, color: calibrationMode ? T.tx : "#fff", fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
+                  >
+                    {calibrationMode ? "Disattiva" : "Attiva"}
+                  </button>
+                </div>
+              </div>;
+            })()}
 
             {/* Warmup - collapsed (solo giorni non-cardio) */}
             {!dayData.cardio && <div ref={function(el) { if (el) el._sectionKey = "intro"; }} id="section-warmup" style={{ borderBottom: "1px solid " + T.bg }}>
@@ -3678,6 +3970,8 @@ export default function App() {
               var rowBreath = getBreath(ex.n);
               var rowBreathColor = rowBreath ? (BREATH_TYPE_COLOR[rowBreath.type] || dc) : dc;
               var rowProgColor = prog ? (prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) : T.sub;
+              var calibrationNeed = getCalibrationNeed(ex.n, ex.s);
+              var calibrationProfile = calibrationProfiles[ex.n] || null;
 
               return <div key={i} id={"ex-row-" + i} style={{ borderBottom: "1px solid " + T.bg }}>
                 <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); if (opening) { requestAnimationFrame(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
@@ -3695,6 +3989,10 @@ export default function App() {
                       {restSec ? <button onClick={function(e) { e.stopPropagation(); quickTimer(restSec); }} style={{ minHeight: 24, padding: "0 8px", border: "1px solid " + T.ok + "34", borderRadius: 999, background: T.ok + "10", color: T.ok, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}>{"⏱ Recupero " + (rawEx.rec || fmtLabel(restSec))}</button> : null}
                     </div>
                     <div style={{ marginTop: 5, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                    {(calibrationMode || calibrationNeed.needed || calibrationProfile) && <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid " + (calibrationMode ? "#FFB30044" : calibrationNeed.needed ? "#C6282840" : T.ok + "40"), borderRadius: 999, padding: "3px 8px", background: calibrationMode ? "#FFB30010" : calibrationNeed.needed ? "#C6282810" : T.ok + "10", color: calibrationMode ? "#A66A00" : calibrationNeed.needed ? "#C62828" : T.ok }}>
+                      <span>🎯</span>
+                      <span>{calibrationMode ? "Calibrazione" : calibrationNeed.needed ? "Ricalibra" : "Punto zero salvato"}</span>
+                    </span>}
                     {rowBreath && <>
                       <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid " + rowBreathColor + "40", borderRadius: 999, padding: "3px 8px", background: rowBreathColor + "10", color: rowBreathColor }}>
                         <span>🫁</span>
@@ -3774,6 +4072,19 @@ export default function App() {
                         <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Cosa fai oggi</div>
                       </div>
                       <div style={{ padding: "10px 11px", background: T.sb, display: "grid", gap: 8 }}>
+                        {(calibrationMode || calibrationNeed.needed || calibrationProfile) && <div style={{ borderRadius: 9, padding: "9px 10px", background: calibrationMode ? "#FFB30010" : calibrationNeed.needed ? "#C6282810" : T.ok + "10", border: "1px solid " + (calibrationMode ? "#FFB30024" : calibrationNeed.needed ? "#C6282824" : T.ok + "24") }}>
+                          <div style={{ fontSize: 10, fontWeight: 800, color: calibrationMode ? "#A66A00" : calibrationNeed.needed ? "#C62828" : T.ok, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 5 }}>Calibrazione</div>
+                          <div style={{ fontSize: 12, fontWeight: 700, color: T.tx, marginBottom: 4 }}>
+                            {calibrationMode ? "Modalita attiva" : calibrationNeed.needed ? "Ricalibrazione consigliata" : "Punto zero gia salvato"}
+                          </div>
+                          <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>
+                            {calibrationMode
+                              ? getCalibrationQuickInstruction(ex.n, ex.s)
+                              : calibrationNeed.needed
+                                ? calibrationNeed.reason
+                                : (calibrationProfile.startWeight > 0 ? "Ultimo peso calibrato: " + calibrationProfile.startWeight + " kg." : "Ultimo riferimento salvato: " + calibrationProfile.reps + " ripetizioni.") + " Se fai un deload o uno stop lungo, attiva di nuovo la calibrazione."}
+                          </div>
+                        </div>}
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(185px,1fr))", gap: 8 }}>
                           <div style={{ borderRadius: 9, background: T.cd, border: "1px solid " + T.bg, padding: "9px 10px" }}>
                             <div style={{ fontSize: 10, fontWeight: 800, color: approach.needed ? dc : T.sub, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 5 }}>Serie di avvicinamento</div>
@@ -3852,7 +4163,7 @@ export default function App() {
                               <div style={{ display: "flex", gap: 6, padding: "0 10px 10px", alignItems: "center" }}>
                                 {!isBW && <><input type="number" inputMode="decimal" placeholder="kg" value={tmpW} onChange={function(e) { setTmpW(e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus /><span style={{ fontSize: 11, color: T.sub, flexShrink: 0 }}>kg</span></>}
                                 <input type={tgt === "max" ? "text" : "number"} inputMode="numeric" placeholder="rip" value={tmpR} onChange={function(e) { setTmpR(e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus={isBW} />
-                                <button onClick={function() { logSet(ex.n, dayIdx, si, isBW ? 0 : tmpW, tmpR); }} style={{ width: 44, height: 44, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 20, cursor: "pointer", flexShrink: 0, fontWeight: 700 }}>✓</button>
+                                <button onClick={function() { beginLogSet(ex, dayIdx, si, isBW ? 0 : tmpW, tmpR, isBW); }} style={{ width: 44, height: 44, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 20, cursor: "pointer", flexShrink: 0, fontWeight: 700 }}>✓</button>
                                 <button onClick={function() { setEditing(null); setTmpW(""); setTmpR(""); }} style={{ width: 36, height: 44, background: T.bg, color: T.sub, border: "none", borderRadius: 8, fontSize: 16, cursor: "pointer", flexShrink: 0 }}>✕</button>
                               </div>
                             ) : done ? (
@@ -3974,6 +4285,57 @@ export default function App() {
               </div></div>}
             </div>}
 
+          </div>
+        </div>
+      </div>}
+
+      {calibrationFeedback && <div style={{ position: "fixed", left: 12, right: 12, bottom: tPanel ? 110 : 78, zIndex: 130, maxWidth: 600, margin: "0 auto", background: T.ok, color: "#fff", borderRadius: 12, padding: "10px 12px", boxShadow: "0 8px 24px rgba(0,0,0,0.16)", fontSize: 12, fontWeight: 700, lineHeight: 1.5 }}>
+        {calibrationFeedback}
+      </div>}
+
+      {calibrationPrompt && <div onClick={function() { setCalibrationPrompt(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.38)", zIndex: 140, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: 12 }}>
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", maxWidth: 560, background: T.cd, borderRadius: 16, overflow: "hidden", boxShadow: "0 20px 40px rgba(0,0,0,0.22)" }}>
+          <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
+            <div style={{ fontSize: 15, fontWeight: 800, color: T.tx }}>🎯 Calibrazione — {calibrationPrompt.exName}</div>
+            <div style={{ fontSize: 12, color: T.sub, marginTop: 4, lineHeight: 1.6 }}>{getCalibrationQuickInstruction(calibrationPrompt.exName, calibrationPrompt.serie)}</div>
+          </div>
+          <div style={{ padding: 16, display: "grid", gap: 12 }}>
+            <label style={{ display: "grid", gap: 6 }}>
+              <span style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>Quante ripetizioni hai fatto?</span>
+              <input type="number" inputMode="numeric" value={calibrationAnswers.reps} onChange={function(e) { setCalibrationAnswers(function(prev) { return Object.assign({}, prev, { reps: e.target.value, cleanReps: prev.cleanSame === "yes" ? e.target.value : prev.cleanReps }); }); }} style={{ width: "100%", padding: "11px 12px", border: "1px solid " + dc + "28", borderRadius: 10, fontSize: 15, fontWeight: 700, background: T.sb, color: T.tx, boxSizing: "border-box" }} />
+            </label>
+            <div style={{ display: "grid", gap: 6 }}>
+              <span style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>Erano tutte con la stessa tecnica della prima?</span>
+              <div style={{ display: "flex", gap: 8 }}>
+                {[
+                  { key: "yes", label: "Si" },
+                  { key: "no", label: "No" },
+                ].map(function(opt) {
+                  var active = calibrationAnswers.cleanSame === opt.key;
+                  return <button key={opt.key} onClick={function() { setCalibrationAnswers(function(prev) { return Object.assign({}, prev, { cleanSame: opt.key, cleanReps: opt.key === "yes" ? prev.reps : prev.cleanReps }); }); }} style={{ flex: 1, minHeight: 40, border: "none", borderRadius: 10, background: active ? dc : T.bg, color: active ? "#fff" : T.sub, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>{opt.label}</button>;
+                })}
+              </div>
+            </div>
+            {calibrationAnswers.cleanSame === "no" && <label style={{ display: "grid", gap: 6 }}>
+              <span style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>Quante erano davvero pulite?</span>
+              <input type="number" inputMode="numeric" value={calibrationAnswers.cleanReps} onChange={function(e) { setCalibrationAnswers(function(prev) { return Object.assign({}, prev, { cleanReps: e.target.value }); }); }} style={{ width: "100%", padding: "11px 12px", border: "1px solid " + dc + "28", borderRadius: 10, fontSize: 15, fontWeight: 700, background: T.sb, color: T.tx, boxSizing: "border-box" }} />
+            </label>}
+            <div style={{ display: "grid", gap: 6 }}>
+              <span style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>Quante altre ripetizioni pulite avresti potuto fare?</span>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 6 }}>
+                {["0","1","2","3","4+"].map(function(opt) {
+                  var active = calibrationAnswers.reserve === opt;
+                  return <button key={opt} onClick={function() { setCalibrationAnswers(function(prev) { return Object.assign({}, prev, { reserve: opt }); }); }} style={{ minHeight: 40, border: "none", borderRadius: 10, background: active ? dc : T.bg, color: active ? "#fff" : T.sub, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>{opt}</button>;
+                })}
+              </div>
+            </div>
+            <div style={{ padding: "10px 12px", borderRadius: 10, background: dc + "0A", border: "1px solid " + dc + "18", fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
+              {getCalibrationDecision(calibrationPrompt.type, calibrationAnswers.reserve).detail}
+            </div>
+            <div style={{ display: "flex", gap: 8 }}>
+              <button onClick={function() { setCalibrationPrompt(null); }} style={{ flex: 1, minHeight: 44, border: "1px solid " + T.bg, borderRadius: 10, background: T.sb, color: T.sub, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Annulla</button>
+              <button onClick={confirmCalibrationPrompt} style={{ flex: 1, minHeight: 44, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Salva risposta</button>
+            </div>
           </div>
         </div>
       </div>}
