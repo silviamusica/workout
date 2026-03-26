@@ -805,6 +805,127 @@ var PERSONAL_DATA_SECTIONS = [
   },
 ];
 
+var NUTRITION_CURRENT_PLAN = [
+  {
+    t: "Numeri del piano attuale",
+    d: [
+      {type:"bold-list", content:[
+        ["Calorie totali", "Circa 1600 kcal al giorno."],
+        ["Carboidrati", "170-185 g al giorno, circa 2.98-3.25 g/kg su 57 kg."],
+        ["Proteine", "95-102 g al giorno, circa 1.67-1.79 g/kg."],
+        ["Lipidi", "Circa 50 g al giorno, circa 0.88 g/kg."],
+        ["Fibre", "Circa 30 g al giorno."],
+      ]},
+      {type:"p", content:"Distribuzione indicativa: 46% carboidrati, 26% proteine, 28% grassi. Il piano e piu proteico del normotipo standard ed e coerente con un obiettivo di ricomposizione corporea."},
+    ]
+  },
+  {
+    t: "Struttura della giornata",
+    d: [
+      {type:"bold-list", content:[
+        ["Colazione", "Bevanda vegetale 200 ml + proteine in polvere 20 g + frutto + caffe + pane di segale 60 g. Alternativa: yogurt di soia 150 g + proteine 20 g + 4 fette Wasa + frutto + caffe."],
+        ["Spuntini", "Non obbligatori. Puoi spostare gli alimenti nel corso della giornata purche il totale resti coerente."],
+        ["Pranzo", "Fino a 60 g di cereale oppure 150 g patate oppure 85 g pane + fino a 150 g di secondo + verdure libere + fino a 2 cucchiai di olio EVO + 1 frutto."],
+        ["Cena", "Fino a 150 g patate oppure 85 g pane oppure 60 g riso + fino a 120-150 g di secondo + verdure a sazieta + fino a 1 cucchiaio di olio + 1 frutto."],
+        ["Integrazione", "Creatina monoidrato 3 g al giorno a colazione + omega-3 Enerzona RX 1 capsula al mattino."],
+      ]},
+    ]
+  },
+  {
+    t: "Punti di attenzione pratici",
+    d: [
+      {type:"bold-list", content:[
+        ["Proteine", "Sei nel range utile ma nella zona bassa. Nei giorni in cui mangi meno o hai poca fame, uno shake extra puo aiutarti a non scendere sotto il target."],
+        ["Carboidrati", "Nei giorni dei pesi usa il lato alto del range per sostenere meglio la performance."],
+        ["Deficit", "Con un TDEE di circa 2077 kcal, il deficit e attorno a 475 kcal: gestibile, ma da monitorare se la performance cala per 2 settimane di fila."],
+        ["Dieta flexitariana", "Compatibile con l'ipertrofia. Quando scegli fonti vegetali, serve solo piu attenzione alla quota proteica totale e per pasto."],
+        ["Cosa monitorare", "BIA ripetuta, misure antropometriche e performance in palestra valgono piu del solo peso sulla bilancia."],
+      ]},
+    ]
+  },
+];
+
+var NUTRITION_PRINCIPLES = [
+  {
+    t: "Proteine: la priorità assoluta",
+    d: [
+      { type:"p", content:"Range: 1.6-2.2 g/kg al giorno. Il tuo piano nutrizionale prevede circa 1.67-1.79 g/kg (95-102 g/giorno a 57 kg). In deficit calorico, avvicinarsi a 2.0 g/kg (114 g) preserva meglio la massa magra." },
+      { type:"p", content:"Distribuzione: almeno 4 pasti con 0.4-0.55 g/kg per pasto, cioe circa 23-31 g per pasto. L'effetto anabolico di un singolo pasto dura 5-6 ore: non serve mangiare ogni 2 ore, ma serve arrivare al totale giornaliero." },
+      { type:"p", content:"Fonti utili: pollo, tacchino, uova, pesce, yogurt greco, ricotta, fiocchi di latte, tofu, tempeh, seitan e combinazioni legumi + cereali." },
+    ]
+  },
+  {
+    t: "Carboidrati: carburante per la performance",
+    d: [
+      { type:"p", content:"Il glicogeno muscolare e il carburante principale dell'allenamento ipertrofico. 3 set da 12RM riducono il glicogeno del circa 26%; 6 set del circa 38%. Il ripristino completo avviene entro 24 ore con un'assunzione giornaliera adeguata." },
+      { type:"p", content:"Il tuo piano sta attorno a 170-185 g al giorno, cioe circa 2.98-3.25 g/kg. Nei giorni con i pesi conviene stare sul lato alto del range." },
+      { type:"p", content:"Fonti pratiche: riso, pasta, patate, pane, avena, frutta e cereali integrali. Le fonti integrali aiutano fibra e sazieta, ma vicino all'allenamento puoi usare anche fonti piu facili da digerire." },
+    ]
+  },
+  {
+    t: "Grassi: equilibrio ormonale",
+    d: [
+      { type:"p", content:"I grassi completano il bilancio calorico dopo proteine e carboidrati. Non scendere sotto 0.8 g/kg: livelli troppo bassi possono alterare il profilo ormonale e peggiorare la sostenibilita della dieta." },
+      { type:"p", content:"Il tuo piano e attorno a 0.88 g/kg, quindi nella parte bassa ma ancora adeguata. Privilegia olio EVO, frutta secca, avocado e pesce grasso. Limita i grassi saturi delle fonti piu processate." },
+    ]
+  },
+  {
+    t: "Timing dei pasti",
+    d: [
+      { type:"p", content:"La finestra anabolica esiste, ma e molto piu ampia di quanto si creda. Se hai mangiato 2-3 ore prima dell'allenamento, non c'e urgenza di mangiare entro 30 minuti." },
+      { type:"bold-list", content:[
+        ["Pre-workout", "1-2 ore prima: pasto con proteine + carboidrati."],
+        ["Post-workout", "Entro 4-6 ore dal pasto pre: proteine 0.4-0.5 g/kg di massa magra, circa 20-25 g nel tuo caso."],
+        ["Prima di dormire", "30-40 g di proteine lente come yogurt greco, skyr o fiocchi di latte se ti aiutano a raggiungere il totale giornaliero."],
+      ]},
+    ]
+  },
+  {
+    t: "Idratazione",
+    d: [
+      { type:"p", content:"Bevi quando hai sete: per la maggior parte delle persone e sufficiente. Non esiste un target universale identico per tutti." },
+      { type:"p", content:"Come base pratica, non scendere sotto 1.2-1.5 litri al giorno. Il colore dell'urina e un indicatore semplice: giallo chiaro = idratazione di solito adeguata." },
+    ]
+  },
+  {
+    t: "Integratori: cosa vale davvero",
+    d: [
+      { type:"p", content:"La maggior parte degli integratori non cambia i risultati in modo rilevante. I pochi davvero utili vanno letti come strumenti semplici, non come scorciatoie." },
+      { type:"p", content:"La creatina monoidrato resta il supplemento piu solido: 3-5 g al giorno, tutti i giorni. Nel tuo piano sono previsti 3 g, un dosaggio funzionale. Puo far salire il peso di 1-3% per acqua intramuscolare, ma e un aumento 'utile', non grasso." },
+      { type:"p", content:"Le proteine whey servono soprattutto quando il cibo non basta. Una dose da 20-30 g e pratica a colazione o nei giorni in cui l'appetito e basso." },
+      { type:"p", content:"Gli omega-3 hanno senso se la capsula apporta davvero circa 1 g combinato di EPA + DHA. La caffeina puo aiutare la performance, ma va usata con cautela se assumi gia altri stimolanti. Un multivitaminico puo essere ragionevole in deficit calorico o se la dieta e poco varia." },
+      { type:"p", content:"Il resto, come BCAA, bruciagrassi o pre-workout complessi, ha prove deboli o nulle quando le basi della dieta sono gia a posto." },
+    ]
+  },
+  {
+    t: "Tabelle pratiche: legumi, cereali e macro",
+    d: [
+      { type:"p", content:"Valori indicativi per alimenti cotti o pronti al consumo. Possono variare leggermente per marca e metodo di cottura, ma sono abbastanza precisi per orientarti." },
+      { type:"table", columns:["Alimento","Porzione","Kcal","Carb","Prot","Grassi"], rows:[
+        ["Lenticchie cotte","100 g","116","20 g","9 g","0.4 g"],
+        ["Ceci cotti","100 g","164","27 g","9 g","2.6 g"],
+        ["Fagioli borlotti cotti","100 g","127","23 g","8 g","0.5 g"],
+        ["Piselli cotti","100 g","81","14 g","5 g","0.4 g"],
+        ["Edamame","100 g","122","9 g","11 g","5 g"],
+      ]},
+      { type:"table", columns:["Alimento","Porzione","Kcal","Carb","Prot","Grassi"], rows:[
+        ["Riso cotto","100 g","130","28 g","2.5 g","0.3 g"],
+        ["Pasta cotta","100 g","157","31 g","5.8 g","0.9 g"],
+        ["Patate bollite","100 g","87","20 g","1.9 g","0.1 g"],
+        ["Pane","50 g","130","24 g","4 g","1.5 g"],
+        ["Avena secca","40 g","156","26 g","6.8 g","2.8 g"],
+      ]},
+      { type:"table", columns:["Combinazione utile","Porzione esempio","Kcal","Carb","Prot","Grassi"], rows:[
+        ["Lenticchie + riso","150 g lenticchie + 100 g riso","304","58 g","16 g","1 g"],
+        ["Ceci + pane","150 g ceci + 60 g pane","324","55 g","16 g","4.8 g"],
+        ["Tofu + riso","150 g tofu + 100 g riso","310","31 g","20 g","13 g"],
+        ["Yogurt greco + avena","170 g yogurt + 40 g avena","256","32 g","23 g","3 g"],
+      ]},
+      { type:"p", content:"Regola pratica: i legumi da soli sono ottimi, ma per alzare la quota proteica del pasto spesso conviene abbinarli a cereali, tofu, yogurt o altre fonti proteiche piu dense." },
+    ]
+  },
+];
+
 /* === MUSCLES === */
 var MUSC = [
   { n: "Grande pettorale", z: "Anteriore", w: "Petto, dalla clavicola all'omero", y: "Spinta orizzontale e adduzione braccio.", ex: ["Panca","Push-Up","Croci Manubri a Terra","Floor Press Manubri"] },
@@ -1320,6 +1441,7 @@ export default function App() {
   var [glossTermOpen, setGlossTermOpen] = useState(null);
   var [glossTab, setGlossTab] = useState("principi");
   var [teoriaTab, setTeoriaTab] = useState("basi");
+  var [alimentazioneTab, setAlimentazioneTab] = useState("principi");
   var [resetOpen, setResetOpen] = useState(false);
   var [exInfoOpen, setExInfoOpen] = useState(null);
   var [openEx, setOpenEx] = useState(null);
@@ -1594,6 +1716,28 @@ export default function App() {
                 <span style={{ fontSize: 12, lineHeight: 1.6, color: T.sub }}>{item[1]}</span>
               </div>;
             })}
+          </div>;
+        }
+        if (block.type === "table") {
+          return <div key={bi} style={{ overflowX: "auto", border: "1px solid " + ac + "18", borderRadius: 10, background: T.cd }}>
+            <table style={{ width: "100%", minWidth: 420, borderCollapse: "collapse" }}>
+              <thead>
+                <tr>
+                  {block.columns.map(function(col, ci) {
+                    return <th key={ci} style={{ textAlign: ci === 0 ? "left" : "center", padding: "8px 10px", fontSize: 10, fontWeight: 800, color: ac, textTransform: "uppercase", letterSpacing: 0.6, background: ac + "0A", borderBottom: "1px solid " + ac + "18" }}>{col}</th>;
+                  })}
+                </tr>
+              </thead>
+              <tbody>
+                {block.rows.map(function(row, ri) {
+                  return <tr key={ri} style={{ borderBottom: ri < block.rows.length - 1 ? "1px solid " + T.bg : "none" }}>
+                    {row.map(function(cell, ci) {
+                      return <td key={ci} style={{ padding: "8px 10px", fontSize: 11, lineHeight: 1.5, color: ci === 0 ? T.tx : T.sub, textAlign: ci === 0 ? "left" : "center", fontWeight: ci === 0 ? 700 : 500, whiteSpace: ci === 0 ? "normal" : "nowrap" }}>{cell}</td>;
+                    })}
+                  </tr>;
+                })}
+              </tbody>
+            </table>
           </div>;
         }
         return null;
@@ -2264,12 +2408,6 @@ export default function App() {
       {/* === HOME TAB === */}
       {tab === "home" && <div style={{ maxWidth: 600, margin: "0 auto", padding: "20px 14px 100px" }}>
 
-        {/* Hero */}
-        <div style={{ background: T.hd, borderRadius: 16, padding: "28px 22px 24px", marginBottom: 14, color: T.htx, textAlign: "center" }}>
-          <div style={{ fontSize: 40, marginBottom: 8 }}>🏋️</div>
-          <div style={{ fontSize: 22, fontWeight: 900 }}>HomeWorkout</div>
-        </div>
-
         {/* Come funziona */}
         <div style={{ background: T.cd, borderRadius: 16, padding: "18px 18px 16px", marginBottom: 10 }}>
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 14 }}>Come funziona</div>
@@ -2616,18 +2754,16 @@ export default function App() {
         {teoriaTab === "alimentazione" && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
           <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
             <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🥗 Alimentazione</div>
-            <div style={{ fontSize: 12, color: T.sub }}>Principi base per supportare l'allenamento</div>
+            <div style={{ fontSize: 12, color: T.sub }}>Principi base e dieta attuale per supportare l'allenamento</div>
           </div>
-          <div style={{ padding: "12px 16px 16px", display: "grid", gap: 8 }}>
-            {[
-              { t: "Proteine: la priorità assoluta", body: "Range: 1.6-2.2 g/kg al giorno. Il tuo piano nutrizionale prevede ~1.67-1.79 g/kg (95-102 g/giorno a 57 kg). In deficit calorico, avvicinarsi a 2.0 g/kg (114 g) preserva meglio la massa magra.\n\nDistribuzione: almeno 4 pasti con 0.4-0.55 g/kg per pasto (23-31 g per pasto). L'effetto anabolico di un singolo pasto dura 5-6 ore — non serve mangiare ogni 2 ore.\n\nFonti ottimali: pollo, tacchino, uova, pesce, legumi + cereali, yogurt greco, ricotta, fiocchi di latte." },
-              { t: "Carboidrati: carburante per la performance", body: "Il glicogeno muscolare è il carburante principale dell'allenamento ipertrofico. 3 set da 12RM riducono il glicogeno del ~26%; 6 set del ~38%. Il ripristino completo avviene entro 24 ore con un'assunzione giornaliera adeguata — indipendentemente dal timing post-workout.\n\nIl tuo piano: ~2.98-3.25 g/kg (170-185 g/giorno). Minimo consigliato: 3 g/kg.\n\nFonti: riso, pasta, patate, pane, frutta, avena. Preferisci fonti integrali per fibra e sazietà." },
-              { t: "Grassi: equilibrio ormonale", body: "I grassi completano il bilancio calorico dopo proteine e carboidrati. Non scendere sotto 0.8 g/kg: livelli troppo bassi possono alterare il profilo ormonale.\n\nIl tuo piano: ~0.88 g/kg (~50 g), al limite basso ma adeguato. Privilegia fonti insature: olio EVO, frutta secca, pesce grasso (salmone, sgombro), avocado. Limita i grassi saturi (salumi, formaggi grassi)." },
-              { t: "Timing dei pasti", body: "La 'finestra anabolica' esiste, ma è molto più ampia di quanto si creda. Se hai consumato un pasto completo 2-3 ore prima dell'allenamento, la finestra post-workout si estende a 4-6 ore — non c'è urgenza di mangiare entro 30 minuti.\n\nSe ti alleni a digiuno, le proteine post-workout diventano urgenti (entro 45 minuti).\n\n• Pre-workout (1-2h): pasto con proteine + carboidrati\n• Post-workout (entro 4-6h dal pasto pre): proteine 0.4-0.5 g/kg di massa magra (~20-25 g)\n• Prima di dormire: 30-40 g di proteine a digestione lenta (caseine: fiocchi di latte, yogurt greco). Il beneficio principale è raggiungere il target proteico giornaliero." },
-              { t: "Idratazione", body: "Bevi quando hai sete — per la maggior parte delle persone è sufficiente. Non esiste un target universale di 'X ml al giorno'.\n\nMinimo: non scendere sotto 1.2-1.5 litri al giorno (come indicato dal tuo piano nutrizionale). Non bere quantità eccessive senza elettroliti: a lungo termine il rischio è iponatremia.\n\nMonitora il colore dell'urina: giallo chiaro = idratazione ottimale." },
-              { t: "Ricomposizione corporea: il tuo caso", body: "Con massa grassa al 20.9% e massa muscolare al 54.2% (BIA marzo 2026), sei nella posizione ideale per una ricomposizione corporea: perdere grasso e guadagnare muscolo simultaneamente.\n\nFunziona con deficit moderato (-300/-400 kcal), proteine alte (1.6-2.2 g/kg) e allenamento con i pesi. Con un TDEE stimato di ~2077 kcal e un piano da 1600 kcal, il deficit attuale è ~475 kcal: leggermente aggressivo ma ancora gestibile. Monitora la performance: se cala per 2 settimane consecutive, il deficit è troppo alto.\n\nTarget realistico: 0.5-0.7% del peso a settimana = 285-400 g/settimana. Perdere 2-3 kg di grasso ti porterebbe a ~16-17% di massa grassa. 5 kg ti porterebbe a ~12% — molto difficile da sostenere a lungo termine." },
-              { t: "Integratori: cosa vale, cosa no", body: "La maggior parte degli integratori non ha prove solide. Quelli con evidenza robusta:\n\n• Creatina monoidrato: 3-5 g/giorno tutti i giorni. Il tuo piano: 3 g/giorno. Migliora forza e ipertrofia in modo consistente. Possibile aumento di peso 1-3% da acqua intramuscolare (aspetto più tonico, non gonfio). La letteratura supporta l'uso continuativo oltre le 8 settimane.\n• Proteine whey: 20-30 g per dose quando i pasti non bastano. Già nel tuo piano (20 g a colazione).\n• Omega-3 (EPA + DHA): 1 g combinato/giorno. Già nel tuo piano. Benefici cognitivi e possibile supporto alla sintesi proteica.\n• Caffeina: 3-6 mg/kg pre-workout = 168-336 mg per te = 2-3 caffè. Attenzione: se assumi altri stimolanti per altri motivi, valuta con il medico la combinazione.\n• Multivitaminico: utile in deficit calorico quando la varietà alimentare è limitata.\n\nTutto il resto (BCAA se le proteine sono sufficienti, bruciagrassi, pre-workout complessi) ha prove deboli o nulle." },
-            ].map(function(item, ii) {
+          <div style={{ padding: "10px 16px 0" }}>
+            <div style={{ display: "flex", gap: 0, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "30", marginBottom: 14 }}>
+              <button onClick={function() { setAlimentazioneTab("principi"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: alimentazioneTab === "principi" ? dc : "transparent", color: alimentazioneTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>Principi</button>
+              <button onClick={function() { setAlimentazioneTab("dieta"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: alimentazioneTab === "dieta" ? dc : "transparent", color: alimentazioneTab === "dieta" ? "#fff" : T.sub, transition: "background 0.15s" }}>Dieta attuale</button>
+            </div>
+          </div>
+          {alimentazioneTab === "principi" && <div style={{ padding: "0 16px 16px", display: "grid", gap: 8 }}>
+            {NUTRITION_PRINCIPLES.map(function(item, ii) {
               var isOpen = showPrinciples === 200 + ii;
               return <div key={ii} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "30" : T.bg) }}>
                 <div onClick={function() { setShowPrinciples(isOpen ? null : 200 + ii); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
@@ -2635,11 +2771,25 @@ export default function App() {
                   <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
                 </div>
                 {isOpen && <div style={{ padding: "4px 14px 14px", background: T.sb }}>
-                  <DetailText text={item.body} accent={dc} size={12} soft={true} />
+                  <RichBlocks blocks={item.d} accent={dc} />
                 </div>}
               </div>;
             })}
-          </div>
+          </div>}
+          {alimentazioneTab === "dieta" && <div style={{ padding: "0 16px 16px", display: "grid", gap: 8 }}>
+            {NUTRITION_CURRENT_PLAN.map(function(item, ii) {
+              var isOpen = showPrinciples === 500 + ii;
+              return <div key={ii} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "30" : T.bg) }}>
+                <div onClick={function() { setShowPrinciples(isOpen ? null : 500 + ii); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
+                  <span style={{ fontSize: 13, fontWeight: isOpen ? 700 : 600, color: isOpen ? dc : T.tx, lineHeight: 1.3 }}>{item.t}</span>
+                  <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+                </div>
+                {isOpen && <div style={{ padding: "4px 14px 14px", background: T.sb }}>
+                  <RichBlocks blocks={item.d} accent={dc} />
+                </div>}
+              </div>;
+            })}
+          </div>}
         </div>}
 
         </div>
