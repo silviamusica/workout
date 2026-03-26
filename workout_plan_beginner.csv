@@ -1,0 +1,39 @@
+Programma,Giorno,Focus,Tipo,#,Esercizio,Serie,Note,Recupero,Attrezzi,Errori_comuni,Respirazione
+Principiante,Giorno A,Full Body A — fondamenta,Riscaldamento,1,Marcia con ginocchia alte,,3 minuti,,,,
+Principiante,Giorno A,Full Body A — fondamenta,Riscaldamento,2,Cat-Cow,,8 ripetizioni lente,,,,
+Principiante,Giorno A,Full Body A — fondamenta,Riscaldamento,3,Serie avvicinamento squat con bilanciere,,1-3 mini-serie leggere prima del carico di lavoro,,,,
+Principiante,Giorno A,Full Body A — fondamenta,Esercizio,1,Squat,3x8-10,"Con manubri o bilanciere, lascia 1-2 ripetizioni in riserva",90s-2 min,Manubri o bilanciere,"Profondita che si accorcia; ginocchia che collassano; schiena che perde assetto",Valsalva
+Principiante,Giorno A,Full Body A — fondamenta,Esercizio,2,Floor Press Manubri,3x8-10,"Su panca se disponibile, altrimenti a terra. In alternativa push-up facilitati",90s,Manubri o panca,"Spalle sollevate; gomiti troppo aperti; ROM incoerente",Inspira scendendo · espira spingendo
+Principiante,Giorno A,Full Body A — fondamenta,Esercizio,3,Rematore Manubri,3x8-12,Tira il gomito verso il fianco e mantieni il busto stabile,90s,Manubri,"Busto che oscilla; slancio; spalla che sale",Inspira scendendo · espira tirando
+Principiante,Giorno A,Full Body A — fondamenta,Esercizio,4,Plank,3x30-45s,Ferma la serie se perdi l'allineamento,60s,Tappetino,"Bacino che cede; spalle incassate; apnea",Respiro lento e continuo
+Principiante,Giorno A,Full Body A — fondamenta,Stretching,1,Quadricipiti,,3-5 minuti finali,,,,
+Principiante,Giorno A,Full Body A — fondamenta,Stretching,2,Glutei,,3-5 minuti finali,,,,
+Principiante,Giorno A,Full Body A — fondamenta,Stretching,3,Pettorali,,3-5 minuti finali,,,,
+Principiante,Giorno A,Full Body A — fondamenta,Stretching,4,Dorsali,,3-5 minuti finali,,,,
+Principiante,Giorno B,Full Body B — catena posteriore e spinta verticale,Riscaldamento,1,Jumping jacks,,2-3 minuti,,,,
+Principiante,Giorno B,Full Body B — catena posteriore e spinta verticale,Riscaldamento,2,Good Morning senza peso,,10 ripetizioni lente,,,,
+Principiante,Giorno B,Full Body B — catena posteriore e spinta verticale,Riscaldamento,3,Serie avvicinamento trazioni,,1-2 serie leggere su lat machine o trazioni facilitate,,,,
+Principiante,Giorno B,Full Body B — catena posteriore e spinta verticale,Esercizio,1,Stacco Rumeno,3x8-10,Con manubri o bilanciere. Cerca lo stretch su femorali e glutei,90s-2 min,Manubri o bilanciere,"Schiena arrotondata; ginocchia troppo flesse; carico lontano dal corpo",Valsalva
+Principiante,Giorno B,Full Body B — catena posteriore e spinta verticale,Esercizio,2,Military Press,3x8-10,"Con manubri da seduta o in piedi, lascia 1-2 ripetizioni in riserva",90s,Manubri o bilanciere,"Lombare inarcata; gomiti troppo larghi; traiettoria non verticale",Valsalva
+Principiante,Giorno B,Full Body B — catena posteriore e spinta verticale,Esercizio,3,Lat Machine,3x8-12,"In alternativa body rows o trazioni facilitate",90s,Lat machine o TRX,"Spalle che salgono; slancio; ROM corto",Inspira braccia su · espira tirando
+Principiante,Giorno B,Full Body B — catena posteriore e spinta verticale,Esercizio,4,Affondi,3x10-12 per gamba,Alternati o camminati con controllo,90s,Corpo libero o manubri,"Passo troppo corto; ginocchio che collassa; perdita di equilibrio",Inspira scendendo · espira spingendo
+Principiante,Giorno B,Full Body B — catena posteriore e spinta verticale,Stretching,1,Femorali,,3-5 minuti finali,,,,
+Principiante,Giorno B,Full Body B — catena posteriore e spinta verticale,Stretching,2,Glutei,,3-5 minuti finali,,,,
+Principiante,Giorno B,Full Body B — catena posteriore e spinta verticale,Stretching,3,Spalle,,3-5 minuti finali,,,,
+Principiante,Giorno B,Full Body B — catena posteriore e spinta verticale,Stretching,4,Flessori anca,,3-5 minuti finali,,,,
+Principiante,Giorno C,Full Body C — volume tecnico,Riscaldamento,1,Marcia con ginocchia alte,,2 minuti,,,,
+Principiante,Giorno C,Full Body C — volume tecnico,Riscaldamento,2,World's Greatest Stretch,,4 per lato,,,,
+Principiante,Giorno C,Full Body C — volume tecnico,Riscaldamento,3,Cat-Cow,,8 ripetizioni lente dopo lo stretch,,,,
+Principiante,Giorno C,Full Body C — volume tecnico,Esercizio,1,Squat Bulgaro,3x8-10 per gamba,Controllo e ROM completo prima del carico,90s,Manubri o corpo libero,"ROM corto; busto che oscilla; ginocchio che collassa",Inspira scendendo · espira spingendo
+Principiante,Giorno C,Full Body C — volume tecnico,Esercizio,2,Floor Press Manubri,3x8-10,"Su panca inclinata se disponibile, altrimenti a terra",90s,Manubri o panca,"Spalle che si sollevano; slancio; ROM non uniforme",Inspira scendendo · espira spingendo
+Principiante,Giorno C,Full Body C — volume tecnico,Esercizio,3,Pulley,3x8-12,"In alternativa rematore al TRX",90s,Cavo basso o TRX,"Busto che si muove; gomiti troppo larghi; spalle alte",Inspira braccia avanti · espira tirando
+Principiante,Giorno C,Full Body C — volume tecnico,Esercizio,4,Hip Thrust Bilanciere,3x10-15,"Va bene anche ponte glutei a corpo libero o con manubro leggero",90s,Bilanciere o manubro + panca,"Salire con la lombare; ROM corto; discesa troppo veloce",Inspira in basso · espira salendo
+Principiante,Giorno C,Full Body C — volume tecnico,Esercizio,5,Addominali Obliqui,3x15-20,Crunch a terra lenti se preferisci,60s,Tappetino,"Tirare il collo; slancio; perdere il controllo del tronco",Inspira aprendo · espira ruotando
+Principiante,Giorno C,Full Body C — volume tecnico,Stretching,1,Glutei,,3-5 minuti finali,,,,
+Principiante,Giorno C,Full Body C — volume tecnico,Stretching,2,Quadricipiti,,3-5 minuti finali,,,,
+Principiante,Giorno C,Full Body C — volume tecnico,Stretching,3,Pettorali,,3-5 minuti finali,,,,
+Principiante,Giorno C,Full Body C — volume tecnico,Stretching,4,Dorsali,,3-5 minuti finali,,,,
+Principiante,Giorno 2,Recupero,Riposo,1,Riposo completo,,Passeggiata leggera o mobilita facoltativa,,,,
+Principiante,Giorno 4,Recupero,Riposo,1,Riposo completo,,Passeggiata leggera o mobilita facoltativa,,,,
+Principiante,Giorno 6,Recupero,Riposo,1,Riposo completo,,Passeggiata leggera o mobilita facoltativa,,,,
+Principiante,Giorno 7,Recupero,Riposo,1,Riposo completo,,Se ti senti bene fai solo camminata facile o stretching,,,,

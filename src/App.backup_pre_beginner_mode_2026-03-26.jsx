@@ -1368,151 +1368,6 @@ var DAYS_V4 = [
   },
 ];
 
-var DAYS_BEGINNER = [
-  { name: "Giorno A", focus: "Full Body A — fondamenta", dur: "4 esercizi", tEst: 50,
-    intro: {
-      attrezzi: ["Manubri o bilanciere", "Panca piana o rialzo", "Tappetino"],
-      muscoli: ["Gambe e glutei", "Petto, spalle e tricipiti", "Schiena e bicipiti", "Core"],
-      obiettivi: ["Imparare gli schemi motori principali in sicurezza", "Costruire una base muscolare generale", "Abituarti alla multifrequenza senza stancarti troppo"],
-      attenzione: ["Mantieni sempre 1-2 ripetizioni in riserva: non devi andare a cedimento", "Cura la profondita e la tecnica prima di pensare al peso", "Scrivi i carichi: la progressione lineare funziona solo se tracci i dati"],
-      ritmo: "Recuperi 90s-2 min sui multiarticolari, 60s-90s sul core."
-    },
-    warmup: [
-      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti continui. Alza la temperatura corporea e prepara anche e caviglie.", tm: 180 },
-      { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente. Mobilizza colonna e bacino prima degli esercizi di spinta e squat." },
-      { n: "Serie avvicinamento squat con bilanciere", img: "w_SerieAvvicinamentoSquat", d: "1-3 mini-serie leggere solo per prepararti al carico di lavoro. Esempio: barra x8, poi un carico intermedio x5, poi uno un po piu alto x3. Non devono stancarti." },
-    ],
-    ex: [
-      { n: "Squat", s: "3x8-10", rpe: "8", note: "Con manubri o bilanciere. Parti conservativa e lascia 1-2 ripetizioni in riserva.", rec: "90s-2 min", gear: "Manubri o bilanciere", errori: "Profondita che si accorcia; ginocchia che collassano; schiena che perde assetto" },
-      { n: "Floor Press Manubri", s: "3x8-10", rpe: "8", note: "Se hai la panca, puoi farle su panca piana. In alternativa push-up facilitati con mani su rialzo.", rec: "90s", gear: "Manubri o panca", errori: "Spalle sollevate; gomiti troppo aperti; ROM incoerente" },
-      { n: "Rematore Manubri", s: "3x8-12", rpe: "8", note: "Tieni il busto stabile e porta il gomito verso il fianco.", rec: "90s", gear: "Manubri", errori: "Busto che oscilla; slancio; spalla che sale verso l'orecchio" },
-      { n: "Plank", s: "3x30-45s", rpe: "", note: "Sedere basso, costole giu, glutei contratti. Ferma la serie se perdi l'allineamento.", rec: "60s", gear: "Tappetino", errori: "Bacino che cede; spalle incassate; apnea" },
-    ],
-    str: ["Quadricipiti","Glutei","Pettorali","Dorsali"] },
-  { name: "Giorno B", focus: "Full Body B — catena posteriore e spinta verticale", dur: "4 esercizi", tEst: 50,
-    intro: {
-      attrezzi: ["Manubri o bilanciere", "Lat machine o TRX/barra", "Tappetino"],
-      muscoli: ["Glutei e femorali", "Spalle", "Schiena in tirata verticale", "Gambe e glutei"],
-      obiettivi: ["Imparare il pattern di hip hinge", "Rinforzare spalle e dorsali", "Costruire stabilita sulle gambe con lavoro unilaterale"],
-      attenzione: ["Stacco rumeno: il sedere va indietro, non giu", "Lento avanti: addome attivo e schiena stabile", "Negli affondi conta il controllo, non la fretta"],
-      ritmo: "Recuperi 90s-2 min sui primi tre esercizi, 90s sugli affondi."
-    },
-    warmup: [
-      { n: "Jumping jacks", img: "w_JumpingJacks", d: "2-3 minuti a ritmo leggero per entrare nella seduta.", tm: 180 },
-      { n: "Good Morning senza peso", img: "w_GoodMorningSenzaPeso", d: "10 ripetizioni lente per imparare a spingere il bacino indietro senza arrotondare la schiena." },
-      { n: "Serie avvicinamento trazioni", img: "w_SospensioneAttiva", d: "Se usi lat machine o trazioni facilitate, fai 1-2 serie leggere prima del lavoro. Devono attivare scapole e dorsali, non affaticarti." },
-    ],
-    ex: [
-      { n: "Stacco Rumeno", s: "3x8-10", rpe: "8", note: "Con manubri o bilanciere. Cerca lo stretch su femorali e glutei mantenendo schiena neutra.", rec: "90s-2 min", gear: "Manubri o bilanciere", errori: "Schiena arrotondata; ginocchia troppo flesse; manubri lontani dal corpo" },
-      { n: "Military Press", s: "3x8-10", rpe: "8", note: "Se parti da zero puoi farlo con manubri da seduta. Lascia sempre 1-2 ripetizioni in riserva.", rec: "90s", gear: "Manubri o bilanciere", errori: "Lombare inarcata; gomiti troppo larghi; traiettoria non verticale" },
-      { n: "Lat Machine", s: "3x8-12", rpe: "8", note: "In alternativa body rows o trazioni facilitate al TRX/barra. Movimento completo e controllato.", rec: "90s", gear: "Lat machine o TRX", errori: "Spalle che salgono; slancio; ROM corto" },
-      { n: "Affondi", s: "3x10-12 per gamba", rpe: "8", note: "Alternati o camminati. Passo comodo e busto stabile.", rec: "90s", gear: "Corpo libero o manubri", errori: "Passo troppo corto; ginocchio che collassa; perdita di equilibrio continua" },
-    ],
-    str: ["Femorali","Glutei","Spalle","Flessori anca"] },
-  { name: "Giorno C", focus: "Full Body C — volume tecnico", dur: "5 esercizi", tEst: 55,
-    intro: {
-      attrezzi: ["Manubri", "Panca inclinata o piana", "Cavo basso o TRX", "Tappetino"],
-      muscoli: ["Quadricipiti e glutei", "Petto e spalle anteriori", "Schiena", "Glutei", "Addome"],
-      obiettivi: ["Aumentare il volume senza stressarti troppo", "Migliorare coordinazione e stabilita mono-laterale", "Chiudere la settimana con lavoro tecnico e controllato"],
-      attenzione: ["Squat bulgaro: meglio poco carico e tanto controllo", "Hip thrust: senti i glutei, non la zona lombare", "Crunch: movimento corto ma pulito, senza tirare il collo"],
-      ritmo: "Recuperi 90s sui multiarticolari, 60s-90s sugli accessori e addome."
-    },
-    warmup: [
-      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 minuti per entrare nel lavoro.", tm: 120 },
-      { n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "4 per lato, poi passa al resto del warm-up. Mobilita anche, torace e femorali." },
-      { n: "Cat-Cow", img: "w_CatCow", d: "8 rip lente dopo lo stretch, per preparare la colonna al lavoro della seduta." },
-    ],
-    ex: [
-      { n: "Squat Bulgaro", s: "3x8-10 per gamba", rpe: "8", note: "Se sei in palestra puoi usare la pressa come alternativa. Obiettivo: controllo e ROM completo.", rec: "90s", gear: "Manubri o corpo libero", errori: "ROM corto; busto che oscilla; ginocchio anteriore che collassa" },
-      { n: "Floor Press Manubri", s: "3x8-10", rpe: "8", note: "Se hai panca inclinata usa quella. Se no mantieni la variante a terra con manubri.", rec: "90s", gear: "Manubri o panca", errori: "Spalle che si sollevano; slancio; ROM non uniforme" },
-      { n: "Pulley", s: "3x8-12", rpe: "8", note: "In alternativa rematore al TRX. Cerca la tirata verso l'ombelico senza dondolare.", rec: "90s", gear: "Cavo basso o TRX", errori: "Busto che si muove; gomiti troppo larghi; spalle alte" },
-      { n: "Hip Thrust Bilanciere", s: "3x10-15", rpe: "8", note: "Se sei all'inizio va bene anche il ponte glutei a corpo libero o con manubro leggero.", rec: "90s", gear: "Bilanciere o manubro + panca", errori: "Salire con la lombare; ROM corto; discesa troppo veloce" },
-      { n: "Addominali Obliqui", s: "3x15-20", rpe: "", note: "Se preferisci, puoi usare crunch a terra lenti e controllati.", rec: "60s", gear: "Tappetino", errori: "Tirare il collo; slancio; perdere il controllo del tronco" },
-    ],
-    str: ["Glutei","Quadricipiti","Pettorali","Dorsali"] },
-];
-
-var BEGINNER_PRINCIPLES_DEEP = [
-  { t: "Perche una scheda principiante e diversa", d: [
-      { type: "p", content: "Sei normopeso, ma la priorita non e dimagrire: e costruire tessuto muscolare. L'obiettivo reale e la ricomposizione corporea, cioe aumentare la massa magra e migliorare tono e forma del corpo." },
-      { type: "p", content: "Per una principiante la strategia migliore non e cercare subito intensita alte o tanto volume. Devi prima costruire fondamenta solide: tecnica, schemi motori e continuita." },
-      { type: "p", content: "Non devi temere di diventare 'troppo grossa': la crescita muscolare femminile e lenta e graduale. Il risultato tipico e un fisico piu tonico, atletico e stabile." },
-    ]},
-  { t: "Come e organizzata la scheda principiante", d: [
-      { type: "p", content: "La multifrequenza resta la scelta migliore anche qui: alleni tutto il corpo 3 volte a settimana, a giorni alterni. In questo modo ogni gruppo muscolare riceve 2-3 stimoli senza sovraccaricare troppo una singola seduta." },
-      { type: "p", content: "Il volume iniziale e moderato: circa 10-12 serie settimanali per i gruppi principali. E abbastanza per crescere, ma non cosi tanto da farti perdere tecnica e recupero." },
-      { type: "p", content: "La scheda usa soprattutto multiarticolari: squat, hip hinge, spinte, tirate, lavoro unilaterale e core. Sono i movimenti che ti insegnano di piu e ti fanno crescere meglio all'inizio." },
-    ]},
-  { t: "Buffer, progressione e cosa conta davvero", d: [
-      { type: "p", content: "Nella scheda principiante non devi allenarti sempre al massimo. Quasi tutte le serie vanno chiuse sentendo che avresti potuto fare ancora 1-2 ripetizioni con buona tecnica." },
-      { type: "p", content: "La progressione e semplice: a parita di peso provi a fare una ripetizione in piu, oppure quando il range e stabile aumenti leggermente il carico. Piccoli progressi, ma continui." },
-      { type: "p", content: "Le cose che fanno davvero la differenza sono poche: presenza costante, tecnica coerente, recuperi rispettati, proteine sufficienti e sonno." },
-    ]},
-  { t: "Alimentazione: il consiglio piu utile adesso", d: [
-      { type: "p", content: "Se il tuo obiettivo e costruire massa magra, l'allenamento da solo non basta. Devi dare al corpo i mattoni per costruire tessuto muscolare: proteine adeguate, idratazione e costanza." },
-      { type: "p", content: "Come base pratica, resta almeno nel range di circa 1.8-2.5 grammi di proteine per ogni chilo di massa magra. Non serve essere perfetta ogni giorno: serve essere regolare per mesi." },
-    ]},
-];
-
-var BEGINNER_PRINCIPLES = [
-  { t: "Come leggere 3x8-10", d: "Vuol dire 3 serie da 8 a 10 ripetizioni con lo stesso peso. Parti con un carico che ti permetta di fare almeno 8 ripetizioni pulite lasciandone ancora 1-2 in riserva. Quando riesci a fare 10 ripetizioni in tutte le serie con buona tecnica, aumenta leggermente il peso e riparti da 8." },
-  { t: "Recuperi nella scheda principiante", d: "Sugli esercizi principali recupera circa 90 secondi o 2 minuti. Sugli esercizi piu leggeri e sul core bastano spesso 60-90 secondi. Se il fiato e il controllo non sono ancora tornati, aspetta un po di piu: recuperare bene e parte dell'allenamento." },
-  { t: "Serie di avvicinamento: quante farne davvero", d: "La rampa completa serve soprattutto sul primo esercizio della seduta, per esempio Squat o Stacco Rumeno. Sugli esercizi successivi spesso basta 1 serie leggera o nessuna. Lo scopo non e stancarti: e arrivare pronta alle serie vere." },
-  { t: "Buffer: fermati prima di sporcare la tecnica", d: "L'obiettivo non e sfinirti. Fermati quando senti che potresti fare ancora 1-2 ripetizioni buone. Se per completare l'ultima rep devi accorciare il movimento, usare slancio o perdere assetto, quella rep non conta." },
-  { t: "Come progredire da principiante", d: "Di settimana in settimana cerca un piccolo passo avanti: una ripetizione in piu oppure un piccolo aumento di peso. Non serve rincorrere il massimo ogni seduta. La costanza vale piu della singola giornata perfetta." },
-];
-
-var BEGINNER_INTRO_BASICS = [
-  {
-    icon: "🌱",
-    title: "Da dove partire davvero",
-    summary: "L'obiettivo iniziale non e spingere forte: e imparare bene i movimenti e diventare costante.",
-    body: [
-      { type: "p", content: "Come principiante ti basta una scheda semplice, fatta bene e ripetuta con regolarita. Il primo obiettivo e costruire le basi: tecnica, confidenza con i pesi e continuita." },
-      { type: "bold-list", content: [
-        ["Cosa conta subito", "Presenza regolare, tecnica pulita, recuperi rispettati e carichi gestibili."],
-        ["Cosa non serve subito", "Cedimento continuo, troppe varianti, tanti esercizi o regole complicate."],
-      ]},
-    ]
-  },
-  {
-    icon: "📐",
-    title: "Serie, ripetizioni e recupero",
-    summary: "Poche regole semplici per leggere la scheda senza confusione.",
-    body: [
-      { type: "bold-list", content: [
-        ["3x8-10", "3 serie da 8 a 10 ripetizioni con lo stesso peso."],
-        ["Recupero", "90s-2 min sugli esercizi principali, 60-90s sugli esercizi piu leggeri."],
-        ["Peso", "Deve permetterti di muoverti bene e lasciare 1-2 ripetizioni in riserva."],
-      ]},
-    ]
-  },
-  {
-    icon: "⚖️",
-    title: "Buffer e progressione",
-    summary: "Non devi andare al massimo ogni serie. Devi migliorare poco alla volta.",
-    body: [
-      { type: "p", content: "Quasi tutte le serie vanno chiuse sentendo che avresti potuto fare ancora 1-2 ripetizioni buone. Questo ti protegge e ti aiuta a imparare meglio." },
-      { type: "bold-list", content: [
-        ["Progressione", "Prima prova ad aggiungere una ripetizione. Poi, quando il range e stabile, alza leggermente il peso."],
-        ["Regola pratica", "Tecnica prima, carico dopo."],
-      ]},
-    ]
-  },
-  {
-    icon: "🥗",
-    title: "Recupero e proteine",
-    summary: "Per costruire massa magra servono allenamento, cibo e riposo.",
-    body: [
-      { type: "p", content: "Se vuoi costruire tessuto muscolare devi dare al corpo i mattoni per farlo: proteine adeguate, sonno e acqua." },
-      { type: "bold-list", content: [
-        ["Proteine", "Come base pratica, resta nel range di circa 1.8-2.5 g per kg di massa magra."],
-        ["Sonno", "Dormire bene ti aiuta a recuperare e a migliorare di settimana in settimana."],
-      ]},
-    ]
-  },
-];
-
 var PRINCIPLES = [
   { t: "Come leggere un esercizio: 4x6-8 RPE 8", d: "4 serie da 6 a 8 ripetizioni a RPE 8. Le serie di lavoro si eseguono tutte con lo stesso peso: non aumentarlo tra una serie e l'altra. Il range 6-8 indica la progressione tra le settimane, non dentro la singola seduta. Esempio: settimana 1 fai 4x6 con 30 kg, settimana 2 fai 4x7 con 30 kg, settimana 3 fai 4x8 con 30 kg, poi aumenti a 32.5 kg e riparti da 4x6. Se nella pratica fai 8, 8, 7, 6 va bene: il carico e corretto, la fatica accumulata e normale. Aumenti solo quando riesci a fare il numero alto previsto in tutte le serie con tecnica pulita." },
   { t: "Straight sets: stesso peso in tutte le serie", d: "Questa scheda non usa la piramide classica. Usa straight sets: stesso peso in tutte le serie dello stesso esercizio. Esempi: 4x6-8 = 4 serie con lo stesso peso; 3x12 = 3 serie con lo stesso peso; 3xRIR 1-2 = 3 serie con lo stesso peso fermandoti con 1-2 ripetizioni in riserva. Il carico cambia solo tra le settimane, quando hai raggiunto il numero alto previsto su tutte le serie. La vecchia logica piramidale tipo 12-10-8-8 qui non si usa." },
@@ -1937,21 +1792,10 @@ export default function App() {
   var lastSnd = useRef(-1);
 
   var T = TH[theme];
-  var activeDays = level === "beginner" ? DAYS_BEGINNER : DAYS_V4;
+  var activeDays = DAYS_V4;
   var safeDayIdx = Math.min(dayIdx, activeDays.length - 1);
   var dayData = activeDays[safeDayIdx];
   var dc = T.ok;
-  var isBeginner = level === "beginner";
-  var teoriaTabs = isBeginner ? [["basi","🧱 Basi"],["teoria","📚 Teoria"],["alimentazione","🥗 Alimentazione"]] : [["basi","🧱 Basi"],["teoria","📚 Teoria"],["muscoli","💪 Muscoli"],["alimentazione","🥗 Alimentazione"]];
-  var homeOverviewNow = isBeginner
-    ? "Stai facendo una scheda principiante Full Body 3 giorni. L'obiettivo non e spingere al massimo, ma imparare bene i movimenti, costruire massa magra e creare continuita."
-    : "Stai facendo soprattutto ipertrofia, ma con fondamentali abbastanza pesanti da costruire anche forza. Non e una scheda di forza pura e non e una fase di definizione separata.";
-  var homeOverviewStructure = isBeginner
-    ? "Full Body 3 giorni a settimana a giorni alterni. Alleni tutto il corpo in ogni seduta con volume moderato e recupero sufficiente."
-    : "Upper/Lower su 4 giorni pesi piu 2 giorni cardio. Ogni muscolo riceve 2 stimoli a settimana, con recupero sufficiente tra una seduta e l'altra.";
-  var homeOverviewFocus = isBeginner
-    ? "Tecnica pulita, buffer costante, progressione lineare, multiarticolari semplici e proteine adeguate. Il primo obiettivo e costruire fondamenta solide."
-    : "Fondamentali prima, accessori dopo, progressione graduale, buffer quasi sempre presente, cardio separato dai pesi e dieta impostata per ricomposizione corporea. La prima settimana, e ogni ricalibrazione dopo stop o deload, serve anche a ritrovare i pesi giusti.";
 
   function getExForMonth(raw) {
     if (month === 1) return { n: raw.n, s: raw.s, rpe: raw.rpe, note: raw.note || "" };
@@ -1979,22 +1823,10 @@ export default function App() {
     } catch(e) {}
     try { var n = localStorage.getItem("wt-username"); if (n) setUserName(n); } catch(e) {}
     try { var p = localStorage.getItem("wt-userphoto"); if (p) setUserPhoto(p); } catch(e) {}
-    try { var lv = localStorage.getItem("wt-level"); if (lv === "beginner" || lv === "v4") setLevel(lv); } catch(e) {}
     try { var th = localStorage.getItem("wt-theme"); if (th && TH[th]) setTheme(th); else localStorage.removeItem("wt-theme"); } catch(e) {}
     try { var fs = parseFloat(localStorage.getItem("wt-fontscale")); if (fs >= 0.9 && fs <= 1.5) setFontScale(fs); } catch(e) {}
     setReady(true);
   }, []);
-
-  useEffect(function() {
-    if (dayIdx <= activeDays.length - 1) return;
-    setDayIdx(0);
-  }, [level]);
-
-  useEffect(function() {
-    if (!isBeginner) return;
-    if (teoriaTab === "muscoli") setTeoriaTab("basi");
-    if (glossTab === "termini") setGlossTab("principi");
-  }, [isBeginner, teoriaTab, glossTab]);
   useEffect(function() {
     if (!autoBackupMsg) return;
     var tm = setTimeout(function() { setAutoBackupMsg(""); }, 5000);
@@ -2852,7 +2684,7 @@ export default function App() {
         <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, maxWidth: 440, width: "100%", color: T.tx, maxHeight: "88vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
           {/* Header fisso */}
           <div style={{ padding: "18px 20px 0", flexShrink: 0 }}>
-            <h3 style={{ margin: "0 0 12px", fontSize: 18, fontWeight: 800 }}>{isBeginner ? "📚 Teoria principiante" : "📚 Teoria e Glossario"}</h3>
+            <h3 style={{ margin: "0 0 12px", fontSize: 18, fontWeight: 800 }}>📚 Teoria e Glossario</h3>
             <div style={{ display: "flex", gap: 0, borderRadius: 10, overflow: "hidden", border: "1px solid " + dc + "30", marginBottom: 14 }}>
               <button onClick={function() { setGlossTab("principi"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>Principi</button>
               <button onClick={function() { setGlossTab("termini"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>Termini base</button>
@@ -2863,10 +2695,9 @@ export default function App() {
             {glossTab === "principi" && <div>
               <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, color: T.sub, marginBottom: 8 }}>Concetti fondamentali</div>
               <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 16 }}>
-                {(isBeginner ? BEGINNER_PRINCIPLES_DEEP : PRINCIPLES_DEEP).map(function(g, gi) {
+                {PRINCIPLES_DEEP.map(function(g, gi) {
                   var isOpen = showPrinciples === gi;
-                  var total = (isBeginner ? BEGINNER_PRINCIPLES_DEEP : PRINCIPLES_DEEP).length;
-                  return <div key={gi} id={"principle-modal-deep-" + gi} style={{ borderBottom: gi < total - 1 ? "1px solid " + T.bg : "none" }}>
+                  return <div key={gi} id={"principle-modal-deep-" + gi} style={{ borderBottom: gi < PRINCIPLES_DEEP.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div onClick={function() { var next = isOpen ? null : gi; setShowPrinciples(next); if (next !== null) scrollItemSoon("principle-modal-deep-" + gi); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
                       <span style={{ fontSize: 13, fontWeight: isOpen ? 700 : 600, color: isOpen ? dc : T.tx, lineHeight: 1.3 }}>{g.t}</span>
                       <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
@@ -2877,12 +2708,11 @@ export default function App() {
                   </div>;
                 })}
               </div>
-              <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, color: T.sub, marginBottom: 8 }}>{isBeginner ? "Come usare la scheda principiante" : "Come leggere la scheda"}</div>
+              <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, color: T.sub, marginBottom: 8 }}>Come leggere la scheda</div>
               <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg }}>
-                {(isBeginner ? BEGINNER_PRINCIPLES : PRINCIPLES).map(function(g, gi) {
+                {PRINCIPLES.map(function(g, gi) {
                   var isOpen = showPrinciples === 100 + gi;
-                  var total = (isBeginner ? BEGINNER_PRINCIPLES : PRINCIPLES).length;
-                  return <div key={gi} id={"principle-modal-guide-" + gi} style={{ borderBottom: gi < total - 1 ? "1px solid " + T.bg : "none" }}>
+                  return <div key={gi} id={"principle-modal-guide-" + gi} style={{ borderBottom: gi < PRINCIPLES.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div onClick={function() { var next = isOpen ? null : 100 + gi; setShowPrinciples(next); if (next !== null) scrollItemSoon("principle-modal-guide-" + gi); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
                       <span style={{ fontSize: 13, fontWeight: isOpen ? 700 : 600, color: isOpen ? dc : T.tx, lineHeight: 1.3 }}>{g.t}</span>
                       <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
@@ -2960,7 +2790,7 @@ export default function App() {
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
           </div>
         </div>
       </div>}
@@ -3039,42 +2869,6 @@ export default function App() {
       {/* === HOME TAB === */}
       {tab === "home" && <div id="home-top" style={{ maxWidth: 600, margin: "0 auto", padding: "20px 14px 100px" }}>
 
-        <div style={{ background: T.cd, borderRadius: 16, padding: "18px 18px 16px", marginBottom: 10 }}>
-          <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 6 }}>Programma selezionato</div>
-          <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6, marginBottom: 12 }}>Scegli quale scheda vuoi usare. Quando cambi programma si aggiornano giorni, esercizi e teoria mostrata nell'app.</div>
-          <div style={{ display: "grid", gap: 8 }}>
-            {[
-              { key: "beginner", icon: "🌱", title: "Principiante", meta: "3 giorni Full Body", desc: "Volume moderato, intensita gestibile, focus su tecnica, buffer e progressione lineare." },
-              { key: "v4", icon: "💥", title: "Ipertrofia avanzato", meta: "4 giorni pesi + 2 cardio", desc: "Scheda piu strutturata, con fondamentali prioritari, double progression e gestione completa dei progressi." },
-            ].map(function(opt) {
-              var active = level === opt.key;
-              return <button
-                key={opt.key}
-                onClick={function() {
-                  setLevel(opt.key);
-                  setDayIdx(0);
-                  setOpenEx(null);
-                  setShowIntro(false);
-                  setShowStr(false);
-                  setShowExSection(false);
-                  setShowPrinciples(false);
-                  try { localStorage.setItem("wt-level", opt.key); } catch(e) {}
-                  scrollTopSoon("home-top");
-                }}
-                style={{ textAlign: "left", padding: "12px 13px", borderRadius: 12, border: active ? "1px solid " + dc + "55" : "1px solid " + T.bg, background: active ? dc + "12" : T.bg, cursor: "pointer" }}
-              >
-                <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 3 }}>
-                  <span style={{ fontSize: 17 }}>{opt.icon}</span>
-                  <span style={{ fontSize: 13, fontWeight: 800, color: active ? dc : T.tx }}>{opt.title}</span>
-                  <span style={{ fontSize: 11, color: active ? dc : T.sub, fontWeight: 600 }}>{opt.meta}</span>
-                  {active && <span style={{ marginLeft: "auto", fontSize: 10, background: dc, color: "#fff", padding: "2px 6px", borderRadius: 999, fontWeight: 800 }}>attivo</span>}
-                </div>
-                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55 }}>{opt.desc}</div>
-              </button>;
-            })}
-          </div>
-        </div>
-
         {/* Panoramica programma */}
         <div style={{ background: T.cd, borderRadius: 16, padding: "18px 18px 16px", marginBottom: 10 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
@@ -3087,15 +2881,15 @@ export default function App() {
           <div style={{ display: "grid", gap: 8 }}>
             <div style={{ padding: "10px 12px", borderRadius: 10, background: T.bg }}>
               <div style={{ fontSize: 12, fontWeight: 800, color: dc, marginBottom: 3 }}>Che lavoro stai facendo ora</div>
-              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>{homeOverviewNow}</div>
+              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Stai facendo soprattutto ipertrofia, ma con fondamentali abbastanza pesanti da costruire anche forza. Non e una scheda di forza pura e non e una fase di definizione separata.</div>
             </div>
             <div style={{ padding: "10px 12px", borderRadius: 10, background: T.bg }}>
               <div style={{ fontSize: 12, fontWeight: 800, color: dc, marginBottom: 3 }}>Come e organizzata</div>
-              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>{homeOverviewStructure}</div>
+              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Upper/Lower su 4 giorni pesi piu 2 giorni cardio. Ogni muscolo riceve 2 stimoli a settimana, con recupero sufficiente tra una seduta e l'altra.</div>
             </div>
             <div style={{ padding: "10px 12px", borderRadius: 10, background: T.bg }}>
               <div style={{ fontSize: 12, fontWeight: 800, color: dc, marginBottom: 3 }}>Cosa conta davvero</div>
-              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>{homeOverviewFocus}</div>
+              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Fondamentali prima, accessori dopo, progressione graduale, buffer quasi sempre presente, cardio separato dai pesi e dieta impostata per ricomposizione corporea. La prima settimana, e ogni ricalibrazione dopo stop o deload, serve anche a ritrovare i pesi giusti.</div>
             </div>
           </div>
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 10 }}>
@@ -3109,9 +2903,9 @@ export default function App() {
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 14 }}>Come funziona</div>
           <div style={{ display: "grid", gap: 8 }}>
             {[
-              { icon: "📋", label: "Scheda", key: "workout", chips: isBeginner ? [{ label: "Principiante", onClick: function() { openMainTab("workout"); } }, { label: "3 giorni", onClick: function() { openMainTab("workout"); } }, { label: "Full Body", onClick: function() { openMainTab("workout"); } }, { label: "Timer", onClick: function() { openMainTab("workout"); } }] : [{ label: "Avanzato", onClick: function() { openMainTab("workout"); } }, { label: "6 giorni", onClick: function() { openMainTab("workout"); } }, { label: "Cardio", onClick: function() { openMainTab("workout"); } }, { label: "Timer", onClick: function() { openMainTab("workout"); } }], desc: isBeginner ? "Scheda Full Body 3 giorni con esercizi meno intensi, foto, badge respirazione 🫁 e timer di recupero." : "Scheda settimanale avanzata con esercizi, foto, badge respirazione 🫁 e timer di recupero." },
+              { icon: "📋", label: "Scheda", key: "workout", chips: [{ label: "V4 attiva", onClick: function() { openMainTab("workout"); } }, { label: "6 giorni", onClick: function() { openMainTab("workout"); } }, { label: "Cardio", onClick: function() { openMainTab("workout"); } }, { label: "Timer", onClick: function() { openMainTab("workout"); } }], desc: "Scheda settimanale con esercizi, foto, badge respirazione 🫁 e timer di recupero." },
               { icon: "📊", label: "Progressi", key: "progressi", chips: [{ label: "Carichi", onClick: function() { openMainTab("progressi"); } }, { label: "Settimane", onClick: function() { openMainTab("progressi"); } }, { label: "Trend", onClick: function() { openMainTab("progressi"); } }], desc: "Tieni traccia dei tuoi miglioramenti settimana per settimana." },
-              { icon: "📚", label: "Teoria", key: "teoria", chips: isBeginner ? [{ label: "Basi", onClick: function() { goToTeoria("basi"); } }, { label: "Teoria", onClick: function() { goToTeoria("teoria", "principi"); } }, { label: "Alimentazione", onClick: function() { goToAlimentazione("principi"); } }] : [{ label: "Basi", onClick: function() { goToTeoria("basi"); } }, { label: "Teoria", onClick: function() { goToTeoria("teoria", "principi"); } }, { label: "Muscoli", onClick: function() { goToTeoria("muscoli"); } }, { label: "Alimentazione", onClick: function() { goToAlimentazione("principi"); } }], desc: isBeginner ? "Le poche cose che ti servono davvero per iniziare senza confusione." : "Principi fondamentali, respirazione, mappa muscolare e alimentazione." },
+              { icon: "📚", label: "Teoria", key: "teoria", chips: [{ label: "Basi", onClick: function() { goToTeoria("basi"); } }, { label: "Teoria", onClick: function() { goToTeoria("teoria", "principi"); } }, { label: "Muscoli", onClick: function() { goToTeoria("muscoli"); } }, { label: "Alimentazione", onClick: function() { goToAlimentazione("principi"); } }], desc: "Principi fondamentali, respirazione, mappa muscolare e alimentazione." },
               { icon: "🏃", label: "Esercizi", key: "exercises", chips: [{ label: "Riscaldamento", onClick: function() { goToExercises("wu"); } }, { label: "Fondamentali", onClick: function() { goToExercises("ex"); } }, { label: "Stretching", onClick: function() { goToExercises("st"); } }], desc: "Biblioteca completa di esercizi con approfondimenti e video." },
             ].map(function(item) {
               return <div key={item.key} onClick={function() {
@@ -3140,7 +2934,7 @@ export default function App() {
               { icon: "⏱️", title: "Cronometro di recupero", desc: "Nella Scheda, ogni esercizio ha un timer di recupero. Toccalo per avviarlo: suona con un beep alla fine del riposo.", onClick: function() { openMainTab("workout"); } },
               { icon: "📊", title: "Registra i tuoi carichi", desc: "Apri un esercizio nella Scheda e registra peso e ripetizioni set per set. I dati vengono salvati localmente sul dispositivo.", onClick: function() { openMainTab("workout"); } },
               { icon: "💾", title: "Backup e ripristino", desc: "Dalle Impostazioni ⚙️ esporta tutti i tuoi dati in JSON e reimportali quando vuoi.", onClick: function() { setSettingsOpen(true); } },
-              { icon: "🫁", title: "Guida alla respirazione", desc: isBeginner ? "La respirazione giusta la trovi gia dentro ogni esercizio della scheda, senza dover studiare tutto prima." : "Nella Teoria trovi una tabella unica per vedere subito quando inspirare, espirare o usare la Valsalva.", onClick: function() { if (isBeginner) { openMainTab("workout"); return; } goToTeoria("teoria", "principi"); setShowPrinciples(600); } },
+              { icon: "🫁", title: "Guida alla respirazione", desc: "Nella Teoria trovi una tabella unica per vedere subito quando inspirare, espirare o usare la Valsalva.", onClick: function() { goToTeoria("teoria", "principi"); setShowPrinciples(600); } },
               { icon: "📖 ▶", title: "Approfondimenti integrati", desc: "Negli esercizi trovi tecnica, errori, immagini e video senza uscire dall'app.", onClick: function() { openMainTab("exercises"); } },
             ].map(function(item, i) {
               return <div key={i} onClick={item.onClick} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "10px 12px", borderRadius: 10, background: T.bg, cursor: item.onClick ? "pointer" : "default" }}>
@@ -3159,14 +2953,14 @@ export default function App() {
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Programma attivo</div>
           <div style={{ display: "grid", gap: 8 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "10px 12px", borderRadius: 10, background: dc + "18", border: "1px solid " + dc + "40" }}>
-              <div style={{ width: 38, height: 38, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>{isBeginner ? "🌱" : "💥"}</div>
+              <div style={{ width: 38, height: 38, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>💥</div>
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 2 }}>
-                  <span style={{ fontSize: 13, fontWeight: 800, color: dc }}>{isBeginner ? "Principiante Full Body" : "Ipertrofia avanzato"}</span>
-                  <span style={{ fontSize: 11, color: dc, fontWeight: 600 }}>{isBeginner ? "3 giorni · ~50 min" : "6 giorni · ~65 min"}</span>
+                  <span style={{ fontSize: 13, fontWeight: 800, color: dc }}>Ipertrofia V4</span>
+                  <span style={{ fontSize: 11, color: dc, fontWeight: 600 }}>6 giorni · ~65 min</span>
                   <span style={{ fontSize: 10, background: dc, color: "#fff", padding: "1px 6px", borderRadius: 4, fontWeight: 700 }}>attivo</span>
                 </div>
-                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.5 }}>{isBeginner ? "Full Body a giorni alterni. Multiarticolari semplici, buffer costante, progressione lineare e tecnica prima dell'intensita." : "Upper/Lower 4+2 cardio. Double progression, lift prioritari, mesociclo strutturato."}</div>
+                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.5 }}>Upper/Lower 4+2 cardio. Double progression, lift prioritari, mesociclo strutturato.</div>
               </div>
             </div>
           </div>
@@ -3176,18 +2970,13 @@ export default function App() {
         <div style={{ background: T.cd, borderRadius: 14, padding: "18px 18px 14px", marginBottom: 14 }}>
           <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Consigli d'uso</div>
           <div style={{ display: "grid", gap: 8 }}>
-            {(isBeginner ? [
-              { tip: "Prima volta? Parti da Basi: trovi solo le regole davvero utili per iniziare.", onClick: function() { goToTeoria("basi"); } },
-              { tip: "Durante l'allenamento usa la Scheda: apri il giorno e segui gli esercizi nell'ordine.", onClick: function() { openMainTab("workout"); } },
-              { tip: "La respirazione e gia scritta dentro ogni esercizio: non devi studiarla tutta prima.", onClick: function() { openMainTab("workout"); } },
-              { tip: "Per dieta e proteine vai in Alimentazione: ti basta capire le basi, non tutto insieme.", onClick: function() { goToAlimentazione("principi"); } },
-            ] : [
+            {[
               { tip: "Prima volta? Inizia da Basi nella tab Teoria per capire come leggere la scheda.", onClick: function() { goToTeoria("basi"); } },
               { tip: "Durante l'allenamento usa la Scheda: trova il giorno, apri l'esercizio e registra i set.", onClick: function() { openMainTab("workout"); } },
               { tip: "Per la respirazione vai in Teoria: trovi una tabella unica da confrontare a colpo d'occhio.", onClick: function() { goToTeoria("teoria", "principi"); setShowPrinciples(600); } },
               { tip: "Per capire multifrequenza, recupero e progressione vai in Teoria. Per la dieta vai in Alimentazione.", onClick: function() { goToTeoria("teoria", "principi"); } },
               { tip: "In Impostazioni ⚙️ puoi cambiare tema, salvare il nome e fare il backup dei dati.", onClick: function() { setSettingsOpen(true); } },
-            ]).map(function(item, i) {
+            ].map(function(item, i) {
               return <div key={i} onClick={item.onClick} style={{ display: "flex", gap: 10, alignItems: "flex-start", cursor: item.onClick ? "pointer" : "default" }}>
                 <div style={{ width: 22, height: 22, borderRadius: "50%", background: dc + "22", color: dc, fontSize: 11, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>{i + 1}</div>
                 <div style={{ fontSize: 12, color: item.onClick ? dc : T.sub, lineHeight: 1.55, textDecoration: item.onClick ? "underline dotted" : "none", textDecorationColor: dc + "60" }}>{item.tip}</div>
@@ -3209,7 +2998,7 @@ export default function App() {
         {/* Tab bar Teoria */}
         <div style={{ position: "sticky", top: 0, zIndex: 10, background: T.bg, padding: "10px 12px 8px", borderBottom: "1px solid " + T.cd }}>
           <div style={{ display: "flex", gap: 0, borderRadius: 10, overflow: "hidden", border: "1px solid " + dc + "30" }}>
-            {teoriaTabs.map(function(pair) {
+            {[["basi","🧱 Basi"],["teoria","📚 Teoria"],["muscoli","💪 Muscoli"],["alimentazione","🥗 Alimentazione"]].map(function(pair) {
               var k = pair[0], label = pair[1];
               var active = teoriaTab === k;
               return <button key={k} onClick={function() { setTeoriaTab(k); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: active ? dc : "transparent", color: active ? "#fff" : T.sub, transition: "background 0.15s" }}>{label}</button>;
@@ -3226,7 +3015,7 @@ export default function App() {
             <div style={{ fontSize: 12, color: T.sub }}>Parti da qui per conoscere le basi</div>
           </div>
           <div style={{ padding: "12px 16px 16px", display: "grid", gap: 6 }}>
-            {(isBeginner ? BEGINNER_INTRO_BASICS : INTRO_BASICS).map(function(card, ci) {
+            {INTRO_BASICS.map(function(card, ci) {
               var isOpen = showIntroCard === ci;
               return <div key={ci} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "30" : T.bg) }}>
                 <div onClick={function() { setShowIntroCard(isOpen ? null : ci); }} style={{ padding: "11px 13px", cursor: "pointer", display: "flex", alignItems: "flex-start", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
@@ -3292,14 +3081,14 @@ export default function App() {
 
         {teoriaTab === "teoria" && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
           <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
-            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>{isBeginner ? "📚 Teoria principiante" : "📚 Teoria e Glossario"}</div>
-            <div style={{ fontSize: 12, color: T.sub }}>{isBeginner ? "Solo i principi utili per costruire le basi e partire bene." : "Principi di allenamento e termini tecnici"}</div>
+            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>📚 Teoria e Glossario</div>
+            <div style={{ fontSize: 12, color: T.sub }}>Principi di allenamento e termini tecnici</div>
           </div>
           {/* Tab interna Principi / Termini */}
           <div style={{ padding: "10px 16px 0" }}>
             <div style={{ display: "flex", gap: 0, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "30", marginBottom: 14 }}>
               <button onClick={function() { setGlossTab("principi"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>🧠 Principi</button>
-              {!isBeginner && <button onClick={function() { setGlossTab("termini"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>🔤 Termini base</button>}
+              <button onClick={function() { setGlossTab("termini"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>🔤 Termini base</button>
             </div>
           </div>
           <div style={{ padding: "0 16px 16px" }}>
@@ -3307,10 +3096,9 @@ export default function App() {
               {/* Sezione: Concetti fondamentali */}
               <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, color: T.sub, marginBottom: 8 }}>🧠 Concetti fondamentali</div>
               <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 16 }}>
-                {(isBeginner ? BEGINNER_PRINCIPLES_DEEP : PRINCIPLES_DEEP).map(function(g, gi) {
+                {PRINCIPLES_DEEP.map(function(g, gi) {
                   var isOpen = showPrinciples === gi;
-                  var total = (isBeginner ? BEGINNER_PRINCIPLES_DEEP : PRINCIPLES_DEEP).length;
-                  return <div key={gi} id={"principle-page-deep-" + gi} style={{ borderBottom: gi < total - 1 ? "1px solid " + T.bg : "none" }}>
+                  return <div key={gi} id={"principle-page-deep-" + gi} style={{ borderBottom: gi < PRINCIPLES_DEEP.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div onClick={function() { var next = isOpen ? null : gi; setShowPrinciples(next); if (next !== null) scrollItemSoon("principle-page-deep-" + gi); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
                       <span style={{ fontSize: 13, fontWeight: isOpen ? 700 : 600, color: isOpen ? dc : T.tx, lineHeight: 1.3 }}>{g.t}</span>
                       <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
@@ -3322,12 +3110,11 @@ export default function App() {
                 })}
               </div>
               {/* Sezione: Come leggere la scheda */}
-              <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, color: T.sub, marginBottom: 8 }}>{isBeginner ? "🗂️ Come usare la scheda principiante" : "🗂️ Come leggere la scheda"}</div>
+              <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 1, color: T.sub, marginBottom: 8 }}>🗂️ Come leggere la scheda</div>
               <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg }}>
-                {(isBeginner ? BEGINNER_PRINCIPLES : PRINCIPLES).map(function(g, gi) {
+                {PRINCIPLES.map(function(g, gi) {
                   var isOpen = showPrinciples === 100 + gi;
-                  var total = (isBeginner ? BEGINNER_PRINCIPLES : PRINCIPLES).length;
-                  return <div key={gi} id={"principle-page-guide-" + gi} style={{ borderBottom: gi < total - 1 ? "1px solid " + T.bg : "none" }}>
+                  return <div key={gi} id={"principle-page-guide-" + gi} style={{ borderBottom: gi < PRINCIPLES.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div onClick={function() { var next = isOpen ? null : 100 + gi; setShowPrinciples(next); if (next !== null) scrollItemSoon("principle-page-guide-" + gi); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
                       <span style={{ fontSize: 13, fontWeight: isOpen ? 700 : 600, color: isOpen ? dc : T.tx, lineHeight: 1.3 }}>{g.t}</span>
                       <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
@@ -3339,13 +3126,13 @@ export default function App() {
                 })}
               </div>
             </div>}
-            {!isBeginner && glossTab === "termini" && <div>
+            {glossTab === "termini" && <div>
               {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
             </div>}
           </div>
         </div>}
 
-        {!isBeginner && teoriaTab === "teoria" && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
+        {teoriaTab === "teoria" && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
           <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
             <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🔒 Dati personali</div>
             <div style={{ fontSize: 12, color: T.sub }}>BIA, composizione corporea e piano alimentare in una sezione separata.</div>
