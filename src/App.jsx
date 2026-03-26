@@ -80,6 +80,13 @@ import img_w_WorldsGreatestStretch from "./images/warmup_stretch/winnie-worlds-g
 import img_w_AffondiCorpoLibero from "./images/warmup_stretch/affondi corpo libero.jpg";
 import img_w_MarciaGinocchiaAlte from "./images/warmup_stretch/ginocchia-alte.jpeg";
 import img_w_GoodMorningSenzaPeso from "./images/warmup_stretch/goodmorning senza peso.jpg";
+import img_w_ShoulderRolls from "./images/Shoulder rolls.jpg";
+import img_w_CerchiApertura from "./images/Cerchi con le braccia + apertura.jpg";
+import img_w_HipHingeBastone from "./images/Hip hinge con bastone.png";
+import img_w_SerieAvvSquat from "./images/serie avvicinamento squat -.jpeg";
+import img_w_SerieAvvStacco from "./images/serie avvicinamento stacco con bilanciere.jpeg";
+import img_w_AffondiCorpoLiberoAlt from "./images/Affondi a corpo libero.jpeg";
+import img_w_SospensioneAttivaSbarra from "./images/Sospensione attiva alla sbarra.jpg";
 
 // Muscle map
 import img_muscle_map from "./images/muscle_map.jpg";
@@ -377,7 +384,7 @@ var INTRO_BASICS = [
       { type: "bold-list", content: [
         ["1. Inspira profondo", "Riempi la pancia d'aria — non il petto. Contrai l'addome."],
         ["2. Esegui in apnea", "Tutto lo sforzo in apnea. Si crea pressione intra-addominale (IAP)."],
-        ["3. Espira dopo il punto critico", "Solo dopo aver superato la fase più difficile (in salita nello squat, al lockout nello stacco)."],
+        ["3. Espira dopo il punto critico", "Solo dopo aver superato la fase piu difficile (in salita nello squat, quando nello stacco sei di nuovo completamente dritta con anche e ginocchia estese)."],
         ["Panca piana", "Inspira in alto e gonfia l'addome, mantieni l'apnea durante la discesa e la prima fase della spinta, espira solo dopo la meta della salita. Con carichi leggeri puoi usare la respirazione semplice."],
         ["Perché funziona", "La IAP forma un 'cuscinetto pneumatico' che protegge le vertebre lombari dalle forze di taglio."],
       ]},
@@ -576,6 +583,28 @@ var PRINCIPLES_DEEP = [
     {type:"p", content:"Il vantaggio: non devi andare a cedimento ogni seduta. La progressione è automatica e misurabile. Quando raggiungi il tetto del range con tecnica pulita, hai guadagnato forza — aggiungere peso è la conferma, non un salto nel vuoto."},
     {type:"p", content:"Sui compound pesanti (Squat, Stacco, Trazioni, Military) usa range stretti come 5-8. Sugli accessori range più ampi come 10-12 o 12-15."}
   ]},
+  { t: "Serie di avvicinamento: a cosa servono", d: [
+    {type:"p", content:"Le serie di avvicinamento sono le serie che fai prima delle serie di lavoro per preparare il corpo al carico reale. Non sono allenamento e non devono affaticarti: sono il ponte tra il riscaldamento generale e la prima serie vera."},
+    {type:"bold-list", content:[
+      ["Perche servono", "Aumentano gradualmente la temperatura muscolare sotto carico specifico, ricordano al sistema nervoso il pattern motorio esatto e preparano tendini e articolazioni alla compressione o trazione che subiranno."],
+      ["Come si fanno", "Poche ripetizioni, carichi crescenti, recuperi brevi. Piu ti avvicini al carico di lavoro, meno ripetizioni fai."],
+      ["Regola pratica", "L'ultima serie di avvicinamento deve farti sentire pronta, non stanca."],
+    ]},
+    {type:"table", columns:["Serie","Carico","Ripetizioni","Scopo"], rows:[
+      ["Avvicinamento 1","Barra scarica","8-10","Senti il movimento e scalda le articolazioni"],
+      ["Avvicinamento 2","~60% del carico lavoro","5","Il pattern si stabilizza"],
+      ["Avvicinamento 3","~80% del carico lavoro","3","Il sistema nervoso si prepara al carico reale"],
+      ["Avvicinamento 4","~90% del carico lavoro","1-2","Opzionale, se il carico di lavoro e alto"],
+      ["Serie di lavoro","100% del carico lavoro","Come da scheda","Da qui inizia l'allenamento vero"],
+    ]},
+    {type:"table", columns:["Situazione","Serve avvicinamento?"], rows:[
+      ["Primo esercizio pesante della sessione","Si, 3-4 serie"],
+      ["Esercizio subito dopo con pattern simile","No, di solito i muscoli sono gia caldi"],
+      ["Trazioni come primo esercizio","Si, 2-3 mini-serie progressive"],
+      ["Panca dopo tirata","Spesso basta 1-2 serie leggere per attivare il pattern di spinta"],
+    ]},
+    {type:"p", content:"Differenza con la piramide: le serie di avvicinamento servono solo a prepararti e producono fatica minima. Nella piramide, invece, le serie iniziali fanno gia parte dell'allenamento e ti affaticano prima di arrivare al carico produttivo."},
+  ]},
   { t: "Lavorare a buffer, non a cedimento", d: [
     {type:"p", content:"Il cedimento (non riuscire a completare una ripetizione) non è necessario per crescere e, se abusato, sovraccarica il sistema nervoso allungando i tempi di recupero."},
     {type:"p", content:"Il buffer significa fermarsi con qualche ripetizione in riserva. Permette di accumulare più volume settimanale con tecnica sempre pulita."},
@@ -638,7 +667,7 @@ var PRINCIPLES_DEEP = [
       "Inspira profondo gonfiando la pancia (non il petto) prima di iniziare",
       "Blocca il respiro — crea pressione intra-addominale",
       "Esegui tutta la fase di sforzo in apnea",
-      "Espira solo dopo aver superato il punto critico (in salita nello squat, a lockout nello stacco)",
+      "Espira solo dopo aver superato il punto critico (in salita nello squat, nello stacco quando hai finito la tirata e sei tornata completamente eretta)",
     ]},
     {type:"p", content:"La pressione intra-addominale forma un 'cuscinetto pneumatico' che protegge le vertebre lombari dalle forze di taglio. Senza questa tecnica, la schiena bassa è esposta sotto carichi elevati."},
     {type:"p", content:"Sulla Panca piana pesante: inspira in alto e gonfia l'addome, mantieni l'apnea durante la discesa e nella prima fase della spinta, espira solo dopo aver superato il punto piu difficile. Nei warm-up o con carichi leggeri puoi usare la respirazione semplice: inspira scendendo, espira salendo."},
@@ -853,7 +882,7 @@ var NUTRITION_PRINCIPLES = [
     d: [
       { type:"p", content:"Range: 1.6-2.2 g/kg al giorno. Il tuo piano nutrizionale prevede circa 1.67-1.79 g/kg (95-102 g/giorno a 57 kg). In deficit calorico, avvicinarsi a 2.0 g/kg (114 g) preserva meglio la massa magra." },
       { type:"p", content:"Distribuzione: almeno 4 pasti con 0.4-0.55 g/kg per pasto, cioe circa 23-31 g per pasto. L'effetto anabolico di un singolo pasto dura 5-6 ore: non serve mangiare ogni 2 ore, ma serve arrivare al totale giornaliero." },
-      { type:"p", content:"Fonti utili: pollo, tacchino, uova, pesce, yogurt greco, ricotta, fiocchi di latte, tofu, tempeh, seitan e combinazioni legumi + cereali." },
+      { type:"p", content:"Fonti utili in una dieta pescetariana: uova, pesce, yogurt greco o skyr, ricotta, fiocchi di latte, tofu, tempeh, seitan, edamame e combinazioni legumi + cereali." },
     ]
   },
   {
@@ -903,6 +932,18 @@ var NUTRITION_PRINCIPLES = [
     t: "Tabelle pratiche: legumi, cereali e macro",
     d: [
       { type:"p", content:"Valori indicativi. Per renderli leggibili, ogni tabella separa chiaramente lo stato dell'alimento: crudo, cotto o pronto al consumo. I valori possono cambiare leggermente per marca e cottura, ma sono abbastanza precisi per orientarti." },
+      { type:"table", columns:["Fonte proteica","Stato","Porzione","Kcal","Carb","Prot","Grassi"], rows:[
+        ["Tofu compatto","Pronto","100 g","144","1.8 g","15 g","8.7 g"],
+        ["Tempeh","Pronto","100 g","193","9 g","19 g","11 g"],
+        ["Seitan","Pronto","100 g","141","6 g","28 g","2 g"],
+        ["Edamame","Cotti","100 g","122","9 g","11 g","5 g"],
+        ["Yogurt greco 0%","Pronto","170 g","100","6 g","17 g","0 g"],
+        ["Skyr","Pronto","170 g","108","7 g","18 g","0.2 g"],
+        ["Fiocchi di latte","Pronto","100 g","98","3 g","11 g","4 g"],
+        ["Uova intere","Pronto","2 uova medie","140","1 g","12 g","10 g"],
+        ["Tonno al naturale","Sgocciolato","100 g","116","0 g","26 g","1 g"],
+        ["Salmone","Pronto","100 g","208","0 g","20 g","13 g"],
+      ]},
       { type:"table", columns:["Alimento","Stato","Porzione","Kcal","Carb","Prot","Grassi"], rows:[
         ["Lenticchie","Crude","100 g","353","60 g","25 g","1.1 g"],
         ["Lenticchie","Cotte","100 g","116","20 g","9 g","0.4 g"],
@@ -982,7 +1023,7 @@ var DAYS = [
         { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "5 minuti. Ginocchia al petto ad ogni passo. Opzione a basso impatto.", tm: 300 },
       ]},
       { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "In piedi, braccia tese ai lati. Fai cerchi ampi in avanti per 10 rip, poi 10 indietro. Scalda la cuffia dei rotatori e le spalle.", alt: [
-        { n: "Shoulder rolls + apertura petto", d: "10 rotazioni delle spalle avanti e indietro, poi apri le braccia tese lateralmente e porta i palmi in alto. 2 serie." },
+        { n: "Shoulder rolls + apertura petto", img: "w_ShoulderRolls", d: "10 rotazioni delle spalle avanti e indietro, poi apri le braccia tese lateralmente e porta i palmi in alto. 2 serie." },
       ]},
       { n: "Cat-Cow", img: "w_CatCow", d: "A quattro zampe: inspira e inarca (pancia giu, testa su), espira e arrotonda (mento al petto, schiena su). 10 ripetizioni lente. Mobilizza tutta la colonna.", alt: [
         { n: "Child's pose + cobra", d: "Posizione del bambino 20s, poi scivola in cobra. 5 ripetizioni lente. Stesso effetto mobilizzante." },
@@ -991,7 +1032,7 @@ var DAYS = [
         { n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "5 per lato. Affondo, mano a terra, ruota il busto verso l'alto. Allunga flessori anca, torace, femorali." },
       ]},
       { n: "Glute Bridge a corpo libero", img: "w_AffondiWarmup", d: "10 ripetizioni. Sdraiata, piedi a terra, spingi le anche verso l'alto contraendo i glutei. Attiva glutei prima del lavoro.", alt: [
-        { n: "Hip hinge con bastone", d: "10 rip. Mani a terra o bastone sulla schiena. Impara lo schema hip hinge." },
+        { n: "Hip hinge con bastone", img: "w_HipHingeBastone", d: "10 rip. Mani a terra o bastone sulla schiena. Impara lo schema hip hinge." },
       ]},
     ],
     ex: [
@@ -1018,7 +1059,7 @@ var DAYS = [
         { n: "Squat con pausa 2s in basso", d: "2 serie da 6. Scendi lento, tieni 2 secondi in fondo. Mobilita anca e caviglia." },
       ]},
       { n: "Military press con bilanciere scarico", img: "w_MilitaryPress", d: "2 serie da 8. Bilanciere vuoto o bastone. Movimento completo: clavicole a sopra la testa. Scalda deltoidi e stabilizzatori.", alt: [
-        { n: "Cerchi con le braccia + apertura", d: "10 cerchi avanti, 10 indietro, poi 10 aperture laterali lente. Scalda cuffia dei rotatori e deltoidi." },
+        { n: "Cerchi con le braccia + apertura", img: "w_CerchiApertura", d: "10 cerchi avanti, 10 indietro, poi 10 aperture laterali lente. Scalda cuffia dei rotatori e deltoidi." },
       ]},
     ],
     ex: [
@@ -1078,7 +1119,7 @@ var DAYS = [
         { n: "Squat bulgaro corpo libero", d: "6 per gamba. Piede posteriore su sedia bassa. Simula il pattern dell'affondo con piu stabilita." },
       ]},
       { n: "Good morning senza peso", img: "w_GoodMorningSenzaPeso", d: "10 ripetizioni. Mani dietro la testa, piega avanti spingendo il bacino indietro. Attiva erettori e femorali.", alt: [
-        { n: "Hip hinge con bastone", d: "Metti un bastone lungo la schiena (deve toccare testa, dorsali e sacro). Piega il bacino indietro. 10 rip. Impara lo schema senza caricare." },
+        { n: "Hip hinge con bastone", img: "w_HipHingeBastone", d: "Metti un bastone lungo la schiena (deve toccare testa, dorsali e sacro). Piega il bacino indietro. 10 rip. Impara lo schema senza caricare." },
       ]},
     ],
     ex: [
@@ -1102,7 +1143,7 @@ var DAYS = [
         { n: "Marcia sul posto", d: "2 minuti a ritmo lento. Opzione minima per giorni di recupero.", tm: 120 },
       ]},
       { n: "Squat a corpo libero", img: "w_SquatBL", d: "10 ripetizioni lente.", alt: [
-        { n: "Affondi a corpo libero", d: "5 per gamba. Lenti, senza peso." },
+        { n: "Affondi a corpo libero", img: "w_AffondiCorpoLiberoAlt", d: "5 per gamba. Lenti, senza peso." },
       ]},
     ],
     ex: [
@@ -1129,8 +1170,9 @@ var DAYS_V4 = [
     },
     warmup: [
       { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti. Attiva flessori anca e gambe.", tm: 180, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti.", tm: 180 }] },
-      { n: "Cat-Cow", img: "w_CatCow", d: "Cat-Cow + World's Greatest Stretch per 2 minuti totali. Mobilizza colonna, anche e caviglie prima dello squat.", tm: 120, alt: [{ n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "4 per lato + 8 Cat-Cow lente." }] },
-      { n: "Serie avvicinamento squat con bilanciere", img: "w_SquatBL", d: "3-4 serie con bilanciere: 40% → 60% → 80%. Imposta la traiettoria prima del carico pesante.", alt: [{ n: "Affondi a corpo libero", d: "6 per gamba, lenti." }] },
+      { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente. Mobilizza la colonna prima dello squat.", alt: [{ n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni ancora piu lente, enfatizzando il movimento di tutta la colonna." }] },
+      { n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "4 per lato. Prima completa tutti gli stretch, poi passa all'esercizio successivo.", alt: [{ n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "5 per lato se senti anche e torace particolarmente rigidi." }] },
+      { n: "Serie avvicinamento squat con bilanciere", img: "w_SerieAvvSquat", d: "3-4 serie con bilanciere: 40% → 60% → 80%. Imposta la traiettoria prima del carico pesante.", alt: [{ n: "Affondi a corpo libero", img: "w_AffondiCorpoLiberoAlt", d: "6 per gamba, lenti." }] },
     ],
     ex: [
       { n: "Squat", s: "4x6-8", rpe: "8-9", note: "Double progression. Piedi ruotati 15-30 gradi, ginocchia fuori, parallelo min. Valsalva. Ultimo set a cedimento tecnico controllato.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper + rack", errori: "Ginocchia che collassano dentro; busto che cade avanti in risalita; talloni che si alzano; schiena che si arrotonda in buca" },
@@ -1153,7 +1195,7 @@ var DAYS_V4 = [
       { n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti.", tm: 180, alt: [{ n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti.", tm: 180 }] },
       { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "15 avanti + 15 indietro. Scalda cuffia dei rotatori.", alt: [{ n: "Shoulder rolls + apertura petto", d: "10 rotazioni + 10 aperture." }] },
       { n: "Inchworm", img: "w_Inchworm", d: "5 ripetizioni. Attiva core, spalle e femorali.", alt: [{ n: "Cat-Cow", img: "w_CatCow", d: "8 lente." }] },
-      { n: "Serie avvicinamento trazioni", img: "w_Inchworm", d: "2-3 serie: 1-2 rep, poi 3, poi 4-5. Non affaticarti.", alt: [{ n: "Sospensione attiva alla sbarra", d: "2-3 serie brevi di attivazione scapolare." }] },
+      { n: "Serie avvicinamento trazioni", img: "Trazioni", d: "2-3 mini-serie con recupero completo. Prima fai 1-2 ripetizioni pulite, poi 3, poi 4-5 solo se restano facili. Obiettivo: attivare scapole, dorsali e presa senza arrivare stanca alle serie vere.", alt: [{ n: "Sospensione attiva alla sbarra", img: "w_SospensioneAttivaSbarra", d: "2-3 serie brevi di attivazione scapolare. Parti appesa a braccia tese, abbassa le spalle lontano dalle orecchie e poi rilassa. Obiettivo: imparare la depressione scapolare prima delle trazioni." }] },
     ],
     ex: [
       { n: "Trazioni", s: "4x5-8", rpe: "8-9", note: "Double progression. Presa prona. Parti da braccia tese. Mento sopra sbarra. Discesa 2-3s. Ultimo set a cedimento tecnico controllato.", priority: true, rec: "2-3 min", gear: "Barra trazioni (+ elastico assist.)", errori: "Kipping/slancio; mento che si protende senza tirare; spalle alle orecchie; ROM incompleto" },
@@ -1185,7 +1227,7 @@ var DAYS_V4 = [
     warmup: [
       { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "Marcia sul posto + affondi a corpo libero per 3 minuti totali. Attiva anche, quadricipiti e glutei.", tm: 180, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti.", tm: 180 }] },
       { n: "Good Morning senza peso", img: "w_GoodMorningSenzaPeso", d: "Good morning senza peso + clamshell con elastico. 2 min. Attiva glutei e femorali.", tm: 120, alt: [{ n: "Cat-Cow", img: "w_CatCow", d: "8 lente." }] },
-      { n: "Serie avvicinamento stacco con bilanciere", img: "w_SquatBL", d: "3-4 serie con bilanciere: 40% → 60% → 80%.", alt: [{ n: "Hip hinge con bastone", d: "10 rip lente." }] },
+      { n: "Serie avvicinamento stacco con bilanciere", img: "w_SerieAvvStacco", d: "3-4 serie con bilanciere: 40% → 60% → 80%.", alt: [{ n: "Hip hinge con bastone", img: "w_HipHingeBastone", d: "10 rip lente." }] },
     ],
     ex: [
       { n: "Stacco da Terra", s: "4x5-8", rpe: "8-9", note: "Double progression. Piedi larghezza anche. Barra a contatto tibie. Spingi il pavimento. Anche e spalle salgono insieme. Ultimo set a cedimento tecnico controllato.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata/cifotica; barra lontana dal corpo; anche che salgono prima delle spalle; collo iperesteso" },
@@ -1206,8 +1248,8 @@ var DAYS_V4 = [
     },
     warmup: [
       { n: "Jumping jacks", img: "w_JumpingJacks", d: "Jumping jacks + cerchi con le braccia per 3 minuti totali.", tm: 180, alt: [{ n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti.", tm: 180 }] },
-      { n: "Cat-Cow", img: "w_CatCow", d: "8-10 rip lente. Mobilizza colonna toracica e spalle prima della spinta verticale.", alt: [{ n: "Shoulder rolls", d: "10 in avanti e 10 indietro." }] },
-      { n: "Military press con bilanciere scarico", img: "w_MilitaryPress", d: "2x8 con bilanciere vuoto. Attivazione spalle e core.", alt: [{ n: "Cerchi con le braccia + apertura", d: "10 cerchi + 10 aperture." }] },
+      { n: "Cat-Cow", img: "w_CatCow", d: "8-10 rip lente. Mobilizza colonna toracica e spalle prima della spinta verticale.", alt: [{ n: "Shoulder rolls", img: "w_ShoulderRolls", d: "10 in avanti e 10 indietro." }] },
+      { n: "Military press con bilanciere scarico", img: "w_MilitaryPress", d: "2x8 con bilanciere vuoto. Attivazione spalle e core.", alt: [{ n: "Cerchi con le braccia + apertura", img: "w_CerchiApertura", d: "10 cerchi + 10 aperture." }] },
     ],
     ex: [
       { n: "Push-Up", s: "4xmax-2", rpe: "8", note: "Fermati 2 rep prima del cedimento. Corpo rigido, gomiti 45 gradi, petto tocca terra. Core contratto.", priority: true, rec: "2 min", gear: "Corpo libero (o rialzo)", errori: "Anche che cedono (banana); gomiti a 90 gradi; testa che penzola; ROM incompleto" },
@@ -1230,8 +1272,9 @@ var DAYS_V4 = [
 ];
 
 var PRINCIPLES = [
-  { t: "Come leggere un esercizio: 4x6-8 RPE 8", d: "4 serie da 6 a 8 ripetizioni a RPE 8. Il peso resta uguale in tutte le serie: non aumentarlo tra una serie e l'altra. Il range 6-8 indica la progressione tra le settimane, non dentro la singola seduta. Esempio: settimana 1 fai 4x6 con 30 kg, settimana 2 fai 4x7 con 30 kg, settimana 3 fai 4x8 con 30 kg, poi aumenti a 32.5 kg e riparti da 4x6. Se nella pratica fai 8, 8, 7, 6 va bene: il peso resta lo stesso e aumenti solo quando riesci a fare il numero alto previsto in tutte le serie con tecnica pulita." },
+  { t: "Come leggere un esercizio: 4x6-8 RPE 8", d: "4 serie da 6 a 8 ripetizioni a RPE 8. Le serie di lavoro si eseguono tutte con lo stesso peso: non aumentarlo tra una serie e l'altra. Il range 6-8 indica la progressione tra le settimane, non dentro la singola seduta. Esempio: settimana 1 fai 4x6 con 30 kg, settimana 2 fai 4x7 con 30 kg, settimana 3 fai 4x8 con 30 kg, poi aumenti a 32.5 kg e riparti da 4x6. Se nella pratica fai 8, 8, 7, 6 va bene: il carico e corretto, la fatica accumulata e normale. Aumenti solo quando riesci a fare il numero alto previsto in tutte le serie con tecnica pulita." },
   { t: "Straight sets: stesso peso in tutte le serie", d: "Questa scheda non usa la piramide classica. Usa straight sets: stesso peso in tutte le serie dello stesso esercizio. Esempi: 4x6-8 = 4 serie con lo stesso peso; 3x12 = 3 serie con lo stesso peso; 3xRIR 1-2 = 3 serie con lo stesso peso fermandoti con 1-2 ripetizioni in riserva. Il carico cambia solo tra le settimane, quando hai raggiunto il numero alto previsto su tutte le serie. La vecchia logica piramidale tipo 12-10-8-8 qui non si usa." },
+  { t: "Serie di avvicinamento: cosa sono", d: "Prima delle serie di lavoro, esegui 3-4 serie di avvicinamento per prepararti al carico. Sono serie leggere con poche ripetizioni: non devono stancarti, devono farti sentire pronta. Parti dalla barra scarica, poi sali circa al 60%, 80% e, se serve, 90% del tuo carico di lavoro, riducendo le ripetizioni man mano che il peso sale (8 → 5 → 3 → 1-2). Le serie di avvicinamento si fanno solo sul primo esercizio pesante della sessione o quando cambi pattern motorio in modo importante. Non contarle come serie di lavoro: servono solo a scaldare sotto carico, richiamare il pattern e preparare articolazioni e tendini." },
   { t: "Come leggere: 4xmax-2", d: "Fai quante ripetizioni riesci fermandoti 2 prima del cedimento (RIR 2). Non c'è un numero fisso: l'obiettivo è migliorare il numero di ripetizioni nel tempo. Si usa su Push-Up e Trazioni dove il carico è il peso corporeo." },
   { t: "RIR e RPE: che differenza c'e?", d: "Misurano la stessa cosa da due lati diversi: quanto sei vicina al cedimento. RIR guarda quante ripetizioni ti restano ancora. RPE guarda quanto e stata dura la serie su una scala da 1 a 10. In pratica: RIR 3 = RPE 7, RIR 2 = RPE 8, RIR 1 = RPE 9, RIR 0 = RPE 10. Quindi se il programma dice RIR 2, significa che devi fermarti quando senti di poter fare ancora 2 ripetizioni buone. Se dice RPE 8, il significato pratico e lo stesso. RIR e spesso piu intuitivo per chi segue una scheda, RPE e piu comodo per descrivere l'intensita in modo rapido." },
   { t: "Come leggere: 3xRIR 1-2", d: "Vuol dire che in ogni serie ti devi fermare con 1-2 ripetizioni ancora disponibili. Tradotto in pratica: stai lavorando vicino al limite, ma senza arrivare a cedimento. Corrisponde circa a RPE 8-9." },
@@ -1317,8 +1360,15 @@ var WS_IMG = {
   "w_CerchiBraccia": img_w_CerchiBraccia,
   "w_WorldsGreatestStretch": img_w_WorldsGreatestStretch,
   "w_AffondiCorpoLibero": img_w_AffondiCorpoLibero,
+  "w_AffondiCorpoLiberoAlt": img_w_AffondiCorpoLiberoAlt,
   "w_MarciaGinocchiaAlte": img_w_MarciaGinocchiaAlte,
   "w_GoodMorningSenzaPeso": img_w_GoodMorningSenzaPeso,
+  "w_SospensioneAttivaSbarra": img_w_SospensioneAttivaSbarra,
+  "w_ShoulderRolls": img_w_ShoulderRolls,
+  "w_CerchiApertura": img_w_CerchiApertura,
+  "w_HipHingeBastone": img_w_HipHingeBastone,
+  "w_SerieAvvSquat": img_w_SerieAvvSquat,
+  "w_SerieAvvStacco": img_w_SerieAvvStacco,
   "w_Plank": img_Plank,
   "w_StaccoBilanciere": img_Stacco_da_Terra,
   "w_ClamshellCorpoLibero": img_Clamshell,
@@ -1336,6 +1386,14 @@ function exImgs(name) {
   var base = EX_IMG[name] ? [EX_IMG[name]] : [];
   var extra = EX_EXTRA_IMG[name] || [];
   return base.concat(extra);
+}
+
+function warmupImgSrc(item) {
+  if (!item) return null;
+  if (item.img && WS_IMG[item.img]) return WS_IMG[item.img];
+  if (item.img && EX_IMG[item.img]) return EX_IMG[item.img];
+  if (EX_IMG[item.n]) return EX_IMG[item.n];
+  return null;
 }
 
 function ytEmbedUrl(url) {
@@ -1514,7 +1572,6 @@ export default function App() {
     if (nextSection) setCatSec(nextSection);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
-  var [showBreath, setShowBreath] = useState(null);
   var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"yt" }
   var [showReg, setShowReg] = useState(null);
   var [catSec, setCatSec] = useState(null);
@@ -1526,7 +1583,6 @@ export default function App() {
   var [cardioDrafts, setCardioDrafts] = useState({});
   var [histIdx, setHistIdx] = useState(null);
   var [histPage, setHistPage] = useState({});
-  var [showTecnica, setShowTecnica] = useState(null);
   var [progTooltip, setProgTooltip] = useState(null);
   var [cableMode, setCableMode] = useState({});
   var [fontScale, setFontScale] = useState(1.1);
@@ -1732,6 +1788,81 @@ export default function App() {
         </div>;
       })}
     </div>;
+  }
+
+  function warmupInfo(text, tm) {
+    var parts = textChunks(text);
+    var execution = tm ? fmtLabel(tm) : (parts[0] || "");
+    var objective = parts.length > 1 ? parts[1] : "";
+    var notes = parts.length > 2 ? parts.slice(2).join(" ") : "";
+    return { execution: execution, objective: objective, notes: notes };
+  }
+
+  function getApproachAdvice(dayIndex, exName) {
+    if (exName === "Squat") {
+      return {
+        needed: true,
+        title: "Si, 3-4 serie",
+        detail: "Barra scarica x 8-10, poi circa 60% x 5 e 80% x 3. Se oggi il carico e alto per te, aggiungi 90% x 1-2."
+      };
+    }
+    if (exName === "Trazioni") {
+      return {
+        needed: true,
+        title: "Si, 2-3 mini-serie",
+        detail: "Fai 1-2 rip pulite, poi 3, poi 4-5 solo se restano facili. Recupero completo: servono ad attivarti, non a stancarti."
+      };
+    }
+    if (exName === "Panca") {
+      return {
+        needed: true,
+        title: "Si, 1-2 serie leggere",
+        detail: "Dopo le tirate attiva il pattern di spinta con barra scarica o carico leggero per 5-8 ripetizioni, senza arrivare a fatica."
+      };
+    }
+    if (exName === "Stacco da Terra") {
+      return {
+        needed: true,
+        title: "Si, 3-4 serie",
+        detail: "Bilanciere scarico x 5-8, poi circa 60% x 5 e 80% x 3. Se serve aggiungi 90% x 1-2 prima della prima serie vera."
+      };
+    }
+    if (exName === "Military Press") {
+      return {
+        needed: true,
+        title: "Gia previste nel riscaldamento",
+        detail: "Fai 2x8 con bilanciere scarico. Se oggi il carico di lavoro e alto, aggiungi 1 serie al 70-80% prima delle serie di lavoro."
+      };
+    }
+    return {
+      needed: false,
+      title: "No, non servono",
+      detail: "Arrivi gia calda dagli esercizi precedenti o dal riscaldamento specifico del giorno: parti direttamente con le serie di lavoro."
+    };
+  }
+
+  function getExerciseObjective(serie, note) {
+    var spec = parseProgressSpec(serie);
+    var perSide = /per\s+gamba/i.test(serie || "") ? " per gamba" : (/per\s+lato/i.test(serie || "") ? " per lato" : "");
+    var parts = [];
+    if (!spec) return { title: "Segui la scheda", detail: note || "Rispetta serie, recuperi e tecnica previsti per oggi." };
+    if (spec.kind === "max") {
+      parts.push("Stesso carico corporeo in tutte le serie.");
+      parts.push("Fermati " + (spec.reserve || 0) + " ripetizioni prima del cedimento in ogni serie.");
+    } else if (spec.kind === "time") {
+      parts.push("Mantieni lo stesso livello di difficolta in tutte le serie.");
+      parts.push("Oggi resta tra " + spec.min + (spec.max !== spec.min ? "-" + spec.max : "") + " secondi" + perSide + " con tecnica pulita.");
+    } else if (spec.min === spec.max) {
+      parts.push("Stesso peso in tutte le serie.");
+      parts.push("Oggi completa " + spec.max + " ripetizioni" + perSide + " in ogni serie.");
+    } else {
+      parts.push("Stesso peso in tutte le serie.");
+      parts.push("Oggi resta tra " + spec.min + " e " + spec.max + " ripetizioni" + perSide + ".");
+    }
+    if ((note || "").toLowerCase().indexOf("cedimento tecnico controllato") >= 0) {
+      parts.push("Solo nell'ultima serie puoi arrivare a cedimento tecnico controllato.");
+    }
+    return { title: parts[0], detail: parts.slice(1).join(" ") };
   }
 
   function openEmbed(url, title) {
@@ -3224,10 +3355,11 @@ export default function App() {
             var items = [];
             DAYS.forEach(function(d) { d.warmup.forEach(function(w) { if (!seen[w.n]) { seen[w.n] = true; items.push(w); } }); });
             return items.map(function(w, wi) {
-              var hasImg = w.img && WS_IMG[w.img];
+              var imgSrc = warmupImgSrc(w);
+              var hasImg = !!imgSrc;
               return <div key={wi} style={{ background: T.cd, borderRadius: 8, marginBottom: 2, overflow: "hidden" }}>
                 <div onClick={function() { setShowImg(showImg === "wl" + wi ? null : "wl" + wi); }} style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
-                  {hasImg && <img src={WS_IMG[w.img]} style={{ width: 48, height: 48, objectFit: "cover", flexShrink: 0 }} />}
+                  {hasImg && <img src={imgSrc} style={{ width: 48, height: 48, objectFit: "cover", flexShrink: 0 }} />}
                   {!hasImg && <div style={{ width: 48, height: 48, background: dc + "12", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, flexShrink: 0, color: dc }}>&#128293;</div>}
                   <div style={{ padding: "6px 10px", flex: 1, minWidth: 0 }}>
                     <div style={{ fontWeight: 700, fontSize: 12 }}>{w.n}</div>
@@ -3236,7 +3368,7 @@ export default function App() {
                   <div style={{ paddingRight: 12, color: T.sub, fontSize: 12 }}>&#9662;</div>
                 </div>
                 {showImg === "wl" + wi && <div style={{ padding: "4px 10px 10px", display: "flex", gap: 8, alignItems: "flex-start" }}>
-                  {hasImg && <img src={WS_IMG[w.img]} style={{ width: 130, height: 130, objectFit: "cover", borderRadius: 8, flexShrink: 0 }} />}
+                  {hasImg && <img src={imgSrc} style={{ width: 130, height: 130, objectFit: "cover", borderRadius: 8, flexShrink: 0 }} />}
                   <div style={{ flex: 1 }}>
                     <DetailText text={w.d} accent={dc} size={11} soft={true} />
                     {w.lk && <EmbedLink url={w.lk} label="Video" size={10} style={{ marginTop: 4 }} />}
@@ -3371,29 +3503,52 @@ export default function App() {
                     var altKey = dayIdx + "-" + wi;
                     var chosenAlt = warmupAlt[altKey]; // undefined = default, number = index in w.alt
                     var active = chosenAlt != null ? w.alt[chosenAlt] : w;
-                    return <div key={wi} style={{ borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "20" }}>
-                      {/* Header row with number + name + alt toggle */}
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px", background: dc + "08" }}>
-                        <div style={{ width: 20, height: 20, borderRadius: 5, background: dc, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, flexShrink: 0 }}>{wi + 1}</div>
-                        <div style={{ flex: 1, fontSize: 12, fontWeight: 700, color: T.tx }}>{active.n}</div>
-                        {w.alt && w.alt.length > 0 && <div style={{ display: "flex", gap: 3 }}>
-                          <button onClick={function() { setWarmupAlt(function(prev) { var n = Object.assign({}, prev); delete n[altKey]; return n; }); }} style={{ fontSize: 9, padding: "2px 6px", border: "none", borderRadius: 4, cursor: "pointer", fontWeight: 700, background: chosenAlt == null ? dc : T.bg, color: chosenAlt == null ? "#fff" : T.sub }}>base</button>
-                          {w.alt.map(function(a, ai) { return <button key={ai} onClick={function() { setWarmupAlt(function(prev) { var n = Object.assign({}, prev); n[altKey] = ai; return n; }); }} style={{ fontSize: 9, padding: "2px 6px", border: "none", borderRadius: 4, cursor: "pointer", fontWeight: 700, background: chosenAlt === ai ? dc : T.bg, color: chosenAlt === ai ? "#fff" : T.sub }}>{"alt" + (w.alt.length > 1 ? " " + (ai + 1) : "")}</button>; })}
-                        </div>}
-                      </div>
-                      {/* Content */}
-                      <div style={{ padding: "8px 10px 10px" }}>
-                        {active.img && WS_IMG[active.img] && <div>
-                          <button onClick={function() { setShowImg(showImg === "w" + wi ? null : "w" + wi); }} style={{ fontSize: 10, color: dc, fontWeight: 600, background: "none", border: "1px solid " + dc + "30", borderRadius: 5, padding: "2px 8px", cursor: "pointer", marginBottom: 4 }}>{showImg === "w" + wi ? "nascondi" : "vedi foto"}</button>
-                          {showImg === "w" + wi && <img src={WS_IMG[active.img]} style={{ width: "100%", borderRadius: 8, marginBottom: 6 }} />}
-                        </div>}
-                        <DetailText text={active.d} accent={dc} size={11} soft={true} />
-                        <div style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 6 }}>
-                          {active.lk && <EmbedLink url={active.lk} label="video" size={10} />}
-                          {active.tm && active.tm >= 120 ? <button onClick={function() { quickStopwatch(); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"▶ " + fmtLabel(active.tm)}</button> : null}
-                          {active.tm && active.tm < 120 ? <button onClick={function() { quickTimer(active.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"⏱ " + fmtLabel(active.tm)}</button> : null}
+                    var imgSrc = warmupImgSrc(active);
+                    var hasImg = !!imgSrc;
+                    var altCount = w.alt ? w.alt.length : 0;
+                    var warm = warmupInfo(active.d, active.tm);
+                    return <div key={wi} style={{ borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "20", padding: 10 }}>
+                      <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                        <div style={{ width: 24, height: 24, borderRadius: 6, background: dc, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, flexShrink: 0, marginTop: 2 }}>{wi + 1}</div>
+                        {hasImg ? <img onClick={function() { setShowImg(showImg === "w" + wi ? null : "w" + wi); }} src={imgSrc} style={{ width: 54, height: 54, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "pointer", border: "1px solid " + dc + "20" }} /> : <div style={{ width: 54, height: 54, borderRadius: 8, background: dc + "10", color: dc, fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>🔥</div>}
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ display: "flex", alignItems: "flex-start", gap: 8, justifyContent: "space-between", marginBottom: 4 }}>
+                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{active.n}</div>
+                            {altCount > 0 && <button
+                              onClick={function() {
+                                setWarmupAlt(function(prev) {
+                                  var n = Object.assign({}, prev);
+                                  if (chosenAlt == null) n[altKey] = 0;
+                                  else if (chosenAlt < altCount - 1) n[altKey] = chosenAlt + 1;
+                                  else delete n[altKey];
+                                  return n;
+                                });
+                              }}
+                              style={{ padding: "3px 8px", borderRadius: 6, border: "1px solid " + dc + "28", background: T.cd, color: dc, fontSize: 10, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}
+                            >cambia</button>}
+                          </div>
+                          <div style={{ display: "grid", gap: 6 }}>
+                            {warm.execution && <div>
+                              <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 1 }}>Ripetizioni / tempo</div>
+                              <div style={{ fontSize: 12, lineHeight: 1.55, color: T.tx, fontWeight: 700 }}>{warm.execution}</div>
+                            </div>}
+                            {warm.objective && <div>
+                              <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 1 }}>Obiettivo</div>
+                              <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{warm.objective}</div>
+                            </div>}
+                            {warm.notes && <div>
+                              <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 1 }}>Raccomandazioni</div>
+                              <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{warm.notes}</div>
+                            </div>}
+                          </div>
+                          <div style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 6, flexWrap: "wrap" }}>
+                            {active.lk && <EmbedLink url={active.lk} label="video" size={10} />}
+                            {active.tm && active.tm >= 120 ? <button onClick={function() { quickStopwatch(); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"▶ " + fmtLabel(active.tm)}</button> : null}
+                            {active.tm && active.tm < 120 ? <button onClick={function() { quickTimer(active.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"⏱ " + fmtLabel(active.tm)}</button> : null}
+                          </div>
                         </div>
                       </div>
+                      {hasImg && showImg === "w" + wi && <img src={imgSrc} style={{ width: "100%", borderRadius: 8, marginTop: 8 }} />}
                     </div>;
                   })}
                 </div>
@@ -3522,44 +3677,65 @@ export default function App() {
               var repeatColor = repeatHint ? (repeatHint.tone === "up" ? "#2E7D32" : repeatHint.tone === "down" ? "#C62828" : dc) : dc;
               var rowBreath = getBreath(ex.n);
               var rowBreathColor = rowBreath ? (BREATH_TYPE_COLOR[rowBreath.type] || dc) : dc;
+              var rowProgColor = prog ? (prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) : T.sub;
 
               return <div key={i} id={"ex-row-" + i} style={{ borderBottom: "1px solid " + T.bg }}>
                 <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); if (opening) { requestAnimationFrame(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
                   <div style={{ width: 34, height: 34, borderRadius: 9, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: dc, flexShrink: 0 }}>{i + 1}</div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontWeight: 600, fontSize: 13, display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap" }}>
+                    <div style={{ fontWeight: 700, fontSize: 13, display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap" }}>
                       <ExName name={ex.n} />
                       {rawEx.priority && <span style={{ fontSize: 9, background: "#FF9F0A20", color: "#FF9F0A", padding: "1px 6px", borderRadius: 4, fontWeight: 800, letterSpacing: 0.3 }}>★ PRIORITÀ</span>}
                       {hasV && <span style={{ fontSize: 9, background: dc + "20", color: dc, padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>{"M" + month}</span>}
                       {hasCableToggle && <span style={{ fontSize: 9, background: isCable ? dc + "20" : T.sub + "20", color: isCable ? dc : T.sub, padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>{isCable ? "🔌" : "💪"}</span>}
                     </div>
-                    <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>
-                      {db ? db.g : ""}{ex.s ? " · " + ex.s : ""}{ex.rpe ? <span onClick={function(e) { e.stopPropagation(); setRpeOpen(true); }} style={{ cursor: "pointer", color: dc, fontWeight: 600, textDecoration: "underline dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2 }}>{" · RPE " + ex.rpe}</span> : ""}
-                      {rawEx.rec ? <span style={{ color: T.sub }}>{" · ⏱ " + rawEx.rec}</span> : ""}
-                      {rawEx.gear ? <span style={{ color: T.sub }}>{" · 🏋️ " + rawEx.gear}</span> : ""}
+                    <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginTop: 3 }}>
+                      {ex.s && <span style={{ fontSize: 12, color: T.tx, fontWeight: 800, letterSpacing: 0.1 }}>{fmtSerie(ex.s)}</span>}
+                      {ex.rpe ? <span onClick={function(e) { e.stopPropagation(); setRpeOpen(true); }} style={{ cursor: "pointer", color: dc, fontSize: 10, fontWeight: 700, textDecoration: "underline dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, whiteSpace: "nowrap" }}>{"RPE " + ex.rpe}</span> : ""}
+                      {restSec ? <button onClick={function(e) { e.stopPropagation(); quickTimer(restSec); }} style={{ minHeight: 24, padding: "0 8px", border: "1px solid " + T.ok + "34", borderRadius: 999, background: T.ok + "10", color: T.ok, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}>{"⏱ Recupero " + (rawEx.rec || fmtLabel(restSec))}</button> : null}
                     </div>
-                    {rowBreath && <div style={{ marginTop: 4, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                    <div style={{ marginTop: 5, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                    {rowBreath && <>
                       <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid " + rowBreathColor + "40", borderRadius: 999, padding: "3px 8px", background: rowBreathColor + "10", color: rowBreathColor }}>
                         <span>🫁</span>
                         <span>{BREATH_TYPE_LABEL[rowBreath.type]}</span>
                       </span>
-                    </div>}
-                    {prog && <div style={{ marginTop: 4 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-                        <div style={{ fontSize: 10, color: prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub, fontWeight: 700 }}>{prog.label}</div>
+                    </>}
+                    {prog && <>
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid " + rowProgColor + "40", borderRadius: 999, padding: "3px 8px", background: rowProgColor + "10", color: rowProgColor }}>
+                        <span>{prog.label.replace(/^[^\s]+\s/, "")}</span>
                         <button
                           onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === ("ex-advice-" + i) ? null : ("ex-advice-" + i)); }}
                           title={getProgressShortHelp(prog)}
-                          style={{ width: 18, height: 18, borderRadius: "50%", border: "1px solid " + ((prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) + "40"), background: "transparent", color: prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub, fontSize: 10, fontWeight: 800, cursor: "pointer", padding: 0, lineHeight: "16px" }}
+                          style={{ width: 16, height: 16, borderRadius: "50%", border: "1px solid " + rowProgColor + "40", background: "transparent", color: rowProgColor, fontSize: 9, fontWeight: 800, cursor: "pointer", padding: 0, lineHeight: "14px" }}
                         >?</button>
-                      </div>
-                      <div style={{ fontSize: 10, color: T.sub, marginTop: 2, lineHeight: 1.45 }}>{prog.short}</div>
-                      {progTooltip === ("ex-advice-" + i) && <div onClick={function(e) { e.stopPropagation(); }} style={{ marginTop: 6, padding: "8px 10px", borderRadius: 8, background: (prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) + "10", border: "1px solid " + (prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) + "28", fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
+                      </span>
+                      {progTooltip === ("ex-advice-" + i) && <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", marginTop: 2, padding: "8px 10px", borderRadius: 8, background: rowProgColor + "10", border: "1px solid " + rowProgColor + "28", fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
                         {getProgressShortHelp(prog)}
                       </div>}
-                    </div>}
+                    </>}
+                    </div>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                    <button
+                      onClick={function(e) {
+                        e.stopPropagation();
+                        setOpenEx(i);
+                        setHistIdx(null);
+                        setEditing(null);
+                        setShowImg(null);
+                        setShowReg(i);
+                        requestAnimationFrame(function() {
+                          requestAnimationFrame(function() {
+                            var el = document.getElementById("reg-block-" + i);
+                            if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+                          });
+                        });
+                      }}
+                      style={{ minHeight: 28, padding: "0 9px", border: "1px solid " + dc + "30", borderRadius: 999, background: dc + "10", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}
+                    >
+                      Registra
+                    </button>
                     {tLog && tLog.sets.length > 0 && <div style={{ background: T.ok, color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 8 }}>{tLog.sets.length + "/" + sc}</div>}
                     <div style={{ fontSize: 14, color: T.sub, transform: isX ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
                   </div>
@@ -3582,8 +3758,9 @@ export default function App() {
                   }
                   var br = getBreath(ex.n);
                   var bColor = br ? (BREATH_TYPE_COLOR[br.type] || dc) : dc;
-                  var isBreathOpen = showBreath === i;
-                  var isTecnica = showTecnica === i;
+                  var approach = getApproachAdvice(safeDayIdx, ex.n);
+                  var objective = getExerciseObjective(ex.s, ex.note || rawEx.note || "");
+                  var progColor = prog ? (prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) : dc;
                   var errorList = (mergedEx.errori || "").split(/\s*;\s*/).filter(Boolean);
                   return <div style={{ padding: "0 14px 14px" }}>
                     {/* Cable toggle */}
@@ -3592,55 +3769,57 @@ export default function App() {
                       <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = false; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: !isCable ? dc : "transparent", color: !isCable ? "#fff" : T.sub }}>💪 Libero</button>
                     </div>}
 
-                    {/* Serie + note */}
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                      {ex.s && <div style={{ fontSize: 13, color: dc, fontWeight: 700 }}>{fmtSerie(ex.s)}{ex.rpe ? " — RPE " + ex.rpe : ""}</div>}
-                      {br && <button onClick={function(e) { e.stopPropagation(); setShowBreath(isBreathOpen ? null : i); }} style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid " + bColor + "40", borderRadius: 6, padding: "3px 8px", background: isBreathOpen ? bColor + "18" : bColor + "0A", color: bColor, cursor: "pointer" }}>🫁 {br.short}</button>}
-                    </div>
-                    {repeatHint && <div style={{ marginBottom: 8, borderRadius: 10, padding: "10px 11px", background: repeatColor + "12", border: "1px solid " + repeatColor + "30" }}>
-                      <div style={{ fontSize: 11, fontWeight: 800, color: repeatColor, marginBottom: 4 }}>
-                        {repeatHint.tone === "down" ? "↓ Carico piu basso rispetto all'altro giorno" : repeatHint.tone === "up" ? "↑ Carico piu alto rispetto all'altro giorno" : "↔ Stesso esercizio nella settimana"}
+                    <div style={{ marginBottom: 10, borderRadius: 11, border: "1px solid " + dc + "22", overflow: "hidden" }}>
+                      <div style={{ padding: "8px 11px", background: dc + "10", borderBottom: "1px solid " + dc + "18" }}>
+                        <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Cosa fai oggi</div>
                       </div>
-                      <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{repeatHint.detail}</div>
-                    </div>}
-                    {ex.note && <div style={{ fontSize: 11, color: T.sub, marginBottom: 8, fontStyle: "italic" }}>{ex.note}</div>}
-                    {prog && <div style={{ marginBottom: 10, borderRadius: 9, padding: "9px 11px", background: (prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) + "12", border: "1px solid " + (prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) + "28" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 3 }}>
-                        <div style={{ fontSize: 11, fontWeight: 800, color: prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub }}>{prog.label}</div>
-                        <button
-                          onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === ("ex-open-advice-" + i) ? null : ("ex-open-advice-" + i)); }}
-                          title={getProgressShortHelp(prog)}
-                          style={{ width: 18, height: 18, borderRadius: "50%", border: "1px solid " + ((prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) + "40"), background: "transparent", color: prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub, fontSize: 10, fontWeight: 800, cursor: "pointer", padding: 0, lineHeight: "16px" }}
-                        >?</button>
-                      </div>
-                      <div style={{ fontSize: 10, color: T.sub, marginBottom: 5, lineHeight: 1.45 }}>{getProgressShortHelp(prog)}</div>
-                      <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{prog.detail}</div>
-                      {progTooltip === ("ex-open-advice-" + i) && <div onClick={function(e) { e.stopPropagation(); }} style={{ marginTop: 7, paddingTop: 7, borderTop: "1px solid " + T.bg, fontSize: 11, lineHeight: 1.6, color: T.sub }}>
-                        {prog.label.indexOf("Controlla tu") >= 0 ? "Succede quando nella stessa seduta cambi il peso tra una serie e l'altra. In questo caso l'app non puo dirti automaticamente se aumentare il carico." :
-                         prog.label.indexOf("Sessione incompleta") >= 0 ? "Registra tutte le serie previste dalla scheda. Finche manca anche una sola serie, il consiglio resta prudente." :
-                         prog.label.indexOf("Aggiungi ripetizioni") >= 0 || prog.label.indexOf("Prova a chiudere il target") >= 0 || prog.label.indexOf("Prova a chiudere il range") >= 0 ? "Tradotto: il peso va bene. Non aumentarlo ancora. Cerca di portare piu serie verso il numero alto di ripetizioni previsto." :
-                         prog.label.indexOf("Consolida") >= 0 ? "Tradotto: sei ancora sotto il minimo su una o piu serie, oppure la tecnica non e ancora abbastanza solida per salire di carico." :
-                         prog.label.indexOf("Stabile") >= 0 ? "Tradotto: stai tenendo lo stesso livello della volta scorsa. Non e un errore, ma non e ancora un progresso netto." :
-                         "Questo consiglio e calcolato sull'ultima sessione completa registrata per questo esercizio."}
-                      </div>}
-                    </div>}
+                      <div style={{ padding: "10px 11px", background: T.sb, display: "grid", gap: 8 }}>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(185px,1fr))", gap: 8 }}>
+                          <div style={{ borderRadius: 9, background: T.cd, border: "1px solid " + T.bg, padding: "9px 10px" }}>
+                            <div style={{ fontSize: 10, fontWeight: 800, color: approach.needed ? dc : T.sub, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 5 }}>Serie di avvicinamento</div>
+                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx, marginBottom: 4 }}>{approach.title}</div>
+                            <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{approach.detail}</div>
+                          </div>
+                          {br && <div style={{ borderRadius: 9, background: T.cd, border: "1px solid " + bColor + "24", padding: "9px 10px" }}>
+                            <div style={{ fontSize: 10, fontWeight: 800, color: bColor, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 5 }}>Come respirare</div>
+                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx, marginBottom: 4 }}>{BREATH_TYPE_LABEL[br.type]}</div>
+                            <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}><b style={{ color: T.tx }}>Inspira:</b> {br.inhale}</div>
+                            <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub, marginTop: 3 }}><b style={{ color: T.tx }}>Espira:</b> {br.exhale}</div>
+                          </div>}
+                          <div style={{ borderRadius: 9, background: T.cd, border: "1px solid " + T.bg, padding: "9px 10px" }}>
+                            <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 5 }}>Recupero</div>
+                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx, marginBottom: 4 }}>{rawEx.rec || (restSec ? fmtLabel(restSec) : "Come da scheda")}</div>
+                            <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>Recupero completo prima della serie successiva. Non partire col fiatone se l'obiettivo e forza o controllo.</div>
+                          </div>
+                          <div style={{ borderRadius: 9, background: T.cd, border: "1px solid " + progColor + "24", padding: "9px 10px" }}>
+                            <div style={{ fontSize: 10, fontWeight: 800, color: progColor, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 5 }}>Obiettivo</div>
+                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx, marginBottom: 4 }}>{objective.title}</div>
+                            <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{objective.detail}</div>
+                          </div>
+                        </div>
 
-                    {/* Breath panel */}
-                    {isBreathOpen && <div style={{ marginBottom: 10, borderRadius: 9, border: "1px solid " + bColor + "30", overflow: "hidden" }}>
-                      <div style={{ padding: "6px 11px", background: bColor + "10", borderBottom: "1px solid " + bColor + "20" }}>
-                        <span style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.7, color: bColor }}>{BREATH_TYPE_LABEL[br.type]}</span>
+                        {repeatHint && <div style={{ borderRadius: 9, padding: "9px 10px", background: repeatColor + "10", border: "1px solid " + repeatColor + "24" }}>
+                          <div style={{ fontSize: 10, fontWeight: 800, color: repeatColor, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 4 }}>Nota sul carico</div>
+                          <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{repeatHint.detail}</div>
+                        </div>}
+
+                        {prog && <div style={{ borderRadius: 9, padding: "9px 10px", background: progColor + "10", border: "1px solid " + progColor + "24" }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+                            <div style={{ fontSize: 10, fontWeight: 800, color: progColor, textTransform: "uppercase", letterSpacing: 0.7 }}>Progressione</div>
+                            <button
+                              onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === ("ex-open-advice-" + i) ? null : ("ex-open-advice-" + i)); }}
+                              title={getProgressShortHelp(prog)}
+                              style={{ width: 18, height: 18, borderRadius: "50%", border: "1px solid " + progColor + "40", background: "transparent", color: progColor, fontSize: 10, fontWeight: 800, cursor: "pointer", padding: 0, lineHeight: "16px" }}
+                            >?</button>
+                          </div>
+                          <div style={{ fontSize: 12, fontWeight: 700, color: T.tx, marginBottom: 4 }}>{prog.label}</div>
+                          <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{prog.detail}</div>
+                          {progTooltip === ("ex-open-advice-" + i) && <div onClick={function(e) { e.stopPropagation(); }} style={{ marginTop: 7, paddingTop: 7, borderTop: "1px solid " + T.bg, fontSize: 11, lineHeight: 1.6, color: T.sub }}>
+                            {getProgressShortHelp(prog)}
+                          </div>}
+                        </div>}
                       </div>
-                      <div style={{ padding: "8px 11px", background: T.sb, display: "grid", gap: 6 }}>
-                        <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
-                          <span style={{ fontSize: 15, lineHeight: 1, flexShrink: 0 }}>🌬️</span>
-                          <div><div style={{ fontSize: 10, fontWeight: 800, color: bColor, marginBottom: 2 }}>INSPIRA</div><div style={{ fontSize: 11, lineHeight: 1.5, color: T.sub }}>{br.inhale}</div></div>
-                        </div>
-                        <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
-                          <span style={{ fontSize: 15, lineHeight: 1, flexShrink: 0 }}>💨</span>
-                          <div><div style={{ fontSize: 10, fontWeight: 800, color: bColor, marginBottom: 2 }}>ESPIRA</div><div style={{ fontSize: 11, lineHeight: 1.5, color: T.sub }}>{br.exhale}</div></div>
-                        </div>
-                      </div>
-                    </div>}
+                    </div>
 
                     {/* Timer buttons — prominenti */}
                     {showTimerBtns && <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
@@ -3649,7 +3828,7 @@ export default function App() {
                     </div>}
 
                     {/* === REGISTRA SERIE === */}
-                    <div style={{ marginBottom: 10 }}>
+                    <div id={"reg-block-" + i} style={{ marginBottom: 10, borderRadius: 10, padding: showReg === i ? "8px" : 0, background: showReg === i ? dc + "08" : "transparent", border: showReg === i ? "1px solid " + dc + "24" : "none" }}>
                       <div style={{ fontSize: 11, fontWeight: 800, color: T.tx, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8, display: "flex", alignItems: "center", gap: 8 }}>
                         Registra
                         {tLog && tLog.sets.length > 0 && <span style={{ fontSize: 10, background: T.ok, color: "#fff", padding: "1px 7px", borderRadius: 8, fontWeight: 700 }}>{tLog.sets.length + "/" + sc + " serie"}</span>}
@@ -3694,80 +3873,71 @@ export default function App() {
 
                     {/* === LETTURA RAPIDA === */}
                     <div style={{ marginTop: 10, paddingTop: 10, borderTop: "1px solid " + T.bg, display: "grid", gap: 10 }}>
-                      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 8 }}>
-                        <div style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
-                          <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Ultima Sessione</div>
-                          {pastSessions.length === 0 ? <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Nessuno storico ancora. Dopo la prima registrazione qui vedrai subito l'ultima seduta utile.</div> : (function() {
-                            var sess = pastSessions[hPage];
-                            return <>
-                              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 7 }}>
-                                <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{sess.date}</div>
-                                {pastSessions.length > 1 && <div style={{ marginLeft: "auto", display: "flex", gap: 4 }}>
-                                  <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.min(hPage + 1, pastSessions.length - 1); return n; }); }} disabled={hPage >= pastSessions.length - 1} style={{ width: 26, height: 26, border: "1px solid " + T.bg, borderRadius: 6, background: T.cd, color: hPage >= pastSessions.length - 1 ? T.sub + "40" : T.sub, cursor: hPage >= pastSessions.length - 1 ? "default" : "pointer", fontSize: 13 }}>‹</button>
-                                  <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.max(hPage - 1, 0); return n; }); }} disabled={hPage === 0} style={{ width: 26, height: 26, border: "1px solid " + T.bg, borderRadius: 6, background: T.cd, color: hPage === 0 ? T.sub + "40" : T.sub, cursor: hPage === 0 ? "default" : "pointer", fontSize: 13 }}>›</button>
-                                </div>}
-                              </div>
-                              <div style={{ display: "grid", gap: 5 }}>
-                                {sess.sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) {
-                                  return <div key={si} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, borderRadius: 8, background: T.cd, padding: "6px 9px" }}>
-                                    <span style={{ fontSize: 10, fontWeight: 800, color: dc }}>{"SERIE " + (s.si + 1)}</span>
-                                    <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{isBW ? s.r + " rip" : (s.w > 0 ? s.w + " kg × " : "") + s.r + " rip"}</span>
-                                  </div>;
-                                })}
-                              </div>
-                            </>;
-                          })()}
-                        </div>
-
-                        <div style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
-                          <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Come Si Fa</div>
-                          <div style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{renderGlossaryText(db.c || "", dc)}</div>
-                        </div>
+                      <div style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
+                        <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Ultima sessione</div>
+                        {pastSessions.length === 0 ? <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Nessuno storico ancora. Dopo la prima registrazione qui vedrai subito la seduta utile da copiare o migliorare.</div> : (function() {
+                          var sess = pastSessions[hPage];
+                          return <>
+                            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 7 }}>
+                              <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{sess.date}</div>
+                              {pastSessions.length > 1 && <div style={{ marginLeft: "auto", display: "flex", gap: 4 }}>
+                                <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.min(hPage + 1, pastSessions.length - 1); return n; }); }} disabled={hPage >= pastSessions.length - 1} style={{ width: 26, height: 26, border: "1px solid " + T.bg, borderRadius: 6, background: T.cd, color: hPage >= pastSessions.length - 1 ? T.sub + "40" : T.sub, cursor: hPage >= pastSessions.length - 1 ? "default" : "pointer", fontSize: 13 }}>‹</button>
+                                <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.max(hPage - 1, 0); return n; }); }} disabled={hPage === 0} style={{ width: 26, height: 26, border: "1px solid " + T.bg, borderRadius: 6, background: T.cd, color: hPage === 0 ? T.sub + "40" : T.sub, cursor: hPage === 0 ? "default" : "pointer", fontSize: 13 }}>›</button>
+                              </div>}
+                            </div>
+                            <div style={{ display: "grid", gap: 5 }}>
+                              {sess.sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) {
+                                return <div key={si} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, borderRadius: 8, background: T.cd, padding: "6px 9px" }}>
+                                  <span style={{ fontSize: 10, fontWeight: 800, color: dc }}>{"SERIE " + (s.si + 1)}</span>
+                                  <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{isBW ? s.r + " rip" : (s.w > 0 ? s.w + " kg × " : "") + s.r + " rip"}</span>
+                                </div>;
+                              })}
+                            </div>
+                          </>;
+                        })()}
                       </div>
 
-                      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 8 }}>
-                        {db.t && db.t.length > 0 && <div style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
-                          <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Cue Chiave</div>
-                          <div style={{ display: "grid", gap: 5 }}>
+                      <details style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
+                        <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 11px", fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Tecnica essenziale</summary>
+                        <div style={{ padding: "0 11px 11px", display: "grid", gap: 8 }}>
+                          <div style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{renderGlossaryText(db.c || "", dc)}</div>
+                          {db.t && db.t.length > 0 && <div style={{ display: "grid", gap: 5 }}>
                             {db.t.map(function(tip, ti) { return <div key={ti} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: dc + "08", border: "1px solid " + dc + "12", borderRadius: 8, padding: "7px 9px" }}>
                               <span style={{ color: dc, fontSize: 10, lineHeight: 1.6 }}>•</span>
                               <span style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{tip}</span>
                             </div>; })}
-                          </div>
-                        </div>}
+                          </div>}
+                        </div>
+                      </details>
 
-                        {errorList.length > 0 && <div style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
-                          <div style={{ fontSize: 10, fontWeight: 800, color: "#C62828", textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Errori Da Evitare</div>
-                          <div style={{ display: "grid", gap: 5 }}>
-                            {errorList.map(function(err, ei) { return <div key={ei} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: "#C6282810", border: "1px solid #C6282820", borderRadius: 8, padding: "7px 9px" }}>
-                              <span style={{ color: "#C62828", fontSize: 10, lineHeight: 1.6 }}>•</span>
-                              <span style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{err}</span>
-                            </div>; })}
-                          </div>
-                        </div>}
-                      </div>
+                      {errorList.length > 0 && <details style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
+                        <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 11px", fontSize: 11, fontWeight: 800, color: "#C62828", textTransform: "uppercase", letterSpacing: 0.8 }}>Errori da evitare</summary>
+                        <div style={{ padding: "0 11px 11px", display: "grid", gap: 5 }}>
+                          {errorList.map(function(err, ei) { return <div key={ei} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: "#C6282810", border: "1px solid #C6282820", borderRadius: 8, padding: "7px 9px" }}>
+                            <span style={{ color: "#C62828", fontSize: 10, lineHeight: 1.6 }}>•</span>
+                            <span style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{err}</span>
+                          </div>; })}
+                        </div>
+                      </details>}
 
-                      <div style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, overflow: "hidden" }}>
-                        <button onClick={function(e) { e.stopPropagation(); setShowTecnica(isTecnica ? null : i); }} style={{ width: "100%", padding: "10px 11px", background: "transparent", border: "none", display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }}>
+                      <div style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 5 }}>
                           <span style={{ fontSize: 13 }}>📚</span>
-                          <div style={{ textAlign: "left" }}>
-                            <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Approfondisci</div>
-                            <div style={{ fontSize: 11, color: T.sub }}>Foto, video e spiegazioni complete</div>
-                          </div>
-                          <span style={{ marginLeft: "auto", fontSize: 12, color: T.sub, transform: isTecnica ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</span>
+                          <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Scheda completa esercizio</div>
+                        </div>
+                        <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6, marginBottom: 8 }}>Se hai dubbi su tecnica, immagini o video, apri la scheda completa nella tab Esercizi.</div>
+                        <button
+                          onClick={function(e) {
+                            e.stopPropagation();
+                            setTab("exercises");
+                            setCatSec("ex");
+                            setExInfoOpen(ex.n);
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }}
+                          style={{ minHeight: 40, padding: "0 12px", border: "1px solid " + dc + "30", borderRadius: 8, background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer" }}
+                        >
+                          Apri in Esercizi →
                         </button>
-                        {isTecnica && <div style={{ padding: "0 11px 11px" }}>
-                          {exImgs(ex.n).length > 0 && <div style={{ display: "flex", gap: 6, marginBottom: 10, overflowX: "auto" }}>
-                            {exImgs(ex.n).map(function(src, si) { return <img key={si} src={src} style={{ height: 120, width: "auto", borderRadius: 8, flexShrink: 0, border: "1px solid " + T.bg }} />; })}
-                          </div>}
-                          {db.lk && <div style={{ marginBottom: 8 }}><EmbedLink url={db.lk} label="video" size={11} /></div>}
-                          {db.deep && <div style={{ marginTop: 6 }}>
-                            {Array.isArray(db.deep) ? db.deep.map(function(block, bi) {
-                              if (block.type === "ul") return <div key={bi} style={{ display: "grid", gap: 5, marginBottom: 8 }}>{block.content.map(function(item, ii) { return <div key={ii} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: dc + "08", border: "1px solid " + dc + "12", borderRadius: 8, padding: "7px 10px" }}><span style={{ color: dc, fontSize: 10, lineHeight: 1.6 }}>•</span><span style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{item}</span></div>; })}</div>;
-                              return <DetailText key={bi} text={block.content} accent={dc} size={11} soft={true} />;
-                            }) : <DetailText text={db.deep} accent={dc} size={11} soft={true} />}
-                          </div>}
-                        </div>}
                       </div>
                     </div>
                   </div>;
