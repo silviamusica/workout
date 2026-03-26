@@ -149,7 +149,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"ul","content":["Piedi poco piu larghi delle spalle, punte a circa 30 gradi verso fuori","Ginocchia spinte fuori durante tutta la discesa — non lasciarle collassare","Talloni sempre ancorati a terra","Scendi sotto il parallelo: sedere sotto il livello delle ginocchia"]},
   {"type":"p","content":"Nella risalita, mantieni la coordinazione testa-busto-sedere: non inclinare troppo il busto in avanti (togli lavoro ai glutei e lo carichi sulla schiena)."},
   {"type":"p","content":"Manovra di Valsalva: inspira profondo, blocca il respiro e gonfia la pancia prima di scendere. Espira solo dopo aver superato il punto critico della risalita."}
-]}, "Military Press": {"g": "Deltoidi/Tricipiti/Core", "c": "Bilanciere alle clavicole. Spingi sopra la testa, scendi controllando.", "p": "Piedi larghezza spalle, glutei e core contratti.", "t": ["Glutei stretti per stabilizzare", "Se lombare inarca: riduci carico"]}, "Trazioni Supine": {"g": "Dorsali/Bicipiti/Romboidi", "c": "Presa supina (palmi verso di te). Tira su, mento sopra, scendi.", "p": "Scapole depresse. Core attivo.", "t": ["Supina = piu bicipiti", "Elastico per assistenza"]}, "Curl Bicipiti": {"g": "Bicipiti/Brachiale", "c": "Manubri ai lati, presa supina. Fletti verso spalle, scendi.", "p": "Gomiti fissi ai lati. Niente dondolio.", "t": ["Se dondoli: peso troppo", "Eccentrica 3s = piu stimolo"]}, "French Press Manubri": {"g": "Tricipiti", "c": "Su panca, manubri sopra. Fletti gomiti verso tempie, estendi.", "p": "Gomiti verso soffitto, fermi. Presa neutra.", "t": ["Gomiti paralleli", "Leggermente dietro la testa"]}, "Dip su Panca": {"g": "Tricipiti/Pettorali inf.", "c": "Mani su panca dietro. Scendi a 90 gradi gomiti, spingi su.", "p": "Gomiti indietro. Schiena vicina alla panca.", "t": ["Gambe tese = piu difficile", "Non sotto 90 gradi"]}, "Squat Bulgaro": {"g": "Quadricipiti/Glutei/Femorali", "c": "Piede posteriore su panca. Scendi a 90 gradi, spingi su.", "p": "Busto eretto. Ginocchio in linea con punta.", "t": ["Busto avanti = piu glutei", "Manubri ai lati per carico"], "deep": [
+]}, "Military Press": {"g": "Deltoidi/Tricipiti/Core", "c": "Bilanciere alle clavicole. Spingi sopra la testa, scendi controllando.", "p": "Piedi larghezza spalle, glutei e core contratti.", "t": ["Glutei stretti per stabilizzare", "Se lombare inarca: riduci carico"]}, "Trazioni Supine": {"g": "Dorsali/Bicipiti/Romboidi", "c": "Presa neutra o supina. Tira su, mento sopra, scendi controllando.", "p": "Scapole depresse. Core attivo.", "t": ["Neutra o supina in base al comfort articolare", "Elastico per assistenza"]}, "Curl Bicipiti": {"g": "Bicipiti/Brachiale", "c": "Manubri ai lati, presa supina. Fletti verso spalle, scendi.", "p": "Gomiti fissi ai lati. Niente dondolio.", "t": ["Se dondoli: peso troppo", "Eccentrica 3s = piu stimolo"]}, "French Press Manubri": {"g": "Tricipiti", "c": "Su panca, manubri sopra. Fletti gomiti verso tempie, estendi.", "p": "Gomiti verso soffitto, fermi. Presa neutra.", "t": ["Gomiti paralleli", "Leggermente dietro la testa"]}, "Dip su Panca": {"g": "Tricipiti/Pettorali inf.", "c": "Mani su panca dietro. Scendi a 90 gradi gomiti, spingi su.", "p": "Gomiti indietro. Schiena vicina alla panca.", "t": ["Gambe tese = piu difficile", "Non sotto 90 gradi"]}, "Squat Bulgaro": {"g": "Quadricipiti/Glutei/Femorali", "c": "Piede posteriore su panca. Scendi a 90 gradi, spingi su.", "p": "Busto eretto. Ginocchio in linea con punta.", "t": ["Busto avanti = piu glutei", "Manubri ai lati per carico"], "deep": [
   {"type":"p","content":"Variante dell'affondo con il piede posteriore poggiato su un rialzo (panca, step, sedia). Valgono le stesse regole degli affondi: ginocchio posteriore sfiora terra senza urtarla."},
   {"type":"p","content":"Gestisci il focus muscolare:"},
   {"type":"ul","content":["Passo corto + busto verticale = piu quadricipiti","Passo piu lungo + busto inclinato = piu glutei e femorali","Ginocchio anteriore sempre allineato con il piede — non collassare verso l'interno"]},
@@ -867,17 +867,17 @@ var DAYS_V4 = [
     },
     warmup: [
       { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti. Attiva flessori anca e gambe.", tm: 180, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti.", tm: 180 }] },
-      { n: "Cat-Cow", img: "w_CatCow", d: "2 min lenti. Mobilizza anche, colonna e caviglie.", tm: 120, alt: [{ n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "4 per lato." }] },
+      { n: "Cat-Cow", img: "w_CatCow", d: "Cat-Cow + World's Greatest Stretch per 2 minuti totali. Mobilizza colonna, anche e caviglie prima dello squat.", tm: 120, alt: [{ n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "4 per lato + 8 Cat-Cow lente." }] },
       { n: "Squat a corpo libero", img: "w_SquatBL", d: "3-4 serie di avvicinamento: barra 40% → 60% → 80%. Imposta la traiettoria prima del carico pesante.", alt: [{ n: "Affondi a corpo libero", d: "6 per gamba, lenti." }] },
     ],
     ex: [
-      { n: "Squat", s: "4x6-8", rpe: "8", note: "Double progression. Piedi ruotati 15-30 gradi, ginocchia fuori, parallelo min. Valsalva.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper + rack", errori: "Ginocchia che collassano dentro; busto che cade avanti in risalita; talloni che si alzano; schiena che si arrotonda in buca" },
+      { n: "Squat", s: "4x6-8", rpe: "8-9", note: "Double progression. Piedi ruotati 15-30 gradi, ginocchia fuori, parallelo min. Valsalva. Ultimo set a cedimento tecnico controllato.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper + rack", errori: "Ginocchia che collassano dentro; busto che cade avanti in risalita; talloni che si alzano; schiena che si arrotonda in buca" },
       { n: "Squat Bulgaro", s: "3x10-12", rpe: "8", note: "Per gamba. Piede post sul dorso della panca. Discesa verticale, ginocchio ant verso 2-3 dito.", rec: "90s-2 min", gear: "Manubri + panca", errori: "Ginocchio ant che supera la punta; piede post troppo lontano; tronco che oscilla" },
-      { n: "Hip Thrust Bilanciere", s: "4x10-12", rpe: "8", note: "Scapole sul bordo panca. Mento al petto. Squeeze glutei 1s in alto. Piedi larghezza spalle.", rec: "2 min", gear: "Bilanciere + bumper + panca", errori: "Iperestensione lombare in alto; appoggio scapole troppo basso; piedi troppo vicini" },
+      { n: "Hip Thrust Bilanciere", s: "4x10-12", rpe: "8-9", note: "Scapole sul bordo panca. Mento al petto. Squeeze glutei 1s in alto. Piedi larghezza spalle.", rec: "2 min", gear: "Bilanciere + bumper + panca", errori: "Iperestensione lombare in alto; appoggio scapole troppo basso; piedi troppo vicini" },
       { n: "Nordic Curl", s: "3x5-8", rpe: "8", note: "Eccentrica 3-4s. Elastico al petto se necessario. Corpo rigido, glutei contratti.", rec: "2 min", gear: "Elastico + rack", errori: "Cedere col busto; fase eccentrica troppo veloce" },
       { n: "Slackline", s: "2x45s", rpe: "", note: "Sguardo avanti. Ginocchia leggermente flesse. Core attivo.", rec: "60s", gear: "Slackline board", errori: "Guardare i piedi; irrigidire le caviglie" },
       { n: "Ab Wheel", s: "3x8-10", rpe: "8", note: "Core contratto tutto il tempo. Estendi il piu possibile senza cedere la lombare.", rec: "90s", gear: "Ab wheel", errori: "Lombare che si inarca; anche che non si estendono; range troppo corto" },
-    ], str: ["Quadricipiti","Glutei","Femorali","Core"] },
+    ], str: ["Quadricipiti","Flessori anca","Glutei"] },
 
   { name: "Mar", focus: "Upper A — Tirata + Petto", dur: "5 esercizi", tEst: 65,
     intro: {
@@ -889,15 +889,15 @@ var DAYS_V4 = [
     warmup: [
       { n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti.", tm: 180, alt: [{ n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti.", tm: 180 }] },
       { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "15 avanti + 15 indietro. Scalda cuffia dei rotatori.", alt: [{ n: "Shoulder rolls + apertura petto", d: "10 rotazioni + 10 aperture." }] },
-      { n: "Inchworm", img: "w_Inchworm", d: "Serie di avvicinamento trazioni: 1-2 rep, poi 3, poi 4-5. Non affaticarsi.", alt: [{ n: "Cat-Cow", img: "w_CatCow", d: "8 lente." }] },
+      { n: "Inchworm", img: "w_Inchworm", d: "Inchworm per 3 minuti + 2-3 serie di avvicinamento alle trazioni (1-2 rep, poi 3, poi 4-5). Non affaticarsi.", tm: 180, alt: [{ n: "Cat-Cow", img: "w_CatCow", d: "8 lente + sospensione attiva alla sbarra." }] },
     ],
     ex: [
-      { n: "Trazioni", s: "4x5-8", rpe: "8", note: "Double progression. Presa prona. Parti da braccia tese. Mento sopra sbarra. Discesa 2-3s.", priority: true, rec: "2-3 min", gear: "Barra trazioni (+ elastico assist.)", errori: "Kipping/slancio; mento che si protende senza tirare; spalle alle orecchie; ROM incompleto" },
-      { n: "T-bar Row", s: "4x8-10", rpe: "8", note: "Busto a 45 gradi fisso. Tira verso ombelico. Presa neutra. Scapole addotte 1s.", rec: "2 min", gear: "T-bar + bumper", errori: "Schiena arrotondata; slancio col busto; tirare con i bicipiti" },
-      { n: "Panca", s: "4x8-10", rpe: "8", note: "Scapole addotte e basse. Arco lombare naturale. Gomiti a 45-75 gradi. Barra tocca linea capezzoli. Polsi dritti.", rec: "2 min", gear: "Bilanciere + panca + rack", errori: "Rimbalzo sul petto; gomiti a 90 gradi; sedere che si alza; polsi piegati" },
-      { n: "Face Pull", s: "3x15", rpe: "7", note: "Cavo alto + corda. Tira verso le orecchie. Rotazione esterna in alto. Gomiti alti.", rec: "60-90s", gear: "Cavo alto + corda", errori: "Corpo che si inclina avanti; gomiti che scendono; nessuna rotazione esterna" },
-      { n: "Curl Bicipiti", s: "3x10-12", rpe: "8", note: "Gomiti fissi ai fianchi. Supinazione. Eccentrica 2-3s.", rec: "90s", gear: "Manubri", errori: "Slancio col busto; gomiti che avanzano; fase eccentrica troppo veloce" },
-    ], str: ["Dorsali","Pettorali","Bicipiti","Deltoidi posteriori"] },
+      { n: "Trazioni", s: "4x5-8", rpe: "8-9", note: "Double progression. Presa prona. Parti da braccia tese. Mento sopra sbarra. Discesa 2-3s. Ultimo set a cedimento tecnico controllato.", priority: true, rec: "2-3 min", gear: "Barra trazioni (+ elastico assist.)", errori: "Kipping/slancio; mento che si protende senza tirare; spalle alle orecchie; ROM incompleto" },
+      { n: "T-bar Row", s: "4x8-10", rpe: "8-9", note: "Busto a 45 gradi fisso. Tira verso ombelico. Presa neutra. Scapole addotte 1s.", rec: "2 min", gear: "T-bar + bumper", errori: "Schiena arrotondata; slancio col busto; tirare con i bicipiti" },
+      { n: "Panca", s: "4x8-10", rpe: "8-9", note: "Scapole addotte e basse. Arco lombare naturale. Gomiti a 45-75 gradi. Barra tocca linea capezzoli. Polsi dritti. Ultimo set a cedimento tecnico controllato.", rec: "2 min", gear: "Bilanciere + panca + rack", errori: "Rimbalzo sul petto; gomiti a 90 gradi; sedere che si alza; polsi piegati" },
+      { n: "Face Pull", s: "3x15", rpe: "9", note: "Cavo alto + corda. Tira verso le orecchie. Rotazione esterna in alto. Gomiti alti.", rec: "60-90s", gear: "Cavo alto + corda", errori: "Corpo che si inclina avanti; gomiti che scendono; nessuna rotazione esterna" },
+      { n: "Curl Bicipiti", s: "3x10-12", rpe: "9", note: "Gomiti fissi ai fianchi. Supinazione. Eccentrica 2-3s.", rec: "90s", gear: "Manubri", errori: "Slancio col busto; gomiti che avanzano; fase eccentrica troppo veloce" },
+    ], str: ["Dorsali","Pettorali","Bicipiti","Spalle"] },
 
   { name: "Mer", focus: "Cardio A ❤️", cardio: true,
     cardioOptions: [
@@ -915,18 +915,18 @@ var DAYS_V4 = [
       ritmo: "Recuperi 2-3 min su Stacco. 2 min su Stacco rumeno. 90-120s sugli altri."
     },
     warmup: [
-      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti + affondi corpo libero.", tm: 180, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti.", tm: 180 }] },
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "Marcia sul posto + affondi a corpo libero per 3 minuti totali. Attiva anche, quadricipiti e glutei.", tm: 180, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti.", tm: 180 }] },
       { n: "Good Morning senza peso", img: "w_GoodMorningSenzaPeso", d: "Good morning senza peso + clamshell con elastico. 2 min. Attiva glutei e femorali.", tm: 120, alt: [{ n: "Cat-Cow", img: "w_CatCow", d: "8 lente." }] },
-      { n: "Squat a corpo libero", img: "w_SquatBL", d: "3-4 serie avvicinamento stacco: barra 40% → 60% → 80%.", alt: [{ n: "Hip hinge con bastone", d: "10 rip lente." }] },
+      { n: "Squat a corpo libero", img: "w_SquatBL", d: "3-4 serie di avvicinamento allo stacco: barra 40% → 60% → 80%.", alt: [{ n: "Hip hinge con bastone", d: "10 rip lente." }] },
     ],
     ex: [
-      { n: "Stacco da Terra", s: "4x5-8", rpe: "8", note: "Double progression. Piedi larghezza anche. Barra a contatto tibie. Spingi il pavimento. Anche e spalle salgono insieme.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata/cifotica; barra lontana dal corpo; anche che salgono prima delle spalle; collo iperesteso" },
-      { n: "Stacco Rumeno", s: "3x10-12", rpe: "8", note: "Manubri lungo le cosce. Ginocchia flesse e fisse. Senti lo stretch femorali. Spingi il sedere indietro.", rec: "2 min", gear: "Manubri", errori: "Ginocchia troppo flesse; schiena arrotondata; manubri lontani dal corpo" },
-      { n: "Hip Thrust Bilanciere", s: "3x12-15", rpe: "7", note: "Peso INFERIORE rispetto al lunedi. Focus su squeeze glutei. Stesse indicazioni tecniche.", rec: "90s-2 min", gear: "Bilanciere + bumper + panca", errori: "Vedi lunedi" },
-      { n: "Affondi", s: "3x12", rpe: "8", note: "Affondi camminati con manubri. Passo lungo per enfatizzare glutei. Ginocchio post sfiora il pavimento. Busto eretto.", rec: "2 min", gear: "Manubri", errori: "Passo troppo corto; ginocchio post che non scende; busto che oscilla" },
-      { n: "Hyperextension con Sacco", s: "3x12-15", rpe: "7", note: "Sacco sabbia 5kg al petto. Sali solo fino alla linea del corpo. Squeeze glutei in alto. Collo neutro.", rec: "90s", gear: "Panca romana + sacco sabbia", errori: "Iperestensione lombare in alto; velocita eccessiva; collo iperesteso" },
-      { n: "Fitball Hamstring Curl", s: "3x12", rpe: "7", note: "Bacino alto tutto il tempo. Talloni sulla fitball. Curl lento e controllato.", rec: "90s", gear: "Fitball", errori: "Bacino che cade; piedi che scivolano; range incompleto" },
-    ], str: ["Femorali","Glutei","Lombare"] },
+      { n: "Stacco da Terra", s: "4x5-8", rpe: "8-9", note: "Double progression. Piedi larghezza anche. Barra a contatto tibie. Spingi il pavimento. Anche e spalle salgono insieme. Ultimo set a cedimento tecnico controllato.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata/cifotica; barra lontana dal corpo; anche che salgono prima delle spalle; collo iperesteso" },
+      { n: "Stacco Rumeno", s: "3x10-12", rpe: "8-9", note: "Manubri lungo le cosce. Ginocchia flesse e fisse. Senti lo stretch femorali. Spingi il sedere indietro.", rec: "2 min", gear: "Manubri", errori: "Ginocchia troppo flesse; schiena arrotondata; manubri lontani dal corpo" },
+      { n: "Hip Thrust Bilanciere", s: "3x12-15", rpe: "9", note: "Peso INFERIORE rispetto al lunedi. Focus su squeeze glutei. Stesse indicazioni tecniche.", rec: "90s-2 min", gear: "Bilanciere + bumper + panca", errori: "Vedi lunedi" },
+      { n: "Affondi", s: "3x12 per gamba", rpe: "8-9", note: "Affondi camminati con manubri. Passo lungo per enfatizzare glutei. Ginocchio post sfiora il pavimento. Busto eretto.", rec: "2 min", gear: "Manubri", errori: "Passo troppo corto; ginocchio post che non scende; busto che oscilla" },
+      { n: "Hyperextension con Sacco", s: "3x12-15", rpe: "9", note: "Sacco sabbia 5kg al petto. Sali solo fino alla linea del corpo. Squeeze glutei in alto. Collo neutro.", rec: "90s", gear: "Panca romana + sacco sabbia", errori: "Iperestensione lombare in alto; velocita eccessiva; collo iperesteso" },
+      { n: "Fitball Hamstring Curl", s: "3x12", rpe: "9", note: "Bacino alto tutto il tempo. Talloni sulla fitball. Curl lento e controllato.", rec: "90s", gear: "Fitball", errori: "Bacino che cade; piedi che scivolano; range incompleto" },
+    ], str: ["Femorali","Glutei","Lombare","Flessori anca"] },
 
   { name: "Ven", focus: "Upper B — Spinta + Trazioni + Tricipiti", dur: "6 esercizi", tEst: 65,
     intro: {
@@ -936,18 +936,18 @@ var DAYS_V4 = [
       ritmo: "Recuperi 2 min su Push-up, Trazioni, Military. 90-120s su Dip. 60-90s su Tricipiti cavo e Woodchop."
     },
     warmup: [
-      { n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti.", tm: 180, alt: [{ n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti.", tm: 180 }] },
-      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "15 avanti + 15 indietro.", alt: [{ n: "Shoulder rolls", d: "10 in avanti e 10 indietro." }] },
+      { n: "Jumping jacks", img: "w_JumpingJacks", d: "Jumping jacks + cerchi con le braccia per 3 minuti totali.", tm: 180, alt: [{ n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti.", tm: 180 }] },
+      { n: "Cat-Cow", img: "w_CatCow", d: "8-10 rip lente. Mobilizza colonna toracica e spalle prima della spinta verticale.", alt: [{ n: "Shoulder rolls", d: "10 in avanti e 10 indietro." }] },
       { n: "Military press con bilanciere scarico", img: "w_MilitaryPress", d: "2x8 con bilanciere vuoto. Attivazione spalle e core.", alt: [{ n: "Cerchi con le braccia + apertura", d: "10 cerchi + 10 aperture." }] },
     ],
     ex: [
       { n: "Push-Up", s: "4xmax-2", rpe: "8", note: "Fermati 2 rep prima del cedimento. Corpo rigido, gomiti 45 gradi, petto tocca terra. Core contratto.", priority: true, rec: "2 min", gear: "Corpo libero (o rialzo)", errori: "Anche che cedono (banana); gomiti a 90 gradi; testa che penzola; ROM incompleto" },
       { n: "Trazioni Supine", s: "3xmax-2", rpe: "8", note: "Presa neutra o supina. Stesso standard tecnico di martedi. Piu stimolo su bicipiti.", priority: true, rec: "2 min", gear: "Barra trazioni", errori: "Vedi martedi — presa diversa per variazione angolare" },
-      { n: "Military Press", s: "4x6-8", rpe: "8", note: "Double progression. Core rigido. Barra dalle clavicole. Spingi verticale. Testa si sposta avanti dopo il passaggio.", rec: "2 min", gear: "Bilanciere + rack", errori: "Iperestensione lombare; barra davanti al viso; gomiti che svasano; testa che arretra" },
+      { n: "Military Press", s: "4x6-8", rpe: "8-9", note: "Double progression. Core rigido. Barra dalle clavicole. Spingi verticale. Testa si sposta avanti dopo il passaggio. Ultimo set a cedimento tecnico controllato.", rec: "2 min", gear: "Bilanciere + rack", errori: "Iperestensione lombare; barra davanti al viso; gomiti che svasano; testa che arretra" },
       { n: "Dip alle Parallele", s: "3xRIR 1-2", rpe: "8", note: "Busto inclinato avanti per petto. Gomiti indietro. Scendi a 90 gradi. Controlla la salita.", rec: "2 min", gear: "Barra dip", errori: "Spalle che salgono; oscillazione del corpo; discesa eccessiva oltre 90 gradi" },
-      { n: "Tricipiti Cavo", s: "3x12", rpe: "7", note: "Corda. Gomiti fissi ai fianchi. Apri la corda in basso. Estensione completa. Eccentrica lenta.", rec: "60-90s", gear: "Cavo alto + corda", errori: "Gomiti che si muovono; busto che si inclina; usare lo slancio" },
-      { n: "Woodchop", s: "3x12", rpe: "7", note: "Per lato. Cavo alto o elastico. Rotazione dal core, braccia tese. Movimento controllato.", rec: "60-90s", gear: "Cavo alto o elastico", errori: "Ruotare con le braccia invece che dal core; peso eccessivo" },
-    ], str: ["Pettorali","Dorsali","Deltoidi","Tricipiti","Obliqui"] },
+      { n: "Tricipiti Cavo", s: "3x12", rpe: "9", note: "Corda. Gomiti fissi ai fianchi. Apri la corda in basso. Estensione completa. Eccentrica lenta.", rec: "60-90s", gear: "Cavo alto + corda", errori: "Gomiti che si muovono; busto che si inclina; usare lo slancio" },
+      { n: "Woodchop", s: "3x12", rpe: "8-9", note: "Per lato. Cavo alto o elastico. Rotazione dal core, braccia tese. Movimento controllato.", rec: "60-90s", gear: "Cavo alto o elastico", errori: "Ruotare con le braccia invece che dal core; peso eccessivo" },
+    ], str: ["Pettorali","Spalle","Tricipiti","Dorsali"] },
 
   { name: "Dom", focus: "Cardio B ❤️", cardio: true,
     cardioOptions: [
@@ -1077,6 +1077,9 @@ function parseSerie(str) {
   return { sets: parseInt(m[1]), reps: m[2] === "max" ? Array(parseInt(m[1])).fill("max") : m[2].split("-") };
 }
 function todayStr() { return new Date().toISOString().split("T")[0]; }
+var MAX_PROGRESS_EX = ["Push-Up","Trazioni Supine"];
+var ACCESSORY_PROGRESS_EX = ["Squat Bulgaro","Face Pull","Curl Bicipiti","Hyperextension con Sacco","Fitball Hamstring Curl","Tricipiti Cavo"];
+var CORE_PROGRESS_EX = ["Slackline","Ab Wheel"];
 
 /* === BREATHING RULES === */
 // type: "valsalva" | "anatomic-push" | "anatomic-pull" | "iso"
@@ -1469,6 +1472,99 @@ export default function App() {
   function logSet(en, di, si, w, r) { var t = todayStr(); var k = t + "_d" + di + "_m" + month + "_" + en; var nl = Object.assign({}, logs); if (!nl[k]) nl[k] = { date: t, day: di, month: month, exercise: en, sets: [] }; var x = nl[k].sets.findIndex(function(s) { return s.si === si; }); var entry = { si: si, w: parseFloat(w) || 0, r: r === "max" ? r : (parseInt(r) || 0) }; if (x >= 0) nl[k].sets[x] = entry; else nl[k].sets.push(entry); saveData(nl); setEditing(null); setTmpW(""); setTmpR(""); }
   function getLog(en, di) { return logs[todayStr() + "_d" + di + "_m" + month + "_" + en]; }
   function getHist(en) { return Object.values(logs).filter(function(l) { return l.exercise === en; }).sort(function(a,b) { return b.date.localeCompare(a.date); }).slice(0, 10); }
+  function getAllHist(en) { return Object.values(logs).filter(function(l) { return l.exercise === en && l.month === month; }).sort(function(a,b) { var c = b.date.localeCompare(a.date); return c || ((b.day || 0) - (a.day || 0)); }); }
+  function parseProgressSpec(str) {
+    if (!str) return null;
+    var clean = str.toLowerCase().replace(/\s+/g, "").replace(/pergamba/g, "");
+    var m = clean.match(/^(\d+)[xX](.+)$/);
+    if (!m) return null;
+    var sets = parseInt(m[1]) || 0;
+    var rhs = m[2];
+    var maxM = rhs.match(/^max(?:-(\d+))?$/);
+    if (maxM) return { kind: "max", sets: sets, reserve: parseInt(maxM[1] || "0") || 0 };
+    var timeM = rhs.match(/^(\d+)(?:-(\d+))?s$/);
+    if (timeM) return { kind: "time", sets: sets, min: parseInt(timeM[1]) || 0, max: parseInt(timeM[2] || timeM[1]) || 0 };
+    var repM = rhs.match(/^(\d+)(?:-(\d+))?$/);
+    if (repM) return { kind: "range", sets: sets, min: parseInt(repM[1]) || 0, max: parseInt(repM[2] || repM[1]) || 0 };
+    return null;
+  }
+  function normalizeSessionSets(entry, expectedSets) {
+    if (!entry || !entry.sets || !entry.sets.length) return [];
+    var sorted = entry.sets.slice().sort(function(a, b) { return (a.si || 0) - (b.si || 0); });
+    if (expectedSets && sorted.length < expectedSets) return [];
+    if (expectedSets) {
+      for (var i = 0; i < expectedSets; i++) {
+        if (!sorted.find(function(s) { return s.si === i; })) return [];
+      }
+      sorted = sorted.slice(0, expectedSets);
+    }
+    return sorted;
+  }
+  function formatSessionSummary(sets, isBW, isTime) {
+    return sets.map(function(s) {
+      var reps = s.r === "max" ? "max" : String(parseInt(s.r) || 0);
+      if (isTime) reps += "s";
+      if (isBW) return reps;
+      var kg = parseFloat(s.w) || 0;
+      return kg > 0 ? (kg + "x" + reps) : reps;
+    }).join(" · ");
+  }
+  function getProgressAdvice(exName, serie) {
+    var spec = parseProgressSpec(serie);
+    if (!spec) return null;
+    var sessions = getAllHist(exName);
+    if (!sessions.length) return { tone: "empty", label: "⚪ Nessun dato", detail: "Registra una sessione completa per ricevere un consiglio.", short: "Nessun dato" };
+    var complete = sessions.map(function(entry) {
+      return { entry: entry, sets: normalizeSessionSets(entry, spec.sets) };
+    }).filter(function(item) { return item.sets.length === spec.sets; });
+    if (!complete.length) return { tone: "empty", label: "⚪ Sessione incompleta", detail: "Mancano una o piu serie registrate rispetto al target.", short: "Sessione incompleta" };
+    var latest = complete[0];
+    var previous = complete[1] || null;
+    var isMax = spec.kind === "max" || MAX_PROGRESS_EX.indexOf(exName) >= 0;
+    var isCore = CORE_PROGRESS_EX.indexOf(exName) >= 0;
+    var isAccessory = ACCESSORY_PROGRESS_EX.indexOf(exName) >= 0;
+    var isTime = spec.kind === "time";
+    if (isMax) {
+      var latestTotal = latest.sets.reduce(function(acc, s) { return acc + (s.r === "max" ? 0 : (parseInt(s.r) || 0)); }, 0);
+      if (!previous) return { tone: "empty", label: "⚪ Serve un'altra sessione", detail: "Ultima: " + formatSessionSummary(latest.sets, true, false) + ". Serve un confronto per stimare la progressione.", short: "Serve un'altra sessione" };
+      var prevTotal = previous.sets.reduce(function(acc, s) { return acc + (s.r === "max" ? 0 : (parseInt(s.r) || 0)); }, 0);
+      var third = complete[2] || null;
+      var stagnant = false;
+      if (third) {
+        var thirdTotal = third.sets.reduce(function(acc, s) { return acc + (s.r === "max" ? 0 : (parseInt(s.r) || 0)); }, 0);
+        stagnant = latestTotal <= prevTotal && prevTotal <= thirdTotal;
+      }
+      if (latestTotal > prevTotal) return { tone: "up", label: "🟢 Stai progredendo", detail: "Totale rip: " + prevTotal + " → " + latestTotal + ". Continua con la stessa variante finche sali.", short: "Totale rip in aumento" };
+      if (stagnant) return { tone: "hold", label: "🟠 Valuta progressione di difficolta", detail: "Totale rip stabile/in calo per piu sessioni (" + prevTotal + " → " + latestTotal + "). Valuta zavorra o variante piu difficile.", short: "Valuta una progressione di difficolta" };
+      return { tone: "mid", label: "🟡 Stabile", detail: "Totale rip: " + prevTotal + " → " + latestTotal + ". Prova ad aggiungere 1-2 rip complessive.", short: "Totale rip stabile" };
+    }
+    var reps = latest.sets.map(function(s) { return parseInt(s.r) || 0; });
+    var weights = latest.sets.map(function(s) { return parseFloat(s.w) || 0; }).filter(function(w) { return w > 0; });
+    if (!isCore && weights.length > 1) {
+      var firstW = weights[0];
+      var mixed = weights.some(function(w) { return w !== firstW; });
+      if (mixed) return { tone: "empty", label: "⚪ Valuta manualmente", detail: "Ultima sessione non uniforme: " + formatSessionSummary(latest.sets, false, isTime) + ".", short: "Carichi diversi nella stessa seduta" };
+    }
+    var allAtTop = reps.every(function(r) { return r >= spec.max; });
+    var allInRange = reps.every(function(r) { return r >= spec.min; });
+    var latestSummary = formatSessionSummary(latest.sets, weights.length === 0, isTime);
+    if (isCore) {
+      if (allAtTop) {
+        return { tone: "up", label: isTime ? "🟢 Aumenta durata" : "🟢 Aumenta ripetizioni", detail: "Ultima: " + latestSummary + ". Hai chiuso tutto il target previsto.", short: isTime ? "Hai chiuso il tempo target" : "Hai chiuso il range target" };
+      }
+      if (allInRange) {
+        return { tone: "mid", label: "🟡 Consolida", detail: "Ultima: " + latestSummary + ". Sei dentro il target ma non ancora al tetto su tutte le serie.", short: "Dentro il target" };
+      }
+      return { tone: "hold", label: "🟠 Consolida tecnica", detail: "Ultima: " + latestSummary + ". Prima chiudi il minimo previsto su tutte le serie.", short: "Sotto il minimo su una o piu serie" };
+    }
+    if (allAtTop) {
+      return { tone: "up", label: isAccessory ? "🟢 Aumenta leggermente il carico" : "🟢 Aumenta carico", detail: "Ultima: " + latestSummary + ". Hai chiuso tutto il range previsto.", short: "Hai chiuso tutto il range" };
+    }
+    if (allInRange) {
+      return { tone: "mid", label: isAccessory ? "🟡 Prova a chiudere il range" : "🟡 Aggiungi ripetizioni", detail: "Ultima: " + latestSummary + ". Sei nel range ma non ancora al tetto su tutte le serie.", short: "Nel range, ma non al tetto" };
+    }
+    return { tone: "hold", label: isAccessory ? "🟠 Consolida tecnica e rip" : "🟠 Consolida questo peso", detail: "Ultima: " + latestSummary + ". Almeno una serie e sotto il minimo previsto.", short: "Almeno una serie sotto il minimo" };
+  }
 
 
   function exportData() {
@@ -2109,11 +2205,11 @@ export default function App() {
           <div style={{ padding: "12px 16px 16px", display: "grid", gap: 8 }}>
             {[
               { t: "Proteine: la priorità assoluta", body: "Range: 1.6-2.2 g/kg al giorno. Il tuo piano nutrizionale prevede ~1.78 g/kg (100 g/giorno a 56 kg). In deficit calorico, avvicinarsi a 2.0 g/kg (112 g) preserva meglio la massa magra.\n\nDistribuzione: almeno 4 pasti con 0.4-0.55 g/kg per pasto (22-31 g per pasto). L'effetto anabolico di un singolo pasto dura 5-6 ore — non serve mangiare ogni 2 ore.\n\nFonti ottimali: pollo, tacchino, uova, pesce, legumi + cereali, yogurt greco, ricotta, fiocchi di latte." },
-              { t: "Carboidrati: carburante per la performance", body: "Il glicogeno muscolare è il carburante principale dell'allenamento ipertrofico. 3 set da 12RM riducono il glicogeno del ~26%; 6 set del ~38%. Il ripristino completo avviene entro 24 ore con un'assunzione giornaliera adeguata — indipendentemente dal timing post-workout.\n\nIl tuo piano: ~3.24 g/kg (170-185 g/giorno). Minimo consigliato: 3 g/kg.\n\nFonti: riso, pasta, patate, pane, frutta, avena. Preferisci fonti integrali per fibra e sazietà." },
-              { t: "Grassi: equilibrio ormonale", body: "I grassi completano il bilancio calorico dopo proteine e carboidrati. Non scendere sotto 0.8 g/kg: livelli troppo bassi possono alterare il profilo ormonale.\n\nIl tuo piano: ~0.87 g/kg (~50 g), al limite basso ma adeguato. Privilegia fonti insature: olio EVO, frutta secca, pesce grasso (salmone, sgombro), avocado. Limita i grassi saturi (salumi, formaggi grassi)." },
+              { t: "Carboidrati: carburante per la performance", body: "Il glicogeno muscolare è il carburante principale dell'allenamento ipertrofico. 3 set da 12RM riducono il glicogeno del ~26%; 6 set del ~38%. Il ripristino completo avviene entro 24 ore con un'assunzione giornaliera adeguata — indipendentemente dal timing post-workout.\n\nIl tuo piano: ~3.30 g/kg (185 g/giorno). Minimo consigliato: 3 g/kg.\n\nFonti: riso, pasta, patate, pane, frutta, avena. Preferisci fonti integrali per fibra e sazietà." },
+              { t: "Grassi: equilibrio ormonale", body: "I grassi completano il bilancio calorico dopo proteine e carboidrati. Non scendere sotto 0.8 g/kg: livelli troppo bassi possono alterare il profilo ormonale.\n\nIl tuo piano: ~0.89 g/kg (~50 g), al limite basso ma adeguato. Privilegia fonti insature: olio EVO, frutta secca, pesce grasso (salmone, sgombro), avocado. Limita i grassi saturi (salumi, formaggi grassi)." },
               { t: "Timing dei pasti", body: "La 'finestra anabolica' esiste, ma è molto più ampia di quanto si creda. Se hai consumato un pasto completo 2-3 ore prima dell'allenamento, la finestra post-workout si estende a 4-6 ore — non c'è urgenza di mangiare entro 30 minuti.\n\nSe ti alleni a digiuno, le proteine post-workout diventano urgenti (entro 45 minuti).\n\n• Pre-workout (1-2h): pasto con proteine + carboidrati\n• Post-workout (entro 4-6h dal pasto pre): proteine 0.4-0.5 g/kg di massa magra (~20-25 g)\n• Prima di dormire: 30-40 g di proteine a digestione lenta (caseine: fiocchi di latte, yogurt greco). Il beneficio principale è raggiungere il target proteico giornaliero." },
               { t: "Idratazione", body: "Bevi quando hai sete — per la maggior parte delle persone è sufficiente. Non esiste un target universale di 'X ml al giorno'.\n\nMinimo: non scendere sotto 1.2-1.5 litri al giorno (come indicato dal tuo piano nutrizionale). Non bere quantità eccessive senza elettroliti: a lungo termine il rischio è iponatremia.\n\nMonitora il colore dell'urina: giallo chiaro = idratazione ottimale." },
-              { t: "Ricomposizione corporea: il tuo caso", body: "Con massa grassa al 20.9% e massa muscolare al 54.2% (BIA marzo 2026), sei nella posizione ideale per una ricomposizione corporea: perdere grasso e guadagnare muscolo simultaneamente.\n\nFunziona con deficit moderato (-300/-400 kcal), proteine alte (1.6-2.2 g/kg) e allenamento con i pesi. Il tuo deficit attuale (~475 kcal) è leggermente più aggressivo del range ideale — monitora la performance: se cala per 2 settimane consecutive, il deficit è troppo alto.\n\nTarget realistico: 0.5-0.7% del peso a settimana = 280-390 g/settimana. Perdere 2-3 kg di grasso ti porterebbe a ~16-17% di massa grassa. 5 kg ti porterebbe a ~12% — molto difficile da sostenere a lungo termine." },
+              { t: "Ricomposizione corporea: il tuo caso", body: "Con massa grassa al 20.9% e massa muscolare al 54.2% (BIA marzo 2026), sei nella posizione ideale per una ricomposizione corporea: perdere grasso e guadagnare muscolo simultaneamente.\n\nFunziona con deficit moderato (-300/-400 kcal), proteine alte (1.6-2.2 g/kg) e allenamento con i pesi. Con un TDEE stimato di ~2050 kcal e un piano da 1600 kcal, il deficit attuale è ~450 kcal: leggermente aggressivo ma ancora gestibile. Monitora la performance: se cala per 2 settimane consecutive, il deficit è troppo alto.\n\nTarget realistico: 0.5-0.7% del peso a settimana = 280-390 g/settimana. Perdere 2-3 kg di grasso ti porterebbe a ~16-17% di massa grassa. 5 kg ti porterebbe a ~12% — molto difficile da sostenere a lungo termine." },
               { t: "Integratori: cosa vale, cosa no", body: "La maggior parte degli integratori non ha prove solide. Quelli con evidenza robusta:\n\n• Creatina monoidrato: 3-5 g/giorno tutti i giorni. Il tuo piano: 3 g/giorno. Migliora forza e ipertrofia in modo consistente. Possibile aumento di peso 1-3% da acqua intramuscolare (aspetto più tonico, non gonfio). La letteratura supporta l'uso continuativo oltre le 8 settimane.\n• Proteine whey: 20-30 g per dose quando i pasti non bastano. Già nel tuo piano (20 g a colazione).\n• Omega-3 (EPA + DHA): 1 g combinato/giorno. Già nel tuo piano. Benefici cognitivi e possibile supporto alla sintesi proteica.\n• Caffeina: 3-6 mg/kg pre-workout = 168-336 mg per te = 2-3 caffè. Attenzione: se assumi altri stimolanti per altri motivi, valuta con il medico la combinazione.\n• Multivitaminico: utile in deficit calorico quando la varietà alimentare è limitata.\n\nTutto il resto (BCAA se le proteine sono sufficienti, bruciagrassi, pre-workout complessi) ha prove deboli o nulle." },
             ].map(function(item, ii) {
               var isOpen = showPrinciples === 200 + ii;
@@ -2615,6 +2711,7 @@ export default function App() {
               var tLog = getLog(ex.n, dayIdx);
               var p = parseSerie(ex.s);
               var sc = p.sets;
+              var prog = getProgressAdvice(ex.n, ex.s);
               var isH = histIdx === i;
               var hData = isH ? getHist(ex.n) : [];
               var hasV = month > 1 && rawEx["v" + month];
@@ -2645,6 +2742,7 @@ export default function App() {
                       {rawEx.rec ? <span style={{ color: T.sub }}>{" · ⏱ " + rawEx.rec}</span> : ""}
                       {rawEx.gear ? <span style={{ color: T.sub }}>{" · 🏋️ " + rawEx.gear}</span> : ""}
                     </div>
+                    {prog && <div style={{ fontSize: 10, color: prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub, marginTop: 4, fontWeight: 700 }}>{prog.label}</div>}
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     {tLog && tLog.sets.length > 0 && <div style={{ background: T.ok, color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 8 }}>{tLog.sets.length + "/" + sc}</div>}
@@ -2684,6 +2782,10 @@ export default function App() {
                       {br && <button onClick={function(e) { e.stopPropagation(); setShowBreath(isBreathOpen ? null : i); }} style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid " + bColor + "40", borderRadius: 6, padding: "3px 8px", background: isBreathOpen ? bColor + "18" : bColor + "0A", color: bColor, cursor: "pointer" }}>🫁 {br.short}</button>}
                     </div>
                     {ex.note && <div style={{ fontSize: 11, color: T.sub, marginBottom: 8, fontStyle: "italic" }}>{ex.note}</div>}
+                    {prog && <div style={{ marginBottom: 10, borderRadius: 9, padding: "9px 11px", background: (prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) + "12", border: "1px solid " + (prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) + "28" }}>
+                      <div style={{ fontSize: 11, fontWeight: 800, color: prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub, marginBottom: 3 }}>{prog.label}</div>
+                      <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{prog.detail}</div>
+                    </div>}
 
                     {/* Breath panel */}
                     {isBreathOpen && <div style={{ marginBottom: 10, borderRadius: 9, border: "1px solid " + bColor + "30", overflow: "hidden" }}>
