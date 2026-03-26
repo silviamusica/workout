@@ -1663,6 +1663,31 @@ var CARDIO_KIND_LABEL = { run: "Corsa", ruck: "Rucking", hiit: "HIIT", circuit: 
 var CALIBRATION_BODYWEIGHT_EX = ["Push-Up","Trazioni","Trazioni Supine","Dip alle Parallele","Nordic Curl","Slackline","Ab Wheel","Fitball Hamstring Curl"];
 var CALIBRATION_SKIP_EX = ["HIIT tapis roulant","Rucking con zaino 15-20 kg","Circuito sacco + corde + slackline","Corsa leggera zona 2"];
 
+function usesElasticScale(exName) {
+  return exName === "Trazioni" || exName === "Trazioni Supine";
+}
+
+function clampElasticTick(v) {
+  var n = parseInt(v);
+  if (!n) return 0;
+  return Math.max(1, Math.min(10, n));
+}
+
+function formatElasticTick(v) {
+  var n = clampElasticTick(v);
+  return n ? ("tacca elastico " + n) : "";
+}
+
+function formatLoadAndReps(exName, w, r) {
+  var reps = (r === "max" ? "max" : (parseInt(r) || 0)) + " rip";
+  if (usesElasticScale(exName)) {
+    var tick = formatElasticTick(w);
+    return tick ? (tick + " × " + reps) : reps;
+  }
+  var kg = parseFloat(w) || 0;
+  return kg > 0 ? (kg + " kg × " + reps) : reps;
+}
+
 function daysBetweenISO(a, b) {
   if (!a || !b) return null;
   var da = new Date(a + "T00:00:00");
@@ -1675,6 +1700,7 @@ function getCalibrationType(exName, serie) {
   if (exName === "Slackline") return "tempo";
   if (exName === "Nordic Curl") return "assistito";
   if (exName === "Ab Wheel" || exName === "Fitball Hamstring Curl") return "body-control";
+  if (usesElasticScale(exName)) return "band-assist";
   if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || (serie || "").toLowerCase().indexOf("max") >= 0) return "bodyweight";
   if (exName.indexOf("Cavo") >= 0 || exName === "Face Pull" || exName === "Woodchop") return "cable";
   if (exName === "Squat Bulgaro" || exName === "Stacco Rumeno" || exName === "Affondi" || exName === "Curl Bicipiti") return "dumbbell";
@@ -1684,6 +1710,7 @@ function getCalibrationType(exName, serie) {
 function getCalibrationQuickInstruction(exName, serie) {
   var type = getCalibrationType(exName, serie);
   if (type === "none") return "Questo esercizio non richiede calibrazione del peso.";
+  if (type === "band-assist") return "Qui non usi kg: salva la tacca dell'elastico da 1 (massimo aiuto) a 10 (minimo aiuto). Se resti sotto il minimo del range, serve piu aiuto.";
   if (type === "bodyweight") return "Segna quante ripetizioni pulite fai fermandoti con circa 1-2 ripetizioni in riserva. Questo numero diventa il tuo punto zero.";
   if (type === "assistito") return "Trova il livello di assistenza con cui controlli bene il movimento. Se la discesa e incontrollata, aumenta l'assistenza.";
   if (type === "tempo") return "Verifica se riesci a completare il tempo previsto con controllo. Se e facile, annotalo e aumenta la difficolta in futuro.";
@@ -1691,19 +1718,75 @@ function getCalibrationQuickInstruction(exName, serie) {
   return "Fai una prima serie di test e valuta quante ripetizioni pulite ti restavano. Se erano 2, hai trovato il peso giusto.";
 }
 
-function getCalibrationDecision(type, reserve) {
+function getCalibrationRestLabel(exName, rec) {
+  if (rec) return "Riposa " + rec.toLowerCase() + ".";
+  var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","Front Squat","Pause Squat","Push Press","Stacco Sumo","Stacco Rumeno","Hip Thrust Bilanciere","T-bar Row","Dip alle Parallele"];
+  var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Squat Bulgaro","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino","Hyperextension con Sacco","Fitball Hamstring Curl","Face Pull","Alzate Laterali","French Press Manubri"];
+  if (heavy.indexOf(exName) >= 0) return "Riposa 2 minuti.";
+  if (medium.indexOf(exName) >= 0) return "Riposa 90 secondi.";
+  return "Riposa come da recupero previsto per questo esercizio.";
+}
+
+function getCalibrationChangeLabel(type, dir) {
+  if (type === "cable") return dir === "up" ? "sali di uno step al cavo" : "scendi di uno step al cavo";
+  if (type === "dumbbell") return dir === "up" ? "aumenta di poco il carico" : "riduci di poco il carico";
+  return dir === "up" ? "aumenta il carico" : "riduci il carico";
+}
+
+function getCalibrationRetestHint(meta) {
+  if (!meta || !meta.isLastSet) return meta ? getCalibrationRestLabel(meta.exName, meta.rec) + " Poi rifai la serie di test." : "Rifai la serie di test.";
+  return "Questa era l'ultima serie prevista: segna l'indicazione e correggi il carico dalla prossima seduta, senza rifare tutto da capo oggi.";
+}
+
+function getCalibrationDecision(type, reserve, cleanReps, serie, exName, meta) {
   var val = reserve === "4+" ? 4 : parseInt(reserve);
-  if (type === "bodyweight" || type === "assistito" || type === "tempo" || type === "body-control") {
-    if (val >= 3) return { tone: "mid", title: "Un po' troppo facile", detail: "La prossima volta puoi spingere 1-2 ripetizioni in piu o aumentare leggermente la difficolta." };
-    if (val === 2) return { tone: "up", title: "Punto zero corretto", detail: "Salva questo numero: e il tuo riferimento di partenza." };
-    if (val === 1) return { tone: "up", title: "Punto zero valido", detail: "Va bene anche cosi. Sei nella zona alta, ma il riferimento e utile." };
-    return { tone: "hold", title: "Troppo vicino al cedimento", detail: "La prossima volta fermati 1 ripetizione prima o usa una variante piu facile." };
+  var spec = parseProgressSpec(serie);
+  var clean = parseInt(cleanReps) || 0;
+  if (type === "band-assist") {
+    if (spec && spec.kind === "range" && clean < spec.min) {
+      return {
+        tone: "hold",
+        title: "Aiuto insufficiente",
+        detail: clean <= Math.max(1, spec.min - 3)
+          ? "Sei troppo sotto il minimo del range per questa tacca. Usa piu assistenza: scendi di 1-2 tacche. " + getCalibrationRetestHint(meta)
+          : "Sei sotto il minimo del range. Usa un po' piu assistenza: scendi di 1 tacca. " + getCalibrationRetestHint(meta),
+        accepted: false,
+      };
+    }
+    if (val >= 3) return { tone: "mid", title: "Un po' troppo facile", detail: "Puoi usare meno aiuto: sali di 1 tacca. " + getCalibrationRetestHint(meta), accepted: false };
+    if (val === 2) return { tone: "up", title: "Tacca giusta", detail: "Salva questa tacca dell'elastico: e il tuo riferimento di partenza.", accepted: true };
+    if (val === 1) return { tone: "up", title: "Tacca valida", detail: "Va bene anche cosi. Sei nella zona alta, ma il riferimento e utile.", accepted: true };
+    return { tone: "hold", title: "Troppo vicino al cedimento", detail: "Serve piu aiuto: scendi di 1 tacca. " + getCalibrationRetestHint(meta), accepted: false };
   }
-  if (reserve === "4+") return { tone: "hold", title: "Peso troppo leggero", detail: "Aggiungi 2.5-5 kg, riposa 3 minuti e rifai la serie di test." };
-  if (val === 3) return { tone: "mid", title: "Leggermente leggero", detail: "Aggiungi circa 2.5 kg, riposa 3 minuti e rifai." };
-  if (val === 2) return { tone: "up", title: "Peso giusto", detail: "Completa le serie rimanenti con questo peso. Questo e il tuo punto di partenza." };
-  if (val === 1) return { tone: "up", title: "Peso giusto, zona alta", detail: "Va bene per iniziare. Tieni questo peso e completa le serie rimanenti." };
-  return { tone: "hold", title: "Peso troppo pesante", detail: "Togli circa 2.5 kg, riposa 3 minuti e rifai la serie di test." };
+  if ((type === "bodyweight" || type === "assistito" || type === "body-control") && spec && spec.kind === "range" && clean < spec.min) {
+    return {
+      tone: "hold",
+      title: "Difficolta troppo alta",
+      detail: "Sei sotto il minimo del range. Usa una variante piu facile o piu assistenza prima di salvare questo punto zero.",
+      accepted: false,
+    };
+  }
+  if (type === "bodyweight" || type === "assistito" || type === "tempo" || type === "body-control") {
+    if (val >= 3) return { tone: "mid", title: "Un po' troppo facile", detail: "La prossima volta puoi spingere 1-2 ripetizioni in piu o aumentare leggermente la difficolta.", accepted: false };
+    if (val === 2) return { tone: "up", title: "Punto zero corretto", detail: "Salva questo numero: e il tuo riferimento di partenza.", accepted: true };
+    if (val === 1) return { tone: "up", title: "Punto zero valido", detail: "Va bene anche cosi. Sei nella zona alta, ma il riferimento e utile.", accepted: true };
+    return { tone: "hold", title: "Troppo vicino al cedimento", detail: "La prossima volta fermati 1 ripetizione prima o usa una variante piu facile.", accepted: false };
+  }
+  if (spec && spec.kind === "range" && clean < spec.min) {
+    return {
+      tone: "hold",
+      title: "Peso troppo pesante",
+      detail: clean <= Math.max(1, spec.min - 3)
+        ? "Sei troppo sotto il minimo del range: " + getCalibrationChangeLabel(type, "down") + " in modo netto. " + getCalibrationRetestHint(meta)
+        : "Sei sotto il minimo del range: " + getCalibrationChangeLabel(type, "down") + ". " + getCalibrationRetestHint(meta),
+      accepted: false,
+    };
+  }
+  if (reserve === "4+") return { tone: "hold", title: "Peso troppo leggero", detail: getCalibrationChangeLabel(type, "up") + " in modo deciso. " + getCalibrationRetestHint(meta), accepted: false };
+  if (val === 3) return { tone: "mid", title: "Leggermente leggero", detail: getCalibrationChangeLabel(type, "up") + ". " + getCalibrationRetestHint(meta), accepted: false };
+  if (val === 2) return { tone: "up", title: "Peso giusto", detail: "Completa le serie rimanenti con questo peso. Questo e il tuo punto di partenza.", accepted: true };
+  if (val === 1) return { tone: "up", title: "Peso giusto, zona alta", detail: "Va bene per iniziare. Tieni questo peso e completa le serie rimanenti.", accepted: true };
+  return { tone: "hold", title: "Peso troppo pesante", detail: getCalibrationChangeLabel(type, "down") + ". " + getCalibrationRetestHint(meta), accepted: false };
 }
 
 function cardioOptionKind(opt) {
@@ -1786,7 +1869,7 @@ var BREATH_RULES = {
   "Addominali Obliqui": { type:"anatomic-push", short:"Inspira aprendo · espira ruotando",            inhale:"Tornando al centro (eccentrica)", exhale:"Ruotando/flettendo verso il lato (concentrica)" },
 };
 var BREATH_TYPE_COLOR = { valsalva: "#E07848", "anatomic-push": "#5C8FD0", "anatomic-pull": "#6DAD8C", "anatomic-open": "#9B7ED0", iso: "#A08878" };
-var BREATH_TYPE_LABEL = { valsalva: "Manovra di Valsalva", "anatomic-push": "Anatomica — Spinta", "anatomic-pull": "Anatomica — Trazione", "anatomic-open": "Anatomica — Apertura", iso: "Isometrica" };
+var BREATH_TYPE_LABEL = { valsalva: "Valsalva", "anatomic-push": "Anatomica — Spinta", "anatomic-pull": "Anatomica — Trazione", "anatomic-open": "Anatomica — Apertura", iso: "Isometrica" };
 var BREATH_COMPARE_ROWS = [
   ["Squat", "Valsalva", "Prima di scendere: gonfia l'addome", "Dopo il punto critico della risalita"],
   ["Stacco da Terra", "Valsalva", "Prima di tirare: gonfia l'addome", "Dopo la ripetizione o dopo aver deposto il bilanciere"],
@@ -1940,6 +2023,10 @@ export default function App() {
   var activeDays = level === "beginner" ? DAYS_BEGINNER : DAYS_V4;
   var safeDayIdx = Math.min(dayIdx, activeDays.length - 1);
   var dayData = activeDays[safeDayIdx];
+  var activeOpenRawEx = dayData && dayData.ex && openEx !== null && dayData.ex[openEx] ? dayData.ex[openEx] : null;
+  var activeOpenMergedEx = activeOpenRawEx ? (activeOpenRawEx.cable && activeOpenRawEx.free ? Object.assign({}, activeOpenRawEx, activeOpenRawEx.defaultFree ? activeOpenRawEx.free : activeOpenRawEx.cable) : activeOpenRawEx) : null;
+  var activeOpenEx = activeOpenMergedEx ? getExForMonth(activeOpenMergedEx) : null;
+  var activeOpenRestSec = activeOpenMergedEx && activeOpenEx ? getExerciseRestSeconds(activeOpenMergedEx, activeOpenEx) : null;
   var dc = T.ok;
   var isBeginner = level === "beginner";
   var teoriaTabs = isBeginner ? [["basi","🧱 Basi"],["teoria","📚 Teoria"],["alimentazione","🥗 Alimentazione"]] : [["basi","🧱 Basi"],["teoria","📚 Teoria"],["muscoli","💪 Muscoli"],["alimentazione","🥗 Alimentazione"]];
@@ -2005,6 +2092,18 @@ export default function App() {
     var tm = setTimeout(function() { setCalibrationFeedback(""); }, 5000);
     return function() { clearTimeout(tm); };
   }, [calibrationFeedback]);
+  useEffect(function() {
+    if (!activeOpenRestSec) return;
+    setTMode("countdown");
+    setTTarget(activeOpenRestSec);
+    if (!tRunning) {
+      tAcc.current = 0;
+      lastSnd.current = -1;
+      setTMs(activeOpenRestSec * 1000);
+      setTFlash(false);
+      setTWarning(false);
+    }
+  }, [activeOpenRestSec]);
   var saveData = useCallback(function(nl, nc, np, nm) {
     var nextLogs = nl || {};
     var nextCardioLogs = nc || {};
@@ -2039,7 +2138,7 @@ export default function App() {
 
   useEffect(function() { if (tRunning) { tStart.current = Date.now(); intv.current = setInterval(function() { var el = Date.now() - tStart.current + tAcc.current; if (tMode === "countdown") { var rem = tTarget*1000 - el; if (rem <= 0) { setTMs(0); setTRunning(false); tAcc.current = 0; setTFlash(true); setTWarning(false); beepEnd(); setTimeout(function() { setTFlash(false); }, 3000); clearInterval(intv.current); } else { setTMs(rem); setTWarning(rem <= 10000); checkSound(rem, "countdown"); } } else { setTMs(el); setTWarning(false); checkSound(el, "stopwatch"); } }, 50); } else { clearInterval(intv.current); } return function() { clearInterval(intv.current); }; }, [tRunning, tMode, tTarget]);
 
-  function timerGo() { try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {} if (tMode === "countdown" && tMs === 0 && !tRunning) { tAcc.current = 0; setTMs(tTarget * 1000); } lastSnd.current = tMode === "countdown" ? 0 : Math.floor(tMs/1000); tStart.current = Date.now(); setTRunning(true); setTFlash(false); setTFull(true); }
+  function timerGo() { try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {} if (tMode === "countdown" && tMs === 0 && !tRunning) { tAcc.current = 0; setTMs(tTarget * 1000); } lastSnd.current = tMode === "countdown" ? 0 : Math.floor(tMs/1000); tStart.current = Date.now(); setTRunning(true); setTFlash(false); setTFull(false); }
   function timerPause() { setTRunning(false); tAcc.current = tMode === "stopwatch" ? tMs : tTarget*1000 - tMs; }
   function timerReset() { setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMs(tMode === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); setTFull(false); }
   function timerSwitch(m) { setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMode(m); setTMs(m === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); }
@@ -2060,7 +2159,7 @@ export default function App() {
       tAcc.current = 0;
       lastSnd.current = 0;
       setTRunning(true);
-      setTFull(true);
+      setTFull(false);
     }, 50);
   }
 
@@ -2078,7 +2177,7 @@ export default function App() {
       tAcc.current = 0;
       lastSnd.current = 0;
       setTRunning(true);
-      setTFull(true);
+      setTFull(false);
     }, 50);
   }
 
@@ -2385,6 +2484,17 @@ export default function App() {
     return 60;
   }
 
+  function getExerciseRestSeconds(rawEx, ex) {
+    if (!rawEx || !ex) return null;
+    if (rawEx.rec) {
+      var m = rawEx.rec.match(/(\d+(?:\.\d+)?)\s*min/i);
+      if (m) return Math.round(parseFloat(m[1]) * 60);
+      var s = rawEx.rec.match(/(\d+)\s*s/i);
+      if (s) return parseInt(s[1]);
+    }
+    return getRestTime(ex.n, ex.rpe);
+  }
+
   function getWorkTime(exName, serie) {
     if (exName === "Plank" && serie && serie.indexOf("45s") >= 0) return 45;
     if (exName === "Plank") return 30;
@@ -2464,16 +2574,30 @@ export default function App() {
     if (!calibrationMode) return saveSetEntry(exObj.n, di, si, w, r);
     var calType = getCalibrationType(exObj.n, exObj.s);
     if (calType === "none") return saveSetEntry(exObj.n, di, si, w, r);
+    var spec = parseProgressSpec(exObj.s);
     setCalibrationAnswers({ reps: String(r || ""), cleanSame: "yes", cleanReps: String(r || ""), reserve: calType === "weighted" || calType === "dumbbell" || calType === "cable" ? "2" : "2" });
-    setCalibrationPrompt({ exName: exObj.n, serie: exObj.s, di: di, si: si, w: isBW ? 0 : w, r: r, isBW: isBW, type: calType });
+    setCalibrationPrompt({
+      exName: exObj.n,
+      serie: exObj.s,
+      di: di,
+      si: si,
+      w: isBW ? 0 : w,
+      r: r,
+      isBW: isBW,
+      type: calType,
+      rec: exObj.rec || "",
+      totalSets: spec ? spec.sets : 0,
+      isLastSet: !!(spec && si === spec.sets - 1),
+    });
   }
   function confirmCalibrationPrompt() {
     if (!calibrationPrompt) return;
     var repsDone = parseInt(calibrationAnswers.reps) || parseInt(calibrationPrompt.r) || 0;
     var cleanReps = calibrationAnswers.cleanSame === "yes" ? repsDone : (parseInt(calibrationAnswers.cleanReps) || 0);
     var reserve = calibrationAnswers.reserve || "2";
+    var decision = getCalibrationDecision(calibrationPrompt.type, reserve, cleanReps, calibrationPrompt.serie, calibrationPrompt.exName, calibrationPrompt);
     var nextProfiles = calibrationProfiles;
-    if (reserve === "1" || reserve === "2") {
+    if (decision.accepted) {
       nextProfiles = Object.assign({}, calibrationProfiles, {});
       nextProfiles[calibrationPrompt.exName] = {
         exercise: calibrationPrompt.exName,
@@ -2485,7 +2609,6 @@ export default function App() {
       };
     }
     saveSetEntry(calibrationPrompt.exName, calibrationPrompt.di, calibrationPrompt.si, calibrationPrompt.w, cleanReps, nextProfiles);
-    var decision = getCalibrationDecision(calibrationPrompt.type, reserve);
     setCalibrationFeedback(decision.title + ". " + decision.detail);
     setCalibrationPrompt(null);
   }
@@ -2628,11 +2751,15 @@ export default function App() {
     }
     return sorted;
   }
-  function formatSessionSummary(sets, isBW, isTime) {
+  function formatSessionSummary(exName, sets, isBW, isTime) {
     return sets.map(function(s) {
       var reps = s.r === "max" ? "max" : String(parseInt(s.r) || 0);
       if (isTime) reps += "s";
       if (isBW) return reps;
+      if (usesElasticScale(exName)) {
+        var tick = formatElasticTick(s.w);
+        return tick ? (tick + "x" + reps) : reps;
+      }
       var kg = parseFloat(s.w) || 0;
       return kg > 0 ? (kg + "x" + reps) : reps;
     }).join(" · ");
@@ -2654,7 +2781,7 @@ export default function App() {
     var isTime = spec.kind === "time";
     if (isMax) {
       var latestTotal = latest.sets.reduce(function(acc, s) { return acc + (s.r === "max" ? 0 : (parseInt(s.r) || 0)); }, 0);
-      if (!previous) return { tone: "empty", label: "⚪ Serve un'altra sessione", detail: "Ultima: " + formatSessionSummary(latest.sets, true, false) + ". Serve un confronto per stimare la progressione.", short: "Serve un'altra sessione" };
+      if (!previous) return { tone: "empty", label: "⚪ Serve un'altra sessione", detail: "Ultima: " + formatSessionSummary(exName, latest.sets, true, false) + ". Serve un confronto per stimare la progressione.", short: "Serve un'altra sessione" };
       var prevTotal = previous.sets.reduce(function(acc, s) { return acc + (s.r === "max" ? 0 : (parseInt(s.r) || 0)); }, 0);
       var third = complete[2] || null;
       var stagnant = false;
@@ -2671,11 +2798,11 @@ export default function App() {
     if (!isCore && weights.length > 1) {
       var firstW = weights[0];
       var mixed = weights.some(function(w) { return w !== firstW; });
-      if (mixed) return { tone: "empty", label: "⚪ Controlla tu", detail: "Ultima sessione non uniforme: " + formatSessionSummary(latest.sets, false, isTime) + ".", short: "Carichi diversi nella stessa seduta" };
+      if (mixed) return { tone: "empty", label: "⚪ Controlla tu", detail: "Ultima sessione non uniforme: " + formatSessionSummary(exName, latest.sets, false, isTime) + ".", short: "Carichi diversi nella stessa seduta" };
     }
     var allAtTop = reps.every(function(r) { return r >= spec.max; });
     var allInRange = reps.every(function(r) { return r >= spec.min; });
-    var latestSummary = formatSessionSummary(latest.sets, weights.length === 0, isTime);
+    var latestSummary = formatSessionSummary(exName, latest.sets, weights.length === 0, isTime);
     if (isCore) {
       if (allAtTop) {
         return { tone: "up", label: isTime ? "🟢 Aumenta durata" : "🟢 Aumenta ripetizioni", detail: "Ultima: " + latestSummary + ". Hai completato tutto il target previsto.", short: isTime ? "Hai completato il tempo target" : "Hai completato il target di ripetizioni" };
@@ -2740,7 +2867,10 @@ export default function App() {
     return (
       <div onClick={function() { setExInfoOpen(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 250, display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}>
         <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, padding: 20, maxWidth: 420, width: "100%", color: T.tx, maxHeight: "80vh", overflowY: "auto" }}>
-          <h3 style={{ margin: "0 0 4px", fontSize: 17, fontWeight: 800 }}>{exInfoOpen}</h3>
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 12, justifyContent: "space-between", marginBottom: 4 }}>
+            <h3 style={{ margin: 0, fontSize: 17, fontWeight: 800 }}>{exInfoOpen}</h3>
+            <button onClick={function() { setExInfoOpen(null); }} style={{ border: "none", background: T.bg, color: T.sub, borderRadius: 8, padding: "6px 10px", fontSize: 12, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>✕ Chiudi</button>
+          </div>
           <div style={{ fontSize: 12, color: dc, fontWeight: 600, marginBottom: 12 }}>{db.g}</div>
           {imgs.map(function(src, ii) { return <img key={ii} src={src} style={{ width: "100%", borderRadius: 10, marginBottom: 12 }} />; })}
           <div style={{ background: T.sb, borderRadius: 10, padding: 12, marginBottom: 10 }}>
@@ -2792,13 +2922,14 @@ export default function App() {
 
   // Clickable exercise name
   function ExName(props) {
-    return <span onClick={function(e) { e.stopPropagation(); setExInfoOpen(props.name); }} style={{ cursor: "pointer", textDecoration: "underline", textDecorationStyle: "dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2 }}>{props.name}</span>;
+    return <span onClick={function(e) { e.stopPropagation(); setExInfoOpen(props.name); }} style={{ cursor: "pointer", textDecoration: "underline", textDecorationStyle: "dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, textTransform: "uppercase", letterSpacing: 0.4 }}>{props.name}</span>;
   }
 
   // === FULLSCREEN TIMER ===
   if (tFull) return (
     <div style={{ position: "fixed", inset: 0, zIndex: 999, background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "'Plus Jakarta Sans',sans-serif", transition: "background 0.4s" }}>
       <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+      <style>{'@keyframes timerBlink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(1.03)}}'}</style>
       <div style={{ fontSize: 11, opacity: 0.5, marginBottom: 8, fontWeight: 600, letterSpacing: 1, textTransform: "uppercase" }}>{tMode === "countdown" ? "Timer recupero" : "Cronometro"}</div>
       <div style={{ fontSize: 72, fontWeight: 800, letterSpacing: 2, fontVariantNumeric: "tabular-nums", marginBottom: 24, color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s" }}>{fmtTime(tMs)}</div>
       {tWarning && !tFlash && <div style={{ fontSize: 14, fontWeight: 700, color: "#FFAAAA", marginBottom: 16, letterSpacing: 0.5 }}>⚡ Ultimi {Math.ceil(tMs/1000)}s</div>}
@@ -3521,7 +3652,7 @@ export default function App() {
         });
         var weeks = Object.keys(weekMap).sort(function(a,b) { return b.localeCompare(a); });
         // Exercise progress: compute best set (max weight or max reps if BW)
-        var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Trazioni","Trazioni Supine","Dip su Panca","Plank","Hollow Position","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Fire Hydrant"];
+        var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Dip su Panca","Plank","Hollow Position","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Fire Hydrant"];
         var exProgress = Object.keys(exMap).map(function(name) {
           var entries = exMap[name].sort(function(a,b) { return a.date.localeCompare(b.date); });
           var isBW = BW_EX.indexOf(name) >= 0;
@@ -4166,15 +4297,7 @@ export default function App() {
               var isH = histIdx === i;
               var hData = isH ? getHist(ex.n) : [];
               var hasV = month > 1 && rawEx["v" + month];
-              var restSec = (function() {
-                if (rawEx.rec) {
-                  var m = rawEx.rec.match(/(\d+(?:\.\d+)?)\s*min/i);
-                  if (m) return Math.round(parseFloat(m[1]) * 60);
-                  var s = rawEx.rec.match(/(\d+)\s*s/i);
-                  if (s) return parseInt(s[1]);
-                }
-                return getRestTime(ex.n, ex.rpe);
-              })();
+              var restSec = getExerciseRestSeconds(rawEx, ex);
               var workSec = getWorkTime(ex.n, ex.s);
               var showTimerBtns = restSec || workSec;
               var repeatHint = rawEx.repeatHint || null;
@@ -4189,7 +4312,7 @@ export default function App() {
                 <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); if (opening) { requestAnimationFrame(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
                   <div style={{ width: 34, height: 34, borderRadius: 9, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: dc, flexShrink: 0 }}>{i + 1}</div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontWeight: 700, fontSize: 13, display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap" }}>
+                    <div style={{ fontWeight: 800, fontSize: 14, display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap", textTransform: "uppercase", letterSpacing: 0.35 }}>
                       <ExName name={ex.n} />
                       {rawEx.priority && <span style={{ fontSize: 9, background: "#FF9F0A20", color: "#FF9F0A", padding: "1px 6px", borderRadius: 4, fontWeight: 800, letterSpacing: 0.3 }}>★ PRIORITÀ</span>}
                       {hasV && <span style={{ fontSize: 9, background: dc + "20", color: dc, padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>{"M" + month}</span>}
@@ -4198,7 +4321,7 @@ export default function App() {
                     <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginTop: 3 }}>
                       {ex.s && <span style={{ fontSize: 12, color: T.tx, fontWeight: 800, letterSpacing: 0.1 }}>{fmtSerie(ex.s)}</span>}
                       {ex.rpe ? <span onClick={function(e) { e.stopPropagation(); setRpeOpen(true); }} style={{ cursor: "pointer", color: dc, fontSize: 10, fontWeight: 700, textDecoration: "underline dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, whiteSpace: "nowrap" }}>{"RPE " + ex.rpe}</span> : ""}
-                      {restSec ? <button onClick={function(e) { e.stopPropagation(); quickTimer(restSec); }} style={{ minHeight: 24, padding: "0 8px", border: "1px solid " + T.ok + "34", borderRadius: 999, background: T.ok + "10", color: T.ok, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}>{"⏱ Recupero " + (rawEx.rec || fmtLabel(restSec))}</button> : null}
+                      {restSec ? <button onClick={function(e) { e.stopPropagation(); quickTimer(restSec); }} style={{ minHeight: 24, padding: "0 8px", border: "1px solid " + T.ok + "34", borderRadius: 999, background: T.ok + "10", color: T.ok, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}>{"⏱ Recupero min " + fmtLabel(restSec)}</button> : null}
                     </div>
                     <div style={{ marginTop: 5, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                     {(calibrationMode || calibrationNeed.needed || calibrationProfile) && <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid " + (calibrationMode ? "#FFB30044" : calibrationNeed.needed ? "#C6282840" : T.ok + "40"), borderRadius: 999, padding: "3px 8px", background: calibrationMode ? "#FFB30010" : calibrationNeed.needed ? "#C6282810" : T.ok + "10", color: calibrationMode ? "#A66A00" : calibrationNeed.needed ? "#C62828" : T.ok }}>
@@ -4252,8 +4375,9 @@ export default function App() {
                 </div>
                 {isX && db && (function() {
                   // bodyweight detection: no kg field needed
-                  var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Trazioni","Trazioni Supine","Dip su Panca","Plank","Hollow Position","Hollow Tuck","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Fire Hydrant","Cat-Cow","Inchworm","Dead bug","Glute Bridge"];
+                  var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Dip su Panca","Plank","Hollow Position","Hollow Tuck","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Fire Hydrant","Cat-Cow","Inchworm","Dead bug","Glute Bridge"];
                   var isBW = BW_EX.indexOf(ex.n) >= 0;
+                  var usesBand = usesElasticScale(ex.n);
                   // last session data for pre-fill
                   var allHist = getHist(ex.n);
                   var pastSessions = allHist.filter(function(h) { return h.date !== todayStr(); });
@@ -4294,29 +4418,37 @@ export default function App() {
                               ? getCalibrationQuickInstruction(ex.n, ex.s)
                               : calibrationNeed.needed
                                 ? calibrationNeed.reason
-                                : (calibrationProfile.startWeight > 0 ? "Ultimo peso calibrato: " + calibrationProfile.startWeight + " kg." : "Ultimo riferimento salvato: " + calibrationProfile.reps + " ripetizioni.") + " Se fai un deload o uno stop lungo, attiva di nuovo la calibrazione."}
+                                : ((usesBand && calibrationProfile.startWeight > 0)
+                                    ? ("Ultima tacca calibrata: " + formatElasticTick(calibrationProfile.startWeight) + ".")
+                                    : (calibrationProfile.startWeight > 0
+                                      ? ("Ultimo peso calibrato: " + calibrationProfile.startWeight + " kg.")
+                                      : ("Ultimo riferimento salvato: " + calibrationProfile.reps + " ripetizioni."))) + " Se fai un deload o uno stop lungo, attiva di nuovo la calibrazione."}
                           </div>
                         </div>}
-                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(185px,1fr))", gap: 8 }}>
-                          <div style={{ borderRadius: 9, background: T.cd, border: "1px solid " + T.bg, padding: "9px 10px" }}>
-                            <div style={{ fontSize: 10, fontWeight: 800, color: approach.needed ? dc : T.sub, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 5 }}>Serie di avvicinamento</div>
-                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx, marginBottom: 4 }}>{approach.title}</div>
+
+                        <div style={{ display: "grid", gap: 7 }}>
+                          <div style={{ display: "grid", gap: 3, background: T.cd, border: "1px solid " + T.bg, borderRadius: 9, padding: "9px 10px" }}>
+                            <div style={{ fontSize: 10, fontWeight: 800, color: approach.needed ? dc : T.sub, textTransform: "uppercase", letterSpacing: 0.7 }}>Serie di avvicinamento</div>
+                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{approach.title}</div>
                             <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{approach.detail}</div>
                           </div>
-                          {br && <div style={{ borderRadius: 9, background: T.cd, border: "1px solid " + bColor + "24", padding: "9px 10px" }}>
-                            <div style={{ fontSize: 10, fontWeight: 800, color: bColor, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 5 }}>Come respirare</div>
-                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx, marginBottom: 4 }}>{BREATH_TYPE_LABEL[br.type]}</div>
+
+                          {br && <div style={{ display: "grid", gap: 3, background: T.cd, border: "1px solid " + bColor + "24", borderRadius: 9, padding: "9px 10px" }}>
+                            <div style={{ fontSize: 10, fontWeight: 800, color: bColor, textTransform: "uppercase", letterSpacing: 0.7 }}>Respirazione</div>
+                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{BREATH_TYPE_LABEL[br.type]}</div>
                             <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}><b style={{ color: T.tx }}>Inspira:</b> {br.inhale}</div>
-                            <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub, marginTop: 3 }}><b style={{ color: T.tx }}>Espira:</b> {br.exhale}</div>
+                            <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}><b style={{ color: T.tx }}>Espira:</b> {br.exhale}</div>
                           </div>}
-                          <div style={{ borderRadius: 9, background: T.cd, border: "1px solid " + T.bg, padding: "9px 10px" }}>
-                            <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 5 }}>Recupero</div>
-                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx, marginBottom: 4 }}>{rawEx.rec || (restSec ? fmtLabel(restSec) : "Come da scheda")}</div>
-                            <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>Recupero completo prima della serie successiva. Non partire col fiatone se l'obiettivo e forza o controllo.</div>
+
+                          <div style={{ display: "grid", gap: 3, background: T.cd, border: "1px solid " + T.bg, borderRadius: 9, padding: "9px 10px" }}>
+                            <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>Recupero</div>
+                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{restSec ? fmtLabel(restSec) : (rawEx.rec || "Come da scheda")}</div>
+                            <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>Parti solo quando il respiro e tornato sotto controllo.</div>
                           </div>
-                          <div style={{ borderRadius: 9, background: T.cd, border: "1px solid " + progColor + "24", padding: "9px 10px" }}>
-                            <div style={{ fontSize: 10, fontWeight: 800, color: progColor, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 5 }}>Obiettivo</div>
-                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx, marginBottom: 4 }}>{objective.title}</div>
+
+                          <div style={{ display: "grid", gap: 3, background: T.cd, border: "1px solid " + progColor + "24", borderRadius: 9, padding: "9px 10px" }}>
+                            <div style={{ fontSize: 10, fontWeight: 800, color: progColor, textTransform: "uppercase", letterSpacing: 0.7 }}>Obiettivo di oggi</div>
+                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{objective.title}</div>
                             <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{objective.detail}</div>
                           </div>
                         </div>
@@ -4345,9 +4477,11 @@ export default function App() {
                     </div>
 
                     {/* Timer buttons — prominenti */}
-                    {showTimerBtns && <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
-                      {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ flex: 1, minHeight: 52, border: "none", borderRadius: 12, background: dc, color: "#fff", fontWeight: 800, fontSize: 14, cursor: "pointer" }}>{"▶ " + fmtLabel(workSec)}</button> : null}
-                      {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ flex: 1, minHeight: 52, border: "none", borderRadius: 12, background: T.ok, color: "#fff", fontWeight: 800, fontSize: 14, cursor: "pointer" }}>{"⏱ " + fmtLabel(restSec)}</button> : null}
+                    {showTimerBtns && <div style={{ display: "grid", gap: 8, marginBottom: 12 }}>
+                      {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ width: "100%", minHeight: 60, border: "none", borderRadius: 14, background: tMode === "countdown" && tRunning ? (tWarning ? "#B91C1C" : T.ok) : T.ok, color: "#fff", fontWeight: 900, fontSize: 16, letterSpacing: 0.35, cursor: "pointer", boxShadow: tMode === "countdown" ? "0 10px 24px rgba(0,0,0,0.18)" : "none", animation: tMode === "countdown" && tWarning ? "timerBlink 1s infinite" : "none" }}>
+                        {"▶ AVVIA TIMER DI RECUPERO · " + fmtLabel(restSec)}
+                      </button> : null}
+                      {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ width: "100%", minHeight: 46, border: "none", borderRadius: 12, background: dc, color: "#fff", fontWeight: 800, fontSize: 13, cursor: "pointer" }}>{"▶ Timer lavoro · " + fmtLabel(workSec)}</button> : null}
                     </div>}
 
                     {/* === REGISTRA SERIE === */}
@@ -4367,25 +4501,28 @@ export default function App() {
                             {/* Serie header */}
                             <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px" }}>
                               <div style={{ width: 26, height: 26, borderRadius: "50%", background: done ? T.ok : T.tx + "15", color: done ? "#fff" : T.sub, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0 }}>{done ? "✓" : si + 1}</div>
-                              <div style={{ flex: 1, fontSize: 12, color: T.sub, fontWeight: 600 }}>{tgt} rip{isBW ? "" : " · " + (sugg.w ? sugg.w + " kg sugg." : "inserisci kg")}</div>
+                              <div style={{ flex: 1, fontSize: 12, color: T.sub, fontWeight: 600 }}>
+                                {tgt} rip
+                                {isBW ? "" : usesBand ? (" · " + (sugg.w ? formatElasticTick(sugg.w) + " sugg." : "inserisci tacca")) : (" · " + (sugg.w ? sugg.w + " kg sugg." : "inserisci kg"))}
+                              </div>
                               {done && !isE && <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(String(lg.w)); setTmpR(String(lg.r)); }} style={{ fontSize: 10, color: T.sub, background: "none", border: "none", cursor: "pointer", padding: "0 4px" }}>modifica</button>}
                             </div>
                             {/* Input or result */}
                             {isE ? (
                               <div style={{ display: "flex", gap: 6, padding: "0 10px 10px", alignItems: "center" }}>
-                                {!isBW && <><input type="number" inputMode="decimal" placeholder="kg" value={tmpW} onChange={function(e) { setTmpW(e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus /><span style={{ fontSize: 11, color: T.sub, flexShrink: 0 }}>kg</span></>}
+                                {!isBW && <><input type="number" inputMode="numeric" min={usesBand ? 1 : undefined} max={usesBand ? 10 : undefined} placeholder={usesBand ? "tacca 1-10" : "kg"} value={tmpW} onChange={function(e) { setTmpW(usesBand ? String(clampElasticTick(e.target.value) || "") : e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus /><span style={{ fontSize: 11, color: T.sub, flexShrink: 0 }}>{usesBand ? "tacca" : "kg"}</span></>}
                                 <input type={tgt === "max" ? "text" : "number"} inputMode="numeric" placeholder="rip" value={tmpR} onChange={function(e) { setTmpR(e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus={isBW} />
-                                <button onClick={function() { beginLogSet(ex, dayIdx, si, isBW ? 0 : tmpW, tmpR, isBW); }} style={{ width: 44, height: 44, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 20, cursor: "pointer", flexShrink: 0, fontWeight: 700 }}>✓</button>
+                                <button onClick={function() { beginLogSet(ex, dayIdx, si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : tmpW), tmpR, isBW); }} style={{ width: 44, height: 44, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 20, cursor: "pointer", flexShrink: 0, fontWeight: 700 }}>✓</button>
                                 <button onClick={function() { setEditing(null); setTmpW(""); setTmpR(""); }} style={{ width: 36, height: 44, background: T.bg, color: T.sub, border: "none", borderRadius: 8, fontSize: 16, cursor: "pointer", flexShrink: 0 }}>✕</button>
                               </div>
                             ) : done ? (
                               <div style={{ padding: "0 10px 10px" }}>
-                                <div style={{ fontSize: 15, fontWeight: 800, color: T.ok }}>{isBW ? lg.r + " rip" : lg.w + " kg × " + lg.r + " rip"}</div>
+                                <div style={{ fontSize: 15, fontWeight: 800, color: T.ok }}>{isBW ? lg.r + " rip" : formatLoadAndReps(ex.n, lg.w, lg.r)}</div>
                               </div>
                             ) : (
                               <div style={{ padding: "0 10px 10px" }}>
                                 <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(sugg.w); setTmpR(sugg.r); }} style={{ width: "100%", minHeight: 44, border: "2px dashed " + dc + "40", borderRadius: 8, background: "transparent", color: dc, fontWeight: 700, fontSize: 13, cursor: "pointer" }}>
-                                  {sugg.r ? "▶ " + (isBW ? sugg.r + " rip" : sugg.w + " kg × " + sugg.r + " rip") : "+ registra"}
+                                  {sugg.r ? "▶ " + (isBW ? sugg.r + " rip" : formatLoadAndReps(ex.n, sugg.w, sugg.r)) : "+ registra"}
                                 </button>
                               </div>
                             )}
@@ -4412,7 +4549,7 @@ export default function App() {
                               {sess.sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) {
                                 return <div key={si} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, borderRadius: 8, background: T.cd, padding: "6px 9px" }}>
                                   <span style={{ fontSize: 10, fontWeight: 800, color: dc }}>{"SERIE " + (s.si + 1)}</span>
-                                  <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{isBW ? s.r + " rip" : (s.w > 0 ? s.w + " kg × " : "") + s.r + " rip"}</span>
+                                  <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{isBW ? s.r + " rip" : formatLoadAndReps(ex.n, s.w, s.r)}</span>
                                 </div>;
                               })}
                             </div>
@@ -4510,6 +4647,7 @@ export default function App() {
           <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
             <div style={{ fontSize: 15, fontWeight: 800, color: T.tx }}>🎯 Calibrazione — {calibrationPrompt.exName}</div>
             <div style={{ fontSize: 12, color: T.sub, marginTop: 4, lineHeight: 1.6 }}>{getCalibrationQuickInstruction(calibrationPrompt.exName, calibrationPrompt.serie)}</div>
+            {calibrationPrompt.isLastSet && <div style={{ fontSize: 11, color: dc, marginTop: 6, lineHeight: 1.55 }}>Questa e l'ultima serie prevista: se il suggerimento dice di cambiare carico o aiuto, puoi anche segnartelo e correggere dalla prossima seduta senza rifare tutto oggi.</div>}
           </div>
           <div style={{ padding: 16, display: "grid", gap: 12 }}>
             <label style={{ display: "grid", gap: 6 }}>
@@ -4542,7 +4680,7 @@ export default function App() {
               </div>
             </div>
             <div style={{ padding: "10px 12px", borderRadius: 10, background: dc + "0A", border: "1px solid " + dc + "18", fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
-              {getCalibrationDecision(calibrationPrompt.type, calibrationAnswers.reserve).detail}
+              {getCalibrationDecision(calibrationPrompt.type, calibrationAnswers.reserve, calibrationAnswers.cleanSame === "yes" ? calibrationAnswers.reps : calibrationAnswers.cleanReps, calibrationPrompt.serie, calibrationPrompt.exName, calibrationPrompt).detail}
             </div>
             <div style={{ display: "flex", gap: 8 }}>
               <button onClick={function() { setCalibrationPrompt(null); }} style={{ flex: 1, minHeight: 44, border: "1px solid " + T.bg, borderRadius: 10, background: T.sb, color: T.sub, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Annulla</button>
@@ -4556,7 +4694,12 @@ export default function App() {
       <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 100, background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 -4px 20px rgba(0,0,0,0.2)", transition: "background 0.4s" }}>
         <div style={{ display: "flex", alignItems: "center", padding: "8px 14px", gap: 8, maxWidth: 600, margin: "0 auto" }}>
           <button onClick={function() { setTPanel(!tPanel); }} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 30, height: 30, borderRadius: 7, cursor: "pointer", fontSize: 13 }}>{tPanel ? "\u25BE" : "\u25B4"}</button>
-          <div onClick={function() { setTFull(true); }} style={{ fontVariantNumeric: "tabular-nums", fontSize: 24, fontWeight: 800, letterSpacing: "0.5px", flex: 1, textAlign: "center", cursor: "pointer", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s" }}>{fmtTime(tMs)}</div>
+          <div onClick={function() { setTPanel(function(prev) { return !prev; }); }} style={{ flex: 1, textAlign: "center", cursor: "pointer" }}>
+            {activeOpenEx && tMode === "countdown" && <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.68)", marginBottom: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+              {"Recupero minimo consigliato: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget)}
+            </div>}
+            <div style={{ fontVariantNumeric: "tabular-nums", fontSize: 24, fontWeight: 800, letterSpacing: "0.5px", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s", animation: tWarning ? "timerBlink 1s infinite" : "none" }}>{fmtTime(tMs)}</div>
+          </div>
           <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
             {!tRunning ? <button onClick={timerGo} style={{ background: T.ok, border: "none", color: "#fff", width: 36, height: 36, borderRadius: 9, cursor: "pointer", fontSize: 16 }}>&#9654;</button> : <button onClick={timerPause} style={{ background: T.ac, border: "none", color: "#000", width: 36, height: 36, borderRadius: 9, cursor: "pointer", fontSize: 13, fontWeight: 800 }}>&#9646;&#9646;</button>}
             <button onClick={timerReset} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 36, height: 36, borderRadius: 9, cursor: "pointer", fontSize: 12 }}>&#8634;</button>
