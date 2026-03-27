@@ -87,6 +87,12 @@ import img_w_SerieAvvSquat from "./images/serie avvicinamento squat -.jpeg";
 import img_w_SerieAvvStacco from "./images/serie avvicinamento stacco con bilanciere.jpeg";
 import img_w_AffondiCorpoLiberoAlt from "./images/Affondi a corpo libero.jpeg";
 import img_w_SospensioneAttivaSbarra from "./images/Sospensione attiva alla sbarra.jpg";
+import img_w_BandPullApart from "./images/band pull apart.gif";
+import img_Bird_Dog from "./images/Bird-Dog.gif";
+import img_Breathe_Brace from "./images/breathe and brace - .jpeg";
+import img_Dead_Bug from "./images/dead bug.gif";
+import img_Goblet_Squat from "./images/goblet squat.gif";
+import img_Glute_Bridge from "./images/Glute-Bridge-.gif";
 
 // Muscle map
 import img_muscle_map from "./images/muscle_map.jpg";
@@ -222,7 +228,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"ul","content":["Inizia con la fettuccia tesa bassa (30-40 cm dal suolo) e breve (5-6 metri)","Usa un corrimano laterale (albero o palo) per i primi tentativi","Porta il peso su una gamba alla volta, fletti il ginocchio della gamba di supporto","Lo sguardo fisso su un punto a circa 2 metri davanti a te e fondamentale per l'equilibrio"]},
   {"type":"p","content":"Non e solo un esercizio: e un modo divertente per allenare sistemi propriocettivi che normalmente non ricevono stimolo. Si integra bene come warm-up o come attivita di recupero attivo."}
 ]},
-"Breathing + Brace supino": {"g": "Core/Respirazione", "c": "Sdraiata supina con ginocchia flesse. Inspira gonfiando addome e fianchi, poi indurisci il tronco come se dovessi ricevere un pugno.", "p": "Costole giu, collo rilassato, zona lombare neutra. Non risucchiare la pancia.", "t": ["Senti la pancia che spinge a 360 gradi", "Mantieni 3-5 secondi per ogni respiro", "Serve a imparare il brace, non a stancarti"]},
+"Breathing + Brace supino": {"g": "Core/Respirazione", "c": "Sdraiata supina con ginocchia flesse. Inspira gonfiando addome e fianchi, poi indurisci il tronco come se dovessi ricevere un pugno.", "p": "Costole giu, collo rilassato, zona lombare neutra. Non risucchiare la pancia.", "t": ["Senti la pancia che spinge a 360 gradi", "Mantieni 3-5 secondi per ogni respiro", "Serve a imparare il brace, non a stancarti"], "lk": "https://www.youtube.com/watch?v=izT3xD8X0WA"},
 "Dead Bug": {"g": "Core/Stabilizzazione", "c": "Supina, braccia verso il soffitto e ginocchia a 90 gradi. Estendi braccio e gamba opposti senza perdere la lombare a terra.", "p": "Zona lombare sempre incollata a terra. Movimento lento e controllato.", "t": ["Se la schiena si stacca, accorcia il range", "Espira mentre estendi", "Il bacino non deve ruotare"]},
 "Bird Dog": {"g": "Core/Stabilizzazione", "c": "A quattro zampe. Allunga braccio e gamba opposti mantenendo il busto fermo e il bacino stabile.", "p": "Spalle e anche parallele al pavimento. Colonna lunga e neutra.", "t": ["Non sollevare troppo la gamba", "Il movimento e lento, non esplosivo", "Immagina di allungarti in due direzioni"]},
 "Pelvic Tilt a terra": {"g": "Bacino/Core", "c": "Sdraiata supina, ginocchia flesse. Alterna retroversione e anteroversione del bacino senza muovere torace e spalle.", "p": "Spalle rilassate, piedi a terra, movimento piccolo ma controllato.", "t": ["Prima appiattisci la lombare", "Poi crea un piccolo arco", "L'obiettivo e sentire il bacino, non fare forza"]},
@@ -1452,84 +1458,95 @@ var DAYS_BASICS = [
 ];
 
 var DAYS_BEGINNER = [
-  { name: "Giorno A", focus: "Full Body A — fondamenta", dur: "4 esercizi", tEst: 50,
+  { name: "Giorno A", focus: "Full Body A — spinta + quadricipiti", dur: "5 esercizi", tEst: 55,
     intro: {
-      attrezzi: ["Manubri o bilanciere", "Panca piana o rialzo", "Tappetino"],
-      muscoli: ["Gambe e glutei", "Petto, spalle e tricipiti", "Schiena e bicipiti", "Core"],
-      obiettivi: ["Imparare gli schemi motori principali in sicurezza", "Costruire una base muscolare generale", "Abituarti alla multifrequenza senza stancarti troppo"],
-      attenzione: ["Mantieni sempre 1-2 ripetizioni in riserva: non devi andare a cedimento", "Cura la profondita e la tecnica prima di pensare al peso", "Scrivi i carichi: la progressione lineare funziona solo se tracci i dati"],
-      ritmo: "Recuperi 90s-2 min sui multiarticolari, 60s-90s sul core."
+      attrezzi: ["Manubri o bilanciere", "Panca piana o tappetino", "Fitball", "Tappetino"],
+      muscoli: ["Quadricipiti e glutei", "Petto, spalle e tricipiti", "Schiena e bicipiti", "Femorali", "Core"],
+      obiettivi: ["Costruire i pattern base di squat, spinta orizzontale e tirata orizzontale", "Dare volume sufficiente anche ai femorali fin dall'inizio", "Imparare a gestire buffer e tecnica senza stancarti troppo"],
+      attenzione: ["Lascia sempre 1-2 ripetizioni in riserva", "Se usi bilanciere o manubri leggeri non serve Valsalva: usa la respirazione del movimento", "Scrivi sempre carico e ripetizioni per far funzionare la progressione"],
+      ritmo: "Recuperi 90s-2 min sugli esercizi principali, 60-90s sul core."
     },
     warmup: [
-      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti continui. Alza la temperatura corporea e prepara anche e caviglie.", tm: 180 },
-      { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente. Mobilizza colonna e bacino prima degli esercizi di spinta e squat." },
-      { n: "Serie avvicinamento squat con bilanciere", img: "w_SerieAvvicinamentoSquat", d: "1-3 mini-serie leggere solo per prepararti al carico di lavoro. Esempio: barra x8, poi un carico intermedio x5, poi uno un po piu alto x3. Non devono stancarti." },
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti. Alza la temperatura corporea e prepara anche e caviglie.", tm: 180 },
+      { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente per mobilizzare colonna e bacino." },
+      { n: "Serie avvicinamento squat con bilanciere", img: "w_SerieAvvicinamentoSquat", d: "1-3 mini-serie leggere prima del carico di lavoro. Servono a prepararti, non a stancarti." },
     ],
     ex: [
-      { n: "Squat", s: "3x8-10", rpe: "8", note: "Con manubri o bilanciere. Parti conservativa e lascia 1-2 ripetizioni in riserva.", rec: "90s-2 min", gear: "Manubri o bilanciere", errori: "Profondita che si accorcia; ginocchia che collassano; schiena che perde assetto" },
-      { n: "Floor Press Manubri", s: "3x8-10", rpe: "8", note: "Se hai la panca, puoi farle su panca piana. In alternativa push-up facilitati con mani su rialzo.", rec: "90s", gear: "Manubri o panca", errori: "Spalle sollevate; gomiti troppo aperti; ROM incoerente" },
-      { n: "Rematore Manubri", s: "3x8-12", rpe: "8", note: "Tieni il busto stabile e porta il gomito verso il fianco.", rec: "90s", gear: "Manubri", errori: "Busto che oscilla; slancio; spalla che sale verso l'orecchio" },
-      { n: "Plank", s: "3x30-45s", rpe: "", note: "Sedere basso, costole giu, glutei contratti. Ferma la serie se perdi l'allineamento.", rec: "60s", gear: "Tappetino", errori: "Bacino che cede; spalle incassate; apnea" },
+      { n: "Squat", s: "3x8-10", rpe: "8", note: "Con manubri o bilanciere. Lascia 1-2 ripetizioni in riserva. Se usi il bilanciere e il carico supera circa il 50% del tuo peso corporeo, passa alla Valsalva.", rec: "90s-2 min", gear: "Manubri o bilanciere", errori: "Profondita che si accorcia; ginocchia che collassano; schiena che perde assetto" },
+      { n: "Floor Press Manubri", s: "3x8-10", rpe: "8", note: "Se hai la panca, usala: e preferibile per ROM completo. A terra il ROM e piu corto. In alternativa push-up facilitati su rialzo.", rec: "90s", gear: "Manubri + panca o tappetino", errori: "Spalle sollevate; gomiti troppo aperti; ROM incoerente" },
+      { n: "Rematore Manubri", s: "3x8-12", rpe: "8", note: "Una mano e un ginocchio sulla panca se serve. Tira il gomito verso il fianco e mantieni il busto fisso.", rec: "90s", gear: "Manubri + panca", errori: "Busto che oscilla; slancio; spalla che sale verso l'orecchio" },
+      { n: "Fitball Hamstring Curl", s: "3x10-12", rpe: "8", note: "Bacino alto per tutta la serie. Se diventa troppo facile, prova una variante monopodalica.", rec: "90s", gear: "Fitball", errori: "Bacino che cade; piedi che scivolano; range incompleto" },
+      { n: "Plank", s: "3x20-45s", rpe: "", note: "Ferma la serie quando perdi l'allineamento. Respira normalmente senza mollare la tensione addominale.", rec: "60s", gear: "Tappetino", errori: "Bacino che cede; spalle incassate; apnea" },
     ],
     str: ["Quadricipiti","Glutei","Pettorali","Dorsali"] },
-  { name: "Giorno B", focus: "Full Body B — catena posteriore e spinta verticale", dur: "4 esercizi", tEst: 50,
+  { name: "Giorno 2", focus: "Riposo", rest: true, intro: { attrezzi: [], muscoli: [], obiettivi: ["Passeggiata leggera o mobilita facoltativa"], attenzione: ["Nessun allenamento strutturato"], ritmo: "Camminata facile, mobilita breve o riposo completo." }, warmup: [], ex: [], str: [] },
+  { name: "Giorno B", focus: "Full Body B — tirata + catena posteriore", dur: "4 esercizi", tEst: 50,
     intro: {
-      attrezzi: ["Manubri o bilanciere", "Lat machine o TRX/barra", "Tappetino"],
-      muscoli: ["Glutei e femorali", "Spalle", "Schiena in tirata verticale", "Gambe e glutei"],
-      obiettivi: ["Imparare il pattern di hip hinge", "Rinforzare spalle e dorsali", "Costruire stabilita sulle gambe con lavoro unilaterale"],
-      attenzione: ["Stacco rumeno: il sedere va indietro, non giu", "Lento avanti: addome attivo e schiena stabile", "Negli affondi conta il controllo, non la fretta"],
+      attrezzi: ["Manubri o bilanciere", "Lat machine o barra + elastico", "Elastico leggero", "Tappetino"],
+      muscoli: ["Glutei e femorali", "Spalle", "Dorsali", "Gambe e glutei"],
+      obiettivi: ["Imparare il pattern di hip hinge", "Rinforzare tirata verticale e spinta verticale", "Lavorare su stabilita e coordinazione degli affondi"],
+      attenzione: ["Stacco rumeno: il sedere va indietro, non verso il basso", "Military press: addome attivo e traiettoria pulita", "Prima di tirare o spingere, attiva le scapole"],
       ritmo: "Recuperi 90s-2 min sui primi tre esercizi, 90s sugli affondi."
     },
     warmup: [
       { n: "Jumping jacks", img: "w_JumpingJacks", d: "2-3 minuti a ritmo leggero per entrare nella seduta.", tm: 180 },
-      { n: "Good Morning senza peso", img: "w_GoodMorningSenzaPeso", d: "10 ripetizioni lente per imparare a spingere il bacino indietro senza arrotondare la schiena." },
-      { n: "Serie avvicinamento trazioni", img: "w_SospensioneAttiva", d: "Se usi lat machine o trazioni facilitate, fai 1-2 serie leggere prima del lavoro. Devono attivare scapole e dorsali, non affaticarti." },
+      { n: "Good Morning senza peso", img: "w_GoodMorningSenzaPeso", d: "10 ripetizioni lente. Focus: sedere indietro, schiena neutra." },
+      { n: "Band Pull-Apart con elastico", img: "w_CerchiApertura", d: "2x15. Elastico leggero, braccia tese davanti al petto. Apri fino al petto e senti le scapole." },
+      { n: "Serie avvicinamento trazioni", img: "w_SospensioneAttiva", d: "1-2 serie leggere su lat machine o trazioni facilitate. Devono attivare dorsali e scapole, non affaticarti." },
     ],
     ex: [
-      { n: "Stacco Rumeno", s: "3x8-10", rpe: "8", note: "Con manubri o bilanciere. Cerca lo stretch su femorali e glutei mantenendo schiena neutra.", rec: "90s-2 min", gear: "Manubri o bilanciere", errori: "Schiena arrotondata; ginocchia troppo flesse; manubri lontani dal corpo" },
-      { n: "Military Press", s: "3x8-10", rpe: "8", note: "Se parti da zero puoi farlo con manubri da seduta. Lascia sempre 1-2 ripetizioni in riserva.", rec: "90s", gear: "Manubri o bilanciere", errori: "Lombare inarcata; gomiti troppo larghi; traiettoria non verticale" },
-      { n: "Lat Machine", s: "3x8-12", rpe: "8", note: "In alternativa body rows o trazioni facilitate al TRX/barra. Movimento completo e controllato.", rec: "90s", gear: "Lat machine o TRX", errori: "Spalle che salgono; slancio; ROM corto" },
-      { n: "Affondi", s: "3x10-12 per gamba", rpe: "8", note: "Alternati o camminati. Passo comodo e busto stabile.", rec: "90s", gear: "Corpo libero o manubri", errori: "Passo troppo corto; ginocchio che collassa; perdita di equilibrio continua" },
+      { n: "Stacco Rumeno", s: "3x8-10", rpe: "8", note: "Con manubri o bilanciere. Scendi lungo le cosce finche senti stretch nei femorali senza arrotondare la schiena. Quando il pattern e stabile, puoi introdurre lo stacco convenzionale con bilanciere scarico.", rec: "90s-2 min", gear: "Manubri o bilanciere", errori: "Schiena arrotondata; ginocchia troppo flesse; carico lontano dal corpo" },
+      { n: "Military Press", s: "3x8-10", rpe: "8", note: "Con manubri da seduta o in piedi. Se usi il bilanciere in piedi e il carico diventa alto, allora passa alla Valsalva.", rec: "90s-2 min", gear: "Manubri o bilanciere", errori: "Lombare inarcata; gomiti troppo larghi; traiettoria non verticale" },
+      { n: "Lat Machine", s: "3x8-12", rpe: "8", note: "In alternativa trazioni facilitate con elastico. Se non hai lat machine puoi fare anche negative controllate in 3-5 secondi.", rec: "90s", gear: "Lat machine o barra + elastico", errori: "Spalle che salgono; slancio; ROM corto" },
+      { n: "Affondi", s: "3x10-12 per gamba", rpe: "8", note: "Alternati o camminati. Passo lungo per enfatizzare i glutei. Corpo libero all'inizio, poi manubri.", rec: "90s", gear: "Corpo libero o manubri", errori: "Passo troppo corto; ginocchio che collassa; perdita di equilibrio" },
     ],
     str: ["Femorali","Glutei","Spalle","Flessori anca"] },
-  { name: "Giorno C", focus: "Full Body C — volume tecnico", dur: "5 esercizi", tEst: 55,
+  { name: "Giorno 4", focus: "Riposo", rest: true, intro: { attrezzi: [], muscoli: [], obiettivi: ["Passeggiata leggera o mobilita facoltativa"], attenzione: ["Nessun allenamento strutturato"], ritmo: "Camminata facile, mobilita breve o riposo completo." }, warmup: [], ex: [], str: [] },
+  { name: "Giorno C", focus: "Full Body C — glutei e accessori", dur: "5 esercizi", tEst: 55,
     intro: {
-      attrezzi: ["Manubri", "Panca inclinata o piana", "Cavo basso o TRX", "Tappetino"],
-      muscoli: ["Quadricipiti e glutei", "Petto e spalle anteriori", "Schiena", "Glutei", "Addome"],
-      obiettivi: ["Aumentare il volume senza stressarti troppo", "Migliorare coordinazione e stabilita mono-laterale", "Chiudere la settimana con lavoro tecnico e controllato"],
-      attenzione: ["Squat bulgaro: meglio poco carico e tanto controllo", "Hip thrust: senti i glutei, non la zona lombare", "Crunch: movimento corto ma pulito, senza tirare il collo"],
-      ritmo: "Recuperi 90s sui multiarticolari, 60s-90s sugli accessori e addome."
+      attrezzi: ["Manubri", "Panca inclinata o tappetino", "Cavo basso o TRX", "Panca per hip thrust", "Tappetino"],
+      muscoli: ["Quadricipiti e glutei", "Petto e spalle anteriori", "Schiena", "Glutei", "Core"],
+      obiettivi: ["Dare piu focus a glutei e accessori senza rendere la seduta pesante", "Migliorare il controllo mono-laterale", "Chiudere la settimana con lavoro tecnico e completo"],
+      attenzione: ["Squat bulgaro: prima controllo, poi carico", "Hip thrust: glutei in alto, non lombare", "Dead bug: la lombare resta ferma a terra"],
+      ritmo: "Recuperi 90s sui multiarticolari, 60-90s sugli accessori e sul core."
     },
     warmup: [
-      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 minuti per entrare nel lavoro.", tm: 120 },
-      { n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "4 per lato, poi passa al resto del warm-up. Mobilita anche, torace e femorali." },
-      { n: "Cat-Cow", img: "w_CatCow", d: "8 rip lente dopo lo stretch, per preparare la colonna al lavoro della seduta." },
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 minuti per entrare nella seduta.", tm: 120 },
+      { n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "4 per lato. Prima completi lo stretch, poi passi al resto del warm-up." },
+      { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente per preparare la colonna e il bacino." },
     ],
     ex: [
-      { n: "Squat Bulgaro", s: "3x8-10 per gamba", rpe: "8", note: "Se sei in palestra puoi usare la pressa come alternativa. Obiettivo: controllo e ROM completo.", rec: "90s", gear: "Manubri o corpo libero", errori: "ROM corto; busto che oscilla; ginocchio anteriore che collassa" },
-      { n: "Floor Press Manubri", s: "3x8-10", rpe: "8", note: "Se hai panca inclinata usa quella. Se no mantieni la variante a terra con manubri.", rec: "90s", gear: "Manubri o panca", errori: "Spalle che si sollevano; slancio; ROM non uniforme" },
-      { n: "Pulley", s: "3x8-12", rpe: "8", note: "In alternativa rematore al TRX. Cerca la tirata verso l'ombelico senza dondolare.", rec: "90s", gear: "Cavo basso o TRX", errori: "Busto che si muove; gomiti troppo larghi; spalle alte" },
-      { n: "Hip Thrust Bilanciere", s: "3x10-15", rpe: "8", note: "Se sei all'inizio va bene anche il ponte glutei a corpo libero o con manubro leggero.", rec: "90s", gear: "Bilanciere o manubro + panca", errori: "Salire con la lombare; ROM corto; discesa troppo veloce" },
-      { n: "Addominali Obliqui", s: "3x15-20", rpe: "", note: "Se preferisci, puoi usare crunch a terra lenti e controllati.", rec: "60s", gear: "Tappetino", errori: "Tirare il collo; slancio; perdere il controllo del tronco" },
+      { n: "Squat Bulgaro", s: "3x8-10 per gamba", rpe: "8", note: "Corpo libero all'inizio. Quando il pattern e stabile aggiungi manubri leggeri. Controllo e ROM completo prima del carico.", rec: "90s", gear: "Corpo libero o manubri", errori: "ROM corto; busto che oscilla; ginocchio che collassa" },
+      { n: "Floor Press Manubri", s: "3x8-10", rpe: "8", note: "Se hai panca inclinata usala per enfatizzare il pettorale alto. Altrimenti mantieni la variante a terra.", rec: "90s", gear: "Manubri + panca inclinata o tappetino", errori: "Spalle che si sollevano; slancio; ROM non uniforme" },
+      { n: "Pulley", s: "3x8-12", rpe: "8", note: "In alternativa rematore al TRX o elastico ancorato in basso. Tira verso l'ombelico senza dondolare.", rec: "90s", gear: "Cavo basso o TRX", errori: "Busto che si muove; gomiti troppo larghi; spalle alte" },
+      { n: "Hip Thrust Bilanciere", s: "3x10-15", rpe: "8", note: "Se sei all'inizio va bene anche il ponte glutei a corpo libero o con manubrio leggero sulle anche. Squeeze glutei in alto.", rec: "90s", gear: "Bilanciere o manubrio + panca", errori: "Salire con la lombare; ROM corto; discesa troppo veloce" },
+      { n: "Dead Bug", s: "3x8 per lato", rpe: "", note: "Supina con ginocchia a 90 gradi. Estendi braccio e gamba opposta senza staccare la lombare da terra.", rec: "60s", gear: "Tappetino", errori: "Lombare che si stacca; movimento troppo veloce; respiro trattenuto" },
     ],
     str: ["Glutei","Quadricipiti","Pettorali","Dorsali"] },
+  { name: "Giorno 6", focus: "Riposo", rest: true, intro: { attrezzi: [], muscoli: [], obiettivi: ["Passeggiata leggera o mobilita facoltativa"], attenzione: ["Nessun allenamento strutturato"], ritmo: "Camminata facile, mobilita breve o riposo completo." }, warmup: [], ex: [], str: [] },
+  { name: "Giorno 7", focus: "Riposo", rest: true, intro: { attrezzi: [], muscoli: [], obiettivi: ["Se ti senti bene: camminata facile o stretching"], attenzione: ["Nessun allenamento strutturato"], ritmo: "Recupero generale. Niente HIIT, niente corsa." }, warmup: [], ex: [], str: [] },
 ];
 
 var BEGINNER_PRINCIPLES_DEEP = [
   { t: "Perche una scheda principiante e diversa", d: [
-      { type: "p", content: "Sei normopeso, ma la priorita non e dimagrire: e costruire tessuto muscolare. L'obiettivo reale e la ricomposizione corporea, cioe aumentare la massa magra e migliorare tono e forma del corpo." },
+      { type: "p", content: "Sei normopeso, ma la priorita non e dimagrire: e costruire tessuto muscolare. L'obiettivo reale e aumentare la massa magra e migliorare tono e forma del corpo." },
       { type: "p", content: "Per una principiante la strategia migliore non e cercare subito intensita alte o tanto volume. Devi prima costruire fondamenta solide: tecnica, schemi motori e continuita." },
       { type: "p", content: "Non devi temere di diventare 'troppo grossa': la crescita muscolare femminile e lenta e graduale. Il risultato tipico e un fisico piu tonico, atletico e stabile." },
+      { type: "p", content: "Se il dato di massa grassa molto bassa fosse corretto, il focus deve restare ancora di piu sulla costruzione di massa magra: niente deficit e niente cardio intenso. Meglio verificare il dato con una BIA o una plicometria." },
     ]},
   { t: "Come e organizzata la scheda principiante", d: [
-      { type: "p", content: "La multifrequenza resta la scelta migliore anche qui: alleni tutto il corpo 3 volte a settimana, a giorni alterni. In questo modo ogni gruppo muscolare riceve 2-3 stimoli senza sovraccaricare troppo una singola seduta." },
-      { type: "p", content: "Il volume iniziale e moderato: circa 10-12 serie settimanali per i gruppi principali. E abbastanza per crescere, ma non cosi tanto da farti perdere tecnica e recupero." },
-      { type: "p", content: "La scheda usa soprattutto multiarticolari: squat, hip hinge, spinte, tirate, lavoro unilaterale e core. Sono i movimenti che ti insegnano di piu e ti fanno crescere meglio all'inizio." },
+      { type: "p", content: "La multifrequenza resta la scelta migliore anche qui: alleni tutto il corpo 3 volte a settimana, a giorni alterni, con giorni di riposo reali tra una seduta e l'altra." },
+      { type: "p", content: "Il volume iniziale e moderato: circa 6-10 serie dirette per i gruppi principali, abbastanza per crescere senza perdere tecnica e recupero." },
+      { type: "p", content: "La scheda usa soprattutto multiarticolari: squat, hip hinge, spinte, tirate, lavoro unilaterale e core. I femorali sono gia coperti con Stacco rumeno e Fitball hamstring curl." },
     ]},
   { t: "Buffer, progressione e cosa conta davvero", d: [
       { type: "p", content: "Nella scheda principiante non devi allenarti sempre al massimo. Quasi tutte le serie vanno chiuse sentendo che avresti potuto fare ancora 1-2 ripetizioni con buona tecnica." },
       { type: "p", content: "La progressione e semplice: a parita di peso provi a fare una ripetizione in piu, oppure quando il range e stabile aumenti leggermente il carico. Piccoli progressi, ma continui." },
       { type: "p", content: "Le cose che fanno davvero la differenza sono poche: presenza costante, tecnica coerente, recuperi rispettati, proteine sufficienti e sonno." },
+    ]},
+  { t: "Cardio e recupero nella fase principiante", d: [
+      { type: "p", content: "In questa fase non serve cardio strutturato. Nei giorni di riposo bastano camminate leggere e un po di mobilita facoltativa." },
+      { type: "p", content: "Se il focus e costruire massa magra, il cardio intenso sarebbe solo interferenza in piu: meglio recuperare bene e arrivare fresca ai tre allenamenti." },
     ]},
   { t: "Alimentazione: il consiglio piu utile adesso", d: [
       { type: "p", content: "Se il tuo obiettivo e costruire massa magra, l'allenamento da solo non basta. Devi dare al corpo i mattoni per costruire tessuto muscolare: proteine adeguate, idratazione e costanza." },
@@ -1543,6 +1560,7 @@ var BEGINNER_PRINCIPLES = [
   { t: "Serie di avvicinamento: quante farne davvero", d: "La rampa completa serve soprattutto sul primo esercizio della seduta, per esempio Squat o Stacco Rumeno. Sugli esercizi successivi spesso basta 1 serie leggera o nessuna. Lo scopo non e stancarti: e arrivare pronta alle serie vere." },
   { t: "Buffer: fermati prima di sporcare la tecnica", d: "L'obiettivo non e sfinirti. Fermati quando senti che potresti fare ancora 1-2 ripetizioni buone. Se per completare l'ultima rep devi accorciare il movimento, usare slancio o perdere assetto, quella rep non conta." },
   { t: "Come progredire da principiante", d: "Di settimana in settimana cerca un piccolo passo avanti: una ripetizione in piu oppure un piccolo aumento di peso. Non serve rincorrere il massimo ogni seduta. La costanza vale piu della singola giornata perfetta." },
+  { t: "Cardio nella scheda principiante", d: "In questa fase non ti serve cardio strutturato. Nei giorni di riposo bastano camminate leggere e un po di mobilita. La priorita e recuperare bene e costruire massa magra." },
 ];
 
 var BEGINNER_INTRO_BASICS = [
@@ -1599,6 +1617,7 @@ var BEGINNER_INTRO_BASICS = [
 var BASIC_COMPETENCIES = [
   {
     id: "brace",
+    img: "Breathing + Brace supino",
     badge: "Prerequisito",
     tone: "#C62828",
     t: "1. Colonna neutra + brace addominale",
@@ -1616,6 +1635,7 @@ var BASIC_COMPETENCIES = [
   },
   {
     id: "hinge",
+    img: "Test del bastone",
     badge: "Prerequisito",
     tone: "#C62828",
     t: "2. Hip hinge",
@@ -1633,6 +1653,7 @@ var BASIC_COMPETENCIES = [
   },
   {
     id: "bacino",
+    img: "Pelvic Tilt a terra",
     badge: "Prerequisito",
     tone: "#C62828",
     t: "3. Controllo del bacino",
@@ -1650,6 +1671,7 @@ var BASIC_COMPETENCIES = [
   },
   {
     id: "squat",
+    img: "Goblet Squat",
     badge: "Prerequisito",
     tone: "#C62828",
     t: "4. Squat pattern base",
@@ -1667,6 +1689,7 @@ var BASIC_COMPETENCIES = [
   },
   {
     id: "core",
+    img: "Dead Bug",
     badge: "Parallela",
     tone: "#2E7D32",
     t: "5. Stabilita core anti-movimento",
@@ -1684,6 +1707,7 @@ var BASIC_COMPETENCIES = [
   },
   {
     id: "scapole",
+    img: "Band Pull-Apart con elastico",
     badge: "Parallela",
     tone: "#2E7D32",
     t: "6. Controllo scapolare",
@@ -1701,6 +1725,7 @@ var BASIC_COMPETENCIES = [
   },
   {
     id: "patterns",
+    img: "Push-Up",
     badge: "Parallela",
     tone: "#2E7D32",
     t: "7. Pattern base di spinta e tirata",
@@ -1845,10 +1870,10 @@ var PRINCIPLES = [
 
 
 var EX_IMG = {
-  "Band Pull-Apart con elastico": img_w_CerchiApertura,
-  "Bird Dog": img_Plank,
-  "Breathing + Brace supino": img_Plank,
-  "Dead Bug": img_Plank,
+  "Band Pull-Apart con elastico": img_w_BandPullApart,
+  "Bird Dog": img_Bird_Dog,
+  "Breathing + Brace supino": img_Breathe_Brace,
+  "Dead Bug": img_Dead_Bug,
   "Ab Wheel": img_Ab_Wheel,
   "Abduzione Laterale": img_Abduzione_Laterale,
   "Addominali Obliqui": img_Addominali_Obliqui,
@@ -1864,8 +1889,8 @@ var EX_IMG = {
   "Fire Hydrant": img_Fire_Hydrant,
   "Floor Press Manubri": img_Floor_Press_Manubri,
   "French Press Manubri": img_French_Press_Manubri,
-  "Glute Bridge": img_Clamshell,
-  "Goblet Squat": img_w_SquatBL,
+  "Glute Bridge": img_Glute_Bridge,
+  "Goblet Squat": img_Goblet_Squat,
   "Good Morning senza peso": img_w_GoodMorningSenzaPeso,
   "Front Squat": img_Front_Squat,
   "Good Morning": img_Good_Morning,
@@ -1886,7 +1911,7 @@ var EX_IMG = {
   "Push Press": img_Push_Press,
   "Push-Up": img_Push_Up,
   "Retrazione scapolare al muro": img_w_ShoulderRolls,
-  "Shoulder rolls + apertura petto": img_w_CerchiApertura,
+  "Shoulder rolls + apertura petto": img_w_ShoulderRolls,
   "Push-Up Declino": img_Push_Up_Declino,
   "Push-Up Diamante": img_Push_Up_Diamante,
   "Rematore Bilanciere": img_Rematore_Bilanciere,
@@ -1941,6 +1966,7 @@ var WS_IMG = {
   "w_GoodMorningSenzaPeso": img_w_GoodMorningSenzaPeso,
   "w_SospensioneAttivaSbarra": img_w_SospensioneAttivaSbarra,
   "w_ShoulderRolls": img_w_ShoulderRolls,
+  "w_BandPullApart": img_w_BandPullApart,
   "w_CerchiApertura": img_w_CerchiApertura,
   "w_HipHingeBastone": img_w_HipHingeBastone,
   "w_SerieAvvSquat": img_w_SerieAvvSquat,
@@ -2243,6 +2269,7 @@ function fmtTime(ms) { var s = Math.floor(ms / 1000); return (Math.floor(s/60) <
 
 export default function App() {
   var [tab, setTab] = useState("home");
+  var [tabHistory, setTabHistory] = useState([]);
   var [level, setLevel] = useState("v4");
   var [dayIdx, setDayIdx] = useState(0);
   var [month, setMonth] = useState(1);
@@ -2275,11 +2302,22 @@ export default function App() {
   var [showTheorySection, setShowTheorySection] = useState(null);
 
   function openMainTab(nextTab) {
-    setTab(nextTab);
+    setTab(function(prev) {
+      setTabHistory(function(h) { return prev !== nextTab ? h.concat(prev).slice(-10) : h; });
+      return nextTab;
+    });
     requestAnimationFrame(function() {
       requestAnimationFrame(function() {
         scrollToAnchor(nextTab + "-top");
       });
+    });
+  }
+  function goBack() {
+    setTabHistory(function(h) {
+      if (h.length === 0) return h;
+      var prev = h[h.length - 1];
+      setTab(prev);
+      return h.slice(0, -1);
     });
   }
 
@@ -2413,7 +2451,7 @@ export default function App() {
   var T = TH[theme];
   var isBasics = level === "basics";
   var isBeginner = level === "beginner";
-  var activeDays = isBasics ? DAYS_BASICS : isBeginner ? DAYS_BEGINNER : DAYS_V4;
+  var activeDays = isBasics ? DAYS_BASICS : isBeginner ? DAYS_BEGINNER.filter(function(d) { return !d.rest; }) : DAYS_V4;
   var safeDayIdx = Math.min(dayIdx, activeDays.length - 1);
   var dayData = activeDays[safeDayIdx];
   var activeOpenRawEx = dayData && dayData.ex && openEx !== null && dayData.ex[openEx] ? dayData.ex[openEx] : null;
@@ -2431,17 +2469,17 @@ export default function App() {
   var homeOverviewNow = isBasics
     ? "Stai lavorando sulle tecniche preliminari: brace, bacino, hip hinge, scapole, squat pattern e movimenti base di spinta e tirata."
     : isBeginner
-    ? "Stai facendo una scheda principiante Full Body 3 giorni. L'obiettivo non e spingere al massimo, ma imparare bene i movimenti, costruire massa magra e creare continuita."
+    ? "Stai facendo una scheda principiante Full Body 3 giorni. L'obiettivo non e dimagrire: e costruire massa magra, imparare bene i movimenti e creare continuita."
     : "Stai facendo soprattutto ipertrofia, ma con fondamentali abbastanza pesanti da costruire anche forza. Non e una scheda di forza pura e non e una fase di definizione separata.";
   var homeOverviewStructure = isBasics
     ? "3 giornate tecniche brevi. Pochi esercizi, molto controllo, recuperi tranquilli e focus su prerequisiti motori prima di passare alla scheda principiante."
     : isBeginner
-    ? "Full Body 3 giorni a settimana a giorni alterni. Alleni tutto il corpo in ogni seduta con volume moderato e recupero sufficiente."
+    ? "Full Body A-B-C a giorni alterni, con giorni di riposo in mezzo. Alleni tutto il corpo 3 volte a settimana con volume moderato e nessun cardio strutturato."
     : "Upper/Lower su 4 giorni pesi piu 2 giorni cardio. Ogni muscolo riceve 2 stimoli a settimana, con recupero sufficiente tra una seduta e l'altra.";
   var homeOverviewFocus = isBasics
     ? "La qualita del gesto vale piu della fatica. Se perdi posizione, la serie finisce. Quando i prerequisiti sono stabili, passi a Principiante."
     : isBeginner
-    ? "Tecnica pulita, buffer costante, progressione lineare, multiarticolari semplici e proteine adeguate. Il primo obiettivo e costruire fondamenta solide."
+    ? "Tecnica pulita, buffer costante, progressione lineare, multiarticolari semplici, proteine adeguate e solo camminate leggere nei giorni off."
     : "Fondamentali prima, accessori dopo, progressione graduale, buffer quasi sempre presente, cardio separato dai pesi e dieta impostata per ricomposizione corporea. La prima settimana, e ogni ricalibrazione dopo stop o deload, serve anche a ritrovare i pesi giusti.";
   var introBasicsCards = isBasics ? PRELIM_INTRO_BASICS : isBeginner ? BEGINNER_INTRO_BASICS : INTRO_BASICS;
   var deepPrinciplesList = isBasics ? PRELIM_PRINCIPLES_DEEP : isBeginner ? BEGINNER_PRINCIPLES_DEEP : PRINCIPLES_DEEP;
@@ -3320,7 +3358,7 @@ export default function App() {
               </div>
             </div>
           </details>}
-          {getExerciseCompetencies(exInfoOpen).length > 0 && <div style={{ marginBottom: 12, borderRadius: 10, overflow: "hidden", background: T.bg, padding: "10px 12px" }}>
+          {!isBasics && getExerciseCompetencies(exInfoOpen).length > 0 && <div style={{ marginBottom: 12, borderRadius: 10, overflow: "hidden", background: T.bg, padding: "10px 12px" }}>
             <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.6, marginBottom: 4 }}>🎯 Tecniche da padroneggiare</div>
             <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55, marginBottom: 8 }}>Apri la competenza per capire perche ti serve proprio in questo esercizio.</div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -3594,8 +3632,10 @@ export default function App() {
         </div>
         {/* View tabs */}
         <div style={{ display: "flex", gap: 1, maxWidth: 600, margin: "12px auto 0", alignItems: "stretch" }}>
+          {/* Back button */}
+          <button onClick={function() { goBack(); }} disabled={tabHistory.length === 0} style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: tabHistory.length > 0 ? "pointer" : "default", fontSize: 16, color: tabHistory.length > 0 ? T.tx : T.sub + "40", borderBottom: "2px solid transparent", transition: "color 0.15s" }}>‹</button>
           {/* Home icon-only tab */}
-          <button onClick={function() { setTab("home"); scrollTopSoon("home-top"); }} style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 14, color: tab === "home" ? T.tx : T.sub, borderBottom: tab === "home" ? "2px solid " + dc : "2px solid transparent" }}>⌂</button>
+          <button onClick={function() { setTab("home"); setTabHistory([]); scrollTopSoon("home-top"); }} style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 14, color: tab === "home" ? T.tx : T.sub, borderBottom: tab === "home" ? "2px solid " + dc : "2px solid transparent" }}>⌂</button>
           {/* Main tabs */}
           {["Scheda", "Progressi", "Teoria", "Esercizi"].map(function(t) { var keys = {"Scheda":"workout","Progressi":"progressi","Teoria":"teoria","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); scrollTopSoon(keys[t] + "-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, color: active ? T.tx : T.sub, borderBottom: active ? "2px solid " + dc : "2px solid transparent", letterSpacing: active ? 0.1 : 0, transition: "color 0.15s" }}>{t}</button>; })}
         </div>
@@ -3702,46 +3742,6 @@ export default function App() {
               { label: "Backup dati", onClick: function() { setSettingsOpen(true); } },
             ]).map(function(action) {
               return <button key={action.label} onClick={action.onClick} style={{ fontSize: 11, background: dc + "14", color: dc, padding: "6px 10px", borderRadius: 8, fontWeight: 700, border: "none", cursor: "pointer" }}>{action.label}</button>;
-            })}
-          </div>
-        </div>
-
-        {/* Programma attivo */}
-        <div style={{ background: T.cd, borderRadius: 16, padding: "18px 18px 16px", marginBottom: 10 }}>
-          <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 12 }}>Programma attivo</div>
-          <div style={{ display: "grid", gap: 8 }}>
-            <div style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "10px 12px", borderRadius: 10, background: dc + "18", border: "1px solid " + dc + "40" }}>
-              <div style={{ width: 38, height: 38, borderRadius: 10, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>{isBasics ? "🎯" : isBeginner ? "🌱" : "💥"}</div>
-              <div style={{ flex: 1 }}>
-                <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 2 }}>
-                  <span style={{ fontSize: 13, fontWeight: 800, color: dc }}>{isBasics ? "Tecniche preliminari" : isBeginner ? "Principiante Full Body" : "Ipertrofia avanzato"}</span>
-                  <span style={{ fontSize: 11, color: dc, fontWeight: 600 }}>{isBasics ? "3 giorni · ~40 min" : isBeginner ? "3 giorni · ~50 min" : "6 giorni · ~65 min"}</span>
-                  <span style={{ fontSize: 10, background: dc, color: "#fff", padding: "1px 6px", borderRadius: 4, fontWeight: 700 }}>attivo</span>
-                </div>
-                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.5 }}>{isBasics ? "Prerequisiti motori e tecnici prima della scheda vera. Pochi esercizi, tanti richiami alle competenze di base." : isBeginner ? "Full Body a giorni alterni. Multiarticolari semplici, buffer costante, progressione lineare e tecnica prima dell'intensita." : "Upper/Lower 4+2 cardio. Double progression, lift prioritari, mesociclo strutturato."}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Inizia da qui */}
-        <div style={{ background: T.cd, borderRadius: 14, padding: "16px 18px 14px", marginBottom: 14 }}>
-          <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 10 }}>Inizia da qui</div>
-          <div style={{ display: "grid", gap: 8 }}>
-            {(isBasics ? [
-              "1. Apri Tecniche e guarda cosa devi padroneggiare.",
-              "2. Vai nella Scheda e usa i giorni tecnici senza fretta.",
-              "3. Quando i prerequisiti sono stabili, passa a Principiante.",
-            ] : isBeginner ? [
-              "1. Apri Basi e leggi solo le regole essenziali.",
-              "2. Vai nella Scheda e segui il giorno selezionato.",
-              "3. Registra i pesi e mantieni il buffer: non serve spingere al massimo.",
-            ] : [
-              "1. Guarda la panoramica e poi apri la Scheda del giorno.",
-              "2. Usa timer, respirazione e progressione direttamente negli esercizi.",
-              "3. Controlla Progressi e Teoria solo quando ti servono.",
-            ]).map(function(line, i) {
-              return <div key={i} style={{ fontSize: 12, color: T.sub, lineHeight: 1.6, background: T.bg, borderRadius: 10, padding: "10px 12px" }}>{line}</div>;
             })}
           </div>
         </div>
@@ -3862,18 +3862,23 @@ export default function App() {
                 {showTheorySection === "skills" && <div style={{ borderTop: "1px solid " + T.bg }}>
                   {BASIC_COMPETENCIES.map(function(skill, si) {
                     var isOpen = showCompetency === skill.id;
+                    var skillImg = skill.img ? (EX_IMG[skill.img] || WS_IMG[skill.img] || null) : null;
                     return <div key={skill.id} id={"competency-" + skill.id} style={{ borderBottom: si < BASIC_COMPETENCIES.length - 1 ? "1px solid " + T.bg : "none" }}>
                       <div onClick={function() { var next = isOpen ? null : skill.id; setShowCompetency(next); if (next) scrollTopSoon("competency-" + skill.id); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
-                        <div style={{ minWidth: 0 }}>
-                          <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 3 }}>
-                            <span style={{ fontSize: 13, fontWeight: isOpen ? 800 : 700, color: isOpen ? dc : T.tx, lineHeight: 1.3 }}>{skill.t}</span>
-                            <span style={{ fontSize: 9, background: skill.tone + "16", color: skill.tone, padding: "2px 6px", borderRadius: 999, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.5 }}>{skill.badge}</span>
+                        <div style={{ minWidth: 0, display: "flex", alignItems: "center", gap: 10 }}>
+                          {skillImg ? <img src={skillImg} style={{ width: 54, height: 54, objectFit: "cover", borderRadius: 10, border: "1px solid " + T.bg, flexShrink: 0 }} /> : null}
+                          <div style={{ minWidth: 0 }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 3 }}>
+                              <span style={{ fontSize: 13, fontWeight: isOpen ? 800 : 700, color: isOpen ? dc : T.tx, lineHeight: 1.3 }}>{skill.t}</span>
+                              <span style={{ fontSize: 9, background: skill.tone + "16", color: skill.tone, padding: "2px 6px", borderRadius: 999, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.5 }}>{skill.badge}</span>
+                            </div>
+                            <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5 }}>{skill.summary}</div>
                           </div>
-                          <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5 }}>{skill.summary}</div>
                         </div>
                         <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
                       </div>
                       {isOpen && <div style={{ padding: "4px 14px 14px", background: T.sb }}>
+                        {skillImg ? <img src={skillImg} style={{ width: "100%", maxWidth: 240, display: "block", borderRadius: 12, border: "1px solid " + T.bg, marginBottom: 12 }} /> : null}
                         <RichBlocks blocks={skill.d} accent={dc} />
                         {skill.id === "squat" && <button onClick={function(e) { e.stopPropagation(); setTab("exercises"); setCatSec("ex"); setExInfoOpen("Goblet Squat"); }} style={{ marginTop: 10, minHeight: 30, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "30", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>Apri: cos'e il Goblet Squat</button>}
                       </div>}
@@ -4595,7 +4600,7 @@ export default function App() {
               </div>;
             })()}
 
-            {!dayData.cardio && !dismissedSeriesBanner && !focusMode && <div style={{ margin: "10px 14px 0", padding: "10px 12px", borderRadius: 12, background: dc + "0A", border: "1px solid " + dc + "22", display: "flex", alignItems: "flex-start", gap: 8 }}>
+            {!isBasics && !dayData.cardio && !dayData.rest && !dismissedSeriesBanner && !focusMode && <div style={{ margin: "10px 14px 0", padding: "10px 12px", borderRadius: 12, background: dc + "0A", border: "1px solid " + dc + "22", display: "flex", alignItems: "flex-start", gap: 8 }}>
               <div style={{ flex: 1 }}>
                 <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Come leggere le serie</div>
                 <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Il peso resta uguale in tutte le serie dello stesso esercizio. Non aumentarlo tra una serie e l'altra: il numero di ripetizioni sale tra le settimane, non dentro la seduta.</div>
@@ -4603,7 +4608,7 @@ export default function App() {
               <button onClick={function() { setDismissedSeriesBanner(true); }} style={{ flexShrink: 0, width: 24, height: 24, border: "none", background: "transparent", color: T.sub, fontSize: 16, cursor: "pointer", lineHeight: 1, padding: 0 }}>×</button>
             </div>}
 
-            {!dayData.cardio && calibrationEnabled && !focusMode && (function() {
+            {!dayData.cardio && !dayData.rest && calibrationEnabled && !focusMode && (function() {
               var dayCalibration = getDayCalibrationSuggestion(safeDayIdx);
               if (!calibrationMode && !dayCalibration) return null;
               if (dismissedCalBanner) return null;
@@ -4646,7 +4651,7 @@ export default function App() {
             })()}
 
             {/* Warmup - collapsed (solo giorni non-cardio) */}
-            {!dayData.cardio && <div ref={function(el) { if (el) el._sectionKey = "intro"; }} id="section-warmup" style={{ borderBottom: "1px solid " + T.bg }}>
+            {!dayData.cardio && !dayData.rest && <div ref={function(el) { if (el) el._sectionKey = "intro"; }} id="section-warmup" style={{ borderBottom: "1px solid " + T.bg }}>
               <div onClick={function() { var opening = !showIntro; setShowIntro(opening); if (opening) { setShowExSection(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-warmup"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showIntro ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
                 <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#128293;</div>
                 <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Riscaldamento</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{dayData.warmup.length + " esercizi · " + dayData.dur}</div></div>
@@ -4792,8 +4797,38 @@ export default function App() {
               })}
             </div>}
 
+            {dayData.rest && <div style={{ padding: "16px 14px 20px" }}>
+              <div style={{ background: T.cd, borderRadius: 16, padding: "18px 16px", border: "1px solid " + T.bg }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                  <span style={{ fontSize: 22 }}>🛌</span>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: T.tx }}>{dayData.focus}</div>
+                </div>
+                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.65, marginBottom: 12 }}>
+                  Oggi non c'e allenamento strutturato. L'obiettivo e recuperare bene, muoverti in modo leggero solo se ti va e arrivare fresca alla prossima seduta.
+                </div>
+                <div style={{ display: "grid", gap: 8 }}>
+                  <div style={{ padding: "10px 12px", borderRadius: 10, background: T.sb }}>
+                    <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Cosa puoi fare</div>
+                    <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
+                      {dayData.intro && dayData.intro.obiettivi && dayData.intro.obiettivi[0]
+                        ? dayData.intro.obiettivi[0]
+                        : "Passeggiata leggera o mobilita facoltativa."}
+                    </div>
+                  </div>
+                  <div style={{ padding: "10px 12px", borderRadius: 10, background: T.sb }}>
+                    <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Nota</div>
+                    <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
+                      {dayData.intro && dayData.intro.ritmo
+                        ? dayData.intro.ritmo
+                        : "Riposo completo."}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>}
+
             {/* Exercises - collapsed (solo giorni non-cardio) */}
-            {!dayData.cardio && <div id="section-esercizi" style={{ borderBottom: "1px solid " + T.bg }}>
+            {!dayData.cardio && !dayData.rest && <div id="section-esercizi" style={{ borderBottom: "1px solid " + T.bg }}>
               <div onClick={function() { var opening = !showExSection; setShowExSection(opening); if (opening) { setShowIntro(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-esercizi"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showExSection ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
                 <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#128170;</div>
                 <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Esercizi</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{dayData.ex ? dayData.ex.length + " esercizi" : ""}</div></div>
@@ -4829,12 +4864,13 @@ export default function App() {
               var rowSkills = getExerciseCompetencies(ex.n);
               var calibrationNeed = getCalibrationNeed(ex.n, ex.s);
               var calibrationProfile = calibrationProfiles[ex.n] || null;
+              var rowImg = exImgs(ex.n)[0] || null;
 
               var anyOpen = openEx !== null;
               var isDimmed = anyOpen && !isX;
               return <div key={i} id={"ex-row-" + i} style={{ borderBottom: "1px solid " + T.bg, opacity: isDimmed ? 0.38 : 1, transition: "opacity 0.25s" }}>
                 <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); if (opening) { requestAnimationFrame(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
-                  <div style={{ width: 34, height: 34, borderRadius: 9, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: dc, flexShrink: 0 }}>{i + 1}</div>
+                  {rowImg ? <img src={rowImg} style={{ width: 48, height: 48, objectFit: "cover", borderRadius: 10, border: "1px solid " + T.bg, flexShrink: 0 }} /> : <div style={{ width: 34, height: 34, borderRadius: 9, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: dc, flexShrink: 0 }}>{i + 1}</div>}
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ fontWeight: 800, fontSize: 14, display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap", textTransform: "uppercase", letterSpacing: 0.35 }}>
                       <ExName name={ex.n} />
@@ -4858,29 +4894,10 @@ export default function App() {
                         <span>{BREATH_TYPE_LABEL[rowBreath.type]}</span>
                       </span>
                     </>}
-                    {rowSkills.length > 0 && <button onClick={function(e) { e.stopPropagation(); setSkillTooltip(skillTooltip === ("row-skills-" + i) ? null : ("row-skills-" + i)); }} style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid " + T.sub + "30", borderRadius: 999, padding: "3px 8px", background: T.sub + "10", color: T.sub, cursor: "pointer" }}>
-                      <span>🎯 Tecniche</span>
-                    </button>}
-                    {prog && prog.tone !== "mid" && <>
-                      <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid " + rowProgColor + "35", borderRadius: 999, padding: "3px 8px", background: rowProgColor + "0D", color: rowProgColor }}>
-                        <span>{prog.tone === "up" ? "↑ Aumenta" : prog.tone === "hold" ? "↔ Mantieni" : prog.tone === "sub" ? "↓ Riduci" : prog.label.replace(/^[^\s]+\s/, "")}</span>
-                      </span>
-                      {progTooltip === ("ex-advice-" + i) && <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", marginTop: 2, padding: "8px 10px", borderRadius: 8, background: rowProgColor + "10", border: "1px solid " + rowProgColor + "28", fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
-                        {getProgressShortHelp(prog)}
-                      </div>}
-                    </>}
-                    {rowSkills.length > 0 && skillTooltip === ("row-skills-" + i) && <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", marginTop: 2, padding: "8px 10px", borderRadius: 8, background: T.sub + "10", border: "1px solid " + T.sub + "20", fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
-                      <div style={{ fontWeight: 700, color: T.tx, marginBottom: 6 }}>Tecniche utili per questo esercizio</div>
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                        {rowSkills.map(function(skill) {
-                          return <button key={skill.id} onClick={function(ev) { ev.stopPropagation(); openCompetency(skill.id); }} style={{ minHeight: 26, padding: "0 9px", borderRadius: 999, border: "1px solid " + skill.tone + "35", background: skill.tone + "12", color: skill.tone, fontSize: 10, fontWeight: 800, cursor: "pointer" }}>{skill.t}</button>;
-                        })}
-                      </div>
-                    </div>}
                     </div>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                    <button
+                    {!isBasics && <button
                       onClick={function(e) {
                         e.stopPropagation();
                         setOpenEx(i);
@@ -4898,8 +4915,8 @@ export default function App() {
                       style={{ minHeight: 28, padding: "0 9px", border: "1px solid " + dc + "30", borderRadius: 999, background: dc + "10", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}
                     >
                       Registra
-                    </button>
-                    {tLog && tLog.sets.length > 0 && <div style={{ background: T.ok, color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 8 }}>{tLog.sets.length + "/" + sc}</div>}
+                    </button>}
+                    {!isBasics && tLog && tLog.sets.length > 0 && <div style={{ background: T.ok, color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 8 }}>{tLog.sets.length + "/" + sc}</div>}
                     <div style={{ fontSize: 14, color: T.sub, transform: isX ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
                   </div>
                 </div>
@@ -4969,7 +4986,7 @@ export default function App() {
                         </div>}
                       </div>
                       {/* Guida completa — collassata (nascosta in focus mode) */}
-                      {!focusMode && <details style={{ borderTop: "1px solid " + T.bg }}>
+                      {!isBasics && !focusMode && <details style={{ borderTop: "1px solid " + T.bg }}>
                         <summary style={{ cursor: "pointer", listStyle: "none", padding: "8px 12px", fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, display: "flex", alignItems: "center", gap: 6 }}>
                           <span style={{ flex: 1 }}>Guida completa</span><span style={{ fontSize: 12 }}>›</span>
                         </summary>
@@ -5009,7 +5026,7 @@ export default function App() {
                       {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ width: "100%", minHeight: 46, border: "none", borderRadius: 12, background: dc, color: "#fff", fontWeight: 800, fontSize: 13, cursor: "pointer" }}>{"▶ Timer lavoro · " + fmtLabel(workSec)}</button> : null}
                     </div>}
 
-                    {exSkills.length > 0 && <div style={{ marginBottom: 12, borderRadius: 12, padding: "10px 11px", background: dc + "08", border: "1px solid " + dc + "22" }}>
+                    {!isBasics && exSkills.length > 0 && <div style={{ marginBottom: 12, borderRadius: 12, padding: "10px 11px", background: dc + "08", border: "1px solid " + dc + "22" }}>
                       <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>🎯 Tecniche da padroneggiare per questo esercizio</div>
                       <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55, marginBottom: 8 }}>Queste competenze spiegano quali basi tecniche rendono piu sicuro ed efficace questo esercizio.</div>
                       <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -5025,8 +5042,19 @@ export default function App() {
                       </div>
                     </div>}
 
+                    {isBasics && <div style={{ marginBottom: 12, borderRadius: 12, padding: "10px 11px", background: dc + "08", border: "1px solid " + dc + "22" }}>
+                      <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Cosa guardare</div>
+                      <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6, marginBottom: 8 }}>{db.c}</div>
+                      {errorList.length > 0 && <div style={{ display: "grid", gap: 5 }}>
+                        {errorList.map(function(err, ei) { return <div key={ei} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: "#C6282810", border: "1px solid #C6282820", borderRadius: 8, padding: "7px 9px" }}>
+                          <span style={{ color: "#C62828", fontSize: 10, lineHeight: 1.6 }}>•</span>
+                          <span style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{err}</span>
+                        </div>; })}
+                      </div>}
+                    </div>}
+
                     {/* === REGISTRA SERIE === */}
-                    <div id={"reg-block-" + i} style={{ marginBottom: 10, borderRadius: 12, padding: "10px", background: dc + "08", border: "2px solid " + dc + "28" }}>
+                    {!isBasics && <div id={"reg-block-" + i} style={{ marginBottom: 10, borderRadius: 12, padding: "10px", background: dc + "08", border: "2px solid " + dc + "28" }}>
                       <div style={{ fontSize: 12, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 1, marginBottom: 10, display: "flex", alignItems: "center", gap: 8 }}>
                         Registra
                         {tLog && tLog.sets.length > 0 && <span style={{ fontSize: 11, background: T.ok, color: "#fff", padding: "2px 8px", borderRadius: 8, fontWeight: 800 }}>{tLog.sets.length + "/" + sc + " serie"}</span>}
@@ -5078,10 +5106,10 @@ export default function App() {
                           </div>;
                         })}
                       </div>
-                    </div>
+                    </div>}
 
                     {/* === DETTAGLI E STORICO (collassato) === */}
-                    <details style={{ marginTop: 6, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
+                    {!isBasics && <details style={{ marginTop: 6, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
                       <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 12px", fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, display: "flex", alignItems: "center", gap: 6 }}>
                         <span style={{ flex: 1 }}>Storico · Tecnica · Errori</span><span style={{ fontSize: 12 }}>›</span>
                       </summary>
@@ -5153,7 +5181,7 @@ export default function App() {
                         </button>
                       </div>
                     </div>
-                    </details>
+                    </details>}
                   </div>;
                 })()}
               </div>;
@@ -5162,26 +5190,22 @@ export default function App() {
             </div>}
 
             {/* Stretching */}
-            {!dayData.cardio && <div id="section-stretching">
+            {!dayData.cardio && !dayData.rest && <div id="section-stretching">
               <div onClick={function() { var opening = !showStr; setShowStr(opening); if (opening) { setShowIntro(false); setShowExSection(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-stretching"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showStr ? T.st + "22" : T.st + "0A", borderLeft: "3px solid " + T.st }}>
                 <div style={{ width: 30, height: 30, borderRadius: 8, background: T.st, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#129495;</div>
                 <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: T.st, textTransform: "uppercase", letterSpacing: 1 }}>Stretching finale</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{dayData.str ? dayData.str.length + " esercizi · 5-8 min" : ""}</div></div>
                 <div style={{ fontSize: 13, color: T.st, transform: showStr ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
               {showStr && <div style={{ padding: "0 14px 14px" }}><div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                {dayData.str.map(function(sn, si) { var sd = STR[sn]; if (!sd) return null; return <div key={si} style={{ background: T.sb, borderRadius: 8, padding: 12, marginBottom: 2 }}>
-                  <div style={{ fontWeight: 700, fontSize: 12, color: T.st, marginBottom: 2 }}>{sn}</div>
-                  <div style={{ fontSize: 11, color: dc, fontWeight: 600, marginBottom: 4 }}>{sd.d}</div>
-                  {sd.img && WS_IMG[sd.img] && <div>
-                    <button onClick={function() { setShowImg(showImg === "s" + si ? null : "s" + si); }} style={{ fontSize: 10, color: T.st, fontWeight: 600, background: "none", border: "1px solid " + T.st + "30", borderRadius: 5, padding: "2px 8px", cursor: "pointer", marginBottom: 4 }}>{showImg === "s" + si ? "nascondi" : "vedi foto"}</button>
-                    {showImg === "s" + si && <img src={WS_IMG[sd.img]} style={{ width: "100%", maxWidth: 280, borderRadius: 8, marginBottom: 6 }} />}
-                  </div>}
-                  <DetailText text={sd.h} accent={T.st} size={11} soft={true} />
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <span style={{ fontSize: 10, color: T.sub, fontStyle: "italic" }}>{sd.t}</span>
-                    <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-                      {sd.lk && <a href={sd.lk} target="_blank" rel="noopener noreferrer" style={{ fontSize: 10, color: dc, fontWeight: 600, textDecoration: "none" }}>video &rarr;</a>}
-                      {sd.tm && <button onClick={function() { quickTimer(sd.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"\u23F1 " + fmtLabel(sd.tm)}</button>}
+                {dayData.str.map(function(sn, si) { var sd = STR[sn]; if (!sd) return null; var imgSrc = sd.img && WS_IMG[sd.img] ? WS_IMG[sd.img] : null; return <div key={si} style={{ background: T.sb, borderRadius: 8, padding: "8px 10px", marginBottom: 2, display: "flex", gap: 10, alignItems: "flex-start" }}>
+                  {imgSrc ? <img src={imgSrc} style={{ width: 60, height: 60, objectFit: "cover", borderRadius: 7, flexShrink: 0, border: "1px solid " + T.bg }} /> : <div style={{ width: 60, height: 60, borderRadius: 7, background: T.st + "15", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>🧘</div>}
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontWeight: 700, fontSize: 12, color: T.st, marginBottom: 1 }}>{sn}</div>
+                    <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.45, marginBottom: 4 }}>{sd.h ? (typeof sd.h === "string" ? sd.h.replace(/<[^>]+>/g, "").substring(0, 100) + (sd.h.length > 100 ? "…" : "") : sd.d) : sd.d}</div>
+                    <div style={{ display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}>
+                      {sd.t && <span style={{ fontSize: 10, color: T.sub, fontStyle: "italic" }}>{sd.t}</span>}
+                      {sd.lk && <a href={sd.lk} target="_blank" rel="noopener noreferrer" style={{ fontSize: 10, color: dc, fontWeight: 600, textDecoration: "none" }}>video →</a>}
+                      {sd.tm && <button onClick={function() { quickTimer(sd.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "2px 8px", border: "none", borderRadius: 5, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"\u23F1 " + fmtLabel(sd.tm)}</button>}
                     </div>
                   </div>
                 </div>; })}
