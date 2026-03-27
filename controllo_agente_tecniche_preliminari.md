@@ -107,13 +107,13 @@ Le sezioni da mantenere sono:
 - non va descritto solo come posizione scapolare, ma come controllo dinamico durante spinte e tirate
 
 ### 7. Pattern base di spinta e tirata
-- immagine di riferimento: `Push-Up`
+- immagine di riferimento: `Push-Up ginocchia a terra`
 - non usare `lat machine controllata` come prerequisito obbligatorio se non coerente con attrezzi disponibili
 - usare invece:
+  - push-up ginocchia a terra
   - push-up su rialzo
   - floor press manubri
-  - trazioni assistite con elastico
-  - trazioni negative
+  - sospensione attiva alla sbarra
   - pulley leggero
 
 ## Mappa competenze → esercizi

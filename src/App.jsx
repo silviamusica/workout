@@ -94,6 +94,8 @@ import img_Dead_Bug from "./images/preliminary/dead bug.gif";
 import img_Goblet_Squat from "./images/preliminary/goblet squat.gif";
 import img_Glute_Bridge from "./images/preliminary/Glute-Bridge-.gif";
 import img_Pallof_Press from "./images/preliminary/Pallof+Press.gif";
+import img_Pelvic_Tilt from "./images/preliminary/Pelvic-Tilt.gif";
+import img_Push_Up_Ginocchia from "./images/preliminary/push up ginocchia.gif";
 
 // Muscle map
 import img_muscle_map from "./images/muscle_map.jpg";
@@ -233,6 +235,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
 "Dead Bug": {"g": "Core/Stabilizzazione", "c": "Supina, braccia verso il soffitto e ginocchia a 90 gradi. Estendi braccio e gamba opposti senza perdere la lombare a terra.", "p": "Zona lombare sempre incollata a terra. Movimento lento e controllato.", "t": ["Se la schiena si stacca, accorcia il range", "Espira mentre estendi", "Il bacino non deve ruotare"]},
 "Bird Dog": {"g": "Core/Stabilizzazione", "c": "A quattro zampe. Allunga braccio e gamba opposti mantenendo il busto fermo e il bacino stabile.", "p": "Spalle e anche parallele al pavimento. Colonna lunga e neutra.", "t": ["Non sollevare troppo la gamba", "Il movimento e lento, non esplosivo", "Immagina di allungarti in due direzioni"]},
 "Pelvic Tilt a terra": {"g": "Bacino/Core", "c": "Sdraiata supina, ginocchia flesse. Alterna retroversione e anteroversione del bacino senza muovere torace e spalle.", "p": "Spalle rilassate, piedi a terra, movimento piccolo ma controllato.", "t": ["Prima appiattisci la lombare", "Poi crea un piccolo arco", "L'obiettivo e sentire il bacino, non fare forza"]},
+"Sospensione attiva alla sbarra": {"g": "Scapole/Presa/Core", "c": "Appenditi alla sbarra a braccia tese. Tieni il corpo lungo, spalle lontane dalle orecchie e addome attivo senza iniziare una vera tirata.", "p": "Braccia distese, collo lungo, costole giu e bacino stabile. Non devi tirarti su.", "t": ["Serve a prendere confidenza con la sbarra", "Se serve appoggia leggermente i piedi", "Conta piu la posizione che il tempo"]},
 "Goblet Squat": {"g": "Quadricipiti/Glutei/Core", "c": "Tieni un manubrio al petto. Scendi in squat fino al parallelo e risali spingendo il pavimento.", "p": "Talloni a terra, petto aperto, gomiti vicini al tronco.", "t": ["Il peso davanti ti aiuta a stare piu eretta", "Ginocchia nella direzione dei piedi", "Scendi solo fin dove resti stabile"]},
 "Test del bastone": {"g": "Hip Hinge/Controllo colonna", "c": "Tieni un bastone lungo la schiena in tre punti di contatto: testa, dorsale alta e sacro. Fai una cerniera d'anca senza perdere i contatti.", "p": "Ginocchia morbide, sedere indietro, collo neutro.", "t": ["Se perdi un contatto stai piegando la schiena", "Il bastone ti dice subito se il pattern e giusto", "Poche ripetizioni, massima precisione"]},
 "Good Morning senza peso": {"g": "Hip Hinge/Femorali/Glutei", "c": "In piedi, mani dietro la testa o al petto. Spingi il bacino indietro mantenendo la schiena neutra, poi torna su.", "p": "Peso su tutta la pianta del piede. Colonna lunga e stabile.", "t": ["Senti allungare femorali e glutei", "Le tibie restano quasi verticali", "Se senti la lombare, riduci il range"]},
@@ -240,6 +243,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
 "Band Pull-Apart con elastico": {"g": "Scapole/Deltoidi posteriori", "c": "Elastico leggero davanti al petto, braccia tese. Apri le braccia fino a portare l'elastico verso il petto.", "p": "Spalle basse, petto aperto, gomiti morbidi ma fermi.", "t": ["Apri senza inarcare la schiena", "Alla fine senti le scapole che si avvicinano", "Usa un elastico molto leggero"]},
 "Retrazione scapolare al muro": {"g": "Scapole/Postura", "c": "Schiena al muro, braccia a W. Premi gomiti e dorso delle mani contro il muro e stringi le scapole insieme.", "p": "Costole giu, collo neutro, schiena aderente al muro.", "t": ["Tieni 2-3 secondi in retrazione", "Non alzare le spalle", "Movimento piccolo ma preciso"]},
 "Squat a corpo libero": {"g": "Quadricipiti/Glutei/Core", "c": "Scendi in squat a corpo libero fino al parallelo o fin dove controlli bene il movimento. Risali spingendo il pavimento.", "p": "Talloni a terra, busto stabile, ginocchia nella direzione dei piedi.", "t": ["Braccia avanti per equilibrio", "Scendi con controllo", "La profondita conta solo se resti stabile"]},
+"Push-Up ginocchia a terra": {"g": "Pettorali/Tricipiti/Core", "c": "Parti in appoggio su mani e ginocchia, corpo in linea tra testa, anche e ginocchia. Scendi col petto verso il pavimento e spingi su senza perdere il tronco.", "p": "Addome attivo, glutei leggermente contratti, gomiti circa a 45 gradi.", "t": ["Meglio poco range ma pulito", "Se serve usa anche un rialzo", "Il bacino non deve cedere"]},
 "Glute Bridge": {"g": "Glutei/Bacino", "c": "Supina, piedi a terra. Solleva il bacino fino ad allineare ginocchia, anche e spalle, poi scendi controllando.", "p": "In alto retroverti il bacino e stringi i glutei. Non iperestendere la lombare.", "t": ["Spingi dai talloni", "Pausa breve in alto", "Se senti solo la schiena, riduci il range"]},
 "Pallof Press": {"g": "Core anti-rotazione", "c": "In piedi o in ginocchio con elastico o cavo al lato. Spingi le braccia avanti e resisti alla rotazione del busto.", "p": "Costole giu, bacino fermo, busto frontale. Le braccia si muovono ma il tronco non gira.", "t": ["Poco carico, massimo controllo", "Espira mentre allontani le mani", "Se il busto ruota, alleggerisci"], "lk": "https://www.youtube.com/watch?v=qQOsWutOQoM"}
 };
@@ -1405,7 +1409,7 @@ var DAYS_BASICS = [
     warmup: [
       { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 minuti per entrare nella seduta.", tm: 120 },
       { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente per iniziare a muovere colonna e bacino." },
-      { n: "Pelvic Tilt a terra", img: "w_CatCow", d: "10 ripetizioni lente: senti anteroversione e retroversione del bacino senza muovere il torace." },
+      { n: "Pelvic Tilt a terra", img: "Pelvic Tilt a terra", d: "10 ripetizioni lente: senti anteroversione e retroversione del bacino senza muovere il torace." },
     ],
     ex: [
       { n: "Breathing + Brace supino", s: "3x5", rpe: "", note: "5 respiri controllati per serie. Addome che spinge a 360 gradi.", rec: "60s", gear: "Tappetino", errori: "Pancia risucchiata; spalle rigide; torace che si alza troppo" },
@@ -1438,10 +1442,10 @@ var DAYS_BASICS = [
     str: ["Femorali","Dorsali","Spalle"] },
   { name: "Giorno C", focus: "Tecniche preliminari — spinta, tirata e core", dur: "5 esercizi", tEst: 40,
     intro: {
-      attrezzi: ["Rialzo o panca", "Elastico per trazioni", "Tappetino", "Panca o supporto"],
-      muscoli: ["Pettorali e tricipiti", "Dorsali", "Core", "Glutei"],
+      attrezzi: ["Rialzo o panca", "Barra trazioni", "Tappetino", "Elastico o cavo"],
+      muscoli: ["Pettorali e tricipiti", "Scapole e dorsali", "Core", "Glutei"],
       obiettivi: ["Pulire il pattern di spinta", "Pulire il pattern di tirata", "Integrare core e bacino nei movimenti"],
-      attenzione: ["Push-Up: corpo in linea", "Trazioni: parti dalle scapole", "Glute Bridge: no iperestensione lombare"],
+      attenzione: ["Push-Up facilitato: corpo in linea anche con le ginocchia a terra", "Sbarra: prima impara a stare appesa bene, non a tirarti su", "Glute Bridge: no iperestensione lombare"],
       ritmo: "Recuperi 60-90 secondi. Ti devi sentire lucida, non sfinita."
     },
     warmup: [
@@ -1450,8 +1454,8 @@ var DAYS_BASICS = [
       { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente prima del core e della spinta." },
     ],
     ex: [
-      { n: "Push-Up", s: "3x6-10", rpe: "7", note: "Usa un rialzo o le ginocchia se serve. Il corpo resta rigido.", rec: "60-90s", gear: "Corpo libero o rialzo", errori: "Bacino che cede; testa che penzola; ROM corto" },
-      { n: "Trazioni", s: "3x3-6", rpe: "7", note: "Assistite con elastico o in negativa controllata. Parti da scapole attive.", rec: "90s", gear: "Barra trazioni + elastico", errori: "Slancio; spalle alte; gomiti che piegano prima delle scapole" },
+      { n: "Push-Up ginocchia a terra", s: "3x6-10", rpe: "7", note: "Versione facilitata. Se serve usa anche un rialzo. Il corpo resta rigido da testa a ginocchia.", rec: "60-90s", gear: "Corpo libero o rialzo", errori: "Bacino che cede; testa che penzola; gomiti troppo larghi; ROM corto" },
+      { n: "Sospensione attiva alla sbarra", s: "3x15-25s", rpe: "", note: "Appenditi con braccia tese, spalle basse e addome attivo. Serve a prendere confidenza con la sbarra, non a fare trazioni.", rec: "60-90s", gear: "Barra trazioni", errori: "Spalle alle orecchie; corpo molle; partire a tirare con i gomiti" },
       { n: "Bird Dog", s: "3x8 per lato", rpe: "", note: "Movimento lento. Bacino fermo.", rec: "60s", gear: "Tappetino", errori: "Bacino che ruota; slancio; gamba troppo alta" },
       { n: "Glute Bridge", s: "3x10", rpe: "", note: "Retroversione in alto, glutei stretti, lombare neutra.", rec: "60s", gear: "Tappetino", errori: "Salire con la schiena; piedi troppo lontani; nessuna pausa in alto" },
       { n: "Pallof Press", s: "3x8-10 per lato", rpe: "", note: "Elastico o cavo laterale. Spingi le mani avanti senza lasciare ruotare il busto.", rec: "60s", gear: "Elastico o cavo", errori: "Busto che gira; spalle che salgono; fretta" },
@@ -1727,18 +1731,18 @@ var BASIC_COMPETENCIES = [
   },
   {
     id: "patterns",
-    img: "Push-Up",
+    img: "Push-Up ginocchia a terra",
     badge: "Parallela",
     tone: "#2E7D32",
     t: "7. Pattern base di spinta e tirata",
     summary: "Spingere e tirare con assetto stabile, ROM completo e scapole controllate.",
     d: [
-      { type: "p", content: "Push-Up e Row/Trazioni sono pattern, non solo esercizi. Prima li impari in versione facile, poi li carichi." },
+      { type: "p", content: "Spinta e tirata si imparano con versioni facili e controllate. Prima corpo rigido e scapole stabili, poi eventualmente carichi o varianti piu difficili." },
       { type: "bold-list", content: [
         ["Perche conta", "Prima impari il gesto base, poi aggiungi difficolta. Se il pattern e sporco, il carico peggiora solo il difetto e rende meno efficiente il movimento."],
         ["Ti serve in", "Push-Up, Floor Press Manubri, Panca, Trazioni, Trazioni assistite, Pulley, rematori."],
-        ["Segnali giusti", "Push-Up con corpo rigido e petto che scende davvero; tirate con scapole attive e ROM completo."],
-        ["Esercizi utili", "Push-Up su rialzo, Floor Press Manubri, Trazioni assistite con elastico, Trazioni negative, Pulley leggero."],
+        ["Segnali giusti", "Push-Up facilitato con corpo rigido e petto che scende davvero; sospensione o tirate leggere con scapole attive e senza slancio."],
+        ["Esercizi utili", "Push-Up ginocchia a terra, Push-Up su rialzo, Floor Press Manubri, Sospensione attiva alla sbarra, Pulley leggero."],
         ["Test rapido", "Il movimento resta uguale dalla prima all'ultima ripetizione senza slancio o scorciatoie."],
       ]},
     ]
@@ -1773,6 +1777,7 @@ var EXERCISE_COMPETENCIES = {
   "Panca": ["brace","scapole","patterns"],
   "Floor Press Manubri": ["brace","patterns"],
   "Push-Up": ["brace","core","patterns"],
+  "Push-Up ginocchia a terra": ["brace","core","patterns"],
   "Push-Up Declino": ["brace","core","patterns"],
   "Push-Up Diamante": ["brace","core","patterns"],
   "Military Press": ["brace"],
@@ -1796,6 +1801,7 @@ var EXERCISE_COMPETENCIES = {
   "Pelvic Tilt a terra": ["bacino"],
   "Breathing + Brace supino": ["brace"],
   "Pallof Press": ["core"],
+  "Sospensione attiva alla sbarra": ["scapole","patterns"],
 };
 
 var PRELIM_INTRO_BASICS = [
@@ -1918,8 +1924,9 @@ var EX_IMG = {
   "Nordic Curl": img_Nordic_Curl,
   "Overhead Extension": img_Overhead_Extension,
   "Panca": img_Panca,
-  "Pelvic Tilt a terra": img_w_CatCow,
+  "Pelvic Tilt a terra": img_Pelvic_Tilt,
   "Pallof Press": img_Pallof_Press,
+  "Push-Up ginocchia a terra": img_Push_Up_Ginocchia,
   "Pause Squat": img_Pause_Squat,
   "Pendlay Row": img_Pendlay_Row,
   "Plank": img_Plank,
@@ -1934,6 +1941,7 @@ var EX_IMG = {
   "Rematore Manubri": img_Rematore_Manubri,
   "Shoulder Tap": img_Shoulder_Tap,
   "Scapular Pull-Up": img_w_SospensioneAttivaSbarra,
+  "Sospensione attiva alla sbarra": img_w_SospensioneAttivaSbarra,
   "Single Leg Deadlift": img_Single_Leg_Deadlift,
   "Squat": img_Squat,
   "Squat a corpo libero": img_w_SquatBL,
@@ -4480,14 +4488,23 @@ export default function App() {
           {Object.keys(EX).sort().map(function(name, ei) {
             var db = EX[name];
             var hasImg = !!EX_IMG[name];
-            return <div key={ei} onClick={function() { setExInfoOpen(name); }} style={{ background: T.cd, borderRadius: 8, marginBottom: 2, overflow: "hidden", cursor: "pointer", display: "flex", alignItems: "center" }}>
-              {hasImg && <img src={EX_IMG[name]} style={{ width: 48, height: 48, objectFit: "cover", flexShrink: 0 }} />}
+            return <div key={ei} style={{ background: T.cd, borderRadius: 8, marginBottom: 2, overflow: "hidden" }}>
+              <div onClick={function() { setExInfoOpen(name); }} style={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
+              {hasImg && <img onClick={function(e) { e.stopPropagation(); setShowImg(showImg === "el" + ei ? null : "el" + ei); }} src={EX_IMG[name]} style={{ width: 48, height: 48, objectFit: "cover", flexShrink: 0, cursor: "zoom-in" }} />}
               {!hasImg && <div style={{ width: 48, height: 48, background: dc + "12", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, flexShrink: 0, color: dc }}>?</div>}
               <div style={{ padding: "6px 10px", flex: 1, minWidth: 0 }}>
                 <div style={{ fontWeight: 700, fontSize: 12 }}>{name}</div>
                 <div style={{ fontSize: 10, color: T.sub }}>{db.g}</div>
               </div>
               <div style={{ paddingRight: 12, color: T.sub, fontSize: 12 }}>&#8250;</div>
+              </div>
+              {hasImg && showImg === "el" + ei && <div style={{ padding: "4px 10px 10px", display: "flex", gap: 8, alignItems: "flex-start" }}>
+                <img onClick={function(e) { e.stopPropagation(); setShowImg(null); }} src={EX_IMG[name]} style={{ width: 130, height: 130, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "zoom-out" }} />
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{db.c}</div>
+                  {db.lk && <EmbedLink url={db.lk} label="Video" size={10} style={{ marginTop: 4 }} />}
+                </div>
+              </div>}
             </div>;
           })}
         </div>}
@@ -4523,7 +4540,7 @@ export default function App() {
                   <div style={{ paddingRight: 12, color: T.sub, fontSize: 12 }}>&#9662;</div>
                 </div>
                 {showImg === "wl" + wi && <div style={{ padding: "4px 10px 10px", display: "flex", gap: 8, alignItems: "flex-start" }}>
-                  {hasImg && <img src={imgSrc} style={{ width: 130, height: 130, objectFit: "cover", borderRadius: 8, flexShrink: 0 }} />}
+                  {hasImg && <img onClick={function(e) { e.stopPropagation(); setShowImg(null); }} src={imgSrc} style={{ width: 130, height: 130, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "zoom-out" }} />}
                   <div style={{ flex: 1 }}>
                     <DetailText text={w.d} accent={dc} size={11} soft={true} />
                     {w.lk && <EmbedLink url={w.lk} label="Video" size={10} style={{ marginTop: 4 }} />}
@@ -4557,7 +4574,7 @@ export default function App() {
                 <div style={{ paddingRight: 12, color: T.sub, fontSize: 12 }}>&#9662;</div>
               </div>
               {showImg === "sl" + si && <div style={{ padding: "4px 10px 10px", display: "flex", gap: 8, alignItems: "flex-start" }}>
-                {hasImg && <img src={WS_IMG[sd.img]} style={{ width: 130, height: 130, objectFit: "cover", borderRadius: 8, flexShrink: 0 }} />}
+                {hasImg && <img onClick={function(e) { e.stopPropagation(); setShowImg(null); }} src={WS_IMG[sd.img]} style={{ width: 130, height: 130, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "zoom-out" }} />}
                 <div style={{ flex: 1 }}>
                   <DetailText text={sd.h} accent={T.st} size={11} soft={true} />
                   <div style={{ fontSize: 10, color: T.sub, fontStyle: "italic", marginTop: 4 }}>{sd.t}</div>
@@ -4756,7 +4773,7 @@ export default function App() {
                           </div>
                         </div>
                       </div>
-                      {hasImg && showImg === "w" + wi && <img src={imgSrc} style={{ width: "100%", borderRadius: 8, marginTop: 8 }} />}
+                      {hasImg && showImg === "w" + wi && <img onClick={function() { setShowImg(null); }} src={imgSrc} style={{ width: "100%", borderRadius: 8, marginTop: 8, cursor: "zoom-out" }} />}
                     </div>;
                   })}
                 </div>
@@ -4973,7 +4990,7 @@ export default function App() {
                 </div>
                 {rowImg && showImg === ("ex-thumb-" + i) && <div style={{ padding: "0 14px 12px", background: isX ? T.sb : "transparent" }}>
                   <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg, background: T.cd, padding: 10 }}>
-                    <img src={rowImg} style={{ width: "100%", display: "block", borderRadius: 10 }} />
+                    <img onClick={function() { setShowImg(null); }} src={rowImg} style={{ width: "100%", display: "block", borderRadius: 10, cursor: "zoom-out" }} />
                     {db && db.lk && <EmbedLink url={db.lk} label="▶ Video tutorial" size={11} style={{ marginTop: 8 }} />}
                   </div>
                 </div>}
@@ -5254,8 +5271,9 @@ export default function App() {
                 <div style={{ fontSize: 13, color: T.st, transform: showStr ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
               {showStr && <div style={{ padding: "0 14px 14px" }}><div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                {dayData.str.map(function(sn, si) { var sd = STR[sn]; if (!sd) return null; var imgSrc = sd.img && WS_IMG[sd.img] ? WS_IMG[sd.img] : null; return <div key={si} style={{ background: T.sb, borderRadius: 8, padding: "8px 10px", marginBottom: 2, display: "flex", gap: 10, alignItems: "flex-start" }}>
-                  {imgSrc ? <img src={imgSrc} style={{ width: 60, height: 60, objectFit: "cover", borderRadius: 7, flexShrink: 0, border: "1px solid " + T.bg }} /> : <div style={{ width: 60, height: 60, borderRadius: 7, background: T.st + "15", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>🧘</div>}
+                {dayData.str.map(function(sn, si) { var sd = STR[sn]; if (!sd) return null; var imgSrc = sd.img && WS_IMG[sd.img] ? WS_IMG[sd.img] : null; return <div key={si} style={{ background: T.sb, borderRadius: 8, padding: "8px 10px", marginBottom: 2 }}>
+                  <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                  {imgSrc ? <img onClick={function() { setShowImg(showImg === "dst" + si ? null : "dst" + si); }} src={imgSrc} style={{ width: 60, height: 60, objectFit: "cover", borderRadius: 7, flexShrink: 0, border: "1px solid " + T.bg, cursor: "zoom-in" }} /> : <div style={{ width: 60, height: 60, borderRadius: 7, background: T.st + "15", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>🧘</div>}
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ fontWeight: 700, fontSize: 12, color: T.st, marginBottom: 1 }}>{sn}</div>
                     <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.45, marginBottom: 4 }}>{sd.h ? (typeof sd.h === "string" ? sd.h.replace(/<[^>]+>/g, "").substring(0, 100) + (sd.h.length > 100 ? "…" : "") : sd.d) : sd.d}</div>
@@ -5265,6 +5283,8 @@ export default function App() {
                       {sd.tm && <button onClick={function() { quickTimer(sd.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "2px 8px", border: "none", borderRadius: 5, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"\u23F1 " + fmtLabel(sd.tm)}</button>}
                     </div>
                   </div>
+                  </div>
+                  {imgSrc && showImg === "dst" + si && <img onClick={function() { setShowImg(null); }} src={imgSrc} style={{ width: "100%", borderRadius: 8, marginTop: 8, cursor: "zoom-out" }} />}
                 </div>; })}
               </div></div>}
             </div>}
