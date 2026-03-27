@@ -1328,7 +1328,7 @@ var DAYS_V4 = [
     ],
     ex: [
       { n: "Squat", s: "4x6-8", rpe: "8-9", note: "Setup: piedi larghezza spalle, punte 15-30 gradi, mani simmetriche, gomiti giu e leggermente dietro. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper + rack", errori: "Ginocchia che collassano dentro; busto che cade avanti in risalita; talloni che si alzano; schiena che si arrotonda in buca" },
-      { n: "Squat Bulgaro", s: "3x10-12", rpe: "8", note: "Setup: piedi su due binari, piede davanti ben piantato, piede dietro in appoggio morbido. RPE 8 per gamba. Alternativa: TRX split squat.", rec: "90s-2 min", gear: "Manubri + panca", errori: "Ginocchio ant che supera la punta piede; piede post troppo lontano; tronco che oscilla" },
+      { n: "Squat Bulgaro", s: "3x10-12", rpe: "8", note: "Setup: piedi su due binari, piede davanti ben piantato, piede dietro in appoggio morbido. RPE 8 per gamba. Alternativa: TRX split squat.", rec: "90s-2 min", gear: "Manubri + panca", errori: "Ginocchio che collassa verso l'interno; peso che scappa sull'avampiede; tronco che oscilla" },
       { n: "Hip Thrust Bilanciere", s: "4x10-12", rpe: "8-9", note: "Setup: piedi larghezza bacino-spalle, tibia quasi verticale in alto, mento leggermente chiuso. RPE 8-9.", rec: "2 min", gear: "Bilanciere + bumper + panca", errori: "Iperestensione lombare in alto; appoggio scapole troppo basso; piedi troppo vicini" },
       { n: "Nordic Curl", s: "3x5-8", rpe: "8", note: "Setup: ginocchia larghezza anche, bacino neutro o leggera retroversione. Assisti con elastico se serve.", rec: "2 min", gear: "Elastico + rack", errori: "Cedere col busto; fase eccentrica troppo veloce" },
       { n: "Ab Wheel", s: "3x8-10", rpe: "8", note: "Dalle ginocchia. Costole giu e glutei attivi. Alternativa: TRX fallout o fitball rollout.", rec: "90s", gear: "Ab wheel", errori: "Lombare che si inarca; anche che non si estendono; range troppo corto" },
@@ -1440,9 +1440,9 @@ var DAYS_BASICS = [
     ex: [
       { n: "Breathing + Brace supino", s: "3x5", rpe: "", note: "5 respiri controllati per serie. Addome che spinge a 360 gradi.", rec: "60s", gear: "Tappetino", errori: "Pancia risucchiata; spalle rigide; torace che si alza troppo" },
       { n: "Dead Bug", s: "3x8 per lato", rpe: "", note: "Lombare sempre a terra. Movimento lento.", rec: "60s", gear: "Tappetino", errori: "Lombare che si stacca; fretta; bacino che ruota" },
-      { n: "Squat a corpo libero", s: "3x8-10", rpe: "7", note: "Talloni a terra, ginocchia fuori, scendi solo fin dove controlli bene.", rec: "60-90s", gear: "Corpo libero", errori: "Talloni che si alzano; ginocchia che collassano; busto instabile" },
-      { n: "Goblet Squat", s: "3x8", rpe: "7", note: "Peso leggero. Pausa di 2-3 secondi in basso. I gomiti aiutano a spingere le ginocchia verso fuori per trovare piu stabilita.", rec: "90s", gear: "Manubrio leggero", errori: "Peso troppo alto; schiena che si chiude; movimento incoerente" },
-      { n: "Plank", s: "3x20-30s", rpe: "", note: "Sedere basso, costole giu, glutei contratti.", rec: "60s", gear: "Tappetino", errori: "Bacino che cede; sedere troppo alto; apnea" },
+      { n: "Squat a corpo libero", s: "3x8-10", rpe: "", note: "Talloni a terra. Ginocchia nella direzione dei piedi. Scendi solo fin dove controlli bene.", rec: "60-90s", gear: "Corpo libero", errori: "Talloni che si alzano; ginocchia che collassano; busto instabile" },
+      { n: "Goblet Squat", s: "3x8", rpe: "", note: "Peso leggero. Pausa 2-3 secondi in basso. I gomiti aiutano a spingere le ginocchia verso fuori.", rec: "90s", gear: "Manubrio leggero", errori: "Peso troppo alto; schiena che si chiude; movimento incoerente" },
+      { n: "Plank", s: "3x20-30s", rpe: "", note: "Gomiti sotto le spalle. Costole giu. Glutei attivi. Bacino neutro.", rec: "60s", gear: "Tappetino", errori: "Bacino che cede; sedere troppo alto; apnea" },
     ],
     str: ["Glutei","Quadricipiti","Flessori anca"] },
   { name: "Giorno B", focus: "Tecniche preliminari — hip hinge e scapole", dur: "5 esercizi", tEst: 40,
@@ -1454,14 +1454,14 @@ var DAYS_BASICS = [
       ritmo: "Recuperi 60-90 secondi. Qualita del gesto prima del volume."
     },
     warmup: [
-      { n: "Jumping jacks", img: "w_JumpingJacks", d: "2 minuti leggeri.", tm: 120 },
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 minuti leggeri.", tm: 120 },
     ],
     ex: [
-      { n: "Test del bastone", s: "3x6", rpe: "", note: "Poche ripetizioni precise. Il bastone deve toccare testa, parte alta della schiena e osso sacro. Non deve toccare il vuoto naturale della lombare. Se perdi uno dei 3 punti, fermati.", rec: "60s", gear: "Bastone", errori: "Schiena che si muove; ginocchia troppo piegate; fretta" },
-      { n: "Good Morning senza peso", s: "3x10", rpe: "7", note: "Movimento lento. Obiettivo: sedere indietro e schiena neutra.", rec: "60-90s", gear: "Corpo libero", errori: "Piegarti dalla schiena; sedere che scende invece di andare indietro; collo contratto" },
-      { n: "Scapular Pull-Up", s: "2x5", rpe: "", note: "Braccia tese. Movimento piccolo ma pulito.", rec: "60s", gear: "Barra trazioni", errori: "Gomiti che si piegano; spalle alle orecchie; slancio" },
+      { n: "Test del bastone", s: "3x6", rpe: "", note: "Poche ripetizioni precise. Il bastone resta in contatto con testa, dorsale alta e sacro.", rec: "60s", gear: "Bastone", errori: "Schiena che si muove; ginocchia troppo piegate; fretta" },
+      { n: "Good Morning senza peso", s: "3x10", rpe: "", note: "Movimento lento. Obiettivo: sedere indietro e schiena stabile.", rec: "60-90s", gear: "Corpo libero", errori: "Piegarti dalla schiena; sedere che scende; collo contratto" },
+      { n: "Scapular Pull-Up", s: "2x5", rpe: "", note: "Braccia tese. Movimento piccolo ma pulito. Regressione: piedi in appoggio su box, lat machine con sola depressione scapolare o elastico assistito.", rec: "60s", gear: "Barra trazioni", errori: "Gomiti che si piegano; spalle alle orecchie; slancio" },
       { n: "Band Pull-Apart con elastico", s: "2x15", rpe: "", note: "Elastico leggero. Scapole addotte in fondo.", rec: "60s", gear: "Elastico leggero", errori: "Schiena che si inarca; trapezio alto dominante; elastico troppo duro" },
-      { n: "Face Pull", s: "2x12-15", rpe: "", note: "Cavo leggero. Tira verso il viso con gomiti larghi e spalle basse. Obiettivo: controllo scapolare, non fatica.", rec: "60s", gear: "Cavo alto + corda", errori: "Spalle che salgono; slancio; gomiti che scendono" },
+      { n: "Face Pull", s: "2x12-15", rpe: "", note: "Cavo leggero. Tira verso il viso con gomiti larghi e spalle basse.", rec: "60s", gear: "Cavo alto + corda", errori: "Spalle che salgono; slancio; gomiti che scendono" },
     ],
     str: ["Femorali","Dorsali","Spalle"] },
   { name: "Giorno C", focus: "Tecniche preliminari — spinta, tirata e core", dur: "5 esercizi", tEst: 40,
@@ -1477,7 +1477,7 @@ var DAYS_BASICS = [
     ],
     ex: [
       { n: "Push-Up ginocchia a terra", s: "3x6-10", rpe: "7", note: "Versione facilitata. Se serve usa anche un rialzo. Da testa a ginocchia devi restare in linea, senza piegarti in mezzo.", rec: "60-90s", gear: "Corpo libero o rialzo", errori: "Bacino che cede; testa che penzola; gomiti troppo larghi; movimento troppo corto" },
-      { n: "Sospensione attiva alla sbarra", s: "3x15-25s", rpe: "", note: "Appenditi con braccia tese, spalle basse e pancia leggermente attiva. Serve a prendere confidenza con la sbarra, non a fare trazioni.", rec: "60-90s", gear: "Barra trazioni", errori: "Spalle alle orecchie; corpo molle; partire a tirare con i gomiti" },
+      { n: "Sospensione attiva alla sbarra", s: "3x15-25s", rpe: "", note: "Appenditi con braccia tese. Spalle basse e pancia leggermente attiva. Non devi fare trazioni. Regressione: piedi in appoggio su box o tenuta attiva al lat machine/cavo alto.", rec: "60-90s", gear: "Barra trazioni", errori: "Spalle alle orecchie; corpo molle; partire a tirare con i gomiti" },
       { n: "Bird Dog", s: "3x8 per lato", rpe: "", note: "Movimento lento. Bacino fermo.", rec: "60s", gear: "Tappetino", errori: "Bacino che ruota; slancio; gamba troppo alta" },
       { n: "Glute Bridge", s: "3x10", rpe: "", note: "Retroversione in alto, glutei stretti, lombare neutra.", rec: "60s", gear: "Tappetino", errori: "Salire con la schiena; piedi troppo lontani; nessuna pausa in alto" },
       { n: "Pallof Press", s: "3x8-10 per lato", rpe: "", note: "Elastico o cavo laterale. Spingi le mani avanti senza lasciare ruotare il busto.", rec: "60s", gear: "Elastico o cavo", errori: "Busto che gira; spalle che salgono; fretta" },
@@ -1497,14 +1497,14 @@ var DAYS_BEGINNER = [
     warmup: [
       { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti. Alza la temperatura corporea e prepara anche e caviglie.", tm: 180 },
       { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente per mobilizzare colonna e bacino." },
-      { n: "Serie avvicinamento squat o goblet squat", img: "w_SerieAvvicinamentoSquat", d: "1-3 mini-serie leggere prima del carico di lavoro. Manubri, bilanciere o TRX: servono a prepararti, non a stancarti." },
+      { n: "Serie avvicinamento squat", img: "w_SerieAvvicinamentoSquat", d: "1-3 mini-serie leggere prima del carico di lavoro.", gear: "Manubri o bilanciere" },
     ],
     ex: [
       { n: "Squat", s: "3x8-10", rpe: "8", note: "Base: squat con manubri o bilanciere, 1-2 RIR. Setup: piedi larghezza spalle, punte 15-30°, ginocchia seguono le punte, peso sul mesopiede. Mani simmetriche; gomiti giu e leggermente dietro se usi il bilanciere. Alternative: TRX squat o goblet squat.", rec: "90s-2 min", gear: "Manubri, bilanciere o TRX", errori: "Profondita che si accorcia; ginocchia che collassano; talloni che si sollevano; schiena che perde assetto" },
-      { n: "Floor Press Manubri", s: "3x8-10", rpe: "8", note: "Base: panca manubri o floor press. Setup: piedi saldi a terra, mani sopra i gomiti, gomiti 30-60° dal busto, scapole stabili. Alternative: TRX chest press, cable chest press, push-up su rialzo.", rec: "90s", gear: "Manubri + panca, tappetino, TRX o cavi", errori: "Spalle sollevate; gomiti aperti a 90°; polsi piegati; ROM incoerente" },
+      { n: "Floor Press Manubri", s: "3x8-10", rpe: "8", note: "Su panca se disponibile per ROM completo. A terra il ROM e limitato. In alternativa push-up facilitati su rialzo.", rec: "90s", gear: "Manubri + panca (o tappetino)", errori: "Spalle sollevate dalla panca; gomiti troppo aperti a 90 gradi; ROM incoerente tra le ripetizioni" },
       { n: "Rematore Manubri", s: "3x8-12", rpe: "8", note: "Base: rematore manubri. Setup: mano e ginocchio opposti in appoggio, piede a terra stabile, busto fermo. Mano neutra; tira il gomito verso il fianco senza alzare la spalla. Alternative: TRX row o pulley basso.", rec: "90s", gear: "Manubri + panca, TRX o pulley", errori: "Busto che oscilla; slancio col braccio; spalla che sale; gomito troppo largo" },
-      { n: "Fitball Hamstring Curl", s: "3x10-12", rpe: "8", note: "Base: fitball hamstring curl. Setup: supina, talloni sulla fitball, braccia a terra rilassate, bacino alto dall'inizio alla fine. Alternative: TRX hamstring curl o glute bridge su fitball.", rec: "90s", gear: "Fitball o TRX", errori: "Bacino che cade; piedi che scivolano; range incompleto; lombare che compensa" },
-      { n: "Plank", s: "3x20-45s", rpe: "", note: "Base: plank frontale. Setup: gomiti sotto le spalle, piedi uniti o poco separati, glutei stretti, costole giu. Alternative: fitball plank solo se il base e stabile.", rec: "60s", gear: "Tappetino", errori: "Bacino che cede; anche troppo alte; spalle incassate; apnea" },
+      { n: "Glute Bridge su Fitball", s: "3x10-12", rpe: "8", note: "Base: supina con talloni sulla fitball e bacino alto. Spingi dai talloni e fermati 1 secondo in alto senza inarcare la lombare. Progressione: fitball hamstring curl. Alternativa: glute bridge a terra o TRX hamstring curl se gia controlli bene il bacino.", rec: "60-90s", gear: "Fitball o TRX", errori: "Bacino che crolla; spinta sulla lombare; piedi troppo lontani; nessuna pausa in alto" },
+      { n: "Plank", s: "3x20-45s", rpe: "", note: "Ferma la serie quando perdi l'allineamento. Respira normalmente senza rilasciare la contrazione addominale.", rec: "60s", gear: "Tappetino", errori: "Bacino che cede verso il basso; anche che si alzano; spalle incassate; apnea" },
     ],
     str: ["Quadricipiti","Glutei","Pettorali","Dorsali"] },
   { name: "Giorno 2", focus: "Riposo", rest: true, intro: { attrezzi: [], muscoli: [], obiettivi: ["Passeggiata leggera o mobilita facoltativa"], attenzione: ["Nessun allenamento strutturato"], ritmo: "Camminata facile, mobilita breve o riposo completo." }, warmup: [], ex: [], str: [] },
@@ -1520,12 +1520,12 @@ var DAYS_BEGINNER = [
       { n: "Jumping jacks", img: "w_JumpingJacks", d: "2-3 minuti a ritmo leggero per entrare nella seduta.", tm: 180 },
       { n: "Good Morning senza peso", img: "w_GoodMorningSenzaPeso", d: "10 ripetizioni lente. Focus: sedere indietro, schiena neutra." },
       { n: "Band Pull-Apart con elastico", img: "w_CerchiApertura", d: "2x15. Elastico leggero, braccia tese davanti al petto. Apri fino al petto e senti le scapole." },
-      { n: "Serie avvicinamento tirata verticale", img: "w_SospensioneAttiva", d: "1-2 serie leggere di lat machine, pulley alto o TRX row. Devono attivare dorsali e scapole, non affaticarti." },
+      { n: "Serie avvicinamento stacco rumeno", img: "w_GoodMorningSenzaPeso", d: "1-2 serie leggere del primo esercizio del giorno.", gear: "Manubri o bilanciere" },
     ],
     ex: [
       { n: "Stacco Rumeno", s: "3x8-10", rpe: "8", note: "Base: stacco rumeno con manubri o bilanciere, 1-2 RIR. Setup: piedi larghezza anche, mani poco fuori cosce, gomiti tesi, ginocchia appena sbloccate. Anca indietro e carico vicino alle gambe. Alternative: cable pull-through o TRX hip hinge assistito.", rec: "90s-2 min", gear: "Manubri, bilanciere, cavo o TRX", errori: "Schiena arrotondata; ginocchia troppo flesse; carico lontano dal corpo; anca che scende invece di andare indietro" },
       { n: "Military Press", s: "3x8-10", rpe: "8", note: "Base: military press con manubri o bilanciere. Setup: piedi larghezza anche, mani poco fuori spalle, gomiti leggermente avanti, polsi neutri, glutei e addome attivi. Alternative: press manubri da seduta o half-kneeling single arm cable press.", rec: "90s-2 min", gear: "Manubri, bilanciere o cavo", errori: "Lombare inarcata; gomiti troppo larghi; traiettoria non verticale; testa che non passa sotto il carico" },
-      { n: "Lat Machine", s: "3x8-12", rpe: "8", note: "Base: lat machine o pulley alto. Setup: mani poco oltre le spalle, petto alto, gomiti verso il basso e vicino alle costole, spalle giu. Alternative: trazioni facilitate con elastico o TRX high row se non hai tirata verticale.", rec: "90s", gear: "Lat machine, cavo alto, barra + elastico o TRX", errori: "Spalle che salgono; slancio col busto; ROM corto; tirare solo con le braccia" },
+      { n: "Lat Machine", s: "3x8-12", rpe: "8", note: "Tira la barra al petto alto. Scapole depresse e addotte. Se non hai lat machine: trazioni negative (sali con sgabello e scendi in 3-5 secondi controllando).", rec: "90s", gear: "Lat machine o barra trazioni + elastico", errori: "Spalle che salgono alle orecchie; slancio col busto; ROM corto; tirare con le braccia anziche con la schiena" },
       { n: "Affondi", s: "3x10-12 per gamba", rpe: "8", note: "Base: affondi alternati o camminati. Setup: piedi su due binari, passo abbastanza lungo, piede davanti tutto a terra, busto stabile. Gomiti rilassati ai lati se usi manubri. Alternative: TRX reverse lunge o split squat al cavo.", rec: "90s", gear: "Corpo libero, manubri, TRX o cavo", errori: "Passo troppo corto; ginocchio anteriore che collassa; perdita di equilibrio; busto che oscilla" },
     ],
     str: ["Femorali","Glutei","Spalle","Flessori anca"] },
@@ -1545,7 +1545,7 @@ var DAYS_BEGINNER = [
     ],
     ex: [
       { n: "Squat Bulgaro", s: "3x8-10 per gamba", rpe: "8", note: "Base: squat bulgaro. Setup: piede davanti tutto a terra, piede dietro in appoggio morbido, piedi su due binari. Mani ai lati o ai manici TRX; ginocchio davanti segue la punta. Alternative: TRX split squat o step-up.", rec: "90s", gear: "Corpo libero, manubri o TRX", errori: "ROM che si accorcia; busto che oscilla; ginocchio che collassa; piede davanti instabile" },
-      { n: "Floor Press Manubri", s: "3x8-10", rpe: "8", note: "Base: panca manubri inclinata o floor press. Setup: piedi saldi, mani sopra i gomiti, gomiti 30-60° dal busto, scapole stabili. Alternative: TRX push-up o cable chest press.", rec: "90s", gear: "Manubri + panca, tappetino, TRX o cavi", errori: "Spalle che si sollevano; slancio; gomiti troppo aperti; ROM non uniforme" },
+      { n: "Floor Press Manubri", s: "3x8-10", rpe: "8", note: "Su panca inclinata se disponibile per enfatizzare il pettorale alto. Altrimenti floor press a terra. Alternative: Push-Up su rialzo o cable chest press.", rec: "90s", gear: "Manubri + panca inclinata (o tappetino)", errori: "Spalle che si sollevano; slancio; ROM non uniforme tra le ripetizioni" },
       { n: "Pulley", s: "3x8-12", rpe: "8", note: "Base: pulley basso o rematore elastico. Setup: petto alto, mani neutre o poco prone, gomiti 30-45° dal busto, spalle basse. Alternative: TRX row o one arm cable row.", rec: "90s", gear: "Cavo basso, elastico o TRX", errori: "Busto che si muove avanti-indietro; gomiti troppo larghi; spalle che salgono" },
       { n: "Hip Thrust Bilanciere", s: "3x10-15", rpe: "8", note: "Base: hip thrust o glute bridge. Setup: piedi larghezza bacino-spalle, tibia quasi verticale in alto, mani fermano il carico, mento leggermente chiuso. Chiudi coi glutei, non con la lombare. Alternative: fitball glute bridge o hip thrust al cavo.", rec: "90s", gear: "Corpo libero, manubrio + panca, fitball o cavo", errori: "Salire con la lombare; ROM corto; discesa troppo veloce; no squeeze in alto" },
       { n: "Dead Bug", s: "3x8 per lato", rpe: "", note: "Base: dead bug. Setup: lombare aderente a terra, braccia verso il soffitto, ginocchia a 90°. Estendi braccio e gamba opposti lentamente. Alternative: dead bug con fitball tra mani e ginocchia o bird dog.", rec: "60s", gear: "Tappetino o fitball", errori: "Lombare che si stacca; movimento troppo veloce; respiro trattenuto; braccia e gambe fuori controllo" },
@@ -2369,11 +2369,69 @@ export default function App() {
     setScapulaOpen(true);
   }
 
-  function openMainTab(nextTab) {
+  function makeNavSnapshot() {
+    return {
+      tab: tab,
+      teoriaTab: teoriaTab,
+      glossTab: glossTab,
+      alimentazioneTab: alimentazioneTab,
+      catSec: catSec,
+      exInfoOpen: exInfoOpen,
+      showTheorySection: showTheorySection,
+      showCompetency: showCompetency,
+      glossOpen: glossOpen,
+    };
+  }
+  function pushNavSnapshot() {
+    var snap = makeNavSnapshot();
+    setTabHistory(function(h) {
+      var last = h.length ? h[h.length - 1] : null;
+      if (last && JSON.stringify(last) === JSON.stringify(snap)) return h;
+      return h.concat([snap]).slice(-30);
+    });
+  }
+  function restoreNavSnapshot(snap) {
+    if (!snap) return;
+    setTab(snap.tab || "home");
+    setTeoriaTab(snap.teoriaTab || "basi");
+    setGlossTab(snap.glossTab || "principi");
+    setAlimentazioneTab(snap.alimentazioneTab || "principi");
+    setCatSec(snap.catSec || null);
+    setExInfoOpen(snap.exInfoOpen || null);
+    setShowTheorySection(snap.showTheorySection || null);
+    setShowCompetency(snap.showCompetency || null);
+    setGlossOpen(!!snap.glossOpen);
+  }
+  function anchorForSnapshot(snap) {
+    if (!snap) return "home-top";
+    if (snap.tab === "exercises") {
+      if (snap.exInfoOpen || snap.catSec === "ex") return "exercise-section-ex";
+      if (snap.catSec === "wu") return "exercise-section-wu";
+      if (snap.catSec === "st") return "exercise-section-st";
+      return "exercises-top";
+    }
+    if (snap.tab === "teoria") {
+      if (snap.showCompetency) return "competency-" + snap.showCompetency;
+      if (snap.showTheorySection) return "theory-section-" + snap.showTheorySection;
+      return "teoria-top";
+    }
+    if (snap.tab === "workout") return "workout-top";
+    if (snap.tab === "progressi") return "progressi-top";
+    return (snap.tab || "home") + "-top";
+  }
+  function navigateToTab(nextTab, opts) {
+    var options = opts || {};
     setTab(function(prev) {
-      setTabHistory(function(h) { return prev !== nextTab ? h.concat(prev).slice(-10) : h; });
+      if (options.resetHistory) {
+        setTabHistory([]);
+      } else if (options.trackHistory !== false && prev !== nextTab) {
+        pushNavSnapshot();
+      }
       return nextTab;
     });
+  }
+  function openMainTab(nextTab) {
+    navigateToTab(nextTab);
     requestAnimationFrame(function() {
       requestAnimationFrame(function() {
         scrollToAnchor(nextTab + "-top");
@@ -2384,7 +2442,12 @@ export default function App() {
     setTabHistory(function(h) {
       if (h.length === 0) return h;
       var prev = h[h.length - 1];
-      setTab(prev);
+      restoreNavSnapshot(prev);
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          scrollToAnchor(anchorForSnapshot(prev));
+        });
+      });
       return h.slice(0, -1);
     });
   }
@@ -2418,13 +2481,15 @@ export default function App() {
   }
 
   function goToTeoria(nextTeoriaTab, nextGlossTab) {
-    setTab("teoria");
+    if (tab === "teoria" && (nextTeoriaTab && nextTeoriaTab !== teoriaTab || nextGlossTab && nextGlossTab !== glossTab)) pushNavSnapshot();
+    navigateToTab("teoria");
     if (nextTeoriaTab) setTeoriaTab(nextTeoriaTab);
     if (nextGlossTab) setGlossTab(nextGlossTab);
     scrollTopSoon("teoria-top");
   }
   function goToTheoryAnchor(nextTeoriaTab, nextGlossTab, anchorId, openKey) {
-    setTab("teoria");
+    if (tab === "teoria") pushNavSnapshot();
+    navigateToTab("teoria");
     if (nextTeoriaTab) setTeoriaTab(nextTeoriaTab);
     if (nextGlossTab) setGlossTab(nextGlossTab);
     if (openKey !== undefined && openKey !== null) setShowTheorySection(openKey);
@@ -2436,19 +2501,22 @@ export default function App() {
   }
 
   function goToAlimentazione(nextAlimentazioneTab) {
-    setTab("teoria");
+    if (tab === "teoria") pushNavSnapshot();
+    navigateToTab("teoria");
     setTeoriaTab("alimentazione");
     if (nextAlimentazioneTab) setAlimentazioneTab(nextAlimentazioneTab);
     scrollTopSoon("teoria-top");
   }
 
   function goToExercises(nextSection) {
-    setTab("exercises");
+    if (tab === "exercises" && nextSection && nextSection !== catSec) pushNavSnapshot();
+    navigateToTab("exercises");
     if (nextSection) setCatSec(nextSection);
     scrollTopSoon("exercises-top");
   }
   function goToExercisesSection(nextSection) {
-    setTab("exercises");
+    if (tab === "exercises") pushNavSnapshot();
+    navigateToTab("exercises");
     if (nextSection) setCatSec(nextSection);
     requestAnimationFrame(function() {
       requestAnimationFrame(function() {
@@ -2463,7 +2531,8 @@ export default function App() {
     return (EXERCISE_COMPETENCIES[exName] || []).map(getCompetencyById).filter(Boolean);
   }
   function openCompetency(id) {
-    setTab("teoria");
+    pushNavSnapshot();
+    navigateToTab("teoria");
     setTeoriaTab("teoria");
     setGlossTab("principi");
     setShowCompetency(id);
@@ -3739,7 +3808,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
             </summary>
             <div style={{ padding: "0 12px 12px" }}>
               <RichBlocks blocks={db.deep} accent={dc} />
-              {(exInfoOpen === "Trazioni" || exInfoOpen === "Plank" || exInfoOpen === "Push-Up" || exInfoOpen === "Ab Wheel") && <button onClick={function() { setExInfoOpen("Hollow Position"); }} style={{ marginTop: 10, fontSize: 11, color: dc, fontWeight: 700, background: dc + "12", border: "1px solid " + dc + "30", borderRadius: 8, padding: "6px 12px", cursor: "pointer" }}>→ Vedi Hollow Position</button>}
+              {(exInfoOpen === "Trazioni" || exInfoOpen === "Plank" || exInfoOpen === "Push-Up" || exInfoOpen === "Ab Wheel") && <button onClick={function() { pushNavSnapshot(); setExInfoOpen("Hollow Position"); }} style={{ marginTop: 10, fontSize: 11, color: dc, fontWeight: 700, background: dc + "12", border: "1px solid " + dc + "30", borderRadius: 8, padding: "6px 12px", cursor: "pointer" }}>→ Vedi Hollow Position</button>}
             </div>
           </details>}
           {db.lk && <EmbedLink url={db.lk} label="▶ Video tutorial" size={12} style={{ marginBottom: 12 }} />}
@@ -3751,7 +3820,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
 
   // Clickable exercise name
   function ExName(props) {
-    return <span onClick={function(e) { e.stopPropagation(); setExInfoOpen(exInfoOpen === props.name ? null : props.name); }} style={{ cursor: "pointer", textDecoration: "underline", textDecorationStyle: "dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, textTransform: "uppercase", letterSpacing: 0.4 }}>{props.name}</span>;
+    return <span onClick={function(e) { e.stopPropagation(); var next = exInfoOpen === props.name ? null : props.name; if (next !== exInfoOpen) pushNavSnapshot(); setExInfoOpen(next); }} style={{ cursor: "pointer", textDecoration: "underline", textDecorationStyle: "dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, textTransform: "uppercase", letterSpacing: 0.4 }}>{props.name}</span>;
   }
 
   // === FULLSCREEN TIMER ===
@@ -3792,7 +3861,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           <DetailText text={glossTermOpen.d} accent={dc} soft={true} />
           <div style={{ display: "flex", gap: 8, marginTop: 14 }}>
             <button onClick={function() { setGlossTermOpen(null); }} style={{ flex: 1, padding: 10, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Chiudi</button>
-            <button onClick={function() { setGlossTermOpen(null); setGlossOpen(true); setGlossTab("termini"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: 10, border: "1px solid " + dc + "24", borderRadius: 10, background: dc + "10", color: dc, fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Apri glossario</button>
+            <button onClick={function() { pushNavSnapshot(); setGlossTermOpen(null); setGlossOpen(true); setGlossTab("termini"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: 10, border: "1px solid " + dc + "24", borderRadius: 10, background: dc + "10", color: dc, fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Apri glossario</button>
           </div>
         </div>
       </div>}
@@ -3863,8 +3932,8 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           <div style={{ padding: "18px 20px 0", flexShrink: 0 }}>
             <h3 style={{ margin: "0 0 12px", fontSize: 18, fontWeight: 800 }}>{theoryTitle}</h3>
             <div style={{ display: "flex", gap: 0, borderRadius: 10, overflow: "hidden", border: "1px solid " + dc + "30", marginBottom: 14 }}>
-              <button onClick={function() { setGlossTab("principi"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>Principi</button>
-              {!(isBasics || isBeginner) && <button onClick={function() { setGlossTab("termini"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>Termini base</button>}
+              <button onClick={function() { if (glossTab !== "principi") pushNavSnapshot(); setGlossTab("principi"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>Principi</button>
+              {!(isBasics || isBeginner) && <button onClick={function() { if (glossTab !== "termini") pushNavSnapshot(); setGlossTab("termini"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>Termini base</button>}
             </div>
           </div>
           {/* Body scrollabile */}
@@ -4041,20 +4110,11 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
         {/* View tabs */}
         <div style={{ display: "flex", gap: 1, maxWidth: 600, margin: "12px auto 0", alignItems: "stretch" }}>
           {/* Back button */}
-          <button
-            onClick={function() { goBack(); }}
-            disabled={tabHistory.length === 0}
-            title="Torna alla tab precedente"
-            aria-label="Torna alla tab precedente"
-            style={{ minWidth: 56, flexShrink: 0, padding: "8px 6px", border: "none", background: "transparent", cursor: tabHistory.length > 0 ? "pointer" : "default", fontSize: 11, fontWeight: 800, color: tabHistory.length > 0 ? T.tx : T.sub + "40", borderBottom: "2px solid transparent", transition: "color 0.15s", display: "flex", alignItems: "center", justifyContent: "center", gap: 4 }}
-          >
-            <span style={{ fontSize: 15, lineHeight: 1 }}>←</span>
-            <span>Ind.</span>
-          </button>
+          <button onClick={function() { goBack(); }} disabled={tabHistory.length === 0} title="Torna alla schermata precedente" aria-label="Torna alla schermata precedente" style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: tabHistory.length > 0 ? "pointer" : "default", fontSize: 16, color: tabHistory.length > 0 ? T.tx : T.sub + "40", borderBottom: "2px solid transparent", transition: "color 0.15s" }}>‹</button>
           {/* Home icon-only tab */}
-          <button onClick={function() { setTab("home"); setTabHistory([]); scrollTopSoon("home-top"); }} style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 14, color: tab === "home" ? T.tx : T.sub, borderBottom: tab === "home" ? "2px solid " + dc : "2px solid transparent" }}>⌂</button>
+          <button onClick={function() { navigateToTab("home"); scrollTopSoon("home-top"); }} style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 14, color: tab === "home" ? T.tx : T.sub, borderBottom: tab === "home" ? "2px solid " + dc : "2px solid transparent" }}>⌂</button>
           {/* Main tabs */}
-          {(isBasics ? ["Scheda", "Teoria", "Esercizi"] : ["Scheda", "Progressi", "Teoria", "Esercizi"]).map(function(t) { var keys = {"Scheda":"workout","Progressi":"progressi","Teoria":"teoria","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { setTab(keys[t]); scrollTopSoon(keys[t] + "-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, color: active ? T.tx : T.sub, borderBottom: active ? "2px solid " + dc : "2px solid transparent", letterSpacing: active ? 0.1 : 0, transition: "color 0.15s" }}>{t}</button>; })}
+          {(isBasics ? ["Scheda", "Teoria", "Esercizi"] : ["Scheda", "Progressi", "Teoria", "Esercizi"]).map(function(t) { var keys = {"Scheda":"workout","Progressi":"progressi","Teoria":"teoria","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { navigateToTab(keys[t]); scrollTopSoon(keys[t] + "-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, color: active ? T.tx : T.sub, borderBottom: active ? "2px solid " + dc : "2px solid transparent", letterSpacing: active ? 0.1 : 0, transition: "color 0.15s" }}>{t}</button>; })}
         </div>
       </div>
 
@@ -4183,7 +4243,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
             {teoriaTabs.map(function(pair) {
               var k = pair[0], label = pair[1];
               var active = teoriaTab === k;
-              return <button key={k} onClick={function() { setTeoriaTab(k); setShowTheorySection(null); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: active ? dc : "transparent", color: active ? "#fff" : T.sub, transition: "background 0.15s" }}>{label}</button>;
+              return <button key={k} onClick={function() { if (teoriaTab !== k) pushNavSnapshot(); setTeoriaTab(k); setShowTheorySection(null); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: active ? dc : "transparent", color: active ? "#fff" : T.sub, transition: "background 0.15s" }}>{label}</button>;
             })}
           </div>
         </div>
@@ -4269,14 +4329,14 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           {/* Tab interna Principi / Termini */}
           <div style={{ padding: "10px 16px 0" }}>
             <div style={{ display: "flex", gap: 0, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "30", marginBottom: 14 }}>
-              <button onClick={function() { setGlossTab("principi"); setShowTheorySection(null); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>🧠 Principi</button>
-              {!(isBasics || isBeginner) && <button onClick={function() { setGlossTab("termini"); setShowTheorySection(null); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>🔤 Termini base</button>}
+              <button onClick={function() { if (glossTab !== "principi") pushNavSnapshot(); setGlossTab("principi"); setShowTheorySection(null); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>🧠 Principi</button>
+              {!(isBasics || isBeginner) && <button onClick={function() { if (glossTab !== "termini") pushNavSnapshot(); setGlossTab("termini"); setShowTheorySection(null); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>🔤 Termini base</button>}
             </div>
           </div>
           <div style={{ padding: "0 16px 16px" }}>
             {glossTab === "principi" && <div>
               <div id="theory-section-skills" style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 12 }}>
-                <div onClick={function() { var next = showTheorySection === "skills" ? null : "skills"; setShowTheorySection(next); if (next) scrollTopSoon("theory-section-skills"); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "skills" ? dc + "10" : "transparent" }}>
+                <div onClick={function() { var next = showTheorySection === "skills" ? null : "skills"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-skills"); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "skills" ? dc + "10" : "transparent" }}>
                   <span style={{ fontSize: 13, fontWeight: 800, color: showTheorySection === "skills" ? dc : T.tx, lineHeight: 1.3 }}>🎯 Tecniche preliminari</span>
                   <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showTheorySection === "skills" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
                 </div>
@@ -4286,7 +4346,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                     var skillImg = skill.img ? (EX_IMG[skill.img] || WS_IMG[skill.img] || null) : null;
                     var dimmed = showCompetency && !isOpen;
                     return <div key={skill.id} id={"competency-" + skill.id} style={{ borderBottom: si < BASIC_COMPETENCIES.length - 1 ? "1px solid " + T.bg : "none", opacity: dimmed ? 0.48 : 1, transition: "opacity 0.2s" }}>
-                      <div onClick={function() { var next = isOpen ? null : skill.id; setShowCompetency(next); if (next) scrollTopSoon("competency-" + skill.id); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
+                      <div onClick={function() { var next = isOpen ? null : skill.id; if (next !== showCompetency) pushNavSnapshot(); setShowCompetency(next); if (next) scrollTopSoon("competency-" + skill.id); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
                         <div style={{ minWidth: 0, display: "flex", alignItems: "center", gap: 10 }}>
                           {skillImg ? <img src={skillImg} style={{ width: 54, height: 54, objectFit: "cover", borderRadius: 10, border: "1px solid " + T.bg, flexShrink: 0 }} /> : null}
                           <div style={{ minWidth: 0 }}>
@@ -4303,14 +4363,14 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                         {skillImg ? <img src={skillImg} style={{ width: "100%", maxWidth: 240, display: "block", borderRadius: 12, border: "1px solid " + T.bg, marginBottom: 12 }} /> : null}
                         {skill.id === "scapole" && <button onClick={function(e) { e.stopPropagation(); openScapulaModal(); }} style={{ marginBottom: 10, minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + skill.tone + "35", background: skill.tone + "12", color: skill.tone, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>Apri guida scapole</button>}
                         <RichBlocks blocks={skill.d} accent={dc} />
-                        {skill.id === "squat" && <button onClick={function(e) { e.stopPropagation(); setTab("exercises"); setCatSec("ex"); setExInfoOpen("Goblet Squat"); }} style={{ marginTop: 10, minHeight: 30, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "30", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>Apri: cos'e il Goblet Squat</button>}
+                        {skill.id === "squat" && <button onClick={function(e) { e.stopPropagation(); navigateToTab("exercises"); setCatSec("ex"); setExInfoOpen("Goblet Squat"); }} style={{ marginTop: 10, minHeight: 30, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "30", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>Apri: cos'e il Goblet Squat</button>}
                       </div>}
                     </div>;
                   })}
                 </div>}
               </div>
               <div id="theory-section-concepts" style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 12 }}>
-                <div onClick={function() { var next = showTheorySection === "concepts" ? null : "concepts"; setShowTheorySection(next); if (next) scrollTopSoon("theory-section-concepts"); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "concepts" ? dc + "10" : "transparent" }}>
+                <div onClick={function() { var next = showTheorySection === "concepts" ? null : "concepts"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-concepts"); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "concepts" ? dc + "10" : "transparent" }}>
                   <span style={{ fontSize: 13, fontWeight: 800, color: showTheorySection === "concepts" ? dc : T.tx, lineHeight: 1.3 }}>{isBasics ? "📌 Perche servono e quando passare oltre" : "🧠 Concetti fondamentali"}</span>
                   <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showTheorySection === "concepts" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
                 </div>
@@ -4332,7 +4392,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                 </div>}
               </div>
               <div id="theory-section-guide" style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: !(isBasics || isBeginner) ? 12 : 0 }}>
-                <div onClick={function() { var next = showTheorySection === "guide" ? null : "guide"; setShowTheorySection(next); if (next) scrollTopSoon("theory-section-guide"); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "guide" ? dc + "10" : "transparent" }}>
+                <div onClick={function() { var next = showTheorySection === "guide" ? null : "guide"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-guide"); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "guide" ? dc + "10" : "transparent" }}>
                   <span style={{ fontSize: 13, fontWeight: 800, color: showTheorySection === "guide" ? dc : T.tx, lineHeight: 1.3 }}>{isBasics ? "🗂️ Come usare il livello preliminare" : isBeginner ? "🗂️ Come usare la scheda principiante" : "🗂️ Come leggere la scheda"}</span>
                   <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showTheorySection === "guide" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
                 </div>
@@ -4364,7 +4424,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
         </div>}
 
         {!(isBasics || isBeginner) && teoriaTab === "teoria" && glossTab === "principi" && <div id="theory-section-breathing" style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-          <div onClick={function() { var next = showTheorySection === "breathing" ? null : "breathing"; setShowTheorySection(next); if (next) scrollTopSoon("theory-section-breathing"); }} style={{ padding: "14px 16px 12px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+          <div onClick={function() { var next = showTheorySection === "breathing" ? null : "breathing"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-breathing"); }} style={{ padding: "14px 16px 12px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
             <div>
               <div style={{ fontSize: 16, fontWeight: 800, color: showTheorySection === "breathing" ? dc : T.tx, marginBottom: 2 }}>🫁 Respirazione esercizi</div>
               <div style={{ fontSize: 12, color: T.sub }}>Tabella unica: come respirare nei principali esercizi</div>
@@ -4512,7 +4572,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
             </div>
             <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 6 }}>Esercizi</div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-              {m.ex.map(function(e, ei) { return <span key={ei} onClick={function() { setExInfoOpen(e); }} style={{ fontSize: 11, background: dc + "12", color: dc, padding: "4px 10px", borderRadius: 6, fontWeight: 600, cursor: "pointer", textDecoration: "underline dotted", textDecorationColor: dc + "50" }}>{e}</span>; })}
+              {m.ex.map(function(e, ei) { return <span key={ei} onClick={function() { pushNavSnapshot(); setExInfoOpen(e); }} style={{ fontSize: 11, background: dc + "12", color: dc, padding: "4px 10px", borderRadius: 6, fontWeight: 600, cursor: "pointer", textDecoration: "underline dotted", textDecorationColor: dc + "50" }}>{e}</span>; })}
             </div>
           </div>
         </div>; })}
@@ -4525,8 +4585,8 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           </div>
           <div style={{ padding: "10px 16px 0" }}>
             <div style={{ display: "flex", gap: 0, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "30", marginBottom: 14 }}>
-              <button onClick={function() { setAlimentazioneTab("principi"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: alimentazioneTab === "principi" ? dc : "transparent", color: alimentazioneTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>Principi</button>
-              <button onClick={function() { setAlimentazioneTab("dieta"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: alimentazioneTab === "dieta" ? dc : "transparent", color: alimentazioneTab === "dieta" ? "#fff" : T.sub, transition: "background 0.15s" }}>Dieta attuale</button>
+              <button onClick={function() { if (alimentazioneTab !== "principi") pushNavSnapshot(); setAlimentazioneTab("principi"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: alimentazioneTab === "principi" ? dc : "transparent", color: alimentazioneTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>Principi</button>
+              <button onClick={function() { if (alimentazioneTab !== "dieta") pushNavSnapshot(); setAlimentazioneTab("dieta"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: alimentazioneTab === "dieta" ? dc : "transparent", color: alimentazioneTab === "dieta" ? "#fff" : T.sub, transition: "background 0.15s" }}>Dieta attuale</button>
             </div>
           </div>
           {alimentazioneTab === "principi" && <div style={{ padding: "0 16px 16px", display: "grid", gap: 8 }}>
@@ -4857,7 +4917,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
         </div>
 
         {/* Esercizi header */}
-        <div id="exercise-section-ex" onClick={function() { var next = catSec === "ex" ? null : "ex"; setCatSec(next); if (next) scrollTopSoon("exercise-section-ex"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
+        <div id="exercise-section-ex" onClick={function() { var next = catSec === "ex" ? null : "ex"; if (next !== catSec) pushNavSnapshot(); setCatSec(next); if (next) scrollTopSoon("exercise-section-ex"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 16 }}>{"\uD83D\uDCAA"}</span>
             <span style={{ fontSize: 14, fontWeight: 800, color: dc }}>{"Esercizi (" + exEntries.length + ")"}</span>
@@ -4894,7 +4954,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
             var db = item.db;
             var hasImg = !!EX_IMG[name];
             return <div key={ei} style={{ background: T.cd, borderRadius: 8, marginBottom: 2, overflow: "hidden" }}>
-              <div onClick={function() { setExInfoOpen(exInfoOpen === name ? null : name); }} style={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
+              <div onClick={function() { var next = exInfoOpen === name ? null : name; if (next !== exInfoOpen) pushNavSnapshot(); setExInfoOpen(next); }} style={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
               {hasImg && <img onClick={function(e) { e.stopPropagation(); setShowImg(showImg === "el" + ei ? null : "el" + ei); }} src={EX_IMG[name]} style={{ width: 48, height: 48, objectFit: "cover", flexShrink: 0, cursor: "zoom-in" }} />}
               {!hasImg && <div style={{ width: 48, height: 48, background: dc + "12", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, flexShrink: 0, color: dc }}>?</div>}
               <div style={{ padding: "6px 10px", flex: 1, minWidth: 0 }}>
@@ -4933,7 +4993,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
         </div>}
 
         {/* Riscaldamento header */}
-        <div id="exercise-section-wu" onClick={function() { var next = catSec === "wu" ? null : "wu"; setCatSec(next); if (next) scrollTopSoon("exercise-section-wu"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
+        <div id="exercise-section-wu" onClick={function() { var next = catSec === "wu" ? null : "wu"; if (next !== catSec) pushNavSnapshot(); setCatSec(next); if (next) scrollTopSoon("exercise-section-wu"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 16 }}>&#128293;</span>
             {(function() {
@@ -4975,7 +5035,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
         </div>}
 
         {/* Stretching header */}
-        <div id="exercise-section-st" onClick={function() { var next = catSec === "st" ? null : "st"; setCatSec(next); if (next) scrollTopSoon("exercise-section-st"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
+        <div id="exercise-section-st" onClick={function() { var next = catSec === "st" ? null : "st"; if (next !== catSec) pushNavSnapshot(); setCatSec(next); if (next) scrollTopSoon("exercise-section-st"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 16 }}>&#129495;</span>
             <span style={{ fontSize: 14, fontWeight: 800, color: T.st }}>{"Stretching (" + Object.keys(STR).length + ")"}</span>
@@ -5673,7 +5733,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                         <button
                           onClick={function(e) {
                             e.stopPropagation();
-                            setTab("exercises");
+                            navigateToTab("exercises");
                             setCatSec("ex");
                             setExInfoOpen(ex.n);
                             window.scrollTo({ top: 0, behavior: "smooth" });
