@@ -101,6 +101,16 @@ import img_Push_Up_Ginocchia from "./images/preliminary/push up ginocchia.gif";
 import img_muscle_map from "./images/muscle_map.jpg";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import {
+  EXERCISE_CARD_STATUS,
+  EXERCISE_PHOTO_STATUS,
+  EXERCISE_VIDEO_STATUS,
+  EXERCISE_PATTERN_LABELS,
+  EXERCISE_GEAR_LABELS,
+  NEW_EXERCISE_WORKFLOW_SEED,
+  EXISTING_COVERED_EXERCISES,
+  slugifyExerciseName,
+} from "./data/exerciseWorkflow";
 
 /* === AUDIO === */
 let _ac = null;
@@ -251,6 +261,23 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
 "Glute Bridge": {"g": "Glutei/Bacino", "c": "Supina, piedi a terra. Solleva il bacino fino ad allineare ginocchia, anche e spalle, poi scendi controllando.", "p": "In alto retroverti il bacino e stringi i glutei. Non iperestendere la lombare.", "t": ["Spingi dai talloni", "Pausa breve in alto", "Se senti solo la schiena, riduci il range"], "lk": "https://www.youtube.com/watch?v=sOrrVfRDVGc"},
 "Pallof Press": {"g": "Core anti-rotazione", "c": "In piedi o in ginocchio con elastico o cavo al lato. Spingi le braccia avanti e resisti alla rotazione del busto.", "p": "Costole giu, bacino fermo, busto frontale. Le braccia si muovono ma il tronco non gira.", "t": ["Poco carico, massimo controllo", "Espira mentre allontani le mani", "Se il busto ruota, alleggerisci"], "lk": "https://www.youtube.com/watch?v=qQOsWutOQoM"}
 };
+
+NEW_EXERCISE_WORKFLOW_SEED.forEach(function(seed) {
+  if (!EX[seed.name]) {
+    EX[seed.name] = {
+      g: EXERCISE_PATTERN_LABELS[seed.pattern] || "Scheda in preparazione",
+      c: "Scheda tecnica in preparazione.",
+      p: "Campi setup, esecuzione, cue tecnici ed errori da compilare.",
+      t: [],
+      lk: seed.videoUrl || "",
+      deep: [
+        { type: "p", content: "Questa scheda e stata creata come struttura pronta da compilare. I contenuti tecnici dettagliati verranno aggiunti in un secondo momento." }
+      ]
+    };
+  } else if (seed.videoUrl && !EX[seed.name].lk) {
+    EX[seed.name].lk = seed.videoUrl;
+  }
+});
 
 var MUSCLE_IMG = img_muscle_map;
 
@@ -2450,7 +2477,6 @@ export default function App() {
 var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"yt" }
   var [showReg, setShowReg] = useState(null);
   var [catSec, setCatSec] = useState(null);
-  var [exGearFilter, setExGearFilter] = useState("all");
   var [logs, setLogs] = useState({});
   var [cardioLogs, setCardioLogs] = useState({});
   var [calibrationMode, setCalibrationMode] = useState(false);
@@ -2485,6 +2511,9 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [tWarning, setTWarning] = useState(false);
   var [tPanel, setTPanel] = useState(false);
   var [autoBackupMsg, setAutoBackupMsg] = useState("");
+  var [exGearFilter, setExGearFilter] = useState("all");
+  var [exPatternFilter, setExPatternFilter] = useState("all");
+  var [exWorkflowFilter, setExWorkflowFilter] = useState("all");
   var intv = useRef(null);
   var tStart = useRef(null);
   var tAcc = useRef(0);
@@ -2495,9 +2524,18 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var isBeginner = level === "beginner";
   var activeDays = isBasics ? DAYS_BASICS : isBeginner ? DAYS_BEGINNER.filter(function(d) { return !d.rest; }) : DAYS_V4;
   var safeDayIdx = Math.min(dayIdx, activeDays.length - 1);
+  var WORKFLOW_SEED_BY_SLUG = NEW_EXERCISE_WORKFLOW_SEED.reduce(function(acc, item) {
+    acc[item.slug] = item;
+    return acc;
+  }, {});
+  var COVERED_BY_SLUG = EXISTING_COVERED_EXERCISES.reduce(function(acc, name) {
+    acc[slugifyExerciseName(name)] = true;
+    return acc;
+  }, {});
   var EX_GEAR_OVERRIDES = {
     "Nordic Curl": ["corpo_libero"],
     "Squat": ["bilanciere","manubri"],
+    "TRX Squat": ["trx","corpo_libero"],
     "Stacco Rumeno": ["bilanciere","manubri"],
     "Addominali Obliqui": ["corpo_libero"],
     "Arnold Press": ["manubri"],
@@ -2521,6 +2559,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     "Pendlay Row": ["bilanciere"],
     "Push Press": ["manubri","bilanciere"],
     "Push-Up": ["corpo_libero"],
+    "Push-Up su rialzo": ["corpo_libero","panca"],
     "Push-Up Declino": ["corpo_libero","panca"],
     "Push-Up Diamante": ["corpo_libero"],
     "Retrazione scapolare al muro": ["corpo_libero"],
@@ -2543,9 +2582,137 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     "Woodchop": ["cavi","elastico"],
     "Pallof Press": ["cavi","elastico"],
     "Band Pull-Apart con elastico": ["elastico"],
-    "Military Press": ["manubri","bilanciere"]
+    "Military Press": ["manubri","bilanciere"],
+    "TRX Chest Press": ["trx"],
+    "Cable Chest Press": ["cavi"],
+    "TRX Row": ["trx"],
+    "TRX Hamstring Curl": ["trx"],
+    "Glute Bridge su Fitball": ["fitball"],
+    "Cable Pull-Through": ["cavi"],
+    "TRX Hip Hinge Assistito": ["trx"],
+    "Press Manubri da Seduta": ["manubri"],
+    "Half-Kneeling Single Arm Cable Press": ["cavi"],
+    "Trazioni Facilitate con Elastico": ["elastico","corpo_libero"],
+    "TRX High Row": ["trx"],
+    "TRX Reverse Lunge": ["trx"],
+    "Split Squat al Cavo": ["cavi"],
+    "TRX Split Squat": ["trx"],
+    "Rematore Elastico": ["elastico"],
+    "One Arm Cable Row": ["cavi"],
+    "Hip Thrust al Cavo": ["cavi"],
+    "Bird Dog": ["corpo_libero"]
+  };
+  var EX_PATTERN_OVERRIDES = {
+    "Squat": "squat",
+    "Squat a corpo libero": "squat",
+    "Goblet Squat": "squat",
+    "Front Squat": "squat",
+    "Pause Squat": "squat",
+    "TRX Squat": "squat",
+    "Stacco da Terra": "hinge",
+    "Stacco Rumeno": "hinge",
+    "Good Morning": "hinge",
+    "Good Morning senza peso": "hinge",
+    "Hip Thrust Bilanciere": "hinge",
+    "Hip Thrust Singolo": "hinge",
+    "Hip Thrust al Cavo": "hinge",
+    "Glute Bridge": "hinge",
+    "Glute Bridge su Fitball": "hinge",
+    "Fitball Hamstring Curl": "hinge",
+    "TRX Hamstring Curl": "hinge",
+    "Nordic Curl": "hinge",
+    "Hyperextension": "hinge",
+    "Hyperextension con Sacco": "hinge",
+    "Cable Pull-Through": "hinge",
+    "TRX Hip Hinge Assistito": "hinge",
+    "Panca": "spinta",
+    "Floor Press Manubri": "spinta",
+    "Push-Up": "spinta",
+    "Push-Up su rialzo": "spinta",
+    "Push-Up Declino": "spinta",
+    "Push-Up Diamante": "spinta",
+    "Military Press": "spinta",
+    "Push Press": "spinta",
+    "Dip alle Parallele": "spinta",
+    "Dip su Panca": "spinta",
+    "Arnold Press": "spinta",
+    "Alzate Laterali": "spinta",
+    "French Press Manubri": "spinta",
+    "Overhead Extension": "spinta",
+    "Tricipiti Cavo": "spinta",
+    "TRX Chest Press": "spinta",
+    "Cable Chest Press": "spinta",
+    "Press Manubri da Seduta": "spinta",
+    "Half-Kneeling Single Arm Cable Press": "spinta",
+    "Trazioni": "tirata",
+    "Trazioni Supine": "tirata",
+    "Trazioni Facilitate con Elastico": "tirata",
+    "Pulley": "tirata",
+    "Lat Machine": "tirata",
+    "Rematore Bilanciere": "tirata",
+    "Rematore Manubri": "tirata",
+    "Rematore Elastico": "tirata",
+    "One Arm Cable Row": "tirata",
+    "T-bar Row": "tirata",
+    "Pendlay Row": "tirata",
+    "Face Pull": "tirata",
+    "Band Pull-Apart con elastico": "tirata",
+    "Scapular Pull-Up": "tirata",
+    "Sospensione attiva alla sbarra": "tirata",
+    "Retrazione scapolare al muro": "tirata",
+    "TRX Row": "tirata",
+    "TRX High Row": "tirata",
+    "Curl Bicipiti": "tirata",
+    "Curl Martello": "tirata",
+    "Curl Concentrato": "tirata",
+    "Ab Wheel": "core",
+    "Plank": "core",
+    "Dead Bug": "core",
+    "Bird Dog": "core",
+    "Pallof Press": "core",
+    "Woodchop": "core",
+    "Hollow Position": "core",
+    "Hollow Tuck": "core",
+    "Shoulder Tap": "core",
+    "Pelvic Tilt a terra": "core",
+    "Breathing + Brace supino": "core",
+    "Addominali Obliqui": "core",
+    "Clamshell": "core",
+    "Fire Hydrant": "core",
+    "Affondi": "affondo_unilaterale",
+    "Walking Lunge": "affondo_unilaterale",
+    "Squat Bulgaro": "affondo_unilaterale",
+    "Step Up": "affondo_unilaterale",
+    "Single Leg Deadlift": "affondo_unilaterale",
+    "TRX Reverse Lunge": "affondo_unilaterale",
+    "Split Squat al Cavo": "affondo_unilaterale",
+    "TRX Split Squat": "affondo_unilaterale"
+  };
+  var EX_WORKFLOW_FILTER_LABELS = {
+    all: "Tutti",
+    priority: "Prioritari",
+    photo: "Da fotografare",
+    video: "Da video-linkare",
+    new: "Nuovi",
+    covered: "Gia coperti"
+  };
+  var EX_PATTERN_FILTER_LABELS = Object.assign({ all: "Tutti i pattern" }, EXERCISE_PATTERN_LABELS);
+  function classifyExercisePattern(name, db) {
+    var slug = slugifyExerciseName(name);
+    if (WORKFLOW_SEED_BY_SLUG[slug] && WORKFLOW_SEED_BY_SLUG[slug].pattern) return WORKFLOW_SEED_BY_SLUG[slug].pattern;
+    if (EX_PATTERN_OVERRIDES[name]) return EX_PATTERN_OVERRIDES[name];
+    var text = (name + " " + ((db && db.g) || "") + " " + ((db && db.c) || "")).toLowerCase();
+    if (text.indexOf("squat") >= 0) return "squat";
+    if (text.indexOf("stacco") >= 0 || text.indexOf("hinge") >= 0 || text.indexOf("thrust") >= 0 || text.indexOf("bridge") >= 0) return "hinge";
+    if (text.indexOf("push") >= 0 || text.indexOf("press") >= 0 || text.indexOf("panca") >= 0 || text.indexOf("dip") >= 0 || text.indexOf("tricipiti") >= 0) return "spinta";
+    if (text.indexOf("trazioni") >= 0 || text.indexOf("row") >= 0 || text.indexOf("rematore") >= 0 || text.indexOf("pull") >= 0 || text.indexOf("lat machine") >= 0 || text.indexOf("pulley") >= 0 || text.indexOf("curl") >= 0) return "tirata";
+    if (text.indexOf("plank") >= 0 || text.indexOf("bug") >= 0 || text.indexOf("core") >= 0 || text.indexOf("pallof") >= 0 || text.indexOf("woodchop") >= 0 || text.indexOf("hollow") >= 0 || text.indexOf("brace") >= 0) return "core";
+    if (text.indexOf("affondo") >= 0 || text.indexOf("lunge") >= 0 || text.indexOf("split squat") >= 0 || text.indexOf("step up") >= 0 || text.indexOf("bulgaro") >= 0) return "affondo_unilaterale";
+    return "";
   };
   function classifyExerciseGear(name) {
+    var slug = slugifyExerciseName(name);
+    if (WORKFLOW_SEED_BY_SLUG[slug] && WORKFLOW_SEED_BY_SLUG[slug].attrezzi && WORKFLOW_SEED_BY_SLUG[slug].attrezzi.length) return WORKFLOW_SEED_BY_SLUG[slug].attrezzi;
     if (EX_GEAR_OVERRIDES[name]) return EX_GEAR_OVERRIDES[name];
     var pools = [DAYS_V4, DAYS_BEGINNER, DAYS_BASICS];
     var text = name;
@@ -2569,23 +2736,65 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     if (s.indexOf("corpo libero") >= 0 || s.indexOf("tappetino") >= 0 || s.indexOf("ginocchia") >= 0) return ["corpo_libero"];
     return [];
   }
-  var EX_GEAR_LABELS = {
-    all: "Tutti",
-    trx: "TRX",
-    fitball: "Fitball",
-    cavi: "Cavi",
-    manubri: "Manubri",
-    bilanciere: "Bilanciere",
-    sbarra: "Sbarra",
-    elastico: "Elastico",
-    panca: "Panca",
-    panca_romana: "Panca romana",
-    corpo_libero: "Corpo libero"
-  };
-  var exEntries = Object.keys(EX).sort().map(function(name) {
-    return { name: name, db: EX[name], gearKeys: classifyExerciseGear(name) };
+  function getExerciseWorkflowMeta(name, db) {
+    var slug = slugifyExerciseName(name);
+    var seed = WORKFLOW_SEED_BY_SLUG[slug] || null;
+    var hasCardContent = !!(db && (
+      (db.c && db.c !== "Scheda tecnica in preparazione.") ||
+      (db.p && db.p !== "Campi setup, esecuzione, cue tecnici ed errori da compilare.") ||
+      (db.t && db.t.length) ||
+      db.deep
+    ));
+    var hasImg = !!EX_IMG[name];
+    var hasVideo = !!(db && db.lk);
+    var cardStatus = seed ? seed.statoScheda : (hasCardContent ? EXERCISE_CARD_STATUS.READY : EXERCISE_CARD_STATUS.TODO);
+    var photoStatus = seed ? seed.statoFoto : (hasImg ? EXERCISE_PHOTO_STATUS.READY : EXERCISE_PHOTO_STATUS.MISSING);
+    var videoStatus = seed ? seed.statoVideo : (hasVideo ? EXERCISE_VIDEO_STATUS.LINKED : EXERCISE_VIDEO_STATUS.MISSING);
+    if (seed && cardStatus === EXERCISE_CARD_STATUS.TODO && hasCardContent) cardStatus = EXERCISE_CARD_STATUS.DRAFT;
+    if (photoStatus === EXERCISE_PHOTO_STATUS.MISSING && hasImg) photoStatus = EXERCISE_PHOTO_STATUS.READY;
+    if (videoStatus === EXERCISE_VIDEO_STATUS.MISSING && hasVideo) videoStatus = EXERCISE_VIDEO_STATUS.LINKED;
+    return {
+      name: name,
+      slug: seed ? seed.slug : slug,
+      priority: seed ? seed.priorita : null,
+      isSeed: !!seed,
+      isCovered: !!COVERED_BY_SLUG[slug],
+      cardStatus: cardStatus,
+      photoStatus: photoStatus,
+      videoStatus: videoStatus,
+      gearKeys: classifyExerciseGear(name),
+      patternKey: classifyExercisePattern(name, db),
+      schema: seed || null
+    };
+  }
+  var exEntries = Object.keys(EX).map(function(name) {
+    var db = EX[name];
+    var meta = getExerciseWorkflowMeta(name, db);
+    return Object.assign({ name: name, db: db }, meta);
+  }).sort(function(a, b) {
+    if (a.priority && b.priority) return a.priority - b.priority;
+    if (a.priority) return -1;
+    if (b.priority) return 1;
+    if (a.isCovered && !b.isCovered) return 1;
+    if (!a.isCovered && b.isCovered) return -1;
+    return a.name.localeCompare(b.name, "it");
   });
-  var exVisibleEntries = exEntries.filter(function(item) { return exGearFilter === "all" || item.gearKeys.indexOf(exGearFilter) >= 0; });
+  var exVisibleEntries = exEntries.filter(function(item) {
+    var matchGear = exGearFilter === "all" || item.gearKeys.indexOf(exGearFilter) >= 0;
+    var matchPattern = exPatternFilter === "all" || item.patternKey === exPatternFilter;
+    var matchWorkflow =
+      exWorkflowFilter === "all" ||
+      (exWorkflowFilter === "priority" && !!item.priority) ||
+      (exWorkflowFilter === "photo" && item.photoStatus !== EXERCISE_PHOTO_STATUS.READY) ||
+      (exWorkflowFilter === "video" && item.videoStatus === EXERCISE_VIDEO_STATUS.MISSING) ||
+      (exWorkflowFilter === "new" && item.isSeed) ||
+      (exWorkflowFilter === "covered" && item.isCovered);
+    return matchGear && matchPattern && matchWorkflow;
+  });
+  var exCatalogByName = exEntries.reduce(function(acc, item) {
+    acc[item.name] = item;
+    return acc;
+  }, {});
   var dayData = activeDays[safeDayIdx];
   var activeOpenRawEx = dayData && dayData.ex && openEx !== null && dayData.ex[openEx] ? dayData.ex[openEx] : null;
   var activeOpenMergedEx = activeOpenRawEx ? (activeOpenRawEx.cable && activeOpenRawEx.free ? Object.assign({}, activeOpenRawEx, activeOpenRawEx.defaultFree ? activeOpenRawEx.free : activeOpenRawEx.cable) : activeOpenRawEx) : null;
@@ -3462,6 +3671,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     if (!exInfoOpen) return null;
     var db = EX[exInfoOpen];
     if (!db) return null;
+    var meta = exCatalogByName[exInfoOpen] || null;
     var imgs = exImgs(exInfoOpen);
     var embed = ytEmbedUrl(db.lk);
     return (
@@ -3472,6 +3682,15 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
             <button onClick={function() { setExInfoOpen(null); }} style={{ border: "none", background: T.bg, color: T.sub, borderRadius: 8, padding: "6px 10px", fontSize: 12, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>✕ Chiudi</button>
           </div>
           <div style={{ fontSize: 12, color: dc, fontWeight: 600, marginBottom: 12 }}>{db.g}</div>
+          {meta && <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 12 }}>
+            {meta.priority && <span style={{ padding: "4px 8px", borderRadius: 999, background: dc + "16", color: dc, fontSize: 10, fontWeight: 800 }}>{"Priorita #" + meta.priority}</span>}
+            {meta.isSeed && <span style={{ padding: "4px 8px", borderRadius: 999, background: "#8E44AD16", color: "#8E44AD", fontSize: 10, fontWeight: 800 }}>Nuovo seed</span>}
+            {meta.isCovered && <span style={{ padding: "4px 8px", borderRadius: 999, background: "#1E88E516", color: "#1E88E5", fontSize: 10, fontWeight: 800 }}>Gia coperto</span>}
+            {meta.patternKey && <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{EXERCISE_PATTERN_LABELS[meta.patternKey]}</span>}
+            <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Scheda: " + meta.cardStatus.replace("_", " ")}</span>
+            <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Foto: " + meta.photoStatus}</span>
+            <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Video: " + meta.videoStatus}</span>
+          </div>}
           {imgs.map(function(src, ii) { return <img key={ii} src={src} style={{ width: "100%", borderRadius: 10, marginBottom: 12 }} />; })}
           <div style={{ background: T.sb, borderRadius: 10, padding: 12, marginBottom: 10 }}>
             <div style={{ fontSize: 11, fontWeight: 800, color: dc, marginBottom: 6, textTransform: "uppercase", letterSpacing: 0.6 }}>Come si esegue</div>
@@ -3822,7 +4041,16 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
         {/* View tabs */}
         <div style={{ display: "flex", gap: 1, maxWidth: 600, margin: "12px auto 0", alignItems: "stretch" }}>
           {/* Back button */}
-          <button onClick={function() { goBack(); }} disabled={tabHistory.length === 0} style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: tabHistory.length > 0 ? "pointer" : "default", fontSize: 16, color: tabHistory.length > 0 ? T.tx : T.sub + "40", borderBottom: "2px solid transparent", transition: "color 0.15s" }}>‹</button>
+          <button
+            onClick={function() { goBack(); }}
+            disabled={tabHistory.length === 0}
+            title="Torna alla tab precedente"
+            aria-label="Torna alla tab precedente"
+            style={{ minWidth: 56, flexShrink: 0, padding: "8px 6px", border: "none", background: "transparent", cursor: tabHistory.length > 0 ? "pointer" : "default", fontSize: 11, fontWeight: 800, color: tabHistory.length > 0 ? T.tx : T.sub + "40", borderBottom: "2px solid transparent", transition: "color 0.15s", display: "flex", alignItems: "center", justifyContent: "center", gap: 4 }}
+          >
+            <span style={{ fontSize: 15, lineHeight: 1 }}>←</span>
+            <span>Ind.</span>
+          </button>
           {/* Home icon-only tab */}
           <button onClick={function() { setTab("home"); setTabHistory([]); scrollTopSoon("home-top"); }} style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 14, color: tab === "home" ? T.tx : T.sub, borderBottom: tab === "home" ? "2px solid " + dc : "2px solid transparent" }}>⌂</button>
           {/* Main tabs */}
@@ -4632,18 +4860,35 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
         <div id="exercise-section-ex" onClick={function() { var next = catSec === "ex" ? null : "ex"; setCatSec(next); if (next) scrollTopSoon("exercise-section-ex"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 16 }}>{"\uD83D\uDCAA"}</span>
-            <span style={{ fontSize: 14, fontWeight: 800, color: dc }}>{"Esercizi (" + Object.keys(EX).length + ")"}</span>
+            <span style={{ fontSize: 14, fontWeight: 800, color: dc }}>{"Esercizi (" + exEntries.length + ")"}</span>
           </div>
           <div style={{ fontSize: 14, color: T.sub, transform: catSec === "ex" ? "rotate(180deg)" : "none" }}>&#9662;</div>
         </div>
         {catSec === "ex" && <div style={{ marginBottom: 12 }}>
+          <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, margin: "0 0 6px 2px" }}>Workflow</div>
           <div style={{ display: "flex", gap: 6, overflowX: "auto", paddingBottom: 8, marginBottom: 8 }}>
-            {Object.keys(EX_GEAR_LABELS).map(function(key) {
-              var active = exGearFilter === key;
-              return <button key={key} onClick={function(e) { e.stopPropagation(); setExGearFilter(key); }} style={{ whiteSpace: "nowrap", minHeight: 30, padding: "0 12px", borderRadius: 999, border: "1px solid " + (active ? dc : T.sub + "30"), background: active ? dc : T.cd, color: active ? "#fff" : T.tx, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>{EX_GEAR_LABELS[key]}</button>;
+            {Object.keys(EX_WORKFLOW_FILTER_LABELS).map(function(key) {
+              var active = exWorkflowFilter === key;
+              return <button key={key} onClick={function(e) { e.stopPropagation(); setExWorkflowFilter(key); }} style={{ whiteSpace: "nowrap", minHeight: 30, padding: "0 12px", borderRadius: 999, border: "1px solid " + (active ? dc : T.sub + "30"), background: active ? dc : T.cd, color: active ? "#fff" : T.tx, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>{EX_WORKFLOW_FILTER_LABELS[key]}</button>;
             })}
           </div>
-          {exGearFilter !== "all" && <div style={{ fontSize: 11, color: T.sub, margin: "0 0 8px 2px" }}>{"Sezione: " + EX_GEAR_LABELS[exGearFilter]}</div>}
+          <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, margin: "0 0 6px 2px" }}>Attrezzo</div>
+          <div style={{ display: "flex", gap: 6, overflowX: "auto", paddingBottom: 8, marginBottom: 8 }}>
+            {Object.keys(EXERCISE_GEAR_LABELS).map(function(key) {
+              var active = exGearFilter === key;
+              return <button key={key} onClick={function(e) { e.stopPropagation(); setExGearFilter(key); }} style={{ whiteSpace: "nowrap", minHeight: 30, padding: "0 12px", borderRadius: 999, border: "1px solid " + (active ? dc : T.sub + "30"), background: active ? dc : T.cd, color: active ? "#fff" : T.tx, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>{EXERCISE_GEAR_LABELS[key]}</button>;
+            })}
+          </div>
+          <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, margin: "0 0 6px 2px" }}>Pattern</div>
+          <div style={{ display: "flex", gap: 6, overflowX: "auto", paddingBottom: 8, marginBottom: 8 }}>
+            {Object.keys(EX_PATTERN_FILTER_LABELS).map(function(key) {
+              var active = exPatternFilter === key;
+              return <button key={key} onClick={function(e) { e.stopPropagation(); setExPatternFilter(key); }} style={{ whiteSpace: "nowrap", minHeight: 30, padding: "0 12px", borderRadius: 999, border: "1px solid " + (active ? dc : T.sub + "30"), background: active ? dc : T.cd, color: active ? "#fff" : T.tx, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>{EX_PATTERN_FILTER_LABELS[key]}</button>;
+            })}
+          </div>
+          {(exWorkflowFilter !== "all" || exGearFilter !== "all" || exPatternFilter !== "all") && <div style={{ fontSize: 11, color: T.sub, margin: "0 0 8px 2px" }}>
+            {[exWorkflowFilter !== "all" ? EX_WORKFLOW_FILTER_LABELS[exWorkflowFilter] : null, exGearFilter !== "all" ? EXERCISE_GEAR_LABELS[exGearFilter] : null, exPatternFilter !== "all" ? EX_PATTERN_FILTER_LABELS[exPatternFilter] : null].filter(Boolean).join(" · ")}
+          </div>}
           {exVisibleEntries.map(function(item, ei) {
             var name = item.name;
             var db = item.db;
@@ -4655,6 +4900,15 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
               <div style={{ padding: "6px 10px", flex: 1, minWidth: 0 }}>
                 <div style={{ fontWeight: 700, fontSize: 12 }}>{name}</div>
                 <div style={{ fontSize: 10, color: T.sub }}>{db.g}</div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: 4 }}>
+                  {item.priority && <span style={{ padding: "2px 6px", borderRadius: 999, background: dc + "16", color: dc, fontSize: 9, fontWeight: 800 }}>{"P" + item.priority}</span>}
+                  {item.isSeed && <span style={{ padding: "2px 6px", borderRadius: 999, background: "#8E44AD16", color: "#8E44AD", fontSize: 9, fontWeight: 800 }}>Nuovo</span>}
+                  {item.isCovered && <span style={{ padding: "2px 6px", borderRadius: 999, background: "#1E88E516", color: "#1E88E5", fontSize: 9, fontWeight: 800 }}>Coperto</span>}
+                  {item.patternKey && <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{EXERCISE_PATTERN_LABELS[item.patternKey]}</span>}
+                  <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{"Scheda " + item.cardStatus.replace("_", " ")}</span>
+                  <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{"Foto " + item.photoStatus}</span>
+                  <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{"Video " + item.videoStatus}</span>
+                </div>
               </div>
               <div style={{ paddingRight: 12, color: T.sub, fontSize: 12 }}>&#8250;</div>
               </div>
