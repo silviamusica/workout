@@ -3092,6 +3092,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     return acc;
   }, {});
   var dayData = activeDays[safeDayIdx];
+  var estimatedDayMinutes = dayData ? estimateDayMinutes(dayData, month) : 0;
   var activeOpenRawEx = dayData && dayData.ex && openEx !== null && dayData.ex[openEx] ? dayData.ex[openEx] : null;
   var activeOpenMergedEx = activeOpenRawEx ? (activeOpenRawEx.cable && activeOpenRawEx.free ? Object.assign({}, activeOpenRawEx, activeOpenRawEx.defaultFree ? activeOpenRawEx.free : activeOpenRawEx.cable) : activeOpenRawEx) : null;
   var activeOpenEx = activeOpenMergedEx ? getExForMonth(activeOpenMergedEx) : null;
@@ -3597,18 +3598,62 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     return null;
   }
 
+  function estimateWarmupItemMinutes(item) {
+    if (!item) return 0;
+    if (item.tm) return item.tm / 60;
+    var text = String(item.d || "");
+    var minMatch = text.match(/(\d+(?:\.\d+)?)\s*min/i);
+    if (minMatch) return parseFloat(minMatch[1]);
+    var secMatch = text.match(/(\d+)\s*s/i);
+    if (secMatch) return parseInt(secMatch[1]) / 60;
+    var repMatch = text.match(/(\d+)\s*(?:rip|ripetizioni)/i);
+    if (repMatch) {
+      var reps = parseInt(repMatch[1]) || 8;
+      return Math.max(0.75, Math.min(2, reps * 0.08));
+    }
+    return 1.5;
+  }
+
   function estimateExerciseMinutes(rawEx, ex) {
     var p = parseSerie(ex.s);
     var sets = p.sets || 3;
-    // tempo per singola serie in secondi basato sul range reps
-    var repsStr = p.reps[0] || "10";
-    var reps = repsStr === "max" ? 10 : (parseInt(repsStr) || 10);
-    var secPerSet = reps <= 5 ? 40 : reps <= 8 ? 35 : reps <= 12 ? 28 : 22;
-    // recupero
+    var repsNums = (p.reps || []).map(function(rep) {
+      if (rep === "max") return 10;
+      if ((rep || "").indexOf("s") >= 0) return parseInt(rep) || 30;
+      return parseInt(rep) || 0;
+    }).filter(function(v) { return v > 0; });
+    var avgTarget = repsNums.length ? (repsNums.reduce(function(acc, v) { return acc + v; }, 0) / repsNums.length) : 10;
+    var classKey = getGuidedExerciseClass(ex.n);
+    var secPerSet;
+    if (p.kind === "time" || ex.n === "Plank") {
+      secPerSet = Math.max(35, avgTarget + 15);
+    } else if (classKey === "heavy") {
+      secPerSet = avgTarget <= 6 ? 55 : avgTarget <= 8 ? 50 : 45;
+    } else if (classKey === "compound") {
+      secPerSet = avgTarget <= 8 ? 42 : avgTarget <= 12 ? 36 : 32;
+    } else {
+      secPerSet = avgTarget <= 10 ? 30 : avgTarget <= 15 ? 26 : 22;
+    }
     var recSec = getExerciseRestSeconds(rawEx, ex) || 90;
-    // totale: set × lavoro + (set-1) × recupero, arrotondato al mezzo minuto
-    var total = sets * secPerSet + (sets - 1) * recSec;
-    return Math.round(total / 30) * 0.5;
+    var setupSec = classKey === "heavy" ? 75 : classKey === "compound" ? 45 : 30;
+    var transitionSec = sets >= 4 ? 25 : 15;
+    var total = setupSec + sets * secPerSet + (sets - 1) * recSec + transitionSec;
+    return Math.max(2, Math.round(total / 60));
+  }
+
+  function estimateDayMinutes(day, activeMonth) {
+    if (!day || day.rest) return 0;
+    if (day.cardio) return day.tEst || 0;
+    var warmupMin = (day.warmup || []).reduce(function(acc, item) {
+      return acc + estimateWarmupItemMinutes(item);
+    }, 0);
+    var exerciseMin = (day.ex || []).reduce(function(acc, rawEx) {
+      var exDef = getExForMonthValue(rawEx, activeMonth || month);
+      return acc + estimateExerciseMinutes(rawEx, exDef);
+    }, 0);
+    var stretchMin = Math.min(8, Math.max(4, (day.str || []).length * 1.25));
+    var bufferMin = (day.ex || []).length >= 6 ? 6 : (day.ex || []).length >= 4 ? 4 : 3;
+    return Math.max(15, Math.round((warmupMin + exerciseMin + stretchMin + bufferMin) / 5) * 5);
   }
 
   function buildBackupPayload(sourceLogs, sourceCardioLogs, meta) {
@@ -5967,7 +6012,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                   <div style={{ flex: 1 }}>
                     <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, lineHeight: 1.3 }}>{dayData.focus}</div>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginTop: 3 }}>
-                      <div style={{ fontSize: 11, color: dc, fontWeight: 600 }}>~{dayData.tEst} min</div>
+                      <div style={{ fontSize: 11, color: dc, fontWeight: 600 }}>~{estimatedDayMinutes || dayData.tEst} min</div>
                       {!dayData.cardio && !dayData.rest && !isBasics && <button
                         onClick={function(e) { e.stopPropagation(); setFocusMode(function(v) { return !v; }); }}
                         style={{ minHeight: 26, padding: "0 10px", border: "1px solid " + (focusMode ? dc + "70" : T.sub + "30"), borderRadius: 999, background: focusMode ? dc + "20" : "transparent", color: focusMode ? dc : T.sub, boxShadow: focusMode ? ("0 0 0 2px " + dc + "18, 0 0 14px " + dc + "25") : "none", fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap", display: "inline-flex", alignItems: "center", gap: 5 }}
