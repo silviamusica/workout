@@ -2260,6 +2260,14 @@ function getCalibrationRestLabel(exName, rec) {
   return "Riposa come da recupero previsto per questo esercizio.";
 }
 
+function isFatiguePatternAtTop(reps, spec) {
+  if (!spec || spec.kind !== "range" || !reps || reps.length < 4) return false;
+  var half = Math.floor(reps.length / 2);
+  var firstHalfTop = reps.slice(0, half).every(function(r) { return r >= spec.max; });
+  var secondHalfInRangeBelowTop = reps.slice(half).every(function(r) { return r >= spec.min && r < spec.max; });
+  return firstHalfTop && secondHalfInRangeBelowTop;
+}
+
 function getCalibrationChangeLabel(type, dir) {
   if (type === "cable") return dir === "up" ? "sali di uno step al cavo" : "scendi di uno step al cavo";
   if (type === "dumbbell") return dir === "up" ? "aumenta di poco il carico" : "riduci di poco il carico";
@@ -3574,10 +3582,11 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   function getExerciseRestSeconds(rawEx, ex) {
     if (!rawEx || !ex) return null;
     if (rawEx.rec) {
-      var m = rawEx.rec.match(/(\d+(?:\.\d+)?)\s*min/i);
-      if (m) return Math.round(parseFloat(m[1]) * 60);
-      var s = rawEx.rec.match(/(\d+)\s*s/i);
+      var recText = String(rawEx.rec);
+      var s = recText.match(/(\d+)\s*s/i);
       if (s) return parseInt(s[1]);
+      var m = recText.match(/(\d+(?:\.\d+)?)\s*min/i);
+      if (m) return Math.round(parseFloat(m[1]) * 60);
     }
     return getRestTime(ex.n, ex.rpe);
   }
@@ -3898,6 +3907,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     var avgRir = rirValues.length ? (rirValues.reduce(function(acc, v) { return acc + v; }, 0) / rirValues.length) : null;
     var allAtTop = spec.kind === "range" && reps.every(function(r) { return r >= spec.max; });
     var allInRange = spec.kind === "range" && reps.every(function(r) { return r >= spec.min; });
+    var fatiguePattern = isFatiguePatternAtTop(reps, spec);
     var nextReps = reps.map(function(r) { return String(Math.min((parseInt(r) || spec.min) + 1, spec.max)); }).join("/");
     if (allAtTop) {
       if (avgRir !== null && avgRir <= 1) {
@@ -3910,6 +3920,9 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       return { state: "up", title: "Aumenta difficolta", detail: "Ultima: " + formatSessionSummary(exName, sets, true, false) + ". Prossima: aumenta la difficolta o aggiungi 1 rip per serie." };
     }
     if (allInRange) {
+      if (fatiguePattern) {
+        return { state: "hold", title: "Calo normale di fatica", detail: "Ultima: " + formatSessionSummary(exName, sets, isBW, false) + ". Le prime serie sono al top e le ultime calano restando nel range: e fatica normale, non un fallimento. Prova a chiudere meglio le ultime serie la prossima volta." };
+      }
       return { state: "hold", title: "Resta cosi, prova 1 rip in piu", detail: "Ultima: " + formatSessionSummary(exName, sets, isBW, false) + ". Oggi resta con lo stesso " + getGuidedReferenceTerm(exName) + " e prova a salire verso " + nextReps + "." };
     }
     return { state: "down", title: "Consolida", detail: "Ultima: " + formatSessionSummary(exName, sets, isBW, false) + ". Prima chiudi bene il minimo del range su tutte le serie." };
@@ -3949,6 +3962,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     var reps = sets.map(function(s) { return parseInt(s.r) || 0; });
     var allAtTop = spec.kind === "range" && reps.every(function(r) { return r >= spec.max; });
     var allInRange = spec.kind === "range" && reps.every(function(r) { return r >= spec.min; });
+    var fatiguePattern = isFatiguePatternAtTop(reps, spec);
     var rirValues = sets.map(function(s) { return numericRirValue(s.rir); }).filter(function(v) { return v !== null; });
     var avgRir = rirValues.length ? (rirValues.reduce(function(acc, v) { return acc + v; }, 0) / rirValues.length) : null;
     var lowRirCount = sets.filter(function(s) { var rir = numericRirValue(s.rir); return rir !== null && rir <= 0; }).length;
@@ -3977,7 +3991,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       if (inc.kind === "assist") return "La prossima volta prova meno assistenza o un range di movimento piu ampio, ripartendo dal minimo del range.";
       return "La prossima volta prova +1 rip per serie o una variante piu difficile.";
     }
-    if (allInRange && spec.kind === "range" && reps.length >= 4 && reps[0] >= spec.max && reps[1] >= spec.max && reps[reps.length - 2] < spec.max) {
+    if (allInRange && fatiguePattern) {
       return "Riferimento calibrato bene. Il calo nelle ultime serie e fatica normale. La prossima volta prova a chiudere anche la terza e quarta serie.";
     }
     if (allInRange) return "Riferimento giusto. La prossima volta prova ad aggiungere 1 ripetizione per serie.";
