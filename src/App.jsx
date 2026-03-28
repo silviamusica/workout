@@ -3823,8 +3823,18 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     return "compound";
   }
 
+  function getGuidedReferenceTerm(exName) {
+    var inc = getGuidedIncrementInfo(exName);
+    if (inc.kind === "kg") return "peso";
+    if (inc.kind === "step") return "step";
+    if (inc.kind === "tick" || inc.kind === "assist") return "livello di assistenza";
+    if (inc.kind === "reps") return "variante";
+    return "riferimento";
+  }
+
   function getGuidedIncrementInfo(exName) {
     if (usesElasticScale(exName)) return { kind: "tick", amount: 1, label: "-1 tacca elastico" };
+    if (exName === "Nordic Curl") return { kind: "assist", amount: 1, label: "meno assistenza o piu ROM" };
     if (exName.indexOf("Cavo") >= 0 || exName === "Face Pull" || exName === "Woodchop" || exName === "Tricipiti Cavo" || exName === "Pulley" || exName === "Lat Machine") {
       return { kind: "step", amount: 1, label: "+1 step cavo" };
     }
@@ -3843,6 +3853,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     if (inc.kind === "kg") return inc.amount >= 2.5 ? "Prova con 2.5 kg in meno la prossima volta." : "Prova con 1 kg in meno per manubrio la prossima volta.";
     if (inc.kind === "step") return "Prova con 1 step in meno la prossima volta.";
     if (inc.kind === "tick") return "Prova con 1 tacca di aiuto in piu la prossima volta.";
+    if (inc.kind === "assist") return "Prova con piu assistenza o con un range di movimento piu corto la prossima volta.";
     return "Prova con una variante piu facile la prossima volta.";
   }
 
@@ -3890,7 +3901,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     var nextReps = reps.map(function(r) { return String(Math.min((parseInt(r) || spec.min) + 1, spec.max)); }).join("/");
     if (allAtTop) {
       if (avgRir !== null && avgRir <= 1) {
-        return { state: "hold", title: "Chiuse ma troppo tirate", detail: "Ultima: " + formatSessionSummary(exName, sets, isBW, false) + ". Hai chiuso il range, ma con buffer minimo: resta su questo peso ancora una seduta e cerca piu margine prima di salire." };
+        return { state: "hold", title: "Chiuse ma troppo tirate", detail: "Ultima: " + formatSessionSummary(exName, sets, isBW, false) + ". Hai chiuso il range, ma con buffer minimo: resta su questo " + getGuidedReferenceTerm(exName) + " ancora una seduta e cerca piu margine prima di salire." };
       }
       var inc = getGuidedIncrementInfo(exName);
       if (inc.kind === "kg") return { state: "up", title: "Aumenta carico", detail: "Ultima: " + formatSessionSummary(exName, sets, false, false) + ". Prossima: " + (load + inc.amount) + " kg e riparti dal minimo del range." };
@@ -3899,7 +3910,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       return { state: "up", title: "Aumenta difficolta", detail: "Ultima: " + formatSessionSummary(exName, sets, true, false) + ". Prossima: aumenta la difficolta o aggiungi 1 rip per serie." };
     }
     if (allInRange) {
-      return { state: "hold", title: "Resta cosi, prova 1 rip in piu", detail: "Ultima: " + formatSessionSummary(exName, sets, isBW, false) + ". Oggi resta con lo stesso riferimento e prova a salire verso " + nextReps + "." };
+      return { state: "hold", title: "Resta cosi, prova 1 rip in piu", detail: "Ultima: " + formatSessionSummary(exName, sets, isBW, false) + ". Oggi resta con lo stesso " + getGuidedReferenceTerm(exName) + " e prova a salire verso " + nextReps + "." };
     }
     return { state: "down", title: "Consolida", detail: "Ultima: " + formatSessionSummary(exName, sets, isBW, false) + ". Prima chiudi bene il minimo del range su tutte le serie." };
   }
@@ -3957,19 +3968,20 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       if (exName === "Dip alle Parallele") return "Hai fatto almeno 10 rip pulite in tutte le serie per 2 sessioni consecutive. Valuta una zavorra leggera da +1.25 kg.";
     }
     if (allAtTop && avgRir !== null && avgRir <= 1) {
-      return "Hai chiuso il range, ma il buffer era minimo. Resta a questo peso ancora una sessione per consolidare prima di aumentare.";
+      return "Hai chiuso il range, ma il buffer era minimo. Resta su questo " + getGuidedReferenceTerm(exName) + " ancora una sessione per consolidare prima di aumentare.";
     }
     if (allAtTop) {
       if (inc.kind === "kg") return "La prossima volta aumenta a " + (load + inc.amount) + " kg e riparti dal minimo del range.";
       if (inc.kind === "step") return "La prossima volta sali di 1 step al cavo e riparti dal minimo del range.";
       if (inc.kind === "tick") return "La prossima volta usa 1 tacca di aiuto in meno e riparti dal minimo del range.";
+      if (inc.kind === "assist") return "La prossima volta prova meno assistenza o un range di movimento piu ampio, ripartendo dal minimo del range.";
       return "La prossima volta prova +1 rip per serie o una variante piu difficile.";
     }
     if (allInRange && spec.kind === "range" && reps.length >= 4 && reps[0] >= spec.max && reps[1] >= spec.max && reps[reps.length - 2] < spec.max) {
-      return "Peso calibrato bene. Il calo nelle ultime serie e fatica normale. La prossima volta prova a chiudere anche la terza e quarta serie.";
+      return "Riferimento calibrato bene. Il calo nelle ultime serie e fatica normale. La prossima volta prova a chiudere anche la terza e quarta serie.";
     }
-    if (allInRange) return "Peso giusto. La prossima volta prova ad aggiungere 1 ripetizione per serie.";
-    return "Consolida questo peso prima di salire.";
+    if (allInRange) return "Riferimento giusto. La prossima volta prova ad aggiungere 1 ripetizione per serie.";
+    return "Consolida questo " + getGuidedReferenceTerm(exName) + " prima di salire.";
   }
 
   function getUnderMinPerformanceMessage(exName, serie, repsDone) {
@@ -3979,7 +3991,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     if (reps <= Math.max(1, spec.min - 3)) {
       return "Sei molto sotto il minimo previsto (" + reps + " su " + spec.min + "). Probabile carico troppo alto, recupero insufficiente o tecnica che cede: alleggerisci e consolida. " + getGuidedReductionLabel(exName);
     }
-    return "Sei sotto il minimo previsto (" + reps + " su " + spec.min + "). Non salire di carico: consolida questo peso prima di progredire.";
+    return "Sei sotto il minimo previsto (" + reps + " su " + spec.min + "). Non aumentare ancora: consolida questo " + getGuidedReferenceTerm(exName) + " prima di progredire.";
   }
 
   function updateSetRirValue(exName, di, si, rirValue) {
@@ -4393,7 +4405,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     if (allInRange) {
       return { tone: "mid", label: isAccessory ? "🟡 Prova a chiudere il target" : "🟡 Aggiungi ripetizioni", detail: "Ultima: " + latestSummary + ". Il peso va bene, ma non hai ancora fatto il numero alto di ripetizioni in tutte le serie.", short: "Peso giusto, ma non ancora al numero alto" };
     }
-    return { tone: "hold", label: isAccessory ? "🟠 Consolida tecnica e rip" : "🟠 Consolida questo peso", detail: "Ultima: " + latestSummary + ". Almeno una serie e sotto il minimo previsto.", short: "Almeno una serie sotto il minimo" };
+    return { tone: "hold", label: isAccessory ? "🟠 Consolida tecnica e rip" : "🟠 Consolida il riferimento", detail: "Ultima: " + latestSummary + ". Almeno una serie e sotto il minimo previsto.", short: "Almeno una serie sotto il minimo" };
   }
 
 
