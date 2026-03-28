@@ -1,3 +1,6 @@
+import rawExerciseGuidePatches from "./exerciseGuidePatches.json";
+import rawExerciseGuidePatchesGobletBird from "./exerciseGuidePatchesGobletBird.json";
+
 export var EXERCISE_CARD_STATUS = {
   TODO: "da_creare",
   DRAFT: "bozza",
@@ -59,6 +62,43 @@ function blankCues() {
   };
 }
 
+function listToText(value) {
+  if (Array.isArray(value)) return value.filter(Boolean).join("\n");
+  return value || "";
+}
+
+function normalizeGuidePatch(input) {
+  return {
+    name: input.name,
+    obiettivo: input.obiettivo || "",
+    setup: listToText(input.setup),
+    esecuzione: listToText(input.esecuzione),
+    cueTecnici: {
+      mani: input.cue_tecnici && input.cue_tecnici.mani || "",
+      piedi: input.cue_tecnici && input.cue_tecnici.piedi || "",
+      gomiti: input.cue_tecnici && input.cue_tecnici.gomiti || "",
+      bacino: input.cue_tecnici && input.cue_tecnici.bacino || "",
+      colonna: input.cue_tecnici && input.cue_tecnici.colonna || "",
+      scapole: input.cue_tecnici && input.cue_tecnici.scapole || "",
+    },
+    erroriComuni: Array.isArray(input.errori_comuni) ? input.errori_comuni.filter(Boolean) : [],
+    regressione: input.regressione || "",
+    alternativa: input.alternativa || "",
+    progressione: input.progressione || "",
+    competenzePreliminari: Array.isArray(input.competenze_preliminari_collegate) ? input.competenze_preliminari_collegate.filter(Boolean) : [],
+    note: input.note || "",
+    statoSchedaConsigliato: input.stato_scheda_consigliato || "",
+  };
+}
+
+var ALL_EXERCISE_GUIDE_PATCHES = rawExerciseGuidePatches.concat(rawExerciseGuidePatchesGobletBird);
+
+var GUIDE_PATCH_BY_NAME = ALL_EXERCISE_GUIDE_PATCHES.reduce(function(acc, patch) {
+  if (!patch || !patch.name) return acc;
+  acc[patch.name] = normalizeGuidePatch(patch);
+  return acc;
+}, {});
+
 function seedExercise(input) {
   return {
     name: input.name,
@@ -87,6 +127,29 @@ function seedExercise(input) {
   };
 }
 
+function mergeSeedWithGuidePatch(seed) {
+  var patch = GUIDE_PATCH_BY_NAME[seed.name];
+  if (!patch) return seed;
+  var nextStatus = patch.statoSchedaConsigliato === "pronta"
+    ? EXERCISE_CARD_STATUS.READY
+    : patch.statoSchedaConsigliato === "bozza"
+      ? EXERCISE_CARD_STATUS.DRAFT
+      : seed.statoScheda;
+  return Object.assign({}, seed, {
+    obiettivo: patch.obiettivo || seed.obiettivo,
+    setup: patch.setup || seed.setup,
+    esecuzione: patch.esecuzione || seed.esecuzione,
+    cueTecnici: Object.assign({}, seed.cueTecnici || blankCues(), patch.cueTecnici || {}),
+    erroriComuni: patch.erroriComuni && patch.erroriComuni.length ? patch.erroriComuni : seed.erroriComuni,
+    regressione: patch.regressione || seed.regressione,
+    alternativa: patch.alternativa || seed.alternativa,
+    progressione: patch.progressione || seed.progressione,
+    competenzePreliminari: patch.competenzePreliminari && patch.competenzePreliminari.length ? patch.competenzePreliminari : seed.competenzePreliminari,
+    note: patch.note || seed.note,
+    statoScheda: nextStatus || EXERCISE_CARD_STATUS.DRAFT,
+  });
+}
+
 export var NEW_EXERCISE_WORKFLOW_SEED = [
   seedExercise({ name: "Push-Up su rialzo", attrezzi: ["corpo_libero"], pattern: "spinta", priorita: 1 }),
   seedExercise({ name: "Goblet Squat", attrezzi: ["manubri"], pattern: "squat", priorita: 2, statoScheda: EXERCISE_CARD_STATUS.DRAFT, statoFoto: EXERCISE_PHOTO_STATUS.READY, statoVideo: EXERCISE_VIDEO_STATUS.LINKED }),
@@ -109,7 +172,7 @@ export var NEW_EXERCISE_WORKFLOW_SEED = [
   seedExercise({ name: "TRX Hamstring Curl", attrezzi: ["trx"], pattern: "hinge", priorita: 19 }),
   seedExercise({ name: "Hip Thrust al Cavo", attrezzi: ["cavi"], pattern: "hinge", priorita: 20 }),
   seedExercise({ name: "TRX Split Squat", attrezzi: ["trx"], pattern: "affondo_unilaterale", priorita: 21 }),
-];
+].map(mergeSeedWithGuidePatch);
 
 export var EXISTING_COVERED_EXERCISES = [
   "Squat",

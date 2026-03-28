@@ -262,21 +262,123 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
 "Pallof Press": {"g": "Core anti-rotazione", "c": "In piedi o in ginocchio con elastico o cavo al lato. Spingi le braccia avanti e resisti alla rotazione del busto.", "p": "Costole giu, bacino fermo, busto frontale. Le braccia si muovono ma il tronco non gira.", "t": ["Poco carico, massimo controllo", "Espira mentre allontani le mani", "Se il busto ruota, alleggerisci"], "lk": "https://www.youtube.com/watch?v=qQOsWutOQoM"}
 };
 
-NEW_EXERCISE_WORKFLOW_SEED.forEach(function(seed) {
-  if (!EX[seed.name]) {
-    EX[seed.name] = {
-      g: EXERCISE_PATTERN_LABELS[seed.pattern] || "Scheda in preparazione",
-      c: "Scheda tecnica in preparazione.",
-      p: "Campi setup, esecuzione, cue tecnici ed errori da compilare.",
-      t: [],
-      lk: seed.videoUrl || "",
-      deep: [
-        { type: "p", content: "Questa scheda e stata creata come struttura pronta da compilare. I contenuti tecnici dettagliati verranno aggiunti in un secondo momento." }
-      ]
-    };
-  } else if (seed.videoUrl && !EX[seed.name].lk) {
-    EX[seed.name].lk = seed.videoUrl;
+var EXERCISE_GUIDE_PLACEHOLDER_TITLE = "Scheda tecnica in preparazione.";
+var EXERCISE_GUIDE_PLACEHOLDER_SUBTITLE = "Campi setup, esecuzione, cue tecnici ed errori da compilare.";
+var EXERCISE_GUIDE_PLACEHOLDER_DEEP = "Questa scheda e stata creata come struttura pronta da compilare. I contenuti tecnici dettagliati verranno aggiunti in un secondo momento.";
+function splitGuideText(value) {
+  return String(value || "")
+    .split("\n")
+    .map(function(item) { return item.trim(); })
+    .filter(Boolean);
+}
+
+function cueTableFromSeed(seed) {
+  var rows = [
+    ["Mani", seed.cueTecnici && seed.cueTecnici.mani || ""],
+    ["Piedi", seed.cueTecnici && seed.cueTecnici.piedi || ""],
+    ["Gomiti", seed.cueTecnici && seed.cueTecnici.gomiti || ""],
+    ["Bacino", seed.cueTecnici && seed.cueTecnici.bacino || ""],
+    ["Colonna", seed.cueTecnici && seed.cueTecnici.colonna || ""],
+    ["Scapole", seed.cueTecnici && seed.cueTecnici.scapole || ""],
+  ].filter(function(row) { return row[1]; });
+  if (!rows.length) return null;
+  return { type: "table", columns: ["Cue tecnico", "Indicazione"], rows: rows };
+}
+
+function buildGuideSummary(seed) {
+  var summary = [];
+  splitGuideText(seed.esecuzione).slice(0, 1).forEach(function(item) { summary.push(item); });
+  ["mani", "piedi", "gomiti", "bacino", "colonna", "scapole"].some(function(key) {
+    var value = seed.cueTecnici && seed.cueTecnici[key];
+    if (value) summary.push(value);
+    return summary.length >= 3;
+  });
+  if (summary.length < 3) {
+    (seed.erroriComuni || []).slice(0, 3 - summary.length).forEach(function(item) {
+      summary.push("Attenzione a: " + item);
+    });
   }
+  return summary.slice(0, 3);
+}
+
+function buildGuideDeep(seed) {
+  var blocks = [];
+  var setup = splitGuideText(seed.setup);
+  var execution = splitGuideText(seed.esecuzione);
+  var cueTable = cueTableFromSeed(seed);
+  if (seed.obiettivo) {
+    blocks.push({ type: "p", content: "Obiettivo" });
+    blocks.push({ type: "p", content: seed.obiettivo });
+  }
+  if (setup.length) {
+    blocks.push({ type: "p", content: "Setup" });
+    blocks.push({ type: "ul", content: setup });
+  }
+  if (execution.length) {
+    blocks.push({ type: "p", content: "Esecuzione" });
+    blocks.push({ type: "ul", content: execution });
+  }
+  if (cueTable) {
+    blocks.push({ type: "p", content: "Cue tecnici" });
+    blocks.push(cueTable);
+  }
+  if (seed.erroriComuni && seed.erroriComuni.length) {
+    blocks.push({ type: "p", content: "Errori comuni" });
+    blocks.push({ type: "ul", content: seed.erroriComuni });
+  }
+  if (seed.regressione) {
+    blocks.push({ type: "p", content: "Regressione" });
+    blocks.push({ type: "p", content: seed.regressione });
+  }
+  if (seed.alternativa) {
+    blocks.push({ type: "p", content: "Alternativa" });
+    blocks.push({ type: "p", content: seed.alternativa });
+  }
+  if (seed.progressione) {
+    blocks.push({ type: "p", content: "Progressione" });
+    blocks.push({ type: "p", content: seed.progressione });
+  }
+  if (seed.competenzePreliminari && seed.competenzePreliminari.length) {
+    blocks.push({ type: "p", content: "Competenze preliminari collegate" });
+    blocks.push({ type: "ul", content: seed.competenzePreliminari });
+  }
+  if (seed.note) {
+    blocks.push({ type: "p", content: "Note" });
+    blocks.push({ type: "p", content: seed.note });
+  }
+  return blocks;
+}
+
+function isPlaceholderDeep(deep) {
+  return Array.isArray(deep) &&
+    deep.length === 1 &&
+    deep[0] &&
+    deep[0].type === "p" &&
+    deep[0].content === EXERCISE_GUIDE_PLACEHOLDER_DEEP;
+}
+
+function mergeExerciseGuideWithSeed(existing, seed) {
+  var next = Object.assign({}, existing || {});
+  var deep = buildGuideDeep(seed);
+  next.g = next.g || EXERCISE_PATTERN_LABELS[seed.pattern] || "Scheda tecnica";
+  if (!next.c || next.c === EXERCISE_GUIDE_PLACEHOLDER_TITLE) next.c = seed.obiettivo || next.c || EXERCISE_GUIDE_PLACEHOLDER_TITLE;
+  if (!next.p || next.p === EXERCISE_GUIDE_PLACEHOLDER_SUBTITLE) next.p = splitGuideText(seed.setup)[0] || next.p || EXERCISE_GUIDE_PLACEHOLDER_SUBTITLE;
+  if (!next.t || !next.t.length) next.t = buildGuideSummary(seed);
+  if ((!next.deep || isPlaceholderDeep(next.deep)) && deep.length) next.deep = deep;
+  if (!next.lk && seed.videoUrl) next.lk = seed.videoUrl;
+  return next;
+}
+
+NEW_EXERCISE_WORKFLOW_SEED.forEach(function(seed) {
+  var baseEntry = EX[seed.name] || {
+    g: EXERCISE_PATTERN_LABELS[seed.pattern] || "Scheda tecnica",
+    c: EXERCISE_GUIDE_PLACEHOLDER_TITLE,
+    p: EXERCISE_GUIDE_PLACEHOLDER_SUBTITLE,
+    t: [],
+    lk: seed.videoUrl || "",
+    deep: [{ type: "p", content: EXERCISE_GUIDE_PLACEHOLDER_DEEP }]
+  };
+  EX[seed.name] = mergeExerciseGuideWithSeed(baseEntry, seed);
 });
 
 var MUSCLE_IMG = img_muscle_map;
@@ -2564,6 +2666,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [cableMode, setCableMode] = useState({});
   var [fontScale, setFontScale] = useState(1.1);
   var [settingsOpen, setSettingsOpen] = useState(false);
+  var [exerciseWorkflowEnabled, setExerciseWorkflowEnabled] = useState(false);
   var [userName, setUserName] = useState("");
   var [userPhoto, setUserPhoto] = useState(null);
   var [privateCodeInput, setPrivateCodeInput] = useState("");
@@ -2765,6 +2868,14 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     new: "Nuovi",
     covered: "Gia coperti"
   };
+  var EX_WORKFLOW_HELP = {
+    all: "Panoramica completa. Usa questa vista per decidere da dove partire.",
+    priority: "Parti da qui: per questi esercizi compila prima la guida completa nell'app (obiettivo, setup, esecuzione, cue tecnici, errori, regressione, alternativa e progressione), poi aggiungi foto e video.",
+    photo: "Qui ti servono immagini. Scatta o collega le foto mancanti e poi segnala come pronta la parte foto.",
+    video: "Qui manca il video o il link non e ancora verificato. Aggiungi il link giusto e controlla che apra davvero l'esercizio corretto.",
+    new: "Esercizi nuovi da costruire. Prima compila la guida base dell'esercizio nell'app: obiettivo, setup, esecuzione, cue tecnici, errori, regressione, alternativa e progressione.",
+    covered: "Esercizi gia coperti. In genere non sono urgenti: rivedili solo se vuoi rifinire dettagli."
+  };
   var EX_PATTERN_FILTER_LABELS = Object.assign({ all: "Tutti i pattern" }, EXERCISE_PATTERN_LABELS);
   function classifyExercisePattern(name, db) {
     var slug = slugifyExerciseName(name);
@@ -2852,6 +2963,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     var matchGear = exGearFilter === "all" || item.gearKeys.indexOf(exGearFilter) >= 0;
     var matchPattern = exPatternFilter === "all" || item.patternKey === exPatternFilter;
     var matchWorkflow =
+      !exerciseWorkflowEnabled ||
       exWorkflowFilter === "all" ||
       (exWorkflowFilter === "priority" && !!item.priority) ||
       (exWorkflowFilter === "photo" && item.photoStatus !== EXERCISE_PHOTO_STATUS.READY) ||
@@ -2927,6 +3039,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     try { var lv = localStorage.getItem("wt-level"); if (lv === "basics" || lv === "beginner" || lv === "v4") setLevel(lv); } catch(e) {}
     try { var th = localStorage.getItem("wt-theme"); if (th && TH[th]) setTheme(th); else localStorage.removeItem("wt-theme"); } catch(e) {}
     try { var fs = parseFloat(localStorage.getItem("wt-fontscale")); if (fs >= 0.9 && fs <= 1.5) setFontScale(fs); } catch(e) {}
+    try { setExerciseWorkflowEnabled(localStorage.getItem("wt-exercise-workflow") === "1"); } catch(e) {}
     setReady(true);
   }, []);
 
@@ -3389,15 +3502,177 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     };
   }
 
-  function downloadBackupPayload(payload, filename) {
-    var dataStr = JSON.stringify(payload, null, 2);
-    var dataBlob = new Blob([dataStr], { type: "application/json" });
+  function getExForMonthValue(raw, m) {
+    if (!raw) return { n: "", s: "", rpe: "", note: "" };
+    if (!m || m === 1) return { n: raw.n, s: raw.s, rpe: raw.rpe, note: raw.note || "" };
+    var v = raw["v" + m];
+    if (v) return { n: v.n, s: v.s || raw.s, rpe: v.rpe || raw.rpe, note: v.note || "" };
+    return { n: raw.n, s: raw.s, rpe: raw.rpe, note: raw.note || "" };
+  }
+
+  function getProgramLabel(key) {
+    if (key === "v4") return "Ipertrofia avanzato";
+    if (key === "beginner") return "Principiante";
+    if (key === "basics") return "Tecniche preliminari";
+    return "";
+  }
+
+  function findExerciseContext(entry) {
+    var pools = [
+      { key: "v4", days: DAYS_V4 },
+      { key: "beginner", days: DAYS_BEGINNER },
+      { key: "basics", days: DAYS_BASICS }
+    ];
+    for (var pi = 0; pi < pools.length; pi++) {
+      var pool = pools[pi];
+      var day = pool.days[entry.day];
+      if (!day || !day.ex || !day.ex.length) continue;
+      for (var ei = 0; ei < day.ex.length; ei++) {
+        var rawEx = day.ex[ei];
+        var exDef = getExForMonthValue(rawEx, entry.month);
+        if (exDef.n === entry.exercise) {
+          return {
+            program: getProgramLabel(pool.key),
+            dayName: day.name,
+            focus: day.focus,
+            plannedSerie: exDef.s || "",
+            note: exDef.note || ""
+          };
+        }
+      }
+    }
+    return {
+      program: "",
+      dayName: typeof entry.day === "number" ? ("Giorno " + (entry.day + 1)) : "",
+      focus: "",
+      plannedSerie: "",
+      note: ""
+    };
+  }
+
+  function findCardioContext(entry) {
+    var day = DAYS_V4[entry.day];
+    return {
+      program: "Ipertrofia avanzato",
+      dayName: day && day.name ? day.name : (typeof entry.day === "number" ? ("Giorno " + (entry.day + 1)) : ""),
+      focus: day && day.focus ? day.focus : "",
+    };
+  }
+
+  function csvCell(value) {
+    var str = value == null ? "" : String(value);
+    if (/[;"\n]/.test(str)) return '"' + str.replace(/"/g, '""') + '"';
+    return str;
+  }
+
+  function downloadTextFile(text, filename, mimeType) {
+    var dataBlob = new Blob([text], { type: mimeType || "text/plain;charset=utf-8" });
     var url = URL.createObjectURL(dataBlob);
     var link = document.createElement("a");
     link.href = url;
     link.download = filename;
     link.click();
     URL.revokeObjectURL(url);
+  }
+
+  function downloadBackupPayload(payload, filename) {
+    var dataStr = JSON.stringify(payload, null, 2);
+    downloadTextFile(dataStr, filename, "application/json");
+  }
+
+  function buildReadableCsv(sourceLogs, sourceCardioLogs) {
+    var rows = [[
+      "Data",
+      "Programma",
+      "Giorno",
+      "Focus",
+      "Mese",
+      "Tipo",
+      "Attivita",
+      "Serie previste",
+      "Serie registrate",
+      "Dettaglio serie",
+      "Totale ripetizioni",
+      "Volume (kg x rip)",
+      "Minuti cardio",
+      "Km",
+      "Kg zaino",
+      "Note"
+    ]];
+
+    Object.values(sourceLogs || {})
+      .sort(function(a, b) {
+        var c = String(a.date || "").localeCompare(String(b.date || ""));
+        if (c !== 0) return c;
+        return (a.day || 0) - (b.day || 0);
+      })
+      .forEach(function(entry) {
+        if (!entry) return;
+        var ctx = findExerciseContext(entry);
+        var sets = (entry.sets || []).slice().sort(function(a, b) { return (a.si || 0) - (b.si || 0); });
+        var detail = sets.map(function(setItem) {
+          return "S" + (setItem.si + 1) + ": " + formatLoadAndReps(entry.exercise, setItem.w, setItem.r);
+        }).join(" | ");
+        var totalReps = sets.reduce(function(sum, setItem) {
+          return sum + (setItem.r === "max" ? 0 : (parseInt(setItem.r) || 0));
+        }, 0);
+        var volume = sets.reduce(function(sum, setItem) {
+          var reps = setItem.r === "max" ? 0 : (parseInt(setItem.r) || 0);
+          var kg = usesElasticScale(entry.exercise) ? 0 : (parseFloat(setItem.w) || 0);
+          return sum + kg * reps;
+        }, 0);
+        rows.push([
+          entry.date || "",
+          ctx.program,
+          ctx.dayName,
+          ctx.focus,
+          entry.month || "",
+          "Pesi",
+          entry.exercise || "",
+          ctx.plannedSerie,
+          sets.length,
+          detail,
+          totalReps || "",
+          volume ? Math.round(volume * 10) / 10 : "",
+          "",
+          "",
+          "",
+          ctx.note
+        ]);
+      });
+
+    Object.values(sourceCardioLogs || {})
+      .sort(function(a, b) {
+        var c = String(a.date || "").localeCompare(String(b.date || ""));
+        if (c !== 0) return c;
+        return (a.day || 0) - (b.day || 0);
+      })
+      .forEach(function(entry) {
+        if (!entry) return;
+        var ctx = findCardioContext(entry);
+        rows.push([
+          entry.date || "",
+          ctx.program,
+          ctx.dayName,
+          ctx.focus,
+          entry.month || "",
+          "Cardio",
+          entry.label || CARDIO_KIND_LABEL[entry.kind] || "",
+          "",
+          "",
+          entry.kind ? (CARDIO_KIND_LABEL[entry.kind] || entry.kind) : "",
+          "",
+          "",
+          entry.minutes || "",
+          entry.km || "",
+          entry.kg || "",
+          ""
+        ]);
+      });
+
+    return rows.map(function(row) {
+      return row.map(csvCell).join(";");
+    }).join("\n");
   }
 
   function isExerciseCompleteInLogs(sourceLogs, di, exName, expectedSets) {
@@ -3701,7 +3976,9 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
 
 
   function exportData() {
-    downloadBackupPayload(buildBackupPayload(logs, cardioLogs, { type: "manual-backup" }), 'workout-backup-' + todayStr() + '.json');
+    var baseName = 'workout-backup-' + todayStr();
+    downloadBackupPayload(buildBackupPayload(logs, cardioLogs, { type: "manual-backup" }), baseName + '.json');
+    downloadTextFile(buildReadableCsv(logs, cardioLogs), baseName + '-leggibile.csv', "text/csv;charset=utf-8");
   }
 
   function importData() {
@@ -3752,13 +4029,13 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           </div>
           <div style={{ fontSize: 12, color: dc, fontWeight: 600, marginBottom: 12 }}>{db.g}</div>
           {meta && <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 12 }}>
-            {meta.priority && <span style={{ padding: "4px 8px", borderRadius: 999, background: dc + "16", color: dc, fontSize: 10, fontWeight: 800 }}>{"Priorita #" + meta.priority}</span>}
-            {meta.isSeed && <span style={{ padding: "4px 8px", borderRadius: 999, background: "#8E44AD16", color: "#8E44AD", fontSize: 10, fontWeight: 800 }}>Nuovo seed</span>}
-            {meta.isCovered && <span style={{ padding: "4px 8px", borderRadius: 999, background: "#1E88E516", color: "#1E88E5", fontSize: 10, fontWeight: 800 }}>Gia coperto</span>}
+            {exerciseWorkflowEnabled && meta.priority && <span style={{ padding: "4px 8px", borderRadius: 999, background: dc + "16", color: dc, fontSize: 10, fontWeight: 800 }}>{"Priorita #" + meta.priority}</span>}
+            {exerciseWorkflowEnabled && meta.isSeed && <span style={{ padding: "4px 8px", borderRadius: 999, background: "#8E44AD16", color: "#8E44AD", fontSize: 10, fontWeight: 800 }}>Nuovo seed</span>}
+            {exerciseWorkflowEnabled && meta.isCovered && <span style={{ padding: "4px 8px", borderRadius: 999, background: "#1E88E516", color: "#1E88E5", fontSize: 10, fontWeight: 800 }}>Gia coperto</span>}
             {meta.patternKey && <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{EXERCISE_PATTERN_LABELS[meta.patternKey]}</span>}
-            <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Scheda: " + meta.cardStatus.replace("_", " ")}</span>
-            <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Foto: " + meta.photoStatus}</span>
-            <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Video: " + meta.videoStatus}</span>
+            {exerciseWorkflowEnabled && <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Scheda: " + meta.cardStatus.replace("_", " ")}</span>}
+            {exerciseWorkflowEnabled && <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Foto: " + meta.photoStatus}</span>}
+            {exerciseWorkflowEnabled && <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Video: " + meta.videoStatus}</span>}
           </div>}
           {imgs.map(function(src, ii) { return <img key={ii} src={src} style={{ width: "100%", borderRadius: 10, marginBottom: 12 }} />; })}
           <div style={{ background: T.sb, borderRadius: 10, padding: 12, marginBottom: 10 }}>
@@ -4040,7 +4317,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
           </div>
         </div>
       </div>}
@@ -4080,10 +4357,30 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                 </button>;
               })}
             </div>
+            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Libreria esercizi</div>
+            <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Modalità workflow esercizi</div>
+                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Mostra stati contenuto, priorità seed e filtro workflow nella tab Esercizi. Se resta spenta, la libreria mostra solo i filtri normali per attrezzo e pattern.</div>
+                </div>
+                <button
+                  onClick={function() {
+                    var next = !exerciseWorkflowEnabled;
+                    setExerciseWorkflowEnabled(next);
+                    if (!next) setExWorkflowFilter("all");
+                    try { localStorage.setItem("wt-exercise-workflow", next ? "1" : "0"); } catch(e) {}
+                  }}
+                  style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (exerciseWorkflowEnabled ? dc : T.sub + "30"), background: exerciseWorkflowEnabled ? dc : T.cd, color: exerciseWorkflowEnabled ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
+                >
+                  {exerciseWorkflowEnabled ? "ON" : "OFF"}
+                </button>
+              </div>
+            </div>
             {/* Dati */}
             <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Dati</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 8 }}>
-              <button onClick={function() { exportData(); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬇️</span> Esporta dati (backup JSON)</button>
+              <button onClick={function() { exportData(); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬇️</span> Esporta dati (JSON + CSV leggibile)</button>
               <button onClick={function() { importData(); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬆️</span> Importa dati (ripristino JSON)</button>
               <button onClick={function() { setResetOpen(true); setSettingsOpen(false); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid #C6282820", background: "#C6282808", cursor: "pointer", fontSize: 13, fontWeight: 600, color: "#C62828" }}><span>🗑️</span> Cancella tutti i dati</button>
             </div>
@@ -4925,13 +5222,19 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           <div style={{ fontSize: 14, color: T.sub, transform: catSec === "ex" ? "rotate(180deg)" : "none" }}>&#9662;</div>
         </div>
         {catSec === "ex" && <div style={{ marginBottom: 12 }}>
-          <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, margin: "0 0 6px 2px" }}>Workflow</div>
-          <div style={{ display: "flex", gap: 6, overflowX: "auto", paddingBottom: 8, marginBottom: 8 }}>
-            {Object.keys(EX_WORKFLOW_FILTER_LABELS).map(function(key) {
-              var active = exWorkflowFilter === key;
-              return <button key={key} onClick={function(e) { e.stopPropagation(); setExWorkflowFilter(key); }} style={{ whiteSpace: "nowrap", minHeight: 30, padding: "0 12px", borderRadius: 999, border: "1px solid " + (active ? dc : T.sub + "30"), background: active ? dc : T.cd, color: active ? "#fff" : T.tx, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>{EX_WORKFLOW_FILTER_LABELS[key]}</button>;
-            })}
-          </div>
+          {exerciseWorkflowEnabled && <>
+            <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, margin: "0 0 6px 2px" }}>Workflow</div>
+            <div style={{ display: "flex", gap: 6, overflowX: "auto", paddingBottom: 8, marginBottom: 8 }}>
+              {Object.keys(EX_WORKFLOW_FILTER_LABELS).map(function(key) {
+                var active = exWorkflowFilter === key;
+                return <button key={key} onClick={function(e) { e.stopPropagation(); setExWorkflowFilter(key); }} style={{ whiteSpace: "nowrap", minHeight: 30, padding: "0 12px", borderRadius: 999, border: "1px solid " + (active ? dc : T.sub + "30"), background: active ? dc : T.cd, color: active ? "#fff" : T.tx, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>{EX_WORKFLOW_FILTER_LABELS[key]}</button>;
+              })}
+            </div>
+            <div style={{ background: dc + "0A", border: "1px solid " + dc + "18", borderRadius: 10, padding: "9px 10px", marginBottom: 10 }}>
+              <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 3 }}>Cosa fare</div>
+              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>{EX_WORKFLOW_HELP[exWorkflowFilter] || EX_WORKFLOW_HELP.all}</div>
+            </div>
+          </>}
           <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, margin: "0 0 6px 2px" }}>Attrezzo</div>
           <div style={{ display: "flex", gap: 6, overflowX: "auto", paddingBottom: 8, marginBottom: 8 }}>
             {Object.keys(EXERCISE_GEAR_LABELS).map(function(key) {
@@ -4946,8 +5249,8 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
               return <button key={key} onClick={function(e) { e.stopPropagation(); setExPatternFilter(key); }} style={{ whiteSpace: "nowrap", minHeight: 30, padding: "0 12px", borderRadius: 999, border: "1px solid " + (active ? dc : T.sub + "30"), background: active ? dc : T.cd, color: active ? "#fff" : T.tx, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>{EX_PATTERN_FILTER_LABELS[key]}</button>;
             })}
           </div>
-          {(exWorkflowFilter !== "all" || exGearFilter !== "all" || exPatternFilter !== "all") && <div style={{ fontSize: 11, color: T.sub, margin: "0 0 8px 2px" }}>
-            {[exWorkflowFilter !== "all" ? EX_WORKFLOW_FILTER_LABELS[exWorkflowFilter] : null, exGearFilter !== "all" ? EXERCISE_GEAR_LABELS[exGearFilter] : null, exPatternFilter !== "all" ? EX_PATTERN_FILTER_LABELS[exPatternFilter] : null].filter(Boolean).join(" · ")}
+          {((exerciseWorkflowEnabled && exWorkflowFilter !== "all") || exGearFilter !== "all" || exPatternFilter !== "all") && <div style={{ fontSize: 11, color: T.sub, margin: "0 0 8px 2px" }}>
+            {[(exerciseWorkflowEnabled && exWorkflowFilter !== "all") ? EX_WORKFLOW_FILTER_LABELS[exWorkflowFilter] : null, exGearFilter !== "all" ? EXERCISE_GEAR_LABELS[exGearFilter] : null, exPatternFilter !== "all" ? EX_PATTERN_FILTER_LABELS[exPatternFilter] : null].filter(Boolean).join(" · ")}
           </div>}
           {exVisibleEntries.map(function(item, ei) {
             var name = item.name;
@@ -4961,13 +5264,13 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                 <div style={{ fontWeight: 700, fontSize: 12 }}>{name}</div>
                 <div style={{ fontSize: 10, color: T.sub }}>{db.g}</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: 4 }}>
-                  {item.priority && <span style={{ padding: "2px 6px", borderRadius: 999, background: dc + "16", color: dc, fontSize: 9, fontWeight: 800 }}>{"P" + item.priority}</span>}
-                  {item.isSeed && <span style={{ padding: "2px 6px", borderRadius: 999, background: "#8E44AD16", color: "#8E44AD", fontSize: 9, fontWeight: 800 }}>Nuovo</span>}
-                  {item.isCovered && <span style={{ padding: "2px 6px", borderRadius: 999, background: "#1E88E516", color: "#1E88E5", fontSize: 9, fontWeight: 800 }}>Coperto</span>}
+                  {exerciseWorkflowEnabled && item.priority && <span style={{ padding: "2px 6px", borderRadius: 999, background: dc + "16", color: dc, fontSize: 9, fontWeight: 800 }}>{"P" + item.priority}</span>}
+                  {exerciseWorkflowEnabled && item.isSeed && <span style={{ padding: "2px 6px", borderRadius: 999, background: "#8E44AD16", color: "#8E44AD", fontSize: 9, fontWeight: 800 }}>Nuovo</span>}
+                  {exerciseWorkflowEnabled && item.isCovered && <span style={{ padding: "2px 6px", borderRadius: 999, background: "#1E88E516", color: "#1E88E5", fontSize: 9, fontWeight: 800 }}>Coperto</span>}
                   {item.patternKey && <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{EXERCISE_PATTERN_LABELS[item.patternKey]}</span>}
-                  <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{"Scheda " + item.cardStatus.replace("_", " ")}</span>
-                  <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{"Foto " + item.photoStatus}</span>
-                  <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{"Video " + item.videoStatus}</span>
+                  {exerciseWorkflowEnabled && <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{"Scheda " + item.cardStatus.replace("_", " ")}</span>}
+                  {exerciseWorkflowEnabled && <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{"Foto " + item.photoStatus}</span>}
+                  {exerciseWorkflowEnabled && <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{"Video " + item.videoStatus}</span>}
                 </div>
               </div>
               <div style={{ paddingRight: 12, color: T.sub, fontSize: 12 }}>&#8250;</div>

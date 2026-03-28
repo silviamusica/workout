@@ -1,0 +1,766 @@
+[
+  {
+    "name": "TRX Squat",
+    "obiettivo": "Imparare lo squat con supporto esterno, migliorando equilibrio, profondità e controllo del busto senza perdere assetto.",
+    "setup": [
+      "Regola il TRX a mezza lunghezza circa.",
+      "Afferra le maniglie e fai mezzo passo indietro per mettere i cavi in leggera tensione.",
+      "Piedi circa larghezza spalle, punte leggermente aperte.",
+      "Braccia davanti al petto, busto alto."
+    ],
+    "esecuzione": [
+      "Scendi in squat piegando anche e ginocchia insieme.",
+      "Usa il TRX solo come aiuto leggero, senza tirarti su con le braccia.",
+      "Mantieni il peso sul mesopiede e il torace stabile.",
+      "Spingi il pavimento e risali estendendo ginocchia e anche."
+    ],
+    "cue_tecnici": {
+      "mani": "Presa salda ma leggera. Le mani guidano l'equilibrio, non tirano il corpo verso l'alto.",
+      "piedi": "Appoggio pieno a terra. Peso distribuito tra tallone, base dell'alluce e base del mignolo.",
+      "gomiti": "Morbidi, vicino al corpo. Non aprirli in fuori in modo rigido.",
+      "bacino": "Scende tra i piedi senza chiudersi sotto troppo presto.",
+      "colonna": "Neutra. Petto alto senza iperestendere la schiena.",
+      "scapole": "Stabili e basse. Non alzare le spalle verso le orecchie."
+    },
+    "errori_comuni": [
+      "Tirarsi su con le braccia invece di spingere con le gambe.",
+      "Ginocchia che collassano verso l'interno.",
+      "Talloni che si staccano da terra.",
+      "Schiena che si arrotonda o petto che crolla."
+    ],
+    "regressione": "Squat a box o TRX squat con escursione ridotta.",
+    "alternativa": "Goblet Squat leggero.",
+    "progressione": "TRX squat con fermo in basso, poi Goblet Squat e infine Squat libero.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "controllo del bacino",
+      "squat pattern base"
+    ],
+    "note": "Inspira prima di scendere, mantieni il tronco stabile, espira mentre risali. Utile per chi perde equilibrio o tende a sedersi indietro troppo poco.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "TRX Chest Press",
+    "obiettivo": "Allenare il pattern di spinta orizzontale con carico regolabile attraverso l'inclinazione del corpo.",
+    "setup": [
+      "Regola il TRX a media lunghezza.",
+      "Voltati di spalle al punto di ancoraggio e afferra le maniglie.",
+      "Corpo in linea da testa a talloni, piedi sfalsati o paralleli secondo stabilità.",
+      "Braccia distese davanti al petto, cavi in tensione."
+    ],
+    "esecuzione": [
+      "Piega i gomiti e avvicina il petto tra le maniglie in modo controllato.",
+      "Mantieni il corpo rigido come in un push-up.",
+      "Ferma la discesa quando perdi assetto o le spalle scappano avanti.",
+      "Spingi le maniglie e torna alla posizione iniziale."
+    ],
+    "cue_tecnici": {
+      "mani": "Impugnatura neutra e polsi dritti.",
+      "piedi": "Più avanti = più difficile. Tieni l'appoggio stabile e non oscillare.",
+      "gomiti": "A circa 30-45 gradi dal busto. Non aprirli a T.",
+      "bacino": "Neutro. Evita di lasciarlo cadere o di alzarlo troppo.",
+      "colonna": "Linea unica da testa a bacino a caviglie.",
+      "scapole": "Stabili; in basso e leggermente addotte in partenza, poi lasciale muovere senza perdere controllo."
+    },
+    "errori_comuni": [
+      "Sedersi indietro per alleggerire troppo il carico.",
+      "Gomiti troppo aperti.",
+      "Lombare inarcata o bacino che crolla.",
+      "Spalle che salgono verso le orecchie."
+    ],
+    "regressione": "Push-Up su rialzo alto o TRX chest press con corpo meno inclinato.",
+    "alternativa": "Cable Chest Press.",
+    "progressione": "TRX chest press più inclinato, piedi uniti, poi Push-Up a terra o anelli.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "stabilità core anti-movimento",
+      "controllo scapolare",
+      "pattern base di spinta e tirata"
+    ],
+    "note": "Espira nella spinta. Se perdi linea del corpo, riduci inclinazione.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "Cable Chest Press",
+    "obiettivo": "Allenare la spinta orizzontale con traiettoria libera ma stabile, utile per imparare controllo di scapole e tronco.",
+    "setup": [
+      "Posiziona le maniglie circa all'altezza del petto.",
+      "Afferra le impugnature e fai un passo avanti in posizione sfalsata.",
+      "Addome attivo, petto alto, maniglie vicino al petto.",
+      "Trova una distanza che mantenga tensione già in partenza."
+    ],
+    "esecuzione": [
+      "Spingi in avanti fino quasi a distendere i gomiti.",
+      "Non lasciare che il tronco ruoti o vada in iperestensione.",
+      "Rientra lentamente fino a sentire allungamento controllato sul petto.",
+      "Ripeti mantenendo stesso assetto."
+    ],
+    "cue_tecnici": {
+      "mani": "Polsi neutri. La traiettoria finisce davanti al petto, non troppo alta.",
+      "piedi": "Posizione sfalsata o parallela se hai più controllo. Spingi forte nel pavimento.",
+      "gomiti": "Seguono una linea naturale, non larghi a 90 gradi.",
+      "bacino": "Stabile e fermo. Evita torsioni.",
+      "colonna": "Neutra. Costole giù, niente arco lombare.",
+      "scapole": "Partono stabili; non perdere il controllo nella fase di ritorno."
+    },
+    "errori_comuni": [
+      "Fare il movimento solo con le braccia.",
+      "Spalle sollevate o protratte senza controllo.",
+      "Schiena iperestesa.",
+      "Ritorno troppo veloce."
+    ],
+    "regressione": "Mezzo inginocchio o carico più basso.",
+    "alternativa": "Push-Up su rialzo.",
+    "progressione": "Versione unilaterale o con fermo in allungamento.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "controllo scapolare",
+      "pattern base di spinta e tirata"
+    ],
+    "note": "Molto utile quando il push-up è ancora instabile. Espira quando spingi, inspira nel ritorno.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "Push-Up su rialzo",
+    "obiettivo": "Imparare il push-up con carico ridotto, mantenendo linea del corpo e controllo scapolare.",
+    "setup": [
+      "Appoggia le mani su un supporto stabile più alto del pavimento.",
+      "Posiziona mani poco più larghe delle spalle.",
+      "Corpo in linea da testa a talloni.",
+      "Stringi glutei e addome prima di partire."
+    ],
+    "esecuzione": [
+      "Piega i gomiti e porta il petto verso il supporto.",
+      "Mantieni collo neutro e bacino fermo.",
+      "Scendi fin dove riesci senza perdere la linea del corpo.",
+      "Spingi il supporto e torna su."
+    ],
+    "cue_tecnici": {
+      "mani": "Sotto o poco fuori le spalle. Dita aperte per stabilità.",
+      "piedi": "Uniti o poco divaricati. Appoggio saldo sulle punte.",
+      "gomiti": "Circa 30-45 gradi dal busto.",
+      "bacino": "Neutro. Non lasciarlo crollare né alzarlo a piramide.",
+      "colonna": "Corpo rigido come una tavola.",
+      "scapole": "Si muovono in modo naturale, ma senza spalle incassate."
+    },
+    "errori_comuni": [
+      "Testa in avanti o collo esteso.",
+      "Petto che non scende mentre il bacino cede.",
+      "Gomiti troppo aperti.",
+      "Range dimezzato per mancanza di controllo."
+    ],
+    "regressione": "Push-Up al muro o su rialzo più alto.",
+    "alternativa": "Cable Chest Press o TRX Chest Press con inclinazione facile.",
+    "progressione": "Rialzo più basso, poi Push-Up a terra.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "stabilità core anti-movimento",
+      "controllo scapolare",
+      "pattern base di spinta e tirata"
+    ],
+    "note": "Meglio poche ripetizioni pulite che tante spezzate. Espira mentre spingi via il supporto.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "TRX Row",
+    "obiettivo": "Allenare la tirata orizzontale con carico modulabile, migliorando controllo scapolare e rigidità del tronco.",
+    "setup": [
+      "Regola il TRX a media lunghezza.",
+      "Afferra le maniglie e inclina il corpo indietro mantenendolo in linea.",
+      "Braccia distese, cavi in tensione, petto alto.",
+      "Più i piedi sono avanti, più l'esercizio è difficile."
+    ],
+    "esecuzione": [
+      "Tira il petto verso le maniglie portando i gomiti indietro.",
+      "Mantieni il corpo rigido senza piegare anche o ginocchia per aiutarti.",
+      "Ferma il movimento quando le maniglie arrivano circa ai lati del torace.",
+      "Torna lentamente in estensione completa."
+    ],
+    "cue_tecnici": {
+      "mani": "Presa neutra. Polsi dritti.",
+      "piedi": "Appoggio stabile. Più avanti per aumentare il carico.",
+      "gomiti": "Seguono il busto, circa 30-45 gradi.",
+      "bacino": "Stabile, in linea con il tronco.",
+      "colonna": "Neutra. Niente testa che sporge o schiena che si inarca.",
+      "scapole": "Parti con scapole stabili; retrai senza scrollare."
+    },
+    "errori_comuni": [
+      "Tirarsi su con slancio.",
+      "Bacino che cede o sale.",
+      "Spalle alte.",
+      "Maniglie tirate al collo invece che al torace."
+    ],
+    "regressione": "Corpo più verticale.",
+    "alternativa": "Pulley basso o Rematore Elastico.",
+    "progressione": "Corpo più inclinato, fermo in massima contrazione o piedi rialzati.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "controllo scapolare",
+      "pattern base di spinta e tirata"
+    ],
+    "note": "Pensa a portare il petto verso le maniglie, non solo le mani verso il petto.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "TRX Hamstring Curl",
+    "obiettivo": "Allenare femorali e glutei controllando anche il bacino, senza sovraccaricare la schiena.",
+    "setup": [
+      "Regola il TRX corto o medio-corto.",
+      "Sdraiati supina e inserisci i talloni nelle cinghie.",
+      "Braccia lungo i fianchi, palmi a terra.",
+      "Solleva il bacino prima di iniziare."
+    ],
+    "esecuzione": [
+      "Con bacino alto, piega le ginocchia portando i talloni verso i glutei.",
+      "Mantieni il tronco fermo e non lasciare cadere il bacino.",
+      "Estendi di nuovo le gambe lentamente.",
+      "Ripeti mantenendo tensione nei femorali."
+    ],
+    "cue_tecnici": {
+      "mani": "Spingono leggermente nel pavimento per stabilità, senza aiutare il movimento.",
+      "piedi": "Talloni nelle staffe; caviglie ferme.",
+      "gomiti": "Rilassati, appoggiati a terra.",
+      "bacino": "Alto e stabile. Non crolla nella fase di ritorno.",
+      "colonna": "Neutra; evita di compensare con la lombare.",
+      "scapole": "Appoggiate e stabili a terra."
+    },
+    "errori_comuni": [
+      "Bacino che cade a ogni ripetizione.",
+      "Movimento veloce in ritorno.",
+      "Crampi per carico troppo alto o range troppo ampio.",
+      "Spingere con la schiena invece che flettere il ginocchio."
+    ],
+    "regressione": "Glute Bridge su Fitball o curl con escursione ridotta.",
+    "alternativa": "Fitball Hamstring Curl.",
+    "progressione": "Versione eccentrica lenta o unilaterale assistita.",
+    "competenze_preliminari_collegate": [
+      "controllo del bacino",
+      "stabilità core anti-movimento",
+      "hip hinge"
+    ],
+    "note": "Se senti solo i polpacci, riduci il range e pensa a piegare il ginocchio mantenendo il bacino alto.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "Glute Bridge su Fitball",
+    "obiettivo": "Attivare glutei e catena posteriore insegnando a stabilizzare bacino e tronco su superficie instabile moderata.",
+    "setup": [
+      "Sdraiati supina con talloni sopra la fitball.",
+      "Braccia a terra lungo i fianchi.",
+      "Gambe piegate o semi-estese secondo variante scelta.",
+      "Addome attivo prima di sollevare il bacino."
+    ],
+    "esecuzione": [
+      "Spingi i talloni nella palla e solleva il bacino.",
+      "Arriva in linea spalle-bacino-ginocchia senza iperestendere.",
+      "Mantieni un breve fermo in alto.",
+      "Scendi lentamente senza perdere controllo."
+    ],
+    "cue_tecnici": {
+      "mani": "A terra per stabilità.",
+      "piedi": "Talloni ben piantati sulla palla; niente spinta sulle punte.",
+      "gomiti": "Rilassati e vicini al corpo.",
+      "bacino": "Sale in blocco, guidato dai glutei.",
+      "colonna": "Neutra. Non inarcare la lombare per andare più in alto.",
+      "scapole": "Appoggiate a terra e stabili."
+    },
+    "errori_comuni": [
+      "Spingere con la schiena invece che con i glutei.",
+      "Palla che scappa perché i piedi sono posizionati male.",
+      "Bacino che ruota da un lato.",
+      "Range troppo alto con perdita di assetto."
+    ],
+    "regressione": "Glute Bridge a terra.",
+    "alternativa": "Hip Thrust a corpo libero.",
+    "progressione": "Fermo lungo in alto o versione con curl della palla.",
+    "competenze_preliminari_collegate": [
+      "controllo del bacino",
+      "stabilità core anti-movimento",
+      "hip hinge"
+    ],
+    "note": "Utile come base prima di curl più difficili. Espira in salita, inspira in discesa.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "Cable Pull-Through",
+    "obiettivo": "Insegnare l'hip hinge e allenare glutei e femorali con bassa richiesta tecnica rispetto allo stacco.",
+    "setup": [
+      "Aggancia una corda al cavo basso.",
+      "Voltati di spalle alla macchina e passa la corda tra le gambe.",
+      "Fai qualche passo avanti per avere tensione già in partenza.",
+      "Piedi larghezza anche-spalle, ginocchia morbide."
+    ],
+    "esecuzione": [
+      "Spingi il bacino indietro mantenendo schiena neutra.",
+      "Senti allungamento su glutei e femorali senza accovacciarti.",
+      "Estendi le anche e torna in piedi stringendo i glutei.",
+      "Blocca il movimento in alto senza iperestendere la schiena."
+    ],
+    "cue_tecnici": {
+      "mani": "Tengono la corda vicino al corpo. Braccia passive.",
+      "piedi": "Appoggio pieno, tibie quasi verticali.",
+      "gomiti": "Distesi o leggermente morbidi, ma fermi.",
+      "bacino": "Va indietro e poi avanti; è il motore del movimento.",
+      "colonna": "Neutra per tutto il gesto.",
+      "scapole": "Stabili, senza spalle che si chiudono troppo in avanti."
+    },
+    "errori_comuni": [
+      "Trasformarlo in uno squat piegando troppo le ginocchia.",
+      "Iperestendere la schiena in alto.",
+      "Tirare con le braccia.",
+      "Cavo troppo lontano dal corpo."
+    ],
+    "regressione": "TRX Hip Hinge Assistito.",
+    "alternativa": "Stacco Rumeno leggero.",
+    "progressione": "Più carico o fermo in massimo allungamento mantenendo assetto.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "hip hinge",
+      "controllo del bacino"
+    ],
+    "note": "Ottimo ponte tra drill tecnico e vero hip hinge con carico.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "TRX Hip Hinge Assistito",
+    "obiettivo": "Imparare la cerniera d'anca con supporto del TRX, separando il movimento del bacino da quello della schiena.",
+    "setup": [
+      "Regola il TRX a media lunghezza.",
+      "Afferra le maniglie e fai un passo indietro con leggera tensione.",
+      "Piedi larghezza anche, ginocchia appena sbloccate.",
+      "Petto alto e addome attivo."
+    ],
+    "esecuzione": [
+      "Spingi il bacino indietro mantenendo mani e cavi come supporto leggero.",
+      "Inclina il busto finché mantieni schiena neutra.",
+      "Senti il carico su glutei e femorali, non sulla schiena.",
+      "Torna in piedi spingendo il pavimento e chiudendo l'anca."
+    ],
+    "cue_tecnici": {
+      "mani": "Usano il TRX per equilibrio, non per tirare il corpo.",
+      "piedi": "Appoggio pieno, peso soprattutto su mesopiede e tallone.",
+      "gomiti": "Morbidi e vicini al corpo.",
+      "bacino": "Va indietro come se dovesse toccare un muro.",
+      "colonna": "Neutra. Niente flessione lombare o cervicale.",
+      "scapole": "Stabili e basse."
+    },
+    "errori_comuni": [
+      "Piegare troppo le ginocchia e fare uno squat.",
+      "Perdere i tre punti di assetto del tronco.",
+      "Tirarsi avanti con le braccia.",
+      "Muovere la schiena invece del bacino."
+    ],
+    "regressione": "Hip hinge al muro o con bastone a tre punti.",
+    "alternativa": "Cable Pull-Through.",
+    "progressione": "Stacco Rumeno con manubri o bilanciere.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "hip hinge",
+      "controllo del bacino"
+    ],
+    "note": "È un drill tecnico prima di essere un esercizio duro. Se non senti i femorali, probabilmente stai ancora facendo uno squat.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "Press Manubri da Seduta",
+    "obiettivo": "Allenare la spinta verticale riducendo richiesta di equilibrio globale rispetto alla versione in piedi.",
+    "setup": [
+      "Siediti con schienale verticale o quasi verticale e piedi ben appoggiati.",
+      "Porta i manubri all'altezza delle spalle.",
+      "Avambracci verticali e addome attivo.",
+      "Petto aperto senza inarcare la schiena."
+    ],
+    "esecuzione": [
+      "Spingi i manubri verso l'alto sopra la testa.",
+      "Muovili su una traiettoria naturale senza urtare tra loro.",
+      "Ferma poco prima di perdere controllo delle spalle.",
+      "Scendi lentamente fino alla posizione iniziale."
+    ],
+    "cue_tecnici": {
+      "mani": "Presa salda, polsi neutri o leggermente inclinati secondo comfort.",
+      "piedi": "Saldi a terra per creare base stabile.",
+      "gomiti": "Sotto o leggermente davanti ai polsi in partenza.",
+      "bacino": "Stabile sul sedile, senza scivolare avanti.",
+      "colonna": "Neutra. Evita arco lombare eccessivo.",
+      "scapole": "Stabili; lasciale ruotare verso l'alto senza sollevare le spalle."
+    },
+    "errori_comuni": [
+      "Inarcare la lombare per superare il punto difficile.",
+      "Gomiti troppo larghi o troppo dietro.",
+      "Polsi piegati all'indietro.",
+      "Range tagliato per instabilità."
+    ],
+    "regressione": "Press manubri leggeri o Half-Kneeling Single Arm Cable Press.",
+    "alternativa": "Military Press.",
+    "progressione": "Versione in piedi o alternata un braccio alla volta.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "controllo scapolare",
+      "pattern base di spinta e tirata"
+    ],
+    "note": "Buona scelta quando in piedi compensi troppo con la schiena.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "Half-Kneeling Single Arm Cable Press",
+    "obiettivo": "Allenare spinta unilaterale e stabilità anti-rotazione del tronco.",
+    "setup": [
+      "Posiziona il cavo all'altezza del petto.",
+      "Mettiti in mezzo inginocchio con il ginocchio interno a terra e l'altro piede avanti.",
+      "Afferra la maniglia con il braccio opposto alla gamba avanti, salvo diversa scelta tecnica.",
+      "Trova assetto alto del busto e bacino neutro."
+    ],
+    "esecuzione": [
+      "Spingi la maniglia in avanti senza ruotare il busto.",
+      "Mantieni gluteo della gamba a terra attivo.",
+      "Ritorna lentamente alla partenza controllando la trazione del cavo.",
+      "Completa le ripetizioni senza perdere equilibrio."
+    ],
+    "cue_tecnici": {
+      "mani": "Polso neutro, presa ferma ma non rigida.",
+      "piedi": "Piede avanti ben pieno a terra; dita del piede dietro rilassate o in appoggio secondo comfort.",
+      "gomiti": "Partono sotto la mano e spingono in avanti, non verso l'alto.",
+      "bacino": "Squadrato in avanti. Niente torsioni.",
+      "colonna": "Alta e neutra. Costole giù.",
+      "scapole": "Stabili; non perdere la spalla avanti nel ritorno."
+    },
+    "errori_comuni": [
+      "Ruotare il busto verso il cavo.",
+      "Iperestendere la lombare.",
+      "Spinta fatta con slancio del tronco.",
+      "Piede avanti poco stabile."
+    ],
+    "regressione": "Cable Chest Press bilaterale o carico più basso.",
+    "alternativa": "Press Manubri da Seduta.",
+    "progressione": "Versione in piedi a un braccio o con fermo in massima estensione.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "stabilità core anti-movimento",
+      "controllo scapolare",
+      "pattern base di spinta e tirata"
+    ],
+    "note": "Molto utile per chi ruota o inarca la schiena nelle spinte.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "Trazioni Facilitate con Elastico",
+    "obiettivo": "Imparare la trazione verticale completa con assistenza, mantenendo traiettoria e controllo scapolare.",
+    "setup": [
+      "Fissa l'elastico alla sbarra e inserisci un piede o un ginocchio nell'anello.",
+      "Afferra la sbarra con la presa prevista.",
+      "Parti in sospensione controllata con corpo allineato.",
+      "Attiva addome e glutei prima di tirare."
+    ],
+    "esecuzione": [
+      "Depressa le scapole e inizia a tirare con i gomiti verso il basso.",
+      "Porta il petto verso la sbarra senza perdere assetto.",
+      "Scendi lentamente fino quasi a completa estensione.",
+      "Mantieni tensione senza rimbalzare nell'elastico."
+    ],
+    "cue_tecnici": {
+      "mani": "Presa piena con pollice chiuso. Polsi neutri.",
+      "piedi": "Stabili nell'elastico. Evita oscillazioni inutili.",
+      "gomiti": "Vanno verso il basso e vicino alle costole, non solo indietro.",
+      "bacino": "Leggermente in retroversione, glutei attivi.",
+      "colonna": "Neutra con costole controllate.",
+      "scapole": "Prima giù, poi retrazione quanto basta. Niente spalle alle orecchie."
+    },
+    "errori_comuni": [
+      "Usare slancio o kip.",
+      "Perdere tensione in basso.",
+      "Elastico troppo forte che altera troppo il gesto.",
+      "Collo proiettato verso la sbarra."
+    ],
+    "regressione": "Scapular pull-up o lat machine.",
+    "alternativa": "Lat Machine.",
+    "progressione": "Elastico più leggero, fermo in alto, poi trazioni libere.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "controllo scapolare",
+      "pattern base di spinta e tirata"
+    ],
+    "note": "Meglio un elastico che aiuta il giusto: se aiuta troppo, impari una traiettoria poco utile.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "TRX High Row",
+    "obiettivo": "Allenare tirata alta e controllo scapolare, utile per parte alta della schiena e deltoide posteriore.",
+    "setup": [
+      "Regola il TRX a media lunghezza.",
+      "Inclina il corpo indietro come per una row, ma con gomiti più alti.",
+      "Braccia distese davanti al viso o alto petto in base alla linea scelta.",
+      "Corpo rigido e cavi in tensione."
+    ],
+    "esecuzione": [
+      "Tira portando le mani verso il viso o la parte alta del petto.",
+      "Apri i gomiti in linea con la spalla senza scrollare.",
+      "Ferma in contrazione breve.",
+      "Ritorna lentamente in estensione."
+    ],
+    "cue_tecnici": {
+      "mani": "Presa neutra o semi-prona secondo maniglie.",
+      "piedi": "Stabili; più avanti = più difficile.",
+      "gomiti": "Alti ma controllati, non dietro eccessivamente.",
+      "bacino": "Fermo, in linea con il corpo.",
+      "colonna": "Neutra; evita testa avanti.",
+      "scapole": "Retrai e ruota verso l'alto con controllo, senza scrollare."
+    },
+    "errori_comuni": [
+      "Spalle alte.",
+      "Gomiti troppo bassi, trasformando l'esercizio in row normale.",
+      "Slancio del corpo.",
+      "Polsi piegati e tensione nel collo."
+    ],
+    "regressione": "TRX Row con corpo più verticale.",
+    "alternativa": "Face pull al cavo.",
+    "progressione": "Maggiore inclinazione o fermo isometrico in alto.",
+    "competenze_preliminari_collegate": [
+      "controllo scapolare",
+      "pattern base di spinta e tirata"
+    ],
+    "note": "Utile come lavoro di qualità, non come esercizio da tirare con slancio.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "TRX Reverse Lunge",
+    "obiettivo": "Allenare l'affondo indietro con supporto esterno, migliorando equilibrio e controllo del ginocchio.",
+    "setup": [
+      "Afferra il TRX con leggera tensione e resta in piedi alta.",
+      "Piedi larghezza bacino.",
+      "Petto alto, addome attivo.",
+      "Usa il TRX solo come supporto leggero."
+    ],
+    "esecuzione": [
+      "Porta una gamba indietro e scendi in affondo.",
+      "Mantieni la tibia della gamba avanti stabile e il piede ben appoggiato.",
+      "Sfiora il pavimento con il ginocchio dietro se il controllo lo consente.",
+      "Spingi soprattutto con la gamba davanti per tornare su."
+    ],
+    "cue_tecnici": {
+      "mani": "Le mani aiutano equilibrio, non tirano il corpo.",
+      "piedi": "Piede avanti pieno a terra; passo indietro su due binari, non su una linea stretta.",
+      "gomiti": "Morbidi e vicini al corpo.",
+      "bacino": "Resta squadrato in avanti.",
+      "colonna": "Alta e neutra, senza piegarsi in avanti troppo.",
+      "scapole": "Stabili e basse."
+    },
+    "errori_comuni": [
+      "Passo indietro troppo corto.",
+      "Peso che va tutto sull'avampiede davanti.",
+      "Ginocchio che collassa verso l'interno.",
+      "Tirarsi su con il TRX."
+    ],
+    "regressione": "Split squat statico assistito.",
+    "alternativa": "Affondi a corpo libero.",
+    "progressione": "Meno aiuto dal TRX, poi manubri.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "controllo del bacino",
+      "squat pattern base"
+    ],
+    "note": "Molto utile per chi perde equilibrio negli affondi liberi.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "Split Squat al Cavo",
+    "obiettivo": "Allenare pattern unilaterale con resistenza continua e richiesta elevata di stabilità del tronco.",
+    "setup": [
+      "Posiziona il cavo basso o medio secondo variante scelta.",
+      "Entra in posizione di split squat con piedi su due binari.",
+      "Afferra la maniglia in goblet/front rack o a lato secondo impostazione.",
+      "Stabilisci appoggio pieno del piede davanti."
+    ],
+    "esecuzione": [
+      "Scendi piegando entrambe le ginocchia mantenendo busto stabile.",
+      "Controlla la trazione del cavo senza ruotare.",
+      "Spingi il pavimento con la gamba davanti per risalire.",
+      "Ripeti tutte le serie sullo stesso lato prima di cambiare se utile."
+    ],
+    "cue_tecnici": {
+      "mani": "Tengono la maniglia vicino al corpo o in posizione definita senza tirare.",
+      "piedi": "Su due binari, non uno dietro l'altro. Piede davanti pieno a terra.",
+      "gomiti": "Stabili in base alla presa; non volano fuori.",
+      "bacino": "Squadrato. Evita rotazioni verso il cavo.",
+      "colonna": "Neutra e alta.",
+      "scapole": "Stabili, soprattutto se la presa è anteriore o controlaterale."
+    },
+    "errori_comuni": [
+      "Posizione dei piedi troppo stretta.",
+      "Perdere equilibrio per trazione del cavo non controllata.",
+      "Busto che ruota.",
+      "Spinta fatta quasi tutta con la gamba dietro."
+    ],
+    "regressione": "TRX Split Squat o split squat a corpo libero.",
+    "alternativa": "TRX Reverse Lunge.",
+    "progressione": "Più carico, presa controlaterale o fermo in basso.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "controllo del bacino",
+      "stabilità core anti-movimento",
+      "squat pattern base"
+    ],
+    "note": "Molto utile quando vuoi unilaterale con più tensione ma meno carico assiale.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "TRX Split Squat",
+    "obiettivo": "Allenare il pattern unilaterale in modo controllato usando il TRX come supporto per equilibrio e traiettoria.",
+    "setup": [
+      "Afferra le maniglie del TRX con leggera tensione.",
+      "Porta un piede avanti e uno dietro su due binari.",
+      "Busto alto e addome attivo.",
+      "Trova una distanza che ti permetta di scendere senza perdere equilibrio."
+    ],
+    "esecuzione": [
+      "Scendi in split squat piegando entrambe le ginocchia.",
+      "Usa il TRX solo per stabilizzarti, non per tirarti su.",
+      "Mantieni il piede davanti ben radicato.",
+      "Spingi con la gamba davanti per risalire."
+    ],
+    "cue_tecnici": {
+      "mani": "Tengono le maniglie come guida di equilibrio.",
+      "piedi": "Due binari. Piede davanti pieno, piede dietro di supporto.",
+      "gomiti": "Morbidi e vicini al corpo.",
+      "bacino": "Resta squadrato in avanti.",
+      "colonna": "Neutra e verticale quanto il pattern consente.",
+      "scapole": "Basse e stabili."
+    },
+    "errori_comuni": [
+      "Tirarsi su con le braccia.",
+      "Passo troppo stretto.",
+      "Peso che scappa sulla punta del piede davanti.",
+      "Bacino che ruota o cede lateralmente."
+    ],
+    "regressione": "Affondo statico con supporto a muro.",
+    "alternativa": "TRX Reverse Lunge.",
+    "progressione": "Meno supporto del TRX, manubri o Squat Bulgaro.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "controllo del bacino",
+      "squat pattern base"
+    ],
+    "note": "Più semplice del Bulgarian per molti utenti. Ottimo per imparare la linea del ginocchio.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "Rematore Elastico",
+    "obiettivo": "Imparare la tirata orizzontale con resistenza semplice e accessibile, utile per scapole e dorso.",
+    "setup": [
+      "Fissa l'elastico a un punto stabile all'altezza del petto o poco sotto.",
+      "Afferra le estremità e fai un passo indietro per mettere tensione.",
+      "Petto alto, ginocchia morbide, addome attivo.",
+      "Braccia distese senza perdere postura."
+    ],
+    "esecuzione": [
+      "Tira i gomiti indietro verso i fianchi.",
+      "Avvicina le mani al torace senza spalle alte.",
+      "Ferma un attimo in contrazione.",
+      "Ritorna lentamente in avanti."
+    ],
+    "cue_tecnici": {
+      "mani": "Presa ferma, polsi neutri.",
+      "piedi": "Base stabile, larghezza bacino-spalle.",
+      "gomiti": "Guidano il gesto; vicini al busto.",
+      "bacino": "Fermo, senza slancio.",
+      "colonna": "Neutra con petto aperto.",
+      "scapole": "Retrarre con controllo, senza stringere eccessivamente o scrollare."
+    },
+    "errori_comuni": [
+      "Slancio del tronco.",
+      "Spalle alle orecchie.",
+      "Gomiti troppo aperti.",
+      "Ritorno lasciato andare."
+    ],
+    "regressione": "Elastico più leggero o posizione più vicina al punto di ancoraggio.",
+    "alternativa": "TRX Row.",
+    "progressione": "Elastico più forte, fermo in contrazione o One Arm Cable Row.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "controllo scapolare",
+      "pattern base di spinta e tirata"
+    ],
+    "note": "Ottimo a casa o nel warm-up. La qualità conta più della resistenza.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "One Arm Cable Row",
+    "obiettivo": "Allenare la tirata orizzontale unilaterale migliorando controllo scapolare e stabilità anti-rotazione.",
+    "setup": [
+      "Posiziona la maniglia al cavo basso o a metà busto.",
+      "Mettiti in posizione stabile, in piedi o con un appoggio libero della mano opposta.",
+      "Allunga il braccio davanti senza perdere postura.",
+      "Addome attivo e petto alto."
+    ],
+    "esecuzione": [
+      "Tira il gomito indietro verso il fianco.",
+      "Mantieni il tronco fermo, senza ruotare verso la maniglia.",
+      "Ferma un attimo in contrazione con spalla lontana dall'orecchio.",
+      "Estendi di nuovo il braccio lentamente."
+    ],
+    "cue_tecnici": {
+      "mani": "Presa neutra o secondo maniglia disponibile. Polso dritto.",
+      "piedi": "Base stabile; se in split stance, usa due binari.",
+      "gomiti": "Si muovono verso il fianco, non troppo alti.",
+      "bacino": "Fermo e squadrato.",
+      "colonna": "Neutra; evita torsioni.",
+      "scapole": "Partono stabili, poi retrazione e depressione controllate."
+    },
+    "errori_comuni": [
+      "Ruotare tutto il busto.",
+      "Tirare solo con il bicipite.",
+      "Spalla che sale.",
+      "Range incompleto per eccesso di carico."
+    ],
+    "regressione": "Rematore Elastico o carico più basso con appoggio.",
+    "alternativa": "Pulley basso.",
+    "progressione": "Versione senza appoggio, fermo in contrazione o assetto mezzo inginocchio.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "stabilità core anti-movimento",
+      "controllo scapolare",
+      "pattern base di spinta e tirata"
+    ],
+    "note": "Molto utile per correggere asimmetrie e imparare a non ruotare nelle tirate.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "Hip Thrust al Cavo",
+    "obiettivo": "Allenare estensione d'anca e glutei con resistenza continua, utile come alternativa al bilanciere.",
+    "setup": [
+      "Sistema panca o box per appoggiare la parte alta della schiena.",
+      "Aggancia una cintura o una corda al cavo basso in linea con il bacino.",
+      "Posiziona i piedi a terra circa larghezza bacino-spalle.",
+      "Schiena alta appoggiata, mento leggermente chiuso."
+    ],
+    "esecuzione": [
+      "Parti con anche flesse e glutei vicini al pavimento.",
+      "Spingi forte con i piedi e estendi le anche fino a portare il bacino in linea con il tronco.",
+      "Stringi i glutei in alto senza inarcare la schiena.",
+      "Scendi lentamente mantenendo controllo della trazione."
+    ],
+    "cue_tecnici": {
+      "mani": "Stabilizzano il cavo o la panca se serve, senza tirare.",
+      "piedi": "Piantati a terra; in alto la tibia è circa verticale.",
+      "gomiti": "Morbidi se usi le mani per stabilità.",
+      "bacino": "Sale e si chiude con i glutei, non con la lombare.",
+      "colonna": "Neutra. Mento leggermente chiuso per non iperestendere.",
+      "scapole": "Appoggiate alla panca e stabili."
+    },
+    "errori_comuni": [
+      "Piedi troppo lontani o troppo vicini.",
+      "Iperestendere la schiena in alto.",
+      "Scendere troppo veloce.",
+      "Perdere simmetria del bacino."
+    ],
+    "regressione": "Glute Bridge a terra o Hip Thrust a corpo libero.",
+    "alternativa": "Glute Bridge su Fitball.",
+    "progressione": "Più carico, fermo in alto o versione bilanciere.",
+    "competenze_preliminari_collegate": [
+      "controllo del bacino",
+      "stabilità core anti-movimento",
+      "hip hinge"
+    ],
+    "note": "Se senti troppo quadricipiti, controlla distanza dei piedi. Se senti schiena, stai chiudendo male l'anca.",
+    "stato_scheda_consigliato": "pronta"
+  }
+]

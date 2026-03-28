@@ -1,0 +1,83 @@
+[
+  {
+    "name": "Goblet Squat",
+    "obiettivo": "Imparare o rinforzare il pattern di squat con un carico anteriore che aiuta a tenere il busto più stabile e il movimento più pulito.",
+    "setup": [
+      "Tieni un manubrio o kettlebell davanti al petto, vicino allo sterno.",
+      "Piedi circa larghezza spalle o poco oltre, punte leggermente aperte.",
+      "Gomiti rivolti verso il basso, torace alto senza irrigidirti.",
+      "Inspira e crea una buona tensione del tronco prima di scendere."
+    ],
+    "esecuzione": [
+      "Scendi in squat piegando anche e ginocchia insieme.",
+      "Mantieni il carico vicino al petto per tutta la discesa.",
+      "Vai fin dove riesci senza perdere appoggio pieno dei piedi né controllo del bacino.",
+      "Spingi il pavimento e risali mantenendo il busto stabile."
+    ],
+    "cue_tecnici": {
+      "mani": "Stringi il carico in modo saldo ma senza sollevare le spalle. Tienilo vicino al corpo.",
+      "piedi": "Appoggio pieno a terra. Peso distribuito tra tallone, base dell'alluce e base del mignolo.",
+      "gomiti": "Puntano verso il basso o leggermente avanti. Non aprirli larghi e non lasciarli cadere dietro.",
+      "bacino": "Scende tra i piedi con controllo. Evita retroversione marcata in basso se perdi assetto.",
+      "colonna": "Neutra. Mantieni il petto alto senza inarcare troppo la schiena.",
+      "scapole": "Stabili e basse. Non stringerle troppo, ma non lasciare che le spalle salgano."
+    },
+    "errori_comuni": [
+      "Carico lontano dal petto.",
+      "Talloni che si staccano o peso che scappa troppo avanti.",
+      "Ginocchia che collassano verso l'interno.",
+      "Petto che crolla o schiena che si arrotonda in basso."
+    ],
+    "regressione": "TRX Squat o squat a box con fermo breve.",
+    "alternativa": "Squat libero a corpo libero o cable squat leggero.",
+    "progressione": "Goblet squat più pesante, con fermo in basso o tempo lento, poi front squat o back squat.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "controllo del bacino",
+      "squat pattern base"
+    ],
+    "note": "Utile per imparare a scendere con più controllo e per costruire forza tecnica prima di passare a squat più complessi. Espira nella risalita senza perdere compattezza.",
+    "stato_scheda_consigliato": "pronta"
+  },
+  {
+    "name": "Bird Dog",
+    "obiettivo": "Allenare stabilità del tronco, controllo del bacino e coordinazione crociata senza muovere la colonna.",
+    "setup": [
+      "Mettiti in quadrupedia con mani sotto le spalle e ginocchia sotto le anche.",
+      "Spingi leggermente il pavimento con le mani e tieni il collo lungo.",
+      "Attiva addome e glutei quanto basta per non inarcare la schiena.",
+      "Trova una posizione stabile prima di iniziare a muovere braccio e gamba."
+    ],
+    "esecuzione": [
+      "Allunga lentamente un braccio in avanti e la gamba opposta indietro.",
+      "Ferma il movimento quando riesci a mantenere bacino e torace stabili.",
+      "Mantieni un breve fermo senza perdere equilibrio né linea del tronco.",
+      "Rientra con controllo e ripeti dall'altro lato."
+    ],
+    "cue_tecnici": {
+      "mani": "Spingono il pavimento in modo attivo. La mano che resta a terra stabilizza, quella che si allunga non sale oltre il necessario.",
+      "piedi": "Il piede che si allunga spinge indietro con il tallone, senza aprire l'anca.",
+      "gomiti": "Estesi ma non rigidi. Non bloccarli in iperestensione.",
+      "bacino": "Resta quasi fermo. Evita rotazione o inclinazione laterale mentre allunghi la gamba.",
+      "colonna": "Neutra dall'inizio alla fine. Non inarcare la lombare per allungarti di più.",
+      "scapole": "Stabili e lontane dalle orecchie. Non collassare sulla spalla d'appoggio."
+    },
+    "errori_comuni": [
+      "Alzare troppo la gamba e inarcare la schiena.",
+      "Ruotare il bacino verso il lato della gamba che si allunga.",
+      "Oscillare con il tronco o perdere equilibrio a ogni ripetizione.",
+      "Muovere il collo in estensione invece di tenere la testa neutra."
+    ],
+    "regressione": "Muovi solo il braccio o solo la gamba, oppure usa un fermo più corto.",
+    "alternativa": "Dead Bug o plank corto se la quadrupedia è instabile.",
+    "progressione": "Bird dog con fermo più lungo, con mini-band leggera o con tocco ginocchio-gomito controllato.",
+    "competenze_preliminari_collegate": [
+      "colonna neutra + brace",
+      "controllo del bacino",
+      "stabilità core anti-movimento",
+      "coordinazione crociata"
+    ],
+    "note": "Qualità prima della lunghezza del gesto. Meglio un allungo più corto ma stabile che un movimento ampio con schiena e bacino che si muovono.",
+    "stato_scheda_consigliato": "pronta"
+  }
+]
