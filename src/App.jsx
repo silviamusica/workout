@@ -2363,6 +2363,9 @@ function safeCalibrationDecision(type, reserve, cleanReps, serie, exName, meta) 
     if (spec && spec.kind === "range" && safeClean < spec.min) {
       return { tone: "hold", title: "Difficolta troppo alta", detail: "Sei sotto il minimo del range. Usa una variante piu facile o piu assistenza.", accepted: false };
     }
+    if (spec && spec.kind === "range" && safeClean > spec.min && (safeReserve === "2" || safeReserve === "3" || safeReserve === "4+")) {
+      return { tone: "mid", title: "Partenza troppo facile", detail: "In calibrazione il riferimento dovrebbe stare vicino al numero basso del range. Se sei gia oltre (" + safeClean + " su " + spec.min + "-" + spec.max + ") con ancora margine, aumenta leggermente la difficolta.", accepted: false };
+    }
     if (safeReserve === "4+" || safeReserve === "3") {
       return { tone: "mid", title: "Un po' troppo facile", detail: "La prossima volta puoi aumentare leggermente la difficolta o fare piu ripetizioni.", accepted: false };
     }
@@ -2373,6 +2376,14 @@ function safeCalibrationDecision(type, reserve, cleanReps, serie, exName, meta) 
   }
   if (spec && spec.kind === "range" && safeClean < spec.min) {
     return { tone: "hold", title: "Peso troppo pesante", detail: "Sei sotto il minimo del range: " + getCalibrationChangeLabel(safeType, "down") + ". " + getCalibrationRetestHint(meta), accepted: false };
+  }
+  if (spec && spec.kind === "range" && safeClean > spec.min && (safeReserve === "2" || safeReserve === "3" || safeReserve === "4+")) {
+    return {
+      tone: "mid",
+      title: "Peso troppo leggero per partire",
+      detail: "In calibrazione devi trovare un riferimento vicino al numero basso del range. Se fai gia " + safeClean + " rip su " + spec.min + "-" + spec.max + " con ancora margine, " + getCalibrationChangeLabel(safeType, "up") + ". " + getCalibrationRetestHint(meta),
+      accepted: false
+    };
   }
   if (safeReserve === "4+") {
     return { tone: "hold", title: "Peso troppo leggero", detail: getCalibrationChangeLabel(safeType, "up") + " in modo deciso. " + getCalibrationRetestHint(meta), accepted: false };
@@ -2738,6 +2749,18 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [calibrationPrompt, setCalibrationPrompt] = useState(null);
   var [calibrationAnswers, setCalibrationAnswers] = useState({ reps: "", cleanSame: "yes", cleanReps: "", reserve: "2" });
   var [calibrationFeedback, setCalibrationFeedback] = useState("");
+  var [guidedMode, setGuidedMode] = useState(false);
+  var [guidedPrompt, setGuidedPrompt] = useState(null);
+  var [guidedFeedback, setGuidedFeedback] = useState("");
+  var [guidedRestHint, setGuidedRestHint] = useState("");
+  var [guidedPromptSeenCount, setGuidedPromptSeenCount] = useState(function() {
+    try {
+      return parseInt(localStorage.getItem("wt-guided-prompt-seen") || "0") || 0;
+    } catch (e) {
+      return 0;
+    }
+  });
+  var [forcedRecoveryLock, setForcedRecoveryLock] = useState(null);
   var [editing, setEditing] = useState(null);
   var [tmpW, setTmpW] = useState("");
   var [tmpR, setTmpR] = useState("");
@@ -3111,6 +3134,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           setCardioLogs(parsed.cardioLogs || {});
           setCalibrationProfiles(parsed.calibrationProfiles || {});
           setCalibrationMode(!!parsed.calibrationMode);
+          setGuidedMode(!!parsed.guidedMode);
         } else if (parsed && typeof parsed === "object") {
           setLogs(parsed);
         }
@@ -3152,6 +3176,18 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     return function() { clearTimeout(tm); };
   }, [calibrationFeedback]);
   useEffect(function() {
+    if (!guidedFeedback) return;
+    var tm = setTimeout(function() { setGuidedFeedback(""); }, 5000);
+    return function() { clearTimeout(tm); };
+  }, [guidedFeedback]);
+  useEffect(function() {
+    if (!forcedRecoveryLock) return;
+    if (tMode === "countdown" && !tRunning && tMs === 0) {
+      setForcedRecoveryLock(null);
+      setCalibrationFeedback("Recupero completato. Ora puoi registrare la serie successiva.");
+    }
+  }, [forcedRecoveryLock, tMode, tRunning, tMs]);
+  useEffect(function() {
     if (!activeOpenRestSec) return;
     setTMode("countdown");
     setTTarget(activeOpenRestSec);
@@ -3163,21 +3199,23 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       setTWarning(false);
     }
   }, [activeOpenRestSec]);
-  var saveData = useCallback(function(nl, nc, np, nm) {
+  var saveData = useCallback(function(nl, nc, np, nm, ng) {
     var nextLogs = nl || {};
     var nextCardioLogs = nc || {};
     var nextProfiles = np || {};
     var nextMode = typeof nm === "boolean" ? nm : false;
+    var nextGuided = typeof ng === "boolean" ? ng : guidedMode;
     setLogs(nextLogs);
     setCardioLogs(nextCardioLogs);
     setCalibrationProfiles(nextProfiles);
     setCalibrationMode(nextMode);
+    setGuidedMode(nextGuided);
     try {
-      var raw = JSON.stringify({ logs: nextLogs, cardioLogs: nextCardioLogs, calibrationProfiles: nextProfiles, calibrationMode: nextMode });
+      var raw = JSON.stringify({ logs: nextLogs, cardioLogs: nextCardioLogs, calibrationProfiles: nextProfiles, calibrationMode: nextMode, guidedMode: nextGuided });
       localStorage.setItem(SK, raw);
       localStorage.setItem(SK_SHADOW, raw);
     } catch(e) {}
-  }, []);
+  }, [guidedMode]);
 
   function checkSound(ms, mode, target) {
     if (mode === "countdown") {
@@ -3583,6 +3621,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       cardioLogs: sourceCardioLogs || {},
       calibrationProfiles: calibrationProfiles || {},
       calibrationMode: calibrationMode,
+      guidedMode: guidedMode,
     };
   }
 
@@ -3782,6 +3821,183 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     setAutoBackupMsg("Sessione completata. Se vuoi, ora puoi esportare i dati da Impostazioni in JSON + CSV.");
   }
 
+  function getGuidedTodayKey(di, exName) {
+    return todayStr() + "_d" + di + "_m" + month + "_" + exName;
+  }
+
+  function getGuidedExerciseClass(exName) {
+    var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Front Squat","Pause Squat","Push Press","Stacco Sumo","Trazioni","Trazioni Supine","Hip Thrust Bilanciere","T-bar Row","Stacco Rumeno"];
+    var mono = ["Curl Bicipiti","Curl Martello","Curl Concentrato","Tricipiti Cavo","Face Pull","Alzate Laterali","Woodchop","French Press Manubri","Kick Back Manubri","Overhead Extension","Fire Hydrant","Clamshell","Abduzione Laterale","Addominali Obliqui"];
+    if (heavy.indexOf(exName) >= 0) return "heavy";
+    if (mono.indexOf(exName) >= 0) return "mono";
+    return "compound";
+  }
+
+  function getGuidedIncrementInfo(exName) {
+    if (usesElasticScale(exName)) return { kind: "tick", amount: 1, label: "-1 tacca elastico" };
+    if (exName.indexOf("Cavo") >= 0 || exName === "Face Pull" || exName === "Woodchop" || exName === "Tricipiti Cavo" || exName === "Pulley" || exName === "Lat Machine") {
+      return { kind: "step", amount: 1, label: "+1 step cavo" };
+    }
+    if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || exName === "Push-Up" || exName === "Push-Up su rialzo" || exName === "Dip alle Parallele") {
+      return { kind: "reps", amount: 1, label: "+1 rip per serie" };
+    }
+    if (exName === "Squat Bulgaro" || exName === "Affondi" || exName === "Curl Bicipiti" || exName === "Curl Martello" || exName === "Press Manubri da Seduta" || exName === "Alzate Laterali") {
+      return { kind: "kg", amount: 1, label: "+1 kg per manubrio" };
+    }
+    return { kind: "kg", amount: 2.5, label: "+2.5 kg" };
+  }
+
+  function getGuidedReductionLabel(exName) {
+    var inc = getGuidedIncrementInfo(exName);
+    if (inc.kind === "kg") return inc.amount >= 2.5 ? "Prova con 2.5 kg in meno la prossima volta." : "Prova con 1 kg in meno per manubrio la prossima volta.";
+    if (inc.kind === "step") return "Prova con 1 step in meno la prossima volta.";
+    if (inc.kind === "tick") return "Prova con 1 tacca di aiuto in piu la prossima volta.";
+    return "Prova con una variante piu facile la prossima volta.";
+  }
+
+  function getGuidedLastCompleteSession(exName, serie) {
+    var spec = parseProgressSpec(serie);
+    if (!spec || !spec.sets) return null;
+    var sessions = getAllHist(exName);
+    for (var i = 0; i < sessions.length; i++) {
+      var normalized = normalizeSessionSets(sessions[i], spec.sets);
+      if (normalized.length === spec.sets) {
+        return { entry: sessions[i], sets: normalized, spec: spec };
+      }
+    }
+    return null;
+  }
+
+  function getGuidedSessionSuggestion(exName, serie) {
+    var progressAdvice = getProgressAdvice(exName, serie);
+    if (progressAdvice && progressAdvice.tone === "empty" && progressAdvice.short === "Carichi diversi nella stessa seduta") {
+      return { state: "empty", title: "Sessione non uniforme", detail: "Sessione precedente non uniforme: usa il peso della maggioranza delle serie e torna a renderlo costante in tutta la seduta." };
+    }
+    var last = getGuidedLastCompleteSession(exName, serie);
+    if (!last) {
+      return { state: "empty", title: "Nessun dato", detail: "Ti manca ancora un riferimento utile: registra la prima seduta o fai calibrazione se necessaria." };
+    }
+    var spec = last.spec;
+    var sets = last.sets;
+    var isBW = CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || usesElasticScale(exName);
+    var reps = sets.map(function(s) { return parseInt(s.r) || 0; });
+    var load = sets[0] ? (parseFloat(sets[0].w) || 0) : 0;
+    var rirValues = sets.map(function(s) { return numericRirValue(s.rir); }).filter(function(v) { return v !== null; });
+    var avgRir = rirValues.length ? (rirValues.reduce(function(acc, v) { return acc + v; }, 0) / rirValues.length) : null;
+    var allAtTop = spec.kind === "range" && reps.every(function(r) { return r >= spec.max; });
+    var allInRange = spec.kind === "range" && reps.every(function(r) { return r >= spec.min; });
+    var nextReps = reps.map(function(r) { return String(Math.min((parseInt(r) || spec.min) + 1, spec.max)); }).join("/");
+    if (allAtTop) {
+      if (avgRir !== null && avgRir <= 1) {
+        return { state: "hold", title: "Chiuse ma troppo tirate", detail: "Ultima: " + formatSessionSummary(exName, sets, isBW, false) + ". Hai chiuso il range, ma con buffer minimo: resta su questo peso ancora una seduta e cerca piu margine prima di salire." };
+      }
+      var inc = getGuidedIncrementInfo(exName);
+      if (inc.kind === "kg") return { state: "up", title: "Aumenta carico", detail: "Ultima: " + formatSessionSummary(exName, sets, false, false) + ". Prossima: " + (load + inc.amount) + " kg e riparti dal minimo del range." };
+      if (inc.kind === "step") return { state: "up", title: "Aumenta di uno step", detail: "Ultima: " + formatSessionSummary(exName, sets, false, false) + ". Prossima: sali di 1 step al cavo e riparti dal minimo del range." };
+      if (inc.kind === "tick") return { state: "up", title: "Riduci l'assistenza", detail: "Ultima: " + formatSessionSummary(exName, sets, false, false) + ". Prossima: prova 1 tacca di aiuto in meno e riparti dal minimo del range." };
+      return { state: "up", title: "Aumenta difficolta", detail: "Ultima: " + formatSessionSummary(exName, sets, true, false) + ". Prossima: aumenta la difficolta o aggiungi 1 rip per serie." };
+    }
+    if (allInRange) {
+      return { state: "hold", title: "Resta cosi, prova 1 rip in piu", detail: "Ultima: " + formatSessionSummary(exName, sets, isBW, false) + ". Oggi resta con lo stesso riferimento e prova a salire verso " + nextReps + "." };
+    }
+    return { state: "down", title: "Consolida", detail: "Ultima: " + formatSessionSummary(exName, sets, isBW, false) + ". Prima chiudi bene il minimo del range su tutte le serie." };
+  }
+
+  function getGuidedRestSuggestion(exName, baseRestSec, rirValue) {
+    var rir = numericRirValue(rirValue);
+    var base = baseRestSec || 90;
+    if (rir === null) return { seconds: base, label: "Recupero standard" };
+    var kind = getGuidedExerciseClass(exName);
+    if (rir <= 0) {
+      if (kind === "heavy") return { seconds: 180, label: "Serie a cedimento: prendi 3 min pieni" };
+      if (kind === "compound") return { seconds: Math.max(base, 120), label: "Serie molto tirata: prenditi 2 min pieni" };
+      return { seconds: Math.max(90, Math.min(base, 90)), label: "Monoarticolare a cedimento: 90s bastano" };
+    }
+    if (rir === 1) {
+      if (kind === "heavy") return { seconds: Math.max(base, 150), label: "RIR 1: allunga il recupero a 2.5-3 min" };
+      if (kind === "compound") return { seconds: Math.max(base, 90), label: "RIR 1: prenditi 90-120s" };
+      return { seconds: Math.max(60, Math.min(base, 90)), label: "RIR 1 su monoarticolare: 60-90s bastano" };
+    }
+    if (rir === 2) return { seconds: base, label: "RIR 2: resta sul recupero standard" };
+    if (rir >= 3) {
+      if (kind === "heavy") return { seconds: 120, label: "Carico leggero: puoi ripartire in 2 min" };
+      if (kind === "compound") return { seconds: Math.max(60, Math.min(base, 90)), label: "Carico leggero: 60-90s bastano" };
+      return { seconds: 60, label: "Monoarticolare leggero: 60s bastano" };
+    }
+    return { seconds: base, label: "Recupero standard" };
+  }
+
+  function getGuidedExerciseDecision(exName, serie, di) {
+    var spec = parseProgressSpec(serie);
+    if (!spec || !spec.sets) return null;
+    var entry = logs[getGuidedTodayKey(di, exName)];
+    if (!entry) return null;
+    var sets = normalizeSessionSets(entry, spec.sets);
+    if (sets.length !== spec.sets) return null;
+    var reps = sets.map(function(s) { return parseInt(s.r) || 0; });
+    var allAtTop = spec.kind === "range" && reps.every(function(r) { return r >= spec.max; });
+    var allInRange = spec.kind === "range" && reps.every(function(r) { return r >= spec.min; });
+    var rirValues = sets.map(function(s) { return numericRirValue(s.rir); }).filter(function(v) { return v !== null; });
+    var avgRir = rirValues.length ? (rirValues.reduce(function(acc, v) { return acc + v; }, 0) / rirValues.length) : null;
+    var lowRirCount = sets.filter(function(s) { var rir = numericRirValue(s.rir); return rir !== null && rir <= 0; }).length;
+    var load = sets[0] ? (parseFloat(sets[0].w) || 0) : 0;
+    var inc = getGuidedIncrementInfo(exName);
+    if (lowRirCount > 1) return "Hai superato il buffer su piu serie. La prossima volta fermati 1 rip prima.";
+    if (allAtTop && avgRir !== null && avgRir <= 1) {
+      return "Hai chiuso il range, ma il buffer era minimo. Resta a questo peso ancora una sessione per consolidare prima di aumentare.";
+    }
+    if (allAtTop) {
+      if (inc.kind === "kg") return "La prossima volta aumenta a " + (load + inc.amount) + " kg e riparti dal minimo del range.";
+      if (inc.kind === "step") return "La prossima volta sali di 1 step al cavo e riparti dal minimo del range.";
+      if (inc.kind === "tick") return "La prossima volta usa 1 tacca di aiuto in meno e riparti dal minimo del range.";
+      return "La prossima volta prova +1 rip per serie o una variante piu difficile.";
+    }
+    if (allInRange && spec.kind === "range" && reps.length >= 4 && reps[0] >= spec.max && reps[1] >= spec.max && reps[reps.length - 2] < spec.max) {
+      return "Peso calibrato bene. Il calo nelle ultime serie e fatica normale. La prossima volta prova a chiudere anche la terza e quarta serie.";
+    }
+    if (allInRange) return "Peso giusto. La prossima volta prova ad aggiungere 1 ripetizione per serie.";
+    return "Consolida questo peso prima di salire.";
+  }
+
+  function getUnderMinPerformanceMessage(exName, serie, repsDone) {
+    var spec = parseProgressSpec(serie);
+    var reps = parseInt(repsDone) || 0;
+    if (!spec || spec.kind !== "range" || reps <= 0 || reps >= spec.min) return "";
+    if (reps <= Math.max(1, spec.min - 3)) {
+      return "Sei molto sotto il minimo previsto (" + reps + " su " + spec.min + "). Probabile carico troppo alto, recupero insufficiente o tecnica che cede: alleggerisci e consolida. " + getGuidedReductionLabel(exName);
+    }
+    return "Sei sotto il minimo previsto (" + reps + " su " + spec.min + "). Non salire di carico: consolida questo peso prima di progredire.";
+  }
+
+  function updateSetRirValue(exName, di, si, rirValue) {
+    var key = getGuidedTodayKey(di, exName);
+    var nextLogs = Object.assign({}, logs);
+    var entry = nextLogs[key];
+    if (!entry || !entry.sets) return;
+    entry = Object.assign({}, entry, {
+      sets: entry.sets.map(function(setItem) {
+        if (setItem.si !== si) return setItem;
+        return Object.assign({}, setItem, { rir: normalizeRirValue(rirValue) });
+      })
+    });
+    nextLogs[key] = entry;
+    saveData(nextLogs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode);
+  }
+
+  function getExerciseRirHistorySummary(exName) {
+    var sessions = getAllHist(exName).filter(function(entry) {
+      return (entry.sets || []).some(function(setItem) { return numericRirValue(setItem.rir) !== null; });
+    }).slice(0, 3);
+    if (!sessions.length) return null;
+    var avgs = sessions.map(function(entry) {
+      var vals = (entry.sets || []).map(function(setItem) { return numericRirValue(setItem.rir); }).filter(function(v) { return v !== null; });
+      var avg = vals.reduce(function(acc, v) { return acc + v; }, 0) / vals.length;
+      return { date: entry.date, avg: Math.round(avg * 10) / 10 };
+    });
+    var latestTwoLow = getGuidedExerciseClass(exName) === "heavy" && avgs.length >= 2 && avgs[0].avg < 1.5 && avgs[1].avg < 1.5;
+    return { avgs: avgs, warn: latestTwoLow };
+  }
+
   function saveSetEntry(en, di, si, w, r, customProfiles, rirValue) {
     var t = todayStr();
     var k = t + "_d" + di + "_m" + month + "_" + en;
@@ -3791,7 +4007,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     var x = nl[k].sets.findIndex(function(s) { return s.si === si; });
     var entry = { si: si, w: parseFloat(w) || 0, r: r === "max" ? r : (parseInt(r) || 0), rir: normalizeRirValue(rirValue) };
     if (x >= 0) nl[k].sets[x] = entry; else nl[k].sets.push(entry);
-    saveData(nl, cardioLogs, customProfiles || calibrationProfiles, calibrationMode);
+    saveData(nl, cardioLogs, customProfiles || calibrationProfiles, calibrationMode, guidedMode);
     if (!wasComplete && isDayWorkoutComplete(nl, di)) autoExportCompletedSession(nl, di);
     setEditing(null);
     setTmpW("");
@@ -3801,15 +4017,57 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   }
   function beginLogSet(exObj, di, si, w, r, isBW, rirValue) {
     try {
+      if (effectiveCalibrationMode && forcedRecoveryLock) {
+        setCalibrationFeedback("Aspetta la fine del recupero prima di registrare la serie successiva.");
+        return;
+      }
       if (!r || String(r).trim() === "") {
         setCalibrationFeedback("Inserisci prima le ripetizioni della serie.");
         return;
       }
       var calNeed = getCalibrationNeed(exObj.n, exObj.s);
-      if (!effectiveCalibrationMode || !calNeed.needed) return saveSetEntry(exObj.n, di, si, w, r, null, rirValue);
+      if (!effectiveCalibrationMode || !calNeed.needed) {
+        var saved = saveSetEntry(exObj.n, di, si, w, r, null, rirValue);
+        var specGuided = parseProgressSpec(exObj.s);
+        var underMinMsg = getUnderMinPerformanceMessage(exObj.n, exObj.s, r);
+        var savedEntry = saved ? saved[getGuidedTodayKey(di, exObj.n)] : null;
+        var prevSet = savedEntry && savedEntry.sets ? savedEntry.sets.find(function(setItem) { return setItem.si === si - 1; }) : null;
+        if (guidedMode) {
+          if (normalizeRirValue(rirValue)) {
+            var restInfo = getGuidedRestSuggestion(exObj.n, getExerciseRestSeconds({ rec: exObj.rec || "" }, exObj) || 90, rirValue);
+            setGuidedRestHint(restInfo.label);
+            quickTimer(restInfo.seconds);
+            if (underMinMsg) {
+              setGuidedFeedback(underMinMsg);
+            } else if (specGuided && si === specGuided.sets - 1) {
+              setGuidedFeedback(getGuidedExerciseDecision(exObj.n, exObj.s, di) || "Serie salvata.");
+            } else {
+              setGuidedFeedback("Serie salvata. " + restInfo.label);
+            }
+          } else {
+            setGuidedPrompt({
+              exName: exObj.n,
+              di: di,
+              si: si,
+              serie: exObj.s,
+              restSec: getExerciseRestSeconds({ rec: exObj.rec || "" }, exObj) || 90,
+              isLastSet: !!(specGuided && si === specGuided.sets - 1),
+              prevRir: prevSet ? normalizeRirValue(prevSet.rir) : "",
+            });
+            if (underMinMsg) setGuidedFeedback(underMinMsg);
+          }
+        } else if (underMinMsg) {
+          setCalibrationFeedback(underMinMsg);
+        }
+        return saved;
+      }
       var calType = getCalibrationType(exObj.n, exObj.s);
       if (calType === "none") return saveSetEntry(exObj.n, di, si, w, r, null, rirValue);
       var spec = parseProgressSpec(exObj.s);
+      var underMinPreview = getUnderMinPerformanceMessage(exObj.n, exObj.s, r);
+      if (underMinPreview) {
+        setCalibrationFeedback(underMinPreview);
+      }
       setCalibrationAnswers({ reps: String(r || ""), cleanSame: "yes", cleanReps: String(r || ""), reserve: calType === "weighted" || calType === "dumbbell" || calType === "cable" ? "2" : "2" });
       setCalibrationPrompt({
         exName: exObj.n,
@@ -3835,11 +4093,20 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       var repsDone = parseInt(calibrationAnswers.reps) || parseInt(calibrationPrompt.r) || 0;
       var cleanReps = calibrationAnswers.cleanSame === "yes" ? repsDone : (parseInt(calibrationAnswers.cleanReps) || 0);
       var reserve = calibrationAnswers.reserve || "2";
+      var spec = parseProgressSpec(calibrationPrompt.serie);
       if (cleanReps <= 0) {
         setCalibrationFeedback("Inserisci almeno 1 ripetizione pulita prima di salvare.");
         return;
       }
-      var decision = safeCalibrationDecision(calibrationPrompt.type, reserve, cleanReps, calibrationPrompt.serie, calibrationPrompt.exName, calibrationPrompt);
+      var belowMin = !!(spec && spec.kind === "range" && cleanReps < spec.min);
+      var decision = belowMin
+        ? {
+            tone: "hold",
+            title: "Riferimento non valido",
+            detail: (getUnderMinPerformanceMessage(calibrationPrompt.exName, calibrationPrompt.serie, cleanReps) || "Sei sotto il minimo previsto.") + " La serie viene salvata, ma non come punto zero valido.",
+            accepted: false,
+          }
+        : safeCalibrationDecision(calibrationPrompt.type, reserve, cleanReps, calibrationPrompt.serie, calibrationPrompt.exName, calibrationPrompt);
       var nextProfiles = calibrationProfiles;
       if (decision.accepted) {
         nextProfiles = Object.assign({}, calibrationProfiles, {});
@@ -3853,12 +4120,47 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
         };
       }
       saveSetEntry(calibrationPrompt.exName, calibrationPrompt.di, calibrationPrompt.si, calibrationPrompt.w, cleanReps, nextProfiles, reserve);
+      var forcedRestSec = getExerciseRestSeconds({ rec: calibrationPrompt.rec || "" }, { n: calibrationPrompt.exName, rpe: "" }) || 90;
+      setForcedRecoveryLock({
+        exName: calibrationPrompt.exName,
+        di: calibrationPrompt.di,
+        si: calibrationPrompt.si,
+        seconds: forcedRestSec
+      });
+      quickTimer(forcedRestSec);
       setCalibrationFeedback(decision.title + ". " + decision.detail);
+      if (guidedMode) {
+        var guidedRest = getGuidedRestSuggestion(calibrationPrompt.exName, getExerciseRestSeconds({ rec: calibrationPrompt.rec || "" }, { n: calibrationPrompt.exName, rpe: "" }) || 90, reserve);
+        setGuidedRestHint(guidedRest.label);
+        if (calibrationPrompt.isLastSet) {
+          setGuidedFeedback(getGuidedExerciseDecision(calibrationPrompt.exName, calibrationPrompt.serie, calibrationPrompt.di) || decision.detail);
+        }
+      }
       setCalibrationPrompt(null);
     } catch (err) {
       console.error("Calibration confirm failed", err);
       setCalibrationFeedback("C'e stato un problema nel salvataggio della calibrazione. Riprova senza chiudere la scheda.");
     }
+  }
+  function confirmGuidedPrompt(rirValue) {
+    if (!guidedPrompt) return;
+    updateSetRirValue(guidedPrompt.exName, guidedPrompt.di, guidedPrompt.si, rirValue);
+    var nextSeen = guidedPromptSeenCount + 1;
+    setGuidedPromptSeenCount(nextSeen);
+    try { localStorage.setItem("wt-guided-prompt-seen", String(nextSeen)); } catch (e) {}
+    var restInfo = getGuidedRestSuggestion(guidedPrompt.exName, guidedPrompt.restSec || 90, rirValue);
+    setGuidedRestHint(restInfo.label);
+    quickTimer(restInfo.seconds);
+    if (rirValue === "0") {
+      setGuidedFeedback("Sei andata a cedimento. Sulla prossima serie fermati 1 rip prima.");
+    } else if (rirValue === "3" || rirValue === "4+") {
+      setGuidedFeedback("Il carico e leggero. Se si ripete alla prossima serie, considera un aumento.");
+    } else if (guidedPrompt.isLastSet) {
+      setGuidedFeedback(getGuidedExerciseDecision(guidedPrompt.exName, guidedPrompt.serie, guidedPrompt.di) || restInfo.label);
+    } else {
+      setGuidedFeedback(restInfo.label);
+    }
+    setGuidedPrompt(null);
   }
   function getLog(en, di) { return logs[todayStr() + "_d" + di + "_m" + month + "_" + en]; }
   function getHist(en) { return Object.values(logs).filter(function(l) { return l.exercise === en; }).sort(function(a,b) { return b.date.localeCompare(a.date); }).slice(0, 10); }
@@ -4107,7 +4409,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           var imported = JSON.parse(evt.target.result);
           var importedLogs = imported && imported.logs && typeof imported.logs === "object" ? imported.logs : imported;
           var importedCardioLogs = imported && imported.cardioLogs && typeof imported.cardioLogs === "object" ? imported.cardioLogs : {};
-          saveData(importedLogs || {}, importedCardioLogs || {}, imported && imported.calibrationProfiles && typeof imported.calibrationProfiles === "object" ? imported.calibrationProfiles : {}, !!(imported && imported.calibrationMode));
+          saveData(importedLogs || {}, importedCardioLogs || {}, imported && imported.calibrationProfiles && typeof imported.calibrationProfiles === "object" ? imported.calibrationProfiles : {}, !!(imported && imported.calibrationMode), !!(imported && imported.guidedMode));
           alert('Dati importati con successo!');
         } catch(e) {
           alert('Errore: file non valido');
@@ -4431,7 +4733,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(false); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
           </div>
         </div>
       </div>}
@@ -4491,6 +4793,23 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                 </button>
               </div>
             </div>
+            {!isBasics && <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Modalità guidata</div>
+                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Quando è attiva, l'app ti mostra briefing pre-sessione, richiesta RIR dopo le serie, suggerimento di recupero e decisione finale sull'esercizio.</div>
+                </div>
+                <button
+                  onClick={function() {
+                    var next = !guidedMode;
+                    saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, next);
+                  }}
+                  style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (guidedMode ? dc : T.sub + "30"), background: guidedMode ? dc : T.cd, color: guidedMode ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
+                >
+                  {guidedMode ? "ON" : "OFF"}
+                </button>
+              </div>
+            </div>}
             {/* Dati */}
             <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Dati</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 8 }}>
@@ -5667,6 +5986,32 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
               <button onClick={function() { setDismissedSeriesBanner(true); }} style={{ flexShrink: 0, width: 24, height: 24, border: "none", background: "transparent", color: T.sub, fontSize: 16, cursor: "pointer", lineHeight: 1, padding: 0 }}>×</button>
             </div>}
 
+            {!isBasics && !dayData.cardio && !dayData.rest && guidedMode && !focusMode && <div style={{ margin: "10px 14px 0", padding: "11px 12px", borderRadius: 12, background: dc + "0A", border: "1px solid " + dc + "22" }}>
+              <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>🧭 Modalità guidata</div>
+              {dayData.intro && dayData.intro.obiettivi && dayData.intro.obiettivi.length > 0 && <div style={{ marginBottom: 10 }}>
+                <div style={{ fontSize: 12, color: T.tx, fontWeight: 800, marginBottom: 5 }}>Obiettivi della sessione</div>
+                <div style={{ display: "grid", gap: 4 }}>
+                  {dayData.intro.obiettivi.map(function(goal, gi) {
+                    return <div key={gi} style={{ display: "flex", gap: 7, alignItems: "flex-start" }}>
+                      <span style={{ color: dc, fontSize: 11, lineHeight: 1.6, fontWeight: 800 }}>•</span>
+                      <span style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>{goal}</span>
+                    </div>;
+                  })}
+                </div>
+              </div>}
+              <div style={{ display: "grid", gap: 8 }}>
+                {(dayData.ex || []).map(function(rawEx, gi) {
+                  var gEx = getExForMonth(rawEx);
+                  var sugg = getGuidedSessionSuggestion(gEx.n, gEx.s);
+                  return <div key={gEx.n + "-" + gi} style={{ padding: "9px 10px", borderRadius: 10, background: T.sb, border: "1px solid " + T.bg }}>
+                    <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, marginBottom: 3 }}>{gEx.n}</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 3 }}>{sugg.title}</div>
+                    <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{sugg.detail}</div>
+                  </div>;
+                })}
+              </div>
+            </div>}
+
             {!dayData.cardio && !dayData.rest && calibrationEnabled && !focusMode && (function() {
               var dayCalibration = getDayCalibrationSuggestion(safeDayIdx);
               if (!dayCalibration) return null;
@@ -6012,6 +6357,8 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                   var progColor = prog ? (prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) : dc;
                   var errorList = (mergedEx.errori || "").split(/\s*;\s*/).filter(Boolean);
                   var exSkills = getExerciseCompetencies(ex.n);
+                  var guidedRirSummary = getExerciseRirHistorySummary(ex.n);
+                  var calibrationLocked = !!(effectiveCalibrationMode && forcedRecoveryLock);
                   return <div style={{ padding: "0 14px 14px" }}>
                     {/* Cable toggle */}
                     {hasCableToggle && <div style={{ display: "flex", gap: 0, marginBottom: 10, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "40", alignSelf: "flex-start", width: "fit-content" }} onClick={function(e) { e.stopPropagation(); }}>
@@ -6132,6 +6479,9 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                         Registra
                         {tLog && tLog.sets.length > 0 && <span style={{ fontSize: 11, background: T.ok, color: "#fff", padding: "2px 8px", borderRadius: 8, fontWeight: 800 }}>{tLog.sets.length + "/" + sc + " serie"}</span>}
                       </div>
+                      {calibrationLocked && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: "#FFB30012", border: "1px solid #FFB30033", fontSize: 11, color: "#8A5A00", lineHeight: 1.55 }}>
+                        Recupero obbligatorio in calibrazione attivo: aspetta la fine del timer prima di salvare la serie successiva.
+                      </div>}
                       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                         {Array.from({ length: sc }).map(function(_, si) {
                           var lg = tLog ? tLog.sets.find(function(s) { return s.si === si; }) : null;
@@ -6154,11 +6504,11 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                               <div style={{ display: "flex", gap: 6, padding: "0 10px 10px", alignItems: "center" }}>
                                 {!isBW && <><input type="number" inputMode="numeric" min={usesBand ? 1 : undefined} max={usesBand ? 10 : undefined} placeholder={usesBand ? "tacca 1-10" : "kg"} value={tmpW} onChange={function(e) { setTmpW(usesBand ? String(clampElasticTick(e.target.value) || "") : e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus /><span style={{ fontSize: 11, color: T.sub, flexShrink: 0 }}>{usesBand ? "tacca" : "kg"}</span></>}
                                 <input type={tgt === "max" ? "text" : "number"} inputMode="numeric" placeholder="rip" value={tmpR} onChange={function(e) { setTmpR(e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus={isBW} />
-                                <select value={tmpRir} onChange={function(e) { setTmpRir(e.target.value); }} style={{ minWidth: 72, padding: "10px 8px", border: "2px solid " + dc + "40", borderRadius: 8, fontSize: 12, background: T.cd, color: T.tx, fontWeight: 700 }}>
+                                {!effectiveCalibrationMode && <select value={tmpRir} onChange={function(e) { setTmpRir(e.target.value); }} style={{ minWidth: 72, padding: "10px 8px", border: "2px solid " + dc + "40", borderRadius: 8, fontSize: 12, background: T.cd, color: T.tx, fontWeight: 700 }}>
                                   <option value="">RIR</option>
                                   {["0","1","2","3","4+"].map(function(opt) { return <option key={opt} value={opt}>{"RIR " + opt}</option>; })}
-                                </select>
-                                <button onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : tmpW), tmpR, isBW, tmpRir); }} style={{ width: 44, height: 44, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 20, cursor: "pointer", flexShrink: 0, fontWeight: 700 }}>✓</button>
+                                </select>}
+                                <button disabled={calibrationLocked} onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : tmpW), tmpR, isBW, tmpRir); }} style={{ width: 44, height: 44, background: calibrationLocked ? T.bg : dc, color: calibrationLocked ? T.sub : "#fff", border: "none", borderRadius: 8, fontSize: 20, cursor: calibrationLocked ? "default" : "pointer", flexShrink: 0, fontWeight: 700 }}>✓</button>
                                 <button onClick={function(e) { e.stopPropagation(); setEditing(null); setTmpW(""); setTmpR(""); setTmpRir(""); }} style={{ width: 36, height: 44, background: T.bg, color: T.sub, border: "none", borderRadius: 8, fontSize: 16, cursor: "pointer", flexShrink: 0 }}>✕</button>
                               </div>
                             ) : done ? (
@@ -6167,7 +6517,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                               </div>
                             ) : (
                               <div style={{ padding: "0 10px 10px", display: "flex", flexDirection: "column", gap: 6 }}>
-                                <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(sugg.w); setTmpR(sugg.r); setTmpRir(sugg.rir || ""); }} style={{ width: "100%", minHeight: 52, border: "2px dashed " + dc + "50", borderRadius: 10, background: dc + "08", color: dc, fontWeight: 800, fontSize: 15, cursor: "pointer" }}>
+                                <button disabled={calibrationLocked} onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(sugg.w); setTmpR(sugg.r); setTmpRir(sugg.rir || ""); }} style={{ width: "100%", minHeight: 52, border: "2px dashed " + dc + "50", borderRadius: 10, background: calibrationLocked ? T.bg : dc + "08", color: calibrationLocked ? T.sub : dc, fontWeight: 800, fontSize: 15, cursor: calibrationLocked ? "default" : "pointer" }}>
                                   {sugg.r ? "▶ " + (isBW ? sugg.r + " rip" : formatLoadAndReps(ex.n, sugg.w, sugg.r)) : "+ registra"}
                                 </button>
                                 {(function() {
@@ -6214,6 +6564,21 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                           </>;
                         })()}
                       </div>
+
+                      {guidedMode && guidedRirSummary && <div style={{ background: T.cd, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
+                        <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Storico RIR</div>
+                        <div style={{ display: "grid", gap: 4 }}>
+                          {guidedRirSummary.avgs.map(function(item) {
+                            return <div key={item.date} style={{ display: "flex", justifyContent: "space-between", gap: 8, fontSize: 11, color: T.sub }}>
+                              <span>{item.date}</span>
+                              <span style={{ fontWeight: 700, color: T.tx }}>{"RIR medio " + item.avg}</span>
+                            </div>;
+                          })}
+                        </div>
+                        {guidedRirSummary.warn && <div style={{ marginTop: 8, padding: "7px 8px", borderRadius: 8, background: "#C6282810", border: "1px solid #C6282820", fontSize: 11, color: "#A32020", lineHeight: 1.55 }}>
+                          Media RIR sotto 1.5 per 2 sessioni consecutive: valuta un deload o una lieve riduzione del carico.
+                        </div>}
+                      </div>}
 
                       <details style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
                         <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 11px", fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Tecnica essenziale</summary>
@@ -6326,6 +6691,33 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
         {calibrationFeedback}
       </div>}
 
+      {guidedFeedback && <div style={{ position: "fixed", left: 12, right: 12, bottom: calibrationFeedback ? (tPanel ? 176 : 144) : (tPanel ? 110 : 78), zIndex: 129, maxWidth: 600, margin: "0 auto", background: dc, color: "#fff", borderRadius: 12, padding: "10px 12px", boxShadow: "0 8px 24px rgba(0,0,0,0.16)", fontSize: 12, fontWeight: 700, lineHeight: 1.5 }}>
+        🧭 {guidedFeedback}
+      </div>}
+
+      {guidedPrompt && <div onClick={function() { setGuidedPrompt(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.38)", zIndex: 139, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: 12 }}>
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", maxWidth: 520, background: T.cd, borderRadius: 16, overflow: "hidden", boxShadow: "0 20px 40px rgba(0,0,0,0.22)" }}>
+          <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
+            <div style={{ fontSize: 15, fontWeight: 800, color: T.tx }}>🧭 Modalità guidata — {guidedPrompt.exName}</div>
+            <div style={{ fontSize: 12, color: T.sub, marginTop: 4, lineHeight: 1.6 }}>Quante ripetizioni pulite ti sarebbero rimaste? Questo dato serve per guidare recupero e progressione.</div>
+            {guidedPromptSeenCount < 5 && <div style={{ marginTop: 7, padding: "7px 8px", borderRadius: 8, background: dc + "0D", border: "1px solid " + dc + "18", fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
+              Non sai stimare bene? Scegli <b style={{ color: T.tx }}>2</b> se la serie era impegnativa ma ancora controllata.
+            </div>}
+          </div>
+          <div style={{ padding: 16, display: "grid", gap: 10 }}>
+            {guidedPrompt.prevRir && <button onClick={function() { confirmGuidedPrompt(guidedPrompt.prevRir); }} style={{ minHeight: 42, border: "1px solid " + dc + "24", borderRadius: 10, background: dc + "10", color: dc, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>
+              {"= serie precedente (RIR " + guidedPrompt.prevRir + ")"}
+            </button>}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 6 }}>
+              {["0","1","2","3","4+"].map(function(opt) {
+                return <button key={opt} onClick={function() { confirmGuidedPrompt(opt); }} style={{ minHeight: 42, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>{opt}</button>;
+              })}
+            </div>
+            <button onClick={function() { setGuidedPrompt(null); }} style={{ minHeight: 40, border: "1px solid " + T.bg, borderRadius: 10, background: T.sb, color: T.sub, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Chiudi senza salvare RIR</button>
+          </div>
+        </div>
+      </div>}
+
       {calibrationPrompt && <div onClick={function() { setCalibrationPrompt(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.38)", zIndex: 140, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: 12 }}>
         <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", maxWidth: 560, background: T.cd, borderRadius: 16, overflow: "hidden", boxShadow: "0 20px 40px rgba(0,0,0,0.22)" }}>
           <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
@@ -6334,10 +6726,15 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
             {calibrationPrompt.isLastSet && <div style={{ fontSize: 11, color: dc, marginTop: 6, lineHeight: 1.55 }}>Questa e l'ultima serie prevista: se il suggerimento dice di cambiare carico o aiuto, puoi anche segnartelo e correggere dalla prossima seduta senza rifare tutto oggi.</div>}
           </div>
           <div style={{ padding: 16, display: "grid", gap: 12 }}>
-            <label style={{ display: "grid", gap: 6 }}>
-              <span style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>Quante ripetizioni hai fatto?</span>
-              <input type="number" inputMode="numeric" value={calibrationAnswers.reps} onChange={function(e) { setCalibrationAnswers(function(prev) { return Object.assign({}, prev, { reps: e.target.value, cleanReps: prev.cleanSame === "yes" ? e.target.value : prev.cleanReps }); }); }} style={{ width: "100%", padding: "11px 12px", border: "1px solid " + dc + "28", borderRadius: 10, fontSize: 15, fontWeight: 700, background: T.sb, color: T.tx, boxSizing: "border-box" }} />
-            </label>
+            <div style={{ display: "grid", gap: 6 }}>
+              <span style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>Ripetizioni registrate</span>
+              <div style={{ width: "100%", padding: "11px 12px", border: "1px solid " + dc + "28", borderRadius: 10, fontSize: 15, fontWeight: 700, background: T.sb, color: T.tx, boxSizing: "border-box" }}>
+                {(parseInt(calibrationPrompt.r) || parseInt(calibrationAnswers.reps) || 0) + " rip"}
+              </div>
+              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
+                Qui non devi reinserirle: usa questo passaggio solo per dire se erano tutte pulite e quante te ne restavano.
+              </div>
+            </div>
             <div style={{ display: "grid", gap: 6 }}>
               <span style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>Erano tutte con la stessa tecnica della prima?</span>
               <div style={{ display: "flex", gap: 8 }}>
@@ -6346,7 +6743,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                   { key: "no", label: "No" },
                 ].map(function(opt) {
                   var active = calibrationAnswers.cleanSame === opt.key;
-                  return <button key={opt.key} onClick={function() { setCalibrationAnswers(function(prev) { return Object.assign({}, prev, { cleanSame: opt.key, cleanReps: opt.key === "yes" ? prev.reps : prev.cleanReps }); }); }} style={{ flex: 1, minHeight: 40, border: "none", borderRadius: 10, background: active ? dc : T.bg, color: active ? "#fff" : T.sub, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>{opt.label}</button>;
+                  return <button key={opt.key} onClick={function() { setCalibrationAnswers(function(prev) { return Object.assign({}, prev, { cleanSame: opt.key, cleanReps: opt.key === "yes" ? String(parseInt(calibrationPrompt.r) || parseInt(prev.reps) || 0) : prev.cleanReps }); }); }} style={{ flex: 1, minHeight: 40, border: "none", borderRadius: 10, background: active ? dc : T.bg, color: active ? "#fff" : T.sub, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>{opt.label}</button>;
                 })}
               </div>
             </div>
@@ -6376,15 +6773,15 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
 
       {/* TIMER BAR */}
       <div style={{ position: "fixed", bottom: 10, left: 0, right: 0, zIndex: 100, pointerEvents: "none" }}>
-        <div style={{ maxWidth: 600, margin: "0 auto", display: "flex", justifyContent: "flex-end", padding: "0 12px" }}>
-        <div style={{ width: "min(100%, 360px)", pointerEvents: "auto", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s", borderRadius: 16, overflow: "hidden" }}>
-        <div style={{ display: "flex", alignItems: "center", padding: "8px 12px", gap: 8 }}>
+        <div style={{ maxWidth: 600, margin: "0 auto", display: "flex", justifyContent: "flex-end", padding: "0 10px", boxSizing: "border-box" }}>
+        <div style={{ width: "min(calc(100vw - 20px), 340px)", maxWidth: "calc(100vw - 20px)", pointerEvents: "auto", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s", borderRadius: 16, overflow: "hidden", boxSizing: "border-box" }}>
+        <div style={{ display: "flex", alignItems: "center", padding: "8px 10px", gap: 6, minWidth: 0 }}>
           <button onClick={function() { setTPanel(!tPanel); }} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 30, height: 30, borderRadius: 7, cursor: "pointer", fontSize: 13 }}>{tPanel ? "\u25BE" : "\u25B4"}</button>
-          <div onClick={function() { setTPanel(function(prev) { return !prev; }); }} style={{ flex: 1, textAlign: "center", cursor: "pointer" }}>
+          <div onClick={function() { setTPanel(function(prev) { return !prev; }); }} style={{ flex: 1, textAlign: "center", cursor: "pointer", minWidth: 0 }}>
             {activeOpenEx && tMode === "countdown" && <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.68)", marginBottom: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-              {"Recupero minimo consigliato: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget)}
+              {(guidedMode && guidedRestHint ? guidedRestHint + " · " : "") + "Recupero minimo consigliato: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget)}
             </div>}
-            <div style={{ fontVariantNumeric: "tabular-nums", fontSize: 24, fontWeight: 800, letterSpacing: "0.5px", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s", animation: tWarning ? "timerBlink 1s infinite" : "none" }}>{fmtTime(tMs)}</div>
+            <div style={{ fontVariantNumeric: "tabular-nums", fontSize: 22, fontWeight: 800, letterSpacing: "0.5px", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s", animation: tWarning ? "timerBlink 1s infinite" : "none" }}>{fmtTime(tMs)}</div>
           </div>
           <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
             {!tRunning ? <button onClick={timerGo} style={{ background: T.ok, border: "none", color: "#fff", width: 36, height: 36, borderRadius: 9, cursor: "pointer", fontSize: 16 }}>&#9654;</button> : <button onClick={timerPause} style={{ background: T.ac, border: "none", color: "#000", width: 36, height: 36, borderRadius: 9, cursor: "pointer", fontSize: 13, fontWeight: 800 }}>&#9646;&#9646;</button>}
