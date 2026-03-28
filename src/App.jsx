@@ -3171,16 +3171,6 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     return function() { clearTimeout(tm); };
   }, [autoBackupMsg]);
   useEffect(function() {
-    if (!calibrationFeedback) return;
-    var tm = setTimeout(function() { setCalibrationFeedback(""); }, 5000);
-    return function() { clearTimeout(tm); };
-  }, [calibrationFeedback]);
-  useEffect(function() {
-    if (!guidedFeedback) return;
-    var tm = setTimeout(function() { setGuidedFeedback(""); }, 5000);
-    return function() { clearTimeout(tm); };
-  }, [guidedFeedback]);
-  useEffect(function() {
     if (!forcedRecoveryLock) return;
     if (tMode === "countdown" && !tRunning && tMs === 0) {
       setForcedRecoveryLock(null);
@@ -3838,9 +3828,10 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     if (exName.indexOf("Cavo") >= 0 || exName === "Face Pull" || exName === "Woodchop" || exName === "Tricipiti Cavo" || exName === "Pulley" || exName === "Lat Machine") {
       return { kind: "step", amount: 1, label: "+1 step cavo" };
     }
-    if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || exName === "Push-Up" || exName === "Push-Up su rialzo" || exName === "Dip alle Parallele") {
+    if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || exName === "Push-Up" || exName === "Push-Up su rialzo" || exName === "Dip alle Parallele" || exName === "Fitball Hamstring Curl" || exName === "Ab Wheel") {
       return { kind: "reps", amount: 1, label: "+1 rip per serie" };
     }
+    if (exName === "Hyperextension con Sacco") return { kind: "kg", amount: 1, label: "+1 kg nel sacco" };
     if (exName === "Squat Bulgaro" || exName === "Affondi" || exName === "Curl Bicipiti" || exName === "Curl Martello" || exName === "Press Manubri da Seduta" || exName === "Alzate Laterali") {
       return { kind: "kg", amount: 1, label: "+1 kg per manubrio" };
     }
@@ -3866,6 +3857,16 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       }
     }
     return null;
+  }
+
+  function getGuidedCompleteSessions(exName, serie, limit) {
+    var spec = parseProgressSpec(serie);
+    if (!spec || !spec.sets) return [];
+    return getAllHist(exName).map(function(entry) {
+      return { entry: entry, sets: normalizeSessionSets(entry, spec.sets), spec: spec };
+    }).filter(function(item) {
+      return item.sets.length === spec.sets;
+    }).slice(0, limit || 3);
   }
 
   function getGuidedSessionSuggestion(exName, serie) {
@@ -3942,7 +3943,19 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     var lowRirCount = sets.filter(function(s) { var rir = numericRirValue(s.rir); return rir !== null && rir <= 0; }).length;
     var load = sets[0] ? (parseFloat(sets[0].w) || 0) : 0;
     var inc = getGuidedIncrementInfo(exName);
+    var recentComplete = getGuidedCompleteSessions(exName, serie, 2);
+    var currentAndPrevStable = recentComplete.length >= 2 ? recentComplete.every(function(session) {
+      if (exName === "Push-Up") return session.sets.every(function(s) { return (parseInt(s.r) || 0) >= 15; });
+      if (exName === "Trazioni" || exName === "Trazioni Supine") return session.sets.every(function(s) { return (parseInt(s.r) || 0) >= 8; });
+      if (exName === "Dip alle Parallele") return session.sets.every(function(s) { return (parseInt(s.r) || 0) >= 10; });
+      return false;
+    }) : false;
     if (lowRirCount > 1) return "Hai superato il buffer su piu serie. La prossima volta fermati 1 rip prima.";
+    if (currentAndPrevStable) {
+      if (exName === "Push-Up") return "Hai superato 15 rip per serie per 2 sessioni consecutive. Passa a una variante piu difficile, per esempio Push-Up declino o diamante.";
+      if (exName === "Trazioni" || exName === "Trazioni Supine") return "Hai fatto almeno 8 rip pulite in tutte le serie per 2 sessioni consecutive. Valuta una zavorra leggera da +1.25 kg.";
+      if (exName === "Dip alle Parallele") return "Hai fatto almeno 10 rip pulite in tutte le serie per 2 sessioni consecutive. Valuta una zavorra leggera da +1.25 kg.";
+    }
     if (allAtTop && avgRir !== null && avgRir <= 1) {
       return "Hai chiuso il range, ma il buffer era minimo. Resta a questo peso ancora una sessione per consolidare prima di aumentare.";
     }
@@ -6687,12 +6700,23 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
         </div>
       </div>}
 
-      {calibrationFeedback && <div style={{ position: "fixed", left: 12, right: 12, bottom: tPanel ? 110 : 78, zIndex: 130, maxWidth: 600, margin: "0 auto", background: T.ok, color: "#fff", borderRadius: 12, padding: "10px 12px", boxShadow: "0 8px 24px rgba(0,0,0,0.16)", fontSize: 12, fontWeight: 700, lineHeight: 1.5 }}>
-        {calibrationFeedback}
-      </div>}
-
-      {guidedFeedback && <div style={{ position: "fixed", left: 12, right: 12, bottom: calibrationFeedback ? (tPanel ? 176 : 144) : (tPanel ? 110 : 78), zIndex: 129, maxWidth: 600, margin: "0 auto", background: dc, color: "#fff", borderRadius: 12, padding: "10px 12px", boxShadow: "0 8px 24px rgba(0,0,0,0.16)", fontSize: 12, fontWeight: 700, lineHeight: 1.5 }}>
-        🧭 {guidedFeedback}
+      {(calibrationFeedback || guidedFeedback) && <div
+        onClick={function() {
+          setCalibrationFeedback("");
+          setGuidedFeedback("");
+        }}
+        style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.18)", zIndex: 132, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: "12px 12px " + (tPanel ? "104px" : "72px"), boxSizing: "border-box" }}
+      >
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "min(calc(100vw - 24px), 720px)", display: "grid", gap: 10 }}>
+          {guidedFeedback && <div style={{ background: dc, color: "#fff", borderRadius: 16, padding: "14px 16px", boxShadow: "0 14px 34px rgba(0,0,0,0.22)", fontSize: 14, fontWeight: 700, lineHeight: 1.65 }}>
+            <div style={{ fontSize: 12, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 5, opacity: 0.88 }}>🧭 Modalità guidata</div>
+            {guidedFeedback}
+          </div>}
+          {calibrationFeedback && <div style={{ background: T.ok, color: "#fff", borderRadius: 16, padding: "14px 16px", boxShadow: "0 14px 34px rgba(0,0,0,0.22)", fontSize: 14, fontWeight: 700, lineHeight: 1.65 }}>
+            <div style={{ fontSize: 12, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 5, opacity: 0.92 }}>🎯 Calibrazione</div>
+            {calibrationFeedback}
+          </div>}
+        </div>
       </div>}
 
       {guidedPrompt && <div onClick={function() { setGuidedPrompt(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.38)", zIndex: 139, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: 12 }}>
