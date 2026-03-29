@@ -2175,7 +2175,7 @@ var CALIBRATION_BODYWEIGHT_EX = ["Push-Up","Trazioni","Trazioni Supine","Dip all
 var CALIBRATION_SKIP_EX = ["HIIT tapis roulant","Rucking con zaino 15-20 kg","Circuito sacco + corde + slackline","Corsa leggera zona 2"];
 
 function usesElasticScale(exName) {
-  return exName === "Trazioni" || exName === "Trazioni Supine";
+  return exName === "Trazioni" || exName === "Trazioni Supine" || exName === "Dip alle Parallele";
 }
 
 function clampElasticTick(v) {
@@ -4052,13 +4052,19 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     return todayStr() + "_d" + di + "_m" + month + "_" + exName;
   }
 
-  function getGuidedExerciseClass(exName) {
-    var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Front Squat","Pause Squat","Push Press","Stacco Sumo","Trazioni","Trazioni Supine","Hip Thrust Bilanciere","T-bar Row","Stacco Rumeno"];
-    var mono = ["Curl Bicipiti","Curl Martello","Curl Concentrato","Tricipiti Cavo","Face Pull","Alzate Laterali","Woodchop","French Press Manubri","Kick Back Manubri","Overhead Extension","Fire Hydrant","Clamshell","Abduzione Laterale","Addominali Obliqui"];
-    if (heavy.indexOf(exName) >= 0) return "heavy";
-    if (mono.indexOf(exName) >= 0) return "mono";
-    return "compound";
-  }
+function getGuidedExerciseClass(exName) {
+  var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Front Squat","Pause Squat","Push Press","Stacco Sumo","Trazioni","Trazioni Supine","Hip Thrust Bilanciere","T-bar Row","Stacco Rumeno"];
+  var mono = ["Curl Bicipiti","Curl Martello","Curl Concentrato","Tricipiti Cavo","Face Pull","Alzate Laterali","Woodchop","French Press Manubri","Kick Back Manubri","Overhead Extension","Fire Hydrant","Clamshell","Abduzione Laterale","Addominali Obliqui"];
+  if (heavy.indexOf(exName) >= 0) return "heavy";
+  if (mono.indexOf(exName) >= 0) return "mono";
+  return "compound";
+}
+
+function isNearBodyweightElasticSession(exName, sets) {
+  if (!usesElasticScale(exName) || !sets || !sets.length) return false;
+  var tick = clampElasticTick(sets[0].w);
+  return tick >= 8;
+}
 
   function getGuidedReferenceTerm(exName) {
     var inc = getGuidedIncrementInfo(exName);
@@ -4144,7 +4150,12 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       var inc = getGuidedIncrementInfo(exName);
       if (inc.kind === "kg") return { state: "up", title: "Aumenta carico", detail: "Ultima: " + formatSessionSummary(exName, sets, false, false) + ". Prossima: " + (load + inc.amount) + " kg e riparti dal minimo del range." };
       if (inc.kind === "step") return { state: "up", title: "Aumenta di uno step", detail: "Ultima: " + formatSessionSummary(exName, sets, false, false) + ". Prossima: sali di 1 step al cavo e riparti dal minimo del range." };
-      if (inc.kind === "tick") return { state: "up", title: "Riduci l'assistenza", detail: "Ultima: " + formatSessionSummary(exName, sets, false, false) + ". Prossima: prova 1 tacca di aiuto in meno e riparti dal minimo del range." };
+      if (inc.kind === "tick") {
+        if (isNearBodyweightElasticSession(exName, sets)) {
+          return { state: "up", title: "Quasi senza aiuto", detail: "Ultima: " + formatSessionSummary(exName, sets, false, false) + ". Sei quasi senza assistenza: prova 1 tacca in meno. Se sei gia al minimo aiuto e il gesto resta pulito, puoi iniziare a testare il bodyweight puro." };
+        }
+        return { state: "up", title: "Riduci l'assistenza", detail: "Ultima: " + formatSessionSummary(exName, sets, false, false) + ". Prossima: prova 1 tacca di aiuto in meno e riparti dal minimo del range." };
+      }
       return { state: "up", title: "Aumenta difficolta", detail: "Ultima: " + formatSessionSummary(exName, sets, true, false) + ". Prossima: aumenta la difficolta o aggiungi 1 rip per serie." };
     }
     if (allInRange) {
@@ -4199,15 +4210,15 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     var recentComplete = getGuidedCompleteSessions(exName, serie, 2);
     var currentAndPrevStable = recentComplete.length >= 2 ? recentComplete.every(function(session) {
       if (exName === "Push-Up") return session.sets.every(function(s) { return (parseInt(s.r) || 0) >= 15; });
-      if (exName === "Trazioni" || exName === "Trazioni Supine") return session.sets.every(function(s) { return (parseInt(s.r) || 0) >= 8; });
-      if (exName === "Dip alle Parallele") return session.sets.every(function(s) { return (parseInt(s.r) || 0) >= 10; });
+      if (exName === "Trazioni" || exName === "Trazioni Supine") return isNearBodyweightElasticSession(exName, session.sets) && session.sets.every(function(s) { return (parseInt(s.r) || 0) >= 8; });
+      if (exName === "Dip alle Parallele") return isNearBodyweightElasticSession(exName, session.sets) && session.sets.every(function(s) { return (parseInt(s.r) || 0) >= 10; });
       return false;
     }) : false;
     if (lowRirCount > 1) return "Hai superato il buffer su piu serie. La prossima volta fermati 1 rip prima.";
     if (currentAndPrevStable) {
       if (exName === "Push-Up") return "Hai superato 15 rip per serie per 2 sessioni consecutive. Passa a una variante piu difficile, per esempio Push-Up declino o diamante.";
-      if (exName === "Trazioni" || exName === "Trazioni Supine") return "Hai fatto almeno 8 rip pulite in tutte le serie per 2 sessioni consecutive. Valuta una zavorra leggera da +1.25 kg.";
-      if (exName === "Dip alle Parallele") return "Hai fatto almeno 10 rip pulite in tutte le serie per 2 sessioni consecutive. Valuta una zavorra leggera da +1.25 kg.";
+      if (exName === "Trazioni" || exName === "Trazioni Supine") return "Hai fatto almeno 8 rip pulite in tutte le serie per 2 sessioni consecutive con assistenza minima. Valuta una zavorra leggera da +1.25 kg.";
+      if (exName === "Dip alle Parallele") return "Hai fatto almeno 10 rip pulite in tutte le serie per 2 sessioni consecutive con assistenza minima. Valuta bodyweight puro o una zavorra leggera da +1.25 kg.";
     }
     if (allAtTop && avgRir !== null && avgRir <= 1) {
       return "Hai chiuso il range, ma il buffer era minimo. Resta su questo " + getGuidedReferenceTerm(exName) + " ancora una sessione per consolidare prima di aumentare.";
@@ -6782,6 +6793,9 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                         Registra
                         {tLog && tLog.sets.length > 0 && <span style={{ fontSize: 11, background: T.ok, color: "#fff", padding: "2px 8px", borderRadius: 8, fontWeight: 800 }}>{tLog.sets.length + "/" + sc + " serie"}</span>}
                       </div>
+                      {usesBand && ex.n === "Dip alle Parallele" && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: T.sb, border: "1px solid " + T.bg, fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
+                        Scegli una tacca da 1 a 10 che rappresenta il tuo elastico attuale: 1 = massimo aiuto, 10 = minimo aiuto. Usala come riferimento fisso nelle prossime sedute.
+                      </div>}
                       {calibrationLocked && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: "#FFB30012", border: "1px solid #FFB30033", fontSize: 11, color: "#8A5A00", lineHeight: 1.55 }}>
                         Recupero obbligatorio in calibrazione attivo: aspetta la fine del timer prima di salvare la serie successiva.
                       </div>}
