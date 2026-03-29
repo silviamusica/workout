@@ -4419,20 +4419,20 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     var type = getCalibrationType(exName, serie);
     if (type === "none") return { needed: false, reason: "" };
     var profile = calibrationProfiles[exName] || null;
-    if (profile && profile.date) {
-      var profileGap = daysBetweenISO(profile.date, todayStr());
-      if (profileGap !== null && profileGap <= 14) {
-        return { needed: false, initial: false, reason: "" };
-      }
-      if (profileGap !== null && profileGap > 14) {
-        return { needed: true, initial: false, reason: "Sono passati piu di 14 giorni dall'ultima calibrazione salvata: conviene ricalibrare." };
-      }
-    }
     var hist = Object.values(logs).filter(function(l) { return l.exercise === exName; }).sort(function(a,b) { return b.date.localeCompare(a.date); });
     var last = hist[0] || null;
-    if (!last) return { needed: true, initial: true, reason: "Non hai ancora un riferimento salvato per questo esercizio: questa e una calibrazione iniziale." };
-    var gap = daysBetweenISO(last.date, todayStr());
-    if (gap !== null && gap > 14) return { needed: true, initial: false, reason: "Sono passati piu di 14 giorni dall'ultima registrazione: conviene ricalibrare." };
+    var profileGap = profile && profile.date ? daysBetweenISO(profile.date, todayStr()) : null;
+    var logGap = last && last.date ? daysBetweenISO(last.date, todayStr()) : null;
+    var recentProfile = profileGap !== null && profileGap <= 14;
+    var recentLog = logGap !== null && logGap <= 14;
+    if (recentProfile || recentLog) {
+      return { needed: false, initial: false, reason: "" };
+    }
+    if (!profile && !last) return { needed: true, initial: true, reason: "Non hai ancora un riferimento salvato per questo esercizio: questa e una calibrazione iniziale." };
+    if (profileGap !== null && (logGap === null || profile.date >= last.date) && profileGap > 14) {
+      return { needed: true, initial: false, reason: "L'ultimo riferimento utile per questo esercizio e vecchio di oltre 14 giorni: conviene ricalibrare." };
+    }
+    if (logGap !== null && logGap > 14) return { needed: true, initial: false, reason: "L'ultima registrazione utile di questo esercizio e vecchia di oltre 14 giorni: conviene ricalibrare." };
     return { needed: false, initial: false, reason: "" };
   }
   function getDayCalibrationSuggestion(di) {
