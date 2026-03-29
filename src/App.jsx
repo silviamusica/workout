@@ -2001,6 +2001,8 @@ var PRELIM_PRINCIPLES = [
 ];
 
 var PRINCIPLES = [
+  { t: "Come regolarti senza modalita guidata", d: "Usa regole semplici. 1) Tieni lo stesso peso in tutte le serie. 2) Se il range e 6-8, il primo obiettivo e stare nel range con tecnica pulita. 3) Se chiudi tutte le serie al numero alto del range con ancora 1-2 ripetizioni in riserva, la volta dopo puoi salire. 4) Se resti dentro il range ma non chiudi tutte le serie al numero alto, tieni lo stesso peso e prova ad aggiungere ripetizioni. 5) Se scendi sotto il minimo del range, il carico e troppo alto oppure il recupero e stato troppo corto: non salire, consolida o alleggerisci. 6) Per i recuperi parti cosi: 2-3 minuti sui fondamentali pesanti, 90-120 secondi sugli accessori composti, 60-90 secondi sui monoarticolari. Questa base basta gia per autoregolarti bene." },
+  { t: "Modalita guidata: come leggerla davvero", d: "La modalita guidata non e un ordine assoluto. E un promemoria automatico basato su ripetizioni, RIR e recupero. Se il suggerimento non torna con la serie che hai appena fatto, usa prima il tuo giudizio e la tecnica reale. In pratica: se sei sotto il minimo del range, il carico e troppo alto o hai recuperato poco; se sei nel range ma non al top, resta li; se chiudi tutto al top con margine, puoi salire; se chiudi tutto al top ma sei a RIR 0-1, non salire ancora. Sugli esercizi senza peso fisso non ragionare in kg: ragiona in assistenza, variante, ampiezza o controllo." },
   { t: "Come leggere un esercizio: 4x6-8 RPE 8", d: "4 serie da 6 a 8 ripetizioni a RPE 8. Le serie di lavoro si eseguono tutte con lo stesso peso: non aumentarlo tra una serie e l'altra. Il range 6-8 indica la progressione tra le settimane, non dentro la singola seduta. Esempio: settimana 1 fai 4x6 con 30 kg, settimana 2 fai 4x7 con 30 kg, settimana 3 fai 4x8 con 30 kg, poi aumenti a 32.5 kg e riparti da 4x6. Se nella pratica fai 8, 8, 7, 6 va bene: il carico e corretto, la fatica accumulata e normale. Aumenti solo quando riesci a fare il numero alto previsto in tutte le serie con tecnica pulita." },
   { t: "Straight sets: stesso peso in tutte le serie", d: "Questa scheda non usa la piramide classica. Usa straight sets: stesso peso in tutte le serie dello stesso esercizio. Esempi: 4x6-8 = 4 serie con lo stesso peso; 3x12 = 3 serie con lo stesso peso; 3xRIR 1-2 = 3 serie con lo stesso peso fermandoti con 1-2 ripetizioni in riserva. Il carico cambia solo tra le settimane, quando hai raggiunto il numero alto previsto su tutte le serie. La vecchia logica piramidale tipo 12-10-8-8 qui non si usa." },
   { t: "Serie di avvicinamento: cosa sono", d: "Non devi fare una lunga rampa per ogni esercizio. La rampa completa serve soprattutto sul primo esercizio pesante della seduta, come Squat, Panca o Stacco. Sugli esercizi successivi spesso non serve nulla, oppure basta 1 serie leggera per abituarti al gesto. Servono a prepararti, non ad allenarti: poche ripetizioni, carichi che salgono poco alla volta, recuperi brevi. Se fatte bene non ti stancano, perche i pesi intermedi restano lontani dalla fatica vera. Più ti avvicini al carico di lavoro, più i salti di peso diventano piccoli e le ripetizioni restano basse." },
@@ -2771,7 +2773,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [calibrationPrompt, setCalibrationPrompt] = useState(null);
   var [calibrationAnswers, setCalibrationAnswers] = useState({ reps: "", cleanSame: "yes", cleanReps: "", reserve: "2" });
   var [calibrationFeedback, setCalibrationFeedback] = useState("");
-  var [guidedMode, setGuidedMode] = useState(true);
+  var [guidedMode, setGuidedMode] = useState(false);
   var [extraInfoEnabled, setExtraInfoEnabled] = useState(true);
   var [guidedPrompt, setGuidedPrompt] = useState(null);
   var [guidedFeedback, setGuidedFeedback] = useState("");
@@ -2820,6 +2822,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var tStart = useRef(null);
   var tAcc = useRef(0);
   var lastSnd = useRef(-1);
+  var feedbackCardsRef = useRef(null);
 
   var T = TH[theme];
   var isBasics = level === "basics";
@@ -3158,13 +3161,13 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           setCardioLogs(parsed.cardioLogs || {});
           setCalibrationProfiles(parsed.calibrationProfiles || {});
           setCalibrationMode(!!parsed.calibrationMode);
-          setGuidedMode(typeof parsed.guidedMode === "boolean" ? parsed.guidedMode : true);
+          setGuidedMode(typeof parsed.guidedMode === "boolean" ? parsed.guidedMode : false);
         } else if (parsed && typeof parsed === "object") {
           setLogs(parsed);
         }
       } else {
         setCalibrationMode(true);
-        setGuidedMode(true);
+        setGuidedMode(false);
       }
     } catch(e) {}
     try { var n = localStorage.getItem("wt-username"); if (n) setUserName(n); } catch(e) {}
@@ -3199,6 +3202,21 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     var tm = setTimeout(function() { setAutoBackupMsg(""); }, 5000);
     return function() { clearTimeout(tm); };
   }, [autoBackupMsg]);
+  useEffect(function() {
+    if (!(calibrationFeedback || guidedFeedback)) return;
+    function handleOutsideFeedback(ev) {
+      var box = feedbackCardsRef.current;
+      if (box && box.contains(ev.target)) return;
+      setCalibrationFeedback("");
+      setGuidedFeedback("");
+    }
+    document.addEventListener("mousedown", handleOutsideFeedback, true);
+    document.addEventListener("touchstart", handleOutsideFeedback, true);
+    return function() {
+      document.removeEventListener("mousedown", handleOutsideFeedback, true);
+      document.removeEventListener("touchstart", handleOutsideFeedback, true);
+    };
+  }, [calibrationFeedback, guidedFeedback]);
   useEffect(function() {
     if (!forcedRecoveryLock) return;
     if (tMode === "countdown" && !tRunning && tMs === 0) {
@@ -3591,8 +3609,8 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   }
 
   function getRestTime(exName, rpe) {
-    var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","Front Squat","Pause Squat","Push Press","Stacco Sumo","Stacco Rumeno","Hip Thrust Bilanciere","T-bar Row","Dip alle Parallele"];
-    var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Squat Bulgaro","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino","Hyperextension con Sacco","Fitball Hamstring Curl","Face Pull","Alzate Laterali","French Press Manubri"];
+    var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","Front Squat","Pause Squat","Push Press","Stacco Sumo","Hip Thrust Bilanciere","T-bar Row","Dip alle Parallele"];
+    var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Squat Bulgaro","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino","Hyperextension con Sacco","Fitball Hamstring Curl","Face Pull","Alzate Laterali","French Press Manubri","Stacco Rumeno"];
     var core = ["Plank","Ab Wheel","Addominali Obliqui","Shoulder Tap","Woodchop","Slackline"];
     if (core.indexOf(exName) >= 0) return exName === "Plank" ? null : 30;
     if (heavy.indexOf(exName) >= 0) return 120;
@@ -4101,7 +4119,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
 
   function getGuidedSessionSuggestion(exName, serie) {
     var progressAdvice = getProgressAdvice(exName, serie);
-    if (progressAdvice && progressAdvice.tone === "empty" && progressAdvice.short === "Carichi diversi nella stessa seduta") {
+    if (progressAdvice && progressAdvice.mixedSession) {
       return { state: "empty", title: "Sessione non uniforme", detail: "Sessione precedente non uniforme: usa il peso della maggioranza delle serie e torna a renderlo costante in tutta la seduta." };
     }
     var last = getGuidedLastCompleteSession(exName, serie);
@@ -4146,12 +4164,12 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     if (rir <= 0) {
       if (kind === "heavy") return { seconds: 180, label: "Serie a cedimento: prendi 3 min pieni" };
       if (kind === "compound") return { seconds: Math.max(base, 120), label: "Serie molto tirata: prenditi 2 min pieni" };
-      return { seconds: Math.max(90, Math.min(base, 90)), label: "Monoarticolare a cedimento: 90s bastano" };
+      return { seconds: 90, label: "Monoarticolare a cedimento: 90s bastano" };
     }
     if (rir === 1) {
       if (kind === "heavy") return { seconds: Math.max(base, 150), label: "RIR 1: allunga il recupero a 2.5-3 min" };
       if (kind === "compound") return { seconds: Math.max(base, 90), label: "RIR 1: prenditi 90-120s" };
-      return { seconds: Math.max(60, Math.min(base, 90)), label: "RIR 1 su monoarticolare: 60-90s bastano" };
+      return { seconds: Math.min(Math.max(base, 60), 90), label: "RIR 1 su monoarticolare: 60-90s bastano" };
     }
     if (rir === 2) return { seconds: base, label: "RIR 2: resta sul recupero standard" };
     if (rir >= 3) {
@@ -4266,10 +4284,6 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   }
   function beginLogSet(exObj, di, si, w, r, isBW, rirValue) {
     try {
-      if (effectiveCalibrationMode && forcedRecoveryLock) {
-        setCalibrationFeedback("Aspetta la fine del recupero prima di registrare la serie successiva.");
-        return;
-      }
       if (!r || String(r).trim() === "") {
         setCalibrationFeedback("Inserisci prima le ripetizioni della serie.");
         return;
@@ -4285,7 +4299,6 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           if (normalizeRirValue(rirValue)) {
             var restInfo = getGuidedRestSuggestion(exObj.n, getExerciseRestSeconds({ rec: exObj.rec || "" }, exObj) || 90, rirValue);
             setGuidedRestHint(restInfo.label);
-            quickTimer(restInfo.seconds);
             if (underMinMsg) {
               setGuidedFeedback(underMinMsg);
             } else if (specGuided && si === specGuided.sets - 1) {
@@ -4370,13 +4383,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       }
       saveSetEntry(calibrationPrompt.exName, calibrationPrompt.di, calibrationPrompt.si, calibrationPrompt.w, cleanReps, nextProfiles, reserve);
       var forcedRestSec = getExerciseRestSeconds({ rec: calibrationPrompt.rec || "" }, { n: calibrationPrompt.exName, rpe: "" }) || 90;
-      setForcedRecoveryLock({
-        exName: calibrationPrompt.exName,
-        di: calibrationPrompt.di,
-        si: calibrationPrompt.si,
-        seconds: forcedRestSec
-      });
-      quickTimer(forcedRestSec);
+      setForcedRecoveryLock(null);
       setCalibrationFeedback(decision.title + ". " + decision.detail);
       if (guidedMode) {
         var guidedRest = getGuidedRestSuggestion(calibrationPrompt.exName, getExerciseRestSeconds({ rec: calibrationPrompt.rec || "" }, { n: calibrationPrompt.exName, rpe: "" }) || 90, reserve);
@@ -4399,7 +4406,6 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     try { localStorage.setItem("wt-guided-prompt-seen", String(nextSeen)); } catch (e) {}
     var restInfo = getGuidedRestSuggestion(guidedPrompt.exName, guidedPrompt.restSec || 90, rirValue);
     setGuidedRestHint(restInfo.label);
-    quickTimer(restInfo.seconds);
     if (rirValue === "0") {
       setGuidedFeedback("Sei andata a cedimento. Sulla prossima serie fermati 1 rip prima.");
     } else if (rirValue === "3" || rirValue === "4+") {
@@ -4609,7 +4615,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     if (!isCore && weights.length > 1) {
       var firstW = weights[0];
       var mixed = weights.some(function(w) { return w !== firstW; });
-      if (mixed) return { tone: "empty", label: "⚪ Controlla tu", detail: "Ultima sessione non uniforme: " + formatSessionSummary(exName, latest.sets, false, isTime) + ".", short: "Carichi diversi nella stessa seduta" };
+      if (mixed) return { tone: "empty", label: "⚪ Controlla tu", detail: "Ultima sessione non uniforme: " + formatSessionSummary(exName, latest.sets, false, isTime) + ".", short: "Carichi diversi nella stessa seduta", mixedSession: true };
     }
     var allAtTop = reps.every(function(r) { return r >= spec.max; });
     var allInRange = reps.every(function(r) { return r >= spec.min; });
@@ -4667,7 +4673,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           var imported = JSON.parse(text);
           var importedLogs = imported && imported.logs && typeof imported.logs === "object" ? imported.logs : imported;
           var importedCardioLogs = imported && imported.cardioLogs && typeof imported.cardioLogs === "object" ? imported.cardioLogs : {};
-          saveData(importedLogs || {}, importedCardioLogs || {}, imported && imported.calibrationProfiles && typeof imported.calibrationProfiles === "object" ? imported.calibrationProfiles : {}, !!(imported && imported.calibrationMode), imported && typeof imported.guidedMode === "boolean" ? imported.guidedMode : true);
+          saveData(importedLogs || {}, importedCardioLogs || {}, imported && imported.calibrationProfiles && typeof imported.calibrationProfiles === "object" ? imported.calibrationProfiles : {}, !!(imported && imported.calibrationMode), imported && typeof imported.guidedMode === "boolean" ? imported.guidedMode : false);
           setAutoBackupMsg("Importazione JSON completata. I dati sono stati caricati correttamente.");
         } catch(e) {
           alert('Errore: file non valido. Per il CSV usa quello esportato dall\'app.');
@@ -4991,7 +4997,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(true); setExtraInfoEnabled(true); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(false); setExtraInfoEnabled(true); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
           </div>
         </div>
       </div>}
@@ -5055,7 +5061,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
               <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Modalità guidata</div>
-                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Di default è attiva: l'app ti mostra briefing pre-sessione, richiesta RIR dopo le serie, suggerimento di recupero e decisione finale sull'esercizio. Puoi spegnerla qui se la vuoi più semplice.</div>
+                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Di default è spenta. Quando la attivi, l'app aggiunge briefing pre-sessione, richiesta RIR dopo le serie, suggerimento di recupero e decisione finale. Se vuoi regolarti da sola, puoi lasciarla spenta e seguire la scheda teoria.</div>
                 </div>
                 <button
                   onClick={function() {
@@ -5406,6 +5412,14 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                 {showTheorySection === "guide" && <div style={{ borderTop: "1px solid " + T.bg }}>
                   {isBasics && <div style={{ padding: "12px 14px 0", fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
                     In questa modalita non devi inseguire peso, progressi o calibrazione. Devi ripetere i gesti finche diventano stabili e facili da riconoscere anche negli esercizi della scheda principiante e avanzata.
+                  </div>}
+                  {!(isBasics || isBeginner) && <div style={{ padding: "12px 14px 0" }}>
+                    <div style={{ background: T.sb, border: "1px solid " + T.bg, borderRadius: 12, padding: "12px 13px" }}>
+                      <div style={{ fontSize: 12, fontWeight: 800, color: dc, marginBottom: 6 }}>Come usarla davvero</div>
+                      <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.65 }}>
+                        La scheda funziona anche senza modalita guidata. Parti cosi: stesso peso in tutte le serie, recupero pieno, tecnica uguale dalla prima all'ultima ripetizione. Se stai nel range ma non chiudi il numero alto, tieni lo stesso peso. Se chiudi tutte le serie al numero alto con ancora margine, la volta dopo sali. Se il suggerimento guidato non torna con quello che hai sentito davvero nella serie, conta di piu la tecnica reale che il popup.
+                      </div>
+                    </div>
                   </div>}
                   {shortPrinciplesList.map(function(g, gi) {
                     var isOpen = showPrinciples === 100 + gi;
@@ -6793,7 +6807,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                               <div style={{ display: "flex", gap: 6, padding: "0 10px 10px", alignItems: "center" }}>
                                 {!isBW && <><input type="number" inputMode="numeric" min={usesBand ? 1 : undefined} max={usesBand ? 10 : undefined} placeholder={usesBand ? "tacca 1-10" : "kg"} value={tmpW} onChange={function(e) { setTmpW(usesBand ? String(clampElasticTick(e.target.value) || "") : e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus /><span style={{ fontSize: 11, color: T.sub, flexShrink: 0 }}>{usesBand ? "tacca" : "kg"}</span></>}
                                 <input type={tgt === "max" ? "text" : "number"} inputMode="numeric" placeholder="rip" value={tmpR} onChange={function(e) { setTmpR(e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus={isBW} />
-                                {!effectiveCalibrationMode && <select value={tmpRir} onChange={function(e) { setTmpRir(e.target.value); }} style={{ minWidth: 72, padding: "10px 8px", border: "2px solid " + dc + "40", borderRadius: 8, fontSize: 12, background: T.cd, color: T.tx, fontWeight: 700 }}>
+                                {!effectiveCalibrationMode && !guidedMode && <select value={tmpRir} onChange={function(e) { setTmpRir(e.target.value); }} style={{ minWidth: 72, padding: "10px 8px", border: "2px solid " + dc + "40", borderRadius: 8, fontSize: 12, background: T.cd, color: T.tx, fontWeight: 700 }}>
                                   <option value="">RIR</option>
                                   {["0","1","2","3","4+"].map(function(opt) { return <option key={opt} value={opt}>{"RIR " + opt}</option>; })}
                                 </select>}
@@ -6977,13 +6991,9 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       </div>}
 
       {(calibrationFeedback || guidedFeedback) && <div
-        onClick={function() {
-          setCalibrationFeedback("");
-          setGuidedFeedback("");
-        }}
-        style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.18)", zIndex: 132, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: "12px 12px " + (tPanel ? "104px" : "72px"), boxSizing: "border-box" }}
+        style={{ position: "fixed", left: 12, right: 12, bottom: tPanel ? 104 : 72, zIndex: 132, pointerEvents: "none" }}
       >
-        <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "min(calc(100vw - 24px), 720px)", display: "grid", gap: 10 }}>
+        <div ref={feedbackCardsRef} style={{ width: "min(calc(100vw - 24px), 720px)", margin: "0 auto", display: "grid", gap: 10, pointerEvents: "auto" }}>
           {guidedFeedback && <div
             onClick={function() { setGuidedFeedback(""); }}
             style={{ background: dc, color: "#fff", borderRadius: 16, padding: "14px 16px", boxShadow: "0 14px 34px rgba(0,0,0,0.22)", fontSize: 14, fontWeight: 700, lineHeight: 1.65, cursor: "pointer" }}
