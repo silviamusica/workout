@@ -2569,6 +2569,7 @@ export default function App() {
   var [showStr, setShowStr] = useState(false);
   var [showImg, setShowImg] = useState(null);
   var [showExSection, setShowExSection] = useState(false);
+  var [showGuidedSection, setShowGuidedSection] = useState(false);
   var [showPrinciples, setShowPrinciples] = useState(false);
   var [showIntroCard, setShowIntroCard] = useState(null);
   var [showMuscleIntro, setShowMuscleIntro] = useState(null);
@@ -2590,6 +2591,7 @@ export default function App() {
       teoriaTab: teoriaTab,
       glossTab: glossTab,
       alimentazioneTab: alimentazioneTab,
+      showGuidedSection: showGuidedSection,
       catSec: catSec,
       exInfoOpen: exInfoOpen,
       showTheorySection: showTheorySection,
@@ -2611,6 +2613,7 @@ export default function App() {
     setTeoriaTab(snap.teoriaTab || "basi");
     setGlossTab(snap.glossTab || "principi");
     setAlimentazioneTab(snap.alimentazioneTab || "principi");
+    setShowGuidedSection(!!snap.showGuidedSection);
     setCatSec(snap.catSec || null);
     setExInfoOpen(snap.exInfoOpen || null);
     setShowTheorySection(snap.showTheorySection || null);
@@ -2630,7 +2633,7 @@ export default function App() {
       if (snap.showTheorySection) return "theory-section-" + snap.showTheorySection;
       return "teoria-top";
     }
-    if (snap.tab === "workout") return "workout-top";
+    if (snap.tab === "workout") return snap.showGuidedSection ? "section-guided" : "workout-top";
     if (snap.tab === "progressi") return "progressi-top";
     return (snap.tab || "home") + "-top";
   }
@@ -3859,6 +3862,151 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     }).join("\n");
   }
 
+  function parseCsvRows(text) {
+    var rows = [];
+    var row = [];
+    var cell = "";
+    var inQuotes = false;
+    for (var i = 0; i < text.length; i++) {
+      var ch = text[i];
+      if (inQuotes) {
+        if (ch === '"') {
+          if (text[i + 1] === '"') {
+            cell += '"';
+            i++;
+          } else {
+            inQuotes = false;
+          }
+        } else {
+          cell += ch;
+        }
+      } else {
+        if (ch === '"') {
+          inQuotes = true;
+        } else if (ch === ';') {
+          row.push(cell);
+          cell = "";
+        } else if (ch === '\n') {
+          row.push(cell);
+          rows.push(row);
+          row = [];
+          cell = "";
+        } else if (ch !== '\r') {
+          cell += ch;
+        }
+      }
+    }
+    if (cell.length || row.length) {
+      row.push(cell);
+      rows.push(row);
+    }
+    return rows.filter(function(r) { return r.some(function(c) { return String(c || "").trim() !== ""; }); });
+  }
+
+  function getProgramDaysByLabel(label) {
+    if (label === "Ipertrofia avanzato") return DAYS_V4;
+    if (label === "Principiante") return DAYS_BEGINNER;
+    if (label === "Tecniche preliminari") return DAYS_BASICS;
+    return null;
+  }
+
+  function getDayIndexFromCsv(programLabel, dayName) {
+    var days = getProgramDaysByLabel(programLabel);
+    if (days) {
+      for (var i = 0; i < days.length; i++) {
+        if (days[i] && days[i].name === dayName) return i;
+      }
+    }
+    var m = String(dayName || "").match(/giorno\s+([0-9]+)/i);
+    if (m) return Math.max(0, (parseInt(m[1]) || 1) - 1);
+    return null;
+  }
+
+  function inferCardioKind(label) {
+    var clean = String(label || "").toLowerCase();
+    if (clean.indexOf("ruck") >= 0) return "ruck";
+    if (clean.indexOf("hiit") >= 0) return "hiit";
+    if (clean.indexOf("circuit") >= 0) return "circuit";
+    if (clean.indexOf("corsa") >= 0 || clean.indexOf("run") >= 0) return "run";
+    return "";
+  }
+
+  function parseReadableSetDetail(exName, detail) {
+    return String(detail || "").split("|").map(function(part) {
+      return String(part || "").trim();
+    }).filter(Boolean).map(function(part) {
+      var idx = part.indexOf(":");
+      var body = idx >= 0 ? part.slice(idx + 1).trim() : part;
+      var tickM = body.match(/tacca elastico\s+(\d+)\s*[×x]\s*(max|\d+)\s*rip/i);
+      if (tickM) return { w: parseInt(tickM[1]) || 0, r: tickM[2] === "max" ? "max" : (parseInt(tickM[2]) || 0) };
+      var kgM = body.match(/([0-9]+(?:[.,][0-9]+)?)\s*kg\s*[×x]\s*(max|\d+)\s*rip/i);
+      if (kgM) return { w: parseFloat(String(kgM[1]).replace(",", ".")) || 0, r: kgM[2] === "max" ? "max" : (parseInt(kgM[2]) || 0) };
+      var repM = body.match(/(max|\d+)\s*(?:rip|s)\b/i);
+      if (repM) return { w: 0, r: repM[1] === "max" ? "max" : (parseInt(repM[1]) || 0) };
+      return null;
+    }).filter(Boolean).map(function(setItem, idx) {
+      return { si: idx, w: setItem.w, r: setItem.r };
+    });
+  }
+
+  function importReadableCsv(text) {
+    var rows = parseCsvRows(text);
+    if (!rows.length) throw new Error("empty-csv");
+    var header = rows[0].map(function(cell) { return String(cell || "").trim(); });
+    if (header[0] !== "Data" || header[1] !== "Programma" || header[5] !== "Tipo") {
+      throw new Error("invalid-readable-csv");
+    }
+    var nextLogs = Object.assign({}, logs);
+    var nextCardioLogs = Object.assign({}, cardioLogs);
+    var importedWeights = 0;
+    var importedCardio = 0;
+    rows.slice(1).forEach(function(row) {
+      var get = function(name) {
+        var idx = header.indexOf(name);
+        return idx >= 0 ? String(row[idx] || "").trim() : "";
+      };
+      var date = get("Data");
+      var program = get("Programma");
+      var dayName = get("Giorno");
+      var monthVal = parseInt(get("Mese")) || month;
+      var type = get("Tipo");
+      var activity = get("Attivita");
+      if (!date || !type || !activity) return;
+      var di = getDayIndexFromCsv(program, dayName);
+      if (di == null) return;
+      if (type === "Pesi") {
+        var sets = parseReadableSetDetail(activity, get("Dettaglio serie"));
+        if (!sets.length) return;
+        nextLogs[date + "_d" + di + "_m" + monthVal + "_" + activity] = {
+          date: date,
+          day: di,
+          month: monthVal,
+          exercise: activity,
+          sets: sets
+        };
+        importedWeights++;
+        return;
+      }
+      if (type === "Cardio") {
+        var label = activity;
+        var cardioKey = date + "_d" + di + "_m" + monthVal + "_cardio_" + label;
+        nextCardioLogs[cardioKey] = {
+          date: date,
+          day: di,
+          month: monthVal,
+          label: label,
+          kind: inferCardioKind(label),
+          minutes: parseFloat(get("Minuti cardio")) || 0,
+          km: parseFloat(String(get("Km")).replace(",", ".")) || 0,
+          kg: parseFloat(String(get("Kg zaino")).replace(",", ".")) || 0
+        };
+        importedCardio++;
+      }
+    });
+    saveData(nextLogs, nextCardioLogs, calibrationProfiles, calibrationMode, guidedMode);
+    setAutoBackupMsg("Importazione CSV completata. Caricati " + importedWeights + " esercizi e " + importedCardio + " voci cardio.");
+  }
+
   function isExerciseCompleteInLogs(sourceLogs, di, exName, expectedSets) {
     var key = todayStr() + "_d" + di + "_m" + month + "_" + exName;
     var entry = sourceLogs[key];
@@ -4491,29 +4639,38 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     setTimeout(function() {
       downloadTextFile(buildReadableCsv(logs, cardioLogs), baseName + '-leggibile.csv', "text/csv;charset=utf-8");
     }, 180);
+    setAutoBackupMsg("Esportazione completata. Hai scaricato JSON + CSV leggibile.");
   }
 
   function exportJsonOnly() {
     var baseName = 'workout-backup-' + todayStr();
     downloadBackupPayload(buildBackupPayload(logs, cardioLogs, { type: "manual-backup" }), baseName + '.json');
+    setAutoBackupMsg("Esportazione completata. Hai scaricato il backup JSON.");
   }
 
   function importData() {
     var input = document.createElement('input');
     input.type = 'file';
-    input.accept = '.json';
+    input.accept = '.json,.csv,text/csv';
     input.onchange = function(e) {
       var file = e.target.files[0];
+      if (!file) return;
       var reader = new FileReader();
       reader.onload = function(evt) {
         try {
-          var imported = JSON.parse(evt.target.result);
+          var text = String(evt.target.result || "");
+          var lowerName = String(file.name || "").toLowerCase();
+          if (lowerName.endsWith(".csv")) {
+            importReadableCsv(text);
+            return;
+          }
+          var imported = JSON.parse(text);
           var importedLogs = imported && imported.logs && typeof imported.logs === "object" ? imported.logs : imported;
           var importedCardioLogs = imported && imported.cardioLogs && typeof imported.cardioLogs === "object" ? imported.cardioLogs : {};
           saveData(importedLogs || {}, importedCardioLogs || {}, imported && imported.calibrationProfiles && typeof imported.calibrationProfiles === "object" ? imported.calibrationProfiles : {}, !!(imported && imported.calibrationMode), imported && typeof imported.guidedMode === "boolean" ? imported.guidedMode : true);
-          alert('Dati importati con successo!');
+          setAutoBackupMsg("Importazione JSON completata. I dati sono stati caricati correttamente.");
         } catch(e) {
-          alert('Errore: file non valido');
+          alert('Errore: file non valido. Per il CSV usa quello esportato dall\'app.');
         }
       };
       reader.readAsText(file);
@@ -4934,7 +5091,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
             <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 8 }}>
               <button onClick={function() { exportData(); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬇️</span> Esporta dati (JSON + CSV leggibile)</button>
               <button onClick={function() { exportJsonOnly(); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>🧾</span> Esporta solo JSON</button>
-              <button onClick={function() { importData(); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬆️</span> Importa dati (ripristino JSON)</button>
+              <button onClick={function() { importData(); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬆️</span> Importa dati (JSON o CSV leggibile)</button>
               <button onClick={function() { setResetOpen(true); setSettingsOpen(false); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid #C6282820", background: "#C6282808", cursor: "pointer", fontSize: 13, fontWeight: 600, color: "#C62828" }}><span>🗑️</span> Cancella tutti i dati</button>
             </div>
           </div>
@@ -6024,7 +6181,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "8px 12px 0" }}>
           {/* Day tabs */}
           <div style={{ display: "flex", gap: 4, overflowX: "auto", paddingBottom: 0 }}>
-            {activeDays.map(function(d, i) { var active = safeDayIdx === i; return <button key={i} onClick={function() { setDayIdx(i); setOpenEx(null); setEditing(null); setHistIdx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false); setShowImg(null); setShowDayIntro(false); setDismissedCalBanner(false); setDismissedSeriesBanner(false); scrollTopSoon("workout-top"); }} style={{ flex: i < 4 ? 1 : "none", padding: "7px 8px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}>{d.name + (d.cardio ? " ❤️" : "")}</button>; })}
+            {activeDays.map(function(d, i) { var active = safeDayIdx === i; return <button key={i} onClick={function() { setDayIdx(i); setOpenEx(null); setEditing(null); setHistIdx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowGuidedSection(false); setShowPrinciples(false); setShowImg(null); setShowDayIntro(false); setDismissedCalBanner(false); setDismissedSeriesBanner(false); scrollTopSoon("workout-top"); }} style={{ flex: i < 4 ? 1 : "none", padding: "7px 8px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}>{d.name + (d.cardio ? " ❤️" : "")}</button>; })}
           </div>
           {/* Month selector — compact strip inside card top */}
         </div>
@@ -6105,30 +6262,39 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
               <button onClick={function() { setDismissedSeriesBanner(true); }} style={{ flexShrink: 0, width: 24, height: 24, border: "none", background: "transparent", color: T.sub, fontSize: 16, cursor: "pointer", lineHeight: 1, padding: 0 }}>×</button>
             </div>}
 
-            {!isBasics && !dayData.cardio && !dayData.rest && guidedMode && !focusMode && <div style={{ margin: "10px 14px 0", padding: "11px 12px", borderRadius: 12, background: dc + "0A", border: "1px solid " + dc + "22" }}>
-              <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>🧭 Modalità guidata</div>
-              {dayData.intro && dayData.intro.obiettivi && dayData.intro.obiettivi.length > 0 && <div style={{ marginBottom: 10 }}>
-                <div style={{ fontSize: 12, color: T.tx, fontWeight: 800, marginBottom: 5 }}>Obiettivi della sessione</div>
-                <div style={{ display: "grid", gap: 4 }}>
-                  {dayData.intro.obiettivi.map(function(goal, gi) {
-                    return <div key={gi} style={{ display: "flex", gap: 7, alignItems: "flex-start" }}>
-                      <span style={{ color: dc, fontSize: 11, lineHeight: 1.6, fontWeight: 800 }}>•</span>
-                      <span style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>{goal}</span>
+            {!isBasics && !dayData.cardio && !dayData.rest && guidedMode && !focusMode && <div ref={function(el) { if (el) el._sectionKey = "guided"; }} id="section-guided" style={{ borderBottom: "1px solid " + T.bg }}>
+              <div onClick={function() { var opening = !showGuidedSection; setShowGuidedSection(opening); if (opening) { setShowIntro(false); setShowStr(false); setShowExSection(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-guided"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showGuidedSection ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
+                <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>🧭</div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Modalità guidata</div>
+                  <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{"Briefing e consigli esercizio per esercizio"}</div>
+                </div>
+                <div style={{ fontSize: 13, color: dc, transform: showGuidedSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
+              </div>
+              {showGuidedSection && <div style={{ padding: "0 14px 14px" }}><div style={{ marginTop: 10, padding: "11px 12px", borderRadius: 12, background: dc + "0A", border: "1px solid " + dc + "22" }}>
+                {dayData.intro && dayData.intro.obiettivi && dayData.intro.obiettivi.length > 0 && <div style={{ marginBottom: 10 }}>
+                  <div style={{ fontSize: 12, color: T.tx, fontWeight: 800, marginBottom: 5 }}>Obiettivi della sessione</div>
+                  <div style={{ display: "grid", gap: 4 }}>
+                    {dayData.intro.obiettivi.map(function(goal, gi) {
+                      return <div key={gi} style={{ display: "flex", gap: 7, alignItems: "flex-start" }}>
+                        <span style={{ color: dc, fontSize: 11, lineHeight: 1.6, fontWeight: 800 }}>•</span>
+                        <span style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>{goal}</span>
+                      </div>;
+                    })}
+                  </div>
+                </div>}
+                <div style={{ display: "grid", gap: 8 }}>
+                  {(dayData.ex || []).map(function(rawEx, gi) {
+                    var gEx = getExForMonth(rawEx);
+                    var sugg = getGuidedSessionSuggestion(gEx.n, gEx.s);
+                    return <div key={gEx.n + "-" + gi} style={{ padding: "9px 10px", borderRadius: 10, background: T.sb, border: "1px solid " + T.bg }}>
+                      <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, marginBottom: 3 }}>{gEx.n}</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 3 }}>{sugg.title}</div>
+                      <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{sugg.detail}</div>
                     </div>;
                   })}
                 </div>
-              </div>}
-              <div style={{ display: "grid", gap: 8 }}>
-                {(dayData.ex || []).map(function(rawEx, gi) {
-                  var gEx = getExForMonth(rawEx);
-                  var sugg = getGuidedSessionSuggestion(gEx.n, gEx.s);
-                  return <div key={gEx.n + "-" + gi} style={{ padding: "9px 10px", borderRadius: 10, background: T.sb, border: "1px solid " + T.bg }}>
-                    <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, marginBottom: 3 }}>{gEx.n}</div>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 3 }}>{sugg.title}</div>
-                    <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{sugg.detail}</div>
-                  </div>;
-                })}
-              </div>
+              </div></div>}
             </div>}
 
             {!dayData.cardio && !dayData.rest && calibrationEnabled && !focusMode && (function() {
