@@ -2371,6 +2371,9 @@ function safeCalibrationDecision(type, reserve, cleanReps, serie, exName, meta) 
     if (spec && spec.kind === "range" && safeClean < spec.min) {
       return { tone: "hold", title: "Difficolta troppo alta", detail: "Sei sotto il minimo del range. Usa una variante piu facile o piu assistenza.", accepted: false };
     }
+    if (spec && spec.kind === "range" && safeClean > spec.max) {
+      return { tone: "mid", title: "Troppo facile per partire", detail: "Se il target e " + spec.min + "-" + spec.max + " e tu arrivi gia a " + safeClean + ", la difficolta e troppo bassa per una calibrazione utile. Aumenta la difficolta o riduci l'assistenza.", accepted: false };
+    }
     if (spec && spec.kind === "range" && safeClean > spec.min && (safeReserve === "2" || safeReserve === "3" || safeReserve === "4+")) {
       return { tone: "mid", title: "Partenza troppo facile", detail: "In calibrazione il riferimento dovrebbe stare vicino al numero basso del range. Se sei gia oltre (" + safeClean + " su " + spec.min + "-" + spec.max + ") con ancora margine, aumenta leggermente la difficolta.", accepted: false };
     }
@@ -2384,6 +2387,14 @@ function safeCalibrationDecision(type, reserve, cleanReps, serie, exName, meta) 
   }
   if (spec && spec.kind === "range" && safeClean < spec.min) {
     return { tone: "hold", title: "Peso troppo pesante", detail: "Sei sotto il minimo del range: " + getCalibrationChangeLabel(safeType, "down") + ". " + getCalibrationRetestHint(meta), accepted: false };
+  }
+  if (spec && spec.kind === "range" && safeClean > spec.max) {
+    return {
+      tone: "mid",
+      title: "Peso troppo basso",
+      detail: "Se il target e " + spec.min + "-" + spec.max + " e tu arrivi gia a " + safeClean + ", questo carico e troppo facile per una calibrazione utile. " + getCalibrationChangeLabel(safeType, "up") + ". " + getCalibrationRetestHint(meta),
+      accepted: false
+    };
   }
   if (spec && spec.kind === "range" && safeClean > spec.min && (safeReserve === "2" || safeReserve === "3" || safeReserve === "4+")) {
     return {
@@ -2757,7 +2768,8 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [calibrationPrompt, setCalibrationPrompt] = useState(null);
   var [calibrationAnswers, setCalibrationAnswers] = useState({ reps: "", cleanSame: "yes", cleanReps: "", reserve: "2" });
   var [calibrationFeedback, setCalibrationFeedback] = useState("");
-  var [guidedMode, setGuidedMode] = useState(false);
+  var [guidedMode, setGuidedMode] = useState(true);
+  var [extraInfoEnabled, setExtraInfoEnabled] = useState(true);
   var [guidedPrompt, setGuidedPrompt] = useState(null);
   var [guidedFeedback, setGuidedFeedback] = useState("");
   var [guidedRestHint, setGuidedRestHint] = useState("");
@@ -3143,12 +3155,13 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           setCardioLogs(parsed.cardioLogs || {});
           setCalibrationProfiles(parsed.calibrationProfiles || {});
           setCalibrationMode(!!parsed.calibrationMode);
-          setGuidedMode(!!parsed.guidedMode);
+          setGuidedMode(typeof parsed.guidedMode === "boolean" ? parsed.guidedMode : true);
         } else if (parsed && typeof parsed === "object") {
           setLogs(parsed);
         }
       } else {
         setCalibrationMode(true);
+        setGuidedMode(true);
       }
     } catch(e) {}
     try { var n = localStorage.getItem("wt-username"); if (n) setUserName(n); } catch(e) {}
@@ -3157,6 +3170,10 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     try { var th = localStorage.getItem("wt-theme"); if (th && TH[th]) setTheme(th); else localStorage.removeItem("wt-theme"); } catch(e) {}
     try { var fs = parseFloat(localStorage.getItem("wt-fontscale")); if (fs >= 0.9 && fs <= 1.5) setFontScale(fs); } catch(e) {}
     try { setExerciseWorkflowEnabled(localStorage.getItem("wt-exercise-workflow") === "1"); } catch(e) {}
+    try {
+      var ei = localStorage.getItem("wt-extra-info");
+      setExtraInfoEnabled(ei == null ? true : ei === "1");
+    } catch(e) {}
     setReady(true);
   }, []);
 
@@ -4493,7 +4510,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           var imported = JSON.parse(evt.target.result);
           var importedLogs = imported && imported.logs && typeof imported.logs === "object" ? imported.logs : imported;
           var importedCardioLogs = imported && imported.cardioLogs && typeof imported.cardioLogs === "object" ? imported.cardioLogs : {};
-          saveData(importedLogs || {}, importedCardioLogs || {}, imported && imported.calibrationProfiles && typeof imported.calibrationProfiles === "object" ? imported.calibrationProfiles : {}, !!(imported && imported.calibrationMode), !!(imported && imported.guidedMode));
+          saveData(importedLogs || {}, importedCardioLogs || {}, imported && imported.calibrationProfiles && typeof imported.calibrationProfiles === "object" ? imported.calibrationProfiles : {}, !!(imported && imported.calibrationMode), imported && typeof imported.guidedMode === "boolean" ? imported.guidedMode : true);
           alert('Dati importati con successo!');
         } catch(e) {
           alert('Errore: file non valido');
@@ -4817,7 +4834,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(false); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(true); setExtraInfoEnabled(true); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
           </div>
         </div>
       </div>}
@@ -4881,7 +4898,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
               <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Modalità guidata</div>
-                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Quando è attiva, l'app ti mostra briefing pre-sessione, richiesta RIR dopo le serie, suggerimento di recupero e decisione finale sull'esercizio.</div>
+                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Di default è attiva: l'app ti mostra briefing pre-sessione, richiesta RIR dopo le serie, suggerimento di recupero e decisione finale sull'esercizio. Puoi spegnerla qui se la vuoi più semplice.</div>
                 </div>
                 <button
                   onClick={function() {
@@ -4891,6 +4908,24 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                   style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (guidedMode ? dc : T.sub + "30"), background: guidedMode ? dc : T.cd, color: guidedMode ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
                 >
                   {guidedMode ? "ON" : "OFF"}
+                </button>
+              </div>
+            </div>}
+            {!isBasics && <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Info aggiuntive esercizi</div>
+                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Se la spegni, nella scheda restano solo le cose davvero essenziali: serie, ripetizioni, recupero, registrazione, storico utile e tutor. Nasconde respirazione, guida completa, tecnica estesa ed errori.</div>
+                </div>
+                <button
+                  onClick={function() {
+                    var next = !extraInfoEnabled;
+                    setExtraInfoEnabled(next);
+                    try { localStorage.setItem("wt-extra-info", next ? "1" : "0"); } catch(e) {}
+                  }}
+                  style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (extraInfoEnabled ? dc : T.sub + "30"), background: extraInfoEnabled ? dc : T.cd, color: extraInfoEnabled ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
+                >
+                  {extraInfoEnabled ? "ON" : "OFF"}
                 </button>
               </div>
             </div>}
@@ -6105,20 +6140,25 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                 <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
                   <div style={{ fontSize: 15, lineHeight: 1.3 }}>🎯</div>
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: 11, fontWeight: 800, color: calibrationMode ? "#A66A00" : "#C62828", textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>
-                      {calibrationMode ? (initialCalibration ? "Calibrazione iniziale attiva" : "Settimana di calibrazione attiva") : (initialCalibration ? "Calibrazione iniziale disponibile" : "Ricalibrazione consigliata")}
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
+                      <div style={{ fontSize: 11, fontWeight: 800, color: calibrationMode ? "#A66A00" : "#C62828", textTransform: "uppercase", letterSpacing: 0.8 }}>
+                        {initialCalibration ? "Calibrazione da fare oggi" : "Ricalibrazione da fare oggi"}
+                      </div>
+                      <span style={{ display: "inline-flex", alignItems: "center", height: 20, padding: "0 8px", borderRadius: 999, background: calibrationMode ? "#2E7D3220" : T.bg, border: "1px solid " + (calibrationMode ? "#2E7D3240" : T.sub + "20"), color: calibrationMode ? "#2E7D32" : T.sub, fontSize: 10, fontWeight: 800, letterSpacing: 0.5, opacity: calibrationMode ? 1 : 0.7, boxShadow: calibrationMode ? "0 0 0 2px #2E7D3212, 0 0 14px #2E7D3220" : "none" }}>
+                        {calibrationMode ? "MODALITA ON" : "MODALITA OFF"}
+                      </span>
                     </div>
                     <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
                       {calibrationMode
                         ? (initialCalibration
-                            ? "Stai iniziando senza riferimenti salvati: questa settimana serve a trovare i tuoi pesi di partenza. Dopo ogni serie l'app ti guida e ti aiuta a capire se il carico e giusto."
-                            : "Questa settimana serve a trovare o ricalibrare i tuoi pesi di riferimento. Dopo ogni serie l'app ti chiede quante ripetizioni pulite ti restavano e ti suggerisce se tenere, alzare o abbassare il carico.")
+                            ? "Per gli esercizi segnati sotto la calibrazione e gia attiva. Registra la serie e l'app ti guida subito a trovare il tuo riferimento iniziale."
+                            : "Per gli esercizi segnati sotto la ricalibrazione e gia attiva. Registra la serie e l'app ti guida subito a confermare o aggiornare il riferimento.")
                         : dayCalibration.length === 1
-                          ? dayCalibration[0].reason
-                          : "Alcuni esercizi di oggi non hanno ancora un riferimento affidabile oppure non li fai da piu di 2 settimane."}
+                          ? (dayCalibration[0].reason + " Se vuoi farla adesso, attiva la modalita calibrazione.")
+                          : "Gli esercizi qui sotto sono quelli che oggi hanno davvero bisogno di calibrazione. Se vuoi farla adesso, attiva la modalita calibrazione."}
                     </div>
                     {!calibrationMode && dayCalibration.length > 0 && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55, marginTop: 6 }}>
-                      {"Da rivedere: " + dayCalibration.map(function(item) { return item.name; }).join(", ")}
+                      {"Da calibrare oggi: " + dayCalibration.map(function(item) { return item.name; }).join(", ")}
                     </div>}
                   </div>
                   <button
@@ -6128,7 +6168,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                     }}
                     style={{ minHeight: 34, padding: "0 10px", border: "none", borderRadius: 9, background: calibrationMode ? T.bg : dc, color: calibrationMode ? T.tx : "#fff", fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
                   >
-                    {calibrationMode ? "Disattiva" : "Attiva"}
+                    {calibrationMode ? "Clicca per disattivare" : "Clicca per attivare"}
                   </button>
                   <button
                     onClick={function() { setDismissedCalBanner(true); }}
@@ -6453,18 +6493,17 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                     {/* === FOCUS BLOCK: serie · RIR · respiro · recupero === */}
                     <div style={{ marginBottom: 12, borderRadius: 12, border: "2px solid " + dc + "30", overflow: "hidden", background: T.sb }}>
                       {/* Calibrazione (se attiva/necessaria) */}
-                      {(calibrationEnabled && (calibrationNeed.needed || (!focusMode && calibrationProfile && !effectiveCalibrationMode))) && <div style={{ padding: "9px 12px", background: calibrationNeed.needed ? (effectiveCalibrationMode ? "#FFB30018" : "#C6282818") : T.ok + "12", borderBottom: "1px solid " + (calibrationNeed.needed ? (effectiveCalibrationMode ? "#FFB30030" : "#C6282830") : T.ok + "30") }}>
-                        <div style={{ fontSize: 10, fontWeight: 800, color: calibrationNeed.needed ? (effectiveCalibrationMode ? "#A66A00" : "#C62828") : T.ok, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 3 }}>🎯 Calibrazione — {calibrationNeed.needed ? (effectiveCalibrationMode ? "Attiva" : (calibrationNeed.initial ? "Iniziale" : "Ricalibra")) : "Punto zero salvato"}</div>
+                      {(calibrationEnabled && calibrationNeed.needed) && <div style={{ padding: "9px 12px", background: effectiveCalibrationMode ? "#FFB30018" : "#C6282818", borderBottom: "1px solid " + (effectiveCalibrationMode ? "#FFB30030" : "#C6282830") }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 3 }}>
+                          <div style={{ fontSize: 10, fontWeight: 800, color: effectiveCalibrationMode ? "#A66A00" : "#C62828", textTransform: "uppercase", letterSpacing: 0.7 }}>🎯 {calibrationNeed.initial ? "Calibrazione da fare" : "Ricalibrazione da fare"}</div>
+                          <span style={{ display: "inline-flex", alignItems: "center", height: 18, padding: "0 7px", borderRadius: 999, background: effectiveCalibrationMode ? "#2E7D3220" : T.bg, border: "1px solid " + (effectiveCalibrationMode ? "#2E7D3240" : T.sub + "20"), color: effectiveCalibrationMode ? "#2E7D32" : T.sub, fontSize: 9, fontWeight: 800, letterSpacing: 0.45, opacity: effectiveCalibrationMode ? 1 : 0.7, boxShadow: effectiveCalibrationMode ? "0 0 0 2px #2E7D3212, 0 0 14px #2E7D3220" : "none" }}>
+                            {effectiveCalibrationMode ? "ON" : "OFF"}
+                          </span>
+                        </div>
                         <div style={{ fontSize: 11, lineHeight: 1.5, color: T.sub }}>
-                          {calibrationNeed.needed && effectiveCalibrationMode
+                          {effectiveCalibrationMode
                             ? getCalibrationQuickInstruction(ex.n, ex.s)
-                            : calibrationNeed.needed
-                              ? calibrationNeed.reason
-                              : ((usesBand && calibrationProfile.startWeight > 0)
-                                  ? ("Ultima tacca: " + formatElasticTick(calibrationProfile.startWeight) + ".")
-                                  : (calibrationProfile.startWeight > 0
-                                    ? ("Ultimo peso: " + calibrationProfile.startWeight + " kg.")
-                                    : ("Ultimo rif: " + calibrationProfile.reps + " rip.")))}
+                            : (calibrationNeed.reason + " Attiva la modalita calibrazione per farla ora.")}
                         </div>
                       </div>}
                       {/* Griglia info operative */}
@@ -6478,7 +6517,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                           <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 4 }}>Recupero</div>
                           <div style={{ fontSize: 18, fontWeight: 900, color: T.tx }}>{restSec ? fmtLabel(restSec) : (rawEx.rec || "—")}</div>
                         </div>
-                        {!focusMode && br && <div onClick={function() { openBreathModal(ex.n); }} style={{ background: T.sb, padding: "10px 12px", gridColumn: "1 / -1", borderTop: "1px solid " + T.bg, cursor: "pointer" }}>
+                        {!focusMode && extraInfoEnabled && br && <div onClick={function() { openBreathModal(ex.n); }} style={{ background: T.sb, padding: "10px 12px", gridColumn: "1 / -1", borderTop: "1px solid " + T.bg, cursor: "pointer" }}>
                           <div style={{ fontSize: 10, fontWeight: 800, color: bColor, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 4 }}>🫁 Respirazione — {BREATH_TYPE_LABEL[br.type]}</div>
                           <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}><span style={{ color: T.sub, fontWeight: 600 }}>↓ Inspira:</span> {br.inhale}</div>
                           <div style={{ fontSize: 12, fontWeight: 700, color: T.tx, marginTop: 2 }}><span style={{ color: T.sub, fontWeight: 600 }}>↑ Espira:</span> {br.exhale}</div>
@@ -6486,7 +6525,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                         </div>}
                       </div>
                       {/* Guida completa — collassata (nascosta in focus mode) */}
-                      {!isBasics && !focusMode && <details style={{ borderTop: "1px solid " + T.bg }}>
+                      {!isBasics && !focusMode && extraInfoEnabled && <details style={{ borderTop: "1px solid " + T.bg }}>
                         <summary style={{ cursor: "pointer", listStyle: "none", padding: "8px 12px", fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, display: "flex", alignItems: "center", gap: 6 }}>
                           <span style={{ flex: 1 }}>Guida completa</span><span style={{ fontSize: 12 }}>›</span>
                         </summary>
@@ -6620,7 +6659,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                     </div>}
 
                     {/* === DETTAGLI E STORICO (collassato) === */}
-                    {!isBasics && !focusMode && <details style={{ marginTop: 6, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
+                    {!isBasics && !focusMode && extraInfoEnabled && <details style={{ marginTop: 6, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
                       <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 12px", fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, display: "flex", alignItems: "center", gap: 6 }}>
                         <span style={{ flex: 1 }}>Storico · Tecnica · Errori</span><span style={{ fontSize: 12 }}>›</span>
                       </summary>
@@ -6779,11 +6818,17 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
         style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.18)", zIndex: 132, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: "12px 12px " + (tPanel ? "104px" : "72px"), boxSizing: "border-box" }}
       >
         <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "min(calc(100vw - 24px), 720px)", display: "grid", gap: 10 }}>
-          {guidedFeedback && <div style={{ background: dc, color: "#fff", borderRadius: 16, padding: "14px 16px", boxShadow: "0 14px 34px rgba(0,0,0,0.22)", fontSize: 14, fontWeight: 700, lineHeight: 1.65 }}>
+          {guidedFeedback && <div
+            onClick={function() { setGuidedFeedback(""); }}
+            style={{ background: dc, color: "#fff", borderRadius: 16, padding: "14px 16px", boxShadow: "0 14px 34px rgba(0,0,0,0.22)", fontSize: 14, fontWeight: 700, lineHeight: 1.65, cursor: "pointer" }}
+          >
             <div style={{ fontSize: 12, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 5, opacity: 0.88 }}>🧭 Modalità guidata</div>
             {guidedFeedback}
           </div>}
-          {calibrationFeedback && <div style={{ background: T.ok, color: "#fff", borderRadius: 16, padding: "14px 16px", boxShadow: "0 14px 34px rgba(0,0,0,0.22)", fontSize: 14, fontWeight: 700, lineHeight: 1.65 }}>
+          {calibrationFeedback && <div
+            onClick={function() { setCalibrationFeedback(""); }}
+            style={{ background: T.ok, color: "#fff", borderRadius: 16, padding: "14px 16px", boxShadow: "0 14px 34px rgba(0,0,0,0.22)", fontSize: 14, fontWeight: 700, lineHeight: 1.65, cursor: "pointer" }}
+          >
             <div style={{ fontSize: 12, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 5, opacity: 0.92 }}>🎯 Calibrazione</div>
             {calibrationFeedback}
           </div>}
@@ -6815,6 +6860,16 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
 
       {calibrationPrompt && <div onClick={function() { setCalibrationPrompt(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.38)", zIndex: 140, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: 12 }}>
         <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", maxWidth: 560, background: T.cd, borderRadius: 16, overflow: "hidden", boxShadow: "0 20px 40px rgba(0,0,0,0.22)" }}>
+          {(function() {
+            var previewDecision = safeCalibrationDecision(calibrationPrompt.type, calibrationAnswers.reserve, calibrationAnswers.cleanSame === "yes" ? calibrationPrompt.r : calibrationAnswers.cleanReps, calibrationPrompt.serie, calibrationPrompt.exName, calibrationPrompt);
+            var toneBg = previewDecision.tone === "up" ? "#2E7D3216" : previewDecision.tone === "mid" ? "#EF6C0016" : "#C6282816";
+            var toneBorder = previewDecision.tone === "up" ? "#2E7D3230" : previewDecision.tone === "mid" ? "#EF6C0030" : "#C6282830";
+            var toneColor = previewDecision.tone === "up" ? "#2E7D32" : previewDecision.tone === "mid" ? "#C45A00" : "#C62828";
+            return <div onClick={function() { setCalibrationFeedback(previewDecision.title + ". " + previewDecision.detail); }} style={{ margin: 14, marginBottom: 0, padding: "12px 13px", borderRadius: 12, background: toneBg, border: "1px solid " + toneBorder, cursor: "pointer" }}>
+              <div style={{ fontSize: 13, fontWeight: 800, color: toneColor, marginBottom: 4 }}>{previewDecision.title}</div>
+              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>{previewDecision.detail}</div>
+            </div>;
+          })()}
           <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
             <div style={{ fontSize: 15, fontWeight: 800, color: T.tx }}>🎯 Calibrazione — {calibrationPrompt.exName}</div>
             <div style={{ fontSize: 12, color: T.sub, marginTop: 4, lineHeight: 1.6 }}>{getCalibrationQuickInstruction(calibrationPrompt.exName, calibrationPrompt.serie)}</div>
@@ -6854,9 +6909,6 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                   return <button key={opt} onClick={function() { setCalibrationAnswers(function(prev) { return Object.assign({}, prev, { reserve: opt }); }); }} style={{ minHeight: 40, border: "none", borderRadius: 10, background: active ? dc : T.bg, color: active ? "#fff" : T.sub, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>{opt}</button>;
                 })}
               </div>
-            </div>
-            <div style={{ padding: "10px 12px", borderRadius: 10, background: dc + "0A", border: "1px solid " + dc + "18", fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
-              {safeCalibrationDecision(calibrationPrompt.type, calibrationAnswers.reserve, calibrationAnswers.cleanSame === "yes" ? calibrationAnswers.reps : calibrationAnswers.cleanReps, calibrationPrompt.serie, calibrationPrompt.exName, calibrationPrompt).detail}
             </div>
             <div style={{ display: "flex", gap: 8 }}>
               <button onClick={function() { setCalibrationPrompt(null); }} style={{ flex: 1, minHeight: 44, border: "1px solid " + T.bg, borderRadius: 10, background: T.sb, color: T.sub, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Annulla</button>

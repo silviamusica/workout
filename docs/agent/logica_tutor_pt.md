@@ -20,7 +20,8 @@ L'app oggi ha due logiche diverse ma compatibili:
 - non vale per tutti gli esercizi: alcuni sono esclusi o gestiti come corpo libero / assistiti / tempo
 
 2. `Modalità guidata`
-- si attiva da `Impostazioni`
+- è attiva di default
+- si può disattivare da `Impostazioni`
 - affianca la seduta normale
 - usa RIR, storico e range per guidare recupero e progressione
 - non sostituisce la calibrazione
@@ -36,7 +37,16 @@ L'app salva in locale e anche nel backup JSON:
 
 Quindi:
 - import/export conserva sia la calibrazione sia la modalità guidata
-- `Reset totale` riporta `guidedMode` a `OFF`
+- `Reset totale` riporta `guidedMode` a `ON`
+
+Esiste anche un toggle separato:
+- `Info aggiuntive esercizi`
+
+Se è `OFF`:
+- nasconde respirazione
+- nasconde guida completa
+- nasconde tecnica estesa, errori e storico tecnico esteso
+- lascia visibili le parti essenziali della scheda e del tutor
 
 ## Calibrazione
 
@@ -50,6 +60,11 @@ Per un esercizio, la calibrazione è suggerita se:
 
 Se esiste un profilo recente:
 - l'avviso non viene ripetuto ogni volta
+- il blocco calibrativo non appare nella scheda dell'esercizio
+
+Quindi il comportamento corretto oggi è:
+- calibrazione visibile solo se manca o è scaduta
+- nessun pannello `punto zero salvato` sugli esercizi già a posto
 
 ### Flusso attuale
 
@@ -104,8 +119,9 @@ Quindi in calibrazione:
 
 ### Attivazione
 
-Si attiva da:
-- `Impostazioni > Modalità guidata`
+Stato attuale:
+- è `ON` di default
+- si può spegnere da `Impostazioni > Modalità guidata`
 
 Quando è `OFF`:
 - la scheda funziona normalmente
