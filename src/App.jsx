@@ -3190,6 +3190,10 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   }, [level]);
 
   useEffect(function() {
+    setFocusMode(level === "v4");
+  }, [level]);
+
+  useEffect(function() {
     if (!(isBasics || isBeginner)) return;
     if (isBasics && teoriaTab !== "teoria") setTeoriaTab("teoria");
     if (teoriaTab === "muscoli") setTeoriaTab("basi");
@@ -4837,7 +4841,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif", background: T.bg, minHeight: "100vh", color: T.tx, zoom: fontScale, WebkitFontSmoothing: "antialiased" }}>
       <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-      {autoBackupMsg && <div style={{ position: "fixed", left: 12, right: 12, bottom: tPanel ? 210 : 110, zIndex: 260, maxWidth: 600, margin: "0 auto", background: T.ok, color: "#fff", borderRadius: 12, padding: "12px 14px", boxShadow: "0 10px 30px rgba(0,0,0,0.18)", fontSize: 12, fontWeight: 700, lineHeight: 1.5 }}>
+      {autoBackupMsg && <div style={{ position: "fixed", left: 12, right: 12, bottom: tPanel ? 190 : 96, zIndex: 260, maxWidth: 600, margin: "0 auto", background: T.ok, color: "#fff", borderRadius: 12, padding: "12px 14px", boxShadow: "0 10px 30px rgba(0,0,0,0.18)", fontSize: 12, fontWeight: 700, lineHeight: 1.5 }}>
         💾 {autoBackupMsg}
       </div>}
 
@@ -6248,7 +6252,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           {/* Month selector — compact strip inside card top */}
         </div>
 
-        <div id="workout-top" style={{ maxWidth: 600, margin: "0 auto", padding: "0 12px 24px", paddingBottom: tPanel ? 200 : 100 }}>
+        <div id="workout-top" style={{ maxWidth: 600, margin: "0 auto", padding: "0 12px 24px", paddingBottom: tPanel ? 180 : 96 }}>
           <div style={{ background: T.cd, borderRadius: "0 0 14px 14px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", overflow: "hidden" }}>
 
             {/* Day intro schematic */}
@@ -6640,7 +6644,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                     <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginTop: 3 }}>
                       {ex.s && <span style={{ fontSize: 12, color: T.tx, fontWeight: 800, letterSpacing: 0.1 }}>{fmtSerie(ex.s)}</span>}
                       {ex.rpe ? <span onClick={function(e) { e.stopPropagation(); setRpeOpen(true); }} style={{ cursor: "pointer", color: dc, fontSize: 10, fontWeight: 700, textDecoration: "underline dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, whiteSpace: "nowrap" }}>{formatEffortLabel(ex.rpe, ex.s)}</span> : ""}
-                      {restSec ? <button onClick={function(e) { e.stopPropagation(); quickTimer(restSec); }} style={{ minHeight: 24, padding: "0 8px", border: "1px solid " + T.ok + "34", borderRadius: 999, background: T.ok + "10", color: T.ok, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}>{"⏱ Recupero min " + fmtLabel(restSec)}</button> : null}
                       {(function() { var mins = estimateExerciseMinutes(rawEx, ex); return mins ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 600 }}>{"~" + mins + " min"}</span> : null; })()}
                     </div>
                     <div style={{ marginTop: 5, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
@@ -7130,21 +7133,21 @@ function isNearBodyweightElasticSession(exName, sets) {
       {/* TIMER BAR */}
       <div style={{ position: "fixed", bottom: 10, left: 0, right: 0, zIndex: 100, pointerEvents: "none" }}>
         <div style={{ maxWidth: 600, margin: "0 auto", display: "flex", justifyContent: "flex-end", padding: "0 10px", boxSizing: "border-box" }}>
-        <div style={{ width: "min(calc(100vw - 20px), 340px)", maxWidth: "calc(100vw - 20px)", pointerEvents: "auto", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s", borderRadius: 16, overflow: "hidden", boxSizing: "border-box" }}>
-        <div style={{ display: "flex", alignItems: "center", padding: "8px 10px", gap: 6, minWidth: 0 }}>
-          <button onClick={function() { setTPanel(!tPanel); }} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 30, height: 30, borderRadius: 7, cursor: "pointer", fontSize: 13 }}>{tPanel ? "\u25BE" : "\u25B4"}</button>
+        <div style={{ width: "min(calc(100vw - 20px), 284px)", maxWidth: "calc(100vw - 20px)", pointerEvents: "auto", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s", borderRadius: 14, overflow: "hidden", boxSizing: "border-box" }}>
+        <div style={{ display: "flex", alignItems: "center", padding: "7px 8px", gap: 5, minWidth: 0 }}>
+          <button onClick={function() { setTPanel(!tPanel); }} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 28, height: 28, borderRadius: 7, cursor: "pointer", fontSize: 12 }}>{tPanel ? "\u25BE" : "\u25B4"}</button>
           <div onClick={function() { setTPanel(function(prev) { return !prev; }); }} style={{ flex: 1, textAlign: "center", cursor: "pointer", minWidth: 0 }}>
             {activeOpenEx && tMode === "countdown" && <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.68)", marginBottom: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-              {(guidedMode && guidedRestHint ? guidedRestHint + " · " : "") + "Recupero minimo consigliato: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget)}
+              {"🔔 " + ((guidedMode && guidedRestHint ? guidedRestHint + " · " : "") + "Recupero min: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget))}
             </div>}
-            <div style={{ fontVariantNumeric: "tabular-nums", fontSize: 22, fontWeight: 800, letterSpacing: "0.5px", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s", animation: tWarning ? "timerBlink 1s infinite" : "none" }}>{fmtTime(tMs)}</div>
+            <div style={{ fontVariantNumeric: "tabular-nums", fontSize: 20, fontWeight: 800, letterSpacing: "0.4px", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s", animation: tWarning ? "timerBlink 1s infinite" : "none" }}>{fmtTime(tMs)}</div>
           </div>
           <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
-            {!tRunning ? <button onClick={timerGo} style={{ background: T.ok, border: "none", color: "#fff", width: 36, height: 36, borderRadius: 9, cursor: "pointer", fontSize: 16 }}>&#9654;</button> : <button onClick={timerPause} style={{ background: T.ac, border: "none", color: "#000", width: 36, height: 36, borderRadius: 9, cursor: "pointer", fontSize: 13, fontWeight: 800 }}>&#9646;&#9646;</button>}
-            <button onClick={timerReset} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 36, height: 36, borderRadius: 9, cursor: "pointer", fontSize: 12 }}>&#8634;</button>
+            {!tRunning ? <button onClick={timerGo} style={{ background: T.ok, border: "none", color: "#fff", width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 15 }}>&#9654;</button> : <button onClick={timerPause} style={{ background: T.ac, border: "none", color: "#000", width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12, fontWeight: 800 }}>&#9646;&#9646;</button>}
+            <button onClick={timerReset} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12 }}>&#8634;</button>
           </div>
         </div>
-        {tPanel && <div style={{ padding: "0 12px 12px" }}>
+        {tPanel && <div style={{ padding: "0 10px 10px" }}>
           <div style={{ display: "flex", gap: 4, marginBottom: 8 }}>
             {["stopwatch","countdown"].map(function(m) { return <button key={m} onClick={function() { timerSwitch(m); }} style={{ flex: 1, padding: "7px 0", border: "none", borderRadius: 8, cursor: "pointer", fontSize: 12, fontWeight: tMode === m ? 700 : 500, background: tMode === m ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: tMode === m ? "#fff" : "rgba(255,255,255,0.5)" }}>{m === "stopwatch" ? "Cronometro" : "Recupero"}</button>; })}
           </div>
