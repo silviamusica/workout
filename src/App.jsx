@@ -2193,6 +2193,34 @@ function formatElasticTick(v) {
   return n ? ("tacca elastico " + n) : "";
 }
 
+var BARBELL_BASE_KG = 20;
+var BARBELL_TOTAL_EX = ["Squat","Panca","Military Press","Stacco da Terra","Stacco Rumeno","Front Squat","Pause Squat","Push Press","Stacco Sumo","Rematore Bilanciere","Pendlay Row","Good Morning","Hip Thrust Bilanciere"];
+
+function usesBarbellTotal(exName) {
+  return BARBELL_TOTAL_EX.indexOf(exName) >= 0;
+}
+
+function plateInputToStoredWeight(exName, inputWeight, barbellBase) {
+  var kg = parseFloat(inputWeight) || 0;
+  var base = typeof barbellBase === "number" ? barbellBase : BARBELL_BASE_KG;
+  return usesBarbellTotal(exName) ? (kg + base) : kg;
+}
+
+function storedWeightToPlateInput(exName, storedWeight, barbellBase) {
+  var kg = parseFloat(storedWeight) || 0;
+  if (!usesBarbellTotal(exName)) return kg;
+  var base = typeof barbellBase === "number" ? barbellBase : BARBELL_BASE_KG;
+  return Math.max(0, kg - base);
+}
+
+function formatInputWeightHint(exName, inputWeight, barbellBase) {
+  var kg = parseFloat(inputWeight);
+  if (!isFinite(kg) || kg <= 0) return "";
+  if (!usesBarbellTotal(exName)) return kg + " kg";
+  var base = typeof barbellBase === "number" ? barbellBase : BARBELL_BASE_KG;
+  return kg + " kg dischi · " + (kg + base) + " kg tot";
+}
+
 function formatLoadAndReps(exName, w, r) {
   var reps = (r === "max" ? "max" : (parseInt(r) || 0)) + " rip";
   if (usesElasticScale(exName)) {
@@ -2780,6 +2808,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [calibrationAnswers, setCalibrationAnswers] = useState({ reps: "", cleanSame: "yes", cleanReps: "", reserve: "2" });
   var [calibrationFeedback, setCalibrationFeedback] = useState("");
   var [guidedMode, setGuidedMode] = useState(false);
+  var [barbellWeight, setBarbellWeight] = useState(BARBELL_BASE_KG);
   var [extraInfoEnabled, setExtraInfoEnabled] = useState(true);
   var [guidedPrompt, setGuidedPrompt] = useState(null);
   var [guidedFeedback, setGuidedFeedback] = useState("");
@@ -3168,13 +3197,19 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           setCalibrationProfiles(parsed.calibrationProfiles || {});
           setCalibrationMode(!!parsed.calibrationMode);
           setGuidedMode(typeof parsed.guidedMode === "boolean" ? parsed.guidedMode : false);
+          setBarbellWeight(typeof parsed.barbellWeight === "number" ? parsed.barbellWeight : BARBELL_BASE_KG);
         } else if (parsed && typeof parsed === "object") {
           setLogs(parsed);
         }
       } else {
         setCalibrationMode(true);
         setGuidedMode(false);
+        setBarbellWeight(BARBELL_BASE_KG);
       }
+    } catch(e) {}
+    try {
+      var bw = parseFloat(localStorage.getItem("wt-barbell-weight"));
+      if (isFinite(bw) && bw > 0) setBarbellWeight(bw);
     } catch(e) {}
     try { var n = localStorage.getItem("wt-username"); if (n) setUserName(n); } catch(e) {}
     try { var p = localStorage.getItem("wt-userphoto"); if (p) setUserPhoto(p); } catch(e) {}
@@ -3246,23 +3281,26 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       setTWarning(false);
     }
   }, [activeOpenRestSec]);
-  var saveData = useCallback(function(nl, nc, np, nm, ng) {
+  var saveData = useCallback(function(nl, nc, np, nm, ng, bw) {
     var nextLogs = nl || {};
     var nextCardioLogs = nc || {};
     var nextProfiles = np || {};
     var nextMode = typeof nm === "boolean" ? nm : false;
     var nextGuided = typeof ng === "boolean" ? ng : guidedMode;
+    var nextBarbell = typeof bw === "number" && isFinite(bw) && bw > 0 ? bw : barbellWeight;
     setLogs(nextLogs);
     setCardioLogs(nextCardioLogs);
     setCalibrationProfiles(nextProfiles);
     setCalibrationMode(nextMode);
     setGuidedMode(nextGuided);
+    setBarbellWeight(nextBarbell);
     try {
-      var raw = JSON.stringify({ logs: nextLogs, cardioLogs: nextCardioLogs, calibrationProfiles: nextProfiles, calibrationMode: nextMode, guidedMode: nextGuided });
+      var raw = JSON.stringify({ logs: nextLogs, cardioLogs: nextCardioLogs, calibrationProfiles: nextProfiles, calibrationMode: nextMode, guidedMode: nextGuided, barbellWeight: nextBarbell });
       localStorage.setItem(SK, raw);
       localStorage.setItem(SK_SHADOW, raw);
+      localStorage.setItem("wt-barbell-weight", String(nextBarbell));
     } catch(e) {}
-  }, [guidedMode]);
+  }, [guidedMode, barbellWeight]);
 
   function checkSound(ms, mode, target) {
     if (mode === "countdown") {
@@ -3714,6 +3752,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       calibrationProfiles: calibrationProfiles || {},
       calibrationMode: calibrationMode,
       guidedMode: guidedMode,
+      barbellWeight: barbellWeight,
     };
   }
 
@@ -3826,7 +3865,12 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
         var ctx = findExerciseContext(entry);
         var sets = (entry.sets || []).slice().sort(function(a, b) { return (a.si || 0) - (b.si || 0); });
         var detail = sets.map(function(setItem) {
-          return "S" + (setItem.si + 1) + ": " + formatLoadAndReps(entry.exercise, setItem.w, setItem.r);
+          var base = formatLoadAndReps(entry.exercise, setItem.w, setItem.r);
+          if (usesBarbellTotal(entry.exercise)) {
+            var dischi = storedWeightToPlateInput(entry.exercise, setItem.w, barbellWeight);
+            base += " (bil. " + barbellWeight + " + dischi " + dischi + ")";
+          }
+          return "S" + (setItem.si + 1) + ": " + base;
         }).join(" | ");
         var totalReps = sets.reduce(function(sum, setItem) {
           return sum + (setItem.r === "max" ? 0 : (parseInt(setItem.r) || 0));
@@ -4031,7 +4075,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
         importedCardio++;
       }
     });
-    saveData(nextLogs, nextCardioLogs, calibrationProfiles, calibrationMode, guidedMode);
+    saveData(nextLogs, nextCardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight);
     setAutoBackupMsg("Importazione CSV completata. Caricati " + importedWeights + " esercizi e " + importedCardio + " voci cardio.");
   }
 
@@ -4714,7 +4758,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           var imported = JSON.parse(text);
           var importedLogs = imported && imported.logs && typeof imported.logs === "object" ? imported.logs : imported;
           var importedCardioLogs = imported && imported.cardioLogs && typeof imported.cardioLogs === "object" ? imported.cardioLogs : {};
-          saveData(importedLogs || {}, importedCardioLogs || {}, imported && imported.calibrationProfiles && typeof imported.calibrationProfiles === "object" ? imported.calibrationProfiles : {}, !!(imported && imported.calibrationMode), imported && typeof imported.guidedMode === "boolean" ? imported.guidedMode : false);
+          saveData(importedLogs || {}, importedCardioLogs || {}, imported && imported.calibrationProfiles && typeof imported.calibrationProfiles === "object" ? imported.calibrationProfiles : {}, !!(imported && imported.calibrationMode), imported && typeof imported.guidedMode === "boolean" ? imported.guidedMode : false, imported && typeof imported.barbellWeight === "number" ? imported.barbellWeight : BARBELL_BASE_KG);
           setAutoBackupMsg("Importazione JSON completata. I dati sono stati caricati correttamente.");
         } catch(e) {
           alert('Errore: file non valido. Per il CSV usa quello esportato dall\'app.');
@@ -4822,6 +4866,8 @@ function isNearBodyweightElasticSession(exName, sets) {
   }
 
   // === FULLSCREEN TIMER ===
+  var timerPassive = editing !== null || !!calibrationPrompt || !!guidedPrompt;
+
   if (tFull) return (
     <div style={{ position: "fixed", inset: 0, zIndex: 999, background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "'Plus Jakarta Sans',sans-serif", transition: "background 0.4s" }}>
       <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -5055,7 +5101,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(false); setExtraInfoEnabled(true); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(false); setBarbellWeight(BARBELL_BASE_KG); setExtraInfoEnabled(true); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); localStorage.removeItem("wt-barbell-weight"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
           </div>
         </div>
       </div>}
@@ -5132,6 +5178,27 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </button>
               </div>
             </div>}
+            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Attrezzatura</div>
+            <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Peso bilanciere</div>
+              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6, marginBottom: 8 }}>Usato per gli esercizi con bilanciere. Nella registrazione inserisci solo i kg dei dischi; l'app somma automaticamente il bilanciere.</div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <input
+                  type="number"
+                  inputMode="decimal"
+                  min="0"
+                  step="0.5"
+                  value={barbellWeight}
+                  onChange={function(e) {
+                    var next = parseFloat(e.target.value);
+                    if (!isFinite(next) || next < 0) next = 0;
+                    saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, next);
+                  }}
+                  style={{ width: 96, padding: "10px 10px", border: "1px solid " + T.bg, borderRadius: 8, fontSize: 14, fontWeight: 700, background: T.cd, color: T.tx, boxSizing: "border-box" }}
+                />
+                <span style={{ fontSize: 12, color: T.sub, fontWeight: 700 }}>kg</span>
+              </div>
+            </div>
             {!isBasics && <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
               <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
                 <div style={{ flex: 1 }}>
@@ -6707,7 +6774,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                   function getSuggested(si) {
                     if (!lastSession) return { w: "", r: "", rir: "" };
                     var s = lastSession.sets.find(function(s) { return s.si === si; });
-                    if (s) return { w: s.w > 0 ? String(s.w) : "", r: String(s.r), rir: normalizeRirValue(s.rir) };
+                    if (s) {
+                      var suggestedWeight = s.w > 0 ? storedWeightToPlateInput(ex.n, s.w, barbellWeight) : "";
+                      return { w: suggestedWeight === "" ? "" : String(suggestedWeight), r: String(s.r), rir: normalizeRirValue(s.rir) };
+                    }
                     return { w: "", r: "", rir: "" };
                   }
                   var br = getBreath(ex.n);
@@ -6841,6 +6911,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                       {usesBand && ex.n === "Dip alle Parallele" && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: T.sb, border: "1px solid " + T.bg, fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
                         Scegli una tacca da 1 a 10 che rappresenta il tuo elastico attuale: 1 = massimo aiuto, 10 = minimo aiuto. Usala come riferimento fisso nelle prossime sedute.
                       </div>}
+                      {!isBW && !usesBand && usesBarbellTotal(ex.n) && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: T.sb, border: "1px solid " + T.bg, fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
+                        Inserisci solo i kg dei dischi. Il bilanciere da 20 kg viene sommato automaticamente al totale.
+                      </div>}
                       {calibrationLocked && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: "#FFB30012", border: "1px solid #FFB30033", fontSize: 11, color: "#8A5A00", lineHeight: 1.55 }}>
                         Recupero obbligatorio in calibrazione attivo: aspetta la fine del timer prima di salvare la serie successiva.
                       </div>}
@@ -6851,27 +6924,33 @@ function isNearBodyweightElasticSession(exName, sets) {
                           var tgt = p.reps[si] || p.reps[p.reps.length - 1];
                           var sugg = getSuggested(si);
                           var done = !!lg;
+                          var showInlineRir = !guidedMode && (!effectiveCalibrationMode || si > 0 || !!(tLog && tLog.sets && tLog.sets.length > 0));
                           return <div key={si} style={{ borderRadius: 10, border: "1px solid " + (done ? T.ok + "40" : T.bg), background: done ? T.ok + "0C" : T.sb, overflow: "hidden" }}>
                             {/* Serie header */}
                             <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px" }}>
                               <div style={{ width: 26, height: 26, borderRadius: "50%", background: done ? T.ok : T.tx + "15", color: done ? "#fff" : T.sub, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0 }}>{done ? "✓" : si + 1}</div>
                               <div style={{ flex: 1, fontSize: 12, color: T.sub, fontWeight: 600 }}>
                                 {tgt} rip
-                                {isBW ? "" : usesBand ? (" · " + (sugg.w ? formatElasticTick(sugg.w) + " sugg." : "inserisci tacca")) : (" · " + (sugg.w ? sugg.w + " kg sugg." : "inserisci kg"))}
+                                {isBW ? "" : usesBand ? (" · " + (sugg.w ? formatElasticTick(sugg.w) + " sugg." : "inserisci tacca")) : (" · " + (sugg.w ? (usesBarbellTotal(ex.n) ? formatInputWeightHint(ex.n, sugg.w, barbellWeight) + " sugg." : sugg.w + " kg sugg.") : (usesBarbellTotal(ex.n) ? "inserisci kg dischi" : "inserisci kg")))}
                               </div>
-                              {done && !isE && <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(String(lg.w)); setTmpR(String(lg.r)); setTmpRir(normalizeRirValue(lg.rir)); }} style={{ fontSize: 10, color: T.sub, background: "none", border: "none", cursor: "pointer", padding: "0 4px" }}>modifica</button>}
+                              {done && !isE && <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(String(storedWeightToPlateInput(ex.n, lg.w, barbellWeight))); setTmpR(String(lg.r)); setTmpRir(normalizeRirValue(lg.rir)); }} style={{ fontSize: 10, color: T.sub, background: "none", border: "none", cursor: "pointer", padding: "0 4px" }}>modifica</button>}
                             </div>
                             {/* Input or result */}
                             {isE ? (
-                              <div style={{ display: "flex", gap: 6, padding: "0 10px 10px", alignItems: "center" }}>
-                                {!isBW && <><input type="number" inputMode="numeric" min={usesBand ? 1 : undefined} max={usesBand ? 10 : undefined} placeholder={usesBand ? "tacca 1-10" : "kg"} value={tmpW} onChange={function(e) { setTmpW(usesBand ? String(clampElasticTick(e.target.value) || "") : e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus /><span style={{ fontSize: 11, color: T.sub, flexShrink: 0 }}>{usesBand ? "tacca" : "kg"}</span></>}
-                                <input type={tgt === "max" ? "text" : "number"} inputMode="numeric" placeholder="rip" value={tmpR} onChange={function(e) { setTmpR(e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus={isBW} />
-                                {!effectiveCalibrationMode && !guidedMode && <select value={tmpRir} onChange={function(e) { setTmpRir(e.target.value); }} style={{ minWidth: 72, padding: "10px 8px", border: "2px solid " + dc + "40", borderRadius: 8, fontSize: 12, background: T.cd, color: T.tx, fontWeight: 700 }}>
-                                  <option value="">RIR</option>
-                                  {["0","1","2","3","4+"].map(function(opt) { return <option key={opt} value={opt}>{"RIR " + opt}</option>; })}
-                                </select>}
-                                <button disabled={calibrationLocked} onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : tmpW), tmpR, isBW, tmpRir); }} style={{ width: 44, height: 44, background: calibrationLocked ? T.bg : dc, color: calibrationLocked ? T.sub : "#fff", border: "none", borderRadius: 8, fontSize: 20, cursor: calibrationLocked ? "default" : "pointer", flexShrink: 0, fontWeight: 700 }}>✓</button>
-                                <button onClick={function(e) { e.stopPropagation(); setEditing(null); setTmpW(""); setTmpR(""); setTmpRir(""); }} style={{ width: 36, height: 44, background: T.bg, color: T.sub, border: "none", borderRadius: 8, fontSize: 16, cursor: "pointer", flexShrink: 0 }}>✕</button>
+                              <div style={{ padding: "0 10px 10px" }}>
+                                <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                                  {!isBW && <><input type="number" inputMode="numeric" min={usesBand ? 1 : 0} max={usesBand ? 10 : undefined} placeholder={usesBand ? "tacca 1-10" : (usesBarbellTotal(ex.n) ? "kg dischi" : "kg")} value={tmpW} onChange={function(e) { setTmpW(usesBand ? String(clampElasticTick(e.target.value) || "") : e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus /><span style={{ fontSize: 11, color: T.sub, flexShrink: 0 }}>{usesBand ? "tacca" : (usesBarbellTotal(ex.n) ? "kg dischi" : "kg")}</span></>}
+                                  <input type={tgt === "max" ? "text" : "number"} inputMode="numeric" placeholder="rip" value={tmpR} onChange={function(e) { setTmpR(e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus={isBW} />
+                                  {showInlineRir && <select value={tmpRir} onChange={function(e) { setTmpRir(e.target.value); }} style={{ minWidth: 72, padding: "10px 8px", border: "2px solid " + dc + "40", borderRadius: 8, fontSize: 12, background: T.cd, color: T.tx, fontWeight: 700 }}>
+                                    <option value="">RIR</option>
+                                    {["0","1","2","3","4+"].map(function(opt) { return <option key={opt} value={opt}>{"RIR " + opt}</option>; })}
+                                  </select>}
+                                  <button disabled={calibrationLocked} onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : plateInputToStoredWeight(ex.n, tmpW, barbellWeight)), tmpR, isBW, tmpRir); }} style={{ width: 44, height: 44, background: calibrationLocked ? T.bg : dc, color: calibrationLocked ? T.sub : "#fff", border: "none", borderRadius: 8, fontSize: 20, cursor: calibrationLocked ? "default" : "pointer", flexShrink: 0, fontWeight: 700 }}>✓</button>
+                                  <button onClick={function(e) { e.stopPropagation(); setEditing(null); setTmpW(""); setTmpR(""); setTmpRir(""); }} style={{ width: 36, height: 44, background: T.bg, color: T.sub, border: "none", borderRadius: 8, fontSize: 16, cursor: "pointer", flexShrink: 0 }}>✕</button>
+                                </div>
+                                {!isBW && !usesBand && usesBarbellTotal(ex.n) && <div style={{ marginTop: 6, fontSize: 11, color: T.sub, lineHeight: 1.5 }}>
+                                  {"Totale: " + plateInputToStoredWeight(ex.n, tmpW, barbellWeight) + " kg (bil. " + barbellWeight + " + dischi " + (parseFloat(tmpW) || 0) + ")"}
+                                </div>}
                               </div>
                             ) : done ? (
                               <div style={{ padding: "0 10px 10px" }}>
@@ -6880,7 +6959,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                             ) : (
                               <div style={{ padding: "0 10px 10px", display: "flex", flexDirection: "column", gap: 6 }}>
                                 <button disabled={calibrationLocked} onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(sugg.w); setTmpR(sugg.r); setTmpRir(sugg.rir || ""); }} style={{ width: "100%", minHeight: 52, border: "2px dashed " + dc + "50", borderRadius: 10, background: calibrationLocked ? T.bg : dc + "08", color: calibrationLocked ? T.sub : dc, fontWeight: 800, fontSize: 15, cursor: calibrationLocked ? "default" : "pointer" }}>
-                                  {sugg.r ? "▶ " + (isBW ? sugg.r + " rip" : formatLoadAndReps(ex.n, sugg.w, sugg.r)) : "+ registra"}
+                                  {sugg.r ? "▶ " + (isBW ? sugg.r + " rip" : formatLoadAndReps(ex.n, usesBarbellTotal(ex.n) ? plateInputToStoredWeight(ex.n, sugg.w, barbellWeight) : sugg.w, sugg.r)) : "+ registra"}
                                 </button>
                                 {(function() {
                                   if (si === 0) return null;
@@ -7138,7 +7217,7 @@ function isNearBodyweightElasticSession(exName, sets) {
       {/* TIMER BAR */}
       <div style={{ position: "fixed", bottom: 10, left: 0, right: 0, zIndex: 100, pointerEvents: "none" }}>
         <div style={{ maxWidth: 600, margin: "0 auto", display: "flex", justifyContent: "flex-end", padding: "0 10px", boxSizing: "border-box" }}>
-        <div style={{ width: "min(calc(100vw - 20px), 284px)", maxWidth: "calc(100vw - 20px)", pointerEvents: "auto", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s", borderRadius: 14, overflow: "hidden", boxSizing: "border-box" }}>
+        <div style={{ width: "min(calc(100vw - 20px), 284px)", maxWidth: "calc(100vw - 20px)", pointerEvents: timerPassive ? "none" : "auto", opacity: timerPassive ? 0.34 : 1, transform: timerPassive ? "scale(0.96)" : "none", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s, opacity 0.2s, transform 0.2s", borderRadius: 14, overflow: "hidden", boxSizing: "border-box" }}>
         <div style={{ display: "flex", alignItems: "center", padding: "7px 8px", gap: 5, minWidth: 0 }}>
           <button onClick={function() { setTPanel(!tPanel); }} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 28, height: 28, borderRadius: 7, cursor: "pointer", fontSize: 12 }}>{tPanel ? "\u25BE" : "\u25B4"}</button>
           <div onClick={function() { setTPanel(function(prev) { return !prev; }); }} style={{ flex: 1, textAlign: "center", cursor: "pointer", minWidth: 0 }}>
