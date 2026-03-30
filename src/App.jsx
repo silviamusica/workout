@@ -2051,7 +2051,7 @@ var EX_IMG = {
   "Hyperextension": img_Hyperextension,
   "Kick Back Manubri": img_Kick_Back_Manubri,
   "Lat Machine": img_Lat_Machine,
-  "Leg Curl al Cavo": img_Leg_Curl_Cavo_In_Piedi,
+  "Leg Curl al Cavo": img_Leg_Curl_Cavo_Sdraiato,
   "Military Press": img_Military_Press,
   "Nordic Curl": img_Nordic_Curl,
   "Overhead Extension": img_Overhead_Extension,
@@ -2140,7 +2140,7 @@ var SK_SHADOW = SK + "-shadow";
 var EX_EXTRA_IMG = {
   "Ab Wheel": [img_Ab_Wheel_Corretto],
   "Hollow Position": [img_Hollow_Tuck, img_Hollow_Tuck_Advanced, img_Hollow_One_Leg, img_Hollow_Full],
-  "Leg Curl al Cavo": [img_Leg_Curl_Cavo_Sdraiato],
+  "Leg Curl al Cavo": [img_Leg_Curl_Cavo_In_Piedi],
 };
 
 function exImgs(name) {
