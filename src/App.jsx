@@ -21,6 +21,8 @@ import img_Hip_Thrust_Singolo from "./images/exercises/Hip_Thrust_Singolo.jpg";
 import img_Hyperextension from "./images/exercises/Hyperextension.jpg";
 import img_Kick_Back_Manubri from "./images/exercises/Kick_Back_Manubri.jpg";
 import img_Lat_Machine from "./images/exercises/Lat machine .jpeg";
+import img_Leg_Curl_Cavo_In_Piedi from "./images/exercises/legcurlcavi.jpeg";
+import img_Leg_Curl_Cavo_Sdraiato from "./images/exercises/legculr cavi sdraiati-.jpeg";
 import img_Military_Press from "./images/exercises/Military_Press.jpg";
 import img_Nordic_Curl from "./images/exercises/Nordic_Curl.jpg";
 import img_Overhead_Extension from "./images/exercises/Overhead_Extension.jpg";
@@ -149,7 +151,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"p","content":"Il Nordic Curl isola i femorali in modo eccellente senza sovraccaricare il sistema nervoso centrale come fanno i grandi multiarticolari."},
   {"type":"p","content":"La chiave e il tempo sotto tensione: rallenta la fase eccentrica (la discesa) quanto piu possibile — anche solo 20-30 gradi di discesa controllata hanno un impatto enorme sull'ipertrofia dei femorali."},
   {"type":"ul","content":["Le mani servono ad ammortizzare la caduta finale, non a spingerti su","Mantieni i femorali sempre in tensione senza rilassarli in cima (tensione continua)","Nel tempo, scendi sempre piu vicino al pavimento mantenendo il controllo"]}
-]}, "Good Morning": {"g": "Erettori/Glutei/Femorali", "c": "Bilanciere sulle spalle. Piega avanti spingendo bacino indietro, ginocchia flesse.", "p": "Schiena NEUTRA sempre. Scendi fino a tensione femorali.", "t": ["Chiudi una porta col sedere", "Inizia con bilanciere scarico"], "lk": "https://youtu.be/7mrKMteISXs?si=4oBp31pGSjs8U_sc", "deep": [
+]}, "Leg Curl al Cavo": {"g": "Femorali", "c": "Cavigliera alla caviglia, cavo basso dietro di te. Prona a terra o in piedi appoggiata a un supporto. Fletti il ginocchio portando il tallone verso il gluteo. Controlla la discesa in 2 secondi.", "p": "Ginocchio fermo, bacino stabile. Non inarcare la lombare in flessione.", "t": ["Eccentrica lenta: 2-3 secondi in discesa", "Non usare slancio per portare su il tallone", "Se in piedi: appoggiati a un supporto per stabilita"]}, "Good Morning": {"g": "Erettori/Glutei/Femorali", "c": "Bilanciere sulle spalle. Piega avanti spingendo bacino indietro, ginocchia flesse.", "p": "Schiena NEUTRA sempre. Scendi fino a tensione femorali.", "t": ["Chiudi una porta col sedere", "Inizia con bilanciere scarico"], "lk": "https://youtu.be/7mrKMteISXs?si=4oBp31pGSjs8U_sc", "deep": [
   {"type":"p","content":"Il Good Morning e un esercizio di preparazione specifica per migliorare Squat e Stacco da terra. E un movimento Hip Dominant: il motore e il bacino che si spinge indietro, non la schiena che si piega."},
   {"type":"ul","content":["Mantieni le curve fisiologiche della colonna — non perdere mai la lordosi lombare","Inizia con bilanciere scarico o leggerissimo per imparare lo schema motorio","Questo esercizio rinforza i punti deboli (lombari e femorali) nel punto critico di squat e stacco"]},
   {"type":"p","content":"Manovra di Valsalva: inspira profondamente, blocca il respiro e gonfia la pancia prima di eseguire il movimento. Crea pressione intra-addominale che protegge le vertebre lombari sotto carico."}
@@ -1417,11 +1419,11 @@ var DAYS = [
 var DAYS_V4 = [
   { name: "Giorno 1", focus: "Lower A — Quadricipiti + Glutei", dur: "5 esercizi", tEst: 65,
     intro: {
-      attrezzi: ["Bilanciere + rack + bumper", "Manubri", "Panca", "Elastico", "Slackline board", "Ab wheel"],
-      muscoli: ["Quadricipiti (Squat, Squat bulgaro)", "Glutei (Hip thrust)", "Femorali (Nordic curl)", "Core (Ab wheel)"],
-      obiettivi: ["Costruire forza sullo Squat con double progression", "Aggiungere volume su glutei e quadricipiti senza allungare troppo la seduta", "Rinforzare i femorali con Nordic curl controllato"],
-      attenzione: ["Squat: ginocchia FUORI, Valsalva, parallelo minimo se la tecnica resta pulita", "Hip thrust: mento al petto, NON iperestendere la lombare in alto — squeeze glutei 1s", "Nordic curl: usa l'elastico se serve e controlla soprattutto la discesa"],
-      ritmo: "Recuperi 2-3 min su Squat. 2 min su Hip thrust e Nordic. 90-120s sugli altri."
+      attrezzi: ["Bilanciere + rack + bumper", "Manubri", "Panca", "Cavo basso + cavigliera", "Slackline board", "Ab wheel"],
+      muscoli: ["Quadricipiti (Squat, Squat bulgaro)", "Glutei (Hip thrust)", "Femorali (Leg curl al cavo)", "Core (Ab wheel)"],
+      obiettivi: ["Costruire forza sullo Squat con double progression", "Aggiungere volume su glutei e quadricipiti senza allungare troppo la seduta", "Rinforzare i femorali con un leg curl controllato e semplice da gestire"],
+      attenzione: ["Squat: ginocchia FUORI, Valsalva, parallelo minimo se la tecnica resta pulita", "Hip thrust: mento al petto, NON iperestendere la lombare in alto — squeeze glutei 1s", "Leg curl al cavo: bacino fermo, niente slancio, eccentrica lenta 2-3 secondi"],
+      ritmo: "Recuperi 2-3 min su Squat. 2 min su Hip thrust. 90s-2 min su Leg curl al cavo. 90-120s sugli altri."
     },
     warmup: [
       { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3-5 minuti. Obiettivo: alzare temperatura, non affaticarti.", tm: 180, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "2-3 minuti leggeri.", tm: 180 }] },
@@ -1432,7 +1434,7 @@ var DAYS_V4 = [
       { n: "Squat", s: "4x6-8", rpe: "8-9", note: "Setup: piedi larghezza spalle, punte 15-30 gradi, mani simmetriche, gomiti giu e leggermente dietro. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper + rack", errori: "Ginocchia che collassano dentro; busto che cade avanti in risalita; talloni che si alzano; schiena che si arrotonda in buca" },
       { n: "Squat Bulgaro", s: "3x10-12", rpe: "8", note: "Setup: piedi su due binari, piede davanti ben piantato, piede dietro in appoggio morbido. RPE 8 per gamba. Alternativa: TRX split squat.", rec: "90s-2 min", gear: "Manubri + panca", errori: "Ginocchio che collassa verso l'interno; peso che scappa sull'avampiede; tronco che oscilla" },
       { n: "Hip Thrust Bilanciere", s: "4x10-12", rpe: "8-9", note: "Setup: piedi larghezza bacino-spalle, tibia quasi verticale in alto, mento leggermente chiuso. RPE 8-9.", rec: "2 min", gear: "Bilanciere + bumper + panca", errori: "Iperestensione lombare in alto; appoggio scapole troppo basso; piedi troppo vicini" },
-      { n: "Nordic Curl", s: "3x5-8", rpe: "8", note: "Setup: ginocchia larghezza anche, bacino neutro o leggera retroversione. Assisti con elastico se serve.", rec: "2 min", gear: "Elastico + rack", errori: "Cedere col busto; fase eccentrica troppo veloce" },
+      { n: "Leg Curl al Cavo", s: "3x10-12", rpe: "8-9", note: "Setup: cavigliera alla caviglia, cavo basso. Prona a terra o in piedi. Fletti il ginocchio portando il tallone verso il gluteo. Eccentrica 2-3 secondi. Alternativa piu avanzata: Nordic Curl assistito con elastico.", rec: "90s-2 min", gear: "Cavo basso + cavigliera", errori: "Slancio col bacino; eccentrica troppo veloce; lombare che si inarca" },
       { n: "Ab Wheel", s: "3x8-10", rpe: "8", note: "Dalle ginocchia. Costole giu e glutei attivi. Alternativa: TRX fallout o fitball rollout.", rec: "90s", gear: "Ab wheel", errori: "Lombare che si inarca; anche che non si estendono; range troppo corto" },
     ], str: ["Quadricipiti","Flessori anca","Glutei"] },
 
@@ -2049,6 +2051,7 @@ var EX_IMG = {
   "Hyperextension": img_Hyperextension,
   "Kick Back Manubri": img_Kick_Back_Manubri,
   "Lat Machine": img_Lat_Machine,
+  "Leg Curl al Cavo": img_Leg_Curl_Cavo_In_Piedi,
   "Military Press": img_Military_Press,
   "Nordic Curl": img_Nordic_Curl,
   "Overhead Extension": img_Overhead_Extension,
@@ -2137,6 +2140,7 @@ var SK_SHADOW = SK + "-shadow";
 var EX_EXTRA_IMG = {
   "Ab Wheel": [img_Ab_Wheel_Corretto],
   "Hollow Position": [img_Hollow_Tuck, img_Hollow_Tuck_Advanced, img_Hollow_One_Leg, img_Hollow_Full],
+  "Leg Curl al Cavo": [img_Leg_Curl_Cavo_Sdraiato],
 };
 
 function exImgs(name) {
@@ -2485,6 +2489,7 @@ var BREATH_RULES = {
   "Tricipiti Cavo":     { type:"anatomic-push", short:"Inspira piegando · espira estendendo",         inhale:"Risalendo (eccentrica)", exhale:"Estendendo verso il basso (concentrica)" },
   "Hyperextension":     { type:"anatomic-push", short:"Inspira scendendo · espira risalendo",         inhale:"Scendendo (eccentrica)", exhale:"Risalendo contraendo glutei e dorsali" },
   "Nordic Curl":        { type:"anatomic-push", short:"Inspira scendendo · espira risalendo",         inhale:"Scendendo (eccentrica controllata)", exhale:"Risalendo (concentrica)" },
+  "Leg Curl al Cavo":   { type:"anatomic-push", short:"Inspira scendendo · espira flettendo",        inhale:"Estendendo il ginocchio (eccentrica)", exhale:"Flettendo il ginocchio verso il gluteo (concentrica)" },
   "Squat Bulgaro":      { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo (eccentrica)", exhale:"Spingendo verso l'alto (concentrica)" },
   "Affondi":            { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo (eccentrica)", exhale:"Spingendo verso l'alto (concentrica)" },
   "Walking Lunge":      { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo ad ogni passo", exhale:"Spingendo verso l'alto" },

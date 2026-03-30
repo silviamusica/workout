@@ -338,7 +338,7 @@ Il tasso di guadagno muscolare rallenta e i progressi di forza diventano piu len
 | 1 | Squat | 4x6-8 | RPE 8-9, ultimo set a cedimento tecnico controllato |
 | 2 | Squat Bulgaro | 3x10-12 | RPE 8, per gamba |
 | 3 | Hip Thrust Bilanciere | 4x10-12 | RPE 8-9 |
-| 4 | Nordic Curl | 3x5-8 | RPE 8, assistito con elastico se necessario |
+| 4 | Leg Curl al Cavo | 3x10-12 | RPE 8-9, eccentrica 2-3 secondi. Alternativa: Nordic Curl assistito |
 | 5 | Slackline bipodalica | 2x45s | Stabilita bipodalica, sguardo avanti, ginocchia flesse |
 | 6 | Ab Wheel dalle ginocchia | 3x8-10 | RPE 8 |
 
