@@ -1784,7 +1784,7 @@ var BASIC_COMPETENCIES = [
     ]
   },
   {
-    id: "squat",
+    id: "core",
     img: "Dead Bug",
     badge: "Prerequisito",
     tone: "#C62828",
@@ -2764,6 +2764,7 @@ export default function App() {
     });
   }
 var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"yt" }
+  var [stretchModal, setStretchModal] = useState(null); // { title, text, duration, imgSrc, video }
   var [showReg, setShowReg] = useState(null);
   var [catSec, setCatSec] = useState(null);
   var [logs, setLogs] = useState({});
@@ -4336,12 +4337,19 @@ function isNearBodyweightElasticSession(exName, sets) {
       }
       var calType = getCalibrationType(exObj.n, exObj.s);
       if (calType === "none") return saveSetEntry(exObj.n, di, si, w, r, null, rirValue);
+      var todayEntry = logs[getGuidedTodayKey(di, exObj.n)];
+      var alreadyTestedToday = !!(todayEntry && todayEntry.sets && todayEntry.sets.length);
+      if (si > 0 || alreadyTestedToday) {
+        var savedFollowup = saveSetEntry(exObj.n, di, si, w, r, null, rirValue);
+        setCalibrationFeedback("Serie salvata. In calibrazione usa solo la prima serie utile come test; le altre servono solo da registrazione.");
+        return savedFollowup;
+      }
       var spec = parseProgressSpec(exObj.s);
       var underMinPreview = getUnderMinPerformanceMessage(exObj.n, exObj.s, r);
       if (underMinPreview) {
         setCalibrationFeedback(underMinPreview);
       }
-      setCalibrationAnswers({ reps: String(r || ""), cleanSame: "yes", cleanReps: String(r || ""), reserve: calType === "weighted" || calType === "dumbbell" || calType === "cable" ? "2" : "2" });
+      setCalibrationAnswers({ reps: String(r || ""), cleanSame: "yes", cleanReps: String(r || ""), reserve: "2" });
       setCalibrationPrompt({
         exName: exObj.n,
         serie: exObj.s,
@@ -4360,26 +4368,39 @@ function isNearBodyweightElasticSession(exName, sets) {
       setCalibrationFeedback("C'e stato un problema nell'aprire la calibrazione. Riprova sulla stessa serie.");
     }
   }
-  function confirmCalibrationPrompt() {
+  function getManualCalibrationDecision(choice, prompt, cleanReps, reserve) {
+    var spec = parseProgressSpec(prompt.serie);
+    if (choice === "down") {
+      return { tone: "hold", title: "Troppo pesante", detail: getCalibrationChangeLabel(prompt.type, "down") + ". La serie viene salvata, ma non come punto zero valido.", accepted: false };
+    }
+    if (choice === "up") {
+      return { tone: "mid", title: "Troppo facile", detail: getCalibrationChangeLabel(prompt.type, "up") + ". La serie viene salvata, ma non come punto zero valido.", accepted: false };
+    }
+    if (spec && spec.kind === "range" && cleanReps < spec.min) {
+      return { tone: "hold", title: "Troppo pesante", detail: (getUnderMinPerformanceMessage(prompt.exName, prompt.serie, cleanReps) || "Sei sotto il minimo del range.") + " La serie viene salvata, ma non come punto zero valido.", accepted: false };
+    }
+    if (spec && spec.kind === "range" && cleanReps > spec.max) {
+      return { tone: "mid", title: "Troppo facile", detail: "Sei oltre il tetto del range per una calibrazione utile. " + getCalibrationChangeLabel(prompt.type, "up") + ". La serie viene salvata, ma non come punto zero valido.", accepted: false };
+    }
+    if (reserve === "0") {
+      return { tone: "hold", title: "Troppo pesante", detail: "Se eri gia a cedimento o quasi, questo riferimento e troppo tirato. " + getCalibrationChangeLabel(prompt.type, "down") + ". La serie viene salvata, ma non come punto zero valido.", accepted: false };
+    }
+    if (reserve === "4+") {
+      return { tone: "mid", title: "Troppo facile", detail: "Se ne avevi ancora molte, il riferimento e troppo leggero. " + getCalibrationChangeLabel(prompt.type, "up") + ". La serie viene salvata, ma non come punto zero valido.", accepted: false };
+    }
+    return { tone: "up", title: "Riferimento giusto", detail: "Questo e un buon punto di partenza: salva il riferimento e usa questo dato per progredire nelle prossime sedute.", accepted: true };
+  }
+  function confirmCalibrationPrompt(choice) {
     if (!calibrationPrompt) return;
     try {
-      var repsDone = parseInt(calibrationAnswers.reps) || parseInt(calibrationPrompt.r) || 0;
-      var cleanReps = calibrationAnswers.cleanSame === "yes" ? repsDone : (parseInt(calibrationAnswers.cleanReps) || 0);
+      var repsDone = parseInt(calibrationPrompt.r) || 0;
+      var cleanReps = parseInt(calibrationAnswers.cleanReps) || repsDone;
       var reserve = calibrationAnswers.reserve || "2";
-      var spec = parseProgressSpec(calibrationPrompt.serie);
       if (cleanReps <= 0) {
         setCalibrationFeedback("Inserisci almeno 1 ripetizione pulita prima di salvare.");
         return;
       }
-      var belowMin = !!(spec && spec.kind === "range" && cleanReps < spec.min);
-      var decision = belowMin
-        ? {
-            tone: "hold",
-            title: "Riferimento non valido",
-            detail: (getUnderMinPerformanceMessage(calibrationPrompt.exName, calibrationPrompt.serie, cleanReps) || "Sei sotto il minimo previsto.") + " La serie viene salvata, ma non come punto zero valido.",
-            accepted: false,
-          }
-        : safeCalibrationDecision(calibrationPrompt.type, reserve, cleanReps, calibrationPrompt.serie, calibrationPrompt.exName, calibrationPrompt);
+      var decision = getManualCalibrationDecision(choice || "ok", calibrationPrompt, cleanReps, reserve);
       var nextProfiles = calibrationProfiles;
       if (decision.accepted) {
         nextProfiles = Object.assign({}, calibrationProfiles, {});
@@ -5000,6 +5021,23 @@ function isNearBodyweightElasticSession(exName, sets) {
         </div>
       </div>}
 
+      {stretchModal && <div onClick={function() { setStretchModal(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", zIndex: 395, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: 12 }}>
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", maxWidth: 560, maxHeight: "88vh", overflow: "auto", background: T.cd, borderRadius: 16, boxShadow: "0 20px 40px rgba(0,0,0,0.22)" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 16px", borderBottom: "1px solid " + T.bg }}>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 15, fontWeight: 800, color: T.tx }}>🧘 {stretchModal.title}</div>
+              {stretchModal.duration && <div style={{ fontSize: 11, color: T.st, fontWeight: 700, marginTop: 4 }}>{stretchModal.duration}</div>}
+            </div>
+            <button onClick={function() { setStretchModal(null); }} style={{ border: "none", background: T.bg, color: T.sub, borderRadius: 8, padding: "5px 11px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>✕ Chiudi</button>
+          </div>
+          <div style={{ padding: 16 }}>
+            {stretchModal.imgSrc && <img src={stretchModal.imgSrc} style={{ width: "100%", display: "block", borderRadius: 12, marginBottom: 12 }} />}
+            <DetailText text={stretchModal.text} accent={T.st} size={12} soft={true} />
+            {stretchModal.video && <EmbedLink url={stretchModal.video} label="▶ Video" size={11} color={T.st} style={{ marginTop: 10 }} />}
+          </div>
+        </div>
+      </div>}
+
       {/* Reset Confirm */}
       {resetOpen && <div onClick={function() { setResetOpen(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 200, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
         <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, padding: 24, maxWidth: 340, width: "100%", color: T.tx, textAlign: "center" }}>
@@ -5387,7 +5425,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                         {skillImg ? <img src={skillImg} style={{ width: "100%", maxWidth: 240, display: "block", borderRadius: 12, border: "1px solid " + T.bg, marginBottom: 12 }} /> : null}
                         {skill.id === "scapole" && <button onClick={function(e) { e.stopPropagation(); openScapulaModal(); }} style={{ marginBottom: 10, minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + skill.tone + "35", background: skill.tone + "12", color: skill.tone, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>Apri guida scapole</button>}
                         <RichBlocks blocks={skill.d} accent={dc} />
-                        {skill.id === "squat" && <button onClick={function(e) { e.stopPropagation(); navigateToTab("exercises"); setCatSec("ex"); setExInfoOpen("Goblet Squat"); }} style={{ marginTop: 10, minHeight: 30, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "30", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>Apri: cos'e il Goblet Squat</button>}
                       </div>}
                     </div>;
                   })}
@@ -6990,6 +7027,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.45, marginBottom: 4 }}>{sd.h ? (typeof sd.h === "string" ? sd.h.replace(/<[^>]+>/g, "").substring(0, 100) + (sd.h.length > 100 ? "…" : "") : sd.d) : sd.d}</div>
                     <div style={{ display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}>
                       {sd.t && <span style={{ fontSize: 10, color: T.sub, fontStyle: "italic" }}>{sd.t}</span>}
+                      <button onClick={function() { setStretchModal({ title: sn, text: sd.h || sd.d || "", duration: sd.t || "", imgSrc: imgSrc, video: sd.lk || "" }); }} style={{ minHeight: 24, padding: "0 8px", border: "1px solid " + T.st + "34", borderRadius: 999, background: T.st + "10", color: T.st, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}>Dettagli</button>
                       {sd.lk && <a href={sd.lk} target="_blank" rel="noopener noreferrer" style={{ fontSize: 10, color: dc, fontWeight: 600, textDecoration: "none" }}>video →</a>}
                       {sd.tm && <button onClick={function() { quickTimer(sd.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "2px 8px", border: "none", borderRadius: 5, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"\u23F1 " + fmtLabel(sd.tm)}</button>}
                     </div>
@@ -7050,16 +7088,6 @@ function isNearBodyweightElasticSession(exName, sets) {
 
       {calibrationPrompt && <div onClick={function() { setCalibrationPrompt(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.38)", zIndex: 140, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: 12 }}>
         <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", maxWidth: 560, background: T.cd, borderRadius: 16, overflow: "hidden", boxShadow: "0 20px 40px rgba(0,0,0,0.22)" }}>
-          {(function() {
-            var previewDecision = safeCalibrationDecision(calibrationPrompt.type, calibrationAnswers.reserve, calibrationAnswers.cleanSame === "yes" ? calibrationPrompt.r : calibrationAnswers.cleanReps, calibrationPrompt.serie, calibrationPrompt.exName, calibrationPrompt);
-            var toneBg = previewDecision.tone === "up" ? "#2E7D3216" : previewDecision.tone === "mid" ? "#EF6C0016" : "#C6282816";
-            var toneBorder = previewDecision.tone === "up" ? "#2E7D3230" : previewDecision.tone === "mid" ? "#EF6C0030" : "#C6282830";
-            var toneColor = previewDecision.tone === "up" ? "#2E7D32" : previewDecision.tone === "mid" ? "#C45A00" : "#C62828";
-            return <div onClick={function() { setCalibrationFeedback(previewDecision.title + ". " + previewDecision.detail); }} style={{ margin: 14, marginBottom: 0, padding: "12px 13px", borderRadius: 12, background: toneBg, border: "1px solid " + toneBorder, cursor: "pointer" }}>
-              <div style={{ fontSize: 13, fontWeight: 800, color: toneColor, marginBottom: 4 }}>{previewDecision.title}</div>
-              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>{previewDecision.detail}</div>
-            </div>;
-          })()}
           <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
             <div style={{ fontSize: 15, fontWeight: 800, color: T.tx }}>🎯 Calibrazione — {calibrationPrompt.exName}</div>
             <div style={{ fontSize: 12, color: T.sub, marginTop: 4, lineHeight: 1.6 }}>{getCalibrationQuickInstruction(calibrationPrompt.exName, calibrationPrompt.serie)}</div>
@@ -7067,30 +7095,17 @@ function isNearBodyweightElasticSession(exName, sets) {
           </div>
           <div style={{ padding: 16, display: "grid", gap: 12 }}>
             <div style={{ display: "grid", gap: 6 }}>
-              <span style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>Ripetizioni registrate</span>
-              <div style={{ width: "100%", padding: "11px 12px", border: "1px solid " + dc + "28", borderRadius: 10, fontSize: 15, fontWeight: 700, background: T.sb, color: T.tx, boxSizing: "border-box" }}>
-                {(parseInt(calibrationPrompt.r) || parseInt(calibrationAnswers.reps) || 0) + " rip"}
-              </div>
               <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
-                Qui non devi reinserirle: usa questo passaggio solo per dire se erano tutte pulite e quante te ne restavano.
+                1. Correggi solo le rip pulite davvero. 2. Scegli quante te ne restavano. 3. Dimmi se questo test era troppo facile, giusto o troppo pesante.
               </div>
             </div>
-            <div style={{ display: "grid", gap: 6 }}>
-              <span style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>Erano tutte con la stessa tecnica della prima?</span>
-              <div style={{ display: "flex", gap: 8 }}>
-                {[
-                  { key: "yes", label: "Si" },
-                  { key: "no", label: "No" },
-                ].map(function(opt) {
-                  var active = calibrationAnswers.cleanSame === opt.key;
-                  return <button key={opt.key} onClick={function() { setCalibrationAnswers(function(prev) { return Object.assign({}, prev, { cleanSame: opt.key, cleanReps: opt.key === "yes" ? String(parseInt(calibrationPrompt.r) || parseInt(prev.reps) || 0) : prev.cleanReps }); }); }} style={{ flex: 1, minHeight: 40, border: "none", borderRadius: 10, background: active ? dc : T.bg, color: active ? "#fff" : T.sub, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>{opt.label}</button>;
-                })}
-              </div>
-            </div>
-            {calibrationAnswers.cleanSame === "no" && <label style={{ display: "grid", gap: 6 }}>
-              <span style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>Quante erano davvero pulite?</span>
+            <label style={{ display: "grid", gap: 6 }}>
+              <span style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>Ripetizioni pulite davvero</span>
               <input type="number" inputMode="numeric" value={calibrationAnswers.cleanReps} onChange={function(e) { setCalibrationAnswers(function(prev) { return Object.assign({}, prev, { cleanReps: e.target.value }); }); }} style={{ width: "100%", padding: "11px 12px", border: "1px solid " + dc + "28", borderRadius: 10, fontSize: 15, fontWeight: 700, background: T.sb, color: T.tx, boxSizing: "border-box" }} />
-            </label>}
+              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
+                Se erano tutte buone, lascia il numero registrato. Se le ultime erano sporche, abbassalo.
+              </div>
+            </label>
             <div style={{ display: "grid", gap: 6 }}>
               <span style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>Quante altre ripetizioni pulite avresti potuto fare?</span>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 6 }}>
@@ -7100,9 +7115,13 @@ function isNearBodyweightElasticSession(exName, sets) {
                 })}
               </div>
             </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8 }}>
+              <button onClick={function() { confirmCalibrationPrompt("down"); }} style={{ minHeight: 44, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Troppo pesante</button>
+              <button onClick={function() { confirmCalibrationPrompt("ok"); }} style={{ minHeight: 44, border: "none", borderRadius: 10, background: T.ok, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Giusta</button>
+              <button onClick={function() { confirmCalibrationPrompt("up"); }} style={{ minHeight: 44, border: "none", borderRadius: 10, background: "#EF6C00", color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Troppo facile</button>
+            </div>
             <div style={{ display: "flex", gap: 8 }}>
               <button onClick={function() { setCalibrationPrompt(null); }} style={{ flex: 1, minHeight: 44, border: "1px solid " + T.bg, borderRadius: 10, background: T.sb, color: T.sub, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Annulla</button>
-              <button onClick={confirmCalibrationPrompt} style={{ flex: 1, minHeight: 44, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Salva risposta</button>
             </div>
           </div>
         </div>
