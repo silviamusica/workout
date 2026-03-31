@@ -53,6 +53,7 @@ import img_Woodchop from "./images/exercises/Cable-wood-chop-resized .jpeg";
 import img_Dip_alle_Parallele from "./images/exercises/dip tricipiti parallele.jpg";
 import img_T_bar_Row from "./images/exercises/t-bar-rows.gif";
 import img_Fitball_Hamstring_Curl from "./images/exercises/Fitball Hamstring Curl .jpg";
+import img_Glute_Bridge_Fitball from "./images/exercises/glute-bridge-fitball.gif";
 import img_Face_Pull from "./images/exercises/Face-pull-resized.jpeg";
 import img_Hip_Thrust_Bilanciere from "./images/exercises/Hip Thrust Bilanciere .jpeg";
 import img_Tricipiti_Cavo from "./images/exercises/cavi tricipiti.jpg";
@@ -565,6 +566,23 @@ var INTRO_BASICS = [
         ["Giorno 3 e Giorno 7", "Non sono giorni sprecati. Sono giornate con meno stress dei pesi, dedicate a cardio leggero o condizionamento e al recupero generale. Il tessuto connettivo recupera più lentamente del muscolo."],
       ]},
       { type: "p", content: "Se dopo 2-3 settimane i carichi non crescono: controlla prima sonno e proteine prima di toccare il programma." },
+    ]
+  },
+  {
+    icon: "❤️",
+    title: "Cardio nella V4",
+    color: null,
+    summary: "Il cardio resta utile, ma deve stare al suo posto: supporto al recupero e al fiato, non interferenza coi 4 giorni pesi.",
+    body: [
+      { type: "p", content: "Nella V4 il cardio non compare più dentro la Scheda pesi. Lo trovi qui nelle basi perché serve capirne la logica, non mischiarlo con squat, stacco, panca e trazioni." },
+      { type: "bold-list", content: [
+        ["Frequenza", "Massimo 2 sessioni a settimana, su giorni separati dai pesi."],
+        ["Rucking preferito", "Ha meno interferenza della corsa: meno impatto eccentrico, meno gambe distrutte, più facile recuperare per il Lower successivo."],
+        ["HIIT limitato", "Al massimo 1 volta a settimana. Se ti rovina Giorno 4 o Giorno 5, va ridotto o tolto."],
+        ["Zona 2", "Va bene come lavoro leggero: devi riuscire a parlare senza fiatone."],
+        ["Segnale di troppo cardio", "Se i carichi in sala smettono di salire per 2+ settimane, prima taglia cardio, non i pesi."],
+      ]},
+      { type: "p", content: "Regola pratica: i progressi veri della V4 li leggi nei 4 allenamenti pesi. Il cardio serve a supportarti, non a guidare il programma." },
     ]
   },
 ];
@@ -1624,7 +1642,7 @@ var DAYS_BEGINNER = [
       { n: "Jumping jacks", img: "w_JumpingJacks", d: "2-3 minuti a ritmo leggero per entrare nella seduta.", tm: 180 },
       { n: "Good Morning senza peso", img: "w_GoodMorningSenzaPeso", d: "10 ripetizioni lente. Focus: sedere indietro, schiena neutra." },
       { n: "Band Pull-Apart con elastico", img: "w_CerchiApertura", d: "2x15. Elastico leggero, braccia tese davanti al petto. Apri fino al petto e senti le scapole." },
-      { n: "Serie avvicinamento stacco rumeno", img: "w_GoodMorningSenzaPeso", d: "1-2 serie leggere del primo esercizio del giorno.", gear: "Manubri o bilanciere" },
+      { n: "Serie avvicinamento stacco rumeno", img: "w_SerieAvvStacco", d: "1-2 serie leggere e progressive del primo esercizio del giorno. Devono preparare il pattern, non affaticarti.", gear: "Manubri o bilanciere" },
     ],
     ex: [
       { n: "Stacco Rumeno", s: "3x8-10", rpe: "8", note: "Base: stacco rumeno con manubri o bilanciere, 1-2 RIR. Setup: piedi larghezza anche, mani poco fuori cosce, gomiti tesi, ginocchia appena sbloccate. Anca indietro e carico vicino alle gambe. Alternative: cable pull-through o TRX hip hinge assistito.", rec: "90s-2 min", gear: "Manubri, bilanciere, cavo o TRX", errori: "Schiena arrotondata; ginocchia troppo flesse; carico lontano dal corpo; anca che scende invece di andare indietro" },
@@ -2045,6 +2063,7 @@ var EX_IMG = {
   "Goblet Squat": img_Goblet_Squat,
   "Good Morning senza peso": img_w_GoodMorningSenzaPeso,
   "Front Squat": img_Front_Squat,
+  "Glute Bridge su Fitball": img_Glute_Bridge_Fitball,
   "Good Morning": img_Good_Morning,
   "Hip Thrust Singolo": img_Hip_Thrust_Singolo,
   "Hollow Position": img_Hollow_Position,
@@ -2194,6 +2213,7 @@ function formatElasticTick(v) {
 }
 
 var BARBELL_BASE_KG = 20;
+var BARBELL_MIN_KG = 0;
 var BARBELL_TOTAL_EX = ["Squat","Panca","Military Press","Stacco da Terra","Stacco Rumeno","Front Squat","Pause Squat","Push Press","Stacco Sumo","Rematore Bilanciere","Pendlay Row","Good Morning","Hip Thrust Bilanciere"];
 
 function usesBarbellTotal(exName) {
@@ -2802,6 +2822,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [catSec, setCatSec] = useState(null);
   var [logs, setLogs] = useState({});
   var [cardioLogs, setCardioLogs] = useState({});
+  var [exerciseNoteDrafts, setExerciseNoteDrafts] = useState({});
   var [calibrationMode, setCalibrationMode] = useState(false);
   var [calibrationProfiles, setCalibrationProfiles] = useState({});
   var [calibrationPrompt, setCalibrationPrompt] = useState(null);
@@ -2862,7 +2883,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var T = TH[theme];
   var isBasics = level === "basics";
   var isBeginner = level === "beginner";
-  var activeDays = isBasics ? DAYS_BASICS : isBeginner ? DAYS_BEGINNER.filter(function(d) { return !d.rest; }) : DAYS_V4;
+  var activeDays = isBasics ? DAYS_BASICS : isBeginner ? DAYS_BEGINNER.filter(function(d) { return !d.rest; }) : DAYS_V4.filter(function(d) { return !d.cardio; });
   var safeDayIdx = Math.min(dayIdx, activeDays.length - 1);
   var WORKFLOW_SEED_BY_SLUG = NEW_EXERCISE_WORKFLOW_SEED.reduce(function(acc, item) {
     acc[item.slug] = item;
@@ -3197,7 +3218,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           setCalibrationProfiles(parsed.calibrationProfiles || {});
           setCalibrationMode(!!parsed.calibrationMode);
           setGuidedMode(typeof parsed.guidedMode === "boolean" ? parsed.guidedMode : false);
-          setBarbellWeight(typeof parsed.barbellWeight === "number" ? parsed.barbellWeight : BARBELL_BASE_KG);
+          setBarbellWeight(typeof parsed.barbellWeight === "number" ? Math.max(BARBELL_MIN_KG, parsed.barbellWeight) : BARBELL_BASE_KG);
         } else if (parsed && typeof parsed === "object") {
           setLogs(parsed);
         }
@@ -3287,7 +3308,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     var nextProfiles = np || {};
     var nextMode = typeof nm === "boolean" ? nm : false;
     var nextGuided = typeof ng === "boolean" ? ng : guidedMode;
-    var nextBarbell = typeof bw === "number" && isFinite(bw) && bw > 0 ? bw : barbellWeight;
+    var nextBarbell = typeof bw === "number" && isFinite(bw) && bw >= BARBELL_MIN_KG ? bw : barbellWeight;
     setLogs(nextLogs);
     setCardioLogs(nextCardioLogs);
     setCalibrationProfiles(nextProfiles);
@@ -4503,6 +4524,22 @@ function isNearBodyweightElasticSession(exName, sets) {
     setGuidedPrompt(null);
   }
   function getLog(en, di) { return logs[todayStr() + "_d" + di + "_m" + month + "_" + en]; }
+  function getExerciseNoteDraftKey(en, di) { return di + "__" + en; }
+  function saveExerciseNote(en, di, noteText) {
+    var t = todayStr();
+    var k = t + "_d" + di + "_m" + month + "_" + en;
+    var nextLogs = Object.assign({}, logs);
+    var existing = nextLogs[k] || { date: t, day: di, month: month, exercise: en, sets: [] };
+    var cleanNote = String(noteText || "").trim();
+    nextLogs[k] = Object.assign({}, existing, { note: cleanNote });
+    saveData(nextLogs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight);
+    setExerciseNoteDrafts(function(prev) {
+      var next = Object.assign({}, prev);
+      next[getExerciseNoteDraftKey(en, di)] = cleanNote;
+      return next;
+    });
+    setAutoBackupMsg(cleanNote ? "Nota esercizio salvata." : "Nota esercizio rimossa.");
+  }
   function getHist(en) { return Object.values(logs).filter(function(l) { return l.exercise === en; }).sort(function(a,b) { return b.date.localeCompare(a.date); }).slice(0, 10); }
   function getAllHist(en) { return Object.values(logs).filter(function(l) { return l.exercise === en && l.month === month; }).sort(function(a,b) { var c = b.date.localeCompare(a.date); return c || ((b.day || 0) - (a.day || 0)); }); }
   function getCalibrationNeed(exName, serie) {
@@ -5186,12 +5223,12 @@ function isNearBodyweightElasticSession(exName, sets) {
                 <input
                   type="number"
                   inputMode="decimal"
-                  min="0"
+                  min={BARBELL_MIN_KG}
                   step="0.5"
                   value={barbellWeight}
                   onChange={function(e) {
                     var next = parseFloat(e.target.value);
-                    if (!isFinite(next) || next < 0) next = 0;
+                    if (!isFinite(next) || next < BARBELL_MIN_KG) next = BARBELL_MIN_KG;
                     saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, next);
                   }}
                   style={{ width: 96, padding: "10px 10px", border: "1px solid " + T.bg, borderRadius: 8, fontSize: 14, fontWeight: 700, background: T.cd, color: T.tx, boxSizing: "border-box" }}
@@ -5782,6 +5819,12 @@ function isNearBodyweightElasticSession(exName, sets) {
           var months = ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"];
           return d.getDate() + " " + months[d.getMonth()] + " – " + end.getDate() + " " + months[end.getMonth()];
         }
+        function fmtProgressDate(dateStr) {
+          var d = new Date(dateStr);
+          if (isNaN(d.getTime())) return dateStr;
+          var months = ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"];
+          return d.getDate() + " " + months[d.getMonth()];
+        }
         var allEntries = Object.values(logs).filter(function(entry) { return entry.month === month; });
         // Per-exercise history (last best per week)
         var exMap = {};
@@ -5967,14 +6010,6 @@ function isNearBodyweightElasticSession(exName, sets) {
             </div>
           </details>
 
-          {!isBasics && <div style={{ background: T.cd, borderRadius: 14, padding: "12px 14px", marginBottom: 10, display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, marginBottom: 3 }}>Il cardio non entra piu nel conteggio di Progressi</div>
-              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Qui leggi solo i 4 allenamenti pesi. Per logica e indicazioni cardio usa Teoria oppure i giorni cardio della scheda.</div>
-            </div>
-            <button onClick={function(e) { e.stopPropagation(); goToTeoria("teoria"); }} style={{ border: "none", borderRadius: 999, padding: "8px 12px", background: dc, color: "#fff", fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}>Apri teoria</button>
-          </div>}
-
           {allEntries.length === 0 ? <div style={{ background: T.cd, borderRadius: 12, padding: 24, textAlign: "center" }}>
             <div style={{ fontSize: 32, marginBottom: 8 }}>🏋️</div>
             <div style={{ fontSize: 14, fontWeight: 700, color: T.tx, marginBottom: 6 }}>Nessun dato ancora</div>
@@ -6031,7 +6066,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     <div style={{ padding: "0 14px 12px", display: "grid", gap: 8 }}>
                       {sessionDays.map(function(session, si) {
                         var dayLabel = DAYS[session.day] ? DAYS[session.day].name : ("Giorno " + (session.day + 1));
-                        var dateLabel = formatDateShort ? formatDateShort(session.date) : session.date;
+                        var dateLabel = fmtProgressDate(session.date);
                         return <div key={wk + "-" + si} style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 12px" }}>
                           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 8 }}>
                             <div style={{ fontSize: 12, fontWeight: 800, color: T.tx }}>{dayLabel}</div>
@@ -6043,6 +6078,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                               return <div key={entry.exercise + "-" + ei2} style={{ display: "grid", gap: 2 }}>
                                 <div style={{ fontSize: 11, fontWeight: 700, color: T.tx }}>{entry.exercise}</div>
                                 <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.55 }}>{exerciseSummary || "Nessuna serie salvata"}</div>
+                                {entry.note && <div style={{ fontSize: 10, color: dc, lineHeight: 1.55, background: dc + "0A", border: "1px solid " + dc + "18", borderRadius: 8, padding: "6px 8px", marginTop: 2 }}>
+                                  <span style={{ fontWeight: 800, marginRight: 5 }}>Nota:</span>{entry.note}
+                                </div>}
                               </div>;
                             })}
                           </div>
@@ -6762,6 +6800,8 @@ function isNearBodyweightElasticSession(exName, sets) {
               var db = EX[ex.n];
               var isX = openEx === i;
               var tLog = getLog(ex.n, dayIdx);
+              var noteDraftKey = getExerciseNoteDraftKey(ex.n, dayIdx);
+              var currentExerciseNote = exerciseNoteDrafts[noteDraftKey] != null ? exerciseNoteDrafts[noteDraftKey] : ((tLog && tLog.note) || "");
               var p = parseSerie(ex.s);
               var sc = p.sets;
               var prog = getProgressAdvice(ex.n, ex.s);
@@ -6992,6 +7032,25 @@ function isNearBodyweightElasticSession(exName, sets) {
                         Registra
                         {tLog && tLog.sets.length > 0 && <span style={{ fontSize: 11, background: T.ok, color: "#fff", padding: "2px 8px", borderRadius: 8, fontWeight: 800 }}>{tLog.sets.length + "/" + sc + " serie"}</span>}
                       </div>
+                      {!isBW && !usesBand && usesBarbellTotal(ex.n) && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: T.sb, border: "1px solid " + T.bg }}>
+                        <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Bilanciere usato in questa fase</div>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                          {[0,2,10,15,20].map(function(opt) {
+                            var active = barbellWeight === opt;
+                            return <button
+                              key={opt}
+                              onClick={function(e) {
+                                e.stopPropagation();
+                                saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, opt);
+                              }}
+                              style={{ minHeight: 28, padding: "0 10px", borderRadius: 999, border: "1px solid " + (active ? dc : T.sub + "30"), background: active ? dc : T.cd, color: active ? "#fff" : T.sub, fontSize: 10, fontWeight: 800, cursor: "pointer" }}
+                            >
+                              {opt + " kg"}
+                            </button>;
+                          })}
+                          <span style={{ fontSize: 10, color: T.sub, lineHeight: 1.5 }}>Attuale: {barbellWeight} kg</span>
+                        </div>
+                      </div>}
                       {usesBand && ex.n === "Dip alle Parallele" && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: T.sb, border: "1px solid " + T.bg, fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
                         Scegli una tacca da 1 a 10 che rappresenta il tuo elastico attuale: 1 = massimo aiuto, 10 = minimo aiuto. Usala come riferimento fisso nelle prossime sedute.
                       </div>}
@@ -7057,6 +7116,33 @@ function isNearBodyweightElasticSession(exName, sets) {
                             )}
                           </div>;
                         })}
+                      </div>
+                    </div>}
+
+                    {!isBasics && <div style={{ marginBottom: 10, borderRadius: 12, padding: "10px", background: T.sb, border: "1px solid " + T.bg }}>
+                      <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Note esercizio</div>
+                      <textarea
+                        value={currentExerciseNote}
+                        onChange={function(e) {
+                          var value = e.target.value;
+                          setExerciseNoteDrafts(function(prev) {
+                            var next = Object.assign({}, prev);
+                            next[noteDraftKey] = value;
+                            return next;
+                          });
+                        }}
+                        placeholder="Esempio: panca instabile, spalla ok, ultima serie sporca, elastico rosso 2 giri..."
+                        rows={3}
+                        style={{ width: "100%", resize: "vertical", minHeight: 74, padding: "10px 11px", borderRadius: 8, border: "1px solid " + T.bg, background: T.cd, color: T.tx, fontSize: 12, lineHeight: 1.55, boxSizing: "border-box" }}
+                      />
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginTop: 8 }}>
+                        <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.5 }}>Questa nota resta agganciata all'esercizio di oggi e compare anche in Progressi.</div>
+                        <button
+                          onClick={function(e) { e.stopPropagation(); saveExerciseNote(ex.n, dayIdx, currentExerciseNote); }}
+                          style={{ minHeight: 32, padding: "0 12px", border: "none", borderRadius: 999, background: dc, color: "#fff", fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
+                        >
+                          Salva nota
+                        </button>
                       </div>
                     </div>}
 
