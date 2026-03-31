@@ -2345,6 +2345,18 @@ function daysBetweenISO(a, b) {
   return Math.round((db - da) / 86400000);
 }
 
+function formatDateItalian(dateStr) {
+  if (!dateStr) return "";
+  var m = String(dateStr).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (m) return m[3] + "/" + m[2] + "/" + m[1];
+  var d = new Date(dateStr);
+  if (isNaN(d.getTime())) return String(dateStr);
+  var dd = String(d.getDate()).padStart(2, "0");
+  var mm = String(d.getMonth() + 1).padStart(2, "0");
+  var yyyy = d.getFullYear();
+  return dd + "/" + mm + "/" + yyyy;
+}
+
 function getCalibrationType(exName, serie) {
   if (CALIBRATION_SKIP_EX.indexOf(exName) >= 0) return "none";
   if (exName === "Slackline") return "tempo";
@@ -6277,10 +6289,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           return d.getDate() + " " + months[d.getMonth()] + " – " + end.getDate() + " " + months[end.getMonth()];
         }
         function fmtProgressDate(dateStr) {
-          var d = new Date(dateStr);
-          if (isNaN(d.getTime())) return dateStr;
-          var months = ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"];
-          return d.getDate() + " " + months[d.getMonth()];
+          return formatDateItalian(dateStr);
         }
         var allEntries = Object.values(logs).filter(function(entry) { return entry.month === month; });
         // Per-exercise history (last best per week)
@@ -7366,6 +7375,11 @@ function isNearBodyweightElasticSession(exName, sets) {
                   // last session data for pre-fill
                   var allHist = getHist(ex.n);
                   var pastSessions = allHist.filter(function(h) { return h.date !== todayStr(); });
+                  if (usesBand) {
+                    pastSessions = pastSessions.filter(function(h) {
+                      return (h.sets || []).some(function(s) { return clampElasticTick(s.w) > 0; });
+                    });
+                  }
                   var hPage = histPage[i] || 0;
                   var lastSession = pastSessions[hPage] || null;
                   // pre-fill helper: get suggested value for series si
@@ -7650,7 +7664,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                           var sess = pastSessions[hPage];
                           return <>
                             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 7 }}>
-                              <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{sess.date}</div>
+                              <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{formatDateItalian(sess.date)}</div>
                               {pastSessions.length > 1 && <div style={{ marginLeft: "auto", display: "flex", gap: 4 }}>
                                 <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.min(hPage + 1, pastSessions.length - 1); return n; }); }} disabled={hPage >= pastSessions.length - 1} style={{ width: 26, height: 26, border: "1px solid " + T.bg, borderRadius: 6, background: T.cd, color: hPage >= pastSessions.length - 1 ? T.sub + "40" : T.sub, cursor: hPage >= pastSessions.length - 1 ? "default" : "pointer", fontSize: 13 }}>‹</button>
                                 <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.max(hPage - 1, 0); return n; }); }} disabled={hPage === 0} style={{ width: 26, height: 26, border: "1px solid " + T.bg, borderRadius: 6, background: T.cd, color: hPage === 0 ? T.sub + "40" : T.sub, cursor: hPage === 0 ? "default" : "pointer", fontSize: 13 }}>›</button>
