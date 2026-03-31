@@ -90,9 +90,9 @@ Nella scheda:
 Serve a guidare la sessione anche fuori dalla calibrazione.
 
 Stato attuale:
-- è attiva di default
-- si può spegnere in `Impostazioni`
-- se un backup vecchio non contiene il flag, l'app la considera comunque attiva
+- è spenta di default
+- si può attivare o spegnere in `Impostazioni`
+- se un backup vecchio non contiene il flag, l'app la considera spenta
 
 Fa queste cose:
 - briefing pre-sessione
@@ -151,15 +151,17 @@ Nella riga serie, in calibrazione, si inseriscono solo:
 - `kg` o `tacca elastico`
 - `ripetizioni`
 
-Non si inserisce lì il `RIR`.
+Sulla prima serie test non si inserisce lì il `RIR`.
 
 Dopo la spunta:
 - si apre il modale di calibrazione
-- il modale mostra le ripetizioni registrate
 - chiede:
-  - se erano tutte pulite
-  - quante erano davvero pulite, se serve
-  - quante ripetizioni pulite restavano
+  - quante erano davvero le ripetizioni pulite
+  - quante ripetizioni pulite restavano (`RIR / riserva`)
+  - se il test era `Troppo pesante`, `Giusta` o `Troppo facile`
+
+Nota:
+- dalla seconda serie in poi il `RIR` può essere inserito direttamente nella riga
 
 ### Regole importanti
 
@@ -171,13 +173,12 @@ Dopo la spunta:
   - se segni `12`
   - l'app deve considerarlo troppo facile e suggerire aumento del carico o della difficoltà
 
-### Recupero obbligatorio
+### Timer e recupero
 
-In calibrazione:
-- dopo il salvataggio parte il timer
-- finché il timer non finisce, la serie successiva non si registra
-
-Questo è un blocco reale, non solo un consiglio visivo.
+Il timer oggi:
+- è manuale
+- non deve bloccare la registrazione
+- può essere bloccato con il lucchetto per restare aperto e non essere sovrascritto
 
 ## 6. Comportamento attuale della modalità guidata
 

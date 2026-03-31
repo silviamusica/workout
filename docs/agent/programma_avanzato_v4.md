@@ -11,7 +11,8 @@ Obiettivo: fornire a un agente o collaboratore un riferimento unico, leggibile e
 ## Stato attuale del programma
 
 - Programma attivo: `V4`
-- Struttura: `Upper/Lower` su 4 giorni pesi + 2 giorni cardio
+- Struttura: `Upper/Lower` su 4 giorni pesi
+- Il cardio non compare più nella tab `Scheda`: resta consultabile nella parte teorica dell'app
 - Obiettivo principale: `ipertrofia con forte componente di forza applicata sui fondamentali`
 - La `definizione` non e una scheda separata gia presente nell'app: dipende soprattutto da dieta, proteine, recupero e gestione del volume
 
@@ -321,6 +322,11 @@ Il tasso di guadagno muscolare rallenta e i progressi di forza diventano piu len
 
 ## Scheda completa V4
 
+Nota UI attuale:
+- nella tab `Scheda` della V4 l'utente vede solo i 4 giorni pesi
+- i giorni cardio `3` e `7` sono stati tolti dalla scheda operativa per non confondere il tracciamento
+- le indicazioni cardio restano in `Teoria > Basi`
+
 ### Giorno 1 — Lower A — Quadricipiti + Glutei
 
 **Riscaldamento**
@@ -383,6 +389,10 @@ Il tasso di guadagno muscolare rallenta e i progressi di forza diventano piu len
 | 4 | Spalle | 5 min finali |
 
 ### Giorno 3 — Cardio A
+
+Nota:
+- questo giorno non è più mostrato nella tab `Scheda`
+- resta come riferimento teorico / programmatorio
 
 **Cardio**
 
@@ -456,6 +466,10 @@ Il tasso di guadagno muscolare rallenta e i progressi di forza diventano piu len
 
 ### Giorno 7 — Cardio B
 
+Nota:
+- questo giorno non è più mostrato nella tab `Scheda`
+- resta come riferimento teorico / programmatorio
+
 **Cardio**
 
 | # | Opzione | Durata | Note |
@@ -470,6 +484,7 @@ Il tasso di guadagno muscolare rallenta e i progressi di forza diventano piu len
 - La progressione principale e la `double progression`
 - I 4 lift prioritari vanno fatti per primi
 - Il cardio resta separato dai pesi
+- In app, il cardio della V4 è consultabile in teoria e non nella scheda giornaliera operativa
 - La definizione dipende soprattutto dalla dieta, non da una scheda separata gia presente in app
 
 ## File di riferimento collegati

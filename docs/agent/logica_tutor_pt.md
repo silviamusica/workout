@@ -20,7 +20,7 @@ L'app oggi ha due logiche diverse ma compatibili:
 - non vale per tutti gli esercizi: alcuni sono esclusi o gestiti come corpo libero / assistiti / tempo
 
 2. `Modalità guidata`
-- è attiva di default
+- è spenta di default
 - si può disattivare da `Impostazioni`
 - affianca la seduta normale
 - usa RIR, storico e range per guidare recupero e progressione
@@ -37,7 +37,7 @@ L'app salva in locale e anche nel backup JSON:
 
 Quindi:
 - import/export conserva sia la calibrazione sia la modalità guidata
-- `Reset totale` riporta `guidedMode` a `ON`
+- `Reset totale` riporta `guidedMode` a `OFF`
 
 Esiste anche un toggle separato:
 - `Info aggiuntive esercizi`
@@ -72,15 +72,18 @@ In calibrazione, nella riga serie l'utente inserisce solo:
 - `kg` o `tacca elastico`
 - `ripetizioni`
 
-Non inserisce lì il RIR.
+Sulla prima serie test non inserisce lì il RIR.
 
 Dopo il click sulla spunta:
 - si apre il modale di calibrazione
-- il modale mostra le ripetizioni già registrate
 - chiede:
-  - se erano tutte pulite
-  - quante erano davvero pulite, se serve
-  - quante ripetizioni pulite restavano
+  - quante erano davvero le ripetizioni pulite
+  - quante ripetizioni pulite restavano (`RIR / riserva`)
+  - se il test era `Troppo pesante`, `Giusta` o `Troppo facile`
+
+Note pratiche:
+- dalla seconda serie in poi, anche in calibrazione, il `RIR` può essere inserito direttamente nella riga
+- nella prima serie test il `RIR` viene raccolto nel modale finale
 
 ### Cosa salva
 
@@ -106,21 +109,21 @@ Logica desiderata già implementata:
 - partire vicino al numero basso del range
 - poi progredire nel tempo
 
-### Recupero obbligatorio in calibrazione
+### Recupero in calibrazione
 
-Dopo il salvataggio di una risposta valida o non valida:
-- parte il timer di recupero
-- la serie successiva non può essere registrata fino a fine timer
+L'app non avvia più automaticamente il timer dopo la serie.
 
-Quindi in calibrazione:
-- l'app forza l'uso del recupero
+Il timer:
+- è manuale
+- non deve bloccare la registrazione della serie successiva
+- può essere bloccato con il lucchetto per restare aperto e non essere sovrascritto
 
 ## Modalità guidata
 
 ### Attivazione
 
 Stato attuale:
-- è `ON` di default
+- è `OFF` di default
 - si può spegnere da `Impostazioni > Modalità guidata`
 
 Quando è `OFF`:
@@ -392,10 +395,14 @@ Esiste anche:
 
 Il timer attuale:
 - è un pannello flottante piccolo
+- è solo manuale
 - non dovrebbe bloccare la registrazione
 - resta visibile durante la lettura della scheda
 - mostra il recupero minimo consigliato dell'esercizio aperto
 - in modalità guidata può mostrare anche il suggerimento contestuale sul recupero
+- ha un lucchetto `🔒`:
+  - se bloccato, resta aperto
+  - non viene sovrascritto dai nuovi recuperi finché non viene sbloccato
 
 ## File da controllare se si modifica la logica tutor
 

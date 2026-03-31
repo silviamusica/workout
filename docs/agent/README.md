@@ -2,6 +2,13 @@
 
 Questa cartella contiene solo i file indispensabili per capire e modificare i programmi presenti nell'app.
 
+Per un controllo specifico della `V4`, l'ordine migliore oggi è:
+
+1. `logica_tutor_pt.md`
+2. `workout_plan_v4.csv`
+3. `programma_avanzato_v4.md`
+4. `dossier_pt_claude.md`
+
 Ordine consigliato di lettura:
 
 1. `dossier_pt_claude.md`

@@ -2238,6 +2238,7 @@ var BARBELL_MIN_KG = 0;
 var BARBELL_TOTAL_EX = ["Squat","Panca","Military Press","Stacco da Terra","Stacco Rumeno","Front Squat","Pause Squat","Push Press","Stacco Sumo","Rematore Bilanciere","Pendlay Row","Good Morning","Hip Thrust Bilanciere"];
 
 function usesBarbellTotal(exName) {
+  if (exName === "T-bar Row") return false;
   return BARBELL_TOTAL_EX.indexOf(exName) >= 0;
 }
 
@@ -4207,6 +4208,18 @@ function isNearBodyweightElasticSession(exName, sets) {
     return "Prova con una variante piu facile la prossima volta.";
   }
 
+  function getGuidedRirZeroMessage(exName) {
+    var term = getGuidedReferenceTerm(exName);
+    var inc = getGuidedIncrementInfo(exName);
+    if (inc.kind === "kg") {
+      return "Sei arrivata a cedimento. Non aumentare questo " + term + ". Se succede ancora o resti sotto il minimo del range, alleggerisci. " + getGuidedReductionLabel(exName);
+    }
+    if (inc.kind === "step" || inc.kind === "tick" || inc.kind === "assist") {
+      return "Sei arrivata a cedimento. Non aumentare ancora questo " + term + ". Se succede ancora o resti sotto il minimo del range, usa piu aiuto.";
+    }
+    return "Sei arrivata a cedimento. Non aumentare ancora la difficolta. Se succede ancora o resti sotto il minimo del range, usa una variante piu facile.";
+  }
+
   function getGuidedLastCompleteSession(exName, serie) {
     var spec = parseProgressSpec(serie);
     if (!spec || !spec.sets) return null;
@@ -4545,7 +4558,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     var restInfo = getGuidedRestSuggestion(guidedPrompt.exName, guidedPrompt.restSec || 90, rirValue);
     setGuidedRestHint(restInfo.label);
     if (rirValue === "0") {
-      setGuidedFeedback("Sei andata a cedimento. Sulla prossima serie fermati 1 rip prima.");
+      setGuidedFeedback(getGuidedRirZeroMessage(guidedPrompt.exName));
     } else if (rirValue === "3" || rirValue === "4+") {
       setGuidedFeedback("Il carico e leggero. Se si ripete alla prossima serie, considera un aumento.");
     } else if (guidedPrompt.isLastSet) {
@@ -7337,19 +7350,19 @@ function isNearBodyweightElasticSession(exName, sets) {
       </div>}
 
       {(calibrationFeedback || guidedFeedback) && <div
-        style={{ position: "fixed", left: 12, right: 12, bottom: tPanel ? 104 : 72, zIndex: 132, pointerEvents: "none" }}
+        style={{ position: "fixed", left: 8, right: 8, bottom: tPanel ? 104 : 72, zIndex: 132, pointerEvents: "none" }}
       >
-        <div ref={feedbackCardsRef} style={{ width: "min(calc(100vw - 24px), 720px)", margin: "0 auto", display: "grid", gap: 10, pointerEvents: "auto" }}>
+        <div ref={feedbackCardsRef} style={{ width: "min(calc(100vw - 16px), 560px)", margin: "0 auto", display: "grid", gap: 10, pointerEvents: "auto", boxSizing: "border-box" }}>
           {guidedFeedback && <div
             onClick={function() { setGuidedFeedback(""); }}
-            style={{ background: dc, color: "#fff", borderRadius: 16, padding: "14px 16px", boxShadow: "0 14px 34px rgba(0,0,0,0.22)", fontSize: 14, fontWeight: 700, lineHeight: 1.65, cursor: "pointer" }}
+            style={{ background: dc, color: "#fff", borderRadius: 16, padding: "14px 16px", boxShadow: "0 14px 34px rgba(0,0,0,0.22)", fontSize: 13, fontWeight: 700, lineHeight: 1.6, cursor: "pointer", boxSizing: "border-box", overflowWrap: "anywhere", wordBreak: "break-word" }}
           >
             <div style={{ fontSize: 12, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 5, opacity: 0.88 }}>🧭 Modalità guidata</div>
             {guidedFeedback}
           </div>}
           {calibrationFeedback && <div
             onClick={function() { setCalibrationFeedback(""); }}
-            style={{ background: T.ok, color: "#fff", borderRadius: 16, padding: "14px 16px", boxShadow: "0 14px 34px rgba(0,0,0,0.22)", fontSize: 14, fontWeight: 700, lineHeight: 1.65, cursor: "pointer" }}
+            style={{ background: T.ok, color: "#fff", borderRadius: 16, padding: "14px 16px", boxShadow: "0 14px 34px rgba(0,0,0,0.22)", fontSize: 13, fontWeight: 700, lineHeight: 1.6, cursor: "pointer", boxSizing: "border-box", overflowWrap: "anywhere", wordBreak: "break-word" }}
           >
             <div style={{ fontSize: 12, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 5, opacity: 0.92 }}>🎯 Calibrazione</div>
             {calibrationFeedback}
