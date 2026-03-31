@@ -5800,26 +5800,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </button>;
               })}
             </div>
-            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Libreria esercizi</div>
-            <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Modalità workflow esercizi</div>
-                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Mostra stati contenuto, priorità seed e filtro workflow nella tab Esercizi. Se resta spenta, la libreria mostra solo i filtri normali per attrezzo e pattern.</div>
-                </div>
-                <button
-                  onClick={function() {
-                    var next = !exerciseWorkflowEnabled;
-                    setExerciseWorkflowEnabled(next);
-                    if (!next) setExWorkflowFilter("all");
-                    try { localStorage.setItem("wt-exercise-workflow", next ? "1" : "0"); } catch(e) {}
-                  }}
-                  style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (exerciseWorkflowEnabled ? dc : T.sub + "30"), background: exerciseWorkflowEnabled ? dc : T.cd, color: exerciseWorkflowEnabled ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
-                >
-                  {exerciseWorkflowEnabled ? "ON" : "OFF"}
-                </button>
-              </div>
-            </div>
             {!isBasics && <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
               <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
                 <div style={{ flex: 1 }}>
@@ -6934,19 +6914,6 @@ function isNearBodyweightElasticSession(exName, sets) {
           <div style={{ fontSize: 14, color: T.sub, transform: catSec === "ex" ? "rotate(180deg)" : "none" }}>&#9662;</div>
         </div>
         {catSec === "ex" && <div style={{ marginBottom: 12 }}>
-          {exerciseWorkflowEnabled && <>
-            <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, margin: "0 0 6px 2px" }}>Workflow</div>
-            <div style={{ display: "flex", gap: 6, overflowX: "auto", paddingBottom: 8, marginBottom: 8 }}>
-              {Object.keys(EX_WORKFLOW_FILTER_LABELS).map(function(key) {
-                var active = exWorkflowFilter === key;
-                return <button key={key} onClick={function(e) { e.stopPropagation(); setExWorkflowFilter(key); }} style={{ whiteSpace: "nowrap", minHeight: 30, padding: "0 12px", borderRadius: 999, border: "1px solid " + (active ? dc : T.sub + "30"), background: active ? dc : T.cd, color: active ? "#fff" : T.tx, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>{EX_WORKFLOW_FILTER_LABELS[key]}</button>;
-              })}
-            </div>
-            <div style={{ background: dc + "0A", border: "1px solid " + dc + "18", borderRadius: 10, padding: "9px 10px", marginBottom: 10 }}>
-              <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 3 }}>Cosa fare</div>
-              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>{EX_WORKFLOW_HELP[exWorkflowFilter] || EX_WORKFLOW_HELP.all}</div>
-            </div>
-          </>}
           <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, margin: "0 0 6px 2px" }}>Attrezzo</div>
           <div style={{ display: "flex", gap: 6, overflowX: "auto", paddingBottom: 8, marginBottom: 8 }}>
             {Object.keys(EXERCISE_GEAR_LABELS).map(function(key) {
@@ -6962,8 +6929,8 @@ function isNearBodyweightElasticSession(exName, sets) {
               return <button key={key} onClick={function(e) { e.stopPropagation(); setExPatternFilter(key); }} style={{ whiteSpace: "nowrap", minHeight: 30, padding: "0 12px", borderRadius: 999, border: "1px solid " + (active ? dc : T.sub + "30"), background: active ? dc : T.cd, color: active ? "#fff" : T.tx, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>{EX_PATTERN_FILTER_LABELS[key]}</button>;
             })}
           </div>
-          {((exerciseWorkflowEnabled && exWorkflowFilter !== "all") || exGearFilter !== "all" || exPatternFilter !== "all") && <div style={{ fontSize: 11, color: T.sub, margin: "0 0 8px 2px" }}>
-            {[(exerciseWorkflowEnabled && exWorkflowFilter !== "all") ? EX_WORKFLOW_FILTER_LABELS[exWorkflowFilter] : null, exGearFilter !== "all" ? EXERCISE_GEAR_LABELS[exGearFilter] : null, exPatternFilter !== "all" ? EX_PATTERN_FILTER_LABELS[exPatternFilter] : null].filter(Boolean).join(" · ")}
+          {(exGearFilter !== "all" || exPatternFilter !== "all") && <div style={{ fontSize: 11, color: T.sub, margin: "0 0 8px 2px" }}>
+            {[exGearFilter !== "all" ? EXERCISE_GEAR_LABELS[exGearFilter] : null, exPatternFilter !== "all" ? EX_PATTERN_FILTER_LABELS[exPatternFilter] : null].filter(Boolean).join(" · ")}
           </div>}
           {exVisibleEntries.map(function(item, ei) {
             var name = item.name;
@@ -6977,13 +6944,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                 <div style={{ fontWeight: 700, fontSize: 12 }}>{name}</div>
                 <div style={{ fontSize: 10, color: T.sub }}>{db.g}</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: 4 }}>
-                  {exerciseWorkflowEnabled && item.priority && <span style={{ padding: "2px 6px", borderRadius: 999, background: dc + "16", color: dc, fontSize: 9, fontWeight: 800 }}>{"P" + item.priority}</span>}
-                  {exerciseWorkflowEnabled && item.isSeed && <span style={{ padding: "2px 6px", borderRadius: 999, background: "#8E44AD16", color: "#8E44AD", fontSize: 9, fontWeight: 800 }}>Nuovo</span>}
-                  {exerciseWorkflowEnabled && item.isCovered && <span style={{ padding: "2px 6px", borderRadius: 999, background: "#1E88E516", color: "#1E88E5", fontSize: 9, fontWeight: 800 }}>Coperto</span>}
                   {item.patternKey && <span title={EXERCISE_PATTERN_HELP[item.patternKey] || ""} style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{EXERCISE_PATTERN_LABELS[item.patternKey] + " · " + (EXERCISE_PATTERN_HELP[item.patternKey] || "")}</span>}
-                  {exerciseWorkflowEnabled && <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{"Scheda " + item.cardStatus.replace("_", " ")}</span>}
-                  {exerciseWorkflowEnabled && <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{"Foto " + item.photoStatus}</span>}
-                  {exerciseWorkflowEnabled && <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{"Video " + item.videoStatus}</span>}
                 </div>
               </div>
               <div style={{ paddingRight: 12, color: T.sub, fontSize: 12 }}>&#8250;</div>
