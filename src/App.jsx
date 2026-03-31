@@ -7,6 +7,8 @@ import img_Affondi from "./images/exercises/Affondi.jpg";
 import img_Alzate_Laterali from "./images/exercises/Alzate_Laterali.jpg";
 import img_Arnold_Press from "./images/exercises/Arnold_Press.jpg";
 import img_Clamshell from "./images/exercises/Clamshell.jpg";
+import img_Cable_Chest_Press from "./images/exercises/cable-chest-press.webp";
+import img_Cable_Pull_Through from "./images/exercises/cable-pull-through.gif";
 import img_Croci_Manubri_a_Terra from "./images/exercises/Croci_Manubri_a_Terra.jpg";
 import img_Curl_Bicipiti from "./images/exercises/Curl_Bicipiti.jpg";
 import img_Curl_Concentrato from "./images/exercises/Curl_Concentrato.jpg";
@@ -33,6 +35,7 @@ import img_Plank from "./images/exercises/Plank.jpg";
 import img_Pulley from "./images/exercises/Pulley-basso.jpeg";
 import img_Push_Press from "./images/exercises/Push_Press.jpg";
 import img_Push_Up from "./images/exercises/Push-Up.gif";
+import img_Push_Up_Rialzo from "./images/exercises/pushup-rialzo.jpg";
 import img_Push_Up_Declino from "./images/exercises/Push_Up_Declino.jpg";
 import img_Push_Up_Diamante from "./images/exercises/Push_Up_Diamante.jpg";
 import img_Rematore_Bilanciere from "./images/exercises/Rematore_Bilanciere.jpg";
@@ -52,6 +55,11 @@ import img_Walking_Lunge from "./images/exercises/Walking_Lunge.jpg";
 import img_Woodchop from "./images/exercises/Cable-wood-chop-resized .jpeg";
 import img_Dip_alle_Parallele from "./images/exercises/dip tricipiti parallele.jpg";
 import img_T_bar_Row from "./images/exercises/t-bar-rows.gif";
+import img_TRX_Hip_Hinge from "./images/exercises/trx hip hinge.gif";
+import img_TRX_Reverse_Lunge from "./images/exercises/trx reverse lunge.jpg";
+import img_TRX_Row from "./images/exercises/trx-row.webp";
+import img_TRX_Split_Squat from "./images/exercises/trx split squat.gif";
+import img_TRX_Squat from "./images/exercises/trx-squat - .jpeg";
 import img_Fitball_Hamstring_Curl from "./images/exercises/Fitball Hamstring Curl .jpg";
 import img_Glute_Bridge_Fitball from "./images/exercises/glute-bridge-fitball.gif";
 import img_Face_Pull from "./images/exercises/Face-pull-resized.jpeg";
@@ -2051,6 +2059,8 @@ var EX_IMG = {
   "Alzate Laterali": img_Alzate_Laterali,
   "Arnold Press": img_Arnold_Press,
   "Clamshell": img_Clamshell,
+  "Cable Chest Press": img_Cable_Chest_Press,
+  "Cable Pull-Through": img_Cable_Pull_Through,
   "Croci Manubri a Terra": img_Croci_Manubri_a_Terra,
   "Curl Bicipiti": img_Curl_Bicipiti,
   "Curl Concentrato": img_Curl_Concentrato,
@@ -2084,6 +2094,7 @@ var EX_IMG = {
   "Pulley": img_Pulley,
   "Push Press": img_Push_Press,
   "Push-Up": img_Push_Up,
+  "Push-Up su rialzo": img_Push_Up_Rialzo,
   "Retrazione scapolare al muro": img_w_ShoulderRolls,
   "Shoulder rolls + apertura petto": img_w_ShoulderRolls,
   "Push-Up Declino": img_Push_Up_Declino,
@@ -2103,6 +2114,11 @@ var EX_IMG = {
   "Step Up": img_Step_Up,
   "Trazioni": img_Trazioni,
   "Trazioni Supine": img_Trazioni_Supine,
+  "TRX Hip Hinge Assistito": img_TRX_Hip_Hinge,
+  "TRX Reverse Lunge": img_TRX_Reverse_Lunge,
+  "TRX Row": img_TRX_Row,
+  "TRX Split Squat": img_TRX_Split_Squat,
+  "TRX Squat": img_TRX_Squat,
   "Tricipiti Cavo": img_Tricipiti_Cavo,
   "Walking Lunge": img_Walking_Lunge,
   "Woodchop": img_Woodchop,
@@ -2870,6 +2886,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [tFlash, setTFlash] = useState(false);
   var [tWarning, setTWarning] = useState(false);
   var [tPanel, setTPanel] = useState(false);
+  var [tLocked, setTLocked] = useState(false);
   var [autoBackupMsg, setAutoBackupMsg] = useState("");
   var [exGearFilter, setExGearFilter] = useState("all");
   var [exPatternFilter, setExPatternFilter] = useState("all");
@@ -3292,6 +3309,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   }, [forcedRecoveryLock, tMode, tRunning, tMs]);
   useEffect(function() {
     if (!activeOpenRestSec) return;
+    if (tLocked) return;
     setTMode("countdown");
     setTTarget(activeOpenRestSec);
     if (!tRunning) {
@@ -3301,7 +3319,10 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       setTFlash(false);
       setTWarning(false);
     }
-  }, [activeOpenRestSec]);
+  }, [activeOpenRestSec, tLocked, tRunning]);
+  useEffect(function() {
+    if (tLocked) setTPanel(true);
+  }, [tLocked]);
   var saveData = useCallback(function(nl, nc, np, nm, ng, bw) {
     var nextLogs = nl || {};
     var nextCardioLogs = nc || {};
@@ -3344,10 +3365,15 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   function timerGo() { try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {} if (tMode === "countdown" && tMs === 0 && !tRunning) { tAcc.current = 0; setTMs(tTarget * 1000); } lastSnd.current = tMode === "countdown" ? 0 : Math.floor(tMs/1000); tStart.current = Date.now(); setTRunning(true); setTFlash(false); setTFull(false); }
   function timerPause() { setTRunning(false); tAcc.current = tMode === "stopwatch" ? tMs : tTarget*1000 - tMs; }
   function timerReset() { setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMs(tMode === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); setTFull(false); }
-  function timerSwitch(m) { setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMode(m); setTMs(m === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); }
-  function timerSetTarget(s) { setTTarget(s); if (!tRunning) { tAcc.current = 0; lastSnd.current = -1; setTMs(s * 1000); } }
+  function timerSwitch(m) { if (tLocked) return; setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMode(m); setTMs(m === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); }
+  function timerSetTarget(s) { if (tLocked) return; setTTarget(s); if (!tRunning) { tAcc.current = 0; lastSnd.current = -1; setTMs(s * 1000); } }
+  function toggleTimerLock() {
+    setTLocked(function(prev) { return !prev; });
+    setTPanel(true);
+  }
 
   function quickTimer(secs) {
+    if (tLocked) return;
     try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {}
     setTRunning(false);
     clearInterval(intv.current);
@@ -7060,6 +7086,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                       {calibrationLocked && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: "#FFB30012", border: "1px solid #FFB30033", fontSize: 11, color: "#8A5A00", lineHeight: 1.55 }}>
                         Recupero obbligatorio in calibrazione attivo: aspetta la fine del timer prima di salvare la serie successiva.
                       </div>}
+                      {effectiveCalibrationMode && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: T.sb, border: "1px solid " + T.bg, fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
+                        Nella <b style={{ color: T.tx }}>prima serie test</b> il RIR si inserisce nel modale finale come <b style={{ color: T.tx }}>RIR / riserva</b>. Dalla <b style={{ color: T.tx }}>seconda serie</b> puoi scriverlo direttamente nella riga.
+                      </div>}
                       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                         {Array.from({ length: sc }).map(function(_, si) {
                           var lg = tLog ? tLog.sets.find(function(s) { return s.si === si; }) : null;
@@ -7067,7 +7096,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                           var tgt = p.reps[si] || p.reps[p.reps.length - 1];
                           var sugg = getSuggested(si);
                           var done = !!lg;
-                          var showInlineRir = !guidedMode && (!effectiveCalibrationMode || si > 0 || !!(tLog && tLog.sets && tLog.sets.length > 0));
+                          var showInlineRir = ((!guidedMode) || effectiveCalibrationMode) && (!effectiveCalibrationMode || si > 0 || !!(tLog && tLog.sets && tLog.sets.length > 0));
                           return <div key={si} style={{ borderRadius: 10, border: "1px solid " + (done ? T.ok + "40" : T.bg), background: done ? T.ok + "0C" : T.sb, overflow: "hidden" }}>
                             {/* Serie header */}
                             <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px" }}>
@@ -7364,12 +7393,15 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>
             </label>
             <div style={{ display: "grid", gap: 6 }}>
-              <span style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>Quante altre ripetizioni pulite avresti potuto fare?</span>
+              <span style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>RIR / riserva: quante altre ripetizioni pulite avresti potuto fare?</span>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 6 }}>
                 {["0","1","2","3","4+"].map(function(opt) {
                   var active = calibrationAnswers.reserve === opt;
                   return <button key={opt} onClick={function() { setCalibrationAnswers(function(prev) { return Object.assign({}, prev, { reserve: opt }); }); }} style={{ minHeight: 40, border: "none", borderRadius: 10, background: active ? dc : T.bg, color: active ? "#fff" : T.sub, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>{opt}</button>;
                 })}
+              </div>
+              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
+                Questo e il tuo RIR della serie test. Se per esempio ne avevi ancora 2 pulite, scegli <b style={{ color: T.tx }}>2</b>.
               </div>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8 }}>
@@ -7389,19 +7421,23 @@ function isNearBodyweightElasticSession(exName, sets) {
         <div style={{ maxWidth: 600, margin: "0 auto", display: "flex", justifyContent: "flex-end", padding: "0 10px", boxSizing: "border-box" }}>
         <div style={{ width: "min(calc(100vw - 20px), 284px)", maxWidth: "calc(100vw - 20px)", pointerEvents: timerPassive ? "none" : "auto", opacity: timerPassive ? 0.34 : 1, transform: timerPassive ? "scale(0.96)" : "none", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s, opacity 0.2s, transform 0.2s", borderRadius: 14, overflow: "hidden", boxSizing: "border-box" }}>
         <div style={{ display: "flex", alignItems: "center", padding: "7px 8px", gap: 5, minWidth: 0 }}>
-          <button onClick={function() { setTPanel(!tPanel); }} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 28, height: 28, borderRadius: 7, cursor: "pointer", fontSize: 12 }}>{tPanel ? "\u25BE" : "\u25B4"}</button>
-          <div onClick={function() { setTPanel(function(prev) { return !prev; }); }} style={{ flex: 1, textAlign: "center", cursor: "pointer", minWidth: 0 }}>
+          <button onClick={function() { if (!tLocked) setTPanel(!tPanel); }} title={tLocked ? "Timer bloccato" : (tPanel ? "Riduci timer" : "Espandi timer")} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 28, height: 28, borderRadius: 7, cursor: tLocked ? "default" : "pointer", fontSize: 12, opacity: tLocked ? 0.45 : 1 }}>{(tPanel || tLocked) ? "\u25BE" : "\u25B4"}</button>
+          <div onClick={function() { if (!tLocked) setTPanel(function(prev) { return !prev; }); }} style={{ flex: 1, textAlign: "center", cursor: tLocked ? "default" : "pointer", minWidth: 0 }}>
             {activeOpenEx && tMode === "countdown" && <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.68)", marginBottom: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
               {"🔔 " + ((guidedMode && guidedRestHint ? guidedRestHint + " · " : "") + "Recupero min: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget))}
             </div>}
             <div style={{ fontVariantNumeric: "tabular-nums", fontSize: 20, fontWeight: 800, letterSpacing: "0.4px", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s", animation: tWarning ? "timerBlink 1s infinite" : "none" }}>{fmtTime(tMs)}</div>
           </div>
           <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
+            <button onClick={toggleTimerLock} title={tLocked ? "Sblocca timer" : "Blocca timer"} style={{ background: tLocked ? T.ac : "rgba(255,255,255,0.1)", border: "none", color: tLocked ? "#000" : T.htx, width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 13, fontWeight: 800 }}>{tLocked ? "🔒" : "🔓"}</button>
             {!tRunning ? <button onClick={timerGo} style={{ background: T.ok, border: "none", color: "#fff", width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 15 }}>&#9654;</button> : <button onClick={timerPause} style={{ background: T.ac, border: "none", color: "#000", width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12, fontWeight: 800 }}>&#9646;&#9646;</button>}
             <button onClick={timerReset} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12 }}>&#8634;</button>
           </div>
         </div>
-        {tPanel && <div style={{ padding: "0 10px 10px" }}>
+        {(tPanel || tLocked) && <div style={{ padding: "0 10px 10px" }}>
+          {tLocked && <div style={{ marginBottom: 8, padding: "7px 8px", borderRadius: 8, background: "rgba(255,255,255,0.08)", fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.82)", lineHeight: 1.5 }}>
+            Timer bloccato: resta aperto e non viene sovrascritto dai nuovi recuperi finché non lo sblocchi.
+          </div>}
           <div style={{ display: "flex", gap: 4, marginBottom: 8 }}>
             {["stopwatch","countdown"].map(function(m) { return <button key={m} onClick={function() { timerSwitch(m); }} style={{ flex: 1, padding: "7px 0", border: "none", borderRadius: 8, cursor: "pointer", fontSize: 12, fontWeight: tMode === m ? 700 : 500, background: tMode === m ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: tMode === m ? "#fff" : "rgba(255,255,255,0.5)" }}>{m === "stopwatch" ? "Cronometro" : "Recupero"}</button>; })}
           </div>
