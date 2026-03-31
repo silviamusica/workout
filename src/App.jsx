@@ -2217,6 +2217,11 @@ function usesElasticScale(exName) {
   return exName === "Trazioni" || exName === "Trazioni Supine" || exName === "Dip alle Parallele";
 }
 
+function isTimeTrackedExercise(exName, serie) {
+  if (exName === "Plank") return true;
+  return !!(serie && /\d+s/i.test(String(serie)));
+}
+
 function clampElasticTick(v) {
   var n = parseInt(v);
   if (!n) return 0;
@@ -2284,7 +2289,8 @@ function numericRirValue(v) {
 
 function formatSetResult(exName, setEntry, isBW, isTime) {
   if (!setEntry) return "";
-  var base = isTime
+  var timed = isTime || isTimeTrackedExercise(exName);
+  var base = timed
     ? ((setEntry.r === "max" ? "max" : (parseInt(setEntry.r) || 0)) + " s")
     : (isBW ? (setEntry.r + " rip") : formatLoadAndReps(exName, setEntry.w, setEntry.r));
   var rir = normalizeRirValue(setEntry.rir);
@@ -4836,7 +4842,7 @@ function isNearBodyweightElasticSession(exName, sets) {
   // Timer preset buttons helper
   function timerBtns(big) {
     return [30,60,90,120,180].map(function(s) {
-      return <button key={s} onClick={function() { timerSetTarget(s); }} style={{ flex: big ? "none" : 1, padding: big ? "10px 16px" : "7px 0", border: "none", borderRadius: big ? 10 : 7, cursor: "pointer", fontSize: big ? 14 : 11, fontWeight: 700, background: tTarget === s ? dc : "rgba(255,255,255,0.07)", color: tTarget === s ? "#fff" : "rgba(255,255,255,0.5)" }}>{fmtLabel(s)}</button>;
+      return <button key={s} onClick={function() { timerSetTarget(s); }} style={{ flex: big ? "none" : 1, padding: big ? "10px 16px" : "7px 0", border: "none", borderRadius: big ? 10 : 7, cursor: "pointer", fontSize: big ? 14 : 11, fontWeight: 700, background: tTarget === s ? dc : "rgba(255,255,255,0.07)", color: tTarget === s ? "#fff" : "rgba(255,255,255,0.5)", pointerEvents: "auto", touchAction: "manipulation" }}>{fmtLabel(s)}</button>;
     });
   }
 
@@ -7094,6 +7100,8 @@ function isNearBodyweightElasticSession(exName, sets) {
                           var lg = tLog ? tLog.sets.find(function(s) { return s.si === si; }) : null;
                           var isE = editing === i + "-" + si;
                           var tgt = p.reps[si] || p.reps[p.reps.length - 1];
+                          var isTimeExercise = isTimeTrackedExercise(ex.n, ex.s);
+                          var targetLabel = isTimeExercise ? ((String(tgt).replace(/s$/i, "") || tgt) + " s") : (tgt + " rip");
                           var sugg = getSuggested(si);
                           var done = !!lg;
                           var showInlineRir = ((!guidedMode) || effectiveCalibrationMode) && (!effectiveCalibrationMode || si > 0 || !!(tLog && tLog.sets && tLog.sets.length > 0));
@@ -7102,23 +7110,23 @@ function isNearBodyweightElasticSession(exName, sets) {
                             <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px" }}>
                               <div style={{ width: 26, height: 26, borderRadius: "50%", background: done ? T.ok : T.tx + "15", color: done ? "#fff" : T.sub, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0 }}>{done ? "✓" : si + 1}</div>
                               <div style={{ flex: 1, fontSize: 12, color: T.sub, fontWeight: 600 }}>
-                                {tgt} rip
+                                {targetLabel}
                                 {isBW ? "" : usesBand ? (" · " + (sugg.w ? formatElasticTick(sugg.w) + " sugg." : "inserisci tacca")) : (" · " + (sugg.w ? (usesBarbellTotal(ex.n) ? formatInputWeightHint(ex.n, sugg.w, barbellWeight) + " sugg." : sugg.w + " kg sugg.") : (usesBarbellTotal(ex.n) ? "inserisci kg dischi" : "inserisci kg")))}
                               </div>
-                              {done && !isE && <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(String(storedWeightToPlateInput(ex.n, lg.w, barbellWeight))); setTmpR(String(lg.r)); setTmpRir(normalizeRirValue(lg.rir)); }} style={{ fontSize: 10, color: T.sub, background: "none", border: "none", cursor: "pointer", padding: "0 4px" }}>modifica</button>}
+                              {done && !isE && <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(String(storedWeightToPlateInput(ex.n, lg.w, barbellWeight))); setTmpR(String(lg.r)); setTmpRir(normalizeRirValue(lg.rir)); }} style={{ fontSize: 10, color: T.sub, background: "none", border: "none", cursor: "pointer", padding: "0 4px", touchAction: "manipulation" }}>modifica</button>}
                             </div>
                             {/* Input or result */}
                             {isE ? (
                               <div style={{ padding: "0 10px 10px" }}>
                                 <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
                                   {!isBW && <><input type="number" inputMode="numeric" min={usesBand ? 1 : 0} max={usesBand ? 10 : undefined} placeholder={usesBand ? "tacca 1-10" : (usesBarbellTotal(ex.n) ? "kg dischi" : "kg")} value={tmpW} onChange={function(e) { setTmpW(usesBand ? String(clampElasticTick(e.target.value) || "") : e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus /><span style={{ fontSize: 11, color: T.sub, flexShrink: 0 }}>{usesBand ? "tacca" : (usesBarbellTotal(ex.n) ? "kg dischi" : "kg")}</span></>}
-                                  <input type={tgt === "max" ? "text" : "number"} inputMode="numeric" placeholder="rip" value={tmpR} onChange={function(e) { setTmpR(e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus={isBW} />
+                                  <input type={tgt === "max" ? "text" : "number"} inputMode="numeric" placeholder={isTimeExercise ? "sec" : "rip"} value={tmpR} onChange={function(e) { setTmpR(e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus={isBW} />
                                   {showInlineRir && <select value={tmpRir} onChange={function(e) { setTmpRir(e.target.value); }} style={{ minWidth: 72, padding: "10px 8px", border: "2px solid " + dc + "40", borderRadius: 8, fontSize: 12, background: T.cd, color: T.tx, fontWeight: 700 }}>
                                     <option value="">RIR</option>
                                     {["0","1","2","3","4+"].map(function(opt) { return <option key={opt} value={opt}>{"RIR " + opt}</option>; })}
                                   </select>}
-                                  <button disabled={calibrationLocked} onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : plateInputToStoredWeight(ex.n, tmpW, barbellWeight)), tmpR, isBW, tmpRir); }} style={{ width: 44, height: 44, background: calibrationLocked ? T.bg : dc, color: calibrationLocked ? T.sub : "#fff", border: "none", borderRadius: 8, fontSize: 20, cursor: calibrationLocked ? "default" : "pointer", flexShrink: 0, fontWeight: 700 }}>✓</button>
-                                  <button onClick={function(e) { e.stopPropagation(); setEditing(null); setTmpW(""); setTmpR(""); setTmpRir(""); }} style={{ width: 36, height: 44, background: T.bg, color: T.sub, border: "none", borderRadius: 8, fontSize: 16, cursor: "pointer", flexShrink: 0 }}>✕</button>
+                                  <button disabled={calibrationLocked} onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : plateInputToStoredWeight(ex.n, tmpW, barbellWeight)), tmpR, isBW, tmpRir); }} style={{ width: 44, height: 44, background: calibrationLocked ? T.bg : dc, color: calibrationLocked ? T.sub : "#fff", border: "none", borderRadius: 8, fontSize: 20, cursor: calibrationLocked ? "default" : "pointer", flexShrink: 0, fontWeight: 700, touchAction: "manipulation" }}>✓</button>
+                                  <button onClick={function(e) { e.stopPropagation(); setEditing(null); setTmpW(""); setTmpR(""); setTmpRir(""); }} style={{ width: 36, height: 44, background: T.bg, color: T.sub, border: "none", borderRadius: 8, fontSize: 16, cursor: "pointer", flexShrink: 0, touchAction: "manipulation" }}>✕</button>
                                 </div>
                                 {!isBW && !usesBand && usesBarbellTotal(ex.n) && <div style={{ marginTop: 6, fontSize: 11, color: T.sub, lineHeight: 1.5 }}>
                                   {"Totale: " + plateInputToStoredWeight(ex.n, tmpW, barbellWeight) + " kg (bil. " + barbellWeight + " + dischi " + (parseFloat(tmpW) || 0) + ")"}
@@ -7126,19 +7134,19 @@ function isNearBodyweightElasticSession(exName, sets) {
                               </div>
                             ) : done ? (
                               <div style={{ padding: "0 10px 10px" }}>
-                                <div style={{ fontSize: 15, fontWeight: 800, color: T.ok }}>{formatSetResult(ex.n, lg, isBW, false)}</div>
+                                <div style={{ fontSize: 15, fontWeight: 800, color: T.ok }}>{formatSetResult(ex.n, lg, isBW, isTimeExercise)}</div>
                               </div>
                             ) : (
                               <div style={{ padding: "0 10px 10px", display: "flex", flexDirection: "column", gap: 6 }}>
-                                <button disabled={calibrationLocked} onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(sugg.w); setTmpR(sugg.r); setTmpRir(sugg.rir || ""); }} style={{ width: "100%", minHeight: 52, border: "2px dashed " + dc + "50", borderRadius: 10, background: calibrationLocked ? T.bg : dc + "08", color: calibrationLocked ? T.sub : dc, fontWeight: 800, fontSize: 15, cursor: calibrationLocked ? "default" : "pointer" }}>
-                                  {sugg.r ? "▶ " + (isBW ? sugg.r + " rip" : formatLoadAndReps(ex.n, usesBarbellTotal(ex.n) ? plateInputToStoredWeight(ex.n, sugg.w, barbellWeight) : sugg.w, sugg.r)) : "+ registra"}
+                                <button disabled={calibrationLocked} onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(sugg.w); setTmpR(sugg.r); setTmpRir(sugg.rir || ""); }} style={{ width: "100%", minHeight: 52, border: "2px dashed " + dc + "50", borderRadius: 10, background: calibrationLocked ? T.bg : dc + "08", color: calibrationLocked ? T.sub : dc, fontWeight: 800, fontSize: 15, cursor: calibrationLocked ? "default" : "pointer", touchAction: "manipulation" }}>
+                                  {sugg.r ? "▶ " + (isTimeExercise ? (sugg.r + " s") : (isBW ? sugg.r + " rip" : formatLoadAndReps(ex.n, usesBarbellTotal(ex.n) ? plateInputToStoredWeight(ex.n, sugg.w, barbellWeight) : sugg.w, sugg.r))) : "+ registra"}
                                 </button>
                                 {(function() {
                                   if (si === 0) return null;
                                   var prevLg = tLog ? tLog.sets.find(function(s) { return s.si === si - 1; }) : null;
                                   if (!prevLg) return null;
-                                  return <button onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : prevLg.w, String(prevLg.r), isBW, prevLg.rir || ""); }} style={{ width: "100%", minHeight: 36, border: "1px solid " + T.sub + "30", borderRadius: 8, background: "transparent", color: T.sub, fontWeight: 700, fontSize: 12, cursor: "pointer" }}>
-                                    {"↑ copia serie " + si + " · " + formatSetResult(ex.n, prevLg, isBW, false)}
+                                  return <button onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : prevLg.w, String(prevLg.r), isBW, prevLg.rir || ""); }} style={{ width: "100%", minHeight: 36, border: "1px solid " + T.sub + "30", borderRadius: 8, background: "transparent", color: T.sub, fontWeight: 700, fontSize: 12, cursor: "pointer", touchAction: "manipulation" }}>
+                                    {"↑ copia serie " + si + " · " + formatSetResult(ex.n, prevLg, isBW, isTimeExercise)}
                                   </button>;
                                 })()}
                               </div>
@@ -7197,7 +7205,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                               {sess.sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) {
                                 return <div key={si} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, borderRadius: 8, background: T.cd, padding: "6px 9px" }}>
                                   <span style={{ fontSize: 10, fontWeight: 800, color: dc }}>{"SERIE " + (s.si + 1)}</span>
-                                  <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{formatSetResult(ex.n, s, isBW, false)}</span>
+                                  <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{formatSetResult(ex.n, s, isBW, isTimeTrackedExercise(ex.n, ex.s))}</span>
                                 </div>;
                               })}
                             </div>
@@ -7282,7 +7290,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                               {sess.sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) {
                                 return <div key={si} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, borderRadius: 8, background: T.cd, padding: "6px 9px" }}>
                                   <span style={{ fontSize: 10, fontWeight: 800, color: dc }}>{"SERIE " + (s.si + 1)}</span>
-                                  <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{formatSetResult(ex.n, s, isBW, false)}</span>
+                                  <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{formatSetResult(ex.n, s, isBW, isTimeTrackedExercise(ex.n, ex.s))}</span>
                                 </div>;
                               })}
                             </div>
@@ -7419,9 +7427,9 @@ function isNearBodyweightElasticSession(exName, sets) {
       {/* TIMER BAR */}
       <div style={{ position: "fixed", bottom: 10, left: 0, right: 0, zIndex: 100, pointerEvents: "none" }}>
         <div style={{ maxWidth: 600, margin: "0 auto", display: "flex", justifyContent: "flex-end", padding: "0 10px", boxSizing: "border-box" }}>
-        <div style={{ width: "min(calc(100vw - 20px), 284px)", maxWidth: "calc(100vw - 20px)", pointerEvents: timerPassive ? "none" : "auto", opacity: timerPassive ? 0.34 : 1, transform: timerPassive ? "scale(0.96)" : "none", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s, opacity 0.2s, transform 0.2s", borderRadius: 14, overflow: "hidden", boxSizing: "border-box" }}>
+        <div style={{ width: "min(calc(100vw - 20px), 284px)", maxWidth: "calc(100vw - 20px)", pointerEvents: "none", opacity: timerPassive ? 0.34 : 1, transform: timerPassive ? "scale(0.96)" : "none", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s, opacity 0.2s, transform 0.2s", borderRadius: 14, overflow: "hidden", boxSizing: "border-box" }}>
         <div style={{ display: "flex", alignItems: "center", padding: "7px 8px", gap: 5, minWidth: 0 }}>
-          <button onClick={function() { if (!tLocked) setTPanel(!tPanel); }} title={tLocked ? "Timer bloccato" : (tPanel ? "Riduci timer" : "Espandi timer")} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 28, height: 28, borderRadius: 7, cursor: tLocked ? "default" : "pointer", fontSize: 12, opacity: tLocked ? 0.45 : 1 }}>{(tPanel || tLocked) ? "\u25BE" : "\u25B4"}</button>
+          <button onClick={function() { if (!tLocked) setTPanel(!tPanel); }} title={tLocked ? "Timer bloccato" : (tPanel ? "Riduci timer" : "Espandi timer")} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 28, height: 28, borderRadius: 7, cursor: tLocked ? "default" : "pointer", fontSize: 12, opacity: tLocked ? 0.45 : 1, pointerEvents: "auto", touchAction: "manipulation" }}>{(tPanel || tLocked) ? "\u25BE" : "\u25B4"}</button>
           <div onClick={function() { if (!tLocked) setTPanel(function(prev) { return !prev; }); }} style={{ flex: 1, textAlign: "center", cursor: tLocked ? "default" : "pointer", minWidth: 0 }}>
             {activeOpenEx && tMode === "countdown" && <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.68)", marginBottom: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
               {"🔔 " + ((guidedMode && guidedRestHint ? guidedRestHint + " · " : "") + "Recupero min: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget))}
@@ -7429,9 +7437,9 @@ function isNearBodyweightElasticSession(exName, sets) {
             <div style={{ fontVariantNumeric: "tabular-nums", fontSize: 20, fontWeight: 800, letterSpacing: "0.4px", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s", animation: tWarning ? "timerBlink 1s infinite" : "none" }}>{fmtTime(tMs)}</div>
           </div>
           <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
-            <button onClick={toggleTimerLock} title={tLocked ? "Sblocca timer" : "Blocca timer"} style={{ background: tLocked ? T.ac : "rgba(255,255,255,0.1)", border: "none", color: tLocked ? "#000" : T.htx, width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 13, fontWeight: 800 }}>{tLocked ? "🔒" : "🔓"}</button>
-            {!tRunning ? <button onClick={timerGo} style={{ background: T.ok, border: "none", color: "#fff", width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 15 }}>&#9654;</button> : <button onClick={timerPause} style={{ background: T.ac, border: "none", color: "#000", width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12, fontWeight: 800 }}>&#9646;&#9646;</button>}
-            <button onClick={timerReset} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12 }}>&#8634;</button>
+            <button onClick={toggleTimerLock} title={tLocked ? "Sblocca timer" : "Blocca timer"} style={{ background: tLocked ? T.ac : "rgba(255,255,255,0.1)", border: "none", color: tLocked ? "#000" : T.htx, width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 13, fontWeight: 800, pointerEvents: "auto", touchAction: "manipulation" }}>{tLocked ? "🔒" : "🔓"}</button>
+            {!tRunning ? <button onClick={timerGo} style={{ background: T.ok, border: "none", color: "#fff", width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 15, pointerEvents: "auto", touchAction: "manipulation" }}>&#9654;</button> : <button onClick={timerPause} style={{ background: T.ac, border: "none", color: "#000", width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12, fontWeight: 800, pointerEvents: "auto", touchAction: "manipulation" }}>&#9646;&#9646;</button>}
+            <button onClick={timerReset} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12, pointerEvents: "auto", touchAction: "manipulation" }}>&#8634;</button>
           </div>
         </div>
         {(tPanel || tLocked) && <div style={{ padding: "0 10px 10px" }}>
@@ -7439,7 +7447,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             Timer bloccato: resta aperto e non viene sovrascritto dai nuovi recuperi finché non lo sblocchi.
           </div>}
           <div style={{ display: "flex", gap: 4, marginBottom: 8 }}>
-            {["stopwatch","countdown"].map(function(m) { return <button key={m} onClick={function() { timerSwitch(m); }} style={{ flex: 1, padding: "7px 0", border: "none", borderRadius: 8, cursor: "pointer", fontSize: 12, fontWeight: tMode === m ? 700 : 500, background: tMode === m ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: tMode === m ? "#fff" : "rgba(255,255,255,0.5)" }}>{m === "stopwatch" ? "Cronometro" : "Recupero"}</button>; })}
+            {["stopwatch","countdown"].map(function(m) { return <button key={m} onClick={function() { timerSwitch(m); }} style={{ flex: 1, padding: "7px 0", border: "none", borderRadius: 8, cursor: "pointer", fontSize: 12, fontWeight: tMode === m ? 700 : 500, background: tMode === m ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: tMode === m ? "#fff" : "rgba(255,255,255,0.5)", pointerEvents: "auto", touchAction: "manipulation" }}>{m === "stopwatch" ? "Cronometro" : "Recupero"}</button>; })}
           </div>
           {tMode === "countdown" && <div style={{ display: "flex", gap: 5 }}>{timerBtns(false)}</div>}
         </div>}
