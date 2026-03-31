@@ -127,8 +127,18 @@ import {
 let _ac = null;
 function getAC() { if (!_ac) try { _ac = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {} return _ac; }
 function playTone(freq, dur, vol) { try { var c = getAC(); if (!c) return; if (c.state === "suspended") c.resume(); var o = c.createOscillator(); var g = c.createGain(); o.connect(g); g.connect(c.destination); o.frequency.value = freq; o.type = "sine"; g.gain.setValueAtTime(vol, c.currentTime); g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + dur); o.start(c.currentTime); o.stop(c.currentTime + dur); } catch(e) {} }
-function beep30() { playTone(660, 0.18, 0.35); }
-function beep60() { playTone(880, 0.15, 0.4); setTimeout(function() { playTone(880, 0.2, 0.4); }, 200); }
+function beep30() { playTone(660, 0.16, 0.35); }
+function beep60() { playTone(880, 0.16, 0.42); }
+function beepTriple() {
+  playTone(880, 0.12, 0.42);
+  setTimeout(function() { playTone(880, 0.12, 0.42); }, 180);
+  setTimeout(function() { playTone(880, 0.12, 0.42); }, 360);
+}
+function beepFive() {
+  [0, 120, 240, 360, 480].forEach(function(delay) {
+    setTimeout(function() { playTone(1100, 0.08, 0.5); }, delay);
+  });
+}
 function beepEnd() { playTone(1047, 0.15, 0.5); setTimeout(function() { playTone(1047, 0.15, 0.5); }, 180); setTimeout(function() { playTone(1319, 0.3, 0.5); }, 360); }
 
 /* === THEMES === */
@@ -2346,7 +2356,7 @@ function isFatiguePatternAtTop(reps, spec) {
 }
 
 function getCalibrationChangeLabel(type, dir) {
-  if (type === "cable") return dir === "up" ? "sali di uno step al cavo" : "scendi di uno step al cavo";
+  if (type === "cable") return dir === "up" ? "sali di uno scatto sul pacco pesi del cavo" : "scendi di uno scatto sul pacco pesi del cavo";
   if (type === "dumbbell") return dir === "up" ? "aumenta di poco il carico" : "riduci di poco il carico";
   return dir === "up" ? "aumenta il carico" : "riduci il carico";
 }
@@ -3356,7 +3366,13 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       var remSec = Math.ceil(ms / 1000);
       if (remSec === lastSnd.current) return;
       lastSnd.current = remSec;
-      if (remSec <= 10 && remSec > 0) { playTone(remSec === 3 ? 1100 : remSec <= 3 ? 1320 : 880, 0.12, remSec <= 3 ? 0.6 : 0.4); }
+      if (remSec === 60) {
+        beep60();
+      } else if (remSec === 30) {
+        beepTriple();
+      } else if (remSec === 10) {
+        beepFive();
+      }
     } else {
       var el = Math.floor(ms/1000);
       if (el <= 0 || el === lastSnd.current) return;
@@ -3905,7 +3921,9 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       "Minuti cardio",
       "Km",
       "Kg zaino",
-      "Note"
+      "Note",
+      "Segnale",
+      "Legenda visiva"
     ]];
 
     Object.values(sourceLogs || {})
@@ -3950,7 +3968,9 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           "",
           "",
           "",
-          ctx.note
+          ctx.note,
+          usesElasticScale(entry.exercise) ? "🟣" : (usesBarbellTotal(entry.exercise) ? "🟠" : "🔵"),
+          usesElasticScale(entry.exercise) ? "Elastico / assistenza" : (usesBarbellTotal(entry.exercise) ? "Bilanciere / carico principale" : "Pesi / corpo libero")
         ]);
       });
 
@@ -3979,7 +3999,113 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           entry.minutes || "",
           entry.km || "",
           entry.kg || "",
-          ""
+          "",
+          "❤️",
+          "Cardio"
+        ]);
+      });
+
+    return rows.map(function(row) {
+      return row.map(csvCell).join(";");
+    }).join("\n");
+  }
+
+  function buildImportableCsv(sourceLogs, sourceCardioLogs) {
+    var rows = [[
+      "Data",
+      "Programma",
+      "Giorno",
+      "Focus",
+      "Mese",
+      "Tipo",
+      "Attivita",
+      "Serie",
+      "Peso input",
+      "Peso bilanciere",
+      "Peso totale",
+      "Unita peso",
+      "Ripetizioni/secondi",
+      "RIR",
+      "Tacca elastico",
+      "Note esercizio",
+      "Minuti cardio",
+      "Km",
+      "Kg zaino",
+      "Segnale",
+      "Legenda visiva"
+    ]];
+
+    Object.values(sourceLogs || {})
+      .sort(function(a, b) {
+        var c = String(a.date || "").localeCompare(String(b.date || ""));
+        if (c !== 0) return c;
+        return (a.day || 0) - (b.day || 0);
+      })
+      .forEach(function(entry) {
+        if (!entry) return;
+        var ctx = findExerciseContext(entry);
+        var sets = (entry.sets || []).slice().sort(function(a, b) { return (a.si || 0) - (b.si || 0); });
+        sets.forEach(function(setItem, idx) {
+          var isElastic = usesElasticScale(entry.exercise);
+          var inputWeight = isElastic ? "" : storedWeightToPlateInput(entry.exercise, setItem.w, barbellWeight);
+          var totalWeight = isElastic ? "" : (parseFloat(setItem.w) || 0);
+          rows.push([
+            entry.date || "",
+            ctx.program,
+            ctx.dayName,
+            ctx.focus,
+            entry.month || "",
+            "Pesi",
+            entry.exercise || "",
+            idx + 1,
+            inputWeight === "" ? "" : inputWeight,
+            usesBarbellTotal(entry.exercise) ? barbellWeight : "",
+            totalWeight === "" ? "" : totalWeight,
+            isElastic ? "tacca" : "kg",
+            setItem.r === "max" ? "max" : (parseInt(setItem.r) || 0),
+            normalizeRirValue(setItem.rir) || "",
+            isElastic ? (clampElasticTick(setItem.w) || "") : "",
+            entry.note || "",
+            "",
+            "",
+            "",
+            isElastic ? "🟣" : (usesBarbellTotal(entry.exercise) ? "🟠" : "🔵"),
+            isElastic ? "Elastico / assistenza" : (usesBarbellTotal(entry.exercise) ? "Bilanciere / carico principale" : "Pesi / corpo libero")
+          ]);
+        });
+      });
+
+    Object.values(sourceCardioLogs || {})
+      .sort(function(a, b) {
+        var c = String(a.date || "").localeCompare(String(b.date || ""));
+        if (c !== 0) return c;
+        return (a.day || 0) - (b.day || 0);
+      })
+      .forEach(function(entry) {
+        if (!entry) return;
+        var ctx = findCardioContext(entry);
+        rows.push([
+          entry.date || "",
+          ctx.program,
+          ctx.dayName,
+          ctx.focus,
+          entry.month || "",
+          "Cardio",
+          entry.label || CARDIO_KIND_LABEL[entry.kind] || "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          entry.minutes || "",
+          entry.km || "",
+          entry.kg || "",
+          "❤️",
+          "Cardio"
         ]);
       });
 
@@ -4133,6 +4259,116 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     setAutoBackupMsg("Importazione CSV completata. Caricati " + importedWeights + " esercizi e " + importedCardio + " voci cardio.");
   }
 
+  function importEditableCsv(text) {
+    var rows = parseCsvRows(text);
+    if (!rows.length) throw new Error("empty-csv");
+    var header = rows[0].map(function(cell) { return String(cell || "").trim(); });
+    if (header[0] !== "Data" || header[5] !== "Tipo" || header.indexOf("Serie") < 0 || header.indexOf("Ripetizioni/secondi") < 0) {
+      throw new Error("invalid-editable-csv");
+    }
+    var nextLogs = Object.assign({}, logs);
+    var nextCardioLogs = Object.assign({}, cardioLogs);
+    var grouped = {};
+    var importedWeights = 0;
+    var importedCardio = 0;
+
+    rows.slice(1).forEach(function(row) {
+      var get = function(name) {
+        var idx = header.indexOf(name);
+        return idx >= 0 ? String(row[idx] || "").trim() : "";
+      };
+      var date = get("Data");
+      var program = get("Programma");
+      var dayName = get("Giorno");
+      var monthVal = parseInt(get("Mese")) || month;
+      var type = get("Tipo");
+      var activity = get("Attivita");
+      if (!date || !type || !activity) return;
+      var di = getDayIndexFromCsv(program, dayName);
+      if (di == null) return;
+
+      if (type === "Cardio") {
+        var label = activity;
+        var cardioKey = date + "_d" + di + "_m" + monthVal + "_cardio_" + label;
+        nextCardioLogs[cardioKey] = {
+          date: date,
+          day: di,
+          month: monthVal,
+          label: label,
+          kind: inferCardioKind(label),
+          minutes: parseFloat(String(get("Minuti cardio")).replace(",", ".")) || 0,
+          km: parseFloat(String(get("Km")).replace(",", ".")) || 0,
+          kg: parseFloat(String(get("Kg zaino")).replace(",", ".")) || 0
+        };
+        importedCardio++;
+        return;
+      }
+
+      var groupKey = date + "_d" + di + "_m" + monthVal + "_" + activity;
+      if (!grouped[groupKey]) {
+        grouped[groupKey] = {
+          date: date,
+          day: di,
+          month: monthVal,
+          exercise: activity,
+          note: get("Note esercizio") || "",
+          sets: []
+        };
+      } else if (!grouped[groupKey].note && get("Note esercizio")) {
+        grouped[groupKey].note = get("Note esercizio");
+      }
+
+      var seriesIdx = Math.max(0, (parseInt(get("Serie")) || 1) - 1);
+      var isElastic = usesElasticScale(activity);
+      var repsRaw = get("Ripetizioni/secondi");
+      var repsValue = String(repsRaw).toLowerCase() === "max" ? "max" : (parseInt(repsRaw) || 0);
+      var rirValue = normalizeRirValue(get("RIR"));
+      var elasticTick = clampElasticTick(get("Tacca elastico"));
+      var totalWeightRaw = parseFloat(String(get("Peso totale")).replace(",", "."));
+      var inputWeightRaw = parseFloat(String(get("Peso input")).replace(",", "."));
+      var importedBarbell = parseFloat(String(get("Peso bilanciere")).replace(",", "."));
+      var effectiveBarbell = isFinite(importedBarbell) ? importedBarbell : barbellWeight;
+      var storedWeight = 0;
+
+      if (isElastic) {
+        storedWeight = elasticTick || 0;
+      } else if (isFinite(totalWeightRaw)) {
+        storedWeight = totalWeightRaw;
+      } else if (isFinite(inputWeightRaw)) {
+        storedWeight = plateInputToStoredWeight(activity, inputWeightRaw, effectiveBarbell);
+      }
+
+      grouped[groupKey].sets.push({
+        si: seriesIdx,
+        w: storedWeight,
+        r: repsValue,
+        rir: rirValue || undefined
+      });
+    });
+
+    Object.keys(grouped).forEach(function(key) {
+      var entry = grouped[key];
+      var cleanSets = entry.sets
+        .filter(function(setItem) {
+          return setItem && (setItem.r === "max" || (parseInt(setItem.r) || 0) > 0 || (parseFloat(setItem.w) || 0) > 0);
+        })
+        .sort(function(a, b) { return (a.si || 0) - (b.si || 0); });
+      if (!cleanSets.length) return;
+      nextLogs[key] = {
+        date: entry.date,
+        day: entry.day,
+        month: entry.month,
+        exercise: entry.exercise,
+        sets: cleanSets,
+        note: entry.note || ""
+      };
+      importedWeights++;
+    });
+
+    saveData(nextLogs, nextCardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight);
+    setAutoBackupMsg("Importazione CSV modificabile completata. Caricati " + importedWeights + " esercizi e " + importedCardio + " voci cardio.");
+  }
+
   function isExerciseCompleteInLogs(sourceLogs, di, exName, expectedSets) {
     var key = todayStr() + "_d" + di + "_m" + month + "_" + exName;
     var entry = sourceLogs[key];
@@ -4187,7 +4423,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     if (usesElasticScale(exName)) return { kind: "tick", amount: 1, label: "-1 tacca elastico" };
     if (exName === "Nordic Curl") return { kind: "assist", amount: 1, label: "meno assistenza o piu ROM" };
     if (exName.indexOf("Cavo") >= 0 || exName === "Face Pull" || exName === "Woodchop" || exName === "Tricipiti Cavo" || exName === "Pulley" || exName === "Lat Machine") {
-      return { kind: "step", amount: 1, label: "+1 step cavo" };
+      return { kind: "step", amount: 1, label: "+1 scatto cavo" };
     }
     if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || exName === "Push-Up" || exName === "Push-Up su rialzo" || exName === "Dip alle Parallele" || exName === "Fitball Hamstring Curl" || exName === "Ab Wheel") {
       return { kind: "reps", amount: 1, label: "+1 rip per serie" };
@@ -4202,7 +4438,7 @@ function isNearBodyweightElasticSession(exName, sets) {
   function getGuidedReductionLabel(exName) {
     var inc = getGuidedIncrementInfo(exName);
     if (inc.kind === "kg") return inc.amount >= 2.5 ? "Prova con 2.5 kg in meno la prossima volta." : "Prova con 1 kg in meno per manubrio la prossima volta.";
-    if (inc.kind === "step") return "Prova con 1 step in meno la prossima volta.";
+    if (inc.kind === "step") return "Prova con 1 scatto in meno sul pacco pesi del cavo la prossima volta.";
     if (inc.kind === "tick") return "Prova con 1 tacca di aiuto in piu la prossima volta.";
     if (inc.kind === "assist") return "Prova con piu assistenza o con un range di movimento piu corto la prossima volta.";
     return "Prova con una variante piu facile la prossima volta.";
@@ -4269,7 +4505,7 @@ function isNearBodyweightElasticSession(exName, sets) {
       }
       var inc = getGuidedIncrementInfo(exName);
       if (inc.kind === "kg") return { state: "up", title: "Aumenta carico", detail: "Ultima: " + formatSessionSummary(exName, sets, false, false) + ". Prossima: " + (load + inc.amount) + " kg e riparti dal minimo del range." };
-      if (inc.kind === "step") return { state: "up", title: "Aumenta di uno step", detail: "Ultima: " + formatSessionSummary(exName, sets, false, false) + ". Prossima: sali di 1 step al cavo e riparti dal minimo del range." };
+      if (inc.kind === "step") return { state: "up", title: "Aumenta di uno scatto", detail: "Ultima: " + formatSessionSummary(exName, sets, false, false) + ". Prossima: sali di 1 scatto sul pacco pesi del cavo e riparti dal minimo del range." };
       if (inc.kind === "tick") {
         if (isNearBodyweightElasticSession(exName, sets)) {
           return { state: "up", title: "Quasi senza aiuto", detail: "Ultima: " + formatSessionSummary(exName, sets, false, false) + ". Sei quasi senza assistenza: prova 1 tacca in meno. Se sei gia al minimo aiuto e il gesto resta pulito, puoi iniziare a testare il bodyweight puro." };
@@ -4345,7 +4581,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     }
     if (allAtTop) {
       if (inc.kind === "kg") return "La prossima volta aumenta a " + (load + inc.amount) + " kg e riparti dal minimo del range.";
-      if (inc.kind === "step") return "La prossima volta sali di 1 step al cavo e riparti dal minimo del range.";
+      if (inc.kind === "step") return "La prossima volta sali di 1 scatto sul pacco pesi del cavo e riparti dal minimo del range.";
       if (inc.kind === "tick") return "La prossima volta usa 1 tacca di aiuto in meno e riparti dal minimo del range.";
       if (inc.kind === "assist") return "La prossima volta prova meno assistenza o un range di movimento piu ampio, ripartendo dal minimo del range.";
       return "La prossima volta prova +1 rip per serie o una variante piu difficile.";
@@ -4812,7 +5048,10 @@ function isNearBodyweightElasticSession(exName, sets) {
     setTimeout(function() {
       downloadTextFile(buildReadableCsv(logs, cardioLogs), baseName + '-leggibile.csv', "text/csv;charset=utf-8");
     }, 180);
-    setAutoBackupMsg("Esportazione completata. Hai scaricato JSON + CSV leggibile.");
+    setTimeout(function() {
+      downloadTextFile(buildImportableCsv(logs, cardioLogs), baseName + '-modificabile-importabile.csv', "text/csv;charset=utf-8");
+    }, 360);
+    setAutoBackupMsg("Esportazione completata. Hai scaricato JSON + CSV leggibile + CSV modificabile.");
   }
 
   function exportJsonOnly() {
@@ -4834,7 +5073,11 @@ function isNearBodyweightElasticSession(exName, sets) {
           var text = String(evt.target.result || "");
           var lowerName = String(file.name || "").toLowerCase();
           if (lowerName.endsWith(".csv")) {
-            importReadableCsv(text);
+            try {
+              importEditableCsv(text);
+            } catch (csvErr) {
+              importReadableCsv(text);
+            }
             return;
           }
           var imported = JSON.parse(text);
@@ -4843,7 +5086,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           saveData(importedLogs || {}, importedCardioLogs || {}, imported && imported.calibrationProfiles && typeof imported.calibrationProfiles === "object" ? imported.calibrationProfiles : {}, !!(imported && imported.calibrationMode), imported && typeof imported.guidedMode === "boolean" ? imported.guidedMode : false, imported && typeof imported.barbellWeight === "number" ? imported.barbellWeight : BARBELL_BASE_KG);
           setAutoBackupMsg("Importazione JSON completata. I dati sono stati caricati correttamente.");
         } catch(e) {
-          alert('Errore: file non valido. Per il CSV usa quello esportato dall\'app.');
+          alert('Errore: file non valido. Per il CSV usa quello esportato dall\'app, leggibile o modificabile.');
         }
       };
       reader.readAsText(file);
@@ -5302,9 +5545,9 @@ function isNearBodyweightElasticSession(exName, sets) {
             {/* Dati */}
             <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Dati</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 8 }}>
-              <button onClick={function() { exportData(); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬇️</span> Esporta dati (JSON + CSV leggibile)</button>
+              <button onClick={function() { exportData(); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬇️</span> Esporta dati (JSON + CSV leggibile + CSV modificabile)</button>
               <button onClick={function() { exportJsonOnly(); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>🧾</span> Esporta solo JSON</button>
-              <button onClick={function() { importData(); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬆️</span> Importa dati (JSON o CSV leggibile)</button>
+              <button onClick={function() { importData(); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬆️</span> Importa dati (JSON o CSV)</button>
               <button onClick={function() { setResetOpen(true); setSettingsOpen(false); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid #C6282820", background: "#C6282808", cursor: "pointer", fontSize: 13, fontWeight: 600, color: "#C62828" }}><span>🗑️</span> Cancella tutti i dati</button>
             </div>
           </div>
@@ -7132,8 +7375,8 @@ function isNearBodyweightElasticSession(exName, sets) {
                             {isE ? (
                               <div style={{ padding: "0 10px 10px" }}>
                                 <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-                                  {!isBW && <><input type="number" inputMode="numeric" min={usesBand ? 1 : 0} max={usesBand ? 10 : undefined} placeholder={usesBand ? "tacca 1-10" : (usesBarbellTotal(ex.n) ? "kg dischi" : "kg")} value={tmpW} onChange={function(e) { setTmpW(usesBand ? String(clampElasticTick(e.target.value) || "") : e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus /><span style={{ fontSize: 11, color: T.sub, flexShrink: 0 }}>{usesBand ? "tacca" : (usesBarbellTotal(ex.n) ? "kg dischi" : "kg")}</span></>}
-                                  <input type={tgt === "max" ? "text" : "number"} inputMode="numeric" placeholder={isTimeExercise ? "sec" : "rip"} value={tmpR} onChange={function(e) { setTmpR(e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, fontWeight: 700 }} autoFocus={isBW} />
+                                  {!isBW && <><input type="number" inputMode="numeric" min={usesBand ? 1 : 0} max={usesBand ? 10 : undefined} placeholder={usesBand ? "tacca 1-10" : (usesBarbellTotal(ex.n) ? "kg dischi" : "kg")} value={tmpW} onChange={function(e) { setTmpW(usesBand ? String(clampElasticTick(e.target.value) || "") : e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, WebkitTextFillColor: T.tx, caretColor: T.tx, opacity: 1, fontWeight: 700 }} autoFocus /><span style={{ fontSize: 11, color: T.sub, flexShrink: 0 }}>{usesBand ? "tacca" : (usesBarbellTotal(ex.n) ? "kg dischi" : "kg")}</span></>}
+                                  <input type={tgt === "max" ? "text" : "number"} inputMode="numeric" placeholder={isTimeExercise ? "sec" : "rip"} value={tmpR} onChange={function(e) { setTmpR(e.target.value); }} style={{ flex: 1, minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 16, textAlign: "center", background: T.cd, color: T.tx, WebkitTextFillColor: T.tx, caretColor: T.tx, opacity: 1, fontWeight: 700 }} autoFocus={isBW} />
                                   {showInlineRir && <select value={tmpRir} onChange={function(e) { setTmpRir(e.target.value); }} style={{ minWidth: 72, padding: "10px 8px", border: "2px solid " + dc + "40", borderRadius: 8, fontSize: 12, background: T.cd, color: T.tx, fontWeight: 700 }}>
                                     <option value="">RIR</option>
                                     {["0","1","2","3","4+"].map(function(opt) { return <option key={opt} value={opt}>{"RIR " + opt}</option>; })}
