@@ -216,25 +216,32 @@ L'app distingue 3 categorie:
 ### Regole attuali
 
 `RIR 0`
-- heavy: `3 min`
-- accessorio composto: `2 min`
-- monoarticolare: `90s`
-
-`RIR 1`
-- heavy: `2.5-3 min`
-- accessorio composto: `90-120s`
-- monoarticolare: `60-90s`
-
-`RIR 2`
-- recupero standard della scheda
-
-`RIR 3+`
-- heavy: `2 min`
-- accessorio composto: `60-90s`
+- heavy: `2.5 min`
+- accessorio composto: `90s`
 - monoarticolare: `60s`
 
+`RIR 1`
+- heavy: `2 min`
+- accessorio composto: `75s`
+- monoarticolare: `60s`
+
+`RIR 2`
+- heavy: `90s`
+- accessorio composto: `60s`
+- monoarticolare: `45s`
+
+`RIR 3+`
+- heavy: `75s`
+- accessorio composto: `45s`
+- monoarticolare: `30s`
+
 Il timer mostra anche un testo sintetico:
-- esempio `RIR 2: resta sul recupero standard`
+- esempio `RIR 1: 75s bastano`
+
+Questi tempi sono stati accorciati rispetto alla prima versione della guida:
+- assumono lavoro normale a `RIR 1-2`
+- non sono pensati per cedimento sistematico su tutti i set
+- sono piu coerenti con il recupero medio femminile e con una seduta ipertrofica pratica
 
 ## Feedback se la serie è sotto il minimo
 

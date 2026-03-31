@@ -222,12 +222,20 @@ Usa 3 categorie:
 - accessorio composto
 - monoarticolare
 
-A `RIR 2` usa il recupero standard della scheda.
+Tempi attuali:
+- `RIR 0` → `150s / 90s / 60s`
+- `RIR 1` → `120s / 75s / 60s`
+- `RIR 2` → `90s / 60s / 45s`
+- `RIR 3+` → `75s / 45s / 30s`
+
+Questa versione e piu corta della prima:
+- assume lavoro normale a `RIR 1-2`
+- non e costruita su cedimento sistematico
+- e pensata per un recupero pratico e piu rapido
 
 Nota importante:
 - lo `Stacco Rumeno` è trattato come esercizio heavy nei casi di RIR estremi
-- ma a `RIR 2` usa il recupero base CSV
-- se il CSV dice `90s-2 min`, l'app usa il minimo, cioè `90s`
+- ma a `RIR 2` cade comunque su `90s`, quindi non viene allungato inutilmente
 
 ### Decisione finale
 

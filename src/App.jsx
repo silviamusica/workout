@@ -133,6 +133,15 @@ import {
   slugifyExerciseName,
 } from "./data/exerciseWorkflow";
 
+var EXERCISE_PATTERN_HELP = {
+  squat: "piegamento tipo squat",
+  hinge: "piega dal bacino",
+  spinta: "movimento di spinta",
+  tirata: "movimento di tirata",
+  core: "stabilita del tronco",
+  affondo_unilaterale: "lavoro su una gamba",
+};
+
 /* === AUDIO === */
 let _ac = null;
 function getAC() { if (!_ac) try { _ac = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {} return _ac; }
@@ -3874,7 +3883,8 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
             dayName: day.name,
             focus: day.focus,
             plannedSerie: exDef.s || "",
-            note: exDef.note || ""
+            note: exDef.note || "",
+            rec: rawEx.rec || exDef.rec || ""
           };
         }
       }
@@ -3884,7 +3894,35 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       dayName: typeof entry.day === "number" ? ("Giorno " + (entry.day + 1)) : "",
       focus: "",
       plannedSerie: "",
-      note: ""
+      note: "",
+      rec: ""
+    };
+  }
+
+  function getSessionRepresentativeRir(sets) {
+    var values = (sets || []).map(function(s) { return numericRirValue(s.rir); }).filter(function(v) { return v !== null; });
+    if (!values.length) return null;
+    var avg = values.reduce(function(acc, v) { return acc + v; }, 0) / values.length;
+    var bucket = avg <= 0.5 ? "0" : avg <= 1.5 ? "1" : avg <= 2.5 ? "2" : "3";
+    return { avg: Math.round(avg * 10) / 10, bucket: bucket };
+  }
+
+  function getEntryRestSummary(entry) {
+    if (!entry) return { short: "—", detail: "Recupero non disponibile" };
+    var ctx = findExerciseContext(entry);
+    var baseRestSec = getExerciseRestSeconds({ rec: ctx.rec || "" }, { n: entry.exercise, rpe: "" }) || 0;
+    var restRange = String(ctx.rec || "").trim();
+    var rirInfo = getSessionRepresentativeRir(entry.sets || []);
+    if (rirInfo) {
+      var guided = getGuidedRestSuggestion(entry.exercise, baseRestSec || 90, rirInfo.bucket);
+      return {
+        short: fmtLabel(guided.seconds),
+        detail: "Recupero stimato: " + fmtLabel(guided.seconds) + " · RIR medio " + rirInfo.avg + (restRange ? " · scheda: " + restRange : "")
+      };
+    }
+    return {
+      short: restRange || (baseRestSec ? fmtLabel(baseRestSec) : "—"),
+      detail: "Recupero scheda: " + (restRange || (baseRestSec ? fmtLabel(baseRestSec) : "—"))
     };
   }
 
@@ -5248,7 +5286,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             {exerciseWorkflowEnabled && meta.priority && <span style={{ padding: "4px 8px", borderRadius: 999, background: dc + "16", color: dc, fontSize: 10, fontWeight: 800 }}>{"Priorita #" + meta.priority}</span>}
             {exerciseWorkflowEnabled && meta.isSeed && <span style={{ padding: "4px 8px", borderRadius: 999, background: "#8E44AD16", color: "#8E44AD", fontSize: 10, fontWeight: 800 }}>Nuovo seed</span>}
             {exerciseWorkflowEnabled && meta.isCovered && <span style={{ padding: "4px 8px", borderRadius: 999, background: "#1E88E516", color: "#1E88E5", fontSize: 10, fontWeight: 800 }}>Gia coperto</span>}
-            {meta.patternKey && <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{EXERCISE_PATTERN_LABELS[meta.patternKey]}</span>}
+            {meta.patternKey && <span title={EXERCISE_PATTERN_HELP[meta.patternKey] || ""} style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Pattern: " + EXERCISE_PATTERN_LABELS[meta.patternKey] + " · " + (EXERCISE_PATTERN_HELP[meta.patternKey] || "")}</span>}
             {exerciseWorkflowEnabled && <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Scheda: " + meta.cardStatus.replace("_", " ")}</span>}
             {exerciseWorkflowEnabled && <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Foto: " + meta.photoStatus}</span>}
             {exerciseWorkflowEnabled && <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Video: " + meta.videoStatus}</span>}
@@ -6272,6 +6310,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           if (!sets.length) return null;
           var isBW = BW_EX.indexOf(name) >= 0;
           var isBand = usesElasticScale(name);
+          var restMeta = getEntryRestSummary(entry);
           if (isBW) {
             var bwReps = sets.map(function(s) { return s.r === "max" ? 20 : (parseInt(s.r) || 0); }).filter(function(v) { return v > 0; });
             if (!bwReps.length) return null;
@@ -6286,6 +6325,8 @@ function isNearBodyweightElasticSession(exName, sets) {
               totalReps: bwTotal,
               label: bwPattern || (bwTotal + " rip tot"),
               shortLabel: Math.max.apply(null, bwReps) + " rip",
+              restLabel: restMeta.short,
+              restDetail: restMeta.detail,
             };
           }
           if (isBand) {
@@ -6309,6 +6350,8 @@ function isNearBodyweightElasticSession(exName, sets) {
               totalReps: validBandSets.reduce(function(acc, s) { return acc + s.reps; }, 0),
               label: formatElasticTick(bestBandSet.tick) + " · " + formatCompactSetPattern(sets, false),
               shortLabel: formatElasticTick(bestBandSet.tick),
+              restLabel: restMeta.short,
+              restDetail: restMeta.detail,
             };
           }
           var validWeightedSets = sets.map(function(s) {
@@ -6333,6 +6376,8 @@ function isNearBodyweightElasticSession(exName, sets) {
               totalReps: validWeightedSets.reduce(function(acc, s) { return acc + s.reps; }, 0),
               label: "Sessione mista",
               shortLabel: mixedBest.weight + " kg",
+              restLabel: restMeta.short,
+              restDetail: restMeta.detail,
             };
           }
           var weight = distinctWeights[0];
@@ -6346,6 +6391,8 @@ function isNearBodyweightElasticSession(exName, sets) {
             totalReps: totalReps,
             label: weight + " kg · " + formatCompactSetPattern(sets, false),
             shortLabel: weight + " kg",
+            restLabel: restMeta.short,
+            restDetail: restMeta.detail,
           };
         }
         function pickBetterSessionMetric(current, candidate) {
@@ -6495,9 +6542,11 @@ function isNearBodyweightElasticSession(exName, sets) {
                           <div style={{ display: "grid", gap: 6 }}>
                             {session.entries.map(function(entry, ei2) {
                               var exerciseSummary = formatSessionSummary(entry.exercise, (entry.sets || []).slice().sort(function(a, b) { return (a.si || 0) - (b.si || 0); }), BW_EX.indexOf(entry.exercise) >= 0, false);
+                              var restSummary = getEntryRestSummary(entry);
                               return <div key={entry.exercise + "-" + ei2} style={{ display: "grid", gap: 2 }}>
                                 <div style={{ fontSize: 11, fontWeight: 700, color: T.tx }}>{entry.exercise}</div>
                                 <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.55 }}>{exerciseSummary || "Nessuna serie salvata"}</div>
+                                <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.55 }}>{restSummary.detail}</div>
                                 {entry.note && <div style={{ fontSize: 10, color: dc, lineHeight: 1.55, background: dc + "0A", border: "1px solid " + dc + "18", borderRadius: 8, padding: "6px 8px", marginTop: 2 }}>
                                   <span style={{ fontWeight: 800, marginRight: 5 }}>Nota:</span>{entry.note}
                                 </div>}
@@ -6525,13 +6574,17 @@ function isNearBodyweightElasticSession(exName, sets) {
                   var prevLabel = item.prev === null ? "—" : item.prev.label;
                   var maxLabel = item.maxEver ? item.maxEver.label : "—";
                   var trendShort = item.last ? item.last.shortLabel : "—";
+                  var lastRest = item.last && item.last.restLabel ? item.last.restLabel : "—";
+                  var prevRest = item.prev && item.prev.restLabel ? item.prev.restLabel : "—";
                   return <div key={item.name} style={{ padding: "11px 14px", borderBottom: ii < keyLiftProgress.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 10, alignItems: "center" }}>
                       <div>
                         <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, marginBottom: 4 }}>{item.name}</div>
                         <div style={{ display: "flex", flexWrap: "wrap", gap: 10, fontSize: 11, color: T.sub, lineHeight: 1.5 }}>
                           <span><b style={{ color: T.tx }}>Ultimo:</b> {lastLabel}</span>
+                          <span><b style={{ color: T.tx }}>Rec:</b> {lastRest}</span>
                           <span><b style={{ color: T.tx }}>Prima:</b> {prevLabel}</span>
+                          <span><b style={{ color: T.tx }}>Rec prima:</b> {prevRest}</span>
                           <span><b style={{ color: T.tx }}>Massimo mese:</b> {maxLabel}</span>
                         </div>
                       </div>
@@ -6725,6 +6778,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             })}
           </div>
           <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, margin: "0 0 6px 2px" }}>Pattern</div>
+          <div style={{ fontSize: 10, color: T.sub, margin: "0 0 8px 2px", lineHeight: 1.5 }}>Squat = piegamento tipo squat · Hinge = piega dal bacino · Spinta = allontani · Tirata = avvicini · Core = stabilizzi · Affondo = una gamba alla volta</div>
           <div style={{ display: "flex", gap: 6, overflowX: "auto", paddingBottom: 8, marginBottom: 8 }}>
             {Object.keys(EX_PATTERN_FILTER_LABELS).map(function(key) {
               var active = exPatternFilter === key;
@@ -6749,7 +6803,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   {exerciseWorkflowEnabled && item.priority && <span style={{ padding: "2px 6px", borderRadius: 999, background: dc + "16", color: dc, fontSize: 9, fontWeight: 800 }}>{"P" + item.priority}</span>}
                   {exerciseWorkflowEnabled && item.isSeed && <span style={{ padding: "2px 6px", borderRadius: 999, background: "#8E44AD16", color: "#8E44AD", fontSize: 9, fontWeight: 800 }}>Nuovo</span>}
                   {exerciseWorkflowEnabled && item.isCovered && <span style={{ padding: "2px 6px", borderRadius: 999, background: "#1E88E516", color: "#1E88E5", fontSize: 9, fontWeight: 800 }}>Coperto</span>}
-                  {item.patternKey && <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{EXERCISE_PATTERN_LABELS[item.patternKey]}</span>}
+                  {item.patternKey && <span title={EXERCISE_PATTERN_HELP[item.patternKey] || ""} style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{EXERCISE_PATTERN_LABELS[item.patternKey] + " · " + (EXERCISE_PATTERN_HELP[item.patternKey] || "")}</span>}
                   {exerciseWorkflowEnabled && <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{"Scheda " + item.cardStatus.replace("_", " ")}</span>}
                   {exerciseWorkflowEnabled && <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{"Foto " + item.photoStatus}</span>}
                   {exerciseWorkflowEnabled && <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{"Video " + item.videoStatus}</span>}
