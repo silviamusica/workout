@@ -5783,31 +5783,117 @@ function isNearBodyweightElasticSession(exName, sets) {
           return d.getDate() + " " + months[d.getMonth()] + " – " + end.getDate() + " " + months[end.getMonth()];
         }
         var allEntries = Object.values(logs).filter(function(entry) { return entry.month === month; });
-        var cardioEntries = Object.values(cardioLogs).filter(function(entry) { return entry.month === month; });
         // Per-exercise history (last best per week)
         var exMap = {};
         allEntries.forEach(function(entry) {
           if (!exMap[entry.exercise]) exMap[entry.exercise] = [];
           exMap[entry.exercise].push(entry);
         });
-        // Weekly sessions
+        var targetWeeklySessions = isBeginner ? 3 : 4;
+        // Weekly sessions (solo pesi)
         var weekMap = {};
         allEntries.forEach(function(entry) {
           var wk = getWeekKey(entry.date);
-          if (!weekMap[wk]) weekMap[wk] = { sessions: new Set(), volume: 0, days: [] };
-          weekMap[wk].sessions.add(entry.date + "_" + entry.day);
+          if (!weekMap[wk]) weekMap[wk] = { sessions: new Set(), volume: 0, days: {} };
+          var dayKey = entry.date + "_" + entry.day;
+          weekMap[wk].sessions.add(dayKey);
+          if (!weekMap[wk].days[dayKey]) weekMap[wk].days[dayKey] = { date: entry.date, day: entry.day, entries: [] };
+          weekMap[wk].days[dayKey].entries.push(entry);
           entry.sets.forEach(function(s) {
             var r = s.r === "max" ? 10 : (parseInt(s.r) || 0);
             weekMap[wk].volume += (parseFloat(s.w) || 0) * r;
           });
         });
-        cardioEntries.forEach(function(entry) {
-          var wk = getWeekKey(entry.date);
-          if (!weekMap[wk]) weekMap[wk] = { sessions: new Set(), volume: 0, days: [] };
-          weekMap[wk].sessions.add(entry.date + "_" + entry.day + "_cardio");
-        });
         var weeks = Object.keys(weekMap).sort(function(a,b) { return b.localeCompare(a); });
-        // Exercise progress: compute best set (max weight or max reps if BW)
+        function getSessionProgressMetric(name, entry) {
+          var sets = (entry && entry.sets ? entry.sets : []).slice().sort(function(a, b) { return (a.si || 0) - (b.si || 0); });
+          if (!sets.length) return null;
+          var isBW = BW_EX.indexOf(name) >= 0;
+          var isBand = usesElasticScale(name);
+          if (isBW) {
+            var bwReps = sets.map(function(s) { return s.r === "max" ? 20 : (parseInt(s.r) || 0); }).filter(function(v) { return v > 0; });
+            if (!bwReps.length) return null;
+            var bwTotal = bwReps.reduce(function(acc, v) { return acc + v; }, 0);
+            return {
+              name: name,
+              isBW: true,
+              mixed: false,
+              score: bwTotal,
+              primary: Math.max.apply(null, bwReps),
+              totalReps: bwTotal,
+              label: bwTotal + " rip tot",
+              shortLabel: Math.max.apply(null, bwReps) + " rip",
+            };
+          }
+          if (isBand) {
+            var validBandSets = sets.map(function(s) {
+              return { tick: clampElasticTick(s.w), reps: s.r === "max" ? 20 : (parseInt(s.r) || 0) };
+            }).filter(function(s) { return s.tick > 0 && s.reps > 0; });
+            if (!validBandSets.length) return null;
+            var bandScore = validBandSets.reduce(function(acc, s) { return acc + ((11 - s.tick) * s.reps); }, 0);
+            var bestBandSet = validBandSets.reduce(function(best, s) {
+              if (!best) return s;
+              if (s.tick > best.tick) return s;
+              if (s.tick === best.tick && s.reps > best.reps) return s;
+              return best;
+            }, null);
+            return {
+              name: name,
+              isBW: false,
+              mixed: false,
+              score: bandScore,
+              primary: bestBandSet.tick,
+              totalReps: validBandSets.reduce(function(acc, s) { return acc + s.reps; }, 0),
+              label: formatElasticTick(bestBandSet.tick) + " · " + validBandSets.reduce(function(acc, s) { return acc + s.reps; }, 0) + " rip tot",
+              shortLabel: formatElasticTick(bestBandSet.tick),
+            };
+          }
+          var validWeightedSets = sets.map(function(s) {
+            return { weight: parseFloat(s.w) || 0, reps: s.r === "max" ? 20 : (parseInt(s.r) || 0) };
+          }).filter(function(s) { return s.weight > 0 && s.reps > 0; });
+          if (!validWeightedSets.length) return null;
+          var distinctWeights = Array.from(new Set(validWeightedSets.map(function(s) { return s.weight; })));
+          var mixed = distinctWeights.length > 1;
+          if (mixed) {
+            var mixedBest = validWeightedSets.reduce(function(best, s) {
+              if (!best) return s;
+              var bestScore = best.weight * best.reps;
+              var currScore = s.weight * s.reps;
+              return currScore > bestScore ? s : best;
+            }, null);
+            return {
+              name: name,
+              isBW: false,
+              mixed: true,
+              score: mixedBest.weight * mixedBest.reps,
+              primary: mixedBest.weight,
+              totalReps: validWeightedSets.reduce(function(acc, s) { return acc + s.reps; }, 0),
+              label: "Sessione mista",
+              shortLabel: mixedBest.weight + " kg",
+            };
+          }
+          var weight = distinctWeights[0];
+          var totalReps = validWeightedSets.reduce(function(acc, s) { return acc + s.reps; }, 0);
+          return {
+            name: name,
+            isBW: false,
+            mixed: false,
+            score: weight * totalReps,
+            primary: weight,
+            totalReps: totalReps,
+            label: weight + " kg · " + totalReps + " rip tot",
+            shortLabel: weight + " kg",
+          };
+        }
+        function pickBetterSessionMetric(current, candidate) {
+          if (!current) return candidate;
+          if (!candidate) return current;
+          if (current.mixed !== candidate.mixed) return current.mixed ? candidate : current;
+          if (candidate.score !== current.score) return candidate.score > current.score ? candidate : current;
+          if (candidate.primary !== current.primary) return candidate.primary > current.primary ? candidate : current;
+          return candidate.totalReps > current.totalReps ? candidate : current;
+        }
+        // Exercise progress: compute representative weekly session (not just max set)
         var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Dip su Panca","Plank","Hollow Position","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Fire Hydrant"];
         var exProgress = Object.keys(exMap).map(function(name) {
           var entries = exMap[name].sort(function(a,b) { return a.date.localeCompare(b.date); });
@@ -5815,19 +5901,24 @@ function isNearBodyweightElasticSession(exName, sets) {
           var byWeek = {};
           entries.forEach(function(entry) {
             var wk = getWeekKey(entry.date);
-            var best = entry.sets.reduce(function(acc, s) {
-              var val = isBW ? (s.r === "max" ? 20 : parseInt(s.r) || 0) : (parseFloat(s.w) || 0);
-              return val > acc ? val : acc;
-            }, 0);
-            if (!byWeek[wk] || best > byWeek[wk]) byWeek[wk] = best;
+            var metric = getSessionProgressMetric(name, entry);
+            if (!metric) return;
+            byWeek[wk] = pickBetterSessionMetric(byWeek[wk], metric);
           });
           var wkKeys = Object.keys(byWeek).sort();
-          var last = wkKeys.length > 0 ? byWeek[wkKeys[wkKeys.length - 1]] : 0;
+          var last = wkKeys.length > 0 ? byWeek[wkKeys[wkKeys.length - 1]] : null;
           var prev = wkKeys.length > 1 ? byWeek[wkKeys[wkKeys.length - 2]] : null;
-          var trend = prev === null ? "new" : last > prev ? "up" : last < prev ? "down" : "flat";
-          var maxEver = Math.max.apply(null, Object.values(byWeek));
+          var trend = "new";
+          if (last && prev) {
+            if (last.mixed || prev.mixed) trend = "flat";
+            else trend = last.score > prev.score ? "up" : last.score < prev.score ? "down" : "flat";
+          }
+          var allMetrics = Object.values(byWeek);
+          var maxEver = allMetrics.reduce(function(best, item) {
+            return pickBetterSessionMetric(best, item);
+          }, null);
           return { name: name, isBW: isBW, last: last, prev: prev, trend: trend, maxEver: maxEver, weeks: wkKeys.length };
-        }).filter(function(e) { return e.last > 0; }).sort(function(a,b) { return b.weeks - a.weeks; });
+        }).filter(function(e) { return e.last && e.last.score > 0; }).sort(function(a,b) { return b.weeks - a.weeks; });
         var keyLiftNames = ["Squat", "Stacco da Terra", "Panca", "Military Press", "Trazioni", "Trazioni Supine", "Push-Up", "T-bar Row", "Dip alle Parallele", "Hip Thrust Bilanciere"];
         var keyLiftProgress = keyLiftNames.map(function(name) {
           return exProgress.find(function(item) { return item.name === name; }) || null;
@@ -5854,27 +5945,6 @@ function isNearBodyweightElasticSession(exName, sets) {
           var trend = prev === null ? "new" : last > prev ? "up" : last < prev ? "down" : "flat";
           return { name: name, last: last, prev: prev, trend: trend, weeks: avgByWeek.length, avgByWeek: avgByWeek.slice(-6) };
         }).filter(Boolean).sort(function(a,b) { return b.weeks - a.weeks; });
-        var cardioMap = {};
-        cardioEntries.forEach(function(entry) {
-          if (!cardioMap[entry.label]) cardioMap[entry.label] = [];
-          cardioMap[entry.label].push(entry);
-        });
-        var cardioProgress = Object.keys(cardioMap).map(function(name) {
-          var entries = cardioMap[name].sort(function(a, b) { return a.date.localeCompare(b.date); });
-          var last = entries[entries.length - 1];
-          var prev = entries.length > 1 ? entries[entries.length - 2] : null;
-          var lastScore = cardioScore(last);
-          var prevScore = prev ? cardioScore(prev) : null;
-          var trend = prev === null ? "new" : lastScore > prevScore ? "up" : lastScore < prevScore ? "down" : "flat";
-          return {
-            name: name,
-            last: last,
-            prev: prev,
-            trend: trend,
-            weeks: Array.from(new Set(entries.map(function(entry) { return getWeekKey(entry.date); }))).length
-          };
-        }).sort(function(a, b) { return b.weeks - a.weeks; });
-
         function Tooltip(props) {
           if (progTooltip !== props.id) return null;
           return <div style={{ margin: "4px 0 6px", padding: "9px 12px", borderRadius: 9, background: dc + "12", border: "1px solid " + dc + "25", fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
@@ -5890,30 +5960,39 @@ function isNearBodyweightElasticSession(exName, sets) {
             </summary>
             <div style={{ padding: "0 16px 14px", display: "grid", gap: 5, fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
               <div><b style={{ color: dc }}>Ti dice se stai andando avanti</b> nel mese corrente: continuita, volume totale e andamento degli esercizi.</div>
-              <div><b style={{ color: dc }}>Sessioni per settimana</b> ti mostra quante sedute hai fatto e quanto lavoro hai accumulato.</div>
+              <div><b style={{ color: dc }}>Settimane</b> ti mostra quante sedute pesi hai fatto e quanto lavoro hai accumulato.</div>
+              <div><b style={{ color: dc }}>Dettaglio settimana</b> ti fa vedere gli allenamenti reali che hai registrato, con esercizi e serie.</div>
               <div><b style={{ color: dc }}>Andamento esercizi</b> confronta l'ultima settimana con quella precedente: meglio, stabile o peggio.</div>
-              <div><b style={{ color: dc }}>Andamento cardio</b> riassume l'ultima uscita registrata di corsa, rucking o HIIT con confronto sulla precedente.</div>
-              <div><b style={{ color: dc }}>Importante</b>: per sapere se aumentare peso o ripetizioni, guarda il consiglio dentro il singolo esercizio nella Scheda.</div>
+              <div><b style={{ color: dc }}>Importante</b>: qui contano solo le sedute pesi. Per cardio e indicazioni relative guarda la parte Teoria e i giorni cardio della scheda.</div>
             </div>
           </details>
 
-          {allEntries.length === 0 && cardioEntries.length === 0 ? <div style={{ background: T.cd, borderRadius: 12, padding: 24, textAlign: "center" }}>
+          {!isBasics && <div style={{ background: T.cd, borderRadius: 14, padding: "12px 14px", marginBottom: 10, display: "flex", alignItems: "center", gap: 10 }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, marginBottom: 3 }}>Il cardio non entra piu nel conteggio di Progressi</div>
+              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Qui leggi solo i 4 allenamenti pesi. Per logica e indicazioni cardio usa Teoria oppure i giorni cardio della scheda.</div>
+            </div>
+            <button onClick={function(e) { e.stopPropagation(); goToTeoria("teoria"); }} style={{ border: "none", borderRadius: 999, padding: "8px 12px", background: dc, color: "#fff", fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}>Apri teoria</button>
+          </div>}
+
+          {allEntries.length === 0 ? <div style={{ background: T.cd, borderRadius: 12, padding: 24, textAlign: "center" }}>
             <div style={{ fontSize: 32, marginBottom: 8 }}>🏋️</div>
             <div style={{ fontSize: 14, fontWeight: 700, color: T.tx, marginBottom: 6 }}>Nessun dato ancora</div>
-            <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Registra le serie nella Scheda e qui vedrai i tuoi progressi settimana per settimana.</div>
+            <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Registra le serie dei giorni pesi nella Scheda e qui vedrai i tuoi progressi settimana per settimana.</div>
           </div> : <>
 
             {/* Riepilogo settimane */}
             <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
               <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg, display: "flex", alignItems: "center", gap: 8 }}>
-                <div style={{ fontSize: 14, fontWeight: 800, color: T.tx, flex: 1 }}>Sessioni per settimana</div>
+                <div style={{ fontSize: 14, fontWeight: 800, color: T.tx, flex: 1 }}>Settimane allenamento</div>
                 <button onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === "sess-help" ? null : "sess-help"); }} style={{ width: 22, height: 22, borderRadius: "50%", border: "1px solid " + dc + "40", background: progTooltip === "sess-help" ? dc : "transparent", color: progTooltip === "sess-help" ? "#fff" : dc, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}>?</button>
               </div>
               {progTooltip === "sess-help" && <div style={{ margin: "0 14px 10px", marginTop: 10, padding: "10px 12px", borderRadius: 9, background: dc + "10", border: "1px solid " + dc + "20", fontSize: 11, color: T.sub, lineHeight: 1.7 }} onClick={function(e) { e.stopPropagation(); }}>
                 <div style={{ fontWeight: 700, color: dc, marginBottom: 4 }}>Come leggere questa sezione</div>
-                <div><b>Barre colorate</b> — ogni barra = un allenamento completato in quella settimana.</div>
-                <div style={{ marginTop: 4 }}><b>Numero a destra</b> — quanti allenamenti hai fatto in totale.</div>
+                <div><b>Barre colorate</b> — ogni barra = un allenamento pesi completato in quella settimana.</div>
+                <div style={{ marginTop: 4 }}><b>Numero a destra</b> — quanti allenamenti pesi hai fatto, su un massimo di {targetWeeklySessions}.</div>
                 <div style={{ marginTop: 4 }}><b>Volume kg·rip</b> — lavoro totale della settimana. Se sale nel tempo, in generale stai facendo piu lavoro.</div>
+                <div style={{ marginTop: 4 }}><b>Apri la settimana</b> — vedi data, giorno e dettaglio di ogni esercizio registrato.</div>
               </div>}
               <div style={{ display: "flex", flexDirection: "column" }}>
                 {weeks.slice(0,8).map(function(wk, wi) {
@@ -5921,56 +6000,59 @@ function isNearBodyweightElasticSession(exName, sets) {
                   var sess = w.sessions.size;
                   var vol = Math.round(w.volume);
                   var volTipId = "vol-" + wk;
-                  return <div key={wk} style={{ flexDirection: "column", padding: "10px 14px", borderBottom: wi < weeks.length - 1 ? "1px solid " + T.bg : "none" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{fmtWeek(wk)}</div>
-                        {vol > 0 && <div onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === volTipId ? null : volTipId); }} style={{ fontSize: 10, color: dc, marginTop: 4, cursor: "pointer", fontWeight: 600, display: "grid", gap: 1, lineHeight: 1.35 }}>
-                          <div style={{ display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap" }}>
-                            <span style={{ fontSize: 9, textTransform: "uppercase", letterSpacing: 0.4, opacity: 0.85 }}>Volume totale</span>
-                            <span style={{ fontSize: 9, opacity: 0.7, flexShrink: 0 }}>ℹ</span>
-                          </div>
-                          <div style={{ fontSize: 11, fontWeight: 800, color: dc, wordBreak: "break-word" }}>{vol.toLocaleString()} kg·rip</div>
-                        </div>}
+                  var sessionDays = Object.values(w.days).sort(function(a, b) {
+                    var cmp = a.date.localeCompare(b.date);
+                    return cmp !== 0 ? cmp : ((a.day || 0) - (b.day || 0));
+                  });
+                  return <details key={wk} style={{ borderBottom: wi < weeks.length - 1 ? "1px solid " + T.bg : "none" }}>
+                    <summary style={{ listStyle: "none", cursor: "pointer", padding: "10px 14px" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{fmtWeek(wk)}</div>
+                          {vol > 0 && <div onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === volTipId ? null : volTipId); }} style={{ fontSize: 10, color: dc, marginTop: 4, cursor: "pointer", fontWeight: 600, display: "grid", gap: 1, lineHeight: 1.35 }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap" }}>
+                              <span style={{ fontSize: 9, textTransform: "uppercase", letterSpacing: 0.4, opacity: 0.85 }}>Volume totale</span>
+                              <span style={{ fontSize: 9, opacity: 0.7, flexShrink: 0 }}>ℹ</span>
+                            </div>
+                            <div style={{ fontSize: 11, fontWeight: 800, color: dc, wordBreak: "break-word" }}>{vol.toLocaleString()} kg·rip</div>
+                          </div>}
+                        </div>
+                        <div style={{ display: "flex", gap: 3 }}>
+                          {Array.from({length: targetWeeklySessions}).map(function(_, di) {
+                            return <div key={di} style={{ width: 10, height: 28, borderRadius: 3, background: di < sess ? dc : T.bg }} />;
+                          })}
+                        </div>
+                        <div style={{ fontSize: 13, fontWeight: 800, color: dc, minWidth: 28, textAlign: "right" }}>{sess + "/" + targetWeeklySessions}</div>
                       </div>
-                      <div style={{ display: "flex", gap: 3 }}>
-                        {Array.from({length: 5}).map(function(_, di) {
-                          return <div key={di} style={{ width: 10, height: 28, borderRadius: 3, background: di < sess ? dc : T.bg }} />;
-                        })}
-                      </div>
-                      <div style={{ fontSize: 13, fontWeight: 800, color: dc, minWidth: 20, textAlign: "right" }}>{sess}</div>
-                    </div>
-                    {progTooltip === volTipId && <div style={{ marginTop: 6, padding: "8px 10px", borderRadius: 8, background: dc + "0E", border: "1px solid " + dc + "20", fontSize: 11, color: T.sub, lineHeight: 1.6 }} onClick={function(e) { e.stopPropagation(); }}>
+                    </summary>
+                    {progTooltip === volTipId && <div style={{ margin: "0 14px 8px", padding: "8px 10px", borderRadius: 8, background: dc + "0E", border: "1px solid " + dc + "20", fontSize: 11, color: T.sub, lineHeight: 1.6 }} onClick={function(e) { e.stopPropagation(); }}>
                       <b style={{ color: dc }}>Volume totale</b> = somma di (kg × rip) di tutte le serie registrate questa settimana. Serve per capire se il lavoro complessivo sta salendo, scendendo o restando stabile.
                     </div>}
-                  </div>;
+                    <div style={{ padding: "0 14px 12px", display: "grid", gap: 8 }}>
+                      {sessionDays.map(function(session, si) {
+                        var dayLabel = DAYS[session.day] ? DAYS[session.day].name : ("Giorno " + (session.day + 1));
+                        var dateLabel = formatDateShort ? formatDateShort(session.date) : session.date;
+                        return <div key={wk + "-" + si} style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 12px" }}>
+                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 8 }}>
+                            <div style={{ fontSize: 12, fontWeight: 800, color: T.tx }}>{dayLabel}</div>
+                            <div style={{ fontSize: 10, color: T.sub }}>{dateLabel}</div>
+                          </div>
+                          <div style={{ display: "grid", gap: 6 }}>
+                            {session.entries.map(function(entry, ei2) {
+                              var exerciseSummary = formatSessionSummary(entry.exercise, (entry.sets || []).slice().sort(function(a, b) { return (a.si || 0) - (b.si || 0); }), BW_EX.indexOf(entry.exercise) >= 0, false);
+                              return <div key={entry.exercise + "-" + ei2} style={{ display: "grid", gap: 2 }}>
+                                <div style={{ fontSize: 11, fontWeight: 700, color: T.tx }}>{entry.exercise}</div>
+                                <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.55 }}>{exerciseSummary || "Nessuna serie salvata"}</div>
+                              </div>;
+                            })}
+                          </div>
+                        </div>;
+                      })}
+                    </div>
+                  </details>;
                 })}
               </div>
             </div>
-
-            {cardioProgress.length > 0 && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-              <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg, display: "flex", alignItems: "center", gap: 8 }}>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Andamento cardio</div>
-                </div>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                {cardioProgress.map(function(item, ii) {
-                  var trendColor = item.trend === "up" ? T.ok : item.trend === "down" ? "#C62828" : T.sub;
-                  var trendIcon = item.trend === "up" ? "↑" : item.trend === "down" ? "↓" : item.trend === "new" ? "✦" : "→";
-                  return <div key={ii} style={{ padding: "10px 14px", borderBottom: ii < cardioProgress.length - 1 ? "1px solid " + T.bg : "none" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 2 }}>{item.name}</div>
-                        <div style={{ fontSize: 10, color: T.sub }}>{item.weeks} {item.weeks === 1 ? "settimana" : "settimane"} · ultima: {formatCardioSummary(item.last)}</div>
-                        {item.prev && <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>prima: {formatCardioSummary(item.prev)}</div>}
-                      </div>
-                      <div style={{ fontSize: 14, fontWeight: 800, color: trendColor, minWidth: 28, textAlign: "right" }}>{trendIcon}</div>
-                    </div>
-                  </div>;
-                })}
-              </div>
-            </div>}
 
             {keyLiftProgress.length > 0 && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
               <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
@@ -5981,9 +6063,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                 {keyLiftProgress.map(function(item, ii) {
                   var trendColor = item.trend === "up" ? T.ok : item.trend === "down" ? "#C62828" : T.sub;
                   var trendIcon = item.trend === "up" ? "↑" : item.trend === "down" ? "↓" : item.trend === "new" ? "✦" : "→";
-                  var lastLabel = item.isBW ? (item.last + " rip") : (item.last + " kg");
-                  var prevLabel = item.prev === null ? "—" : (item.isBW ? (item.prev + " rip") : (item.prev + " kg"));
-                  var maxLabel = item.isBW ? (item.maxEver + " rip") : (item.maxEver + " kg");
+                  var lastLabel = item.last ? item.last.label : "—";
+                  var prevLabel = item.prev === null ? "—" : item.prev.label;
+                  var maxLabel = item.maxEver ? item.maxEver.label : "—";
+                  var trendShort = item.last ? item.last.shortLabel : "—";
                   return <div key={item.name} style={{ padding: "11px 14px", borderBottom: ii < keyLiftProgress.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 10, alignItems: "center" }}>
                       <div>
@@ -5995,7 +6078,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                         </div>
                       </div>
                       <div style={{ fontSize: 15, fontWeight: 900, color: trendColor, whiteSpace: "nowrap" }}>
-                        <span style={{ marginRight: 4 }}>{trendIcon}</span>{lastLabel}
+                        <span style={{ marginRight: 4 }}>{trendIcon}</span>{trendShort}
                       </div>
                     </div>
                   </div>;
@@ -6025,13 +6108,14 @@ function isNearBodyweightElasticSession(exName, sets) {
                 {exProgress.map(function(ex, ei) {
                   var trendColor = ex.trend === "up" ? T.ok : ex.trend === "down" ? "#C62828" : T.sub;
                   var trendIcon = ex.trend === "up" ? "↑" : ex.trend === "down" ? "↓" : ex.trend === "new" ? "✦" : "→";
-                  var valLabel = ex.isBW ? ex.last + " rip" : ex.last + " kg";
-                  var maxLabel = ex.isBW ? ex.maxEver + " rip" : ex.maxEver + " kg";
+                  var valLabel = ex.last ? ex.last.label : "—";
+                  var maxLabel = ex.maxEver ? ex.maxEver.label : "—";
                   var exTipId = "ex-" + ei;
-                  var trendText = ex.trend === "up" ? ("Ultima settimana meglio della precedente" + (ex.prev !== null ? " (" + (ex.isBW ? ex.prev + " rip" : ex.prev + " kg") + " → " + valLabel + ")" : "")) :
-                    ex.trend === "down" ? ("Ultima settimana sotto la precedente" + (ex.prev !== null ? " (" + (ex.isBW ? ex.prev + " rip" : ex.prev + " kg") + " → " + valLabel + ")" : "") + ". Puo succedere per fatica, recupero o settimana piu pesante.") :
+                  var prevTrendLabel = ex.prev ? ex.prev.label : null;
+                  var trendText = ex.trend === "up" ? ("Ultima settimana meglio della precedente" + (prevTrendLabel ? " (" + prevTrendLabel + " → " + valLabel + ")" : "")) :
+                    ex.trend === "down" ? ("Ultima settimana sotto la precedente" + (prevTrendLabel ? " (" + prevTrendLabel + " → " + valLabel + ")" : "") + ". Puo succedere per fatica, recupero o settimana piu pesante.") :
                     ex.trend === "new" ? "Hai appena iniziato a registrarlo: serve ancora uno storico per confrontarlo." :
-                    "Ultima settimana molto simile alla precedente. Sei stabile.";
+                    (ex.last && ex.last.mixed ? "Ultima settimana con carichi diversi nella stessa seduta: meglio leggerla come riferimento orientativo, non come progresso netto." : "Ultima settimana molto simile alla precedente. Sei stabile.");
                   return <div key={ei} style={{ borderBottom: ei < exProgress.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === exTipId ? null : exTipId); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", cursor: "pointer" }}>
                       <div style={{ flex: 1, minWidth: 0 }}>
