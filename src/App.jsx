@@ -2947,6 +2947,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [tPanel, setTPanel] = useState(false);
   var [tLocked, setTLocked] = useState(false);
   var [autoBackupMsg, setAutoBackupMsg] = useState("");
+  var [exportMenuOpen, setExportMenuOpen] = useState(false);
   var [exGearFilter, setExGearFilter] = useState("all");
   var [exPatternFilter, setExPatternFilter] = useState("all");
   var [exWorkflowFilter, setExWorkflowFilter] = useState("all");
@@ -3295,6 +3296,18 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           setCalibrationMode(!!parsed.calibrationMode);
           setGuidedMode(typeof parsed.guidedMode === "boolean" ? parsed.guidedMode : false);
           setBarbellWeight(typeof parsed.barbellWeight === "number" ? Math.max(BARBELL_MIN_KG, parsed.barbellWeight) : BARBELL_BASE_KG);
+          if (parsed.profile && typeof parsed.profile === "object") {
+            if (typeof parsed.profile.userName === "string") setUserName(parsed.profile.userName);
+            if (typeof parsed.profile.userPhoto === "string" || parsed.profile.userPhoto === null) setUserPhoto(parsed.profile.userPhoto || null);
+          }
+          if (parsed.preferences && typeof parsed.preferences === "object") {
+            if (parsed.preferences.level === "basics" || parsed.preferences.level === "beginner" || parsed.preferences.level === "v4") setLevel(parsed.preferences.level);
+            if (parsed.preferences.theme && TH[parsed.preferences.theme]) setTheme(parsed.preferences.theme);
+            var pfs = parseFloat(parsed.preferences.fontScale);
+            if (isFinite(pfs) && pfs >= 0.9 && pfs <= 1.5) setFontScale(pfs);
+            if (typeof parsed.preferences.exerciseWorkflowEnabled === "boolean") setExerciseWorkflowEnabled(parsed.preferences.exerciseWorkflowEnabled);
+            if (typeof parsed.preferences.extraInfoEnabled === "boolean") setExtraInfoEnabled(parsed.preferences.extraInfoEnabled);
+          }
         } else if (parsed && typeof parsed === "object") {
           setLogs(parsed);
         }
@@ -3389,12 +3402,33 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     setGuidedMode(nextGuided);
     setBarbellWeight(nextBarbell);
     try {
-      var raw = JSON.stringify({ logs: nextLogs, cardioLogs: nextCardioLogs, calibrationProfiles: nextProfiles, calibrationMode: nextMode, guidedMode: nextGuided, barbellWeight: nextBarbell });
+      var raw = JSON.stringify({
+        logs: nextLogs,
+        cardioLogs: nextCardioLogs,
+        calibrationProfiles: nextProfiles,
+        calibrationMode: nextMode,
+        guidedMode: nextGuided,
+        barbellWeight: nextBarbell,
+        profile: {
+          userName: userName || "",
+          userPhoto: userPhoto || null
+        },
+        preferences: {
+          level: level,
+          theme: theme,
+          fontScale: fontScale,
+          exerciseWorkflowEnabled: exerciseWorkflowEnabled,
+          extraInfoEnabled: extraInfoEnabled,
+          guidedMode: nextGuided,
+          calibrationMode: nextMode,
+          barbellWeight: nextBarbell
+        }
+      });
       localStorage.setItem(SK, raw);
       localStorage.setItem(SK_SHADOW, raw);
       localStorage.setItem("wt-barbell-weight", String(nextBarbell));
     } catch(e) {}
-  }, [guidedMode, barbellWeight]);
+  }, [guidedMode, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled]);
 
   function checkSound(ms, mode, target) {
     if (mode === "countdown") {
@@ -3848,10 +3882,26 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   }
 
   function buildBackupPayload(sourceLogs, sourceCardioLogs, meta) {
+    var profile = {
+      userName: userName || "",
+      userPhoto: userPhoto || null
+    };
+    var preferences = {
+      level: level,
+      theme: theme,
+      fontScale: fontScale,
+      exerciseWorkflowEnabled: exerciseWorkflowEnabled,
+      extraInfoEnabled: extraInfoEnabled,
+      guidedMode: guidedMode,
+      calibrationMode: calibrationMode,
+      barbellWeight: barbellWeight
+    };
     return {
       exportedAt: new Date().toISOString(),
       month: month,
       meta: meta || null,
+      profile: profile,
+      preferences: preferences,
       logs: sourceLogs,
       cardioLogs: sourceCardioLogs || {},
       calibrationProfiles: calibrationProfiles || {},
@@ -3859,6 +3909,63 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       guidedMode: guidedMode,
       barbellWeight: barbellWeight,
     };
+  }
+
+  function getExportPreferenceSummary() {
+    return {
+      userName: userName || "",
+      level: getProgramLabel(level) || level,
+      theme: theme,
+      fontScale: fontScale,
+      guidedMode: guidedMode ? "ON" : "OFF",
+      calibrationMode: calibrationMode ? "ON" : "OFF",
+      extraInfoEnabled: extraInfoEnabled ? "ON" : "OFF",
+      exerciseWorkflowEnabled: exerciseWorkflowEnabled ? "ON" : "OFF",
+      barbellWeight: barbellWeight
+    };
+  }
+
+  function applyImportedProfileAndPreferences(imported) {
+    if (!imported || typeof imported !== "object") return;
+    var profile = imported.profile && typeof imported.profile === "object" ? imported.profile : {};
+    var preferences = imported.preferences && typeof imported.preferences === "object" ? imported.preferences : {};
+    var importedName = typeof profile.userName === "string" ? profile.userName : "";
+    var importedPhoto = typeof profile.userPhoto === "string" ? profile.userPhoto : null;
+    var importedLevel = preferences.level;
+    var importedTheme = preferences.theme;
+    var importedFontScale = parseFloat(preferences.fontScale);
+    var importedWorkflow = typeof preferences.exerciseWorkflowEnabled === "boolean" ? preferences.exerciseWorkflowEnabled : null;
+    var importedExtraInfo = typeof preferences.extraInfoEnabled === "boolean" ? preferences.extraInfoEnabled : null;
+
+    setUserName(importedName);
+    setUserPhoto(importedPhoto);
+    try {
+      if (importedName) localStorage.setItem("wt-username", importedName);
+      else localStorage.removeItem("wt-username");
+      if (importedPhoto) localStorage.setItem("wt-userphoto", importedPhoto);
+      else localStorage.removeItem("wt-userphoto");
+    } catch (e) {}
+
+    if (importedLevel === "basics" || importedLevel === "beginner" || importedLevel === "v4") {
+      setLevel(importedLevel);
+      try { localStorage.setItem("wt-level", importedLevel); } catch (e) {}
+    }
+    if (importedTheme && TH[importedTheme]) {
+      setTheme(importedTheme);
+      try { localStorage.setItem("wt-theme", importedTheme); } catch (e) {}
+    }
+    if (isFinite(importedFontScale) && importedFontScale >= 0.9 && importedFontScale <= 1.5) {
+      setFontScale(importedFontScale);
+      try { localStorage.setItem("wt-fontscale", String(importedFontScale)); } catch (e) {}
+    }
+    if (importedWorkflow !== null) {
+      setExerciseWorkflowEnabled(importedWorkflow);
+      try { localStorage.setItem("wt-exercise-workflow", importedWorkflow ? "1" : "0"); } catch (e) {}
+    }
+    if (importedExtraInfo !== null) {
+      setExtraInfoEnabled(importedExtraInfo);
+      try { localStorage.setItem("wt-extra-info", importedExtraInfo ? "1" : "0"); } catch (e) {}
+    }
   }
 
   function getExForMonthValue(raw, m) {
@@ -3975,6 +4082,12 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       "Giorno",
       "Focus",
       "Mese",
+      "Nome utente",
+      "Livello app",
+      "Tema",
+      "Peso bilanciere",
+      "Modalita guidata",
+      "Info aggiuntive",
       "Tipo",
       "Attivita",
       "Serie previste",
@@ -3989,6 +4102,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       "Segnale",
       "Legenda visiva"
     ]];
+    var exportPrefs = getExportPreferenceSummary();
 
     Object.values(sourceLogs || {})
       .sort(function(a, b) {
@@ -4022,6 +4136,12 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           ctx.dayName,
           ctx.focus,
           entry.month || "",
+          exportPrefs.userName,
+          exportPrefs.level,
+          exportPrefs.theme,
+          exportPrefs.barbellWeight,
+          exportPrefs.guidedMode,
+          exportPrefs.extraInfoEnabled,
           "Pesi",
           entry.exercise || "",
           ctx.plannedSerie,
@@ -4053,6 +4173,12 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           ctx.dayName,
           ctx.focus,
           entry.month || "",
+          exportPrefs.userName,
+          exportPrefs.level,
+          exportPrefs.theme,
+          exportPrefs.barbellWeight,
+          exportPrefs.guidedMode,
+          exportPrefs.extraInfoEnabled,
           "Cardio",
           entry.label || CARDIO_KIND_LABEL[entry.kind] || "",
           "",
@@ -4081,6 +4207,12 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       "Giorno",
       "Focus",
       "Mese",
+      "Nome utente",
+      "Livello app",
+      "Tema",
+      "Peso bilanciere",
+      "Modalita guidata",
+      "Info aggiuntive",
       "Tipo",
       "Attivita",
       "Serie",
@@ -4098,6 +4230,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       "Segnale",
       "Legenda visiva"
     ]];
+    var exportPrefs = getExportPreferenceSummary();
 
     Object.values(sourceLogs || {})
       .sort(function(a, b) {
@@ -4119,6 +4252,12 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
             ctx.dayName,
             ctx.focus,
             entry.month || "",
+            exportPrefs.userName,
+            exportPrefs.level,
+            exportPrefs.theme,
+            exportPrefs.barbellWeight,
+            exportPrefs.guidedMode,
+            exportPrefs.extraInfoEnabled,
             "Pesi",
             entry.exercise || "",
             idx + 1,
@@ -4154,6 +4293,12 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           ctx.dayName,
           ctx.focus,
           entry.month || "",
+          exportPrefs.userName,
+          exportPrefs.level,
+          exportPrefs.theme,
+          exportPrefs.barbellWeight,
+          exportPrefs.guidedMode,
+          exportPrefs.extraInfoEnabled,
           "Cardio",
           entry.label || CARDIO_KIND_LABEL[entry.kind] || "",
           "",
@@ -5236,6 +5381,18 @@ function isNearBodyweightElasticSession(exName, sets) {
     setAutoBackupMsg("Esportazione completata. Hai scaricato il backup JSON.");
   }
 
+  function exportReadableCsvOnly() {
+    var baseName = 'workout-backup-' + todayStr();
+    downloadTextFile(buildReadableCsv(logs, cardioLogs), baseName + '-leggibile.csv', "text/csv;charset=utf-8");
+    setAutoBackupMsg("Esportazione completata. Hai scaricato il CSV leggibile.");
+  }
+
+  function exportEditableCsvOnly() {
+    var baseName = 'workout-backup-' + todayStr();
+    downloadTextFile(buildImportableCsv(logs, cardioLogs), baseName + '-modificabile-importabile.csv', "text/csv;charset=utf-8");
+    setAutoBackupMsg("Esportazione completata. Hai scaricato il CSV modificabile.");
+  }
+
   function importData() {
     var input = document.createElement('input');
     input.type = 'file';
@@ -5260,6 +5417,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           var importedLogs = imported && imported.logs && typeof imported.logs === "object" ? imported.logs : imported;
           var importedCardioLogs = imported && imported.cardioLogs && typeof imported.cardioLogs === "object" ? imported.cardioLogs : {};
           saveData(importedLogs || {}, importedCardioLogs || {}, imported && imported.calibrationProfiles && typeof imported.calibrationProfiles === "object" ? imported.calibrationProfiles : {}, !!(imported && imported.calibrationMode), imported && typeof imported.guidedMode === "boolean" ? imported.guidedMode : false, imported && typeof imported.barbellWeight === "number" ? imported.barbellWeight : BARBELL_BASE_KG);
+          applyImportedProfileAndPreferences(imported);
           setAutoBackupMsg("Importazione JSON completata. I dati sono stati caricati correttamente.");
         } catch(e) {
           alert('Errore: file non valido. Per il CSV usa quello esportato dall\'app, leggibile o modificabile.');
@@ -5726,8 +5884,18 @@ function isNearBodyweightElasticSession(exName, sets) {
               <div><b style={{ color: T.tx }}>CSV modificabile</b>: tabella editabile da Excel o Numbers e poi reimportabile nell'app. Usalo se vuoi correggere o personalizzare i dati a mano.</div>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 8 }}>
-              <button onClick={function() { exportData(); }} style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", textAlign: "left", gap: 10, width: "100%", padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬇️</span> Esporta dati (JSON + CSV leggibile + CSV modificabile)</button>
-              <button onClick={function() { exportJsonOnly(); }} style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", textAlign: "left", gap: 10, width: "100%", padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>🧾</span> Esporta solo JSON</button>
+              <div style={{ position: "relative" }}>
+                <button onClick={function() { setExportMenuOpen(function(v) { return !v; }); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", textAlign: "left", gap: 10, width: "100%", padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}>
+                  <span style={{ display: "flex", alignItems: "center", gap: 10 }}><span>⬇️</span><span>Scegli esportazione</span></span>
+                  <span style={{ color: T.sub, transform: exportMenuOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+                </button>
+                {exportMenuOpen && <div style={{ marginTop: 6, background: T.sb, border: "1px solid " + T.bg, borderRadius: 10, overflow: "hidden" }}>
+                  <button onClick={function() { setExportMenuOpen(false); exportData(); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "11px 14px", border: "none", borderBottom: "1px solid " + T.bg, background: "transparent", cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx, textAlign: "left" }}><span>📦</span> JSON + CSV leggibile + CSV modificabile</button>
+                  <button onClick={function() { setExportMenuOpen(false); exportJsonOnly(); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "11px 14px", border: "none", borderBottom: "1px solid " + T.bg, background: "transparent", cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx, textAlign: "left" }}><span>🧾</span> Solo JSON</button>
+                  <button onClick={function() { setExportMenuOpen(false); exportReadableCsvOnly(); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "11px 14px", border: "none", borderBottom: "1px solid " + T.bg, background: "transparent", cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx, textAlign: "left" }}><span>📄</span> Solo CSV leggibile</button>
+                  <button onClick={function() { setExportMenuOpen(false); exportEditableCsvOnly(); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "11px 14px", border: "none", background: "transparent", cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx, textAlign: "left" }}><span>✏️</span> Solo CSV modificabile</button>
+                </div>}
+              </div>
               <button onClick={function() { importData(); }} style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", textAlign: "left", gap: 10, width: "100%", padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬆️</span> Importa dati (JSON o CSV)</button>
               <button onClick={function() { setResetOpen(true); setSettingsOpen(false); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid #C6282820", background: "#C6282808", cursor: "pointer", fontSize: 13, fontWeight: 600, color: "#C62828" }}><span>🗑️</span> Cancella tutti i dati</button>
             </div>
