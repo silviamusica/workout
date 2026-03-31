@@ -345,8 +345,7 @@ Nota UI attuale:
 | 2 | Squat Bulgaro | 3x10-12 | RPE 8, per gamba |
 | 3 | Hip Thrust Bilanciere | 4x10-12 | RPE 8-9 |
 | 4 | Leg Curl al Cavo | 3x10-12 | RPE 8-9, eccentrica 2-3 secondi. Alternativa: Nordic Curl assistito |
-| 5 | Slackline bipodalica | 2x45s | Stabilita bipodalica, sguardo avanti, ginocchia flesse |
-| 6 | Ab Wheel dalle ginocchia | 3x8-10 | RPE 8 |
+| 5 | Ab Wheel dalle ginocchia | 3x8-10 | RPE 8 |
 
 **Stretching**
 
@@ -416,12 +415,12 @@ Nota:
 
 | # | Esercizio | Serie | Note |
 |---|---|---|---|
-| 1 | Stacco da Terra | 4x5-8 | RPE 8-9, ultimo set a cedimento tecnico controllato |
-| 2 | Stacco Rumeno | 3x10-12 | RPE 8-9 |
-| 3 | Hip Thrust Bilanciere | 3x12-15 | RPE 9 |
-| 4 | Affondi | 3x12 per gamba | RPE 8-9 |
-| 5 | Hyperextension con Sacco | 3x12-15 | RPE 9 |
-| 6 | Fitball Hamstring Curl | 3x12 | RPE 9 |
+| 1 | Stacco da Terra | 3x4-6 | RPE 8-9, ultimo set solo a RIR 0-1 se tecnica stabile |
+| 2 | Stacco Rumeno | 3x10-12 | Accessorio femorali del giorno, RPE 8-9 |
+| 3 | Hip Thrust Bilanciere | 3x8-10 | Secondo lift glutei del giorno, RPE 8-9 |
+| 4 | Affondi | 3x10-12 per gamba | RPE 8-9 |
+| 5 | Hyperextension con Sacco | 2-3x12-15 | Accessorio catena posteriore, RPE 8-9 |
+| 6 | Fitball Hamstring Curl | 3x10-12 | Bacino alto dall'inizio alla fine, RPE 8-9 |
 
 **Stretching**
 
@@ -448,12 +447,12 @@ Nota:
 
 | # | Esercizio | Serie | Note |
 |---|---|---|---|
-| 1 | Push-Up | 4xmax-2 | RPE 8 |
-| 2 | Trazioni Supine | 3xmax-2 | RPE 8, presa neutra o supina |
-| 3 | Military Press | 4x6-8 | RPE 8-9, ultimo set a cedimento tecnico controllato |
-| 4 | Dip alle Parallele | 3xRIR 1-2 | RPE 8-9 |
-| 5 | Tricipiti Cavo | 3x12 | RPE 9 |
-| 6 | Woodchop | 3x12 | RPE 8-9, per lato |
+| 1 | Military Press | 4x6-8 | RPE 8-9, ultimo set solo a RIR 0-1 se tecnica stabile |
+| 2 | Trazioni Supine | 3x5-8 | RPE 8, presa supina o neutra |
+| 3 | Push-Up | 3x8-15 | RIR 1-2 |
+| 4 | Dip alle Parallele | 3x6-10 | RIR 1-2 |
+| 5 | Tricipiti Cavo | 3x10-12 | RPE 8-9 |
+| 6 | Woodchop | 3x10-12 per lato | RPE 8-9 |
 
 **Stretching**
 

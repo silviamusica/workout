@@ -1509,13 +1509,13 @@ var DAYS_V4 = [
     ]
   },
 
-  { name: "Giorno 4", focus: "Lower B — Glutei + Femorali", dur: "5 esercizi", tEst: 65,
+  { name: "Giorno 4", focus: "Lower B — Glutei + Femorali", dur: "6 esercizi", tEst: 75,
     intro: {
       attrezzi: ["Bilanciere + bumper", "Manubri", "Panca", "Panca romana + sacco sabbia", "Fitball", "Elastico"],
-      muscoli: ["Catena posteriore (Stacco, Hyperextension)", "Glutei (Hip thrust, Affondi)", "Femorali (Fitball curl)"],
-      obiettivi: ["Costruire forza nello Stacco da terra con poche serie ma pesanti", "Richiamare i glutei con Hip thrust come secondo lift", "Chiudere con accessori utili senza trasformare la seduta in un secondo stacco"],
-      attenzione: ["Stacco: barra SEMPRE vicina al corpo, anche e spalle salgono insieme, collo neutro", "Hip thrust: versione piu compatta e meno tassante del Giorno 1", "Hyperextension: usa glutei e femorali, non cercare iperestensione lombare"],
-      ritmo: "Recuperi 2-3 min su Stacco. 90-120s su Hip thrust e Affondi. 90s sugli accessori."
+      muscoli: ["Catena posteriore (Stacco, Stacco Rumeno, Hyperextension)", "Glutei (Hip thrust, Affondi)", "Femorali (Stacco Rumeno, Fitball curl)"],
+      obiettivi: ["Costruire forza nello Stacco da terra con poche serie ma pesanti", "Aggiungere volume femorali con Stacco Rumeno a ripetizioni moderate", "Chiudere con accessori utili senza trasformare la seduta in un secondo stacco"],
+      attenzione: ["Stacco: barra SEMPRE vicina al corpo, anche e spalle salgono insieme, collo neutro", "Stacco Rumeno: anca indietro, tibie quasi ferme, carico vicino alle gambe", "Hip thrust: versione piu compatta e meno tassante del Giorno 1", "Hyperextension: usa glutei e femorali, non cercare iperestensione lombare"],
+      ritmo: "Recuperi 2-3 min su Stacco. 90s-2 min su Stacco Rumeno e Hip thrust. 90s-2 min su Affondi. 90s sugli accessori."
     },
     warmup: [
       { n: "Marcia sul posto + affondi a corpo libero", img: "w_AffondiCorpoLiberoAlt", d: "3 minuti totali. Alza la temperatura senza fiato eccessivo.", tm: 180, alt: [{ n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti leggeri.", tm: 180 }] },
@@ -1524,8 +1524,9 @@ var DAYS_V4 = [
     ],
     ex: [
       { n: "Stacco da Terra", s: "3x4-6", rpe: "8-9", note: "Setup: piedi larghezza anche, barra su meta piede, mani appena fuori gambe, braccia tese. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata (cifosi); barra lontana dal corpo; anche che salgono prima delle spalle; collo iperesteso" },
-      { n: "Hip Thrust Bilanciere", s: "3x8-10", rpe: "8-9", note: "Secondo lift del giorno. Setup: piedi larghezza bacino-spalle, tibia quasi verticale in alto. RPE 8-9.", rec: "90s-2 min", gear: "Bilanciere + bumper + panca", errori: "Vedi Giorno 1" },
-      { n: "Affondi", s: "3x10-12 per gamba", rpe: "8-9", note: "Setup: piedi su due binari, passo abbastanza lungo, busto stabile. Alternativa: TRX reverse lunge.", rec: "2 min", gear: "Manubri", errori: "Passo troppo corto; ginocchio post che non scende; busto che oscilla" },
+      { n: "Stacco Rumeno", s: "3x10-12", rpe: "8-9", note: "Accessorio femorali del giorno. Setup: piedi larghezza anche, ginocchia appena sbloccate, mani poco fuori cosce. Anca indietro e bilanciere vicino alle gambe. Fermati quando perdi neutro o tensione utile sui femorali.", rec: "90s-2 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata; ginocchia troppo flesse; carico lontano dal corpo; anca che scende invece di andare indietro" },
+      { n: "Hip Thrust Bilanciere", s: "3x8-10", rpe: "8-9", note: "Secondo lift glutei del giorno. Setup: piedi larghezza bacino-spalle, tibia quasi verticale in alto. RPE 8-9.", rec: "90s-2 min", gear: "Bilanciere + bumper + panca", errori: "Vedi Giorno 1" },
+      { n: "Affondi", s: "3x10-12 per gamba", rpe: "8-9", note: "Setup: piedi su due binari, passo abbastanza lungo, busto stabile. Alternativa: TRX reverse lunge.", rec: "90s-2 min", gear: "Manubri", errori: "Passo troppo corto; ginocchio post che non scende; busto che oscilla" },
       { n: "Hyperextension con Sacco", s: "2-3x12-15", rpe: "8-9", note: "Usala come accessorio, non come altro stacco. Glutei e femorali, non lombare. Alternativa: cable pull-through.", rec: "90s", gear: "Panca romana + sacco sabbia", errori: "Iperestensione lombare in alto; velocita eccessiva; collo iperesteso" },
       { n: "Fitball Hamstring Curl", s: "3x10-12", rpe: "8-9", note: "Bacino alto dall'inizio alla fine. Alternativa: TRX hamstring curl.", rec: "90s", gear: "Fitball", errori: "Bacino che cade; piedi che scivolano; range incompleto" },
     ], str: ["Femorali","Glutei","Lombare","Flessori anca"] },
@@ -2323,7 +2324,7 @@ function getCalibrationType(exName, serie) {
   if (usesElasticScale(exName)) return "band-assist";
   if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || (serie || "").toLowerCase().indexOf("max") >= 0) return "bodyweight";
   if (exName.indexOf("Cavo") >= 0 || exName === "Face Pull" || exName === "Woodchop") return "cable";
-  if (exName === "Squat Bulgaro" || exName === "Stacco Rumeno" || exName === "Affondi" || exName === "Curl Bicipiti") return "dumbbell";
+  if (exName === "Squat Bulgaro" || exName === "Affondi" || exName === "Curl Bicipiti") return "dumbbell";
   return "weighted";
 }
 
@@ -2874,7 +2875,6 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       return 0;
     }
   });
-  var [forcedRecoveryLock, setForcedRecoveryLock] = useState(null);
   var [editing, setEditing] = useState(null);
   var [tmpW, setTmpW] = useState("");
   var [tmpR, setTmpR] = useState("");
@@ -3317,13 +3317,6 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       document.removeEventListener("touchstart", handleOutsideFeedback, true);
     };
   }, [calibrationFeedback, guidedFeedback]);
-  useEffect(function() {
-    if (!forcedRecoveryLock) return;
-    if (tMode === "countdown" && !tRunning && tMs === 0) {
-      setForcedRecoveryLock(null);
-      setCalibrationFeedback("Recupero completato. Ora puoi registrare la serie successiva.");
-    }
-  }, [forcedRecoveryLock, tMode, tRunning, tMs]);
   useEffect(function() {
     if (!activeOpenRestSec) return;
     if (tLocked) return;
@@ -4770,7 +4763,6 @@ function isNearBodyweightElasticSession(exName, sets) {
       }
       saveSetEntry(calibrationPrompt.exName, calibrationPrompt.di, calibrationPrompt.si, calibrationPrompt.w, cleanReps, nextProfiles, reserve);
       var forcedRestSec = getExerciseRestSeconds({ rec: calibrationPrompt.rec || "" }, { n: calibrationPrompt.exName, rpe: "" }) || 90;
-      setForcedRecoveryLock(null);
       setCalibrationFeedback(decision.title + ". " + decision.detail);
       if (guidedMode) {
         var guidedRest = getGuidedRestSuggestion(calibrationPrompt.exName, getExerciseRestSeconds({ rec: calibrationPrompt.rec || "" }, { n: calibrationPrompt.exName, rpe: "" }) || 90, reserve);
@@ -7200,7 +7192,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                   var errorList = (mergedEx.errori || "").split(/\s*;\s*/).filter(Boolean);
                   var exSkills = getExerciseCompetencies(ex.n);
                   var guidedRirSummary = getExerciseRirHistorySummary(ex.n);
-                  var calibrationLocked = !!(effectiveCalibrationMode && forcedRecoveryLock);
                   return <div style={{ padding: "0 14px 14px" }}>
                     {/* Cable toggle */}
                     {hasCableToggle && <div style={{ display: "flex", gap: 0, marginBottom: 10, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "40", alignSelf: "flex-start", width: "fit-content" }} onClick={function(e) { e.stopPropagation(); }}>
@@ -7345,9 +7336,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                       {!isBW && !usesBand && usesBarbellTotal(ex.n) && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: T.sb, border: "1px solid " + T.bg, fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
                         Inserisci solo i kg dei dischi. Il bilanciere da 20 kg viene sommato automaticamente al totale.
                       </div>}
-                      {calibrationLocked && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: "#FFB30012", border: "1px solid #FFB30033", fontSize: 11, color: "#8A5A00", lineHeight: 1.55 }}>
-                        Recupero obbligatorio in calibrazione attivo: aspetta la fine del timer prima di salvare la serie successiva.
-                      </div>}
                       {effectiveCalibrationMode && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: T.sb, border: "1px solid " + T.bg, fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
                         Nella <b style={{ color: T.tx }}>prima serie test</b> il RIR si inserisce nel modale finale come <b style={{ color: T.tx }}>RIR / riserva</b>. Dalla <b style={{ color: T.tx }}>seconda serie</b> puoi scriverlo direttamente nella riga.
                       </div>}
@@ -7381,7 +7369,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                                     <option value="">RIR</option>
                                     {["0","1","2","3","4+"].map(function(opt) { return <option key={opt} value={opt}>{"RIR " + opt}</option>; })}
                                   </select>}
-                                  <button disabled={calibrationLocked} onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : plateInputToStoredWeight(ex.n, tmpW, barbellWeight)), tmpR, isBW, tmpRir); }} style={{ width: 44, height: 44, background: calibrationLocked ? T.bg : dc, color: calibrationLocked ? T.sub : "#fff", border: "none", borderRadius: 8, fontSize: 20, cursor: calibrationLocked ? "default" : "pointer", flexShrink: 0, fontWeight: 700, touchAction: "manipulation" }}>✓</button>
+                                  <button onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : plateInputToStoredWeight(ex.n, tmpW, barbellWeight)), tmpR, isBW, tmpRir); }} style={{ width: 44, height: 44, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 20, cursor: "pointer", flexShrink: 0, fontWeight: 700, touchAction: "manipulation" }}>✓</button>
                                   <button onClick={function(e) { e.stopPropagation(); setEditing(null); setTmpW(""); setTmpR(""); setTmpRir(""); }} style={{ width: 36, height: 44, background: T.bg, color: T.sub, border: "none", borderRadius: 8, fontSize: 16, cursor: "pointer", flexShrink: 0, touchAction: "manipulation" }}>✕</button>
                                 </div>
                                 {!isBW && !usesBand && usesBarbellTotal(ex.n) && <div style={{ marginTop: 6, fontSize: 11, color: T.sub, lineHeight: 1.5 }}>
@@ -7394,7 +7382,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                               </div>
                             ) : (
                               <div style={{ padding: "0 10px 10px", display: "flex", flexDirection: "column", gap: 6 }}>
-                                <button disabled={calibrationLocked} onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(sugg.w); setTmpR(sugg.r); setTmpRir(sugg.rir || ""); }} style={{ width: "100%", minHeight: 52, border: "2px dashed " + dc + "50", borderRadius: 10, background: calibrationLocked ? T.bg : dc + "08", color: calibrationLocked ? T.sub : dc, fontWeight: 800, fontSize: 15, cursor: calibrationLocked ? "default" : "pointer", touchAction: "manipulation" }}>
+                                <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(sugg.w); setTmpR(sugg.r); setTmpRir(sugg.rir || ""); }} style={{ width: "100%", minHeight: 52, border: "2px dashed " + dc + "50", borderRadius: 10, background: dc + "08", color: dc, fontWeight: 800, fontSize: 15, cursor: "pointer", touchAction: "manipulation" }}>
                                   {sugg.r ? "▶ " + (isTimeExercise ? (sugg.r + " s") : (isBW ? sugg.r + " rip" : formatLoadAndReps(ex.n, usesBarbellTotal(ex.n) ? plateInputToStoredWeight(ex.n, sugg.w, barbellWeight) : sugg.w, sugg.r))) : "+ registra"}
                                 </button>
                                 {(function() {

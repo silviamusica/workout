@@ -21,7 +21,7 @@ L'app oggi ha due logiche diverse ma compatibili:
 
 2. `Modalità guidata`
 - è spenta di default
-- si può disattivare da `Impostazioni`
+- si può attivare o disattivare da `Impostazioni`
 - affianca la seduta normale
 - usa RIR, storico e range per guidare recupero e progressione
 - non sostituisce la calibrazione

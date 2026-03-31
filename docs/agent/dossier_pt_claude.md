@@ -334,7 +334,7 @@ Se vuoi dare un'istruzione secca al tuo agente PT, la sintesi è questa:
 
 - l'app ha 3 livelli: basics, beginner, advanced
 - la logica coaching vera è soprattutto nella modalità avanzata
-- oggi la modalità guidata è attiva di default
+- oggi la modalità guidata è spenta di default
 - la calibrazione compare solo se manca un riferimento o è scaduto
 - esiste anche una modalità per nascondere le info non essenziali
 - il riferimento tecnico principale resta `src/App.jsx`
