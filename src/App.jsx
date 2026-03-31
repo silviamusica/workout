@@ -2868,6 +2868,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [guidedPrompt, setGuidedPrompt] = useState(null);
   var [guidedFeedback, setGuidedFeedback] = useState("");
   var [guidedRestHint, setGuidedRestHint] = useState("");
+  var [guidedFillerHint, setGuidedFillerHint] = useState("");
   var [guidedPromptSeenCount, setGuidedPromptSeenCount] = useState(function() {
     try {
       return parseInt(localStorage.getItem("wt-guided-prompt-seen") || "0") || 0;
@@ -4472,8 +4473,81 @@ function isNearBodyweightElasticSession(exName, sets) {
     }).slice(0, limit || 3);
   }
 
+  function isGuidedUniformSession(exName, sets, spec) {
+    if (!sets || !sets.length) return false;
+    if (spec && spec.kind === "time") return true;
+    var inc = getGuidedIncrementInfo(exName);
+    if (inc.kind === "reps") return true;
+    var ref = parseFloat(sets[0].w) || 0;
+    return sets.every(function(setItem) {
+      return (parseFloat(setItem.w) || 0) === ref;
+    });
+  }
+
+  function getGuidedStableSessions(exName, serie, limit) {
+    return getGuidedCompleteSessions(exName, serie, limit || 6).filter(function(session) {
+      return isGuidedUniformSession(exName, session.sets, session.spec);
+    });
+  }
+
+  function getGuidedPhase(exName, serie) {
+    return getGuidedStableSessions(exName, serie, 6).length >= 2 ? "progression" : "exploration";
+  }
+
+  function getRecoveryFillerSuggestion(exName, restSec) {
+    if (!restSec || restSec < 60) return "";
+    if (exName === "Squat" || exName === "Front Squat" || exName === "Pause Squat") {
+      return "band pull-apart leggero 10-15 rip, poi fermati 15-20s prima della serie.";
+    }
+    if (exName === "Stacco da Terra" || exName === "Stacco Rumeno" || exName === "Stacco Sumo") {
+      return "respirazione diaframmatica 4-5 cicli, poi fermati 15-20s prima della serie.";
+    }
+    if (exName === "Panca") {
+      return "retrazione scapolare senza peso per 20s, poi fermati 15-20s prima della serie.";
+    }
+    if (exName === "Military Press" || exName === "Push Press") {
+      return "dead hang passivo 15-20s, poi fermati 15-20s prima della serie.";
+    }
+    if (exName === "Hip Thrust Bilanciere") {
+      return "cat-cow lento 5-6 rip, poi fermati 15-20s prima della serie.";
+    }
+    if (exName === "Squat Bulgaro") {
+      return "clamshell senza peso 8 per lato, poi fermati 15-20s prima della serie.";
+    }
+    return "mobilita o respirazione molto leggera su un distretto lontano, poi fermati 15-20s prima della serie.";
+  }
+
+  function shouldSuppressRepeatedRirFeedback(prevSet, rirValue) {
+    var current = normalizeRirValue(rirValue);
+    var previous = prevSet ? normalizeRirValue(prevSet.rir) : "";
+    if (!current || !previous) return false;
+    if (current !== previous) return false;
+    return current !== "0";
+  }
+
+  function hadEarlierUnderMinToday(exName, serie, di, si) {
+    var spec = parseProgressSpec(serie);
+    var entry = logs[getGuidedTodayKey(di, exName)];
+    if (!spec || spec.kind !== "range" || !entry || !entry.sets) return false;
+    return entry.sets.some(function(setItem) {
+      var reps = parseInt(setItem.r) || 0;
+      return (setItem.si || 0) < si && reps > 0 && reps < spec.min;
+    });
+  }
+
   function getGuidedSessionSuggestion(exName, serie) {
+    var phase = getGuidedPhase(exName, serie);
     var progressAdvice = getProgressAdvice(exName, serie);
+    if (phase === "exploration") {
+      var latestExploration = getGuidedLastCompleteSession(exName, serie);
+      if (!latestExploration) {
+        return { state: "empty", title: "Fase di esplorazione", detail: "Oggi fissa un " + getGuidedReferenceTerm(exName) + " unico su tutte le serie: per ora ti serve un riferimento stabile, non un giudizio di progressione." };
+      }
+      if (!isGuidedUniformSession(exName, latestExploration.sets, latestExploration.spec)) {
+        return { state: "empty", title: "Fase di esplorazione", detail: "Stai ancora cercando il riferimento giusto: oggi prova a usare un " + getGuidedReferenceTerm(exName) + " unico su tutte le serie." };
+      }
+      return { state: "hold", title: "Conferma il riferimento", detail: "Hai un primo riferimento: oggi prova a ripeterlo in modo uniforme su tutte le serie, poi dalla prossima seduta puoi iniziare a ragionare in double progression." };
+    }
     if (progressAdvice && progressAdvice.mixedSession) {
       return { state: "empty", title: "Sessione non uniforme", detail: "Sessione precedente non uniforme: usa il peso della maggioranza delle serie e torna a renderlo costante in tutta la seduta." };
     }
@@ -4518,26 +4592,29 @@ function isNearBodyweightElasticSession(exName, sets) {
 
   function getGuidedRestSuggestion(exName, baseRestSec, rirValue) {
     var rir = numericRirValue(rirValue);
-    var base = baseRestSec || 90;
-    if (rir === null) return { seconds: base, label: "Recupero standard" };
+    if (rir === null) return { seconds: baseRestSec || 90, label: "Recupero standard" };
     var kind = getGuidedExerciseClass(exName);
     if (rir <= 0) {
-      if (kind === "heavy") return { seconds: 180, label: "Serie a cedimento: prendi 3 min pieni" };
-      if (kind === "compound") return { seconds: Math.max(base, 120), label: "Serie molto tirata: prenditi 2 min pieni" };
-      return { seconds: 90, label: "Monoarticolare a cedimento: 90s bastano" };
+      if (kind === "heavy") return { seconds: 150, label: "RIR 0: prenditi 2.5 min e riparti solo quando sei di nuovo pronta" };
+      if (kind === "compound") return { seconds: 90, label: "RIR 0: su questo accessorio bastano 90s" };
+      return { seconds: 60, label: "RIR 0: su un mono bastano 60s" };
     }
     if (rir === 1) {
-      if (kind === "heavy") return { seconds: Math.max(base, 150), label: "RIR 1: allunga il recupero a 2.5-3 min" };
-      if (kind === "compound") return { seconds: Math.max(base, 90), label: "RIR 1: prenditi 90-120s" };
-      return { seconds: Math.min(Math.max(base, 60), 90), label: "RIR 1 su monoarticolare: 60-90s bastano" };
+      if (kind === "heavy") return { seconds: 120, label: "RIR 1: 2 min sono sufficienti" };
+      if (kind === "compound") return { seconds: 75, label: "RIR 1: 75s bastano" };
+      return { seconds: 60, label: "RIR 1: su un mono bastano 60s" };
     }
-    if (rir === 2) return { seconds: base, label: "RIR 2: resta sul recupero standard" };
+    if (rir === 2) {
+      if (kind === "heavy") return { seconds: 90, label: "RIR 2: 90s bastano" };
+      if (kind === "compound") return { seconds: 60, label: "RIR 2: 60s bastano" };
+      return { seconds: 45, label: "RIR 2: su un mono bastano 45s" };
+    }
     if (rir >= 3) {
-      if (kind === "heavy") return { seconds: 120, label: "Carico leggero: puoi ripartire in 2 min" };
-      if (kind === "compound") return { seconds: Math.max(60, Math.min(base, 90)), label: "Carico leggero: 60-90s bastano" };
-      return { seconds: 60, label: "Monoarticolare leggero: 60s bastano" };
+      if (kind === "heavy") return { seconds: 75, label: "Serie facile: puoi ripartire in 75s" };
+      if (kind === "compound") return { seconds: 45, label: "Serie facile: 45s bastano" };
+      return { seconds: 30, label: "Serie facile: su un mono bastano 30s" };
     }
-    return { seconds: base, label: "Recupero standard" };
+    return { seconds: baseRestSec || 90, label: "Recupero standard" };
   }
 
   function getGuidedExerciseDecision(exName, serie, di) {
@@ -4557,6 +4634,15 @@ function isNearBodyweightElasticSession(exName, sets) {
     var load = sets[0] ? (parseFloat(sets[0].w) || 0) : 0;
     var inc = getGuidedIncrementInfo(exName);
     var recentComplete = getGuidedCompleteSessions(exName, serie, 2);
+    var stableCount = getGuidedStableSessions(exName, serie, 6).length;
+    var phase = stableCount >= 2 ? "progression" : "exploration";
+    if (phase === "exploration") {
+      if (isGuidedUniformSession(exName, sets, spec)) {
+        if (stableCount === 0) return "Primo riferimento salvato. La prossima volta riparti dallo stesso " + getGuidedReferenceTerm(exName) + " e prova a tenerlo uniforme su tutte le serie.";
+        return "Secondo riferimento salvato. Dalla prossima seduta puoi usare la double progression vera.";
+      }
+      return "Seduta di esplorazione utile: la prossima volta prova a tenere lo stesso " + getGuidedReferenceTerm(exName) + " su tutte le serie.";
+    }
     var currentAndPrevStable = recentComplete.length >= 2 ? recentComplete.every(function(session) {
       if (exName === "Push-Up") return session.sets.every(function(s) { return (parseInt(s.r) || 0) >= 15; });
       if (exName === "Trazioni" || exName === "Trazioni Supine") return isNearBodyweightElasticSession(exName, session.sets) && session.sets.every(function(s) { return (parseInt(s.r) || 0) >= 8; });
@@ -4586,10 +4672,16 @@ function isNearBodyweightElasticSession(exName, sets) {
     return "Consolida questo " + getGuidedReferenceTerm(exName) + " prima di salire.";
   }
 
-  function getUnderMinPerformanceMessage(exName, serie, repsDone) {
+  function getUnderMinPerformanceMessage(exName, serie, repsDone, di, si) {
     var spec = parseProgressSpec(serie);
     var reps = parseInt(repsDone) || 0;
     if (!spec || spec.kind !== "range" || reps <= 0 || reps >= spec.min) return "";
+    if (typeof di === "number" && typeof si === "number" && hadEarlierUnderMinToday(exName, serie, di, si)) {
+      if (reps <= Math.max(1, spec.min - 3)) {
+        return "Ancora molto sotto il minimo (" + reps + " su " + spec.min + "): abbassa " + getGuidedReferenceTerm(exName) + ". " + getGuidedReductionLabel(exName);
+      }
+      return "Ancora sotto il minimo (" + reps + " su " + spec.min + "): non salire, consolida.";
+    }
     if (reps <= Math.max(1, spec.min - 3)) {
       return "Sei molto sotto il minimo previsto (" + reps + " su " + spec.min + "). Probabile carico troppo alto, recupero insufficiente o tecnica che cede: alleggerisci e consolida. " + getGuidedReductionLabel(exName);
     }
@@ -4652,17 +4744,20 @@ function isNearBodyweightElasticSession(exName, sets) {
       if (!effectiveCalibrationMode || !calNeed.needed) {
         var saved = saveSetEntry(exObj.n, di, si, w, r, null, rirValue);
         var specGuided = parseProgressSpec(exObj.s);
-        var underMinMsg = getUnderMinPerformanceMessage(exObj.n, exObj.s, r);
+        var underMinMsg = getUnderMinPerformanceMessage(exObj.n, exObj.s, r, di, si);
         var savedEntry = saved ? saved[getGuidedTodayKey(di, exObj.n)] : null;
         var prevSet = savedEntry && savedEntry.sets ? savedEntry.sets.find(function(setItem) { return setItem.si === si - 1; }) : null;
         if (guidedMode) {
           if (normalizeRirValue(rirValue)) {
             var restInfo = getGuidedRestSuggestion(exObj.n, getExerciseRestSeconds({ rec: exObj.rec || "" }, exObj) || 90, rirValue);
             setGuidedRestHint(restInfo.label);
+            setGuidedFillerHint(getRecoveryFillerSuggestion(exObj.n, restInfo.seconds));
             if (underMinMsg) {
               setGuidedFeedback(underMinMsg);
             } else if (specGuided && si === specGuided.sets - 1) {
               setGuidedFeedback(getGuidedExerciseDecision(exObj.n, exObj.s, di) || "Serie salvata.");
+            } else if (shouldSuppressRepeatedRirFeedback(prevSet, rirValue)) {
+              setGuidedFeedback("");
             } else {
               setGuidedFeedback("Serie salvata. " + restInfo.label);
             }
@@ -4693,7 +4788,7 @@ function isNearBodyweightElasticSession(exName, sets) {
         return savedFollowup;
       }
       var spec = parseProgressSpec(exObj.s);
-      var underMinPreview = getUnderMinPerformanceMessage(exObj.n, exObj.s, r);
+      var underMinPreview = getUnderMinPerformanceMessage(exObj.n, exObj.s, r, di, si);
       if (underMinPreview) {
         setCalibrationFeedback(underMinPreview);
       }
@@ -4762,11 +4857,11 @@ function isNearBodyweightElasticSession(exName, sets) {
         };
       }
       saveSetEntry(calibrationPrompt.exName, calibrationPrompt.di, calibrationPrompt.si, calibrationPrompt.w, cleanReps, nextProfiles, reserve);
-      var forcedRestSec = getExerciseRestSeconds({ rec: calibrationPrompt.rec || "" }, { n: calibrationPrompt.exName, rpe: "" }) || 90;
       setCalibrationFeedback(decision.title + ". " + decision.detail);
       if (guidedMode) {
         var guidedRest = getGuidedRestSuggestion(calibrationPrompt.exName, getExerciseRestSeconds({ rec: calibrationPrompt.rec || "" }, { n: calibrationPrompt.exName, rpe: "" }) || 90, reserve);
         setGuidedRestHint(guidedRest.label);
+        setGuidedFillerHint(getRecoveryFillerSuggestion(calibrationPrompt.exName, guidedRest.seconds));
         if (calibrationPrompt.isLastSet) {
           setGuidedFeedback(getGuidedExerciseDecision(calibrationPrompt.exName, calibrationPrompt.serie, calibrationPrompt.di) || decision.detail);
         }
@@ -4785,12 +4880,15 @@ function isNearBodyweightElasticSession(exName, sets) {
     try { localStorage.setItem("wt-guided-prompt-seen", String(nextSeen)); } catch (e) {}
     var restInfo = getGuidedRestSuggestion(guidedPrompt.exName, guidedPrompt.restSec || 90, rirValue);
     setGuidedRestHint(restInfo.label);
+    setGuidedFillerHint(getRecoveryFillerSuggestion(guidedPrompt.exName, restInfo.seconds));
     if (rirValue === "0") {
       setGuidedFeedback(getGuidedRirZeroMessage(guidedPrompt.exName));
     } else if (rirValue === "3" || rirValue === "4+") {
       setGuidedFeedback("Il carico e leggero. Se si ripete alla prossima serie, considera un aumento.");
     } else if (guidedPrompt.isLastSet) {
       setGuidedFeedback(getGuidedExerciseDecision(guidedPrompt.exName, guidedPrompt.serie, guidedPrompt.di) || restInfo.label);
+    } else if (guidedPrompt.prevRir && normalizeRirValue(guidedPrompt.prevRir) === normalizeRirValue(rirValue) && normalizeRirValue(rirValue) !== "0") {
+      setGuidedFeedback("");
     } else {
       setGuidedFeedback(restInfo.label);
     }
@@ -5209,7 +5307,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif", background: T.bg, minHeight: "100vh", color: T.tx, zoom: fontScale, WebkitFontSmoothing: "antialiased" }}>
       <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-      {autoBackupMsg && <div style={{ position: "fixed", left: 12, right: 12, bottom: tPanel ? 190 : 96, zIndex: 260, maxWidth: 600, margin: "0 auto", background: T.ok, color: "#fff", borderRadius: 12, padding: "12px 14px", boxShadow: "0 10px 30px rgba(0,0,0,0.18)", fontSize: 12, fontWeight: 700, lineHeight: 1.5 }}>
+      {autoBackupMsg && <div onClick={function() { setAutoBackupMsg(""); }} style={{ position: "fixed", left: 12, right: 12, bottom: tPanel ? 190 : 96, zIndex: 260, maxWidth: 600, margin: "0 auto", background: T.ok, color: "#fff", borderRadius: 12, padding: "12px 14px", boxShadow: "0 10px 30px rgba(0,0,0,0.18)", fontSize: 12, fontWeight: 700, lineHeight: 1.5, cursor: "pointer" }}>
         💾 {autoBackupMsg}
       </div>}
 
@@ -5418,7 +5516,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(false); setBarbellWeight(BARBELL_BASE_KG); setExtraInfoEnabled(true); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); localStorage.removeItem("wt-barbell-weight"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setCardioLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(false); setBarbellWeight(BARBELL_BASE_KG); setExtraInfoEnabled(true); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setGuidedFillerHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); localStorage.removeItem("wt-barbell-weight"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
           </div>
         </div>
       </div>}
@@ -7689,6 +7787,9 @@ function isNearBodyweightElasticSession(exName, sets) {
         {(tPanel || tLocked) && <div style={{ padding: "0 10px 10px" }}>
           {tLocked && <div style={{ marginBottom: 8, padding: "7px 8px", borderRadius: 8, background: "rgba(255,255,255,0.08)", fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.82)", lineHeight: 1.5 }}>
             Timer bloccato: resta aperto e non viene sovrascritto dai nuovi recuperi finché non lo sblocchi.
+          </div>}
+          {guidedMode && guidedFillerHint && tMode === "countdown" && <div style={{ marginBottom: 8, padding: "7px 8px", borderRadius: 8, background: "rgba(255,255,255,0.08)", fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.82)", lineHeight: 1.5 }}>
+            {"Filler: " + guidedFillerHint}
           </div>}
           <div style={{ display: "flex", gap: 4, marginBottom: 8 }}>
             {["stopwatch","countdown"].map(function(m) { return <button key={m} onClick={function() { timerSwitch(m); }} style={{ flex: 1, padding: "7px 0", border: "none", borderRadius: 8, cursor: "pointer", fontSize: 12, fontWeight: tMode === m ? 700 : 500, background: tMode === m ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: tMode === m ? "#fff" : "rgba(255,255,255,0.5)", pointerEvents: "auto", touchAction: "manipulation" }}>{m === "stopwatch" ? "Cronometro" : "Recupero"}</button>; })}
