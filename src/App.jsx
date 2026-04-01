@@ -2278,7 +2278,7 @@ var BARBELL_MIN_KG = 0;
 var BARBELL_TOTAL_EX = ["Squat","Panca","Military Press","Stacco da Terra","Stacco Rumeno","Front Squat","Pause Squat","Push Press","Stacco Sumo","Rematore Bilanciere","Pendlay Row","Good Morning"];
 
 function usesBarbellTotal(exName) {
-  if (exName === "T-bar Row" || exName === "Hip Thrust Bilanciere") return false;
+  if (exName === "T-bar Row") return false;
   return BARBELL_TOTAL_EX.indexOf(exName) >= 0;
 }
 
