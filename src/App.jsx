@@ -7685,7 +7685,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                           var targetLabel = isTimeExercise ? ((String(tgt).replace(/s$/i, "") || tgt) + " s") : (tgt + " rip");
                           var sugg = getSuggested(si);
                           var done = !!lg;
-                          var showInlineRir = ((!guidedMode) || effectiveCalibrationMode) && (!effectiveCalibrationMode || si > 0 || !!(tLog && tLog.sets && tLog.sets.length > 0));
+                          var showInlineRir = !effectiveCalibrationMode || si > 0 || !!(tLog && tLog.sets && tLog.sets.length > 0);
                           return <div key={si} style={{ borderRadius: 10, border: "1px solid " + (done ? T.ok + "40" : T.bg), background: done ? T.ok + "0C" : T.sb, overflow: "hidden" }}>
                             {/* Serie header */}
                             <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px" }}>
