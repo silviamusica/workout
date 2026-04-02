@@ -7563,44 +7563,13 @@ function isNearBodyweightElasticSession(exName, sets) {
                           <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 4 }}>Recupero</div>
                           <div style={{ fontSize: 18, fontWeight: 900, color: T.tx }}>{restSec ? fmtLabel(restSec) : (rawEx.rec || "—")}</div>
                         </div>
-                        {!focusMode && extraInfoEnabled && br && <div onClick={function() { openBreathModal(ex.n); }} style={{ background: T.sb, padding: "10px 12px", gridColumn: "1 / -1", borderTop: "1px solid " + T.bg, cursor: "pointer" }}>
+                        {!focusMode && extraInfoEnabled && br && <div onClick={function() { setExInfoOpen(ex.n); }} style={{ background: T.sb, padding: "10px 12px", gridColumn: "1 / -1", borderTop: "1px solid " + T.bg, cursor: "pointer" }}>
                           <div style={{ fontSize: 10, fontWeight: 800, color: bColor, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 4 }}>🫁 Respirazione — {BREATH_TYPE_LABEL[br.type]}</div>
                           <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}><span style={{ color: T.sub, fontWeight: 600 }}>↓ Inspira:</span> {br.inhale}</div>
                           <div style={{ fontSize: 12, fontWeight: 700, color: T.tx, marginTop: 2 }}><span style={{ color: T.sub, fontWeight: 600 }}>↑ Espira:</span> {br.exhale}</div>
-                          <div style={{ fontSize: 10, color: bColor, fontWeight: 700, marginTop: 6 }}>Apri guida completa →</div>
+                          <div style={{ fontSize: 10, color: bColor, fontWeight: 700, marginTop: 6 }}>Apri scheda esercizio →</div>
                         </div>}
                       </div>
-                      {/* Guida completa — collassata (nascosta in focus mode) */}
-                      {!isBasics && !focusMode && extraInfoEnabled && <details style={{ borderTop: "1px solid " + T.bg }}>
-                        <summary style={{ cursor: "pointer", listStyle: "none", padding: "8px 12px", fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, display: "flex", alignItems: "center", gap: 6 }}>
-                          <span style={{ flex: 1 }}>Guida completa</span><span style={{ fontSize: 12 }}>›</span>
-                        </summary>
-                        <div style={{ padding: "10px 12px", display: "grid", gap: 8, background: T.cd }}>
-                          <div style={{ display: "grid", gap: 3 }}>
-                            <div style={{ fontSize: 10, fontWeight: 800, color: approach.needed ? dc : T.sub, textTransform: "uppercase", letterSpacing: 0.7 }}>Serie di avvicinamento</div>
-                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{approach.title}</div>
-                            <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{approach.detail}</div>
-                          </div>
-                          <div style={{ display: "grid", gap: 3 }}>
-                            <div style={{ fontSize: 10, fontWeight: 800, color: progColor, textTransform: "uppercase", letterSpacing: 0.7 }}>Obiettivo di oggi</div>
-                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{objective.title}</div>
-                            <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{objective.detail}</div>
-                          </div>
-                          {repeatHint && <div style={{ display: "grid", gap: 3 }}>
-                            <div style={{ fontSize: 10, fontWeight: 800, color: repeatColor, textTransform: "uppercase", letterSpacing: 0.7 }}>Nota sul carico</div>
-                            <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{repeatHint.detail}</div>
-                          </div>}
-                          {prog && <div style={{ display: "grid", gap: 3 }}>
-                            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                              <div style={{ fontSize: 10, fontWeight: 800, color: progColor, textTransform: "uppercase", letterSpacing: 0.7 }}>Progressione</div>
-                              <button onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === ("ex-open-advice-" + i) ? null : ("ex-open-advice-" + i)); }} title={getProgressShortHelp(prog)} style={{ width: 18, height: 18, borderRadius: "50%", border: "1px solid " + progColor + "40", background: "transparent", color: progColor, fontSize: 10, fontWeight: 800, cursor: "pointer", padding: 0, lineHeight: "16px" }}>?</button>
-                            </div>
-                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{prog.label}</div>
-                            <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{prog.detail}</div>
-                            {progTooltip === ("ex-open-advice-" + i) && <div onClick={function(e) { e.stopPropagation(); }} style={{ marginTop: 4, paddingTop: 6, borderTop: "1px solid " + T.bg, fontSize: 11, lineHeight: 1.6, color: T.sub }}>{getProgressShortHelp(prog)}</div>}
-                          </div>}
-                        </div>
-                      </details>}
                     </div>
 
                     {/* Timer buttons — prominenti */}
@@ -8028,7 +7997,7 @@ function isNearBodyweightElasticSession(exName, sets) {
         <div style={{ width: "min(calc(100vw - 20px), 284px)", maxWidth: "calc(100vw - 20px)", pointerEvents: "none", opacity: timerPassive ? 0.34 : 1, transform: timerPassive ? "scale(0.96)" : "none", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s, opacity 0.2s, transform 0.2s", borderRadius: 14, overflow: "hidden", boxSizing: "border-box" }}>
         <div style={{ display: "flex", alignItems: "center", padding: "7px 8px", gap: 5, minWidth: 0 }}>
           <button onClick={function() { if (!tLocked) setTPanel(!tPanel); }} title={tLocked ? "Timer bloccato" : (tPanel ? "Riduci timer" : "Espandi timer")} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 28, height: 28, borderRadius: 7, cursor: tLocked ? "default" : "pointer", fontSize: 12, opacity: tLocked ? 0.45 : 1, pointerEvents: "auto", touchAction: "manipulation" }}>{(tPanel || tLocked) ? "\u25BE" : "\u25B4"}</button>
-          <div onClick={function() { if (!tLocked) setTPanel(function(prev) { return !prev; }); }} style={{ flex: 1, textAlign: "center", cursor: tLocked ? "default" : "pointer", minWidth: 0 }}>
+          <div style={{ flex: 1, textAlign: "center", minWidth: 0, pointerEvents: "none" }}>
             {activeOpenEx && tMode === "countdown" && <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.68)", marginBottom: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
               {"🔔 " + ((guidedMode && guidedRestHint ? guidedRestHint + " · " : "") + "Recupero min: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget))}
             </div>}
