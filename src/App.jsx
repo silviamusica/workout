@@ -2898,12 +2898,14 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [logs, setLogs] = useState({});
   var [cardioLogs, setCardioLogs] = useState({});
   var [exerciseNoteDrafts, setExerciseNoteDrafts] = useState({});
+  var [savedExerciseNoteKey, setSavedExerciseNoteKey] = useState("");
   var [calibrationMode, setCalibrationMode] = useState(false);
   var [calibrationProfiles, setCalibrationProfiles] = useState({});
   var [calibrationPrompt, setCalibrationPrompt] = useState(null);
   var [calibrationAnswers, setCalibrationAnswers] = useState({ reps: "", cleanSame: "yes", cleanReps: "", reserve: "2" });
   var [calibrationFeedback, setCalibrationFeedback] = useState("");
   var [guidedMode, setGuidedMode] = useState(false);
+  var [guidedRecoveryEnabled, setGuidedRecoveryEnabled] = useState(false);
   var [barbellWeight, setBarbellWeight] = useState(BARBELL_BASE_KG);
   var [extraInfoEnabled, setExtraInfoEnabled] = useState(true);
   var [guidedPrompt, setGuidedPrompt] = useState(null);
@@ -3295,6 +3297,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           setCalibrationProfiles(parsed.calibrationProfiles || {});
           setCalibrationMode(!!parsed.calibrationMode);
           setGuidedMode(typeof parsed.guidedMode === "boolean" ? parsed.guidedMode : false);
+          setGuidedRecoveryEnabled(!!(parsed.preferences && typeof parsed.preferences.guidedRecoveryEnabled === "boolean" ? parsed.preferences.guidedRecoveryEnabled : false));
           setBarbellWeight(typeof parsed.barbellWeight === "number" ? Math.max(BARBELL_MIN_KG, parsed.barbellWeight) : BARBELL_BASE_KG);
           if (parsed.profile && typeof parsed.profile === "object") {
             if (typeof parsed.profile.userName === "string") setUserName(parsed.profile.userName);
@@ -3330,6 +3333,9 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     try {
       var ei = localStorage.getItem("wt-extra-info");
       setExtraInfoEnabled(ei == null ? true : ei === "1");
+    } catch(e) {}
+    try {
+      setGuidedRecoveryEnabled(localStorage.getItem("wt-guided-recovery") === "1");
     } catch(e) {}
     setReady(true);
   }, []);
@@ -3388,19 +3394,21 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   useEffect(function() {
     if (tLocked) setTPanel(true);
   }, [tLocked]);
-  var saveData = useCallback(function(nl, nc, np, nm, ng, bw) {
+  var saveData = useCallback(function(nl, nc, np, nm, ng, bw, gr) {
     var nextLogs = nl || {};
     var nextCardioLogs = nc || {};
     var nextProfiles = np || {};
     var nextMode = typeof nm === "boolean" ? nm : false;
     var nextGuided = typeof ng === "boolean" ? ng : guidedMode;
     var nextBarbell = typeof bw === "number" && isFinite(bw) && bw >= BARBELL_MIN_KG ? bw : barbellWeight;
+    var nextGuidedRecovery = typeof gr === "boolean" ? gr : guidedRecoveryEnabled;
     setLogs(nextLogs);
     setCardioLogs(nextCardioLogs);
     setCalibrationProfiles(nextProfiles);
     setCalibrationMode(nextMode);
     setGuidedMode(nextGuided);
     setBarbellWeight(nextBarbell);
+    setGuidedRecoveryEnabled(nextGuidedRecovery);
     try {
       var raw = JSON.stringify({
         logs: nextLogs,
@@ -3420,6 +3428,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
           exerciseWorkflowEnabled: exerciseWorkflowEnabled,
           extraInfoEnabled: extraInfoEnabled,
           guidedMode: nextGuided,
+          guidedRecoveryEnabled: nextGuidedRecovery,
           calibrationMode: nextMode,
           barbellWeight: nextBarbell
         }
@@ -3427,8 +3436,9 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       localStorage.setItem(SK, raw);
       localStorage.setItem(SK_SHADOW, raw);
       localStorage.setItem("wt-barbell-weight", String(nextBarbell));
+      localStorage.setItem("wt-guided-recovery", nextGuidedRecovery ? "1" : "0");
     } catch(e) {}
-  }, [guidedMode, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled]);
+  }, [guidedMode, guidedRecoveryEnabled, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled]);
 
   function checkSound(ms, mode, target) {
     if (mode === "countdown") {
@@ -3893,6 +3903,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       exerciseWorkflowEnabled: exerciseWorkflowEnabled,
       extraInfoEnabled: extraInfoEnabled,
       guidedMode: guidedMode,
+      guidedRecoveryEnabled: guidedRecoveryEnabled,
       calibrationMode: calibrationMode,
       barbellWeight: barbellWeight
     };
@@ -3907,6 +3918,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       calibrationProfiles: calibrationProfiles || {},
       calibrationMode: calibrationMode,
       guidedMode: guidedMode,
+      guidedRecoveryEnabled: guidedRecoveryEnabled,
       barbellWeight: barbellWeight,
     };
   }
@@ -3918,6 +3930,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       theme: theme,
       fontScale: fontScale,
       guidedMode: guidedMode ? "ON" : "OFF",
+      guidedRecoveryEnabled: guidedRecoveryEnabled ? "ON" : "OFF",
       calibrationMode: calibrationMode ? "ON" : "OFF",
       extraInfoEnabled: extraInfoEnabled ? "ON" : "OFF",
       exerciseWorkflowEnabled: exerciseWorkflowEnabled ? "ON" : "OFF",
@@ -3936,6 +3949,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     var importedFontScale = parseFloat(preferences.fontScale);
     var importedWorkflow = typeof preferences.exerciseWorkflowEnabled === "boolean" ? preferences.exerciseWorkflowEnabled : null;
     var importedExtraInfo = typeof preferences.extraInfoEnabled === "boolean" ? preferences.extraInfoEnabled : null;
+    var importedGuidedRecovery = typeof preferences.guidedRecoveryEnabled === "boolean" ? preferences.guidedRecoveryEnabled : null;
 
     setUserName(importedName);
     setUserPhoto(importedPhoto);
@@ -3965,6 +3979,10 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     if (importedExtraInfo !== null) {
       setExtraInfoEnabled(importedExtraInfo);
       try { localStorage.setItem("wt-extra-info", importedExtraInfo ? "1" : "0"); } catch (e) {}
+    }
+    if (importedGuidedRecovery !== null) {
+      setGuidedRecoveryEnabled(importedGuidedRecovery);
+      try { localStorage.setItem("wt-guided-recovery", importedGuidedRecovery ? "1" : "0"); } catch (e) {}
     }
   }
 
@@ -4032,7 +4050,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     var baseRestSec = getExerciseRestSeconds({ rec: ctx.rec || "" }, { n: entry.exercise, rpe: "" }) || 0;
     var restRange = String(ctx.rec || "").trim();
     var rirInfo = getSessionRepresentativeRir(entry.sets || []);
-    if (rirInfo) {
+    if (guidedRecoveryEnabled && rirInfo) {
       var guided = getGuidedRestSuggestion(entry.exercise, baseRestSec || 90, rirInfo.bucket);
       return {
         short: fmtLabel(guided.seconds),
@@ -4964,9 +4982,10 @@ function isNearBodyweightElasticSession(exName, sets) {
         var prevSet = savedEntry && savedEntry.sets ? savedEntry.sets.find(function(setItem) { return setItem.si === si - 1; }) : null;
         if (guidedMode) {
           if (normalizeRirValue(rirValue)) {
-            var restInfo = getGuidedRestSuggestion(exObj.n, getExerciseRestSeconds({ rec: exObj.rec || "" }, exObj) || 90, rirValue);
-            setGuidedRestHint(restInfo.label);
-            setGuidedFillerHint(getRecoveryFillerSuggestion(exObj.n, restInfo.seconds));
+            var baseRestNow = getExerciseRestSeconds({ rec: exObj.rec || "" }, exObj) || 90;
+            var restInfo = guidedRecoveryEnabled ? getGuidedRestSuggestion(exObj.n, baseRestNow, rirValue) : { seconds: baseRestNow, label: "Recupero scheda" };
+            setGuidedRestHint(guidedRecoveryEnabled ? restInfo.label : "");
+            setGuidedFillerHint(guidedRecoveryEnabled ? getRecoveryFillerSuggestion(exObj.n, restInfo.seconds) : "");
             if (underMinMsg) {
               setGuidedFeedback(underMinMsg);
             } else if (specGuided && si === specGuided.sets - 1) {
@@ -4974,7 +4993,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             } else if (shouldSuppressRepeatedRirFeedback(prevSet, rirValue)) {
               setGuidedFeedback("");
             } else {
-              setGuidedFeedback("Serie salvata. " + restInfo.label);
+              setGuidedFeedback(guidedRecoveryEnabled ? ("Serie salvata. " + restInfo.label) : "Serie salvata.");
             }
           } else {
             setGuidedPrompt({
@@ -5074,9 +5093,14 @@ function isNearBodyweightElasticSession(exName, sets) {
       saveSetEntry(calibrationPrompt.exName, calibrationPrompt.di, calibrationPrompt.si, calibrationPrompt.w, cleanReps, nextProfiles, reserve);
       setCalibrationFeedback(decision.title + ". " + decision.detail);
       if (guidedMode) {
-        var guidedRest = getGuidedRestSuggestion(calibrationPrompt.exName, getExerciseRestSeconds({ rec: calibrationPrompt.rec || "" }, { n: calibrationPrompt.exName, rpe: "" }) || 90, reserve);
-        setGuidedRestHint(guidedRest.label);
-        setGuidedFillerHint(getRecoveryFillerSuggestion(calibrationPrompt.exName, guidedRest.seconds));
+        if (guidedRecoveryEnabled) {
+          var guidedRest = getGuidedRestSuggestion(calibrationPrompt.exName, getExerciseRestSeconds({ rec: calibrationPrompt.rec || "" }, { n: calibrationPrompt.exName, rpe: "" }) || 90, reserve);
+          setGuidedRestHint(guidedRest.label);
+          setGuidedFillerHint(getRecoveryFillerSuggestion(calibrationPrompt.exName, guidedRest.seconds));
+        } else {
+          setGuidedRestHint("");
+          setGuidedFillerHint("");
+        }
         if (calibrationPrompt.isLastSet) {
           setGuidedFeedback(getGuidedExerciseDecision(calibrationPrompt.exName, calibrationPrompt.serie, calibrationPrompt.di) || decision.detail);
         }
@@ -5093,19 +5117,19 @@ function isNearBodyweightElasticSession(exName, sets) {
     var nextSeen = guidedPromptSeenCount + 1;
     setGuidedPromptSeenCount(nextSeen);
     try { localStorage.setItem("wt-guided-prompt-seen", String(nextSeen)); } catch (e) {}
-    var restInfo = getGuidedRestSuggestion(guidedPrompt.exName, guidedPrompt.restSec || 90, rirValue);
-    setGuidedRestHint(restInfo.label);
-    setGuidedFillerHint(getRecoveryFillerSuggestion(guidedPrompt.exName, restInfo.seconds));
+    var restInfo = guidedRecoveryEnabled ? getGuidedRestSuggestion(guidedPrompt.exName, guidedPrompt.restSec || 90, rirValue) : { seconds: guidedPrompt.restSec || 90, label: "Recupero scheda" };
+    setGuidedRestHint(guidedRecoveryEnabled ? restInfo.label : "");
+    setGuidedFillerHint(guidedRecoveryEnabled ? getRecoveryFillerSuggestion(guidedPrompt.exName, restInfo.seconds) : "");
     if (rirValue === "0") {
       setGuidedFeedback(getGuidedRirZeroMessage(guidedPrompt.exName));
     } else if (rirValue === "3" || rirValue === "4+") {
       setGuidedFeedback("Il carico e leggero. Se si ripete alla prossima serie, considera un aumento.");
     } else if (guidedPrompt.isLastSet) {
-      setGuidedFeedback(getGuidedExerciseDecision(guidedPrompt.exName, guidedPrompt.serie, guidedPrompt.di) || restInfo.label);
+      setGuidedFeedback(getGuidedExerciseDecision(guidedPrompt.exName, guidedPrompt.serie, guidedPrompt.di) || (guidedRecoveryEnabled ? restInfo.label : "Serie salvata."));
     } else if (guidedPrompt.prevRir && normalizeRirValue(guidedPrompt.prevRir) === normalizeRirValue(rirValue) && normalizeRirValue(rirValue) !== "0") {
       setGuidedFeedback("");
     } else {
-      setGuidedFeedback(restInfo.label);
+      setGuidedFeedback(guidedRecoveryEnabled ? restInfo.label : "Serie salvata.");
     }
     setGuidedPrompt(null);
   }
@@ -5804,7 +5828,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Modalità guidata</div>
-                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Di default è spenta. Quando la attivi, l'app aggiunge briefing pre-sessione, richiesta RIR dopo le serie, suggerimento di recupero e decisione finale. Se vuoi regolarti da sola, puoi lasciarla spenta e seguire la scheda teoria.</div>
+                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Di default è spenta. Quando la attivi, l'app aggiunge briefing pre-sessione, richiesta RIR dopo le serie e decisione finale. I recuperi guidati sono separati e restano spenti finché non li attivi qui sotto.</div>
                 </div>
                 <button
                   onClick={function() {
@@ -5814,6 +5838,23 @@ function isNearBodyweightElasticSession(exName, sets) {
                   style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (guidedMode ? dc : T.sub + "30"), background: guidedMode ? dc : T.cd, color: guidedMode ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
                 >
                   {guidedMode ? "ON" : "OFF"}
+                </button>
+              </div>
+            </div>}
+            {!isBasics && <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Recuperi guidati</div>
+                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Di default sono spenti. Se li lasci OFF, la modalità guidata non ti propone recuperi diversi dalla scheda e non ti mostra filler automatici.</div>
+                </div>
+                <button
+                  onClick={function() {
+                    var next = !guidedRecoveryEnabled;
+                    saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, next);
+                  }}
+                  style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (guidedRecoveryEnabled ? dc : T.sub + "30"), background: guidedRecoveryEnabled ? dc : T.cd, color: guidedRecoveryEnabled ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
+                >
+                  {guidedRecoveryEnabled ? "ON" : "OFF"}
                 </button>
               </div>
             </div>}
@@ -6561,7 +6602,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           return candidate.totalReps > current.totalReps ? candidate : current;
         }
         // Exercise progress: compute representative weekly session (not just max set)
-        var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Dip su Panca","Plank","Hollow Position","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Fire Hydrant"];
+        var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Dip su Panca","Plank","Hollow Position","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Fire Hydrant","Fitball Hamstring Curl"];
         var exProgress = Object.keys(exMap).map(function(name) {
           var entries = exMap[name].sort(function(a,b) { return a.date.localeCompare(b.date); });
           var isBW = BW_EX.indexOf(name) >= 0;
@@ -7498,7 +7539,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </div>}
                 {isX && db && (function() {
                   // bodyweight detection: no kg field needed
-                  var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Dip su Panca","Plank","Hollow Position","Hollow Tuck","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Fire Hydrant","Cat-Cow","Inchworm","Dead bug","Glute Bridge"];
+                  var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Dip su Panca","Plank","Hollow Position","Hollow Tuck","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Fire Hydrant","Cat-Cow","Inchworm","Dead bug","Glute Bridge","Fitball Hamstring Curl"];
                   var isBW = BW_EX.indexOf(ex.n) >= 0;
                   var usesBand = usesElasticScale(ex.n);
                   // last session data for pre-fill
@@ -7734,6 +7775,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                             next[noteDraftKey] = value;
                             return next;
                           });
+                          if (savedExerciseNoteKey === noteDraftKey) setSavedExerciseNoteKey("");
                         }}
                         placeholder="Esempio: panca instabile, spalla ok, ultima serie sporca, elastico rosso 2 giri..."
                         rows={3}
@@ -7742,10 +7784,14 @@ function isNearBodyweightElasticSession(exName, sets) {
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginTop: 8 }}>
                         <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.5 }}>Questa nota resta agganciata all'esercizio di oggi e compare anche in Progressi.</div>
                         <button
-                          onClick={function(e) { e.stopPropagation(); saveExerciseNote(ex.n, dayIdx, currentExerciseNote); }}
-                          style={{ minHeight: 32, padding: "0 12px", border: "none", borderRadius: 999, background: dc, color: "#fff", fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
+                          onClick={function(e) {
+                            e.stopPropagation();
+                            saveExerciseNote(ex.n, dayIdx, currentExerciseNote);
+                            setSavedExerciseNoteKey(noteDraftKey);
+                          }}
+                          style={{ minHeight: 32, padding: "0 12px", border: "none", borderRadius: 999, background: savedExerciseNoteKey === noteDraftKey ? T.ok : dc, color: "#fff", fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
                         >
-                          Salva nota
+                          {savedExerciseNoteKey === noteDraftKey ? "Salvato" : "Salva nota"}
                         </button>
                       </div>
                     </div>}
@@ -7999,7 +8045,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           <button onClick={function() { if (!tLocked) setTPanel(!tPanel); }} title={tLocked ? "Timer bloccato" : (tPanel ? "Riduci timer" : "Espandi timer")} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 28, height: 28, borderRadius: 7, cursor: tLocked ? "default" : "pointer", fontSize: 12, opacity: tLocked ? 0.45 : 1, pointerEvents: "auto", touchAction: "manipulation" }}>{(tPanel || tLocked) ? "\u25BE" : "\u25B4"}</button>
           <div style={{ flex: 1, textAlign: "center", minWidth: 0, pointerEvents: "none" }}>
             {activeOpenEx && tMode === "countdown" && <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.68)", marginBottom: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-              {"🔔 " + ((guidedMode && guidedRestHint ? guidedRestHint + " · " : "") + "Recupero min: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget))}
+              {"🔔 " + ((guidedMode && guidedRecoveryEnabled && guidedRestHint ? guidedRestHint + " · " : "") + "Recupero min: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget))}
             </div>}
             <div style={{ fontVariantNumeric: "tabular-nums", fontSize: 20, fontWeight: 800, letterSpacing: "0.4px", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s", animation: tWarning ? "timerBlink 1s infinite" : "none" }}>{fmtTime(tMs)}</div>
           </div>
@@ -8013,7 +8059,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           {tLocked && <div style={{ marginBottom: 8, padding: "7px 8px", borderRadius: 8, background: "rgba(255,255,255,0.08)", fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.82)", lineHeight: 1.5 }}>
             Timer bloccato: resta aperto e non viene sovrascritto dai nuovi recuperi finché non lo sblocchi.
           </div>}
-          {guidedMode && guidedFillerHint && tMode === "countdown" && <div style={{ marginBottom: 8, padding: "7px 8px", borderRadius: 8, background: "rgba(255,255,255,0.08)", fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.82)", lineHeight: 1.5 }}>
+          {guidedMode && guidedRecoveryEnabled && guidedFillerHint && tMode === "countdown" && <div style={{ marginBottom: 8, padding: "7px 8px", borderRadius: 8, background: "rgba(255,255,255,0.08)", fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.82)", lineHeight: 1.5 }}>
             {"Filler: " + guidedFillerHint}
           </div>}
           <div style={{ display: "flex", gap: 4, marginBottom: 8 }}>
