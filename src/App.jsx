@@ -6732,6 +6732,7 @@ function isNearBodyweightElasticSession(exName, sets) {
         var exProgress = Object.keys(exMap).map(function(name) {
           var entries = exMap[name].sort(function(a,b) { return a.date.localeCompare(b.date); });
           var isBW = BW_EX.indexOf(name) >= 0;
+          var isBand = usesElasticScale(name);
           var byWeek = {};
           entries.forEach(function(entry) {
             var wk = getWeekKey(entry.date);
@@ -6745,13 +6746,16 @@ function isNearBodyweightElasticSession(exName, sets) {
           var trend = "new";
           if (last && prev) {
             if (last.mixed || prev.mixed) trend = "flat";
-            else trend = last.score > prev.score ? "up" : last.score < prev.score ? "down" : "flat";
+            else if (isBW || isBand) trend = last.score > prev.score ? "up" : last.score < prev.score ? "down" : "flat";
+            else if ((last.primary || 0) > (prev.primary || 0)) trend = "up";
+            else if ((last.primary || 0) < (prev.primary || 0)) trend = "down";
+            else trend = "flat";
           }
           var allMetrics = Object.values(byWeek);
           var maxEver = allMetrics.reduce(function(best, item) {
             return pickBetterSessionMetric(best, item);
           }, null);
-          return { name: name, isBW: isBW, last: last, prev: prev, trend: trend, maxEver: maxEver, weeks: wkKeys.length };
+          return { name: name, isBW: isBW, isBand: isBand, last: last, prev: prev, trend: trend, maxEver: maxEver, weeks: wkKeys.length };
         }).filter(function(e) { return e.last && e.last.score > 0; }).sort(function(a,b) { return b.weeks - a.weeks; });
         var keyLiftNames = ["Squat", "Stacco da Terra", "Panca", "Military Press", "Trazioni", "Trazioni Supine", "Push-Up", "T-bar Row", "Dip alle Parallele", "Hip Thrust Bilanciere"];
         var keyLiftProgress = keyLiftNames.map(function(name) {
@@ -6899,7 +6903,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             {keyLiftProgress.length > 0 && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
               <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
                 <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Fondamentali: risultati chiave</div>
-                <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Qui vedi subito i carichi o le ripetizioni piu importanti dei movimenti base, con confronto sulla settimana prima.</div>
+                <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Qui vedi subito il carico usato e le rip totali dei movimenti base, con confronto sulla settimana prima.</div>
               </div>
               <div style={{ display: "grid", gap: 0 }}>
                 {keyLiftProgress.map(function(item, ii) {
@@ -6909,22 +6913,27 @@ function isNearBodyweightElasticSession(exName, sets) {
                   var prevLabel = item.prev === null ? "—" : item.prev.label;
                   var maxLabel = item.maxEver ? item.maxEver.label : "—";
                   var trendShort = item.last ? item.last.shortLabel : "—";
+                  var lastTotalReps = item.last && item.last.totalReps ? item.last.totalReps : null;
+                  var prevTotalReps = item.prev && item.prev.totalReps ? item.prev.totalReps : null;
                   var lastRest = item.last && item.last.restLabel ? item.last.restLabel : "—";
                   var prevRest = item.prev && item.prev.restLabel ? item.prev.restLabel : "—";
+                  var showFlatWithoutArrow = !item.isBW && !item.isBand && item.trend === "flat";
                   return <div key={item.name} style={{ padding: "11px 14px", borderBottom: ii < keyLiftProgress.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 10, alignItems: "center" }}>
                       <div>
                         <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, marginBottom: 4 }}>{item.name}</div>
                         <div style={{ display: "flex", flexWrap: "wrap", gap: 10, fontSize: 11, color: T.sub, lineHeight: 1.5 }}>
                           <span><b style={{ color: T.tx }}>Ultimo:</b> {lastLabel}</span>
+                          {lastTotalReps !== null && <span><b style={{ color: T.tx }}>Rip totali:</b> {lastTotalReps}</span>}
                           <span><b style={{ color: T.tx }}>Rec:</b> {lastRest}</span>
                           <span><b style={{ color: T.tx }}>Prima:</b> {prevLabel}</span>
+                          {prevTotalReps !== null && <span><b style={{ color: T.tx }}>Rip totali prima:</b> {prevTotalReps}</span>}
                           <span><b style={{ color: T.tx }}>Rec prima:</b> {prevRest}</span>
                           <span><b style={{ color: T.tx }}>Massimo mese:</b> {maxLabel}</span>
                         </div>
                       </div>
                       <div style={{ fontSize: 15, fontWeight: 900, color: trendColor, whiteSpace: "nowrap" }}>
-                        <span style={{ marginRight: 4 }}>{trendIcon}</span>{trendShort}
+                        {!showFlatWithoutArrow && <span style={{ marginRight: 4 }}>{trendIcon}</span>}{trendShort}
                       </div>
                     </div>
                   </div>;
