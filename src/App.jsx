@@ -2955,6 +2955,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [tWarning, setTWarning] = useState(false);
   var [tPanel, setTPanel] = useState(false);
   var [tLocked, setTLocked] = useState(false);
+  var [tFullscreen, setTFullscreen] = useState(false);
   var [timerPos, setTimerPos] = useState(function() {
     try {
       var raw = localStorage.getItem("wt-timer-pos");
@@ -8254,31 +8255,32 @@ function isNearBodyweightElasticSession(exName, sets) {
       </div>}
 
       {/* TIMER BAR */}
-      <div style={{ position: "fixed", bottom: 10, left: 0, right: 0, zIndex: 100, pointerEvents: "none" }}>
-        <div style={{ maxWidth: 600, margin: "0 auto", display: "flex", justifyContent: "flex-end", padding: "0 10px", boxSizing: "border-box", transform: "translate(" + (timerPos.x || 0) + "px," + (timerPos.y || 0) + "px)" }}>
+      <div style={{ position: "fixed", bottom: tFullscreen ? 0 : 10, left: 0, right: 0, top: tFullscreen ? 0 : "auto", zIndex: 100, pointerEvents: "none", display: tFullscreen ? "flex" : "block", alignItems: tFullscreen ? "center" : "stretch", justifyContent: tFullscreen ? "center" : "flex-end", background: tFullscreen ? "rgba(0,0,0,0.28)" : "transparent" }}>
+        <div style={{ maxWidth: tFullscreen ? "100%" : 600, width: tFullscreen ? "100%" : "auto", margin: "0 auto", display: "flex", justifyContent: tFullscreen ? "center" : "flex-end", padding: tFullscreen ? 16 : "0 10px", boxSizing: "border-box", transform: tFullscreen ? "none" : "translate(" + (timerPos.x || 0) + "px," + (timerPos.y || 0) + "px)" }}>
         <div
-          style={{ width: "min(calc(100vw - 20px), 284px)", maxWidth: "calc(100vw - 20px)", pointerEvents: "none", opacity: timerPassive ? 0.34 : 1, transform: timerPassive ? "scale(0.96)" : "none", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s, opacity 0.2s, transform 0.2s", borderRadius: 14, overflow: "hidden", boxSizing: "border-box" }}>
-        <div style={{ display: "flex", alignItems: "center", padding: "7px 8px", gap: 5, minWidth: 0 }}>
+          style={{ width: tFullscreen ? "min(92vw, 560px)" : "min(calc(100vw - 20px), 284px)", maxWidth: tFullscreen ? "92vw" : "calc(100vw - 20px)", pointerEvents: "none", opacity: timerPassive && !tFullscreen ? 0.34 : 1, transform: timerPassive && !tFullscreen ? "scale(0.96)" : "none", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s, opacity 0.2s, transform 0.2s", borderRadius: 14, overflow: "hidden", boxSizing: "border-box" }}>
+        <div style={{ display: "flex", alignItems: "center", padding: tFullscreen ? "12px 12px" : "7px 8px", gap: 5, minWidth: 0 }}>
           <div
             onMouseDown={startTimerDrag}
             onTouchStart={startTimerDrag}
             title="Trascina il timer"
-            style={{ width: 24, height: 28, borderRadius: 7, background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)", fontSize: 12, fontWeight: 900, display: "flex", alignItems: "center", justifyContent: "center", cursor: "grab", pointerEvents: "auto", touchAction: "none", userSelect: "none", flexShrink: 0 }}
+            style={{ width: 24, height: 28, borderRadius: 7, background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)", fontSize: 12, fontWeight: 900, display: tFullscreen ? "none" : "flex", alignItems: "center", justifyContent: "center", cursor: "grab", pointerEvents: tFullscreen ? "none" : "auto", touchAction: "none", userSelect: "none", flexShrink: 0 }}
           >::</div>
           <button onClick={function() { if (!tLocked) setTPanel(!tPanel); }} title={tLocked ? "Timer bloccato" : (tPanel ? "Riduci timer" : "Espandi timer")} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 28, height: 28, borderRadius: 7, cursor: tLocked ? "default" : "pointer", fontSize: 12, opacity: tLocked ? 0.45 : 1, pointerEvents: "auto", touchAction: "manipulation" }}>{(tPanel || tLocked) ? "\u25BE" : "\u25B4"}</button>
           <div style={{ flex: 1, textAlign: "center", minWidth: 0, pointerEvents: "none" }}>
             {activeOpenEx && tMode === "countdown" && <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.68)", marginBottom: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
               {"🔔 " + ((guidedMode && guidedRecoveryEnabled && guidedRestHint ? guidedRestHint + " · " : "") + "Recupero min: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget))}
             </div>}
-            <div style={{ fontVariantNumeric: "tabular-nums", fontSize: 20, fontWeight: 800, letterSpacing: "0.4px", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s", animation: tWarning ? "timerBlink 1s infinite" : "none" }}>{fmtTime(tMs)}</div>
+            <div style={{ fontVariantNumeric: "tabular-nums", fontSize: tFullscreen ? 52 : 20, fontWeight: 800, letterSpacing: "0.4px", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s", animation: tWarning ? "timerBlink 1s infinite" : "none", lineHeight: 1 }}>{fmtTime(tMs)}</div>
           </div>
           <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
+            <button onClick={function() { setTFullscreen(function(v) { return !v; }); }} title={tFullscreen ? "Esci da schermo pieno" : "Schermo pieno"} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12, fontWeight: 800, pointerEvents: "auto", touchAction: "manipulation" }}>{tFullscreen ? "⤡" : "⤢"}</button>
             <button onClick={toggleTimerLock} title={tLocked ? "Sblocca timer" : "Blocca timer"} style={{ background: tLocked ? T.ac : "rgba(255,255,255,0.1)", border: "none", color: tLocked ? "#000" : T.htx, width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 13, fontWeight: 800, pointerEvents: "auto", touchAction: "manipulation" }}>{tLocked ? "🔒" : "🔓"}</button>
             {!tRunning ? <button onClick={timerGo} style={{ background: T.ok, border: "none", color: "#fff", width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 15, pointerEvents: "auto", touchAction: "manipulation" }}>&#9654;</button> : <button onClick={timerPause} style={{ background: T.ac, border: "none", color: "#000", width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12, fontWeight: 800, pointerEvents: "auto", touchAction: "manipulation" }}>&#9646;&#9646;</button>}
             <button onClick={timerReset} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12, pointerEvents: "auto", touchAction: "manipulation" }}>&#8634;</button>
           </div>
         </div>
-        {(tPanel || tLocked) && <div style={{ padding: "0 10px 10px" }}>
+        {(tPanel || tLocked || tFullscreen) && <div style={{ padding: tFullscreen ? "0 12px 12px" : "0 10px 10px" }}>
           {tLocked && <div style={{ marginBottom: 8, padding: "7px 8px", borderRadius: 8, background: "rgba(255,255,255,0.08)", fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.82)", lineHeight: 1.5 }}>
             Timer bloccato: resta aperto e non viene sovrascritto dai nuovi recuperi finché non lo sblocchi.
           </div>}
