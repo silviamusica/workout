@@ -201,6 +201,15 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"p","content":"Per aumentare ulteriormente la difficolta: porta le braccia tese sopra la testa. Quando anche questa diventa facile oltre i 40'' di tenuta, tieni in mano un disco da 1-2 kg."},
   {"type":"p","content":"Quando usarla: ottima per principianti per sviluppare controllo del core e consapevolezza corporea. A livelli avanzati e un esercizio di passaggio o da inserire in circuiti ad alta densita, lavori combinati o pre-attivazione prima di compound pesanti."}
 ]},
+"Jumping jacks": {"g": "Warm-up/Cardio leggero", "c": "Salti aprendo e chiudendo gambe e braccia in modo ritmico.", "p": "Atterra morbida, tronco alto, ritmo regolare.", "t": ["Servono solo per alzare la temperatura", "Non cercare fiatone o fatica vera", "Tienili leggeri prima dei pesi"]},
+"Jumping jacks + cerchi con le braccia": {"g": "Warm-up Upper", "c": "Piccolo circuito rapido: jumping jacks per alzare la temperatura, poi cerchi con le braccia per scaldare spalle e cuffia.", "p": "Ritmo fluido, spalle rilassate, nessun affanno.", "t": ["Usalo come attivazione generale", "Non deve stancarti", "Passa poi all'attivazione scapolare specifica"]},
+"Marcia con ginocchia alte": {"g": "Warm-up Lower/Cardio leggero", "c": "Cammina sul posto portando il ginocchio verso il petto a ogni passo.", "p": "Bustо alto, appoggi morbidi, ritmo continuo.", "t": ["Scalda senza impatto", "Ottima se non vuoi saltare", "Usala per 2-5 minuti leggeri"]},
+"Marcia sul posto + affondi a corpo libero": {"g": "Warm-up Lower", "c": "Prima marcia sul posto per alzare la temperatura, poi affondi lenti a corpo libero per richiamare glutei e quadricipiti.", "p": "Ritmo progressivo, busto stabile negli affondi.", "t": ["Serve a scaldarti, non a farti bruciare le gambe", "Negli affondi mantieni controllo e passo medio", "Poi passa alle serie di avvicinamento"]},
+"Step-up alternato a corpo libero": {"g": "Warm-up Lower", "c": "Sali e scendi da un box basso alternando le gambe, senza peso.", "p": "Piede tutto sul box, spinta controllata, bacino stabile.", "t": ["Alza la temperatura senza impatto", "Richiama glutei e quadricipiti", "Mantieni un ritmo continuo e facile"]},
+"Band dislocate": {"g": "Warm-up Upper/Spalle", "c": "Con un elastico leggero, porta le braccia tese da davanti a dietro la testa e ritorno.", "p": "Gomiti tesi, spalle basse, movimento controllato.", "t": ["Usa un elastico leggero", "Apri il torace senza forzare dolore", "Ottimo prima di panca, military e trazioni"]},
+"Kettlebell halo": {"g": "Warm-up Upper/Spalle", "c": "Fai girare un kettlebell leggero intorno alla testa in entrambe le direzioni.", "p": "Addome attivo, costole giu, collo rilassato.", "t": ["Movimento lento e controllato", "Ottimo per mobilita spalle e torace", "Non usare carichi alti"]},
+"Kettlebell swing leggero": {"g": "Warm-up Lower/Hinge", "c": "Swing esplosivo con kettlebell leggero per scaldare catena posteriore e alzare la temperatura.", "p": "Hip hinge pulito, schiena neutra, spinta di anche.", "t": ["Leggero: serve a scaldare, non ad allenare", "Poche ripetizioni pulite", "Se perdi il pattern, fermati"]},
+"Salto su fit box basso": {"g": "Warm-up Lower/Potenza", "c": "Salto controllato su un box basso, atterrando morbida e stabile.", "p": "Atterra silenziosa, ginocchia stabili, busto raccolto.", "t": ["Poche ripetizioni", "Serve a svegliare il sistema nervoso", "Usalo solo se ti senti fresca e coordinata"]},
 "Hyperextension": {"g": "Erettori/Glutei/Femorali", "c": "Panca 45 gradi, piedi bloccati. Scendi col busto, risali contraendo glutei e erettori.", "p": "Schiena neutra, non iperestendere.", "t": ["Contrai glutei in alto 1s", "Disco al petto per piu carico"]}, "Addominali Obliqui": {"g": "Obliqui", "c": "Crunch laterale o russian twist (piedi sollevati, ruota il busto).", "p": "Lombare a terra nei crunch.", "t": ["Rotazione dal busto", "Espira quando ruoti"], "deep": [
   {"type":"p","content":"Regola base: retroversione del bacino. Da sdraiata, annulla lo spazio tra la schiena e il pavimento prima di iniziare. Evita che i flessori dell'anca (ileopsoas) tirino la bassa schiena."},
   {"type":"p","content":"Varianti principali:"},
@@ -1040,6 +1049,48 @@ var PRINCIPLES_DEEP = [
     ]},
     {type:"p", content:"Segnali che non richiedono cambio immediato: DOMS normali, una singola seduta brutta, risultati non visibili dopo solo 2 settimane, o la sensazione soggettiva di fare poco se la performance continua a salire."},
   ]},
+  { t: "Quando NON cambiare esercizi", d: [
+    {type:"p", content:"Non adesso. Sei ancora in una fase di raccolta dati: molti esercizi non hanno ancora 2 sessioni uniformi registrate e la double progression, su diversi slot, non e partita davvero."},
+    {type:"p", content:"Cambiare esercizi troppo presto significa buttare via la calibrazione appena fatta e perdere confronti utili. Prima servono riferimenti stabili, poi eventualmente si ruota qualcosa."},
+    {type:"bold-list", content:[
+      ["Prime 4 settimane", "Tieni tutto com'e. Calibra, uniforma i carichi e raccogli riferimenti puliti."],
+      ["Fondamentali", "Squat, Stacco, Trazioni, Push-Up, Panca, Military e Hip Thrust restano per 8-12 settimane minimo."],
+      ["Accessori", "Si valutano dopo 4-6 settimane, e si cambiano solo se stagnano, danno fastidio o annoiano davvero."],
+      ["Dopo un deload", "E il momento naturale per ruotare 1-2 accessori, non per stravolgere tutta la scheda."],
+    ]},
+    {type:"p", content:"Segnali concreti per cambiare qualcosa: performance in calo per 2 settimane consecutive sullo stesso esercizio con sonno e alimentazione regolari; dolore articolare persistente; noia vera dopo 6-8 settimane continue; fine blocco/deload."},
+  ]},
+  { t: "Cosa NON cambiare e cosa puoi ruotare", d: [
+    {type:"p", content:"I fondamentali e i compound principali restano. Gli accessori invece sono gli slot che puoi ruotare quando il lavoro attuale smette di darti risultati o ti crea fastidi."},
+    {type:"bold-list", content:[
+      ["Da tenere fermi", "Squat, Stacco da Terra, Trazioni, Push-Up, Panca, Military Press, Hip Thrust Bilanciere."],
+      ["Da poter ruotare", "Squat Bulgaro, Leg Curl al Cavo, Ab Wheel, T-bar Row, Face Pull, Curl Bicipiti, Affondi, Hyperextension, Fitball Hamstring Curl, Tricipiti Cavo, Woodchop."],
+      ["Regola pratica", "Quando cambi, cambia 1 accessorio alla volta. Se cambi troppo insieme, non capisci piu cosa stava funzionando."],
+    ]},
+    {type:"p", content:"Kettlebell e fit box sono utili soprattutto come supporto: warm-up, tecnica, potenza o alternative accessorie. Non servono per sostituire il bilanciere nei fondamentali finche il blocco V4 sta ancora costruendo base."},
+  ]},
+  { t: "Varianti utili quando sara il momento", d: [
+    {type:"table", columns:["Slot attuale","Variante","Con cosa","Quando usarla"], rows:[
+      ["Squat Bulgaro","TRX Split Squat","TRX","Se il ginocchio si lamenta o vuoi piu assistenza"],
+      ["Squat Bulgaro","Step-Up","Step + manubri","Per cambiare stimolo unilaterale"],
+      ["Leg Curl al Cavo","Fitball Hamstring Curl","Fitball","Se il cavo da fastidio o non e libero"],
+      ["Ab Wheel","TRX Fallout","TRX","Stessa funzione, angolo diverso"],
+      ["T-bar Row","Pulley basso","Cavo basso","Meno stress lombare, piu isolamento dorsale"],
+      ["T-bar Row","Rematore Manubri","Manubri + panca","Per lavoro unilaterale"],
+      ["Face Pull","Band Pull-Apart pesante","Elastico","Se il cavo alto e occupato"],
+      ["Curl Bicipiti","Curl al cavo basso","Cavo basso","Per tensione costante"],
+      ["Affondi","Walking Lunge","Manubri","Per piu stabilita e lavoro globale"],
+      ["Affondi","Step-Up","Step + manubri","Se vuoi meno stress sul ginocchio posteriore"],
+      ["Hyperextension","Cable Pull-Through","Cavo basso","Se vuoi meno stress lombare"],
+      ["Fitball Hamstring Curl","TRX Hamstring Curl","TRX","Per una progressione piu fine"],
+      ["Tricipiti Cavo","French Press Manubri","Manubri","Piu enfasi sul capo lungo"],
+      ["Tricipiti Cavo","Overhead Extension Cavo","Cavo basso","Angolo diverso"],
+      ["Woodchop","Pallof Press","Cavo o elastico","Se vuoi anti-rotazione invece di rotazione"],
+      ["Push-Up","Push-Up Declino","Fit box","Quando superi 15 rip stabili"],
+      ["Push-Up","TRX Push-Up","TRX","Per aggiungere instabilita"],
+    ]},
+    {type:"p", content:"Schema semplice: settimane 1-4 tieni tutto uguale; settimane 5-8 valuti se un accessorio e stagnante; dopo 8-12 settimane o dopo un deload puoi ruotare 2-3 accessori. I fondamentali restano."},
+  ]},
   { t: "Il test iniziale: sapere da dove parti", d: [
     {type:"p", content:"Per sapere se stai migliorando davvero ti serve un punto di partenza misurabile. Non serve un 1RM e non devi fare test massimali puri."},
     {type:"table", columns:["Lift","Test"], rows:[
@@ -1481,8 +1532,17 @@ var DAYS_V4 = [
       ritmo: "Recuperi 2-3 min su Squat. 2 min su Hip thrust. 90s-2 min su Leg curl al cavo. 90-120s sugli altri."
     },
     warmup: [
-      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3-5 minuti. Obiettivo: alzare temperatura, non affaticarti.", tm: 180, alt: [{ n: "Jumping jacks", img: "w_JumpingJacks", d: "2-3 minuti leggeri.", tm: 180 }] },
-      { n: "Cat-Cow + World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "2 minuti totali. Mobilita dinamica, non stretching statico.", alt: [{ n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente seguite da 4 World's Greatest Stretch per lato." }] },
+      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", gearTag: "Corpo libero", d: "3-5 minuti. Obiettivo: alzare temperatura, non affaticarti.", tm: 180, alt: [
+        { n: "Kettlebell swing leggero", img: "Good Morning", gearTag: "Kettlebell", d: "3x10 con 30 secondi di pausa. Scalda tutta la catena posteriore e porta su il cuore in fretta." },
+        { n: "Step-up alternato a corpo libero", img: "Step Up", gearTag: "Step / Fit box", d: "2 minuti continui. Scalda quadricipiti e glutei, alza la temperatura senza impatto.", tm: 120 },
+        { n: "Salto su fit box basso", img: "Step Up", gearTag: "Fit box", d: "5-6 salti controllati. Attivazione esplosiva prima dello squat, senza cercare fatica." },
+        { n: "Jumping jacks", img: "w_JumpingJacks", gearTag: "Corpo libero", d: "2-3 minuti leggeri.", tm: 180 }
+      ] },
+      { n: "Cat-Cow + World's Greatest Stretch", img: "w_WorldsGreatestStretch", gearTag: "Corpo libero", d: "2 minuti totali. Mobilita dinamica, non stretching statico.", alt: [
+        { n: "Goblet squat lento", img: "Goblet Squat", gearTag: "Kettlebell", d: "2x8 con 3 secondi di fermo in buca. Riscalda il pattern squat e apre le anche." },
+        { n: "TRX squat + apertura toracica", img: "TRX Squat", gearTag: "TRX", d: "8 rip per lato. Squat assistito profondo con rotazione del busto a braccia aperte in buca." },
+        { n: "Cat-Cow", img: "w_CatCow", gearTag: "Corpo libero", d: "8 ripetizioni lente seguite da 4 World's Greatest Stretch per lato." }
+      ] },
       { n: "Serie avvicinamento squat con bilanciere", img: "w_SerieAvvSquat", d: "3-5 serie progressive senza fatica: bilanciere scarico poi sali. L'ultima non deve pesarti.", alt: [{ n: "Affondi a corpo libero", img: "w_AffondiCorpoLiberoAlt", d: "6 per gamba, lenti, solo come richiamo se ti senti rigida." }] },
     ],
     ex: [
@@ -1502,11 +1562,24 @@ var DAYS_V4 = [
       ritmo: "Recuperi 2-3 min su Trazioni. 2 min su T-bar e Panca. 60-90s su Face pull e Curl."
     },
     warmup: [
-      { n: "Jumping jacks", img: "w_JumpingJacks", d: "3 minuti.", tm: 180, alt: [{ n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti.", tm: 180 }] },
-      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", d: "15 avanti + 15 indietro. Scalda cuffia dei rotatori.", alt: [{ n: "Shoulder rolls + apertura petto", d: "10 rotazioni + 10 aperture." }] },
-      { n: "Inchworm", img: "w_Inchworm", d: "5 ripetizioni. Attiva core, spalle e femorali.", alt: [{ n: "Cat-Cow", img: "w_CatCow", d: "8 lente." }] },
+      { n: "Jumping jacks", img: "w_JumpingJacks", gearTag: "Corpo libero", d: "3 minuti.", tm: 180, alt: [
+        { n: "Kettlebell halo", img: "Military Press", gearTag: "Kettlebell", d: "8 per direzione. Mobilita spalle, trapezio e romboidi senza affaticare." },
+        { n: "Band dislocate", img: "band pull apart", gearTag: "Elastico", d: "10 rip lente. Passaggio dell'elastico sopra la testa da davanti a dietro per aprire il torace." },
+        { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", gearTag: "Corpo libero", d: "3 minuti.", tm: 180 }
+      ] },
+      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", gearTag: "Corpo libero", d: "15 avanti + 15 indietro. Scalda cuffia dei rotatori.", alt: [
+        { n: "TRX Y-T-W", img: "TRX High Row", gearTag: "TRX", d: "5+5+5 rip. Attivazione completa di cuffia e scapole." },
+        { n: "Shoulder rolls + apertura petto", img: "w_ShoulderRolls", gearTag: "Corpo libero", d: "10 rotazioni + 10 aperture." }
+      ] },
+      { n: "Inchworm", img: "w_Inchworm", gearTag: "Corpo libero", d: "5 ripetizioni. Attiva core, spalle e femorali.", alt: [
+        { n: "TRX row lentissimo", img: "TRX Row", gearTag: "TRX", d: "2x8 con fermo di 2 secondi in contrazione. Scalda dorsali e bicipiti senza affaticare." },
+        { n: "Cat-Cow", img: "w_CatCow", gearTag: "Corpo libero", d: "8 lente." }
+      ] },
       { n: "Scapular Pull-Up", img: "w_SospensioneAttivaSbarra", d: "2x5. Appesa alla barra a braccia tese, tira le scapole in basso senza piegare i gomiti. Il corpo sale di 3-5 cm. Tieni 2 secondi in alto.", alt: [{ n: "Sospensione attiva alla sbarra", img: "w_SospensioneAttivaSbarra", d: "2x5. Parti appesa a braccia tese, abbassa le spalle lontano dalle orecchie e poi rilassa. Stessa attivazione scapolare in versione ancora piu semplice." }] },
-      { n: "Band Pull-Apart con elastico", img: "w_CerchiApertura", d: "2x15. Elastico leggero, braccia tese davanti al petto. Apri fino a portarlo al petto. Scapole addotte in fondo al movimento.", alt: [{ n: "Face Pull leggero con elastico", img: "Face Pull", d: "2x12-15. Tira l'elastico verso il viso con gomiti alti. Obiettivo: accendere deltoidi posteriori e retrattori scapolari senza stancarti." }] },
+      { n: "Band Pull-Apart con elastico", img: "w_CerchiApertura", gearTag: "Elastico", d: "2x15. Elastico leggero, braccia tese davanti al petto. Apri fino a portarlo al petto. Scapole addotte in fondo al movimento.", alt: [
+        { n: "Elastico pull-apart + rotazione esterna combo", img: "band pull apart", gearTag: "Elastico", d: "2x10. Apri e ruota fuori in un movimento fluido per accendere cuffia e scapole." },
+        { n: "Face Pull leggero con elastico", img: "Face Pull", gearTag: "Elastico", d: "2x12-15. Tira l'elastico verso il viso con gomiti alti. Obiettivo: accendere deltoidi posteriori e retrattori scapolari senza stancarti." }
+      ] },
       { n: "Serie avvicinamento trazioni", img: "Trazioni", d: "2-3 mini-serie con recupero completo. Prima fai 1-2 ripetizioni pulite, poi 3, poi 4-5 solo se restano facili. Arrivi qui con spalle gia preparate: queste serie servono solo a preparare la tirata vera.", alt: [{ n: "Sospensione attiva alla sbarra", img: "w_SospensioneAttivaSbarra", d: "2-3 serie brevi di attivazione scapolare. Parti appesa a braccia tese, abbassa le spalle lontano dalle orecchie e poi rilassa. Obiettivo: imparare ad abbassare bene le spalle prima delle trazioni." }] },
     ],
     ex: [
@@ -1537,8 +1610,17 @@ var DAYS_V4 = [
       ritmo: "Recuperi 2-3 min su Stacco. 90s-2 min su Stacco Rumeno e Hip thrust. 90s-2 min su Affondi. 90s sugli accessori."
     },
     warmup: [
-      { n: "Marcia sul posto + affondi a corpo libero", img: "w_AffondiCorpoLiberoAlt", d: "3 minuti totali. Alza la temperatura senza fiato eccessivo.", tm: 180, alt: [{ n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti leggeri.", tm: 180 }] },
-      { n: "Good Morning senza peso + clamshell con elastico", img: "w_GoodMorningSenzaPeso", d: "2 minuti. Richiama cerniera d'anca e gluteo medio.", tm: 120, alt: [{ n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente, poi clamshell leggero con elastico." }] },
+      { n: "Marcia sul posto + affondi a corpo libero", img: "w_AffondiCorpoLiberoAlt", gearTag: "Corpo libero", d: "3 minuti totali. Alza la temperatura senza fiato eccessivo.", tm: 180, alt: [
+        { n: "Kettlebell swing leggero", img: "Good Morning", gearTag: "Kettlebell", d: "3x10 con 30 secondi di pausa. Scalda catena posteriore e sistema nervoso." },
+        { n: "Step-up alternato a corpo libero", img: "Step Up", gearTag: "Step / Fit box", d: "2 minuti continui. Scalda quadricipiti e glutei senza impatto.", tm: 120 },
+        { n: "Salto su fit box basso", img: "Step Up", gearTag: "Fit box", d: "5-6 salti controllati. Attivazione esplosiva prima di Lower B." },
+        { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", gearTag: "Corpo libero", d: "3 minuti leggeri.", tm: 180 }
+      ] },
+      { n: "Good Morning senza peso + clamshell con elastico", img: "w_GoodMorningSenzaPeso", gearTag: "Corpo libero", d: "2 minuti. Richiama cerniera d'anca e gluteo medio.", tm: 120, alt: [
+        { n: "Goblet squat lento", img: "Goblet Squat", gearTag: "Kettlebell", d: "2x8 con 3 secondi di fermo in buca. Mobilita e richiamo del pattern squat." },
+        { n: "TRX squat + apertura toracica", img: "TRX Squat", gearTag: "TRX", d: "8 rip per lato. Squat assistito con apertura toracica in buca." },
+        { n: "Cat-Cow", img: "w_CatCow", gearTag: "Corpo libero", d: "8 ripetizioni lente, poi clamshell leggero con elastico." }
+      ] },
       { n: "Serie avvicinamento stacco con bilanciere", img: "w_SerieAvvStacco", d: "3-5 serie progressive senza fatica: bilanciere scarico poi sali. L'ultima deve preparare, non tassare.", alt: [{ n: "Hip hinge con bastone", img: "w_HipHingeBastone", d: "8-10 rip lente per richiamare la traiettoria." }] },
     ],
     ex: [
@@ -1559,10 +1641,23 @@ var DAYS_V4 = [
       ritmo: "Recuperi 2 min su Push-up, Trazioni, Military. 90-120s su Dip. 60-90s su Tricipiti cavo e Woodchop."
     },
     warmup: [
-      { n: "Jumping jacks + cerchi con le braccia", img: "w_JumpingJacks", d: "2-3 minuti totali. Obiettivo: alzare temperatura.", tm: 180, alt: [{ n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2-3 minuti leggeri.", tm: 180 }] },
-      { n: "Cat-Cow", img: "w_CatCow", d: "8-10 ripetizioni lente.", alt: [{ n: "Shoulder rolls", img: "w_ShoulderRolls", d: "10 in avanti e 10 indietro." }] },
-      { n: "Band Pull-Apart con elastico", img: "w_CerchiApertura", d: "2x15. Elastico leggero, braccia tese davanti al petto. Apri fino al petto. Scapole addotte in fondo.", alt: [{ n: "Face Pull leggero con elastico", img: "Face Pull", d: "2x12-15. Tirata leggera per accendere deltoidi posteriori, trapezio medio e romboidi." }] },
-      { n: "Retrazione scapolare al muro", img: "w_ShoulderRolls", d: "2x10. Schiena al muro, braccia a W. Premi gomiti e dorso delle mani contro il muro, tira le scapole insieme e tieni 3 secondi.", alt: [{ n: "Shoulder rolls", img: "w_ShoulderRolls", d: "10 in avanti e 10 indietro, poi 10 secondi di scapole addotte al muro." }] },
+      { n: "Jumping jacks + cerchi con le braccia", img: "w_JumpingJacks", gearTag: "Corpo libero", d: "2-3 minuti totali. Obiettivo: alzare temperatura.", tm: 180, alt: [
+        { n: "Kettlebell halo", img: "Military Press", gearTag: "Kettlebell", d: "8 per direzione. Mobilita spalle e torace senza affaticarti." },
+        { n: "Band dislocate", img: "band pull apart", gearTag: "Elastico", d: "10 rip lente. Apre torace e spalle." },
+        { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", gearTag: "Corpo libero", d: "2-3 minuti leggeri.", tm: 180 }
+      ] },
+      { n: "Cat-Cow", img: "w_CatCow", gearTag: "Corpo libero", d: "8-10 ripetizioni lente.", alt: [
+        { n: "TRX Y-T-W", img: "TRX High Row", gearTag: "TRX", d: "5+5+5 rip. Attivazione completa della cuffia e delle scapole." },
+        { n: "Shoulder rolls", img: "w_ShoulderRolls", gearTag: "Corpo libero", d: "10 in avanti e 10 indietro." }
+      ] },
+      { n: "Band Pull-Apart con elastico", img: "w_CerchiApertura", gearTag: "Elastico", d: "2x15. Elastico leggero, braccia tese davanti al petto. Apri fino al petto. Scapole addotte in fondo.", alt: [
+        { n: "Elastico pull-apart + rotazione esterna combo", img: "band pull apart", gearTag: "Elastico", d: "2x10. Apri e ruota fuori in un movimento fluido." },
+        { n: "Face Pull leggero con elastico", img: "Face Pull", gearTag: "Elastico", d: "2x12-15. Tirata leggera per accendere deltoidi posteriori, trapezio medio e romboidi." }
+      ] },
+      { n: "Retrazione scapolare al muro", img: "w_ShoulderRolls", gearTag: "Corpo libero", d: "2x10. Schiena al muro, braccia a W. Premi gomiti e dorso delle mani contro il muro, tira le scapole insieme e tieni 3 secondi.", alt: [
+        { n: "TRX row lentissimo", img: "TRX Row", gearTag: "TRX", d: "2x8 con fermo di 2 secondi in contrazione. Scalda dorsali e bicipiti senza affaticare." },
+        { n: "Shoulder rolls", img: "w_ShoulderRolls", gearTag: "Corpo libero", d: "10 in avanti e 10 indietro, poi 10 secondi di scapole addotte al muro." }
+      ] },
       { n: "Serie avvicinamento military press", img: "w_MilitaryPress", d: "2-3 mini-serie leggere prima del carico di lavoro.", alt: [{ n: "Military press con bilanciere scarico", img: "w_MilitaryPress", d: "2x8 con bilanciere vuoto." }] },
     ],
     ex: [
@@ -2101,6 +2196,15 @@ var EX_IMG = {
   "French Press Manubri": img_French_Press_Manubri,
   "Glute Bridge": img_Glute_Bridge,
   "Goblet Squat": img_Goblet_Squat,
+  "Jumping jacks": img_w_JumpingJacks,
+  "Jumping jacks + cerchi con le braccia": img_w_JumpingJacks,
+  "Marcia con ginocchia alte": img_w_MarciaGinocchiaAlte,
+  "Marcia sul posto + affondi a corpo libero": img_w_AffondiCorpoLiberoAlt,
+  "Step-up alternato a corpo libero": img_Step_Up,
+  "Band dislocate": img_w_CerchiApertura,
+  "Kettlebell halo": img_w_MilitaryPress,
+  "Kettlebell swing leggero": img_Good_Morning,
+  "Salto su fit box basso": img_Step_Up,
   "Good Morning senza peso": img_w_GoodMorningSenzaPeso,
   "Front Squat": img_Front_Squat,
   "Glute Bridge su Fitball": img_Glute_Bridge_Fitball,
@@ -3650,6 +3754,34 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     return { execution: execution, objective: objective, notes: notes };
   }
 
+  function getWarmupChoiceOptions(item) {
+    if (!item) return [];
+    var choices = [Object.assign({ __choiceIndex: null }, item)];
+    (item.alt || []).forEach(function(altItem, idx) {
+      choices.push(Object.assign({ __choiceIndex: idx }, altItem));
+    });
+    return choices;
+  }
+
+  function getWarmupGearBadge(item) {
+    var text = String((item && (item.gearTag || item.gear || item.n || "")) || "").toLowerCase();
+    if (!text) return { icon: "🔥", label: "Base" };
+    if (text.indexOf("trx") >= 0) return { icon: "🟡", label: "TRX" };
+    if (text.indexOf("kettlebell") >= 0) return { icon: "⚫", label: "KB" };
+    if (text.indexOf("elast") >= 0 || text.indexOf("band") >= 0) return { icon: "🟣", label: "Elastico" };
+    if (text.indexOf("fit box") >= 0 || text.indexOf("step") >= 0 || text.indexOf("box") >= 0) return { icon: "🟫", label: "Box" };
+    if (text.indexOf("bilanc") >= 0 || text.indexOf("barra") >= 0) return { icon: "🏋️", label: "Bilanciere" };
+    if (text.indexOf("corpo libero") >= 0) return { icon: "⚪", label: "Corpo libero" };
+    return { icon: "🔥", label: item.gearTag || "Base" };
+  }
+
+  function getWarmupSelectionHint(levelKey, dayIndex) {
+    if (levelKey !== "v4") return "";
+    if (dayIndex === 0 || dayIndex === 3) return "Scegli 1-2 varianti che alzano la temperatura e ti preparano al pattern lower del giorno. Poi passa alle serie di avvicinamento.";
+    if (dayIndex === 1 || dayIndex === 4) return "Scegli 1-2 varianti che scaldano spalle e scapole senza affaticarti. Poi passa all'attivazione specifica e alle serie di avvicinamento.";
+    return "";
+  }
+
   function getApproachAdvice(dayIndex, exName) {
     if (exName === "Squat") {
       return {
@@ -4081,6 +4213,25 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     return "";
   }
 
+  function getWorkoutDayLabel(programKey, dayIndex) {
+    if (typeof dayIndex !== "number") return "";
+    var pools = {
+      v4: DAYS_V4,
+      beginner: DAYS_BEGINNER,
+      basics: DAYS_BASICS
+    };
+    var days = pools[programKey] || null;
+    if (!days || !days.length) return "Allenamento " + (dayIndex + 1);
+    var trainingDays = days.map(function(day, idx) {
+      return { day: day, idx: idx };
+    }).filter(function(item) {
+      return item.day && !item.day.rest && item.day.ex && item.day.ex.length;
+    });
+    var orderIndex = trainingDays.findIndex(function(item) { return item.idx === dayIndex; });
+    if (orderIndex >= 0) return "Allenamento " + (orderIndex + 1);
+    return "Allenamento " + (dayIndex + 1);
+  }
+
   function findExerciseContext(entry) {
     var pools = [
       { key: "v4", days: DAYS_V4 },
@@ -4096,8 +4247,9 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
         var exDef = getExForMonthValue(rawEx, entry.month);
         if (exDef.n === entry.exercise) {
           return {
+            programKey: pool.key,
             program: getProgramLabel(pool.key),
-            dayName: day.name,
+            dayName: getWorkoutDayLabel(pool.key, entry.day),
             focus: day.focus,
             plannedSerie: exDef.s || "",
             note: exDef.note || "",
@@ -4107,8 +4259,9 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       }
     }
     return {
+      programKey: "",
       program: "",
-      dayName: typeof entry.day === "number" ? ("Giorno " + (entry.day + 1)) : "",
+      dayName: typeof entry.day === "number" ? ("Allenamento " + (entry.day + 1)) : "",
       focus: "",
       plannedSerie: "",
       note: "",
@@ -4146,8 +4299,9 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   function findCardioContext(entry) {
     var day = DAYS_V4[entry.day];
     return {
+      programKey: "v4",
       program: "Ipertrofia avanzato",
-      dayName: day && day.name ? day.name : (typeof entry.day === "number" ? ("Giorno " + (entry.day + 1)) : ""),
+      dayName: day && day.ex && day.ex.length ? getWorkoutDayLabel("v4", entry.day) : (typeof entry.day === "number" ? ("Allenamento " + (entry.day + 1)) : ""),
       focus: day && day.focus ? day.focus : "",
     };
   }
@@ -6882,7 +7036,8 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>}
                     <div style={{ padding: "0 14px 12px", display: "grid", gap: 8 }}>
                       {sessionDays.map(function(session, si) {
-                        var dayLabel = DAYS[session.day] ? DAYS[session.day].name : ("Giorno " + (session.day + 1));
+                        var sampleEntry = session.entries && session.entries[0] ? session.entries[0] : null;
+                        var dayLabel = sampleEntry ? findExerciseContext(sampleEntry).dayName : ("Allenamento " + ((session.day || 0) + 1));
                         var dateLabel = fmtProgressDate(session.date);
                         return <div key={wk + "-" + si} style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 12px" }}>
                           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 8 }}>
@@ -7440,6 +7595,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                 <div style={{ fontSize: 13, color: dc, transform: showIntro ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
               {showIntro && <div style={{ padding: "0 14px 14px" }}><div style={{ background: T.sb, borderRadius: 10, padding: 12 }}>
+                {getWarmupSelectionHint(level, dayIdx) && <div style={{ marginBottom: 10, padding: "10px 12px", borderRadius: 8, background: dc + "0B", border: "1px solid " + dc + "1A", fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
+                  <b style={{ color: dc }}>Scelta libera:</b> {getWarmupSelectionHint(level, dayIdx)}
+                </div>}
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                   {dayData.warmup.map(function(w, wi) {
                     var altKey = dayIdx + "-" + wi;
@@ -7448,27 +7606,39 @@ function isNearBodyweightElasticSession(exName, sets) {
                     var imgSrc = warmupImgSrc(active);
                     var hasImg = !!imgSrc;
                     var altCount = w.alt ? w.alt.length : 0;
+                    var choiceOptions = getWarmupChoiceOptions(w);
                     var warm = warmupInfo(active.d, active.tm);
+                    var hasGuide = !!EX[active.n];
                     return <div key={wi} style={{ borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "20", padding: 10 }}>
                       <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
                         <div style={{ width: 24, height: 24, borderRadius: 6, background: dc, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, flexShrink: 0, marginTop: 2 }}>{wi + 1}</div>
                         {hasImg ? <img onClick={function() { setShowImg(showImg === "w" + wi ? null : "w" + wi); }} src={imgSrc} style={{ width: 54, height: 54, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "pointer", border: "1px solid " + dc + "20" }} /> : <div style={{ width: 54, height: 54, borderRadius: 8, background: dc + "10", color: dc, fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>🔥</div>}
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ display: "flex", alignItems: "flex-start", gap: 8, justifyContent: "space-between", marginBottom: 4 }}>
-                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{active.n}</div>
-                            {altCount > 0 && <button
-                              onClick={function() {
-                                setWarmupAlt(function(prev) {
-                                  var n = Object.assign({}, prev);
-                                  if (chosenAlt == null) n[altKey] = 0;
-                                  else if (chosenAlt < altCount - 1) n[altKey] = chosenAlt + 1;
-                                  else delete n[altKey];
-                                  return n;
-                                });
-                              }}
-                              style={{ padding: "3px 8px", borderRadius: 6, border: "1px solid " + dc + "28", background: T.cd, color: dc, fontSize: 10, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}
-                            >cambia</button>}
+                            <div onClick={hasGuide ? function() { pushNavSnapshot(); setExInfoOpen(active.n); } : undefined} style={{ fontSize: 12, fontWeight: 700, color: T.tx, cursor: hasGuide ? "pointer" : "default", textDecoration: hasGuide ? "underline dotted" : "none", textDecorationColor: hasGuide ? dc + "60" : "transparent", textUnderlineOffset: hasGuide ? 2 : 0 }}>{active.n}</div>
+                            {altCount > 0 && <span style={{ padding: "3px 8px", borderRadius: 999, border: "1px solid " + dc + "28", background: T.cd, color: dc, fontSize: 10, fontWeight: 700, flexShrink: 0 }}>varianti</span>}
                           </div>
+                          {choiceOptions.length > 1 && <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
+                            {choiceOptions.map(function(choice) {
+                              var badge = getWarmupGearBadge(choice);
+                              var isSelected = choice.__choiceIndex === chosenAlt || (choice.__choiceIndex == null && chosenAlt == null);
+                              return <button
+                                key={String(choice.__choiceIndex) + "-" + choice.n}
+                                onClick={function() {
+                                  setWarmupAlt(function(prev) {
+                                    var next = Object.assign({}, prev);
+                                    if (choice.__choiceIndex == null) delete next[altKey];
+                                    else next[altKey] = choice.__choiceIndex;
+                                    return next;
+                                  });
+                                }}
+                                style={{ display: "flex", alignItems: "center", gap: 5, padding: "4px 9px", borderRadius: 999, border: "1px solid " + (isSelected ? dc : dc + "24"), background: isSelected ? dc + "12" : T.cd, color: isSelected ? dc : T.sub, fontSize: 10, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}
+                              >
+                                <span>{badge.icon}</span>
+                                <span>{badge.label}</span>
+                              </button>;
+                            })}
+                          </div>}
                           <div style={{ display: "grid", gap: 6 }}>
                             {warm.execution && <div>
                               <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 1 }}>Ripetizioni / tempo</div>
@@ -7484,6 +7654,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                             </div>}
                           </div>
                           <div style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 6, flexWrap: "wrap" }}>
+                            {hasGuide && <button onClick={function() { pushNavSnapshot(); setExInfoOpen(active.n); }} style={{ display: "flex", alignItems: "center", gap: 4, padding: "3px 10px", border: "1px solid " + dc + "28", borderRadius: 6, background: T.cd, color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer" }}>📋 Scheda</button>}
                             {active.lk && <EmbedLink url={active.lk} label="video" size={10} />}
                             {active.tm && active.tm >= 120 ? <button onClick={function() { quickStopwatch(); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"▶ " + fmtLabel(active.tm)}</button> : null}
                             {active.tm && active.tm < 120 ? <button onClick={function() { quickTimer(active.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"⏱ " + fmtLabel(active.tm)}</button> : null}
