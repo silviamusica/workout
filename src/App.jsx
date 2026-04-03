@@ -117,6 +117,10 @@ import img_Glute_Bridge from "./images/preliminary/Glute-Bridge-.gif";
 import img_Pallof_Press from "./images/preliminary/Pallof+Press.gif";
 import img_Pelvic_Tilt from "./images/preliminary/Pelvic-Tilt.gif";
 import img_Push_Up_Ginocchia from "./images/preliminary/push up ginocchia.gif";
+import img_w_BandDislocate from "./images/warmup_stretch/Band dislocate.gif";
+import img_w_KettlebellHalo from "./images/warmup_stretch/Kettlebell halo.gif";
+import img_w_KettlebellSwing from "./images/warmup_stretch/kettlebell swing.webp";
+import img_w_SaltoFitBoxBasso from "./images/warmup_stretch/Salto su fit box basso.gif";
 
 // Muscle map
 import img_muscle_map from "./images/muscle_map.jpg";
@@ -210,6 +214,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
 "Kettlebell halo": {"g": "Warm-up Upper/Spalle", "c": "Fai girare un kettlebell leggero intorno alla testa in entrambe le direzioni.", "p": "Addome attivo, costole giu, collo rilassato.", "t": ["Movimento lento e controllato", "Ottimo per mobilita spalle e torace", "Non usare carichi alti"]},
 "Kettlebell swing leggero": {"g": "Warm-up Lower/Hinge", "c": "Swing esplosivo con kettlebell leggero per scaldare catena posteriore e alzare la temperatura.", "p": "Hip hinge pulito, schiena neutra, spinta di anche.", "t": ["Leggero: serve a scaldare, non ad allenare", "Poche ripetizioni pulite", "Se perdi il pattern, fermati"]},
 "Salto su fit box basso": {"g": "Warm-up Lower/Potenza", "c": "Salto controllato su un box basso, atterrando morbida e stabile.", "p": "Atterra silenziosa, ginocchia stabili, busto raccolto.", "t": ["Poche ripetizioni", "Serve a svegliare il sistema nervoso", "Usalo solo se ti senti fresca e coordinata"]},
+"TRX Y-T-W": {"g": "Warm-up Upper/Scapole", "c": "Con il TRX esegui tre micro-pattern consecutivi: Y, poi T, poi W, per attivare cuffia, trapezio medio-basso e scapole.", "p": "Corpo in linea, spalle basse, movimento lento senza strappi.", "t": ["Poche ripetizioni ma controllate", "Tieni fermo il tronco", "Meglio angolo facile che compensi"], "lk": "https://www.youtube.com/shorts/IIFg87UefgQ"},
 "Hyperextension": {"g": "Erettori/Glutei/Femorali", "c": "Panca 45 gradi, piedi bloccati. Scendi col busto, risali contraendo glutei e erettori.", "p": "Schiena neutra, non iperestendere.", "t": ["Contrai glutei in alto 1s", "Disco al petto per piu carico"]}, "Addominali Obliqui": {"g": "Obliqui", "c": "Crunch laterale o russian twist (piedi sollevati, ruota il busto).", "p": "Lombare a terra nei crunch.", "t": ["Rotazione dal busto", "Espira quando ruoti"], "deep": [
   {"type":"p","content":"Regola base: retroversione del bacino. Da sdraiata, annulla lo spazio tra la schiena e il pavimento prima di iniziare. Evita che i flessori dell'anca (ileopsoas) tirino la bassa schiena."},
   {"type":"p","content":"Varianti principali:"},
@@ -2201,10 +2206,11 @@ var EX_IMG = {
   "Marcia con ginocchia alte": img_w_MarciaGinocchiaAlte,
   "Marcia sul posto + affondi a corpo libero": img_w_AffondiCorpoLiberoAlt,
   "Step-up alternato a corpo libero": img_Step_Up,
-  "Band dislocate": img_w_CerchiApertura,
-  "Kettlebell halo": img_w_MilitaryPress,
-  "Kettlebell swing leggero": img_Good_Morning,
-  "Salto su fit box basso": img_Step_Up,
+  "Band dislocate": img_w_BandDislocate,
+  "Kettlebell halo": img_w_KettlebellHalo,
+  "Kettlebell swing leggero": img_w_KettlebellSwing,
+  "Salto su fit box basso": img_w_SaltoFitBoxBasso,
+  "TRX Y-T-W": img_TRX_High_Row,
   "Good Morning senza peso": img_w_GoodMorningSenzaPeso,
   "Front Squat": img_Front_Squat,
   "Glute Bridge su Fitball": img_Glute_Bridge_Fitball,
@@ -4221,15 +4227,15 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       basics: DAYS_BASICS
     };
     var days = pools[programKey] || null;
-    if (!days || !days.length) return "Allenamento " + (dayIndex + 1);
+    if (!days || !days.length) return "Giorno " + (dayIndex + 1);
     var trainingDays = days.map(function(day, idx) {
       return { day: day, idx: idx };
     }).filter(function(item) {
       return item.day && !item.day.rest && item.day.ex && item.day.ex.length;
     });
     var orderIndex = trainingDays.findIndex(function(item) { return item.idx === dayIndex; });
-    if (orderIndex >= 0) return "Allenamento " + (orderIndex + 1);
-    return "Allenamento " + (dayIndex + 1);
+    if (orderIndex >= 0) return "Giorno " + (orderIndex + 1);
+    return "Giorno " + (dayIndex + 1);
   }
 
   function findExerciseContext(entry) {
@@ -4261,7 +4267,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     return {
       programKey: "",
       program: "",
-      dayName: typeof entry.day === "number" ? ("Allenamento " + (entry.day + 1)) : "",
+      dayName: typeof entry.day === "number" ? ("Giorno " + (entry.day + 1)) : "",
       focus: "",
       plannedSerie: "",
       note: "",
@@ -4301,7 +4307,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     return {
       programKey: "v4",
       program: "Ipertrofia avanzato",
-      dayName: day && day.ex && day.ex.length ? getWorkoutDayLabel("v4", entry.day) : (typeof entry.day === "number" ? ("Allenamento " + (entry.day + 1)) : ""),
+      dayName: day && day.ex && day.ex.length ? getWorkoutDayLabel("v4", entry.day) : (typeof entry.day === "number" ? ("Giorno " + (entry.day + 1)) : ""),
       focus: day && day.focus ? day.focus : "",
     };
   }
@@ -5369,9 +5375,59 @@ function isNearBodyweightElasticSession(exName, sets) {
   }
   function getLog(en, di) { return logs[todayStr() + "_d" + di + "_m" + month + "_" + en]; }
   function getExerciseNoteDraftKey(en, di) { return di + "__" + en; }
+  function getHistoricExerciseNoteDraftKey(entry) {
+    return (entry.date || todayStr()) + "__d" + (entry.day || 0) + "__m" + (entry.month || month) + "__" + entry.exercise;
+  }
   function normalizeExerciseNotePhotos(value) {
     if (Array.isArray(value)) return value.filter(Boolean).slice(0, 3);
     return value ? [value] : [];
+  }
+  function resetSetEditingState() {
+    setEditing(null);
+    setTmpW("");
+    setTmpR("");
+    setTmpRir("");
+  }
+  function saveHistoricSetEntry(entry, si, w, r, rirValue) {
+    if (!entry || !entry.exercise) return logs;
+    var key = (entry.date || todayStr()) + "_d" + (entry.day || 0) + "_m" + (entry.month || month) + "_" + entry.exercise;
+    var nextLogs = Object.assign({}, logs);
+    var existing = nextLogs[key] || {
+      date: entry.date || todayStr(),
+      day: entry.day || 0,
+      month: entry.month || month,
+      exercise: entry.exercise,
+      sets: []
+    };
+    var nextSets = (existing.sets || []).slice();
+    var idx = nextSets.findIndex(function(setItem) { return setItem.si === si; });
+    var nextEntry = {
+      si: si,
+      w: parseFloat(w) || 0,
+      r: r === "max" ? r : (parseInt(r) || 0),
+      rir: normalizeRirValue(rirValue)
+    };
+    if (idx >= 0) nextSets[idx] = nextEntry;
+    else nextSets.push(nextEntry);
+    nextSets.sort(function(a, b) { return (a.si || 0) - (b.si || 0); });
+    nextLogs[key] = Object.assign({}, existing, { sets: nextSets });
+    saveData(nextLogs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+    resetSetEditingState();
+    setAutoBackupMsg("Serie aggiornata.");
+    return nextLogs;
+  }
+  function deleteHistoricSetEntry(entry, si) {
+    if (!entry || !entry.exercise) return;
+    var key = (entry.date || todayStr()) + "_d" + (entry.day || 0) + "_m" + (entry.month || month) + "_" + entry.exercise;
+    var nextLogs = Object.assign({}, logs);
+    var existing = nextLogs[key];
+    if (!existing) return;
+    var nextSets = (existing.sets || []).filter(function(setItem) { return setItem.si !== si; });
+    if (nextSets.length) nextLogs[key] = Object.assign({}, existing, { sets: nextSets });
+    else delete nextLogs[key];
+    saveData(nextLogs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+    resetSetEditingState();
+    setAutoBackupMsg(nextSets.length ? "Serie eliminata." : "Voce esercizio eliminata.");
   }
   function saveExerciseNote(en, di, noteText, photoData, videoUrl) {
     var t = todayStr();
@@ -5405,6 +5461,45 @@ function isNearBodyweightElasticSession(exName, sets) {
     });
     setAutoBackupMsg((cleanNote || cleanPhotos.length || cleanVideoUrl) ? "Nota esercizio salvata." : "Nota esercizio rimossa.");
   }
+  function saveHistoricExerciseNote(entry, noteText, photoData, videoUrl) {
+    if (!entry || !entry.exercise) return;
+    var key = (entry.date || todayStr()) + "_d" + (entry.day || 0) + "_m" + (entry.month || month) + "_" + entry.exercise;
+    var nextLogs = Object.assign({}, logs);
+    var existing = nextLogs[key] || {
+      date: entry.date || todayStr(),
+      day: entry.day || 0,
+      month: entry.month || month,
+      exercise: entry.exercise,
+      sets: []
+    };
+    var cleanNote = String(noteText || "").trim();
+    var cleanVideoUrl = String(videoUrl || "").trim();
+    var cleanPhotos = normalizeExerciseNotePhotos(photoData);
+    nextLogs[key] = Object.assign({}, existing, {
+      note: cleanNote,
+      notePhoto: cleanPhotos[0] || null,
+      notePhotos: cleanPhotos,
+      noteVideoUrl: cleanVideoUrl || ""
+    });
+    saveData(nextLogs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+    var noteKey = getHistoricExerciseNoteDraftKey(entry);
+    setExerciseNoteDrafts(function(prev) {
+      var next = Object.assign({}, prev);
+      next[noteKey] = cleanNote;
+      return next;
+    });
+    setExerciseNotePhotoDrafts(function(prev) {
+      var next = Object.assign({}, prev);
+      next[noteKey] = cleanPhotos;
+      return next;
+    });
+    setExerciseNoteVideoDrafts(function(prev) {
+      var next = Object.assign({}, prev);
+      next[noteKey] = cleanVideoUrl || "";
+      return next;
+    });
+    setAutoBackupMsg((cleanNote || cleanPhotos.length || cleanVideoUrl) ? "Nota esercizio salvata." : "Nota esercizio rimossa.");
+  }
   function readFileAsDataUrl(file) {
     return new Promise(function(resolve, reject) {
       var reader = new FileReader();
@@ -5433,10 +5528,9 @@ function isNearBodyweightElasticSession(exName, sets) {
       img.src = dataUrl;
     });
   }
-  async function handleExerciseNotePhotoPick(di, en, file) {
+  async function handleExerciseNotePhotoPickByKey(noteKey, file) {
     if (!file) return;
     try {
-      var noteKey = getExerciseNoteDraftKey(en, di);
       var dataUrl = await readFileAsDataUrl(file);
       var compressed = await compressImageDataUrl(dataUrl, 1280, 0.78);
       setExerciseNotePhotoDrafts(function(prev) {
@@ -5451,6 +5545,14 @@ function isNearBodyweightElasticSession(exName, sets) {
       console.error("Exercise note photo failed", err);
       setAutoBackupMsg("Non sono riuscita a leggere o comprimere la foto.");
     }
+  }
+  async function handleExerciseNotePhotoPick(di, en, file) {
+    if (!file) return;
+    return handleExerciseNotePhotoPickByKey(getExerciseNoteDraftKey(en, di), file);
+  }
+  async function handleHistoricExerciseNotePhotoPick(entry, file) {
+    if (!file) return;
+    return handleExerciseNotePhotoPickByKey(getHistoricExerciseNoteDraftKey(entry), file);
   }
   function getHist(en) { return Object.values(logs).filter(function(l) { return sameExerciseName(l.exercise, en); }).sort(function(a,b) { return b.date.localeCompare(a.date); }).slice(0, 10); }
   function getAllHist(en) { return Object.values(logs).filter(function(l) { return sameExerciseName(l.exercise, en) && l.month === month; }).sort(function(a,b) { var c = b.date.localeCompare(a.date); return c || ((b.day || 0) - (a.day || 0)); }); }
@@ -7037,7 +7139,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     <div style={{ padding: "0 14px 12px", display: "grid", gap: 8 }}>
                       {sessionDays.map(function(session, si) {
                         var sampleEntry = session.entries && session.entries[0] ? session.entries[0] : null;
-                        var dayLabel = sampleEntry ? findExerciseContext(sampleEntry).dayName : ("Allenamento " + ((session.day || 0) + 1));
+                        var dayLabel = sampleEntry ? findExerciseContext(sampleEntry).dayName : ("Giorno " + ((session.day || 0) + 1));
                         var dateLabel = fmtProgressDate(session.date);
                         return <div key={wk + "-" + si} style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 12px" }}>
                           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 8 }}>
@@ -7046,12 +7148,60 @@ function isNearBodyweightElasticSession(exName, sets) {
                           </div>
                           <div style={{ display: "grid", gap: 6 }}>
                             {session.entries.map(function(entry, ei2) {
-                              var exerciseSummary = formatSessionSummary(entry.exercise, (entry.sets || []).slice().sort(function(a, b) { return (a.si || 0) - (b.si || 0); }), BW_EX.indexOf(entry.exercise) >= 0, false);
+                              var sortedSets = (entry.sets || []).slice().sort(function(a, b) { return (a.si || 0) - (b.si || 0); });
+                              var isBW = BW_EX.indexOf(entry.exercise) >= 0;
+                              var usesBand = usesElasticScale(entry.exercise);
+                              var isTimeExercise = isTimeTrackedExercise(entry.exercise, "");
+                              var noteDraftKey = getHistoricExerciseNoteDraftKey(entry);
+                              var currentExerciseNote = exerciseNoteDrafts[noteDraftKey] != null ? exerciseNoteDrafts[noteDraftKey] : (entry.note || "");
+                              var currentExerciseNotePhotos = exerciseNotePhotoDrafts[noteDraftKey] !== undefined ? normalizeExerciseNotePhotos(exerciseNotePhotoDrafts[noteDraftKey]) : normalizeExerciseNotePhotos(entry.notePhotos || entry.notePhoto);
+                              var currentExerciseNoteVideo = exerciseNoteVideoDrafts[noteDraftKey] != null ? exerciseNoteVideoDrafts[noteDraftKey] : (entry.noteVideoUrl || "");
+                              var exerciseSummary = formatSessionSummary(entry.exercise, sortedSets, isBW, isTimeExercise);
                               var restSummary = getEntryRestSummary(entry);
                               return <div key={entry.exercise + "-" + ei2} style={{ display: "grid", gap: 2 }}>
                                 <div style={{ fontSize: 11, fontWeight: 700, color: T.tx }}>{entry.exercise}</div>
                                 <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.55 }}>{exerciseSummary || "Nessuna serie salvata"}</div>
                                 <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.55 }}>{restSummary.detail}</div>
+                                {sortedSets.length > 0 && <div style={{ display: "grid", gap: 6, marginTop: 4 }}>
+                                  {sortedSets.map(function(setItem) {
+                                    var progressEditId = "progress-" + entry.date + "-" + entry.month + "-" + entry.day + "-" + entry.exercise + "-" + setItem.si;
+                                    var isEditingProgressSet = editing === progressEditId;
+                                    return <div key={entry.exercise + "-set-" + setItem.si} style={{ border: "1px solid " + T.bg, borderRadius: 8, padding: "7px 8px", background: T.cd }}>
+                                      {!isEditingProgressSet && <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                        <div style={{ flex: 1, minWidth: 0, fontSize: 10, color: T.tx, fontWeight: 700 }}>
+                                          {"Serie " + (setItem.si + 1) + " · " + formatSetResult(entry.exercise, setItem, isBW, isTimeExercise)}
+                                          {normalizeRirValue(setItem.rir) && <span style={{ color: T.sub, fontWeight: 600 }}>{" · RIR " + normalizeRirValue(setItem.rir)}</span>}
+                                        </div>
+                                        <button onClick={function(e) { e.stopPropagation(); setEditing(progressEditId); setTmpW(usesBand ? String(clampElasticTick(setItem.w) || "") : String(storedWeightToPlateInput(entry.exercise, setItem.w, barbellWeight))); setTmpR(String(setItem.r)); setTmpRir(normalizeRirValue(setItem.rir)); }} style={{ fontSize: 10, color: T.sub, background: "none", border: "none", cursor: "pointer", padding: "2px 4px", fontWeight: 700 }}>modifica</button>
+                                        <button onClick={function(e) { e.stopPropagation(); deleteHistoricSetEntry(entry, setItem.si); }} style={{ fontSize: 10, color: "#C62828", background: "none", border: "none", cursor: "pointer", padding: "2px 4px", fontWeight: 800 }}>elimina</button>
+                                      </div>}
+                                      {isEditingProgressSet && <div style={{ display: "grid", gap: 8 }}>
+                                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
+                                          <label style={{ display: "grid", gap: 4 }}>
+                                            <span style={{ fontSize: 10, fontWeight: 800, color: T.sub }}>{usesBand ? "Tacca elastico" : (isBW ? "Corpo libero" : "Kg")}</span>
+                                            <input type="number" inputMode="numeric" min={usesBand ? 1 : 0} max={usesBand ? 10 : undefined} placeholder={usesBand ? "1-10" : "0"} value={isBW ? "0" : tmpW} disabled={isBW} onChange={function(e) { setTmpW(usesBand ? String(clampElasticTick(e.target.value) || "") : e.target.value); }} style={{ width: "100%", minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 15, textAlign: "center", background: isBW ? T.bg : T.cd, color: T.tx, WebkitTextFillColor: T.tx, caretColor: T.tx, opacity: isBW ? 0.7 : 1, fontWeight: 800, boxSizing: "border-box" }} />
+                                          </label>
+                                          <label style={{ display: "grid", gap: 4 }}>
+                                            <span style={{ fontSize: 10, fontWeight: 800, color: T.sub }}>{isTimeExercise ? "Secondi" : "Ripetizioni"}</span>
+                                            <input type="number" inputMode="numeric" placeholder={isTimeExercise ? "sec" : "rip"} value={tmpR} onChange={function(e) { setTmpR(e.target.value); }} style={{ width: "100%", minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 15, textAlign: "center", background: T.cd, color: T.tx, WebkitTextFillColor: T.tx, caretColor: T.tx, fontWeight: 800, boxSizing: "border-box" }} />
+                                          </label>
+                                          <label style={{ display: "grid", gap: 4 }}>
+                                            <span style={{ fontSize: 10, fontWeight: 800, color: T.sub }}>RIR</span>
+                                            <select value={tmpRir} onChange={function(e) { setTmpRir(e.target.value); }} style={{ width: "100%", minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "40", borderRadius: 8, fontSize: 12, background: T.cd, color: T.tx, fontWeight: 700, boxSizing: "border-box" }}>
+                                              <option value="">—</option>
+                                              {["0","1","2","3","4+"].map(function(opt) { return <option key={opt} value={opt}>{opt}</option>; })}
+                                            </select>
+                                          </label>
+                                        </div>
+                                        {!isBW && !usesBand && formatInputWeightHint(entry.exercise, tmpW, barbellWeight) && <div style={{ fontSize: 10, color: T.sub }}>{formatInputWeightHint(entry.exercise, tmpW, barbellWeight)}</div>}
+                                        <div style={{ display: "flex", gap: 8 }}>
+                                          <button onClick={function(e) { e.stopPropagation(); saveHistoricSetEntry(entry, setItem.si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : plateInputToStoredWeight(entry.exercise, tmpW, barbellWeight)), tmpR, tmpRir); }} style={{ flex: 1, minHeight: 38, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 13, cursor: "pointer", fontWeight: 800 }}>Salva ✓</button>
+                                          <button onClick={function(e) { e.stopPropagation(); resetSetEditingState(); }} style={{ flex: 1, minHeight: 38, background: T.sb, color: T.sub, border: "1px solid " + T.bg, borderRadius: 8, fontSize: 13, cursor: "pointer", fontWeight: 800 }}>Annulla</button>
+                                        </div>
+                                      </div>}
+                                    </div>;
+                                  })}
+                                </div>}
                                 {entry.note && <div style={{ fontSize: 10, color: dc, lineHeight: 1.55, background: dc + "0A", border: "1px solid " + dc + "18", borderRadius: 8, padding: "6px 8px", marginTop: 2 }}>
                                   <span style={{ fontWeight: 800, marginRight: 5 }}>Nota:</span>{entry.note}
                                 </div>}
@@ -7066,6 +7216,90 @@ function isNearBodyweightElasticSession(exName, sets) {
                                   <span style={{ fontWeight: 800, marginRight: 5 }}>Video:</span>
                                   <a href={entry.noteVideoUrl} target="_blank" rel="noreferrer" style={{ color: dc }}>{entry.noteVideoUrl}</a>
                                 </div>}
+                                <details style={{ marginTop: 6 }}>
+                                  <summary style={{ cursor: "pointer", fontSize: 10, fontWeight: 800, color: dc }}>Correggi nota e media</summary>
+                                  <div style={{ display: "grid", gap: 8, marginTop: 8, padding: "8px 9px", borderRadius: 8, background: T.cd, border: "1px solid " + T.bg }}>
+                                    <textarea
+                                      value={currentExerciseNote}
+                                      onChange={function(e) {
+                                        var value = e.target.value;
+                                        setExerciseNoteDrafts(function(prev) {
+                                          var next = Object.assign({}, prev);
+                                          next[noteDraftKey] = value;
+                                          return next;
+                                        });
+                                        if (savedExerciseNoteKey === noteDraftKey) setSavedExerciseNoteKey("");
+                                      }}
+                                      placeholder="Correggi nota, tecnica, sensazioni, attrezzo..."
+                                      rows={3}
+                                      style={{ width: "100%", resize: "vertical", minHeight: 68, padding: "10px 11px", borderRadius: 8, border: "1px solid " + T.bg, background: T.sb, color: T.tx, fontSize: 12, lineHeight: 1.55, boxSizing: "border-box" }}
+                                    />
+                                    <input
+                                      type="url"
+                                      inputMode="url"
+                                      value={currentExerciseNoteVideo}
+                                      onChange={function(e) {
+                                        var value = e.target.value;
+                                        setExerciseNoteVideoDrafts(function(prev) {
+                                          var next = Object.assign({}, prev);
+                                          next[noteDraftKey] = value;
+                                          return next;
+                                        });
+                                        if (savedExerciseNoteKey === noteDraftKey) setSavedExerciseNoteKey("");
+                                      }}
+                                      placeholder="https://..."
+                                      style={{ width: "100%", padding: "10px 11px", borderRadius: 8, border: "1px solid " + T.bg, background: T.sb, color: T.tx, fontSize: 12, boxSizing: "border-box" }}
+                                    />
+                                    <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
+                                      <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer", display: "inline-flex", alignItems: "center", opacity: currentExerciseNotePhotos.length >= 3 ? 0.5 : 1 }}>
+                                        {currentExerciseNotePhotos.length ? "Aggiungi altra foto" : "Aggiungi foto"}
+                                        <input
+                                          type="file"
+                                          accept="image/*"
+                                          style={{ display: "none" }}
+                                          disabled={currentExerciseNotePhotos.length >= 3}
+                                          onChange={function(e) {
+                                            var file = e.target.files && e.target.files[0];
+                                            handleHistoricExerciseNotePhotoPick(entry, file);
+                                            e.target.value = "";
+                                          }}
+                                        />
+                                      </label>
+                                      {currentExerciseNotePhotos.length > 0 && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{currentExerciseNotePhotos.length + "/3 foto"}</span>}
+                                    </div>
+                                    {currentExerciseNotePhotos.length > 0 && <div style={{ display: "grid", gap: 8 }}>
+                                      {currentExerciseNotePhotos.map(function(photoSrc, photoIdx) {
+                                        return <div key={noteDraftKey + "-progress-photo-" + photoIdx} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb, padding: 8 }}>
+                                          <img src={photoSrc} alt={"Nota " + entry.exercise + " " + (photoIdx + 1)} style={{ width: "100%", display: "block", borderRadius: 8 }} />
+                                          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginTop: 6 }}>
+                                            <div style={{ fontSize: 10, color: T.sub }}>{"Foto " + (photoIdx + 1)}</div>
+                                            <button onClick={function(e) {
+                                              e.stopPropagation();
+                                              setExerciseNotePhotoDrafts(function(prev) {
+                                                var next = Object.assign({}, prev);
+                                                next[noteDraftKey] = normalizeExerciseNotePhotos(next[noteDraftKey]).filter(function(_, idx) { return idx !== photoIdx; });
+                                                return next;
+                                              });
+                                              if (savedExerciseNoteKey === noteDraftKey) setSavedExerciseNoteKey("");
+                                            }} style={{ minHeight: 28, padding: "0 10px", border: "1px solid " + T.bg, borderRadius: 999, background: T.cd, color: T.sub, fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Rimuovi</button>
+                                          </div>
+                                        </div>;
+                                      })}
+                                    </div>}
+                                    <div style={{ display: "flex", gap: 8 }}>
+                                      <button onClick={function(e) {
+                                        e.stopPropagation();
+                                        saveHistoricExerciseNote(entry, currentExerciseNote, currentExerciseNotePhotos, currentExerciseNoteVideo);
+                                        setSavedExerciseNoteKey(noteDraftKey);
+                                      }} style={{ flex: 1, minHeight: 34, border: "none", borderRadius: 999, background: savedExerciseNoteKey === noteDraftKey ? T.ok : dc, color: "#fff", fontSize: 11, fontWeight: 800, cursor: "pointer" }}>{savedExerciseNoteKey === noteDraftKey ? "Salvato" : "Salva nota"}</button>
+                                      <button onClick={function(e) {
+                                        e.stopPropagation();
+                                        saveHistoricExerciseNote(entry, "", [], "");
+                                        setSavedExerciseNoteKey(noteDraftKey);
+                                      }} style={{ flex: 1, minHeight: 34, border: "1px solid " + T.bg, borderRadius: 999, background: T.sb, color: "#C62828", fontSize: 11, fontWeight: 800, cursor: "pointer" }}>Elimina nota/media</button>
+                                    </div>
+                                  </div>
+                                </details>
                               </div>;
                             })}
                           </div>
