@@ -2672,7 +2672,12 @@ var BREATHING_TABLE_ROWS = BREATH_COMPARE_ROWS.map(function(row) {
   return { exercise: row[0], category: row[1], breathing: "Inspira: " + row[2] + ". Espira: " + row[3] + "." };
 });
 function getBreath(name) { return BREATH_RULES[name] || null; }
-function fmtTime(ms) { var s = Math.floor(ms / 1000); return (Math.floor(s/60) < 10 ? "0" : "") + Math.floor(s/60) + ":" + (s%60 < 10 ? "0" : "") + s%60 + "." + (Math.floor((ms%1000)/10) < 10 ? "0" : "") + Math.floor((ms%1000)/10); }
+function fmtTime(ms) {
+  var s = Math.floor(ms / 1000);
+  var mins = Math.floor(s / 60);
+  var secs = s % 60;
+  return (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
+}
 
 export default function App() {
   var [tab, setTab] = useState("home");
@@ -2954,7 +2959,6 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [tFlash, setTFlash] = useState(false);
   var [tWarning, setTWarning] = useState(false);
   var [tPanel, setTPanel] = useState(false);
-  var [tLocked, setTLocked] = useState(false);
   var [tFullscreen, setTFullscreen] = useState(false);
   var [timerPos, setTimerPos] = useState(function() {
     try {
@@ -3276,7 +3280,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var teoriaTabs = isBasics
     ? [["teoria","🎯 Tecniche"]]
     : isBeginner
-      ? [["basi","🧱 Basi"],["teoria","📚 Teoria"],["alimentazione","🥗 Alimentazione"]]
+      ? [["basi","🧱 Basi"],["teoria","📚 Teoria"],["muscoli","💪 Muscoli"],["alimentazione","🥗 Alimentazione"]]
       : [["basi","🧱 Basi"],["teoria","📚 Teoria"],["muscoli","💪 Muscoli"],["alimentazione","🥗 Alimentazione"]];
   var homeOverviewNow = isBasics
     ? "Stai lavorando sulle tecniche preliminari: brace, bacino, hip hinge, scapole, squat pattern e movimenti base di spinta e tirata."
@@ -3372,7 +3376,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   useEffect(function() {
     if (!(isBasics || isBeginner)) return;
     if (isBasics && teoriaTab !== "teoria") setTeoriaTab("teoria");
-    if (teoriaTab === "muscoli") setTeoriaTab("basi");
+    if (isBasics && teoriaTab === "muscoli") setTeoriaTab("basi");
     if (glossTab === "termini") setGlossTab("principi");
   }, [isBasics, isBeginner, teoriaTab, glossTab]);
   useEffect(function() {
@@ -3400,7 +3404,6 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   }, [calibrationFeedback, guidedFeedback]);
   useEffect(function() {
     if (!activeOpenRestSec) return;
-    if (tLocked) return;
     setTMode("countdown");
     setTTarget(activeOpenRestSec);
     if (!tRunning) {
@@ -3410,10 +3413,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       setTFlash(false);
       setTWarning(false);
     }
-  }, [activeOpenRestSec, tLocked, tRunning]);
-  useEffect(function() {
-    if (tLocked) setTPanel(true);
-  }, [tLocked]);
+  }, [activeOpenRestSec, tRunning]);
   useEffect(function() {
     try {
       localStorage.setItem("wt-timer-pos", JSON.stringify(timerPos || { x: 0, y: 0 }));
@@ -3492,12 +3492,8 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   function timerGo() { try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {} if (tMode === "countdown" && tMs === 0 && !tRunning) { tAcc.current = 0; setTMs(tTarget * 1000); } lastSnd.current = tMode === "countdown" ? 0 : Math.floor(tMs/1000); tStart.current = Date.now(); setTRunning(true); setTFlash(false); setTFull(false); }
   function timerPause() { setTRunning(false); tAcc.current = tMode === "stopwatch" ? tMs : tTarget*1000 - tMs; }
   function timerReset() { setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMs(tMode === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); setTFull(false); }
-  function timerSwitch(m) { if (tLocked) return; setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMode(m); setTMs(m === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); }
-  function timerSetTarget(s) { if (tLocked) return; setTTarget(s); if (!tRunning) { tAcc.current = 0; lastSnd.current = -1; setTMs(s * 1000); } }
-  function toggleTimerLock() {
-    setTLocked(function(prev) { return !prev; });
-    setTPanel(true);
-  }
+  function timerSwitch(m) { setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMode(m); setTMs(m === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); }
+  function timerSetTarget(s) { setTTarget(s); if (!tRunning) { tAcc.current = 0; lastSnd.current = -1; setTMs(s * 1000); } }
   function startTimerDrag(ev) {
     if (!ev) return;
     if (ev.target && ev.target.closest && ev.target.closest("button")) return;
@@ -3538,7 +3534,6 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   }, [timerPos.x, timerPos.y]);
 
   function quickTimer(secs) {
-    if (tLocked) return;
     try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {}
     setTRunning(false);
     clearInterval(intv.current);
@@ -8266,7 +8261,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             title="Trascina il timer"
             style={{ width: 24, height: 28, borderRadius: 7, background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)", fontSize: 12, fontWeight: 900, display: tFullscreen ? "none" : "flex", alignItems: "center", justifyContent: "center", cursor: "grab", pointerEvents: tFullscreen ? "none" : "auto", touchAction: "none", userSelect: "none", flexShrink: 0 }}
           >::</div>
-          <button onClick={function() { if (!tLocked) setTPanel(!tPanel); }} title={tLocked ? "Timer bloccato" : (tPanel ? "Riduci timer" : "Espandi timer")} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 28, height: 28, borderRadius: 7, cursor: tLocked ? "default" : "pointer", fontSize: 12, opacity: tLocked ? 0.45 : 1, pointerEvents: "auto", touchAction: "manipulation" }}>{(tPanel || tLocked) ? "\u25BE" : "\u25B4"}</button>
+          <button onClick={function() { setTPanel(!tPanel); }} title={tPanel ? "Riduci timer" : "Espandi timer"} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 28, height: 28, borderRadius: 7, cursor: "pointer", fontSize: 12, pointerEvents: "auto", touchAction: "manipulation" }}>{tPanel ? "\u25BE" : "\u25B4"}</button>
           <div style={{ flex: 1, textAlign: "center", minWidth: 0, pointerEvents: "none" }}>
             {activeOpenEx && tMode === "countdown" && <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.68)", marginBottom: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
               {"🔔 " + ((guidedMode && guidedRecoveryEnabled && guidedRestHint ? guidedRestHint + " · " : "") + "Recupero min: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget))}
@@ -8274,16 +8269,12 @@ function isNearBodyweightElasticSession(exName, sets) {
             <div style={{ fontVariantNumeric: "tabular-nums", fontSize: tFullscreen ? 52 : 20, fontWeight: 800, letterSpacing: "0.4px", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s", animation: tWarning ? "timerBlink 1s infinite" : "none", lineHeight: 1 }}>{fmtTime(tMs)}</div>
           </div>
           <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
-            <button onClick={function() { setTFullscreen(function(v) { return !v; }); }} title={tFullscreen ? "Esci da schermo pieno" : "Schermo pieno"} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12, fontWeight: 800, pointerEvents: "auto", touchAction: "manipulation" }}>{tFullscreen ? "⤡" : "⤢"}</button>
-            <button onClick={toggleTimerLock} title={tLocked ? "Sblocca timer" : "Blocca timer"} style={{ background: tLocked ? T.ac : "rgba(255,255,255,0.1)", border: "none", color: tLocked ? "#000" : T.htx, width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 13, fontWeight: 800, pointerEvents: "auto", touchAction: "manipulation" }}>{tLocked ? "🔒" : "🔓"}</button>
             {!tRunning ? <button onClick={timerGo} style={{ background: T.ok, border: "none", color: "#fff", width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 15, pointerEvents: "auto", touchAction: "manipulation" }}>&#9654;</button> : <button onClick={timerPause} style={{ background: T.ac, border: "none", color: "#000", width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12, fontWeight: 800, pointerEvents: "auto", touchAction: "manipulation" }}>&#9646;&#9646;</button>}
             <button onClick={timerReset} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12, pointerEvents: "auto", touchAction: "manipulation" }}>&#8634;</button>
+            <button onClick={function() { setTFullscreen(function(v) { return !v; }); }} title={tFullscreen ? "Esci da schermo pieno" : "Schermo pieno"} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12, fontWeight: 800, pointerEvents: "auto", touchAction: "manipulation" }}>{tFullscreen ? "⤡" : "⤢"}</button>
           </div>
         </div>
-        {(tPanel || tLocked || tFullscreen) && <div style={{ padding: tFullscreen ? "0 12px 12px" : "0 10px 10px" }}>
-          {tLocked && <div style={{ marginBottom: 8, padding: "7px 8px", borderRadius: 8, background: "rgba(255,255,255,0.08)", fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.82)", lineHeight: 1.5 }}>
-            Timer bloccato: resta aperto e non viene sovrascritto dai nuovi recuperi finché non lo sblocchi.
-          </div>}
+        {(tPanel || tFullscreen) && <div style={{ padding: tFullscreen ? "0 12px 12px" : "0 10px 10px" }}>
           <div style={{ marginBottom: 8, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
             <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.72)", lineHeight: 1.4 }}>Trascina il timer dove vuoi.</div>
             <button onClick={function() { setTimerPos({ x: 0, y: 0 }); }} style={{ minHeight: 28, padding: "0 9px", border: "none", borderRadius: 999, background: "rgba(255,255,255,0.12)", color: T.htx, fontSize: 10, fontWeight: 800, cursor: "pointer", pointerEvents: "auto", touchAction: "manipulation" }}>Reset posizione</button>
