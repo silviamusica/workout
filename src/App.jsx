@@ -3950,6 +3950,28 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   }
 
   function buildBackupPayload(sourceLogs, sourceCardioLogs, meta) {
+    var normalizedLogs = {};
+    Object.entries(sourceLogs || {}).forEach(function(tuple) {
+      var key = tuple[0];
+      var entry = tuple[1];
+      if (!entry) return;
+      var ctx = findExerciseContext(entry);
+      normalizedLogs[key] = Object.assign({}, entry, {
+        program: ctx.program || entry.program || "",
+        dayLabel: ctx.dayName || entry.dayLabel || (typeof entry.day === "number" ? ("Giorno " + (entry.day + 1)) : "")
+      });
+    });
+    var normalizedCardioLogs = {};
+    Object.entries(sourceCardioLogs || {}).forEach(function(tuple) {
+      var key = tuple[0];
+      var entry = tuple[1];
+      if (!entry) return;
+      var ctx = findCardioContext(entry);
+      normalizedCardioLogs[key] = Object.assign({}, entry, {
+        program: ctx.program || entry.program || "",
+        dayLabel: ctx.dayName || entry.dayLabel || (typeof entry.day === "number" ? ("Giorno " + (entry.day + 1)) : "")
+      });
+    });
     var profile = {
       userName: userName || "",
       userPhoto: userPhoto || null
@@ -3971,8 +3993,8 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       meta: meta || null,
       profile: profile,
       preferences: preferences,
-      logs: sourceLogs,
-      cardioLogs: sourceCardioLogs || {},
+      logs: normalizedLogs,
+      cardioLogs: normalizedCardioLogs,
       calibrationProfiles: calibrationProfiles || {},
       calibrationMode: calibrationMode,
       guidedMode: guidedMode,
@@ -8259,7 +8281,7 @@ function isNearBodyweightElasticSession(exName, sets) {
       </div>}
 
       {/* TIMER BAR */}
-      <div style={{ position: "fixed", bottom: tFullscreen ? 0 : 10, left: 0, right: 0, top: tFullscreen ? 0 : "auto", zIndex: 100, pointerEvents: "none", display: tFullscreen ? "flex" : "block", alignItems: tFullscreen ? "center" : "stretch", justifyContent: tFullscreen ? "center" : "flex-end", background: tFullscreen ? "rgba(0,0,0,0.28)" : "transparent" }}>
+      <div style={{ position: "fixed", bottom: tFullscreen ? 0 : 10, left: 0, right: 0, top: tFullscreen ? 0 : "auto", zIndex: tFullscreen ? 380 : 230, pointerEvents: "none", display: tFullscreen ? "flex" : "block", alignItems: tFullscreen ? "center" : "stretch", justifyContent: tFullscreen ? "center" : "flex-end", background: tFullscreen ? "rgba(0,0,0,0.28)" : "transparent" }}>
         <div style={{ maxWidth: tFullscreen ? "100%" : 600, width: tFullscreen ? "100%" : "auto", margin: "0 auto", display: "flex", justifyContent: tFullscreen ? "center" : "flex-end", padding: tFullscreen ? 16 : "0 10px", boxSizing: "border-box", transform: tFullscreen ? "none" : "translate(" + (timerPos.x || 0) + "px," + (timerPos.y || 0) + "px)" }}>
         <div
           style={{ width: tFullscreen ? "min(92vw, 560px)" : "min(calc(100vw - 20px), 284px)", maxWidth: tFullscreen ? "92vw" : "calc(100vw - 20px)", pointerEvents: "none", opacity: timerPassive && !tFullscreen ? 0.34 : 1, transform: timerPassive && !tFullscreen ? "scale(0.96)" : "none", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s, opacity 0.2s, transform 0.2s", borderRadius: 14, overflow: "hidden", boxSizing: "border-box" }}>
