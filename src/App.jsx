@@ -2955,6 +2955,20 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [tWarning, setTWarning] = useState(false);
   var [tPanel, setTPanel] = useState(false);
   var [tLocked, setTLocked] = useState(false);
+  var [timerPos, setTimerPos] = useState(function() {
+    try {
+      var raw = localStorage.getItem("wt-timer-pos");
+      if (!raw) return { x: 0, y: 0 };
+      var parsed = JSON.parse(raw);
+      return {
+        x: isFinite(parsed && parsed.x) ? parsed.x : 0,
+        y: isFinite(parsed && parsed.y) ? parsed.y : 0
+      };
+    } catch (e) {
+      return { x: 0, y: 0 };
+    }
+  });
+  var timerDragRef = useRef(null);
   var [autoBackupMsg, setAutoBackupMsg] = useState("");
   var [exportMenuOpen, setExportMenuOpen] = useState(false);
   var [exGearFilter, setExGearFilter] = useState("all");
@@ -3399,6 +3413,11 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   useEffect(function() {
     if (tLocked) setTPanel(true);
   }, [tLocked]);
+  useEffect(function() {
+    try {
+      localStorage.setItem("wt-timer-pos", JSON.stringify(timerPos || { x: 0, y: 0 }));
+    } catch (e) {}
+  }, [timerPos]);
   var saveData = useCallback(function(nl, nc, np, nm, ng, bw, gr) {
     var nextLogs = nl || {};
     var nextCardioLogs = nc || {};
@@ -3478,6 +3497,44 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     setTLocked(function(prev) { return !prev; });
     setTPanel(true);
   }
+  function startTimerDrag(ev) {
+    if (!ev) return;
+    if (ev.target && ev.target.closest && ev.target.closest("button")) return;
+    var point = ev.touches && ev.touches[0] ? ev.touches[0] : ev;
+    timerDragRef.current = {
+      startX: point.clientX,
+      startY: point.clientY,
+      originX: timerPos.x || 0,
+      originY: timerPos.y || 0
+    };
+  }
+  useEffect(function() {
+    function moveTimer(ev) {
+      if (!timerDragRef.current) return;
+      var point = ev.touches && ev.touches[0] ? ev.touches[0] : ev;
+      var dx = point.clientX - timerDragRef.current.startX;
+      var dy = point.clientY - timerDragRef.current.startY;
+      setTimerPos({
+        x: Math.max(-140, Math.min(140, timerDragRef.current.originX + dx)),
+        y: Math.max(-520, Math.min(40, timerDragRef.current.originY + dy))
+      });
+    }
+    function stopTimerDrag() {
+      timerDragRef.current = null;
+    }
+    window.addEventListener("mousemove", moveTimer, true);
+    window.addEventListener("mouseup", stopTimerDrag, true);
+    window.addEventListener("touchmove", moveTimer, true);
+    window.addEventListener("touchend", stopTimerDrag, true);
+    window.addEventListener("touchcancel", stopTimerDrag, true);
+    return function() {
+      window.removeEventListener("mousemove", moveTimer, true);
+      window.removeEventListener("mouseup", stopTimerDrag, true);
+      window.removeEventListener("touchmove", moveTimer, true);
+      window.removeEventListener("touchend", stopTimerDrag, true);
+      window.removeEventListener("touchcancel", stopTimerDrag, true);
+    };
+  }, [timerPos.x, timerPos.y]);
 
   function quickTimer(secs) {
     if (tLocked) return;
@@ -7210,6 +7267,13 @@ function isNearBodyweightElasticSession(exName, sets) {
                         <span>Focus</span>
                       </button>}
                     </div>
+                    {intro.muscoli && intro.muscoli.length > 0 && !dayData.cardio && !dayData.rest && <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginTop: 7 }}>
+                      <span style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>💪 Muscoli</span>
+                      <span style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
+                        {intro.muscoli.slice(0, 3).join(" · ")}
+                        {intro.muscoli.length > 3 ? " ..." : ""}
+                      </span>
+                    </div>}
                   </div>
                   <div style={{ fontSize: 13, color: dc, transform: showDayIntro ? "rotate(180deg)" : "none", transition: "transform 0.2s", flexShrink: 0 }}>&#9662;</div>
                 </div>
@@ -8191,8 +8255,11 @@ function isNearBodyweightElasticSession(exName, sets) {
 
       {/* TIMER BAR */}
       <div style={{ position: "fixed", bottom: 10, left: 0, right: 0, zIndex: 100, pointerEvents: "none" }}>
-        <div style={{ maxWidth: 600, margin: "0 auto", display: "flex", justifyContent: "flex-end", padding: "0 10px", boxSizing: "border-box" }}>
-        <div style={{ width: "min(calc(100vw - 20px), 284px)", maxWidth: "calc(100vw - 20px)", pointerEvents: "none", opacity: timerPassive ? 0.34 : 1, transform: timerPassive ? "scale(0.96)" : "none", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s, opacity 0.2s, transform 0.2s", borderRadius: 14, overflow: "hidden", boxSizing: "border-box" }}>
+        <div style={{ maxWidth: 600, margin: "0 auto", display: "flex", justifyContent: "flex-end", padding: "0 10px", boxSizing: "border-box", transform: "translate(" + (timerPos.x || 0) + "px," + (timerPos.y || 0) + "px)" }}>
+        <div
+          onMouseDown={startTimerDrag}
+          onTouchStart={startTimerDrag}
+          style={{ width: "min(calc(100vw - 20px), 284px)", maxWidth: "calc(100vw - 20px)", pointerEvents: "none", opacity: timerPassive ? 0.34 : 1, transform: timerPassive ? "scale(0.96)" : "none", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s, opacity 0.2s, transform 0.2s", borderRadius: 14, overflow: "hidden", boxSizing: "border-box" }}>
         <div style={{ display: "flex", alignItems: "center", padding: "7px 8px", gap: 5, minWidth: 0 }}>
           <button onClick={function() { if (!tLocked) setTPanel(!tPanel); }} title={tLocked ? "Timer bloccato" : (tPanel ? "Riduci timer" : "Espandi timer")} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 28, height: 28, borderRadius: 7, cursor: tLocked ? "default" : "pointer", fontSize: 12, opacity: tLocked ? 0.45 : 1, pointerEvents: "auto", touchAction: "manipulation" }}>{(tPanel || tLocked) ? "\u25BE" : "\u25B4"}</button>
           <div style={{ flex: 1, textAlign: "center", minWidth: 0, pointerEvents: "none" }}>
@@ -8211,6 +8278,10 @@ function isNearBodyweightElasticSession(exName, sets) {
           {tLocked && <div style={{ marginBottom: 8, padding: "7px 8px", borderRadius: 8, background: "rgba(255,255,255,0.08)", fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.82)", lineHeight: 1.5 }}>
             Timer bloccato: resta aperto e non viene sovrascritto dai nuovi recuperi finché non lo sblocchi.
           </div>}
+          <div style={{ marginBottom: 8, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
+            <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.72)", lineHeight: 1.4 }}>Trascina il timer dove vuoi.</div>
+            <button onClick={function() { setTimerPos({ x: 0, y: 0 }); }} style={{ minHeight: 28, padding: "0 9px", border: "none", borderRadius: 999, background: "rgba(255,255,255,0.12)", color: T.htx, fontSize: 10, fontWeight: 800, cursor: "pointer", pointerEvents: "auto", touchAction: "manipulation" }}>Reset posizione</button>
+          </div>
           {guidedMode && guidedRecoveryEnabled && guidedFillerHint && tMode === "countdown" && <div style={{ marginBottom: 8, padding: "7px 8px", borderRadius: 8, background: "rgba(255,255,255,0.08)", fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.82)", lineHeight: 1.5 }}>
             {"Filler: " + guidedFillerHint}
           </div>}
