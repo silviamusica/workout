@@ -2898,6 +2898,8 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [logs, setLogs] = useState({});
   var [cardioLogs, setCardioLogs] = useState({});
   var [exerciseNoteDrafts, setExerciseNoteDrafts] = useState({});
+  var [exerciseNotePhotoDrafts, setExerciseNotePhotoDrafts] = useState({});
+  var [exerciseNoteVideoDrafts, setExerciseNoteVideoDrafts] = useState({});
   var [savedExerciseNoteKey, setSavedExerciseNoteKey] = useState("");
   var [calibrationMode, setCalibrationMode] = useState(false);
   var [calibrationProfiles, setCalibrationProfiles] = useState({});
@@ -5135,20 +5137,81 @@ function isNearBodyweightElasticSession(exName, sets) {
   }
   function getLog(en, di) { return logs[todayStr() + "_d" + di + "_m" + month + "_" + en]; }
   function getExerciseNoteDraftKey(en, di) { return di + "__" + en; }
-  function saveExerciseNote(en, di, noteText) {
+  function saveExerciseNote(en, di, noteText, photoData, videoUrl) {
     var t = todayStr();
     var k = t + "_d" + di + "_m" + month + "_" + en;
     var nextLogs = Object.assign({}, logs);
     var existing = nextLogs[k] || { date: t, day: di, month: month, exercise: en, sets: [] };
     var cleanNote = String(noteText || "").trim();
-    nextLogs[k] = Object.assign({}, existing, { note: cleanNote });
+    var cleanVideoUrl = String(videoUrl || "").trim();
+    nextLogs[k] = Object.assign({}, existing, {
+      note: cleanNote,
+      notePhoto: photoData || null,
+      noteVideoUrl: cleanVideoUrl || ""
+    });
     saveData(nextLogs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight);
     setExerciseNoteDrafts(function(prev) {
       var next = Object.assign({}, prev);
       next[getExerciseNoteDraftKey(en, di)] = cleanNote;
       return next;
     });
-    setAutoBackupMsg(cleanNote ? "Nota esercizio salvata." : "Nota esercizio rimossa.");
+    setExerciseNotePhotoDrafts(function(prev) {
+      var next = Object.assign({}, prev);
+      next[getExerciseNoteDraftKey(en, di)] = photoData || null;
+      return next;
+    });
+    setExerciseNoteVideoDrafts(function(prev) {
+      var next = Object.assign({}, prev);
+      next[getExerciseNoteDraftKey(en, di)] = cleanVideoUrl || "";
+      return next;
+    });
+    setAutoBackupMsg((cleanNote || photoData || cleanVideoUrl) ? "Nota esercizio salvata." : "Nota esercizio rimossa.");
+  }
+  function readFileAsDataUrl(file) {
+    return new Promise(function(resolve, reject) {
+      var reader = new FileReader();
+      reader.onload = function() { resolve(reader.result); };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+  function compressImageDataUrl(dataUrl, maxSide, quality) {
+    return new Promise(function(resolve, reject) {
+      var img = new Image();
+      img.onload = function() {
+        var w = img.width || 1;
+        var h = img.height || 1;
+        var scale = Math.min(1, (maxSide || 1280) / Math.max(w, h));
+        var tw = Math.max(1, Math.round(w * scale));
+        var th = Math.max(1, Math.round(h * scale));
+        var canvas = document.createElement("canvas");
+        canvas.width = tw;
+        canvas.height = th;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, tw, th);
+        resolve(canvas.toDataURL("image/jpeg", quality || 0.78));
+      };
+      img.onerror = reject;
+      img.src = dataUrl;
+    });
+  }
+  async function handleExerciseNotePhotoPick(di, en, file) {
+    if (!file) return;
+    try {
+      var noteKey = getExerciseNoteDraftKey(en, di);
+      var dataUrl = await readFileAsDataUrl(file);
+      var compressed = await compressImageDataUrl(dataUrl, 1280, 0.78);
+      setExerciseNotePhotoDrafts(function(prev) {
+        var next = Object.assign({}, prev);
+        next[noteKey] = compressed;
+        return next;
+      });
+      if (savedExerciseNoteKey === noteKey) setSavedExerciseNoteKey("");
+      setAutoBackupMsg("Foto pronta. Premi Salva nota per confermare.");
+    } catch (err) {
+      console.error("Exercise note photo failed", err);
+      setAutoBackupMsg("Non sono riuscita a leggere o comprimere la foto.");
+    }
   }
   function getHist(en) { return Object.values(logs).filter(function(l) { return l.exercise === en; }).sort(function(a,b) { return b.date.localeCompare(a.date); }).slice(0, 10); }
   function getAllHist(en) { return Object.values(logs).filter(function(l) { return l.exercise === en && l.month === month; }).sort(function(a,b) { var c = b.date.localeCompare(a.date); return c || ((b.day || 0) - (a.day || 0)); }); }
@@ -6748,6 +6811,13 @@ function isNearBodyweightElasticSession(exName, sets) {
                                 {entry.note && <div style={{ fontSize: 10, color: dc, lineHeight: 1.55, background: dc + "0A", border: "1px solid " + dc + "18", borderRadius: 8, padding: "6px 8px", marginTop: 2 }}>
                                   <span style={{ fontWeight: 800, marginRight: 5 }}>Nota:</span>{entry.note}
                                 </div>}
+                                {entry.notePhoto && <div style={{ marginTop: 4, borderRadius: 8, overflow: "hidden", border: "1px solid " + T.bg, background: T.cd, padding: 6, width: "fit-content", maxWidth: "100%" }}>
+                                  <img src={entry.notePhoto} alt={"Nota " + entry.exercise} style={{ display: "block", width: "min(220px, 100%)", borderRadius: 6 }} />
+                                </div>}
+                                {entry.noteVideoUrl && <div style={{ fontSize: 10, color: dc, lineHeight: 1.55, marginTop: 2, wordBreak: "break-all" }}>
+                                  <span style={{ fontWeight: 800, marginRight: 5 }}>Video:</span>
+                                  <a href={entry.noteVideoUrl} target="_blank" rel="noreferrer" style={{ color: dc }}>{entry.noteVideoUrl}</a>
+                                </div>}
                               </div>;
                             })}
                           </div>
@@ -7455,6 +7525,8 @@ function isNearBodyweightElasticSession(exName, sets) {
               var tLog = getLog(ex.n, dayIdx);
               var noteDraftKey = getExerciseNoteDraftKey(ex.n, dayIdx);
               var currentExerciseNote = exerciseNoteDrafts[noteDraftKey] != null ? exerciseNoteDrafts[noteDraftKey] : ((tLog && tLog.note) || "");
+              var currentExerciseNotePhoto = exerciseNotePhotoDrafts[noteDraftKey] !== undefined ? exerciseNotePhotoDrafts[noteDraftKey] : ((tLog && tLog.notePhoto) || null);
+              var currentExerciseNoteVideo = exerciseNoteVideoDrafts[noteDraftKey] != null ? exerciseNoteVideoDrafts[noteDraftKey] : ((tLog && tLog.noteVideoUrl) || "");
               var p = parseSerie(ex.s);
               var sc = p.sets;
               var prog = getProgressAdvice(ex.n, ex.s);
@@ -7781,12 +7853,69 @@ function isNearBodyweightElasticSession(exName, sets) {
                         rows={3}
                         style={{ width: "100%", resize: "vertical", minHeight: 74, padding: "10px 11px", borderRadius: 8, border: "1px solid " + T.bg, background: T.cd, color: T.tx, fontSize: 12, lineHeight: 1.55, boxSizing: "border-box" }}
                       />
+                      <div style={{ display: "grid", gap: 8, marginTop: 8 }}>
+                        <label style={{ display: "grid", gap: 4 }}>
+                          <span style={{ fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.7 }}>Link video</span>
+                          <input
+                            type="url"
+                            inputMode="url"
+                            value={currentExerciseNoteVideo}
+                            onChange={function(e) {
+                              var value = e.target.value;
+                              setExerciseNoteVideoDrafts(function(prev) {
+                                var next = Object.assign({}, prev);
+                                next[noteDraftKey] = value;
+                                return next;
+                              });
+                              if (savedExerciseNoteKey === noteDraftKey) setSavedExerciseNoteKey("");
+                            }}
+                            placeholder="https://..."
+                            style={{ width: "100%", padding: "10px 11px", borderRadius: 8, border: "1px solid " + T.bg, background: T.cd, color: T.tx, fontSize: 12, boxSizing: "border-box" }}
+                          />
+                        </label>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
+                          <label style={{ minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer", display: "inline-flex", alignItems: "center" }}>
+                            {currentExerciseNotePhoto ? "Cambia foto" : "Aggiungi foto"}
+                            <input
+                              type="file"
+                              accept="image/*"
+                              style={{ display: "none" }}
+                              onChange={function(e) {
+                                var file = e.target.files && e.target.files[0];
+                                handleExerciseNotePhotoPick(dayIdx, ex.n, file);
+                                e.target.value = "";
+                              }}
+                            />
+                          </label>
+                          {currentExerciseNotePhoto && <button
+                            onClick={function(e) {
+                              e.stopPropagation();
+                              setExerciseNotePhotoDrafts(function(prev) {
+                                var next = Object.assign({}, prev);
+                                next[noteDraftKey] = null;
+                                return next;
+                              });
+                              if (savedExerciseNoteKey === noteDraftKey) setSavedExerciseNoteKey("");
+                            }}
+                            style={{ minHeight: 34, padding: "0 12px", border: "1px solid " + T.bg, borderRadius: 999, background: T.cd, color: T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer" }}
+                          >
+                            Rimuovi foto
+                          </button>}
+                        </div>
+                        {currentExerciseNotePhoto && <div style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.cd, padding: 8 }}>
+                          <img src={currentExerciseNotePhoto} alt="Nota esercizio" style={{ width: "100%", display: "block", borderRadius: 8 }} />
+                        </div>}
+                        {currentExerciseNoteVideo && <div style={{ fontSize: 11, color: dc, lineHeight: 1.55, wordBreak: "break-all" }}>
+                          <span style={{ fontWeight: 800, marginRight: 5 }}>Video:</span>
+                          <a href={currentExerciseNoteVideo} target="_blank" rel="noreferrer" style={{ color: dc }}>{currentExerciseNoteVideo}</a>
+                        </div>}
+                      </div>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginTop: 8 }}>
-                        <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.5 }}>Questa nota resta agganciata all'esercizio di oggi e compare anche in Progressi.</div>
+                        <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.5 }}>Questa nota resta agganciata all'esercizio di oggi e compare anche in Progressi. Le foto vengono compresse e salvate localmente nell'app.</div>
                         <button
                           onClick={function(e) {
                             e.stopPropagation();
-                            saveExerciseNote(ex.n, dayIdx, currentExerciseNote);
+                            saveExerciseNote(ex.n, dayIdx, currentExerciseNote, currentExerciseNotePhoto, currentExerciseNoteVideo);
                             setSavedExerciseNoteKey(noteDraftKey);
                           }}
                           style={{ minHeight: 32, padding: "0 12px", border: "none", borderRadius: 999, background: savedExerciseNoteKey === noteDraftKey ? T.ok : dc, color: "#fff", fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
