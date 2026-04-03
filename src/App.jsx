@@ -7477,7 +7477,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               var anyOpen = openEx !== null;
               var isDimmed = anyOpen && !isX;
               return <div key={i} id={"ex-row-" + i} style={{ borderBottom: "1px solid " + T.bg, opacity: isDimmed ? 0.38 : 1, transition: "opacity 0.25s" }}>
-                <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); if (opening) { requestAnimationFrame(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
+                <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); if (opening) { setHistPage(function(p) { var n = Object.assign({}, p); n[i] = 0; return n; }); requestAnimationFrame(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
                   {rowImg ? <img
                     src={rowImg}
                     onClick={function(e) { e.stopPropagation(); setShowImg(showImg === ("ex-thumb-" + i) ? null : ("ex-thumb-" + i)); }}
