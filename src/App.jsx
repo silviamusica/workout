@@ -265,9 +265,9 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"ul","content":["La profondita ottimale e 90 gradi al gomito — scendere di piu aumenta il rischio per la spalla","Busto inclinato in avanti 10-15 gradi = maggior coinvolgimento del pettorale","Busto perfettamente verticale = lavoro prevalentemente ai tricipiti","Scapole abbassate e avvicinate prima di scendere: proteggono l'articolazione della spalla"]},
   {"type":"p","content":"Se ancora difficile, usa le parallele con un elastico di assistenza. Per aumentare la difficolta, appendi un disco alla cintura (Dip zavorrati)."}
 ]},
-"Hyperextension con Sacco": {"g": "Erettori/Glutei/Femorali", "c": "Come hyperextension classica ma con un sacco/peso sulle spalle per aggiungere carico.", "p": "Schiena neutra. Non iperestendere oltre la linea del corpo.", "t": ["Il sacco distribuisce il peso uniformemente", "Ferma 1s quando il corpo e in linea", "Glutei contratti in cima"], "deep": [
-  {"type":"p","content":"La versione con sacco del weights permette di incrementare il carico in modo continuo sull'hyperextension, rendendo possibile la progressione oltre il proprio peso corporeo."},
-  {"type":"ul","content":["Sali solo fino alla linea orizzontale del corpo — iperestendere non aggiunge stimolo ai muscoli target e comprime le vertebre lombari","Tieni le scapole addotte durante il movimento per proteggere la schiena","Progressione: corpo libero → disco al petto → sacco sulle spalle"]},
+"Hyperextension": {"g": "Erettori/Glutei/Femorali", "c": "Come hyperextension classica. Se vuoi, puoi aggiungere il carico che preferisci.", "p": "Schiena neutra. Non iperestendere oltre la linea del corpo.", "t": ["Aggiungi carico solo se il movimento resta pulito", "Ferma 1s quando il corpo e in linea", "Glutei contratti in cima"], "deep": [
+  {"type":"p","content":"L'hyperextension permette di incrementare il carico in modo progressivo, ma puoi scegliere tu se usare disco al petto, sacco o restare a corpo libero."},
+  {"type":"ul","content":["Sali solo fino alla linea orizzontale del corpo — iperestendere non aggiunge stimolo ai muscoli target e comprime le vertebre lombari","Tieni le scapole addotte durante il movimento per proteggere la schiena","Progressione: corpo libero → disco al petto → carico aggiuntivo"]},
   {"type":"p","content":"Esercizio di rinforzo per la catena posteriore. Particolarmente efficace dopo lo Stacco da Terra come complemento di volume per la zona lombare."}
 ]},
 "Fitball Hamstring Curl": {"g": "Femorali/Glutei/Core", "c": "Sdraiata supina, talloni sulla fitball. Solleva le anche e porta la palla verso i glutei flettendo le ginocchia.", "p": "Anche alte durante tutto il movimento. Core e glutei contratti.", "t": ["Non far scendere le anche durante la flessione", "Movimento lento e controllato", "Piu difficile su una sola gamba"], "deep": [
@@ -1546,7 +1546,7 @@ var DAYS_V4 = [
       { n: "Stacco Rumeno", s: "3x10-12", rpe: "8-9", note: "Accessorio femorali del giorno. Setup: piedi larghezza anche, ginocchia appena sbloccate, mani poco fuori cosce. Anca indietro e bilanciere vicino alle gambe. Fermati quando perdi neutro o tensione utile sui femorali.", rec: "90s-2 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata; ginocchia troppo flesse; carico lontano dal corpo; anca che scende invece di andare indietro" },
       { n: "Hip Thrust Bilanciere", s: "3x8-10", rpe: "8-9", note: "Secondo lift glutei del giorno. Setup: piedi larghezza bacino-spalle, tibia quasi verticale in alto. RPE 8-9.", rec: "90s-2 min", gear: "Bilanciere + bumper + panca", errori: "Vedi Giorno 1" },
       { n: "Affondi", s: "3x10-12 per gamba", rpe: "8-9", note: "Setup: piedi su due binari, passo abbastanza lungo, busto stabile. Alternativa: TRX reverse lunge.", rec: "90s-2 min", gear: "Manubri", errori: "Passo troppo corto; ginocchio post che non scende; busto che oscilla" },
-      { n: "Hyperextension con Sacco", s: "2-3x12-15", rpe: "8-9", note: "Usala come accessorio, non come altro stacco. Glutei e femorali, non lombare. Alternativa: cable pull-through.", rec: "90s", gear: "Panca romana + sacco sabbia", errori: "Iperestensione lombare in alto; velocita eccessiva; collo iperesteso" },
+      { n: "Hyperextension", s: "2-3x12-15", rpe: "8-9", note: "Usala come accessorio, non come altro stacco. Glutei e femorali, non lombare. Alternativa: cable pull-through.", rec: "90s", gear: "Panca romana", errori: "Iperestensione lombare in alto; velocita eccessiva; collo iperesteso" },
       { n: "Fitball Hamstring Curl", s: "3x10-12", rpe: "8-9", note: "Bacino alto dall'inizio alla fine. Alternativa: TRX hamstring curl.", rec: "90s", gear: "Fitball", errori: "Bacino che cade; piedi che scivolano; range incompleto" },
     ], str: ["Femorali","Glutei","Lombare","Flessori anca"] },
 
@@ -1974,7 +1974,6 @@ var EXERCISE_COMPETENCIES = {
   "Glute Bridge": ["bacino"],
   "Hip Thrust Singolo": ["bacino","core"],
   "Nordic Curl": ["brace","core"],
-  "Hyperextension con Sacco": ["brace","hinge"],
   "Hyperextension": ["brace","hinge"],
   "Fitball Hamstring Curl": ["bacino","core"],
   "Plank": ["brace","core"],
@@ -2168,7 +2167,6 @@ var EX_IMG = {
   "Fitball Hamstring Curl": img_Fitball_Hamstring_Curl,
   "Face Pull": img_Face_Pull,
   "Face Pull leggero con elastico": img_Face_Pull,
-  "Hyperextension con Sacco": img_Hyperextension,
   "Hip Thrust Bilanciere": img_Hip_Thrust_Bilanciere,
   "Slackline": img_Plank,
 };
@@ -2246,8 +2244,15 @@ function parseSerie(str) {
   return { sets: parseInt(m[1]), reps: m[2] === "max" ? Array(parseInt(m[1])).fill("max") : m[2].split("-") };
 }
 function todayStr() { return new Date().toISOString().split("T")[0]; }
+function sameExerciseName(a, b) {
+  var aa = String(a || "").trim();
+  var bb = String(b || "").trim();
+  if (aa === bb) return true;
+  if ((aa === "Hyperextension" && bb === "Hyperextension con Sacco") || (aa === "Hyperextension con Sacco" && bb === "Hyperextension")) return true;
+  return false;
+}
 var MAX_PROGRESS_EX = ["Push-Up","Trazioni Supine"];
-var ACCESSORY_PROGRESS_EX = ["Squat Bulgaro","Face Pull","Curl Bicipiti","Hyperextension con Sacco","Fitball Hamstring Curl","Tricipiti Cavo"];
+var ACCESSORY_PROGRESS_EX = ["Squat Bulgaro","Face Pull","Curl Bicipiti","Hyperextension","Fitball Hamstring Curl","Tricipiti Cavo"];
 var CORE_PROGRESS_EX = ["Slackline","Ab Wheel"];
 var CARDIO_KIND_LABEL = { run: "Corsa", ruck: "Rucking", hiit: "HIIT", circuit: "Circuito" };
 var CALIBRATION_BODYWEIGHT_EX = ["Push-Up","Trazioni","Trazioni Supine","Dip alle Parallele","Nordic Curl","Slackline","Ab Wheel","Fitball Hamstring Curl"];
@@ -2383,7 +2388,7 @@ function getCalibrationQuickInstruction(exName, serie) {
 function getCalibrationRestLabel(exName, rec) {
   if (rec) return "Riposa " + String(rec).toLowerCase() + ".";
   var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","Front Squat","Pause Squat","Push Press","Stacco Sumo","Stacco Rumeno","Hip Thrust Bilanciere","T-bar Row","Dip alle Parallele"];
-  var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Squat Bulgaro","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino","Hyperextension con Sacco","Fitball Hamstring Curl","Face Pull","Alzate Laterali","French Press Manubri"];
+  var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Squat Bulgaro","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino","Fitball Hamstring Curl","Face Pull","Alzate Laterali","French Press Manubri"];
   if (heavy.indexOf(exName) >= 0) return "Riposa 2 minuti.";
   if (medium.indexOf(exName) >= 0) return "Riposa 90 secondi.";
   return "Riposa come da recupero previsto per questo esercizio.";
@@ -2994,7 +2999,6 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     "Hollow Position": ["corpo_libero"],
     "Hollow Tuck": ["corpo_libero"],
     "Hyperextension": ["panca_romana"],
-    "Hyperextension con Sacco": ["panca_romana"],
     "Overhead Extension": ["manubri"],
     "Pause Squat": ["bilanciere"],
     "Pelvic Tilt a terra": ["corpo_libero"],
@@ -3064,7 +3068,6 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     "TRX Hamstring Curl": "hinge",
     "Nordic Curl": "hinge",
     "Hyperextension": "hinge",
-    "Hyperextension con Sacco": "hinge",
     "Cable Pull-Through": "hinge",
     "TRX Hip Hinge Assistito": "hinge",
     "Panca": "spinta",
@@ -3809,7 +3812,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
 
   function getRestTime(exName, rpe) {
     var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","Front Squat","Pause Squat","Push Press","Stacco Sumo","Hip Thrust Bilanciere","T-bar Row","Dip alle Parallele"];
-    var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Squat Bulgaro","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino","Hyperextension con Sacco","Fitball Hamstring Curl","Face Pull","Alzate Laterali","French Press Manubri","Stacco Rumeno"];
+    var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Squat Bulgaro","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino","Fitball Hamstring Curl","Face Pull","Alzate Laterali","French Press Manubri","Stacco Rumeno"];
     var core = ["Plank","Ab Wheel","Addominali Obliqui","Shoulder Tap","Woodchop","Slackline"];
     if (core.indexOf(exName) >= 0) return exName === "Plank" ? null : 30;
     if (heavy.indexOf(exName) >= 0) return 120;
@@ -4657,7 +4660,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || exName === "Push-Up" || exName === "Push-Up su rialzo" || exName === "Dip alle Parallele" || exName === "Fitball Hamstring Curl" || exName === "Ab Wheel") {
       return { kind: "reps", amount: 1, label: "+1 rip per serie" };
     }
-    if (exName === "Hyperextension con Sacco") return { kind: "kg", amount: 1, label: "+1 kg nel sacco" };
+    if (exName === "Hyperextension") return { kind: "kg", amount: 1, label: "+1 kg" };
     if (exName === "Squat Bulgaro" || exName === "Affondi" || exName === "Curl Bicipiti" || exName === "Curl Martello" || exName === "Press Manubri da Seduta" || exName === "Alzate Laterali") {
       return { kind: "kg", amount: 1, label: "+1 kg per manubrio" };
     }
@@ -5137,6 +5140,10 @@ function isNearBodyweightElasticSession(exName, sets) {
   }
   function getLog(en, di) { return logs[todayStr() + "_d" + di + "_m" + month + "_" + en]; }
   function getExerciseNoteDraftKey(en, di) { return di + "__" + en; }
+  function normalizeExerciseNotePhotos(value) {
+    if (Array.isArray(value)) return value.filter(Boolean).slice(0, 3);
+    return value ? [value] : [];
+  }
   function saveExerciseNote(en, di, noteText, photoData, videoUrl) {
     var t = todayStr();
     var k = t + "_d" + di + "_m" + month + "_" + en;
@@ -5144,9 +5151,11 @@ function isNearBodyweightElasticSession(exName, sets) {
     var existing = nextLogs[k] || { date: t, day: di, month: month, exercise: en, sets: [] };
     var cleanNote = String(noteText || "").trim();
     var cleanVideoUrl = String(videoUrl || "").trim();
+    var cleanPhotos = normalizeExerciseNotePhotos(photoData);
     nextLogs[k] = Object.assign({}, existing, {
       note: cleanNote,
-      notePhoto: photoData || null,
+      notePhoto: cleanPhotos[0] || null,
+      notePhotos: cleanPhotos,
       noteVideoUrl: cleanVideoUrl || ""
     });
     saveData(nextLogs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight);
@@ -5157,7 +5166,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     });
     setExerciseNotePhotoDrafts(function(prev) {
       var next = Object.assign({}, prev);
-      next[getExerciseNoteDraftKey(en, di)] = photoData || null;
+      next[getExerciseNoteDraftKey(en, di)] = cleanPhotos;
       return next;
     });
     setExerciseNoteVideoDrafts(function(prev) {
@@ -5165,7 +5174,7 @@ function isNearBodyweightElasticSession(exName, sets) {
       next[getExerciseNoteDraftKey(en, di)] = cleanVideoUrl || "";
       return next;
     });
-    setAutoBackupMsg((cleanNote || photoData || cleanVideoUrl) ? "Nota esercizio salvata." : "Nota esercizio rimossa.");
+    setAutoBackupMsg((cleanNote || cleanPhotos.length || cleanVideoUrl) ? "Nota esercizio salvata." : "Nota esercizio rimossa.");
   }
   function readFileAsDataUrl(file) {
     return new Promise(function(resolve, reject) {
@@ -5203,7 +5212,8 @@ function isNearBodyweightElasticSession(exName, sets) {
       var compressed = await compressImageDataUrl(dataUrl, 1280, 0.78);
       setExerciseNotePhotoDrafts(function(prev) {
         var next = Object.assign({}, prev);
-        next[noteKey] = compressed;
+        var current = normalizeExerciseNotePhotos(next[noteKey]);
+        next[noteKey] = current.concat([compressed]).slice(0, 3);
         return next;
       });
       if (savedExerciseNoteKey === noteKey) setSavedExerciseNoteKey("");
@@ -5213,14 +5223,14 @@ function isNearBodyweightElasticSession(exName, sets) {
       setAutoBackupMsg("Non sono riuscita a leggere o comprimere la foto.");
     }
   }
-  function getHist(en) { return Object.values(logs).filter(function(l) { return l.exercise === en; }).sort(function(a,b) { return b.date.localeCompare(a.date); }).slice(0, 10); }
-  function getAllHist(en) { return Object.values(logs).filter(function(l) { return l.exercise === en && l.month === month; }).sort(function(a,b) { var c = b.date.localeCompare(a.date); return c || ((b.day || 0) - (a.day || 0)); }); }
+  function getHist(en) { return Object.values(logs).filter(function(l) { return sameExerciseName(l.exercise, en); }).sort(function(a,b) { return b.date.localeCompare(a.date); }).slice(0, 10); }
+  function getAllHist(en) { return Object.values(logs).filter(function(l) { return sameExerciseName(l.exercise, en) && l.month === month; }).sort(function(a,b) { var c = b.date.localeCompare(a.date); return c || ((b.day || 0) - (a.day || 0)); }); }
   function getCalibrationNeed(exName, serie) {
     if (!calibrationEnabled) return { needed: false, initial: false, reason: "" };
     var type = getCalibrationType(exName, serie);
     if (type === "none") return { needed: false, reason: "" };
     var profile = calibrationProfiles[exName] || null;
-    var hist = Object.values(logs).filter(function(l) { return l.exercise === exName; }).sort(function(a,b) { return b.date.localeCompare(a.date); });
+    var hist = Object.values(logs).filter(function(l) { return sameExerciseName(l.exercise, exName); }).sort(function(a,b) { return b.date.localeCompare(a.date); });
     var last = hist[0] || null;
     var profileGap = profile && profile.date ? daysBetweenISO(profile.date, todayStr()) : null;
     var logGap = last && last.date ? daysBetweenISO(last.date, todayStr()) : null;
@@ -6811,8 +6821,12 @@ function isNearBodyweightElasticSession(exName, sets) {
                                 {entry.note && <div style={{ fontSize: 10, color: dc, lineHeight: 1.55, background: dc + "0A", border: "1px solid " + dc + "18", borderRadius: 8, padding: "6px 8px", marginTop: 2 }}>
                                   <span style={{ fontWeight: 800, marginRight: 5 }}>Nota:</span>{entry.note}
                                 </div>}
-                                {entry.notePhoto && <div style={{ marginTop: 4, borderRadius: 8, overflow: "hidden", border: "1px solid " + T.bg, background: T.cd, padding: 6, width: "fit-content", maxWidth: "100%" }}>
-                                  <img src={entry.notePhoto} alt={"Nota " + entry.exercise} style={{ display: "block", width: "min(220px, 100%)", borderRadius: 6 }} />
+                                {normalizeExerciseNotePhotos(entry.notePhotos || entry.notePhoto).length > 0 && <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 4 }}>
+                                  {normalizeExerciseNotePhotos(entry.notePhotos || entry.notePhoto).map(function(photoSrc, photoIdx) {
+                                    return <div key={entry.exercise + "-photo-" + photoIdx} style={{ borderRadius: 8, overflow: "hidden", border: "1px solid " + T.bg, background: T.cd, padding: 6, width: "fit-content", maxWidth: "100%" }}>
+                                      <img src={photoSrc} alt={"Nota " + entry.exercise + " " + (photoIdx + 1)} style={{ display: "block", width: "min(220px, 100%)", borderRadius: 6 }} />
+                                    </div>;
+                                  })}
                                 </div>}
                                 {entry.noteVideoUrl && <div style={{ fontSize: 10, color: dc, lineHeight: 1.55, marginTop: 2, wordBreak: "break-all" }}>
                                   <span style={{ fontWeight: 800, marginRight: 5 }}>Video:</span>
@@ -7525,7 +7539,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               var tLog = getLog(ex.n, dayIdx);
               var noteDraftKey = getExerciseNoteDraftKey(ex.n, dayIdx);
               var currentExerciseNote = exerciseNoteDrafts[noteDraftKey] != null ? exerciseNoteDrafts[noteDraftKey] : ((tLog && tLog.note) || "");
-              var currentExerciseNotePhoto = exerciseNotePhotoDrafts[noteDraftKey] !== undefined ? exerciseNotePhotoDrafts[noteDraftKey] : ((tLog && tLog.notePhoto) || null);
+              var currentExerciseNotePhotos = exerciseNotePhotoDrafts[noteDraftKey] !== undefined ? normalizeExerciseNotePhotos(exerciseNotePhotoDrafts[noteDraftKey]) : normalizeExerciseNotePhotos(tLog && (tLog.notePhotos || tLog.notePhoto));
               var currentExerciseNoteVideo = exerciseNoteVideoDrafts[noteDraftKey] != null ? exerciseNoteVideoDrafts[noteDraftKey] : ((tLog && tLog.noteVideoUrl) || "");
               var p = parseSerie(ex.s);
               var sc = p.sets;
@@ -7874,12 +7888,13 @@ function isNearBodyweightElasticSession(exName, sets) {
                           />
                         </label>
                         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
-                          <label style={{ minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer", display: "inline-flex", alignItems: "center" }}>
-                            {currentExerciseNotePhoto ? "Cambia foto" : "Aggiungi foto"}
+                          <label style={{ minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer", display: "inline-flex", alignItems: "center", opacity: currentExerciseNotePhotos.length >= 3 ? 0.5 : 1 }}>
+                            {currentExerciseNotePhotos.length ? "Aggiungi altra foto" : "Aggiungi foto"}
                             <input
                               type="file"
                               accept="image/*"
                               style={{ display: "none" }}
+                              disabled={currentExerciseNotePhotos.length >= 3}
                               onChange={function(e) {
                                 var file = e.target.files && e.target.files[0];
                                 handleExerciseNotePhotoPick(dayIdx, ex.n, file);
@@ -7887,23 +7902,31 @@ function isNearBodyweightElasticSession(exName, sets) {
                               }}
                             />
                           </label>
-                          {currentExerciseNotePhoto && <button
-                            onClick={function(e) {
-                              e.stopPropagation();
-                              setExerciseNotePhotoDrafts(function(prev) {
-                                var next = Object.assign({}, prev);
-                                next[noteDraftKey] = null;
-                                return next;
-                              });
-                              if (savedExerciseNoteKey === noteDraftKey) setSavedExerciseNoteKey("");
-                            }}
-                            style={{ minHeight: 34, padding: "0 12px", border: "1px solid " + T.bg, borderRadius: 999, background: T.cd, color: T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer" }}
-                          >
-                            Rimuovi foto
-                          </button>}
+                          {currentExerciseNotePhotos.length > 0 && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{currentExerciseNotePhotos.length + "/3 foto"}</span>}
                         </div>
-                        {currentExerciseNotePhoto && <div style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.cd, padding: 8 }}>
-                          <img src={currentExerciseNotePhoto} alt="Nota esercizio" style={{ width: "100%", display: "block", borderRadius: 8 }} />
+                        {currentExerciseNotePhotos.length > 0 && <div style={{ display: "grid", gap: 8 }}>
+                          {currentExerciseNotePhotos.map(function(photoSrc, photoIdx) {
+                            return <div key={noteDraftKey + "-photo-" + photoIdx} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.cd, padding: 8 }}>
+                              <img src={photoSrc} alt={"Nota esercizio " + (photoIdx + 1)} style={{ width: "100%", display: "block", borderRadius: 8 }} />
+                              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginTop: 6 }}>
+                                <div style={{ fontSize: 10, color: T.sub }}>{"Foto " + (photoIdx + 1)}</div>
+                                <button
+                                  onClick={function(e) {
+                                    e.stopPropagation();
+                                    setExerciseNotePhotoDrafts(function(prev) {
+                                      var next = Object.assign({}, prev);
+                                      next[noteDraftKey] = normalizeExerciseNotePhotos(next[noteDraftKey]).filter(function(_, idx) { return idx !== photoIdx; });
+                                      return next;
+                                    });
+                                    if (savedExerciseNoteKey === noteDraftKey) setSavedExerciseNoteKey("");
+                                  }}
+                                  style={{ minHeight: 30, padding: "0 10px", border: "1px solid " + T.bg, borderRadius: 999, background: T.sb, color: T.sub, fontSize: 10, fontWeight: 800, cursor: "pointer" }}
+                                >
+                                  Rimuovi
+                                </button>
+                              </div>
+                            </div>;
+                          })}
                         </div>}
                         {currentExerciseNoteVideo && <div style={{ fontSize: 11, color: dc, lineHeight: 1.55, wordBreak: "break-all" }}>
                           <span style={{ fontWeight: 800, marginRight: 5 }}>Video:</span>
@@ -7911,11 +7934,11 @@ function isNearBodyweightElasticSession(exName, sets) {
                         </div>}
                       </div>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginTop: 8 }}>
-                        <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.5 }}>Questa nota resta agganciata all'esercizio di oggi e compare anche in Progressi. Le foto vengono compresse e salvate localmente nell'app.</div>
+                        <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.5 }}>Questa nota resta agganciata all'esercizio di oggi e compare anche in Progressi. Le foto vengono compresse e salvate localmente nell'app. Massimo 3 foto per esercizio/sessione.</div>
                         <button
                           onClick={function(e) {
                             e.stopPropagation();
-                            saveExerciseNote(ex.n, dayIdx, currentExerciseNote, currentExerciseNotePhoto, currentExerciseNoteVideo);
+                            saveExerciseNote(ex.n, dayIdx, currentExerciseNote, currentExerciseNotePhotos, currentExerciseNoteVideo);
                             setSavedExerciseNoteKey(noteDraftKey);
                           }}
                           style={{ minHeight: 32, padding: "0 12px", border: "none", borderRadius: 999, background: savedExerciseNoteKey === noteDraftKey ? T.ok : dc, color: "#fff", fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}

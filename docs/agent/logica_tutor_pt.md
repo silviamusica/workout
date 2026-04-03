@@ -382,7 +382,7 @@ Soglie oggi codificate nella logica guidata:
 - `-1 tacca elastico`
 
 ### Sovraccarico incrementale leggero
-- `Hyperextension con Sacco`: `+1 kg nel sacco`
+- `Hyperextension`: `+1 kg` oppure piccolo carico aggiuntivo a scelta
 
 ## Export e lettura dati
 

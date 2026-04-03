@@ -419,7 +419,7 @@ Nota:
 | 2 | Stacco Rumeno | 3x10-12 | Accessorio femorali del giorno, RPE 8-9 |
 | 3 | Hip Thrust Bilanciere | 3x8-10 | Secondo lift glutei del giorno, RPE 8-9 |
 | 4 | Affondi | 3x10-12 per gamba | RPE 8-9 |
-| 5 | Hyperextension con Sacco | 2-3x12-15 | Accessorio catena posteriore, RPE 8-9 |
+| 5 | Hyperextension | 2-3x12-15 | Accessorio catena posteriore, RPE 8-9 |
 | 6 | Fitball Hamstring Curl | 3x10-12 | Bacino alto dall'inizio alla fine, RPE 8-9 |
 
 **Stretching**

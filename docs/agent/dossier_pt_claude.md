@@ -283,7 +283,7 @@ In questi casi deve parlare di:
 
 ### Incrementi extra già previsti
 
-- `Hyperextension con Sacco` → `+1 kg nel sacco`
+- `Hyperextension` → `+1 kg` oppure piccolo carico aggiuntivo a scelta
 - `Fitball Hamstring Curl` → `+1 rip per serie`
 
 ## 8. Dati salvati dall'app
