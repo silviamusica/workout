@@ -8257,10 +8257,14 @@ function isNearBodyweightElasticSession(exName, sets) {
       <div style={{ position: "fixed", bottom: 10, left: 0, right: 0, zIndex: 100, pointerEvents: "none" }}>
         <div style={{ maxWidth: 600, margin: "0 auto", display: "flex", justifyContent: "flex-end", padding: "0 10px", boxSizing: "border-box", transform: "translate(" + (timerPos.x || 0) + "px," + (timerPos.y || 0) + "px)" }}>
         <div
-          onMouseDown={startTimerDrag}
-          onTouchStart={startTimerDrag}
           style={{ width: "min(calc(100vw - 20px), 284px)", maxWidth: "calc(100vw - 20px)", pointerEvents: "none", opacity: timerPassive ? 0.34 : 1, transform: timerPassive ? "scale(0.96)" : "none", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s, opacity 0.2s, transform 0.2s", borderRadius: 14, overflow: "hidden", boxSizing: "border-box" }}>
         <div style={{ display: "flex", alignItems: "center", padding: "7px 8px", gap: 5, minWidth: 0 }}>
+          <div
+            onMouseDown={startTimerDrag}
+            onTouchStart={startTimerDrag}
+            title="Trascina il timer"
+            style={{ width: 24, height: 28, borderRadius: 7, background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)", fontSize: 12, fontWeight: 900, display: "flex", alignItems: "center", justifyContent: "center", cursor: "grab", pointerEvents: "auto", touchAction: "none", userSelect: "none", flexShrink: 0 }}
+          >::</div>
           <button onClick={function() { if (!tLocked) setTPanel(!tPanel); }} title={tLocked ? "Timer bloccato" : (tPanel ? "Riduci timer" : "Espandi timer")} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 28, height: 28, borderRadius: 7, cursor: tLocked ? "default" : "pointer", fontSize: 12, opacity: tLocked ? 0.45 : 1, pointerEvents: "auto", touchAction: "manipulation" }}>{(tPanel || tLocked) ? "\u25BE" : "\u25B4"}</button>
           <div style={{ flex: 1, textAlign: "center", minWidth: 0, pointerEvents: "none" }}>
             {activeOpenEx && tMode === "countdown" && <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.68)", marginBottom: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
