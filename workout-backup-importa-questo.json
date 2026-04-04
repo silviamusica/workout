@@ -1,0 +1,1436 @@
+{
+  "exportedAt": "2026-03-31T18:41:49.570Z",
+  "month": 1,
+  "meta": {
+    "type": "manual-backup"
+  },
+  "logs": {
+    "2026-03-26_d0_m1_Squat Bulgaro": {
+      "date": "2026-03-26",
+      "day": 0,
+      "month": 1,
+      "exercise": "Squat Bulgaro",
+      "sets": [
+        {
+          "si": 0,
+          "w": 10,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 20,
+          "r": 10,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 12,
+          "r": 12,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-26_d0_m1_Hip Thrust Bilanciere": {
+      "date": "2026-03-26",
+      "day": 0,
+      "month": 1,
+      "exercise": "Hip Thrust Bilanciere",
+      "sets": [
+        {
+          "si": 0,
+          "w": 20,
+          "r": 8,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-26_d1_m1_Trazioni": {
+      "date": "2026-03-26",
+      "day": 1,
+      "month": 1,
+      "exercise": "Trazioni",
+      "sets": [
+        {
+          "si": 0,
+          "w": 0,
+          "r": 5,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 0,
+          "r": 5,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 0,
+          "r": 5,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 0,
+          "r": 5,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-26_d1_m1_T-bar Row": {
+      "date": "2026-03-26",
+      "day": 1,
+      "month": 1,
+      "exercise": "T-bar Row",
+      "sets": [
+        {
+          "si": 0,
+          "w": 32.5,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 32.5,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 32.5,
+          "r": 10,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 35,
+          "r": 8,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-26_d1_m1_Panca": {
+      "date": "2026-03-26",
+      "day": 1,
+      "month": 1,
+      "exercise": "Panca",
+      "sets": [
+        {
+          "si": 0,
+          "w": 25,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 25,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 25,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 25,
+          "r": 8,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-26_d1_m1_Face Pull": {
+      "date": "2026-03-26",
+      "day": 1,
+      "month": 1,
+      "exercise": "Face Pull",
+      "sets": [
+        {
+          "si": 0,
+          "w": 7,
+          "r": 15,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 7,
+          "r": 15,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 7,
+          "r": 15,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-26_d1_m1_Curl Bicipiti": {
+      "date": "2026-03-26",
+      "day": 1,
+      "month": 1,
+      "exercise": "Curl Bicipiti",
+      "sets": [
+        {
+          "si": 0,
+          "w": 7,
+          "r": 10,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 7,
+          "r": 10,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 7,
+          "r": 10,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-19_d1_m1_Squat": {
+      "date": "2026-03-19",
+      "day": 1,
+      "month": 1,
+      "exercise": "Squat",
+      "sets": [
+        {
+          "si": 0,
+          "w": 45,
+          "r": 10,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 45,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 30,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 30,
+          "r": 6,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-19_d1_m1_Trazioni Supine": {
+      "date": "2026-03-19",
+      "day": 1,
+      "month": 1,
+      "exercise": "Trazioni Supine",
+      "sets": [
+        {
+          "si": 0,
+          "w": 0,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 0,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 0,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 0,
+          "r": 8,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-19_d1_m1_Curl Bicipiti": {
+      "date": "2026-03-19",
+      "day": 1,
+      "month": 1,
+      "exercise": "Curl Bicipiti",
+      "sets": [
+        {
+          "si": 0,
+          "w": 6,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 7,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 7,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 6,
+          "r": 12,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-19_d1_m1_French Press Manubri": {
+      "date": "2026-03-19",
+      "day": 1,
+      "month": 1,
+      "exercise": "French Press Manubri",
+      "sets": [
+        {
+          "si": 0,
+          "w": 4.5,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 6,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 6,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 4.5,
+          "r": 12,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-19_d1_m1_Squat Bulgaro": {
+      "date": "2026-03-19",
+      "day": 1,
+      "month": 1,
+      "exercise": "Squat Bulgaro",
+      "sets": [
+        {
+          "si": 0,
+          "w": 20,
+          "r": 10,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 20,
+          "r": 10,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 20,
+          "r": 10,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-19_d1_m1_Tricipiti Cavo": {
+      "date": "2026-03-19",
+      "day": 1,
+      "month": 1,
+      "exercise": "Tricipiti Cavo",
+      "sets": [
+        {
+          "si": 0,
+          "w": 8.5,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 8.5,
+          "r": 11,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 7,
+          "r": 12,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-20_d2_m1_Plank": {
+      "date": "2026-03-20",
+      "day": 2,
+      "month": 1,
+      "exercise": "Plank",
+      "sets": [
+        {
+          "si": 0,
+          "w": 0,
+          "r": 40,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 0,
+          "r": 40,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 0,
+          "r": 40,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-20_d2_m1_Panca": {
+      "date": "2026-03-20",
+      "day": 2,
+      "month": 1,
+      "exercise": "Panca",
+      "sets": [
+        {
+          "si": 0,
+          "w": 25,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 27.5,
+          "r": 6,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 29.5,
+          "r": 6,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 30,
+          "r": 5,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-20_d2_m1_Stacco da Terra": {
+      "date": "2026-03-20",
+      "day": 2,
+      "month": 1,
+      "exercise": "Stacco da Terra",
+      "sets": [
+        {
+          "si": 0,
+          "w": 50,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 55,
+          "r": 6,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 55,
+          "r": 6,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 57.5,
+          "r": 5,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-20_d2_m1_Rematore Bilanciere": {
+      "date": "2026-03-20",
+      "day": 2,
+      "month": 1,
+      "exercise": "Rematore Bilanciere",
+      "sets": [
+        {
+          "si": 0,
+          "w": 30,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 30,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 32.5,
+          "r": 6,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 35,
+          "r": 6,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-20_d2_m1_Squat": {
+      "date": "2026-03-20",
+      "day": 2,
+      "month": 1,
+      "exercise": "Squat",
+      "sets": [
+        {
+          "si": 0,
+          "w": 20,
+          "r": 10,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 45,
+          "r": 10,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-22_d3_m1_Hyperextension": {
+      "date": "2026-03-22",
+      "day": 3,
+      "month": 1,
+      "exercise": "Hyperextension",
+      "sets": [
+        {
+          "si": 0,
+          "w": 10,
+          "r": 15,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 13.5,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 13.5,
+          "r": 15,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-22_d3_m1_Shoulder Tap": {
+      "date": "2026-03-22",
+      "day": 3,
+      "month": 1,
+      "exercise": "Shoulder Tap",
+      "sets": [
+        {
+          "si": 0,
+          "w": 0,
+          "r": 33,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-22_d3_m1_Addominali Obliqui": {
+      "date": "2026-03-22",
+      "day": 3,
+      "month": 1,
+      "exercise": "Addominali Obliqui",
+      "sets": [
+        {
+          "si": 0,
+          "w": 0,
+          "r": 60,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 0,
+          "r": 60,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 0,
+          "r": 60,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-22_d3_m1_Croci Manubri a Terra": {
+      "date": "2026-03-22",
+      "day": 3,
+      "month": 1,
+      "exercise": "Croci Manubri a Terra",
+      "sets": [
+        {
+          "si": 0,
+          "w": 6,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 7,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 7,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 7,
+          "r": 12,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-22_d3_m1_Arnold Press": {
+      "date": "2026-03-22",
+      "day": 3,
+      "month": 1,
+      "exercise": "Arnold Press",
+      "sets": [
+        {
+          "si": 0,
+          "w": 6,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 6,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 6,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 6,
+          "r": 12,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-22_d3_m1_Affondi": {
+      "date": "2026-03-22",
+      "day": 3,
+      "month": 1,
+      "exercise": "Affondi",
+      "sets": [
+        {
+          "si": 0,
+          "w": 10,
+          "r": 15,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 10,
+          "r": 15,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 10,
+          "r": 15,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 10,
+          "r": 15,
+          "rir": ""
+        },
+        {
+          "si": 4,
+          "w": 10,
+          "r": 15,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-22_d3_m1_Clamshell": {
+      "date": "2026-03-22",
+      "day": 3,
+      "month": 1,
+      "exercise": "Clamshell",
+      "sets": [
+        {
+          "si": 0,
+          "w": 2,
+          "r": 15,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 2,
+          "r": 15,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 2,
+          "r": 15,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 2,
+          "r": 15,
+          "rir": ""
+        },
+        {
+          "si": 4,
+          "w": 2,
+          "r": 15,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-23_d0_m1_Trazioni": {
+      "date": "2026-03-23",
+      "day": 0,
+      "month": 1,
+      "exercise": "Trazioni",
+      "sets": [
+        {
+          "si": 0,
+          "w": 4,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 5,
+          "r": 7,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 5,
+          "r": 7,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 5,
+          "r": 7,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-23_d0_m1_Push-Up": {
+      "date": "2026-03-23",
+      "day": 0,
+      "month": 1,
+      "exercise": "Push-Up",
+      "sets": [
+        {
+          "si": 0,
+          "w": 0,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 0,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 0,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 0,
+          "r": 8,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-23_d0_m1_Rematore Manubri": {
+      "date": "2026-03-23",
+      "day": 0,
+      "month": 1,
+      "exercise": "Rematore Manubri",
+      "sets": [
+        {
+          "si": 0,
+          "w": 13.5,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 16,
+          "r": 10,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 16,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 16,
+          "r": 8,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-23_d0_m1_Hyperextension": {
+      "date": "2026-03-23",
+      "day": 0,
+      "month": 1,
+      "exercise": "Hyperextension",
+      "sets": [
+        {
+          "si": 0,
+          "w": 10,
+          "r": 15,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 10,
+          "r": 15,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 10,
+          "r": 15,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-23_d0_m1_Good Morning": {
+      "date": "2026-03-23",
+      "day": 0,
+      "month": 1,
+      "exercise": "Good Morning",
+      "sets": [
+        {
+          "si": 0,
+          "w": 20,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 20,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 20,
+          "r": 12,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-28_d3_m1_Stacco da Terra": {
+      "date": "2026-03-28",
+      "day": 3,
+      "month": 1,
+      "exercise": "Stacco da Terra",
+      "sets": [
+        {
+          "si": 0,
+          "w": 50,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 60,
+          "r": 4,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 65,
+          "r": 4,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-28_d3_m1_Hip Thrust Bilanciere": {
+      "date": "2026-03-28",
+      "day": 3,
+      "month": 1,
+      "exercise": "Hip Thrust Bilanciere",
+      "sets": [
+        {
+          "si": 0,
+          "w": 40,
+          "r": 10,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 42.5,
+          "r": 10,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 45,
+          "r": 10,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-28_d3_m1_Affondi": {
+      "date": "2026-03-28",
+      "day": 3,
+      "month": 1,
+      "exercise": "Affondi",
+      "sets": [
+        {
+          "si": 0,
+          "w": 10,
+          "r": 10,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 12,
+          "r": 10,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 12,
+          "r": 10,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-28_d3_m1_Hyperextension con Sacco": {
+      "date": "2026-03-28",
+      "day": 3,
+      "month": 1,
+      "exercise": "Hyperextension con Sacco",
+      "sets": [
+        {
+          "si": 0,
+          "w": 10,
+          "r": 15,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 12,
+          "r": 12,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-28_d3_m1_Fitball Hamstring Curl": {
+      "date": "2026-03-28",
+      "day": 3,
+      "month": 1,
+      "exercise": "Fitball Hamstring Curl",
+      "sets": [
+        {
+          "si": 0,
+          "w": 0,
+          "r": 12,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-29_d4_m1_Military Press": {
+      "date": "2026-03-29",
+      "day": 4,
+      "month": 1,
+      "exercise": "Military Press",
+      "sets": [
+        {
+          "si": 0,
+          "w": 42.5,
+          "r": 6,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 42.5,
+          "r": 6,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 42.5,
+          "r": 3,
+          "rir": ""
+        },
+        {
+          "si": 3,
+          "w": 40,
+          "r": 6,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-29_d4_m1_Trazioni Supine": {
+      "date": "2026-03-29",
+      "day": 4,
+      "month": 1,
+      "exercise": "Trazioni Supine",
+      "sets": [
+        {
+          "si": 0,
+          "w": 5,
+          "r": 6,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 5,
+          "r": 6,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 5,
+          "r": 6,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-29_d4_m1_Push-Up": {
+      "date": "2026-03-29",
+      "day": 4,
+      "month": 1,
+      "exercise": "Push-Up",
+      "sets": [
+        {
+          "si": 0,
+          "w": 0,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 0,
+          "r": 8,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 0,
+          "r": 8,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-29_d4_m1_Dip alle Parallele": {
+      "date": "2026-03-29",
+      "day": 4,
+      "month": 1,
+      "exercise": "Dip alle Parallele",
+      "sets": [
+        {
+          "si": 0,
+          "w": 0,
+          "r": 6,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 0,
+          "r": 6,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 0,
+          "r": 6,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-29_d4_m1_Tricipiti Cavo": {
+      "date": "2026-03-29",
+      "day": 4,
+      "month": 1,
+      "exercise": "Tricipiti Cavo",
+      "sets": [
+        {
+          "si": 0,
+          "w": 11,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 11,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 13,
+          "r": 10,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-29_d4_m1_Woodchop": {
+      "date": "2026-03-29",
+      "day": 4,
+      "month": 1,
+      "exercise": "Woodchop",
+      "sets": [
+        {
+          "si": 0,
+          "w": 9,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 1,
+          "w": 9,
+          "r": 12,
+          "rir": ""
+        },
+        {
+          "si": 2,
+          "w": 11,
+          "r": 10,
+          "rir": ""
+        }
+      ]
+    },
+    "2026-03-30_d0_m1_Squat": {
+      "date": "2026-03-30",
+      "day": 0,
+      "month": 1,
+      "exercise": "Squat",
+      "sets": [
+        {
+          "si": 0,
+          "w": 30,
+          "r": 6,
+          "rir": "1"
+        },
+        {
+          "si": 1,
+          "w": 32.5,
+          "r": 6,
+          "rir": "1"
+        },
+        {
+          "si": 2,
+          "w": 32.5,
+          "r": 6,
+          "rir": "1"
+        },
+        {
+          "si": 3,
+          "w": 32.5,
+          "r": 6,
+          "rir": "1"
+        }
+      ]
+    },
+    "2026-03-30_d0_m1_Squat Bulgaro": {
+      "date": "2026-03-30",
+      "day": 0,
+      "month": 1,
+      "exercise": "Squat Bulgaro",
+      "sets": [
+        {
+          "si": 0,
+          "w": 20,
+          "r": 10,
+          "rir": "1"
+        },
+        {
+          "si": 1,
+          "w": 20,
+          "r": 10,
+          "rir": "1"
+        },
+        {
+          "si": 2,
+          "w": 20,
+          "r": 10,
+          "rir": "1"
+        }
+      ]
+    },
+    "2026-03-30_d0_m1_Hip Thrust Bilanciere": {
+      "date": "2026-03-30",
+      "day": 0,
+      "month": 1,
+      "exercise": "Hip Thrust Bilanciere",
+      "sets": [
+        {
+          "si": 0,
+          "w": 40,
+          "r": 10,
+          "rir": "1"
+        },
+        {
+          "si": 1,
+          "w": 40,
+          "r": 10,
+          "rir": "1"
+        },
+        {
+          "si": 2,
+          "w": 40,
+          "r": 10,
+          "rir": "1"
+        }
+      ]
+    },
+    "2026-03-30_d0_m1_Leg Curl al Cavo": {
+      "date": "2026-03-30",
+      "day": 0,
+      "month": 1,
+      "exercise": "Leg Curl al Cavo",
+      "sets": [
+        {
+          "si": 0,
+          "w": 12,
+          "r": 10,
+          "rir": "0"
+        },
+        {
+          "si": 1,
+          "w": 12,
+          "r": 10,
+          "rir": "0"
+        },
+        {
+          "si": 2,
+          "w": 12,
+          "r": 10,
+          "rir": "0"
+        }
+      ]
+    },
+    "2026-03-30_d0_m1_Ab Wheel": {
+      "date": "2026-03-30",
+      "day": 0,
+      "month": 1,
+      "exercise": "Ab Wheel",
+      "sets": [
+        {
+          "si": 0,
+          "w": 0,
+          "r": 8,
+          "rir": "2"
+        },
+        {
+          "si": 1,
+          "w": 0,
+          "r": 10,
+          "rir": "2"
+        },
+        {
+          "si": 2,
+          "w": 0,
+          "r": 10,
+          "rir": "2"
+        }
+      ]
+    },
+    "2026-03-31_d1_m1_Trazioni": {
+      "date": "2026-03-31",
+      "day": 1,
+      "month": 1,
+      "exercise": "Trazioni",
+      "sets": [
+        {
+          "si": 0,
+          "w": 6,
+          "r": 5,
+          "rir": "0"
+        },
+        {
+          "si": 1,
+          "w": 6,
+          "r": 6,
+          "rir": "0"
+        },
+        {
+          "si": 2,
+          "w": 6,
+          "r": 6,
+          "rir": "0"
+        },
+        {
+          "si": 3,
+          "w": 6,
+          "r": 6,
+          "rir": "0"
+        }
+      ]
+    },
+    "2026-03-31_d1_m1_T-bar Row": {
+      "date": "2026-03-31",
+      "day": 1,
+      "month": 1,
+      "exercise": "T-bar Row",
+      "sets": [
+        {
+          "si": 0,
+          "w": 25,
+          "r": 8,
+          "rir": "0"
+        },
+        {
+          "si": 1,
+          "w": 25,
+          "r": 8,
+          "rir": "0"
+        },
+        {
+          "si": 2,
+          "w": 25,
+          "r": 8,
+          "rir": "0"
+        },
+        {
+          "si": 3,
+          "w": 25,
+          "r": 8,
+          "rir": "0"
+        }
+      ]
+    },
+    "2026-03-31_d1_m1_Panca": {
+      "date": "2026-03-31",
+      "day": 1,
+      "month": 1,
+      "exercise": "Panca",
+      "sets": [
+        {
+          "si": 0,
+          "w": 30,
+          "r": 8,
+          "rir": "0"
+        },
+        {
+          "si": 1,
+          "w": 30,
+          "r": 8,
+          "rir": "0"
+        },
+        {
+          "si": 2,
+          "w": 30,
+          "r": 8,
+          "rir": "0"
+        },
+        {
+          "si": 3,
+          "w": 30,
+          "r": 8,
+          "rir": "0"
+        }
+      ]
+    },
+    "2026-03-31_d1_m1_Face Pull": {
+      "date": "2026-03-31",
+      "day": 1,
+      "month": 1,
+      "exercise": "Face Pull",
+      "sets": [
+        {
+          "si": 0,
+          "w": 9,
+          "r": 15,
+          "rir": "2"
+        },
+        {
+          "si": 1,
+          "w": 9,
+          "r": 15,
+          "rir": "2"
+        },
+        {
+          "si": 2,
+          "w": 9,
+          "r": 15,
+          "rir": "2"
+        }
+      ]
+    },
+    "2026-03-31_d1_m1_Curl Bicipiti": {
+      "date": "2026-03-31",
+      "day": 1,
+      "month": 1,
+      "exercise": "Curl Bicipiti",
+      "sets": [
+        {
+          "si": 0,
+          "w": 7,
+          "r": 12,
+          "rir": "1"
+        },
+        {
+          "si": 1,
+          "w": 7,
+          "r": 12,
+          "rir": "1"
+        },
+        {
+          "si": 2,
+          "w": 7,
+          "r": 12,
+          "rir": "1"
+        }
+      ]
+    }
+  },
+  "cardioLogs": {},
+  "calibrationProfiles": {},
+  "calibrationMode": false,
+  "guidedMode": true,
+  "barbellWeight": 20
+}
