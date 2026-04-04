@@ -7146,12 +7146,17 @@ function isNearBodyweightElasticSession(exName, sets) {
                         var sampleEntry = session.entries && session.entries[0] ? session.entries[0] : null;
                         var dayLabel = sampleEntry ? findExerciseContext(sampleEntry).dayName : ("Giorno " + ((session.day || 0) + 1));
                         var dateLabel = fmtProgressDate(session.date);
-                        return <div key={wk + "-" + si} style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 12px" }}>
-                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 8 }}>
-                            <div style={{ fontSize: 12, fontWeight: 800, color: T.tx }}>{dayLabel}</div>
-                            <div style={{ fontSize: 10, color: T.sub }}>{dateLabel}</div>
-                          </div>
-                          <div style={{ display: "grid", gap: 6 }}>
+                        return <details key={wk + "-" + si} style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, overflow: "hidden" }}>
+                          <summary style={{ listStyle: "none", cursor: "pointer", padding: "10px 12px" }}>
+                            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
+                              <div style={{ minWidth: 0, flex: 1 }}>
+                                <div style={{ fontSize: 12, fontWeight: 800, color: T.tx }}>{dayLabel}</div>
+                                <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>{dateLabel + " · " + session.entries.length + " esercizi"}</div>
+                              </div>
+                              <div style={{ color: dc, fontSize: 13, fontWeight: 800, flexShrink: 0 }}>Apri</div>
+                            </div>
+                          </summary>
+                          <div style={{ padding: "0 12px 12px", display: "grid", gap: 6 }}>
                             {session.entries.map(function(entry, ei2) {
                               var sortedSets = (entry.sets || []).slice().sort(function(a, b) { return (a.si || 0) - (b.si || 0); });
                               var isBW = BW_EX.indexOf(entry.exercise) >= 0;
@@ -7308,7 +7313,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                               </div>;
                             })}
                           </div>
-                        </div>;
+                        </details>;
                       })}
                     </div>
                   </details>;
