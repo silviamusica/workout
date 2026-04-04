@@ -3051,6 +3051,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [progTooltip, setProgTooltip] = useState(null);
   var [skillTooltip, setSkillTooltip] = useState(null);
   var [cableMode, setCableMode] = useState({});
+  var [completedExercises, setCompletedExercises] = useState({});
   var [fontScale, setFontScale] = useState(1.1);
   var [settingsOpen, setSettingsOpen] = useState(false);
   var [exerciseWorkflowEnabled, setExerciseWorkflowEnabled] = useState(false);
@@ -6214,6 +6215,28 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </div>
               </div>
             </div>
+            {/* Programma */}
+            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Programma</div>
+            <div style={{ display: "grid", gap: 6, marginBottom: 6 }}>
+              {[
+                { key: "basics", icon: "🎯", title: "Tecniche preliminari", meta: "3 giorni tecnici" },
+                { key: "beginner", icon: "🌱", title: "Principiante", meta: "3 giorni Full Body" },
+                { key: "v4", icon: "💥", title: "Ipertrofia avanzato", meta: "4 giorni pesi + 2 cardio" },
+              ].map(function(opt) {
+                var active = level === opt.key;
+                return <button key={opt.key} onClick={function() {
+                  setLevel(opt.key); setDayIdx(0); setOpenEx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false);
+                  try { localStorage.setItem("wt-level", opt.key); } catch(e) {}
+                }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", borderRadius: 10, border: active ? "2px solid " + dc : "2px solid transparent", background: active ? dc + "12" : T.sb, cursor: "pointer", textAlign: "left" }}>
+                  <span style={{ fontSize: 18, flexShrink: 0 }}>{opt.icon}</span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: active ? dc : T.tx }}>{opt.title}</div>
+                    <div style={{ fontSize: 11, color: T.sub }}>{opt.meta}</div>
+                  </div>
+                  {active && <span style={{ fontSize: 10, background: dc, color: "#fff", padding: "2px 7px", borderRadius: 999, fontWeight: 800, flexShrink: 0 }}>attivo</span>}
+                </button>;
+              })}
+            </div>
             {/* Tema */}
             <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Tema</div>
             {Object.keys(TH).map(function(k) { var v = TH[k]; return <button key={k} onClick={function() { setTheme(k); try { localStorage.setItem("wt-theme", k); } catch(e) {} }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", border: theme === k ? "2px solid " + v.dy[0] : "2px solid transparent", borderRadius: 10, background: v.bg, cursor: "pointer", width: "100%", marginBottom: 4 }}><div style={{ display: "flex", gap: 3 }}>{v.dy.slice(0,5).map(function(c,i) { return <div key={i} style={{ width: 14, height: 14, borderRadius: 4, background: c }} />; })}</div><span style={{ fontSize: 13, fontWeight: 600, color: v.tx }}>{v.n}</span>{theme === k && <span style={{ marginLeft: "auto", fontSize: 11, color: v.dy[0], fontWeight: 700 }}>✓ attivo</span>}</button>; })}
@@ -6346,54 +6369,71 @@ function isNearBodyweightElasticSession(exName, sets) {
         </div>
         {/* View tabs */}
         <div style={{ display: "flex", gap: 1, maxWidth: 600, margin: "12px auto 0", alignItems: "stretch" }}>
-          {/* Back button */}
-          <button onClick={function() { goBack(); }} disabled={tabHistory.length === 0} title="Torna alla schermata precedente" aria-label="Torna alla schermata precedente" style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: tabHistory.length > 0 ? "pointer" : "default", fontSize: 16, color: tabHistory.length > 0 ? T.tx : T.sub + "40", borderBottom: "2px solid transparent", transition: "color 0.15s" }}>‹</button>
-          {/* Home icon-only tab */}
-          <button onClick={function() { navigateToTab("home"); scrollTopSoon("home-top"); }} style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 14, color: tab === "home" ? T.tx : T.sub, borderBottom: tab === "home" ? "2px solid " + dc : "2px solid transparent" }}>⌂</button>
-          {/* Main tabs */}
-          {(isBasics ? ["Scheda", "Teoria", "Esercizi"] : ["Scheda", "Progressi", "Teoria", "Esercizi"]).map(function(t) { var keys = {"Scheda":"workout","Progressi":"progressi","Teoria":"teoria","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { navigateToTab(keys[t]); scrollTopSoon(keys[t] + "-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, color: active ? T.tx : T.sub, borderBottom: active ? "2px solid " + dc : "2px solid transparent", letterSpacing: active ? 0.1 : 0, transition: "color 0.15s" }}>{t}</button>; })}
+          {isBeginner ? (function() {
+            var beginnerTabs = [
+              { label: "⌂", key: "home", onClick: function() { navigateToTab("home"); scrollTopSoon("home-top"); } },
+              { label: "Scheda", key: "workout", onClick: function() { navigateToTab("workout"); scrollTopSoon("workout-top"); } },
+              { label: "Teoria", key: "teoria", onClick: function() { navigateToTab("teoria"); scrollTopSoon("teoria-top"); } },
+            ];
+            return beginnerTabs.map(function(bt) {
+              var active = tab === bt.key;
+              return <button key={bt.key} onClick={bt.onClick} style={{ flex: 1, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, color: active ? T.tx : T.sub, borderBottom: active ? "2px solid " + dc : "2px solid transparent", transition: "color 0.15s" }}>{bt.label}</button>;
+            });
+          })() : (function() {
+            return [
+              <button key="back" onClick={function() { goBack(); }} disabled={tabHistory.length === 0} title="Torna alla schermata precedente" aria-label="Torna alla schermata precedente" style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: tabHistory.length > 0 ? "pointer" : "default", fontSize: 16, color: tabHistory.length > 0 ? T.tx : T.sub + "40", borderBottom: "2px solid transparent", transition: "color 0.15s" }}>‹</button>,
+              <button key="home" onClick={function() { navigateToTab("home"); scrollTopSoon("home-top"); }} style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 14, color: tab === "home" ? T.tx : T.sub, borderBottom: tab === "home" ? "2px solid " + dc : "2px solid transparent" }}>⌂</button>,
+              (isBasics ? ["Scheda", "Teoria", "Esercizi"] : ["Scheda", "Progressi", "Teoria", "Esercizi"]).map(function(t) { var keys = {"Scheda":"workout","Progressi":"progressi","Teoria":"teoria","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { navigateToTab(keys[t]); scrollTopSoon(keys[t] + "-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, color: active ? T.tx : T.sub, borderBottom: active ? "2px solid " + dc : "2px solid transparent", letterSpacing: active ? 0.1 : 0, transition: "color 0.15s" }}>{t}</button>; })
+            ];
+          })()}
         </div>
       </div>
 
       {/* === HOME TAB === */}
       {tab === "home" && <div id="home-top" style={{ maxWidth: 600, margin: "0 auto", padding: "20px 14px 100px" }}>
 
-        <div style={{ background: T.cd, borderRadius: 16, padding: "18px 18px 16px", marginBottom: 10 }}>
-          <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, marginBottom: 6 }}>Programma selezionato</div>
-          <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6, marginBottom: 12 }}>Scegli quale scheda vuoi usare. Quando cambi programma si aggiornano giorni, esercizi e teoria mostrata nell'app.</div>
-          <div style={{ display: "grid", gap: 8 }}>
-            {[
-              { key: "basics", icon: "🎯", title: "Tecniche preliminari", meta: "3 giorni tecnici", desc: "Prerequisiti motori prima della vera scheda: brace, bacino, hip hinge, scapole e pattern base." },
-              { key: "beginner", icon: "🌱", title: "Principiante", meta: "3 giorni Full Body", desc: "Volume moderato, intensita gestibile, focus su tecnica, buffer e progressione lineare." },
-              { key: "v4", icon: "💥", title: "Ipertrofia avanzato", meta: "4 giorni pesi + 2 cardio", desc: "Scheda piu strutturata, con fondamentali prioritari, double progression e gestione completa dei progressi." },
-            ].map(function(opt) {
-              var active = level === opt.key;
-              return <button
-                key={opt.key}
-                onClick={function() {
-                  setLevel(opt.key);
-                  setDayIdx(0);
-                  setOpenEx(null);
-                  setShowIntro(false);
-                  setShowStr(false);
-                  setShowExSection(false);
-                  setShowPrinciples(false);
-                  try { localStorage.setItem("wt-level", opt.key); } catch(e) {}
-                  scrollTopSoon("home-top");
-                }}
-                style={{ textAlign: "left", padding: "12px 13px", borderRadius: 12, border: active ? "1px solid " + dc + "55" : "1px solid " + T.bg, background: active ? dc + "12" : T.bg, cursor: "pointer" }}
-              >
-                <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 3 }}>
-                  <span style={{ fontSize: 17 }}>{opt.icon}</span>
-                  <span style={{ fontSize: 13, fontWeight: 800, color: active ? dc : T.tx }}>{opt.title}</span>
-                  <span style={{ fontSize: 11, color: active ? dc : T.sub, fontWeight: 600 }}>{opt.meta}</span>
-                  {active && <span style={{ marginLeft: "auto", fontSize: 10, background: dc, color: "#fff", padding: "2px 6px", borderRadius: 999, fontWeight: 800 }}>attivo</span>}
-                </div>
-                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55 }}>{opt.desc}</div>
-              </button>;
-            })}
+        {/* ── HOME BEGINNER: layout semplificato ── */}
+        {isBeginner && <div>
+          {/* Hero: giorno corrente + CTA */}
+          <div style={{ background: T.cd, borderRadius: 20, padding: "24px 20px 20px", marginBottom: 12 }}>
+            <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 10 }}>Quale giorno vuoi fare?</div>
+            {/* Selettore A / B / C */}
+            <div style={{ display: "flex", gap: 8, marginBottom: 18 }}>
+              {activeDays.map(function(d, i) {
+                var active = safeDayIdx === i;
+                return <button key={i} onClick={function() { setDayIdx(i); setOpenEx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); }} style={{ flex: 1, padding: "10px 0", border: active ? "2px solid " + dc : "2px solid " + T.bg, borderRadius: 12, background: active ? dc + "14" : T.bg, color: active ? dc : T.sub, fontSize: 13, fontWeight: active ? 800 : 600, cursor: "pointer", transition: "all 0.15s" }}>
+                  {d.name}
+                </button>;
+              })}
+            </div>
+            <div style={{ fontSize: 20, fontWeight: 900, color: T.tx, lineHeight: 1.2, marginBottom: 4 }}>{dayData.focus}</div>
+            <div style={{ fontSize: 12, color: T.sub, marginBottom: 20 }}>{dayData.dur}{dayData.tEst ? " · ~" + dayData.tEst + " min" : ""}</div>
+            <button onClick={function() { openMainTab("workout"); }} style={{ width: "100%", padding: "16px 0", border: "none", borderRadius: 14, background: dc, color: "#fff", fontSize: 16, fontWeight: 900, cursor: "pointer", letterSpacing: 0.2 }}>
+              Inizia allenamento →
+            </button>
           </div>
-        </div>
+
+          {/* Link secondari */}
+          <div style={{ background: T.cd, borderRadius: 16, padding: "16px 18px" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: T.sub, marginBottom: 12 }}>Altre sezioni</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              {[
+                { icon: "📚", label: "Teoria — le basi utili", onClick: function() { goToTeoria("basi", "principi"); } },
+                { icon: "🏃", label: "Libreria esercizi", onClick: function() { goToExercisesSection("ex"); } },
+                { icon: "📊", label: "I miei progressi", onClick: function() { openMainTab("progressi"); } },
+              ].map(function(item) {
+                return <button key={item.label} onClick={item.onClick} style={{ display: "flex", alignItems: "center", gap: 12, padding: "11px 12px", borderRadius: 10, border: "none", background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer", textAlign: "left" }}>
+                  <span style={{ fontSize: 16, width: 22, textAlign: "center", flexShrink: 0 }}>{item.icon}</span>
+                  <span>{item.label}</span>
+                  <span style={{ marginLeft: "auto", color: T.sub, fontSize: 14 }}>›</span>
+                </button>;
+              })}
+            </div>
+          </div>
+        </div>}
+
+        {/* ── HOME non-beginner: layout originale ── */}
+        {!isBeginner && <div>
 
         {/* Panoramica programma */}
         <div style={{ background: T.cd, borderRadius: 16, padding: "18px 18px 16px", marginBottom: 10 }}>
@@ -6433,9 +6473,9 @@ function isNearBodyweightElasticSession(exName, sets) {
               { icon: "📚", title: "Teoria", desc: "Competenze da padroneggiare", onClick: function() { goToTheoryAnchor("teoria", "principi", "theory-section-skills", "skills"); } },
               { icon: "🏃", title: "Esercizi", desc: "Tecnica e immagini", onClick: function() { goToExercisesSection("ex"); } },
             ] : [
-              { icon: "📋", title: "Scheda", desc: isBasics ? "Tecniche del giorno" : isBeginner ? "Allenamento di oggi" : "Scheda e timer", onClick: function() { openMainTab("workout"); } },
+              { icon: "📋", title: "Scheda", desc: "Scheda e timer", onClick: function() { openMainTab("workout"); } },
               { icon: "📊", title: "Progressi", desc: "Carichi e storico", onClick: function() { openMainTab("progressi"); } },
-              { icon: "📚", title: "Teoria", desc: isBasics ? "Tecniche da padroneggiare" : isBeginner ? "Solo le basi utili" : "Principi e respirazione", onClick: function() { isBeginner ? goToTeoria("basi", "principi") : goToTheoryAnchor("teoria", "principi", isBasics ? "theory-section-skills" : "theory-section-concepts", isBasics ? "skills" : "concepts"); } },
+              { icon: "📚", title: "Teoria", desc: "Principi e respirazione", onClick: function() { goToTheoryAnchor("teoria", "principi", "theory-section-concepts", "concepts"); } },
               { icon: "🏃", title: "Esercizi", desc: "Tecnica e immagini", onClick: function() { goToExercisesSection("ex"); } },
             ]).map(function(item) {
               return <button key={item.title} onClick={item.onClick} style={{ textAlign: "left", padding: "12px 12px", borderRadius: 12, border: "1px solid " + T.bg, background: T.bg, cursor: "pointer" }}>
@@ -6449,10 +6489,6 @@ function isNearBodyweightElasticSession(exName, sets) {
             {(isBasics ? [
               { label: "Apri tecniche", onClick: function() { goToTheoryAnchor("teoria", "principi", "theory-section-skills", "skills"); } },
               { label: "Vai alla scheda", onClick: function() { openMainTab("workout"); } },
-              { label: "Backup dati", onClick: function() { setSettingsOpen(true); } },
-            ] : isBeginner ? [
-              { label: "Apri basi", onClick: function() { goToTeoria("basi"); } },
-              { label: "Proteine e dieta", onClick: function() { goToAlimentazione("principi"); } },
               { label: "Backup dati", onClick: function() { setSettingsOpen(true); } },
             ] : [
               { label: "Respirazione", onClick: function() { setShowPrinciples(600); goToTheoryAnchor("teoria", "principi", "theory-section-breathing", "breathing"); } },
@@ -6468,6 +6504,8 @@ function isNearBodyweightElasticSession(exName, sets) {
         <button onClick={function() { openMainTab("workout"); }} style={{ width: "100%", padding: "14px 0", border: "none", borderRadius: 12, background: dc, color: "#fff", fontSize: 14, fontWeight: 800, cursor: "pointer", letterSpacing: 0.3 }}>
           Vai alla scheda di oggi →
         </button>
+
+        </div>}
 
       </div>}
 
@@ -7672,9 +7710,9 @@ function isNearBodyweightElasticSession(exName, sets) {
               return <div style={{ borderBottom: "1px solid " + T.bg }}>
                 <div onClick={function() { setShowDayIntro(function(v) { return !v; }); }} style={{ padding: "12px 14px 10px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, lineHeight: 1.3 }}>{dayData.focus}</div>
+                    <div style={{ fontSize: isBeginner ? 19 : 15, fontWeight: 900, color: T.tx, lineHeight: 1.25 }}>{dayData.focus}</div>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginTop: 3 }}>
-                      <div style={{ fontSize: 11, color: dc, fontWeight: 600 }}>~{estimatedDayMinutes || dayData.tEst} min</div>
+                      <div style={{ fontSize: isBeginner ? 12 : 11, color: dc, fontWeight: 600 }}>~{estimatedDayMinutes || dayData.tEst} min</div>
                       {!dayData.cardio && !dayData.rest && !isBasics && <button
                         onClick={function(e) { e.stopPropagation(); setFocusMode(function(v) { return !v; }); }}
                         style={{ minHeight: 26, padding: "0 10px", border: "1px solid " + (focusMode ? dc + "70" : T.sub + "30"), borderRadius: 999, background: focusMode ? dc + "20" : "transparent", color: focusMode ? dc : T.sub, boxShadow: focusMode ? ("0 0 0 2px " + dc + "18, 0 0 14px " + dc + "25") : "none", fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap", display: "inline-flex", alignItems: "center", gap: 5 }}
@@ -8058,26 +8096,34 @@ function isNearBodyweightElasticSession(exName, sets) {
 
               var anyOpen = openEx !== null;
               var isDimmed = anyOpen && !isX;
+              var exDoneKey = dayIdx + "_" + i;
+              var isExDone = !!(isBeginner && completedExercises[exDoneKey]);
               return <div key={i} id={"ex-row-" + i} style={{ borderBottom: "1px solid " + T.bg, opacity: isDimmed ? 0.38 : 1, transition: "opacity 0.25s" }}>
                 <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); if (opening) { setHistPage(function(p) { var n = Object.assign({}, p); n[i] = 0; return n; }); requestAnimationFrame(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
+                  {isBeginner && <div
+                    onClick={function(e) { e.stopPropagation(); setCompletedExercises(function(prev) { var next = Object.assign({}, prev); if (next[exDoneKey]) { delete next[exDoneKey]; } else { next[exDoneKey] = true; } return next; }); }}
+                    style={{ width: 28, height: 28, borderRadius: "50%", border: "2px solid " + (isExDone ? T.ok : dc + "50"), background: isExDone ? T.ok : "transparent", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, transition: "background 0.2s, border-color 0.2s", cursor: "pointer" }}
+                  >
+                    {isExDone && <svg width="13" height="10" viewBox="0 0 13 10" fill="none"><polyline points="1,5 5,9 12,1" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                  </div>}
                   {rowImg ? <img
                     src={rowImg}
                     onClick={function(e) { e.stopPropagation(); setShowImg(showImg === ("ex-thumb-" + i) ? null : ("ex-thumb-" + i)); }}
-                    style={{ width: 48, height: 48, objectFit: "cover", borderRadius: 10, border: "1px solid " + T.bg, flexShrink: 0, cursor: "zoom-in" }}
-                  /> : <div style={{ width: 34, height: 34, borderRadius: 9, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: dc, flexShrink: 0 }}>{i + 1}</div>}
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontWeight: 800, fontSize: 14, display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap", textTransform: "uppercase", letterSpacing: 0.35 }}>
+                    style={{ width: 48, height: 48, objectFit: "cover", borderRadius: 10, border: "1px solid " + T.bg, flexShrink: 0, cursor: "zoom-in", opacity: isExDone ? 0.45 : 1, transition: "opacity 0.2s" }}
+                  /> : <div style={{ width: 34, height: 34, borderRadius: 9, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: dc, flexShrink: 0, opacity: isExDone ? 0.45 : 1, transition: "opacity 0.2s" }}>{i + 1}</div>}
+                  <div style={{ flex: 1, minWidth: 0, opacity: isExDone ? 0.55 : 1, transition: "opacity 0.2s" }}>
+                    <div style={{ fontWeight: isBeginner ? 700 : 800, fontSize: isBeginner ? 15 : 14, display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap", textTransform: isBeginner ? "none" : "uppercase", letterSpacing: isBeginner ? 0 : 0.35, textDecoration: isExDone ? "line-through" : "none", textDecorationColor: T.sub }}>
                       <ExName name={ex.n} />
                       {rawEx.priority && <span style={{ fontSize: 9, background: dc + "18", color: dc, padding: "1px 6px", borderRadius: 4, fontWeight: 800, letterSpacing: 0.3 }}>★ PRIORITÀ</span>}
                       {hasV && <span style={{ fontSize: 9, background: dc + "20", color: dc, padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>{"M" + month}</span>}
                       {hasCableToggle && <span style={{ fontSize: 9, background: isCable ? dc + "20" : T.sub + "20", color: isCable ? dc : T.sub, padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>{isCable ? "🔌" : "💪"}</span>}
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginTop: 3 }}>
-                      {ex.s && <span style={{ fontSize: 12, color: T.tx, fontWeight: 800, letterSpacing: 0.1 }}>{fmtSerie(ex.s)}</span>}
-                      {ex.rpe ? <span onClick={function(e) { e.stopPropagation(); setRpeOpen(true); }} style={{ cursor: "pointer", color: dc, fontSize: 10, fontWeight: 700, textDecoration: "underline dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, whiteSpace: "nowrap" }}>{formatEffortLabel(ex.rpe, ex.s)}</span> : ""}
-                      {(function() { var mins = estimateExerciseMinutes(rawEx, ex); return mins ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 600 }}>{"~" + mins + " min"}</span> : null; })()}
+                    <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginTop: isBeginner ? 5 : 3 }}>
+                      {ex.s && <span style={{ fontSize: isBeginner ? 14 : 12, color: isBeginner ? dc : T.tx, fontWeight: 800, letterSpacing: 0.1 }}>{fmtSerie(ex.s)}</span>}
+                      {!isBeginner && ex.rpe ? <span onClick={function(e) { e.stopPropagation(); setRpeOpen(true); }} style={{ cursor: "pointer", color: dc, fontSize: 10, fontWeight: 700, textDecoration: "underline dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, whiteSpace: "nowrap" }}>{formatEffortLabel(ex.rpe, ex.s)}</span> : ""}
+                      {!isBeginner && (function() { var mins = estimateExerciseMinutes(rawEx, ex); return mins ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 600 }}>{"~" + mins + " min"}</span> : null; })()}
                     </div>
-                    <div style={{ marginTop: 5, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                    {!isBeginner && <div style={{ marginTop: 5, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                     {calibrationEnabled && calibrationNeed.needed && <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid #C6282830", borderRadius: 999, padding: "3px 8px", background: "#C6282810", color: "#C62828" }}>
                       <span>{calibrationNeed.initial ? "Calibrazione" : "Ricalibra"}</span>
                     </span>}
@@ -8087,7 +8133,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                         <span>{BREATH_TYPE_LABEL[rowBreath.type]}</span>
                       </span>
                     </>}
-                    </div>
+                    </div>}
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     {!isBasics && <button
