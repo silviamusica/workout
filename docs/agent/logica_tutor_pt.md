@@ -7,6 +7,15 @@ Serve a:
 - controllare calibrazione, guida sessione, recuperi e progressione
 - dare a un PT un quadro chiaro di cosa l'app suggerisce davvero oggi
 
+Per controlli su:
+- pattern esercizi
+- varianti e regressioni
+- obiettivi tecnici per variante
+- interpretazione dei briefing guided
+
+leggere anche:
+- `./esercizi_varianti_obiettivi_guided.md`
+
 File applicativo principale:
 - `../../src/App.jsx`
 
@@ -170,6 +179,17 @@ Mostra:
 - hai chiuso il top del range
 - ma il `RIR medio <= 1`
 - quindi l'app non dice di aumentare subito
+
+### Come il PT deve leggere questi stati
+
+- sono stati di coaching locale, non diagnosi tecniche complete
+- usano storico, range e RIR, non analisi video
+- servono a orientare la seduta, non a cambiare da soli la programmazione
+
+Quindi:
+- se la tecnica reale e brutta ma lo storico direbbe `Aumenta carico`, il PT deve dare priorita alla tecnica reale
+- se la seduta e stata non uniforme, la qualita del dato viene prima della voglia di progredire
+- se una variante e stata usata al posto dell'esercizio principale, il suggerimento va letto nel contesto della variante davvero eseguita
 
 ## Prompt RIR dopo la serie
 
@@ -382,7 +402,7 @@ Soglie oggi codificate nella logica guidata:
 - `-1 tacca elastico`
 
 ### Sovraccarico incrementale leggero
-- `Hyperextension`: `+1 kg` oppure piccolo carico aggiuntivo a scelta
+- `Hyperextension con Sacco`: `+1 kg nel sacco`
 
 ## Export e lettura dati
 

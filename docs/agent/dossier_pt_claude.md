@@ -17,6 +17,7 @@ File dati programma:
 
 File descrittivi:
 - `./logica_tutor_pt.md`
+- `./esercizi_varianti_obiettivi_guided.md`
 - `./programma_avanzato_v4.md`
 - `./tecniche_preliminari.md`
 
@@ -48,20 +49,42 @@ Ordine consigliato:
 1. `logica_tutor_pt.md`
 - spiega coaching, calibrazione, guided mode, RIR, recuperi, decisioni finali
 
-2. `workout_plan_v4.csv`
+2. `esercizi_varianti_obiettivi_guided.md`
+- serve per controllare pattern, varianti, regressioni, obiettivi tecnici e lettura coerente della guided mode
+
+3. `workout_plan_v4.csv`
 - è la fonte scheda più importante se il controllo riguarda la modalità avanzata
 
-3. `workout_plan_beginner.csv`
+4. `workout_plan_beginner.csv`
 - serve per verificare coerenza del livello principiante
 
-4. `workout_plan_basics.csv`
+5. `workout_plan_basics.csv`
 - serve per verificare il livello tecniche preliminari
 
-5. `programma_avanzato_v4.md`
+6. `programma_avanzato_v4.md`
 - contesto teorico e logica del V4
 
-6. `tecniche_preliminari.md`
+7. `tecniche_preliminari.md`
 - vincoli e logica del livello preliminare
+
+## 2.bis. File nuovo per il controllo esercizi
+
+Se il controllo del PT riguarda:
+- correttezza delle varianti
+- obiettivo delle regressioni
+- sostituzioni per attrezzatura
+- priorita tecnica dei fondamentali
+- coerenza del briefing guidato
+
+il file di riferimento principale non deve essere solo il CSV.
+
+In quel caso il file da leggere subito e:
+- `esercizi_varianti_obiettivi_guided.md`
+
+Perche:
+- il CSV descrive la scheda
+- ma non esplicita bene la differenza tra variante, regressione e alternativa
+- e non basta da solo per controllare la guided mode
 
 ## 3. Logiche tutor presenti oggi
 
@@ -283,7 +306,7 @@ In questi casi deve parlare di:
 
 ### Incrementi extra già previsti
 
-- `Hyperextension` → `+1 kg` oppure piccolo carico aggiuntivo a scelta
+- `Hyperextension con Sacco` → `+1 kg nel sacco`
 - `Fitball Hamstring Curl` → `+1 rip per serie`
 
 ## 8. Dati salvati dall'app
