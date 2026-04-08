@@ -3388,6 +3388,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var calibrationEnabled = !isBasics;
   var effectiveCalibrationMode = calibrationEnabled && calibrationMode;
   var dc = T.ok;
+  var gc = "#0F766E";
   var teoriaTabs = isBasics
     ? [["teoria","🎯 Tecniche"]]
     : isBeginner
@@ -3605,6 +3606,33 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   function timerReset() { setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMs(tMode === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); setTFull(false); }
   function timerSwitch(m) { setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMode(m); setTMs(m === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); }
   function timerSetTarget(s) { setTTarget(s); if (!tRunning) { tAcc.current = 0; lastSnd.current = -1; setTMs(s * 1000); } }
+  function getTimerDockBottomPx() {
+    return tPanel ? 96 : 74;
+  }
+  function getTimerDragBounds() {
+    if (typeof window === "undefined") return { minX: -140, maxX: 140, minY: -220, maxY: 0 };
+    var viewportWidth = window.innerWidth || 390;
+    var viewportHeight = window.innerHeight || 844;
+    var timerWidth = Math.min(viewportWidth - 20, 284);
+    var timerHeight = tPanel ? 188 : 64;
+    var horizontalSlack = Math.max(0, Math.floor((viewportWidth - 20 - timerWidth) / 2));
+    var topSafe = 12;
+    var bottomSafe = getTimerDockBottomPx() + 12;
+    return {
+      minX: -horizontalSlack,
+      maxX: horizontalSlack,
+      minY: -(viewportHeight - timerHeight - topSafe - bottomSafe),
+      maxY: 0
+    };
+  }
+  function clampTimerPos(pos) {
+    var next = pos || { x: 0, y: 0 };
+    var bounds = getTimerDragBounds();
+    return {
+      x: Math.max(bounds.minX, Math.min(bounds.maxX, isFinite(next.x) ? next.x : 0)),
+      y: Math.max(bounds.minY, Math.min(bounds.maxY, isFinite(next.y) ? next.y : 0))
+    };
+  }
   function startTimerDrag(ev) {
     if (!ev) return;
     if (ev.target && ev.target.closest && ev.target.closest("button")) return;
@@ -3622,10 +3650,10 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       var point = ev.touches && ev.touches[0] ? ev.touches[0] : ev;
       var dx = point.clientX - timerDragRef.current.startX;
       var dy = point.clientY - timerDragRef.current.startY;
-      setTimerPos({
-        x: Math.max(-140, Math.min(140, timerDragRef.current.originX + dx)),
-        y: Math.max(-520, Math.min(40, timerDragRef.current.originY + dy))
-      });
+      setTimerPos(clampTimerPos({
+        x: timerDragRef.current.originX + dx,
+        y: timerDragRef.current.originY + dy
+      }));
     }
     function stopTimerDrag() {
       timerDragRef.current = null;
@@ -3642,7 +3670,22 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       window.removeEventListener("touchend", stopTimerDrag, true);
       window.removeEventListener("touchcancel", stopTimerDrag, true);
     };
-  }, [timerPos.x, timerPos.y]);
+  }, [timerPos.x, timerPos.y, tPanel]);
+  useEffect(function() {
+    if (tFullscreen) return;
+    function syncTimerPosIntoViewport() {
+      setTimerPos(function(prev) {
+        var next = clampTimerPos(prev);
+        if ((prev && prev.x) === next.x && (prev && prev.y) === next.y) return prev;
+        return next;
+      });
+    }
+    syncTimerPosIntoViewport();
+    window.addEventListener("resize", syncTimerPosIntoViewport);
+    return function() {
+      window.removeEventListener("resize", syncTimerPosIntoViewport);
+    };
+  }, [tPanel, tFullscreen]);
 
   function quickTimer(secs) {
     try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {}
@@ -7750,21 +7793,21 @@ function isNearBodyweightElasticSession(exName, sets) {
             </div>}
 
             {!isBasics && !dayData.cardio && !dayData.rest && guidedMode && !focusMode && <div ref={function(el) { if (el) el._sectionKey = "guided"; }} id="section-guided" style={{ borderBottom: "1px solid " + T.bg }}>
-              <div onClick={function() { var opening = !showGuidedSection; setShowGuidedSection(opening); if (opening) { setShowIntro(false); setShowStr(false); setShowExSection(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-guided"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showGuidedSection ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
-                <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>🧭</div>
+              <div onClick={function() { var opening = !showGuidedSection; setShowGuidedSection(opening); if (opening) { setShowIntro(false); setShowStr(false); setShowExSection(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-guided"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showGuidedSection ? gc + "12" : gc + "08", borderLeft: "3px solid " + gc }}>
+                <div style={{ width: 30, height: 30, borderRadius: 8, background: gc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>🧭</div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Modalità guidata</div>
+                  <div style={{ fontWeight: 800, fontSize: 11, color: gc, textTransform: "uppercase", letterSpacing: 1 }}>Modalità guidata</div>
                   <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{"Briefing e consigli esercizio per esercizio"}</div>
                 </div>
-                <div style={{ fontSize: 13, color: dc, transform: showGuidedSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
+                <div style={{ fontSize: 13, color: gc, transform: showGuidedSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
-              {showGuidedSection && <div style={{ padding: "0 14px 14px" }}><div style={{ marginTop: 10, padding: "11px 12px", borderRadius: 12, background: dc + "0A", border: "1px solid " + dc + "22" }}>
+              {showGuidedSection && <div style={{ padding: "0 14px 14px" }}><div style={{ marginTop: 10, padding: "11px 12px", borderRadius: 12, background: gc + "0A", border: "1px solid " + gc + "22" }}>
                 {dayData.intro && dayData.intro.obiettivi && dayData.intro.obiettivi.length > 0 && <div style={{ marginBottom: 10 }}>
                   <div style={{ fontSize: 12, color: T.tx, fontWeight: 800, marginBottom: 5 }}>Obiettivi della sessione</div>
                   <div style={{ display: "grid", gap: 4 }}>
                     {dayData.intro.obiettivi.map(function(goal, gi) {
                       return <div key={gi} style={{ display: "flex", gap: 7, alignItems: "flex-start" }}>
-                        <span style={{ color: dc, fontSize: 11, lineHeight: 1.6, fontWeight: 800 }}>•</span>
+                        <span style={{ color: gc, fontSize: 11, lineHeight: 1.6, fontWeight: 800 }}>•</span>
                         <span style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>{goal}</span>
                       </div>;
                     })}
@@ -7776,7 +7819,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     var sugg = getGuidedSessionSuggestion(gEx.n, gEx.s);
                     return <div key={gEx.n + "-" + gi} style={{ padding: "9px 10px", borderRadius: 10, background: T.sb, border: "1px solid " + T.bg }}>
                       <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, marginBottom: 3 }}>{gEx.n}</div>
-                      <div style={{ fontSize: 11, fontWeight: 700, color: dc, marginBottom: 3 }}>{sugg.title}</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: gc, marginBottom: 3 }}>{sugg.title}</div>
                       <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{sugg.detail}</div>
                     </div>;
                   })}
@@ -8445,16 +8488,74 @@ function isNearBodyweightElasticSession(exName, sets) {
                           rows={3}
                           style={{ width: "100%", resize: "vertical", minHeight: 64, padding: "8px 10px", borderRadius: 8, border: "1px solid " + T.bg, background: T.sb, color: T.tx, fontSize: 12, lineHeight: 1.55, boxSizing: "border-box" }}
                         />
-                        <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 6 }}>
+                        <input
+                          type="url"
+                          inputMode="url"
+                          value={currentExerciseNoteVideo}
+                          onChange={function(e) {
+                            var value = e.target.value;
+                            setExerciseNoteVideoDrafts(function(prev) { var next = Object.assign({}, prev); next[noteDraftKey] = value; return next; });
+                            if (savedExerciseNoteKey === noteDraftKey) setSavedExerciseNoteKey("");
+                          }}
+                          placeholder="Link video personale o YouTube: https://..."
+                          style={{ width: "100%", marginTop: 8, padding: "8px 10px", borderRadius: 8, border: "1px solid " + T.bg, background: T.sb, color: T.tx, fontSize: 12, boxSizing: "border-box" }}
+                        />
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center", marginTop: 8 }}>
+                          <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer", display: "inline-flex", alignItems: "center", opacity: currentExerciseNotePhotos.length >= 3 ? 0.5 : 1 }}>
+                            {currentExerciseNotePhotos.length ? "Aggiungi altra foto" : "Aggiungi foto"}
+                            <input
+                              type="file"
+                              accept="image/*"
+                              style={{ display: "none" }}
+                              disabled={currentExerciseNotePhotos.length >= 3}
+                              onChange={function(e) {
+                                var file = e.target.files && e.target.files[0];
+                                handleExerciseNotePhotoPick(dayIdx, ex.n, file);
+                                e.target.value = "";
+                              }}
+                            />
+                          </label>
+                          {currentExerciseNotePhotos.length > 0 && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{currentExerciseNotePhotos.length + "/3 foto"}</span>}
+                        </div>
+                        {currentExerciseNotePhotos.length > 0 && <div style={{ display: "grid", gap: 8, marginTop: 8 }}>
+                          {currentExerciseNotePhotos.map(function(photoSrc, photoIdx) {
+                            return <div key={noteDraftKey + "-today-photo-" + photoIdx} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb, padding: 8 }}>
+                              <img src={photoSrc} alt={"Nota " + ex.n + " " + (photoIdx + 1)} style={{ width: "100%", display: "block", borderRadius: 8 }} />
+                              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginTop: 6 }}>
+                                <div style={{ fontSize: 10, color: T.sub }}>{"Foto " + (photoIdx + 1)}</div>
+                                <button onClick={function(e) {
+                                  e.stopPropagation();
+                                  setExerciseNotePhotoDrafts(function(prev) {
+                                    var next = Object.assign({}, prev);
+                                    next[noteDraftKey] = normalizeExerciseNotePhotos(next[noteDraftKey]).filter(function(_, idx) { return idx !== photoIdx; });
+                                    return next;
+                                  });
+                                  if (savedExerciseNoteKey === noteDraftKey) setSavedExerciseNoteKey("");
+                                }} style={{ minHeight: 28, padding: "0 10px", border: "1px solid " + T.bg, borderRadius: 999, background: T.cd, color: T.sub, fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Rimuovi</button>
+                              </div>
+                            </div>;
+                          })}
+                        </div>}
+                        <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
                           <button
                             onClick={function(e) {
                               e.stopPropagation();
                               saveExerciseNote(ex.n, dayIdx, currentExerciseNote, currentExerciseNotePhotos, currentExerciseNoteVideo);
                               setSavedExerciseNoteKey(noteDraftKey);
                             }}
-                            style={{ minHeight: 30, padding: "0 12px", border: "none", borderRadius: 999, background: savedExerciseNoteKey === noteDraftKey ? T.ok : dc, color: "#fff", fontSize: 11, fontWeight: 800, cursor: "pointer" }}
+                            style={{ flex: 1, minHeight: 34, padding: "0 12px", border: "none", borderRadius: 999, background: savedExerciseNoteKey === noteDraftKey ? T.ok : dc, color: "#fff", fontSize: 11, fontWeight: 800, cursor: "pointer" }}
                           >
                             {savedExerciseNoteKey === noteDraftKey ? "Salvato ✓" : "Salva nota"}
+                          </button>
+                          <button
+                            onClick={function(e) {
+                              e.stopPropagation();
+                              saveExerciseNote(ex.n, dayIdx, "", [], "");
+                              setSavedExerciseNoteKey(noteDraftKey);
+                            }}
+                            style={{ flex: 1, minHeight: 34, border: "1px solid " + T.bg, borderRadius: 999, background: T.sb, color: "#C62828", fontSize: 11, fontWeight: 800, cursor: "pointer" }}
+                          >
+                            Elimina nota/media
                           </button>
                         </div>
                       </div>
@@ -8549,7 +8650,7 @@ function isNearBodyweightElasticSession(exName, sets) {
         <div ref={feedbackCardsRef} style={{ width: "min(calc(100vw - 16px), 560px)", margin: "0 auto", display: "grid", gap: 10, pointerEvents: "auto", boxSizing: "border-box" }}>
           {guidedFeedback && <div
             onClick={function() { setGuidedFeedback(""); }}
-            style={{ background: dc, color: "#fff", borderRadius: 16, padding: "14px 16px", boxShadow: "0 14px 34px rgba(0,0,0,0.22)", fontSize: 13, fontWeight: 700, lineHeight: 1.6, cursor: "pointer", boxSizing: "border-box", overflowWrap: "anywhere", wordBreak: "break-word" }}
+            style={{ background: gc, color: "#fff", borderRadius: 16, padding: "14px 16px", boxShadow: "0 14px 34px rgba(0,0,0,0.22)", fontSize: 13, fontWeight: 700, lineHeight: 1.6, cursor: "pointer", boxSizing: "border-box", overflowWrap: "anywhere", wordBreak: "break-word", maxHeight: "min(38vh, 280px)", overflowY: "auto", WebkitOverflowScrolling: "touch" }}
           >
             <div style={{ fontSize: 12, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 5, opacity: 0.88 }}>🧭 Modalità guidata</div>
             {guidedFeedback}
@@ -8565,21 +8666,21 @@ function isNearBodyweightElasticSession(exName, sets) {
       </div>}
 
       {guidedPrompt && <div onClick={function() { setGuidedPrompt(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.38)", zIndex: 139, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: 12 }}>
-        <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", maxWidth: 520, background: T.cd, borderRadius: 16, overflow: "hidden", boxShadow: "0 20px 40px rgba(0,0,0,0.22)" }}>
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", maxWidth: 520, maxHeight: "min(78vh, 560px)", background: T.cd, borderRadius: 16, overflowX: "hidden", overflowY: "auto", WebkitOverflowScrolling: "touch", boxShadow: "0 20px 40px rgba(0,0,0,0.22)" }}>
           <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
             <div style={{ fontSize: 15, fontWeight: 800, color: T.tx }}>🧭 Modalità guidata — {guidedPrompt.exName}</div>
             <div style={{ fontSize: 12, color: T.sub, marginTop: 4, lineHeight: 1.6 }}>Quante ripetizioni pulite ti sarebbero rimaste? Questo dato serve per guidare recupero e progressione.</div>
-            {guidedPromptSeenCount < 5 && <div style={{ marginTop: 7, padding: "7px 8px", borderRadius: 8, background: dc + "0D", border: "1px solid " + dc + "18", fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
+            {guidedPromptSeenCount < 5 && <div style={{ marginTop: 7, padding: "7px 8px", borderRadius: 8, background: gc + "0D", border: "1px solid " + gc + "18", fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
               Non sai stimare bene? Scegli <b style={{ color: T.tx }}>2</b> se la serie era impegnativa ma ancora controllata.
             </div>}
           </div>
           <div style={{ padding: 16, display: "grid", gap: 10 }}>
-            {guidedPrompt.prevRir && <button onClick={function() { confirmGuidedPrompt(guidedPrompt.prevRir); }} style={{ minHeight: 42, border: "1px solid " + dc + "24", borderRadius: 10, background: dc + "10", color: dc, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>
+            {guidedPrompt.prevRir && <button onClick={function() { confirmGuidedPrompt(guidedPrompt.prevRir); }} style={{ minHeight: 42, border: "1px solid " + gc + "24", borderRadius: 10, background: gc + "10", color: gc, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>
               {"= serie precedente (RIR " + guidedPrompt.prevRir + ")"}
             </button>}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 6 }}>
               {["0","1","2","3","4+"].map(function(opt) {
-                return <button key={opt} onClick={function() { confirmGuidedPrompt(opt); }} style={{ minHeight: 42, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>{opt}</button>;
+                return <button key={opt} onClick={function() { confirmGuidedPrompt(opt); }} style={{ minHeight: 42, border: "none", borderRadius: 10, background: gc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>{opt}</button>;
               })}
             </div>
             <button onClick={function() { setGuidedPrompt(null); }} style={{ minHeight: 40, border: "1px solid " + T.bg, borderRadius: 10, background: T.sb, color: T.sub, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Chiudi senza salvare RIR</button>
@@ -8632,7 +8733,7 @@ function isNearBodyweightElasticSession(exName, sets) {
       </div>}
 
       {/* TIMER BAR */}
-      <div style={{ position: "fixed", bottom: tFullscreen ? 0 : 10, left: 0, right: 0, top: tFullscreen ? 0 : "auto", zIndex: tFullscreen ? 380 : 230, pointerEvents: "none", display: tFullscreen ? "flex" : "block", alignItems: tFullscreen ? "center" : "stretch", justifyContent: tFullscreen ? "center" : "flex-end", background: tFullscreen ? "rgba(0,0,0,0.28)" : "transparent" }}>
+      <div style={{ position: "fixed", bottom: tFullscreen ? 0 : "calc(env(safe-area-inset-bottom, 0px) + " + getTimerDockBottomPx() + "px)", left: 0, right: 0, top: tFullscreen ? 0 : "auto", zIndex: tFullscreen ? 380 : 230, pointerEvents: "none", display: tFullscreen ? "flex" : "block", alignItems: tFullscreen ? "center" : "stretch", justifyContent: tFullscreen ? "center" : "flex-end", background: tFullscreen ? "rgba(0,0,0,0.28)" : "transparent" }}>
         <div style={{ maxWidth: tFullscreen ? "100%" : 600, width: tFullscreen ? "100%" : "auto", margin: "0 auto", display: "flex", justifyContent: tFullscreen ? "center" : "flex-end", padding: tFullscreen ? 16 : "0 10px", boxSizing: "border-box", transform: tFullscreen ? "none" : "translate(" + (timerPos.x || 0) + "px," + (timerPos.y || 0) + "px)" }}>
         <div
           style={{ width: tFullscreen ? "min(92vw, 560px)" : "min(calc(100vw - 20px), 284px)", maxWidth: tFullscreen ? "92vw" : "calc(100vw - 20px)", pointerEvents: "none", opacity: timerPassive && !tFullscreen ? 0.34 : 1, transform: timerPassive && !tFullscreen ? "scale(0.96)" : "none", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s, opacity 0.2s, transform 0.2s", borderRadius: 14, overflow: "hidden", boxSizing: "border-box" }}>
