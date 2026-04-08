@@ -3613,6 +3613,12 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   function getTimerDockBottomPx() {
     return tPanel ? 96 : 74;
   }
+  function getFloatingBannerBottomPx() {
+    return getTimerDockBottomPx() + (tPanel ? 116 : 84);
+  }
+  function getToastBottomPx() {
+    return getTimerDockBottomPx() + (tPanel ? 168 : 112);
+  }
   function getTimerTopSafePx() {
     return 56;
   }
@@ -6043,7 +6049,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif", background: T.bg, minHeight: "100vh", color: T.tx, zoom: fontScale, WebkitFontSmoothing: "antialiased" }}>
       <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-      {autoBackupMsg && <div onClick={function() { setAutoBackupMsg(""); }} style={{ position: "fixed", left: 12, right: 12, bottom: tPanel ? 190 : 96, zIndex: 260, maxWidth: 600, margin: "0 auto", background: T.ok, color: "#fff", borderRadius: 12, padding: "12px 14px", boxShadow: "0 10px 30px rgba(0,0,0,0.18)", fontSize: 12, fontWeight: 700, lineHeight: 1.5, cursor: "pointer" }}>
+      {autoBackupMsg && <div onClick={function() { setAutoBackupMsg(""); }} style={{ position: "fixed", left: 12, right: 12, bottom: getToastBottomPx(), zIndex: 320, maxWidth: 600, margin: "0 auto", background: T.ok, color: "#fff", borderRadius: 12, padding: "12px 14px", boxShadow: "0 10px 30px rgba(0,0,0,0.18)", fontSize: 12, fontWeight: 700, lineHeight: 1.5, cursor: "pointer" }}>
         💾 {autoBackupMsg}
       </div>}
 
@@ -8665,7 +8671,7 @@ function isNearBodyweightElasticSession(exName, sets) {
       </div>}
 
       {(calibrationFeedback || guidedFeedback) && <div
-        style={{ position: "fixed", left: 8, right: 8, bottom: tPanel ? 104 : 72, zIndex: 132, pointerEvents: "none" }}
+        style={{ position: "fixed", left: 8, right: 8, bottom: getFloatingBannerBottomPx(), zIndex: 320, pointerEvents: "none" }}
       >
         <div ref={feedbackCardsRef} style={{ width: "min(calc(100vw - 16px), 560px)", margin: "0 auto", display: "grid", gap: 10, pointerEvents: "auto", boxSizing: "border-box" }}>
           {guidedFeedback && <div
