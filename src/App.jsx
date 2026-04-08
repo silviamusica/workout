@@ -2937,6 +2937,30 @@ export default function App() {
       });
     });
   }
+  function openWorkoutSection(sectionId, opts) {
+    var options = opts || {};
+    if (typeof options.dayIndex === "number") setDayIdx(options.dayIndex);
+    setOpenEx(null);
+    setEditing(null);
+    setHistIdx(null);
+    setShowIntro(false);
+    setShowExSection(false);
+    setShowGuidedSection(false);
+    setShowPrinciples(false);
+    setShowImg(null);
+    setShowDayIntro(false);
+    setDismissedCalBanner(false);
+    setDismissedSeriesBanner(false);
+    setShowStr(sectionId === "section-stretching");
+    setShowHipBonus(sectionId === "section-hip-bonus");
+    setShowCardioMobility(sectionId === "section-cardio-mobility");
+    navigateToTab("workout");
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        scrollToAnchor(sectionId || "workout-top");
+      });
+    });
+  }
   function goBack() {
     setTabHistory(function(h) {
       if (h.length === 0) return h;
@@ -3478,6 +3502,13 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     if (item.err) blocks.push("Attenzione: " + item.err + ".");
     return blocks.join(" ");
   }
+  function getStretchMinutesLabel(item) {
+    var totalSec = item.est || item.tm || 0;
+    if (!totalSec) return "";
+    var mins = Math.round((totalSec / 60) * 10) / 10;
+    if (mins === Math.round(mins)) return "~" + Math.round(mins) + " min";
+    return "~" + String(mins).replace(".", ",") + " min";
+  }
   function renderStretchList(dayName, sectionKey, list) {
     var items = getStretchSectionItems(list);
     return <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -3497,6 +3528,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
               <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginBottom: 6 }}>{getStretchPreviewText(item)}</div>
               <div style={{ display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}>
                 {item.t && <span style={{ fontSize: 10, color: T.sub, fontStyle: "italic" }}>{item.t}</span>}
+                {getStretchMinutesLabel(item) && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{getStretchMinutesLabel(item)}</span>}
                 <button onClick={function() { setStretchModal({ title: item.n, text: getStretchDetailText(item), duration: item.t || "", imgSrc: imgSrc, video: item.lk || "" }); }} style={{ minHeight: 24, padding: "0 8px", border: "1px solid " + T.st + "34", borderRadius: 999, background: T.st + "10", color: T.st, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}>Dettagli</button>
                 {item.lk && <a href={item.lk} target="_blank" rel="noopener noreferrer" style={{ fontSize: 10, color: dc, fontWeight: 700, textDecoration: "none" }}>video →</a>}
                 {item.tm && <button onClick={function() { quickTimer(item.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "2px 8px", border: "none", borderRadius: 999, background: dc, color: "#fff", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>{"⏱ " + fmtLabel(item.tm)}</button>}
@@ -3512,7 +3544,6 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   }
   function renderCardioSupportDay(item) {
     var cardioDay = item.day;
-    var sourceDayIdx = item.idx;
     var protocolStats = getStretchSectionStats(cardioDay.name, "cardio-hip", HIP_PROTOCOL_BASE);
     return <div key={cardioDay.name} style={{ background: T.cd, borderRadius: 14, border: "1px solid " + T.bg, overflow: "hidden" }}>
       <div style={{ padding: "14px 14px 10px", borderBottom: "1px solid " + T.bg }}>
@@ -3525,13 +3556,6 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       <div style={{ padding: "12px 14px 14px" }}>
         <div style={{ display: "grid", gap: 10 }}>
           {cardioDay.cardioOptions.map(function(opt, oi) {
-            var kind = cardioOptionKind(opt);
-            var fieldCfg = cardioFieldConfig(kind);
-            var draftKey = sourceDayIdx + "_" + opt.label;
-            var draft = cardioDrafts[draftKey] || {};
-            var log = getCardioLog(sourceDayIdx, opt.label);
-            var cardioProg = getCardioProgress(sourceDayIdx, opt.label);
-            var canSave = (parseFloat(draft.minutes) || 0) > 0 && (kind !== "ruck" || (parseFloat(draft.kg) || 0) > 0);
             return <div key={oi} style={{ background: T.sb, borderRadius: 12, padding: "12px", border: "1px solid " + dc + "18" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 5 }}>
                 <span style={{ fontSize: 20 }}>{opt.icon}</span>
@@ -3541,37 +3565,10 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
                 </div>
               </div>
               <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>{opt.desc}</div>
-              <div style={{ marginTop: 10, display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(90px,1fr))", gap: 8 }}>
-                {fieldCfg.map(function(field) {
-                  return <label key={field.key} style={{ display: "grid", gap: 4 }}>
-                    <span style={{ fontSize: 10, fontWeight: 700, color: T.sub }}>{field.label}</span>
-                    <input
-                      type="number"
-                      inputMode={field.inputMode}
-                      step={field.inputMode === "decimal" ? "0.1" : "1"}
-                      placeholder={field.placeholder}
-                      value={draft[field.key] || ""}
-                      onChange={function(e) {
-                        var value = e.target.value;
-                        setCardioDrafts(function(prev) {
-                          var next = Object.assign({}, prev);
-                          next[draftKey] = Object.assign({}, next[draftKey] || {}, { [field.key]: value });
-                          return next;
-                        });
-                      }}
-                      style={{ width: "100%", padding: "9px 8px", border: "1px solid " + dc + "28", borderRadius: 9, fontSize: 13, fontWeight: 700, background: T.cd, color: T.tx, boxSizing: "border-box" }}
-                    />
-                  </label>;
-                })}
+              <div style={{ marginTop: 9, display: "flex", gap: 6, flexWrap: "wrap" }}>
+                <span style={{ fontSize: 10, fontWeight: 800, color: dc, background: dc + "10", border: "1px solid " + dc + "22", borderRadius: 999, padding: "3px 8px" }}>{opt.duration}</span>
+                <span style={{ fontSize: 10, color: T.sub, background: T.cd, border: "1px solid " + T.bg, borderRadius: 999, padding: "3px 8px" }}>Segui l'opzione che oggi ti va meglio</span>
               </div>
-              <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", marginTop: 9 }}>
-                <button onClick={function() { saveCardioSession(sourceDayIdx, opt); }} disabled={!canSave} style={{ minHeight: 38, padding: "0 12px", border: "none", borderRadius: 10, background: canSave ? dc : T.bg, color: canSave ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: canSave ? "pointer" : "default" }}>Salva cardio</button>
-                {log && <div style={{ fontSize: 11, color: T.sub }}><b style={{ color: T.tx }}>Oggi:</b> {formatCardioSummary(log)}</div>}
-              </div>
-              {cardioProg && <div style={{ marginTop: 8, padding: "8px 10px", borderRadius: 9, background: (cardioProg.tone === "up" ? T.ok : cardioProg.tone === "mid" ? dc : cardioProg.tone === "hold" ? "#C62828" : T.bg) + "12", border: "1px solid " + (cardioProg.tone === "up" ? T.ok : cardioProg.tone === "mid" ? dc : cardioProg.tone === "hold" ? "#C62828" : T.sub) + "20" }}>
-                <div style={{ fontSize: 11, fontWeight: 800, color: cardioProg.tone === "up" ? T.ok : cardioProg.tone === "mid" ? dc : cardioProg.tone === "hold" ? "#C62828" : T.sub, marginBottom: 3 }}>{cardioProg.label}</div>
-                <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{cardioProg.detail}</div>
-              </div>}
             </div>;
           })}
           <div style={{ background: T.st + "0D", borderRadius: 12, border: "1px solid " + T.st + "22", padding: "12px" }}>
@@ -6737,8 +6734,8 @@ function isNearBodyweightElasticSession(exName, sets) {
             </div>}
             <div style={{ fontSize: 18, fontWeight: 900, color: T.tx, lineHeight: 1.2, marginBottom: 4 }}>{dayData.focus}</div>
             <div style={{ fontSize: 12, color: T.sub, marginBottom: 20 }}>{dayData.dur}{dayData.tEst ? " · ~" + dayData.tEst + " min" : ""}</div>
-            <button onClick={function() { openMainTab("workout"); }} style={{ width: "100%", padding: "16px 0", border: "none", borderRadius: 14, background: dc, color: "#fff", fontSize: 16, fontWeight: 900, cursor: "pointer", letterSpacing: 0.2 }}>
-              Vai alla scheda →
+            <button onClick={function() { openWorkoutSection("workout-top"); }} style={{ width: "100%", padding: "16px 0", border: "none", borderRadius: 14, background: dc, color: "#fff", fontSize: 16, fontWeight: 900, cursor: "pointer", letterSpacing: 0.2 }}>
+              Vai ai pesi →
             </button>
           </div>
 
@@ -6750,6 +6747,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                 { icon: "📚", label: "Tecniche da padroneggiare", onClick: function() { goToTheoryAnchor("teoria", "principi", "theory-section-skills", "skills"); } },
                 { icon: "🏃", label: "Libreria esercizi", onClick: function() { goToExercisesSection("ex"); } },
               ] : [
+                { icon: "🏋️", label: "Pesi — scheda del giorno", onClick: function() { openWorkoutSection("workout-top"); } },
+                { icon: "❤️", label: "Cardio — cosa fare nei giorni cardio", onClick: function() { openWorkoutSection("section-cardio-mobility"); } },
+                { icon: "🧘", label: "Stretching — blocco finale", onClick: function() { openWorkoutSection("section-stretching"); } },
                 { icon: "📊", label: "Progressi e storico", onClick: function() { openMainTab("progressi"); } },
                 { icon: "📚", label: "Teoria — principi e respirazione", onClick: function() { goToTheoryAnchor("teoria", "principi", "theory-section-concepts", "concepts"); } },
                 { icon: "🏃", label: "Libreria esercizi", onClick: function() { goToExercisesSection("ex"); } },
@@ -8933,8 +8933,8 @@ function isNearBodyweightElasticSession(exName, sets) {
               <div onClick={function() { var opening = !showCardioMobility; setShowCardioMobility(opening); if (opening) { requestAnimationFrame(function() { var el = document.getElementById("section-cardio-mobility"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showCardioMobility ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
                 <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>❤️</div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Cardio e mobilità anca</div>
-                  <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>Giorno 3 e Giorno 7 in una sezione separata, senza aggiungere tab nuovi alla scheda pesi.</div>
+                  <div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Cardio</div>
+                  <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>Qui trovi cosa fare nei giorni cardio, con protocollo anca già separato e senza nessun log da compilare.</div>
                 </div>
                 <div style={{ fontSize: 13, color: dc, transform: showCardioMobility ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
