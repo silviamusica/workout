@@ -3085,6 +3085,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     }
   });
   var timerDragRef = useRef(null);
+  var timerTapRef = useRef(0);
   var [autoBackupMsg, setAutoBackupMsg] = useState("");
   var [exportMenuOpen, setExportMenuOpen] = useState(false);
   var [exGearFilter, setExGearFilter] = useState("all");
@@ -3606,8 +3607,14 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   function timerReset() { setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMs(tMode === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); setTFull(false); }
   function timerSwitch(m) { setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMode(m); setTMs(m === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); }
   function timerSetTarget(s) { setTTarget(s); if (!tRunning) { tAcc.current = 0; lastSnd.current = -1; setTMs(s * 1000); } }
+  function resetTimerPosition() {
+    setTimerPos({ x: 0, y: 0 });
+  }
   function getTimerDockBottomPx() {
     return tPanel ? 96 : 74;
+  }
+  function getTimerTopSafePx() {
+    return 56;
   }
   function getTimerDragBounds() {
     if (typeof window === "undefined") return { minX: -140, maxX: 140, minY: -220, maxY: 0 };
@@ -3616,7 +3623,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     var timerWidth = Math.min(viewportWidth - 20, 284);
     var timerHeight = tPanel ? 188 : 64;
     var horizontalSlack = Math.max(0, Math.floor((viewportWidth - 20 - timerWidth) / 2));
-    var topSafe = 12;
+    var topSafe = getTimerTopSafePx();
     var bottomSafe = getTimerDockBottomPx() + 12;
     return {
       minX: -horizontalSlack,
@@ -3643,6 +3650,19 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       originX: timerPos.x || 0,
       originY: timerPos.y || 0
     };
+  }
+  function handleTimerDoubleTapReset(ev) {
+    if (tFullscreen) return;
+    if (ev && ev.target && ev.target.closest && ev.target.closest("button")) return;
+    var now = Date.now();
+    if (now - timerTapRef.current < 320) {
+      resetTimerPosition();
+      timerTapRef.current = 0;
+      timerDragRef.current = null;
+      if (ev && ev.preventDefault) ev.preventDefault();
+      return;
+    }
+    timerTapRef.current = now;
   }
   useEffect(function() {
     function moveTimer(ev) {
@@ -8736,11 +8756,14 @@ function isNearBodyweightElasticSession(exName, sets) {
       <div style={{ position: "fixed", bottom: tFullscreen ? 0 : "calc(env(safe-area-inset-bottom, 0px) + " + getTimerDockBottomPx() + "px)", left: 0, right: 0, top: tFullscreen ? 0 : "auto", zIndex: tFullscreen ? 380 : 230, pointerEvents: "none", display: tFullscreen ? "flex" : "block", alignItems: tFullscreen ? "center" : "stretch", justifyContent: tFullscreen ? "center" : "flex-end", background: tFullscreen ? "rgba(0,0,0,0.28)" : "transparent" }}>
         <div style={{ maxWidth: tFullscreen ? "100%" : 600, width: tFullscreen ? "100%" : "auto", margin: "0 auto", display: "flex", justifyContent: tFullscreen ? "center" : "flex-end", padding: tFullscreen ? 16 : "0 10px", boxSizing: "border-box", transform: tFullscreen ? "none" : "translate(" + (timerPos.x || 0) + "px," + (timerPos.y || 0) + "px)" }}>
         <div
+          onDoubleClick={handleTimerDoubleTapReset}
+          onTouchEnd={handleTimerDoubleTapReset}
           style={{ width: tFullscreen ? "min(92vw, 560px)" : "min(calc(100vw - 20px), 284px)", maxWidth: tFullscreen ? "92vw" : "calc(100vw - 20px)", pointerEvents: "none", opacity: timerPassive && !tFullscreen ? 0.34 : 1, transform: timerPassive && !tFullscreen ? "scale(0.96)" : "none", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s, opacity 0.2s, transform 0.2s", borderRadius: 14, overflow: "hidden", boxSizing: "border-box" }}>
         <div style={{ display: "flex", alignItems: "center", padding: tFullscreen ? "12px 12px" : "7px 8px", gap: 5, minWidth: 0 }}>
           <div
             onMouseDown={startTimerDrag}
             onTouchStart={startTimerDrag}
+            onDoubleClick={handleTimerDoubleTapReset}
             title="Trascina il timer"
             style={{ width: 24, height: 28, borderRadius: 7, background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)", fontSize: 12, fontWeight: 900, display: tFullscreen ? "none" : "flex", alignItems: "center", justifyContent: "center", cursor: "grab", pointerEvents: tFullscreen ? "none" : "auto", touchAction: "none", userSelect: "none", flexShrink: 0 }}
           >::</div>
@@ -8759,8 +8782,8 @@ function isNearBodyweightElasticSession(exName, sets) {
         </div>
         {(tPanel || tFullscreen) && <div style={{ padding: tFullscreen ? "0 12px 12px" : "0 10px 10px" }}>
           <div style={{ marginBottom: 8, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
-            <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.72)", lineHeight: 1.4 }}>Trascina il timer dove vuoi.</div>
-            <button onClick={function() { setTimerPos({ x: 0, y: 0 }); }} style={{ minHeight: 28, padding: "0 9px", border: "none", borderRadius: 999, background: "rgba(255,255,255,0.12)", color: T.htx, fontSize: 10, fontWeight: 800, cursor: "pointer", pointerEvents: "auto", touchAction: "manipulation" }}>Reset posizione</button>
+            <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.72)", lineHeight: 1.4 }}>Trascina il timer dove vuoi. Doppio tap per centrarlo.</div>
+            <button onClick={resetTimerPosition} style={{ minHeight: 28, padding: "0 9px", border: "none", borderRadius: 999, background: "rgba(255,255,255,0.12)", color: T.htx, fontSize: 10, fontWeight: 800, cursor: "pointer", pointerEvents: "auto", touchAction: "manipulation" }}>Reset posizione</button>
           </div>
           {guidedMode && guidedRecoveryEnabled && guidedFillerHint && tMode === "countdown" && <div style={{ marginBottom: 8, padding: "7px 8px", borderRadius: 8, background: "rgba(255,255,255,0.08)", fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.82)", lineHeight: 1.5 }}>
             {"Filler: " + guidedFillerHint}
