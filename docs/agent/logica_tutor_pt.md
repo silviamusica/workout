@@ -40,12 +40,14 @@ L'app oggi ha due logiche diverse ma compatibili:
 L'app salva in locale e anche nel backup JSON:
 - `logs`
 - `cardioLogs`
+- `stretchLogs`
 - `calibrationProfiles`
 - `calibrationMode`
 - `guidedMode`
 
 Quindi:
 - import/export conserva sia la calibrazione sia la modalità guidata
+- import/export conserva anche gli stati stretching e mobilità (`fatto` / `saltato`)
 - `Reset totale` riporta `guidedMode` a `OFF`
 
 Esiste anche un toggle separato:
@@ -140,6 +142,60 @@ Quando è `OFF`:
 
 Quando è `ON`:
 - compaiono briefing, prompt RIR, suggerimenti recupero e feedback finali
+
+## Stretching e mobilità
+
+### Logica attuale
+
+La V4 usa ora due blocchi distinti:
+
+1. `Stretching finale`
+- compare dopo gli esercizi dei 4 giorni pesi
+- è specifico per il giorno, non più generico per distretto
+- ogni voce mostra durata, cue breve, timer rapido e dettagli
+
+2. `Mobilità anca`
+- nei giorni pesi compare come `Bonus mobilità anca`
+- nei giorni cardio compare dentro la sezione `Cardio e mobilità anca`
+- non crea nuovi tab-giorno e non rompe il tracking esistente dei pesi
+
+### Stato utente
+
+Per stretching e mobilità l'utente può segnare:
+- `Fatto`
+- `Saltato`
+
+Questi stati:
+- non bloccano il flusso
+- non producono giudizi
+- servono solo come tracciamento leggero e persistente
+
+### Timer
+
+Il timer stretching:
+- è manuale
+- parte da 20, 30 o 40 secondi in base alla posizione
+- non è bloccante
+- può essere ignorato o saltato liberamente
+
+### Regole di copy
+
+Per stretching e mobilità l'app deve usare tono non prescrittivo:
+- `consigliato`
+- `se hai tempo`
+- `per oggi`
+
+Da evitare:
+- `devi`
+- `obbligatorio`
+- qualsiasi messaggio colpevolizzante se l'utente salta il blocco
+
+### Soluzione strutturale scelta
+
+Per non rompere la struttura V4:
+- i giorni cardio non sono stati trasformati in nuovi tab-giorno nella scheda principale
+- cardio e protocollo anca sono accessibili in una sezione dedicata della scheda
+- i 4 giorni pesi restano il flusso operativo principale
 
 ## Briefing pre-sessione
 

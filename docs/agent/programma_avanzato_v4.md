@@ -12,7 +12,7 @@ Obiettivo: fornire a un agente o collaboratore un riferimento unico, leggibile e
 
 - Programma attivo: `V4`
 - Struttura: `Upper/Lower` su 4 giorni pesi
-- Il cardio non compare più nella tab `Scheda`: resta consultabile nella parte teorica dell'app
+- Il cardio non compare come giorno separato nella tab `Scheda`, ma ora esiste una sezione dedicata `Cardio e mobilità anca`
 - Obiettivo principale: `ipertrofia con forte componente di forza applicata sui fondamentali`
 - La `definizione` non e una scheda separata gia presente nell'app: dipende soprattutto da dieta, proteine, recupero e gestione del volume
 
@@ -323,9 +323,10 @@ Il tasso di guadagno muscolare rallenta e i progressi di forza diventano piu len
 ## Scheda completa V4
 
 Nota UI attuale:
-- nella tab `Scheda` della V4 l'utente vede solo i 4 giorni pesi
-- i giorni cardio `3` e `7` sono stati tolti dalla scheda operativa per non confondere il tracciamento
-- le indicazioni cardio restano in `Teoria > Basi`
+- nella tab `Scheda` della V4 l'utente continua a lavorare sui 4 giorni pesi principali
+- per non rompere la struttura esistente, i giorni cardio `3` e `7` non sono stati trasformati in nuovi tab-giorno
+- cardio e protocollo anca sono accessibili in una sezione separata `Cardio e mobilità anca`
+- nei giorni pesi il protocollo anca compare come `Bonus mobilità anca` facoltativo dopo lo stretching finale
 
 ### Giorno 1 — Lower A — Quadricipiti + Glutei
 
@@ -349,11 +350,19 @@ Nota UI attuale:
 
 **Stretching**
 
-| # | Distretto | Note |
+| # | Esercizio | Note |
 |---|---|---|
-| 1 | Quadricipiti | 5 min finali |
-| 2 | Flessori anca | 5 min finali |
-| 3 | Glutei | 5 min finali |
+| 1 | Standing Quad Pull | Tallone verso il gluteo, ginocchia vicine, bacino neutro |
+| 2 | Half Kneeling Lunge | Flessori anca, bacino neutro, anche appena avanti |
+| 3 | Figure-Four Supino | Glutei e piriforme, sacro pesante a terra |
+
+**Bonus mobilità anca**
+
+Protocollo breve facoltativo dopo lo stretching finale:
+- Half Kneeling Lunge
+- Half Kneeling Lunge + Reach
+- Figure-Four Supino
+- Happy Baby
 
 ### Giorno 2 — Upper A — Tirata + Petto
 
@@ -380,18 +389,22 @@ Nota UI attuale:
 
 **Stretching**
 
-| # | Distretto | Note |
+| # | Esercizio | Note |
 |---|---|---|
-| 1 | Dorsali | 5 min finali |
-| 2 | Pettorali | 5 min finali |
-| 3 | Bicipiti | 5 min finali |
-| 4 | Spalle | 5 min finali |
+| 1 | Doorway Pec Stretch | Pettorali, gomito a 90°, spalla bassa |
+| 2 | Overhead Lat Stretch | Dorsali, mano alta e fianco lontano |
+| 3 | Cross-Body Shoulder Stretch | Deltoide posteriore e spalle |
+| 4 | Wrist Flexor/Extensor Stretch | Avambracci e polsi dopo presa e tirate |
+
+**Bonus mobilità anca**
+
+Stesso blocco facoltativo del Giorno 1, mostrato dopo lo stretching finale.
 
 ### Giorno 3 — Cardio A
 
 Nota:
-- questo giorno non è più mostrato nella tab `Scheda`
-- resta come riferimento teorico / programmatorio
+- questo giorno resta fuori dai tab-giorno principali per non rompere il tracking dei pesi
+- in app compare dentro la sezione dedicata `Cardio e mobilità anca`
 
 **Cardio**
 
@@ -400,6 +413,14 @@ Nota:
 | 1 | HIIT tapis roulant | 25 min | Settimane dispari. 5 min warmup + 8x(30s sprint / 60s cammino) + 5 min cooldown. RPE 8-9 sprint. Sessione alta intensita |
 | 2 | Rucking con zaino 15-20 kg | 45-60 min | Settimane pari. Salite e discese. Zaino alto e aderente. Zona 2. Progressione: +1 kg ogni 2 settimane OPPURE +5 min. Mai entrambi |
 | 3 | Circuito sacco + corde + slackline | 25-30 min | Bonus. Sostituisce HIIT quando vuoi variare. 3 round sacco 3 min + 4x30s battle rope + slackline 3x30s. Sessione alta intensita |
+
+**Protocollo anca dedicato**
+
+Dopo il cardio, oppure in un secondo momento della giornata:
+- Half Kneeling Lunge
+- Half Kneeling Lunge + Reach
+- Figure-Four Supino
+- Happy Baby
 
 ### Giorno 4 — Lower B — Glutei + Femorali
 
@@ -424,12 +445,16 @@ Nota:
 
 **Stretching**
 
-| # | Distretto | Note |
+| # | Esercizio | Note |
 |---|---|---|
-| 1 | Femorali | 5 min finali |
-| 2 | Glutei | 5 min finali |
-| 3 | Lombare | 5 min finali |
-| 4 | Flessori anca | 5 min finali |
+| 1 | Supine Assisted Leg Pull | Femorali, bacino a terra, piede in dorsiflessione |
+| 2 | Figure-Four Supino | Glutei e piriforme |
+| 3 | Cat-Cow Lento | Decompressione spinale post stacco |
+| 4 | Half Kneeling Lunge | Flessori anca, bacino neutro |
+
+**Bonus mobilità anca**
+
+Stesso blocco facoltativo del Giorno 1, mostrato dopo lo stretching finale.
 
 ### Giorno 5 — Upper B — Spinta + Trazioni + Tricipiti
 
@@ -456,18 +481,22 @@ Nota:
 
 **Stretching**
 
-| # | Distretto | Note |
+| # | Esercizio | Note |
 |---|---|---|
-| 1 | Pettorali | 5 min finali |
-| 2 | Spalle | 5 min finali |
-| 3 | Tricipiti | 5 min finali |
-| 4 | Dorsali | 5 min finali |
+| 1 | Doorway Pec Stretch | Dopo push-up e dip |
+| 2 | Overhead Triceps Stretch | Tricipiti, costole giù |
+| 3 | Overhead Lat Stretch | Dorsali, utile dopo trazioni supine |
+| 4 | Band Dislocate Lento | Spalle e torace, elastico leggero |
+
+**Bonus mobilità anca**
+
+Stesso blocco facoltativo del Giorno 1, mostrato dopo lo stretching finale.
 
 ### Giorno 7 — Cardio B
 
 Nota:
-- questo giorno non è più mostrato nella tab `Scheda`
-- resta come riferimento teorico / programmatorio
+- questo giorno resta fuori dai tab-giorno principali per non rompere il tracking dei pesi
+- in app compare dentro la sezione dedicata `Cardio e mobilità anca`
 
 **Cardio**
 
@@ -476,6 +505,14 @@ Nota:
 | 1 | Corsa leggera zona 2 | 30 min | Bassa intensita. FC 120-140. Cadenza 170+ passi/min. Puoi parlare senza fiatone |
 | 2 | Rucking con zaino 15-20 kg | 45-75 min | Bassa intensita. Zona 2. Progressione: +5 min ogni 2 settimane. Se nel Giorno 3 hai fatto rucking preferisci la corsa |
 
+**Protocollo anca dedicato**
+
+Dopo il cardio, oppure in un secondo momento della giornata:
+- Half Kneeling Lunge
+- Half Kneeling Lunge + Reach
+- Figure-Four Supino
+- Happy Baby
+
 ## Note operative da mantenere coerenti nell'app
 
 - Il carico delle serie di lavoro resta uguale in tutte le serie dello stesso esercizio
@@ -483,7 +520,9 @@ Nota:
 - La progressione principale e la `double progression`
 - I 4 lift prioritari vanno fatti per primi
 - Il cardio resta separato dai pesi
-- In app, il cardio della V4 è consultabile in teoria e non nella scheda giornaliera operativa
+- In app, il cardio della V4 è consultabile in una sezione dedicata della scheda, separata dai tab-giorno pesi
+- Lo stretching finale ha timer rapido e stato `Fatto` / `Saltato`
+- Il protocollo anca non crea giorni nuovi: è `Bonus mobilità anca` nei giorni pesi e blocco dedicato nei giorni cardio
 - La definizione dipende soprattutto dalla dieta, non da una scheda separata gia presente in app
 
 ## File di riferimento collegati
