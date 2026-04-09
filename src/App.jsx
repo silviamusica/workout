@@ -3682,8 +3682,8 @@ export default function App() {
   var teoriaTabs = isBasics
     ? [["teoria","🎯 Tecniche"]]
     : isBeginner
-      ? [["basi","🧱 Basi"],["teoria","📚 Teoria"],["muscoli","💪 Muscoli"],["alimentazione","🥗 Alimentazione"]]
-      : [["basi","🧱 Basi"],["teoria","📚 Teoria"],["muscoli","💪 Muscoli"],["alimentazione","🥗 Alimentazione"]];
+      ? [["basi","🧱 Basi"],["teoria","📚 Teoria"],["muscoli","💪 Muscoli"],["alimentazione","🥗 Cibo"]]
+      : [["basi","🧱 Basi"],["teoria","📚 Teoria"],["muscoli","💪 Muscoli"],["alimentazione","🥗 Cibo"]];
   var homeOverviewNow = isBasics
     ? "Stai lavorando sulle tecniche preliminari: brace, bacino, hip hinge, scapole, squat pattern e movimenti base di spinta e tirata."
     : isBeginner
@@ -7343,7 +7343,7 @@ function isNearBodyweightElasticSession(exName, sets) {
 
         {teoriaTab === "alimentazione" && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
           <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
-            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🥗 Alimentazione</div>
+            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🥗 Cibo</div>
             <div style={{ fontSize: 12, color: T.sub }}>Principi base e dieta attuale per supportare l'allenamento</div>
           </div>
           <div style={{ padding: "10px 16px 0" }}>
