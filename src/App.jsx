@@ -3149,6 +3149,7 @@ export default function App() {
     }
   });
   var timerDragRef = useRef(null);
+  var timerDragMovedRef = useRef(false);
   var timerTapRef = useRef(0);
   var timerHandleTapRef = useRef(0);
   var [autoBackupMsg, setAutoBackupMsg] = useState("");
@@ -3963,8 +3964,9 @@ export default function App() {
   }
   function startTimerDrag(ev) {
     if (!ev) return;
-    if (ev.target && ev.target.closest && ev.target.closest("button")) return;
+    if (ev.target && ev.target.closest && ev.target.closest("button") && !ev.target.closest("[data-timer-drag]")) return;
     var point = ev.touches && ev.touches[0] ? ev.touches[0] : ev;
+    timerDragMovedRef.current = false;
     timerDragRef.current = {
       startX: point.clientX,
       startY: point.clientY,
@@ -3991,18 +3993,28 @@ export default function App() {
     if (tFullscreen) return;
     if (ev && ev.preventDefault) ev.preventDefault();
     if (ev && ev.stopPropagation) ev.stopPropagation();
-    if (timerDragRef.current && timerDragRef.current.moved) {
-      timerHandleTapRef.current = 0;
-      return;
-    }
-    var now = Date.now();
-    if (now - timerHandleTapRef.current < 320) {
-      toggleTimerMini();
-      timerHandleTapRef.current = 0;
+    if (timerDragMovedRef.current || (timerDragRef.current && timerDragRef.current.moved)) {
+      timerDragMovedRef.current = false;
       timerDragRef.current = null;
       return;
     }
-    timerHandleTapRef.current = now;
+    setTMini(true);
+    setTPanel(false);
+    timerDragRef.current = null;
+    timerDragMovedRef.current = false;
+  }
+  function handleTimerIconRelease(ev) {
+    if (tFullscreen) return;
+    if (ev && ev.preventDefault) ev.preventDefault();
+    if (ev && ev.stopPropagation) ev.stopPropagation();
+    if (timerDragMovedRef.current || (timerDragRef.current && timerDragRef.current.moved)) {
+      timerDragMovedRef.current = false;
+      timerDragRef.current = null;
+      return;
+    }
+    setTMini(false);
+    timerDragRef.current = null;
+    timerDragMovedRef.current = false;
   }
   useEffect(function() {
     function moveTimer(ev) {
@@ -4010,7 +4022,10 @@ export default function App() {
       var point = ev.touches && ev.touches[0] ? ev.touches[0] : ev;
       var dx = point.clientX - timerDragRef.current.startX;
       var dy = point.clientY - timerDragRef.current.startY;
-      if (Math.abs(dx) > 8 || Math.abs(dy) > 8) timerDragRef.current.moved = true;
+      if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
+        timerDragRef.current.moved = true;
+        timerDragMovedRef.current = true;
+      }
       setTimerPos(clampTimerPos({
         x: timerDragRef.current.originX + dx,
         y: timerDragRef.current.originY + dy
@@ -9195,19 +9210,29 @@ function isNearBodyweightElasticSession(exName, sets) {
           onDoubleClick={handleTimerDoubleTapReset}
           onTouchEnd={handleTimerDoubleTapReset}
           style={{ width: tFullscreen ? "min(92vw, 560px)" : (tMini ? 56 : "min(calc(100vw - 20px), 238px)"), maxWidth: tFullscreen ? "92vw" : (tMini ? 56 : "calc(100vw - 20px)"), pointerEvents: "none", opacity: timerPassive && !tFullscreen ? 0.34 : 1, transform: timerPassive && !tFullscreen ? "scale(0.96)" : "none", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s, opacity 0.2s, transform 0.2s", borderRadius: tFullscreen ? 14 : 12, overflow: "hidden", boxSizing: "border-box" }}>
-        {tMini && !tFullscreen ? <button onClick={function() { setTMini(false); }} title="Apri timer" style={{ width: 56, height: 56, border: "none", background: "transparent", color: T.htx, display: "grid", placeItems: "center", cursor: "pointer", pointerEvents: "auto", touchAction: "manipulation", padding: 0 }}>
+        {tMini && !tFullscreen ? <div
+          role="button"
+          tabIndex={0}
+          data-timer-drag="true"
+          onMouseDown={startTimerDrag}
+          onTouchStart={startTimerDrag}
+          onPointerUp={handleTimerIconRelease}
+          onKeyDown={function(e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setTMini(false); } }}
+          title="Apri timer. Tieni premuto e trascina per spostarlo"
+          style={{ width: 56, height: 56, border: "none", background: "transparent", color: T.htx, display: "grid", placeItems: "center", cursor: "grab", pointerEvents: "auto", touchAction: "none", padding: 0, userSelect: "none" }}>
           <div style={{ display: "grid", gap: 2, justifyItems: "center", lineHeight: 1 }}>
             <div style={{ fontSize: 15, opacity: 0.9 }}>{tRunning ? "⏱" : "🕒"}</div>
             <div style={{ fontVariantNumeric: "tabular-nums", fontSize: 10, fontWeight: 800, letterSpacing: "0.2px" }}>{fmtTime(tMs)}</div>
           </div>
-        </button> : <>
+        </div> : <>
         <div style={{ display: "flex", alignItems: "center", padding: tFullscreen ? "12px 12px" : "6px 7px", gap: 4, minWidth: 0 }}>
           <div
             data-timer-handle="true"
+            data-timer-drag="true"
             onMouseDown={startTimerDrag}
             onTouchStart={startTimerDrag}
             onPointerUp={handleTimerHandleDoubleTap}
-            title="Trascina il timer. Doppio tap per mini icona"
+            title="Tocca per mini icona. Tieni premuto e trascina per spostarlo"
             style={{ width: 22, height: 24, borderRadius: 6, background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)", fontSize: 10, fontWeight: 900, display: tFullscreen ? "none" : "grid", gridTemplateColumns: "repeat(2, 1fr)", gridTemplateRows: "repeat(2, 1fr)", placeItems: "center", cursor: "grab", pointerEvents: tFullscreen ? "none" : "auto", touchAction: "none", userSelect: "none", flexShrink: 0, padding: "5px 4px", boxSizing: "border-box" }}
           >
             <span style={{ width: 3, height: 3, borderRadius: 999, background: "currentColor", display: "block" }} />
