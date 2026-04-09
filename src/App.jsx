@@ -108,6 +108,20 @@ import img_w_SerieAvvSquat from "./images/warmup_stretch/serie avvicinamento squ
 import img_w_SerieAvvStacco from "./images/warmup_stretch/serie avvicinamento stacco con bilanciere.jpeg";
 import img_w_AffondiCorpoLiberoAlt from "./images/warmup_stretch/Affondi a corpo libero.jpeg";
 import img_w_SospensioneAttivaSbarra from "./images/warmup_stretch/Sospensione attiva alla sbarra.jpg";
+import img_str_FigureFourSupine from "./images/warmup_stretch/figure four supine.gif";
+import img_str_HalfKneelingReach from "./images/warmup_stretch/half kneeling + reach.webp";
+import img_str_HappyBaby from "./images/warmup_stretch/happy_baby.gif";
+import img_str_ReclinedHipCradle from "./images/warmup_stretch/reclined hip cradle.gif";
+import img_str_StandingQuadPull from "./images/warmup_stretch/standing quad pull.gif";
+import img_str_SupportedLowLunge from "./images/warmup_stretch/Supported Low Lunge.gif";
+import img_str_CatCowStretch from "./images/warmup_stretch/cat-cow-stretch.gif";
+import img_str_CouchStretch from "./images/warmup_stretch/Couch Stretch.webp";
+import img_str_CrossBodyShoulder from "./images/warmup_stretch/cross body shoulder stretch .webp";
+import img_str_BandDislocateLento from "./images/warmup_stretch/band dislocate lento.gif";
+import img_str_DoorwayPec from "./images/warmup_stretch/doorway pec stretch  (1).gif";
+import img_str_HalfKneelingLunge from "./images/warmup_stretch/half kneeling lunge (1).gif";
+import img_str_OverheadLat from "./images/warmup_stretch/overhead lat stretch  (1).gif";
+import img_str_WristStretch from "./images/warmup_stretch/wrist stretch (1).gif";
 import img_w_BandPullApart from "./images/preliminary/band pull apart.gif";
 import img_Bird_Dog from "./images/preliminary/Bird-Dog.gif";
 import img_Breathe_Brace from "./images/preliminary/abdominal-bracing-hold - .jpeg";
@@ -1245,7 +1259,7 @@ var NUTRITION_PRINCIPLES = [
   {
     t: "Carboidrati: carburante per la performance",
     d: [
-      { type:"p", content:"Il glicogeno muscolare e il carburante principale dell'allenamento ipertrofico. 3 set da 12RM riducono il glicogeno del circa 26%; 6 set del circa 38%. Il ripristino completo avviene entro 24 ore con un'assunzione giornaliera adeguata." },
+      { type:"p", content:"Il glicogeno muscolare e il carburante principale dell'allenamento ipertrofico. Qui 12RM significa un carico con cui riesci a fare circa 12 ripetizioni tirate, vicino al limite. In pratica: 3 serie cosi possono ridurre il glicogeno muscolare di circa il 26%; 6 serie di circa il 38%. Con carboidrati adeguati durante la giornata, il ripristino completo di solito avviene entro 24 ore." },
       { type:"p", content:"Il tuo piano sta attorno a 170-185 g al giorno, cioe circa 2.98-3.25 g/kg. Nei giorni con i pesi conviene stare sul lato alto del range." },
       { type:"p", content:"Fonti pratiche: riso, pasta, patate, pane, avena, frutta e cereali integrali. Le fonti integrali aiutano fibra e sazieta, ma vicino all'allenamento puoi usare anche fonti piu facili da digerire." },
     ]
@@ -1375,22 +1389,22 @@ var STR = {
   "Tricipiti": { img: "str_Tricipiti", d: "Braccio dietro la testa", h: "Porta un braccio sopra la testa e piega il gomito, lasciando cadere la mano dietro la schiena tra le scapole. Con l'altra mano, afferra il gomito e spingi dolcemente verso il basso/dietro. Sentirai l'allungamento lungo la parte posteriore del braccio.", t: "20s per lato, ripeti 2 volte", tm: 20 },
   "Glutei": { img: "str_Glutei", d: "Figura a 4 (piriforme)", h: "Sdraiata supina, incrocia una caviglia sul ginocchio opposto formando un 4. Afferra con entrambe le mani la coscia della gamba che sta a terra e tirala verso il petto. Sentirai un allungamento profondo nel gluteo della gamba incrociata. Se non arrivi con le mani, usa un asciugamano.", t: "30s per lato, ripeti 2 volte", tm: 30 },
   "Cat-Cow": { img: "w_CatCow", d: "Gatto-mucca (mobilita colonna)", h: "A quattro zampe, mani sotto le spalle, ginocchia sotto le anche. INSPIRA: inarca la schiena lasciando cadere la pancia verso il pavimento, testa su, coccige su (mucca). ESPIRA: arrotonda la schiena verso il soffitto, mento al petto, coccige in dentro (gatto). Alterna lentamente, sincronizzando col respiro.", t: "10 ripetizioni lente", tm: 60, lk: "https://www.youtube.com/watch?v=AVyXJ8xMNxA" },
-  "Standing Quad Pull": { d: "Standing quad pull", h: "In piedi, afferra la caviglia e porta il tallone verso il gluteo. Ginocchia vicine, bacino neutro, petto alto. Se vuoi sentire meglio anche il tibiale, tira leggermente la punta del piede verso la testa. Senti tensione ma riesci a respirare normalmente.", t: "2x30s per lato", tm: 30, est: 120, cue: "Ginocchia vicine, bacino neutro, tallone verso il gluteo.", target: "Quadricipiti", breath: "Diaframmatica, espirazione lunga", err: "Lombare inarcata o ginocchio che scappa avanti", lk: "https://www.youtube.com/watch?v=UZ-GSxmr2zs&pp=ygUSU3RhbmRpbmcgUXVhZCBQdWxs" },
-  "Half Kneeling Lunge": { d: "Half kneeling lunge", h: "Mezzo affondo in appoggio sul ginocchio dietro. Punta la fibbia della cintura verso l'orizzonte per tenere il bacino neutro, poi spingi le anche appena avanti. Il movimento e piccolo: devi sentire la parte anteriore dell'anca senza compensare con la lombare.", t: "2x40s per lato", tm: 40, est: 160, cue: "Bacino neutro, anche appena avanti.", target: "Iliopsoas + retto femorale", breath: "Diaframmatica, espirazione completa", err: "Compenso lombare o passo troppo lungo", lk: "https://www.youtube.com/watch?v=dUgr_vjDWNw" },
-  "Half Kneeling Lunge + Reach": { d: "Half kneeling lunge + reach verticale", h: "Dalla stessa posizione del mezzo affondo, alza il braccio del lato che stai allungando e cerca il soffitto. Mantieni bacino neutro e costole giu. Pensa ad allungare tutta la linea anteriore dal ginocchio alla mano, senza perdere il controllo del tronco.", t: "2x30s per lato", tm: 30, est: 120, cue: "Braccio del lato in stretching verso l'alto, costole giu.", target: "Flessori anca + catena laterale", breath: "Diaframmatica, lenta", err: "Costole aperte o spalla sollevata", lk: "https://www.youtube.com/watch?v=jE63mBT_a9Q" },
-  "Figure-Four Supino": { d: "Figure-four supino", h: "Sdraiata supina, appoggia una caviglia sulla coscia opposta formando un 4. Afferra la coscia della gamba di sotto e tirala verso il petto. Il sacro resta pesante a terra: se si stacca stai compensando. Cerca il gluteo profondo, non la lombare.", t: "2x40s per lato", tm: 40, est: 160, cue: "Sacro a terra, caviglia appoggiata alta sulla coscia.", target: "Glutei + piriforme", breath: "Diaframmatica, espira senza forzare", err: "Tirare da collo/spalle o perdere il bacino", lk: "https://www.youtube.com/watch?v=-g0nuyTHMrI" },
-  "Happy Baby": { d: "Happy baby", h: "Sdraiata supina, ginocchia verso le ascelle e mani ai piedi o alle caviglie. Mantieni il bacino pesante a terra e fai piccoli dondolii laterali se ti aiutano a lasciare andare l'anca. La posizione deve aprire l'anca, non irrigidire il collo.", t: "2x40s", tm: 40, est: 80, cue: "Ginocchia larghe, sacro pesante, micromovimenti leggeri.", target: "Rotatori esterni + adduttori + glutei", breath: "Diaframmatica, lenta", err: "Spingere troppo o sollevare il sacro", lk: "https://www.youtube.com/watch?v=h-Mmlos5hJY&pp=ygUSaGFwcHkgYmFieSBzdHJldGNo" },
-  "Doorway Pec Stretch": { d: "Doorway pec stretch", h: "Appoggia l'avambraccio a uno stipite o al rack, gomito a 90 gradi. Ruota il busto via dal braccio finche senti il petto aprirsi. Mantieni la spalla bassa e il collo lungo.", t: "2x30s per lato", tm: 30, est: 120, cue: "Gomito a 90 gradi, spalla bassa, ruota il busto via.", target: "Pettorali", breath: "Espira lungo mentre apri il torace", err: "Spalla che sale o gomito troppo alto", lk: "https://www.youtube.com/watch?v=CEQMx4zFwYs" },
-  "Overhead Lat Stretch": { d: "Overhead lat stretch", h: "Appoggia la mano in alto su rack o supporto. Porta il fianco indietro e leggermente via dalla mano per sentire il gran dorsale allungarsi lungo il costato. Evita di ruotare tutto il busto: pensa a creare spazio dal fianco fino all'ascella, senza perdere le costole.", t: "2x30s per lato", tm: 30, est: 120, cue: "Mano alta, fianco lontano, costole controllate.", target: "Gran dorsale", breath: "Diaframmatica con espirazione completa", err: "Ruotare troppo o perdere il fianco", lk: "https://www.youtube.com/watch?v=5HLQAVOvxNE" },
-  "Cross-Body Shoulder Stretch": { d: "Cross-body shoulder stretch", h: "Porta un braccio teso davanti al petto e accompagnalo verso il corpo con l'altro. Tieni la spalla bassa e il torace fermo. Il lavoro deve stare dietro la spalla e nella parte posteriore del deltoide, non nel collo o nel trapezio.", t: "2x30s per lato", tm: 30, est: 120, cue: "Braccio lungo, spalla bassa, torace fermo.", target: "Deltoide posteriore + capsula posteriore", breath: "Respiro regolare", err: "Spalla verso l'orecchio o tronco che ruota", lk: "https://www.youtube.com/watch?v=swvXpKN832E&pp=ygUbY3Jvc3MgYmFieSBzaG91ZGxlciBzdHJldGNo" },
-  "Wrist Flexor/Extensor Stretch": { d: "Wrist flexor/extensor stretch", h: "Alterna una posizione con dita verso il basso e una con dita verso l'alto per scaricare presa, polsi e avambracci. Mantieni il gomito disteso ma non rigido e cerca tensione graduale, non dolore. L'idea e decomprimere l'avambraccio dopo trazioni, row e lavoro di presa, non forzare l'articolazione.", t: "2x20s per direzione", tm: 20, est: 80, cue: "Movimento graduale, gomito disteso, niente dolore.", target: "Avambracci + polsi", breath: "Respiro facile", err: "Spingere troppo o piegare la spalla", lk: "https://www.youtube.com/watch?v=GkDeFSfcekU&pp=ygUXZmxleG9yLWV4dGVuc29yIHN0cmV0aGM%3D" },
-  "Supine Assisted Leg Pull": { d: "Supine assisted leg pull", h: "Supina, una gamba verso il soffitto con elastico o asciugamano sotto il piede. Tieni il bacino pesante a terra e il piede in dorsiflessione. Porta la gamba solo fin dove senti il femorale senza perdere la posizione del bacino.", t: "2x40s per lato", tm: 40, est: 160, cue: "Bacino a terra, gamba lunga, piede in dorsiflessione.", target: "Femorali", breath: "Espira e lascia cedere il femorale", err: "Bacino che si solleva o ginocchio che si piega", lk: "https://www.youtube.com/watch?v=qcfHJBm1R2U&pp=ygUYc3VwaW5lIGFzc2lzdGVkIGxlZyBwdWxs" },
-  "Cat-Cow Lento": { base: "Cat-Cow", d: "Cat-cow lento", t: "8-10 ripetizioni lente", tm: 60, est: 60, cue: "Muovi la colonna segmento per segmento, senza fretta.", target: "Mobilita lombare e toracica", breath: "Inspira in estensione, espira in flessione", err: "Andare veloce o forzare il collo" },
-  "Overhead Triceps Stretch": { d: "Overhead triceps stretch", h: "Porta un braccio sopra la testa, piega il gomito e accompagna il gomito verso dietro con l'altra mano. Costole giu e addome leggermente attivo: se apri troppo il torace perdi il focus sul tricipite. Cerca una linea lunga dal gomito al fianco, senza irrigidire il collo.", t: "2x30s per lato", tm: 30, est: 120, cue: "Gomito verso l'alto, costole giu, niente compenso lombare.", target: "Tricipiti", breath: "Respiro lento", err: "Torace che si apre troppo o collo rigido", lk: "https://www.youtube.com/watch?v=_IOHtPSYGbk&pp=ygUXb3ZlcmhlYWQgdHJpY2VwcyBzcmV0Y2g%3D" },
-  "Band Dislocate Lento": { d: "Band dislocate lento", h: "Con elastico leggero, porta le braccia tese davanti al corpo e accompagna lentamente il passaggio sopra la testa e dietro. Mantieni le costole giu e rallenta il punto piu difficile. Deve mobilizzare spalle e torace, non diventare uno strappo. Se devi piegare i gomiti o inarcare la schiena, l'elastico e troppo corto.", t: "8-10 ripetizioni lente", tm: 60, est: 60, cue: "Elastico leggero, braccia tese, movimento lento e controllato.", target: "Spalle + torace", breath: "Fluido con il movimento", err: "Elastico troppo corto o lombare che compensa", lk: "https://www.youtube.com/watch?v=qJz79bK7QS8&pp=ygUUYmFuZCBkaXNsb2NhdGUgbGVudG_SBwkJ2goBhyohjO8%3D" },
-  "Couch Stretch": { d: "Couch stretch", h: "Ginocchio vicino a muro o panca, piede dietro, altra gamba avanti. Parti con il busto leggermente inclinato e avvicina il ginocchio al supporto solo quanto riesci a controllare il bacino. Progressione: busto piu verticale senza perdere respiro.", t: "2x40s per lato", tm: 40, est: 160, cue: "Ginocchio vicino al supporto, bacino controllato, busto progressivo.", target: "Retto femorale + flessori anca", breath: "Lenta, espirazione lunga", err: "Entrare troppo forte e perdere il bacino", lk: "https://www.youtube.com/watch?v=TIJu5aWPke0&pp=ygUNQ291Y2ggU3RyZXRjaA%3D%3D" },
-  "Leg Cradle Supino": { d: "Leg cradle supino", h: "Supina, prendi la tibia e avvicinala all'addome come una culla, tenendo il bacino fermo a terra. Cerca apertura dietro e lateralmente sull'anca, senza chiuderti nelle spalle.", t: "2x30s per lato", tm: 30, est: 120, cue: "Tibia verso l'addome, bacino fermo.", target: "Glutei + adduttori + rotatori", breath: "Lenta", err: "Sacro che si stacca o spalle rigide", lk: "https://www.youtube.com/watch?v=Rb7oHuWIBGI&pp=ygURTGVnIENyYWRsZSBzdXBpbmU%3D" },
-  "Supported Low Lunge": { d: "Supported low lunge", h: "Affondo basso con mani a terra o su supporto. Gamba dietro lunga, petto aperto quanto basta, anche che scendono verso il basso. Se vuoi sentire di piu gli adduttori apri leggermente la posizione del piede davanti.", t: "2x30s per lato", tm: 30, est: 120, cue: "Gamba dietro lunga, anche verso il basso, mani in appoggio.", target: "Psoas + TFL", breath: "Fluida", err: "Affondare nella lombare o spingere senza controllo", lk: "https://www.youtube.com/watch?v=-Rprn7V7qgo&pp=ygUTU3VwcG9ydGVkIExvdyBMdW5nZdIHCQnaCgGHKiGM7w%3D%3D" },
+  "Standing Quad Pull": { img: "str_StandingQuadPull", d: "Standing quad pull", goal: "Allungare il quadricipite dopo il lavoro di squat e affondi. Riduce la rigidita del retto femorale che tira il bacino in avanti.", h: "In piedi, appoggiati al rack con una mano. Afferra la caviglia dietro di te e tira il tallone verso il gluteo. Ginocchia vicine.", t: "2x30s per lato", tm: 30, est: 120, cue: "Punta le dita del piede verso la testa (dorsiflessione): estende anche il tibiale anteriore, non solo il quadricipite.", feel: "Parte anteriore della coscia, dalla rotula fino all'anca.", breath: "Diaframmatica, espirazione lunga", err: "Inarcare la schiena per compensare: tieni il bacino neutro, gluteo contratto. Ginocchio che si apre lateralmente: tienilo in linea con l'anca.", reason: "Giorno 1 e 4: dopo squat, bulgaro e affondi i quadricipiti sono accorciati e pieni di sangue. Lo stretching li riporta alla lunghezza di riposo.", lk: "https://www.youtube.com/watch?v=UZ-GSxmr2zs&pp=ygUSU3RhbmRpbmcgUXVhZCBQdWxs" },
+  "Half Kneeling Lunge": { img: "str_HalfKneelingLunge", d: "Half kneeling lunge", goal: "Allungare iliopsoas e retto femorale: i flessori profondi dell'anca. E l'esercizio piu importante per sbloccare l'anca da sedentarieta.", h: "Ginocchio a terra, l'altro piede avanti con il ginocchio sopra la caviglia. Spingi le anche avanti mantenendo il busto verticale.", t: "2x40s per lato", tm: 40, est: 160, cue: "Punta la fibbia della cintura verso l'orizzonte. Il bacino resta neutro, non in anteroversione. L'avanzamento delle anche e piccolo ma deve essere sentito.", feel: "Parte anteriore dell'anca della gamba dietro, in profondita. Se senti la lombare, hai perso il bacino.", breath: "Diaframmatica, espirazione completa", err: "Inarcare la lombare per andare piu avanti, inclinarsi col busto in avanti, ginocchio davanti che supera la punta del piede.", reason: "Presente in tutti i giorni lower e nel protocollo anca. I flessori dell'anca corti limitano la profondita dello squat e il lockout dell'hip thrust.", lk: "https://www.youtube.com/watch?v=dUgr_vjDWNw" },
+  "Half Kneeling Lunge + Reach": { img: "str_HalfKneelingReach", d: "Half kneeling lunge + reach verticale", goal: "Estendere l'allungamento del half kneeling lunge a tutta la catena anteriore, dallo psoas fino al gran dorsale e agli obliqui.", h: "Dalla posizione del half kneeling lunge, alza il braccio dello stesso lato del ginocchio a terra verso il soffitto. Allunga come se volessi toccare il soffitto.", t: "2x30s per lato", tm: 30, est: 120, cue: "La mano sale, l'anca scende. Senti una linea di tensione continua dal ginocchio a terra fino alla punta delle dita in alto.", feel: "Psoas profondo, fianco, obliqui e dorsale dello stesso lato. Molto piu esteso del lunge semplice.", breath: "Diaframmatica, lenta", err: "Perdere il bacino neutro quando alzi il braccio o ruotare il busto. Il petto resta frontale.", reason: "Protocollo anca e giorni lower. Aggiunge la componente delle catene muscolari: non allunghi un muscolo solo, ma tutta la catena anteriore-laterale.", lk: "https://www.youtube.com/watch?v=jE63mBT_a9Q" },
+  "Figure-Four Supino": { img: "str_FigureFourSupine", d: "Figure-four supino", goal: "Allungare i rotatori esterni dell'anca e il gluteo. I rotatori corti limitano la rotazione dell'anca e possono comprimere il nervo sciatico.", h: "Schiena a terra. Appoggia la caviglia sulla coscia opposta formando un 4. Afferra la coscia di sotto con entrambe le mani e tira verso il petto.", t: "2x40s per lato", tm: 40, est: 160, cue: "Mantieni il sacro a terra. Il ginocchio della gamba incrociata si apre lateralmente: non lo forzare verso il basso, lascia che la gravita e la trazione facciano il lavoro.", feel: "Gluteo profondo e parte posteriore-laterale dell'anca della gamba incrociata. Se senti il ginocchio, la posizione e sbagliata.", breath: "Diaframmatica, espira senza forzare", err: "Alzare il sacro da terra, forzare il ginocchio con la mano, testa che si solleva.", reason: "Giorno 1, 4 e protocollo anca. Dopo squat, stacco e hip thrust i rotatori esterni sono contratti.", lk: "https://www.youtube.com/watch?v=-g0nuyTHMrI" },
+  "Happy Baby": { img: "str_HappyBaby", d: "Happy baby", goal: "Allungare rotatori, adduttori, glutei e lombare in una posizione unica. Mobilita globale dell'anca in flessione, abduzione e rotazione esterna.", h: "Schiena a terra. Ginocchia verso le ascelle, mani che afferrano i piedi o le caviglie dall'esterno. Gomiti premono le ginocchia verso il basso.", t: "2x40s", tm: 40, est: 80, cue: "Micromovimenti: dondola il bacino lateralmente, 2-3 cm per lato. Ogni oscillazione porta l'allungamento su un punto diverso.", feel: "Inguine, interno coscia, gluteo profondo. La sensazione e distribuita, non puntiforme.", breath: "Diaframmatica, lenta", err: "Testa e spalle che si sollevano, tirare troppo forte con le braccia, lombare che si inarca.", reason: "Protocollo anca. E l'esercizio che lavora simultaneamente su piu limitazioni dell'anca. Ideale nei giorni cardio quando c'e piu tempo.", lk: "https://www.youtube.com/watch?v=h-Mmlos5hJY&pp=ygUSaGFwcHkgYmFieSBzdHJldGNo" },
+  "Doorway Pec Stretch": { img: "str_DoorwayPec", d: "Doorway pec stretch", goal: "Allungare il pettorale e il deltoide anteriore dopo spinta. Contrasta la chiusura delle spalle da postura seduta.", h: "Avambraccio appoggiato sul montante del rack o sullo stipite. Gomito a 90 gradi, all'altezza della spalla. Ruota il busto lontano dal braccio appoggiato.", t: "2x30s per lato", tm: 30, est: 120, cue: "La rotazione e del busto, non del braccio. Il braccio resta fermo, il petto si apre.", feel: "Petto, dalla parte vicina allo sterno fino alla spalla. Se senti la spalla davanti tirare in modo sgradevole, arretra la rotazione.", breath: "Espira lungo mentre apri il torace", err: "Gomito sopra la spalla o spingere la spalla in avanti per andare piu in la.", reason: "Giorno 2 e 5: dopo trazioni + panca e dopo push-up + dip. Il pettorale accorciato tira le spalle in avanti e peggiora la postura delle trazioni.", lk: "https://www.youtube.com/watch?v=CEQMx4zFwYs" },
+  "Overhead Lat Stretch": { img: "str_OverheadLat", d: "Overhead lat stretch", goal: "Allungare il gran dorsale dopo le tirate. Migliora la mobilita delle spalle in flessione.", h: "Mano alta sul rack, braccio teso. Spingi il fianco lontano dal rack, creando una curva laterale col corpo.", t: "2x30s per lato", tm: 30, est: 120, cue: "Il fianco si allontana, la mano resta ferma. Senti una linea di allungamento dal polso fino alla cresta iliaca.", feel: "Lato del tronco sotto l'ascella, lungo il dorsale fino al fianco.", breath: "Diaframmatica con espirazione completa", err: "Ruotare il busto o piegarsi dalla vita invece che dall'anca.", reason: "Giorno 2 e 5. Il gran dorsale e il muscolo piu grosso della schiena e dopo molte serie di tirata e accorciato e pieno di tensione.", lk: "https://www.youtube.com/watch?v=5HLQAVOvxNE" },
+  "Cross-Body Shoulder Stretch": { img: "str_CrossBodyShoulder", d: "Cross-body shoulder stretch", goal: "Allungare il deltoide posteriore e la capsula posteriore della spalla. Bilancia il lavoro delle tirate.", h: "Braccio teso davanti al petto. L'altra mano lo spinge verso il corpo, sopra il gomito.", t: "2x30s per lato", tm: 30, est: 120, cue: "La spalla del braccio che stiri resta bassa, non alzarla verso l'orecchio.", feel: "Parte posteriore della spalla, dietro il deltoide.", breath: "Respiro regolare", err: "Spingere sul gomito invece che sopra o alzare la spalla.", reason: "Giorno 2: dopo trazioni, T-bar row e panca. La capsula posteriore della spalla si irrigidisce con il volume di tirata.", lk: "https://www.youtube.com/watch?v=swvXpKN832E&pp=ygUbY3Jvc3MgYmFieSBzaG91ZGxlciBzdHJldGNo" },
+  "Wrist Flexor/Extensor Stretch": { img: "str_WristStretch", d: "Wrist flexor/extensor stretch", goal: "Decomprimere polsi e avambracci dopo la presa prolungata su trazioni, row e bilanciere.", h: "Braccio teso davanti. Con l'altra mano, tira le dita verso di te e poi lontano da te. Lento.", t: "2x20s per direzione", tm: 20, est: 80, cue: "Il braccio resta completamente teso. Se pieghi il gomito, l'allungamento salta l'avambraccio.", feel: "Parte interna dell'avambraccio per i flessori e parte esterna per gli estensori.", breath: "Respiro facile", err: "Tirare troppo forte o fare solo una direzione.", reason: "Giorno 2: dopo trazioni e row la presa e distrutta. Riduce la rigidita che si accumula nei tendini dell'avambraccio.", lk: "https://www.youtube.com/watch?v=GkDeFSfcekU&pp=ygUXZmxleG9yLWV4dGVuc29yIHN0cmV0aGM%3D" },
+  "Supine Assisted Leg Pull": { img: "str_Femorali", d: "Supine assisted leg pull", goal: "Allungare i femorali e il polpaccio. I femorali corti limitano l'hip hinge e tirano il bacino in retroversione.", h: "Schiena a terra. Avvolgi un elastico o un asciugamano intorno alla pianta del piede. Gamba tesa verso il soffitto. Tira delicatamente verso di te.", t: "2x40s per lato", tm: 40, est: 160, cue: "Il piede in dorsiflessione estende l'allungamento al polpaccio. Il bacino resta a terra, non si alza.", feel: "Parte posteriore della coscia, dal gluteo fino al cavo del ginocchio. Con dorsiflessione, anche il polpaccio.", breath: "Espira lentamente mentre tiri", err: "Piegare il ginocchio per salire di piu, sollevare il bacino da terra, bloccare il respiro.", reason: "Giorno 4: dopo stacco e stacco rumeno. I femorali hanno lavorato in allungamento sotto carico pesante.", lk: "https://www.youtube.com/watch?v=qcfHJBm1R2U&pp=ygUYc3VwaW5lIGFzc2lzdGVkIGxlZyBwdWxs" },
+  "Cat-Cow Lento": { base: "Cat-Cow", img: "str_CatCowStretch", thumbPos: "center", thumbScale: 1.45, d: "Cat-cow lento", goal: "Mobilizzare la colonna vertebrale e decomprimere la lombare dopo il lavoro pesante di catena posteriore.", h: "Quattro zampe, mani sotto le spalle, ginocchia sotto le anche. Cat: arrotonda la schiena verso il soffitto, mento al petto. Cow: estendi la schiena, petto avanti, sguardo avanti. Lento, 3-4 secondi per fase.", t: "8-10 ripetizioni lente", tm: 60, est: 60, cue: "Muovi una vertebra alla volta, non tutto insieme. Senti ogni segmento della colonna che si flette e poi si estende.", feel: "Tutta la colonna, dalla lombare alla cervicale. Nella fase cat senti allungamento lombare, nella fase cow apertura toracica.", breath: "Inspira in estensione, espira in flessione", err: "Andare veloce o muovere solo testa e bacino lasciando il centro rigido.", reason: "Giorno 4: dopo stacco da terra e stacco rumeno la colonna e stata compressa sotto carico. Il cat-cow la decomprime senza carico.", lk: "https://www.youtube.com/watch?v=AVyXJ8xMNxA" },
+  "Overhead Triceps Stretch": { img: "str_Tricipiti", d: "Overhead triceps stretch", goal: "Allungare il tricipite, soprattutto il capo lungo che attraversa sia il gomito che la spalla. Dopo military, push-up e dip e il muscolo piu affaticato.", h: "Braccio alzato, piega il gomito e porta la mano dietro la testa verso la scapola opposta. L'altra mano spinge delicatamente il gomito verso il basso e indietro.", t: "2x30s per lato", tm: 30, est: 120, cue: "Il gomito punta al soffitto, non in avanti. Se il gomito cade avanti, il capo lungo non si allunga.", feel: "Parte posteriore del braccio, dalla punta del gomito fino sotto l'ascella.", breath: "Respiro lento", err: "Spingere il gomito troppo forte o inarcare la schiena per compensare.", reason: "Giorno 5: dopo military press, push-up, dip e tricipiti cavo. Quattro esercizi che tassano i tricipiti.", lk: "https://www.youtube.com/watch?v=_IOHtPSYGbk&pp=ygUXb3ZlcmhlYWQgdHJpY2VwcyBzcmV0Y2g%3D" },
+  "Band Dislocate Lento": { img: "str_BandDislocateLento", thumbPos: "center top", thumbScale: 1.55, d: "Band dislocate lento", goal: "Mobilizzare l'intera articolazione della spalla attraverso il ROM completo. Contrasta la chiusura delle spalle post-spinta.", h: "Elastico leggero o asciugamano tenuto a braccia tese davanti. Passa l'elastico sopra la testa e dietro la schiena, poi torna avanti. Lento: 3-4 secondi per passaggio.", t: "8-10 ripetizioni lente", tm: 60, est: 60, cue: "Le braccia restano tese per tutto il percorso. Se devi piegare i gomiti, allarga la presa sull'elastico.", feel: "Parte anteriore delle spalle nel passaggio dietro, parte posteriore nel ritorno avanti. L'apertura toracica migliora passaggio dopo passaggio.", breath: "Fluido con il movimento", err: "Presa troppo stretta, inarcare la schiena nel punto piu alto o andare veloce.", reason: "Giorno 5: dopo esercizi di spinta e trazione. Resetta la mobilita della spalla in tutti i piani.", lk: "https://www.youtube.com/watch?v=qJz79bK7QS8&pp=ygUUYmFuZCBkaXNsb2NhdGUgbGVudG_SBwkJ2goBhyohjO8%3D" },
+  "Couch Stretch": { img: "str_CouchStretch", thumbPos: "center 28%", thumbScale: 1.35, d: "Couch stretch", goal: "Allungamento profondo di retto femorale e flessori dell'anca. Piu intenso del half kneeling lunge perche aggiunge la flessione del ginocchio.", h: "Ginocchio a terra vicino al muro o alla panca, piede appoggiato al muro con la pianta verso il soffitto. L'altro piede davanti, ginocchio a 90 gradi. Raddrizza il busto.", t: "2x40s per lato", tm: 40, est: 160, cue: "Fibbia della cintura verso il soffitto: retroversione attiva del bacino. Se senti la lombare, stai in anteroversione.", feel: "Parte anteriore della coscia della gamba dietro, dal ginocchio fino all'anca. Molto piu intenso del quad pull in piedi.", breath: "Lenta, espirazione lunga", err: "Inarcare la schiena, ginocchio troppo lontano dal muro o forzare la posizione completa dal primo giorno.", reason: "Protocollo anca, settimane 5+. E la progressione del half kneeling lunge: aggiunge la flessione del ginocchio che allunga anche il retto femorale distalmente.", lk: "https://www.youtube.com/watch?v=TIJu5aWPke0&pp=ygUNQ291Y2ggU3RyZXRjaA%3D%3D" },
+  "Leg Cradle Supino": { img: "str_ReclinedHipCradle", d: "Leg cradle supino", goal: "Allungare piriforme, glutei e adduttori in una posizione stabile e controllata.", h: "Schiena a terra. Solleva una gamba, afferra la tibia con entrambe le mani, una alla caviglia e una al ginocchio. Tira la tibia verso l'addome parallelamente al pavimento.", t: "2x30s per lato", tm: 30, est: 120, cue: "Il sacro resta a terra. La tibia si avvicina al corpo, non il corpo alla tibia.", feel: "Gluteo profondo e parte esterna dell'anca. Simile al figure-four ma con piu enfasi sugli adduttori.", breath: "Lenta", err: "Alzare la testa e le spalle o tirare il ginocchio invece della tibia.", reason: "Protocollo anca, settimane 5+. Complementa il figure-four aggiungendo l'abduzione dell'anca, che il figure-four non lavora.", lk: "https://www.youtube.com/watch?v=Rb7oHuWIBGI&pp=ygURTGVnIENyYWRsZSBzdXBpbmU%3D" },
+  "Supported Low Lunge": { img: "str_SupportedLowLunge", d: "Supported low lunge", goal: "Allungare psoas e TFL in profondita, con possibilita di raggiungere anche gli adduttori nella variante wide stance.", h: "Mani a terra o su blocchi/step. Un piede avanti tra le mani. Gamba dietro lunga, ginocchio a terra. Spingi le anche verso il basso e in avanti.", t: "2x30s per lato", tm: 30, est: 120, cue: "Il peso affonda verso il pavimento. Le mani servono solo per equilibrio, non per sostenerti.", feel: "Inguine profondo e parte anteriore dell'anca della gamba dietro. Nella variante larga: anche interno coscia.", breath: "Fluida", err: "Busto che collassa sulle mani, ginocchio davanti che avanza oltre la caviglia o lombare che si inarca.", reason: "Protocollo anca, settimane 9+. E la posizione piu profonda di allungamento dei flessori dell'anca e richiede una base costruita con half kneeling lunge e couch stretch.", lk: "https://www.youtube.com/watch?v=-Rprn7V7qgo&pp=ygUTU3VwcG9ydGVkIExvdyBMdW5nZdIHCQnaCgGHKiGM7w%3D%3D" },
 };
 
 var HIP_PROTOCOL_BASE = [
@@ -1845,58 +1859,43 @@ var DAYS_BEGINNER = [
 ];
 
 var BEGINNER_PRINCIPLES_DEEP = [
-  { t: "Perche una scheda principiante e diversa", d: [
-      { type: "p", content: "Sei normopeso, ma la priorita non e dimagrire: e costruire tessuto muscolare. L'obiettivo reale e aumentare la massa magra e migliorare tono e forma del corpo." },
-      { type: "p", content: "Per una principiante la strategia migliore non e cercare subito intensita alte o tanto volume. Devi prima costruire fondamenta solide: tecnica, schemi motori e continuita." },
-      { type: "p", content: "Non devi temere di diventare 'troppo grossa': la crescita muscolare femminile e lenta e graduale. Il risultato tipico e un fisico piu tonico, atletico e stabile." },
-      { type: "p", content: "Se il dato di massa grassa molto bassa fosse corretto, il focus deve restare ancora di piu sulla costruzione di massa magra: niente deficit e niente cardio intenso. Meglio verificare il dato con una BIA o una plicometria." },
+  { t: "Obiettivo della fase principiante", d: [
+      { type: "p", content: "Qui non devi inseguire fatica o cardio: devi costruire tecnica, continuita e un po di massa magra." },
+      { type: "p", content: "Il risultato atteso non e diventare grossa, ma piu stabile, piu tonica e piu sicura sui movimenti base." },
     ]},
-  { t: "Come e organizzata la scheda principiante", d: [
-      { type: "p", content: "La multifrequenza resta la scelta migliore anche qui: alleni tutto il corpo 3 volte a settimana, a giorni alterni, con giorni di riposo reali tra una seduta e l'altra." },
-      { type: "p", content: "Il volume iniziale e moderato: circa 6-10 serie dirette per i gruppi principali, abbastanza per crescere senza perdere tecnica e recupero." },
-      { type: "p", content: "La scheda usa soprattutto multiarticolari: squat, hip hinge, spinte, tirate, lavoro unilaterale e core. I femorali sono gia coperti con Stacco rumeno e Fitball hamstring curl." },
+  { t: "Come funziona la scheda", d: [
+      { type: "p", content: "Alleni tutto il corpo 3 volte a settimana, a giorni alterni, con volume moderato e multiarticolari semplici." },
+      { type: "p", content: "L'idea e ripetere bene gli stessi pattern abbastanza spesso da impararli e progredire senza confusione." },
     ]},
-  { t: "Buffer, progressione e cosa conta davvero", d: [
-      { type: "p", content: "Nella scheda principiante non devi allenarti sempre al massimo. Quasi tutte le serie vanno chiuse sentendo che avresti potuto fare ancora 1-2 ripetizioni con buona tecnica." },
-      { type: "p", content: "La progressione e semplice: a parita di peso provi a fare una ripetizione in piu, oppure quando il range e stabile aumenti leggermente il carico. Piccoli progressi, ma continui." },
-      { type: "p", content: "Le cose che fanno davvero la differenza sono poche: presenza costante, tecnica coerente, recuperi rispettati, proteine sufficienti e sonno." },
-    ]},
-  { t: "Cardio e recupero nella fase principiante", d: [
-      { type: "p", content: "In questa fase non serve cardio strutturato. Nei giorni di riposo bastano camminate leggere e un po di mobilita facoltativa." },
-      { type: "p", content: "Se il focus e costruire massa magra, il cardio intenso sarebbe solo interferenza in piu: meglio recuperare bene e arrivare fresca ai tre allenamenti." },
-    ]},
-  { t: "Alimentazione: il consiglio piu utile adesso", d: [
-      { type: "p", content: "Se il tuo obiettivo e costruire massa magra, l'allenamento da solo non basta. Devi dare al corpo i mattoni per costruire tessuto muscolare: proteine adeguate, idratazione e costanza." },
-      { type: "p", content: "Come base pratica, resta almeno nel range di circa 1.8-2.5 grammi di proteine per ogni chilo di massa magra. Non serve essere perfetta ogni giorno: serve essere regolare per mesi." },
+  { t: "Cosa fa davvero la differenza", d: [
+      { type: "p", content: "Chiudi quasi tutte le serie con 1-2 ripetizioni in riserva, rispetta i recuperi e prova a migliorare poco alla volta." },
+      { type: "p", content: "Le priorita vere sono poche: presenza costante, tecnica pulita, proteine adeguate e sonno." },
     ]},
 ];
 
 var BEGINNER_PRINCIPLES = [
-  { t: "Come leggere 3x8-10", d: "Vuol dire 3 serie da 8 a 10 ripetizioni con lo stesso peso. Parti con un carico che ti permetta di fare almeno 8 ripetizioni pulite lasciandone ancora 1-2 in riserva. Quando riesci a fare 10 ripetizioni in tutte le serie con buona tecnica, aumenta leggermente il peso e riparti da 8." },
-  { t: "Recuperi nella scheda principiante", d: "Sugli esercizi principali recupera circa 90 secondi o 2 minuti. Sugli esercizi piu leggeri e sul core bastano spesso 60-90 secondi. Se il fiato e il controllo non sono ancora tornati, aspetta un po di piu: recuperare bene e parte dell'allenamento." },
-  { t: "Serie di avvicinamento: quante farne davvero", d: "La rampa completa serve soprattutto sul primo esercizio della seduta, per esempio Squat o Stacco Rumeno. Sugli esercizi successivi spesso basta 1 serie leggera o nessuna. Lo scopo non e stancarti: e arrivare pronta alle serie vere." },
-  { t: "Buffer: fermati prima di sporcare la tecnica", d: "L'obiettivo non e sfinirti. Fermati quando senti che potresti fare ancora 1-2 ripetizioni buone. Se per completare l'ultima rep devi accorciare il movimento, usare slancio o perdere una posizione stabile, quella rep non conta." },
-  { t: "Come progredire da principiante", d: "Di settimana in settimana cerca un piccolo passo avanti: una ripetizione in piu oppure un piccolo aumento di peso. Non serve rincorrere il massimo ogni seduta. La costanza vale piu della singola giornata perfetta." },
-  { t: "Cardio nella scheda principiante", d: "In questa fase non ti serve cardio strutturato. Nei giorni di riposo bastano camminate leggere e un po di mobilita. La priorita e recuperare bene e costruire massa magra." },
+  { t: "Come leggere 3x8-10", d: "Vuol dire 3 serie con lo stesso peso. Parti dal numero basso del range e quando chiudi tutte le serie al numero alto con tecnica pulita, alza poco il carico." },
+  { t: "Recuperi", d: "Sugli esercizi principali stai circa tra 90 secondi e 2 minuti. Sugli esercizi piu leggeri basta spesso 60-90 secondi." },
+  { t: "Buffer", d: "Fermati quasi sempre con 1-2 ripetizioni buone ancora disponibili. Se devi sporcare la tecnica, la serie e gia finita." },
+  { t: "Cardio", d: "Qui non serve cardio strutturato. Nei giorni off bastano camminate leggere e recupero buono." },
 ];
 
 var BEGINNER_INTRO_BASICS = [
   {
     icon: "🌱",
-    title: "Da dove partire davvero",
-    summary: "L'obiettivo iniziale non e spingere forte: e imparare bene i movimenti e diventare costante.",
+    title: "Da dove partire",
+    summary: "All'inizio conta imparare bene i movimenti e allenarti con continuita.",
     body: [
-      { type: "p", content: "Come principiante ti basta una scheda semplice, fatta bene e ripetuta con regolarita. Il primo obiettivo e costruire le basi: tecnica, confidenza con i pesi e continuita." },
       { type: "bold-list", content: [
         ["Cosa conta subito", "Presenza regolare, tecnica pulita, recuperi rispettati e carichi gestibili."],
-        ["Cosa non serve subito", "Cedimento continuo, troppe varianti, tanti esercizi o regole complicate."],
+        ["Cosa evitare", "Cedimento continuo, troppe varianti e regole inutili."],
       ]},
     ]
   },
   {
     icon: "📐",
     title: "Serie, ripetizioni e recupero",
-    summary: "Poche regole semplici per leggere la scheda senza confusione.",
+    summary: "Le uniche regole che ti servono per leggere la scheda.",
     body: [
       { type: "bold-list", content: [
         ["3x8-10", "3 serie da 8 a 10 ripetizioni con lo stesso peso."],
@@ -1908,9 +1907,8 @@ var BEGINNER_INTRO_BASICS = [
   {
     icon: "⚖️",
     title: "Buffer e progressione",
-    summary: "Non devi andare al massimo ogni serie. Devi migliorare poco alla volta.",
+    summary: "Non devi andare al massimo: devi migliorare poco alla volta.",
     body: [
-      { type: "p", content: "Quasi tutte le serie vanno chiuse sentendo che avresti potuto fare ancora 1-2 ripetizioni buone. Questo ti protegge e ti aiuta a imparare meglio." },
       { type: "bold-list", content: [
         ["Progressione", "Prima prova ad aggiungere una ripetizione. Poi, quando il range e stabile, alza leggermente il peso."],
         ["Regola pratica", "Tecnica prima, carico dopo."],
@@ -1920,9 +1918,8 @@ var BEGINNER_INTRO_BASICS = [
   {
     icon: "🥗",
     title: "Recupero e proteine",
-    summary: "Per costruire massa magra servono allenamento, cibo e riposo.",
+    summary: "Allenamento, sonno e proteine devono andare insieme.",
     body: [
-      { type: "p", content: "Se vuoi costruire tessuto muscolare devi dare al corpo i mattoni per farlo: proteine adeguate, sonno e acqua." },
       { type: "bold-list", content: [
         ["Proteine", "Come base pratica, resta nel range di circa 1.8-2.5 g per kg di massa magra."],
         ["Sonno", "Dormire bene ti aiuta a recuperare e a migliorare di settimana in settimana."],
@@ -2345,6 +2342,20 @@ var WS_IMG = {
   "w_ClamshellCorpoLibero": img_Clamshell,
   "w_AffondiWarmup": img_Affondi,
   "w_SospensioneAttiva": img_w_SospensioneAttivaSbarra,
+  "str_BandDislocateLento": img_str_BandDislocateLento,
+  "str_CatCowStretch": img_str_CatCowStretch,
+  "str_CouchStretch": img_str_CouchStretch,
+  "str_CrossBodyShoulder": img_str_CrossBodyShoulder,
+  "str_DoorwayPec": img_str_DoorwayPec,
+  "str_FigureFourSupine": img_str_FigureFourSupine,
+  "str_HalfKneelingReach": img_str_HalfKneelingReach,
+  "str_HappyBaby": img_str_HappyBaby,
+  "str_HalfKneelingLunge": img_str_HalfKneelingLunge,
+  "str_OverheadLat": img_str_OverheadLat,
+  "str_ReclinedHipCradle": img_str_ReclinedHipCradle,
+  "str_StandingQuadPull": img_str_StandingQuadPull,
+  "str_SupportedLowLunge": img_str_SupportedLowLunge,
+  "str_WristStretch": img_str_WristStretch,
 };
 var SK = "wt-v5";
 var SK_SHADOW = SK + "-shadow";
@@ -2368,13 +2379,6 @@ function warmupImgSrc(item) {
   if (EX_IMG[item.n]) return EX_IMG[item.n];
   return null;
 }
-
-function ytEmbedUrl(url) {
-  if (!url) return null;
-  var m = url.match(/youtube\.com\/watch\?v=([^&]+)/) || url.match(/youtu\.be\/([^?&]+)/);
-  return m ? "https://www.youtube.com/embed/" + m[1] : null;
-}
-
 
 function parseSerie(str) {
   if (!str) return { sets: 3, reps: ["12"] };
@@ -2939,6 +2943,7 @@ export default function App() {
   }
   function resetWorkoutPanels() {
     setOpenEx(null);
+    setOpenStretchCard(null);
     setEditing(null);
     setHistIdx(null);
     setShowIntro(false);
@@ -3069,8 +3074,7 @@ export default function App() {
       });
     });
   }
-var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"yt" }
-  var [stretchModal, setStretchModal] = useState(null); // { title, text, duration, imgSrc, video }
+  var [openStretchCard, setOpenStretchCard] = useState(null);
   var [showReg, setShowReg] = useState(null);
   var [catSec, setCatSec] = useState(null);
   var [logs, setLogs] = useState({});
@@ -3129,6 +3133,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   var [tFlash, setTFlash] = useState(false);
   var [tWarning, setTWarning] = useState(false);
   var [tPanel, setTPanel] = useState(false);
+  var [tMini, setTMini] = useState(true);
   var [tFullscreen, setTFullscreen] = useState(false);
   var [timerPos, setTimerPos] = useState(function() {
     try {
@@ -3145,6 +3150,7 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   });
   var timerDragRef = useRef(null);
   var timerTapRef = useRef(0);
+  var timerHandleTapRef = useRef(0);
   var [autoBackupMsg, setAutoBackupMsg] = useState("");
   var [exportMenuOpen, setExportMenuOpen] = useState(false);
   var [exGearFilter, setExGearFilter] = useState("all");
@@ -3455,6 +3461,13 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     : [];
   var safeStretchIdx = stretchSupportDays.length ? Math.min(stretchIdx, stretchSupportDays.length - 1) : 0;
   var stretchDayData = stretchSupportDays.length ? stretchSupportDays[safeStretchIdx] : null;
+  function openStretchDay(dayName) {
+    var idx = stretchSupportDays.findIndex(function(day) { return day && day.name === dayName; });
+    setWorkoutView("stretching");
+    if (idx >= 0) setStretchIdx(idx);
+    resetWorkoutPanels();
+    scrollTopSoon("workout-top");
+  }
 
   function normalizeStretchEntry(entry) {
     if (!entry) return null;
@@ -3462,12 +3475,25 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       var base = STR[entry];
       return base ? Object.assign({ n: entry, key: entry }, base) : null;
     }
-    var fromBase = entry.base && STR[entry.base] ? STR[entry.base] : null;
     var name = entry.n || entry.name || entry.base || "";
+    var fromBase = (entry.base && STR[entry.base] ? STR[entry.base] : null) || (name && STR[name] ? STR[name] : null);
     return Object.assign({}, fromBase || {}, entry, { n: name, key: entry.key || name });
   }
   function getStretchSectionItems(list) {
     return (list || []).map(normalizeStretchEntry).filter(Boolean);
+  }
+  function getStretchNavItems(day) {
+    if (!day) return [];
+    var items = [];
+    getStretchSectionItems(day.str).forEach(function(item) {
+      items.push(Object.assign({ sectionLabel: "Stretching del giorno" }, item));
+    });
+    if (day.hipBonus) {
+      getStretchSectionItems(HIP_PROTOCOL_BASE).forEach(function(item) {
+        items.push(Object.assign({ sectionLabel: "Bonus anca" }, item));
+      });
+    }
+    return items;
   }
   function getStretchSectionStats(dayName, sectionKey, list) {
     var items = getStretchSectionItems(list);
@@ -3504,6 +3530,9 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     text = String(text).replace(/<[^>]+>/g, "").trim();
     return text.length > 110 ? text.slice(0, 110).trim() + "…" : text;
   }
+  function getStretchFullPreviewText(item) {
+    return String((item && (item.cue || item.h || item.d)) || "").replace(/<[^>]+>/g, "").trim();
+  }
   function getStretchDetailText(item) {
     var blocks = [];
     if (item.target) blocks.push("Target: " + item.target + ".");
@@ -3521,22 +3550,6 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     if (day && day.focus) return "Oggi lo usi dopo " + day.focus + " per scaricare " + target + " e chiudere la seduta in modo piu pulito.";
     return "Usalo per scaricare il distretto che oggi hai appena allenato e recuperare meglio per la seduta successiva.";
   }
-  function getYoutubeEmbedUrl(url) {
-    if (!url) return "";
-    var u = String(url);
-    var id = "";
-    var m = u.match(/[?&]v=([^&#]+)/);
-    if (m) id = m[1];
-    else {
-      m = u.match(/youtu\.be\/([^?#]+)/);
-      if (m) id = m[1];
-      else {
-        m = u.match(/youtube\.com\/shorts\/([^?#]+)/);
-        if (m) id = m[1];
-      }
-    }
-    return id ? ("https://www.youtube-nocookie.com/embed/" + id + "?rel=0&modestbranding=1") : u;
-  }
   function getStretchMinutesLabel(item) {
     var totalSec = item.est || item.tm || 0;
     if (!totalSec) return "";
@@ -3544,35 +3557,87 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     if (mins === Math.round(mins)) return "~" + Math.round(mins) + " min";
     return "~" + String(mins).replace(".", ",") + " min";
   }
+  function stretchImgSrc(item) {
+    if (!item) return null;
+    if (item.img && WS_IMG[item.img]) return WS_IMG[item.img];
+    if (item.img && EX_IMG[item.img]) return EX_IMG[item.img];
+    if (item.n && WS_IMG[item.n]) return WS_IMG[item.n];
+    if (item.n && EX_IMG[item.n]) return EX_IMG[item.n];
+    return warmupImgSrc(item);
+  }
   function renderStretchList(dayName, sectionKey, list) {
     var items = getStretchSectionItems(list);
     return <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
       {items.map(function(item, si) {
-        var imgSrc = item.img && WS_IMG[item.img] ? WS_IMG[item.img] : null;
+        var imgSrc = stretchImgSrc(item);
         var status = getStretchStatus(dayName, sectionKey, item.key);
-        var cardKey = sectionKey + "-" + si;
-        return <div key={cardKey} style={{ background: T.sb, borderRadius: 10, padding: "10px 11px", border: "1px solid " + T.bg }}>
-          <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-            {imgSrc ? <img onClick={function() { setShowImg(showImg === "stretch-" + cardKey ? null : "stretch-" + cardKey); }} src={imgSrc} style={{ width: 60, height: 60, objectFit: "cover", borderRadius: 8, flexShrink: 0, border: "1px solid " + T.bg, cursor: "zoom-in" }} /> : <div style={{ width: 60, height: 60, borderRadius: 8, background: T.st + "15", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>🧘</div>}
+        var cardKey = dayName + "-" + sectionKey + "-" + si;
+        var isOpen = openStretchCard === cardKey;
+        var thumbScale = item.thumbScale || 1;
+        var thumbPos = item.thumbPos || "center";
+        return <div id={"stretch-card-" + cardKey} key={cardKey} style={{ background: T.sb, borderRadius: 10, border: "1px solid " + T.bg, overflow: "hidden" }}>
+          <div onClick={function() {
+            var opening = !isOpen;
+            setOpenStretchCard(opening ? cardKey : null);
+            if (opening) scrollItemSoon("stretch-card-" + cardKey);
+          }} style={{ padding: "10px 11px", display: "flex", gap: 10, alignItems: "flex-start", cursor: "pointer", background: isOpen ? T.st + "08" : "transparent" }}>
+            {imgSrc ? <div onClick={function(e) { e.stopPropagation(); setShowImg(showImg === "stretch-" + cardKey ? null : "stretch-" + cardKey); }} style={{ width: 60, height: 60, overflow: "hidden", borderRadius: 8, flexShrink: 0, border: "1px solid " + T.bg, cursor: "zoom-in", position: "relative", background: T.card || T.sb }}>
+              <img src={imgSrc} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: thumbPos, transform: thumbScale !== 1 ? "scale(" + thumbScale + ")" : undefined, transformOrigin: "center", display: "block" }} />
+            </div> : <div style={{ width: 60, height: 60, borderRadius: 8, background: T.st + "15", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>🧘</div>}
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginBottom: 3 }}>
                 <div style={{ fontWeight: 800, fontSize: 12, color: T.st }}>{item.n}</div>
                 {status === "done" && <span style={{ padding: "2px 7px", borderRadius: 999, background: T.ok + "16", color: T.ok, fontSize: 9, fontWeight: 800 }}>Fatto</span>}
                 {status === "skip" && <span style={{ padding: "2px 7px", borderRadius: 999, background: "#C6282814", color: "#C62828", fontSize: 9, fontWeight: 800 }}>Saltato</span>}
               </div>
-              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginBottom: 6 }}>{getStretchPreviewText(item)}</div>
+              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginBottom: 6, whiteSpace: "normal", overflow: "visible", overflowWrap: "anywhere", wordBreak: "break-word" }}>
+                {isOpen ? getStretchFullPreviewText(item) : getStretchPreviewText(item)}
+              </div>
               <div style={{ display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}>
                 {item.t && <span style={{ fontSize: 10, color: T.sub, fontStyle: "italic" }}>{item.t}</span>}
                 {getStretchMinutesLabel(item) && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{getStretchMinutesLabel(item)}</span>}
-                <button onClick={function() { setStretchModal({ title: item.n, intro: item.d || "", howTo: item.h || "", cue: item.cue || "", target: item.target || "", breath: item.breath || "", attention: item.err || "", reason: getStretchReason(dayName, sectionKey, item), duration: item.t || "", minutes: getStretchMinutesLabel(item), seconds: item.tm || 0, imgSrc: imgSrc, video: item.lk || "", videoEmbed: getYoutubeEmbedUrl(item.lk || "") }); }} style={{ minHeight: 24, padding: "0 8px", border: "1px solid " + T.st + "34", borderRadius: 999, background: T.st + "10", color: T.st, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}>Dettagli</button>
-                {item.lk && <a href={item.lk} target="_blank" rel="noopener noreferrer" style={{ fontSize: 10, color: dc, fontWeight: 700, textDecoration: "none" }}>video →</a>}
-                {item.tm && <button onClick={function() { quickTimer(item.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "2px 8px", border: "none", borderRadius: 999, background: dc, color: "#fff", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>{"⏱ " + fmtLabel(item.tm)}</button>}
-                <button onClick={function() { setStretchStatus(dayName, sectionKey, item.key, "done"); }} style={{ minHeight: 24, padding: "0 8px", border: "1px solid " + T.ok + "35", borderRadius: 999, background: status === "done" ? T.ok : T.ok + "12", color: status === "done" ? "#fff" : T.ok, fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Fatto</button>
-                <button onClick={function() { setStretchStatus(dayName, sectionKey, item.key, "skip"); }} style={{ minHeight: 24, padding: "0 8px", border: "1px solid " + "#C62828" + "30", borderRadius: 999, background: status === "skip" ? "#C62828" : "#C62828" + "10", color: status === "skip" ? "#fff" : "#C62828", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Saltato</button>
+                {item.lk && <EmbedLink url={item.lk} label="Video" size={10} color={dc} style={{ minHeight: 24 }} />}
+                {item.tm && <button onClick={function(e) { e.stopPropagation(); quickTimer(item.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "2px 8px", border: "none", borderRadius: 999, background: dc, color: "#fff", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>{"⏱ " + fmtLabel(item.tm)}</button>}
+                <button onClick={function(e) { e.stopPropagation(); setStretchStatus(dayName, sectionKey, item.key, "done"); }} style={{ minHeight: 24, padding: "0 8px", border: "1px solid " + T.ok + "35", borderRadius: 999, background: status === "done" ? T.ok : T.ok + "12", color: status === "done" ? "#fff" : T.ok, fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Fatto</button>
+                <button onClick={function(e) { e.stopPropagation(); setStretchStatus(dayName, sectionKey, item.key, "skip"); }} style={{ minHeight: 24, padding: "0 8px", border: "1px solid " + "#C62828" + "30", borderRadius: 999, background: status === "skip" ? "#C62828" : "#C62828" + "10", color: status === "skip" ? "#fff" : "#C62828", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Saltato</button>
               </div>
             </div>
+            <div style={{ fontSize: 13, color: T.st, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s", flexShrink: 0, marginTop: 2 }}>&#9662;</div>
           </div>
-          {imgSrc && showImg === "stretch-" + cardKey && <img onClick={function() { setShowImg(null); }} src={imgSrc} style={{ width: "100%", borderRadius: 8, marginTop: 8, cursor: "zoom-out" }} />}
+          {imgSrc && showImg === "stretch-" + cardKey && <div style={{ padding: "0 11px 10px" }}><img onClick={function() { setShowImg(null); }} src={imgSrc} style={{ width: "100%", borderRadius: 8, cursor: "zoom-out" }} /></div>}
+          {isOpen && <div style={{ padding: "0 11px 11px", display: "grid", gap: 10, borderTop: "1px solid " + T.bg, background: T.cd }}>
+            {imgSrc && <img src={imgSrc} style={{ width: "100%", display: "block", borderRadius: 12, marginTop: 10 }} />}
+            {item.d && <div style={{ marginTop: 10, padding: "10px 12px", borderRadius: 10, background: T.st + "10", border: "1px solid " + T.st + "20", fontSize: 12, color: T.tx, lineHeight: 1.6, whiteSpace: "normal", overflow: "visible", overflowWrap: "anywhere", wordBreak: "break-word" }}>{item.d}</div>}
+            {item.lk && <div style={{ background: T.sb, borderRadius: 12, padding: "11px 12px", border: "1px solid " + T.bg }}>
+              <div style={{ fontSize: 10, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Video</div>
+              <EmbedLink url={item.lk} label="Apri video" size={12} color={T.st} />
+            </div>}
+            {(item.goal || item.target) && <div style={{ background: T.sb, borderRadius: 12, padding: "11px 12px", border: "1px solid " + T.bg }}>
+              <div style={{ fontSize: 10, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Perché oggi</div>
+              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7, whiteSpace: "normal", overflow: "visible", overflowWrap: "anywhere", wordBreak: "break-word" }}>{item.reason || getStretchReason(dayName, sectionKey, item)}</div>
+            </div>}
+            {item.h && <div style={{ background: T.sb, borderRadius: 12, padding: "11px 12px", border: "1px solid " + T.bg }}>
+              <div style={{ fontSize: 10, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Come farlo</div>
+              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7, whiteSpace: "normal", overflow: "visible", overflowWrap: "anywhere", wordBreak: "break-word" }}>{item.h}</div>
+            </div>}
+            {item.cue && <div style={{ background: T.sb, borderRadius: 12, padding: "11px 12px", border: "1px solid " + T.bg }}>
+              <div style={{ fontSize: 10, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Focus</div>
+              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7, whiteSpace: "normal", overflow: "visible", overflowWrap: "anywhere", wordBreak: "break-word" }}>{item.cue}</div>
+            </div>}
+            {item.feel && <div style={{ background: T.sb, borderRadius: 12, padding: "11px 12px", border: "1px solid " + T.bg }}>
+              <div style={{ fontSize: 10, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Dove sentirlo</div>
+              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7, whiteSpace: "normal", overflow: "visible", overflowWrap: "anywhere", wordBreak: "break-word" }}>{item.feel}</div>
+            </div>}
+            {item.err && <div style={{ background: "#C628280A", borderRadius: 12, padding: "11px 12px", border: "1px solid #C6282820" }}>
+              <div style={{ fontSize: 10, fontWeight: 800, color: "#C62828", textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Attenzione</div>
+              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7, whiteSpace: "normal", overflow: "visible", overflowWrap: "anywhere", wordBreak: "break-word" }}>{item.err}</div>
+            </div>}
+            {item.breath && <div style={{ background: T.sb, borderRadius: 12, padding: "11px 12px", border: "1px solid " + T.bg }}>
+              <div style={{ fontSize: 10, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Respirazione</div>
+              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7, whiteSpace: "normal", overflow: "visible", overflowWrap: "anywhere", wordBreak: "break-word" }}>{item.breath}</div>
+            </div>}
+            {item.tm ? <button onClick={function() { quickTimer(item.tm); }} style={{ minHeight: 46, border: "none", borderRadius: 12, background: dc, color: "#fff", fontWeight: 800, fontSize: 13, cursor: "pointer" }}>{"▶ Avvia timer · " + fmtLabel(item.tm)}</button> : null}
+          </div>}
         </div>;
       })}
     </div>;
@@ -3712,6 +3777,11 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     if (dayIdx <= activeDays.length - 1) return;
     setDayIdx(0);
   }, [level]);
+  useEffect(function() {
+    if ((isBasics || isBeginner) && workoutView !== "weights") {
+      setWorkoutView("weights");
+    }
+  }, [isBasics, isBeginner, workoutView]);
 
   useEffect(function() {
     setFocusMode(level === "v4");
@@ -3847,7 +3917,15 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
   function resetTimerPosition() {
     setTimerPos({ x: 0, y: 0 });
   }
+  function toggleTimerMini() {
+    setTMini(function(prev) {
+      var next = !prev;
+      if (next) setTPanel(false);
+      return next;
+    });
+  }
   function getTimerDockBottomPx() {
+    if (tMini) return 58;
     return tPanel ? 96 : 74;
   }
   function getFloatingBannerBottomPx() {
@@ -3863,8 +3941,8 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     if (typeof window === "undefined") return { minX: -140, maxX: 140, minY: -220, maxY: 0 };
     var viewportWidth = window.innerWidth || 390;
     var viewportHeight = window.innerHeight || 844;
-    var timerWidth = Math.min(viewportWidth - 20, 284);
-    var timerHeight = tPanel ? 188 : 64;
+    var timerWidth = tMini ? 56 : Math.min(viewportWidth - 20, 238);
+    var timerHeight = tMini ? 56 : (tPanel ? 188 : 64);
     var horizontalSlack = Math.max(0, Math.floor((viewportWidth - 20 - timerWidth) / 2));
     var topSafe = getTimerTopSafePx();
     var bottomSafe = getTimerDockBottomPx() + 12;
@@ -3891,12 +3969,14 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
       startX: point.clientX,
       startY: point.clientY,
       originX: timerPos.x || 0,
-      originY: timerPos.y || 0
+      originY: timerPos.y || 0,
+      moved: false
     };
   }
   function handleTimerDoubleTapReset(ev) {
     if (tFullscreen) return;
     if (ev && ev.target && ev.target.closest && ev.target.closest("button")) return;
+    if (ev && ev.target && ev.target.closest && ev.target.closest("[data-timer-handle]")) return;
     var now = Date.now();
     if (now - timerTapRef.current < 320) {
       resetTimerPosition();
@@ -3907,12 +3987,30 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     }
     timerTapRef.current = now;
   }
+  function handleTimerHandleDoubleTap(ev) {
+    if (tFullscreen) return;
+    if (ev && ev.preventDefault) ev.preventDefault();
+    if (ev && ev.stopPropagation) ev.stopPropagation();
+    if (timerDragRef.current && timerDragRef.current.moved) {
+      timerHandleTapRef.current = 0;
+      return;
+    }
+    var now = Date.now();
+    if (now - timerHandleTapRef.current < 320) {
+      toggleTimerMini();
+      timerHandleTapRef.current = 0;
+      timerDragRef.current = null;
+      return;
+    }
+    timerHandleTapRef.current = now;
+  }
   useEffect(function() {
     function moveTimer(ev) {
       if (!timerDragRef.current) return;
       var point = ev.touches && ev.touches[0] ? ev.touches[0] : ev;
       var dx = point.clientX - timerDragRef.current.startX;
       var dy = point.clientY - timerDragRef.current.startY;
+      if (Math.abs(dx) > 8 || Math.abs(dy) > 8) timerDragRef.current.moved = true;
       setTimerPos(clampTimerPos({
         x: timerDragRef.current.originX + dx,
         y: timerDragRef.current.originY + dy
@@ -4162,17 +4260,12 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     return { title: parts[0], detail: parts.slice(1).join(" ") };
   }
 
-  function openEmbed(url, title) {
-    var isYt = url.includes("youtube.com") || url.includes("youtu.be");
-    setEmbedOpen({ url: url, title: title || url, type: isYt ? "yt" : "wiki" });
-  }
-
   function EmbedLink(props) {
     var isYt = props.url && (props.url.includes("youtube.com") || props.url.includes("youtu.be"));
-    return <button onClick={function(e) { e.stopPropagation(); openEmbed(props.url, props.label); }} style={Object.assign({ display: "inline-flex", alignItems: "center", gap: 5, fontSize: props.size || 11, color: props.color || dc, fontWeight: 600, textDecoration: "none", background: (props.color || dc) + "10", borderRadius: 7, padding: "6px 10px", border: "none", cursor: "pointer" }, props.style || {})}>
+    return <a href={props.url} target="_blank" rel="noreferrer" onClick={function(e) { e.stopPropagation(); }} style={Object.assign({ display: "inline-flex", alignItems: "center", gap: 5, fontSize: props.size || 11, color: props.color || dc, fontWeight: 600, textDecoration: "none", background: (props.color || dc) + "10", borderRadius: 7, padding: "6px 10px", border: "none", cursor: "pointer" }, props.style || {})}>
       <span>{isYt ? "▶" : "📖"}</span>
       <span>{props.label}</span>
-    </button>;
+    </a>;
   }
 
   function RichBlocks(props) {
@@ -4182,14 +4275,27 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     return <div style={{ display: "grid", gap: 10 }}>
       {blocks.map(function(block, bi) {
         if (block.type === "p") {
-          return <p key={bi} style={{ margin: 0, fontSize: 12, lineHeight: 1.7, color: T.sub }}>{block.content}</p>;
+          var parts = textChunks(block.content);
+          var lead = parts[0] || block.content;
+          var rest = parts.slice(1);
+          return <div key={bi} style={{ background: T.sb, border: "1px solid " + T.bg, borderRadius: 12, padding: "10px 12px", display: "grid", gap: rest.length ? 8 : 0 }}>
+            <div style={{ fontSize: 12, lineHeight: 1.7, color: T.tx, fontWeight: 650 }}>{renderGlossaryText(lead, ac)}</div>
+            {rest.length > 0 && <div style={{ display: "grid", gap: 6 }}>
+              {rest.map(function(item, idx) {
+                return <div key={idx} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: ac + "08", border: "1px solid " + ac + "12", borderRadius: 9, padding: "7px 9px" }}>
+                  <span style={{ width: 18, height: 18, borderRadius: 999, background: ac + "18", color: ac, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 800, flexShrink: 0, marginTop: 1 }}>{idx + 1}</span>
+                  <span style={{ fontSize: 11, lineHeight: 1.65, color: T.sub }}>{renderGlossaryText(item, ac)}</span>
+                </div>;
+              })}
+            </div>}
+          </div>;
         }
         if (block.type === "ul") {
-          return <ul key={bi} style={{ margin: "0", paddingLeft: 0, listStyle: "none", display: "grid", gap: 5 }}>
+          return <ul key={bi} style={{ margin: "0", paddingLeft: 0, listStyle: "none", display: "grid", gap: 7 }}>
             {block.content.map(function(item, ii) {
-              return <li key={ii} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
-                <span style={{ color: ac, fontWeight: 700, fontSize: 13, lineHeight: 1.5, flexShrink: 0, marginTop: 1 }}>•</span>
-                <span style={{ fontSize: 12, lineHeight: 1.6, color: T.sub }}>{item}</span>
+              return <li key={ii} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: T.sb, border: "1px solid " + T.bg, borderRadius: 10, padding: "8px 10px" }}>
+                <span style={{ width: 18, height: 18, borderRadius: 999, background: ac + "18", color: ac, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 800, flexShrink: 0, marginTop: 1 }}>•</span>
+                <span style={{ fontSize: 11.5, lineHeight: 1.6, color: T.sub }}>{renderGlossaryText(item, ac)}</span>
               </li>;
             })}
           </ul>;
@@ -4238,15 +4344,15 @@ var [embedOpen, setEmbedOpen] = useState(null); // { url, title, type: "wiki"|"y
     var lead = items[0];
     var rest = items.slice(1);
     return <div style={{ display: "grid", gap: 10 }}>
-      <div style={{ background: T.sb, borderLeft: "3px solid " + ac, borderRadius: 10, padding: "10px 12px" }}>
+      <div style={{ background: T.sb, border: "1px solid " + ac + "20", borderLeft: "4px solid " + ac, borderRadius: 12, padding: "10px 12px" }}>
         <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 0.7, textTransform: "uppercase", color: ac, marginBottom: 5 }}>Idea Chiave</div>
-        <div style={{ fontSize: 13, lineHeight: 1.75, color: "#CFCFD6", fontWeight: 600 }}>{renderGlossaryText(lead, ac)}</div>
+        <div style={{ fontSize: 13, lineHeight: 1.75, color: T.tx, fontWeight: 700 }}>{renderGlossaryText(lead, ac)}</div>
       </div>
       {rest.length > 0 && <div style={{ display: "grid", gap: 8 }}>
         {rest.map(function(item, idx) {
-          return <div key={idx} style={{ display: "flex", gap: 9, alignItems: "flex-start", background: "#141418", border: "1px solid rgba(255,255,255,0.05)", borderRadius: 10, padding: "9px 11px" }}>
-            <span style={{ width: 22, height: 22, borderRadius: 999, background: "rgba(255,255,255,0.06)", color: ac, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 800, flexShrink: 0 }}>{idx + 1}</span>
-            <span style={{ fontSize: 12, lineHeight: 1.78, color: "#B7B7C0" }}>{renderGlossaryText(item, ac)}</span>
+          return <div key={idx} style={{ display: "flex", gap: 9, alignItems: "flex-start", background: T.sb, border: "1px solid " + T.bg, borderRadius: 10, padding: "9px 11px" }}>
+            <span style={{ width: 22, height: 22, borderRadius: 999, background: ac + "18", color: ac, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 800, flexShrink: 0 }}>{idx + 1}</span>
+            <span style={{ fontSize: 12, lineHeight: 1.72, color: T.sub }}>{renderGlossaryText(item, ac)}</span>
           </div>;
         })}
       </div>}
@@ -6182,7 +6288,6 @@ function isNearBodyweightElasticSession(exName, sets) {
     if (!db) return null;
     var meta = exCatalogByName[exInfoOpen] || null;
     var imgs = exImgs(exInfoOpen);
-    var embed = ytEmbedUrl(db.lk);
     return (
       <div onClick={function() { setExInfoOpen(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 250, display: "flex", alignItems: "flex-start", justifyContent: "center", padding: 16, overflowY: "auto", WebkitOverflowScrolling: "touch" }}>
         <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, padding: 20, maxWidth: 420, width: "100%", color: T.tx, maxHeight: "calc(100dvh - 32px)", overflowY: "auto", WebkitOverflowScrolling: "touch", margin: "max(12px, env(safe-area-inset-top, 0px)) 0" }}>
@@ -6232,15 +6337,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                 return <button key={skill.id} onClick={function() { setExInfoOpen(null); openCompetency(skill.id); }} style={{ minHeight: 28, padding: "0 10px", borderRadius: 999, border: "1px solid " + skill.tone + "35", background: skill.tone + "12", color: skill.tone, fontSize: 10, fontWeight: 800, cursor: "pointer" }}>{skill.t}</button>;
               })}
             </div>
-          </div>}
-          {embed && <div style={{ marginBottom: 12, borderRadius: 10, overflow: "hidden", background: "#000" }}>
-            <iframe
-              src={embed}
-              title={exInfoOpen + " video"}
-              style={{ width: "100%", aspectRatio: "16 / 9", border: "none", display: "block" }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
           </div>}
           {db.deep && <details style={{ marginBottom: 12, borderRadius: 10, overflow: "hidden", background: T.bg }} open>
             <summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 11, fontWeight: 800, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 6, textTransform: "uppercase", letterSpacing: 0.6 }}>
@@ -6442,95 +6538,6 @@ function isNearBodyweightElasticSession(exName, sets) {
           {/* Footer fisso */}
           <div style={{ padding: "12px 20px", flexShrink: 0 }}>
             <button onClick={function() { setGlossOpen(false); }} style={{ width: "100%", padding: 10, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Chiudi</button>
-          </div>
-        </div>
-      </div>}
-
-      {/* Embed modal */}
-      {embedOpen && <div onClick={function() { setEmbedOpen(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.82)", zIndex: 400, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", padding: 0 }}>
-        <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", maxWidth: 640, height: "88vh", background: T.cd, borderRadius: "16px 16px 0 0", display: "flex", flexDirection: "column", overflow: "hidden" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 16px", borderBottom: "1px solid " + T.bg, flexShrink: 0 }}>
-            <span style={{ fontSize: 16 }}>{embedOpen.type === "yt" ? "▶️" : "📖"}</span>
-            <span style={{ fontSize: 13, fontWeight: 700, color: T.tx, flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{embedOpen.title}</span>
-            <button onClick={function() { setEmbedOpen(null); }} style={{ border: "none", background: T.bg, color: T.sub, borderRadius: 8, padding: "5px 11px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>✕ Chiudi</button>
-          </div>
-          <iframe
-            src={embedOpen.type === "yt"
-              ? (function() {
-                  var u = embedOpen.url;
-                  var id = null;
-                  var m = u.match(/[?&]v=([^&#]+)/);
-                  if (m) id = m[1];
-                  else { m = u.match(/youtu\.be\/([^?#]+)/); if (m) id = m[1]; }
-                  return id ? "https://www.youtube-nocookie.com/embed/" + id + "?rel=0&modestbranding=1" : u;
-                })()
-              : embedOpen.url
-            }
-            style={{ flex: 1, width: "100%", border: "none" }}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            title={embedOpen.title}
-          />
-        </div>
-      </div>}
-
-      {stretchModal && <div onClick={function() { setStretchModal(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", zIndex: 395, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: 12 }}>
-        <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", maxWidth: 560, maxHeight: "88vh", overflow: "auto", background: T.cd, borderRadius: 16, boxShadow: "0 20px 40px rgba(0,0,0,0.22)" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 16px", borderBottom: "1px solid " + T.bg }}>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 15, fontWeight: 800, color: T.tx }}>🧘 {stretchModal.title}</div>
-              <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", marginTop: 4 }}>
-                {stretchModal.duration && <div style={{ fontSize: 11, color: T.st, fontWeight: 700 }}>{stretchModal.duration}</div>}
-                {stretchModal.minutes && <div style={{ fontSize: 11, color: T.sub, fontWeight: 700 }}>{stretchModal.minutes}</div>}
-              </div>
-            </div>
-            <button onClick={function() { setStretchModal(null); }} style={{ border: "none", background: T.bg, color: T.sub, borderRadius: 8, padding: "5px 11px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>✕ Chiudi</button>
-          </div>
-          <div style={{ padding: 16 }}>
-            {stretchModal.imgSrc && <img src={stretchModal.imgSrc} style={{ width: "100%", display: "block", borderRadius: 12, marginBottom: 12 }} />}
-            {stretchModal.intro && <div style={{ marginBottom: 12, padding: "10px 12px", borderRadius: 10, background: T.st + "10", border: "1px solid " + T.st + "20", fontSize: 12, color: T.tx, lineHeight: 1.6 }}>
-              {stretchModal.intro}
-            </div>}
-            <div style={{ display: "grid", gap: 10 }}>
-              {stretchModal.reason && <div style={{ background: dc + "10", borderRadius: 12, padding: "11px 12px", border: "1px solid " + dc + "22" }}>
-                <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Perche oggi</div>
-                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7 }}>{stretchModal.reason}</div>
-              </div>}
-              {stretchModal.howTo && <div style={{ background: T.sb, borderRadius: 12, padding: "11px 12px", border: "1px solid " + T.bg }}>
-                <div style={{ fontSize: 10, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Come farlo</div>
-                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7 }}>{stretchModal.howTo}</div>
-              </div>}
-              {stretchModal.cue && <div style={{ background: T.sb, borderRadius: 12, padding: "11px 12px", border: "1px solid " + T.bg }}>
-                <div style={{ fontSize: 10, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Focus</div>
-                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7 }}>{stretchModal.cue}</div>
-              </div>}
-              {stretchModal.target && <div style={{ background: T.sb, borderRadius: 12, padding: "11px 12px", border: "1px solid " + T.bg }}>
-                <div style={{ fontSize: 10, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>A cosa serve</div>
-                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7 }}>{stretchModal.target}</div>
-              </div>}
-              {stretchModal.attention && <div style={{ background: "#C628280A", borderRadius: 12, padding: "11px 12px", border: "1px solid #C6282820" }}>
-                <div style={{ fontSize: 10, fontWeight: 800, color: "#C62828", textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Attenzione</div>
-                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7 }}>{stretchModal.attention}</div>
-              </div>}
-              {stretchModal.breath && <div style={{ background: T.sb, borderRadius: 12, padding: "11px 12px", border: "1px solid " + T.bg }}>
-                <div style={{ fontSize: 10, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Respirazione</div>
-                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7 }}>{stretchModal.breath}</div>
-              </div>}
-              {stretchModal.seconds ? <button onClick={function() { quickTimer(stretchModal.seconds); }} style={{ minHeight: 46, border: "none", borderRadius: 12, background: dc, color: "#fff", fontWeight: 800, fontSize: 13, cursor: "pointer" }}>{"▶ Avvia timer · " + fmtLabel(stretchModal.seconds)}</button> : null}
-              {stretchModal.videoEmbed && <div style={{ background: T.sb, borderRadius: 12, padding: "11px 12px", border: "1px solid " + T.bg }}>
-                <div style={{ fontSize: 10, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Video guida</div>
-                <div style={{ position: "relative", width: "100%", paddingTop: "56.25%", borderRadius: 10, overflow: "hidden", background: "#000" }}>
-                  <iframe
-                    src={stretchModal.videoEmbed}
-                    title={stretchModal.title + " video"}
-                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-                {stretchModal.video && <EmbedLink url={stretchModal.video} label="Apri su YouTube" size={11} color={T.st} style={{ marginTop: 8 }} />}
-              </div>}
-            </div>
           </div>
         </div>
       </div>}
@@ -6790,8 +6797,22 @@ function isNearBodyweightElasticSession(exName, sets) {
         {!isBeginner && <div>
           {/* Hero: giorno + CTA */}
           <div style={{ background: T.cd, borderRadius: 20, padding: "24px 20px 20px", marginBottom: 12 }}>
-            <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 10 }}>{isBasics ? "Sessione di oggi" : "Seleziona giorno"}</div>
-            {!isBasics && <div style={{ display: "flex", gap: 8, marginBottom: 18 }}>
+            <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 10 }}>{isBasics ? "Sessione di oggi" : "Seleziona allenamento"}</div>
+            {!isBasics && <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8, marginBottom: 16 }}>
+              {[
+                { key: "weights", icon: "🏋️", title: "Pesi", desc: dayData.focus, action: function() { setWorkoutView("weights"); resetWorkoutPanels(); } },
+                { key: "cardio", icon: "❤️", title: "Cardio", desc: cardioDayData ? cardioDayData.focus : "Giorni cardio", action: function() { setWorkoutView("cardio"); resetWorkoutPanels(); } },
+                { key: "stretching", icon: "🧘", title: "Stretching", desc: stretchDayData ? stretchDayData.focus : "Giorni pesi e cardio", action: function() { setWorkoutView("stretching"); resetWorkoutPanels(); } },
+              ].map(function(item) {
+                var active = workoutView === item.key;
+                return <button key={item.key} onClick={item.action} style={{ border: active ? "2px solid " + dc : "1px solid " + T.bg, borderRadius: 14, background: active ? dc + "12" : T.bg, color: T.tx, padding: "10px 9px", cursor: "pointer", textAlign: "left", minHeight: 90 }}>
+                  <div style={{ fontSize: 18, marginBottom: 8 }}>{item.icon}</div>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: active ? dc : T.tx, lineHeight: 1.2, marginBottom: 4 }}>{item.title}</div>
+                  <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.35 }}>{item.desc}</div>
+                </button>;
+              })}
+            </div>}
+            {!isBasics && workoutView === "weights" && <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
               {activeDays.map(function(d, i) {
                 var active = safeDayIdx === i;
                 return <button key={i} onClick={function() { setDayIdx(i); setWorkoutView("weights"); resetWorkoutPanels(); }} style={{ flex: 1, padding: "9px 0", border: active ? "2px solid " + dc : "2px solid " + T.bg, borderRadius: 12, background: active ? dc + "14" : T.bg, color: active ? dc : T.sub, fontSize: 12, fontWeight: active ? 800 : 600, cursor: "pointer", transition: "all 0.15s", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
@@ -6799,10 +6820,34 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </button>;
               })}
             </div>}
-            <div style={{ fontSize: 18, fontWeight: 900, color: T.tx, lineHeight: 1.2, marginBottom: 4 }}>{dayData.focus}</div>
-            <div style={{ fontSize: 12, color: T.sub, marginBottom: 20 }}>{dayData.dur}{dayData.tEst ? " · ~" + dayData.tEst + " min" : ""}</div>
-            <button onClick={function() { openWorkoutSection("workout-top"); }} style={{ width: "100%", padding: "16px 0", border: "none", borderRadius: 14, background: dc, color: "#fff", fontSize: 16, fontWeight: 900, cursor: "pointer", letterSpacing: 0.2 }}>
-              Vai ai pesi →
+            {!isBasics && workoutView === "cardio" && <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+              {cardioSupportDays.map(function(item, i) {
+                var active = safeCardioIdx === i;
+                return <button key={item.day.name} onClick={function() { setCardioIdx(i); setWorkoutView("cardio"); resetWorkoutPanels(); }} style={{ flex: 1, padding: "9px 0", border: active ? "2px solid " + dc : "2px solid " + T.bg, borderRadius: 12, background: active ? dc + "14" : T.bg, color: active ? dc : T.sub, fontSize: 12, fontWeight: active ? 800 : 600, cursor: "pointer", transition: "all 0.15s", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                  {item.day.name}
+                </button>;
+              })}
+            </div>}
+            {!isBasics && workoutView === "stretching" && <div style={{ display: "flex", gap: 8, marginBottom: 16, overflowX: "auto" }}>
+              {stretchSupportDays.map(function(item, i) {
+                var active = safeStretchIdx === i;
+                return <button key={item.name} onClick={function() { setStretchIdx(i); setWorkoutView("stretching"); resetWorkoutPanels(); }} style={{ flex: "none", padding: "9px 12px", border: active ? "2px solid " + dc : "2px solid " + T.bg, borderRadius: 12, background: active ? dc + "14" : T.bg, color: active ? dc : T.sub, fontSize: 12, fontWeight: active ? 800 : 600, cursor: "pointer", transition: "all 0.15s", whiteSpace: "nowrap" }}>
+                  {item.name}
+                </button>;
+              })}
+            </div>}
+            <div style={{ fontSize: 18, fontWeight: 900, color: T.tx, lineHeight: 1.2, marginBottom: 4 }}>
+              {workoutView === "cardio" && cardioDayData ? cardioDayData.focus : workoutView === "stretching" && stretchDayData ? ("Stretching · " + stretchDayData.focus) : dayData.focus}
+            </div>
+            <div style={{ fontSize: 12, color: T.sub, marginBottom: 20 }}>
+              {workoutView === "cardio" && cardioDayData
+                ? "Apri i giorni cardio dedicati"
+                : workoutView === "stretching" && stretchDayData
+                  ? "Apri lo stretching del giorno o dei giorni cardio"
+                  : (dayData.dur + (dayData.tEst ? " · ~" + dayData.tEst + " min" : ""))}
+            </div>
+            <button onClick={function() { openWorkoutSection(workoutView === "cardio" ? "section-cardio-mobility" : workoutView === "stretching" ? "section-stretching" : "workout-top"); }} style={{ width: "100%", padding: "16px 0", border: "none", borderRadius: 14, background: dc, color: "#fff", fontSize: 16, fontWeight: 900, cursor: "pointer", letterSpacing: 0.2 }}>
+              {workoutView === "cardio" ? "Vai al cardio →" : workoutView === "stretching" ? "Vai allo stretching →" : "Vai ai pesi →"}
             </button>
           </div>
 
@@ -6814,9 +6859,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                 { icon: "📚", label: "Tecniche da padroneggiare", onClick: function() { goToTheoryAnchor("teoria", "principi", "theory-section-skills", "skills"); } },
                 { icon: "🏃", label: "Libreria esercizi", onClick: function() { goToExercisesSection("ex"); } },
               ] : [
-                { icon: "🏋️", label: "Pesi — scheda del giorno", onClick: function() { openWorkoutSection("workout-top"); } },
-                { icon: "❤️", label: "Cardio — giorni dedicati", onClick: function() { openWorkoutSection("section-cardio-mobility"); } },
-                { icon: "🧘", label: "Stretching — giorni pesi e cardio", onClick: function() { openWorkoutSection("section-stretching"); } },
                 { icon: "📊", label: "Progressi e storico", onClick: function() { openMainTab("progressi"); } },
                 { icon: "📚", label: "Teoria — principi e respirazione", onClick: function() { goToTheoryAnchor("teoria", "principi", "theory-section-concepts", "concepts"); } },
                 { icon: "🏃", label: "Libreria esercizi", onClick: function() { goToExercisesSection("ex"); } },
@@ -6834,40 +6876,41 @@ function isNearBodyweightElasticSession(exName, sets) {
       </div>}
 
       {/* === TEORIA TAB === */}
-      {tab === "teoria" && <div style={{ maxWidth: 600, margin: "0 auto", padding: "0 0 100px" }}>
+      {tab === "teoria" && <div style={{ maxWidth: 680, margin: "0 auto", padding: "0 0 100px" }}>
 
         {/* Tab bar Teoria */}
-        <div style={{ position: "sticky", top: 0, zIndex: 10, background: T.bg, padding: "10px 12px 8px", borderBottom: "1px solid " + T.cd }}>
-          <div style={{ display: "flex", gap: 0, borderRadius: 10, overflow: "hidden", border: "1px solid " + dc + "30" }}>
+        <div style={{ position: "sticky", top: 0, zIndex: 10, background: T.bg + "EE", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", padding: "12px 12px 10px", borderBottom: "1px solid " + T.cd }}>
+          <div style={{ display: "flex", gap: 0, borderRadius: 14, overflow: "hidden", border: "1px solid " + dc + "24", boxShadow: "0 6px 18px rgba(0,0,0,0.06)" }}>
             {teoriaTabs.map(function(pair) {
               var k = pair[0], label = pair[1];
               var active = teoriaTab === k;
-              return <button key={k} onClick={function() { if (teoriaTab !== k) pushNavSnapshot(); setTeoriaTab(k); setShowTheorySection(null); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "9px 0", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: active ? dc : "transparent", color: active ? "#fff" : T.sub, transition: "background 0.15s" }}>{label}</button>;
+              return <button key={k} onClick={function() { if (teoriaTab !== k) pushNavSnapshot(); setTeoriaTab(k); setShowTheorySection(null); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "11px 0", border: "none", fontSize: 11, fontWeight: 800, cursor: "pointer", background: active ? dc : "transparent", color: active ? "#fff" : T.sub, transition: "background 0.15s, color 0.15s", letterSpacing: 0.2 }}>{label}</button>;
             })}
           </div>
         </div>
 
-        <div id="teoria-top" style={{ padding: "12px 12px 0" }}>
+        <div id="teoria-top" style={{ padding: "16px 12px 0" }}>
 
         {/* Intro: Le basi dell'allenamento */}
-        {teoriaTab === "basi" && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-          <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid " + T.bg }}>
-            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🔬 Le basi dell'allenamento</div>
-            <div style={{ fontSize: 12, color: T.sub }}>Parti da qui per conoscere le basi</div>
+        {teoriaTab === "basi" && <div style={{ background: T.cd, borderRadius: 22, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 14px 30px rgba(0,0,0,0.06)" }}>
+          <div style={{ padding: "18px 18px 14px", borderBottom: "1px solid " + T.bg, background: "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
+            <div style={{ fontSize: 19, fontWeight: 900, color: T.tx, marginBottom: 4, letterSpacing: -0.2 }}>🔬 Le basi dell'allenamento</div>
+            <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55, maxWidth: 520 }}>Parti da qui per capire logica, struttura e principi pratici senza perderti nei dettagli.</div>
           </div>
-          <div style={{ padding: "12px 16px 16px", display: "grid", gap: 6 }}>
+          <div style={{ padding: "16px 18px 18px", display: "grid", gap: 16 }}>
+            <div style={{ display: "grid", gap: 6 }}>
             {introBasicsCards.map(function(card, ci) {
               var isOpen = showIntroCard === ci;
-              return <div key={ci} id={"intro-card-" + ci} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "30" : T.bg) }}>
-                <div onClick={function() { var next = isOpen ? null : ci; setShowIntroCard(next); if (next !== null) scrollTopSoon("intro-card-" + ci); }} style={{ padding: "11px 13px", cursor: "pointer", display: "flex", alignItems: "flex-start", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
-                  <span style={{ fontSize: 20, lineHeight: 1, flexShrink: 0, marginTop: 1 }}>{card.icon}</span>
+              return <div key={ci} id={"intro-card-" + ci} style={{ borderRadius: 14, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "26" : T.bg), background: isOpen ? T.sb : T.cd, boxShadow: isOpen ? "0 10px 22px rgba(0,0,0,0.05)" : "none", transition: "box-shadow 0.18s, border-color 0.18s" }}>
+                <div onClick={function() { var next = isOpen ? null : ci; setShowIntroCard(next); if (next !== null) scrollTopSoon("intro-card-" + ci); }} style={{ padding: "14px 14px 13px", cursor: "pointer", display: "flex", alignItems: "flex-start", gap: 12, background: isOpen ? dc + "0A" : "transparent" }}>
+                  <span style={{ fontSize: 22, lineHeight: 1, flexShrink: 0, marginTop: 1 }}>{card.icon}</span>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: isOpen ? dc : T.tx, lineHeight: 1.3, marginBottom: 3 }}>{card.title}</div>
-                    <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5 }}>{card.summary}</div>
+                    <div style={{ fontSize: 14, fontWeight: 800, color: isOpen ? dc : T.tx, lineHeight: 1.3, marginBottom: 4 }}>{card.title}</div>
+                    <div style={{ fontSize: 11.5, color: T.sub, lineHeight: 1.55 }}>{card.summary}</div>
                   </div>
                   <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s", marginTop: 4 }}>▾</span>
                 </div>
-                {isOpen && <div style={{ padding: "4px 13px 14px", background: T.sb, display: "grid", gap: 10 }}>
+                {isOpen && <div style={{ padding: "6px 14px 16px", background: T.sb, display: "grid", gap: 10 }}>
                   {card.body.map(function(block, bi) {
                     if (block.type === "p") {
                       return <p key={bi} style={{ margin: 0, fontSize: 12, lineHeight: 1.75, color: T.sub }}>{block.content}</p>;
@@ -6917,25 +6960,84 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </div>}
               </div>;
             })}
+            </div>
+            <div style={{ borderTop: "1px solid " + T.bg, paddingTop: 14 }}>
+              <div style={{ fontSize: 15, fontWeight: 900, color: T.tx, marginBottom: 3 }}>💪 Come è strutturato l'allenamento</div>
+              <div style={{ fontSize: 12, color: T.sub, marginBottom: 12, lineHeight: 1.55, maxWidth: 520 }}>Qui trovi la logica della scheda: cosa viene prima, cosa viene dopo e come leggere i diversi tipi di esercizio.</div>
+              <div style={{ display: "grid", gap: 6 }}>
+                {INTRO_ESERCIZI.map(function(card, ci) {
+                  var isOpen = showExIntro === ci;
+                  return <div key={ci} id={"theory-exercise-intro-card-" + ci} style={{ borderRadius: 14, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "26" : T.bg), background: isOpen ? T.sb : T.cd, boxShadow: isOpen ? "0 10px 22px rgba(0,0,0,0.05)" : "none" }}>
+                    <div onClick={function() { var next = isOpen ? null : ci; setShowExIntro(next); if (next !== null) scrollTopSoon("theory-exercise-intro-card-" + ci); }} style={{ padding: "14px 14px 13px", cursor: "pointer", display: "flex", alignItems: "flex-start", gap: 12, background: isOpen ? dc + "0A" : "transparent" }}>
+                      <span style={{ fontSize: 22, lineHeight: 1, flexShrink: 0, marginTop: 1 }}>{card.icon}</span>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontSize: 14, fontWeight: 800, color: isOpen ? dc : T.tx, lineHeight: 1.3, marginBottom: 4 }}>{card.title}</div>
+                        <div style={{ fontSize: 11.5, color: T.sub, lineHeight: 1.55 }}>{card.summary}</div>
+                      </div>
+                      <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s", marginTop: 4 }}>▾</span>
+                    </div>
+                    {isOpen && <div style={{ padding: "6px 14px 16px", background: T.sb, display: "grid", gap: 10 }}>
+                      {card.body.map(function(block, bi) {
+                        if (block.type === "p") return <p key={bi} style={{ margin: 0, fontSize: 12, lineHeight: 1.75, color: T.sub }}>{block.content}</p>;
+                        if (block.type === "bold-list") return <div key={bi} style={{ display: "grid", gap: 6 }}>
+                          {block.content.map(function(item, ii) {
+                            return <div key={ii} style={{ background: dc + "0A", border: "1px solid " + dc + "18", borderRadius: 8, padding: "8px 11px" }}>
+                              <div style={{ fontSize: 12, fontWeight: 800, color: dc, marginBottom: 2 }}>{item[0]}</div>
+                              <div style={{ fontSize: 12, lineHeight: 1.65, color: T.sub }}>{item[1]}</div>
+                            </div>;
+                          })}
+                        </div>;
+                        if (block.type === "fondamentali-list") return <div key={bi} style={{ display: "grid", gap: 8 }}>
+                          {block.content.map(function(ex, ei) {
+                            return <div key={ei} style={{ borderRadius: 10, border: "1px solid " + dc + "20", overflow: "hidden" }}>
+                              <div style={{ padding: "9px 12px 7px", background: dc + "0E" }}>
+                                <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 3 }}>
+                                  <span style={{ fontSize: 14, fontWeight: 800, color: dc }}>{ex.nome}</span>
+                                  <span style={{ fontSize: 10, background: dc + "20", color: dc, padding: "1px 7px", borderRadius: 10, fontWeight: 700 }}>{ex.pattern}</span>
+                                </div>
+                                <div style={{ fontSize: 10, color: T.sub, fontWeight: 600, letterSpacing: 0.2 }}>{ex.muscoli}</div>
+                              </div>
+                              <div style={{ padding: "8px 12px 10px", display: "grid", gap: 6 }}>
+                                <p style={{ margin: 0, fontSize: 11, lineHeight: 1.65, color: T.sub }}>{ex.perche}</p>
+                                <div style={{ display: "flex", gap: 6, alignItems: "flex-start" }}>
+                                  <span style={{ fontSize: 10, fontWeight: 800, color: dc, flexShrink: 0, marginTop: 1 }}>↔</span>
+                                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5 }}><span style={{ fontWeight: 700, color: T.tx }}>Varianti: </span>{ex.varianti}</div>
+                                </div>
+                                <div style={{ display: "flex", gap: 6, alignItems: "flex-start", background: "#E07848" + "0A", borderRadius: 6, padding: "5px 8px" }}>
+                                  <span style={{ fontSize: 10, flexShrink: 0, marginTop: 1 }}>⚠️</span>
+                                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5 }}><span style={{ fontWeight: 700, color: "#E07848" }}>Errore comune: </span>{ex.errore}</div>
+                                </div>
+                              </div>
+                            </div>;
+                          })}
+                        </div>;
+                        if (block.type === "link") return <EmbedLink key={bi} url={block.url} label={block.label} style={{ marginTop: 2 }} />;
+                        return null;
+                      })}
+                    </div>}
+                  </div>;
+                })}
+              </div>
+            </div>
           </div>
         </div>}
 
-        {teoriaTab === "teoria" && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-          <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
-            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>{theoryTitle}</div>
-            <div style={{ fontSize: 12, color: T.sub }}>{theorySubtitle}</div>
+        {teoriaTab === "teoria" && <div style={{ background: T.cd, borderRadius: 22, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 14px 30px rgba(0,0,0,0.06)" }}>
+          <div style={{ padding: "18px 18px 12px", borderBottom: "1px solid " + T.bg, background: "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
+            <div style={{ fontSize: 19, fontWeight: 900, color: T.tx, marginBottom: 4, letterSpacing: -0.2 }}>{theoryTitle}</div>
+            <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55, maxWidth: 540 }}>{theorySubtitle}</div>
           </div>
           {/* Tab interna Principi / Termini */}
-          <div style={{ padding: "10px 16px 0" }}>
-            <div style={{ display: "flex", gap: 0, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "30", marginBottom: 14 }}>
-              <button onClick={function() { if (glossTab !== "principi") pushNavSnapshot(); setGlossTab("principi"); setShowTheorySection(null); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>🧠 Principi</button>
-              {!(isBasics || isBeginner) && <button onClick={function() { if (glossTab !== "termini") pushNavSnapshot(); setGlossTab("termini"); setShowTheorySection(null); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>🔤 Termini base</button>}
+          <div style={{ padding: "12px 18px 0" }}>
+            <div style={{ display: "flex", gap: 0, borderRadius: 12, overflow: "hidden", border: "1px solid " + dc + "24", marginBottom: 16, background: T.sb }}>
+              <button onClick={function() { if (glossTab !== "principi") pushNavSnapshot(); setGlossTab("principi"); setShowTheorySection(null); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "10px 0", border: "none", fontSize: 12, fontWeight: 800, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>🧠 Principi</button>
+              {!(isBasics || isBeginner) && <button onClick={function() { if (glossTab !== "termini") pushNavSnapshot(); setGlossTab("termini"); setShowTheorySection(null); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "10px 0", border: "none", fontSize: 12, fontWeight: 800, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>🔤 Termini base</button>}
             </div>
           </div>
-          <div style={{ padding: "0 16px 16px" }}>
+          <div style={{ padding: "0 18px 18px" }}>
             {glossTab === "principi" && <div>
-              <div id="theory-section-skills" style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 12 }}>
-                <div onClick={function() { var next = showTheorySection === "skills" ? null : "skills"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-skills"); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "skills" ? dc + "10" : "transparent" }}>
+              <div id="theory-section-skills" style={{ borderRadius: 16, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 14, background: T.cd, boxShadow: "0 8px 20px rgba(0,0,0,0.04)" }}>
+                <div onClick={function() { var next = showTheorySection === "skills" ? null : "skills"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-skills"); }} style={{ padding: "14px 16px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "skills" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
                   <span style={{ fontSize: 13, fontWeight: 800, color: showTheorySection === "skills" ? dc : T.tx, lineHeight: 1.3 }}>🎯 Tecniche preliminari</span>
                   <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showTheorySection === "skills" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
                 </div>
@@ -6967,8 +7069,8 @@ function isNearBodyweightElasticSession(exName, sets) {
                   })}
                 </div>}
               </div>
-              <div id="theory-section-concepts" style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 12 }}>
-                <div onClick={function() { var next = showTheorySection === "concepts" ? null : "concepts"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-concepts"); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "concepts" ? dc + "10" : "transparent" }}>
+              <div id="theory-section-concepts" style={{ borderRadius: 16, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 14, background: T.cd, boxShadow: "0 8px 20px rgba(0,0,0,0.04)" }}>
+                <div onClick={function() { var next = showTheorySection === "concepts" ? null : "concepts"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-concepts"); }} style={{ padding: "14px 16px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "concepts" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
                   <span style={{ fontSize: 13, fontWeight: 800, color: showTheorySection === "concepts" ? dc : T.tx, lineHeight: 1.3 }}>{isBasics ? "📌 Perche servono e quando passare oltre" : "🧠 Concetti fondamentali"}</span>
                   <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showTheorySection === "concepts" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
                 </div>
@@ -6989,8 +7091,8 @@ function isNearBodyweightElasticSession(exName, sets) {
                   })}
                 </div>}
               </div>
-              <div id="theory-section-guide" style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: !(isBasics || isBeginner) ? 12 : 0 }}>
-                <div onClick={function() { var next = showTheorySection === "guide" ? null : "guide"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-guide"); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "guide" ? dc + "10" : "transparent" }}>
+              <div id="theory-section-guide" style={{ borderRadius: 16, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: !(isBasics || isBeginner) ? 14 : 0, background: T.cd, boxShadow: "0 8px 20px rgba(0,0,0,0.04)" }}>
+                <div onClick={function() { var next = showTheorySection === "guide" ? null : "guide"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-guide"); }} style={{ padding: "14px 16px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "guide" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
                   <span style={{ fontSize: 13, fontWeight: 800, color: showTheorySection === "guide" ? dc : T.tx, lineHeight: 1.3 }}>{isBasics ? "🗂️ Come usare il livello preliminare" : isBeginner ? "🗂️ Come usare la scheda principiante" : "🗂️ Come leggere la scheda"}</span>
                   <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showTheorySection === "guide" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
                 </div>
@@ -7029,8 +7131,8 @@ function isNearBodyweightElasticSession(exName, sets) {
           </div>
         </div>}
 
-        {!(isBasics || isBeginner) && teoriaTab === "teoria" && glossTab === "principi" && <div id="theory-section-breathing" style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-          <div onClick={function() { var next = showTheorySection === "breathing" ? null : "breathing"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-breathing"); }} style={{ padding: "14px 16px 12px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+        {!(isBasics || isBeginner) && teoriaTab === "teoria" && glossTab === "principi" && <div id="theory-section-breathing" style={{ background: T.cd, borderRadius: 18, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 10px 24px rgba(0,0,0,0.05)" }}>
+          <div onClick={function() { var next = showTheorySection === "breathing" ? null : "breathing"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-breathing"); }} style={{ padding: "16px 18px 13px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "breathing" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
             <div>
               <div style={{ fontSize: 16, fontWeight: 800, color: showTheorySection === "breathing" ? dc : T.tx, marginBottom: 2 }}>🫁 Respirazione esercizi</div>
               <div style={{ fontSize: 12, color: T.sub }}>Tabella unica: come respirare nei principali esercizi</div>
@@ -7069,8 +7171,8 @@ function isNearBodyweightElasticSession(exName, sets) {
           </div>}
         </div>}
 
-        {!(isBasics || isBeginner) && teoriaTab === "teoria" && glossTab === "principi" && <div id="theory-section-hipmobility" style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-          <div onClick={function() { var next = showTheorySection === "hipmobility" ? null : "hipmobility"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-hipmobility"); }} style={{ padding: "14px 16px 12px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+        {!(isBasics || isBeginner) && teoriaTab === "teoria" && glossTab === "principi" && <div id="theory-section-hipmobility" style={{ background: T.cd, borderRadius: 18, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 10px 24px rgba(0,0,0,0.05)" }}>
+          <div onClick={function() { var next = showTheorySection === "hipmobility" ? null : "hipmobility"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-hipmobility"); }} style={{ padding: "16px 18px 13px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "hipmobility" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
             <div>
               <div style={{ fontSize: 16, fontWeight: 800, color: showTheorySection === "hipmobility" ? dc : T.tx, marginBottom: 2 }}>🦴 Mobilità anca</div>
               <div style={{ fontSize: 12, color: T.sub }}>Perche conta per squat, stacco e hip thrust e come usare il protocollo senza rompere la scheda.</div>
@@ -7847,69 +7949,6 @@ function isNearBodyweightElasticSession(exName, sets) {
 
       {/* === EXERCISES TAB === */}
       {tab === "exercises" && <div id="exercises-top" style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }}>
-
-        {/* Intro esercizi */}
-        <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-          <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
-            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>💪 Come è strutturato l'allenamento</div>
-            <div style={{ fontSize: 12, color: T.sub }}>Fondamentali, multiarticolari, isolamenti e progressione</div>
-          </div>
-          <div style={{ padding: "12px 16px 16px", display: "grid", gap: 6 }}>
-            {INTRO_ESERCIZI.map(function(card, ci) {
-              var isOpen = showExIntro === ci;
-              return <div key={ci} id={"exercise-intro-card-" + ci} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "30" : T.bg) }}>
-                <div onClick={function() { var next = isOpen ? null : ci; setShowExIntro(next); if (next !== null) scrollTopSoon("exercise-intro-card-" + ci); }} style={{ padding: "11px 13px", cursor: "pointer", display: "flex", alignItems: "flex-start", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
-                  <span style={{ fontSize: 20, lineHeight: 1, flexShrink: 0, marginTop: 1 }}>{card.icon}</span>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: isOpen ? dc : T.tx, lineHeight: 1.3, marginBottom: 3 }}>{card.title}</div>
-                    <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5 }}>{card.summary}</div>
-                  </div>
-                  <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s", marginTop: 4 }}>▾</span>
-                </div>
-                {isOpen && <div style={{ padding: "4px 13px 14px", background: T.sb, display: "grid", gap: 10 }}>
-                  {card.body.map(function(block, bi) {
-                    if (block.type === "p") return <p key={bi} style={{ margin: 0, fontSize: 12, lineHeight: 1.75, color: T.sub }}>{block.content}</p>;
-                    if (block.type === "bold-list") return <div key={bi} style={{ display: "grid", gap: 6 }}>
-                      {block.content.map(function(item, ii) {
-                        return <div key={ii} style={{ background: dc + "0A", border: "1px solid " + dc + "18", borderRadius: 8, padding: "8px 11px" }}>
-                          <div style={{ fontSize: 12, fontWeight: 800, color: dc, marginBottom: 2 }}>{item[0]}</div>
-                          <div style={{ fontSize: 12, lineHeight: 1.65, color: T.sub }}>{item[1]}</div>
-                        </div>;
-                      })}
-                    </div>;
-                    if (block.type === "fondamentali-list") return <div key={bi} style={{ display: "grid", gap: 8 }}>
-                      {block.content.map(function(ex, ei) {
-                        return <div key={ei} style={{ borderRadius: 10, border: "1px solid " + dc + "20", overflow: "hidden" }}>
-                          <div style={{ padding: "9px 12px 7px", background: dc + "0E" }}>
-                            <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 3 }}>
-                              <span style={{ fontSize: 14, fontWeight: 800, color: dc }}>{ex.nome}</span>
-                              <span style={{ fontSize: 10, background: dc + "20", color: dc, padding: "1px 7px", borderRadius: 10, fontWeight: 700 }}>{ex.pattern}</span>
-                            </div>
-                            <div style={{ fontSize: 10, color: T.sub, fontWeight: 600, letterSpacing: 0.2 }}>{ex.muscoli}</div>
-                          </div>
-                          <div style={{ padding: "8px 12px 10px", display: "grid", gap: 6 }}>
-                            <p style={{ margin: 0, fontSize: 11, lineHeight: 1.65, color: T.sub }}>{ex.perche}</p>
-                            <div style={{ display: "flex", gap: 6, alignItems: "flex-start" }}>
-                              <span style={{ fontSize: 10, fontWeight: 800, color: dc, flexShrink: 0, marginTop: 1 }}>↔</span>
-                              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5 }}><span style={{ fontWeight: 700, color: T.tx }}>Varianti: </span>{ex.varianti}</div>
-                            </div>
-                            <div style={{ display: "flex", gap: 6, alignItems: "flex-start", background: "#E07848" + "0A", borderRadius: 6, padding: "5px 8px" }}>
-                              <span style={{ fontSize: 10, flexShrink: 0, marginTop: 1 }}>⚠️</span>
-                              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5 }}><span style={{ fontWeight: 700, color: "#E07848" }}>Errore comune: </span>{ex.errore}</div>
-                            </div>
-                          </div>
-                        </div>;
-                      })}
-                    </div>;
-                    if (block.type === "link") return <EmbedLink key={bi} url={block.url} label={block.label} style={{ marginTop: 2 }} />;
-                    return null;
-                  })}
-                </div>}
-              </div>;
-            })}
-          </div>
-        </div>
-
         {/* Esercizi header */}
         <div id="exercise-section-ex" onClick={function() { var next = catSec === "ex" ? null : "ex"; if (next !== catSec) pushNavSnapshot(); setCatSec(next); if (next) scrollTopSoon("exercise-section-ex"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -7958,15 +7997,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                 <img onClick={function(e) { e.stopPropagation(); setShowImg(null); }} src={EX_IMG[name]} style={{ width: 130, height: 130, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "zoom-out" }} />
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{db.c}</div>
-                  {db.lk && ytEmbedUrl(db.lk) && <div style={{ marginTop: 8, borderRadius: 8, overflow: "hidden", background: "#000" }}>
-                    <iframe
-                      src={ytEmbedUrl(db.lk)}
-                      title={name + " video"}
-                      style={{ width: "100%", aspectRatio: "16 / 9", border: "none", display: "block" }}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>}
                   {db.lk && <EmbedLink url={db.lk} label="Video" size={10} style={{ marginTop: 4 }} />}
                 </div>
               </div>}
@@ -8979,6 +9009,36 @@ function isNearBodyweightElasticSession(exName, sets) {
                 })()}
               </div>;
             })}
+            {!isBasics && !isBeginner && dayData && !dayData.cardio && ((dayData.str && dayData.str.length) || dayData.hipBonus) && <div style={{ padding: "14px", borderTop: "1px solid " + T.bg, background: T.st + "08" }}>
+              <div style={{ borderRadius: 14, background: T.cd, border: "1px solid " + T.st + "22", padding: "12px 12px 10px", boxShadow: "0 8px 20px rgba(0,0,0,0.06)" }}>
+                <div style={{ fontSize: 11, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8 }}>Stretching del giorno</div>
+                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55, marginTop: 4 }}>Quando chiudi i pesi, apri direttamente la tab stretching di {dayData.name} con gli esercizi gia filtrati sul giorno corretto.</div>
+                <div style={{ display: "flex", gap: 8, overflowX: "auto", marginTop: 10, paddingBottom: 2 }}>
+                  {getStretchNavItems(dayData).map(function(item, idx) {
+                    var imgSrc = stretchImgSrc(item);
+                    var thumbScale = item.thumbScale || 1;
+                    var thumbPos = item.thumbPos || "center";
+                    return <button
+                      key={item.key + "-" + idx}
+                      onClick={function() { openStretchDay(dayData.name); }}
+                      style={{ flex: "none", width: 98, border: "1px solid " + T.bg, borderRadius: 12, background: T.sb, padding: 6, cursor: "pointer", textAlign: "left" }}
+                    >
+                      {imgSrc ? <div style={{ width: "100%", height: 52, overflow: "hidden", borderRadius: 8, background: T.card || T.sb, marginBottom: 6 }}>
+                        <img src={imgSrc} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: thumbPos, transform: thumbScale !== 1 ? "scale(" + thumbScale + ")" : undefined, transformOrigin: "center", display: "block" }} />
+                      </div> : <div style={{ width: "100%", height: 52, borderRadius: 8, background: T.st + "15", display: "grid", placeItems: "center", fontSize: 18, marginBottom: 6 }}>🧘</div>}
+                      <div style={{ fontSize: 9, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 3 }}>{item.sectionLabel}</div>
+                      <div style={{ fontSize: 10, fontWeight: 700, color: T.tx, lineHeight: 1.3, minHeight: 26 }}>{item.n}</div>
+                    </button>;
+                  })}
+                </div>
+                <button
+                  onClick={function() { openStretchDay(dayData.name); }}
+                  style={{ width: "100%", minHeight: 48, marginTop: 10, border: "none", borderRadius: 12, background: T.st, color: "#fff", fontSize: 13, fontWeight: 800, cursor: "pointer", boxShadow: "0 8px 20px rgba(0,0,0,0.12)" }}
+                >
+                  {"Apri stretching di " + dayData.name + " →"}
+                </button>
+              </div>
+            </div>}
             </div>}
             </div>}
 
@@ -9134,41 +9194,54 @@ function isNearBodyweightElasticSession(exName, sets) {
         <div
           onDoubleClick={handleTimerDoubleTapReset}
           onTouchEnd={handleTimerDoubleTapReset}
-          style={{ width: tFullscreen ? "min(92vw, 560px)" : "min(calc(100vw - 20px), 284px)", maxWidth: tFullscreen ? "92vw" : "calc(100vw - 20px)", pointerEvents: "none", opacity: timerPassive && !tFullscreen ? 0.34 : 1, transform: timerPassive && !tFullscreen ? "scale(0.96)" : "none", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s, opacity 0.2s, transform 0.2s", borderRadius: 14, overflow: "hidden", boxSizing: "border-box" }}>
-        <div style={{ display: "flex", alignItems: "center", padding: tFullscreen ? "12px 12px" : "7px 8px", gap: 5, minWidth: 0 }}>
+          style={{ width: tFullscreen ? "min(92vw, 560px)" : (tMini ? 56 : "min(calc(100vw - 20px), 238px)"), maxWidth: tFullscreen ? "92vw" : (tMini ? 56 : "calc(100vw - 20px)"), pointerEvents: "none", opacity: timerPassive && !tFullscreen ? 0.34 : 1, transform: timerPassive && !tFullscreen ? "scale(0.96)" : "none", background: tFlash ? "linear-gradient(135deg,#7A4020,#B06030)" : tWarning ? "linear-gradient(135deg,#2A1A08,#5A3018)" : T.hd, color: T.htx, boxShadow: "0 8px 24px rgba(0,0,0,0.24)", transition: "background 0.4s, opacity 0.2s, transform 0.2s", borderRadius: tFullscreen ? 14 : 12, overflow: "hidden", boxSizing: "border-box" }}>
+        {tMini && !tFullscreen ? <button onClick={function() { setTMini(false); }} title="Apri timer" style={{ width: 56, height: 56, border: "none", background: "transparent", color: T.htx, display: "grid", placeItems: "center", cursor: "pointer", pointerEvents: "auto", touchAction: "manipulation", padding: 0 }}>
+          <div style={{ display: "grid", gap: 2, justifyItems: "center", lineHeight: 1 }}>
+            <div style={{ fontSize: 15, opacity: 0.9 }}>{tRunning ? "⏱" : "🕒"}</div>
+            <div style={{ fontVariantNumeric: "tabular-nums", fontSize: 10, fontWeight: 800, letterSpacing: "0.2px" }}>{fmtTime(tMs)}</div>
+          </div>
+        </button> : <>
+        <div style={{ display: "flex", alignItems: "center", padding: tFullscreen ? "12px 12px" : "6px 7px", gap: 4, minWidth: 0 }}>
           <div
+            data-timer-handle="true"
             onMouseDown={startTimerDrag}
             onTouchStart={startTimerDrag}
-            onDoubleClick={handleTimerDoubleTapReset}
-            title="Trascina il timer"
-            style={{ width: 24, height: 28, borderRadius: 7, background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)", fontSize: 12, fontWeight: 900, display: tFullscreen ? "none" : "flex", alignItems: "center", justifyContent: "center", cursor: "grab", pointerEvents: tFullscreen ? "none" : "auto", touchAction: "none", userSelect: "none", flexShrink: 0 }}
-          >::</div>
-          <button onClick={function() { setTPanel(!tPanel); }} title={tPanel ? "Riduci timer" : "Espandi timer"} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 28, height: 28, borderRadius: 7, cursor: "pointer", fontSize: 12, pointerEvents: "auto", touchAction: "manipulation" }}>{tPanel ? "\u25BE" : "\u25B4"}</button>
+            onPointerUp={handleTimerHandleDoubleTap}
+            title="Trascina il timer. Doppio tap per mini icona"
+            style={{ width: 22, height: 24, borderRadius: 6, background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)", fontSize: 10, fontWeight: 900, display: tFullscreen ? "none" : "grid", gridTemplateColumns: "repeat(2, 1fr)", gridTemplateRows: "repeat(2, 1fr)", placeItems: "center", cursor: "grab", pointerEvents: tFullscreen ? "none" : "auto", touchAction: "none", userSelect: "none", flexShrink: 0, padding: "5px 4px", boxSizing: "border-box" }}
+          >
+            <span style={{ width: 3, height: 3, borderRadius: 999, background: "currentColor", display: "block" }} />
+            <span style={{ width: 3, height: 3, borderRadius: 999, background: "currentColor", display: "block" }} />
+            <span style={{ width: 3, height: 3, borderRadius: 999, background: "currentColor", display: "block" }} />
+            <span style={{ width: 3, height: 3, borderRadius: 999, background: "currentColor", display: "block" }} />
+          </div>
+          <button onClick={function() { setTPanel(!tPanel); }} title={tPanel ? "Riduci timer" : "Espandi timer"} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 24, height: 24, borderRadius: 6, cursor: "pointer", fontSize: 10, pointerEvents: "auto", touchAction: "manipulation" }}>{tPanel ? "\u25BE" : "\u25B4"}</button>
           <div style={{ flex: 1, textAlign: "center", minWidth: 0, pointerEvents: "none" }}>
-            {activeOpenEx && tMode === "countdown" && <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.68)", marginBottom: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+            {(tPanel || tFullscreen) && activeOpenEx && tMode === "countdown" && <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.68)", marginBottom: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
               {"🔔 " + ((guidedMode && guidedRecoveryEnabled && guidedRestHint ? guidedRestHint + " · " : "") + "Recupero min: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget))}
             </div>}
-            <div style={{ fontVariantNumeric: "tabular-nums", fontSize: tFullscreen ? 52 : 20, fontWeight: 800, letterSpacing: "0.4px", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s", animation: tWarning ? "timerBlink 1s infinite" : "none", lineHeight: 1 }}>{fmtTime(tMs)}</div>
+            <div style={{ fontVariantNumeric: "tabular-nums", fontSize: tFullscreen ? 52 : 17, fontWeight: 800, letterSpacing: tFullscreen ? "0.4px" : "0.2px", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s", animation: tWarning ? "timerBlink 1s infinite" : "none", lineHeight: 1 }}>{fmtTime(tMs)}</div>
           </div>
-          <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
-            {!tRunning ? <button onClick={timerGo} style={{ background: T.ok, border: "none", color: "#fff", width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 15, pointerEvents: "auto", touchAction: "manipulation" }}>&#9654;</button> : <button onClick={timerPause} style={{ background: T.ac, border: "none", color: "#000", width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12, fontWeight: 800, pointerEvents: "auto", touchAction: "manipulation" }}>&#9646;&#9646;</button>}
-            <button onClick={timerReset} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12, pointerEvents: "auto", touchAction: "manipulation" }}>&#8634;</button>
-            <button onClick={function() { setTFullscreen(function(v) { return !v; }); }} title={tFullscreen ? "Esci da schermo pieno" : "Schermo pieno"} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 34, height: 34, borderRadius: 9, cursor: "pointer", fontSize: 12, fontWeight: 800, pointerEvents: "auto", touchAction: "manipulation" }}>{tFullscreen ? "⤡" : "⤢"}</button>
+          <div style={{ display: "flex", gap: 4, flexShrink: 0 }}>
+            {!tRunning ? <button onClick={timerGo} style={{ background: T.ok, border: "none", color: "#fff", width: 28, height: 28, borderRadius: 8, cursor: "pointer", fontSize: 13, pointerEvents: "auto", touchAction: "manipulation" }}>&#9654;</button> : <button onClick={timerPause} style={{ background: T.ac, border: "none", color: "#000", width: 28, height: 28, borderRadius: 8, cursor: "pointer", fontSize: 10, fontWeight: 800, pointerEvents: "auto", touchAction: "manipulation" }}>&#9646;&#9646;</button>}
+            <button onClick={timerReset} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 28, height: 28, borderRadius: 8, cursor: "pointer", fontSize: 11, pointerEvents: "auto", touchAction: "manipulation" }}>&#8634;</button>
+            <button onClick={function() { setTFullscreen(function(v) { return !v; }); }} title={tFullscreen ? "Esci da schermo pieno" : "Schermo pieno"} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 28, height: 28, borderRadius: 8, cursor: "pointer", fontSize: 11, fontWeight: 800, pointerEvents: "auto", touchAction: "manipulation" }}>{tFullscreen ? "⤡" : "⤢"}</button>
           </div>
         </div>
-        {(tPanel || tFullscreen) && <div style={{ padding: tFullscreen ? "0 12px 12px" : "0 10px 10px" }}>
+        {(tPanel || tFullscreen) && <div style={{ padding: tFullscreen ? "0 12px 12px" : "0 8px 8px" }}>
           <div style={{ marginBottom: 8, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
-            <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.72)", lineHeight: 1.4 }}>Trascina il timer dove vuoi. Doppio tap per centrarlo.</div>
-            <button onClick={resetTimerPosition} style={{ minHeight: 28, padding: "0 9px", border: "none", borderRadius: 999, background: "rgba(255,255,255,0.12)", color: T.htx, fontSize: 10, fontWeight: 800, cursor: "pointer", pointerEvents: "auto", touchAction: "manipulation" }}>Reset posizione</button>
+            <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.72)", lineHeight: 1.35 }}>Trascina il timer dove vuoi. Doppio tap per centrarlo.</div>
+            <button onClick={resetTimerPosition} style={{ minHeight: 24, padding: "0 8px", border: "none", borderRadius: 999, background: "rgba(255,255,255,0.12)", color: T.htx, fontSize: 9, fontWeight: 800, cursor: "pointer", pointerEvents: "auto", touchAction: "manipulation" }}>Reset posizione</button>
           </div>
           {guidedMode && guidedRecoveryEnabled && guidedFillerHint && tMode === "countdown" && <div style={{ marginBottom: 8, padding: "7px 8px", borderRadius: 8, background: "rgba(255,255,255,0.08)", fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.82)", lineHeight: 1.5 }}>
             {"Filler: " + guidedFillerHint}
           </div>}
           <div style={{ display: "flex", gap: 4, marginBottom: 8 }}>
-            {["stopwatch","countdown"].map(function(m) { return <button key={m} onClick={function() { timerSwitch(m); }} style={{ flex: 1, padding: "7px 0", border: "none", borderRadius: 8, cursor: "pointer", fontSize: 12, fontWeight: tMode === m ? 700 : 500, background: tMode === m ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: tMode === m ? "#fff" : "rgba(255,255,255,0.5)", pointerEvents: "auto", touchAction: "manipulation" }}>{m === "stopwatch" ? "Cronometro" : "Recupero"}</button>; })}
+            {["stopwatch","countdown"].map(function(m) { return <button key={m} onClick={function() { timerSwitch(m); }} style={{ flex: 1, padding: "6px 0", border: "none", borderRadius: 8, cursor: "pointer", fontSize: 11, fontWeight: tMode === m ? 700 : 500, background: tMode === m ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: tMode === m ? "#fff" : "rgba(255,255,255,0.5)", pointerEvents: "auto", touchAction: "manipulation" }}>{m === "stopwatch" ? "Cronometro" : "Recupero"}</button>; })}
           </div>
           {tMode === "countdown" && <div style={{ display: "flex", gap: 5 }}>{timerBtns(false)}</div>}
         </div>}
+        </>}
         </div>
         </div>
       </div>
