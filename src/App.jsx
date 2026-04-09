@@ -4473,6 +4473,26 @@ export default function App() {
     return 1.5;
   }
 
+  function getExerciseSetupSeconds(exName) {
+    var name = String(exName || "").toLowerCase();
+    if (!name) return 120;
+    if (name.indexOf("stacco da terra") >= 0) return 300;
+    if (name.indexOf("t-bar") >= 0 || name.indexOf("t bar") >= 0) return 300;
+    if (name.indexOf("hip thrust") >= 0) return 300;
+    if (name.indexOf("hyperextension") >= 0 || name.indexOf("panca romana") >= 0) return 120;
+    if (name.indexOf("stacco rumeno") >= 0) return 120;
+    if (name.indexOf("affondi") >= 0 || name.indexOf("walking lunge") >= 0) return 120;
+    if (
+      name.indexOf("cavo") >= 0 ||
+      name.indexOf("cavi") >= 0 ||
+      name.indexOf("cable") >= 0 ||
+      name.indexOf("face pull") >= 0 ||
+      name.indexOf("woodchop") >= 0 ||
+      name.indexOf("pulley") >= 0
+    ) return 180;
+    return 120;
+  }
+
   function estimateExerciseMinutes(rawEx, ex) {
     var p = parseSerie(ex.s);
     var sets = p.sets || 3;
@@ -4494,7 +4514,7 @@ export default function App() {
       secPerSet = avgTarget <= 10 ? 30 : avgTarget <= 15 ? 26 : 22;
     }
     var recSec = getExerciseRestSeconds(rawEx, ex) || 90;
-    var setupSec = 120;
+    var setupSec = getExerciseSetupSeconds(ex.n);
     var total = setupSec + sets * secPerSet + (sets - 1) * recSec;
     return Math.max(2, Math.round(total / 60));
   }
@@ -4639,6 +4659,62 @@ export default function App() {
     var v = raw["v" + m];
     if (v) return { n: v.n, s: v.s || raw.s, rpe: v.rpe || raw.rpe, note: v.note || "" };
     return { n: raw.n, s: raw.s, rpe: raw.rpe, note: raw.note || "" };
+  }
+
+  function logisticsTokensForExercise(raw, activeEx) {
+    var name = String((activeEx && activeEx.n) || (raw && raw.n) || "").toLowerCase();
+    var gear = String((raw && raw.gear) || "").toLowerCase();
+    var text = name + " " + gear;
+    var tokens = [];
+    function add(key, label) {
+      if (!tokens.some(function(t) { return t.key === key; })) tokens.push({ key: key, label: label });
+    }
+    if (/t-?bar|t bar/.test(text)) add("tbar", "T-bar");
+    if ((/bilanciere|barbell|stacco|squat|military press|hip thrust/.test(text) || name === "panca") && !/bodyweight|corpo libero/.test(text)) add("barbell", "bilanciere e dischi");
+    if (/rack/.test(text)) add("rack", "rack");
+    if (/panca romana|hyperextension/.test(text)) add("roman_bench", "panca romana");
+    if ((/panca|bench|hip thrust/.test(text) && !/panca romana/.test(text)) || /bench/.test(text)) add("bench", "panca");
+    if (/cavo|cavi|cable|carrucola|pulley|face pull|woodchop/.test(text)) add("cable", "carrucola/cavo");
+    if (/corda/.test(text)) add("rope", "corda");
+    if (/cavigliera/.test(text)) add("ankle_strap", "cavigliera");
+    if (/manubri|manubrio|dumbbell/.test(text)) add("dumbbells", "manubri");
+    if (/barra trazioni|trazioni|sbarra/.test(text)) add("pullup_bar", "sbarra trazioni");
+    if (/elastico|band/.test(text)) add("band", "elastico");
+    if (/tappetino|mat/.test(text)) add("mat", "tappetino");
+    if (/fitball/.test(text)) add("fitball", "fitball");
+    if (/ab wheel/.test(text)) add("ab_wheel", "ab wheel");
+    if (/trx/.test(text)) add("trx", "TRX");
+    return tokens;
+  }
+
+  function buildLogisticsCue(raw, activeEx, laterRawList, activeMonth) {
+    var current = logisticsTokensForExercise(raw, activeEx);
+    var later = [];
+    (laterRawList || []).forEach(function(laterRaw) {
+      var laterEx = getExForMonthValue(laterRaw, activeMonth || month);
+      logisticsTokensForExercise(laterRaw, laterEx).forEach(function(token) {
+        if (later.indexOf(token.key) < 0) later.push(token.key);
+      });
+    });
+    var keep = current.filter(function(token) { return later.indexOf(token.key) >= 0; });
+    var clear = current.filter(function(token) { return later.indexOf(token.key) < 0; });
+    var nextRaw = laterRawList && laterRawList[0];
+    var nextEx = nextRaw ? getExForMonthValue(nextRaw, activeMonth || month) : null;
+    function labels(items) {
+      return items.map(function(token) { return token.label; }).join(", ");
+    }
+    if (!current.length) {
+      return {
+        title: nextEx ? "Prima del prossimo esercizio" : "Fine allenamento pesi",
+        keep: nextEx ? ("Vai a " + nextEx.n + ". Prenditi 1 minuto per cambiare postazione e avvia il timer recupero se ti serve.") : "Pesi finiti: passa allo stretching del giorno.",
+        clear: "Non ci sono attrezzi grandi associati a questo esercizio: libera solo il tuo spazio."
+      };
+    }
+    return {
+      title: nextEx ? ("Logistica → prossimo: " + nextEx.n) : "Logistica finale",
+      keep: keep.length ? ("Lascia pronto " + labels(keep) + ": ti serve ancora piu avanti nella seduta.") : (nextEx ? ("Questo setup non ricompare. Prepara con calma la postazione per " + nextEx.n + ".") : "Ultimo esercizio pesi: dopo il log puoi chiudere la postazione."),
+      clear: clear.length ? ("Puoi mettere a posto " + labels(clear) + " quando hai ripreso fiato.") : "Non smontare ancora il setup usato: ti fara risparmiare tempo dopo."
+    };
   }
 
   function getProgramLabel(key) {
@@ -8633,6 +8709,8 @@ function isNearBodyweightElasticSession(exName, sets) {
                   var errorList = (mergedEx.errori || "").split(/\s*;\s*/).filter(Boolean);
                   var exSkills = getExerciseCompetencies(ex.n);
                   var guidedRirSummary = getExerciseRirHistorySummary(ex.n);
+                  var allSetsLogged = !!(tLog && tLog.sets && sc > 0 && tLog.sets.length >= sc);
+                  var logisticsCue = allSetsLogged ? buildLogisticsCue(mergedEx, ex, (dayData.ex || []).slice(i + 1), month) : null;
                   return <div style={{ padding: "0 14px 14px" }}>
                     {/* Cable toggle */}
                     {hasCableToggle && <div style={{ display: "flex", gap: 0, marginBottom: 10, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "40", alignSelf: "flex-start", width: "fit-content" }} onClick={function(e) { e.stopPropagation(); }}>
@@ -8809,6 +8887,20 @@ function isNearBodyweightElasticSession(exName, sets) {
                             )}
                           </div>;
                         })}
+                      </div>
+                    </div>}
+
+                    {logisticsCue && <div style={{ marginBottom: 10, borderRadius: 12, padding: "10px 11px", background: T.ok + "0F", border: "1px solid " + T.ok + "35" }}>
+                      <div style={{ fontSize: 10, fontWeight: 900, color: T.ok, textTransform: "uppercase", letterSpacing: 0.9, marginBottom: 7 }}>✓ {logisticsCue.title}</div>
+                      <div style={{ display: "grid", gap: 6 }}>
+                        <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                          <span style={{ fontSize: 13, lineHeight: 1.45 }}>↳</span>
+                          <span style={{ fontSize: 12, color: T.tx, lineHeight: 1.55, fontWeight: 700 }}>{logisticsCue.keep}</span>
+                        </div>
+                        <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                          <span style={{ fontSize: 13, lineHeight: 1.45 }}>•</span>
+                          <span style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{logisticsCue.clear}</span>
+                        </div>
                       </div>
                     </div>}
 
