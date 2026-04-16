@@ -3764,6 +3764,22 @@ export default function App() {
     };
   }
 
+  function stripHeavyMediaFromLogs(sourceLogs) {
+    var nextLogs = {};
+    Object.keys(sourceLogs || {}).forEach(function(key) {
+      var entry = sourceLogs[key];
+      if (!entry || typeof entry !== "object") {
+        nextLogs[key] = entry;
+        return;
+      }
+      var nextEntry = Object.assign({}, entry);
+      delete nextEntry.notePhoto;
+      delete nextEntry.notePhotos;
+      nextLogs[key] = nextEntry;
+    });
+    return nextLogs;
+  }
+
   async function pushSnapshotToCloud(snapshot, userId, silent) {
     if (!supabase || !userId || !snapshot) return;
     var response = await supabase
@@ -4141,7 +4157,7 @@ export default function App() {
     setBarbellWeight(nextBarbell);
     setGuidedRecoveryEnabled(nextGuidedRecovery);
     try {
-      var raw = JSON.stringify(buildPersistedStatePayload(
+      var snapshot = buildPersistedStatePayload(
         nextLogs,
         nextCardioLogs,
         nextStretchLogs,
@@ -4159,13 +4175,41 @@ export default function App() {
           exerciseWorkflowEnabled: nextWorkflowEnabled,
           extraInfoEnabled: nextExtraInfoEnabled
         }
-      ));
+      );
+      var raw = JSON.stringify(snapshot);
       localStorage.setItem(SK, raw);
       localStorage.removeItem(SK_SHADOW);
       localStorage.setItem("wt-barbell-weight", String(nextBarbell));
       localStorage.setItem("wt-guided-recovery", nextGuidedRecovery ? "1" : "0");
     } catch(e) {
-      setAutoBackupMsg("Salvataggio locale non riuscito: spazio del browser probabilmente pieno. Esporta subito il JSON e ricarica la pagina dopo aver reimportato il backup piu recente.");
+      try {
+        var lightSnapshot = buildPersistedStatePayload(
+          stripHeavyMediaFromLogs(nextLogs),
+          nextCardioLogs,
+          nextStretchLogs,
+          nextProfiles,
+          nextMode,
+          nextGuided,
+          nextBarbell,
+          nextGuidedRecovery,
+          {
+            userName: nextUserName,
+            userPhoto: null,
+            level: nextLevel,
+            theme: nextTheme,
+            fontScale: nextFontScale,
+            exerciseWorkflowEnabled: nextWorkflowEnabled,
+            extraInfoEnabled: nextExtraInfoEnabled
+          }
+        );
+        localStorage.setItem(SK, JSON.stringify(lightSnapshot));
+        localStorage.removeItem(SK_SHADOW);
+        localStorage.setItem("wt-barbell-weight", String(nextBarbell));
+        localStorage.setItem("wt-guided-recovery", nextGuidedRecovery ? "1" : "0");
+        setAutoBackupMsg("Spazio browser quasi pieno: ho salvato una copia locale alleggerita senza foto. I dati di allenamento restano salvati.");
+      } catch(lightErr) {
+        setAutoBackupMsg("Salvataggio locale non riuscito: spazio del browser probabilmente pieno. Esporta subito il JSON e ricarica la pagina dopo aver reimportato il backup piu recente.");
+      }
     }
   }, [guidedMode, guidedRecoveryEnabled, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled, stretchLogs]);
 
@@ -7102,7 +7146,10 @@ function isNearBodyweightElasticSession(exName, sets) {
       {settingsOpen && <div onClick={function() { setSettingsOpen(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 250, display: "flex", alignItems: "flex-start", justifyContent: "center", padding: 16, overflowY: "auto", WebkitOverflowScrolling: "touch" }}>
         <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, maxWidth: 400, width: "100%", color: T.tx, maxHeight: "calc(100dvh - 32px)", display: "flex", flexDirection: "column", overflow: "hidden", margin: "max(12px, env(safe-area-inset-top, 0px)) 0 max(12px, env(safe-area-inset-bottom, 0px))" }}>
           <div style={{ padding: "18px 20px 0", flexShrink: 0 }}>
-            <h3 style={{ margin: "0 0 16px", fontSize: 18, fontWeight: 800 }}>⚙️ Impostazioni</h3>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, marginBottom: 16 }}>
+              <h3 style={{ margin: 0, fontSize: 18, fontWeight: 800 }}>⚙️ Impostazioni</h3>
+              <button onClick={function() { setSettingsOpen(false); }} aria-label="Chiudi impostazioni" style={{ width: 34, height: 34, border: "none", borderRadius: 10, background: T.bg, color: T.sub, fontSize: 18, fontWeight: 800, cursor: "pointer", flexShrink: 0, lineHeight: 1 }}>✕</button>
+            </div>
           </div>
           <div style={{ overflowY: "auto", WebkitOverflowScrolling: "touch", flex: 1, padding: "0 20px" }}>
             {/* Profilo */}
