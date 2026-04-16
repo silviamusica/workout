@@ -2821,6 +2821,8 @@ var BREATH_COMPARE_ROWS = [
 var BREATHING_TABLE_ROWS = BREATH_COMPARE_ROWS.map(function(row) {
   return { exercise: row[0], category: row[1], breathing: "Inspira: " + row[2] + ". Espira: " + row[3] + "." };
 });
+var APP_VERSION = typeof __APP_VERSION__ === "string" ? __APP_VERSION__ : "dev";
+var APP_BUILD_TIME = typeof __BUILD_TIME__ === "string" ? __BUILD_TIME__ : "";
 function getBreath(name) { return BREATH_RULES[name] || null; }
 function fmtTime(ms) {
   var s = Math.floor(ms / 1000);
@@ -3729,7 +3731,6 @@ export default function App() {
 
   function buildPersistedStatePayload(sourceLogs, sourceCardioLogs, sourceStretchLogs, sourceProfiles, sourceCalibrationMode, sourceGuidedMode, sourceBarbellWeight, sourceGuidedRecovery, overrides) {
     var nextUserName = overrides && typeof overrides.userName === "string" ? overrides.userName : (userName || "");
-    var nextUserPhoto = overrides && Object.prototype.hasOwnProperty.call(overrides, "userPhoto") ? (overrides.userPhoto || null) : (userPhoto || null);
     var nextLevel = overrides && (overrides.level === "basics" || overrides.level === "beginner" || overrides.level === "v4") ? overrides.level : level;
     var nextTheme = overrides && overrides.theme && TH[overrides.theme] ? overrides.theme : theme;
     var nextFontScale = overrides && isFinite(overrides.fontScale) && overrides.fontScale >= 0.9 && overrides.fontScale <= 1.5 ? overrides.fontScale : fontScale;
@@ -3747,7 +3748,7 @@ export default function App() {
       barbellWeight: sourceBarbellWeight,
       profile: {
         userName: nextUserName,
-        userPhoto: nextUserPhoto
+        userPhoto: null
       },
       preferences: {
         level: nextLevel,
@@ -3828,7 +3829,7 @@ export default function App() {
         var importedPreferences = remote.payload.preferences && typeof remote.payload.preferences === "object" ? remote.payload.preferences : {};
         var importedStretchLogs = remote.payload.stretchLogs && typeof remote.payload.stretchLogs === "object" ? remote.payload.stretchLogs : {};
         saveData(
-          remote.payload.logs || {},
+          normalizeImportedWorkoutLogs(remote.payload.logs || {}, importedPreferences.level),
           remote.payload.cardioLogs || {},
           remote.payload.calibrationProfiles || {},
           !!remote.payload.calibrationMode,
@@ -3947,7 +3948,8 @@ export default function App() {
       if (stored) {
         var parsed = JSON.parse(stored);
         if (parsed && parsed.logs && typeof parsed.logs === "object") {
-          setLogs(parsed.logs || {});
+          var parsedLevel = parsed.preferences && typeof parsed.preferences === "object" ? parsed.preferences.level : level;
+          setLogs(normalizeImportedWorkoutLogs(parsed.logs || {}, parsedLevel));
           setCardioLogs(parsed.cardioLogs || {});
           setStretchLogs(parsed.stretchLogs || {});
           setCalibrationProfiles(parsed.calibrationProfiles || {});
@@ -3968,7 +3970,7 @@ export default function App() {
             if (typeof parsed.preferences.extraInfoEnabled === "boolean") setExtraInfoEnabled(parsed.preferences.extraInfoEnabled);
           }
         } else if (parsed && typeof parsed === "object") {
-          setLogs(parsed);
+          setLogs(normalizeImportedWorkoutLogs(parsed, level));
         }
       } else {
         setCalibrationMode(true);
@@ -3981,7 +3983,16 @@ export default function App() {
       if (isFinite(bw) && bw > 0) setBarbellWeight(bw);
     } catch(e) {}
     try { var n = localStorage.getItem("wt-username"); if (n) setUserName(n); } catch(e) {}
-    try { var p = localStorage.getItem("wt-userphoto"); if (p) setUserPhoto(p); } catch(e) {}
+    try {
+      var p = localStorage.getItem("wt-userphoto");
+      if (p) {
+        if (p.length > 350000) {
+          persistProfilePhotoDataUrl(p);
+        } else {
+          setUserPhoto(p);
+        }
+      }
+    } catch(e) {}
     try { var lv = localStorage.getItem("wt-level"); if (lv === "basics" || lv === "beginner" || lv === "v4") setLevel(lv); } catch(e) {}
     try { var th = localStorage.getItem("wt-theme"); if (th && TH[th]) setTheme(th); else localStorage.removeItem("wt-theme"); } catch(e) {}
     try { var fs = parseFloat(localStorage.getItem("wt-fontscale")); if (fs >= 0.9 && fs <= 1.5) setFontScale(fs); } catch(e) {}
@@ -4892,7 +4903,7 @@ export default function App() {
     });
     var profile = {
       userName: userName || "",
-      userPhoto: userPhoto || null
+      userPhoto: null
     };
     var preferences = {
       level: level,
@@ -4951,13 +4962,16 @@ export default function App() {
     var importedGuidedRecovery = typeof preferences.guidedRecoveryEnabled === "boolean" ? preferences.guidedRecoveryEnabled : null;
 
     setUserName(importedName);
-    setUserPhoto(importedPhoto);
     try {
       if (importedName) localStorage.setItem("wt-username", importedName);
       else localStorage.removeItem("wt-username");
-      if (importedPhoto) localStorage.setItem("wt-userphoto", importedPhoto);
-      else localStorage.removeItem("wt-userphoto");
     } catch (e) {}
+    if (importedPhoto) {
+      persistProfilePhotoDataUrl(importedPhoto);
+    } else {
+      setUserPhoto(null);
+      try { localStorage.removeItem("wt-userphoto"); } catch (photoErr) {}
+    }
 
     if (importedLevel === "basics" || importedLevel === "beginner" || importedLevel === "v4") {
       setLevel(importedLevel);
@@ -4983,6 +4997,29 @@ export default function App() {
       setGuidedRecoveryEnabled(importedGuidedRecovery);
       try { localStorage.setItem("wt-guided-recovery", importedGuidedRecovery ? "1" : "0"); } catch (e) {}
     }
+  }
+
+  function normalizeImportedWorkoutLogs(sourceLogs, importedLevel) {
+    var levelHint = importedLevel === "basics" || importedLevel === "beginner" || importedLevel === "v4" ? importedLevel : level;
+    if (levelHint !== "v4") return sourceLogs || {};
+    var nextLogs = {};
+    Object.keys(sourceLogs || {}).forEach(function(key) {
+      var entry = sourceLogs[key];
+      if (!entry || typeof entry !== "object") {
+        nextLogs[key] = entry;
+        return;
+      }
+      var nextEntry = Object.assign({}, entry);
+      var nextKey = key;
+      if (typeof nextEntry.day === "number" && nextEntry.day >= 4) {
+        nextEntry.day = nextEntry.day - 1;
+        nextKey = key.replace(/_d(\d+)_/, function(match, dayValue) {
+          return "_d" + (parseInt(dayValue, 10) - 1) + "_";
+        });
+      }
+      nextLogs[nextKey] = nextEntry;
+    });
+    return nextLogs;
   }
 
   function getExForMonthValue(raw, m) {
@@ -5077,6 +5114,12 @@ export default function App() {
     return "Giorno " + (dayIndex + 1);
   }
 
+  function normalizeLegacyProgramDayIndex(programKey, dayIndex) {
+    if (typeof dayIndex !== "number") return dayIndex;
+    if (programKey === "v4" && dayIndex >= 4) return dayIndex - 1;
+    return dayIndex;
+  }
+
   function findExerciseContext(entry) {
     var pools = [
       { key: "v4", days: DAYS_V4 },
@@ -5085,7 +5128,8 @@ export default function App() {
     ];
     for (var pi = 0; pi < pools.length; pi++) {
       var pool = pools[pi];
-      var day = pool.days[entry.day];
+      var normalizedDayIndex = normalizeLegacyProgramDayIndex(pool.key, entry.day);
+      var day = pool.days[normalizedDayIndex];
       if (!day || !day.ex || !day.ex.length) continue;
       for (var ei = 0; ei < day.ex.length; ei++) {
         var rawEx = day.ex[ei];
@@ -5094,12 +5138,31 @@ export default function App() {
           return {
             programKey: pool.key,
             program: getProgramLabel(pool.key),
-            dayName: getWorkoutDayLabel(pool.key, entry.day),
+            dayName: getWorkoutDayLabel(pool.key, normalizedDayIndex),
             focus: day.focus,
             plannedSerie: exDef.s || "",
             note: exDef.note || "",
             rec: rawEx.rec || exDef.rec || ""
           };
+        }
+      }
+      for (var di = 0; di < pool.days.length; di++) {
+        var altDay = pool.days[di];
+        if (!altDay || !altDay.ex || !altDay.ex.length) continue;
+        for (var aj = 0; aj < altDay.ex.length; aj++) {
+          var altRawEx = altDay.ex[aj];
+          var altExDef = getExForMonthValue(altRawEx, entry.month);
+          if (altExDef.n === entry.exercise) {
+            return {
+              programKey: pool.key,
+              program: getProgramLabel(pool.key),
+              dayName: getWorkoutDayLabel(pool.key, di),
+              focus: altDay.focus,
+              plannedSerie: altExDef.s || "",
+              note: altExDef.note || "",
+              rec: altRawEx.rec || altExDef.rec || ""
+            };
+          }
         }
       }
     }
@@ -6412,6 +6475,22 @@ function isNearBodyweightElasticSession(exName, sets) {
       img.src = dataUrl;
     });
   }
+  async function persistProfilePhotoDataUrl(dataUrl) {
+    if (!dataUrl) {
+      setUserPhoto(null);
+      try { localStorage.removeItem("wt-userphoto"); } catch (e) {}
+      return;
+    }
+    try {
+      var compressed = await compressImageDataUrl(dataUrl, 320, 0.72);
+      setUserPhoto(compressed);
+      try { localStorage.setItem("wt-userphoto", compressed); } catch (e) {}
+    } catch (err) {
+      setUserPhoto(null);
+      try { localStorage.removeItem("wt-userphoto"); } catch (e2) {}
+      setAutoBackupMsg("Foto profilo troppo pesante: l'ho rimossa dal salvataggio locale per evitare errori.");
+    }
+  }
   async function handleExerciseNotePhotoPickByKey(noteKey, file) {
     if (!file) return;
     try {
@@ -6812,11 +6891,12 @@ function isNearBodyweightElasticSession(exName, sets) {
             return;
           }
           var imported = JSON.parse(text);
-          var importedLogs = imported && imported.logs && typeof imported.logs === "object" ? imported.logs : imported;
+          var importedPreferences = imported && imported.preferences && typeof imported.preferences === "object" ? imported.preferences : {};
+          var importedLogsRaw = imported && imported.logs && typeof imported.logs === "object" ? imported.logs : imported;
+          var importedLogs = normalizeImportedWorkoutLogs(importedLogsRaw, importedPreferences.level);
           var importedCardioLogs = imported && imported.cardioLogs && typeof imported.cardioLogs === "object" ? imported.cardioLogs : {};
           var importedStretchLogs = imported && imported.stretchLogs && typeof imported.stretchLogs === "object" ? imported.stretchLogs : {};
           var importedProfile = imported && imported.profile && typeof imported.profile === "object" ? imported.profile : {};
-          var importedPreferences = imported && imported.preferences && typeof imported.preferences === "object" ? imported.preferences : {};
           saveData(
             importedLogs || {},
             importedCardioLogs || {},
@@ -7152,7 +7232,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             {/* Profilo */}
             <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>Profilo</div>
             <div style={{ display: "flex", alignItems: "center", gap: 14, background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
-              <div onClick={function() { var input = document.createElement("input"); input.type = "file"; input.accept = "image/*"; input.onchange = function(e) { var file = e.target.files[0]; if (!file) return; var reader = new FileReader(); reader.onload = function(ev) { setUserPhoto(ev.target.result); try { localStorage.setItem("wt-userphoto", ev.target.result); } catch(e2) {} }; reader.readAsDataURL(file); }; input.click(); }} style={{ width: 52, height: 52, borderRadius: "50%", background: userPhoto ? "transparent" : dc + "20", border: "2px dashed " + dc + "60", overflow: "hidden", cursor: "pointer", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>
+              <div onClick={function() { var input = document.createElement("input"); input.type = "file"; input.accept = "image/*"; input.onchange = function(e) { var file = e.target.files[0]; if (!file) return; var reader = new FileReader(); reader.onload = function(ev) { persistProfilePhotoDataUrl(ev.target.result); }; reader.readAsDataURL(file); }; input.click(); }} style={{ width: 52, height: 52, borderRadius: "50%", background: userPhoto ? "transparent" : dc + "20", border: "2px dashed " + dc + "60", overflow: "hidden", cursor: "pointer", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>
                 {userPhoto ? <img src={userPhoto} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : "📷"}
               </div>
               <div style={{ flex: 1 }}>
@@ -7335,6 +7415,10 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>
               <button onClick={function() { importData(); }} style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", textAlign: "left", gap: 10, width: "100%", padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬆️</span> Importa dati (JSON o CSV)</button>
               <button onClick={function() { setResetOpen(true); setSettingsOpen(false); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid #C6282820", background: "#C6282808", cursor: "pointer", fontSize: 13, fontWeight: 600, color: "#C62828" }}><span>🗑️</span> Cancella tutti i dati</button>
+            </div>
+            <div style={{ marginBottom: 12, padding: "10px 12px", borderRadius: 10, background: T.sb, border: "1px solid " + T.bg, fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
+              <div><b style={{ color: T.tx }}>Versione app</b>: {APP_VERSION}</div>
+              {APP_BUILD_TIME && <div><b style={{ color: T.tx }}>Build</b>: {new Date(APP_BUILD_TIME).toLocaleString("it-IT")}</div>}
             </div>
           </div>
           <div style={{ padding: "12px 20px calc(12px + env(safe-area-inset-bottom, 0px))", flexShrink: 0, borderTop: "1px solid " + T.bg, background: T.cd }}>
