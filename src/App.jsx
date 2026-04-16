@@ -138,6 +138,7 @@ import img_w_SaltoFitBoxBasso from "./images/warmup_stretch/Salto su fit box bas
 
 // Muscle map
 import img_muscle_map from "./images/muscle_map.jpg";
+import { supabase } from "./supabaseClient";
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import {
@@ -2386,7 +2387,13 @@ function parseSerie(str) {
   if (!m) return { sets: 3, reps: ["12"] };
   return { sets: parseInt(m[1]), reps: m[2] === "max" ? Array(parseInt(m[1])).fill("max") : m[2].split("-") };
 }
-function todayStr() { return new Date().toISOString().split("T")[0]; }
+function todayStr() {
+  var now = new Date();
+  var year = now.getFullYear();
+  var month = String(now.getMonth() + 1).padStart(2, "0");
+  var day = String(now.getDate()).padStart(2, "0");
+  return year + "-" + month + "-" + day;
+}
 function sameExerciseName(a, b) {
   var aa = String(a || "").trim();
   var bb = String(b || "").trim();
@@ -3157,11 +3164,19 @@ export default function App() {
   var [exGearFilter, setExGearFilter] = useState("all");
   var [exPatternFilter, setExPatternFilter] = useState("all");
   var [exWorkflowFilter, setExWorkflowFilter] = useState("all");
+  var [cloudEmail, setCloudEmail] = useState("");
+  var [cloudPassword, setCloudPassword] = useState("");
+  var [cloudUser, setCloudUser] = useState(null);
+  var [cloudAuthReady, setCloudAuthReady] = useState(false);
+  var [cloudBusy, setCloudBusy] = useState(false);
+  var [cloudStatus, setCloudStatus] = useState("");
+  var [cloudHydratedUserId, setCloudHydratedUserId] = useState("");
   var intv = useRef(null);
   var tStart = useRef(null);
   var tAcc = useRef(0);
   var lastSnd = useRef(-1);
   var feedbackCardsRef = useRef(null);
+  var cloudSyncTimerRef = useRef(null);
 
   var T = TH[theme];
   var isBasics = level === "basics";
@@ -3448,6 +3463,7 @@ export default function App() {
   }, {});
   var dayData = activeDays[safeDayIdx];
   var estimatedDayMinutes = dayData ? estimateDayMinutes(dayData, month) : 0;
+  var isCurrentWeightDayComplete = workoutView === "weights" && !!dayData && !dayData.cardio && !dayData.rest && isDayWorkoutComplete(logs, safeDayIdx);
   var activeOpenRawEx = dayData && dayData.ex && openEx !== null && dayData.ex[openEx] ? dayData.ex[openEx] : null;
   var activeOpenMergedEx = activeOpenRawEx ? (activeOpenRawEx.cable && activeOpenRawEx.free ? Object.assign({}, activeOpenRawEx, activeOpenRawEx.defaultFree ? activeOpenRawEx.free : activeOpenRawEx.cable) : activeOpenRawEx) : null;
   var activeOpenEx = activeOpenMergedEx ? getExForMonth(activeOpenMergedEx) : null;
@@ -3712,9 +3728,207 @@ export default function App() {
     return { n: raw.n, s: raw.s, rpe: raw.rpe, note: raw.note || "" };
   }
 
+  function buildPersistedStatePayload(sourceLogs, sourceCardioLogs, sourceStretchLogs, sourceProfiles, sourceCalibrationMode, sourceGuidedMode, sourceBarbellWeight, sourceGuidedRecovery, overrides) {
+    var nextUserName = overrides && typeof overrides.userName === "string" ? overrides.userName : (userName || "");
+    var nextUserPhoto = overrides && Object.prototype.hasOwnProperty.call(overrides, "userPhoto") ? (overrides.userPhoto || null) : (userPhoto || null);
+    var nextLevel = overrides && (overrides.level === "basics" || overrides.level === "beginner" || overrides.level === "v4") ? overrides.level : level;
+    var nextTheme = overrides && overrides.theme && TH[overrides.theme] ? overrides.theme : theme;
+    var nextFontScale = overrides && isFinite(overrides.fontScale) && overrides.fontScale >= 0.9 && overrides.fontScale <= 1.5 ? overrides.fontScale : fontScale;
+    var nextWorkflowEnabled = overrides && typeof overrides.exerciseWorkflowEnabled === "boolean" ? overrides.exerciseWorkflowEnabled : exerciseWorkflowEnabled;
+    var nextExtraInfoEnabled = overrides && typeof overrides.extraInfoEnabled === "boolean" ? overrides.extraInfoEnabled : extraInfoEnabled;
+    return {
+      savedAt: new Date().toISOString(),
+      logs: sourceLogs || {},
+      cardioLogs: sourceCardioLogs || {},
+      stretchLogs: sourceStretchLogs || {},
+      calibrationProfiles: sourceProfiles || {},
+      calibrationMode: !!sourceCalibrationMode,
+      guidedMode: !!sourceGuidedMode,
+      guidedRecoveryEnabled: !!sourceGuidedRecovery,
+      barbellWeight: sourceBarbellWeight,
+      profile: {
+        userName: nextUserName,
+        userPhoto: nextUserPhoto
+      },
+      preferences: {
+        level: nextLevel,
+        theme: nextTheme,
+        fontScale: nextFontScale,
+        exerciseWorkflowEnabled: nextWorkflowEnabled,
+        extraInfoEnabled: nextExtraInfoEnabled,
+        guidedMode: !!sourceGuidedMode,
+        guidedRecoveryEnabled: !!sourceGuidedRecovery,
+        calibrationMode: !!sourceCalibrationMode,
+        barbellWeight: sourceBarbellWeight
+      }
+    };
+  }
+
+  async function pushSnapshotToCloud(snapshot, userId, silent) {
+    if (!supabase || !userId || !snapshot) return;
+    var response = await supabase
+      .from("user_app_state")
+      .upsert({
+        user_id: userId,
+        payload: snapshot,
+        updated_at: snapshot.savedAt || new Date().toISOString()
+      });
+    if (response.error) {
+      if (!silent) setCloudStatus("Sync cloud non riuscito: " + response.error.message);
+      throw response.error;
+    }
+    if (!silent) setCloudStatus("Cloud sincronizzato.");
+  }
+
+  async function hydrateFromCloudForUser(userId) {
+    if (!supabase || !userId) return;
+    setCloudBusy(true);
+    setCloudStatus("Controllo backup cloud...");
+    try {
+      var result = await supabase
+        .from("user_app_state")
+        .select("payload, updated_at")
+        .eq("user_id", userId)
+        .maybeSingle();
+      if (result.error) throw result.error;
+      var remote = result.data;
+      if (!remote || !remote.payload || typeof remote.payload !== "object") {
+        setCloudHydratedUserId(userId);
+        setCloudStatus("Cloud pronto. Nessun backup remoto trovato.");
+        return;
+      }
+      var localSavedAt = "";
+      var localSnapshot = null;
+      try {
+        var localRaw = localStorage.getItem(SK);
+        if (localRaw) {
+          var localParsed = JSON.parse(localRaw);
+          localSavedAt = typeof localParsed.savedAt === "string" ? localParsed.savedAt : "";
+          if (localParsed && typeof localParsed === "object") localSnapshot = localParsed;
+        }
+      } catch (e) {}
+      var remoteSavedAt = typeof remote.payload.savedAt === "string" ? remote.payload.savedAt : (remote.updated_at || "");
+      if (remoteSavedAt && (!localSavedAt || remoteSavedAt > localSavedAt)) {
+        var importedProfile = remote.payload.profile && typeof remote.payload.profile === "object" ? remote.payload.profile : {};
+        var importedPreferences = remote.payload.preferences && typeof remote.payload.preferences === "object" ? remote.payload.preferences : {};
+        var importedStretchLogs = remote.payload.stretchLogs && typeof remote.payload.stretchLogs === "object" ? remote.payload.stretchLogs : {};
+        saveData(
+          remote.payload.logs || {},
+          remote.payload.cardioLogs || {},
+          remote.payload.calibrationProfiles || {},
+          !!remote.payload.calibrationMode,
+          !!remote.payload.guidedMode,
+          typeof remote.payload.barbellWeight === "number" ? remote.payload.barbellWeight : BARBELL_BASE_KG,
+          !!remote.payload.guidedRecoveryEnabled,
+          {
+            stretchLogs: importedStretchLogs,
+            userName: typeof importedProfile.userName === "string" ? importedProfile.userName : "",
+            userPhoto: typeof importedProfile.userPhoto === "string" ? importedProfile.userPhoto : null,
+            level: importedPreferences.level,
+            theme: importedPreferences.theme,
+            fontScale: parseFloat(importedPreferences.fontScale),
+            exerciseWorkflowEnabled: typeof importedPreferences.exerciseWorkflowEnabled === "boolean" ? importedPreferences.exerciseWorkflowEnabled : undefined,
+            extraInfoEnabled: typeof importedPreferences.extraInfoEnabled === "boolean" ? importedPreferences.extraInfoEnabled : undefined
+          }
+        );
+        setStretchLogs(importedStretchLogs);
+        applyImportedProfileAndPreferences(remote.payload);
+        setCloudStatus("Backup cloud caricato.");
+      } else if (localSavedAt) {
+        try {
+          var localState = localSnapshot || buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+          await pushSnapshotToCloud(localState, userId, true);
+          setCloudStatus("Backup locale inviato al cloud.");
+        } catch (syncErr) {
+          setCloudStatus("Cloud raggiunto, ma il push iniziale non e riuscito.");
+        }
+      } else {
+        setCloudStatus("Cloud pronto.");
+      }
+      setCloudHydratedUserId(userId);
+    } catch (err) {
+      setCloudStatus("Connessione cloud non riuscita: " + err.message);
+    } finally {
+      setCloudBusy(false);
+    }
+  }
+
+  async function handleCloudSignIn() {
+    if (!supabase) {
+      setCloudStatus("Supabase non configurato.");
+      return;
+    }
+    if (!cloudEmail || !cloudPassword) {
+      setCloudStatus("Inserisci email e password.");
+      return;
+    }
+    setCloudBusy(true);
+    setCloudStatus("Accesso cloud in corso...");
+    try {
+      var result = await supabase.auth.signInWithPassword({ email: cloudEmail, password: cloudPassword });
+      if (result.error) throw result.error;
+      setCloudStatus("Accesso eseguito.");
+    } catch (err) {
+      setCloudStatus("Accesso non riuscito: " + err.message);
+    } finally {
+      setCloudBusy(false);
+    }
+  }
+
+  async function handleCloudSignUp() {
+    if (!supabase) {
+      setCloudStatus("Supabase non configurato.");
+      return;
+    }
+    if (!cloudEmail || !cloudPassword) {
+      setCloudStatus("Inserisci email e password.");
+      return;
+    }
+    setCloudBusy(true);
+    setCloudStatus("Creazione account cloud...");
+    try {
+      var result = await supabase.auth.signUp({ email: cloudEmail, password: cloudPassword });
+      if (result.error) throw result.error;
+      setCloudStatus("Account creato. Se Supabase chiede conferma email, apri la mail e poi rientra.");
+    } catch (err) {
+      setCloudStatus("Registrazione non riuscita: " + err.message);
+    } finally {
+      setCloudBusy(false);
+    }
+  }
+
+  async function handleCloudSignOut() {
+    if (!supabase) return;
+    setCloudBusy(true);
+    try {
+      await supabase.auth.signOut();
+      setCloudStatus("Disconnessa dal cloud.");
+      setCloudHydratedUserId("");
+    } finally {
+      setCloudBusy(false);
+    }
+  }
+
+  async function handleCloudManualSync() {
+    if (!cloudUser) {
+      setCloudStatus("Prima fai accesso cloud.");
+      return;
+    }
+    setCloudBusy(true);
+    try {
+      var snapshot = buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+      await pushSnapshotToCloud(snapshot, cloudUser.id, false);
+    } catch (err) {
+      setCloudStatus("Sync cloud non riuscito: " + err.message);
+    } finally {
+      setCloudBusy(false);
+    }
+  }
+
   useEffect(function() {
     try {
-      var stored = localStorage.getItem(SK) || localStorage.getItem(SK_SHADOW);
+      var stored = localStorage.getItem(SK);
+      if (!stored) stored = localStorage.getItem(SK_SHADOW);
       if (stored) {
         var parsed = JSON.parse(stored);
         if (parsed && parsed.logs && typeof parsed.logs === "object") {
@@ -3785,6 +3999,35 @@ export default function App() {
   }, [isBasics, isBeginner, workoutView]);
 
   useEffect(function() {
+    if (!supabase) {
+      setCloudAuthReady(true);
+      return;
+    }
+    var active = true;
+    supabase.auth.getUser().then(function(result) {
+      if (!active) return;
+      setCloudUser(result && result.data ? result.data.user || null : null);
+      setCloudAuthReady(true);
+    });
+    var authListener = supabase.auth.onAuthStateChange(function(_event, session) {
+      setCloudUser(session && session.user ? session.user : null);
+      if (!(session && session.user)) setCloudHydratedUserId("");
+      setCloudAuthReady(true);
+    });
+    return function() {
+      active = false;
+      if (authListener && authListener.data && authListener.data.subscription) {
+        authListener.data.subscription.unsubscribe();
+      }
+    };
+  }, []);
+
+  useEffect(function() {
+    if (!cloudAuthReady || !cloudUser || cloudHydratedUserId === cloudUser.id) return;
+    hydrateFromCloudForUser(cloudUser.id);
+  }, [cloudAuthReady, cloudUser, cloudHydratedUserId]);
+
+  useEffect(function() {
     setFocusMode(level === "v4");
   }, [level]);
 
@@ -3839,7 +4082,42 @@ export default function App() {
       localStorage.setItem("wt-stretch-logs", JSON.stringify(stretchLogs || {}));
     } catch (e) {}
   }, [stretchLogs]);
-  var saveData = useCallback(function(nl, nc, np, nm, ng, bw, gr) {
+
+  useEffect(function() {
+    if (!supabase || !cloudUser || cloudHydratedUserId !== cloudUser.id) return;
+    clearTimeout(cloudSyncTimerRef.current);
+    cloudSyncTimerRef.current = setTimeout(function() {
+      var snapshot = buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+      pushSnapshotToCloud(snapshot, cloudUser.id, true).then(function() {
+        setCloudStatus("Cloud sincronizzato.");
+      }).catch(function() {
+        setCloudStatus("Salvato in locale. Sync cloud in attesa.");
+      });
+    }, 900);
+    return function() {
+      clearTimeout(cloudSyncTimerRef.current);
+    };
+  }, [
+    logs,
+    cardioLogs,
+    stretchLogs,
+    calibrationProfiles,
+    calibrationMode,
+    guidedMode,
+    guidedRecoveryEnabled,
+    barbellWeight,
+    userName,
+    userPhoto,
+    level,
+    theme,
+    fontScale,
+    exerciseWorkflowEnabled,
+    extraInfoEnabled,
+    cloudUser,
+    cloudHydratedUserId
+  ]);
+
+  var saveData = useCallback(function(nl, nc, np, nm, ng, bw, gr, overrides) {
     var nextLogs = nl || {};
     var nextCardioLogs = nc || {};
     var nextProfiles = np || {};
@@ -3847,6 +4125,14 @@ export default function App() {
     var nextGuided = typeof ng === "boolean" ? ng : guidedMode;
     var nextBarbell = typeof bw === "number" && isFinite(bw) && bw >= BARBELL_MIN_KG ? bw : barbellWeight;
     var nextGuidedRecovery = typeof gr === "boolean" ? gr : guidedRecoveryEnabled;
+    var nextStretchLogs = overrides && overrides.stretchLogs && typeof overrides.stretchLogs === "object" ? overrides.stretchLogs : (stretchLogs || {});
+    var nextUserName = overrides && typeof overrides.userName === "string" ? overrides.userName : (userName || "");
+    var nextUserPhoto = overrides && Object.prototype.hasOwnProperty.call(overrides, "userPhoto") ? (overrides.userPhoto || null) : (userPhoto || null);
+    var nextLevel = overrides && (overrides.level === "basics" || overrides.level === "beginner" || overrides.level === "v4") ? overrides.level : level;
+    var nextTheme = overrides && overrides.theme && TH[overrides.theme] ? overrides.theme : theme;
+    var nextFontScale = overrides && isFinite(overrides.fontScale) && overrides.fontScale >= 0.9 && overrides.fontScale <= 1.5 ? overrides.fontScale : fontScale;
+    var nextWorkflowEnabled = overrides && typeof overrides.exerciseWorkflowEnabled === "boolean" ? overrides.exerciseWorkflowEnabled : exerciseWorkflowEnabled;
+    var nextExtraInfoEnabled = overrides && typeof overrides.extraInfoEnabled === "boolean" ? overrides.extraInfoEnabled : extraInfoEnabled;
     setLogs(nextLogs);
     setCardioLogs(nextCardioLogs);
     setCalibrationProfiles(nextProfiles);
@@ -3855,35 +4141,32 @@ export default function App() {
     setBarbellWeight(nextBarbell);
     setGuidedRecoveryEnabled(nextGuidedRecovery);
     try {
-      var raw = JSON.stringify({
-        logs: nextLogs,
-        cardioLogs: nextCardioLogs,
-        stretchLogs: stretchLogs || {},
-        calibrationProfiles: nextProfiles,
-        calibrationMode: nextMode,
-        guidedMode: nextGuided,
-        barbellWeight: nextBarbell,
-        profile: {
-          userName: userName || "",
-          userPhoto: userPhoto || null
-        },
-        preferences: {
-          level: level,
-          theme: theme,
-          fontScale: fontScale,
-          exerciseWorkflowEnabled: exerciseWorkflowEnabled,
-          extraInfoEnabled: extraInfoEnabled,
-          guidedMode: nextGuided,
-          guidedRecoveryEnabled: nextGuidedRecovery,
-          calibrationMode: nextMode,
-          barbellWeight: nextBarbell
+      var raw = JSON.stringify(buildPersistedStatePayload(
+        nextLogs,
+        nextCardioLogs,
+        nextStretchLogs,
+        nextProfiles,
+        nextMode,
+        nextGuided,
+        nextBarbell,
+        nextGuidedRecovery,
+        {
+          userName: nextUserName,
+          userPhoto: nextUserPhoto,
+          level: nextLevel,
+          theme: nextTheme,
+          fontScale: nextFontScale,
+          exerciseWorkflowEnabled: nextWorkflowEnabled,
+          extraInfoEnabled: nextExtraInfoEnabled
         }
-      });
+      ));
       localStorage.setItem(SK, raw);
-      localStorage.setItem(SK_SHADOW, raw);
+      localStorage.removeItem(SK_SHADOW);
       localStorage.setItem("wt-barbell-weight", String(nextBarbell));
       localStorage.setItem("wt-guided-recovery", nextGuidedRecovery ? "1" : "0");
-    } catch(e) {}
+    } catch(e) {
+      setAutoBackupMsg("Salvataggio locale non riuscito: spazio del browser probabilmente pieno. Esporta subito il JSON e ricarica la pagina dopo aver reimportato il backup piu recente.");
+    }
   }, [guidedMode, guidedRecoveryEnabled, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled, stretchLogs]);
 
   function checkSound(ms, mode, target) {
@@ -4050,6 +4333,9 @@ export default function App() {
   useEffect(function() {
     if (tFullscreen) return;
     function syncTimerPosIntoViewport() {
+      if (typeof window !== "undefined" && (window.innerWidth || 0) <= 640) {
+        setTMini(false);
+      }
       setTimerPos(function(prev) {
         var next = clampTimerPos(prev);
         if ((prev && prev.x) === next.x && (prev && prev.y) === next.y) return prev;
@@ -4065,6 +4351,11 @@ export default function App() {
 
   function quickTimer(secs) {
     try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {}
+    if (typeof window !== "undefined" && (window.innerWidth || 0) <= 640) {
+      setTMini(false);
+      setTPanel(true);
+      resetTimerPosition();
+    }
     setTRunning(false);
     clearInterval(intv.current);
     tAcc.current = 0;
@@ -4501,20 +4792,20 @@ export default function App() {
       if ((rep || "").indexOf("s") >= 0) return parseInt(rep) || 30;
       return parseInt(rep) || 0;
     }).filter(function(v) { return v > 0; });
-    var avgTarget = repsNums.length ? (repsNums.reduce(function(acc, v) { return acc + v; }, 0) / repsNums.length) : 10;
+    var topTarget = repsNums.length ? Math.max.apply(null, repsNums) : 10;
     var classKey = getGuidedExerciseClass(ex.n);
     var secPerSet;
     if (p.kind === "time" || ex.n === "Plank") {
-      secPerSet = Math.max(35, avgTarget + 15);
+      secPerSet = Math.max(45, topTarget + 20);
     } else if (classKey === "heavy") {
-      secPerSet = avgTarget <= 6 ? 55 : avgTarget <= 8 ? 50 : 45;
+      secPerSet = topTarget <= 6 ? 75 : topTarget <= 8 ? 70 : 65;
     } else if (classKey === "compound") {
-      secPerSet = avgTarget <= 8 ? 42 : avgTarget <= 12 ? 36 : 32;
+      secPerSet = topTarget <= 8 ? 58 : topTarget <= 12 ? 52 : 46;
     } else {
-      secPerSet = avgTarget <= 10 ? 30 : avgTarget <= 15 ? 26 : 22;
+      secPerSet = topTarget <= 10 ? 42 : topTarget <= 15 ? 36 : 30;
     }
     var recSec = getExerciseRestSeconds(rawEx, ex) || 90;
-    var setupSec = getExerciseSetupSeconds(ex.n);
+    var setupSec = getExerciseSetupSeconds(ex.n) + 30;
     var total = setupSec + sets * secPerSet + (sets - 1) * recSec;
     return Math.max(2, Math.round(total / 60));
   }
@@ -4674,6 +4965,8 @@ export default function App() {
     if (/rack/.test(text)) add("rack", "rack");
     if (/panca romana|hyperextension/.test(text)) add("roman_bench", "panca romana");
     if ((/panca|bench|hip thrust/.test(text) && !/panca romana/.test(text)) || /bench/.test(text)) add("bench", "panca");
+    if (/barra dip|parallele/.test(text)) add("dip_bar", "barra dip/parallele");
+    if (/lat machine/.test(text)) add("lat_machine", "lat machine");
     if (/cavo|cavi|cable|carrucola|pulley|face pull|woodchop/.test(text)) add("cable", "carrucola/cavo");
     if (/corda/.test(text)) add("rope", "corda");
     if (/cavigliera/.test(text)) add("ankle_strap", "cavigliera");
@@ -4689,31 +4982,31 @@ export default function App() {
 
   function buildLogisticsCue(raw, activeEx, laterRawList, activeMonth) {
     var current = logisticsTokensForExercise(raw, activeEx);
+    current = current.filter(function(token) { return token.key === "barbell"; });
     var later = [];
     (laterRawList || []).forEach(function(laterRaw) {
       var laterEx = getExForMonthValue(laterRaw, activeMonth || month);
       logisticsTokensForExercise(laterRaw, laterEx).forEach(function(token) {
-        if (later.indexOf(token.key) < 0) later.push(token.key);
+        if (token.key === "barbell" && later.indexOf(token.key) < 0) later.push(token.key);
       });
     });
-    var keep = current.filter(function(token) { return later.indexOf(token.key) >= 0; });
-    var clear = current.filter(function(token) { return later.indexOf(token.key) < 0; });
+    var keepBarbell = current.some(function(token) { return later.indexOf(token.key) >= 0; });
     var nextRaw = laterRawList && laterRawList[0];
     var nextEx = nextRaw ? getExForMonthValue(nextRaw, activeMonth || month) : null;
-    function labels(items) {
-      return items.map(function(token) { return token.label; }).join(", ");
-    }
     if (!current.length) {
+      return null;
+    }
+    if (keepBarbell) {
       return {
-        title: nextEx ? "Prima del prossimo esercizio" : "Fine allenamento pesi",
-        keep: nextEx ? ("Vai a " + nextEx.n + ". Prenditi 1 minuto per cambiare postazione e avvia il timer recupero se ti serve.") : "Pesi finiti: passa allo stretching del giorno.",
-        clear: "Non ci sono attrezzi grandi associati a questo esercizio: libera solo il tuo spazio."
+        title: nextEx ? ("Dopo " + activeEx.n + " → prossimo: " + nextEx.n) : ("Dopo " + activeEx.n),
+        keep: "Lascia il bilanciere pronto: ti serve ancora negli esercizi successivi.",
+        clear: ""
       };
     }
     return {
-      title: nextEx ? ("Logistica → prossimo: " + nextEx.n) : "Logistica finale",
-      keep: keep.length ? ("Lascia pronto " + labels(keep) + ": ti serve ancora piu avanti nella seduta.") : (nextEx ? ("Questo setup non ricompare. Prepara con calma la postazione per " + nextEx.n + ".") : "Ultimo esercizio pesi: dopo il log puoi chiudere la postazione."),
-      clear: clear.length ? ("Puoi mettere a posto " + labels(clear) + " quando hai ripreso fiato.") : "Non smontare ancora il setup usato: ti fara risparmiare tempo dopo."
+      title: nextEx ? ("Dopo " + activeEx.n + " → prossimo: " + nextEx.n) : ("Dopo " + activeEx.n),
+      keep: "Il bilanciere non serve piu: rimettilo a posto prima di passare oltre.",
+      clear: ""
     };
   }
 
@@ -5358,10 +5651,40 @@ export default function App() {
     });
   }
 
+  function getCompletedWorkoutFileName(di, suffix) {
+    var day = activeDays[di];
+    if (!day) return "workout-backup-" + todayStr() + ".json";
+    var safeDay = String(day.name || ("giorno-" + (di + 1)))
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+    return "workout-backup-" + todayStr() + "-" + safeDay + (suffix ? "-" + suffix : "") + ".json";
+  }
+
+  function exportCompletedSessionBackup(sourceLogs, di, exportType) {
+    var day = activeDays[di];
+    if (!day) return;
+    var fileSuffix = exportType === "manual-complete" || exportType === "prompt-complete" ? "manual" : "auto";
+    downloadBackupPayload(
+      buildBackupPayload(sourceLogs, cardioLogs, { type: exportType || "workout-complete", day: day.name || ("Giorno " + (di + 1)) }),
+      getCompletedWorkoutFileName(di, fileSuffix)
+    );
+  }
+
   function autoExportCompletedSession(sourceLogs, di) {
     var day = activeDays[di];
     if (!day) return;
-    setAutoBackupMsg("Sessione completata. Se vuoi, ora puoi esportare i dati da Impostazioni in JSON + CSV.");
+    var shouldExport = true;
+    try {
+      shouldExport = window.confirm("Allenamento completato. Vuoi salvare adesso il backup JSON sul dispositivo?");
+    } catch (e) {}
+    if (shouldExport) {
+      saveData(sourceLogs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+      exportCompletedSessionBackup(sourceLogs, di, "prompt-complete");
+      setAutoBackupMsg("Allenamento salvato in locale e backup JSON esportato.");
+      return;
+    }
+    setAutoBackupMsg("Allenamento completato e salvato in locale. Export JSON annullato: puoi rifarlo dal pulsante finale o da Impostazioni.");
   }
 
   function getGuidedTodayKey(di, exName) {
@@ -5470,6 +5793,21 @@ function isNearBodyweightElasticSession(exName, sets) {
 
   function getGuidedPhase(exName, serie) {
     return getGuidedStableSessions(exName, serie, 6).length >= 2 ? "progression" : "exploration";
+  }
+
+  function getExerciseSeriesSpecByName(exName) {
+    var collections = [DAYS_V4, DAYS_BEGINNER, DAYS_BASICS];
+    for (var ci = 0; ci < collections.length; ci++) {
+      var days = collections[ci] || [];
+      for (var di = 0; di < days.length; di++) {
+        var list = days[di] && days[di].ex ? days[di].ex : [];
+        for (var ei = 0; ei < list.length; ei++) {
+          var ex = getExForMonthValue(list[ei], month);
+          if (ex && ex.n === exName && ex.s) return ex.s;
+        }
+      }
+    }
+    return "";
   }
 
   function getRecoveryFillerSuggestion(exName, restSec) {
@@ -6295,6 +6633,92 @@ function isNearBodyweightElasticSession(exName, sets) {
     return { tone: "hold", label: isAccessory ? "🟠 Consolida tecnica e rip" : "🟠 Consolida il riferimento", detail: "Ultima: " + latestSummary + ". Almeno una serie e sotto il minimo previsto.", short: "Almeno una serie sotto il minimo" };
   }
 
+  function getStableLoadStallInfo(exName, serie) {
+    var spec = parseProgressSpec(serie);
+    if (!spec || spec.kind === "max" || spec.kind === "time") return null;
+    if (CORE_PROGRESS_EX.indexOf(exName) >= 0 || usesElasticScale(exName)) return null;
+    var sessions = getAllHist(exName);
+    if (!sessions.length) return null;
+    var complete = sessions.map(function(entry) {
+      return { entry: entry, sets: normalizeSessionSets(entry, spec.sets) };
+    }).filter(function(item) { return item.sets.length === spec.sets; });
+    if (complete.length < 3) return null;
+    var latestThree = complete.slice(0, 3);
+    var loadValues = latestThree.map(function(item) {
+      var weights = item.sets.map(function(s) { return parseFloat(s.w) || 0; }).filter(function(w) { return w > 0; });
+      if (!weights.length) return null;
+      var first = weights[0];
+      var uniform = weights.every(function(w) { return w === first; });
+      if (!uniform) return null;
+      return first;
+    });
+    if (loadValues.some(function(v) { return v === null; })) return null;
+    var sameLoad = loadValues.every(function(v) { return v === loadValues[0]; });
+    if (!sameLoad) return null;
+    var repTotals = latestThree.map(function(item) {
+      return item.sets.reduce(function(acc, s) { return acc + (parseInt(s.r) || 0); }, 0);
+    });
+    var stagnant = repTotals[0] <= repTotals[1] && repTotals[1] <= repTotals[2];
+    if (!stagnant) return null;
+    return {
+      load: loadValues[0],
+      totals: repTotals,
+      sessions: latestThree
+    };
+  }
+
+  function getProgressActionGuide(exName, serie) {
+    var prog = getProgressAdvice(exName, serie);
+    if (!prog) return null;
+    var stall = getStableLoadStallInfo(exName, serie);
+    if (stall) {
+      return {
+        tone: "hold",
+        title: "Peso fermo da 3 sedute",
+        action: "Non aumentare il carico. Tieni " + stall.load + " kg e prova a guadagnare almeno 1 ripetizione totale nella prossima seduta. Se resti ferma ancora, allunga i recuperi, riduci di poco il peso oppure conferma che tecnica e range siano identici.",
+        detail: "Ultime 3 sedute con " + stall.load + " kg: " + stall.totals[2] + " → " + stall.totals[1] + " → " + stall.totals[0] + " rip totali."
+      };
+    }
+    if (prog.label.indexOf("Aumenta carico") >= 0 || prog.label.indexOf("Aumenta leggermente il carico") >= 0) {
+      return {
+        tone: "up",
+        title: "Pronta a salire",
+        action: "Nella prossima seduta aumenta leggermente il peso e riparti dal numero basso del range.",
+        detail: prog.detail
+      };
+    }
+    if (prog.label.indexOf("Aumenta ripetizioni") >= 0 || prog.label.indexOf("Prova a chiudere il target") >= 0 || prog.label.indexOf("Stabile") >= 0) {
+      return {
+        tone: "mid",
+        title: "Peso giusto, fai più ripetizioni",
+        action: "Non cambiare peso nella prossima seduta. Prova ad aggiungere 1 ripetizione totale oppure a migliorare l'ultima serie.",
+        detail: prog.detail
+      };
+    }
+    if (prog.label.indexOf("Consolida") >= 0) {
+      return {
+        tone: "hold",
+        title: "Consolida prima di salire",
+        action: "Tieni lo stesso peso e rendi tutte le serie pulite e dentro il minimo del range. Oggi conta più la qualità del gesto del numero.",
+        detail: prog.detail
+      };
+    }
+    if (prog.label.indexOf("Serve un'altra sessione") >= 0 || prog.label.indexOf("Nessun dato") >= 0 || prog.label.indexOf("Sessione incompleta") >= 0) {
+      return {
+        tone: "empty",
+        title: "Servono più dati",
+        action: "Completa almeno un'altra seduta uniforme dello stesso esercizio prima di cambiare carico.",
+        detail: prog.detail
+      };
+    }
+    return {
+      tone: prog.tone,
+      title: "Indicazione operativa",
+      action: getProgressShortHelp(prog),
+      detail: prog.detail
+    };
+  }
+
 
   function exportData() {
     var baseName = 'workout-backup-' + todayStr();
@@ -6350,7 +6774,29 @@ function isNearBodyweightElasticSession(exName, sets) {
           var importedLogs = imported && imported.logs && typeof imported.logs === "object" ? imported.logs : imported;
           var importedCardioLogs = imported && imported.cardioLogs && typeof imported.cardioLogs === "object" ? imported.cardioLogs : {};
           var importedStretchLogs = imported && imported.stretchLogs && typeof imported.stretchLogs === "object" ? imported.stretchLogs : {};
-          saveData(importedLogs || {}, importedCardioLogs || {}, imported && imported.calibrationProfiles && typeof imported.calibrationProfiles === "object" ? imported.calibrationProfiles : {}, !!(imported && imported.calibrationMode), imported && typeof imported.guidedMode === "boolean" ? imported.guidedMode : false, imported && typeof imported.barbellWeight === "number" ? imported.barbellWeight : BARBELL_BASE_KG);
+          var importedProfile = imported && imported.profile && typeof imported.profile === "object" ? imported.profile : {};
+          var importedPreferences = imported && imported.preferences && typeof imported.preferences === "object" ? imported.preferences : {};
+          saveData(
+            importedLogs || {},
+            importedCardioLogs || {},
+            imported && imported.calibrationProfiles && typeof imported.calibrationProfiles === "object" ? imported.calibrationProfiles : {},
+            !!(imported && imported.calibrationMode),
+            imported && typeof imported.guidedMode === "boolean" ? imported.guidedMode : false,
+            imported && typeof imported.barbellWeight === "number" ? imported.barbellWeight : BARBELL_BASE_KG,
+            typeof imported.guidedRecoveryEnabled === "boolean"
+              ? imported.guidedRecoveryEnabled
+              : !!(importedPreferences && typeof importedPreferences.guidedRecoveryEnabled === "boolean" ? importedPreferences.guidedRecoveryEnabled : false),
+            {
+              stretchLogs: importedStretchLogs,
+              userName: typeof importedProfile.userName === "string" ? importedProfile.userName : "",
+              userPhoto: typeof importedProfile.userPhoto === "string" ? importedProfile.userPhoto : null,
+              level: importedPreferences.level,
+              theme: importedPreferences.theme,
+              fontScale: parseFloat(importedPreferences.fontScale),
+              exerciseWorkflowEnabled: typeof importedPreferences.exerciseWorkflowEnabled === "boolean" ? importedPreferences.exerciseWorkflowEnabled : undefined,
+              extraInfoEnabled: typeof importedPreferences.extraInfoEnabled === "boolean" ? importedPreferences.extraInfoEnabled : undefined
+            }
+          );
           setStretchLogs(importedStretchLogs);
           try { localStorage.setItem("wt-stretch-logs", JSON.stringify(importedStretchLogs)); } catch (stretchErr) {}
           applyImportedProfileAndPreferences(imported);
@@ -6446,8 +6892,14 @@ function isNearBodyweightElasticSession(exName, sets) {
   }
 
   // Clickable exercise name
+  function getExerciseDisplayName(name) {
+    if (name === "Trazioni") return "Trazioni · prone";
+    if (name === "Trazioni Supine") return "Trazioni Supine · supine";
+    return name;
+  }
+
   function ExName(props) {
-    return <span onClick={function(e) { e.stopPropagation(); var next = exInfoOpen === props.name ? null : props.name; if (next !== exInfoOpen) pushNavSnapshot(); setExInfoOpen(next); }} style={{ cursor: "pointer", textDecoration: "underline", textDecorationStyle: "dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, textTransform: "uppercase", letterSpacing: 0.4 }}>{props.name}</span>;
+    return <span onClick={function(e) { e.stopPropagation(); var next = exInfoOpen === props.name ? null : props.name; if (next !== exInfoOpen) pushNavSnapshot(); setExInfoOpen(next); }} style={{ cursor: "pointer", textDecoration: "underline", textDecorationStyle: "dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, textTransform: "uppercase", letterSpacing: 0.4 }}>{getExerciseDisplayName(props.name)}</span>;
   }
 
   // === FULLSCREEN TIMER ===
@@ -6647,12 +7099,12 @@ function isNearBodyweightElasticSession(exName, sets) {
       </div>}
 
       {/* Settings Modal */}
-      {settingsOpen && <div onClick={function() { setSettingsOpen(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 250, display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}>
-        <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, maxWidth: 400, width: "100%", color: T.tx, maxHeight: "88vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+      {settingsOpen && <div onClick={function() { setSettingsOpen(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 250, display: "flex", alignItems: "flex-start", justifyContent: "center", padding: 16, overflowY: "auto", WebkitOverflowScrolling: "touch" }}>
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, maxWidth: 400, width: "100%", color: T.tx, maxHeight: "calc(100dvh - 32px)", display: "flex", flexDirection: "column", overflow: "hidden", margin: "max(12px, env(safe-area-inset-top, 0px)) 0 max(12px, env(safe-area-inset-bottom, 0px))" }}>
           <div style={{ padding: "18px 20px 0", flexShrink: 0 }}>
             <h3 style={{ margin: "0 0 16px", fontSize: 18, fontWeight: 800 }}>⚙️ Impostazioni</h3>
           </div>
-          <div style={{ overflowY: "auto", flex: 1, padding: "0 20px" }}>
+          <div style={{ overflowY: "auto", WebkitOverflowScrolling: "touch", flex: 1, padding: "0 20px" }}>
             {/* Profilo */}
             <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>Profilo</div>
             <div style={{ display: "flex", alignItems: "center", gap: 14, background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
@@ -6776,6 +7228,47 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </button>
               </div>
             </div>}
+            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Cloud</div>
+            <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 8 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Sync con Supabase</div>
+              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6, marginBottom: 10 }}>I dati restano salvati anche in locale. Se fai accesso qui, l'app sincronizza automaticamente il backup completo nel cloud.</div>
+              {!cloudUser ? <>
+                <div style={{ display: "grid", gap: 8 }}>
+                  <input
+                    type="email"
+                    inputMode="email"
+                    autoCapitalize="none"
+                    value={cloudEmail}
+                    onChange={function(e) { setCloudEmail(e.target.value); }}
+                    placeholder="Email cloud"
+                    style={{ width: "100%", padding: "10px 12px", border: "1px solid " + T.bg, borderRadius: 8, fontSize: 13, background: T.cd, color: T.tx, boxSizing: "border-box" }}
+                  />
+                  <input
+                    type="password"
+                    value={cloudPassword}
+                    onChange={function(e) { setCloudPassword(e.target.value); }}
+                    placeholder="Password"
+                    style={{ width: "100%", padding: "10px 12px", border: "1px solid " + T.bg, borderRadius: 8, fontSize: 13, background: T.cd, color: T.tx, boxSizing: "border-box" }}
+                  />
+                  <div style={{ display: "flex", gap: 8 }}>
+                    <button onClick={handleCloudSignIn} disabled={cloudBusy} style={{ flex: 1, minHeight: 40, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: cloudBusy ? "default" : "pointer", opacity: cloudBusy ? 0.7 : 1 }}>Accedi</button>
+                    <button onClick={handleCloudSignUp} disabled={cloudBusy} style={{ flex: 1, minHeight: 40, border: "1px solid " + T.bg, borderRadius: 10, background: T.cd, color: T.tx, fontSize: 12, fontWeight: 800, cursor: cloudBusy ? "default" : "pointer", opacity: cloudBusy ? 0.7 : 1 }}>Crea account</button>
+                  </div>
+                </div>
+              </> : <>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, marginBottom: 10 }}>
+                  <div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{cloudUser.email}</div>
+                    <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Backup cloud attivo</div>
+                  </div>
+                  <button onClick={handleCloudSignOut} disabled={cloudBusy} style={{ minHeight: 34, padding: "0 12px", border: "1px solid " + T.bg, borderRadius: 10, background: T.cd, color: T.sub, fontSize: 11, fontWeight: 800, cursor: cloudBusy ? "default" : "pointer", opacity: cloudBusy ? 0.7 : 1 }}>Esci</button>
+                </div>
+                <button onClick={handleCloudManualSync} disabled={cloudBusy} style={{ width: "100%", minHeight: 40, border: "none", borderRadius: 10, background: T.ok, color: "#fff", fontSize: 12, fontWeight: 800, cursor: cloudBusy ? "default" : "pointer", opacity: cloudBusy ? 0.7 : 1 }}>Sincronizza adesso</button>
+              </>}
+              <div style={{ marginTop: 8, fontSize: 11, color: cloudStatus && cloudStatus.indexOf("non riuscito") >= 0 ? "#C62828" : T.sub, lineHeight: 1.55 }}>
+                {cloudStatus || (cloudUser ? "Cloud configurato." : "Nessun accesso cloud attivo.")}
+              </div>
+            </div>
             {/* Dati */}
             <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Dati</div>
             <div style={{ marginBottom: 8, padding: "10px 12px", borderRadius: 10, background: T.sb, border: "1px solid " + T.bg, fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
@@ -6800,7 +7293,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               <button onClick={function() { setResetOpen(true); setSettingsOpen(false); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid #C6282820", background: "#C6282808", cursor: "pointer", fontSize: 13, fontWeight: 600, color: "#C62828" }}><span>🗑️</span> Cancella tutti i dati</button>
             </div>
           </div>
-          <div style={{ padding: "12px 20px", flexShrink: 0 }}>
+          <div style={{ padding: "12px 20px calc(12px + env(safe-area-inset-bottom, 0px))", flexShrink: 0, borderTop: "1px solid " + T.bg, background: T.cd }}>
             <button onClick={function() { setSettingsOpen(false); }} style={{ width: "100%", padding: 10, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Chiudi</button>
           </div>
         </div>
@@ -6814,7 +7307,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             <div onClick={function() { setSettingsOpen(true); }} style={{ width: 34, height: 34, borderRadius: "50%", background: userPhoto ? "transparent" : "rgba(255,255,255,0.10)", border: "1.5px solid rgba(255,255,255,0.15)", overflow: "hidden", cursor: "pointer", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16 }}>
               {userPhoto ? <img src={userPhoto} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : "👤"}
             </div>
-            <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: -0.3 }}>{userName ? userName : "HomeWorkout"}</div>
+            <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: -0.3 }}>{userName ? userName : "Allenamento"}</div>
           </div>
           {/* Settings */}
           <button onClick={function() { setSettingsOpen(true); }} style={{ background: "rgba(255,255,255,0.08)", border: "none", color: T.sub, width: 32, height: 32, borderRadius: 8, cursor: "pointer", fontSize: 14, display: "flex", alignItems: "center", justifyContent: "center" }}>⚙️</button>
@@ -7630,6 +8123,24 @@ function isNearBodyweightElasticSession(exName, sets) {
           }, null);
           return { name: name, isBW: isBW, isBand: isBand, last: last, prev: prev, trend: trend, maxEver: maxEver, weeks: wkKeys.length };
         }).filter(function(e) { return e.last && e.last.score > 0; }).sort(function(a,b) { return b.weeks - a.weeks; });
+        var exActionItems = exProgress.map(function(item) {
+          var serie = getExerciseSeriesSpecByName(item.name);
+          var guide = serie ? getProgressActionGuide(item.name, serie) : null;
+          return Object.assign({}, item, { serie: serie, guide: guide });
+        });
+        var priorityGuides = exActionItems.filter(function(item) {
+          return item.guide && (item.guide.title === "Peso fermo da 3 sedute" || item.guide.tone === "hold" || item.guide.tone === "mid" || item.guide.tone === "up");
+        }).sort(function(a, b) {
+          function score(item) {
+            if (!item.guide) return 99;
+            if (item.guide.title === "Peso fermo da 3 sedute") return 0;
+            if (item.guide.tone === "hold") return 1;
+            if (item.guide.tone === "mid") return 2;
+            if (item.guide.tone === "up") return 3;
+            return 4;
+          }
+          return score(a) - score(b);
+        }).slice(0, 3);
         var keyLiftNames = ["Squat", "Stacco da Terra", "Panca", "Military Press", "Trazioni", "Trazioni Supine", "Push-Up", "T-bar Row", "Dip alle Parallele", "Hip Thrust Bilanciere"];
         var keyLiftProgress = keyLiftNames.map(function(name) {
           return exProgress.find(function(item) { return item.name === name; }) || null;
@@ -7683,6 +8194,26 @@ function isNearBodyweightElasticSession(exName, sets) {
             <div style={{ fontSize: 14, fontWeight: 700, color: T.tx, marginBottom: 6 }}>Nessun dato ancora</div>
             <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Registra le serie dei giorni pesi nella Scheda e qui vedrai i tuoi progressi settimana per settimana.</div>
           </div> : <>
+
+            {priorityGuides.length > 0 && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
+              <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
+                <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Analisi guidata: cosa fare adesso</div>
+                <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6, marginTop: 3 }}>Priorita ricavate dai dati delle ultime sedute registrate.</div>
+              </div>
+              <div style={{ display: "grid", gap: 0 }}>
+                {priorityGuides.map(function(item, ii) {
+                  var toneColor = item.guide.tone === "up" ? T.ok : item.guide.tone === "mid" ? "#B7791F" : item.guide.tone === "hold" ? "#C62828" : T.sub;
+                  return <div key={item.name} style={{ padding: "11px 14px", borderBottom: ii < priorityGuides.length - 1 ? "1px solid " + T.bg : "none" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                      <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, flex: 1 }}>{item.name}</div>
+                      <div style={{ fontSize: 10, fontWeight: 800, color: toneColor, textTransform: "uppercase", letterSpacing: 0.6 }}>{item.guide.title}</div>
+                    </div>
+                    <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.65 }}>{item.guide.action}</div>
+                    <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.55, marginTop: 5 }}>{item.guide.detail}</div>
+                  </div>;
+                })}
+              </div>
+            </div>}
 
             {/* Riepilogo settimane */}
             <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
@@ -7971,7 +8502,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                 <div style={{ marginTop: 4 }}><b>Settimane</b> — da quante settimane stai registrando quell'esercizio in questo mese.</div>
               </div>}
               <div style={{ display: "flex", flexDirection: "column" }}>
-                {exProgress.map(function(ex, ei) {
+                {exActionItems.map(function(ex, ei) {
                   var trendColor = ex.trend === "up" ? T.ok : ex.trend === "down" ? "#C62828" : T.sub;
                   var trendIcon = ex.trend === "up" ? "↑" : ex.trend === "down" ? "↓" : ex.trend === "new" ? "✦" : "→";
                   var valLabel = ex.last ? ex.last.label : "—";
@@ -7994,6 +8525,11 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>
                     {progTooltip === exTipId && <div style={{ margin: "0 14px 10px", padding: "8px 12px", borderRadius: 8, background: trendColor + "10", border: "1px solid " + trendColor + "30", fontSize: 11, color: T.sub, lineHeight: 1.6 }} onClick={function(e) { e.stopPropagation(); }}>
                       <span style={{ fontWeight: 700, color: trendColor, marginRight: 5 }}>{trendIcon}</span>{trendText}
+                      {ex.guide && <div style={{ marginTop: 8, paddingTop: 8, borderTop: "1px solid " + trendColor + "20" }}>
+                        <div style={{ fontSize: 10, fontWeight: 800, color: trendColor, textTransform: "uppercase", letterSpacing: 0.6, marginBottom: 4 }}>Cosa fare</div>
+                        <div>{ex.guide.action}</div>
+                        <div style={{ marginTop: 4 }}>{ex.guide.detail}</div>
+                      </div>}
                     </div>}
                   </div>;
                 })}
@@ -8207,6 +8743,26 @@ function isNearBodyweightElasticSession(exName, sets) {
 
         <div id="workout-top" style={{ maxWidth: 600, margin: "0 auto", padding: "0 12px 24px", paddingBottom: tPanel ? 180 : 96 }}>
           {workoutView === "weights" && <div style={{ background: T.cd, borderRadius: "0 0 14px 14px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", overflow: "hidden" }}>
+
+            {isCurrentWeightDayComplete && <div style={{ padding: "12px 14px", borderBottom: "1px solid " + T.bg, background: T.ok + "10" }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                <div style={{ width: 32, height: 32, borderRadius: 10, background: T.ok, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, flexShrink: 0 }}>✓</div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 12, fontWeight: 900, color: T.ok, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 3 }}>Allenamento completato</div>
+                  <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Il salvataggio locale resta attivo, ma qui puoi forzare subito il backup finale in JSON prima di chiudere la scheda.</div>
+                </div>
+              </div>
+              <button
+                onClick={function() {
+                  saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+                  exportCompletedSessionBackup(logs, safeDayIdx, "manual-complete");
+                  setAutoBackupMsg("Allenamento salvato in locale e backup JSON esportato.");
+                }}
+                style={{ width: "100%", minHeight: 46, marginTop: 10, border: "none", borderRadius: 10, background: T.ok, color: "#fff", fontSize: 13, fontWeight: 900, cursor: "pointer" }}
+              >
+                Salva ed esporta JSON
+              </button>
+            </div>}
 
             {/* Day intro schematic */}
             {(function() {
@@ -8711,7 +9267,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   var guidedRirSummary = getExerciseRirHistorySummary(ex.n);
                   var allSetsLogged = !!(tLog && tLog.sets && sc > 0 && tLog.sets.length >= sc);
                   var logisticsCue = allSetsLogged ? buildLogisticsCue(mergedEx, ex, (dayData.ex || []).slice(i + 1), month) : null;
-                  return <div style={{ padding: "0 14px 14px" }}>
+                  return <div style={{ padding: "0 14px 14px", maxHeight: "min(72dvh, 760px)", overflowY: "auto", WebkitOverflowScrolling: "touch", overscrollBehavior: "contain", touchAction: "pan-y" }} onClick={function(e) { e.stopPropagation(); }}>
                     {/* Cable toggle */}
                     {hasCableToggle && <div style={{ display: "flex", gap: 0, marginBottom: 10, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "40", alignSelf: "flex-start", width: "fit-content" }} onClick={function(e) { e.stopPropagation(); }}>
                       <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = true; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: isCable ? dc : "transparent", color: isCable ? "#fff" : T.sub }}>🔌 Cavi</button>
@@ -8897,10 +9453,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                           <span style={{ fontSize: 13, lineHeight: 1.45 }}>↳</span>
                           <span style={{ fontSize: 12, color: T.tx, lineHeight: 1.55, fontWeight: 700 }}>{logisticsCue.keep}</span>
                         </div>
-                        <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                        {logisticsCue.clear && <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
                           <span style={{ fontSize: 13, lineHeight: 1.45 }}>•</span>
                           <span style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{logisticsCue.clear}</span>
-                        </div>
+                        </div>}
                       </div>
                     </div>}
 
