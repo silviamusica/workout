@@ -3176,7 +3176,6 @@ export default function App() {
   var tAcc = useRef(0);
   var lastSnd = useRef(-1);
   var feedbackCardsRef = useRef(null);
-  var cloudSyncTimerRef = useRef(null);
 
   var T = TH[theme];
   var isBasics = level === "basics";
@@ -4101,17 +4100,15 @@ export default function App() {
 
   useEffect(function() {
     if (!supabase || !cloudUser || cloudHydratedUserId !== cloudUser.id) return;
-    clearTimeout(cloudSyncTimerRef.current);
-    cloudSyncTimerRef.current = setTimeout(function() {
-      var snapshot = buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
-      pushSnapshotToCloud(snapshot, cloudUser.id, true).then(function() {
-        setCloudStatus("Cloud sincronizzato.");
-      }).catch(function() {
-        setCloudStatus("Salvato in locale. Sync cloud in attesa.");
-      });
-    }, 900);
+    var cancelled = false;
+    var snapshot = buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+    pushSnapshotToCloud(snapshot, cloudUser.id, true).then(function() {
+      if (!cancelled) setCloudStatus("Cloud sincronizzato.");
+    }).catch(function() {
+      if (!cancelled) setCloudStatus("Salvato in locale. Sync cloud in attesa.");
+    });
     return function() {
-      clearTimeout(cloudSyncTimerRef.current);
+      cancelled = true;
     };
   }, [
     logs,
