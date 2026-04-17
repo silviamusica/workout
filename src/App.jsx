@@ -6858,13 +6858,19 @@ function isNearBodyweightElasticSession(exName, sets) {
       if (!previous) return { tone: "empty", label: "⚪ Serve un'altra sessione", detail: "Ultima: " + formatSessionSummary(exName, latest.sets, true, false) + ". Serve un confronto per stimare la progressione.", short: "Serve un'altra sessione" };
       var prevTotal = previous.sets.reduce(function(acc, s) { return acc + (s.r === "max" ? 0 : (parseInt(s.r) || 0)); }, 0);
       var third = complete[2] || null;
+      var thirdTotal = null;
       var stagnant = false;
       if (third) {
-        var thirdTotal = third.sets.reduce(function(acc, s) { return acc + (s.r === "max" ? 0 : (parseInt(s.r) || 0)); }, 0);
+        thirdTotal = third.sets.reduce(function(acc, s) { return acc + (s.r === "max" ? 0 : (parseInt(s.r) || 0)); }, 0);
         stagnant = latestTotal <= prevTotal && prevTotal <= thirdTotal;
       }
       if (latestTotal > prevTotal) return { tone: "up", label: "🟢 Stai progredendo", detail: "Totale rip: " + prevTotal + " → " + latestTotal + ". Continua con la stessa variante finche sali.", short: "Totale rip in aumento" };
-      if (stagnant) return { tone: "hold", label: "🟠 Valuta progressione di difficolta", detail: "Totale rip stabile/in calo per piu sessioni (" + prevTotal + " → " + latestTotal + "). Valuta zavorra o variante piu difficile.", short: "Valuta una progressione di difficolta" };
+      if (stagnant) return {
+        tone: "hold",
+        label: "🟠 Ferma da piu sedute",
+        detail: "Nelle ultime sedute il totale rip non sta salendo (" + thirdTotal + " → " + prevTotal + " → " + latestTotal + "). Se tecnica, recuperi e assistenza sono uguali, nella prossima seduta scegli una sola strada: piccola zavorra oppure variante piu difficile.",
+        short: "Rip totali ferme da piu sedute"
+      };
       return { tone: "mid", label: "🟡 Stabile", detail: "Totale rip: " + prevTotal + " → " + latestTotal + ". Prova ad aggiungere 1-2 rip complessive.", short: "Totale rip stabile" };
     }
     var reps = latest.sets.map(function(s) { return parseInt(s.r) || 0; });
@@ -6962,6 +6968,14 @@ function isNearBodyweightElasticSession(exName, sets) {
         tone: "hold",
         title: "Consolida prima di salire",
         action: "Tieni lo stesso peso e rendi tutte le serie pulite e dentro il minimo del range. Oggi conta più la qualità del gesto del numero.",
+        detail: prog.detail
+      };
+    }
+    if (prog.label.indexOf("Ferma da piu sedute") >= 0) {
+      return {
+        tone: "hold",
+        title: "Stallo confermato",
+        action: "Non restare a ripetere identico all'infinito. Se le ultime sedute erano davvero comparabili, nella prossima prova una sola modifica: zavorra minima oppure variante piu difficile. Se invece erano diverse per recupero, assistenza o tecnica, prima rendile uguali.",
         detail: prog.detail
       };
     }
@@ -8446,19 +8460,16 @@ function isNearBodyweightElasticSession(exName, sets) {
         }
 
         return <div id="progressi-top" style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }} onClick={function() { setProgTooltip(null); }}>
-          <div style={{ fontSize: 18, fontWeight: 900, color: T.tx, marginBottom: 4, padding: "4px 0 8px" }}>📊 Progressi</div>
-          <details style={{ background: T.cd, borderRadius: 16, marginBottom: 10, border: "1px solid " + dc + "18", overflow: "hidden" }}>
-            <summary style={{ cursor: "pointer", listStyle: "none", padding: "14px 16px", fontSize: 14, fontWeight: 800, color: T.tx }}>
-              ℹ️ Come usare Progressi
-            </summary>
-            <div style={{ padding: "0 16px 14px", display: "grid", gap: 5, fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
-              <div><b style={{ color: dc }}>Ti dice se stai andando avanti</b> nel mese corrente: continuita, volume totale e andamento degli esercizi.</div>
-              <div><b style={{ color: dc }}>Settimane</b> ti mostra quante sedute pesi hai fatto e quanto lavoro hai accumulato.</div>
-              <div><b style={{ color: dc }}>Dettaglio settimana</b> ti fa vedere gli allenamenti reali che hai registrato, con esercizi e serie.</div>
-              <div><b style={{ color: dc }}>Andamento esercizi</b> confronta l'ultima settimana con quella precedente: meglio, stabile o peggio.</div>
-              <div><b style={{ color: dc }}>Importante</b>: qui contano solo le sedute pesi. Per cardio e indicazioni relative guarda la parte Teoria e i giorni cardio della scheda.</div>
-            </div>
-          </details>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, padding: "4px 0 8px" }}>
+            <div style={{ fontSize: 18, fontWeight: 900, color: T.tx, flex: 1 }}>📊 Progressi</div>
+            <button onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === "progressi-help" ? null : "progressi-help"); }} style={{ width: 22, height: 22, borderRadius: "50%", border: "1px solid " + dc + "40", background: progTooltip === "progressi-help" ? dc : "transparent", color: progTooltip === "progressi-help" ? "#fff" : dc, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}>?</button>
+          </div>
+          {progTooltip === "progressi-help" && <div style={{ marginBottom: 10, padding: "10px 12px", borderRadius: 9, background: dc + "10", border: "1px solid " + dc + "20", fontSize: 11, color: T.sub, lineHeight: 1.7 }} onClick={function(e) { e.stopPropagation(); }}>
+            <div><b style={{ color: dc }}>Questa pagina</b> legge solo le sedute pesi del mese corrente.</div>
+            <div style={{ marginTop: 4 }}><b style={{ color: dc }}>Settimane</b> mostra quante sedute hai fatto e il lavoro totale accumulato.</div>
+            <div style={{ marginTop: 4 }}><b style={{ color: dc }}>Fondamentali</b> confronta subito ultima settimana, settimana prima e massimo del mese.</div>
+            <div style={{ marginTop: 4 }}><b style={{ color: dc }}>Andamento esercizi</b> ti fa vedere se l'ultima settimana e migliore, simile o peggiore della precedente.</div>
+          </div>}
 
           {allEntries.length === 0 ? <div style={{ background: T.cd, borderRadius: 12, padding: 24, textAlign: "center" }}>
             <div style={{ fontSize: 32, marginBottom: 8 }}>🏋️</div>
@@ -8476,7 +8487,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   var toneColor = item.guide.tone === "up" ? T.ok : item.guide.tone === "mid" ? "#B7791F" : item.guide.tone === "hold" ? "#C62828" : T.sub;
                   return <div key={item.name} style={{ padding: "11px 14px", borderBottom: ii < priorityGuides.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                      <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, flex: 1 }}>{item.name}</div>
+                      <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, flex: 1 }}>{getExerciseDisplayName(item.name)}</div>
                       <div style={{ fontSize: 10, fontWeight: 800, color: toneColor, textTransform: "uppercase", letterSpacing: 0.6 }}>{item.guide.title}</div>
                     </div>
                     <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.65 }}>{item.guide.action}</div>
@@ -8561,7 +8572,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                               var exerciseSummary = formatSessionSummary(entry.exercise, sortedSets, isBW, isTimeExercise);
                               var restSummary = getEntryRestSummary(entry);
                               return <div key={entry.exercise + "-" + ei2} style={{ display: "grid", gap: 2 }}>
-                                <div style={{ fontSize: 11, fontWeight: 700, color: T.tx }}>{entry.exercise}</div>
+                                <div style={{ fontSize: 11, fontWeight: 700, color: T.tx }}>{getExerciseDisplayName(entry.exercise)}</div>
                                 <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.55 }}>{exerciseSummary || "Nessuna serie salvata"}</div>
                                 <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.55 }}>{restSummary.detail}</div>
                                 {sortedSets.length > 0 && <div style={{ display: "grid", gap: 6, marginTop: 4 }}>
@@ -8734,7 +8745,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   return <div key={item.name} style={{ padding: "11px 14px", borderBottom: ii < keyLiftProgress.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 10, alignItems: "center" }}>
                       <div>
-                        <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, marginBottom: 4 }}>{item.name}</div>
+                        <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, marginBottom: 4 }}>{getExerciseDisplayName(item.name)}</div>
                         <div style={{ display: "flex", flexWrap: "wrap", gap: 10, fontSize: 11, color: T.sub, lineHeight: 1.5 }}>
                           <span><b style={{ color: T.tx }}>Ultimo:</b> {lastLabel}</span>
                           {lastTotalReps !== null && <span><b style={{ color: T.tx }}>Rip totali:</b> {lastTotalReps}</span>}
@@ -8821,7 +8832,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   return <div key={ii} style={{ padding: "10px 14px", borderBottom: ii < rirProgress.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
                       <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 2 }}>{item.name}</div>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 2 }}>{getExerciseDisplayName(item.name)}</div>
                         <div style={{ fontSize: 10, color: T.sub }}>
                           {item.weeks} {item.weeks === 1 ? "settimana" : "settimane"} · ultimo: RIR medio {item.last}
                           {item.prev !== null ? (" · prima: " + item.prev) : ""}
