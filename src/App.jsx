@@ -2823,6 +2823,34 @@ var BREATHING_TABLE_ROWS = BREATH_COMPARE_ROWS.map(function(row) {
 });
 var APP_VERSION = typeof __APP_VERSION__ === "string" ? __APP_VERSION__ : "dev";
 var APP_BUILD_TIME = typeof __BUILD_TIME__ === "string" ? __BUILD_TIME__ : "";
+var V4_DAY_SPLIT_PLAN = {
+  "Giorno 1": {
+    am: ["Squat", "Squat Bulgaro"],
+    pm: ["Hip Thrust Bilanciere", "Leg Curl al Cavo", "Ab Wheel"],
+  },
+  "Giorno 2": {
+    am: ["Trazioni", "T-bar Row"],
+    pm: ["Panca", "Face Pull", "Curl Bicipiti"],
+  },
+  "Giorno 4": {
+    am: ["Stacco da Terra", "Stacco Rumeno"],
+    pm: ["Hip Thrust Bilanciere", "Affondi", "Hyperextension", "Fitball Hamstring Curl"],
+  },
+  "Giorno 5": {
+    am: ["Military Press", "Trazioni Supine"],
+    pm: ["Push-Up", "Dip alle Parallele", "Tricipiti Cavo", "Woodchop"],
+  },
+};
+
+function normalizeSplitDayPrefs(source) {
+  if (!source || typeof source !== "object") return {};
+  var next = {};
+  Object.keys(source).forEach(function(key) {
+    next[key] = source[key] === "split" ? "split" : "single";
+  });
+  return next;
+}
+
 function getBreath(name) { return BREATH_RULES[name] || null; }
 function fmtTime(ms) {
   var s = Math.floor(ms / 1000);
@@ -2858,6 +2886,7 @@ export default function App() {
   var [dismissedSeriesBanner, setDismissedSeriesBanner] = useState(false);
   var [focusMode, setFocusMode] = useState(false);
   var [warmupAlt, setWarmupAlt] = useState({});
+  var [splitDayPrefs, setSplitDayPrefs] = useState({});
   var [workoutView, setWorkoutView] = useState("weights");
   var [cardioIdx, setCardioIdx] = useState(0);
   var [stretchIdx, setStretchIdx] = useState(0);
@@ -2877,6 +2906,100 @@ export default function App() {
   }
   function openScapulaModal() {
     setScapulaOpen(true);
+  }
+
+  function getDaySplitPrefKey(day, idx, levelHint) {
+    var safeLevel = levelHint || level;
+    var dayLabel = day && day.name ? day.name : ("day-" + idx);
+    return safeLevel + ":" + dayLabel;
+  }
+
+  function getCurrentDayExerciseName(rawEx, activeMonth) {
+    if (!rawEx || typeof rawEx !== "object") return "";
+    if (activeMonth === 1) return rawEx.n || "";
+    var variant = rawEx["v" + activeMonth];
+    if (variant && variant.n) return variant.n;
+    return rawEx.n || "";
+  }
+
+  function getSplitSessionWarmupHint(groupKey) {
+    if (groupKey === "am") {
+      return "AM: fai il riscaldamento completo del giorno prima del primo esercizio.";
+    }
+    if (groupKey === "pm") {
+      return "PM: fai 3-5 minuti leggeri e 1-2 serie di avvicinamento prima del primo esercizio della seconda sessione.";
+    }
+    return "";
+  }
+
+  function buildDayExerciseGroups(day, activeMonth, splitMode) {
+    var items = (day && day.ex ? day.ex : []).map(function(rawEx, index) {
+      return { rawEx: rawEx, index: index, name: getCurrentDayExerciseName(rawEx, activeMonth) };
+    });
+    if (!items.length) return [];
+    if (!splitMode) {
+      return [{
+        key: "single",
+        label: "Sessione unica",
+        shortLabel: "Unica",
+        hint: "",
+        items: items,
+      }];
+    }
+    var plan = day && day.name ? V4_DAY_SPLIT_PLAN[day.name] : null;
+    if (!plan) {
+      return [{
+        key: "single",
+        label: "Sessione unica",
+        shortLabel: "Unica",
+        hint: "",
+        items: items,
+      }];
+    }
+    var grouped = [];
+    ["am", "pm"].forEach(function(groupKey) {
+      var names = plan[groupKey] || [];
+      var groupItems = [];
+      names.forEach(function(name) {
+        var found = items.find(function(item) { return item.name === name; });
+        if (found) groupItems.push(found);
+      });
+      if (groupItems.length) {
+        grouped.push({
+          key: groupKey,
+          label: groupKey === "am" ? "AM" : "PM",
+          shortLabel: groupKey === "am" ? "Mattina" : "Sera",
+          hint: getSplitSessionWarmupHint(groupKey),
+          items: groupItems,
+        });
+      }
+    });
+    var covered = {};
+    grouped.forEach(function(group) {
+      group.items.forEach(function(item) {
+        covered[item.index] = true;
+      });
+    });
+    var leftovers = items.filter(function(item) { return !covered[item.index]; });
+    if (leftovers.length) {
+      grouped.push({
+        key: "extra",
+        label: "Extra",
+        shortLabel: "Extra",
+        hint: "",
+        items: leftovers,
+      });
+    }
+    return grouped;
+  }
+
+  function estimateExerciseGroupMinutes(groupItems, activeMonth) {
+    if (!groupItems || !groupItems.length) return 0;
+    var total = groupItems.reduce(function(acc, item) {
+      return acc + estimateExerciseMinutes(item.rawEx, getExForMonthValue(item.rawEx, activeMonth));
+    }, 0);
+    total += Math.max(0, groupItems.length - 1);
+    return Math.max(5, Math.round(total / 5) * 5);
   }
 
   function makeNavSnapshot() {
@@ -3464,6 +3587,10 @@ export default function App() {
   }, {});
   var dayData = activeDays[safeDayIdx];
   var estimatedDayMinutes = dayData ? estimateDayMinutes(dayData, month) : 0;
+  var splitPlanForDay = level === "v4" && dayData ? V4_DAY_SPLIT_PLAN[dayData.name] || null : null;
+  var splitPrefKey = dayData ? getDaySplitPrefKey(dayData, safeDayIdx) : "";
+  var isDaySplitActive = !!(splitPlanForDay && splitDayPrefs[splitPrefKey] === "split");
+  var dayExerciseGroups = buildDayExerciseGroups(dayData, month, isDaySplitActive);
   var isCurrentWeightDayComplete = workoutView === "weights" && !!dayData && !dayData.cardio && !dayData.rest && isDayWorkoutComplete(logs, safeDayIdx);
   var activeOpenRawEx = dayData && dayData.ex && openEx !== null && dayData.ex[openEx] ? dayData.ex[openEx] : null;
   var activeOpenMergedEx = activeOpenRawEx ? (activeOpenRawEx.cable && activeOpenRawEx.free ? Object.assign({}, activeOpenRawEx, activeOpenRawEx.defaultFree ? activeOpenRawEx.free : activeOpenRawEx.cable) : activeOpenRawEx) : null;
@@ -3736,6 +3863,7 @@ export default function App() {
     var nextFontScale = overrides && isFinite(overrides.fontScale) && overrides.fontScale >= 0.9 && overrides.fontScale <= 1.5 ? overrides.fontScale : fontScale;
     var nextWorkflowEnabled = overrides && typeof overrides.exerciseWorkflowEnabled === "boolean" ? overrides.exerciseWorkflowEnabled : exerciseWorkflowEnabled;
     var nextExtraInfoEnabled = overrides && typeof overrides.extraInfoEnabled === "boolean" ? overrides.extraInfoEnabled : extraInfoEnabled;
+    var nextSplitDayPrefs = normalizeSplitDayPrefs(overrides && overrides.splitDayPrefs && typeof overrides.splitDayPrefs === "object" ? overrides.splitDayPrefs : splitDayPrefs);
     return {
       savedAt: new Date().toISOString(),
       logs: sourceLogs || {},
@@ -3756,6 +3884,7 @@ export default function App() {
         fontScale: nextFontScale,
         exerciseWorkflowEnabled: nextWorkflowEnabled,
         extraInfoEnabled: nextExtraInfoEnabled,
+        splitDayPrefs: nextSplitDayPrefs,
         guidedMode: !!sourceGuidedMode,
         guidedRecoveryEnabled: !!sourceGuidedRecovery,
         calibrationMode: !!sourceCalibrationMode,
@@ -3825,9 +3954,9 @@ export default function App() {
       } catch (e) {}
       var remoteSavedAt = typeof remote.payload.savedAt === "string" ? remote.payload.savedAt : (remote.updated_at || "");
       if (remoteSavedAt && (!localSavedAt || remoteSavedAt > localSavedAt)) {
-        var importedProfile = remote.payload.profile && typeof remote.payload.profile === "object" ? remote.payload.profile : {};
-        var importedPreferences = remote.payload.preferences && typeof remote.payload.preferences === "object" ? remote.payload.preferences : {};
-        var importedStretchLogs = remote.payload.stretchLogs && typeof remote.payload.stretchLogs === "object" ? remote.payload.stretchLogs : {};
+          var importedProfile = remote.payload.profile && typeof remote.payload.profile === "object" ? remote.payload.profile : {};
+          var importedPreferences = remote.payload.preferences && typeof remote.payload.preferences === "object" ? remote.payload.preferences : {};
+          var importedStretchLogs = remote.payload.stretchLogs && typeof remote.payload.stretchLogs === "object" ? remote.payload.stretchLogs : {};
         saveData(
           normalizeImportedWorkoutLogs(remote.payload.logs || {}, importedPreferences.level),
           remote.payload.cardioLogs || {},
@@ -3844,7 +3973,8 @@ export default function App() {
             theme: importedPreferences.theme,
             fontScale: parseFloat(importedPreferences.fontScale),
             exerciseWorkflowEnabled: typeof importedPreferences.exerciseWorkflowEnabled === "boolean" ? importedPreferences.exerciseWorkflowEnabled : undefined,
-            extraInfoEnabled: typeof importedPreferences.extraInfoEnabled === "boolean" ? importedPreferences.extraInfoEnabled : undefined
+            extraInfoEnabled: typeof importedPreferences.extraInfoEnabled === "boolean" ? importedPreferences.extraInfoEnabled : undefined,
+            splitDayPrefs: importedPreferences.splitDayPrefs
           }
         );
         setStretchLogs(importedStretchLogs);
@@ -3968,6 +4098,7 @@ export default function App() {
             if (isFinite(pfs) && pfs >= 0.9 && pfs <= 1.5) setFontScale(pfs);
             if (typeof parsed.preferences.exerciseWorkflowEnabled === "boolean") setExerciseWorkflowEnabled(parsed.preferences.exerciseWorkflowEnabled);
             if (typeof parsed.preferences.extraInfoEnabled === "boolean") setExtraInfoEnabled(parsed.preferences.extraInfoEnabled);
+            if (parsed.preferences.splitDayPrefs && typeof parsed.preferences.splitDayPrefs === "object") setSplitDayPrefs(normalizeSplitDayPrefs(parsed.preferences.splitDayPrefs));
           }
         } else if (parsed && typeof parsed === "object") {
           setLogs(normalizeImportedWorkoutLogs(parsed, level));
@@ -4137,6 +4268,7 @@ export default function App() {
     fontScale,
     exerciseWorkflowEnabled,
     extraInfoEnabled,
+    splitDayPrefs,
     cloudUser,
     cloudHydratedUserId
   ]);
@@ -4157,6 +4289,7 @@ export default function App() {
     var nextFontScale = overrides && isFinite(overrides.fontScale) && overrides.fontScale >= 0.9 && overrides.fontScale <= 1.5 ? overrides.fontScale : fontScale;
     var nextWorkflowEnabled = overrides && typeof overrides.exerciseWorkflowEnabled === "boolean" ? overrides.exerciseWorkflowEnabled : exerciseWorkflowEnabled;
     var nextExtraInfoEnabled = overrides && typeof overrides.extraInfoEnabled === "boolean" ? overrides.extraInfoEnabled : extraInfoEnabled;
+    var nextSplitDayPrefs = normalizeSplitDayPrefs(overrides && overrides.splitDayPrefs && typeof overrides.splitDayPrefs === "object" ? overrides.splitDayPrefs : splitDayPrefs);
     setLogs(nextLogs);
     setCardioLogs(nextCardioLogs);
     setCalibrationProfiles(nextProfiles);
@@ -4164,6 +4297,7 @@ export default function App() {
     setGuidedMode(nextGuided);
     setBarbellWeight(nextBarbell);
     setGuidedRecoveryEnabled(nextGuidedRecovery);
+    setSplitDayPrefs(nextSplitDayPrefs);
     try {
       var snapshot = buildPersistedStatePayload(
         nextLogs,
@@ -4181,7 +4315,8 @@ export default function App() {
           theme: nextTheme,
           fontScale: nextFontScale,
           exerciseWorkflowEnabled: nextWorkflowEnabled,
-          extraInfoEnabled: nextExtraInfoEnabled
+          extraInfoEnabled: nextExtraInfoEnabled,
+          splitDayPrefs: nextSplitDayPrefs
         }
       );
       var raw = JSON.stringify(snapshot);
@@ -4207,7 +4342,8 @@ export default function App() {
             theme: nextTheme,
             fontScale: nextFontScale,
             exerciseWorkflowEnabled: nextWorkflowEnabled,
-            extraInfoEnabled: nextExtraInfoEnabled
+            extraInfoEnabled: nextExtraInfoEnabled,
+            splitDayPrefs: nextSplitDayPrefs
           }
         );
         localStorage.setItem(SK, JSON.stringify(lightSnapshot));
@@ -4219,7 +4355,7 @@ export default function App() {
         setAutoBackupMsg("Salvataggio locale non riuscito: spazio del browser probabilmente pieno. Esporta subito il JSON e ricarica la pagina dopo aver reimportato il backup piu recente.");
       }
     }
-  }, [guidedMode, guidedRecoveryEnabled, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled, stretchLogs]);
+  }, [guidedMode, guidedRecoveryEnabled, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled, splitDayPrefs, stretchLogs]);
 
   function checkSound(ms, mode, target) {
     if (mode === "countdown") {
@@ -4911,6 +5047,7 @@ export default function App() {
       fontScale: fontScale,
       exerciseWorkflowEnabled: exerciseWorkflowEnabled,
       extraInfoEnabled: extraInfoEnabled,
+      splitDayPrefs: normalizeSplitDayPrefs(splitDayPrefs),
       guidedMode: guidedMode,
       guidedRecoveryEnabled: guidedRecoveryEnabled,
       calibrationMode: calibrationMode,
@@ -4944,6 +5081,7 @@ export default function App() {
       calibrationMode: calibrationMode ? "ON" : "OFF",
       extraInfoEnabled: extraInfoEnabled ? "ON" : "OFF",
       exerciseWorkflowEnabled: exerciseWorkflowEnabled ? "ON" : "OFF",
+      splitDaysConfigured: Object.keys(splitDayPrefs || {}).filter(function(key) { return splitDayPrefs[key] === "split"; }).length,
       barbellWeight: barbellWeight
     };
   }
@@ -4960,6 +5098,7 @@ export default function App() {
     var importedWorkflow = typeof preferences.exerciseWorkflowEnabled === "boolean" ? preferences.exerciseWorkflowEnabled : null;
     var importedExtraInfo = typeof preferences.extraInfoEnabled === "boolean" ? preferences.extraInfoEnabled : null;
     var importedGuidedRecovery = typeof preferences.guidedRecoveryEnabled === "boolean" ? preferences.guidedRecoveryEnabled : null;
+    var importedSplitDayPrefs = preferences.splitDayPrefs && typeof preferences.splitDayPrefs === "object" ? normalizeSplitDayPrefs(preferences.splitDayPrefs) : null;
 
     setUserName(importedName);
     try {
@@ -4992,6 +5131,9 @@ export default function App() {
     if (importedExtraInfo !== null) {
       setExtraInfoEnabled(importedExtraInfo);
       try { localStorage.setItem("wt-extra-info", importedExtraInfo ? "1" : "0"); } catch (e) {}
+    }
+    if (importedSplitDayPrefs !== null) {
+      setSplitDayPrefs(importedSplitDayPrefs);
     }
     if (importedGuidedRecovery !== null) {
       setGuidedRecoveryEnabled(importedGuidedRecovery);
@@ -6915,7 +7057,8 @@ function isNearBodyweightElasticSession(exName, sets) {
               theme: importedPreferences.theme,
               fontScale: parseFloat(importedPreferences.fontScale),
               exerciseWorkflowEnabled: typeof importedPreferences.exerciseWorkflowEnabled === "boolean" ? importedPreferences.exerciseWorkflowEnabled : undefined,
-              extraInfoEnabled: typeof importedPreferences.extraInfoEnabled === "boolean" ? importedPreferences.extraInfoEnabled : undefined
+              extraInfoEnabled: typeof importedPreferences.extraInfoEnabled === "boolean" ? importedPreferences.extraInfoEnabled : undefined,
+              splitDayPrefs: importedPreferences.splitDayPrefs
             }
           );
           setStretchLogs(importedStretchLogs);
@@ -7214,7 +7357,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); setCardioLogs({}); setStretchLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(false); setBarbellWeight(BARBELL_BASE_KG); setExtraInfoEnabled(true); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setGuidedFillerHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); localStorage.removeItem("wt-barbell-weight"); localStorage.removeItem("wt-stretch-logs"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setCardioLogs({}); setStretchLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(false); setBarbellWeight(BARBELL_BASE_KG); setExtraInfoEnabled(true); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setGuidedFillerHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); setSplitDayPrefs({}); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); localStorage.removeItem("wt-barbell-weight"); localStorage.removeItem("wt-stretch-logs"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
           </div>
         </div>
       </div>}
@@ -9251,12 +9394,55 @@ function isNearBodyweightElasticSession(exName, sets) {
             {!dayData.cardio && !dayData.rest && <div id="section-esercizi" style={{ borderBottom: "1px solid " + T.bg }}>
               <div onClick={function() { var opening = !showExSection; setShowExSection(opening); if (opening) { setShowIntro(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-esercizi"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showExSection ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
                 <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#128170;</div>
-                <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Esercizi</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{dayData.ex ? dayData.ex.length + " esercizi" : ""}</div></div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Esercizi</div>
+                  <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>
+                    {dayData.ex ? dayData.ex.length + " esercizi" : ""}
+                    {splitPlanForDay ? (isDaySplitActive ? " · split AM/PM" : " · sessione unica") : ""}
+                  </div>
+                </div>
                 <div style={{ fontSize: 13, color: dc, transform: showExSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
             {showExSection && <div>
+            {splitPlanForDay && <div style={{ padding: "12px 14px 6px" }}>
+              <div style={{ borderRadius: 12, border: "1px solid " + dc + "22", background: dc + "08", padding: 12 }}>
+                <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Formato giornata</div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0,1fr))", gap: 8 }}>
+                  {[{ key: "single", label: "Sessione unica", hint: "Tutto nello stesso allenamento." }, { key: "split", label: "Split in due", hint: "AM per i fondamentali, PM per accessori e core." }].map(function(option) {
+                    var active = (option.key === "split") === isDaySplitActive;
+                    return <button
+                      key={option.key}
+                      onClick={function(e) {
+                        e.stopPropagation();
+                        var nextPrefs = Object.assign({}, splitDayPrefs);
+                        nextPrefs[splitPrefKey] = option.key;
+                        saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled, { splitDayPrefs: nextPrefs });
+                      }}
+                      style={{ textAlign: "left", minHeight: 64, padding: "10px 12px", borderRadius: 10, border: "1px solid " + (active ? dc + "55" : T.bg), background: active ? T.cd : T.sb, color: T.tx, cursor: "pointer" }}
+                    >
+                      <div style={{ fontSize: 12, fontWeight: 800, color: active ? dc : T.tx, marginBottom: 4 }}>{option.label}</div>
+                      <div style={{ fontSize: 11, lineHeight: 1.5, color: T.sub }}>{option.hint}</div>
+                    </button>;
+                  })}
+                </div>
+              </div>
+            </div>}
             {/* Exercises list */}
-            {dayData.ex && dayData.ex.map(function(rawEx, i) {
+            {dayExerciseGroups.map(function(group, groupIndex) {
+              var groupMinutes = estimateExerciseGroupMinutes(group.items, month);
+              return <div key={group.key || groupIndex}>
+                {isDaySplitActive && group.items.length > 0 && <div style={{ padding: "12px 14px 8px", background: groupIndex === 0 ? "transparent" : T.sb }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, marginBottom: group.hint ? 6 : 0 }}>
+                    <div>
+                      <div style={{ fontSize: 11, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.9 }}>{group.label} · {group.shortLabel}</div>
+                      <div style={{ fontSize: 11, color: T.sub, marginTop: 2 }}>{"~" + groupMinutes + " min · " + group.items.length + " esercizi"}</div>
+                    </div>
+                  </div>
+                  {group.hint && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55, padding: "9px 10px", borderRadius: 10, background: T.cd, border: "1px solid " + T.bg }}>{group.hint}</div>}
+                </div>}
+            {group.items.map(function(entry) {
+              var rawEx = entry.rawEx;
+              var i = entry.index;
               var cableKey = dayIdx + "_" + i;
               var hasCableToggle = rawEx.cable && rawEx.free;
               var isCable = hasCableToggle ? (cableKey in cableMode ? cableMode[cableKey] : !rawEx.defaultFree) : false;
@@ -9484,15 +9670,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                           })}
                           <span style={{ fontSize: 10, color: T.sub, lineHeight: 1.5 }}>Attuale: {barbellWeight} kg</span>
                         </div>
-                      </div>}
-                      {usesBand && ex.n === "Dip alle Parallele" && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: T.sb, border: "1px solid " + T.bg, fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
-                        Scegli una tacca da 1 a 10 che rappresenta il tuo elastico attuale: 1 = massimo aiuto, 10 = minimo aiuto. Usala come riferimento fisso nelle prossime sedute.
-                      </div>}
-                      {!isBW && !usesBand && usesBarbellTotal(ex.n) && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: T.sb, border: "1px solid " + T.bg, fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
-                        Inserisci solo i kg dei dischi. Il bilanciere da 20 kg viene sommato automaticamente al totale.
-                      </div>}
-                      {effectiveCalibrationMode && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: T.sb, border: "1px solid " + T.bg, fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
-                        Nella <b style={{ color: T.tx }}>prima serie test</b> il RIR si inserisce nel modale finale come <b style={{ color: T.tx }}>RIR / riserva</b>. Dalla <b style={{ color: T.tx }}>seconda serie</b> puoi scriverlo direttamente nella riga.
                       </div>}
                       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                         {Array.from({ length: sc }).map(function(_, si) {
@@ -9798,6 +9975,8 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>}
                   </div>;
                 })()}
+              </div>;
+            })}
               </div>;
             })}
             {!isBasics && !isBeginner && dayData && !dayData.cardio && ((dayData.str && dayData.str.length) || dayData.hipBonus) && <div style={{ padding: "14px", borderTop: "1px solid " + T.bg, background: T.st + "08" }}>
