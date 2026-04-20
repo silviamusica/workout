@@ -10131,6 +10131,9 @@ function isNearBodyweightElasticSession(exName, sets) {
               var rowBreath = getBreath(ex.n);
               var rowBreathColor = T.sub;
               var rowSupersetMeta = isDaySupersetActive ? getSupersetBlockForExercise(dayData && dayData.name, ex.n) : null;
+              var supersetPairMinutes = rowSupersetMeta && rowSupersetMeta.role === "a"
+                ? estimateSupersetPairMinutes(dayData && dayData.name, getFastSupersetPair(dayData && dayData.name, ex.n).pair, month)
+                : 0;
               var rowProgColor = prog ? (prog.tone === "up" ? T.ok : prog.tone === "hold" ? "#C62828" : T.sub) : T.sub;
               var rowSkills = getExerciseCompetencies(ex.n);
               var calibrationNeed = getCalibrationNeed(ex.n, ex.s);
@@ -10146,6 +10149,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 8px", borderRadius: 999, background: dc + "12", color: dc, fontSize: 10, fontWeight: 900, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Superset</div>
                   <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, lineHeight: 1.4 }}>{rowSupersetMeta.title}</div>
                   <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginTop: 3 }}>Recupero dopo la coppia: {fmtLabel(rowSupersetMeta.rest)}</div>
+                  {!!supersetPairMinutes && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginTop: 2 }}>Tempo totale: ~{supersetPairMinutes} min</div>}
                 </div>}
                 <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); if (opening) { setHistPage(function(p) { var n = Object.assign({}, p); n[i] = 0; return n; }); setTimeout(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 50); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
                   {isBeginner && <div
@@ -10170,11 +10174,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                       {ex.s && <span style={{ fontSize: isBeginner ? 14 : 12, color: isBeginner ? dc : T.tx, fontWeight: 800, letterSpacing: 0.1 }}>{fmtSerie(ex.s)}</span>}
                       {!isBeginner && ex.rpe ? <span onClick={function(e) { e.stopPropagation(); setRpeOpen(true); }} style={{ cursor: "pointer", color: dc, fontSize: 10, fontWeight: 700, textDecoration: "underline dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, whiteSpace: "nowrap" }}>{formatEffortLabel(ex.rpe, ex.s)}</span> : ""}
                       {!isBeginner && (function() {
-                        if (rowSupersetMeta) {
-                          if (rowSupersetMeta.role !== "a") return null;
-                          var pairMinutes = estimateSupersetPairMinutes(dayData && dayData.name, getFastSupersetPair(dayData && dayData.name, ex.n).pair, month);
-                          return pairMinutes ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 600 }}>{"~" + pairMinutes + " min coppia"}</span> : null;
-                        }
+                        if (rowSupersetMeta) return null;
                         var mins = estimateExerciseMinutes(rawEx, ex);
                         return mins ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 600 }}>{"~" + mins + " min"}</span> : null;
                       })()}
@@ -10268,6 +10268,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                       <div style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Superset</div>
                       <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, lineHeight: 1.4 }}>{flowSupersetMeta.title}</div>
                       <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55, marginTop: 4 }}>Fai i due esercizi di fila. Recupero solo dopo il secondo: {fmtLabel(flowSupersetMeta.rest)}.</div>
+                      {!!supersetPairMinutes && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55, marginTop: 2 }}>Tempo totale: ~{supersetPairMinutes} min</div>}
                     </div>}
 
                     {!isBasics && flowSupersetMeta && <div style={{ marginBottom: 8, display: "inline-flex", alignItems: "center", gap: 6, padding: "6px 10px", borderRadius: 999, background: dc + "10", border: "1px solid " + dc + "25", color: dc, fontSize: 10, fontWeight: 800 }}>
