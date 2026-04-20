@@ -9603,7 +9603,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               var exDoneKey = dayIdx + "_" + i;
               var isExDone = !!(isBeginner && completedExercises[exDoneKey]);
               return <div key={i} id={"ex-row-" + i} style={{ borderBottom: "1px solid " + T.bg, opacity: isDimmed ? 0.38 : 1, transition: "opacity 0.25s" }}>
-                <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); if (opening) { setHistPage(function(p) { var n = Object.assign({}, p); n[i] = 0; return n; }); requestAnimationFrame(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
+                <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); if (opening) { setHistPage(function(p) { var n = Object.assign({}, p); n[i] = 0; return n; }); setTimeout(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 50); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
                   {isBeginner && <div
                     onClick={function(e) { e.stopPropagation(); setCompletedExercises(function(prev) { var next = Object.assign({}, prev); if (next[exDoneKey]) { delete next[exDoneKey]; } else { next[exDoneKey] = true; } return next; }); }}
                     style={{ width: 28, height: 28, borderRadius: "50%", border: "2px solid " + (isExDone ? T.ok : dc + "50"), background: isExDone ? T.ok : "transparent", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, transition: "background 0.2s, border-color 0.2s", cursor: "pointer" }}
@@ -9648,12 +9648,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                         setEditing(null);
                         setShowImg(null);
                         setShowReg(i);
-                        requestAnimationFrame(function() {
-                          requestAnimationFrame(function() {
-                            var el = document.getElementById("reg-block-" + i);
-                            if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
-                          });
-                        });
+                        setTimeout(function() {
+                          var el = document.getElementById("reg-block-" + i);
+                          if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+                        }, 50);
                       }}
                       style={{ minHeight: 28, padding: "0 9px", border: "1px solid " + dc + "30", borderRadius: 999, background: dc + "10", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}
                     >
@@ -9706,7 +9704,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   var allSetsLogged = !!(tLog && tLog.sets && sc > 0 && tLog.sets.length >= sc);
                   var logisticsCue = allSetsLogged ? buildLogisticsCue(mergedEx, ex, (dayData.ex || []).slice(i + 1), month) : null;
                   var compactExerciseCard = !isBasics && compactMode;
-                  return <div style={{ padding: compactExerciseCard ? "0 12px 12px" : "0 14px 14px", maxHeight: "min(72dvh, 760px)", overflowY: "auto", WebkitOverflowScrolling: "touch", overscrollBehavior: "contain", touchAction: "pan-y" }} onClick={function(e) { e.stopPropagation(); }}>
+                  return <div style={{ padding: compactExerciseCard ? "0 12px 12px" : "0 14px 14px" }} onClick={function(e) { e.stopPropagation(); }}>
                     {/* Cable toggle */}
                     {hasCableToggle && <div style={{ display: "flex", gap: 0, marginBottom: 10, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "40", alignSelf: "flex-start", width: "fit-content" }} onClick={function(e) { e.stopPropagation(); }}>
                       <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = true; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: isCable ? dc : "transparent", color: isCable ? "#fff" : T.sub }}>🔌 Cavi</button>
@@ -9816,7 +9814,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                                     </div>}
                                   </div>
                                   <div style={{ display: "flex", gap: 8 }}>
-                                    <button onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : plateInputToStoredWeight(ex.n, tmpW, barbellWeight)), tmpR, isBW, tmpRir); }} style={{ flex: 1, minHeight: 42, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 14, cursor: "pointer", fontWeight: 800, touchAction: "manipulation" }}>Salva ✓</button>
+                                    <button onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : plateInputToStoredWeight(ex.n, tmpW, barbellWeight)), tmpR, isBW, tmpRir); var isLastSet = si === sc - 1; if (isLastSet) { var nextIdx = i + 1; var exList = dayData.ex || []; if (nextIdx < exList.length) { setTimeout(function() { setOpenEx(nextIdx); setHistPage(function(p) { var n = Object.assign({}, p); n[nextIdx] = 0; return n; }); setTimeout(function() { var el = document.getElementById("ex-row-" + nextIdx); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 50); }, 600); } else { setTimeout(function() { setOpenEx(null); }, 600); } } }} style={{ flex: 1, minHeight: 42, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 14, cursor: "pointer", fontWeight: 800, touchAction: "manipulation" }}>Salva ✓</button>
                                     <button onClick={function(e) { e.stopPropagation(); setEditing(null); setTmpW(""); setTmpR(""); setTmpRir(""); }} style={{ minWidth: 84, minHeight: 42, background: T.bg, color: T.sub, border: "none", borderRadius: 8, fontSize: 13, cursor: "pointer", fontWeight: 700, touchAction: "manipulation" }}>Annulla</button>
                                   </div>
                                 </div>
