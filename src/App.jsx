@@ -135,6 +135,7 @@ import img_w_BandDislocate from "./images/warmup_stretch/Band dislocate.gif";
 import img_w_KettlebellHalo from "./images/warmup_stretch/Kettlebell halo.gif";
 import img_w_KettlebellSwing from "./images/warmup_stretch/kettlebell swing.webp";
 import img_w_SaltoFitBoxBasso from "./images/warmup_stretch/Salto su fit box basso.gif";
+import img_w_DorsiflessioneMuro from "./images/warmup_stretch/dorsiflessione caviglia al muro.jpg";
 import img_w_9090HipMobility from "./images/warmup_stretch/90-90 hip mobility.png";
 import img_w_AffondiSaltatiAlternati from "./images/warmup_stretch/Affondi saltati alternati.jpg";
 import img_w_AlfredsonEccentrico from "./images/warmup_stretch/Alfredson eccentrico.webp";
@@ -2236,6 +2237,7 @@ var EX_IMG = {
   "Jumping jacks + cerchi con le braccia": img_w_JumpingJacks,
   "Marcia con ginocchia alte": img_w_MarciaGinocchiaAlte,
   "Marcia sul posto + affondi a corpo libero": img_w_AffondiCorpoLiberoAlt,
+  "Dorsiflessione al muro": img_w_DorsiflessioneMuro,
   "90/90 hip mobility": img_w_9090HipMobility,
   "Affondi saltati alternati": img_w_AffondiSaltatiAlternati,
   "Alfredson eccentrico": img_w_AlfredsonEccentrico,
@@ -2394,10 +2396,6 @@ function warmupImgSrc(item) {
   if (item.img && EX_IMG[item.img]) return EX_IMG[item.img];
   if (EX_IMG[item.n]) return EX_IMG[item.n];
   return null;
-}
-
-function warmupPhotoStatus(item) {
-  return warmupImgSrc(item) ? "Foto pronta" : "Foto mancante";
 }
 
 function parseSerie(str) {
@@ -9097,7 +9095,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     <div style={{ fontWeight: 700, fontSize: 12 }}>{w.n}</div>
                     <div style={{ fontSize: 10, color: T.sub }}>{w.d.substring(0, 60) + (w.d.length > 60 ? "..." : "")}</div>
                   </div>
-                  <div style={{ paddingRight: 8, fontSize: 10, fontWeight: 800, color: hasImg ? dc : "#C62828" }}>{warmupPhotoStatus(w)}</div>
+                  {!hasImg && <div style={{ paddingRight: 8, fontSize: 10, fontWeight: 800, color: "#C62828" }}>Foto mancante</div>}
                   <div style={{ paddingRight: 12, color: T.sub, fontSize: 12 }}>&#9662;</div>
                 </div>
                 {showImg === "wl" + wi && <div style={{ padding: "4px 10px 10px", display: "flex", gap: 8, alignItems: "flex-start" }}>
@@ -9105,7 +9103,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   {!hasImg && <div style={{ width: 130, minHeight: 90, borderRadius: 8, flexShrink: 0, background: "#C6282810", border: "1px solid #C6282828", color: "#C62828", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", fontSize: 12, fontWeight: 800, padding: 10, boxSizing: "border-box" }}>Foto mancante</div>}
                   <div style={{ flex: 1 }}>
                     <DetailText text={w.d} accent={dc} size={11} soft={true} />
-                    <div style={{ marginTop: 6, fontSize: 10, fontWeight: 800, color: hasImg ? dc : "#C62828" }}>{warmupPhotoStatus(w)}</div>
+                    {!hasImg && <div style={{ marginTop: 6, fontSize: 10, fontWeight: 800, color: "#C62828" }}>Foto mancante</div>}
                   </div>
                 </div>}
               </div>;
@@ -9405,9 +9403,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                                 <div style={{ fontSize: 11, fontWeight: 800, color: T.tx }}>{item.n}</div>
                                 <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.5, marginTop: 2 }}>{item.p || ""}</div>
                               </div>
-                              <div style={{ fontSize: 10, fontWeight: 800, color: hasItemImg ? dc : "#C62828", flexShrink: 0 }}>
-                                {warmupPhotoStatus(item)}
-                              </div>
+                              {!hasItemImg && <div style={{ fontSize: 10, fontWeight: 800, color: "#C62828", flexShrink: 0 }}>Foto mancante</div>}
                             </div>;
                           })}
                         </div>
@@ -9434,9 +9430,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                             {hasActiveImg
                               ? <img src={activeImgSrc} style={{ width: 56, height: 56, objectFit: "cover", borderRadius: 8, flexShrink: 0 }} />
                               : <div style={{ padding: "6px 8px", borderRadius: 999, background: "#C6282810", border: "1px solid #C6282828", color: "#C62828", fontSize: 10, fontWeight: 800 }}>Foto mancante</div>}
-                            <div style={{ fontSize: 10, fontWeight: 800, color: hasActiveImg ? dc : "#C62828" }}>
-                              {warmupPhotoStatus(active)}
-                            </div>
+                            {!hasActiveImg && <div style={{ fontSize: 10, fontWeight: 800, color: "#C62828" }}>Foto mancante</div>}
                           </div>
                         </div>
                       </div>
