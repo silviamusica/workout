@@ -2899,7 +2899,7 @@ export default function App() {
   var [showIntro, setShowIntro] = useState(false);
   var [showDayIntro, setShowDayIntro] = useState(false);
   var [dismissedCalBanner, setDismissedCalBanner] = useState(false);
-  var [focusMode, setFocusMode] = useState(false);
+  var [compactMode, setCompactMode] = useState(false);
   var [warmupAlt, setWarmupAlt] = useState({});
   var [warmupChecks, setWarmupChecks] = useState({});
   var [splitDayPrefs, setSplitDayPrefs] = useState({});
@@ -4267,10 +4267,6 @@ export default function App() {
   }, [cloudAuthReady, cloudUser, cloudHydratedUserId]);
 
   useEffect(function() {
-    setFocusMode(level === "v4");
-  }, [level]);
-
-  useEffect(function() {
     if ((isBasics || isBeginner) && glossTab === "termini") setGlossTab("principi");
   }, [isBasics, isBeginner, glossTab]);
   useEffect(function() {
@@ -4790,10 +4786,10 @@ export default function App() {
     if (prog.label.indexOf("Serve un'altra sessione") >= 0) return "Per questi esercizi serve almeno un confronto con la seduta precedente.";
     if (prog.label.indexOf("Aumenta carico") >= 0 || prog.label.indexOf("Aumenta leggermente il carico") >= 0) return "Hai fatto il numero alto di ripetizioni previsto in tutte le serie: la prossima volta puoi aumentare il peso.";
     if (prog.label.indexOf("Aumenta durata") >= 0) return "Hai completato tutto il tempo previsto: la prossima volta puoi aumentare la durata.";
-    if (prog.label.indexOf("Aumenta ripetizioni") >= 0) return "Hai completato bene il target: la prossima volta puoi aggiungere ripetizioni.";
-    if (prog.label.indexOf("Aggiungi ripetizioni") >= 0 || prog.label.indexOf("Prova a chiudere il target") >= 0 || prog.label.indexOf("Prova a chiudere il range") >= 0) return "Il peso va bene, ma non hai ancora raggiunto il numero alto di ripetizioni in tutte le serie.";
+    if (prog.label.indexOf("Aumenta ripetizioni") >= 0) return "La prossima volta prova a fare piu ripetizioni. Se hai gia chiuso tutto bene con margine, puoi anche salire leggermente di peso.";
+    if (prog.label.indexOf("Aggiungi ripetizioni") >= 0 || prog.label.indexOf("Prova a chiudere il target") >= 0 || prog.label.indexOf("Prova a chiudere il range") >= 0) return "Il peso va bene: prova a fare piu ripetizioni. Se chiudi tutte le serie al numero alto con tecnica pulita, alla seduta dopo puoi alzare leggermente il peso.";
     if (prog.label.indexOf("Stai progredendo") >= 0) return "Rispetto alla seduta precedente hai fatto piu ripetizioni totali.";
-    if (prog.label.indexOf("Stabile") >= 0) return "Sei simile alla seduta precedente: continua o prova ad aggiungere 1-2 ripetizioni totali.";
+    if (prog.label.indexOf("Stabile") >= 0) return "Sei simile alla seduta precedente: prova ad aggiungere 1-2 ripetizioni totali. Se hai gia chiuso bene il target, puoi alzare leggermente il peso.";
     if (prog.label.indexOf("Consolida") >= 0) return "Non aumentare ancora: prima rendi piu solide tecnica e ripetizioni con questo carico.";
     return prog.detail || "";
   }
@@ -7121,8 +7117,8 @@ function isNearBodyweightElasticSession(exName, sets) {
     if (prog.label.indexOf("Aumenta ripetizioni") >= 0 || prog.label.indexOf("Prova a chiudere il target") >= 0 || prog.label.indexOf("Stabile") >= 0) {
       return {
         tone: "mid",
-        title: "Peso giusto, fai più ripetizioni",
-        action: "Non cambiare peso nella prossima seduta. Prova ad aggiungere 1 ripetizione totale oppure a migliorare l'ultima serie.",
+        title: "Prima prova più ripetizioni",
+        action: "Nella prossima seduta prova ad aggiungere almeno 1 ripetizione totale. Se invece hai gia chiuso tutte le serie al numero alto con tecnica pulita, puoi alzare leggermente il peso.",
         detail: prog.detail
       };
     }
@@ -9219,11 +9215,11 @@ function isNearBodyweightElasticSession(exName, sets) {
                         i
                       </button>}
                       {!dayData.cardio && !dayData.rest && !isBasics && <button
-                        onClick={function(e) { e.stopPropagation(); setFocusMode(function(v) { return !v; }); }}
-                        style={{ minHeight: 26, padding: "0 10px", border: "1px solid " + (focusMode ? dc + "70" : T.sub + "30"), borderRadius: 999, background: focusMode ? dc + "20" : "transparent", color: focusMode ? dc : T.sub, boxShadow: focusMode ? ("0 0 0 2px " + dc + "18, 0 0 14px " + dc + "25") : "none", fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap", display: "inline-flex", alignItems: "center", gap: 5 }}
+                        onClick={function(e) { e.stopPropagation(); setCompactMode(function(v) { return !v; }); }}
+                        style={{ minHeight: 26, padding: "0 10px", border: "1px solid " + (compactMode ? dc + "70" : T.sub + "30"), borderRadius: 999, background: compactMode ? dc + "20" : "transparent", color: compactMode ? dc : T.sub, boxShadow: compactMode ? ("0 0 0 2px " + dc + "18, 0 0 14px " + dc + "25") : "none", fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap", display: "inline-flex", alignItems: "center", gap: 5 }}
                       >
-                        <span style={{ fontSize: 11, lineHeight: 1 }}>⚡</span>
-                        <span>Focus</span>
+                        <span style={{ fontSize: 11, lineHeight: 1 }}>◫</span>
+                        <span>Vista compatta</span>
                       </button>}
                     </div>
                     {intro.muscoli && intro.muscoli.length > 0 && !dayData.cardio && !dayData.rest && <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginTop: 7 }}>
@@ -9274,42 +9270,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>;
             })()}
 
-            {!isBasics && !dayData.cardio && !dayData.rest && guidedMode && !focusMode && <div ref={function(el) { if (el) el._sectionKey = "guided"; }} id="section-guided" style={{ borderBottom: "1px solid " + T.bg }}>
-              <div onClick={function() { var opening = !showGuidedSection; setShowGuidedSection(opening); if (opening) { setShowIntro(false); setShowStr(false); setShowExSection(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-guided"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showGuidedSection ? gc + "12" : gc + "08", borderLeft: "3px solid " + gc }}>
-                <div style={{ width: 30, height: 30, borderRadius: 8, background: gc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>🧭</div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 800, fontSize: 11, color: gc, textTransform: "uppercase", letterSpacing: 1 }}>Coach attivo</div>
-                  <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{"Briefing e consigli esercizio per esercizio"}</div>
-                </div>
-                <div style={{ fontSize: 13, color: gc, transform: showGuidedSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
-              </div>
-              {showGuidedSection && <div style={{ padding: "0 14px 14px" }}><div style={{ marginTop: 10, padding: "11px 12px", borderRadius: 12, background: gc + "0A", border: "1px solid " + gc + "22" }}>
-                {dayData.intro && dayData.intro.obiettivi && dayData.intro.obiettivi.length > 0 && <div style={{ marginBottom: 10 }}>
-                  <div style={{ fontSize: 12, color: T.tx, fontWeight: 800, marginBottom: 5 }}>Obiettivi della sessione</div>
-                  <div style={{ display: "grid", gap: 4 }}>
-                    {dayData.intro.obiettivi.map(function(goal, gi) {
-                      return <div key={gi} style={{ display: "flex", gap: 7, alignItems: "flex-start" }}>
-                        <span style={{ color: gc, fontSize: 11, lineHeight: 1.6, fontWeight: 800 }}>•</span>
-                        <span style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>{goal}</span>
-                      </div>;
-                    })}
-                  </div>
-                </div>}
-                <div style={{ display: "grid", gap: 8 }}>
-                  {(dayData.ex || []).map(function(rawEx, gi) {
-                    var gEx = getExForMonth(rawEx);
-                    var sugg = getGuidedSessionSuggestion(gEx.n, gEx.s);
-                    return <div key={gEx.n + "-" + gi} style={{ padding: "9px 10px", borderRadius: 10, background: T.sb, border: "1px solid " + T.bg }}>
-                      <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, marginBottom: 3 }}>{gEx.n}</div>
-                      <div style={{ fontSize: 11, fontWeight: 700, color: gc, marginBottom: 3 }}>{sugg.title}</div>
-                      <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{sugg.detail}</div>
-                    </div>;
-                  })}
-                </div>
-              </div></div>}
-            </div>}
-
-            {!dayData.cardio && !dayData.rest && calibrationEnabled && !focusMode && (function() {
+            {!dayData.cardio && !dayData.rest && calibrationEnabled && !compactMode && (function() {
               var dayCalibration = getDayCalibrationSuggestion(safeDayIdx);
               if (!dayCalibration) return null;
               if (dismissedCalBanner) return null;
@@ -9746,14 +9707,15 @@ function isNearBodyweightElasticSession(exName, sets) {
                   var guidedRirSummary = getExerciseRirHistorySummary(ex.n);
                   var allSetsLogged = !!(tLog && tLog.sets && sc > 0 && tLog.sets.length >= sc);
                   var logisticsCue = allSetsLogged ? buildLogisticsCue(mergedEx, ex, (dayData.ex || []).slice(i + 1), month) : null;
-                  return <div style={{ padding: "0 14px 14px", maxHeight: "min(72dvh, 760px)", overflowY: "auto", WebkitOverflowScrolling: "touch", overscrollBehavior: "contain", touchAction: "pan-y" }} onClick={function(e) { e.stopPropagation(); }}>
+                  var compactExerciseCard = !isBasics && compactMode;
+                  return <div style={{ padding: compactExerciseCard ? "0 12px 12px" : "0 14px 14px", maxHeight: "min(72dvh, 760px)", overflowY: "auto", WebkitOverflowScrolling: "touch", overscrollBehavior: "contain", touchAction: "pan-y" }} onClick={function(e) { e.stopPropagation(); }}>
                     {/* Cable toggle */}
                     {hasCableToggle && <div style={{ display: "flex", gap: 0, marginBottom: 10, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "40", alignSelf: "flex-start", width: "fit-content" }} onClick={function(e) { e.stopPropagation(); }}>
                       <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = true; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: isCable ? dc : "transparent", color: isCable ? "#fff" : T.sub }}>🔌 Cavi</button>
                       <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = false; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: !isCable ? dc : "transparent", color: !isCable ? "#fff" : T.sub }}>💪 Libero</button>
                     </div>}
 
-                    {!isBasics && !focusMode && guidedMode && <div style={{ marginBottom: 12, borderRadius: 12, background: gc + "0A", border: "1px solid " + gc + "22", padding: "11px 13px" }}>
+                    {!isBasics && !compactMode && guidedMode && <div style={{ marginBottom: 10, borderRadius: 12, background: gc + "0A", border: "1px solid " + gc + "22", padding: compactExerciseCard ? "9px 11px" : "11px 13px" }}>
                       {dayData.intro && dayData.intro.obiettivi && dayData.intro.obiettivi.length > 0 && <div style={{ marginBottom: 10 }}>
                         <div style={{ fontSize: 10, fontWeight: 900, color: gc, textTransform: "uppercase", letterSpacing: 1, marginBottom: 7 }}>Obiettivi della sessione</div>
                         <div style={{ display: "grid", gap: 4 }}>
@@ -9773,7 +9735,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>}
 
                     {/* === COACH SESSIONE BREVE === */}
-                    {!isBasics && !focusMode && <div style={{ marginBottom: 12, borderRadius: 12, background: dc + "0C", border: "1px solid " + dc + "28", padding: "11px 13px" }}>
+                    {!isBasics && !compactMode && <div style={{ marginBottom: 10, borderRadius: 12, background: dc + "0C", border: "1px solid " + dc + "28", padding: compactExerciseCard ? "9px 11px" : "11px 13px" }}>
                       <div style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>🧭 Coach sessione</div>
                       {db.t && db.t.slice(0, 3).map(function(tip, ti) {
                         return <div key={ti} style={{ display: "flex", gap: 8, alignItems: "flex-start", marginBottom: ti < Math.min(db.t.length, 2) - 1 ? 5 : 0 }}>
@@ -9798,7 +9760,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>}
 
                     {/* === REGISTRA SERIE === */}
-                    {!isBasics && <div id={"reg-block-" + i} style={{ marginBottom: 10, borderRadius: 12, padding: "10px", background: dc + "08", border: "2px solid " + dc + "28" }}>
+                    {!isBasics && <div id={"reg-block-" + i} style={{ marginBottom: 8, borderRadius: 12, padding: compactExerciseCard ? "8px" : "10px", background: dc + "08", border: "2px solid " + dc + "28" }}>
                       <div style={{ fontSize: 12, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 1, marginBottom: 10, display: "flex", alignItems: "center", gap: 8 }}>
                         Registra
                         {tLog && tLog.sets.length > 0 && <span style={{ fontSize: 11, background: T.ok, color: "#fff", padding: "2px 8px", borderRadius: 8, fontWeight: 800 }}>{tLog.sets.length + "/" + sc + " serie"}</span>}
@@ -9892,7 +9854,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>}
 
                     {/* === DETTAGLI (collassato): storico · tecnica · note === */}
-                    {!isBasics && !focusMode && extraInfoEnabled && <details style={{ marginTop: 2, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
+                    {!isBasics && !compactMode && extraInfoEnabled && <details style={{ marginTop: 2, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
                       <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 12px", fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, display: "flex", alignItems: "center", gap: 6 }}>
                         <span style={{ flex: 1 }}>Dettagli</span><span style={{ fontSize: 12 }}>›</span>
                       </summary>
@@ -10093,7 +10055,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>
                     </details>}
 
-                    {!isBasics && focusMode && <div style={{ marginTop: 6, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
+                    {!isBasics && compactMode && <div style={{ marginTop: 4, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
                       <div style={{ padding: "10px 11px" }}>
                         <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Ultima sessione</div>
                         {pastSessions.length === 0 ? <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Nessuno storico ancora.</div> : (function() {
