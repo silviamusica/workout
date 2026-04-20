@@ -7546,20 +7546,6 @@ function isNearBodyweightElasticSession(exName, sets) {
         </div>
       </div>}
 
-      {showWorkoutInfo && <div onClick={function() { setShowWorkoutInfo(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 220, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
-        <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, padding: 20, maxWidth: 360, width: "100%", color: T.tx }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, marginBottom: 12 }}>
-            <h3 style={{ margin: 0, fontSize: 17, fontWeight: 800 }}>ℹ️ Info generali</h3>
-            <button onClick={function() { setShowWorkoutInfo(false); }} style={{ width: 30, height: 30, border: "none", borderRadius: 10, background: T.bg, color: T.sub, fontSize: 16, fontWeight: 800, cursor: "pointer", lineHeight: 1 }}>✕</button>
-          </div>
-          <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7 }}>
-            Il peso resta uguale in tutte le serie dello stesso esercizio.
-            <br /><br />
-            Non aumentarlo tra una serie e l'altra: il numero di ripetizioni sale tra le settimane, non dentro la seduta.
-          </div>
-        </div>
-      </div>}
-
       {/* Settings Modal */}
       {settingsOpen && <div onClick={function() { setSettingsOpen(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 250, display: "flex", alignItems: "flex-start", justifyContent: "center", padding: 16, overflowY: "auto", WebkitOverflowScrolling: "touch" }}>
         <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, maxWidth: 400, width: "100%", color: T.tx, maxHeight: "calc(100dvh - 32px)", display: "flex", flexDirection: "column", overflow: "hidden", margin: "max(12px, env(safe-area-inset-top, 0px)) 0 max(12px, env(safe-area-inset-bottom, 0px))" }}>
@@ -9212,13 +9198,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                     <div style={{ fontSize: isBeginner ? 19 : 15, fontWeight: 900, color: T.tx, lineHeight: 1.25 }}>{dayData.focus}</div>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginTop: 3 }}>
                       <div style={{ fontSize: isBeginner ? 12 : 11, color: dc, fontWeight: 600 }}>~{estimatedDayMinutes || dayData.tEst} min</div>
-                      {!isBasics && !dayData.cardio && !dayData.rest && <button
-                        onClick={function(e) { e.stopPropagation(); setShowWorkoutInfo(true); }}
-                        aria-label="Info generali scheda"
-                        style={{ width: 24, height: 24, borderRadius: "50%", border: "1px solid " + dc + "45", background: T.cd, color: dc, fontSize: 12, fontWeight: 900, cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", padding: 0 }}
-                      >
-                        i
-                      </button>}
                       {!dayData.cardio && !dayData.rest && !isBasics && <button
                         onClick={function(e) { e.stopPropagation(); setCompactMode(function(v) { return !v; }); }}
                         style={{ minHeight: 26, padding: "0 10px", border: "1px solid " + (compactMode ? dc + "70" : T.sub + "30"), borderRadius: 999, background: compactMode ? dc + "20" : "transparent", color: compactMode ? dc : T.sub, boxShadow: compactMode ? ("0 0 0 2px " + dc + "18, 0 0 14px " + dc + "25") : "none", fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap", display: "inline-flex", alignItems: "center", gap: 5 }}
