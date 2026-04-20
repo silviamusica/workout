@@ -3190,6 +3190,7 @@ export default function App() {
     });
   }
   var [openStretchCard, setOpenStretchCard] = useState(null);
+  var [warmupInfoOpen, setWarmupInfoOpen] = useState(null);
   var [showReg, setShowReg] = useState(null);
   var [catSec, setCatSec] = useState(null);
   var [logs, setLogs] = useState({});
@@ -7546,6 +7547,27 @@ function isNearBodyweightElasticSession(exName, sets) {
         </div>
       </div>}
 
+      {/* Warmup item modal */}
+      {warmupInfoOpen && (function() {
+        var item = warmupInfoOpen;
+        var imgSrc = warmupImgSrc(item);
+        return <div onClick={function() { setWarmupInfoOpen(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", zIndex: 240, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: "0 0 0 0" }}>
+          <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: "16px 16px 0 0", maxWidth: 480, width: "100%", color: T.tx, maxHeight: "85dvh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+            <div style={{ padding: "16px 16px 0", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
+              <div style={{ fontSize: 16, fontWeight: 800, color: T.tx }}>{item.n}</div>
+              <button onClick={function() { setWarmupInfoOpen(null); }} style={{ width: 30, height: 30, border: "none", borderRadius: 10, background: T.bg, color: T.sub, fontSize: 16, fontWeight: 800, cursor: "pointer", lineHeight: 1, flexShrink: 0 }}>✕</button>
+            </div>
+            <div style={{ overflowY: "auto", padding: "14px 16px 24px" }}>
+              {imgSrc && <img src={imgSrc} style={{ width: "100%", borderRadius: 12, marginBottom: 14, display: "block" }} />}
+              {item.d && <div style={{ fontSize: 13, color: T.sub, lineHeight: 1.7 }}>{item.d}</div>}
+              {item.tm && <div style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 8 }}>
+                <button onClick={function() { quickTimer(item.tm); setWarmupInfoOpen(null); }} style={{ minHeight: 40, padding: "0 16px", border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 800, cursor: "pointer" }}>{"⏱ Timer " + fmtLabel(item.tm)}</button>
+              </div>}
+            </div>
+          </div>
+        </div>;
+      })()}
+
       {/* Settings Modal */}
       {settingsOpen && <div onClick={function() { setSettingsOpen(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 250, display: "flex", alignItems: "flex-start", justifyContent: "center", padding: 16, overflowY: "auto", WebkitOverflowScrolling: "touch" }}>
         <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, maxWidth: 400, width: "100%", color: T.tx, maxHeight: "calc(100dvh - 32px)", display: "flex", flexDirection: "column", overflow: "hidden", margin: "max(12px, env(safe-area-inset-top, 0px)) 0 max(12px, env(safe-area-inset-bottom, 0px))" }}>
@@ -9335,13 +9357,13 @@ function isNearBodyweightElasticSession(exName, sets) {
                             var hasItemImg = !!itemImgSrc;
                             return <div key={item.n + "-" + itemIndex} style={{ display: "flex", gap: 8, alignItems: "center", padding: "8px 9px", borderRadius: 8, background: T.cd, border: "1px solid " + T.bg }}>
                               {hasItemImg
-                                ? <img src={itemImgSrc} style={{ width: 42, height: 42, objectFit: "cover", borderRadius: 8, flexShrink: 0 }} />
-                                : <div style={{ width: 42, height: 42, borderRadius: 8, background: dc + "12", color: dc, fontSize: 10, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", lineHeight: 1.2, flexShrink: 0 }}>NO FOTO</div>}
+                                ? <img onClick={function(e) { e.stopPropagation(); setWarmupInfoOpen(item); }} src={itemImgSrc} style={{ width: 48, height: 48, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "zoom-in" }} />
+                                : <div style={{ width: 48, height: 48, borderRadius: 8, background: dc + "12", color: dc, fontSize: 10, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", lineHeight: 1.2, flexShrink: 0 }}>NO FOTO</div>}
                               <div style={{ minWidth: 0, flex: 1 }}>
                                 <div style={{ fontSize: 11, fontWeight: 800, color: T.tx }}>{item.n}</div>
                                 <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.5, marginTop: 2 }}>{item.p || ""}</div>
                               </div>
-                              {!hasItemImg && <div style={{ fontSize: 10, fontWeight: 800, color: "#C62828", flexShrink: 0 }}>Foto mancante</div>}
+                              <button onClick={function(e) { e.stopPropagation(); setWarmupInfoOpen(item); }} style={{ minHeight: 32, padding: "0 10px", border: "1px solid " + dc + "30", borderRadius: 999, background: T.cd, color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", flexShrink: 0, touchAction: "manipulation" }}>Scheda</button>
                             </div>;
                           })}
                         </div>
@@ -9366,9 +9388,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                           </div>
                           <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 8, flexWrap: "wrap" }}>
                             {hasActiveImg
-                              ? <img src={activeImgSrc} style={{ width: 56, height: 56, objectFit: "cover", borderRadius: 8, flexShrink: 0 }} />
+                              ? <img onClick={function(e) { e.stopPropagation(); setWarmupInfoOpen(active); }} src={activeImgSrc} style={{ width: 56, height: 56, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "zoom-in" }} />
                               : <div style={{ padding: "6px 8px", borderRadius: 999, background: "#C6282810", border: "1px solid #C6282828", color: "#C62828", fontSize: 10, fontWeight: 800 }}>Foto mancante</div>}
                             {!hasActiveImg && <div style={{ fontSize: 10, fontWeight: 800, color: "#C62828" }}>Foto mancante</div>}
+                            <button onClick={function(e) { e.stopPropagation(); setWarmupInfoOpen(active); }} style={{ minHeight: 32, padding: "0 10px", border: "1px solid " + dc + "30", borderRadius: 999, background: T.cd, color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", touchAction: "manipulation" }}>Scheda</button>
                           </div>
                         </div>
                       </div>
