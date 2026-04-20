@@ -206,12 +206,12 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"p","content":"Avanza fino ad avere le braccia distese e il viso a pochi centimetri dal suolo, poi torna indietro in modo controllato."},
   {"type":"p","content":"Progressione consigliata: usa un muro davanti per limitare la corsa. Appoggia la rotella al muro a distanza progressivamente maggiore ogni settimana."},
   {"type":"link","label":"Video alternativa: rollout su fitball","url":"https://www.youtube.com/watch?v=frNdUPJYOIc"}
-]}, "Trazioni": {"g": "Dorsali/Bicipiti", "c": "Presa prona oltre le spalle. Tira su, mento sopra, scendi controllando.", "p": "Scapole depresse e addotte. Core attivo. Niente slancio.", "t": ["Negativa: sali con salto, scendi in 5s", "Gomiti verso il basso", "Evita il kipping"], "lk": "https://www.youtube.com/watch?v=u9lPTWFj4_8", "deep": [
-  {"type":"p","content":"Inizia da una posizione di sospensione attiva (active hang): abbassa le spalle deprimendo le scapole prima ancora di tirare. Prediligi la presa prona (palmi in avanti) o neutra per la salute delle articolazioni nel lungo periodo."},
-  {"type":"p","content":"Inizia la tirata portando il petto verso la sbarra, con il torso leggermente inclinato in diagonale — non tirare dritto verso l'alto. Punta i gomiti verso il basso: le mani fungono solo da ganci, il lavoro lo fanno i dorsali. Supera la sbarra col mento."},
-  {"type":"p","content":"Se non riesci ancora a fare trazioni complete, usa la negativa assistita:"},
-  {"type":"ul","content":["Sali con un salto o con un elastico","Scendi lentissima in 5 secondi","E' la tecnica piu efficace per costruire la forza necessaria"]},
-  {"type":"p","content":"Assetto Hollow: durante tutta la trazione mantieni il core compatto e il bacino in retroversione, esattamente come nella Hollow Position da terra. Questo evita che la schiena si inarchi e massimizza il lavoro dei dorsali."}
+]}, "Trazioni": {"g": "Dorsali/Bicipiti", "c": "Primo esercizio del giorno upper e lift prioritario. Le trazioni costruiscono dorsali e forza di trazione verticale. Vai per prima quando presa e scapole sono fresche.", "p": "Sali dritta come un ascensore: glutei contratti e costole chiuse. Il corpo resta una linea verticale; i gomiti scendono verso i fianchi, non il petto verso la barra.", "t": ["Scapole nelle tasche dei pantaloni prima di ogni ripetizione", "Se le spalle salgono verso le orecchie, la ripetizione e finita", "Meglio fermarti 1 rip prima che chiudere col trapezio"], "lk": "https://www.youtube.com/watch?v=u9lPTWFj4_8", "deep": [
+  {"type":"p","content":"Inizia da una sospensione attiva: abbassa le spalle prima ancora di tirare. La salita deve restare verticale, senza buttare il petto avanti e senza iperestendere la lombare per cercare il mento sopra la barra."},
+  {"type":"p","content":"Pensa a un ascensore, non a un'altalena. Glutei contratti, costole chiuse e addome attivo: il mento supera la barra perche i gomiti scendono verso i fianchi, non perche il busto si inarca in avanti."},
+  {"type":"p","content":"Se nelle ultime ripetizioni le spalle salgono verso le orecchie, fermati li: quella e gia la fine della serie utile. Prima di ogni ripetizione ripeti il cue 'scapole nelle tasche posteriori dei pantaloni'."},
+  {"type":"p","content":"Se oggi il gesto si sporca, usa piu assistenza e resta 1 rip prima del cedimento. Meglio 4x5 pulite che 4x6 compensate."},
+  {"type":"ul","content":["Attivazione utile: 3-5 scapular pull-up prima della prima serie","Negativa tecnica: sali con supporto o salto e scendi in 4-5 secondi","Se senti la lombare lavorare piu dei dorsali, stai compensando troppo"]}
 ]}, "Push-Up": {"g": "Pettorali/Tricipiti/Deltoidi", "c": "Mani poco piu larghe delle spalle, corpo in linea. Scendi col petto, spingi su.", "p": "Core contratto, gomiti a 45 gradi, bacino non cade e non sale.", "t": ["Bacino scende col petto", "Ginocchia a terra se difficile", "Eccentrica lenta = piu stimolo"], "deep": [
   {"type":"p","content":"Tieni il bacino in retroversione come nel plank: annulla la curva lombare contraendo gli addominali."},
   {"type":"ul","content":["Mani larghe circa il 150% delle spalle — troppo larghe stressano i polsi, troppo strette diventano un esercizio per tricipiti","Gomiti a 45 gradi rispetto al busto, mai aperti a 90 gradi (comprime la spalla)","Scendi fino a sfiorare terra con il petto — massima ampiezza = massimo stimolo"]},
@@ -6298,6 +6298,13 @@ function isNearBodyweightElasticSession(exName, sets) {
   }
 
   function getGuidedSessionSuggestion(exName, serie) {
+    if (exName === "Trazioni") {
+      return {
+        state: "hold",
+        title: "Tecnica prima del volume",
+        detail: "Oggi resta verticale: glutei contratti, costole chiuse, scapole giu. Se per chiudere la rip devi portare il petto avanti o alzare le spalle verso le orecchie, fermati 1 rip prima oppure aumenta l'assistenza."
+      };
+    }
     var phase = getGuidedPhase(exName, serie);
     var progressAdvice = getProgressAdvice(exName, serie);
     if (phase === "exploration") {
