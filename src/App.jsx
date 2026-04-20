@@ -2374,6 +2374,10 @@ function warmupImgSrc(item) {
   return null;
 }
 
+function warmupPhotoStatus(item) {
+  return warmupImgSrc(item) ? "Foto pronta" : "Foto mancante";
+}
+
 function parseSerie(str) {
   if (!str) return { sets: 3, reps: ["12"] };
   var m = str.replace(/\s/g, "").match(/(\d+)[xX](.+)/);
@@ -4118,6 +4122,8 @@ export default function App() {
       setCloudConflict(null);
       setCloudConflictChoice("");
       setCloudStatus("Hai tenuto i dati di questo dispositivo e li ho inviati al cloud.");
+      setAutoBackupMsg("Scelta completata. Ho tenuto i dati di questo dispositivo e aggiornato il cloud.");
+      closeActionBoxes();
     } catch (err) {
       setCloudStatus("Non sono riuscito a inviare i dati locali al cloud: " + err.message);
     } finally {
@@ -4132,6 +4138,8 @@ export default function App() {
     setCloudConflict(null);
     setCloudConflictChoice("");
     setCloudStatus("Hai scaricato i dati presenti nel cloud.");
+    setAutoBackupMsg("Scelta completata. Ho caricato i dati presenti nel cloud.");
+    closeActionBoxes();
   }
 
   useEffect(function() {
@@ -7143,6 +7151,12 @@ function isNearBodyweightElasticSession(exName, sets) {
     setAutoBackupMsg("Esportazione completata. Hai scaricato JSON + CSV leggibile + CSV modificabile.");
   }
 
+  function closeActionBoxes() {
+    setExportMenuOpen(false);
+    setResetOpen(false);
+    setSettingsOpen(false);
+  }
+
   function exportJsonOnly() {
     var baseName = 'workout-backup-' + todayStr();
     downloadBackupPayload(buildBackupPayload(logs, cardioLogs, { type: "manual-backup" }), baseName + '.json');
@@ -7504,7 +7518,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); setCardioLogs({}); setStretchLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(true); setBarbellWeight(BARBELL_BASE_KG); setExtraInfoEnabled(true); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setGuidedFillerHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); setSplitDayPrefs({}); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); localStorage.removeItem("wt-barbell-weight"); localStorage.removeItem("wt-stretch-logs"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setCardioLogs({}); setStretchLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(true); setBarbellWeight(BARBELL_BASE_KG); setExtraInfoEnabled(true); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setGuidedFillerHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); setSplitDayPrefs({}); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); localStorage.removeItem("wt-barbell-weight"); localStorage.removeItem("wt-stretch-logs"); } catch(e) {} setAutoBackupMsg("Tutti i dati sono stati cancellati."); closeActionBoxes(); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
           </div>
         </div>
       </div>}
@@ -7740,13 +7754,13 @@ function isNearBodyweightElasticSession(exName, sets) {
                   <span style={{ color: T.sub, transform: exportMenuOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
                 </button>
                 {exportMenuOpen && <div style={{ marginTop: 6, background: T.sb, border: "1px solid " + T.bg, borderRadius: 10, overflow: "hidden" }}>
-                  <button onClick={function() { setExportMenuOpen(false); exportData(); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "11px 14px", border: "none", borderBottom: "1px solid " + T.bg, background: "transparent", cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx, textAlign: "left" }}><span>📦</span> JSON + CSV leggibile + CSV modificabile</button>
-                  <button onClick={function() { setExportMenuOpen(false); exportJsonOnly(); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "11px 14px", border: "none", borderBottom: "1px solid " + T.bg, background: "transparent", cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx, textAlign: "left" }}><span>🧾</span> Solo JSON</button>
-                  <button onClick={function() { setExportMenuOpen(false); exportReadableCsvOnly(); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "11px 14px", border: "none", borderBottom: "1px solid " + T.bg, background: "transparent", cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx, textAlign: "left" }}><span>📄</span> Solo CSV leggibile</button>
-                  <button onClick={function() { setExportMenuOpen(false); exportEditableCsvOnly(); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "11px 14px", border: "none", background: "transparent", cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx, textAlign: "left" }}><span>✏️</span> Solo CSV modificabile</button>
+                  <button onClick={function() { closeActionBoxes(); exportData(); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "11px 14px", border: "none", borderBottom: "1px solid " + T.bg, background: "transparent", cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx, textAlign: "left" }}><span>📦</span> JSON + CSV leggibile + CSV modificabile</button>
+                  <button onClick={function() { closeActionBoxes(); exportJsonOnly(); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "11px 14px", border: "none", borderBottom: "1px solid " + T.bg, background: "transparent", cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx, textAlign: "left" }}><span>🧾</span> Solo JSON</button>
+                  <button onClick={function() { closeActionBoxes(); exportReadableCsvOnly(); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "11px 14px", border: "none", borderBottom: "1px solid " + T.bg, background: "transparent", cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx, textAlign: "left" }}><span>📄</span> Solo CSV leggibile</button>
+                  <button onClick={function() { closeActionBoxes(); exportEditableCsvOnly(); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "11px 14px", border: "none", background: "transparent", cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx, textAlign: "left" }}><span>✏️</span> Solo CSV modificabile</button>
                 </div>}
               </div>
-              <button onClick={function() { importData(); }} style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", textAlign: "left", gap: 10, width: "100%", padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬆️</span> Importa dati (JSON o CSV)</button>
+              <button onClick={function() { closeActionBoxes(); importData(); }} style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", textAlign: "left", gap: 10, width: "100%", padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}><span>⬆️</span> Importa dati (JSON o CSV)</button>
               <button onClick={function() { setResetOpen(true); setSettingsOpen(false); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "11px 14px", borderRadius: 10, border: "1px solid #C6282820", background: "#C6282808", cursor: "pointer", fontSize: 13, fontWeight: 600, color: "#C62828" }}><span>🗑️</span> Cancella tutti i dati</button>
             </div>
             <div style={{ marginBottom: 12, padding: "10px 12px", borderRadius: 10, background: T.sb, border: "1px solid " + T.bg, fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
@@ -9061,13 +9075,15 @@ function isNearBodyweightElasticSession(exName, sets) {
                     <div style={{ fontWeight: 700, fontSize: 12 }}>{w.n}</div>
                     <div style={{ fontSize: 10, color: T.sub }}>{w.d.substring(0, 60) + (w.d.length > 60 ? "..." : "")}</div>
                   </div>
+                  <div style={{ paddingRight: 8, fontSize: 10, fontWeight: 800, color: hasImg ? dc : "#C62828" }}>{warmupPhotoStatus(w)}</div>
                   <div style={{ paddingRight: 12, color: T.sub, fontSize: 12 }}>&#9662;</div>
                 </div>
                 {showImg === "wl" + wi && <div style={{ padding: "4px 10px 10px", display: "flex", gap: 8, alignItems: "flex-start" }}>
                   {hasImg && <img onClick={function(e) { e.stopPropagation(); setShowImg(null); }} src={imgSrc} style={{ width: 130, height: 130, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "zoom-out" }} />}
+                  {!hasImg && <div style={{ width: 130, minHeight: 90, borderRadius: 8, flexShrink: 0, background: "#C6282810", border: "1px solid #C6282828", color: "#C62828", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", fontSize: 12, fontWeight: 800, padding: 10, boxSizing: "border-box" }}>Foto mancante</div>}
                   <div style={{ flex: 1 }}>
                     <DetailText text={w.d} accent={dc} size={11} soft={true} />
-                    {w.lk && <EmbedLink url={w.lk} label="Video" size={10} style={{ marginTop: 4 }} />}
+                    <div style={{ marginTop: 6, fontSize: 10, fontWeight: 800, color: hasImg ? dc : "#C62828" }}>{warmupPhotoStatus(w)}</div>
                   </div>
                 </div>}
               </div>;
@@ -9355,9 +9371,22 @@ function isNearBodyweightElasticSession(exName, sets) {
                         <div style={{ fontSize: 11, lineHeight: 1.6, color: T.sub, marginTop: 5 }}>
                           1 giro solo, nessuna pausa tra gli esercizi. Alla fine fai 30 secondi di respiro. Se oggi sei gia scarica, puoi saltare il circuito.
                         </div>
-                        <div style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 8, flexWrap: "wrap" }}>
+                        <div style={{ display: "grid", gap: 8, marginTop: 8 }}>
                           {group.items.map(function(item, itemIndex) {
-                            return item.lk ? <EmbedLink key={item.n + "-" + itemIndex} url={item.lk} label={item.n} size={10} /> : null;
+                            var itemImgSrc = warmupImgSrc(item);
+                            var hasItemImg = !!itemImgSrc;
+                            return <div key={item.n + "-" + itemIndex} style={{ display: "flex", gap: 8, alignItems: "center", padding: "8px 9px", borderRadius: 8, background: T.cd, border: "1px solid " + T.bg }}>
+                              {hasItemImg
+                                ? <img src={itemImgSrc} style={{ width: 42, height: 42, objectFit: "cover", borderRadius: 8, flexShrink: 0 }} />
+                                : <div style={{ width: 42, height: 42, borderRadius: 8, background: dc + "12", color: dc, fontSize: 10, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", lineHeight: 1.2, flexShrink: 0 }}>NO FOTO</div>}
+                              <div style={{ minWidth: 0, flex: 1 }}>
+                                <div style={{ fontSize: 11, fontWeight: 800, color: T.tx }}>{item.n}</div>
+                                <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.5, marginTop: 2 }}>{item.p || ""}</div>
+                              </div>
+                              <div style={{ fontSize: 10, fontWeight: 800, color: hasItemImg ? dc : "#C62828", flexShrink: 0 }}>
+                                {warmupPhotoStatus(item)}
+                              </div>
+                            </div>;
                           })}
                         </div>
                       </div> : group.items.map(function(active, itemIndex) {
@@ -9365,6 +9394,8 @@ function isNearBodyweightElasticSession(exName, sets) {
                     var warm = warmupInfo(active.d, active.tm);
                     var paramsLabel = active.p || active.t || active.s || warm.execution;
                     var cueLabel = active.cue || active.h || active.d || warm.objective || warm.notes;
+                    var activeImgSrc = warmupImgSrc(active);
+                    var hasActiveImg = !!activeImgSrc;
                     return <div key={wi} style={{ borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "20", padding: 10 }}>
                       <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
                         <div style={{ width: 24, height: 24, borderRadius: 6, background: dc, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, flexShrink: 0, marginTop: 2 }}>{itemIndex + 1}</div>
@@ -9377,8 +9408,13 @@ function isNearBodyweightElasticSession(exName, sets) {
                             {paramsLabel && <div style={{ fontSize: 12, lineHeight: 1.55, color: T.tx, fontWeight: 700 }}>{paramsLabel}</div>}
                             {cueLabel && <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{cueLabel}</div>}
                           </div>
-                          <div style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 6, flexWrap: "wrap" }}>
-                            {active.lk && <EmbedLink url={active.lk} label="video" size={10} />}
+                          <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 8, flexWrap: "wrap" }}>
+                            {hasActiveImg
+                              ? <img src={activeImgSrc} style={{ width: 56, height: 56, objectFit: "cover", borderRadius: 8, flexShrink: 0 }} />
+                              : <div style={{ padding: "6px 8px", borderRadius: 999, background: "#C6282810", border: "1px solid #C6282828", color: "#C62828", fontSize: 10, fontWeight: 800 }}>Foto mancante</div>}
+                            <div style={{ fontSize: 10, fontWeight: 800, color: hasActiveImg ? dc : "#C62828" }}>
+                              {warmupPhotoStatus(active)}
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -9687,6 +9723,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   var bColor = br ? (BREATH_TYPE_COLOR[br.type] || dc) : dc;
                   var approach = getApproachAdvice(safeDayIdx, ex.n);
                   var objective = getExerciseObjective(ex.s, ex.note || rawEx.note || "");
+                  var sessionSuggestion = getGuidedSessionSuggestion(ex.n, ex.s);
                   var progColor = prog ? (prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) : dc;
                   var errorList = (mergedEx.errori || "").split(/\s*;\s*/).filter(Boolean);
                   var exSkills = getExerciseCompetencies(ex.n);
@@ -9698,6 +9735,25 @@ function isNearBodyweightElasticSession(exName, sets) {
                     {hasCableToggle && <div style={{ display: "flex", gap: 0, marginBottom: 10, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "40", alignSelf: "flex-start", width: "fit-content" }} onClick={function(e) { e.stopPropagation(); }}>
                       <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = true; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: isCable ? dc : "transparent", color: isCable ? "#fff" : T.sub }}>🔌 Cavi</button>
                       <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = false; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: !isCable ? dc : "transparent", color: !isCable ? "#fff" : T.sub }}>💪 Libero</button>
+                    </div>}
+
+                    {!isBasics && !focusMode && guidedMode && <div style={{ marginBottom: 12, borderRadius: 12, background: gc + "0A", border: "1px solid " + gc + "22", padding: "11px 13px" }}>
+                      {dayData.intro && dayData.intro.obiettivi && dayData.intro.obiettivi.length > 0 && <div style={{ marginBottom: 10 }}>
+                        <div style={{ fontSize: 10, fontWeight: 900, color: gc, textTransform: "uppercase", letterSpacing: 1, marginBottom: 7 }}>Obiettivi della sessione</div>
+                        <div style={{ display: "grid", gap: 4 }}>
+                          {dayData.intro.obiettivi.map(function(goal, gi) {
+                            return <div key={gi} style={{ display: "flex", gap: 7, alignItems: "flex-start" }}>
+                              <span style={{ color: gc, fontSize: 11, lineHeight: 1.6, fontWeight: 800 }}>•</span>
+                              <span style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>{goal}</span>
+                            </div>;
+                          })}
+                        </div>
+                      </div>}
+                      {sessionSuggestion && <div style={{ padding: "10px 11px", borderRadius: 10, background: T.sb, border: "1px solid " + T.bg }}>
+                        <div style={{ fontSize: 10, fontWeight: 900, color: gc, textTransform: "uppercase", letterSpacing: 1, marginBottom: 6 }}>Suggerimento personalizzato</div>
+                        <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, marginBottom: 4 }}>{sessionSuggestion.title}</div>
+                        <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{sessionSuggestion.detail}</div>
+                      </div>}
                     </div>}
 
                     {/* === COACH SESSIONE BREVE === */}
