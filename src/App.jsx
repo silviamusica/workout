@@ -135,6 +135,17 @@ import img_w_BandDislocate from "./images/warmup_stretch/Band dislocate.gif";
 import img_w_KettlebellHalo from "./images/warmup_stretch/Kettlebell halo.gif";
 import img_w_KettlebellSwing from "./images/warmup_stretch/kettlebell swing.webp";
 import img_w_SaltoFitBoxBasso from "./images/warmup_stretch/Salto su fit box basso.gif";
+import img_w_9090HipMobility from "./images/warmup_stretch/90-90 hip mobility.png";
+import img_w_AffondiSaltatiAlternati from "./images/warmup_stretch/Affondi saltati alternati.jpg";
+import img_w_AlfredsonEccentrico from "./images/warmup_stretch/Alfredson eccentrico.webp";
+import img_w_BurpeeCompleto from "./images/warmup_stretch/burpees completo.webp";
+import img_w_CalfRaisesConPallina from "./images/warmup_stretch/Calf Raises con pallina.png";
+import img_w_GobletSquatFermoBuca from "./images/warmup_stretch/Goblet squat con fermo in buca.webp";
+import img_w_ShoulderCARs from "./images/warmup_stretch/Shoulder CARs.jpg";
+import img_w_SquatJump from "./images/warmup_stretch/Squat jump.avif";
+import img_w_SquatThrust from "./images/warmup_stretch/Squat thrust.jpg";
+import img_w_TSpineRotationQuadrupedia from "./images/warmup_stretch/T-spine rotation in quadrupedia.jpg";
+import img_w_TrazioniConElastico from "./images/warmup_stretch/Trazioni con elastico.jpg";
 
 // Muscle map
 import img_muscle_map from "./images/muscle_map.jpg";
@@ -2225,11 +2236,22 @@ var EX_IMG = {
   "Jumping jacks + cerchi con le braccia": img_w_JumpingJacks,
   "Marcia con ginocchia alte": img_w_MarciaGinocchiaAlte,
   "Marcia sul posto + affondi a corpo libero": img_w_AffondiCorpoLiberoAlt,
+  "90/90 hip mobility": img_w_9090HipMobility,
+  "Affondi saltati alternati": img_w_AffondiSaltatiAlternati,
+  "Alfredson eccentrico": img_w_AlfredsonEccentrico,
   "Step-up alternato a corpo libero": img_Step_Up,
   "Band dislocate": img_w_BandDislocate,
+  "Burpee completo": img_w_BurpeeCompleto,
+  "Calf Raises con pallina": img_w_CalfRaisesConPallina,
   "Kettlebell halo": img_w_KettlebellHalo,
   "Kettlebell swing leggero": img_w_KettlebellSwing,
+  "Goblet squat con fermo in buca": img_w_GobletSquatFermoBuca,
   "Salto su fit box basso": img_w_SaltoFitBoxBasso,
+  "Shoulder CARs": img_w_ShoulderCARs,
+  "Squat jump": img_w_SquatJump,
+  "Squat thrust": img_w_SquatThrust,
+  "T-spine rotation in quadrupedia": img_w_TSpineRotationQuadrupedia,
+  "Trazioni con elastico": img_w_TrazioniConElastico,
   "TRX Y-T-W": img_TRX_High_Row,
   "Good Morning senza peso": img_w_GoodMorningSenzaPeso,
   "Front Squat": img_Front_Squat,
