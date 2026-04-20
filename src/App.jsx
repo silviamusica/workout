@@ -2422,6 +2422,10 @@ function sameExerciseName(a, b) {
   if ((aa === "Hyperextension" && bb === "Hyperextension con Sacco") || (aa === "Hyperextension con Sacco" && bb === "Hyperextension")) return true;
   return false;
 }
+function displayExerciseName(name) {
+  if (name === "Hyperextension") return "Hyperextension con Sacco";
+  return name;
+}
 var MAX_PROGRESS_EX = ["Push-Up","Trazioni Supine"];
 var ACCESSORY_PROGRESS_EX = ["Squat Bulgaro","Face Pull","Curl Bicipiti","Hyperextension","Fitball Hamstring Curl","Tricipiti Cavo"];
 var CORE_PROGRESS_EX = ["Slackline","Ab Wheel"];
@@ -2863,6 +2867,58 @@ var V4_DAY_SPLIT_PLAN = {
   },
 };
 
+var FAST_MODE_SUPERSETS = {
+  "Giorno 1": [{ a: "Leg Curl al Cavo", b: "Ab Wheel", rest: 60 }],
+  "Giorno 2": [{ a: "Face Pull", b: "Curl Bicipiti", rest: 60 }],
+  "Giorno 4": [{ a: "Hyperextension con Sacco", b: "Fitball Hamstring Curl", rest: 60 }],
+  "Giorno 5": [{ a: "Tricipiti Cavo", b: "Woodchop", rest: 45 }],
+};
+
+function getFastSupersetPair(dayName, exName) {
+  var pairs = FAST_MODE_SUPERSETS[dayName] || [];
+  for (var i = 0; i < pairs.length; i++) {
+    var pair = pairs[i];
+    if (sameExerciseName(pair.a, exName)) return { pair: pair, role: "a", partner: pair.b };
+    if (sameExerciseName(pair.b, exName)) return { pair: pair, role: "b", partner: pair.a };
+  }
+  return null;
+}
+
+var FLOW_FILLERS = {
+  "Squat": "2 respiri lenti e brace",
+  "Stacco da Terra": "riprendi il brace e la presa",
+  "Panca": "scapole basse e 2 respiri",
+  "Trazioni": "2 scapular pull-up leggere",
+  "Trazioni Supine": "2 scapular pull-up leggere",
+  "Military Press": "glutei stretti e 2 respiri",
+  "Hip Thrust Bilanciere": "reset piedi e mento chiuso",
+  "Leg Curl al Cavo": "controlla cavigliera e cavo",
+  "Ab Wheel": "2 respiri e costole giu",
+  "Face Pull": "spalle basse e polsi sciolti",
+  "Curl Bicipiti": "apri le mani e rilassa avambracci",
+  "Hyperextension": "1 respiro lungo e reset bacino",
+  "Fitball Hamstring Curl": "riporta il bacino alto",
+  "Tricipiti Cavo": "gomiti fermi e cavo pronto",
+  "Woodchop": "brace e piedi stabili"
+};
+
+function getFlowFiller(exName) {
+  return FLOW_FILLERS[exName] || "";
+}
+
+function getSetupActionFromGear(rawEx, exDef) {
+  var tokens = logisticsTokensForExercise(rawEx, exDef);
+  if (tokens.some(function(token) { return token.key === "dumbbells"; })) return "preparare manubri";
+  if (tokens.some(function(token) { return token.key === "barbell"; })) return "preparare bilanciere";
+  if (tokens.some(function(token) { return token.key === "cable"; }) && tokens.some(function(token) { return token.key === "ankle_strap"; })) return "preparare cavo basso e cavigliera";
+  if (tokens.some(function(token) { return token.key === "cable"; })) return "preparare cavo";
+  if (tokens.some(function(token) { return token.key === "fitball"; })) return "preparare fitball";
+  if (tokens.some(function(token) { return token.key === "ab_wheel"; })) return "preparare ab wheel";
+  if (tokens.some(function(token) { return token.key === "pullup_bar"; })) return "andare alla sbarra";
+  if (tokens.some(function(token) { return token.key === "bench"; })) return "preparare panca";
+  return "";
+}
+
 function normalizeSplitDayPrefs(source) {
   if (!source || typeof source !== "object") return {};
   var next = {};
@@ -2904,6 +2960,10 @@ export default function App() {
   var [showDayIntro, setShowDayIntro] = useState(false);
   var [dismissedCalBanner, setDismissedCalBanner] = useState(false);
   var [compactMode, setCompactMode] = useState(false);
+  var [flowModeEnabled, setFlowModeEnabled] = useState(false);
+  var [activeSession, setActiveSession] = useState(false);
+  var [setupChecklistOpen, setSetupChecklistOpen] = useState(false);
+  var [setupChecklistState, setSetupChecklistState] = useState({});
   var [warmupAlt, setWarmupAlt] = useState({});
   var [warmupChecks, setWarmupChecks] = useState({});
   var [splitDayPrefs, setSplitDayPrefs] = useState({});
@@ -3023,6 +3083,95 @@ export default function App() {
     return Math.max(5, Math.round(total / 5) * 5);
   }
 
+  function buildSetupChecklistItems(day) {
+    var intro = day && day.intro && typeof day.intro === "object" ? day.intro : null;
+    var source = intro && intro.attrezzi && intro.attrezzi.length ? intro.attrezzi : [];
+    return source.map(function(item) {
+      return {
+        key: String(item || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""),
+        label: item
+      };
+    }).filter(function(item) { return !!item.key; });
+  }
+
+  function getFirstIncompleteSetIndex(entry, totalSets) {
+    for (var si = 0; si < totalSets; si++) {
+      var logged = entry && entry.sets ? entry.sets.find(function(setItem) { return setItem.si === si; }) : null;
+      if (!logged) return si;
+    }
+    return 0;
+  }
+
+  function getSuggestedSetForExercise(exName, seriesIndex) {
+    var history = getHist(exName).filter(function(entry) { return entry.date !== todayStr(); });
+    var lastSession = history[0] || null;
+    if (!lastSession || !lastSession.sets) return { w: "", r: "", rir: "" };
+    var setData = lastSession.sets.find(function(setItem) { return setItem.si === seriesIndex; });
+    if (!setData) return { w: "", r: "", rir: "" };
+    var suggestedWeight = setData.w > 0 ? storedWeightToPlateInput(exName, setData.w, barbellWeight) : "";
+    return {
+      w: suggestedWeight === "" ? "" : String(suggestedWeight),
+      r: String(setData.r),
+      rir: normalizeRirValue(setData.rir)
+    };
+  }
+
+  function getNextWorkoutExerciseEntry(day, exerciseIndex) {
+    if (!day || !day.ex || typeof exerciseIndex !== "number") return null;
+    for (var idx = exerciseIndex + 1; idx < day.ex.length; idx++) {
+      var nextRaw = day.ex[idx];
+      if (!nextRaw) continue;
+      return {
+        index: idx,
+        rawEx: nextRaw,
+        ex: getExForMonthValue(nextRaw, month)
+      };
+    }
+    return null;
+  }
+
+  function buildNextActionInfo(day, exerciseIndex, exName, setIndex, totalSets) {
+    if (typeof setIndex === "number" && setIndex < totalSets - 1) {
+      return {
+        label: "Serie " + (setIndex + 2) + " di " + totalSets + " · " + displayExerciseName(exName),
+        immediate: false,
+        filler: getFlowFiller(exName)
+      };
+    }
+    var nextEntry = getNextWorkoutExerciseEntry(day, exerciseIndex);
+    if (!nextEntry) {
+      return {
+        label: "Fine allenamento · salva ed esporta se vuoi",
+        immediate: false,
+        completed: true,
+        filler: ""
+      };
+    }
+    var supersetInfo = getFastSupersetPair(day && day.name, exName);
+    if (supersetInfo && supersetInfo.role === "a" && sameExerciseName(supersetInfo.partner, nextEntry.ex.n)) {
+      return {
+        label: displayExerciseName(nextEntry.ex.n) + " · superset diretto, no pausa",
+        immediate: true,
+        nextIndex: nextEntry.index,
+        filler: ""
+      };
+    }
+    var setupAction = getSetupActionFromGear(nextEntry.rawEx, nextEntry.ex);
+    return {
+      label: displayExerciseName(nextEntry.ex.n) + (setupAction ? " · " + setupAction : ""),
+      immediate: false,
+      nextIndex: nextEntry.index,
+      filler: getFlowFiller(exName)
+    };
+  }
+
+  function triggerFlowAlert() {
+    try {
+      if (navigator && typeof navigator.vibrate === "function") navigator.vibrate(200);
+    } catch (e) {}
+    beepEnd();
+  }
+
   function makeNavSnapshot() {
     return {
       tab: tab,
@@ -3105,6 +3254,47 @@ export default function App() {
     setShowDayIntro(false);
     setDismissedCalBanner(false);
   }
+  function startWorkoutSession() {
+    if (!workoutSelectedWeightDay || workoutSelectedWeightDay.cardio || workoutSelectedWeightDay.rest) return;
+    var initialChecks = {};
+    buildSetupChecklistItems(workoutSelectedWeightDay).forEach(function(item) {
+      initialChecks[item.key] = false;
+    });
+    setSetupChecklistState(initialChecks);
+    setActiveSession(true);
+    setSettingsOpen(false);
+    navigateToTab("workout", { resetHistory: true });
+    setShowExSection(true);
+    setShowIntro(false);
+    setShowStr(false);
+    setShowDayIntro(false);
+    setOpenEx(null);
+    setSetupChecklistOpen(true);
+    setAutoBackupMsg("");
+    requestAnimationFrame(function() {
+      var el = document.getElementById("workout-top");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+  function exitWorkoutSession(reason) {
+    setActiveSession(false);
+    setSetupChecklistOpen(false);
+    setPendingAutoAdvance(null);
+    setTimerFlowInfo(null);
+    if (reason === "completed") {
+      setAutoBackupMsg("Sessione attiva conclusa. L'allenamento del giorno e completo.");
+    }
+  }
+  useEffect(function() {
+    if (!activeSession) return;
+    if (tab !== "workout") navigateToTab("workout", { resetHistory: true });
+    if (settingsOpen) setSettingsOpen(false);
+  }, [activeSession, tab, settingsOpen]);
+  useEffect(function() {
+    if (activeSession && isCurrentWeightDayComplete) {
+      exitWorkoutSession("completed");
+    }
+  }, [activeSession, isCurrentWeightDayComplete]);
   function goBack() {
     setTabHistory(function(h) {
       if (h.length === 0) return h;
@@ -3255,6 +3445,8 @@ export default function App() {
   var [tPanel, setTPanel] = useState(false);
   var [tMini, setTMini] = useState(true);
   var [tFullscreen, setTFullscreen] = useState(false);
+  var [timerFlowInfo, setTimerFlowInfo] = useState(null);
+  var [pendingAutoAdvance, setPendingAutoAdvance] = useState(null);
   var [timerPos, setTimerPos] = useState(function() {
     try {
       var raw = localStorage.getItem("wt-timer-pos");
@@ -3291,6 +3483,7 @@ export default function App() {
   var tStart = useRef(null);
   var tAcc = useRef(0);
   var lastSnd = useRef(-1);
+  var timerSecondBuzzRef = useRef(null);
   var feedbackCardsRef = useRef(null);
 
   var T = TH[theme];
@@ -3593,6 +3786,7 @@ export default function App() {
   var isDaySplitActive = !!(splitPlanForDay && splitDayPrefs[splitPrefKey] === "split");
   var dayExerciseGroups = buildDayExerciseGroups(workoutSelectedWeightDay, month, isDaySplitActive);
   var isCurrentWeightDayComplete = !!workoutSelectedWeightDay && !workoutSelectedWeightDay.cardio && !workoutSelectedWeightDay.rest && isDayWorkoutComplete(logs, workoutSelectedWeightIndex);
+  var daySetupChecklistItems = buildSetupChecklistItems(workoutSelectedWeightDay);
   var activeOpenRawEx = dayData && dayData.ex && openEx !== null && dayData.ex[openEx] ? dayData.ex[openEx] : null;
   var activeOpenMergedEx = activeOpenRawEx ? (activeOpenRawEx.cable && activeOpenRawEx.free ? Object.assign({}, activeOpenRawEx, activeOpenRawEx.defaultFree ? activeOpenRawEx.free : activeOpenRawEx.cable) : activeOpenRawEx) : null;
   var activeOpenEx = activeOpenMergedEx ? getExForMonth(activeOpenMergedEx) : null;
@@ -3825,6 +4019,7 @@ export default function App() {
     var nextFontScale = overrides && isFinite(overrides.fontScale) && overrides.fontScale >= 0.9 && overrides.fontScale <= 1.5 ? overrides.fontScale : fontScale;
     var nextWorkflowEnabled = overrides && typeof overrides.exerciseWorkflowEnabled === "boolean" ? overrides.exerciseWorkflowEnabled : exerciseWorkflowEnabled;
     var nextExtraInfoEnabled = overrides && typeof overrides.extraInfoEnabled === "boolean" ? overrides.extraInfoEnabled : extraInfoEnabled;
+    var nextFlowModeEnabled = overrides && typeof overrides.flowModeEnabled === "boolean" ? overrides.flowModeEnabled : flowModeEnabled;
     var nextSplitDayPrefs = normalizeSplitDayPrefs(overrides && overrides.splitDayPrefs && typeof overrides.splitDayPrefs === "object" ? overrides.splitDayPrefs : splitDayPrefs);
     return {
       savedAt: new Date().toISOString(),
@@ -3846,6 +4041,7 @@ export default function App() {
         fontScale: nextFontScale,
         exerciseWorkflowEnabled: nextWorkflowEnabled,
         extraInfoEnabled: nextExtraInfoEnabled,
+        flowModeEnabled: nextFlowModeEnabled,
         splitDayPrefs: nextSplitDayPrefs,
         guidedMode: !!sourceGuidedMode,
         guidedRecoveryEnabled: false,
@@ -3960,6 +4156,7 @@ export default function App() {
         fontScale: fontScale,
         exerciseWorkflowEnabled: exerciseWorkflowEnabled,
         extraInfoEnabled: extraInfoEnabled,
+        flowModeEnabled: flowModeEnabled,
         splitDayPrefs: splitDayPrefs
       }
     );
@@ -3987,6 +4184,7 @@ export default function App() {
         fontScale: parseFloat(importedPreferences.fontScale),
         exerciseWorkflowEnabled: typeof importedPreferences.exerciseWorkflowEnabled === "boolean" ? importedPreferences.exerciseWorkflowEnabled : undefined,
         extraInfoEnabled: typeof importedPreferences.extraInfoEnabled === "boolean" ? importedPreferences.extraInfoEnabled : undefined,
+        flowModeEnabled: typeof importedPreferences.flowModeEnabled === "boolean" ? importedPreferences.flowModeEnabled : undefined,
         splitDayPrefs: importedPreferences.splitDayPrefs
       }
     );
@@ -4194,6 +4392,7 @@ export default function App() {
             if (isFinite(pfs) && pfs >= 0.9 && pfs <= 1.5) setFontScale(pfs);
             if (typeof parsed.preferences.exerciseWorkflowEnabled === "boolean") setExerciseWorkflowEnabled(parsed.preferences.exerciseWorkflowEnabled);
             if (typeof parsed.preferences.extraInfoEnabled === "boolean") setExtraInfoEnabled(parsed.preferences.extraInfoEnabled);
+            if (typeof parsed.preferences.flowModeEnabled === "boolean") setFlowModeEnabled(parsed.preferences.flowModeEnabled);
             if (parsed.preferences.splitDayPrefs && typeof parsed.preferences.splitDayPrefs === "object") setSplitDayPrefs(normalizeSplitDayPrefs(parsed.preferences.splitDayPrefs));
           }
         } else if (parsed && typeof parsed === "object") {
@@ -4227,6 +4426,10 @@ export default function App() {
     try {
       var ei = localStorage.getItem("wt-extra-info");
       setExtraInfoEnabled(ei == null ? true : ei === "1");
+    } catch(e) {}
+    try {
+      var fm = localStorage.getItem("wt-flow-mode");
+      setFlowModeEnabled(fm === "1");
     } catch(e) {}
     try { localStorage.removeItem("wt-guided-recovery"); } catch(e) {}
     try {
@@ -4298,8 +4501,15 @@ export default function App() {
       document.removeEventListener("touchstart", handleOutsideFeedback, true);
     };
   }, [calibrationFeedback, guidedFeedback]);
+  function clearTimerSecondBuzz() {
+    if (timerSecondBuzzRef.current) {
+      clearTimeout(timerSecondBuzzRef.current);
+      timerSecondBuzzRef.current = null;
+    }
+  }
   useEffect(function() {
     if (!activeOpenRestSec) return;
+    if (timerFlowInfo) return;
     setTMode("countdown");
     setTTarget(activeOpenRestSec);
     if (!tRunning) {
@@ -4309,7 +4519,7 @@ export default function App() {
       setTFlash(false);
       setTWarning(false);
     }
-  }, [activeOpenRestSec, tRunning]);
+  }, [activeOpenRestSec, tRunning, timerFlowInfo]);
   useEffect(function() {
     try {
       localStorage.setItem("wt-timer-pos", JSON.stringify(timerPos || { x: 0, y: 0 }));
@@ -4320,6 +4530,11 @@ export default function App() {
       localStorage.setItem("wt-stretch-logs", JSON.stringify(stretchLogs || {}));
     } catch (e) {}
   }, [stretchLogs]);
+  useEffect(function() {
+    return function() {
+      clearTimerSecondBuzz();
+    };
+  }, []);
 
   useEffect(function() {
     if (!supabase || !cloudUser || cloudHydratedUserId !== cloudUser.id || cloudConflict) return;
@@ -4348,6 +4563,7 @@ export default function App() {
     fontScale,
     exerciseWorkflowEnabled,
     extraInfoEnabled,
+    flowModeEnabled,
     splitDayPrefs,
     cloudUser,
     cloudHydratedUserId
@@ -4368,6 +4584,7 @@ export default function App() {
     var nextFontScale = overrides && isFinite(overrides.fontScale) && overrides.fontScale >= 0.9 && overrides.fontScale <= 1.5 ? overrides.fontScale : fontScale;
     var nextWorkflowEnabled = overrides && typeof overrides.exerciseWorkflowEnabled === "boolean" ? overrides.exerciseWorkflowEnabled : exerciseWorkflowEnabled;
     var nextExtraInfoEnabled = overrides && typeof overrides.extraInfoEnabled === "boolean" ? overrides.extraInfoEnabled : extraInfoEnabled;
+    var nextFlowModeEnabled = overrides && typeof overrides.flowModeEnabled === "boolean" ? overrides.flowModeEnabled : flowModeEnabled;
     var nextSplitDayPrefs = normalizeSplitDayPrefs(overrides && overrides.splitDayPrefs && typeof overrides.splitDayPrefs === "object" ? overrides.splitDayPrefs : splitDayPrefs);
     setLogs(nextLogs);
     setCardioLogs(nextCardioLogs);
@@ -4394,6 +4611,7 @@ export default function App() {
           fontScale: nextFontScale,
           exerciseWorkflowEnabled: nextWorkflowEnabled,
           extraInfoEnabled: nextExtraInfoEnabled,
+          flowModeEnabled: nextFlowModeEnabled,
           splitDayPrefs: nextSplitDayPrefs
         }
       );
@@ -4419,11 +4637,12 @@ export default function App() {
             level: nextLevel,
             theme: nextTheme,
             fontScale: nextFontScale,
-            exerciseWorkflowEnabled: nextWorkflowEnabled,
-            extraInfoEnabled: nextExtraInfoEnabled,
-            splitDayPrefs: nextSplitDayPrefs
-          }
-        );
+          exerciseWorkflowEnabled: nextWorkflowEnabled,
+          extraInfoEnabled: nextExtraInfoEnabled,
+          flowModeEnabled: nextFlowModeEnabled,
+          splitDayPrefs: nextSplitDayPrefs
+        }
+      );
         localStorage.setItem(SK, JSON.stringify(lightSnapshot));
         localStorage.removeItem(SK_SHADOW);
         localStorage.setItem("wt-barbell-weight", String(nextBarbell));
@@ -4433,7 +4652,7 @@ export default function App() {
         setAutoBackupMsg("Salvataggio locale non riuscito: spazio del browser probabilmente pieno. Esporta subito il JSON e ricarica la pagina dopo aver reimportato il backup piu recente.");
       }
     }
-  }, [guidedMode, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled, splitDayPrefs, stretchLogs]);
+  }, [guidedMode, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled, flowModeEnabled, splitDayPrefs, stretchLogs]);
 
   var persistCurrentSnapshot = useCallback(function(reason) {
     if (!ready) return false;
@@ -4456,6 +4675,7 @@ export default function App() {
           fontScale: fontScale,
           exerciseWorkflowEnabled: exerciseWorkflowEnabled,
           extraInfoEnabled: extraInfoEnabled,
+          flowModeEnabled: flowModeEnabled,
           splitDayPrefs: splitDayPrefs
         }
       );
@@ -4486,6 +4706,7 @@ export default function App() {
             fontScale: fontScale,
             exerciseWorkflowEnabled: exerciseWorkflowEnabled,
             extraInfoEnabled: extraInfoEnabled,
+            flowModeEnabled: flowModeEnabled,
             splitDayPrefs: splitDayPrefs
           }
         );
@@ -4507,7 +4728,7 @@ export default function App() {
         return false;
       }
     }
-  }, [ready, logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled, splitDayPrefs]);
+  }, [ready, logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled, flowModeEnabled, splitDayPrefs]);
 
   useEffect(function() {
     if (!ready) return;
@@ -4556,13 +4777,133 @@ export default function App() {
     }
   }
 
-  useEffect(function() { if (tRunning) { tStart.current = Date.now(); intv.current = setInterval(function() { var el = Date.now() - tStart.current + tAcc.current; if (tMode === "countdown") { var rem = tTarget*1000 - el; if (rem <= 0) { setTMs(0); setTRunning(false); tAcc.current = 0; setTFlash(true); setTWarning(false); beepEnd(); setTimeout(function() { setTFlash(false); }, 3000); clearInterval(intv.current); } else { setTMs(rem); setTWarning(rem <= 10000); checkSound(rem, "countdown"); } } else { setTMs(el); setTWarning(false); checkSound(el, "stopwatch"); } }, 50); } else { clearInterval(intv.current); } return function() { clearInterval(intv.current); }; }, [tRunning, tMode, tTarget]);
+  useEffect(function() {
+    if (tRunning) {
+      tStart.current = Date.now();
+      intv.current = setInterval(function() {
+        var el = Date.now() - tStart.current + tAcc.current;
+        if (tMode === "countdown") {
+          var rem = tTarget * 1000 - el;
+          if (rem <= 0) {
+            setTMs(0);
+            setTRunning(false);
+            tAcc.current = 0;
+            setTFlash(true);
+            setTWarning(false);
+            triggerFlowAlert();
+            clearTimerSecondBuzz();
+            timerSecondBuzzRef.current = setTimeout(function() {
+              triggerFlowAlert();
+            }, 15000);
+            setTimeout(function() { setTFlash(false); }, 3000);
+            clearInterval(intv.current);
+          } else {
+            setTMs(rem);
+            setTWarning(rem <= 10000);
+            checkSound(rem, "countdown");
+          }
+        } else {
+          setTMs(el);
+          setTWarning(false);
+          checkSound(el, "stopwatch");
+        }
+      }, 50);
+    } else {
+      clearInterval(intv.current);
+    }
+    return function() { clearInterval(intv.current); };
+  }, [tRunning, tMode, tTarget, tMs]);
 
-  function timerGo() { try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {} if (tMode === "countdown" && tMs === 0 && !tRunning) { tAcc.current = 0; setTMs(tTarget * 1000); } lastSnd.current = tMode === "countdown" ? 0 : Math.floor(tMs/1000); tStart.current = Date.now(); setTRunning(true); setTFlash(false); setTFull(false); }
-  function timerPause() { setTRunning(false); tAcc.current = tMode === "stopwatch" ? tMs : tTarget*1000 - tMs; }
-  function timerReset() { setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMs(tMode === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); setTFull(false); }
-  function timerSwitch(m) { setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTMode(m); setTMs(m === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); }
+  useEffect(function() {
+    if (!(pendingAutoAdvance && !tRunning && tMode === "countdown" && tMs === 0)) return;
+    clearTimerSecondBuzz();
+    var nextDay = activeDays[pendingAutoAdvance.dayIdx];
+    if (!nextDay || !nextDay.ex || !nextDay.ex[pendingAutoAdvance.nextIndex]) {
+      setPendingAutoAdvance(null);
+      return;
+    }
+    var rawEx = nextDay.ex[pendingAutoAdvance.nextIndex];
+    var exDef = getExForMonthValue(rawEx, month);
+    var spec = parseProgressSpec(exDef.s);
+    var nextEntry = getLog(exDef.n, pendingAutoAdvance.dayIdx);
+    var nextSetIndex = getFirstIncompleteSetIndex(nextEntry, spec && spec.sets ? spec.sets : 1);
+    var suggested = getSuggestedSetForExercise(exDef.n, nextSetIndex);
+    setOpenEx(pendingAutoAdvance.nextIndex);
+    setShowExSection(true);
+    setShowIntro(false);
+    setShowStr(false);
+    setHistPage(function(prev) {
+      var next = Object.assign({}, prev);
+      next[pendingAutoAdvance.nextIndex] = 0;
+      return next;
+    });
+    setEditing(pendingAutoAdvance.nextIndex + "-" + nextSetIndex);
+    setTmpW(suggested.w);
+    setTmpR(suggested.r);
+    setTmpRir(suggested.rir || "");
+    setPendingAutoAdvance(null);
+    setTimerFlowInfo(null);
+    requestAnimationFrame(function() {
+      var el = document.getElementById("ex-row-" + pendingAutoAdvance.nextIndex);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [pendingAutoAdvance, tRunning, tMode, tMs, month]);
+
+  function timerGo() {
+    clearTimerSecondBuzz();
+    try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {}
+    if (tMode === "countdown" && tMs === 0 && !tRunning) { tAcc.current = 0; setTMs(tTarget * 1000); }
+    lastSnd.current = tMode === "countdown" ? 0 : Math.floor(tMs / 1000);
+    tStart.current = Date.now();
+    setTRunning(true);
+    setTFlash(false);
+    setTFull(false);
+  }
+  function timerPause() {
+    clearTimerSecondBuzz();
+    setTRunning(false);
+    tAcc.current = tMode === "stopwatch" ? tMs : tTarget * 1000 - tMs;
+  }
+  function timerReset() {
+    clearTimerSecondBuzz();
+    setTRunning(false);
+    tAcc.current = 0;
+    lastSnd.current = -1;
+    setTMs(tMode === "countdown" ? tTarget * 1000 : 0);
+    setTFlash(false);
+    setTWarning(false);
+    setTFull(false);
+    setTimerFlowInfo(null);
+    setPendingAutoAdvance(null);
+  }
+  function timerSwitch(m) { clearTimerSecondBuzz(); setTRunning(false); tAcc.current = 0; lastSnd.current = -1; setTimerFlowInfo(null); setPendingAutoAdvance(null); setTMode(m); setTMs(m === "countdown" ? tTarget*1000 : 0); setTFlash(false); setTWarning(false); }
   function timerSetTarget(s) { setTTarget(s); if (!tRunning) { tAcc.current = 0; lastSnd.current = -1; setTMs(s * 1000); } }
+  function startRecoveryTimer(secs, flowInfo) {
+    clearTimerSecondBuzz();
+    try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {}
+    if (typeof window !== "undefined" && (window.innerWidth || 0) <= 640) {
+      setTMini(false);
+      setTPanel(true);
+      resetTimerPosition();
+    }
+    setTRunning(false);
+    clearInterval(intv.current);
+    tAcc.current = 0;
+    lastSnd.current = 0;
+    setTimerFlowInfo(flowInfo || null);
+    setTMode("countdown");
+    setTTarget(secs);
+    setTMs(secs * 1000);
+    setTFlash(false);
+    setTWarning(secs <= 10);
+    setTimeout(function() {
+      tStart.current = Date.now();
+      tAcc.current = 0;
+      lastSnd.current = 0;
+      setTRunning(true);
+      setTFull(false);
+    }, 50);
+  }
   function resetTimerPosition() {
     setTimerPos({ x: 0, y: 0 });
   }
@@ -4715,6 +5056,7 @@ export default function App() {
   }, [tPanel, tFullscreen]);
 
   function quickTimer(secs) {
+    clearTimerSecondBuzz();
     try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {}
     if (typeof window !== "undefined" && (window.innerWidth || 0) <= 640) {
       setTMini(false);
@@ -4725,6 +5067,8 @@ export default function App() {
     clearInterval(intv.current);
     tAcc.current = 0;
     lastSnd.current = 0;
+    setTimerFlowInfo(null);
+    setPendingAutoAdvance(null);
     setTMode("countdown");
     setTTarget(secs);
     setTMs(secs * 1000);
@@ -4739,11 +5083,14 @@ export default function App() {
   }
 
   function quickStopwatch() {
+    clearTimerSecondBuzz();
     try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {}
     setTRunning(false);
     clearInterval(intv.current);
     tAcc.current = 0;
     lastSnd.current = -1;
+    setTimerFlowInfo(null);
+    setPendingAutoAdvance(null);
     setTMode("stopwatch");
     setTMs(0);
     setTFlash(false);
@@ -5327,6 +5674,7 @@ export default function App() {
     var importedFontScale = parseFloat(preferences.fontScale);
     var importedWorkflow = typeof preferences.exerciseWorkflowEnabled === "boolean" ? preferences.exerciseWorkflowEnabled : null;
     var importedExtraInfo = typeof preferences.extraInfoEnabled === "boolean" ? preferences.extraInfoEnabled : null;
+    var importedFlowMode = typeof preferences.flowModeEnabled === "boolean" ? preferences.flowModeEnabled : null;
     var importedSplitDayPrefs = preferences.splitDayPrefs && typeof preferences.splitDayPrefs === "object" ? normalizeSplitDayPrefs(preferences.splitDayPrefs) : null;
 
     setUserName(importedName);
@@ -5359,6 +5707,10 @@ export default function App() {
     if (importedExtraInfo !== null) {
       setExtraInfoEnabled(importedExtraInfo);
       try { localStorage.setItem("wt-extra-info", importedExtraInfo ? "1" : "0"); } catch (e) {}
+    }
+    if (importedFlowMode !== null) {
+      setFlowModeEnabled(importedFlowMode);
+      try { localStorage.setItem("wt-flow-mode", importedFlowMode ? "1" : "0"); } catch (e) {}
     }
     if (importedSplitDayPrefs !== null) {
       setSplitDayPrefs(importedSplitDayPrefs);
@@ -7347,6 +7699,7 @@ function isNearBodyweightElasticSession(exName, sets) {
 
   // Clickable exercise name
   function getExerciseDisplayName(name) {
+    if (name === "Hyperextension") return "Hyperextension con Sacco";
     if (name === "Trazioni") return "Trazioni · prone";
     if (name === "Trazioni Supine") return "Trazioni Supine · supine";
     return name;
@@ -7573,6 +7926,34 @@ function isNearBodyweightElasticSession(exName, sets) {
         </div>;
       })()}
 
+      {setupChecklistOpen && workoutSelectedWeightDay && <div onClick={function() { setSetupChecklistOpen(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", zIndex: 245, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: 12 }}>
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", maxWidth: 520, background: T.cd, borderRadius: 16, overflow: "hidden", boxShadow: "0 20px 40px rgba(0,0,0,0.22)" }}>
+          <div style={{ padding: "16px 16px 10px", borderBottom: "1px solid " + T.bg }}>
+            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 4 }}>Prepara tutto prima di iniziare</div>
+            <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Spunta gli attrezzi del giorno e poi parti senza altre micro-decisioni.</div>
+          </div>
+          <div style={{ padding: 16, display: "grid", gap: 10 }}>
+            {daySetupChecklistItems.length ? daySetupChecklistItems.map(function(item) {
+              var checked = !!setupChecklistState[item.key];
+              return <button key={item.key} onClick={function() {
+                setSetupChecklistState(function(prev) {
+                  var next = Object.assign({}, prev);
+                  next[item.key] = !next[item.key];
+                  return next;
+                });
+              }} style={{ display: "flex", alignItems: "center", gap: 10, minHeight: 48, padding: "0 12px", borderRadius: 12, border: "1px solid " + (checked ? T.ok + "55" : T.bg), background: checked ? T.ok + "10" : T.sb, color: T.tx, cursor: "pointer", textAlign: "left" }}>
+                <span style={{ width: 22, height: 22, borderRadius: 999, border: "2px solid " + (checked ? T.ok : T.sub + "50"), background: checked ? T.ok : "transparent", color: "#fff", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 900, flexShrink: 0 }}>{checked ? "✓" : ""}</span>
+                <span style={{ fontSize: 13, fontWeight: 700, lineHeight: 1.45 }}>{item.label}</span>
+              </button>;
+            }) : <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Nessun setup specifico da mostrare per questo giorno.</div>}
+            <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
+              <button onClick={function() { setSetupChecklistOpen(false); }} style={{ flex: 1, minHeight: 44, border: "none", borderRadius: 10, background: T.ok, color: "#fff", fontSize: 12, fontWeight: 900, cursor: "pointer" }}>Inizia</button>
+              <button onClick={function() { setSetupChecklistOpen(false); }} style={{ flex: 1, minHeight: 44, border: "1px solid " + T.bg, borderRadius: 10, background: T.sb, color: T.sub, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Salta, so gia cosa mi serve</button>
+            </div>
+          </div>
+        </div>
+      </div>}
+
       {/* Settings Modal */}
       {settingsOpen && <div onClick={function() { setSettingsOpen(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 250, display: "flex", alignItems: "flex-start", justifyContent: "center", padding: 16, overflowY: "auto", WebkitOverflowScrolling: "touch" }}>
         <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, maxWidth: 400, width: "100%", color: T.tx, maxHeight: "calc(100dvh - 32px)", display: "flex", flexDirection: "column", overflow: "hidden", margin: "max(12px, env(safe-area-inset-top, 0px)) 0 max(12px, env(safe-area-inset-bottom, 0px))" }}>
@@ -7638,6 +8019,24 @@ function isNearBodyweightElasticSession(exName, sets) {
                   style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (extraInfoEnabled ? dc : T.sub + "30"), background: extraInfoEnabled ? dc : T.cd, color: extraInfoEnabled ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
                 >
                   {extraInfoEnabled ? "ON" : "OFF"}
+                </button>
+              </div>
+            </div>}
+            {!isBasics && <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Modalita flusso</div>
+                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Riduce le distrazioni durante l'allenamento: checklist iniziale, prossimo passo nel timer, avanzamento automatico e sessione attiva solo sulla scheda.</div>
+                </div>
+                <button
+                  onClick={function() {
+                    var next = !flowModeEnabled;
+                    setFlowModeEnabled(next);
+                    try { localStorage.setItem("wt-flow-mode", next ? "1" : "0"); } catch(e) {}
+                  }}
+                  style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (flowModeEnabled ? dc : T.sub + "30"), background: flowModeEnabled ? dc : T.cd, color: flowModeEnabled ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
+                >
+                  {flowModeEnabled ? "ON" : "OFF"}
                 </button>
               </div>
             </div>}
@@ -7816,15 +8215,18 @@ function isNearBodyweightElasticSession(exName, sets) {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", maxWidth: 600, margin: "0 auto" }}>
           {/* Nome e foto utente */}
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div onClick={function() { setSettingsOpen(true); }} style={{ width: 34, height: 34, borderRadius: "50%", background: userPhoto ? "transparent" : "rgba(255,255,255,0.10)", border: "1.5px solid rgba(255,255,255,0.15)", overflow: "hidden", cursor: "pointer", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16 }}>
+            <div onClick={function() { if (!activeSession) setSettingsOpen(true); }} style={{ width: 34, height: 34, borderRadius: "50%", background: userPhoto ? "transparent" : "rgba(255,255,255,0.10)", border: "1.5px solid rgba(255,255,255,0.15)", overflow: "hidden", cursor: activeSession ? "default" : "pointer", opacity: activeSession ? 0.45 : 1, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16 }}>
               {userPhoto ? <img src={userPhoto} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : "👤"}
             </div>
             <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: -0.3 }}>{userName ? userName : "Allenamento"}</div>
           </div>
+          {activeSession && <button onClick={function() { exitWorkoutSession("manual"); }} style={{ minHeight: 30, padding: "0 12px", borderRadius: 999, border: "1px solid rgba(255,255,255,0.18)", background: "rgba(255,255,255,0.12)", color: "#fff", fontSize: 11, fontWeight: 800, cursor: "pointer" }}>Esci dalla sessione</button>}
         </div>
         {/* View tabs */}
         <div style={{ display: "flex", gap: 1, maxWidth: 600, margin: "12px auto 0", alignItems: "stretch" }}>
-          {isBeginner ? (function() {
+          {activeSession ? [
+            <button key="session-workout" onClick={function() { navigateToTab("workout", { resetHistory: true }); scrollTopSoon("workout-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 12, fontWeight: 700, color: T.tx, borderBottom: "2px solid " + dc, transition: "color 0.15s" }}>Scheda</button>
+          ] : isBeginner ? (function() {
             var beginnerTabs = [
               { label: "Scheda", key: "workout", onClick: function() { navigateToTab("workout"); scrollTopSoon("workout-top"); } },
               { label: "Teoria", key: "teoria", onClick: function() { navigateToTab("teoria"); scrollTopSoon("teoria-top"); } },
@@ -9170,6 +9572,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               return <button
                 key={day.name}
                 onClick={function() {
+                  if (activeSession) exitWorkoutSession("manual");
                   if (level === "v4") setWorkoutDayName(day.name);
                   if (!day.cardio) {
                     var nextIdx = activeDays.findIndex(function(item) { return item && item.name === day.name; });
@@ -9225,6 +9628,18 @@ function isNearBodyweightElasticSession(exName, sets) {
                     <div style={{ fontSize: isBeginner ? 19 : 15, fontWeight: 900, color: T.tx, lineHeight: 1.25 }}>{dayData.focus}</div>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginTop: 3 }}>
                       <div style={{ fontSize: isBeginner ? 12 : 11, color: dc, fontWeight: 600 }}>~{estimatedDayMinutes || dayData.tEst} min</div>
+                      {!dayData.cardio && !dayData.rest && !isBasics && flowModeEnabled && !activeSession && <button
+                        onClick={function(e) { e.stopPropagation(); startWorkoutSession(); }}
+                        style={{ minHeight: 28, padding: "0 11px", border: "none", borderRadius: 999, background: T.ok, color: "#fff", fontSize: 10, fontWeight: 900, cursor: "pointer", whiteSpace: "nowrap" }}
+                      >
+                        Inizia allenamento
+                      </button>}
+                      {!dayData.cardio && !dayData.rest && !isBasics && flowModeEnabled && activeSession && <button
+                        onClick={function(e) { e.stopPropagation(); setSetupChecklistOpen(true); }}
+                        style={{ minHeight: 28, padding: "0 11px", border: "1px solid " + dc + "35", borderRadius: 999, background: dc + "10", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}
+                      >
+                        Checklist setup
+                      </button>}
                       {!dayData.cardio && !dayData.rest && !isBasics && <button
                         onClick={function(e) { e.stopPropagation(); setCompactMode(function(v) { return !v; }); }}
                         style={{ minHeight: 26, padding: "0 10px", border: "1px solid " + (compactMode ? dc + "70" : T.sub + "30"), borderRadius: 999, background: compactMode ? dc + "20" : "transparent", color: compactMode ? dc : T.sub, boxShadow: compactMode ? ("0 0 0 2px " + dc + "18, 0 0 14px " + dc + "25") : "none", fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap", display: "inline-flex", alignItems: "center", gap: 5 }}
@@ -9721,12 +10136,18 @@ function isNearBodyweightElasticSession(exName, sets) {
                   var guidedRirSummary = getExerciseRirHistorySummary(ex.n);
                   var allSetsLogged = !!(tLog && tLog.sets && sc > 0 && tLog.sets.length >= sc);
                   var logisticsCue = allSetsLogged ? buildLogisticsCue(mergedEx, ex, (dayData.ex || []).slice(i + 1), month) : null;
+                  var flowSuperset = flowModeEnabled ? getFastSupersetPair(dayData && dayData.name, ex.n) : null;
                   var compactExerciseCard = !isBasics && compactMode;
                   return <div style={{ padding: compactExerciseCard ? "0 12px 12px" : "0 14px 14px" }} onClick={function(e) { e.stopPropagation(); }}>
                     {/* Cable toggle */}
                     {hasCableToggle && <div style={{ display: "flex", gap: 0, marginBottom: 10, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "40", alignSelf: "flex-start", width: "fit-content" }} onClick={function(e) { e.stopPropagation(); }}>
                       <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = true; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: isCable ? dc : "transparent", color: isCable ? "#fff" : T.sub }}>🔌 Cavi</button>
                       <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = false; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: !isCable ? dc : "transparent", color: !isCable ? "#fff" : T.sub }}>💪 Libero</button>
+                    </div>}
+
+                    {!isBasics && flowSuperset && <div style={{ marginBottom: 8, display: "inline-flex", alignItems: "center", gap: 6, padding: "6px 10px", borderRadius: 999, background: dc + "10", border: "1px solid " + dc + "25", color: dc, fontSize: 10, fontWeight: 800 }}>
+                      <span>Superset</span>
+                      <span style={{ color: T.sub, fontWeight: 700 }}>{displayExerciseName(flowSuperset.partner)}</span>
                     </div>}
 
                     {!isBasics && !compactMode && guidedMode && sessionSuggestion && <div style={{ marginBottom: 10, borderRadius: 12, background: gc + "0A", border: "1px solid " + gc + "22", padding: compactExerciseCard ? "9px 11px" : "11px 13px" }}>
@@ -9832,7 +10253,77 @@ function isNearBodyweightElasticSession(exName, sets) {
                                     </div>}
                                   </div>
                                   <div style={{ display: "flex", gap: 8 }}>
-                                    <button onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : plateInputToStoredWeight(ex.n, tmpW, barbellWeight)), tmpR, isBW, tmpRir); var isLastSet = si === sc - 1; if (isLastSet) { var nextIdx = i + 1; var exList = dayData.ex || []; if (nextIdx < exList.length) { setTimeout(function() { setOpenEx(nextIdx); setHistPage(function(p) { var n = Object.assign({}, p); n[nextIdx] = 0; return n; }); setTimeout(function() { var el = document.getElementById("ex-row-" + nextIdx); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 50); }, 600); } else { setTimeout(function() { setOpenEx(null); }, 600); } } else { setTimeout(function() { var nextSugg = getSuggested(si + 1); setEditing(i + "-" + (si + 1)); setTmpW(nextSugg.w); setTmpR(""); setTmpRir(""); }, 300); } }} style={{ flex: 1, minHeight: 42, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 14, cursor: "pointer", fontWeight: 800, touchAction: "manipulation" }}>Salva ✓</button>
+                                    <button onClick={function(e) {
+                                      e.stopPropagation();
+                                      var storedWeight = isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : plateInputToStoredWeight(ex.n, tmpW, barbellWeight));
+                                      beginLogSet(ex, dayIdx, si, storedWeight, tmpR, isBW, tmpRir);
+                                      var nextAction = buildNextActionInfo(dayData, i, ex.n, si, sc);
+                                      if (flowModeEnabled && !isBasics) {
+                                        if (nextAction && nextAction.immediate && typeof nextAction.nextIndex === "number") {
+                                          setTimerFlowInfo({ nextLabel: nextAction.label, filler: nextAction.filler || "" });
+                                          setPendingAutoAdvance({
+                                            dayIdx: dayIdx,
+                                            nextIndex: nextAction.nextIndex
+                                          });
+                                          setTMode("countdown");
+                                          setTTarget(0);
+                                          setTMs(0);
+                                          setTRunning(false);
+                                        } else if (restSec) {
+                                          setPendingAutoAdvance(nextAction && typeof nextAction.nextIndex === "number" ? {
+                                            dayIdx: dayIdx,
+                                            nextIndex: nextAction.nextIndex
+                                          } : null);
+                                          startRecoveryTimer(restSec, {
+                                            nextLabel: nextAction ? nextAction.label : "",
+                                            filler: nextAction ? (nextAction.filler || "") : ""
+                                          });
+                                        } else {
+                                          setTimerFlowInfo(nextAction ? { nextLabel: nextAction.label, filler: nextAction.filler || "" } : null);
+                                          setPendingAutoAdvance(nextAction && typeof nextAction.nextIndex === "number" ? {
+                                            dayIdx: dayIdx,
+                                            nextIndex: nextAction.nextIndex
+                                          } : null);
+                                        }
+                                      }
+                                      if (si === sc - 1) {
+                                        setEditing(null);
+                                        setTmpW("");
+                                        setTmpR("");
+                                        setTmpRir("");
+                                        if (!flowModeEnabled) {
+                                          if (nextAction && typeof nextAction.nextIndex === "number") {
+                                            setTimeout(function() {
+                                              setOpenEx(nextAction.nextIndex);
+                                              setHistPage(function(prev) {
+                                                var next = Object.assign({}, prev);
+                                                next[nextAction.nextIndex] = 0;
+                                                return next;
+                                              });
+                                              setTimeout(function() {
+                                                var el = document.getElementById("ex-row-" + nextAction.nextIndex);
+                                                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                                              }, 50);
+                                            }, 600);
+                                          } else {
+                                            setTimeout(function() { setOpenEx(null); }, 600);
+                                          }
+                                        } else if (!(nextAction && typeof nextAction.nextIndex === "number") && !(nextAction && nextAction.completed)) {
+                                          setOpenEx(null);
+                                        }
+                                        if (flowModeEnabled && nextAction && nextAction.completed) {
+                                          exitWorkoutSession("completed");
+                                        }
+                                      } else {
+                                        setTimeout(function() {
+                                          var nextSugg = getSuggested(si + 1);
+                                          setEditing(i + "-" + (si + 1));
+                                          setTmpW(nextSugg.w);
+                                          setTmpR("");
+                                          setTmpRir("");
+                                        }, 220);
+                                      }
+                                    }} style={{ flex: 1, minHeight: 42, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 14, cursor: "pointer", fontWeight: 800, touchAction: "manipulation" }}>Salva ✓</button>
                                     <button onClick={function(e) { e.stopPropagation(); setEditing(null); setTmpW(""); setTmpR(""); setTmpRir(""); }} style={{ minWidth: 84, minHeight: 42, background: T.bg, color: T.sub, border: "none", borderRadius: 8, fontSize: 13, cursor: "pointer", fontWeight: 700, touchAction: "manipulation" }}>Annulla</button>
                                   </div>
                                 </div>
@@ -9865,17 +10356,17 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>}
 
                     {/* === TIMER RECUPERO — subito dopo le serie === */}
-                    {!isBasics && showTimerBtns && <div style={{ display: "grid", gap: 8, marginBottom: 10 }}>
-                      {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ width: "100%", minHeight: 56, border: "none", borderRadius: 14, background: tMode === "countdown" && tRunning ? (tWarning ? "#B91C1C" : T.ok) : T.ok, color: "#fff", fontWeight: 900, fontSize: 15, letterSpacing: 0.35, cursor: "pointer", boxShadow: tMode === "countdown" ? "0 10px 24px rgba(0,0,0,0.18)" : "none", animation: tMode === "countdown" && tWarning ? "timerBlink 1s infinite" : "none" }}>
+                    {!isBasics && showTimerBtns && <div style={{ display: "grid", gap: 6, marginBottom: 10 }}>
+                      {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ width: "100%", minHeight: 52, border: "none", borderRadius: 12, background: tMode === "countdown" && tRunning ? (tWarning ? "#B91C1C" : T.ok) : T.ok, color: "#fff", fontWeight: 900, fontSize: 14, letterSpacing: 0.2, cursor: "pointer", boxShadow: tMode === "countdown" ? "0 10px 24px rgba(0,0,0,0.18)" : "none", animation: tMode === "countdown" && tWarning ? "timerBlink 1s infinite" : "none" }}>
                         {"▶ TIMER RECUPERO · " + fmtLabel(restSec)}
                       </button> : null}
-                      {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ width: "100%", minHeight: 46, border: "none", borderRadius: 12, background: dc, color: "#fff", fontWeight: 800, fontSize: 13, cursor: "pointer" }}>{"▶ Timer lavoro · " + fmtLabel(workSec)}</button> : null}
+                      {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ width: "100%", minHeight: 42, border: "none", borderRadius: 10, background: dc, color: "#fff", fontWeight: 800, fontSize: 12, cursor: "pointer" }}>{"▶ Timer lavoro · " + fmtLabel(workSec)}</button> : null}
                     </div>}
 
                     {/* === DETTAGLI (collassato): storico · tecnica · note === */}
-                    {!isBasics && !compactMode && extraInfoEnabled && <details style={{ marginTop: 2, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
+                    {!isBasics && !compactMode && extraInfoEnabled && <details style={{ marginTop: 0, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
                       <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 12px", fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ flex: 1 }}>Dettagli</span><span style={{ fontSize: 12 }}>›</span>
+                        <span style={{ flex: 1 }}>Tecnica, note e storico</span><span style={{ fontSize: 12 }}>›</span>
                       </summary>
                     <div style={{ padding: "10px 11px", display: "grid", gap: 10 }}>
                       <div style={{ background: T.cd, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
@@ -10285,8 +10776,16 @@ function isNearBodyweightElasticSession(exName, sets) {
           </div>
           <button onClick={function() { setTPanel(!tPanel); }} title={tPanel ? "Riduci timer" : "Espandi timer"} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 24, height: 24, borderRadius: 6, cursor: "pointer", fontSize: 10, pointerEvents: "auto", touchAction: "manipulation" }}>{tPanel ? "\u25BE" : "\u25B4"}</button>
           <div style={{ flex: 1, textAlign: "center", minWidth: 0, pointerEvents: "none" }}>
-            {(tPanel || tFullscreen) && activeOpenEx && tMode === "countdown" && <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.68)", marginBottom: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-              {"🔔 Recupero min: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget)}
+            {(tPanel || tFullscreen) && tMode === "countdown" && <div style={{ display: "grid", gap: 2, marginBottom: 2 }}>
+              {activeOpenEx && <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.68)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                {"🔔 Recupero min: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget)}
+              </div>}
+              {timerFlowInfo && timerFlowInfo.filler && <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.72)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                {"Filler: " + timerFlowInfo.filler}
+              </div>}
+              {timerFlowInfo && timerFlowInfo.nextLabel && <div style={{ fontSize: 9, fontWeight: 800, color: "#FFFFFF", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                {"Prossimo: " + timerFlowInfo.nextLabel}
+              </div>}
             </div>}
             <div style={{ fontVariantNumeric: "tabular-nums", fontSize: tFullscreen ? 52 : 17, fontWeight: 800, letterSpacing: tFullscreen ? "0.4px" : "0.2px", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s", animation: tWarning ? "timerBlink 1s infinite" : "none", lineHeight: 1 }}>{fmtTime(tMs)}</div>
           </div>

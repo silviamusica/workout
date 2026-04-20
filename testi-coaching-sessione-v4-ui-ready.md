@@ -11,6 +11,8 @@ Obiettivo: testo operativo, leggibile al volo da telefono. L'agente usa questo f
 **Attrezzi:** Bilanciere + rack + bumper · Manubri · Panca · Cavo basso + cavigliera · Slackline board · Ab wheel  
 **Recuperi generali:** 2-3 min su Squat · 2 min su Hip thrust · 90s-2 min su Leg curl · 90-120s sugli altri
 
+> **Superset possibile:** Leg Curl al Cavo + Ab Wheel back-to-back — flessione ginocchio + anti-estensione core, nessuna interferenza. Utile se il tempo stringe.
+
 ---
 
 ### RISCALDAMENTO
@@ -96,10 +98,10 @@ Scarico → circa 50% → 70-80%. Devono preparare, non stancare.
 
 ---
 
-### Leg Curl al Cavo
+### Leg Curl al Cavo *(superset con Ab Wheel)*
 
 **Serie:** 3×10-12 · RPE 8-9  
-**Recupero:** 90s-2 min  
+**Recupero:** 90s-2 min (o diretto su Ab Wheel se in superset)  
 **Attrezzi:** Cavo basso + cavigliera  
 **Alternativa avanzata:** Nordic Curl assistito con elastico
 
@@ -113,10 +115,10 @@ Scarico → circa 50% → 70-80%. Devono preparare, non stancare.
 
 ---
 
-### Ab Wheel
+### Ab Wheel *(superset con Leg Curl al Cavo)*
 
 **Serie:** 3×8-10 · RPE 8  
-**Recupero:** 90s  
+**Recupero:** 90s dopo il secondo esercizio del superset  
 **Attrezzi:** Ab wheel  
 **Alternativa:** TRX fallout o fitball rollout
 
@@ -258,6 +260,8 @@ Mini-serie progressive per entrare nella tirata senza stancarti.
 **Attrezzi:** Bilanciere + bumper · Manubri · Panca · Panca romana + sacco sabbia · Fitball · Elastico  
 **Recuperi generali:** 2-3 min su Stacco · 90s-2 min su Stacco Rumeno e Hip thrust · 90s-2 min su Affondi · 90s sugli accessori
 
+> **Superset possibile:** Hyperextension con Sacco + Fitball Hamstring Curl back-to-back — catena posteriore da angoli diversi, interferenza minima. Utile se il tempo stringe.
+
 ---
 
 ### RISCALDAMENTO
@@ -359,10 +363,10 @@ Scarico → circa 50% → 70-80%. L'ultima deve accendere il gesto, non tassarlo
 
 ---
 
-### Hyperextension
+### Hyperextension con Sacco *(superset con Fitball Hamstring Curl)*
 
 **Serie:** 2-3×12-15 · RPE 8-9  
-**Recupero:** 90s  
+**Recupero:** 90s (o diretto su Fitball se in superset)  
 **Attrezzi:** Panca romana  
 **Alternativa:** Cable pull-through
 
@@ -376,10 +380,10 @@ Scarico → circa 50% → 70-80%. L'ultima deve accendere il gesto, non tassarlo
 
 ---
 
-### Fitball Hamstring Curl
+### Fitball Hamstring Curl *(superset con Hyperextension)*
 
 **Serie:** 3×10-12 · RPE 8-9  
-**Recupero:** 90s  
+**Recupero:** 90s dopo il secondo esercizio del superset  
 **Attrezzi:** Fitball  
 **Alternativa:** TRX hamstring curl
 

@@ -134,7 +134,7 @@ Il timer:
 ### Attivazione
 
 Stato attuale:
-- è `OFF` di default
+- è `ON` di default
 - si può spegnere da `Impostazioni > Modalità guidata`
 
 Quando è `OFF`:
@@ -142,6 +142,60 @@ Quando è `OFF`:
 
 Quando è `ON`:
 - compaiono briefing, prompt RIR, suggerimenti recupero e feedback finali
+
+## Modalità flusso
+
+### Obiettivo
+
+La `Modalità flusso` serve a ridurre il tempo perso tra una serie e l'altra.
+
+Non cambia programmazione, carichi o recuperi teorici:
+- riduce micro-decisioni
+- riduce cambi attrezzo improvvisati
+- rende esplicito il prossimo passo
+
+### Cosa fa
+
+Quando è attiva:
+- prima dell'allenamento mostra una checklist setup del giorno costruita dagli `attrezzi` della seduta
+- durante il countdown del timer mostra una riga `Prossimo`
+- a timer finito può aprire automaticamente il prossimo esercizio previsto
+- se c'è un superset diretto, il timer segnala che non serve pausa
+- nella sessione attiva nasconde le tab non utili per evitare distrazioni
+
+### Sessione attiva
+
+Quando l'utente preme `Inizia allenamento`:
+- l'app entra in `sessione attiva`
+- resta visibile solo `Scheda`
+- `Impostazioni`, `Teoria`, `Progressi` ed `Esercizi` non sono accessibili
+- compare un comando piccolo `Esci dalla sessione`
+
+Quando l'utente:
+- preme `Esci dalla sessione`
+- oppure completa l'ultimo esercizio del giorno
+
+la sessione attiva termina e l'interfaccia completa riappare.
+
+### Timer e prossimo passo
+
+Durante il recupero il timer può mostrare:
+- countdown
+- eventuale filler se previsto
+- riga `Prossimo: ...`
+
+Esempi:
+- `Prossimo: Serie 3 di 4 · Squat`
+- `Prossimo: Squat Bulgaro · preparare manubri`
+- `Prossimo: Ab Wheel · superset diretto, no pausa`
+
+### Vibrazione
+
+Alla fine del countdown:
+- prova una vibrazione breve con `navigator.vibrate(200)`
+- se non c'è interazione entro 15 secondi, ripete una seconda vibrazione breve
+
+Se il browser non supporta vibrazione, resta il segnale sonoro già presente.
 
 ## Stretching e mobilità
 
