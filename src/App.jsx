@@ -2923,7 +2923,9 @@ function normalizeSplitDayPrefs(source) {
   if (!source || typeof source !== "object") return {};
   var next = {};
   Object.keys(source).forEach(function(key) {
-    next[key] = source[key] === "split" ? "split" : "single";
+    if (source[key] === "split") next[key] = "split";
+    else if (source[key] === "superset") next[key] = "superset";
+    else next[key] = "single";
   });
   return next;
 }
@@ -3074,6 +3076,15 @@ export default function App() {
     return grouped;
   }
 
+  function getWorkoutFormatForDay(day, dayIndex) {
+    if (level !== "v4" || !day || day.cardio || day.rest) return "single";
+    var prefKey = getDaySplitPrefKey(day, dayIndex);
+    var stored = splitDayPrefs[prefKey];
+    if (stored === "split" && V4_DAY_SPLIT_PLAN[day.name]) return "split";
+    if (stored === "superset" && FAST_MODE_SUPERSETS[day.name] && FAST_MODE_SUPERSETS[day.name].length) return "superset";
+    return "single";
+  }
+
   function estimateExerciseGroupMinutes(groupItems, activeMonth) {
     if (!groupItems || !groupItems.length) return 0;
     var total = groupItems.reduce(function(acc, item) {
@@ -3130,7 +3141,8 @@ export default function App() {
     return null;
   }
 
-  function buildNextActionInfo(day, exerciseIndex, exName, setIndex, totalSets) {
+  function buildNextActionInfo(day, dayIndex, exerciseIndex, exName, setIndex, totalSets) {
+    var workoutFormat = getWorkoutFormatForDay(day, dayIndex);
     if (typeof setIndex === "number" && setIndex < totalSets - 1) {
       return {
         label: "Serie " + (setIndex + 2) + " di " + totalSets + " · " + displayExerciseName(exName),
@@ -3147,7 +3159,7 @@ export default function App() {
         filler: ""
       };
     }
-    var supersetInfo = getFastSupersetPair(day && day.name, exName);
+    var supersetInfo = workoutFormat === "superset" ? getFastSupersetPair(day && day.name, exName) : null;
     if (supersetInfo && supersetInfo.role === "a" && sameExerciseName(supersetInfo.partner, nextEntry.ex.n)) {
       return {
         label: displayExerciseName(nextEntry.ex.n) + " · superset diretto, no pausa",
@@ -3782,8 +3794,11 @@ export default function App() {
   var workoutSelectedWeightDay = workoutSelectedWeightIndex >= 0 ? activeDays[workoutSelectedWeightIndex] : null;
   var estimatedDayMinutes = workoutSelectedWeightDay ? estimateDayMinutes(workoutSelectedWeightDay, month) : 0;
   var splitPlanForDay = level === "v4" && workoutSelectedWeightDay ? V4_DAY_SPLIT_PLAN[workoutSelectedWeightDay.name] || null : null;
+  var supersetPlanForDay = level === "v4" && workoutSelectedWeightDay ? FAST_MODE_SUPERSETS[workoutSelectedWeightDay.name] || null : null;
   var splitPrefKey = workoutSelectedWeightDay ? getDaySplitPrefKey(workoutSelectedWeightDay, workoutSelectedWeightIndex) : "";
-  var isDaySplitActive = !!(splitPlanForDay && splitDayPrefs[splitPrefKey] === "split");
+  var currentDayWorkoutFormat = getWorkoutFormatForDay(workoutSelectedWeightDay, workoutSelectedWeightIndex);
+  var isDaySplitActive = currentDayWorkoutFormat === "split";
+  var isDaySupersetActive = currentDayWorkoutFormat === "superset";
   var dayExerciseGroups = buildDayExerciseGroups(workoutSelectedWeightDay, month, isDaySplitActive);
   var isCurrentWeightDayComplete = !!workoutSelectedWeightDay && !workoutSelectedWeightDay.cardio && !workoutSelectedWeightDay.rest && isDayWorkoutComplete(logs, workoutSelectedWeightIndex);
   var daySetupChecklistItems = buildSetupChecklistItems(workoutSelectedWeightDay);
@@ -9954,18 +9969,18 @@ function isNearBodyweightElasticSession(exName, sets) {
                   <div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Esercizi</div>
                   <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>
                     {dayData.ex ? dayData.ex.length + " esercizi" : ""}
-                    {splitPlanForDay ? (isDaySplitActive ? " · split AM/PM" : " · sessione unica") : ""}
+                    {(splitPlanForDay || supersetPlanForDay) ? (isDaySplitActive ? " · split AM/PM" : isDaySupersetActive ? " · superset" : " · sessione unica") : ""}
                   </div>
                 </div>
                 <div style={{ fontSize: 13, color: dc, transform: showExSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
             {showExSection && <div>
-            {splitPlanForDay && <div style={{ padding: "12px 14px 6px" }}>
+            {(splitPlanForDay || supersetPlanForDay) && <div style={{ padding: "12px 14px 6px" }}>
               <div style={{ borderRadius: 12, border: "1px solid " + dc + "22", background: dc + "08", padding: 12 }}>
                 <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Formato giornata</div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0,1fr))", gap: 8 }}>
-                  {[{ key: "single", label: "Sessione unica", hint: "Tutto nello stesso allenamento." }, { key: "split", label: "Split in due", hint: "AM per i fondamentali, PM per accessori e core." }].map(function(option) {
-                    var active = (option.key === "split") === isDaySplitActive;
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(" + ((splitPlanForDay && supersetPlanForDay) ? 3 : 2) + ", minmax(0,1fr))", gap: 8 }}>
+                  {[{ key: "single", label: "Sessione unica", hint: "Tutto nello stesso allenamento.", enabled: true }, { key: "split", label: "Split in due", hint: "AM per i fondamentali, PM per accessori e core.", enabled: !!splitPlanForDay }, { key: "superset", label: "Superset", hint: "Accoppia gli esercizi gia previsti per fare piu veloce.", enabled: !!supersetPlanForDay }].filter(function(option) { return option.enabled; }).map(function(option) {
+                    var active = option.key === currentDayWorkoutFormat;
                     return <button
                       key={option.key}
                       onClick={function(e) {
@@ -10136,7 +10151,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   var guidedRirSummary = getExerciseRirHistorySummary(ex.n);
                   var allSetsLogged = !!(tLog && tLog.sets && sc > 0 && tLog.sets.length >= sc);
                   var logisticsCue = allSetsLogged ? buildLogisticsCue(mergedEx, ex, (dayData.ex || []).slice(i + 1), month) : null;
-                  var flowSuperset = flowModeEnabled ? getFastSupersetPair(dayData && dayData.name, ex.n) : null;
+                  var flowSuperset = flowModeEnabled && isDaySupersetActive ? getFastSupersetPair(dayData && dayData.name, ex.n) : null;
                   var compactExerciseCard = !isBasics && compactMode;
                   return <div style={{ padding: compactExerciseCard ? "0 12px 12px" : "0 14px 14px" }} onClick={function(e) { e.stopPropagation(); }}>
                     {/* Cable toggle */}
@@ -10257,7 +10272,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                                       e.stopPropagation();
                                       var storedWeight = isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : plateInputToStoredWeight(ex.n, tmpW, barbellWeight));
                                       beginLogSet(ex, dayIdx, si, storedWeight, tmpR, isBW, tmpRir);
-                                      var nextAction = buildNextActionInfo(dayData, i, ex.n, si, sc);
+                                      var nextAction = buildNextActionInfo(dayData, dayIdx, i, ex.n, si, sc);
                                       if (flowModeEnabled && !isBasics) {
                                         if (nextAction && nextAction.immediate && typeof nextAction.nextIndex === "number") {
                                           setTimerFlowInfo({ nextLabel: nextAction.label, filler: nextAction.filler || "" });
