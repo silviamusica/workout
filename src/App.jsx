@@ -7584,7 +7584,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </div>
               </div>
             </div>
-            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Come mi alleno</div>
+            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Scheda e modalità</div>
             <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", borderRadius: 10, background: dc + "12", border: "2px solid " + dc, marginBottom: 6 }}>
               <span style={{ fontSize: 18, flexShrink: 0 }}>💥</span>
               <div style={{ flex: 1, minWidth: 0 }}>
@@ -7607,6 +7607,24 @@ function isNearBodyweightElasticSession(exName, sets) {
                   style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (guidedMode ? dc : T.sub + "30"), background: guidedMode ? dc : T.cd, color: guidedMode ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
                 >
                   {guidedMode ? "ON" : "OFF"}
+                </button>
+              </div>
+            </div>}
+            {!isBasics && <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Info estese</div>
+                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Se la spegni, nella scheda restano solo le cose davvero essenziali: serie, ripetizioni, recupero, registrazione, storico utile e tutor. Nasconde respirazione, guida completa, tecnica estesa ed errori.</div>
+                </div>
+                <button
+                  onClick={function() {
+                    var next = !extraInfoEnabled;
+                    setExtraInfoEnabled(next);
+                    try { localStorage.setItem("wt-extra-info", next ? "1" : "0"); } catch(e) {}
+                  }}
+                  style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (extraInfoEnabled ? dc : T.sub + "30"), background: extraInfoEnabled ? dc : T.cd, color: extraInfoEnabled ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
+                >
+                  {extraInfoEnabled ? "ON" : "OFF"}
                 </button>
               </div>
             </div>}
@@ -7642,24 +7660,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </button>;
               })}
             </div>
-            {!isBasics && <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Info estese</div>
-                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Se la spegni, nella scheda restano solo le cose davvero essenziali: serie, ripetizioni, recupero, registrazione, storico utile e tutor. Nasconde respirazione, guida completa, tecnica estesa ed errori.</div>
-                </div>
-                <button
-                  onClick={function() {
-                    var next = !extraInfoEnabled;
-                    setExtraInfoEnabled(next);
-                    try { localStorage.setItem("wt-extra-info", next ? "1" : "0"); } catch(e) {}
-                  }}
-                  style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (extraInfoEnabled ? dc : T.sub + "30"), background: extraInfoEnabled ? dc : T.cd, color: extraInfoEnabled ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
-                >
-                  {extraInfoEnabled ? "ON" : "OFF"}
-                </button>
-              </div>
-            </div>}
             <button onClick={function() { setShowAdvancedSettings(function(v) { return !v; }); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, width: "100%", margin: "18px 0 8px", padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, color: T.tx, fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
               <span>Opzioni avanzate</span>
               <span style={{ color: T.sub, transform: showAdvancedSettings ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
@@ -7808,8 +7808,6 @@ function isNearBodyweightElasticSession(exName, sets) {
             </div>
             <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: -0.3 }}>{userName ? userName : "Allenamento"}</div>
           </div>
-          {/* Settings */}
-          <button onClick={function() { setSettingsOpen(true); }} style={{ background: "rgba(255,255,255,0.08)", border: "none", color: T.sub, width: 32, height: 32, borderRadius: 8, cursor: "pointer", fontSize: 14, display: "flex", alignItems: "center", justifyContent: "center" }}>⚙️</button>
         </div>
         {/* View tabs */}
         <div style={{ display: "flex", gap: 1, maxWidth: 600, margin: "12px auto 0", alignItems: "stretch" }}>
@@ -9229,13 +9227,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                         <span>Vista compatta</span>
                       </button>}
                     </div>
-                    {intro.muscoli && intro.muscoli.length > 0 && !dayData.cardio && !dayData.rest && <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginTop: 7 }}>
-                      <span style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>💪 Muscoli</span>
-                      <span style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
-                        {intro.muscoli.slice(0, 3).join(" · ")}
-                        {intro.muscoli.length > 3 ? " ..." : ""}
-                      </span>
-                    </div>}
                   </div>
                   <div style={{ fontSize: 13, color: dc, transform: showDayIntro ? "rotate(180deg)" : "none", transition: "transform 0.2s", flexShrink: 0 }}>&#9662;</div>
                 </div>
@@ -9328,7 +9319,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             {!dayData.cardio && !dayData.rest && <div ref={function(el) { if (el) el._sectionKey = "intro"; }} id="section-warmup" style={{ borderBottom: "1px solid " + T.bg }}>
               <div onClick={function() { var opening = !showIntro; setShowIntro(opening); if (opening) { setShowExSection(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-warmup"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showIntro ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
                 <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#128293;</div>
-                <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Riscaldamento</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>4 fasi · 12-15 min totali</div></div>
+                <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Riscaldamento</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{(function() { var groups = getWarmupGroups(dayData.warmup); var total = groups.reduce(function(s, g) { return s + g.items.length; }, 0); return groups.length + " fasi · " + total + " esercizi · 12-15 min"; })()}</div></div>
                 <div style={{ fontSize: 13, color: dc, transform: showIntro ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
               {showIntro && <div style={{ padding: "0 14px 14px" }}><div style={{ background: T.sb, borderRadius: 10, padding: 12 }}>
@@ -9722,23 +9713,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                       <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = false; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: !isCable ? dc : "transparent", color: !isCable ? "#fff" : T.sub }}>💪 Libero</button>
                     </div>}
 
-                    {!isBasics && !compactMode && guidedMode && <div style={{ marginBottom: 10, borderRadius: 12, background: gc + "0A", border: "1px solid " + gc + "22", padding: compactExerciseCard ? "9px 11px" : "11px 13px" }}>
-                      {dayData.intro && dayData.intro.obiettivi && dayData.intro.obiettivi.length > 0 && <div style={{ marginBottom: 10 }}>
-                        <div style={{ fontSize: 10, fontWeight: 900, color: gc, textTransform: "uppercase", letterSpacing: 1, marginBottom: 7 }}>Obiettivi della sessione</div>
-                        <div style={{ display: "grid", gap: 4 }}>
-                          {dayData.intro.obiettivi.map(function(goal, gi) {
-                            return <div key={gi} style={{ display: "flex", gap: 7, alignItems: "flex-start" }}>
-                              <span style={{ color: gc, fontSize: 11, lineHeight: 1.6, fontWeight: 800 }}>•</span>
-                              <span style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>{goal}</span>
-                            </div>;
-                          })}
-                        </div>
-                      </div>}
-                      {sessionSuggestion && <div style={{ padding: "10px 11px", borderRadius: 10, background: T.sb, border: "1px solid " + T.bg }}>
-                        <div style={{ fontSize: 10, fontWeight: 900, color: gc, textTransform: "uppercase", letterSpacing: 1, marginBottom: 6 }}>Suggerimento personalizzato</div>
-                        <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, marginBottom: 4 }}>{sessionSuggestion.title}</div>
-                        <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{sessionSuggestion.detail}</div>
-                      </div>}
+                    {!isBasics && !compactMode && guidedMode && sessionSuggestion && <div style={{ marginBottom: 10, borderRadius: 12, background: gc + "0A", border: "1px solid " + gc + "22", padding: compactExerciseCard ? "9px 11px" : "11px 13px" }}>
+                      <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, marginBottom: 4 }}>{sessionSuggestion.title}</div>
+                      <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{sessionSuggestion.detail}</div>
                     </div>}
 
                     {/* === COACH SESSIONE BREVE === */}
@@ -9764,6 +9741,25 @@ function isNearBodyweightElasticSession(exName, sets) {
                         </div>; })}
                         </div>
                       </>}
+                    </div>}
+
+                    {/* === ULTIMA SESSIONE (sempre visibile) === */}
+                    {!isBasics && pastSessions.length > 0 && <div style={{ marginBottom: 8, borderRadius: 12, background: T.sb, border: "1px solid " + T.bg, padding: compactExerciseCard ? "8px 10px" : "10px 12px" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                        <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, flex: 1 }}>Ultima sessione · {formatDateItalian(pastSessions[hPage].date)}</div>
+                        {pastSessions.length > 1 && <div style={{ display: "flex", gap: 4 }}>
+                          <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.min(hPage + 1, pastSessions.length - 1); return n; }); }} disabled={hPage >= pastSessions.length - 1} style={{ width: 24, height: 24, border: "1px solid " + T.bg, borderRadius: 5, background: T.cd, color: hPage >= pastSessions.length - 1 ? T.sub + "40" : T.sub, cursor: hPage >= pastSessions.length - 1 ? "default" : "pointer", fontSize: 12 }}>‹</button>
+                          <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.max(hPage - 1, 0); return n; }); }} disabled={hPage === 0} style={{ width: 24, height: 24, border: "1px solid " + T.bg, borderRadius: 5, background: T.cd, color: hPage === 0 ? T.sub + "40" : T.sub, cursor: hPage === 0 ? "default" : "pointer", fontSize: 12 }}>›</button>
+                        </div>}
+                      </div>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                        {pastSessions[hPage].sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) {
+                          return <div key={si} style={{ display: "flex", alignItems: "center", gap: 5, borderRadius: 7, background: T.cd, border: "1px solid " + T.bg, padding: "4px 8px" }}>
+                            <span style={{ fontSize: 10, fontWeight: 800, color: dc }}>{s.si + 1}</span>
+                            <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{formatSetResult(ex.n, s, isBW, isTimeTrackedExercise(ex.n, ex.s))}</span>
+                          </div>;
+                        })}
+                      </div>
                     </div>}
 
                     {/* === REGISTRA SERIE === */}
@@ -9892,30 +9888,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                           {logisticsCue.clear && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{logisticsCue.clear}</div>}
                         </div>
                       </div>}
-
-                      <div style={{ background: T.cd, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
-                        <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Ultima sessione</div>
-                        {pastSessions.length === 0 ? <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Nessuno storico ancora. Dopo la prima registrazione qui vedrai subito la seduta utile da copiare o migliorare.</div> : (function() {
-                          var sess = pastSessions[hPage];
-                          return <>
-                            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 7 }}>
-                              <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{formatDateItalian(sess.date)}</div>
-                              {pastSessions.length > 1 && <div style={{ marginLeft: "auto", display: "flex", gap: 4 }}>
-                                <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.min(hPage + 1, pastSessions.length - 1); return n; }); }} disabled={hPage >= pastSessions.length - 1} style={{ width: 26, height: 26, border: "1px solid " + T.bg, borderRadius: 6, background: T.cd, color: hPage >= pastSessions.length - 1 ? T.sub + "40" : T.sub, cursor: hPage >= pastSessions.length - 1 ? "default" : "pointer", fontSize: 13 }}>‹</button>
-                                <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.max(hPage - 1, 0); return n; }); }} disabled={hPage === 0} style={{ width: 26, height: 26, border: "1px solid " + T.bg, borderRadius: 6, background: T.cd, color: hPage === 0 ? T.sub + "40" : T.sub, cursor: hPage === 0 ? "default" : "pointer", fontSize: 13 }}>›</button>
-                              </div>}
-                            </div>
-                            <div style={{ display: "grid", gap: 5 }}>
-                              {sess.sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) {
-                                return <div key={si} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, borderRadius: 8, background: T.cd, padding: "6px 9px" }}>
-                                  <span style={{ fontSize: 10, fontWeight: 800, color: dc }}>{"SERIE " + (s.si + 1)}</span>
-                                  <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{formatSetResult(ex.n, s, isBW, isTimeTrackedExercise(ex.n, ex.s))}</span>
-                                </div>;
-                              })}
-                            </div>
-                          </>;
-                        })()}
-                      </div>
 
                       {guidedMode && guidedRirSummary && <div style={{ background: T.cd, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
                         <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Storico RIR</div>
@@ -10062,29 +10034,21 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>
                     </details>}
 
-                    {!isBasics && compactMode && <div style={{ marginTop: 4, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
-                      <div style={{ padding: "10px 11px" }}>
-                        <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Ultima sessione</div>
-                        {pastSessions.length === 0 ? <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Nessuno storico ancora.</div> : (function() {
-                          var sess = pastSessions[hPage];
-                          return <>
-                            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 7 }}>
-                              <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{sess.date}</div>
-                              {pastSessions.length > 1 && <div style={{ marginLeft: "auto", display: "flex", gap: 4 }}>
-                                <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.min(hPage + 1, pastSessions.length - 1); return n; }); }} disabled={hPage >= pastSessions.length - 1} style={{ width: 26, height: 26, border: "1px solid " + T.bg, borderRadius: 6, background: T.cd, color: hPage >= pastSessions.length - 1 ? T.sub + "40" : T.sub, cursor: hPage >= pastSessions.length - 1 ? "default" : "pointer", fontSize: 13 }}>‹</button>
-                                <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.max(hPage - 1, 0); return n; }); }} disabled={hPage === 0} style={{ width: 26, height: 26, border: "1px solid " + T.bg, borderRadius: 6, background: T.cd, color: hPage === 0 ? T.sub + "40" : T.sub, cursor: hPage === 0 ? "default" : "pointer", fontSize: 13 }}>›</button>
-                              </div>}
-                            </div>
-                            <div style={{ display: "grid", gap: 5 }}>
-                              {sess.sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) {
-                                return <div key={si} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, borderRadius: 8, background: T.cd, padding: "6px 9px" }}>
-                                  <span style={{ fontSize: 10, fontWeight: 800, color: dc }}>{"SERIE " + (s.si + 1)}</span>
-                                  <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{formatSetResult(ex.n, s, isBW, isTimeTrackedExercise(ex.n, ex.s))}</span>
-                                </div>;
-                              })}
-                            </div>
-                          </>;
-                        })()}
+                    {!isBasics && compactMode && pastSessions.length > 0 && <div style={{ marginTop: 4, borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, padding: "8px 10px" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                        <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, flex: 1 }}>Ultima sessione · {formatDateItalian(pastSessions[hPage].date)}</div>
+                        {pastSessions.length > 1 && <div style={{ display: "flex", gap: 4 }}>
+                          <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.min(hPage + 1, pastSessions.length - 1); return n; }); }} disabled={hPage >= pastSessions.length - 1} style={{ width: 24, height: 24, border: "1px solid " + T.bg, borderRadius: 5, background: T.cd, color: hPage >= pastSessions.length - 1 ? T.sub + "40" : T.sub, cursor: hPage >= pastSessions.length - 1 ? "default" : "pointer", fontSize: 12 }}>‹</button>
+                          <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.max(hPage - 1, 0); return n; }); }} disabled={hPage === 0} style={{ width: 24, height: 24, border: "1px solid " + T.bg, borderRadius: 5, background: T.cd, color: hPage === 0 ? T.sub + "40" : T.sub, cursor: hPage === 0 ? "default" : "pointer", fontSize: 12 }}>›</button>
+                        </div>}
+                      </div>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                        {pastSessions[hPage].sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) {
+                          return <div key={si} style={{ display: "flex", alignItems: "center", gap: 5, borderRadius: 7, background: T.cd, border: "1px solid " + T.bg, padding: "4px 8px" }}>
+                            <span style={{ fontSize: 10, fontWeight: 800, color: dc }}>{s.si + 1}</span>
+                            <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{formatSetResult(ex.n, s, isBW, isTimeTrackedExercise(ex.n, ex.s))}</span>
+                          </div>;
+                        })}
                       </div>
                     </div>}
                   </div>;
