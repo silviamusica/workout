@@ -3105,6 +3105,85 @@ export default function App() {
     return Math.max(5, Math.round(total / 5) * 5);
   }
 
+  function getExerciseTimeEstimateParts(rawEx, ex) {
+    var p = parseSerie(ex.s);
+    var sets = p.sets || 3;
+    var repsNums = (p.reps || []).map(function(rep) {
+      if (rep === "max") return 10;
+      if ((rep || "").indexOf("s") >= 0) return parseInt(rep) || 30;
+      return parseInt(rep) || 0;
+    }).filter(function(v) { return v > 0; });
+    var topTarget = repsNums.length ? Math.max.apply(null, repsNums) : 10;
+    var classKey = getGuidedExerciseClass(ex.n);
+    var secPerSet;
+    if (p.kind === "time" || ex.n === "Plank") {
+      secPerSet = Math.max(45, topTarget + 20);
+    } else if (classKey === "heavy") {
+      secPerSet = topTarget <= 6 ? 75 : topTarget <= 8 ? 70 : 65;
+    } else if (classKey === "compound") {
+      secPerSet = topTarget <= 8 ? 58 : topTarget <= 12 ? 52 : 46;
+    } else {
+      secPerSet = topTarget <= 10 ? 42 : topTarget <= 15 ? 36 : 30;
+    }
+    return {
+      sets: sets,
+      secPerSet: secPerSet,
+      recSec: getExerciseRestSeconds(rawEx, ex) || 90,
+      setupSec: getExerciseSetupSeconds(ex.n) + 30
+    };
+  }
+
+  function estimateSupersetPairMinutes(dayName, pair, activeMonth) {
+    if (!dayName || !pair) return 0;
+    var dayDef = activeDays.find(function(item) { return item && item.name === dayName; }) || null;
+    if (!dayDef || !dayDef.ex) return 0;
+    var rawA = dayDef.ex.find(function(rawEx) { return sameExerciseName(getCurrentDayExerciseName(rawEx, activeMonth), pair.a); }) || null;
+    var rawB = dayDef.ex.find(function(rawEx) { return sameExerciseName(getCurrentDayExerciseName(rawEx, activeMonth), pair.b); }) || null;
+    if (!rawA || !rawB) return 0;
+    var exA = getExForMonthValue(rawA, activeMonth);
+    var exB = getExForMonthValue(rawB, activeMonth);
+    var partA = getExerciseTimeEstimateParts(rawA, exA);
+    var partB = getExerciseTimeEstimateParts(rawB, exB);
+    var rounds = Math.max(partA.sets, partB.sets, 1);
+    var totalSec = partA.setupSec + partB.setupSec;
+    for (var round = 0; round < rounds; round++) {
+      if (round < partA.sets) totalSec += partA.secPerSet;
+      if (round < partB.sets) totalSec += partB.secPerSet;
+      if (round < rounds - 1) totalSec += pair.rest || 0;
+    }
+    return Math.max(3, Math.round(totalSec / 60));
+  }
+
+  function estimateWorkoutMinutesForFormat(day, activeMonth, workoutFormat) {
+    if (!day || !(day.ex && day.ex.length)) return 0;
+    if (workoutFormat !== "superset") {
+      var singleTotal = (day.ex || []).reduce(function(acc, rawEx) {
+        var exDef = getExForMonthValue(rawEx, activeMonth);
+        return acc + estimateExerciseMinutes(rawEx, exDef);
+      }, 0);
+      singleTotal += Math.max(0, ((day.ex || []).length - 1)) * 1;
+      return singleTotal;
+    }
+    var pairs = FAST_MODE_SUPERSETS[day.name] || [];
+    var usedNames = {};
+    var total = 0;
+    pairs.forEach(function(pair) {
+      var pairMinutes = estimateSupersetPairMinutes(day.name, pair, activeMonth);
+      if (!pairMinutes) return;
+      total += pairMinutes;
+      usedNames[pair.a] = true;
+      usedNames[pair.b] = true;
+    });
+    (day.ex || []).forEach(function(rawEx) {
+      var exName = getCurrentDayExerciseName(rawEx, activeMonth);
+      var alreadyInPair = Object.keys(usedNames).some(function(name) { return sameExerciseName(name, exName); });
+      if (alreadyInPair) return;
+      total += estimateExerciseMinutes(rawEx, getExForMonthValue(rawEx, activeMonth));
+    });
+    total += Math.max(0, ((day.ex || []).length - 1)) * 0.5;
+    return total;
+  }
+
   function buildSetupChecklistItems(day) {
     var intro = day && day.intro && typeof day.intro === "object" ? day.intro : null;
     var source = intro && intro.attrezzi && intro.attrezzi.length ? intro.attrezzi : [];
@@ -3803,13 +3882,13 @@ export default function App() {
     ? activeDays.findIndex(function(day) { return day && day.name === workoutSelectedDay.name; })
     : -1;
   var workoutSelectedWeightDay = workoutSelectedWeightIndex >= 0 ? activeDays[workoutSelectedWeightIndex] : null;
-  var estimatedDayMinutes = workoutSelectedWeightDay ? estimateDayMinutes(workoutSelectedWeightDay, month) : 0;
   var splitPlanForDay = level === "v4" && workoutSelectedWeightDay ? V4_DAY_SPLIT_PLAN[workoutSelectedWeightDay.name] || null : null;
   var supersetPlanForDay = level === "v4" && workoutSelectedWeightDay ? FAST_MODE_SUPERSETS[workoutSelectedWeightDay.name] || null : null;
   var splitPrefKey = workoutSelectedWeightDay ? getDaySplitPrefKey(workoutSelectedWeightDay, workoutSelectedWeightIndex) : "";
   var currentDayWorkoutFormat = getWorkoutFormatForDay(workoutSelectedWeightDay, workoutSelectedWeightIndex);
   var isDaySplitActive = currentDayWorkoutFormat === "split";
   var isDaySupersetActive = currentDayWorkoutFormat === "superset";
+  var estimatedDayMinutes = workoutSelectedWeightDay ? estimateDayMinutes(workoutSelectedWeightDay, month, currentDayWorkoutFormat) : 0;
   var dayExerciseGroups = buildDayExerciseGroups(workoutSelectedWeightDay, month, isDaySplitActive);
   var isCurrentWeightDayComplete = !!workoutSelectedWeightDay && !workoutSelectedWeightDay.cardio && !workoutSelectedWeightDay.rest && isDayWorkoutComplete(logs, workoutSelectedWeightIndex);
   var daySetupChecklistItems = buildSetupChecklistItems(workoutSelectedWeightDay);
@@ -5601,20 +5680,16 @@ export default function App() {
     return Math.max(2, Math.round(total / 60));
   }
 
-  function estimateDayMinutes(day, activeMonth) {
+  function estimateDayMinutes(day, activeMonth, workoutFormat) {
     if (!day || day.rest) return 0;
     if (day.cardio) return day.tEst || 0;
     var warmupMin = (day.warmup || []).reduce(function(acc, item) {
       return acc + estimateWarmupItemMinutes(item);
     }, 0);
-    var exerciseMin = (day.ex || []).reduce(function(acc, rawEx) {
-      var exDef = getExForMonthValue(rawEx, activeMonth || month);
-      return acc + estimateExerciseMinutes(rawEx, exDef);
-    }, 0);
-    var betweenExercisesMin = Math.max(0, ((day.ex || []).length - 1)) * 1;
+    var exerciseMin = estimateWorkoutMinutesForFormat(day, activeMonth || month, workoutFormat || "single");
     var stretchMin = Math.min(8, Math.max(4, (day.str || []).length * 1.25));
     var wrapUpMin = 2;
-    return Math.max(15, Math.round((warmupMin + exerciseMin + betweenExercisesMin + stretchMin + wrapUpMin) / 5) * 5);
+    return Math.max(15, Math.round((warmupMin + exerciseMin + stretchMin + wrapUpMin) / 5) * 5);
   }
 
   function buildBackupPayload(sourceLogs, sourceCardioLogs, meta) {
@@ -10011,7 +10086,9 @@ function isNearBodyweightElasticSession(exName, sets) {
             </div>}
             {/* Exercises list */}
             {dayExerciseGroups.map(function(group, groupIndex) {
-              var groupMinutes = estimateExerciseGroupMinutes(group.items, month);
+              var groupMinutes = isDaySupersetActive && workoutSelectedWeightDay
+                ? Math.max(5, Math.round(estimateWorkoutMinutesForFormat(workoutSelectedWeightDay, month, "superset") / 5) * 5)
+                : estimateExerciseGroupMinutes(group.items, month);
               return <div key={group.key || groupIndex}>
                 {isDaySplitActive && group.items.length > 0 && <div style={{ padding: "12px 14px 8px", background: groupIndex === 0 ? "transparent" : T.sb }}>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, marginBottom: group.hint ? 6 : 0 }}>
@@ -10092,7 +10169,15 @@ function isNearBodyweightElasticSession(exName, sets) {
                     <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginTop: isBeginner ? 5 : 3 }}>
                       {ex.s && <span style={{ fontSize: isBeginner ? 14 : 12, color: isBeginner ? dc : T.tx, fontWeight: 800, letterSpacing: 0.1 }}>{fmtSerie(ex.s)}</span>}
                       {!isBeginner && ex.rpe ? <span onClick={function(e) { e.stopPropagation(); setRpeOpen(true); }} style={{ cursor: "pointer", color: dc, fontSize: 10, fontWeight: 700, textDecoration: "underline dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, whiteSpace: "nowrap" }}>{formatEffortLabel(ex.rpe, ex.s)}</span> : ""}
-                      {!isBeginner && (function() { var mins = estimateExerciseMinutes(rawEx, ex); return mins ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 600 }}>{"~" + mins + " min"}</span> : null; })()}
+                      {!isBeginner && (function() {
+                        if (rowSupersetMeta) {
+                          if (rowSupersetMeta.role !== "a") return null;
+                          var pairMinutes = estimateSupersetPairMinutes(dayData && dayData.name, getFastSupersetPair(dayData && dayData.name, ex.n).pair, month);
+                          return pairMinutes ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 600 }}>{"~" + pairMinutes + " min coppia"}</span> : null;
+                        }
+                        var mins = estimateExerciseMinutes(rawEx, ex);
+                        return mins ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 600 }}>{"~" + mins + " min"}</span> : null;
+                      })()}
                     </div>
                     {!isBeginner && <div style={{ marginTop: 5, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                     {calibrationEnabled && calibrationNeed.needed && <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid #C6282830", borderRadius: 999, padding: "3px 8px", background: "#C6282810", color: "#C62828" }}>
@@ -10604,7 +10689,10 @@ function isNearBodyweightElasticSession(exName, sets) {
             })}
               </div>;
             })}
-            {!isBasics && !isBeginner && dayData && !dayData.cardio && ((dayData.str && dayData.str.length) || dayData.hipBonus) && <div id="section-stretching-inline" style={{ borderTop: "1px solid " + T.bg }}>
+            </div>}
+            </div>}
+
+            {!isBasics && !isBeginner && dayData && !dayData.cardio && !dayData.rest && ((dayData.str && dayData.str.length) || dayData.hipBonus) && <div id="section-stretching-inline" style={{ borderBottom: "1px solid " + T.bg }}>
               <div onClick={function() { var opening = !showStr; setShowStr(opening); if (opening) { setShowIntro(false); setShowExSection(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-stretching-inline"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showStr ? T.st + "12" : T.st + "06", borderLeft: "3px solid " + T.st }}>
                 <div style={{ width: 30, height: 30, borderRadius: 8, background: T.st, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>🧘</div>
                 <div style={{ flex: 1 }}>
@@ -10645,8 +10733,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </div>}
 
               </div>}
-            </div>}
-            </div>}
             </div>}
 
           </div>}
