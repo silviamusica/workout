@@ -1390,6 +1390,13 @@ var STR = {
   "Tricipiti": { img: "str_Tricipiti", d: "Braccio dietro la testa", h: "Porta un braccio sopra la testa e piega il gomito, lasciando cadere la mano dietro la schiena tra le scapole. Con l'altra mano, afferra il gomito e spingi dolcemente verso il basso/dietro. Sentirai l'allungamento lungo la parte posteriore del braccio.", t: "20s per lato, ripeti 2 volte", tm: 20 },
   "Glutei": { img: "str_Glutei", d: "Figura a 4 (piriforme)", h: "Sdraiata supina, incrocia una caviglia sul ginocchio opposto formando un 4. Afferra con entrambe le mani la coscia della gamba che sta a terra e tirala verso il petto. Sentirai un allungamento profondo nel gluteo della gamba incrociata. Se non arrivi con le mani, usa un asciugamano.", t: "30s per lato, ripeti 2 volte", tm: 30 },
   "Cat-Cow": { img: "w_CatCow", d: "Gatto-mucca (mobilita colonna)", h: "A quattro zampe, mani sotto le spalle, ginocchia sotto le anche. INSPIRA: inarca la schiena lasciando cadere la pancia verso il pavimento, testa su, coccige su (mucca). ESPIRA: arrotonda la schiena verso il soffitto, mento al petto, coccige in dentro (gatto). Alterna lentamente, sincronizzando col respiro.", t: "10 ripetizioni lente", tm: 60, lk: "https://www.youtube.com/watch?v=AVyXJ8xMNxA" },
+  "Dorsiflessione al muro": { d: "Dorsiflessione al muro", goal: "Ripristinare la dorsiflessione della caviglia per squat, affondi e cammino piu pulito.", h: "Piede a 10-12 cm dal muro. Spingi il ginocchio avanti e leggermente in fuori fino a toccare il muro, senza staccare il tallone.", t: "10 rip per lato", tm: 60, est: 120, cue: "Il tallone resta sempre pesante a terra. Se si alza, avvicina il piede al muro.", feel: "Parte anteriore della caviglia e tendine d'Achille.", breath: "Fluido", err: "Tallone che si alza o bacino che ruota.", reason: "Base di tutti i giorni. Se la caviglia non flette, il corpo compensa salendo sulle punte o piegando troppo il busto.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
+  "Alfredson eccentrico": { d: "Alfredson eccentric calf", goal: "Rinforzare il tendine d'Achille e migliorare la tolleranza del polpaccio al carico.", h: "Sali sullo scalino con entrambi i piedi. Togli un piede e scendi lentamente con uno solo in 3-4 secondi.", t: "2x10 per piede", tm: 90, est: 240, cue: "La discesa lenta e il punto chiave. Risali con due piedi, scendi con uno.", feel: "Polpaccio e tendine d'Achille nella fase di discesa.", breath: "Fluido", err: "Scendere veloce o rimbalzare sul fondo.", reason: "Inserito ogni giorno nel protocollo base per caviglia e tendine.", lk: "https://www.youtube.com/watch?v=WjQBJPuFkHI" },
+  "90/90 hip mobility": { d: "90/90 hip mobility", goal: "Mobilizzare l'anca in rotazione interna ed esterna.", h: "Seduta a terra con entrambe le gambe piegate a 90 gradi. Ruota da un lato all'altro senza piegare la schiena o spingere con la lombare.", t: "8-10 passaggi per lato", tm: 90, est: 180, cue: "Busto alto e movimento che parte dalle anche, non dalla schiena.", feel: "Gluteo profondo davanti e interno coscia dietro, a seconda del lato.", breath: "Fluido", err: "Compensare ruotando la lombare o crollare col busto.", reason: "Base lower e giorni cardio. L'anca bloccata scarica il lavoro sulla lombare.", lk: "https://www.youtube.com/watch?v=z3EhjVHBxLM" },
+  "Calf Raises con pallina": { d: "Calf raises con pallina", goal: "Attivare adduttori e arco plantare insieme mentre lavori sul polpaccio.", h: "In piedi con una pallina tra i malleoli interni. Stringi la pallina e sali lentamente sulle punte, poi scendi controllando.", t: "2x15", tm: 75, est: 150, cue: "La pallina non deve cadere. Se la perdi, stai mollando adduttori e piede.", feel: "Polpacci e interno coscia.", breath: "Fluido", err: "Perdere la pallina o salire troppo in fretta.", reason: "Base lower. Integra stabilita dal piede fino all'anca.", lk: "" },
+  "T-spine rotation in quadrupedia": { d: "T-spine rotation in quadrupedia", goal: "Recuperare rotazione toracica senza chiedere movimento alla lombare.", h: "Quattro zampe, una mano dietro la testa. Ruota il gomito verso il soffitto e poi verso il basso tenendo il bacino fermo.", t: "8-10 rip per lato", tm: 75, est: 150, cue: "Le anche restano ferme. La rotazione deve arrivare dal torace.", feel: "Parte alta della schiena e apertura del petto.", breath: "Espira aprendo", err: "Muovere anche e lombare insieme al torace.", reason: "Base upper e giorni cardio. Una toracica rigida peggiora spalle e collo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
+  "Shoulder CARs": { d: "Shoulder CARs", goal: "Portare la spalla nel ROM completo in modo controllato.", h: "In piedi, braccio lungo il fianco. Disegna un cerchio grande e lento davanti, sopra, dietro e di nuovo giu senza muovere il tronco.", t: "5 cerchi per direzione per braccio", tm: 90, est: 180, cue: "Addome attivo e costole giu. Il corpo resta fermo, si muove solo la spalla.", feel: "Tensione controllata nei punti estremi della spalla.", breath: "Lento e continuo", err: "Inarcare la schiena o accelerare nel punto difficile.", reason: "Base upper. Mobilita la spalla prima di tirate e spinte.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
+  "Ponte monopodalico": { img: "Hip Thrust Singolo", d: "Ponte monopodalico", goal: "Attivare gluteo ed estensione d'anca con bacino stabile su una gamba.", h: "Schiena a terra, un piede appoggiato e l'altro sollevato. Spingi il bacino in alto e tieni 2 secondi senza inarcare la schiena.", t: "2x8 per lato", tm: 75, est: 150, cue: "Fermati quando tronco, bacino e coscia sono in linea. Se senti la lombare, sei salita troppo.", feel: "Gluteo della gamba che spinge.", breath: "Espira salendo", err: "Usare la schiena al posto del gluteo o ruotare il bacino.", reason: "Base lower. Prepara squat, stacco e hip thrust.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
   "Standing Quad Pull": { img: "str_StandingQuadPull", d: "Standing quad pull", goal: "Allungare il quadricipite dopo il lavoro di squat e affondi. Riduce la rigidita del retto femorale che tira il bacino in avanti.", h: "In piedi, appoggiati al rack con una mano. Afferra la caviglia dietro di te e tira il tallone verso il gluteo. Ginocchia vicine.", t: "2x30s per lato", tm: 30, est: 120, cue: "Punta le dita del piede verso la testa (dorsiflessione): estende anche il tibiale anteriore, non solo il quadricipite.", feel: "Parte anteriore della coscia, dalla rotula fino all'anca.", breath: "Diaframmatica, espirazione lunga", err: "Inarcare la schiena per compensare: tieni il bacino neutro, gluteo contratto. Ginocchio che si apre lateralmente: tienilo in linea con l'anca.", reason: "Giorno 1 e 4: dopo squat, bulgaro e affondi i quadricipiti sono accorciati e pieni di sangue. Lo stretching li riporta alla lunghezza di riposo.", lk: "https://www.youtube.com/watch?v=UZ-GSxmr2zs&pp=ygUSU3RhbmRpbmcgUXVhZCBQdWxs" },
   "Half Kneeling Lunge": { img: "str_HalfKneelingLunge", d: "Half kneeling lunge", goal: "Allungare iliopsoas e retto femorale: i flessori profondi dell'anca. E l'esercizio piu importante per sbloccare l'anca da sedentarieta.", h: "Ginocchio a terra, l'altro piede avanti con il ginocchio sopra la caviglia. Spingi le anche avanti mantenendo il busto verticale.", t: "2x40s per lato", tm: 40, est: 160, cue: "Punta la fibbia della cintura verso l'orizzonte. Il bacino resta neutro, non in anteroversione. L'avanzamento delle anche e piccolo ma deve essere sentito.", feel: "Parte anteriore dell'anca della gamba dietro, in profondita. Se senti la lombare, hai perso il bacino.", breath: "Diaframmatica, espirazione completa", err: "Inarcare la lombare per andare piu avanti, inclinarsi col busto in avanti, ginocchio davanti che supera la punta del piede.", reason: "Presente in tutti i giorni lower e nel protocollo anca. I flessori dell'anca corti limitano la profondita dello squat e il lockout dell'hip thrust.", lk: "https://www.youtube.com/watch?v=dUgr_vjDWNw" },
   "Half Kneeling Lunge + Reach": { img: "str_HalfKneelingReach", d: "Half kneeling lunge + reach verticale", goal: "Estendere l'allungamento del half kneeling lunge a tutta la catena anteriore, dallo psoas fino al gran dorsale e agli obliqui.", h: "Dalla posizione del half kneeling lunge, alza il braccio dello stesso lato del ginocchio a terra verso il soffitto. Allunga come se volessi toccare il soffitto.", t: "2x30s per lato", tm: 30, est: 120, cue: "La mano sale, l'anca scende. Senti una linea di tensione continua dal ginocchio a terra fino alla punta delle dita in alto.", feel: "Psoas profondo, fianco, obliqui e dorsale dello stesso lato. Molto piu esteso del lunge semplice.", breath: "Diaframmatica, lenta", err: "Perdere il bacino neutro quando alzi il braccio o ruotare il busto. Il petto resta frontale.", reason: "Protocollo anca e giorni lower. Aggiunge la componente delle catene muscolari: non allunghi un muscolo solo, ma tutta la catena anteriore-laterale.", lk: "https://www.youtube.com/watch?v=jE63mBT_a9Q" },
@@ -1413,6 +1420,15 @@ var HIP_PROTOCOL_BASE = [
   { n: "Half Kneeling Lunge + Reach" },
   { n: "Figure-Four Supino" },
   { n: "Happy Baby" },
+];
+
+var CARDIO_MOBILITY_BASE = [
+  { n: "Dorsiflessione al muro" },
+  { n: "Alfredson eccentrico" },
+  { n: "90/90 hip mobility" },
+  { n: "T-spine rotation in quadrupedia" },
+  { n: "Half Kneeling Lunge" },
+  { n: "Figure-Four Supino" },
 ];
 
 var HIP_PROTOCOL_PROGRESSIONS = [
@@ -1581,18 +1597,19 @@ var DAYS_V4 = [
       ritmo: "Recuperi 2-3 min su Squat. 2 min su Hip thrust. 90s-2 min su Leg curl al cavo. 90-120s sugli altri."
     },
     warmup: [
-      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", gearTag: "Corpo libero", d: "3-5 minuti. Obiettivo: alzare temperatura, non affaticarti.", tm: 180, alt: [
-        { n: "Kettlebell swing leggero", img: "Good Morning", gearTag: "Kettlebell", d: "3x10 con 30 secondi di pausa. Scalda tutta la catena posteriore e porta su il cuore in fretta." },
-        { n: "Step-up alternato a corpo libero", img: "Step Up", gearTag: "Step / Fit box", d: "2 minuti continui. Scalda quadricipiti e glutei, alza la temperatura senza impatto.", tm: 120 },
-        { n: "Salto su fit box basso", img: "Step Up", gearTag: "Fit box", d: "5-6 salti controllati. Attivazione esplosiva prima dello squat, senza cercare fatica." },
-        { n: "Jumping jacks", img: "w_JumpingJacks", gearTag: "Corpo libero", d: "2-3 minuti leggeri.", tm: 180 }
+      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "10 rip per lato", cue: "Ginocchio avanti e leggermente in fuori, tallone sempre a terra.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs", alt: [
+        { n: "Kettlebell swing leggero", img: "Good Morning", gearTag: "Kettlebell", p: "3x10", cue: "Alternativa dinamica quando vuoi un warm-up piu atletico per la catena posteriore." },
+        { n: "Step-up alternato a corpo libero", img: "Step Up", gearTag: "Step / Fit box", p: "2 minuti continui", cue: "Alternativa rapida per temperatura e gambe senza impatto.", tm: 120 }
       ] },
-      { n: "Cat-Cow + World's Greatest Stretch", img: "w_WorldsGreatestStretch", gearTag: "Corpo libero", d: "2 minuti totali. Mobilita dinamica, non stretching statico.", alt: [
-        { n: "Goblet squat lento", img: "Goblet Squat", gearTag: "Kettlebell", d: "2x8 con 3 secondi di fermo in buca. Riscalda il pattern squat e apre le anche." },
-        { n: "TRX squat + apertura toracica", img: "TRX Squat", gearTag: "TRX", d: "8 rip per lato. Squat assistito profondo con rotazione del busto a braccia aperte in buca." },
-        { n: "Cat-Cow", img: "w_CatCow", gearTag: "Corpo libero", d: "8 ripetizioni lente seguite da 4 World's Greatest Stretch per lato." }
+      { n: "Alfredson eccentrico", phase: "mobility", gearTag: "Step / Fit box", p: "2x10 per piede", cue: "Sali con due piedi, scendi con uno in 3-4 secondi.", lk: "https://www.youtube.com/watch?v=WjQBJPuFkHI" },
+      { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8-10 passaggi per lato", cue: "Busto alto, rotazione dalle anche senza compensare con la lombare.", lk: "https://www.youtube.com/watch?v=z3EhjVHBxLM", alt: [
+        { n: "Goblet squat lento", img: "Goblet Squat", gearTag: "Kettlebell", p: "2x8", cue: "Alternativa piu orientata al pattern squat se vuoi lavorare con carico leggero." },
+        { n: "TRX squat + apertura toracica", img: "TRX Squat", gearTag: "TRX", p: "8 rip per lato", cue: "Alternativa assistita per anche e torace." }
       ] },
-      { n: "Serie avvicinamento squat con bilanciere", img: "w_SerieAvvSquat", d: "3-5 serie progressive senza fatica: bilanciere scarico poi sali. L'ultima non deve pesarti.", alt: [{ n: "Affondi a corpo libero", img: "w_AffondiCorpoLiberoAlt", d: "6 per gamba, lenti, solo come richiamo se ti senti rigida." }] },
+      { n: "Calf Raises con pallina", phase: "mobility", gearTag: "Corpo libero", p: "2x15", cue: "Stringi la pallina tra i malleoli e non perderla durante salita e discesa." },
+      { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "2x8 per lato", cue: "Sali finche gluteo, bacino e tronco restano in linea.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
+      { n: "Dead Bug", phase: "activation", img: "Dead Bug", gearTag: "Corpo libero", p: "2x6 per lato", cue: "Lombare sempre aderente a terra, movimento lento.", lk: "https://www.youtube.com/watch?v=I5xbsA71v1A" },
+      { n: "Serie avvicinamento squat con bilanciere", phase: "approach", img: "w_SerieAvvSquat", gearTag: "Bilanciere", p: "3-5 serie progressive", cue: "Bilanciere scarico poi sali senza arrivare a fatica. L'ultima deve preparare, non pesare." },
     ],
     ex: [
       { n: "Squat", s: "4x6-8", rpe: "8-9", note: "Setup: piedi larghezza spalle, punte 15-30 gradi, mani simmetriche, gomiti giu e leggermente dietro. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper + rack", errori: "Ginocchia che collassano dentro; busto che cade avanti in risalita; talloni che si alzano; schiena che si arrotonda in buca" },
@@ -1611,25 +1628,16 @@ var DAYS_V4 = [
       ritmo: "Recuperi 2-3 min su Trazioni. 2 min su T-bar e Panca. 60-90s su Face pull e Curl."
     },
     warmup: [
-      { n: "Jumping jacks", img: "w_JumpingJacks", gearTag: "Corpo libero", d: "3 minuti.", tm: 180, alt: [
-        { n: "Kettlebell halo", img: "Military Press", gearTag: "Kettlebell", d: "8 per direzione. Mobilita spalle, trapezio e romboidi senza affaticare." },
-        { n: "Band dislocate", img: "band pull apart", gearTag: "Elastico", d: "10 rip lente. Passaggio dell'elastico sopra la testa da davanti a dietro per aprire il torace." },
-        { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", gearTag: "Corpo libero", d: "3 minuti.", tm: 180 }
+      { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8-10 rip per lato", cue: "Ruota il gomito verso il soffitto tenendo il bacino fermo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ", alt: [
+        { n: "TRX Y-T-W", img: "TRX High Row", gearTag: "TRX", p: "5+5+5 rip", cue: "Alternativa per mobilita attiva e cuffia." },
+        { n: "Kettlebell halo", img: "Military Press", gearTag: "Kettlebell", p: "8 per direzione", cue: "Alternativa dinamica per torace e spalle." }
       ] },
-      { n: "Cerchi con le braccia", img: "w_CerchiBraccia", gearTag: "Corpo libero", d: "15 avanti + 15 indietro. Scalda cuffia dei rotatori.", alt: [
-        { n: "TRX Y-T-W", img: "TRX High Row", gearTag: "TRX", d: "5+5+5 rip. Attivazione completa di cuffia e scapole." },
-        { n: "Shoulder rolls + apertura petto", img: "w_ShoulderRolls", gearTag: "Corpo libero", d: "10 rotazioni + 10 aperture." }
-      ] },
-      { n: "Inchworm", img: "w_Inchworm", gearTag: "Corpo libero", d: "5 ripetizioni. Attiva core, spalle e femorali.", alt: [
-        { n: "TRX row lentissimo", img: "TRX Row", gearTag: "TRX", d: "2x8 con fermo di 2 secondi in contrazione. Scalda dorsali e bicipiti senza affaticare." },
-        { n: "Cat-Cow", img: "w_CatCow", gearTag: "Corpo libero", d: "8 lente." }
-      ] },
-      { n: "Scapular Pull-Up", img: "w_SospensioneAttivaSbarra", d: "2x5. Appesa alla barra a braccia tese, tira le scapole in basso senza piegare i gomiti. Il corpo sale di 3-5 cm. Tieni 2 secondi in alto.", alt: [{ n: "Sospensione attiva alla sbarra", img: "w_SospensioneAttivaSbarra", d: "2x5. Parti appesa a braccia tese, abbassa le spalle lontano dalle orecchie e poi rilassa. Stessa attivazione scapolare in versione ancora piu semplice." }] },
-      { n: "Band Pull-Apart con elastico", img: "w_CerchiApertura", gearTag: "Elastico", d: "2x15. Elastico leggero, braccia tese davanti al petto. Apri fino a portarlo al petto. Scapole addotte in fondo al movimento.", alt: [
-        { n: "Elastico pull-apart + rotazione esterna combo", img: "band pull apart", gearTag: "Elastico", d: "2x10. Apri e ruota fuori in un movimento fluido per accendere cuffia e scapole." },
-        { n: "Face Pull leggero con elastico", img: "Face Pull", gearTag: "Elastico", d: "2x12-15. Tira l'elastico verso il viso con gomiti alti. Obiettivo: accendere deltoidi posteriori e retrattori scapolari senza stancarti." }
-      ] },
-      { n: "Serie avvicinamento trazioni", img: "Trazioni", d: "2-3 mini-serie con recupero completo. Prima fai 1-2 ripetizioni pulite, poi 3, poi 4-5 solo se restano facili. Arrivi qui con spalle gia preparate: queste serie servono solo a preparare la tirata vera.", alt: [{ n: "Sospensione attiva alla sbarra", img: "w_SospensioneAttivaSbarra", d: "2-3 serie brevi di attivazione scapolare. Parti appesa a braccia tese, abbassa le spalle lontano dalle orecchie e poi rilassa. Obiettivo: imparare ad abbassare bene le spalle prima delle trazioni." }] },
+      { n: "Shoulder CARs", phase: "mobility", gearTag: "Corpo libero", p: "5 cerchi per direzione per braccio", cue: "Cerchi lenti, tronco fermo e costole giu.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
+      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "10 rip per lato", cue: "Anche nei giorni upper: caviglia mobile e appoggio piu stabile ovunque." },
+      { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "2x8 per lato", cue: "Bacino fermo, piedi un po' larghi, niente oscillazioni.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
+      { n: "Band Pull-Apart con elastico", phase: "activation", img: "w_CerchiApertura", gearTag: "Elastico", p: "2x15", cue: "Elastico leggero, scapole addotte in fondo al gesto." },
+      { n: "Scapular Pull-Up", phase: "activation", img: "w_SospensioneAttivaSbarra", gearTag: "Sbarra", p: "2x5", cue: "Braccia tese, spalle giu, il corpo sale di pochi centimetri." },
+      { n: "Serie avvicinamento trazioni", phase: "approach", img: "Trazioni", gearTag: "Sbarra", p: "2-3 mini-serie", cue: "Poche rip pulite e recupero completo. Servono solo a preparare la tirata vera." },
     ],
     ex: [
       { n: "Trazioni", s: "4x5-8", rpe: "8-9", note: "Double progression. Presa prona. Parti da braccia tese. Mento sopra sbarra. Discesa 2-3s. Ultimo set a cedimento tecnico controllato.", priority: true, rec: "2-3 min", gear: "Barra trazioni (+ elastico assist.)", errori: "Kipping/slancio; mento che si protende senza tirare; spalle alle orecchie; ROM incompleto" },
@@ -1643,6 +1651,7 @@ var DAYS_V4 = [
     cardioIntro: "Usa questo giorno come cardio opzionale o base a bassa intensita. Se Lower B ne risente, salta l'HIIT e tieni solo il rucking o il recupero attivo.",
     cardioGear: ["Tapis roulant oppure sacco + corde", "Zaino da rucking 15-20 kg", "Slackline"],
     cardioWhy: "Il cardio e limitato a 2 sessioni a settimana su giorni separati dai pesi per minimizzare l'interferenza con la crescita muscolare. La corsa ha un impatto negativo maggiore sull'ipertrofia rispetto al rucking per la componente eccentrica elevata: per questo il rucking e l'opzione preferita. L'HIIT e limitato a 1 volta a settimana perche puo sopprimere le vie di segnalazione anabolica (mTOR). Alternare alta e bassa intensita tra le due sessioni garantisce stimolo cardiovascolare senza compromettere il recupero dai pesi.",
+    cardioMobilityIntro: "Nei giorni cardio hai piu margine: usa qui il blocco completo di mobilita dal basso verso l'alto con piu calma.",
     cardioOptions: [
       { icon: "🏃", label: "HIIT tapis roulant — 25 min", desc: "Opzionale, solo se recuperi bene. 5 min warm-up + 8x(30s sprint / 60s cammino) + 5 min cooldown. RPE 8-9 negli sprint. Se Lower B ne risente, salta.", duration: "25 min" },
       { icon: "🎒", label: "Rucking con zaino — 45-60 min", desc: "Base consigliata. Zaino 15-20 kg, alto e aderente. Salite e discese. Zona 2. Progressione: +1 kg ogni 2 settimane oppure +5 minuti. Mai entrambi.", duration: "45-60 min" },
@@ -1659,18 +1668,19 @@ var DAYS_V4 = [
       ritmo: "Recuperi 2-3 min su Stacco. 90s-2 min su Stacco Rumeno e Hip thrust. 90s-2 min su Affondi. 90s sugli accessori."
     },
     warmup: [
-      { n: "Marcia sul posto + affondi a corpo libero", img: "w_AffondiCorpoLiberoAlt", gearTag: "Corpo libero", d: "3 minuti totali. Alza la temperatura senza fiato eccessivo.", tm: 180, alt: [
-        { n: "Kettlebell swing leggero", img: "Good Morning", gearTag: "Kettlebell", d: "3x10 con 30 secondi di pausa. Scalda catena posteriore e sistema nervoso." },
-        { n: "Step-up alternato a corpo libero", img: "Step Up", gearTag: "Step / Fit box", d: "2 minuti continui. Scalda quadricipiti e glutei senza impatto.", tm: 120 },
-        { n: "Salto su fit box basso", img: "Step Up", gearTag: "Fit box", d: "5-6 salti controllati. Attivazione esplosiva prima di Lower B." },
-        { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", gearTag: "Corpo libero", d: "3 minuti leggeri.", tm: 180 }
+      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "10 rip per lato", cue: "Tallone sempre a terra, ginocchio avanti e leggermente in fuori.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs", alt: [
+        { n: "Step-up alternato a corpo libero", img: "Step Up", gearTag: "Step / Fit box", p: "2 minuti continui", cue: "Alternativa per scaldare le gambe rapidamente." },
+        { n: "Kettlebell swing leggero", img: "Good Morning", gearTag: "Kettlebell", p: "3x10", cue: "Alternativa piu dinamica se vuoi una partenza piu nervosa." }
       ] },
-      { n: "Good Morning senza peso + clamshell con elastico", img: "w_GoodMorningSenzaPeso", gearTag: "Corpo libero", d: "2 minuti. Richiama cerniera d'anca e gluteo medio.", tm: 120, alt: [
-        { n: "Goblet squat lento", img: "Goblet Squat", gearTag: "Kettlebell", d: "2x8 con 3 secondi di fermo in buca. Mobilita e richiamo del pattern squat." },
-        { n: "TRX squat + apertura toracica", img: "TRX Squat", gearTag: "TRX", d: "8 rip per lato. Squat assistito con apertura toracica in buca." },
-        { n: "Cat-Cow", img: "w_CatCow", gearTag: "Corpo libero", d: "8 ripetizioni lente, poi clamshell leggero con elastico." }
+      { n: "Alfredson eccentrico", phase: "mobility", gearTag: "Step / Fit box", p: "2x10 per piede", cue: "Scendi lentamente con un solo piede in 3-4 secondi.", lk: "https://www.youtube.com/watch?v=WjQBJPuFkHI" },
+      { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8-10 passaggi per lato", cue: "Rotazione dalle anche, non dalla schiena.", lk: "https://www.youtube.com/watch?v=z3EhjVHBxLM", alt: [
+        { n: "Goblet squat lento", img: "Goblet Squat", gearTag: "Kettlebell", p: "2x8", cue: "Alternativa se vuoi aprire anche e pattern squat nello stesso gesto." },
+        { n: "TRX squat + apertura toracica", img: "TRX Squat", gearTag: "TRX", p: "8 rip per lato", cue: "Alternativa assistita per lower B." }
       ] },
-      { n: "Serie avvicinamento stacco con bilanciere", img: "w_SerieAvvStacco", d: "3-5 serie progressive senza fatica: bilanciere scarico poi sali. L'ultima deve preparare, non tassare.", alt: [{ n: "Hip hinge con bastone", img: "w_HipHingeBastone", d: "8-10 rip lente per richiamare la traiettoria." }] },
+      { n: "Calf Raises con pallina", phase: "mobility", gearTag: "Corpo libero", p: "2x15", cue: "Stringi la pallina e non perderla in alto." },
+      { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "2x8 per lato", cue: "Gluteo forte in alto, niente iperestensione lombare.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
+      { n: "Dead Bug", phase: "activation", img: "Dead Bug", gearTag: "Corpo libero", p: "2x6 per lato", cue: "Costole giu e lombare aderente a terra.", lk: "https://www.youtube.com/watch?v=I5xbsA71v1A" },
+      { n: "Serie avvicinamento stacco con bilanciere", phase: "approach", img: "w_SerieAvvStacco", gearTag: "Bilanciere", p: "3-5 serie progressive", cue: "Bilanciere scarico poi sali. L'ultima deve preparare, non tassare." },
     ],
     ex: [
       { n: "Stacco da Terra", s: "3x4-6", rpe: "8-9", note: "Setup: piedi larghezza anche, barra su meta piede, mani appena fuori gambe, braccia tese. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata (cifosi); barra lontana dal corpo; anche che salgono prima delle spalle; collo iperesteso" },
@@ -1690,24 +1700,16 @@ var DAYS_V4 = [
       ritmo: "Recuperi 2 min su Push-up, Trazioni, Military. 90-120s su Dip. 60-90s su Tricipiti cavo e Woodchop."
     },
     warmup: [
-      { n: "Jumping jacks + cerchi con le braccia", img: "w_JumpingJacks", gearTag: "Corpo libero", d: "2-3 minuti totali. Obiettivo: alzare temperatura.", tm: 180, alt: [
-        { n: "Kettlebell halo", img: "Military Press", gearTag: "Kettlebell", d: "8 per direzione. Mobilita spalle e torace senza affaticarti." },
-        { n: "Band dislocate", img: "band pull apart", gearTag: "Elastico", d: "10 rip lente. Apre torace e spalle." },
-        { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", gearTag: "Corpo libero", d: "2-3 minuti leggeri.", tm: 180 }
+      { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8-10 rip per lato", cue: "Apri il torace senza muovere il bacino.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ", alt: [
+        { n: "TRX Y-T-W", img: "TRX High Row", gearTag: "TRX", p: "5+5+5 rip", cue: "Alternativa per torace e controllo scapolare." },
+        { n: "Shoulder rolls", img: "w_ShoulderRolls", gearTag: "Corpo libero", p: "10 + 10", cue: "Alternativa minima quando vuoi solo sciogliere le spalle." }
       ] },
-      { n: "Cat-Cow", img: "w_CatCow", gearTag: "Corpo libero", d: "8-10 ripetizioni lente.", alt: [
-        { n: "TRX Y-T-W", img: "TRX High Row", gearTag: "TRX", d: "5+5+5 rip. Attivazione completa della cuffia e delle scapole." },
-        { n: "Shoulder rolls", img: "w_ShoulderRolls", gearTag: "Corpo libero", d: "10 in avanti e 10 indietro." }
-      ] },
-      { n: "Band Pull-Apart con elastico", img: "w_CerchiApertura", gearTag: "Elastico", d: "2x15. Elastico leggero, braccia tese davanti al petto. Apri fino al petto. Scapole addotte in fondo.", alt: [
-        { n: "Elastico pull-apart + rotazione esterna combo", img: "band pull apart", gearTag: "Elastico", d: "2x10. Apri e ruota fuori in un movimento fluido." },
-        { n: "Face Pull leggero con elastico", img: "Face Pull", gearTag: "Elastico", d: "2x12-15. Tirata leggera per accendere deltoidi posteriori, trapezio medio e romboidi." }
-      ] },
-      { n: "Retrazione scapolare al muro", img: "w_ShoulderRolls", gearTag: "Corpo libero", d: "2x10. Schiena al muro, braccia a W. Premi gomiti e dorso delle mani contro il muro, tira le scapole insieme e tieni 3 secondi.", alt: [
-        { n: "TRX row lentissimo", img: "TRX Row", gearTag: "TRX", d: "2x8 con fermo di 2 secondi in contrazione. Scalda dorsali e bicipiti senza affaticare." },
-        { n: "Shoulder rolls", img: "w_ShoulderRolls", gearTag: "Corpo libero", d: "10 in avanti e 10 indietro, poi 10 secondi di scapole addotte al muro." }
-      ] },
-      { n: "Serie avvicinamento military press", img: "w_MilitaryPress", d: "2-3 mini-serie leggere prima del carico di lavoro.", alt: [{ n: "Military press con bilanciere scarico", img: "w_MilitaryPress", d: "2x8 con bilanciere vuoto." }] },
+      { n: "Shoulder CARs", phase: "mobility", gearTag: "Corpo libero", p: "5 cerchi per direzione per braccio", cue: "Cerchi lenti e completi, addome attivo.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
+      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "10 rip per lato", cue: "Anche qui: caviglia libera e appoggio piu stabile sotto tutto il corpo." },
+      { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "2x8 per lato", cue: "Core rigido e bacino fermo mentre alterni i tocchi.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
+      { n: "Band Pull-Apart con elastico", phase: "activation", img: "w_CerchiApertura", gearTag: "Elastico", p: "2x15", cue: "Apri fino al petto senza inarcare la schiena." },
+      { n: "Scapular Pull-Up", phase: "activation", img: "w_SospensioneAttivaSbarra", gearTag: "Sbarra", p: "2x5", cue: "Spalle giu e gomiti sempre tesi." },
+      { n: "Serie avvicinamento military press", phase: "approach", img: "w_MilitaryPress", gearTag: "Bilanciere", p: "2-3 mini-serie", cue: "Bilanciere vuoto o poco carico per entrare nel gesto senza stancarti." },
     ],
     ex: [
       { n: "Military Press", s: "4x6-8", rpe: "8-9", note: "Setup: piedi larghezza anche, mani poco oltre spalle, gomiti leggermente avanti, glutei e addome attivi. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + rack", errori: "Iperestensione lombare; barra davanti al viso; gomiti che svasano; testa che arretra" },
@@ -1722,6 +1724,7 @@ var DAYS_V4 = [
     cardioIntro: "Lavoro a bassa intensita. Scegli tra corsa leggera e rucking in base a come ti senti e a cosa hai fatto nel Giorno 3.",
     cardioGear: ["Scarpe da corsa", "Zaino da rucking 15-20 kg"],
     cardioWhy: "Il cardio e limitato a 2 sessioni a settimana su giorni separati dai pesi per minimizzare l'interferenza con la crescita muscolare. La corsa ha un impatto negativo maggiore sull'ipertrofia rispetto al rucking per la componente eccentrica elevata: per questo il rucking e l'opzione preferita. L'HIIT e limitato a 1 volta a settimana perche puo sopprimere le vie di segnalazione anabolica (mTOR). Alternare alta e bassa intensita tra le due sessioni garantisce stimolo cardiovascolare senza compromettere il recupero dai pesi.",
+    cardioMobilityIntro: "Qui usa il blocco completo di mobilita, con piu calma rispetto ai giorni pesi: caviglie, anche, torace e flessori.",
     cardioOptions: [
       { icon: "🏃", label: "Corsa leggera zona 2 — 30 min", desc: "Bassa intensita. FC 120-140. Cadenza 170+ passi/min. Devi poter parlare senza fiatone.", duration: "30 min" },
       { icon: "🎒", label: "Rucking con zaino — 45-75 min", desc: "Bassa intensita. Zona 2. Progressione: +5 min ogni 2 settimane. Se nel Giorno 3 hai fatto rucking, oggi preferisci la corsa.", duration: "45-75 min" },
@@ -2186,7 +2189,7 @@ var PRELIM_PRINCIPLES = [
 
 var PRINCIPLES = [
   { t: "Come regolarti senza modalita guidata", d: "Usa regole semplici. 1) Tieni lo stesso peso in tutte le serie. 2) Se il range e 6-8, il primo obiettivo e stare nel range con tecnica pulita. 3) Se chiudi tutte le serie al numero alto del range con ancora 1-2 ripetizioni in riserva, la volta dopo puoi salire. 4) Se resti dentro il range ma non chiudi tutte le serie al numero alto, tieni lo stesso peso e prova ad aggiungere ripetizioni. 5) Se scendi sotto il minimo del range, il carico e troppo alto oppure il recupero e stato troppo corto: non salire, consolida o alleggerisci. 6) Per i recuperi parti cosi: 2-3 minuti sui fondamentali pesanti, 90-120 secondi sugli accessori composti, 60-90 secondi sui monoarticolari. Questa base basta gia per autoregolarti bene." },
-  { t: "Modalita guidata: come leggerla davvero", d: "La modalita guidata non e un ordine assoluto. E un promemoria automatico basato su ripetizioni, RIR e recupero. Se il suggerimento non torna con la serie che hai appena fatto, usa prima il tuo giudizio e la tecnica reale. In pratica: se sei sotto il minimo del range, il carico e troppo alto o hai recuperato poco; se sei nel range ma non al top, resta li; se chiudi tutto al top con margine, puoi salire; se chiudi tutto al top ma sei a RIR 0-1, non salire ancora. Sugli esercizi senza peso fisso non ragionare in kg: ragiona in assistenza, variante, ampiezza o controllo." },
+  { t: "Coach attivo: come leggerlo davvero", d: "Il coach attivo non e un ordine assoluto. E un promemoria automatico basato su ripetizioni, RIR e andamento della serie. Se il suggerimento non torna con la serie che hai appena fatto, usa prima il tuo giudizio e la tecnica reale. In pratica: se sei sotto il minimo del range, il carico e troppo alto o hai recuperato poco; se sei nel range ma non al top, resta li; se chiudi tutto al top con margine, puoi salire; se chiudi tutto al top ma sei a RIR 0-1, non salire ancora. Sugli esercizi senza peso fisso non ragionare in kg: ragiona in assistenza, variante, ampiezza o controllo." },
   { t: "Come leggere un esercizio: 4x6-8 RPE 8", d: "4 serie da 6 a 8 ripetizioni a RPE 8. Le serie di lavoro si eseguono tutte con lo stesso peso: non aumentarlo tra una serie e l'altra. Il range 6-8 indica la progressione tra le settimane, non dentro la singola seduta. Esempio: settimana 1 fai 4x6 con 30 kg, settimana 2 fai 4x7 con 30 kg, settimana 3 fai 4x8 con 30 kg, poi aumenti a 32.5 kg e riparti da 4x6. Se nella pratica fai 8, 8, 7, 6 va bene: il carico e corretto, la fatica accumulata e normale. Aumenti solo quando riesci a fare il numero alto previsto in tutte le serie con tecnica pulita." },
   { t: "Straight sets: stesso peso in tutte le serie", d: "Questa scheda non usa la piramide classica. Usa straight sets: stesso peso in tutte le serie dello stesso esercizio. Esempi: 4x6-8 = 4 serie con lo stesso peso; 3x12 = 3 serie con lo stesso peso; 3xRIR 1-2 = 3 serie con lo stesso peso fermandoti con 1-2 ripetizioni in riserva. Il carico cambia solo tra le settimane, quando hai raggiunto il numero alto previsto su tutte le serie. La vecchia logica piramidale tipo 12-10-8-8 qui non si usa." },
   { t: "Serie di avvicinamento: cosa sono", d: "Non devi fare una lunga rampa per ogni esercizio. La rampa completa serve soprattutto sul primo esercizio pesante della seduta, come Squat, Panca o Stacco. Sugli esercizi successivi spesso non serve nulla, oppure basta 1 serie leggera per abituarti al gesto. Servono a prepararti, non ad allenarti: poche ripetizioni, carichi che salgono poco alla volta, recuperi brevi. Se fatte bene non ti stancano, perche i pesi intermedi restano lontani dalla fatica vera. Più ti avvicini al carico di lavoro, più i salti di peso diventano piccoli e le ripetizioni restano basse." },
@@ -2852,6 +2855,7 @@ function normalizeSplitDayPrefs(source) {
 }
 
 function getBreath(name) { return BREATH_RULES[name] || null; }
+function normalizeAppLevel() { return "v4"; }
 function fmtTime(ms) {
   var s = Math.floor(ms / 1000);
   var mins = Math.floor(s / 60);
@@ -2860,7 +2864,7 @@ function fmtTime(ms) {
 }
 
 export default function App() {
-  var [tab, setTab] = useState("home");
+  var [tab, setTab] = useState("workout");
   var [tabHistory, setTabHistory] = useState([]);
   var [level, setLevel] = useState("v4");
   var [dayIdx, setDayIdx] = useState(0);
@@ -2874,8 +2878,6 @@ export default function App() {
   var [glossOpen, setGlossOpen] = useState(false);
   var [glossTermOpen, setGlossTermOpen] = useState(null);
   var [glossTab, setGlossTab] = useState("principi");
-  var [teoriaTab, setTeoriaTab] = useState("basi");
-  var [alimentazioneTab, setAlimentazioneTab] = useState("principi");
   var [resetOpen, setResetOpen] = useState(false);
   var [exInfoOpen, setExInfoOpen] = useState(null);
   var [openEx, setOpenEx] = useState(null);
@@ -2883,15 +2885,16 @@ export default function App() {
   var [showIntro, setShowIntro] = useState(false);
   var [showDayIntro, setShowDayIntro] = useState(false);
   var [dismissedCalBanner, setDismissedCalBanner] = useState(false);
-  var [dismissedSeriesBanner, setDismissedSeriesBanner] = useState(false);
   var [focusMode, setFocusMode] = useState(false);
   var [warmupAlt, setWarmupAlt] = useState({});
+  var [warmupChecks, setWarmupChecks] = useState({});
   var [splitDayPrefs, setSplitDayPrefs] = useState({});
-  var [workoutView, setWorkoutView] = useState("weights");
+  var [workoutDayName, setWorkoutDayName] = useState("");
   var [cardioIdx, setCardioIdx] = useState(0);
   var [stretchIdx, setStretchIdx] = useState(0);
   var [showImg, setShowImg] = useState(null);
   var [showExSection, setShowExSection] = useState(false);
+  var [showStr, setShowStr] = useState(false);
   var [showGuidedSection, setShowGuidedSection] = useState(false);
   var [showPrinciples, setShowPrinciples] = useState(false);
   var [showIntroCard, setShowIntroCard] = useState(null);
@@ -2924,7 +2927,7 @@ export default function App() {
 
   function getSplitSessionWarmupHint(groupKey) {
     if (groupKey === "am") {
-      return "AM: fai il riscaldamento completo del giorno prima del primo esercizio.";
+      return "AM: fai il riscaldamento completo del giorno, prima di cominciare.";
     }
     if (groupKey === "pm") {
       return "PM: fai 3-5 minuti leggeri e 1-2 serie di avvicinamento prima del primo esercizio della seconda sessione.";
@@ -3005,9 +3008,7 @@ export default function App() {
   function makeNavSnapshot() {
     return {
       tab: tab,
-      teoriaTab: teoriaTab,
       glossTab: glossTab,
-      alimentazioneTab: alimentazioneTab,
       showGuidedSection: showGuidedSection,
       catSec: catSec,
       exInfoOpen: exInfoOpen,
@@ -3026,10 +3027,8 @@ export default function App() {
   }
   function restoreNavSnapshot(snap) {
     if (!snap) return;
-    setTab(snap.tab || "home");
-    setTeoriaTab(snap.teoriaTab || "basi");
+    setTab(snap.tab === "home" ? "workout" : (snap.tab || "workout"));
     setGlossTab(snap.glossTab || "principi");
-    setAlimentazioneTab(snap.alimentazioneTab || "principi");
     setShowGuidedSection(!!snap.showGuidedSection);
     setCatSec(snap.catSec || null);
     setExInfoOpen(snap.exInfoOpen || null);
@@ -3038,7 +3037,7 @@ export default function App() {
     setGlossOpen(!!snap.glossOpen);
   }
   function anchorForSnapshot(snap) {
-    if (!snap) return "home-top";
+    if (!snap) return "workout-top";
     if (snap.tab === "exercises") {
       if (snap.exInfoOpen || snap.catSec === "ex") return "exercise-section-ex";
       if (snap.catSec === "wu") return "exercise-section-wu";
@@ -3052,7 +3051,7 @@ export default function App() {
     }
     if (snap.tab === "workout") return snap.showGuidedSection ? "section-guided" : "workout-top";
     if (snap.tab === "progressi") return "progressi-top";
-    return (snap.tab || "home") + "-top";
+    return ((snap.tab === "home" ? "workout" : snap.tab) || "workout") + "-top";
   }
   function navigateToTab(nextTab, opts) {
     var options = opts || {};
@@ -3065,41 +3064,28 @@ export default function App() {
       return nextTab;
     });
   }
-  function openMainTab(nextTab) {
-    navigateToTab(nextTab);
-    requestAnimationFrame(function() {
-      requestAnimationFrame(function() {
-        scrollToAnchor(nextTab + "-top");
-      });
-    });
-  }
+  useEffect(function() {
+    if (level !== "v4") {
+      if (workoutDayName) setWorkoutDayName("");
+      return;
+    }
+    var options = DAYS_V4.filter(function(day) { return day && !day.rest; });
+    if (workoutDayName && options.some(function(day) { return day.name === workoutDayName; })) return;
+    setWorkoutDayName((dayData && dayData.name) || (options[0] && options[0].name) || "");
+  }, [level, workoutDayName, dayData]);
   function resetWorkoutPanels() {
     setOpenEx(null);
     setOpenStretchCard(null);
     setEditing(null);
     setHistIdx(null);
     setShowIntro(false);
+    setShowStr(false);
     setShowExSection(false);
     setShowGuidedSection(false);
     setShowPrinciples(false);
     setShowImg(null);
     setShowDayIntro(false);
     setDismissedCalBanner(false);
-    setDismissedSeriesBanner(false);
-  }
-  function openWorkoutSection(sectionId, opts) {
-    var options = opts || {};
-    if (typeof options.dayIndex === "number") setDayIdx(options.dayIndex);
-    resetWorkoutPanels();
-    if (sectionId === "section-cardio-mobility") setWorkoutView("cardio");
-    else if (sectionId === "section-stretching" || sectionId === "section-hip-bonus") setWorkoutView("stretching");
-    else setWorkoutView("weights");
-    navigateToTab("workout");
-    requestAnimationFrame(function() {
-      requestAnimationFrame(function() {
-        scrollToAnchor("workout-top");
-      });
-    });
   }
   function goBack() {
     setTabHistory(function(h) {
@@ -3143,17 +3129,9 @@ export default function App() {
     });
   }
 
-  function goToTeoria(nextTeoriaTab, nextGlossTab) {
-    if (tab === "teoria" && (nextTeoriaTab && nextTeoriaTab !== teoriaTab || nextGlossTab && nextGlossTab !== glossTab)) pushNavSnapshot();
-    navigateToTab("teoria");
-    if (nextTeoriaTab) setTeoriaTab(nextTeoriaTab);
-    if (nextGlossTab) setGlossTab(nextGlossTab);
-    scrollTopSoon("teoria-top");
-  }
   function goToTheoryAnchor(nextTeoriaTab, nextGlossTab, anchorId, openKey) {
     if (tab === "teoria") pushNavSnapshot();
     navigateToTab("teoria");
-    if (nextTeoriaTab) setTeoriaTab(nextTeoriaTab);
     if (nextGlossTab) setGlossTab(nextGlossTab);
     if (openKey !== undefined && openKey !== null) setShowTheorySection(openKey);
     requestAnimationFrame(function() {
@@ -3161,14 +3139,6 @@ export default function App() {
         scrollToAnchor(anchorId || "teoria-top");
       });
     });
-  }
-
-  function goToAlimentazione(nextAlimentazioneTab) {
-    if (tab === "teoria") pushNavSnapshot();
-    navigateToTab("teoria");
-    setTeoriaTab("alimentazione");
-    if (nextAlimentazioneTab) setAlimentazioneTab(nextAlimentazioneTab);
-    scrollTopSoon("teoria-top");
   }
 
   function goToExercises(nextSection) {
@@ -3196,7 +3166,6 @@ export default function App() {
   function openCompetency(id) {
     pushNavSnapshot();
     navigateToTab("teoria");
-    setTeoriaTab("teoria");
     setGlossTab("principi");
     setShowCompetency(id);
     setShowTheorySection("skills");
@@ -3221,14 +3190,11 @@ export default function App() {
   var [calibrationPrompt, setCalibrationPrompt] = useState(null);
   var [calibrationAnswers, setCalibrationAnswers] = useState({ reps: "", cleanSame: "yes", cleanReps: "", reserve: "2" });
   var [calibrationFeedback, setCalibrationFeedback] = useState("");
-  var [guidedMode, setGuidedMode] = useState(false);
-  var [guidedRecoveryEnabled, setGuidedRecoveryEnabled] = useState(false);
+  var [guidedMode, setGuidedMode] = useState(true);
   var [barbellWeight, setBarbellWeight] = useState(BARBELL_BASE_KG);
   var [extraInfoEnabled, setExtraInfoEnabled] = useState(true);
   var [guidedPrompt, setGuidedPrompt] = useState(null);
   var [guidedFeedback, setGuidedFeedback] = useState("");
-  var [guidedRestHint, setGuidedRestHint] = useState("");
-  var [guidedFillerHint, setGuidedFillerHint] = useState("");
   var [guidedPromptSeenCount, setGuidedPromptSeenCount] = useState(function() {
     try {
       return parseInt(localStorage.getItem("wt-guided-prompt-seen") || "0") || 0;
@@ -3249,6 +3215,8 @@ export default function App() {
   var [completedExercises, setCompletedExercises] = useState({});
   var [fontScale, setFontScale] = useState(1.1);
   var [settingsOpen, setSettingsOpen] = useState(false);
+  var [showWorkoutInfo, setShowWorkoutInfo] = useState(false);
+  var [showAdvancedSettings, setShowAdvancedSettings] = useState(false);
   var [exerciseWorkflowEnabled, setExerciseWorkflowEnabled] = useState(false);
   var [userName, setUserName] = useState("");
   var [userPhoto, setUserPhoto] = useState(null);
@@ -3284,6 +3252,7 @@ export default function App() {
   var timerDragMovedRef = useRef(false);
   var timerTapRef = useRef(0);
   var timerHandleTapRef = useRef(0);
+  var autosaveFingerprintRef = useRef("");
   var [autoBackupMsg, setAutoBackupMsg] = useState("");
   var [exportMenuOpen, setExportMenuOpen] = useState(false);
   var [exGearFilter, setExGearFilter] = useState("all");
@@ -3296,6 +3265,8 @@ export default function App() {
   var [cloudBusy, setCloudBusy] = useState(false);
   var [cloudStatus, setCloudStatus] = useState("");
   var [cloudHydratedUserId, setCloudHydratedUserId] = useState("");
+  var [cloudConflict, setCloudConflict] = useState(null);
+  var [cloudConflictChoice, setCloudConflictChoice] = useState("");
   var intv = useRef(null);
   var tStart = useRef(null);
   var tAcc = useRef(0);
@@ -3303,9 +3274,9 @@ export default function App() {
   var feedbackCardsRef = useRef(null);
 
   var T = TH[theme];
-  var isBasics = level === "basics";
-  var isBeginner = level === "beginner";
-  var activeDays = isBasics ? DAYS_BASICS : isBeginner ? DAYS_BEGINNER.filter(function(d) { return !d.rest; }) : DAYS_V4.filter(function(d) { return !d.cardio; });
+  var isBasics = false;
+  var isBeginner = false;
+  var activeDays = DAYS_V4.filter(function(d) { return !d.cardio; });
   var safeDayIdx = Math.min(dayIdx, activeDays.length - 1);
   var WORKFLOW_SEED_BY_SLUG = NEW_EXERCISE_WORKFLOW_SEED.reduce(function(acc, item) {
     acc[item.slug] = item;
@@ -3586,34 +3557,26 @@ export default function App() {
     return acc;
   }, {});
   var dayData = activeDays[safeDayIdx];
-  var estimatedDayMinutes = dayData ? estimateDayMinutes(dayData, month) : 0;
-  var splitPlanForDay = level === "v4" && dayData ? V4_DAY_SPLIT_PLAN[dayData.name] || null : null;
-  var splitPrefKey = dayData ? getDaySplitPrefKey(dayData, safeDayIdx) : "";
+  var workoutDayOptions = level === "v4"
+    ? DAYS_V4.filter(function(day) { return day && !day.rest; })
+    : activeDays;
+  var workoutSelectedDay = level === "v4"
+    ? (workoutDayOptions.find(function(day) { return day.name === workoutDayName; }) || workoutDayOptions[0] || null)
+    : dayData;
+  var workoutSelectedWeightIndex = workoutSelectedDay && !workoutSelectedDay.cardio
+    ? activeDays.findIndex(function(day) { return day && day.name === workoutSelectedDay.name; })
+    : -1;
+  var workoutSelectedWeightDay = workoutSelectedWeightIndex >= 0 ? activeDays[workoutSelectedWeightIndex] : null;
+  var estimatedDayMinutes = workoutSelectedWeightDay ? estimateDayMinutes(workoutSelectedWeightDay, month) : 0;
+  var splitPlanForDay = level === "v4" && workoutSelectedWeightDay ? V4_DAY_SPLIT_PLAN[workoutSelectedWeightDay.name] || null : null;
+  var splitPrefKey = workoutSelectedWeightDay ? getDaySplitPrefKey(workoutSelectedWeightDay, workoutSelectedWeightIndex) : "";
   var isDaySplitActive = !!(splitPlanForDay && splitDayPrefs[splitPrefKey] === "split");
-  var dayExerciseGroups = buildDayExerciseGroups(dayData, month, isDaySplitActive);
-  var isCurrentWeightDayComplete = workoutView === "weights" && !!dayData && !dayData.cardio && !dayData.rest && isDayWorkoutComplete(logs, safeDayIdx);
+  var dayExerciseGroups = buildDayExerciseGroups(workoutSelectedWeightDay, month, isDaySplitActive);
+  var isCurrentWeightDayComplete = !!workoutSelectedWeightDay && !workoutSelectedWeightDay.cardio && !workoutSelectedWeightDay.rest && isDayWorkoutComplete(logs, workoutSelectedWeightIndex);
   var activeOpenRawEx = dayData && dayData.ex && openEx !== null && dayData.ex[openEx] ? dayData.ex[openEx] : null;
   var activeOpenMergedEx = activeOpenRawEx ? (activeOpenRawEx.cable && activeOpenRawEx.free ? Object.assign({}, activeOpenRawEx, activeOpenRawEx.defaultFree ? activeOpenRawEx.free : activeOpenRawEx.cable) : activeOpenRawEx) : null;
   var activeOpenEx = activeOpenMergedEx ? getExForMonth(activeOpenMergedEx) : null;
   var activeOpenRestSec = activeOpenMergedEx && activeOpenEx ? getExerciseRestSeconds(activeOpenMergedEx, activeOpenEx) : null;
-  var cardioSupportDays = !(isBasics || isBeginner)
-    ? DAYS_V4.map(function(day, idx) { return { day: day, idx: idx }; }).filter(function(item) { return item.day && item.day.cardio; })
-    : [];
-  var safeCardioIdx = cardioSupportDays.length ? Math.min(cardioIdx, cardioSupportDays.length - 1) : 0;
-  var cardioDayData = cardioSupportDays.length ? cardioSupportDays[safeCardioIdx].day : null;
-  var stretchSupportDays = !(isBasics || isBeginner)
-    ? DAYS_V4.filter(function(day) { return day && (day.cardio || (!day.rest && ((day.str && day.str.length) || day.hipBonus))); })
-    : [];
-  var safeStretchIdx = stretchSupportDays.length ? Math.min(stretchIdx, stretchSupportDays.length - 1) : 0;
-  var stretchDayData = stretchSupportDays.length ? stretchSupportDays[safeStretchIdx] : null;
-  function openStretchDay(dayName) {
-    var idx = stretchSupportDays.findIndex(function(day) { return day && day.name === dayName; });
-    setWorkoutView("stretching");
-    if (idx >= 0) setStretchIdx(idx);
-    resetWorkoutPanels();
-    scrollTopSoon("workout-top");
-  }
-
   function normalizeStretchEntry(entry) {
     if (!entry) return null;
     if (typeof entry === "string") {
@@ -3811,7 +3774,6 @@ export default function App() {
               <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>{opt.desc}</div>
               <div style={{ marginTop: 9, display: "flex", gap: 6, flexWrap: "wrap" }}>
                 <span style={{ fontSize: 10, fontWeight: 800, color: dc, background: dc + "10", border: "1px solid " + dc + "22", borderRadius: 999, padding: "3px 8px" }}>{opt.duration}</span>
-                <span style={{ fontSize: 10, color: T.sub, background: T.cd, border: "1px solid " + T.bg, borderRadius: 999, padding: "3px 8px" }}>Segui l'opzione che oggi ti va meglio</span>
               </div>
             </div>;
           })}
@@ -3823,26 +3785,6 @@ export default function App() {
   var effectiveCalibrationMode = calibrationEnabled && calibrationMode;
   var dc = T.ok;
   var gc = "#0F766E";
-  var teoriaTabs = isBasics
-    ? [["teoria","🎯 Tecniche"]]
-    : isBeginner
-      ? [["basi","🧱 Basi"],["teoria","📚 Teoria"],["muscoli","💪 Muscoli"],["alimentazione","🥗 Cibo"]]
-      : [["basi","🧱 Basi"],["teoria","📚 Teoria"],["muscoli","💪 Muscoli"],["alimentazione","🥗 Cibo"]];
-  var homeOverviewNow = isBasics
-    ? "Stai lavorando sulle tecniche preliminari: brace, bacino, hip hinge, scapole, squat pattern e movimenti base di spinta e tirata."
-    : isBeginner
-    ? "Stai facendo una scheda principiante Full Body 3 giorni. L'obiettivo non e dimagrire: e costruire massa magra, imparare bene i movimenti e creare continuita."
-    : "Stai facendo soprattutto ipertrofia, ma con fondamentali abbastanza pesanti da costruire anche forza. Non e una scheda di forza pura e non e una fase di definizione separata.";
-  var homeOverviewStructure = isBasics
-    ? "3 giornate tecniche brevi. Pochi esercizi, molto controllo, recuperi tranquilli e focus su prerequisiti motori prima di passare alla scheda principiante."
-    : isBeginner
-    ? "Full Body A-B-C a giorni alterni, con giorni di riposo in mezzo. Alleni tutto il corpo 3 volte a settimana con volume moderato e nessun cardio strutturato."
-    : "Upper/Lower su 4 giorni pesi piu 2 giorni cardio. Ogni muscolo riceve 2 stimoli a settimana, con recupero sufficiente tra una seduta e l'altra.";
-  var homeOverviewFocus = isBasics
-    ? "La qualita del gesto vale piu della fatica. Se perdi posizione, la serie finisce. Quando i prerequisiti sono stabili, passi a Principiante."
-    : isBeginner
-    ? "Tecnica pulita, buffer costante, progressione lineare, multiarticolari semplici, proteine adeguate e solo camminate leggere nei giorni off."
-    : "Fondamentali prima, accessori dopo, progressione graduale, buffer quasi sempre presente, cardio separato dai pesi e dieta impostata per ricomposizione corporea. La prima settimana, e ogni ricalibrazione dopo stop o deload, serve anche a ritrovare i pesi giusti.";
   var introBasicsCards = isBasics ? PRELIM_INTRO_BASICS : isBeginner ? BEGINNER_INTRO_BASICS : INTRO_BASICS;
   var deepPrinciplesList = isBasics ? PRELIM_PRINCIPLES_DEEP : isBeginner ? BEGINNER_PRINCIPLES_DEEP : PRINCIPLES_DEEP;
   var shortPrinciplesList = isBasics ? PRELIM_PRINCIPLES : isBeginner ? BEGINNER_PRINCIPLES : PRINCIPLES;
@@ -3858,7 +3800,7 @@ export default function App() {
 
   function buildPersistedStatePayload(sourceLogs, sourceCardioLogs, sourceStretchLogs, sourceProfiles, sourceCalibrationMode, sourceGuidedMode, sourceBarbellWeight, sourceGuidedRecovery, overrides) {
     var nextUserName = overrides && typeof overrides.userName === "string" ? overrides.userName : (userName || "");
-    var nextLevel = overrides && (overrides.level === "basics" || overrides.level === "beginner" || overrides.level === "v4") ? overrides.level : level;
+    var nextLevel = normalizeAppLevel(overrides && overrides.level ? overrides.level : level);
     var nextTheme = overrides && overrides.theme && TH[overrides.theme] ? overrides.theme : theme;
     var nextFontScale = overrides && isFinite(overrides.fontScale) && overrides.fontScale >= 0.9 && overrides.fontScale <= 1.5 ? overrides.fontScale : fontScale;
     var nextWorkflowEnabled = overrides && typeof overrides.exerciseWorkflowEnabled === "boolean" ? overrides.exerciseWorkflowEnabled : exerciseWorkflowEnabled;
@@ -3872,7 +3814,7 @@ export default function App() {
       calibrationProfiles: sourceProfiles || {},
       calibrationMode: !!sourceCalibrationMode,
       guidedMode: !!sourceGuidedMode,
-      guidedRecoveryEnabled: !!sourceGuidedRecovery,
+      guidedRecoveryEnabled: false,
       barbellWeight: sourceBarbellWeight,
       profile: {
         userName: nextUserName,
@@ -3886,7 +3828,7 @@ export default function App() {
         extraInfoEnabled: nextExtraInfoEnabled,
         splitDayPrefs: nextSplitDayPrefs,
         guidedMode: !!sourceGuidedMode,
-        guidedRecoveryEnabled: !!sourceGuidedRecovery,
+        guidedRecoveryEnabled: false,
         calibrationMode: !!sourceCalibrationMode,
         barbellWeight: sourceBarbellWeight
       }
@@ -3909,6 +3851,129 @@ export default function App() {
     return nextLogs;
   }
 
+  function getCloudSnapshotSummary(snapshot) {
+    var payload = snapshot && typeof snapshot === "object" ? snapshot : {};
+    var payloadLogs = payload.logs && typeof payload.logs === "object" ? payload.logs : {};
+    var payloadCardioLogs = payload.cardioLogs && typeof payload.cardioLogs === "object" ? payload.cardioLogs : {};
+    return {
+      savedAt: typeof payload.savedAt === "string" ? payload.savedAt : "",
+      weightEntries: Object.keys(payloadLogs).length,
+      cardioEntries: Object.keys(payloadCardioLogs).length
+    };
+  }
+
+  function formatCloudSavedAt(savedAt) {
+    if (!savedAt) return "data sconosciuta";
+    try {
+      return new Date(savedAt).toLocaleString("it-IT", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+    } catch (e) {
+      return savedAt;
+    }
+  }
+
+  function getCloudConflictRecommendedChoice(conflict) {
+    if (!conflict) return "";
+    var localSavedAt = conflict.localSummary && conflict.localSummary.savedAt ? conflict.localSummary.savedAt : "";
+    var remoteSavedAt = conflict.remoteSummary && conflict.remoteSummary.savedAt ? conflict.remoteSummary.savedAt : "";
+    if (localSavedAt && remoteSavedAt) {
+      if (remoteSavedAt > localSavedAt) return "remote";
+      if (localSavedAt > remoteSavedAt) return "local";
+    }
+    var localWeightEntries = conflict.localSummary && conflict.localSummary.weightEntries ? conflict.localSummary.weightEntries : 0;
+    var localCardioEntries = conflict.localSummary && conflict.localSummary.cardioEntries ? conflict.localSummary.cardioEntries : 0;
+    var remoteWeightEntries = conflict.remoteSummary && conflict.remoteSummary.weightEntries ? conflict.remoteSummary.weightEntries : 0;
+    var remoteCardioEntries = conflict.remoteSummary && conflict.remoteSummary.cardioEntries ? conflict.remoteSummary.cardioEntries : 0;
+    var localTotal = localWeightEntries + localCardioEntries;
+    var remoteTotal = remoteWeightEntries + remoteCardioEntries;
+    if (remoteTotal > localTotal) return "remote";
+    if (localTotal > remoteTotal) return "local";
+    return "";
+  }
+
+  function stripSnapshotMeta(snapshot) {
+    if (!snapshot || typeof snapshot !== "object") return {};
+    var clone = JSON.parse(JSON.stringify(snapshot));
+    delete clone.savedAt;
+    return clone;
+  }
+
+  function areSnapshotsEquivalent(a, b) {
+    try {
+      return JSON.stringify(stripSnapshotMeta(a)) === JSON.stringify(stripSnapshotMeta(b));
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function readStoredSnapshotFromBrowser() {
+    try {
+      var raw = localStorage.getItem(SK) || localStorage.getItem(SK_SHADOW);
+      if (!raw) return null;
+      var parsed = JSON.parse(raw);
+      return parsed && typeof parsed === "object" ? parsed : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function buildCurrentSnapshotForCloud() {
+    return buildPersistedStatePayload(
+      logs,
+      cardioLogs,
+      stretchLogs,
+      calibrationProfiles,
+      calibrationMode,
+      guidedMode,
+      barbellWeight,
+      false,
+      {
+        userName: userName,
+        userPhoto: userPhoto,
+        level: level,
+        theme: theme,
+        fontScale: fontScale,
+        exerciseWorkflowEnabled: exerciseWorkflowEnabled,
+        extraInfoEnabled: extraInfoEnabled,
+        splitDayPrefs: splitDayPrefs
+      }
+    );
+  }
+
+  function applyPersistedSnapshot(snapshot) {
+    if (!snapshot || typeof snapshot !== "object") return;
+    var importedProfile = snapshot.profile && typeof snapshot.profile === "object" ? snapshot.profile : {};
+    var importedPreferences = snapshot.preferences && typeof snapshot.preferences === "object" ? snapshot.preferences : {};
+    var importedStretchLogs = snapshot.stretchLogs && typeof snapshot.stretchLogs === "object" ? snapshot.stretchLogs : {};
+    saveData(
+      normalizeImportedWorkoutLogs(snapshot.logs || {}, importedPreferences.level),
+      snapshot.cardioLogs || {},
+      snapshot.calibrationProfiles || {},
+      !!snapshot.calibrationMode,
+      !!snapshot.guidedMode,
+      typeof snapshot.barbellWeight === "number" ? snapshot.barbellWeight : BARBELL_BASE_KG,
+      false,
+      {
+        stretchLogs: importedStretchLogs,
+        userName: typeof importedProfile.userName === "string" ? importedProfile.userName : "",
+        userPhoto: typeof importedProfile.userPhoto === "string" ? importedProfile.userPhoto : null,
+        level: importedPreferences.level,
+        theme: importedPreferences.theme,
+        fontScale: parseFloat(importedPreferences.fontScale),
+        exerciseWorkflowEnabled: typeof importedPreferences.exerciseWorkflowEnabled === "boolean" ? importedPreferences.exerciseWorkflowEnabled : undefined,
+        extraInfoEnabled: typeof importedPreferences.extraInfoEnabled === "boolean" ? importedPreferences.extraInfoEnabled : undefined,
+        splitDayPrefs: importedPreferences.splitDayPrefs
+      }
+    );
+    setStretchLogs(importedStretchLogs);
+    applyImportedProfileAndPreferences(snapshot);
+  }
+
   async function pushSnapshotToCloud(snapshot, userId, silent) {
     if (!supabase || !userId || !snapshot) return;
     var response = await supabase
@@ -3929,6 +3994,8 @@ export default function App() {
     if (!supabase || !userId) return;
     setCloudBusy(true);
     setCloudStatus("Controllo backup cloud...");
+    setCloudConflict(null);
+    setCloudConflictChoice("");
     try {
       var result = await supabase
         .from("user_app_state")
@@ -3942,47 +4009,28 @@ export default function App() {
         setCloudStatus("Cloud pronto. Nessun backup remoto trovato.");
         return;
       }
-      var localSavedAt = "";
-      var localSnapshot = null;
-      try {
-        var localRaw = localStorage.getItem(SK);
-        if (localRaw) {
-          var localParsed = JSON.parse(localRaw);
-          localSavedAt = typeof localParsed.savedAt === "string" ? localParsed.savedAt : "";
-          if (localParsed && typeof localParsed === "object") localSnapshot = localParsed;
-        }
-      } catch (e) {}
+      var localSnapshot = readStoredSnapshotFromBrowser() || buildCurrentSnapshotForCloud();
+      var localSavedAt = localSnapshot && typeof localSnapshot.savedAt === "string" ? localSnapshot.savedAt : "";
       var remoteSavedAt = typeof remote.payload.savedAt === "string" ? remote.payload.savedAt : (remote.updated_at || "");
+      if (localSnapshot && !areSnapshotsEquivalent(localSnapshot, remote.payload)) {
+        var suggestedChoice = remoteSavedAt && localSavedAt && remoteSavedAt > localSavedAt ? "remote" : "local";
+        setCloudConflict({
+          userId: userId,
+          localSnapshot: localSnapshot,
+          remoteSnapshot: remote.payload,
+          localSummary: getCloudSnapshotSummary(localSnapshot),
+          remoteSummary: getCloudSnapshotSummary(remote.payload)
+        });
+        setCloudConflictChoice(suggestedChoice);
+        setCloudStatus("Conflitto cloud trovato: scegli se tenere i dati di questo dispositivo o scaricare quelli online.");
+        return;
+      }
       if (remoteSavedAt && (!localSavedAt || remoteSavedAt > localSavedAt)) {
-          var importedProfile = remote.payload.profile && typeof remote.payload.profile === "object" ? remote.payload.profile : {};
-          var importedPreferences = remote.payload.preferences && typeof remote.payload.preferences === "object" ? remote.payload.preferences : {};
-          var importedStretchLogs = remote.payload.stretchLogs && typeof remote.payload.stretchLogs === "object" ? remote.payload.stretchLogs : {};
-        saveData(
-          normalizeImportedWorkoutLogs(remote.payload.logs || {}, importedPreferences.level),
-          remote.payload.cardioLogs || {},
-          remote.payload.calibrationProfiles || {},
-          !!remote.payload.calibrationMode,
-          !!remote.payload.guidedMode,
-          typeof remote.payload.barbellWeight === "number" ? remote.payload.barbellWeight : BARBELL_BASE_KG,
-          !!remote.payload.guidedRecoveryEnabled,
-          {
-            stretchLogs: importedStretchLogs,
-            userName: typeof importedProfile.userName === "string" ? importedProfile.userName : "",
-            userPhoto: typeof importedProfile.userPhoto === "string" ? importedProfile.userPhoto : null,
-            level: importedPreferences.level,
-            theme: importedPreferences.theme,
-            fontScale: parseFloat(importedPreferences.fontScale),
-            exerciseWorkflowEnabled: typeof importedPreferences.exerciseWorkflowEnabled === "boolean" ? importedPreferences.exerciseWorkflowEnabled : undefined,
-            extraInfoEnabled: typeof importedPreferences.extraInfoEnabled === "boolean" ? importedPreferences.extraInfoEnabled : undefined,
-            splitDayPrefs: importedPreferences.splitDayPrefs
-          }
-        );
-        setStretchLogs(importedStretchLogs);
-        applyImportedProfileAndPreferences(remote.payload);
+        applyPersistedSnapshot(remote.payload);
         setCloudStatus("Backup cloud caricato.");
       } else if (localSavedAt) {
         try {
-          var localState = localSnapshot || buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+          var localState = localSnapshot || buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false);
           await pushSnapshotToCloud(localState, userId, true);
           setCloudStatus("Backup locale inviato al cloud.");
         } catch (syncErr) {
@@ -4062,13 +4110,38 @@ export default function App() {
     }
     setCloudBusy(true);
     try {
-      var snapshot = buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+      var snapshot = buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false);
       await pushSnapshotToCloud(snapshot, cloudUser.id, false);
     } catch (err) {
       setCloudStatus("Sync cloud non riuscito: " + err.message);
     } finally {
       setCloudBusy(false);
     }
+  }
+
+  async function handleCloudKeepLocal() {
+    if (!cloudConflict || !cloudConflict.userId || !cloudConflict.localSnapshot) return;
+    setCloudBusy(true);
+    try {
+      await pushSnapshotToCloud(cloudConflict.localSnapshot, cloudConflict.userId, true);
+      setCloudHydratedUserId(cloudConflict.userId);
+      setCloudConflict(null);
+      setCloudConflictChoice("");
+      setCloudStatus("Hai tenuto i dati di questo dispositivo e li ho inviati al cloud.");
+    } catch (err) {
+      setCloudStatus("Non sono riuscito a inviare i dati locali al cloud: " + err.message);
+    } finally {
+      setCloudBusy(false);
+    }
+  }
+
+  function handleCloudUseRemote() {
+    if (!cloudConflict || !cloudConflict.userId || !cloudConflict.remoteSnapshot) return;
+    applyPersistedSnapshot(cloudConflict.remoteSnapshot);
+    setCloudHydratedUserId(cloudConflict.userId);
+    setCloudConflict(null);
+    setCloudConflictChoice("");
+    setCloudStatus("Hai scaricato i dati presenti nel cloud.");
   }
 
   useEffect(function() {
@@ -4084,15 +4157,14 @@ export default function App() {
           setStretchLogs(parsed.stretchLogs || {});
           setCalibrationProfiles(parsed.calibrationProfiles || {});
           setCalibrationMode(!!parsed.calibrationMode);
-          setGuidedMode(typeof parsed.guidedMode === "boolean" ? parsed.guidedMode : false);
-          setGuidedRecoveryEnabled(!!(parsed.preferences && typeof parsed.preferences.guidedRecoveryEnabled === "boolean" ? parsed.preferences.guidedRecoveryEnabled : false));
+          setGuidedMode(typeof parsed.guidedMode === "boolean" ? parsed.guidedMode : true);
           setBarbellWeight(typeof parsed.barbellWeight === "number" ? Math.max(BARBELL_MIN_KG, parsed.barbellWeight) : BARBELL_BASE_KG);
           if (parsed.profile && typeof parsed.profile === "object") {
             if (typeof parsed.profile.userName === "string") setUserName(parsed.profile.userName);
             if (typeof parsed.profile.userPhoto === "string" || parsed.profile.userPhoto === null) setUserPhoto(parsed.profile.userPhoto || null);
           }
           if (parsed.preferences && typeof parsed.preferences === "object") {
-            if (parsed.preferences.level === "basics" || parsed.preferences.level === "beginner" || parsed.preferences.level === "v4") setLevel(parsed.preferences.level);
+            setLevel(normalizeAppLevel(parsed.preferences.level));
             if (parsed.preferences.theme && TH[parsed.preferences.theme]) setTheme(parsed.preferences.theme);
             var pfs = parseFloat(parsed.preferences.fontScale);
             if (isFinite(pfs) && pfs >= 0.9 && pfs <= 1.5) setFontScale(pfs);
@@ -4105,7 +4177,7 @@ export default function App() {
         }
       } else {
         setCalibrationMode(true);
-        setGuidedMode(false);
+        setGuidedMode(true);
         setBarbellWeight(BARBELL_BASE_KG);
       }
     } catch(e) {}
@@ -4124,7 +4196,7 @@ export default function App() {
         }
       }
     } catch(e) {}
-    try { var lv = localStorage.getItem("wt-level"); if (lv === "basics" || lv === "beginner" || lv === "v4") setLevel(lv); } catch(e) {}
+    try { setLevel(normalizeAppLevel(localStorage.getItem("wt-level"))); } catch(e) {}
     try { var th = localStorage.getItem("wt-theme"); if (th && TH[th]) setTheme(th); else localStorage.removeItem("wt-theme"); } catch(e) {}
     try { var fs = parseFloat(localStorage.getItem("wt-fontscale")); if (fs >= 0.9 && fs <= 1.5) setFontScale(fs); } catch(e) {}
     try { setExerciseWorkflowEnabled(localStorage.getItem("wt-exercise-workflow") === "1"); } catch(e) {}
@@ -4132,9 +4204,7 @@ export default function App() {
       var ei = localStorage.getItem("wt-extra-info");
       setExtraInfoEnabled(ei == null ? true : ei === "1");
     } catch(e) {}
-    try {
-      setGuidedRecoveryEnabled(localStorage.getItem("wt-guided-recovery") === "1");
-    } catch(e) {}
+    try { localStorage.removeItem("wt-guided-recovery"); } catch(e) {}
     try {
       var stretchStored = localStorage.getItem("wt-stretch-logs");
       if (stretchStored) {
@@ -4149,12 +4219,6 @@ export default function App() {
     if (dayIdx <= activeDays.length - 1) return;
     setDayIdx(0);
   }, [level]);
-  useEffect(function() {
-    if ((isBasics || isBeginner) && workoutView !== "weights") {
-      setWorkoutView("weights");
-    }
-  }, [isBasics, isBeginner, workoutView]);
-
   useEffect(function() {
     if (!supabase) {
       setCloudAuthReady(true);
@@ -4189,13 +4253,10 @@ export default function App() {
   }, [level]);
 
   useEffect(function() {
-    if (!(isBasics || isBeginner)) return;
-    if (isBasics && teoriaTab !== "teoria") setTeoriaTab("teoria");
-    if (isBasics && teoriaTab === "muscoli") setTeoriaTab("basi");
-    if (glossTab === "termini") setGlossTab("principi");
-  }, [isBasics, isBeginner, teoriaTab, glossTab]);
+    if ((isBasics || isBeginner) && glossTab === "termini") setGlossTab("principi");
+  }, [isBasics, isBeginner, glossTab]);
   useEffect(function() {
-    if (isBasics && tab === "progressi") setTab("home");
+    if (isBasics && tab === "progressi") setTab("workout");
   }, [isBasics, tab]);
   useEffect(function() {
     if (!autoBackupMsg) return;
@@ -4241,9 +4302,9 @@ export default function App() {
   }, [stretchLogs]);
 
   useEffect(function() {
-    if (!supabase || !cloudUser || cloudHydratedUserId !== cloudUser.id) return;
+    if (!supabase || !cloudUser || cloudHydratedUserId !== cloudUser.id || cloudConflict) return;
     var cancelled = false;
-    var snapshot = buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+    var snapshot = buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false);
     pushSnapshotToCloud(snapshot, cloudUser.id, true).then(function() {
       if (!cancelled) setCloudStatus("Cloud sincronizzato.");
     }).catch(function() {
@@ -4259,7 +4320,6 @@ export default function App() {
     calibrationProfiles,
     calibrationMode,
     guidedMode,
-    guidedRecoveryEnabled,
     barbellWeight,
     userName,
     userPhoto,
@@ -4280,11 +4340,10 @@ export default function App() {
     var nextMode = typeof nm === "boolean" ? nm : false;
     var nextGuided = typeof ng === "boolean" ? ng : guidedMode;
     var nextBarbell = typeof bw === "number" && isFinite(bw) && bw >= BARBELL_MIN_KG ? bw : barbellWeight;
-    var nextGuidedRecovery = typeof gr === "boolean" ? gr : guidedRecoveryEnabled;
     var nextStretchLogs = overrides && overrides.stretchLogs && typeof overrides.stretchLogs === "object" ? overrides.stretchLogs : (stretchLogs || {});
     var nextUserName = overrides && typeof overrides.userName === "string" ? overrides.userName : (userName || "");
     var nextUserPhoto = overrides && Object.prototype.hasOwnProperty.call(overrides, "userPhoto") ? (overrides.userPhoto || null) : (userPhoto || null);
-    var nextLevel = overrides && (overrides.level === "basics" || overrides.level === "beginner" || overrides.level === "v4") ? overrides.level : level;
+    var nextLevel = normalizeAppLevel(overrides && overrides.level ? overrides.level : level);
     var nextTheme = overrides && overrides.theme && TH[overrides.theme] ? overrides.theme : theme;
     var nextFontScale = overrides && isFinite(overrides.fontScale) && overrides.fontScale >= 0.9 && overrides.fontScale <= 1.5 ? overrides.fontScale : fontScale;
     var nextWorkflowEnabled = overrides && typeof overrides.exerciseWorkflowEnabled === "boolean" ? overrides.exerciseWorkflowEnabled : exerciseWorkflowEnabled;
@@ -4296,7 +4355,6 @@ export default function App() {
     setCalibrationMode(nextMode);
     setGuidedMode(nextGuided);
     setBarbellWeight(nextBarbell);
-    setGuidedRecoveryEnabled(nextGuidedRecovery);
     setSplitDayPrefs(nextSplitDayPrefs);
     try {
       var snapshot = buildPersistedStatePayload(
@@ -4307,7 +4365,7 @@ export default function App() {
         nextMode,
         nextGuided,
         nextBarbell,
-        nextGuidedRecovery,
+        false,
         {
           userName: nextUserName,
           userPhoto: nextUserPhoto,
@@ -4323,7 +4381,7 @@ export default function App() {
       localStorage.setItem(SK, raw);
       localStorage.removeItem(SK_SHADOW);
       localStorage.setItem("wt-barbell-weight", String(nextBarbell));
-      localStorage.setItem("wt-guided-recovery", nextGuidedRecovery ? "1" : "0");
+      localStorage.removeItem("wt-guided-recovery");
     } catch(e) {
       try {
         var lightSnapshot = buildPersistedStatePayload(
@@ -4334,7 +4392,7 @@ export default function App() {
           nextMode,
           nextGuided,
           nextBarbell,
-          nextGuidedRecovery,
+          false,
           {
             userName: nextUserName,
             userPhoto: null,
@@ -4349,13 +4407,112 @@ export default function App() {
         localStorage.setItem(SK, JSON.stringify(lightSnapshot));
         localStorage.removeItem(SK_SHADOW);
         localStorage.setItem("wt-barbell-weight", String(nextBarbell));
-        localStorage.setItem("wt-guided-recovery", nextGuidedRecovery ? "1" : "0");
+        localStorage.removeItem("wt-guided-recovery");
         setAutoBackupMsg("Spazio browser quasi pieno: ho salvato una copia locale alleggerita senza foto. I dati di allenamento restano salvati.");
       } catch(lightErr) {
         setAutoBackupMsg("Salvataggio locale non riuscito: spazio del browser probabilmente pieno. Esporta subito il JSON e ricarica la pagina dopo aver reimportato il backup piu recente.");
       }
     }
-  }, [guidedMode, guidedRecoveryEnabled, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled, splitDayPrefs, stretchLogs]);
+  }, [guidedMode, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled, splitDayPrefs, stretchLogs]);
+
+  var persistCurrentSnapshot = useCallback(function(reason) {
+    if (!ready) return false;
+    var normalizedLevel = normalizeAppLevel(level);
+    try {
+      var snapshot = buildPersistedStatePayload(
+        logs,
+        cardioLogs,
+        stretchLogs,
+        calibrationProfiles,
+        calibrationMode,
+        guidedMode,
+        barbellWeight,
+        false,
+        {
+          userName: userName,
+          userPhoto: userPhoto,
+          level: normalizedLevel,
+          theme: theme,
+          fontScale: fontScale,
+          exerciseWorkflowEnabled: exerciseWorkflowEnabled,
+          extraInfoEnabled: extraInfoEnabled,
+          splitDayPrefs: splitDayPrefs
+        }
+      );
+      var raw = JSON.stringify(snapshot);
+      if (autosaveFingerprintRef.current === raw) return false;
+      localStorage.setItem(SK, raw);
+      localStorage.removeItem(SK_SHADOW);
+      localStorage.setItem("wt-barbell-weight", String(barbellWeight));
+      localStorage.removeItem("wt-guided-recovery");
+      autosaveFingerprintRef.current = raw;
+      return true;
+    } catch (e) {
+      try {
+        var lightSnapshot = buildPersistedStatePayload(
+          stripHeavyMediaFromLogs(logs),
+          cardioLogs,
+          stretchLogs,
+          calibrationProfiles,
+          calibrationMode,
+          guidedMode,
+          barbellWeight,
+          false,
+          {
+            userName: userName,
+            userPhoto: null,
+            level: normalizedLevel,
+            theme: theme,
+            fontScale: fontScale,
+            exerciseWorkflowEnabled: exerciseWorkflowEnabled,
+            extraInfoEnabled: extraInfoEnabled,
+            splitDayPrefs: splitDayPrefs
+          }
+        );
+        var lightRaw = JSON.stringify(lightSnapshot);
+        if (autosaveFingerprintRef.current === lightRaw) return false;
+        localStorage.setItem(SK, lightRaw);
+        localStorage.removeItem(SK_SHADOW);
+        localStorage.setItem("wt-barbell-weight", String(barbellWeight));
+        localStorage.removeItem("wt-guided-recovery");
+        autosaveFingerprintRef.current = lightRaw;
+        setAutoBackupMsg(reason === "interval"
+          ? "Autosalvataggio eseguito con copia locale alleggerita senza foto."
+          : "Spazio browser quasi pieno: ho salvato una copia locale alleggerita senza foto. I dati di allenamento restano salvati.");
+        return true;
+      } catch (lightErr) {
+        if (reason !== "beforeunload") {
+          setAutoBackupMsg("Salvataggio locale non riuscito: spazio del browser probabilmente pieno. Esporta subito il JSON e ricarica la pagina dopo aver reimportato il backup piu recente.");
+        }
+        return false;
+      }
+    }
+  }, [ready, logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled, splitDayPrefs]);
+
+  useEffect(function() {
+    if (!ready) return;
+    persistCurrentSnapshot("state");
+  }, [ready, persistCurrentSnapshot]);
+
+  useEffect(function() {
+    if (!ready) return;
+    var autosaveInterval = setInterval(function() {
+      persistCurrentSnapshot("interval");
+    }, 120000);
+    function handleVisibilityChange() {
+      if (document.visibilityState === "hidden") persistCurrentSnapshot("visibility");
+    }
+    function handleBeforeUnload() {
+      persistCurrentSnapshot("beforeunload");
+    }
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return function() {
+      clearInterval(autosaveInterval);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [ready, persistCurrentSnapshot]);
 
   function checkSound(ms, mode, target) {
     if (mode === "countdown") {
@@ -4659,11 +4816,50 @@ export default function App() {
     return { execution: execution, objective: objective, notes: notes };
   }
 
+  function getWarmupPhaseLabel(phase) {
+    if (phase === "mobility") return "Fase 1 · Mobilita";
+    if (phase === "activation") return "Fase 2 · Attivazione";
+    if (phase === "approach") return "Fase 3 · Avvicinamento";
+    return "Riscaldamento";
+  }
+
+  function getWarmupGroups(list) {
+    var groups = [];
+    (list || []).forEach(function(item) {
+      var phase = item && item.phase ? item.phase : "mobility";
+      var last = groups.length ? groups[groups.length - 1] : null;
+      if (!last || last.phase !== phase) {
+        groups.push({ phase: phase, items: [item] });
+      } else {
+        last.items.push(item);
+      }
+    });
+    return groups;
+  }
+
+  function getWarmupCheckKey(dayName, itemIndex) {
+    return [dayName || "", itemIndex].join("::");
+  }
+
+  function isWarmupDone(dayName, itemIndex) {
+    return !!warmupChecks[getWarmupCheckKey(dayName, itemIndex)];
+  }
+
+  function toggleWarmupDone(dayName, itemIndex) {
+    var key = getWarmupCheckKey(dayName, itemIndex);
+    setWarmupChecks(function(prev) {
+      var next = Object.assign({}, prev);
+      if (next[key]) delete next[key];
+      else next[key] = true;
+      return next;
+    });
+  }
+
   function getWarmupChoiceOptions(item) {
     if (!item) return [];
-    var choices = [Object.assign({ __choiceIndex: null }, item)];
+    var choices = [Object.assign({ __choiceIndex: null, __packageLabel: "A" }, item)];
     (item.alt || []).forEach(function(altItem, idx) {
-      choices.push(Object.assign({ __choiceIndex: idx }, altItem));
+      choices.push(Object.assign({ __choiceIndex: idx, __packageLabel: String.fromCharCode(66 + idx) }, altItem));
     });
     return choices;
   }
@@ -5049,7 +5245,7 @@ export default function App() {
       extraInfoEnabled: extraInfoEnabled,
       splitDayPrefs: normalizeSplitDayPrefs(splitDayPrefs),
       guidedMode: guidedMode,
-      guidedRecoveryEnabled: guidedRecoveryEnabled,
+      guidedRecoveryEnabled: false,
       calibrationMode: calibrationMode,
       barbellWeight: barbellWeight
     };
@@ -5065,7 +5261,7 @@ export default function App() {
       calibrationProfiles: calibrationProfiles || {},
       calibrationMode: calibrationMode,
       guidedMode: guidedMode,
-      guidedRecoveryEnabled: guidedRecoveryEnabled,
+      guidedRecoveryEnabled: false,
       barbellWeight: barbellWeight,
     };
   }
@@ -5077,7 +5273,7 @@ export default function App() {
       theme: theme,
       fontScale: fontScale,
       guidedMode: guidedMode ? "ON" : "OFF",
-      guidedRecoveryEnabled: guidedRecoveryEnabled ? "ON" : "OFF",
+      guidedRecoveryEnabled: "OFF",
       calibrationMode: calibrationMode ? "ON" : "OFF",
       extraInfoEnabled: extraInfoEnabled ? "ON" : "OFF",
       exerciseWorkflowEnabled: exerciseWorkflowEnabled ? "ON" : "OFF",
@@ -5097,7 +5293,6 @@ export default function App() {
     var importedFontScale = parseFloat(preferences.fontScale);
     var importedWorkflow = typeof preferences.exerciseWorkflowEnabled === "boolean" ? preferences.exerciseWorkflowEnabled : null;
     var importedExtraInfo = typeof preferences.extraInfoEnabled === "boolean" ? preferences.extraInfoEnabled : null;
-    var importedGuidedRecovery = typeof preferences.guidedRecoveryEnabled === "boolean" ? preferences.guidedRecoveryEnabled : null;
     var importedSplitDayPrefs = preferences.splitDayPrefs && typeof preferences.splitDayPrefs === "object" ? normalizeSplitDayPrefs(preferences.splitDayPrefs) : null;
 
     setUserName(importedName);
@@ -5112,10 +5307,9 @@ export default function App() {
       try { localStorage.removeItem("wt-userphoto"); } catch (photoErr) {}
     }
 
-    if (importedLevel === "basics" || importedLevel === "beginner" || importedLevel === "v4") {
-      setLevel(importedLevel);
-      try { localStorage.setItem("wt-level", importedLevel); } catch (e) {}
-    }
+    var normalizedImportedLevel = normalizeAppLevel(importedLevel);
+    setLevel(normalizedImportedLevel);
+    try { localStorage.setItem("wt-level", normalizedImportedLevel); } catch (e) {}
     if (importedTheme && TH[importedTheme]) {
       setTheme(importedTheme);
       try { localStorage.setItem("wt-theme", importedTheme); } catch (e) {}
@@ -5137,12 +5331,12 @@ export default function App() {
     }
     if (importedGuidedRecovery !== null) {
       setGuidedRecoveryEnabled(importedGuidedRecovery);
-      try { localStorage.setItem("wt-guided-recovery", importedGuidedRecovery ? "1" : "0"); } catch (e) {}
+      try { localStorage.removeItem("wt-guided-recovery"); } catch (e) {}
     }
   }
 
   function normalizeImportedWorkoutLogs(sourceLogs, importedLevel) {
-    var levelHint = importedLevel === "basics" || importedLevel === "beginner" || importedLevel === "v4" ? importedLevel : level;
+    var levelHint = normalizeAppLevel(importedLevel || level);
     if (levelHint !== "v4") return sourceLogs || {};
     var nextLogs = {};
     Object.keys(sourceLogs || {}).forEach(function(key) {
@@ -5231,20 +5425,12 @@ export default function App() {
   }
 
   function getProgramLabel(key) {
-    if (key === "v4") return "Ipertrofia avanzato";
-    if (key === "beginner") return "Principiante";
-    if (key === "basics") return "Tecniche preliminari";
-    return "";
+    return key === "v4" ? "Ipertrofia avanzato" : "";
   }
 
   function getWorkoutDayLabel(programKey, dayIndex) {
     if (typeof dayIndex !== "number") return "";
-    var pools = {
-      v4: DAYS_V4,
-      beginner: DAYS_BEGINNER,
-      basics: DAYS_BASICS
-    };
-    var days = pools[programKey] || null;
+    var days = programKey === "v4" ? DAYS_V4 : null;
     if (!days || !days.length) return "Giorno " + (dayIndex + 1);
     var trainingDays = days.map(function(day, idx) {
       return { day: day, idx: idx };
@@ -5263,11 +5449,7 @@ export default function App() {
   }
 
   function findExerciseContext(entry) {
-    var pools = [
-      { key: "v4", days: DAYS_V4 },
-      { key: "beginner", days: DAYS_BEGINNER },
-      { key: "basics", days: DAYS_BASICS }
-    ];
+    var pools = [{ key: "v4", days: DAYS_V4 }];
     for (var pi = 0; pi < pools.length; pi++) {
       var pool = pools[pi];
       var normalizedDayIndex = normalizeLegacyProgramDayIndex(pool.key, entry.day);
@@ -5333,13 +5515,6 @@ export default function App() {
     var baseRestSec = getExerciseRestSeconds({ rec: ctx.rec || "" }, { n: entry.exercise, rpe: "" }) || 0;
     var restRange = String(ctx.rec || "").trim();
     var rirInfo = getSessionRepresentativeRir(entry.sets || []);
-    if (guidedRecoveryEnabled && rirInfo) {
-      var guided = getGuidedRestSuggestion(entry.exercise, baseRestSec || 90, rirInfo.bucket);
-      return {
-        short: fmtLabel(guided.seconds),
-        detail: "Recupero stimato: " + fmtLabel(guided.seconds) + " · RIR medio " + rirInfo.avg + (restRange ? " · scheda: " + restRange : "")
-      };
-    }
     return {
       short: restRange || (baseRestSec ? fmtLabel(baseRestSec) : "—"),
       detail: "Recupero scheda: " + (restRange || (baseRestSec ? fmtLabel(baseRestSec) : "—"))
@@ -5388,7 +5563,7 @@ export default function App() {
       "Livello app",
       "Tema",
       "Peso bilanciere",
-      "Modalita guidata",
+      "Coach attivo",
       "Info aggiuntive",
       "Tipo",
       "Attivita",
@@ -5513,7 +5688,7 @@ export default function App() {
       "Livello app",
       "Tema",
       "Peso bilanciere",
-      "Modalita guidata",
+      "Coach attivo",
       "Info aggiuntive",
       "Tipo",
       "Attivita",
@@ -5667,10 +5842,7 @@ export default function App() {
   }
 
   function getProgramDaysByLabel(label) {
-    if (label === "Ipertrofia avanzato") return DAYS_V4;
-    if (label === "Principiante") return DAYS_BEGINNER;
-    if (label === "Tecniche preliminari") return DAYS_BASICS;
-    return null;
+    return label === "Ipertrofia avanzato" ? DAYS_V4 : null;
   }
 
   function getDayIndexFromCsv(programLabel, dayName) {
@@ -5925,7 +6097,7 @@ export default function App() {
       shouldExport = window.confirm("Allenamento completato. Vuoi salvare adesso il backup JSON sul dispositivo?");
     } catch (e) {}
     if (shouldExport) {
-      saveData(sourceLogs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+      saveData(sourceLogs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false);
       exportCompletedSessionBackup(sourceLogs, di, "prompt-complete");
       setAutoBackupMsg("Allenamento salvato in locale e backup JSON esportato.");
       return;
@@ -6042,7 +6214,7 @@ function isNearBodyweightElasticSession(exName, sets) {
   }
 
   function getExerciseSeriesSpecByName(exName) {
-    var collections = [DAYS_V4, DAYS_BEGINNER, DAYS_BASICS];
+    var collections = [DAYS_V4];
     for (var ci = 0; ci < collections.length; ci++) {
       var days = collections[ci] || [];
       for (var di = 0; di < days.length; di++) {
@@ -6150,33 +6322,6 @@ function isNearBodyweightElasticSession(exName, sets) {
       return { state: "hold", title: "Resta cosi, prova 1 rip in piu", detail: "Ultima: " + formatSessionSummary(exName, sets, isBW, false) + ". Oggi resta con lo stesso " + getGuidedReferenceTerm(exName) + " e prova a salire verso " + nextReps + "." };
     }
     return { state: "down", title: "Consolida", detail: "Ultima: " + formatSessionSummary(exName, sets, isBW, false) + ". Prima chiudi bene il minimo del range su tutte le serie." };
-  }
-
-  function getGuidedRestSuggestion(exName, baseRestSec, rirValue) {
-    var rir = numericRirValue(rirValue);
-    if (rir === null) return { seconds: baseRestSec || 90, label: "Recupero standard" };
-    var kind = getGuidedExerciseClass(exName);
-    if (rir <= 0) {
-      if (kind === "heavy") return { seconds: 150, label: "RIR 0: prenditi 2.5 min e riparti solo quando sei di nuovo pronta" };
-      if (kind === "compound") return { seconds: 90, label: "RIR 0: su questo accessorio bastano 90s" };
-      return { seconds: 60, label: "RIR 0: su un mono bastano 60s" };
-    }
-    if (rir === 1) {
-      if (kind === "heavy") return { seconds: 120, label: "RIR 1: 2 min sono sufficienti" };
-      if (kind === "compound") return { seconds: 75, label: "RIR 1: 75s bastano" };
-      return { seconds: 60, label: "RIR 1: su un mono bastano 60s" };
-    }
-    if (rir === 2) {
-      if (kind === "heavy") return { seconds: 90, label: "RIR 2: 90s bastano" };
-      if (kind === "compound") return { seconds: 60, label: "RIR 2: 60s bastano" };
-      return { seconds: 45, label: "RIR 2: su un mono bastano 45s" };
-    }
-    if (rir >= 3) {
-      if (kind === "heavy") return { seconds: 75, label: "Serie facile: puoi ripartire in 75s" };
-      if (kind === "compound") return { seconds: 45, label: "Serie facile: 45s bastano" };
-      return { seconds: 30, label: "Serie facile: su un mono bastano 30s" };
-    }
-    return { seconds: baseRestSec || 90, label: "Recupero standard" };
   }
 
   function getGuidedExerciseDecision(exName, serie, di) {
@@ -6312,9 +6457,6 @@ function isNearBodyweightElasticSession(exName, sets) {
         if (guidedMode) {
           if (normalizeRirValue(rirValue)) {
             var baseRestNow = getExerciseRestSeconds({ rec: exObj.rec || "" }, exObj) || 90;
-            var restInfo = guidedRecoveryEnabled ? getGuidedRestSuggestion(exObj.n, baseRestNow, rirValue) : { seconds: baseRestNow, label: "Recupero scheda" };
-            setGuidedRestHint(guidedRecoveryEnabled ? restInfo.label : "");
-            setGuidedFillerHint(guidedRecoveryEnabled ? getRecoveryFillerSuggestion(exObj.n, restInfo.seconds) : "");
             if (underMinMsg) {
               setGuidedFeedback(underMinMsg);
             } else if (specGuided && si === specGuided.sets - 1) {
@@ -6322,7 +6464,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             } else if (shouldSuppressRepeatedRirFeedback(prevSet, rirValue)) {
               setGuidedFeedback("");
             } else {
-              setGuidedFeedback(guidedRecoveryEnabled ? ("Serie salvata. " + restInfo.label) : "Serie salvata.");
+              setGuidedFeedback("Serie salvata.");
             }
           } else {
             setGuidedPrompt({
@@ -6422,14 +6564,6 @@ function isNearBodyweightElasticSession(exName, sets) {
       saveSetEntry(calibrationPrompt.exName, calibrationPrompt.di, calibrationPrompt.si, calibrationPrompt.w, cleanReps, nextProfiles, reserve);
       setCalibrationFeedback(decision.title + ". " + decision.detail);
       if (guidedMode) {
-        if (guidedRecoveryEnabled) {
-          var guidedRest = getGuidedRestSuggestion(calibrationPrompt.exName, getExerciseRestSeconds({ rec: calibrationPrompt.rec || "" }, { n: calibrationPrompt.exName, rpe: "" }) || 90, reserve);
-          setGuidedRestHint(guidedRest.label);
-          setGuidedFillerHint(getRecoveryFillerSuggestion(calibrationPrompt.exName, guidedRest.seconds));
-        } else {
-          setGuidedRestHint("");
-          setGuidedFillerHint("");
-        }
         if (calibrationPrompt.isLastSet) {
           setGuidedFeedback(getGuidedExerciseDecision(calibrationPrompt.exName, calibrationPrompt.serie, calibrationPrompt.di) || decision.detail);
         }
@@ -6446,19 +6580,16 @@ function isNearBodyweightElasticSession(exName, sets) {
     var nextSeen = guidedPromptSeenCount + 1;
     setGuidedPromptSeenCount(nextSeen);
     try { localStorage.setItem("wt-guided-prompt-seen", String(nextSeen)); } catch (e) {}
-    var restInfo = guidedRecoveryEnabled ? getGuidedRestSuggestion(guidedPrompt.exName, guidedPrompt.restSec || 90, rirValue) : { seconds: guidedPrompt.restSec || 90, label: "Recupero scheda" };
-    setGuidedRestHint(guidedRecoveryEnabled ? restInfo.label : "");
-    setGuidedFillerHint(guidedRecoveryEnabled ? getRecoveryFillerSuggestion(guidedPrompt.exName, restInfo.seconds) : "");
     if (rirValue === "0") {
       setGuidedFeedback(getGuidedRirZeroMessage(guidedPrompt.exName));
     } else if (rirValue === "3" || rirValue === "4+") {
       setGuidedFeedback("Il carico e leggero. Se si ripete alla prossima serie, considera un aumento.");
     } else if (guidedPrompt.isLastSet) {
-      setGuidedFeedback(getGuidedExerciseDecision(guidedPrompt.exName, guidedPrompt.serie, guidedPrompt.di) || (guidedRecoveryEnabled ? restInfo.label : "Serie salvata."));
+      setGuidedFeedback(getGuidedExerciseDecision(guidedPrompt.exName, guidedPrompt.serie, guidedPrompt.di) || "Serie salvata.");
     } else if (guidedPrompt.prevRir && normalizeRirValue(guidedPrompt.prevRir) === normalizeRirValue(rirValue) && normalizeRirValue(rirValue) !== "0") {
       setGuidedFeedback("");
     } else {
-      setGuidedFeedback(guidedRecoveryEnabled ? restInfo.label : "Serie salvata.");
+      setGuidedFeedback("Serie salvata.");
     }
     setGuidedPrompt(null);
   }
@@ -6500,7 +6631,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     else nextSets.push(nextEntry);
     nextSets.sort(function(a, b) { return (a.si || 0) - (b.si || 0); });
     nextLogs[key] = Object.assign({}, existing, { sets: nextSets });
-    saveData(nextLogs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+    saveData(nextLogs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false);
     resetSetEditingState();
     setAutoBackupMsg("Serie aggiornata.");
     return nextLogs;
@@ -6514,7 +6645,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     var nextSets = (existing.sets || []).filter(function(setItem) { return setItem.si !== si; });
     if (nextSets.length) nextLogs[key] = Object.assign({}, existing, { sets: nextSets });
     else delete nextLogs[key];
-    saveData(nextLogs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+    saveData(nextLogs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false);
     resetSetEditingState();
     setAutoBackupMsg(nextSets.length ? "Serie eliminata." : "Voce esercizio eliminata.");
   }
@@ -6570,7 +6701,7 @@ function isNearBodyweightElasticSession(exName, sets) {
       notePhotos: cleanPhotos,
       noteVideoUrl: cleanVideoUrl || ""
     });
-    saveData(nextLogs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+    saveData(nextLogs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false);
     var noteKey = getHistoricExerciseNoteDraftKey(entry);
     setExerciseNoteDrafts(function(prev) {
       var next = Object.assign({}, prev);
@@ -7058,11 +7189,9 @@ function isNearBodyweightElasticSession(exName, sets) {
             importedCardioLogs || {},
             imported && imported.calibrationProfiles && typeof imported.calibrationProfiles === "object" ? imported.calibrationProfiles : {},
             !!(imported && imported.calibrationMode),
-            imported && typeof imported.guidedMode === "boolean" ? imported.guidedMode : false,
+            imported && typeof imported.guidedMode === "boolean" ? imported.guidedMode : true,
             imported && typeof imported.barbellWeight === "number" ? imported.barbellWeight : BARBELL_BASE_KG,
-            typeof imported.guidedRecoveryEnabled === "boolean"
-              ? imported.guidedRecoveryEnabled
-              : !!(importedPreferences && typeof importedPreferences.guidedRecoveryEnabled === "boolean" ? importedPreferences.guidedRecoveryEnabled : false),
+            false,
             {
               stretchLogs: importedStretchLogs,
               userName: typeof importedProfile.userName === "string" ? importedProfile.userName : "",
@@ -7371,7 +7500,21 @@ function isNearBodyweightElasticSession(exName, sets) {
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); setCardioLogs({}); setStretchLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(false); setBarbellWeight(BARBELL_BASE_KG); setExtraInfoEnabled(true); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setGuidedFillerHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); setSplitDayPrefs({}); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); localStorage.removeItem("wt-barbell-weight"); localStorage.removeItem("wt-stretch-logs"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setCardioLogs({}); setStretchLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(true); setBarbellWeight(BARBELL_BASE_KG); setExtraInfoEnabled(true); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setGuidedFillerHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); setSplitDayPrefs({}); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); localStorage.removeItem("wt-barbell-weight"); localStorage.removeItem("wt-stretch-logs"); } catch(e) {} setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+          </div>
+        </div>
+      </div>}
+
+      {showWorkoutInfo && <div onClick={function() { setShowWorkoutInfo(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 220, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, padding: 20, maxWidth: 360, width: "100%", color: T.tx }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, marginBottom: 12 }}>
+            <h3 style={{ margin: 0, fontSize: 17, fontWeight: 800 }}>ℹ️ Info generali</h3>
+            <button onClick={function() { setShowWorkoutInfo(false); }} style={{ width: 30, height: 30, border: "none", borderRadius: 10, background: T.bg, color: T.sub, fontSize: 16, fontWeight: 800, cursor: "pointer", lineHeight: 1 }}>✕</button>
+          </div>
+          <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7 }}>
+            Il peso resta uguale in tutte le serie dello stesso esercizio.
+            <br /><br />
+            Non aumentarlo tra una serie e l'altra: il numero di ripetizioni sale tra le settimane, non dentro la seduta.
           </div>
         </div>
       </div>}
@@ -7400,47 +7543,20 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </div>
               </div>
             </div>
-            {/* Programma */}
-            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Programma</div>
-            <div style={{ display: "grid", gap: 6, marginBottom: 6 }}>
-              {[
-                { key: "basics", icon: "🎯", title: "Tecniche preliminari", meta: "3 giorni tecnici" },
-                { key: "beginner", icon: "🌱", title: "Principiante", meta: "3 giorni Full Body" },
-                { key: "v4", icon: "💥", title: "Ipertrofia avanzato", meta: "4 giorni pesi + 2 cardio" },
-              ].map(function(opt) {
-                var active = level === opt.key;
-                return <button key={opt.key} onClick={function() {
-                  setLevel(opt.key); setDayIdx(0); setOpenEx(null); setShowIntro(false); setShowStr(false); setShowExSection(false); setShowPrinciples(false);
-                  try { localStorage.setItem("wt-level", opt.key); } catch(e) {}
-                }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", borderRadius: 10, border: active ? "2px solid " + dc : "2px solid transparent", background: active ? dc + "12" : T.sb, cursor: "pointer", textAlign: "left" }}>
-                  <span style={{ fontSize: 18, flexShrink: 0 }}>{opt.icon}</span>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: active ? dc : T.tx }}>{opt.title}</div>
-                    <div style={{ fontSize: 11, color: T.sub }}>{opt.meta}</div>
-                  </div>
-                  {active && <span style={{ fontSize: 10, background: dc, color: "#fff", padding: "2px 7px", borderRadius: 999, fontWeight: 800, flexShrink: 0 }}>attivo</span>}
-                </button>;
-              })}
-            </div>
-            {/* Tema */}
-            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Tema</div>
-            {Object.keys(TH).map(function(k) { var v = TH[k]; return <button key={k} onClick={function() { setTheme(k); try { localStorage.setItem("wt-theme", k); } catch(e) {} }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", border: theme === k ? "2px solid " + v.dy[0] : "2px solid transparent", borderRadius: 10, background: v.bg, cursor: "pointer", width: "100%", marginBottom: 4 }}><div style={{ display: "flex", gap: 3 }}>{v.dy.slice(0,5).map(function(c,i) { return <div key={i} style={{ width: 14, height: 14, borderRadius: 4, background: c }} />; })}</div><span style={{ fontSize: 13, fontWeight: 600, color: v.tx }}>{v.n}</span>{theme === k && <span style={{ marginLeft: "auto", fontSize: 11, color: v.dy[0], fontWeight: 700 }}>✓ attivo</span>}</button>; })}
-            {/* Dimensione testo */}
-            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Dimensione testo</div>
-            <div style={{ display: "flex", gap: 0, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 6 }}>
-              {[["A", 0.95, "Piccolo"], ["A", 1.1, "Normale"], ["A", 1.25, "Grande"], ["A", 1.4, "Molto grande"]].map(function(item) {
-                var active = Math.abs(fontScale - item[1]) < 0.05;
-                return <button key={item[1]} onClick={function() { setFontScale(item[1]); try { localStorage.setItem("wt-fontscale", item[1]); } catch(e) {} }} style={{ flex: 1, padding: "10px 0", border: "none", background: active ? dc : "transparent", color: active ? "#fff" : T.sub, cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 2, transition: "background 0.15s" }}>
-                  <span style={{ fontSize: item[1] * 14, fontWeight: 800, lineHeight: 1 }}>{item[0]}</span>
-                  <span style={{ fontSize: 9, fontWeight: 600, opacity: 0.8 }}>{item[2]}</span>
-                </button>;
-              })}
+            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Come mi alleno</div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", borderRadius: 10, background: dc + "12", border: "2px solid " + dc, marginBottom: 6 }}>
+              <span style={{ fontSize: 18, flexShrink: 0 }}>💥</span>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: 13, fontWeight: 700, color: dc }}>Ipertrofia avanzato</div>
+                <div style={{ fontSize: 11, color: T.sub }}>4 giorni pesi + 2 cardio</div>
+              </div>
+              <span style={{ fontSize: 10, background: dc, color: "#fff", padding: "2px 7px", borderRadius: 999, fontWeight: 800, flexShrink: 0 }}>attivo</span>
             </div>
             {!isBasics && <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
               <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Modalità guidata</div>
-                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Di default è spenta. Quando la attivi, l'app aggiunge briefing pre-sessione, richiesta RIR dopo le serie e decisione finale. I recuperi guidati sono separati e restano spenti finché non li attivi qui sotto.</div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Coach attivo</div>
+                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Quando lo attivi, l'app aggiunge briefing pre-sessione, richiesta RIR dopo le serie e decisione finale su come proseguire.</div>
                 </div>
                 <button
                   onClick={function() {
@@ -7450,23 +7566,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                   style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (guidedMode ? dc : T.sub + "30"), background: guidedMode ? dc : T.cd, color: guidedMode ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
                 >
                   {guidedMode ? "ON" : "OFF"}
-                </button>
-              </div>
-            </div>}
-            {!isBasics && <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Recuperi guidati</div>
-                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Di default sono spenti. Se li lasci OFF, la modalità guidata non ti propone recuperi diversi dalla scheda e non ti mostra filler automatici.</div>
-                </div>
-                <button
-                  onClick={function() {
-                    var next = !guidedRecoveryEnabled;
-                    saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, next);
-                  }}
-                  style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (guidedRecoveryEnabled ? dc : T.sub + "30"), background: guidedRecoveryEnabled ? dc : T.cd, color: guidedRecoveryEnabled ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
-                >
-                  {guidedRecoveryEnabled ? "ON" : "OFF"}
                 </button>
               </div>
             </div>}
@@ -7491,10 +7590,21 @@ function isNearBodyweightElasticSession(exName, sets) {
                 <span style={{ fontSize: 12, color: T.sub, fontWeight: 700 }}>kg</span>
               </div>
             </div>
+            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Come vedo l'app</div>
+            {Object.keys(TH).map(function(k) { var v = TH[k]; return <button key={k} onClick={function() { setTheme(k); try { localStorage.setItem("wt-theme", k); } catch(e) {} }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", border: theme === k ? "2px solid " + v.dy[0] : "2px solid transparent", borderRadius: 10, background: v.bg, cursor: "pointer", width: "100%", marginBottom: 4 }}><div style={{ display: "flex", gap: 3 }}>{v.dy.slice(0,5).map(function(c,i) { return <div key={i} style={{ width: 14, height: 14, borderRadius: 4, background: c }} />; })}</div><span style={{ fontSize: 13, fontWeight: 600, color: v.tx }}>{v.n}</span>{theme === k && <span style={{ marginLeft: "auto", fontSize: 11, color: v.dy[0], fontWeight: 700 }}>✓ attivo</span>}</button>; })}
+            <div style={{ display: "flex", gap: 0, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 6 }}>
+              {[["A", 0.95, "Piccolo"], ["A", 1.1, "Normale"], ["A", 1.25, "Grande"], ["A", 1.4, "Molto grande"]].map(function(item) {
+                var active = Math.abs(fontScale - item[1]) < 0.05;
+                return <button key={item[1]} onClick={function() { setFontScale(item[1]); try { localStorage.setItem("wt-fontscale", item[1]); } catch(e) {} }} style={{ flex: 1, padding: "10px 0", border: "none", background: active ? dc : "transparent", color: active ? "#fff" : T.sub, cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 2, transition: "background 0.15s" }}>
+                  <span style={{ fontSize: item[1] * 14, fontWeight: 800, lineHeight: 1 }}>{item[0]}</span>
+                  <span style={{ fontSize: 9, fontWeight: 600, opacity: 0.8 }}>{item[2]}</span>
+                </button>;
+              })}
+            </div>
             {!isBasics && <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
               <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Info aggiuntive esercizi</div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Info estese</div>
                   <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Se la spegni, nella scheda restano solo le cose davvero essenziali: serie, ripetizioni, recupero, registrazione, storico utile e tutor. Nasconde respirazione, guida completa, tecnica estesa ed errori.</div>
                 </div>
                 <button
@@ -7509,10 +7619,15 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </button>
               </div>
             </div>}
-            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Cloud</div>
+            <button onClick={function() { setShowAdvancedSettings(function(v) { return !v; }); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, width: "100%", margin: "18px 0 8px", padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, color: T.tx, fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
+              <span>Opzioni avanzate</span>
+              <span style={{ color: T.sub, transform: showAdvancedSettings ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+            </button>
+            {showAdvancedSettings && <>
+            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "8px 0 8px" }}>Cloud</div>
             <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 8 }}>
               <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Sync con Supabase</div>
-              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6, marginBottom: 10 }}>I dati restano salvati anche in locale. Se fai accesso qui, l'app sincronizza automaticamente il backup completo nel cloud.</div>
+              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6, marginBottom: 10 }}>I dati restano salvati anche in locale. Se cloud e dispositivo hanno backup diversi, prima scegli tu quale versione usare.</div>
               {!cloudUser ? <>
                 <div style={{ display: "grid", gap: 8 }}>
                   <input
@@ -7546,12 +7661,69 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </div>
                 <button onClick={handleCloudManualSync} disabled={cloudBusy} style={{ width: "100%", minHeight: 40, border: "none", borderRadius: 10, background: T.ok, color: "#fff", fontSize: 12, fontWeight: 800, cursor: cloudBusy ? "default" : "pointer", opacity: cloudBusy ? 0.7 : 1 }}>Sincronizza adesso</button>
               </>}
+              {cloudConflict && <div style={{ marginTop: 10, padding: "10px 12px", borderRadius: 10, background: "#C6282810", border: "1px solid #C6282822", display: "grid", gap: 10 }}>
+                <div style={{ fontSize: 11, fontWeight: 800, color: "#C62828", textTransform: "uppercase", letterSpacing: 0.7 }}>Conflitto tra dispositivo e cloud</div>
+                <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
+                  Seleziona quale versione vuoi tenere adesso. Finché non scegli, la sync automatica resta ferma.
+                  {getCloudConflictRecommendedChoice(cloudConflict) === "remote" && <span style={{ color: dc, fontWeight: 700 }}> Versione consigliata: cloud.</span>}
+                  {getCloudConflictRecommendedChoice(cloudConflict) === "local" && <span style={{ color: dc, fontWeight: 700 }}> Versione consigliata: questo dispositivo.</span>}
+                </div>
+                <div style={{ display: "grid", gap: 8 }}>
+                  <button
+                    onClick={function() { setCloudConflictChoice("local"); }}
+                    disabled={cloudBusy}
+                    style={{ padding: "9px 10px", borderRadius: 9, background: T.cd, border: "2px solid " + (cloudConflictChoice === "local" ? dc : T.bg), textAlign: "left", cursor: cloudBusy ? "default" : "pointer", opacity: cloudBusy ? 0.7 : 1 }}
+                  >
+                    <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 4 }}>Questo dispositivo</div>
+                    <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
+                      {"Salvato: " + formatCloudSavedAt(cloudConflict.localSummary && cloudConflict.localSummary.savedAt)}
+                      <br />
+                      {"Pesi: " + ((cloudConflict.localSummary && cloudConflict.localSummary.weightEntries) || 0) + " · Cardio: " + ((cloudConflict.localSummary && cloudConflict.localSummary.cardioEntries) || 0)}
+                    </div>
+                    {getCloudConflictRecommendedChoice(cloudConflict) === "local" && <div style={{ marginTop: 6, fontSize: 10, fontWeight: 800, color: dc }}>Consigliato</div>}
+                    {cloudConflictChoice === "local" && <div style={{ marginTop: 6, fontSize: 10, fontWeight: 800, color: dc }}>Selezionato</div>}
+                  </button>
+                  <button
+                    onClick={function() { setCloudConflictChoice("remote"); }}
+                    disabled={cloudBusy}
+                    style={{ padding: "9px 10px", borderRadius: 9, background: T.cd, border: "2px solid " + (cloudConflictChoice === "remote" ? dc : T.bg), textAlign: "left", cursor: cloudBusy ? "default" : "pointer", opacity: cloudBusy ? 0.7 : 1 }}
+                  >
+                    <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 4 }}>Cloud</div>
+                    <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
+                      {"Salvato: " + formatCloudSavedAt(cloudConflict.remoteSummary && cloudConflict.remoteSummary.savedAt)}
+                      <br />
+                      {"Pesi: " + ((cloudConflict.remoteSummary && cloudConflict.remoteSummary.weightEntries) || 0) + " · Cardio: " + ((cloudConflict.remoteSummary && cloudConflict.remoteSummary.cardioEntries) || 0)}
+                    </div>
+                    {getCloudConflictRecommendedChoice(cloudConflict) === "remote" && <div style={{ marginTop: 6, fontSize: 10, fontWeight: 800, color: dc }}>Consigliato</div>}
+                    {cloudConflictChoice === "remote" && <div style={{ marginTop: 6, fontSize: 10, fontWeight: 800, color: dc }}>Selezionato</div>}
+                  </button>
+                </div>
+                <div style={{ display: "grid", gap: 8 }}>
+                  <button
+                    onClick={cloudConflictChoice === "remote" ? handleCloudUseRemote : handleCloudKeepLocal}
+                    disabled={cloudBusy || !cloudConflictChoice}
+                    style={{ width: "100%", minHeight: 42, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: cloudBusy || !cloudConflictChoice ? "default" : "pointer", opacity: cloudBusy || !cloudConflictChoice ? 0.7 : 1 }}
+                  >
+                    {cloudConflictChoice === "remote" ? "Scarica dal cloud" : "Usa questo dispositivo"}
+                  </button>
+                  <button
+                    onClick={function() { setCloudConflictChoice(cloudConflictChoice === "remote" ? "local" : "remote"); }}
+                    disabled={cloudBusy}
+                    style={{ width: "100%", minHeight: 38, border: "1px solid " + T.bg, borderRadius: 10, background: T.cd, color: T.tx, fontSize: 12, fontWeight: 700, cursor: cloudBusy ? "default" : "pointer", opacity: cloudBusy ? 0.7 : 1 }}
+                  >
+                    {cloudConflictChoice === "remote" ? "Passa a questo dispositivo" : "Passa al cloud"}
+                  </button>
+                </div>
+              </div>}
               <div style={{ marginTop: 8, fontSize: 11, color: cloudStatus && cloudStatus.indexOf("non riuscito") >= 0 ? "#C62828" : T.sub, lineHeight: 1.55 }}>
                 {cloudStatus || (cloudUser ? "Cloud configurato." : "Nessun accesso cloud attivo.")}
               </div>
             </div>
             {/* Dati */}
             <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Dati</div>
+            <div style={{ marginBottom: 8, padding: "10px 12px", borderRadius: 10, background: dc + "12", border: "1px solid " + dc + "22", fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
+              Autosalvataggio attivo ogni 2 minuti e quando l'app va in background.
+            </div>
             <div style={{ marginBottom: 8, padding: "10px 12px", borderRadius: 10, background: T.sb, border: "1px solid " + T.bg, fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
               <div><b style={{ color: T.tx }}>JSON</b>: backup completo dell'app. Mantiene log, impostazioni, calibrazione, RIR e struttura interna. È il formato più sicuro per ripristinare tutto.</div>
               <div><b style={{ color: T.tx }}>CSV leggibile</b>: riepilogo facile da leggere o condividere. Serve soprattutto per controllare i dati, non per modificarli.</div>
@@ -7577,6 +7749,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               <div><b style={{ color: T.tx }}>Versione app</b>: {APP_VERSION}</div>
               {APP_BUILD_TIME && <div><b style={{ color: T.tx }}>Build</b>: {new Date(APP_BUILD_TIME).toLocaleString("it-IT")}</div>}
             </div>
+            </>}
           </div>
           <div style={{ padding: "12px 20px calc(12px + env(safe-area-inset-bottom, 0px))", flexShrink: 0, borderTop: "1px solid " + T.bg, background: T.cd }}>
             <button onClick={function() { setSettingsOpen(false); }} style={{ width: "100%", padding: 10, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Chiudi</button>
@@ -7601,7 +7774,6 @@ function isNearBodyweightElasticSession(exName, sets) {
         <div style={{ display: "flex", gap: 1, maxWidth: 600, margin: "12px auto 0", alignItems: "stretch" }}>
           {isBeginner ? (function() {
             var beginnerTabs = [
-              { label: "⌂", key: "home", onClick: function() { navigateToTab("home"); scrollTopSoon("home-top"); } },
               { label: "Scheda", key: "workout", onClick: function() { navigateToTab("workout"); scrollTopSoon("workout-top"); } },
               { label: "Teoria", key: "teoria", onClick: function() { navigateToTab("teoria"); scrollTopSoon("teoria-top"); } },
             ];
@@ -7612,156 +7784,24 @@ function isNearBodyweightElasticSession(exName, sets) {
           })() : (function() {
             return [
               <button key="back" onClick={function() { goBack(); }} disabled={tabHistory.length === 0} title="Torna alla schermata precedente" aria-label="Torna alla schermata precedente" style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: tabHistory.length > 0 ? "pointer" : "default", fontSize: 16, color: tabHistory.length > 0 ? T.tx : T.sub + "40", borderBottom: "2px solid transparent", transition: "color 0.15s" }}>‹</button>,
-              <button key="home" onClick={function() { navigateToTab("home"); scrollTopSoon("home-top"); }} style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 14, color: tab === "home" ? T.tx : T.sub, borderBottom: tab === "home" ? "2px solid " + dc : "2px solid transparent" }}>⌂</button>,
               (isBasics ? ["Scheda", "Teoria", "Esercizi"] : ["Scheda", "Progressi", "Teoria", "Esercizi"]).map(function(t) { var keys = {"Scheda":"workout","Progressi":"progressi","Teoria":"teoria","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { navigateToTab(keys[t]); scrollTopSoon(keys[t] + "-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, color: active ? T.tx : T.sub, borderBottom: active ? "2px solid " + dc : "2px solid transparent", letterSpacing: active ? 0.1 : 0, transition: "color 0.15s" }}>{t}</button>; })
             ];
           })()}
         </div>
       </div>
 
-      {/* === HOME TAB === */}
-      {tab === "home" && <div id="home-top" style={{ maxWidth: 600, margin: "0 auto", padding: "20px 14px 100px" }}>
-
-        {/* ── HOME BEGINNER: layout semplificato ── */}
-        {isBeginner && <div>
-          {/* Hero: giorno corrente + CTA */}
-          <div style={{ background: T.cd, borderRadius: 20, padding: "24px 20px 20px", marginBottom: 12 }}>
-            <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 10 }}>Quale giorno vuoi fare?</div>
-            {/* Selettore A / B / C */}
-            <div style={{ display: "flex", gap: 8, marginBottom: 18 }}>
-              {activeDays.map(function(d, i) {
-                var active = safeDayIdx === i;
-                return <button key={i} onClick={function() { setDayIdx(i); setOpenEx(null); setShowIntro(false); setShowStr(false); setShowHipBonus(false); setShowCardioMobility(false); setShowExSection(false); }} style={{ flex: 1, padding: "10px 0", border: active ? "2px solid " + dc : "2px solid " + T.bg, borderRadius: 12, background: active ? dc + "14" : T.bg, color: active ? dc : T.sub, fontSize: 13, fontWeight: active ? 800 : 600, cursor: "pointer", transition: "all 0.15s" }}>
-                  {d.name}
-                </button>;
-              })}
-            </div>
-            <div style={{ fontSize: 20, fontWeight: 900, color: T.tx, lineHeight: 1.2, marginBottom: 4 }}>{dayData.focus}</div>
-            <div style={{ fontSize: 12, color: T.sub, marginBottom: 20 }}>{dayData.dur}{dayData.tEst ? " · ~" + dayData.tEst + " min" : ""}</div>
-            <button onClick={function() { openMainTab("workout"); }} style={{ width: "100%", padding: "16px 0", border: "none", borderRadius: 14, background: dc, color: "#fff", fontSize: 16, fontWeight: 900, cursor: "pointer", letterSpacing: 0.2 }}>
-              Inizia allenamento →
-            </button>
-          </div>
-
-          {/* Link secondari */}
-          <div style={{ background: T.cd, borderRadius: 16, padding: "16px 18px" }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: T.sub, marginBottom: 12 }}>Altre sezioni</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              {[
-                { icon: "📚", label: "Teoria — le basi utili", onClick: function() { goToTeoria("basi", "principi"); } },
-                { icon: "🏃", label: "Libreria esercizi", onClick: function() { goToExercisesSection("ex"); } },
-                { icon: "📊", label: "I miei progressi", onClick: function() { openMainTab("progressi"); } },
-              ].map(function(item) {
-                return <button key={item.label} onClick={item.onClick} style={{ display: "flex", alignItems: "center", gap: 12, padding: "11px 12px", borderRadius: 10, border: "none", background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer", textAlign: "left" }}>
-                  <span style={{ fontSize: 16, width: 22, textAlign: "center", flexShrink: 0 }}>{item.icon}</span>
-                  <span>{item.label}</span>
-                  <span style={{ marginLeft: "auto", color: T.sub, fontSize: 14 }}>›</span>
-                </button>;
-              })}
-            </div>
-          </div>
-        </div>}
-
-        {/* ── HOME avanzato/basics: layout semplificato ── */}
-        {!isBeginner && <div>
-          {/* Hero: giorno + CTA */}
-          <div style={{ background: T.cd, borderRadius: 20, padding: "24px 20px 20px", marginBottom: 12 }}>
-            <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 10 }}>{isBasics ? "Sessione di oggi" : "Seleziona allenamento"}</div>
-            {!isBasics && <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8, marginBottom: 16 }}>
-              {[
-                { key: "weights", icon: "🏋️", title: "Pesi", desc: dayData.focus, action: function() { setWorkoutView("weights"); resetWorkoutPanels(); } },
-                { key: "cardio", icon: "❤️", title: "Cardio", desc: cardioDayData ? cardioDayData.focus : "Giorni cardio", action: function() { setWorkoutView("cardio"); resetWorkoutPanels(); } },
-                { key: "stretching", icon: "🧘", title: "Stretching", desc: stretchDayData ? stretchDayData.focus : "Giorni pesi e cardio", action: function() { setWorkoutView("stretching"); resetWorkoutPanels(); } },
-              ].map(function(item) {
-                var active = workoutView === item.key;
-                return <button key={item.key} onClick={item.action} style={{ border: active ? "2px solid " + dc : "1px solid " + T.bg, borderRadius: 14, background: active ? dc + "12" : T.bg, color: T.tx, padding: "10px 9px", cursor: "pointer", textAlign: "left", minHeight: 90 }}>
-                  <div style={{ fontSize: 18, marginBottom: 8 }}>{item.icon}</div>
-                  <div style={{ fontSize: 13, fontWeight: 800, color: active ? dc : T.tx, lineHeight: 1.2, marginBottom: 4 }}>{item.title}</div>
-                  <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.35 }}>{item.desc}</div>
-                </button>;
-              })}
-            </div>}
-            {!isBasics && workoutView === "weights" && <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
-              {activeDays.map(function(d, i) {
-                var active = safeDayIdx === i;
-                return <button key={i} onClick={function() { setDayIdx(i); setWorkoutView("weights"); resetWorkoutPanels(); }} style={{ flex: 1, padding: "9px 0", border: active ? "2px solid " + dc : "2px solid " + T.bg, borderRadius: 12, background: active ? dc + "14" : T.bg, color: active ? dc : T.sub, fontSize: 12, fontWeight: active ? 800 : 600, cursor: "pointer", transition: "all 0.15s", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                  {d.name}
-                </button>;
-              })}
-            </div>}
-            {!isBasics && workoutView === "cardio" && <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
-              {cardioSupportDays.map(function(item, i) {
-                var active = safeCardioIdx === i;
-                return <button key={item.day.name} onClick={function() { setCardioIdx(i); setWorkoutView("cardio"); resetWorkoutPanels(); }} style={{ flex: 1, padding: "9px 0", border: active ? "2px solid " + dc : "2px solid " + T.bg, borderRadius: 12, background: active ? dc + "14" : T.bg, color: active ? dc : T.sub, fontSize: 12, fontWeight: active ? 800 : 600, cursor: "pointer", transition: "all 0.15s", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                  {item.day.name}
-                </button>;
-              })}
-            </div>}
-            {!isBasics && workoutView === "stretching" && <div style={{ display: "flex", gap: 8, marginBottom: 16, overflowX: "auto" }}>
-              {stretchSupportDays.map(function(item, i) {
-                var active = safeStretchIdx === i;
-                return <button key={item.name} onClick={function() { setStretchIdx(i); setWorkoutView("stretching"); resetWorkoutPanels(); }} style={{ flex: "none", padding: "9px 12px", border: active ? "2px solid " + dc : "2px solid " + T.bg, borderRadius: 12, background: active ? dc + "14" : T.bg, color: active ? dc : T.sub, fontSize: 12, fontWeight: active ? 800 : 600, cursor: "pointer", transition: "all 0.15s", whiteSpace: "nowrap" }}>
-                  {item.name}
-                </button>;
-              })}
-            </div>}
-            <div style={{ fontSize: 18, fontWeight: 900, color: T.tx, lineHeight: 1.2, marginBottom: 4 }}>
-              {workoutView === "cardio" && cardioDayData ? cardioDayData.focus : workoutView === "stretching" && stretchDayData ? ("Stretching · " + stretchDayData.focus) : dayData.focus}
-            </div>
-            <div style={{ fontSize: 12, color: T.sub, marginBottom: 20 }}>
-              {workoutView === "cardio" && cardioDayData
-                ? "Apri i giorni cardio dedicati"
-                : workoutView === "stretching" && stretchDayData
-                  ? "Apri lo stretching del giorno o dei giorni cardio"
-                  : (dayData.dur + (dayData.tEst ? " · ~" + dayData.tEst + " min" : ""))}
-            </div>
-            <button onClick={function() { openWorkoutSection(workoutView === "cardio" ? "section-cardio-mobility" : workoutView === "stretching" ? "section-stretching" : "workout-top"); }} style={{ width: "100%", padding: "16px 0", border: "none", borderRadius: 14, background: dc, color: "#fff", fontSize: 16, fontWeight: 900, cursor: "pointer", letterSpacing: 0.2 }}>
-              {workoutView === "cardio" ? "Vai al cardio →" : workoutView === "stretching" ? "Vai allo stretching →" : "Vai ai pesi →"}
-            </button>
-          </div>
-
-          {/* Link secondari */}
-          <div style={{ background: T.cd, borderRadius: 16, padding: "16px 18px" }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: T.sub, marginBottom: 12 }}>Altre sezioni</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              {(isBasics ? [
-                { icon: "📚", label: "Tecniche da padroneggiare", onClick: function() { goToTheoryAnchor("teoria", "principi", "theory-section-skills", "skills"); } },
-                { icon: "🏃", label: "Libreria esercizi", onClick: function() { goToExercisesSection("ex"); } },
-              ] : [
-                { icon: "📊", label: "Progressi e storico", onClick: function() { openMainTab("progressi"); } },
-                { icon: "📚", label: "Teoria — principi e respirazione", onClick: function() { goToTheoryAnchor("teoria", "principi", "theory-section-concepts", "concepts"); } },
-                { icon: "🏃", label: "Libreria esercizi", onClick: function() { goToExercisesSection("ex"); } },
-              ]).map(function(item) {
-                return <button key={item.label} onClick={item.onClick} style={{ display: "flex", alignItems: "center", gap: 12, padding: "11px 12px", borderRadius: 10, border: "none", background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer", textAlign: "left" }}>
-                  <span style={{ fontSize: 16, width: 22, textAlign: "center", flexShrink: 0 }}>{item.icon}</span>
-                  <span>{item.label}</span>
-                  <span style={{ marginLeft: "auto", color: T.sub, fontSize: 14 }}>›</span>
-                </button>;
-              })}
-            </div>
-          </div>
-        </div>}
-
-      </div>}
-
       {/* === TEORIA TAB === */}
       {tab === "teoria" && <div style={{ maxWidth: 680, margin: "0 auto", padding: "0 0 100px" }}>
-
-        {/* Tab bar Teoria */}
-        <div style={{ position: "sticky", top: 0, zIndex: 10, background: T.bg + "EE", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", padding: "12px 12px 10px", borderBottom: "1px solid " + T.cd }}>
-          <div style={{ display: "flex", gap: 0, borderRadius: 14, overflow: "hidden", border: "1px solid " + dc + "24", boxShadow: "0 6px 18px rgba(0,0,0,0.06)" }}>
-            {teoriaTabs.map(function(pair) {
-              var k = pair[0], label = pair[1];
-              var active = teoriaTab === k;
-              return <button key={k} onClick={function() { if (teoriaTab !== k) pushNavSnapshot(); setTeoriaTab(k); setShowTheorySection(null); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "11px 0", border: "none", fontSize: 11, fontWeight: 800, cursor: "pointer", background: active ? dc : "transparent", color: active ? "#fff" : T.sub, transition: "background 0.15s, color 0.15s", letterSpacing: 0.2 }}>{label}</button>;
-            })}
-          </div>
-        </div>
-
         <div id="teoria-top" style={{ padding: "16px 12px 0" }}>
+          <div style={{ background: T.cd, borderRadius: 16, border: "1px solid " + T.bg, padding: "14px 16px", marginBottom: 14 }}>
+            <div style={{ fontSize: 18, fontWeight: 900, color: T.tx, marginBottom: 4 }}>📚 Teoria</div>
+            <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
+              Tutto in una sola pagina: basi, concetti, muscoli e alimentazione. Apri solo la sezione che ti serve.
+            </div>
+          </div>
 
         {/* Intro: Le basi dell'allenamento */}
-        {teoriaTab === "basi" && <div style={{ background: T.cd, borderRadius: 22, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 14px 30px rgba(0,0,0,0.06)" }}>
+        {<div style={{ background: T.cd, borderRadius: 22, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 14px 30px rgba(0,0,0,0.06)" }}>
           <div style={{ padding: "18px 18px 14px", borderBottom: "1px solid " + T.bg, background: "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
             <div style={{ fontSize: 19, fontWeight: 900, color: T.tx, marginBottom: 4, letterSpacing: -0.2 }}>🔬 Le basi dell'allenamento</div>
             <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55, maxWidth: 520 }}>Parti da qui per capire logica, struttura e principi pratici senza perderti nei dettagli.</div>
@@ -7891,20 +7931,13 @@ function isNearBodyweightElasticSession(exName, sets) {
           </div>
         </div>}
 
-        {teoriaTab === "teoria" && <div style={{ background: T.cd, borderRadius: 22, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 14px 30px rgba(0,0,0,0.06)" }}>
+        {<div style={{ background: T.cd, borderRadius: 22, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 14px 30px rgba(0,0,0,0.06)" }}>
           <div style={{ padding: "18px 18px 12px", borderBottom: "1px solid " + T.bg, background: "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
             <div style={{ fontSize: 19, fontWeight: 900, color: T.tx, marginBottom: 4, letterSpacing: -0.2 }}>{theoryTitle}</div>
             <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55, maxWidth: 540 }}>{theorySubtitle}</div>
           </div>
-          {/* Tab interna Principi / Termini */}
-          <div style={{ padding: "12px 18px 0" }}>
-            <div style={{ display: "flex", gap: 0, borderRadius: 12, overflow: "hidden", border: "1px solid " + dc + "24", marginBottom: 16, background: T.sb }}>
-              <button onClick={function() { if (glossTab !== "principi") pushNavSnapshot(); setGlossTab("principi"); setShowTheorySection(null); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "10px 0", border: "none", fontSize: 12, fontWeight: 800, cursor: "pointer", background: glossTab === "principi" ? dc : "transparent", color: glossTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>🧠 Principi</button>
-              {!(isBasics || isBeginner) && <button onClick={function() { if (glossTab !== "termini") pushNavSnapshot(); setGlossTab("termini"); setShowTheorySection(null); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "10px 0", border: "none", fontSize: 12, fontWeight: 800, cursor: "pointer", background: glossTab === "termini" ? dc : "transparent", color: glossTab === "termini" ? "#fff" : T.sub, transition: "background 0.15s" }}>🔤 Termini base</button>}
-            </div>
-          </div>
           <div style={{ padding: "0 18px 18px" }}>
-            {glossTab === "principi" && <div>
+            <div>
               <div id="theory-section-skills" style={{ borderRadius: 16, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 14, background: T.cd, boxShadow: "0 8px 20px rgba(0,0,0,0.04)" }}>
                 <div onClick={function() { var next = showTheorySection === "skills" ? null : "skills"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-skills"); }} style={{ padding: "14px 16px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "skills" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
                   <span style={{ fontSize: 13, fontWeight: 800, color: showTheorySection === "skills" ? dc : T.tx, lineHeight: 1.3 }}>🎯 Tecniche preliminari</span>
@@ -7993,14 +8026,55 @@ function isNearBodyweightElasticSession(exName, sets) {
                   })}
                 </div>}
               </div>
-            </div>}
-            {!(isBasics || isBeginner) && glossTab === "termini" && <div>
+            </div>
+            {!(isBasics || isBeginner) && <div style={{ marginTop: 16 }}>
+              <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Termini base</div>
               {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
             </div>}
           </div>
         </div>}
 
-        {!(isBasics || isBeginner) && teoriaTab === "teoria" && glossTab === "principi" && <div id="theory-section-breathing" style={{ background: T.cd, borderRadius: 18, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 10px 24px rgba(0,0,0,0.05)" }}>
+        {!(isBasics || isBeginner) && <div id="theory-section-warmup" style={{ background: T.cd, borderRadius: 18, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 10px 24px rgba(0,0,0,0.05)" }}>
+          <div onClick={function() { var next = showTheorySection === "warmup" ? null : "warmup"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-warmup"); }} style={{ padding: "16px 18px 13px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "warmup" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
+            <div>
+              <div style={{ fontSize: 16, fontWeight: 800, color: showTheorySection === "warmup" ? dc : T.tx, marginBottom: 2 }}>🔥 Riscaldamento: mobilita e stabilita</div>
+              <div style={{ fontSize: 12, color: T.sub }}>Joint-by-joint, ordine corretto delle fasi e logica pratica prima dei pesi.</div>
+            </div>
+            <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showTheorySection === "warmup" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+          </div>
+          {showTheorySection === "warmup" && <div style={{ padding: "0 16px 16px", borderTop: "1px solid " + T.bg }}>
+            <div style={{ marginTop: 12, display: "grid", gap: 10 }}>
+              <div style={{ padding: "11px 12px", borderRadius: 12, background: dc + "0A", border: "1px solid " + dc + "18" }}>
+                <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 5 }}>La logica joint-by-joint</div>
+                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.65 }}>
+                  Il corpo alterna distretti che chiedono soprattutto mobilita e distretti che chiedono soprattutto stabilita. Caviglia: mobilita. Ginocchio: stabilita. Anca: mobilita. Lombare: stabilita. Toracica: mobilita. Scapola: stabilita. Spalla: mobilita. Se una zona mobile si blocca, quella sopra o sotto compensa muovendosi dove non dovrebbe.
+                </div>
+              </div>
+              <div style={{ display: "grid", gap: 8 }}>
+                {[
+                  ["Ordine corretto", "Prima mobilita dinamica dal basso verso l'alto. Poi attivazione e stabilita. Solo dopo fai le serie di avvicinamento del primo esercizio pesante."],
+                  ["Perche prima mobilita", "Se caviglia, anca o toracica sono rigide, il corpo usa compensi e rigidita inutile. Apri prima il ROM, poi insegni al corpo a controllarlo."],
+                  ["Perche poi stabilita", "Subito dopo la mobilita c'e una finestra utile: il corpo non puo piu contare solo sulla rigidita. Dead bug, shoulder tap, scapole e ponte monopodalico servono a fissare il nuovo assetto."]
+                ].map(function(row, ri) {
+                  return <div key={ri} style={{ background: T.sb, border: "1px solid " + T.bg, borderRadius: 10, padding: "10px 11px" }}>
+                    <div style={{ fontSize: 11, fontWeight: 800, color: dc, marginBottom: 3 }}>{row[0]}</div>
+                    <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>{row[1]}</div>
+                  </div>;
+                })}
+              </div>
+              <div style={{ padding: "11px 12px", borderRadius: 12, background: "#8E6C420E", border: "1px solid #8E6C4220" }}>
+                <div style={{ fontSize: 11, fontWeight: 800, color: "#8E6C42", textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Schema pratico da seguire</div>
+                <div style={{ display: "grid", gap: 5, fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
+                  <div>Fase 1 · Mobilita: caviglie, anche, toracica, spalle.</div>
+                  <div>Fase 2 · Attivazione: core anti-estensione o anti-rotazione e stabilizzatori specifici del giorno.</div>
+                  <div>Fase 3 · Avvicinamento: 2-5 serie leggere e progressive solo per preparare il primo esercizio di lavoro.</div>
+                </div>
+              </div>
+            </div>
+          </div>}
+        </div>}
+
+        {!(isBasics || isBeginner) && <div id="theory-section-breathing" style={{ background: T.cd, borderRadius: 18, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 10px 24px rgba(0,0,0,0.05)" }}>
           <div onClick={function() { var next = showTheorySection === "breathing" ? null : "breathing"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-breathing"); }} style={{ padding: "16px 18px 13px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "breathing" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
             <div>
               <div style={{ fontSize: 16, fontWeight: 800, color: showTheorySection === "breathing" ? dc : T.tx, marginBottom: 2 }}>🫁 Respirazione esercizi</div>
@@ -8040,7 +8114,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           </div>}
         </div>}
 
-        {!(isBasics || isBeginner) && teoriaTab === "teoria" && glossTab === "principi" && <div id="theory-section-hipmobility" style={{ background: T.cd, borderRadius: 18, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 10px 24px rgba(0,0,0,0.05)" }}>
+        {!(isBasics || isBeginner) && <div id="theory-section-hipmobility" style={{ background: T.cd, borderRadius: 18, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 10px 24px rgba(0,0,0,0.05)" }}>
           <div onClick={function() { var next = showTheorySection === "hipmobility" ? null : "hipmobility"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-hipmobility"); }} style={{ padding: "16px 18px 13px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "hipmobility" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
             <div>
               <div style={{ fontSize: 16, fontWeight: 800, color: showTheorySection === "hipmobility" ? dc : T.tx, marginBottom: 2 }}>🦴 Mobilità anca</div>
@@ -8080,7 +8154,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           </div>}
         </div>}
 
-        {!(isBasics || isBeginner) && teoriaTab === "teoria" && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
+        {!(isBasics || isBeginner) && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
           <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
             <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🔒 Dati personali</div>
             <div style={{ fontSize: 12, color: T.sub }}>BIA, composizione corporea e piano alimentare in una sezione separata.</div>
@@ -8121,7 +8195,7 @@ function isNearBodyweightElasticSession(exName, sets) {
         </div>}
 
         {/* === SEZIONE MUSCOLI (dentro Teoria) === */}
-        {teoriaTab === "muscoli" && <div>
+        {<div>
         {/* Intro armonia muscolare */}
         <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
           <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid " + T.bg }}>
@@ -8195,18 +8269,13 @@ function isNearBodyweightElasticSession(exName, sets) {
         </div>; })}
         </div>}
 
-        {teoriaTab === "alimentazione" && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
+        {<div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
           <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
             <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🥗 Cibo</div>
             <div style={{ fontSize: 12, color: T.sub }}>Principi base e dieta attuale per supportare l'allenamento</div>
           </div>
-          <div style={{ padding: "10px 16px 0" }}>
-            <div style={{ display: "flex", gap: 0, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "30", marginBottom: 14 }}>
-              <button onClick={function() { if (alimentazioneTab !== "principi") pushNavSnapshot(); setAlimentazioneTab("principi"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: alimentazioneTab === "principi" ? dc : "transparent", color: alimentazioneTab === "principi" ? "#fff" : T.sub, transition: "background 0.15s" }}>Principi</button>
-              <button onClick={function() { if (alimentazioneTab !== "dieta") pushNavSnapshot(); setAlimentazioneTab("dieta"); scrollTopSoon("teoria-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", background: alimentazioneTab === "dieta" ? dc : "transparent", color: alimentazioneTab === "dieta" ? "#fff" : T.sub, transition: "background 0.15s" }}>Dieta attuale</button>
-            </div>
-          </div>
-          {alimentazioneTab === "principi" && <div style={{ padding: "0 16px 16px", display: "grid", gap: 8 }}>
+          <div style={{ padding: "14px 16px 6px", fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Principi</div>
+          <div style={{ padding: "0 16px 16px", display: "grid", gap: 8 }}>
             {NUTRITION_PRINCIPLES.map(function(item, ii) {
               var isOpen = showPrinciples === 200 + ii;
               return <div key={ii} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "30" : T.bg) }}>
@@ -8219,8 +8288,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </div>}
               </div>;
             })}
-          </div>}
-          {alimentazioneTab === "dieta" && <div style={{ padding: "0 16px 16px", display: "grid", gap: 8 }}>
+          </div>
+          <div style={{ padding: "0 16px 6px", fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Dieta attuale</div>
+          <div style={{ padding: "0 16px 16px", display: "grid", gap: 8 }}>
             {NUTRITION_CURRENT_PLAN.map(function(item, ii) {
               var isOpen = showPrinciples === 500 + ii;
               return <div key={ii} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "30" : T.bg) }}>
@@ -8233,7 +8303,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </div>}
               </div>;
             })}
-          </div>}
+          </div>
         </div>}
 
         </div>
@@ -8731,33 +8801,77 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>
               <div style={{ display: "grid", gap: 0 }}>
                 {keyLiftProgress.map(function(item, ii) {
-                  var trendColor = item.trend === "up" ? T.ok : item.trend === "down" ? "#C62828" : T.sub;
-                  var trendIcon = item.trend === "up" ? "↑" : item.trend === "down" ? "↓" : item.trend === "new" ? "✦" : "→";
-                  var lastLabel = item.last ? item.last.label : "—";
-                  var prevLabel = item.prev === null ? "—" : item.prev.label;
-                  var maxLabel = item.maxEver ? item.maxEver.label : "—";
-                  var trendShort = item.last ? item.last.shortLabel : "—";
+                  var trendColor = item.trend === "up" ? T.ok : item.trend === "down" ? "#C62828" : T.tx;
+                  var trendIcon = item.trend === "up" ? "↑" : item.trend === "down" ? "↓" : "";
                   var lastTotalReps = item.last && item.last.totalReps ? item.last.totalReps : null;
                   var prevTotalReps = item.prev && item.prev.totalReps ? item.prev.totalReps : null;
-                  var lastRest = item.last && item.last.restLabel ? item.last.restLabel : "—";
-                  var prevRest = item.prev && item.prev.restLabel ? item.prev.restLabel : "—";
-                  var showFlatWithoutArrow = !item.isBW && !item.isBand && item.trend === "flat";
+                  var showNeutralIndicator = item.trend === "flat" || item.trend === "new";
+                  var sameLoad = !!(item.last && item.prev && !item.last.mixed && !item.prev.mixed && (item.isBW || item.last.primary === item.prev.primary));
+                  var deltaReps = item.last && item.prev && lastTotalReps !== null && prevTotalReps !== null ? lastTotalReps - prevTotalReps : null;
+                  var deltaColor = deltaReps > 0 ? T.ok : deltaReps < 0 ? "#B7791F" : T.sub;
+                  var deltaText = "—";
+                  if (item.prev && lastTotalReps !== null) {
+                    if (!sameLoad) deltaText = "ripartenza";
+                    else if (deltaReps > 0) deltaText = "↑ +" + deltaReps + " rip";
+                    else if (deltaReps < 0) deltaText = "↓ " + deltaReps + " rip";
+                    else deltaText = "= " + lastTotalReps + " rip";
+                  }
+                  function formatCompactNumber(value) {
+                    if (!isFinite(value)) return "";
+                    var rounded = Math.round(value * 10) / 10;
+                    return Number.isInteger(rounded) ? String(rounded) : String(rounded).replace(/\.0$/, "");
+                  }
+                  function metricPattern(metric) {
+                    if (!metric || !metric.label) return "—";
+                    var parts = String(metric.label).split(" · ");
+                    var pattern = parts.length > 1 ? parts.slice(1).join(" · ") : parts[0];
+                    return pattern.replace(/x/g, "×");
+                  }
+                  function metricTopValue(metric) {
+                    if (!metric) return "—";
+                    if (item.isBW) return metric.primary + " rip";
+                    if (item.isBand) {
+                      var bandTick = clampElasticTick(metric.primary);
+                      return bandTick ? ("tacca " + bandTick) : "—";
+                    }
+                    return formatCompactNumber(metric.primary) + " kg";
+                  }
+                  function metricRowValue(metric) {
+                    if (!metric) return "—";
+                    var pattern = metricPattern(metric);
+                    if (item.isBW) return pattern;
+                    if (item.isBand) {
+                      var bandTick = clampElasticTick(metric.primary);
+                      return (bandTick ? ("tacca " + bandTick) : "—") + " × " + pattern;
+                    }
+                    if (usesBarbellTotal(item.name)) {
+                      return formatCompactNumber(storedWeightToPlateInput(item.name, metric.primary, barbellWeight)) + "d × " + pattern;
+                    }
+                    return formatCompactNumber(metric.primary) + " kg × " + pattern;
+                  }
+                  var topIndicator = metricTopValue(item.last);
+                  var lastRowLabel = metricRowValue(item.last);
+                  var prevRowLabel = metricRowValue(item.prev);
+                  var indicatorPrefix = "";
+                  if (item.isBand && showNeutralIndicator) indicatorPrefix = "→ ";
+                  else if (!showNeutralIndicator && trendIcon) indicatorPrefix = trendIcon + " ";
                   return <div key={item.name} style={{ padding: "11px 14px", borderBottom: ii < keyLiftProgress.length - 1 ? "1px solid " + T.bg : "none" }}>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 10, alignItems: "center" }}>
-                      <div>
-                        <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, marginBottom: 4 }}>{getExerciseDisplayName(item.name)}</div>
-                        <div style={{ display: "flex", flexWrap: "wrap", gap: 10, fontSize: 11, color: T.sub, lineHeight: 1.5 }}>
-                          <span><b style={{ color: T.tx }}>Ultimo:</b> {lastLabel}</span>
-                          {lastTotalReps !== null && <span><b style={{ color: T.tx }}>Rip totali:</b> {lastTotalReps}</span>}
-                          <span><b style={{ color: T.tx }}>Rec:</b> {lastRest}</span>
-                          <span><b style={{ color: T.tx }}>Prima:</b> {prevLabel}</span>
-                          {prevTotalReps !== null && <span><b style={{ color: T.tx }}>Rip totali prima:</b> {prevTotalReps}</span>}
-                          <span><b style={{ color: T.tx }}>Rec prima:</b> {prevRest}</span>
-                          <span><b style={{ color: T.tx }}>Massimo mese:</b> {maxLabel}</span>
-                        </div>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 10, alignItems: "start", marginBottom: 10 }}>
+                      <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, lineHeight: 1.3 }}>{getExerciseDisplayName(item.name)}</div>
+                      <div style={{ fontSize: 18, fontWeight: 900, color: trendColor, whiteSpace: "nowrap", textAlign: "right" }}>
+                        {indicatorPrefix}{topIndicator}
                       </div>
-                      <div style={{ fontSize: 15, fontWeight: 900, color: trendColor, whiteSpace: "nowrap" }}>
-                        {!showFlatWithoutArrow && <span style={{ marginRight: 4 }}>{trendIcon}</span>}{trendShort}
+                    </div>
+                    <div style={{ display: "grid", gap: 6 }}>
+                      <div style={{ display: "grid", gridTemplateColumns: "56px 1fr auto", gap: 10, alignItems: "baseline" }}>
+                        <div style={{ fontSize: 11, fontWeight: 600, color: T.sub }}>Ultimo</div>
+                        <div style={{ fontSize: 13, fontWeight: 600, color: T.tx }}>{lastRowLabel}</div>
+                        <div style={{ fontSize: 12, color: T.sub, textAlign: "right", whiteSpace: "nowrap" }}>{lastTotalReps !== null ? ("rip " + lastTotalReps) : "—"}</div>
+                      </div>
+                      <div style={{ display: "grid", gridTemplateColumns: "56px 1fr auto", gap: 10, alignItems: "baseline" }}>
+                        <div style={{ fontSize: 11, fontWeight: 600, color: T.sub }}>Prima</div>
+                        <div style={{ fontSize: 13, fontWeight: 600, color: T.sub }}>{prevRowLabel}</div>
+                        <div style={{ fontSize: 12, fontWeight: 700, color: item.prev ? deltaColor : T.sub, textAlign: "right", whiteSpace: "nowrap" }}>{deltaText}</div>
                       </div>
                     </div>
                   </div>;
@@ -8993,38 +9107,31 @@ function isNearBodyweightElasticSession(exName, sets) {
 
       {/* === WORKOUT TAB === */}
       {tab === "workout" && <div>
-        {/* Level + Day + Month selector bar */}
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "8px 12px 0" }}>
-          {!isBasics && !isBeginner && <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 6, marginBottom: 8 }}>
-            {[
-              { key: "weights", label: "Pesi", icon: "🏋️" },
-              { key: "cardio", label: "Cardio", icon: "❤️" },
-              { key: "stretching", label: "Stretching", icon: "🧘" }
-            ].map(function(view) {
-              var active = workoutView === view.key;
+          <div style={{ display: "flex", gap: 4, overflowX: "auto", paddingBottom: 0 }}>
+            {workoutDayOptions.map(function(day, i) {
+              var active = workoutSelectedDay && workoutSelectedDay.name === day.name;
               return <button
-                key={view.key}
-                onClick={function() { setWorkoutView(view.key); resetWorkoutPanels(); scrollTopSoon("workout-top"); }}
-                style={{ minHeight: 38, border: "none", borderRadius: 12, cursor: "pointer", fontSize: 12, fontWeight: 800, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}
+                key={day.name}
+                onClick={function() {
+                  if (level === "v4") setWorkoutDayName(day.name);
+                  if (!day.cardio) {
+                    var nextIdx = activeDays.findIndex(function(item) { return item && item.name === day.name; });
+                    if (nextIdx >= 0) setDayIdx(nextIdx);
+                  }
+                  resetWorkoutPanels();
+                  scrollTopSoon("workout-top");
+                }}
+                style={{ flex: level === "v4" ? "none" : (i < 4 ? 1 : "none"), padding: "7px 10px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}
               >
-                <span>{view.icon}</span>
-                <span>{view.label}</span>
+                {day.name + (day.cardio ? " ❤️" : "")}
               </button>;
             })}
-          </div>}
-          {workoutView === "weights" && <div style={{ display: "flex", gap: 4, overflowX: "auto", paddingBottom: 0 }}>
-            {activeDays.map(function(d, i) { var active = safeDayIdx === i; return <button key={i} onClick={function() { setDayIdx(i); resetWorkoutPanels(); scrollTopSoon("workout-top"); }} style={{ flex: i < 4 ? 1 : "none", padding: "7px 8px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}>{d.name}</button>; })}
-          </div>}
-          {!isBasics && !isBeginner && workoutView === "cardio" && <div style={{ display: "flex", gap: 4, overflowX: "auto", paddingBottom: 0 }}>
-            {cardioSupportDays.map(function(item, i) { var active = safeCardioIdx === i; return <button key={item.day.name} onClick={function() { setCardioIdx(i); resetWorkoutPanels(); scrollTopSoon("workout-top"); }} style={{ flex: 1, padding: "7px 8px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}>{item.day.name}</button>; })}
-          </div>}
-          {!isBasics && !isBeginner && workoutView === "stretching" && <div style={{ display: "flex", gap: 4, overflowX: "auto", paddingBottom: 0 }}>
-            {stretchSupportDays.map(function(day, i) { var active = safeStretchIdx === i; return <button key={day.name} onClick={function() { setStretchIdx(i); resetWorkoutPanels(); scrollTopSoon("workout-top"); }} style={{ flex: "none", padding: "7px 10px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}>{day.name + (day.cardio ? " ❤️" : "")}</button>; })}
-          </div>}
+          </div>
         </div>
 
         <div id="workout-top" style={{ maxWidth: 600, margin: "0 auto", padding: "0 12px 24px", paddingBottom: tPanel ? 180 : 96 }}>
-          {workoutView === "weights" && <div style={{ background: T.cd, borderRadius: "0 0 14px 14px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", overflow: "hidden" }}>
+          {workoutSelectedWeightDay && <div style={{ background: T.cd, borderRadius: "0 0 14px 14px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", overflow: "hidden" }}>
 
             {isCurrentWeightDayComplete && <div style={{ padding: "12px 14px", borderBottom: "1px solid " + T.bg, background: T.ok + "10" }}>
               <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
@@ -9036,7 +9143,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>
               <button
                 onClick={function() {
-                  saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled);
+                  saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false);
                   exportCompletedSessionBackup(logs, safeDayIdx, "manual-complete");
                   setAutoBackupMsg("Allenamento salvato in locale e backup JSON esportato.");
                 }}
@@ -9062,6 +9169,13 @@ function isNearBodyweightElasticSession(exName, sets) {
                     <div style={{ fontSize: isBeginner ? 19 : 15, fontWeight: 900, color: T.tx, lineHeight: 1.25 }}>{dayData.focus}</div>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginTop: 3 }}>
                       <div style={{ fontSize: isBeginner ? 12 : 11, color: dc, fontWeight: 600 }}>~{estimatedDayMinutes || dayData.tEst} min</div>
+                      {!isBasics && !dayData.cardio && !dayData.rest && <button
+                        onClick={function(e) { e.stopPropagation(); setShowWorkoutInfo(true); }}
+                        aria-label="Info generali scheda"
+                        style={{ width: 24, height: 24, borderRadius: "50%", border: "1px solid " + dc + "45", background: T.cd, color: dc, fontSize: 12, fontWeight: 900, cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", padding: 0 }}
+                      >
+                        i
+                      </button>}
                       {!dayData.cardio && !dayData.rest && !isBasics && <button
                         onClick={function(e) { e.stopPropagation(); setFocusMode(function(v) { return !v; }); }}
                         style={{ minHeight: 26, padding: "0 10px", border: "1px solid " + (focusMode ? dc + "70" : T.sub + "30"), borderRadius: 999, background: focusMode ? dc + "20" : "transparent", color: focusMode ? dc : T.sub, boxShadow: focusMode ? ("0 0 0 2px " + dc + "18, 0 0 14px " + dc + "25") : "none", fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap", display: "inline-flex", alignItems: "center", gap: 5 }}
@@ -9118,19 +9232,11 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>;
             })()}
 
-            {!isBasics && !dayData.cardio && !dayData.rest && !dismissedSeriesBanner && !focusMode && <div style={{ margin: "10px 14px 0", padding: "10px 12px", borderRadius: 12, background: dc + "0A", border: "1px solid " + dc + "22", display: "flex", alignItems: "flex-start", gap: 8 }}>
-              <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Come leggere le serie</div>
-                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Il peso resta uguale in tutte le serie dello stesso esercizio. Non aumentarlo tra una serie e l'altra: il numero di ripetizioni sale tra le settimane, non dentro la seduta.</div>
-              </div>
-              <button onClick={function() { setDismissedSeriesBanner(true); }} style={{ flexShrink: 0, width: 24, height: 24, border: "none", background: "transparent", color: T.sub, fontSize: 16, cursor: "pointer", lineHeight: 1, padding: 0 }}>×</button>
-            </div>}
-
             {!isBasics && !dayData.cardio && !dayData.rest && guidedMode && !focusMode && <div ref={function(el) { if (el) el._sectionKey = "guided"; }} id="section-guided" style={{ borderBottom: "1px solid " + T.bg }}>
               <div onClick={function() { var opening = !showGuidedSection; setShowGuidedSection(opening); if (opening) { setShowIntro(false); setShowStr(false); setShowExSection(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-guided"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showGuidedSection ? gc + "12" : gc + "08", borderLeft: "3px solid " + gc }}>
                 <div style={{ width: 30, height: 30, borderRadius: 8, background: gc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>🧭</div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 800, fontSize: 11, color: gc, textTransform: "uppercase", letterSpacing: 1 }}>Modalità guidata</div>
+                  <div style={{ fontWeight: 800, fontSize: 11, color: gc, textTransform: "uppercase", letterSpacing: 1 }}>Coach attivo</div>
                   <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{"Briefing e consigli esercizio per esercizio"}</div>
                 </div>
                 <div style={{ fontSize: 13, color: gc, transform: showGuidedSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
@@ -9217,10 +9323,16 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>
               {showIntro && <div style={{ padding: "0 14px 14px" }}><div style={{ background: T.sb, borderRadius: 10, padding: 12 }}>
                 {getWarmupSelectionHint(level, dayIdx) && <div style={{ marginBottom: 10, padding: "10px 12px", borderRadius: 8, background: dc + "0B", border: "1px solid " + dc + "1A", fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
-                  <b style={{ color: dc }}>Scelta libera:</b> {getWarmupSelectionHint(level, dayIdx)}
+                  <b style={{ color: dc }}>Pacchetto A attivo:</b> {getWarmupSelectionHint(level, dayIdx)}
                 </div>}
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                  {dayData.warmup.map(function(w, wi) {
+                  {getWarmupGroups(dayData.warmup).map(function(group, groupIndex) {
+                    return <div key={group.phase + "-" + groupIndex} style={{ display: "grid", gap: 8 }}>
+                      <div style={{ padding: "7px 10px", borderRadius: 8, background: dc + "0D", border: "1px solid " + dc + "1A", fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>
+                        {getWarmupPhaseLabel(group.phase)}
+                      </div>
+                      {group.items.map(function(w) {
+                    var wi = dayData.warmup.indexOf(w);
                     var altKey = dayIdx + "-" + wi;
                     var chosenAlt = warmupAlt[altKey]; // undefined = default, number = index in w.alt
                     var active = chosenAlt != null ? w.alt[chosenAlt] : w;
@@ -9229,14 +9341,16 @@ function isNearBodyweightElasticSession(exName, sets) {
                     var altCount = w.alt ? w.alt.length : 0;
                     var choiceOptions = getWarmupChoiceOptions(w);
                     var warm = warmupInfo(active.d, active.tm);
-                    var hasGuide = !!EX[active.n];
+                    var paramsLabel = active.p || active.t || active.s || warm.execution;
+                    var cueLabel = active.cue || active.h || active.d || warm.objective || warm.notes;
+                    var done = isWarmupDone(dayData.name, wi);
                     return <div key={wi} style={{ borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "20", padding: 10 }}>
                       <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
                         <div style={{ width: 24, height: 24, borderRadius: 6, background: dc, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, flexShrink: 0, marginTop: 2 }}>{wi + 1}</div>
                         {hasImg ? <img onClick={function() { setShowImg(showImg === "w" + wi ? null : "w" + wi); }} src={imgSrc} style={{ width: 54, height: 54, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "pointer", border: "1px solid " + dc + "20" }} /> : <div style={{ width: 54, height: 54, borderRadius: 8, background: dc + "10", color: dc, fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>🔥</div>}
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ display: "flex", alignItems: "flex-start", gap: 8, justifyContent: "space-between", marginBottom: 4 }}>
-                            <div onClick={hasGuide ? function() { pushNavSnapshot(); setExInfoOpen(active.n); } : undefined} style={{ fontSize: 12, fontWeight: 700, color: T.tx, cursor: hasGuide ? "pointer" : "default", textDecoration: hasGuide ? "underline dotted" : "none", textDecorationColor: hasGuide ? dc + "60" : "transparent", textUnderlineOffset: hasGuide ? 2 : 0 }}>{active.n}</div>
+                            <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{active.n}</div>
                             {altCount > 0 && <span style={{ padding: "3px 8px", borderRadius: 999, border: "1px solid " + dc + "28", background: T.cd, color: dc, fontSize: 10, fontWeight: 700, flexShrink: 0 }}>varianti</span>}
                           </div>
                           {choiceOptions.length > 1 && <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
@@ -9255,34 +9369,25 @@ function isNearBodyweightElasticSession(exName, sets) {
                                 }}
                                 style={{ display: "flex", alignItems: "center", gap: 5, padding: "4px 9px", borderRadius: 999, border: "1px solid " + (isSelected ? dc : dc + "24"), background: isSelected ? dc + "12" : T.cd, color: isSelected ? dc : T.sub, fontSize: 10, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}
                               >
+                                <span>{choice.__packageLabel}</span>
                                 <span>{badge.icon}</span>
                                 <span>{badge.label}</span>
                               </button>;
                             })}
                           </div>}
-                          <div style={{ display: "grid", gap: 6 }}>
-                            {warm.execution && <div>
-                              <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 1 }}>Ripetizioni / tempo</div>
-                              <div style={{ fontSize: 12, lineHeight: 1.55, color: T.tx, fontWeight: 700 }}>{warm.execution}</div>
-                            </div>}
-                            {warm.objective && <div>
-                              <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 1 }}>Obiettivo</div>
-                              <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{warm.objective}</div>
-                            </div>}
-                            {warm.notes && <div>
-                              <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 1 }}>Raccomandazioni</div>
-                              <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{warm.notes}</div>
-                            </div>}
+                          <div style={{ display: "grid", gap: 5 }}>
+                            {paramsLabel && <div style={{ fontSize: 12, lineHeight: 1.55, color: T.tx, fontWeight: 700 }}>{paramsLabel}</div>}
+                            {cueLabel && <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{cueLabel}</div>}
                           </div>
                           <div style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 6, flexWrap: "wrap" }}>
-                            {hasGuide && <button onClick={function() { pushNavSnapshot(); setExInfoOpen(active.n); }} style={{ display: "flex", alignItems: "center", gap: 4, padding: "3px 10px", border: "1px solid " + dc + "28", borderRadius: 6, background: T.cd, color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer" }}>📋 Scheda</button>}
                             {active.lk && <EmbedLink url={active.lk} label="video" size={10} />}
-                            {active.tm && active.tm >= 120 ? <button onClick={function() { quickStopwatch(); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"▶ " + fmtLabel(active.tm)}</button> : null}
-                            {active.tm && active.tm < 120 ? <button onClick={function() { quickTimer(active.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "3px 10px", border: "none", borderRadius: 6, background: dc, color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{"⏱ " + fmtLabel(active.tm)}</button> : null}
+                            <button onClick={function() { toggleWarmupDone(dayData.name, wi); }} style={{ display: "flex", alignItems: "center", gap: 4, padding: "3px 10px", border: "1px solid " + (done ? T.ok : dc + "28"), borderRadius: 6, background: done ? T.ok : T.cd, color: done ? "#fff" : dc, fontSize: 10, fontWeight: 800, cursor: "pointer" }}>{done ? "✓ Fatto" : "○ Fatto"}</button>
                           </div>
                         </div>
                       </div>
                       {hasImg && showImg === "w" + wi && <img onClick={function() { setShowImg(null); }} src={imgSrc} style={{ width: "100%", borderRadius: 8, marginTop: 8, cursor: "zoom-out" }} />}
+                    </div>;
+                  })}
                     </div>;
                   })}
                 </div>
@@ -9427,7 +9532,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                         e.stopPropagation();
                         var nextPrefs = Object.assign({}, splitDayPrefs);
                         nextPrefs[splitPrefKey] = option.key;
-                        saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, guidedRecoveryEnabled, { splitDayPrefs: nextPrefs });
+                        saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false, { splitDayPrefs: nextPrefs });
                       }}
                       style={{ textAlign: "left", minHeight: 64, padding: "10px 12px", borderRadius: 10, border: "1px solid " + (active ? dc + "55" : T.bg), background: active ? T.cd : T.sb, color: T.tx, cursor: "pointer" }}
                     >
@@ -9599,49 +9704,16 @@ function isNearBodyweightElasticSession(exName, sets) {
                       <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = false; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: !isCable ? dc : "transparent", color: !isCable ? "#fff" : T.sub }}>💪 Libero</button>
                     </div>}
 
-                    {/* === BRIEF PRE-SERIE === */}
+                    {/* === COACH SESSIONE BREVE === */}
                     {!isBasics && !focusMode && <div style={{ marginBottom: 12, borderRadius: 12, background: dc + "0C", border: "1px solid " + dc + "28", padding: "11px 13px" }}>
-                      <div style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>⚡ Concentrati su</div>
-                      {db.t && db.t.slice(0, 2).map(function(tip, ti) {
+                      <div style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>🧭 Coach sessione</div>
+                      {db.t && db.t.slice(0, 3).map(function(tip, ti) {
                         return <div key={ti} style={{ display: "flex", gap: 8, alignItems: "flex-start", marginBottom: ti < Math.min(db.t.length, 2) - 1 ? 5 : 0 }}>
                           <span style={{ color: dc, fontSize: 11, lineHeight: 1.55, flexShrink: 0 }}>→</span>
                           <span style={{ fontSize: 12, lineHeight: 1.55, color: T.tx, fontWeight: 600 }}>{tip}</span>
                         </div>;
                       })}
-                      {lastSession && <div style={{ marginTop: 9, paddingTop: 9, borderTop: "1px solid " + dc + "20" }}>
-                        <div style={{ fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 4 }}>Ultima sessione · {formatDateItalian(lastSession.date)}</div>
-                        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                          {lastSession.sets.sort(function(a,b){ return a.si - b.si; }).map(function(s, si) {
-                            return <span key={si} style={{ fontSize: 12, fontWeight: 700, color: T.tx, background: T.sb, border: "1px solid " + T.bg, borderRadius: 8, padding: "3px 8px" }}>
-                              {formatSetResult(ex.n, s, isBW, isTimeTrackedExercise(ex.n, ex.s))}
-                            </span>;
-                          })}
-                          {lastSession.sets[0] && lastSession.sets[0].rir !== undefined && lastSession.sets[0].rir !== "" && <span style={{ fontSize: 11, color: T.sub, padding: "3px 8px", background: T.sb, border: "1px solid " + T.bg, borderRadius: 8 }}>{"RIR " + normalizeRirValue(lastSession.sets[0].rir)}</span>}
-                        </div>
-                      </div>}
                     </div>}
-
-                    {/* === INFO RAPIDE: solo recupero, serie/reps restano nella riga compatta */}
-                    <div style={{ marginBottom: 12, borderRadius: 12, border: "1px solid " + T.bg, overflow: "hidden", background: T.sb }}>
-                      {/* Calibrazione (se attiva/necessaria) */}
-                      {(calibrationEnabled && calibrationNeed.needed) && <div style={{ padding: "9px 12px", background: effectiveCalibrationMode ? "#FFB30018" : "#C6282818", borderBottom: "1px solid " + (effectiveCalibrationMode ? "#FFB30030" : "#C6282830") }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 3 }}>
-                          <div style={{ fontSize: 10, fontWeight: 800, color: effectiveCalibrationMode ? "#A66A00" : "#C62828", textTransform: "uppercase", letterSpacing: 0.7 }}>🎯 {calibrationNeed.initial ? "Calibrazione da fare" : "Ricalibrazione da fare"}</div>
-                          <span style={{ display: "inline-flex", alignItems: "center", height: 18, padding: "0 7px", borderRadius: 999, background: effectiveCalibrationMode ? "#2E7D3220" : T.bg, border: "1px solid " + (effectiveCalibrationMode ? "#2E7D3240" : T.sub + "20"), color: effectiveCalibrationMode ? "#2E7D32" : T.sub, fontSize: 9, fontWeight: 800, letterSpacing: 0.45, opacity: effectiveCalibrationMode ? 1 : 0.7, boxShadow: effectiveCalibrationMode ? "0 0 0 2px #2E7D3212, 0 0 14px #2E7D3220" : "none" }}>
-                            {effectiveCalibrationMode ? "ON" : "OFF"}
-                          </span>
-                        </div>
-                        <div style={{ fontSize: 11, lineHeight: 1.5, color: T.sub }}>
-                          {effectiveCalibrationMode
-                            ? getCalibrationQuickInstruction(ex.n, ex.s)
-                            : (calibrationNeed.reason + " Attiva la modalita calibrazione per farla ora.")}
-                        </div>
-                      </div>}
-                      <div style={{ background: T.sb, padding: "10px 12px" }}>
-                          <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7, marginBottom: 4 }}>Recupero</div>
-                          <div style={{ fontSize: 18, fontWeight: 900, color: T.tx }}>{restSec ? fmtLabel(restSec) : (rawEx.rec || "—")}</div>
-                      </div>
-                    </div>
 
                     {isBasics && <div style={{ marginBottom: 12, borderRadius: 12, padding: "10px 11px", background: dc + "08", border: "1px solid " + dc + "22" }}>
                       <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Cosa guardare</div>
@@ -9663,25 +9735,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                         Registra
                         {tLog && tLog.sets.length > 0 && <span style={{ fontSize: 11, background: T.ok, color: "#fff", padding: "2px 8px", borderRadius: 8, fontWeight: 800 }}>{tLog.sets.length + "/" + sc + " serie"}</span>}
                       </div>
-                      {!isBW && !usesBand && usesBarbellTotal(ex.n) && <div style={{ marginBottom: 8, padding: "8px 10px", borderRadius: 8, background: T.sb, border: "1px solid " + T.bg }}>
-                        <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Bilanciere usato in questa fase</div>
-                        <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                          {[0,2,10,15,20].map(function(opt) {
-                            var active = barbellWeight === opt;
-                            return <button
-                              key={opt}
-                              onClick={function(e) {
-                                e.stopPropagation();
-                                saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, opt);
-                              }}
-                              style={{ minHeight: 28, padding: "0 10px", borderRadius: 999, border: "1px solid " + (active ? dc : T.sub + "30"), background: active ? dc : T.cd, color: active ? "#fff" : T.sub, fontSize: 10, fontWeight: 800, cursor: "pointer" }}
-                            >
-                              {opt + " kg"}
-                            </button>;
-                          })}
-                          <span style={{ fontSize: 10, color: T.sub, lineHeight: 1.5 }}>Attuale: {barbellWeight} kg</span>
-                        </div>
-                      </div>}
                       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                         {Array.from({ length: sc }).map(function(_, si) {
                           var lg = tLog ? tLog.sets.find(function(s) { return s.si === si; }) : null;
@@ -9762,20 +9815,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                       </div>
                     </div>}
 
-                    {logisticsCue && <div style={{ marginBottom: 10, borderRadius: 12, padding: "10px 11px", background: T.ok + "0F", border: "1px solid " + T.ok + "35" }}>
-                      <div style={{ fontSize: 10, fontWeight: 900, color: T.ok, textTransform: "uppercase", letterSpacing: 0.9, marginBottom: 7 }}>✓ {logisticsCue.title}</div>
-                      <div style={{ display: "grid", gap: 6 }}>
-                        <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
-                          <span style={{ fontSize: 13, lineHeight: 1.45 }}>↳</span>
-                          <span style={{ fontSize: 12, color: T.tx, lineHeight: 1.55, fontWeight: 700 }}>{logisticsCue.keep}</span>
-                        </div>
-                        {logisticsCue.clear && <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
-                          <span style={{ fontSize: 13, lineHeight: 1.45 }}>•</span>
-                          <span style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{logisticsCue.clear}</span>
-                        </div>}
-                      </div>
-                    </div>}
-
                     {/* === TIMER RECUPERO — subito dopo le serie === */}
                     {!isBasics && showTimerBtns && <div style={{ display: "grid", gap: 8, marginBottom: 10 }}>
                       {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ width: "100%", minHeight: 56, border: "none", borderRadius: 14, background: tMode === "countdown" && tRunning ? (tWarning ? "#B91C1C" : T.ok) : T.ok, color: "#fff", fontWeight: 900, fontSize: 15, letterSpacing: 0.35, cursor: "pointer", boxShadow: tMode === "countdown" ? "0 10px 24px rgba(0,0,0,0.18)" : "none", animation: tMode === "countdown" && tWarning ? "timerBlink 1s infinite" : "none" }}>
@@ -9787,9 +9826,36 @@ function isNearBodyweightElasticSession(exName, sets) {
                     {/* === DETTAGLI (collassato): storico · tecnica · note === */}
                     {!isBasics && !focusMode && extraInfoEnabled && <details style={{ marginTop: 2, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
                       <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 12px", fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ flex: 1 }}>Storico · Tecnica · Note</span><span style={{ fontSize: 12 }}>›</span>
+                        <span style={{ flex: 1 }}>Dettagli</span><span style={{ fontSize: 12 }}>›</span>
                       </summary>
                     <div style={{ padding: "10px 11px", display: "grid", gap: 10 }}>
+                      <div style={{ background: T.cd, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
+                        <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Recupero scheda</div>
+                        <div style={{ fontSize: 18, fontWeight: 900, color: T.tx }}>{restSec ? fmtLabel(restSec) : (rawEx.rec || "—")}</div>
+                      </div>
+
+                      {(calibrationEnabled && calibrationNeed.needed) && <div style={{ background: effectiveCalibrationMode ? "#FFB30010" : "#C6282810", borderRadius: 10, border: "1px solid " + (effectiveCalibrationMode ? "#FFB30030" : "#C6282830"), padding: "10px 11px" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 5 }}>
+                          <div style={{ fontSize: 10, fontWeight: 800, color: effectiveCalibrationMode ? "#A66A00" : "#C62828", textTransform: "uppercase", letterSpacing: 0.7 }}>🎯 {calibrationNeed.initial ? "Calibrazione da fare" : "Ricalibrazione da fare"}</div>
+                          <span style={{ display: "inline-flex", alignItems: "center", height: 18, padding: "0 7px", borderRadius: 999, background: effectiveCalibrationMode ? "#2E7D3220" : T.bg, border: "1px solid " + (effectiveCalibrationMode ? "#2E7D3240" : T.sub + "20"), color: effectiveCalibrationMode ? "#2E7D32" : T.sub, fontSize: 9, fontWeight: 800, letterSpacing: 0.45, opacity: effectiveCalibrationMode ? 1 : 0.7 }}>
+                            {effectiveCalibrationMode ? "ON" : "OFF"}
+                          </span>
+                        </div>
+                        <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>
+                          {effectiveCalibrationMode
+                            ? getCalibrationQuickInstruction(ex.n, ex.s)
+                            : (calibrationNeed.reason + " Attiva la modalita calibrazione per farla ora.")}
+                        </div>
+                      </div>}
+
+                      {logisticsCue && <div style={{ background: T.cd, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
+                        <div style={{ fontSize: 10, fontWeight: 800, color: T.ok, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Dopo questo esercizio</div>
+                        <div style={{ display: "grid", gap: 6 }}>
+                          <div style={{ fontSize: 12, color: T.tx, lineHeight: 1.55, fontWeight: 700 }}>{logisticsCue.keep}</div>
+                          {logisticsCue.clear && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{logisticsCue.clear}</div>}
+                        </div>
+                      </div>}
+
                       <div style={{ background: T.cd, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
                         <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Ultima sessione</div>
                         {pastSessions.length === 0 ? <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Nessuno storico ancora. Dopo la prima registrazione qui vedrai subito la seduta utile da copiare o migliorare.</div> : (function() {
@@ -9990,92 +10056,86 @@ function isNearBodyweightElasticSession(exName, sets) {
             })}
               </div>;
             })}
-            {!isBasics && !isBeginner && dayData && !dayData.cardio && ((dayData.str && dayData.str.length) || dayData.hipBonus) && <div style={{ padding: "14px", borderTop: "1px solid " + T.bg, background: T.st + "08" }}>
-              <div style={{ borderRadius: 14, background: T.cd, border: "1px solid " + T.st + "22", padding: "12px 12px 10px", boxShadow: "0 8px 20px rgba(0,0,0,0.06)" }}>
-                <div style={{ fontSize: 11, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8 }}>Stretching del giorno</div>
-                <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55, marginTop: 4 }}>Quando chiudi i pesi, apri direttamente la tab stretching di {dayData.name} con gli esercizi gia filtrati sul giorno corretto.</div>
-                <div style={{ display: "flex", gap: 8, overflowX: "auto", marginTop: 10, paddingBottom: 2 }}>
-                  {getStretchNavItems(dayData).map(function(item, idx) {
-                    var imgSrc = stretchImgSrc(item);
-                    var thumbScale = item.thumbScale || 1;
-                    var thumbPos = item.thumbPos || "center";
-                    return <button
-                      key={item.key + "-" + idx}
-                      onClick={function() { openStretchDay(dayData.name); }}
-                      style={{ flex: "none", width: 98, border: "1px solid " + T.bg, borderRadius: 12, background: T.sb, padding: 6, cursor: "pointer", textAlign: "left" }}
-                    >
-                      {imgSrc ? <div style={{ width: "100%", height: 52, overflow: "hidden", borderRadius: 8, background: T.card || T.sb, marginBottom: 6 }}>
-                        <img src={imgSrc} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: thumbPos, transform: thumbScale !== 1 ? "scale(" + thumbScale + ")" : undefined, transformOrigin: "center", display: "block" }} />
-                      </div> : <div style={{ width: "100%", height: 52, borderRadius: 8, background: T.st + "15", display: "grid", placeItems: "center", fontSize: 18, marginBottom: 6 }}>🧘</div>}
-                      <div style={{ fontSize: 9, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 3 }}>{item.sectionLabel}</div>
-                      <div style={{ fontSize: 10, fontWeight: 700, color: T.tx, lineHeight: 1.3, minHeight: 26 }}>{item.n}</div>
-                    </button>;
-                  })}
+            {!isBasics && !isBeginner && dayData && !dayData.cardio && ((dayData.str && dayData.str.length) || dayData.hipBonus) && <div id="section-stretching-inline" style={{ borderTop: "1px solid " + T.bg }}>
+              <div onClick={function() { var opening = !showStr; setShowStr(opening); if (opening) { setShowIntro(false); setShowExSection(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-stretching-inline"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showStr ? T.st + "12" : T.st + "06", borderLeft: "3px solid " + T.st }}>
+                <div style={{ width: 30, height: 30, borderRadius: 8, background: T.st, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>🧘</div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontWeight: 800, fontSize: 11, color: T.st, textTransform: "uppercase", letterSpacing: 1 }}>Stretching</div>
+                  <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{(function() {
+                    var mainStats = getStretchSectionStats(dayData.name, "post", dayData.str || []);
+                    var parts = [];
+                    if (mainStats.items.length) parts.push(mainStats.items.length + " esercizi · " + mainStats.totalLabel);
+                    if (dayData.hipBonus) {
+                      var hipStats = getStretchSectionStats(dayData.name, "hip-bonus", HIP_PROTOCOL_BASE);
+                      parts.push("bonus anca · " + hipStats.totalLabel);
+                    }
+                    return parts.join(" · ");
+                  })()}</div>
                 </div>
-                <button
-                  onClick={function() { openStretchDay(dayData.name); }}
-                  style={{ width: "100%", minHeight: 48, marginTop: 10, border: "none", borderRadius: 12, background: T.st, color: "#fff", fontSize: 13, fontWeight: 800, cursor: "pointer", boxShadow: "0 8px 20px rgba(0,0,0,0.12)" }}
-                >
-                  {"Apri stretching di " + dayData.name + " →"}
-                </button>
+                <div style={{ fontSize: 13, color: T.st, transform: showStr ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
+              {showStr && <div style={{ padding: "12px 14px 16px", display: "grid", gap: 12, background: T.st + "08" }}>
+                {!!(dayData.str && dayData.str.length) && <div style={{ background: T.cd, borderRadius: 12, border: "1px solid " + T.st + "22", padding: "12px" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, marginBottom: 4 }}>
+                    <div>
+                      <div style={{ fontSize: 11, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8 }}>Stretching del giorno</div>
+                      <div style={{ fontSize: 11, color: T.sub, marginTop: 2 }}>{(function() { var stats = getStretchSectionStats(dayData.name, "post", dayData.str); return stats.items.length ? (stats.items.length + " esercizi · " + stats.totalLabel + (stats.completed ? " · " + stats.completed + "/" + stats.items.length + " fatti" : "")) : ""; })()}</div>
+                    </div>
+                  </div>
+                  {renderStretchList(dayData.name, "post", dayData.str)}
+                </div>}
+
+                {dayData.hipBonus && <div style={{ background: "#8E6C4210", borderRadius: 12, border: "1px solid #8E6C4220", padding: "12px" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, marginBottom: 4 }}>
+                    <div>
+                      <div style={{ fontSize: 11, fontWeight: 800, color: "#8E6C42", textTransform: "uppercase", letterSpacing: 0.8 }}>Bonus mobilità anca</div>
+                      <div style={{ fontSize: 11, color: T.sub, marginTop: 2 }}>{(function() { var stats = getStretchSectionStats(dayData.name, "hip-bonus", HIP_PROTOCOL_BASE); return stats.items.length + " esercizi · " + stats.totalLabel + (stats.completed ? " · " + stats.completed + "/" + stats.items.length + " fatti" : ""); })()}</div>
+                    </div>
+                    <button onClick={function() { goToTheoryAnchor("teoria", "principi", "theory-section-hipmobility", "hipmobility"); }} style={{ minHeight: 28, padding: "0 10px", borderRadius: 999, border: "1px solid #8E6C4228", background: T.cd, color: "#8E6C42", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Perche farlo</button>
+                  </div>
+                  {renderStretchList(dayData.name, "hip-bonus", HIP_PROTOCOL_BASE)}
+                </div>}
+
+              </div>}
             </div>}
             </div>}
             </div>}
 
           </div>}
-
-          {!isBasics && !isBeginner && workoutView === "cardio" && cardioDayData && <div id="section-cardio-mobility" style={{ background: T.cd, borderRadius: "0 0 14px 14px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", overflow: "hidden" }}>
-            <div style={{ padding: "14px 14px 10px", borderBottom: "1px solid " + T.bg }}>
-              <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Cardio separato</div>
-              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6, marginTop: 4 }}>Qui trovi solo cosa fare nei giorni cardio. Lo stretching resta nella tab dedicata.</div>
-            </div>
-            <div style={{ padding: "12px 14px 16px" }}>
-              {renderCardioSupportDay(cardioSupportDays[safeCardioIdx])}
-            </div>
-          </div>}
-
-          {!isBasics && !isBeginner && workoutView === "stretching" && stretchDayData && <div id="section-stretching" style={{ background: T.cd, borderRadius: "0 0 14px 14px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", overflow: "hidden" }}>
-            <div style={{ padding: "14px 14px 10px", borderBottom: "1px solid " + T.bg }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                <span style={{ fontSize: 18 }}>🧘</span>
-                <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>{stretchDayData.name} · {stretchDayData.focus}</div>
-              </div>
-              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
-                {stretchDayData.cardio
-                  ? "Nei giorni cardio lo stretching vive qui, separato dal lavoro aerobico. Puoi farlo subito dopo oppure piu tardi."
-                  : "Qui trovi lo stretching giusto per questo giorno pesi, senza duplicarlo dentro la scheda allenamento."}
+          {!isBasics && !isBeginner && workoutSelectedDay && workoutSelectedDay.cardio && <div style={{ display: "grid", gap: 12 }}>
+            <div id="section-cardio-mobility" style={{ background: T.cd, borderRadius: "0 0 14px 14px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", overflow: "hidden" }}>
+              <div style={{ padding: "12px 14px 16px" }}>
+                {renderCardioSupportDay({ day: workoutSelectedDay })}
               </div>
             </div>
-            <div style={{ padding: "12px 14px 16px", display: "grid", gap: 12 }}>
-              {!!(stretchDayData.str && stretchDayData.str.length) && <div style={{ background: T.st + "0D", borderRadius: 12, border: "1px solid " + T.st + "22", padding: "12px" }}>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, marginBottom: 4 }}>
-                  <div>
-                    <div style={{ fontSize: 11, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8 }}>Stretching del giorno</div>
-                    <div style={{ fontSize: 11, color: T.sub, marginTop: 2 }}>{(function() { var stats = getStretchSectionStats(stretchDayData.name, "post", stretchDayData.str); return stats.items.length ? (stats.items.length + " esercizi · " + stats.totalLabel + (stats.completed ? " · " + stats.completed + "/" + stats.items.length + " fatti" : "")) : ""; })()}</div>
+            <div id="section-stretching" style={{ background: T.cd, borderRadius: 14, boxShadow: "0 2px 12px rgba(0,0,0,0.06)", overflow: "hidden" }}>
+              <div style={{ padding: "14px 14px 10px", borderBottom: "1px solid " + T.bg }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                  <span style={{ fontSize: 18 }}>🧘</span>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>{workoutSelectedDay.name} · Mobilita</div>
+                </div>
+                <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
+                  {workoutSelectedDay.cardioMobilityIntro || "Nei giorni cardio trovi qui sotto il blocco completo di mobilita associato al giorno."}
+                </div>
+              </div>
+              <div style={{ padding: "12px 14px 16px", display: "grid", gap: 12 }}>
+                <div id="section-hip-bonus" style={{ background: "#8E6C4210", borderRadius: 12, border: "1px solid #8E6C4220", padding: "12px" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, marginBottom: 4 }}>
+                    <div>
+                      <div style={{ fontSize: 11, fontWeight: 800, color: "#8E6C42", textTransform: "uppercase", letterSpacing: 0.8 }}>Mobilita giorno cardio</div>
+                      <div style={{ fontSize: 11, color: T.sub, marginTop: 2 }}>{(function() { var stats = getStretchSectionStats(workoutSelectedDay.name, "cardio-hip", CARDIO_MOBILITY_BASE); return stats.items.length + " esercizi · " + stats.totalLabel + (stats.completed ? " · " + stats.completed + "/" + stats.items.length + " fatti" : ""); })()}</div>
+                    </div>
+                    <button onClick={function() { goToTheoryAnchor("teoria", "principi", "theory-section-warmup", "warmup"); }} style={{ minHeight: 28, padding: "0 10px", borderRadius: 999, border: "1px solid #8E6C4228", background: T.cd, color: "#8E6C42", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Perche farlo</button>
+                  </div>
+                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6, marginBottom: 10 }}>
+                    Ordine del blocco: caviglie, anche, torace, poi flessori e glutei con posizioni piu lente.
+                  </div>
+                  {renderStretchList(workoutSelectedDay.name, "cardio-hip", CARDIO_MOBILITY_BASE)}
+                  <div style={{ marginTop: 10, fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
+                    Nei giorni cardio il blocco e piu lungo apposta: qui non devi correre verso il bilanciere.
                   </div>
                 </div>
-                {renderStretchList(stretchDayData.name, "post", stretchDayData.str)}
-              </div>}
-
-              {(stretchDayData.cardio || stretchDayData.hipBonus) && <div id="section-hip-bonus" style={{ background: "#8E6C4210", borderRadius: 12, border: "1px solid #8E6C4220", padding: "12px" }}>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, marginBottom: 4 }}>
-                  <div>
-                    <div style={{ fontSize: 11, fontWeight: 800, color: "#8E6C42", textTransform: "uppercase", letterSpacing: 0.8 }}>{stretchDayData.cardio ? "Stretching giorno cardio" : "Bonus mobilità anca"}</div>
-                    <div style={{ fontSize: 11, color: T.sub, marginTop: 2 }}>{(function() { var stats = getStretchSectionStats(stretchDayData.name, stretchDayData.cardio ? "cardio-hip" : "hip-bonus", HIP_PROTOCOL_BASE); return stats.items.length + " esercizi · " + stats.totalLabel + (stats.completed ? " · " + stats.completed + "/" + stats.items.length + " fatti" : ""); })()}</div>
-                  </div>
-                  <button onClick={function() { goToTheoryAnchor("teoria", "principi", "theory-section-hipmobility", "hipmobility"); }} style={{ minHeight: 28, padding: "0 10px", borderRadius: 999, border: "1px solid #8E6C4228", background: T.cd, color: "#8E6C42", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Perche farlo</button>
-                </div>
-                <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6, marginBottom: 10 }}>
-                  {stretchDayData.cardio
-                    ? "Questo e il blocco da associare ai giorni cardio. Lo tieni fuori dal cardio per non sporcare la sezione aerobica."
-                    : "Blocco extra per l'anca: resta separato dai pesi e lo fai solo quando vuoi aggiungere mobilita."}
-                </div>
-                {renderStretchList(stretchDayData.name, stretchDayData.cardio ? "cardio-hip" : "hip-bonus", HIP_PROTOCOL_BASE)}
-                <div style={{ marginTop: 10, fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
-                  {HIP_PROTOCOL_PROGRESSIONS[0]}
-                </div>
-              </div>}
+              </div>
             </div>
           </div>}
         </div>
@@ -10089,7 +10149,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             onClick={function() { setGuidedFeedback(""); }}
             style={{ background: gc, color: "#fff", borderRadius: 16, padding: "14px 16px", boxShadow: "0 14px 34px rgba(0,0,0,0.22)", fontSize: 13, fontWeight: 700, lineHeight: 1.6, cursor: "pointer", boxSizing: "border-box", overflowWrap: "anywhere", wordBreak: "break-word", maxHeight: "min(38vh, 280px)", overflowY: "auto", WebkitOverflowScrolling: "touch" }}
           >
-            <div style={{ fontSize: 12, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 5, opacity: 0.88 }}>🧭 Modalità guidata</div>
+            <div style={{ fontSize: 12, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 5, opacity: 0.88 }}>🧭 Coach attivo</div>
             {guidedFeedback}
           </div>}
           {calibrationFeedback && <div
@@ -10105,7 +10165,7 @@ function isNearBodyweightElasticSession(exName, sets) {
       {guidedPrompt && <div onClick={function() { setGuidedPrompt(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.38)", zIndex: 139, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: 12 }}>
         <div onClick={function(e) { e.stopPropagation(); }} style={{ width: "100%", maxWidth: 520, maxHeight: "min(78vh, 560px)", background: T.cd, borderRadius: 16, overflowX: "hidden", overflowY: "auto", WebkitOverflowScrolling: "touch", boxShadow: "0 20px 40px rgba(0,0,0,0.22)" }}>
           <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
-            <div style={{ fontSize: 15, fontWeight: 800, color: T.tx }}>🧭 Modalità guidata — {guidedPrompt.exName}</div>
+            <div style={{ fontSize: 15, fontWeight: 800, color: T.tx }}>🧭 Coach attivo — {guidedPrompt.exName}</div>
             <div style={{ fontSize: 12, color: T.sub, marginTop: 4, lineHeight: 1.6 }}>Quante ripetizioni pulite ti sarebbero rimaste? Questo dato serve per guidare recupero e progressione.</div>
             {guidedPromptSeenCount < 5 && <div style={{ marginTop: 7, padding: "7px 8px", borderRadius: 8, background: gc + "0D", border: "1px solid " + gc + "18", fontSize: 11, color: T.sub, lineHeight: 1.55 }}>
               Non sai stimare bene? Scegli <b style={{ color: T.tx }}>2</b> se la serie era impegnativa ma ancora controllata.
@@ -10209,7 +10269,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           <button onClick={function() { setTPanel(!tPanel); }} title={tPanel ? "Riduci timer" : "Espandi timer"} style={{ background: "rgba(255,255,255,0.1)", border: "none", color: T.htx, width: 24, height: 24, borderRadius: 6, cursor: "pointer", fontSize: 10, pointerEvents: "auto", touchAction: "manipulation" }}>{tPanel ? "\u25BE" : "\u25B4"}</button>
           <div style={{ flex: 1, textAlign: "center", minWidth: 0, pointerEvents: "none" }}>
             {(tPanel || tFullscreen) && activeOpenEx && tMode === "countdown" && <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.68)", marginBottom: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-              {"🔔 " + ((guidedMode && guidedRecoveryEnabled && guidedRestHint ? guidedRestHint + " · " : "") + "Recupero min: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget))}
+              {"🔔 Recupero min: " + activeOpenEx.n + " · " + fmtLabel(activeOpenRestSec || tTarget)}
             </div>}
             <div style={{ fontVariantNumeric: "tabular-nums", fontSize: tFullscreen ? 52 : 17, fontWeight: 800, letterSpacing: tFullscreen ? "0.4px" : "0.2px", color: tWarning ? "#FFCCCC" : T.htx, transition: "color 0.3s", animation: tWarning ? "timerBlink 1s infinite" : "none", lineHeight: 1 }}>{fmtTime(tMs)}</div>
           </div>
@@ -10224,9 +10284,6 @@ function isNearBodyweightElasticSession(exName, sets) {
             <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.72)", lineHeight: 1.35 }}>Trascina il timer dove vuoi. Doppio tap per centrarlo.</div>
             <button onClick={resetTimerPosition} style={{ minHeight: 24, padding: "0 8px", border: "none", borderRadius: 999, background: "rgba(255,255,255,0.12)", color: T.htx, fontSize: 9, fontWeight: 800, cursor: "pointer", pointerEvents: "auto", touchAction: "manipulation" }}>Reset posizione</button>
           </div>
-          {guidedMode && guidedRecoveryEnabled && guidedFillerHint && tMode === "countdown" && <div style={{ marginBottom: 8, padding: "7px 8px", borderRadius: 8, background: "rgba(255,255,255,0.08)", fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.82)", lineHeight: 1.5 }}>
-            {"Filler: " + guidedFillerHint}
-          </div>}
           <div style={{ display: "flex", gap: 4, marginBottom: 8 }}>
             {["stopwatch","countdown"].map(function(m) { return <button key={m} onClick={function() { timerSwitch(m); }} style={{ flex: 1, padding: "6px 0", border: "none", borderRadius: 8, cursor: "pointer", fontSize: 11, fontWeight: tMode === m ? 700 : 500, background: tMode === m ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: tMode === m ? "#fff" : "rgba(255,255,255,0.5)", pointerEvents: "auto", touchAction: "manipulation" }}>{m === "stopwatch" ? "Cronometro" : "Recupero"}</button>; })}
           </div>

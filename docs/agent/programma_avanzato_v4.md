@@ -18,6 +18,31 @@ Obiettivo: fornire a un agente o collaboratore un riferimento unico, leggibile e
 
 ## Perche questo programma e fatto cosi
 
+### Riscaldamento: mobilita prima, stabilita dopo
+
+Il riscaldamento V4 segue la logica `joint-by-joint`:
+- caviglia: mobilita
+- ginocchio: stabilita
+- anca: mobilita
+- lombare: stabilita
+- toracica: mobilita
+- scapola: stabilita
+- spalla: mobilita
+
+Quando una zona che dovrebbe muoversi si irrigidisce, quella vicina compensa. In pratica:
+- caviglia rigida -> squat e affondi peggiorano
+- anca rigida -> la lombare prende movimento che non dovrebbe prendere
+- toracica rigida -> spalle e collo lavorano male
+
+Per questo l'ordine corretto e sempre:
+1. mobilita dinamica dal basso verso l'alto
+2. attivazione e stabilita del distretto che dovra controllare il gesto
+3. serie di avvicinamento del primo esercizio pesante
+
+Nei giorni lower il blocco ruota intorno a caviglia + anca + core/glutei.
+Nei giorni upper ruota intorno a toracica + spalla + controllo scapolare/core.
+Nei giorni cardio c'e piu tempo: qui compare il blocco mobilita completo, piu lungo e meno compresso.
+
 ### La struttura: Upper/Lower su 4 giorni
 
 Ogni muscolo viene allenato 2 volte a settimana.
@@ -334,9 +359,13 @@ Nota UI attuale:
 
 | # | Esercizio | Serie/Tempo | Note |
 |---|---|---|---|
-| 1 | Marcia con ginocchia alte | 3 minuti | |
-| 2 | Cat-Cow + World's Greatest Stretch | 2 minuti totali | |
-| 3 | Serie avvicinamento squat con bilanciere | 3-4 serie | 40% → 60% → 80% |
+| Fase 1 | Dorsiflessione al muro | 10 rip per lato | Caviglia |
+| Fase 1 | Alfredson eccentrico | 2x10 per piede | Tendine d'Achille e polpaccio |
+| Fase 1 | 90/90 hip mobility | 8-10 passaggi per lato | Rotazione anca |
+| Fase 1 | Calf Raises con pallina | 2x15 | Piede + adduttori |
+| Fase 2 | Ponte monopodalico | 2x8 per lato | Gluteo e stabilita bacino |
+| Fase 2 | Dead Bug | 2x6 per lato | Core anti-estensione |
+| Fase 3 | Serie avvicinamento squat con bilanciere | 3-5 serie | Progressive, senza fatica |
 
 **Esercizi**
 
@@ -370,12 +399,13 @@ Protocollo breve facoltativo dopo lo stretching finale:
 
 | # | Esercizio | Serie/Tempo | Note |
 |---|---|---|---|
-| 1 | Jumping jacks | 3 minuti | |
-| 2 | Cerchi con le braccia | 15 avanti + 15 indietro | |
-| 3 | Inchworm | 5 ripetizioni | |
-| 3b | Scapular pull-up | 2x5 | Appesa alla barra, braccia tese. Tira le scapole in basso senza piegare i gomiti. Tieni 2 secondi in alto |
-| 3c | Band pull-apart con elastico | 2x15 | Elastico leggero, braccia tese davanti. Apri fino al petto. Scapole addotte in fondo |
-| 4 | Serie avvicinamento trazioni | 2-3 serie | Dopo l'attivazione scapolare |
+| Fase 1 | T-spine rotation in quadrupedia | 8-10 rip per lato | Mobilita toracica |
+| Fase 1 | Shoulder CARs | 5 cerchi per direzione per braccio | Mobilita spalla |
+| Fase 1 | Dorsiflessione al muro | 10 rip per lato | Anche nei giorni upper |
+| Fase 2 | Shoulder Tap | 2x8 per lato | Core anti-rotazione |
+| Fase 2 | Band pull-apart con elastico | 2x15 | Attivazione scapolare |
+| Fase 2 | Scapular Pull-Up | 2x5 | Depressione scapolare |
+| Fase 3 | Serie avvicinamento trazioni | 2-3 serie | Solo per preparare la tirata |
 
 **Esercizi**
 
@@ -414,13 +444,15 @@ Nota:
 | 2 | Rucking con zaino 15-20 kg | 45-60 min | Settimane pari. Salite e discese. Zaino alto e aderente. Zona 2. Progressione: +1 kg ogni 2 settimane OPPURE +5 min. Mai entrambi |
 | 3 | Circuito sacco + corde + slackline | 25-30 min | Bonus. Sostituisce HIIT quando vuoi variare. 3 round sacco 3 min + 4x30s battle rope + slackline 3x30s. Sessione alta intensita |
 
-**Protocollo anca dedicato**
+**Mobilita giorno cardio**
 
 Dopo il cardio, oppure in un secondo momento della giornata:
+- Dorsiflessione al muro
+- Alfredson eccentrico
+- 90/90 hip mobility
+- T-spine rotation in quadrupedia
 - Half Kneeling Lunge
-- Half Kneeling Lunge + Reach
 - Figure-Four Supino
-- Happy Baby
 
 ### Giorno 4 — Lower B — Glutei + Femorali
 
@@ -428,9 +460,13 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 
 | # | Esercizio | Serie/Tempo | Note |
 |---|---|---|---|
-| 1 | Marcia sul posto + affondi a corpo libero | 3 minuti totali | |
-| 2 | Good Morning senza peso + clamshell con elastico | 2 minuti | |
-| 3 | Serie avvicinamento stacco con bilanciere | 3-4 serie | 40% → 60% → 80% |
+| Fase 1 | Dorsiflessione al muro | 10 rip per lato | Caviglia |
+| Fase 1 | Alfredson eccentrico | 2x10 per piede | Tendine d'Achille e polpaccio |
+| Fase 1 | 90/90 hip mobility | 8-10 passaggi per lato | Rotazione anca |
+| Fase 1 | Calf Raises con pallina | 2x15 | Piede + adduttori |
+| Fase 2 | Ponte monopodalico | 2x8 per lato | Gluteo e stabilita bacino |
+| Fase 2 | Dead Bug | 2x6 per lato | Core anti-estensione |
+| Fase 3 | Serie avvicinamento stacco con bilanciere | 3-5 serie | Progressive, senza fatica |
 
 **Esercizi**
 
@@ -462,11 +498,13 @@ Stesso blocco facoltativo del Giorno 1, mostrato dopo lo stretching finale.
 
 | # | Esercizio | Serie/Tempo | Note |
 |---|---|---|---|
-| 1 | Jumping jacks + cerchi con le braccia | 3 minuti totali | |
-| 2 | Cat-Cow | 8-10 rip lente | |
-| 2b | Band pull-apart con elastico | 2x15 | Elastico leggero, braccia tese davanti. Apri fino al petto. Scapole addotte in fondo |
-| 2c | Retrazione scapolare al muro | 2x10 | Schiena al muro, braccia a W. Premi gomiti e dorso delle mani al muro. Tieni 3 secondi |
-| 3 | Military press con bilanciere scarico | 2x8 | Dopo l'attivazione scapolare |
+| Fase 1 | T-spine rotation in quadrupedia | 8-10 rip per lato | Mobilita toracica |
+| Fase 1 | Shoulder CARs | 5 cerchi per direzione per braccio | Mobilita spalla |
+| Fase 1 | Dorsiflessione al muro | 10 rip per lato | Anche nei giorni upper |
+| Fase 2 | Shoulder Tap | 2x8 per lato | Core anti-rotazione |
+| Fase 2 | Band pull-apart con elastico | 2x15 | Attivazione scapolare |
+| Fase 2 | Scapular Pull-Up | 2x5 | Depressione scapolare |
+| Fase 3 | Serie avvicinamento military press | 2-3 mini-serie | Bilanciere vuoto o poco carico |
 
 **Esercizi**
 
@@ -505,13 +543,15 @@ Nota:
 | 1 | Corsa leggera zona 2 | 30 min | Bassa intensita. FC 120-140. Cadenza 170+ passi/min. Puoi parlare senza fiatone |
 | 2 | Rucking con zaino 15-20 kg | 45-75 min | Bassa intensita. Zona 2. Progressione: +5 min ogni 2 settimane. Se nel Giorno 3 hai fatto rucking preferisci la corsa |
 
-**Protocollo anca dedicato**
+**Mobilita giorno cardio**
 
 Dopo il cardio, oppure in un secondo momento della giornata:
+- Dorsiflessione al muro
+- Alfredson eccentrico
+- 90/90 hip mobility
+- T-spine rotation in quadrupedia
 - Half Kneeling Lunge
-- Half Kneeling Lunge + Reach
 - Figure-Four Supino
-- Happy Baby
 
 ## Note operative da mantenere coerenti nell'app
 
@@ -522,6 +562,8 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 - Il cardio resta separato dai pesi
 - In app, il cardio della V4 è consultabile in una sezione dedicata della scheda, separata dai tab-giorno pesi
 - Lo stretching finale ha timer rapido e stato `Fatto` / `Saltato`
+- Il riscaldamento mostra tre fasi: `Mobilita`, `Attivazione`, `Avvicinamento`
+- Il riscaldamento mostra solo parametri, cue breve, video e stato `Fatto`
 - Il protocollo anca non crea giorni nuovi: è `Bonus mobilità anca` nei giorni pesi e blocco dedicato nei giorni cardio
 - La definizione dipende soprattutto dalla dieta, non da una scheda separata gia presente in app
 
