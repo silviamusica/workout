@@ -1612,6 +1612,8 @@ var DAYS_V4 = [
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Tallone a terra e ginocchio oltre la punta in controllo.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
       { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8 passaggi per lato", cue: "Busto verticale: il movimento parte solo dalle anche.", lk: "https://www.youtube.com/watch?v=z3EhjVHBxLM" },
       { n: "Alfredson eccentrico", phase: "mobility", gearTag: "Step / Fit box", p: "10 per piede", cue: "Sali con due piedi e scendi con uno solo, lento.", lk: "https://www.youtube.com/watch?v=WjQBJPuFkHI" },
+      { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota solo il torace: il bacino resta fermo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
+      { n: "Shoulder CARs", phase: "mobility", gearTag: "Corpo libero", p: "5 cerchi per direzione per braccio", cue: "Cerchi lentissimi, addome contratto.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
       { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 per lato", cue: "Gluteo stretto 2 secondi in alto, lombare ferma.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
       { n: "Dead Bug", phase: "activation", img: "Dead Bug", gearTag: "Corpo libero", p: "5 per lato", cue: "Lombare incollata al pavimento per tutta la serie.", lk: "https://www.youtube.com/watch?v=I5xbsA71v1A" },
       { n: "Push-Up", phase: "circuit", gearTag: "Corpo libero", p: "6-8 rip facili", cue: "Prime ripetizioni pulite, niente fatica.", lk: "https://www.nerdfitness.com/blog/proper-push-up/" },
@@ -1678,6 +1680,8 @@ var DAYS_V4 = [
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Come Giorno 1: tallone a terra e controllo pieno.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
       { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8 passaggi per lato", cue: "Anche mobili, schiena neutra.", lk: "https://www.youtube.com/watch?v=z3EhjVHBxLM" },
       { n: "Calf Raises con pallina", phase: "mobility", gearTag: "Pallina", p: "12 rip", cue: "Stringi la pallina per tutta salita e discesa.", lk: "https://www.drfitology.com/exercises/calves/bodyweight-standing-calf-raise" },
+      { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota il torace, bacino fermo — prepara per lo stacco.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
+      { n: "Shoulder CARs", phase: "mobility", gearTag: "Corpo libero", p: "5 cerchi per direzione per braccio", cue: "Cerchi lentissimi, addome contratto.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
       { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 per lato", cue: "Gluteo forte in alto, assetto fermo.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
       { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "6 per lato", cue: "Anti-rotazione: prepara il core per lo stacco.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
       { n: "Push-Up", phase: "circuit", gearTag: "Corpo libero", p: "6-8 rip facili", cue: "Solo attivazione e ritmo, non andare a fatica.", lk: "https://www.nerdfitness.com/blog/proper-push-up/" },
@@ -3191,6 +3195,7 @@ export default function App() {
   }
   var [openStretchCard, setOpenStretchCard] = useState(null);
   var [warmupInfoOpen, setWarmupInfoOpen] = useState(null);
+  var [openWarmupPhases, setOpenWarmupPhases] = useState({});
   var [showReg, setShowReg] = useState(null);
   var [catSec, setCatSec] = useState(null);
   var [logs, setLogs] = useState({});
@@ -4832,7 +4837,7 @@ export default function App() {
   }
 
   function getWarmupPhaseLabel(phase) {
-    if (phase === "mobility") return "⚡ Mobilita";
+    if (phase === "mobility") return "⚡ Mobilità";
     if (phase === "activation") return "🔒 Attivazione";
     if (phase === "circuit") return "🔥 Circuito";
     if (phase === "approach") return "🏋️ Avvicinamento";
@@ -9330,17 +9335,27 @@ function isNearBodyweightElasticSession(exName, sets) {
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                   {getWarmupGroups(dayData.warmup).map(function(group, groupIndex) {
                     var phaseDone = isWarmupDone(dayData.name, group.phase);
-                    return <div key={group.phase + "-" + groupIndex} style={{ display: "grid", gap: 8 }}>
-                      <div style={{ padding: "9px 10px", borderRadius: 8, background: dc + "0D", border: "1px solid " + dc + "1A", display: "flex", gap: 8, alignItems: "center", justifyContent: "space-between" }}>
-                        <div>
+                    var phaseKey = dayData.name + "-" + group.phase + "-" + groupIndex;
+                    var isPhaseOpen = !!openWarmupPhases[phaseKey];
+                    return <div key={group.phase + "-" + groupIndex} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + dc + "20", background: T.cd }}>
+                      <div onClick={function(e) { e.stopPropagation(); setOpenWarmupPhases(function(prev) { var n = Object.assign({}, prev); n[phaseKey] = !prev[phaseKey]; return n; }); }} style={{ padding: "9px 10px", background: isPhaseOpen ? dc + "10" : dc + "06", display: "flex", gap: 8, alignItems: "center", justifyContent: "space-between", cursor: "pointer" }}>
+                        <div style={{ flex: 1 }}>
                           <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>
                             {getWarmupPhaseLabel(group.phase)}
+                            <span style={{ marginLeft: 6, fontSize: 10, fontWeight: 600, color: T.sub, textTransform: "none", letterSpacing: 0 }}>{group.items.length} eserc.</span>
                           </div>
-                          {getWarmupPhaseHint(group.phase) && <div style={{ fontSize: 10, color: T.sub, marginTop: 3, lineHeight: 1.5 }}>
+                          {!isPhaseOpen && getWarmupPhaseHint(group.phase) && <div style={{ fontSize: 10, color: T.sub, marginTop: 2, lineHeight: 1.4 }}>
                             {getWarmupPhaseHint(group.phase)}
                           </div>}
                         </div>
-                        <button onClick={function(e) { e.stopPropagation(); toggleWarmupDone(dayData.name, group.phase); }} style={{ display: "flex", alignItems: "center", gap: 4, padding: "5px 10px", border: "1px solid " + (phaseDone ? T.ok : dc + "28"), borderRadius: 999, background: phaseDone ? T.ok : T.cd, color: phaseDone ? "#fff" : dc, fontSize: 10, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                          {phaseDone && <span style={{ fontSize: 10, fontWeight: 800, color: T.ok }}>✓</span>}
+                          <div style={{ fontSize: 13, color: dc, transform: isPhaseOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
+                        </div>
+                      </div>
+                      {isPhaseOpen && <div style={{ padding: "10px 10px 10px" }}>
+                      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
+                        <button onClick={function(e) { e.stopPropagation(); toggleWarmupDone(dayData.name, group.phase); }} style={{ display: "flex", alignItems: "center", gap: 4, padding: "5px 10px", border: "1px solid " + (phaseDone ? T.ok : dc + "28"), borderRadius: 999, background: phaseDone ? T.ok : T.cd, color: phaseDone ? "#fff" : dc, fontSize: 10, fontWeight: 800, cursor: "pointer", touchAction: "manipulation" }}>
                           {phaseDone ? "✓ Fase fatta" : "○ Segna fatta"}
                         </button>
                       </div>
@@ -9397,6 +9412,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                       </div>
                     </div>;
                   })}
+                    </div>}
                     </div>;
                   })}
                 </div>
