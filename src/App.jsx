@@ -2884,6 +2884,17 @@ function getFastSupersetPair(dayName, exName) {
   return null;
 }
 
+function getSupersetBlockForExercise(dayName, exName) {
+  var info = getFastSupersetPair(dayName, exName);
+  if (!info) return null;
+  return {
+    title: displayExerciseName(info.pair.a) + " + " + displayExerciseName(info.pair.b),
+    rest: info.pair.rest || 0,
+    role: info.role,
+    partner: displayExerciseName(info.partner)
+  };
+}
+
 var FLOW_FILLERS = {
   "Squat": "2 respiri lenti e brace",
   "Stacco da Terra": "riprendi il brace e la presa",
@@ -10033,13 +10044,16 @@ function isNearBodyweightElasticSession(exName, sets) {
               var isH = histIdx === i;
               var hData = isH ? getHist(ex.n) : [];
               var hasV = month > 1 && rawEx["v" + month];
-              var restSec = getExerciseRestSeconds(rawEx, ex);
+              var flowSupersetMeta = isDaySupersetActive ? getSupersetBlockForExercise(dayData && dayData.name, ex.n) : null;
+              var baseRestSec = getExerciseRestSeconds(rawEx, ex);
+              var restSec = flowSupersetMeta ? (flowSupersetMeta.role === "b" ? flowSupersetMeta.rest : 0) : baseRestSec;
               var workSec = getWorkTime(ex.n, ex.s);
               var showTimerBtns = restSec || workSec;
               var repeatHint = rawEx.repeatHint || null;
               var repeatColor = repeatHint ? (repeatHint.tone === "up" ? "#2E7D32" : repeatHint.tone === "down" ? "#C62828" : dc) : dc;
               var rowBreath = getBreath(ex.n);
               var rowBreathColor = T.sub;
+              var rowSupersetMeta = isDaySupersetActive ? getSupersetBlockForExercise(dayData && dayData.name, ex.n) : null;
               var rowProgColor = prog ? (prog.tone === "up" ? T.ok : prog.tone === "hold" ? "#C62828" : T.sub) : T.sub;
               var rowSkills = getExerciseCompetencies(ex.n);
               var calibrationNeed = getCalibrationNeed(ex.n, ex.s);
@@ -10051,6 +10065,11 @@ function isNearBodyweightElasticSession(exName, sets) {
               var exDoneKey = dayIdx + "_" + i;
               var isExDone = !!(isBeginner && completedExercises[exDoneKey]);
               return <div key={i} id={"ex-row-" + i} style={{ borderBottom: "1px solid " + T.bg, opacity: isDimmed ? 0.38 : 1, transition: "opacity 0.25s" }}>
+                {!isBasics && rowSupersetMeta && rowSupersetMeta.role === "a" && <div style={{ padding: "12px 14px 8px", background: dc + "08", borderBottom: "1px solid " + T.bg }}>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 8px", borderRadius: 999, background: dc + "12", color: dc, fontSize: 10, fontWeight: 900, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Superset</div>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, lineHeight: 1.4 }}>{rowSupersetMeta.title}</div>
+                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginTop: 3 }}>Recupero dopo la coppia: {fmtLabel(rowSupersetMeta.rest)}</div>
+                </div>}
                 <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); if (opening) { setHistPage(function(p) { var n = Object.assign({}, p); n[i] = 0; return n; }); setTimeout(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 50); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
                   {isBeginner && <div
                     onClick={function(e) { e.stopPropagation(); setCompletedExercises(function(prev) { var next = Object.assign({}, prev); if (next[exDoneKey]) { delete next[exDoneKey]; } else { next[exDoneKey] = true; } return next; }); }}
@@ -10160,9 +10179,15 @@ function isNearBodyweightElasticSession(exName, sets) {
                       <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = false; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: !isCable ? dc : "transparent", color: !isCable ? "#fff" : T.sub }}>💪 Libero</button>
                     </div>}
 
-                    {!isBasics && flowSuperset && <div style={{ marginBottom: 8, display: "inline-flex", alignItems: "center", gap: 6, padding: "6px 10px", borderRadius: 999, background: dc + "10", border: "1px solid " + dc + "25", color: dc, fontSize: 10, fontWeight: 800 }}>
-                      <span>Superset</span>
-                      <span style={{ color: T.sub, fontWeight: 700 }}>{displayExerciseName(flowSuperset.partner)}</span>
+                    {!isBasics && flowSupersetMeta && flowSupersetMeta.role === "a" && <div style={{ marginBottom: 10, borderRadius: 12, padding: "10px 12px", background: dc + "10", border: "1px solid " + dc + "25" }}>
+                      <div style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Superset</div>
+                      <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, lineHeight: 1.4 }}>{flowSupersetMeta.title}</div>
+                      <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55, marginTop: 4 }}>Fai i due esercizi di fila. Recupero solo dopo il secondo: {fmtLabel(flowSupersetMeta.rest)}.</div>
+                    </div>}
+
+                    {!isBasics && flowSupersetMeta && <div style={{ marginBottom: 8, display: "inline-flex", alignItems: "center", gap: 6, padding: "6px 10px", borderRadius: 999, background: dc + "10", border: "1px solid " + dc + "25", color: dc, fontSize: 10, fontWeight: 800 }}>
+                      <span>{flowSupersetMeta.role === "a" ? "Superset 1/2" : "Superset 2/2"}</span>
+                      <span style={{ color: T.sub, fontWeight: 700 }}>{flowSupersetMeta.partner}</span>
                     </div>}
 
                     {!isBasics && !compactMode && guidedMode && sessionSuggestion && <div style={{ marginBottom: 10, borderRadius: 12, background: gc + "0A", border: "1px solid " + gc + "22", padding: compactExerciseCard ? "9px 11px" : "11px 13px" }}>
@@ -10373,7 +10398,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     {/* === TIMER RECUPERO — subito dopo le serie === */}
                     {!isBasics && showTimerBtns && <div style={{ display: "grid", gap: 6, marginBottom: 10 }}>
                       {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ width: "100%", minHeight: 52, border: "none", borderRadius: 12, background: tMode === "countdown" && tRunning ? (tWarning ? "#B91C1C" : T.ok) : T.ok, color: "#fff", fontWeight: 900, fontSize: 14, letterSpacing: 0.2, cursor: "pointer", boxShadow: tMode === "countdown" ? "0 10px 24px rgba(0,0,0,0.18)" : "none", animation: tMode === "countdown" && tWarning ? "timerBlink 1s infinite" : "none" }}>
-                        {"▶ TIMER RECUPERO · " + fmtLabel(restSec)}
+                        {flowSupersetMeta && flowSupersetMeta.role === "b" ? ("▶ RECUPERO DOPO SUPERSET · " + fmtLabel(restSec)) : ("▶ TIMER RECUPERO · " + fmtLabel(restSec))}
                       </button> : null}
                       {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ width: "100%", minHeight: 42, border: "none", borderRadius: 10, background: dc, color: "#fff", fontWeight: 800, fontSize: 12, cursor: "pointer" }}>{"▶ Timer lavoro · " + fmtLabel(workSec)}</button> : null}
                     </div>}
@@ -10386,7 +10411,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     <div style={{ padding: "10px 11px", display: "grid", gap: 10 }}>
                       <div style={{ background: T.cd, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
                         <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Recupero scheda</div>
-                        <div style={{ fontSize: 18, fontWeight: 900, color: T.tx }}>{restSec ? fmtLabel(restSec) : (rawEx.rec || "—")}</div>
+                        <div style={{ fontSize: 18, fontWeight: 900, color: T.tx }}>{restSec ? fmtLabel(restSec) : (flowSupersetMeta && flowSupersetMeta.role === "a" ? "Diretto" : (rawEx.rec || "—"))}</div>
                       </div>
 
                       {(calibrationEnabled && calibrationNeed.needed) && <div style={{ background: effectiveCalibrationMode ? "#FFB30010" : "#C6282810", borderRadius: 10, border: "1px solid " + (effectiveCalibrationMode ? "#FFB30030" : "#C6282830"), padding: "10px 11px" }}>
