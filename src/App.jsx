@@ -1597,19 +1597,15 @@ var DAYS_V4 = [
       ritmo: "Recuperi 2-3 min su Squat. 2 min su Hip thrust. 90s-2 min su Leg curl al cavo. 90-120s sugli altri."
     },
     warmup: [
-      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "10 rip per lato", cue: "Ginocchio avanti e leggermente in fuori, tallone sempre a terra.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs", alt: [
-        { n: "Kettlebell swing leggero", img: "Good Morning", gearTag: "Kettlebell", p: "3x10", cue: "Alternativa dinamica quando vuoi un warm-up piu atletico per la catena posteriore." },
-        { n: "Step-up alternato a corpo libero", img: "Step Up", gearTag: "Step / Fit box", p: "2 minuti continui", cue: "Alternativa rapida per temperatura e gambe senza impatto.", tm: 120 }
-      ] },
-      { n: "Alfredson eccentrico", phase: "mobility", gearTag: "Step / Fit box", p: "2x10 per piede", cue: "Sali con due piedi, scendi con uno in 3-4 secondi.", lk: "https://www.youtube.com/watch?v=WjQBJPuFkHI" },
-      { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8-10 passaggi per lato", cue: "Busto alto, rotazione dalle anche senza compensare con la lombare.", lk: "https://www.youtube.com/watch?v=z3EhjVHBxLM", alt: [
-        { n: "Goblet squat lento", img: "Goblet Squat", gearTag: "Kettlebell", p: "2x8", cue: "Alternativa piu orientata al pattern squat se vuoi lavorare con carico leggero." },
-        { n: "TRX squat + apertura toracica", img: "TRX Squat", gearTag: "TRX", p: "8 rip per lato", cue: "Alternativa assistita per anche e torace." }
-      ] },
-      { n: "Calf Raises con pallina", phase: "mobility", gearTag: "Corpo libero", p: "2x15", cue: "Stringi la pallina tra i malleoli e non perderla durante salita e discesa." },
-      { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "2x8 per lato", cue: "Sali finche gluteo, bacino e tronco restano in linea.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
-      { n: "Dead Bug", phase: "activation", img: "Dead Bug", gearTag: "Corpo libero", p: "2x6 per lato", cue: "Lombare sempre aderente a terra, movimento lento.", lk: "https://www.youtube.com/watch?v=I5xbsA71v1A" },
-      { n: "Serie avvicinamento squat con bilanciere", phase: "approach", img: "w_SerieAvvSquat", gearTag: "Bilanciere", p: "3-5 serie progressive", cue: "Bilanciere scarico poi sali senza arrivare a fatica. L'ultima deve preparare, non pesare." },
+      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Tallone a terra e ginocchio oltre la punta in controllo.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
+      { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8 passaggi per lato", cue: "Busto verticale: il movimento parte solo dalle anche.", lk: "https://www.youtube.com/watch?v=z3EhjVHBxLM" },
+      { n: "Alfredson eccentrico", phase: "mobility", gearTag: "Step / Fit box", p: "10 per piede", cue: "Sali con due piedi e scendi con uno solo, lento.", lk: "https://www.youtube.com/watch?v=WjQBJPuFkHI" },
+      { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 per lato", cue: "Gluteo stretto 2 secondi in alto, lombare ferma.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
+      { n: "Dead Bug", phase: "activation", img: "Dead Bug", gearTag: "Corpo libero", p: "5 per lato", cue: "Lombare incollata al pavimento per tutta la serie.", lk: "https://www.youtube.com/watch?v=I5xbsA71v1A" },
+      { n: "Push-Up", phase: "circuit", gearTag: "Corpo libero", p: "6-8 rip facili", cue: "Prime ripetizioni pulite, niente fatica.", lk: "https://www.nerdfitness.com/blog/proper-push-up/" },
+      { n: "Affondi saltati alternati", phase: "circuit", gearTag: "Corpo libero", p: "5 per lato", cue: "Atterraggio morbido e ginocchia in linea.", lk: "https://www.youtube.com/watch?v=45qaTeoPGRw" },
+      { n: "Trazioni con elastico", phase: "circuit", gearTag: "Sbarra + elastico", p: "3-4 rip facili", cue: "Solo attivazione: elastico leggero e scapole vive.", lk: "https://www.youtube.com/watch?v=9mVNP1_kDBs" },
+      { n: "Serie avvicinamento squat", phase: "approach", img: "w_SerieAvvSquat", gearTag: "Bilanciere", p: "3 serie progressive", cue: "Scarico → circa 50% → 70-80%. Devono preparare, non stancare." },
     ],
     ex: [
       { n: "Squat", s: "4x6-8", rpe: "8-9", note: "Setup: piedi larghezza spalle, punte 15-30 gradi, mani simmetriche, gomiti giu e leggermente dietro. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper + rack", errori: "Ginocchia che collassano dentro; busto che cade avanti in risalita; talloni che si alzano; schiena che si arrotonda in buca" },
@@ -1628,16 +1624,15 @@ var DAYS_V4 = [
       ritmo: "Recuperi 2-3 min su Trazioni. 2 min su T-bar e Panca. 60-90s su Face pull e Curl."
     },
     warmup: [
-      { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8-10 rip per lato", cue: "Ruota il gomito verso il soffitto tenendo il bacino fermo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ", alt: [
-        { n: "TRX Y-T-W", img: "TRX High Row", gearTag: "TRX", p: "5+5+5 rip", cue: "Alternativa per mobilita attiva e cuffia." },
-        { n: "Kettlebell halo", img: "Military Press", gearTag: "Kettlebell", p: "8 per direzione", cue: "Alternativa dinamica per torace e spalle." }
-      ] },
-      { n: "Shoulder CARs", phase: "mobility", gearTag: "Corpo libero", p: "5 cerchi per direzione per braccio", cue: "Cerchi lenti, tronco fermo e costole giu.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
-      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "10 rip per lato", cue: "Anche nei giorni upper: caviglia mobile e appoggio piu stabile ovunque." },
-      { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "2x8 per lato", cue: "Bacino fermo, piedi un po' larghi, niente oscillazioni.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
-      { n: "Band Pull-Apart con elastico", phase: "activation", img: "w_CerchiApertura", gearTag: "Elastico", p: "2x15", cue: "Elastico leggero, scapole addotte in fondo al gesto." },
-      { n: "Scapular Pull-Up", phase: "activation", img: "w_SospensioneAttivaSbarra", gearTag: "Sbarra", p: "2x5", cue: "Braccia tese, spalle giu, il corpo sale di pochi centimetri." },
-      { n: "Serie avvicinamento trazioni", phase: "approach", img: "Trazioni", gearTag: "Sbarra", p: "2-3 mini-serie", cue: "Poche rip pulite e recupero completo. Servono solo a preparare la tirata vera." },
+      { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota solo il torace: il bacino resta fermo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
+      { n: "Shoulder CARs", phase: "mobility", gearTag: "Corpo libero", p: "5 cerchi per direzione per braccio", cue: "Cerchi lentissimi, addome contratto.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
+      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Serve anche qui per appoggio e linea stabile.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
+      { n: "Band Pull-Apart con elastico", phase: "activation", img: "w_CerchiApertura", gearTag: "Elastico", p: "15 rip", cue: "Scapole che si avvicinano alla fine del gesto.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
+      { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "8 per lato", cue: "Bacino fermo e anti-rotazione vera.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
+      { n: "Kettlebell swing leggero", phase: "circuit", gearTag: "Kettlebell", p: "10 rip", cue: "Hip hinge esplosivo, braccia solo ganci.", lk: "https://www.youtube.com/watch?v=YSxHifyI6s8" },
+      { n: "Goblet squat con fermo in buca", phase: "circuit", gearTag: "Kettlebell", p: "5 rip con fermo 3s", cue: "Resta verticale e usa il fermo per aprire anche e caviglie.", lk: "https://www.youtube.com/watch?v=MeIiIdhvXT4" },
+      { n: "Squat thrust", phase: "circuit", gearTag: "Corpo libero", p: "5 rip", cue: "Plank compatto: nessun push-up e nessun salto finale.", lk: "https://www.nasm.org/resource-center/exercise-library/squat-thrust-burpees" },
+      { n: "Serie avvicinamento trazioni", phase: "approach", img: "Trazioni", gearTag: "Sbarra + elastico", p: "2-3 mini-serie", cue: "Mini-serie progressive con elastico per entrare nella tirata senza stancarti." },
     ],
     ex: [
       { n: "Trazioni", s: "4x5-8", rpe: "8-9", note: "Double progression. Presa prona. Parti da braccia tese. Mento sopra sbarra. Discesa 2-3s. Ultimo set a cedimento tecnico controllato.", priority: true, rec: "2-3 min", gear: "Barra trazioni (+ elastico assist.)", errori: "Kipping/slancio; mento che si protende senza tirare; spalle alle orecchie; ROM incompleto" },
@@ -1668,19 +1663,15 @@ var DAYS_V4 = [
       ritmo: "Recuperi 2-3 min su Stacco. 90s-2 min su Stacco Rumeno e Hip thrust. 90s-2 min su Affondi. 90s sugli accessori."
     },
     warmup: [
-      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "10 rip per lato", cue: "Tallone sempre a terra, ginocchio avanti e leggermente in fuori.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs", alt: [
-        { n: "Step-up alternato a corpo libero", img: "Step Up", gearTag: "Step / Fit box", p: "2 minuti continui", cue: "Alternativa per scaldare le gambe rapidamente." },
-        { n: "Kettlebell swing leggero", img: "Good Morning", gearTag: "Kettlebell", p: "3x10", cue: "Alternativa piu dinamica se vuoi una partenza piu nervosa." }
-      ] },
-      { n: "Alfredson eccentrico", phase: "mobility", gearTag: "Step / Fit box", p: "2x10 per piede", cue: "Scendi lentamente con un solo piede in 3-4 secondi.", lk: "https://www.youtube.com/watch?v=WjQBJPuFkHI" },
-      { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8-10 passaggi per lato", cue: "Rotazione dalle anche, non dalla schiena.", lk: "https://www.youtube.com/watch?v=z3EhjVHBxLM", alt: [
-        { n: "Goblet squat lento", img: "Goblet Squat", gearTag: "Kettlebell", p: "2x8", cue: "Alternativa se vuoi aprire anche e pattern squat nello stesso gesto." },
-        { n: "TRX squat + apertura toracica", img: "TRX Squat", gearTag: "TRX", p: "8 rip per lato", cue: "Alternativa assistita per lower B." }
-      ] },
-      { n: "Calf Raises con pallina", phase: "mobility", gearTag: "Corpo libero", p: "2x15", cue: "Stringi la pallina e non perderla in alto." },
-      { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "2x8 per lato", cue: "Gluteo forte in alto, niente iperestensione lombare.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
-      { n: "Dead Bug", phase: "activation", img: "Dead Bug", gearTag: "Corpo libero", p: "2x6 per lato", cue: "Costole giu e lombare aderente a terra.", lk: "https://www.youtube.com/watch?v=I5xbsA71v1A" },
-      { n: "Serie avvicinamento stacco con bilanciere", phase: "approach", img: "w_SerieAvvStacco", gearTag: "Bilanciere", p: "3-5 serie progressive", cue: "Bilanciere scarico poi sali. L'ultima deve preparare, non tassare." },
+      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Come Giorno 1: tallone a terra e controllo pieno.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
+      { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8 passaggi per lato", cue: "Anche mobili, schiena neutra.", lk: "https://www.youtube.com/watch?v=z3EhjVHBxLM" },
+      { n: "Calf Raises con pallina", phase: "mobility", gearTag: "Pallina", p: "12 rip", cue: "Stringi la pallina per tutta salita e discesa.", lk: "https://www.drfitology.com/exercises/calves/bodyweight-standing-calf-raise" },
+      { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 per lato", cue: "Gluteo forte in alto, assetto fermo.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
+      { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "6 per lato", cue: "Anti-rotazione: prepara il core per lo stacco.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
+      { n: "Push-Up", phase: "circuit", gearTag: "Corpo libero", p: "6-8 rip facili", cue: "Solo attivazione e ritmo, non andare a fatica.", lk: "https://www.nerdfitness.com/blog/proper-push-up/" },
+      { n: "Affondi saltati alternati", phase: "circuit", gearTag: "Corpo libero", p: "5 per lato", cue: "Esplosivi ma controllati.", lk: "https://www.youtube.com/watch?v=45qaTeoPGRw" },
+      { n: "Burpee completo", phase: "circuit", gearTag: "Corpo libero", p: "4-5 rip", cue: "Plank solido: se cedi con la lombare, riduci.", lk: "https://www.youtube.com/watch?v=TU8QYVW0gDU" },
+      { n: "Serie avvicinamento stacco", phase: "approach", img: "w_SerieAvvStacco", gearTag: "Bilanciere", p: "3 serie progressive", cue: "Scarico → circa 50% → 70-80%. L'ultima deve accendere il gesto, non tassarlo." },
     ],
     ex: [
       { n: "Stacco da Terra", s: "3x4-6", rpe: "8-9", note: "Setup: piedi larghezza anche, barra su meta piede, mani appena fuori gambe, braccia tese. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata (cifosi); barra lontana dal corpo; anche che salgono prima delle spalle; collo iperesteso" },
@@ -1700,16 +1691,15 @@ var DAYS_V4 = [
       ritmo: "Recuperi 2 min su Push-up, Trazioni, Military. 90-120s su Dip. 60-90s su Tricipiti cavo e Woodchop."
     },
     warmup: [
-      { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8-10 rip per lato", cue: "Apri il torace senza muovere il bacino.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ", alt: [
-        { n: "TRX Y-T-W", img: "TRX High Row", gearTag: "TRX", p: "5+5+5 rip", cue: "Alternativa per torace e controllo scapolare." },
-        { n: "Shoulder rolls", img: "w_ShoulderRolls", gearTag: "Corpo libero", p: "10 + 10", cue: "Alternativa minima quando vuoi solo sciogliere le spalle." }
-      ] },
-      { n: "Shoulder CARs", phase: "mobility", gearTag: "Corpo libero", p: "5 cerchi per direzione per braccio", cue: "Cerchi lenti e completi, addome attivo.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
-      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "10 rip per lato", cue: "Anche qui: caviglia libera e appoggio piu stabile sotto tutto il corpo." },
-      { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "2x8 per lato", cue: "Core rigido e bacino fermo mentre alterni i tocchi.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
-      { n: "Band Pull-Apart con elastico", phase: "activation", img: "w_CerchiApertura", gearTag: "Elastico", p: "2x15", cue: "Apri fino al petto senza inarcare la schiena." },
-      { n: "Scapular Pull-Up", phase: "activation", img: "w_SospensioneAttivaSbarra", gearTag: "Sbarra", p: "2x5", cue: "Spalle giu e gomiti sempre tesi." },
-      { n: "Serie avvicinamento military press", phase: "approach", img: "w_MilitaryPress", gearTag: "Bilanciere", p: "2-3 mini-serie", cue: "Bilanciere vuoto o poco carico per entrare nel gesto senza stancarti." },
+      { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Come Giorno 2: ruota il torace, non il bacino.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
+      { n: "Shoulder CARs", phase: "mobility", gearTag: "Corpo libero", p: "5 cerchi per direzione per braccio", cue: "Cerchi lenti e completi senza compensi.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
+      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Anche qui serve una base stabile da terra.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
+      { n: "Scapular Pull-Up", phase: "activation", img: "w_SospensioneAttivaSbarra", gearTag: "Sbarra", p: "5 rip", cue: "Depressione scapolare netta, braccia tese.", lk: "https://www.youtube.com/watch?v=fTbd3q-vwqU" },
+      { n: "Band Pull-Apart con elastico", phase: "activation", img: "w_CerchiApertura", gearTag: "Elastico", p: "15 rip", cue: "Scapole addotte in fondo, spalle basse.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
+      { n: "Kettlebell swing leggero", phase: "circuit", gearTag: "Kettlebell", p: "10 rip", cue: "Esplosivita da anche e catena posteriore.", lk: "https://www.youtube.com/watch?v=YSxHifyI6s8" },
+      { n: "Affondi saltati alternati", phase: "circuit", gearTag: "Corpo libero", p: "5 per lato", cue: "Ritmo alto ma atterraggio morbido.", lk: "https://www.youtube.com/watch?v=45qaTeoPGRw" },
+      { n: "Squat jump", phase: "circuit", gearTag: "Corpo libero", p: "5 rip", cue: "Salto esplosivo e atterraggio ammortizzato.", lk: "https://www.youtube.com/watch?v=A-cFYGvaXio" },
+      { n: "Serie avvicinamento military press", phase: "approach", img: "w_MilitaryPress", gearTag: "Bilanciere", p: "2-3 mini-serie", cue: "Bilanciere leggero e progressivo per entrare nel gesto fresco." },
     ],
     ex: [
       { n: "Military Press", s: "4x6-8", rpe: "8-9", note: "Setup: piedi larghezza anche, mani poco oltre spalle, gomiti leggermente avanti, glutei e addome attivi. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + rack", errori: "Iperestensione lombare; barra davanti al viso; gomiti che svasano; testa che arretra" },
@@ -4817,10 +4807,19 @@ export default function App() {
   }
 
   function getWarmupPhaseLabel(phase) {
-    if (phase === "mobility") return "Fase 1 · Mobilita";
-    if (phase === "activation") return "Fase 2 · Attivazione";
-    if (phase === "approach") return "Fase 3 · Avvicinamento";
+    if (phase === "mobility") return "⚡ Mobilita";
+    if (phase === "activation") return "🔒 Attivazione";
+    if (phase === "circuit") return "🔥 Circuito";
+    if (phase === "approach") return "🏋️ Avvicinamento";
     return "Riscaldamento";
+  }
+
+  function getWarmupPhaseHint(phase) {
+    if (phase === "mobility") return "Apri le articolazioni e prepara il ROM.";
+    if (phase === "activation") return "Fissa il nuovo assetto con core e stabilizzatori.";
+    if (phase === "circuit") return "1 giro solo, zero pause interne, poi 30s di respiro.";
+    if (phase === "approach") return "Serie leggere e progressive del primo gesto del giorno.";
+    return "";
   }
 
   function getWarmupGroups(list) {
@@ -4837,22 +4836,28 @@ export default function App() {
     return groups;
   }
 
-  function getWarmupCheckKey(dayName, itemIndex) {
-    return [dayName || "", itemIndex].join("::");
+  function getWarmupCheckKey(dayName, phase) {
+    return [dayName || "", phase || "mobility"].join("::");
   }
 
-  function isWarmupDone(dayName, itemIndex) {
-    return !!warmupChecks[getWarmupCheckKey(dayName, itemIndex)];
+  function isWarmupDone(dayName, phase) {
+    return !!warmupChecks[getWarmupCheckKey(dayName, phase)];
   }
 
-  function toggleWarmupDone(dayName, itemIndex) {
-    var key = getWarmupCheckKey(dayName, itemIndex);
+  function toggleWarmupDone(dayName, phase) {
+    var key = getWarmupCheckKey(dayName, phase);
     setWarmupChecks(function(prev) {
       var next = Object.assign({}, prev);
       if (next[key]) delete next[key];
       else next[key] = true;
       return next;
     });
+  }
+
+  function getWarmupCircuitSummary(items) {
+    return (items || []).map(function(item) {
+      return [item.p, item.n && item.n.toLowerCase()].filter(Boolean).join(" ");
+    }).join(" → ");
   }
 
   function getWarmupChoiceOptions(item) {
@@ -4878,9 +4883,8 @@ export default function App() {
 
   function getWarmupSelectionHint(levelKey, dayIndex) {
     if (levelKey !== "v4") return "";
-    if (dayIndex === 0 || dayIndex === 3) return "Scegli 1-2 varianti che alzano la temperatura e ti preparano al pattern lower del giorno. Poi passa alle serie di avvicinamento.";
-    if (dayIndex === 1 || dayIndex === 4) return "Scegli 1-2 varianti che scaldano spalle e scapole senza affaticarti. Poi passa all'attivazione specifica e alle serie di avvicinamento.";
-    return "";
+    if (dayIndex === 1 || dayIndex === 4) return "Nei giorni upper il circuito evita di pre-affaticare petto, dorsali e tricipiti: lavora piu da gambe, anche e sistema nervoso.";
+    return "Tempo target 12-15 minuti totali: mobilita, attivazione, 1 giro di circuito e serie di avvicinamento.";
   }
 
   function getApproachAdvice(dayIndex, exName) {
@@ -8037,8 +8041,8 @@ function isNearBodyweightElasticSession(exName, sets) {
         {!(isBasics || isBeginner) && <div id="theory-section-warmup" style={{ background: T.cd, borderRadius: 18, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 10px 24px rgba(0,0,0,0.05)" }}>
           <div onClick={function() { var next = showTheorySection === "warmup" ? null : "warmup"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-warmup"); }} style={{ padding: "16px 18px 13px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "warmup" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
             <div>
-              <div style={{ fontSize: 16, fontWeight: 800, color: showTheorySection === "warmup" ? dc : T.tx, marginBottom: 2 }}>🔥 Riscaldamento: mobilita e stabilita</div>
-              <div style={{ fontSize: 12, color: T.sub }}>Joint-by-joint, ordine corretto delle fasi e logica pratica prima dei pesi.</div>
+              <div style={{ fontSize: 16, fontWeight: 800, color: showTheorySection === "warmup" ? dc : T.tx, marginBottom: 2 }}>🔥 Riscaldamento: 4 fasi complete</div>
+              <div style={{ fontSize: 12, color: T.sub }}>Mobilita, stabilita, circuito neurale e serie di avvicinamento in 12-15 minuti.</div>
             </div>
             <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showTheorySection === "warmup" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
           </div>
@@ -8052,9 +8056,10 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>
               <div style={{ display: "grid", gap: 8 }}>
                 {[
-                  ["Ordine corretto", "Prima mobilita dinamica dal basso verso l'alto. Poi attivazione e stabilita. Solo dopo fai le serie di avvicinamento del primo esercizio pesante."],
+                  ["Ordine corretto", "Prima mobilita dinamica dal basso verso l'alto. Poi attivazione e stabilita. Poi un circuito neurale breve. Solo dopo fai le serie di avvicinamento del primo esercizio pesante."],
                   ["Perche prima mobilita", "Se caviglia, anca o toracica sono rigide, il corpo usa compensi e rigidita inutile. Apri prima il ROM, poi insegni al corpo a controllarlo."],
-                  ["Perche poi stabilita", "Subito dopo la mobilita c'e una finestra utile: il corpo non puo piu contare solo sulla rigidita. Dead bug, shoulder tap, scapole e ponte monopodalico servono a fissare il nuovo assetto."]
+                  ["Perche poi stabilita", "Subito dopo la mobilita c'e una finestra utile: il corpo non puo piu contare solo sulla rigidita. Dead bug, shoulder tap, scapole e ponte monopodalico servono a fissare il nuovo assetto."],
+                  ["Perche il circuito e corto", "Serve solo ad alzare frequenza cardiaca e attivazione nervosa. E un giro solo, senza fatica. Se parti gia stanca puoi saltarlo e passare direttamente all'avvicinamento."]
                 ].map(function(row, ri) {
                   return <div key={ri} style={{ background: T.sb, border: "1px solid " + T.bg, borderRadius: 10, padding: "10px 11px" }}>
                     <div style={{ fontSize: 11, fontWeight: 800, color: dc, marginBottom: 3 }}>{row[0]}</div>
@@ -8065,9 +8070,10 @@ function isNearBodyweightElasticSession(exName, sets) {
               <div style={{ padding: "11px 12px", borderRadius: 12, background: "#8E6C420E", border: "1px solid #8E6C4220" }}>
                 <div style={{ fontSize: 11, fontWeight: 800, color: "#8E6C42", textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Schema pratico da seguire</div>
                 <div style={{ display: "grid", gap: 5, fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
-                  <div>Fase 1 · Mobilita: caviglie, anche, toracica, spalle.</div>
-                  <div>Fase 2 · Attivazione: core anti-estensione o anti-rotazione e stabilizzatori specifici del giorno.</div>
-                  <div>Fase 3 · Avvicinamento: 2-5 serie leggere e progressive solo per preparare il primo esercizio di lavoro.</div>
+                  <div>Fase 1 · Mobilita: 4-5 minuti per aprire caviglie, anche, toracica e spalle.</div>
+                  <div>Fase 2 · Attivazione: 2-3 minuti di core e stabilizzatori specifici del giorno.</div>
+                  <div>Fase 3 · Circuito neurale: 1 giro solo, continuo, senza arrivare a fiatone pesante.</div>
+                  <div>Fase 4 · Avvicinamento: 2-3 o 3 serie leggere e progressive del primo gesto del giorno.</div>
                 </div>
               </div>
             </div>
@@ -9318,74 +9324,64 @@ function isNearBodyweightElasticSession(exName, sets) {
             {!dayData.cardio && !dayData.rest && <div ref={function(el) { if (el) el._sectionKey = "intro"; }} id="section-warmup" style={{ borderBottom: "1px solid " + T.bg }}>
               <div onClick={function() { var opening = !showIntro; setShowIntro(opening); if (opening) { setShowExSection(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-warmup"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showIntro ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
                 <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#128293;</div>
-                <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Riscaldamento</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{dayData.warmup.length + " esercizi · " + dayData.dur}</div></div>
+                <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Riscaldamento</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>4 fasi · 12-15 min totali</div></div>
                 <div style={{ fontSize: 13, color: dc, transform: showIntro ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
               {showIntro && <div style={{ padding: "0 14px 14px" }}><div style={{ background: T.sb, borderRadius: 10, padding: 12 }}>
                 {getWarmupSelectionHint(level, dayIdx) && <div style={{ marginBottom: 10, padding: "10px 12px", borderRadius: 8, background: dc + "0B", border: "1px solid " + dc + "1A", fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
-                  <b style={{ color: dc }}>Pacchetto A attivo:</b> {getWarmupSelectionHint(level, dayIdx)}
+                  <b style={{ color: dc }}>Schema del giorno:</b> {getWarmupSelectionHint(level, dayIdx)}
                 </div>}
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                   {getWarmupGroups(dayData.warmup).map(function(group, groupIndex) {
+                    var phaseDone = isWarmupDone(dayData.name, group.phase);
                     return <div key={group.phase + "-" + groupIndex} style={{ display: "grid", gap: 8 }}>
-                      <div style={{ padding: "7px 10px", borderRadius: 8, background: dc + "0D", border: "1px solid " + dc + "1A", fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>
-                        {getWarmupPhaseLabel(group.phase)}
+                      <div style={{ padding: "9px 10px", borderRadius: 8, background: dc + "0D", border: "1px solid " + dc + "1A", display: "flex", gap: 8, alignItems: "center", justifyContent: "space-between" }}>
+                        <div>
+                          <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.7 }}>
+                            {getWarmupPhaseLabel(group.phase)}
+                          </div>
+                          {getWarmupPhaseHint(group.phase) && <div style={{ fontSize: 10, color: T.sub, marginTop: 3, lineHeight: 1.5 }}>
+                            {getWarmupPhaseHint(group.phase)}
+                          </div>}
+                        </div>
+                        <button onClick={function(e) { e.stopPropagation(); toggleWarmupDone(dayData.name, group.phase); }} style={{ display: "flex", alignItems: "center", gap: 4, padding: "5px 10px", border: "1px solid " + (phaseDone ? T.ok : dc + "28"), borderRadius: 999, background: phaseDone ? T.ok : T.cd, color: phaseDone ? "#fff" : dc, fontSize: 10, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}>
+                          {phaseDone ? "✓ Fase fatta" : "○ Segna fatta"}
+                        </button>
                       </div>
-                      {group.items.map(function(w) {
-                    var wi = dayData.warmup.indexOf(w);
-                    var altKey = dayIdx + "-" + wi;
-                    var chosenAlt = warmupAlt[altKey]; // undefined = default, number = index in w.alt
-                    var active = chosenAlt != null ? w.alt[chosenAlt] : w;
-                    var imgSrc = warmupImgSrc(active);
-                    var hasImg = !!imgSrc;
-                    var altCount = w.alt ? w.alt.length : 0;
-                    var choiceOptions = getWarmupChoiceOptions(w);
+                      {group.phase === "circuit" ? <div style={{ borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "20", padding: 10, background: dc + "06" }}>
+                        <div style={{ fontSize: 12, lineHeight: 1.65, color: T.tx, fontWeight: 700 }}>
+                          {getWarmupCircuitSummary(group.items)}
+                        </div>
+                        <div style={{ fontSize: 11, lineHeight: 1.6, color: T.sub, marginTop: 5 }}>
+                          1 giro solo, nessuna pausa tra gli esercizi. Alla fine fai 30 secondi di respiro. Se oggi sei gia scarica, puoi saltare il circuito.
+                        </div>
+                        <div style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 8, flexWrap: "wrap" }}>
+                          {group.items.map(function(item, itemIndex) {
+                            return item.lk ? <EmbedLink key={item.n + "-" + itemIndex} url={item.lk} label={item.n} size={10} /> : null;
+                          })}
+                        </div>
+                      </div> : group.items.map(function(active, itemIndex) {
+                    var wi = dayData.warmup.indexOf(active);
                     var warm = warmupInfo(active.d, active.tm);
                     var paramsLabel = active.p || active.t || active.s || warm.execution;
                     var cueLabel = active.cue || active.h || active.d || warm.objective || warm.notes;
-                    var done = isWarmupDone(dayData.name, wi);
                     return <div key={wi} style={{ borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "20", padding: 10 }}>
                       <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-                        <div style={{ width: 24, height: 24, borderRadius: 6, background: dc, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, flexShrink: 0, marginTop: 2 }}>{wi + 1}</div>
-                        {hasImg ? <img onClick={function() { setShowImg(showImg === "w" + wi ? null : "w" + wi); }} src={imgSrc} style={{ width: 54, height: 54, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "pointer", border: "1px solid " + dc + "20" }} /> : <div style={{ width: 54, height: 54, borderRadius: 8, background: dc + "10", color: dc, fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>🔥</div>}
+                        <div style={{ width: 24, height: 24, borderRadius: 6, background: dc, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, flexShrink: 0, marginTop: 2 }}>{itemIndex + 1}</div>
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ display: "flex", alignItems: "flex-start", gap: 8, justifyContent: "space-between", marginBottom: 4 }}>
                             <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{active.n}</div>
-                            {altCount > 0 && <span style={{ padding: "3px 8px", borderRadius: 999, border: "1px solid " + dc + "28", background: T.cd, color: dc, fontSize: 10, fontWeight: 700, flexShrink: 0 }}>varianti</span>}
+                            <span style={{ padding: "3px 8px", borderRadius: 999, border: "1px solid " + dc + "28", background: T.cd, color: dc, fontSize: 10, fontWeight: 700, flexShrink: 0 }}>{getWarmupGearBadge(active).label}</span>
                           </div>
-                          {choiceOptions.length > 1 && <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
-                            {choiceOptions.map(function(choice) {
-                              var badge = getWarmupGearBadge(choice);
-                              var isSelected = choice.__choiceIndex === chosenAlt || (choice.__choiceIndex == null && chosenAlt == null);
-                              return <button
-                                key={String(choice.__choiceIndex) + "-" + choice.n}
-                                onClick={function() {
-                                  setWarmupAlt(function(prev) {
-                                    var next = Object.assign({}, prev);
-                                    if (choice.__choiceIndex == null) delete next[altKey];
-                                    else next[altKey] = choice.__choiceIndex;
-                                    return next;
-                                  });
-                                }}
-                                style={{ display: "flex", alignItems: "center", gap: 5, padding: "4px 9px", borderRadius: 999, border: "1px solid " + (isSelected ? dc : dc + "24"), background: isSelected ? dc + "12" : T.cd, color: isSelected ? dc : T.sub, fontSize: 10, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}
-                              >
-                                <span>{choice.__packageLabel}</span>
-                                <span>{badge.icon}</span>
-                                <span>{badge.label}</span>
-                              </button>;
-                            })}
-                          </div>}
                           <div style={{ display: "grid", gap: 5 }}>
                             {paramsLabel && <div style={{ fontSize: 12, lineHeight: 1.55, color: T.tx, fontWeight: 700 }}>{paramsLabel}</div>}
                             {cueLabel && <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{cueLabel}</div>}
                           </div>
                           <div style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 6, flexWrap: "wrap" }}>
                             {active.lk && <EmbedLink url={active.lk} label="video" size={10} />}
-                            <button onClick={function() { toggleWarmupDone(dayData.name, wi); }} style={{ display: "flex", alignItems: "center", gap: 4, padding: "3px 10px", border: "1px solid " + (done ? T.ok : dc + "28"), borderRadius: 6, background: done ? T.ok : T.cd, color: done ? "#fff" : dc, fontSize: 10, fontWeight: 800, cursor: "pointer" }}>{done ? "✓ Fatto" : "○ Fatto"}</button>
                           </div>
                         </div>
                       </div>
-                      {hasImg && showImg === "w" + wi && <img onClick={function() { setShowImg(null); }} src={imgSrc} style={{ width: "100%", borderRadius: 8, marginTop: 8, cursor: "zoom-out" }} />}
                     </div>;
                   })}
                     </div>;

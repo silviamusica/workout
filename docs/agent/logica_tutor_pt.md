@@ -159,6 +159,18 @@ La V4 usa ora due blocchi distinti:
 - nei giorni cardio compare dentro la sezione `Cardio e mobilità anca`
 - non crea nuovi tab-giorno e non rompe il tracking esistente dei pesi
 
+In piu, nei 4 giorni pesi il riscaldamento principale e ora strutturato in `4 fasi`:
+- `Mobilita`
+- `Attivazione + stabilita`
+- `Circuito neurale`
+- `Serie di avvicinamento`
+
+Nota pratica per PT e agenti:
+- il `Circuito neurale` e sempre `1 giro solo`
+- non deve mai diventare lavoro a fatica
+- se l'utente arriva gia stanca, il circuito si puo saltare senza considerarlo un errore
+- in app lo stato `Fatto` del riscaldamento e segnato per `fase`, non per singolo esercizio
+
 ### Stato utente
 
 Per stretching e mobilità l'utente può segnare:

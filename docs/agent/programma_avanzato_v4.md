@@ -18,7 +18,7 @@ Obiettivo: fornire a un agente o collaboratore un riferimento unico, leggibile e
 
 ## Perche questo programma e fatto cosi
 
-### Riscaldamento: mobilita prima, stabilita dopo
+### Riscaldamento: 4 fasi complete, non cardio vuoto
 
 Il riscaldamento V4 segue la logica `joint-by-joint`:
 - caviglia: mobilita
@@ -37,10 +37,18 @@ Quando una zona che dovrebbe muoversi si irrigidisce, quella vicina compensa. In
 Per questo l'ordine corretto e sempre:
 1. mobilita dinamica dal basso verso l'alto
 2. attivazione e stabilita del distretto che dovra controllare il gesto
-3. serie di avvicinamento del primo esercizio pesante
+3. circuito neurale breve per alzare frequenza cardiaca e attivazione
+4. serie di avvicinamento del primo esercizio pesante
 
-Nei giorni lower il blocco ruota intorno a caviglia + anca + core/glutei.
-Nei giorni upper ruota intorno a toracica + spalla + controllo scapolare/core.
+Regole fisse:
+- il blocco completo deve stare dentro `12-15 minuti`
+- il circuito e `1 giro solo`, mai a fatica
+- nel circuito non ci sono pause tra gli esercizi
+- alla fine del circuito ci sono `30 secondi di respiro`
+- se arrivi gia stanca, il circuito si puo saltare
+
+Nei giorni lower il blocco ruota intorno a caviglia + anca + core/glutei + attivazione esplosiva non tassante.
+Nei giorni upper ruota intorno a toracica + spalla + controllo scapolare/core, evitando di pre-affaticare i muscoli che lavoreranno nelle serie vere.
 Nei giorni cardio c'e piu tempo: qui compare il blocco mobilita completo, piu lungo e meno compresso.
 
 ### La struttura: Upper/Lower su 4 giorni
@@ -359,13 +367,13 @@ Nota UI attuale:
 
 | # | Esercizio | Serie/Tempo | Note |
 |---|---|---|---|
-| Fase 1 | Dorsiflessione al muro | 10 rip per lato | Caviglia |
-| Fase 1 | Alfredson eccentrico | 2x10 per piede | Tendine d'Achille e polpaccio |
-| Fase 1 | 90/90 hip mobility | 8-10 passaggi per lato | Rotazione anca |
-| Fase 1 | Calf Raises con pallina | 2x15 | Piede + adduttori |
-| Fase 2 | Ponte monopodalico | 2x8 per lato | Gluteo e stabilita bacino |
-| Fase 2 | Dead Bug | 2x6 per lato | Core anti-estensione |
-| Fase 3 | Serie avvicinamento squat con bilanciere | 3-5 serie | Progressive, senza fatica |
+| Fase 1 | Dorsiflessione al muro | 8 rip per lato | Caviglia |
+| Fase 1 | 90/90 hip mobility | 8 passaggi per lato | Anca |
+| Fase 1 | Alfredson eccentrico | 10 per piede | Polpaccio e tendine |
+| Fase 2 | Ponte monopodalico | 6 per lato | Gluteo e stabilita bacino |
+| Fase 2 | Dead Bug | 5 per lato | Core anti-estensione |
+| Fase 3 | Push-Up → Affondi saltati alternati → Trazioni con elastico | 6-8 → 5/lato → 3-4 | 1 giro, continuo, zero fatica |
+| Fase 4 | Serie avvicinamento squat | 3 serie | Scarico → 50% → 70-80% |
 
 **Esercizi**
 
@@ -399,13 +407,13 @@ Protocollo breve facoltativo dopo lo stretching finale:
 
 | # | Esercizio | Serie/Tempo | Note |
 |---|---|---|---|
-| Fase 1 | T-spine rotation in quadrupedia | 8-10 rip per lato | Mobilita toracica |
+| Fase 1 | T-spine rotation in quadrupedia | 8 rip per lato | Mobilita toracica |
 | Fase 1 | Shoulder CARs | 5 cerchi per direzione per braccio | Mobilita spalla |
-| Fase 1 | Dorsiflessione al muro | 10 rip per lato | Anche nei giorni upper |
-| Fase 2 | Shoulder Tap | 2x8 per lato | Core anti-rotazione |
-| Fase 2 | Band pull-apart con elastico | 2x15 | Attivazione scapolare |
-| Fase 2 | Scapular Pull-Up | 2x5 | Depressione scapolare |
-| Fase 3 | Serie avvicinamento trazioni | 2-3 serie | Solo per preparare la tirata |
+| Fase 1 | Dorsiflessione al muro | 8 rip per lato | Appoggio stabile anche nei giorni upper |
+| Fase 2 | Band pull-apart con elastico | 15 rip | Attivazione scapolare |
+| Fase 2 | Shoulder Tap | 8 per lato | Core anti-rotazione |
+| Fase 3 | Kettlebell swing leggero → Goblet squat con fermo → Squat thrust | 10 → 5 → 5 | 1 giro, continuo, senza pre-affaticare l'upper |
+| Fase 4 | Serie avvicinamento trazioni | 2-3 mini-serie | Progressive con elastico |
 
 **Esercizi**
 
@@ -460,13 +468,13 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 
 | # | Esercizio | Serie/Tempo | Note |
 |---|---|---|---|
-| Fase 1 | Dorsiflessione al muro | 10 rip per lato | Caviglia |
-| Fase 1 | Alfredson eccentrico | 2x10 per piede | Tendine d'Achille e polpaccio |
-| Fase 1 | 90/90 hip mobility | 8-10 passaggi per lato | Rotazione anca |
-| Fase 1 | Calf Raises con pallina | 2x15 | Piede + adduttori |
-| Fase 2 | Ponte monopodalico | 2x8 per lato | Gluteo e stabilita bacino |
-| Fase 2 | Dead Bug | 2x6 per lato | Core anti-estensione |
-| Fase 3 | Serie avvicinamento stacco con bilanciere | 3-5 serie | Progressive, senza fatica |
+| Fase 1 | Dorsiflessione al muro | 8 rip per lato | Caviglia |
+| Fase 1 | 90/90 hip mobility | 8 passaggi per lato | Anca |
+| Fase 1 | Calf Raises con pallina | 12 rip | Piede e controllo adduttori |
+| Fase 2 | Ponte monopodalico | 6 per lato | Gluteo e stabilita bacino |
+| Fase 2 | Shoulder Tap | 6 per lato | Core anti-rotazione |
+| Fase 3 | Push-Up → Affondi saltati alternati → Burpee completo | 6-8 → 5/lato → 4-5 | 1 giro, continuo, controllo pieno |
+| Fase 4 | Serie avvicinamento stacco | 3 serie | Scarico → 50% → 70-80% |
 
 **Esercizi**
 
@@ -498,13 +506,13 @@ Stesso blocco facoltativo del Giorno 1, mostrato dopo lo stretching finale.
 
 | # | Esercizio | Serie/Tempo | Note |
 |---|---|---|---|
-| Fase 1 | T-spine rotation in quadrupedia | 8-10 rip per lato | Mobilita toracica |
+| Fase 1 | T-spine rotation in quadrupedia | 8 rip per lato | Mobilita toracica |
 | Fase 1 | Shoulder CARs | 5 cerchi per direzione per braccio | Mobilita spalla |
-| Fase 1 | Dorsiflessione al muro | 10 rip per lato | Anche nei giorni upper |
-| Fase 2 | Shoulder Tap | 2x8 per lato | Core anti-rotazione |
-| Fase 2 | Band pull-apart con elastico | 2x15 | Attivazione scapolare |
-| Fase 2 | Scapular Pull-Up | 2x5 | Depressione scapolare |
-| Fase 3 | Serie avvicinamento military press | 2-3 mini-serie | Bilanciere vuoto o poco carico |
+| Fase 1 | Dorsiflessione al muro | 8 rip per lato | Base stabile anche nel giorno upper |
+| Fase 2 | Scapular Pull-Up | 5 rip | Depressione scapolare |
+| Fase 2 | Band pull-apart con elastico | 15 rip | Attivazione scapolare |
+| Fase 3 | Kettlebell swing leggero → Affondi saltati alternati → Squat jump | 10 → 5/lato → 5 | 1 giro, continuo, solo sistema nervoso |
+| Fase 4 | Serie avvicinamento military press | 2-3 mini-serie | Bilanciere leggero e progressivo |
 
 **Esercizi**
 
@@ -562,8 +570,9 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 - Il cardio resta separato dai pesi
 - In app, il cardio della V4 è consultabile in una sezione dedicata della scheda, separata dai tab-giorno pesi
 - Lo stretching finale ha timer rapido e stato `Fatto` / `Saltato`
-- Il riscaldamento mostra tre fasi: `Mobilita`, `Attivazione`, `Avvicinamento`
-- Il riscaldamento mostra solo parametri, cue breve, video e stato `Fatto`
+- Il riscaldamento mostra quattro fasi: `Mobilita`, `Attivazione`, `Circuito`, `Avvicinamento`
+- Il circuito e compatto, continuo e facoltativo se l'utente arriva gia stanca
+- Il riscaldamento usa un solo stato `Fatto` per fase, non per singolo esercizio
 - Il protocollo anca non crea giorni nuovi: è `Bonus mobilità anca` nei giorni pesi e blocco dedicato nei giorni cardio
 - La definizione dipende soprattutto dalla dieta, non da una scheda separata gia presente in app
 
