@@ -558,8 +558,8 @@ var INTRO_BASICS = [
       { type: "p", content: "Recupero consigliato — la ricerca (Schoenfeld) mostra che recuperi più lunghi sui compound producono più ipertrofia preservando il volume nelle serie successive:" },
       { type: "bold-list", content: [
         ["Compound pesanti", "Squat, Stacco, Trazioni, Military, Panca: 2-3 minuti."],
-        ["Accessori medi", "Squat Bulgaro, Stacco Rumeno, Hip Thrust: 90s-2 min."],
-        ["Monoarticolari", "Curl, Tricipiti, Face Pull, Woodchop: 60-90 secondi."],
+        ["Accessori medi", "Stacco Rumeno, Affondi, Hyperextension, Pulley: 90s-2 min."],
+        ["Monoarticolari", "Curl, Leg Curl al Cavo, Woodchop, Fire Hydrant: 60-90 secondi."],
       ]},
     ]
   },
@@ -982,8 +982,8 @@ var PRINCIPLES_DEEP = [
   { t: "Hip Dominant vs Knee Dominant", d: [
     {type:"p", content:"I compound lower di questa scheda si dividono in due categorie con meccanica e muscoli diversi."},
     {type:"bold-list", content:[
-      ["Knee Dominant", "busto verticale, ginocchio che flette → quadricipiti. In questa scheda: Squat, Squat Bulgaro, Affondi camminati."],
-      ["Hip Dominant", "anca che spinge indietro, busto inclinato → glutei, femorali, erettori. In questa scheda: Stacco da Terra, Stacco Rumeno, Hip Thrust, Hyperextension."],
+      ["Knee Dominant", "busto verticale, ginocchio che flette → quadricipiti. In questa scheda: Squat, Affondi."],
+      ["Hip Dominant", "anca che spinge indietro, busto inclinato → glutei, femorali, erettori. In questa scheda: Stacco da Terra, Stacco Rumeno, Hyperextension."],
     ]},
     {type:"p", content:"Lower A è orientato al knee dominant (Squat come priorità). Lower B è orientato all'hip dominant (Stacco come priorità). La distribuzione garantisce equilibrio tra quadricipiti e catena posteriore."},
   ]},
@@ -1015,21 +1015,20 @@ var PRINCIPLES_DEEP = [
   { t: "I 7 fondamentali classici: ci sono tutti?", d: [
     {type:"p", content:"Si. Ferlito identifica 7 fondamentali classici: Panca, Squat, Stacco, Trazioni, Military Press, Dip e Rematore. Il programma attuale li copre tutti."},
     {type:"table", columns:["Fondamentale","Linea di azione","Presente?","Dove"], rows:[
-      ["Panca","Spinta orizzontale","Si","Giorno 2: Panca 4x8-10"],
-      ["Squat","Dominante ginocchio","Si","Giorno 1: Squat 4x6-8"],
-      ["Stacco","Estensione d'anca","Si","Giorno 4: Stacco 4x5-8"],
-      ["Trazioni","Tirata verticale","Si","Giorno 2 e Giorno 5"],
-      ["Military Press","Spinta verticale","Si","Giorno 5: Military Press 4x6-8"],
-      ["Dip","Spinta complementare","Si","Giorno 5: Dip alle Parallele 3xRIR 1-2"],
-      ["Rematore","Tirata orizzontale","Si","Giorno 2: T-bar Row 4x8-10"],
+      ["Panca","Spinta orizzontale","Si","Giorno 2: Panca 5x6-8"],
+      ["Squat","Dominante ginocchio","Si","Giorno 1: Squat 5x5-6"],
+      ["Stacco","Estensione d'anca","Si","Giorno 4: Stacco 5x4-5"],
+      ["Trazioni","Tirata verticale","Si","Giorno 2: Trazioni 5x + Giorno 5: Trazioni Supine 4x"],
+      ["Military Press","Spinta verticale","Si","Giorno 5: Military Press 5x5-6"],
+      ["T-bar Row","Tirata orizzontale","Si","Giorno 5: T-bar Row 5x8-10"],
     ]},
     {type:"p", content:"In piu hai i Push-Up come lift prioritario. Sono la versione a corpo libero della spinta orizzontale: stessa linea d'azione della Panca, ma con carico e progressione diversi."},
   ]},
   { t: "Perche 4 lift prioritari", d: [
     {type:"p", content:"Squat, Stacco, Trazioni e Push-Up sono tutti multiarticolari: coinvolgono piu articolazioni e grandi catene muscolari contemporaneamente. Sono i movimenti che danno il massimo stimolo con il minimo numero di esercizi."},
     {type:"bold-list", content:[
-      ["Squat", "Giorno 1 pesante, con Squat Bulgaro come variante di volume unilaterale."],
-      ["Stacco", "Giorno 4 pesante, con Stacco Rumeno come accessorio per femorali e catena posteriore."],
+      ["Squat", "Giorno 1 pesante, con Stacco Rumeno come accessorio femorali nello stesso giorno."],
+      ["Stacco", "Giorno 4 pesante, con Affondi e Hyperextension come volume accessorio."],
       ["Trazioni", "Giorno 2 presa prona per forza, Giorno 5 presa neutra o supina per volume."],
       ["Push-Up", "Giorno 5 a corpo libero, con la Panca nel Giorno 2 come variante bilanciere dello stesso pattern di spinta."],
     ]},
@@ -1533,7 +1532,7 @@ var DAYS = [
 
 /* === IPERTROFIA V4 — Upper/Lower 4+2 Cardio (da CSV programma) === */
 var DAYS_V4 = [
-  { name: "Giorno 1", focus: "Lower A — Quadricipiti + Glutei", dur: "5 esercizi", tEst: 65,
+  { name: "Giorno 1", focus: "Lower A — Quadricipiti + Femorali", dur: "4 esercizi", tEst: 80,
     intro: {
       attrezzi: ["Bilanciere + rack + bumper", "Manubri", "Panca", "Cavo basso + cavigliera", "Slackline board", "Ab wheel"],
       muscoli: ["Quadricipiti (Squat)", "Femorali/Glutei (Stacco Rumeno)", "Glutei (Hip thrust)", "Femorali (Leg curl al cavo)", "Core (Ab wheel)"],
@@ -1558,7 +1557,7 @@ var DAYS_V4 = [
       { n: "Ab Wheel", s: "5x8-10", rpe: "8", note: "Dalle ginocchia. Costole giu e glutei attivi. Alternativa: TRX fallout o fitball rollout.", rec: "90s", gear: "Ab wheel", errori: "Lombare che si inarca; anche che non si estendono; range troppo corto" },
     ], str: ["Quadricipiti","Flessori anca","Glutei"] },
 
-  { name: "Giorno 2", focus: "Upper A — Tirata + Petto", dur: "5 esercizi", tEst: 65,
+  { name: "Giorno 2", focus: "Upper A — Tirata + Petto", dur: "4 esercizi", tEst: 85,
     intro: {
       attrezzi: ["Barra trazioni", "Elastico leggero", "T-bar", "Bilanciere + panca + rack", "Cavo alto + corda", "Manubri"],
       muscoli: ["Dorsali/Bicipiti (Trazioni, T-bar row)", "Pettorali/Tricipiti (Panca piana)", "Deltoidi posteriori (Face pull)", "Bicipiti (Curl)"],
@@ -1593,13 +1592,13 @@ var DAYS_V4 = [
     ]
   },
 
-  { name: "Giorno 4", focus: "Lower B — Glutei + Femorali", dur: "6 esercizi", tEst: 75,
+  { name: "Giorno 4", focus: "Lower B — Stacco + Catena Posteriore", dur: "4 esercizi", tEst: 85,
     intro: {
       attrezzi: ["Bilanciere + bumper", "Manubri", "Panca", "Panca romana + sacco sabbia", "Fitball", "Elastico"],
-      muscoli: ["Catena posteriore (Stacco, Hyperextension)", "Glutei/Quad (Squat Bulgaro, Hip thrust, Affondi)", "Femorali (Fitball curl)"],
-      obiettivi: ["Costruire forza nello Stacco da terra con poche serie ma pesanti", "Aggiungere volume unilaterale con Squat Bulgaro", "Chiudere con accessori utili senza trasformare la seduta in un secondo stacco"],
-      attenzione: ["Stacco: barra SEMPRE vicina al corpo, anche e spalle salgono insieme, collo neutro", "Squat Bulgaro: prima controllo, poi carico; ginocchio segue la punta", "Hip thrust: versione piu compatta e meno tassante del Giorno 1", "Hyperextension: usa glutei e femorali, non cercare iperestensione lombare"],
-      ritmo: "Recuperi 2-3 min su Stacco. 90s-2 min su Squat Bulgaro e Hip thrust. 90s-2 min su Affondi. 90s sugli accessori."
+      muscoli: ["Catena posteriore (Stacco, Hyperextension)", "Quadricipiti/Glutei (Affondi)", "Gluteo medio (Fire Hydrant)"],
+      obiettivi: ["Costruire forza nello Stacco da terra con poche serie ma pesanti", "Aggiungere volume su catena posteriore e gambe con Affondi e Hyperextension", "Attivare il gluteo medio con Fire Hydrant a fine sessione"],
+      attenzione: ["Stacco: barra SEMPRE vicina al corpo, anche e spalle salgono insieme, collo neutro", "Affondi: passo abbastanza lungo, ginocchio segue la punta, busto stabile", "Hyperextension: usa glutei e femorali, non cercare iperestensione lombare", "Fire Hydrant: bacino fermo, pausa 1s in alto"],
+      ritmo: "Recuperi 2-3 min su Stacco. 90s-2 min su Affondi. 90s su Hyperextension. 60s su Fire Hydrant."
     },
     warmup: [
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "12 per gamba x2", cue: "Come Giorno 1: tallone a terra e controllo pieno.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
@@ -1618,13 +1617,13 @@ var DAYS_V4 = [
       { n: "Fire Hydrant", s: "3x15-20", rpe: "8", note: "Per gamba. Quattro zampe, bacino completamente fermo. Pausa 1s in alto. Alternativa: con elastico sopra le ginocchia per piu resistenza.", rec: "60s", gear: "Corpo libero (o elastico)", errori: "Bacino che ruota o si inclina; ginocchio che perde i 90 gradi; movimento troppo veloce senza pausa" },
     ], str: ["Supine Assisted Leg Pull","Figure-Four Supino","Cat-Cow Lento","Half Kneeling Lunge"], hipBonus: true },
 
-  { name: "Giorno 5", focus: "Upper B — Spinta + Trazioni + Tricipiti", dur: "6 esercizi", tEst: 65,
+  { name: "Giorno 5", focus: "Upper B — Spinta + Tirata", dur: "5 esercizi", tEst: 80,
     intro: {
-      attrezzi: ["Barra trazioni", "Bilanciere + rack", "Barra dip", "Cavo alto + corda", "Elastico leggero", "Parete libera"],
-      muscoli: ["Pettorali/Core (Push-up)", "Dorsali/Bicipiti (Trazioni neutra/supina)", "Deltoidi (Military press)", "Tricipiti (Dip, Tricipiti cavo)", "Obliqui (Woodchop)"],
-      obiettivi: ["Seconda frequenza su Push-up e Trazioni con variante diversa", "Costruire forza sulla Military press con double progression", "Volume accessorio su tricipiti e obliqui"],
-      attenzione: ["Push-up: corpo RIGIDO come una tavola, gomiti a 45 gradi, petto tocca terra, core contratto", "Military press: core rigido, barra parte dalle clavicole, testa si sposta avanti al passaggio", "Dip: busto inclinato in avanti, scendi fino a gomiti a 90 gradi, controlla la salita"],
-      ritmo: "Recuperi 2 min su Push-up, Trazioni, Military. 90-120s su Dip. 60-90s su Tricipiti cavo e Woodchop."
+      attrezzi: ["T-bar", "Bilanciere + rack", "Barra trazioni", "Elastico leggero", "Cavo alto o elastico"],
+      muscoli: ["Dorsali/Trapezi (T-bar Row)", "Deltoidi (Military Press)", "Pettorali/Core (Push-Up)", "Dorsali/Bicipiti (Trazioni Supine)", "Obliqui (Woodchop)"],
+      obiettivi: ["Costruire forza su T-bar Row e Military Press con double progression", "Seconda frequenza su Push-Up e Trazioni con variante supina", "Volume obliqui con Woodchop"],
+      attenzione: ["T-bar: busto fisso a 45 gradi, tira verso ombelico, scapole addotte 1s", "Military press: core rigido, barra parte dalle clavicole, testa si sposta avanti al passaggio", "Push-up: corpo rigido, gomiti a 45 gradi, petto tocca terra"],
+      ritmo: "Recuperi 2-3 min su T-bar e Military. 2 min su Push-Up e Trazioni Supine. 60-90s su Woodchop."
     },
     warmup: [
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Come Giorno 2: ruota il torace, non il bacino.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
@@ -1886,7 +1885,7 @@ var BASIC_COMPETENCIES = [
       { type: "bold-list", content: [
         ["Perche conta", "Il bacino decide come lavori con glutei, addome e lombare. Se non lo controlli, compensi con schiena e anche."],
         ["Devi saper fare", "Anteroversione volontaria e retroversione volontaria, senza muovere spalle o torace."],
-        ["Ti serve in", "Hip Thrust, Glute Bridge, Plank, Hollow Position, Ab Wheel, Squat profondo, Fitball Hamstring Curl."],
+        ["Ti serve in", "Glute Bridge, Plank, Hollow Position, Ab Wheel, Squat profondo, Hyperextension."],
         ["Segnali giusti", "Riesci ad appiattire e poi ricreare il piccolo arco lombare a comando."],
         ["Esercizi utili", "Pelvic Tilt a terra, Cat-Cow lento, Glute Bridge controllato, Hollow Position."],
         ["Test rapido", "Da supina riesci a premere la lombare a terra e poi a ricreare spazio senza muovere spalle o gambe."],
@@ -1941,9 +1940,9 @@ var BASIC_COMPETENCIES = [
       { type: "p", content: "Serve in trazioni, rematori, panca, dip e military. Nei giorni upper questa competenza e gia attivata nel riscaldamento con Scapular Pull-Up, Band Pull-Apart e retrazione scapolare al muro." },
       { type: "bold-list", content: [
         ["Perche conta", "Le scapole sono la base dinamica delle spinte e delle tirate: non basta tenerle ferme, devi saperle controllare durante tutto il movimento."],
-        ["Ti serve in", "Trazioni, Trazioni Supine, Rematore Manubri, T-bar Row, Panca, Dip, Military Press, Face Pull."],
+        ["Ti serve in", "Trazioni, Trazioni Supine, T-bar Row, Panca, Military Press, Pulley."],
         ["Segnali giusti", "Petto aperto, spalle basse, dorsali che lavorano piu del trapezio alto e parte alta della schiena che guida bene la tirata o la spinta."],
-        ["Esercizi utili", "Band Pull-Apart, retrazione scapolare al muro, Scapular Pull-Up, Face Pull."],
+        ["Esercizi utili", "Band Pull-Apart, retrazione scapolare al muro, Scapular Pull-Up."],
         ["Indicatori oggettivi", "15 Band Pull-Apart puliti senza compensi e 10 retrazioni al muro senza alzare le spalle."],
       ]},
     ]
@@ -1959,7 +1958,7 @@ var BASIC_COMPETENCIES = [
       { type: "p", content: "Prima di caricare uno squat devi saper raggiungere almeno il parallelo con controllo. Il drill piu utile e il goblet squat con pausa in buca, usando i gomiti per spingere delicatamente le ginocchia verso fuori." },
       { type: "bold-list", content: [
         ["Perche conta", "Lo squat pattern insegna equilibrio, profondita e gestione delle ginocchia. Senza questo, il carico arriva troppo presto."],
-        ["Ti serve in", "Squat, Goblet Squat, Squat Bulgaro, Affondi, Walking Lunge, Step Up."],
+        ["Ti serve in", "Squat, Goblet Squat, Affondi, Walking Lunge, Step Up."],
         ["Segnali giusti", "Talloni a terra, ginocchia che seguono i piedi, schiena stabile anche in basso."],
         ["Drill", "Goblet Squat con pausa in buca e gomiti che spingono le ginocchia verso fuori."],
         ["Esercizi utili", "Squat a corpo libero, Goblet Squat, tenuta in buca con gomiti contro le ginocchia."],
@@ -2123,7 +2122,7 @@ var PRINCIPLES = [
   { t: "Come leggere: RPE 8-9", d: "RPE 8 significa che potresti fare ancora 2 ripetizioni; RPE 9 che potresti farne ancora 1. In questa scheda i fondamentali stanno di solito a RPE 8-9 per stimolare bene il muscolo senza distruggere tecnica e recupero." },
   { t: "Come progredire settimana dopo settimana", d: "Stesso peso per tutta la settimana e per tutte le serie. Ogni settimana prova a fare 1 ripetizione in piu per serie. Quando completi tutte le serie al numero piu alto del range sentendo di averne ancora 1-2, aggiungi 2.5 kg e riparti dal numero piu basso. Non aumentare mai peso e ripetizioni nella stessa settimana." },
   { t: "Quando rifare la calibrazione", d: "La calibrazione non si fa una volta sola per sempre. Va rifatta la prima volta con la scheda, dopo uno stop di piu di 2 settimane, dopo un deload sui fondamentali e quando cambi un esercizio. Se i riferimenti non sono piu attuali, l'app ti suggerisce di ricalibrare." },
-  { t: "Recupero tra le serie", d: "Compound pesanti (Squat, Stacco, Trazioni, Military, Panca, Hip Thrust): 2-3 minuti. Accessori (Squat Bulgaro, Rematori, Stacco Rumeno): 90s-2 min. Isolamenti (Curl, Woodchop, Tricipiti cavo): 60-90s. Rispettare i recuperi è importante quanto l'esercizio: il muscolo deve ricaricare ATP per performare nella serie successiva." },
+  { t: "Recupero tra le serie", d: "Compound pesanti (Squat, Stacco, Trazioni, Military, Panca, T-bar Row): 2-3 minuti. Accessori (Stacco Rumeno, Pulley, Affondi, Hyperextension): 90s-2 min. Isolamenti (Curl, Leg Curl al Cavo, Woodchop, Fire Hydrant): 60-90s. Rispettare i recuperi è importante quanto l'esercizio: il muscolo deve ricaricare ATP per performare nella serie successiva." },
   { t: "★ PRIORITÀ: cosa significa", d: "L'esercizio contrassegnato con ★ è il fondamentale della sessione. Va fatto per primo, con la massima concentrazione. Se devi tagliare la sessione per mancanza di tempo o energia, completa almeno l'esercizio prioritario. Il resto è accessorio." },
 ];
 
