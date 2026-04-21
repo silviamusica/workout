@@ -2781,12 +2781,12 @@ var APP_VERSION = typeof __APP_VERSION__ === "string" ? __APP_VERSION__ : "dev";
 var APP_BUILD_TIME = typeof __BUILD_TIME__ === "string" ? __BUILD_TIME__ : "";
 var V4_DAY_SPLIT_PLAN = {
   "Giorno 1": {
-    am: ["Squat", "Stacco Rumeno"],
+    am: ["Squat", "Stacco Rumeno", "Glute Bridge Bilanciere"],
     pm: ["Leg Curl al Cavo", "Ab Wheel"],
   },
   "Giorno 2": {
     am: ["Trazioni", "Panca"],
-    pm: ["Pulley", "Curl Bicipiti"],
+    pm: ["Pulley", "Band Pull-Apart con rotazione esterna", "Curl Bicipiti"],
   },
   "Giorno 4": {
     am: ["Stacco da Terra", "Affondi"],
@@ -2800,9 +2800,9 @@ var V4_DAY_SPLIT_PLAN = {
 
 var FAST_MODE_SUPERSETS = {
   "Giorno 1": [{ a: "Leg Curl al Cavo", b: "Ab Wheel", rest: 60 }],
-  "Giorno 2": [{ a: "Face Pull", b: "Curl Bicipiti", rest: 60 }],
-  "Giorno 4": [{ a: "Hyperextension con Sacco", b: "Fitball Hamstring Curl", rest: 60 }],
-  "Giorno 5": [{ a: "Tricipiti Cavo", b: "Woodchop", rest: 45 }],
+  "Giorno 2": [{ a: "Band Pull-Apart con rotazione esterna", b: "Curl Bicipiti", rest: 60 }],
+  "Giorno 4": [{ a: "Hyperextension", b: "Fire Hydrant", rest: 60 }],
+  "Giorno 5": [{ a: "Push-Up", b: "Woodchop", rest: 45 }],
 };
 
 function getFastSupersetPair(dayName, exName) {
