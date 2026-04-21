@@ -347,7 +347,7 @@ Il recupero suggerito dipende da:
 L'app distingue 3 categorie:
 
 1. `Compound pesante`
-- esempi: Squat, Stacco, Panca, Military, Trazioni, Stacco Rumeno, T-bar Row, Pulley Basso
+- esempi: Squat, Stacco, Panca, Military, Trazioni, Trazioni Supine, Stacco Rumeno, T-bar Row, Pulley, Glute Bridge Bilanciere
 
 2. `Accessorio composto`
 - multiarticolare non heavy
@@ -483,12 +483,12 @@ Esempi:
 - Panca
 - Military Press
 - Stacco Rumeno
+- Glute Bridge Bilanciere
+- T-bar Row
 - Front Squat
 - Pause Squat
 - Push Press
 - Stacco Sumo
-- Hip Thrust Bilanciere
-- T-bar Row
 
 ### Manubri
 - `+1 kg per manubrio`
@@ -514,17 +514,21 @@ Esempi:
 ### Corpo libero
 - `+1 rip per serie`
 
+Esempi:
+- Push-Up
+- Ab Wheel
+- Fire Hydrant
+- Band Pull-Apart con rotazione esterna
+
 Soglie oggi codificate nella logica guidata:
 - `Push-Up`: se fai almeno `15 rip` in tutte le serie per `2 sessioni consecutive`, l'app suggerisce una variante più difficile, per esempio `Push-Up declino` o `diamante`
 - `Trazioni` e `Trazioni Supine`: se fai almeno `8 rip` in tutte le serie per `2 sessioni consecutive`, l'app suggerisce zavorra leggera `+1.25 kg`
-
-Nota: `Dip alle Parallele` e `Fitball Hamstring Curl` non sono più nel programma attivo V4 (rimossi in 2026-04-21).
 
 ### Elastico assistenza
 - `-1 tacca elastico`
 
 ### Sovraccarico incrementale leggero
-- `Hyperextension con Sacco`: `+1 kg nel sacco`
+- `Hyperextension`: `+1 kg`
 
 ## Export e lettura dati
 
@@ -552,6 +556,37 @@ Il timer attuale:
 - ha un lucchetto `🔒`:
   - se bloccato, resta aperto
   - non viene sovrascritto dai nuovi recuperi finché non viene sbloccato
+
+## Modalità sessione: superset e split AM/PM
+
+L'app offre tre formati per ogni giorno pesi: sessione unica, split AM/PM, superset.
+
+### Split AM/PM (V4_DAY_SPLIT_PLAN)
+
+| Giorno | AM | PM |
+|---|---|---|
+| G1 | Squat · Stacco Rumeno · Glute Bridge Bilanciere | Leg Curl al Cavo · Ab Wheel |
+| G2 | Trazioni · Panca | Pulley · Band Pull-Apart con rotazione esterna · Curl Bicipiti |
+| G4 | Stacco da Terra · Affondi | Hyperextension · Fire Hydrant |
+| G5 | T-bar Row · Military Press | Push-Up · Trazioni Supine · Woodchop |
+
+### Superset (FAST_MODE_SUPERSETS)
+
+| Giorno | A | B | Recupero dopo B |
+|---|---|---|---|
+| G1 | Leg Curl al Cavo | Ab Wheel | 60s |
+| G2 | Band Pull-Apart con rotazione esterna | Curl Bicipiti | 60s |
+| G4 | Hyperextension | Fire Hydrant | 60s |
+| G5 | Push-Up | Woodchop | 45s |
+
+### Modalità flusso
+
+L'app ha una modalità flusso pensata per ridurre le micro-decisioni tra una serie e l'altra:
+- checklist setup attrezzi pre-sessione
+- riga `Prossimo:` sempre visibile durante il countdown del timer
+- avanzamento automatico alla card successiva a timer scaduto
+- vibrazione a fine countdown (`navigator.vibrate(200)`)
+- sessione attiva: nasconde tab non utili, resta visibile solo `Scheda`
 
 ## File da controllare se si modifica la logica tutor
 

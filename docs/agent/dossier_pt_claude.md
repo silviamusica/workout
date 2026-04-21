@@ -256,9 +256,14 @@ Questa versione e piu corta della prima:
 - non e costruita su cedimento sistematico
 - e pensata per un recupero pratico e piu rapido
 
-Nota importante:
-- lo `Stacco Rumeno` è trattato come esercizio heavy nei casi di RIR estremi
-- ma a `RIR 2` cade comunque su `90s`, quindi non viene allungato inutilmente
+Compound pesanti attivi V4 (categoria heavy nel recupero guidato):
+`Squat · Stacco da Terra · Panca · Military Press · Trazioni · Trazioni Supine · Stacco Rumeno · T-bar Row · Pulley · Glute Bridge Bilanciere`
+
+Monoarticolari attivi V4 (categoria mono):
+`Curl Bicipiti · Woodchop · Fire Hydrant · Band Pull-Apart con rotazione esterna · Leg Curl al Cavo`
+
+Compound medi (default compound):
+`Affondi · Push-Up · Hyperextension · Ab Wheel`
 
 ### Decisione finale
 
@@ -287,14 +292,13 @@ Suggerisce anche di quanto scalare:
 L'app non deve parlare di `peso` dove non ha senso.
 
 Esempi:
-- `Nordic Curl`
 - `Push-Up`
-- `Fitball Hamstring Curl`
 - `Ab Wheel`
+- `Fire Hydrant`
+- `Band Pull-Apart con rotazione esterna`
 
 In questi casi deve parlare di:
 - variante
-- assistenza
 - difficoltà
 - riferimento
 
@@ -303,11 +307,9 @@ In questi casi deve parlare di:
 - `Push-Up`: se fai almeno 15 rip in tutte le serie per 2 sessioni consecutive → variante più difficile
 - `Trazioni` e `Trazioni Supine`: se fai almeno 8 rip in tutte le serie per 2 sessioni consecutive → zavorra `+1.25 kg`
 
-Nota: `Dip alle Parallele` e `Fitball Hamstring Curl` non sono più nel programma attivo (rimossi 2026-04-21).
-
 ### Incrementi extra già previsti
 
-- `Hyperextension con Sacco` → `+1 kg nel sacco`
+- `Hyperextension` → `+1 kg`
 
 ## 8. Dati salvati dall'app
 
@@ -324,6 +326,31 @@ L'app esporta:
 
 Esiste anche:
 - `Esporta solo JSON`
+
+## 8.bis. Esercizi attivi V4 (2026-04-21)
+
+| Giorno | Esercizi |
+|---|---|
+| G1 Lower A | Squat · Stacco Rumeno · Glute Bridge Bilanciere · Leg Curl al Cavo · Ab Wheel |
+| G2 Upper A | Trazioni · Panca · Pulley · Band Pull-Apart con rotazione esterna · Curl Bicipiti |
+| G4 Lower B | Stacco da Terra · Affondi · Hyperextension · Fire Hydrant |
+| G5 Upper B | T-bar Row · Military Press · Push-Up · Trazioni Supine · Woodchop |
+
+Rimossi dal programma attivo (non devono comparire in suggerimenti o liste coaching):
+- Hip Thrust Bilanciere
+- Squat Bulgaro
+- Fitball Hamstring Curl
+- Face Pull
+- Dip alle Parallele
+- Tricipiti Cavo
+- T-bar Row da G2 (spostato a G5)
+- Stacco Rumeno da G4 (spostato a G1)
+
+Superset attivi per modalità rapida:
+- G1: Leg Curl al Cavo + Ab Wheel
+- G2: Band Pull-Apart con rotazione esterna + Curl Bicipiti
+- G4: Hyperextension + Fire Hydrant
+- G5: Push-Up + Woodchop
 
 ## 9. Cosa deve verificare un agente PT
 
