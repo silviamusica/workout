@@ -1099,31 +1099,26 @@ var PRINCIPLES_DEEP = [
   { t: "Cosa NON cambiare e cosa puoi ruotare", d: [
     {type:"p", content:"I fondamentali e i compound principali restano. Gli accessori invece sono gli slot che puoi ruotare quando il lavoro attuale smette di darti risultati o ti crea fastidi."},
     {type:"bold-list", content:[
-      ["Da tenere fermi", "Squat, Stacco da Terra, Trazioni, Push-Up, Panca, Military Press, Hip Thrust Bilanciere."],
-      ["Da poter ruotare", "Squat Bulgaro, Leg Curl al Cavo, Ab Wheel, T-bar Row, Face Pull, Curl Bicipiti, Affondi, Hyperextension, Fitball Hamstring Curl, Tricipiti Cavo, Woodchop."],
+      ["Da tenere fermi", "Squat, Stacco da Terra, Trazioni, Push-Up, Panca, Military Press, T-bar Row, Stacco Rumeno."],
+      ["Da poter ruotare", "Leg Curl al Cavo, Ab Wheel, Curl Bicipiti, Affondi, Hyperextension, Fire Hydrant, Woodchop, Trazioni Supine, Pulley."],
       ["Regola pratica", "Quando cambi, cambia 1 accessorio alla volta. Se cambi troppo insieme, non capisci piu cosa stava funzionando."],
     ]},
     {type:"p", content:"Kettlebell e fit box sono utili soprattutto come supporto: warm-up, tecnica, potenza o alternative accessorie. Non servono per sostituire il bilanciere nei fondamentali finche il blocco V4 sta ancora costruendo base."},
   ]},
   { t: "Varianti utili quando sara il momento", d: [
     {type:"table", columns:["Slot attuale","Variante","Con cosa","Quando usarla"], rows:[
-      ["Squat Bulgaro","TRX Split Squat","TRX","Se il ginocchio si lamenta o vuoi piu assistenza"],
-      ["Squat Bulgaro","Step-Up","Step + manubri","Per cambiare stimolo unilaterale"],
       ["Leg Curl al Cavo","Fitball Hamstring Curl","Fitball","Se il cavo da fastidio o non e libero"],
       ["Ab Wheel","TRX Fallout","TRX","Stessa funzione, angolo diverso"],
-      ["T-bar Row","Pulley basso","Cavo basso","Meno stress lombare, piu isolamento dorsale"],
-      ["T-bar Row","Rematore Manubri","Manubri + panca","Per lavoro unilaterale"],
-      ["Face Pull","Band Pull-Apart pesante","Elastico","Se il cavo alto e occupato"],
+      ["Pulley","Rematore Manubri","Manubri + panca","Per lavoro unilaterale"],
       ["Curl Bicipiti","Curl al cavo basso","Cavo basso","Per tensione costante"],
       ["Affondi","Walking Lunge","Manubri","Per più stabilità e lavoro globale"],
       ["Affondi","Step-Up","Step + manubri","Se vuoi meno stress sul ginocchio posteriore"],
       ["Hyperextension","Cable Pull-Through","Cavo basso","Se vuoi meno stress lombare"],
-      ["Fitball Hamstring Curl","TRX Hamstring Curl","TRX","Per una progressione piu fine"],
-      ["Tricipiti Cavo","French Press Manubri","Manubri","Piu enfasi sul capo lungo"],
-      ["Tricipiti Cavo","Overhead Extension Cavo","Cavo basso","Angolo diverso"],
+      ["Fire Hydrant","Clamshell con elastico","Elastico","Per piu resistenza in abduzione"],
       ["Woodchop","Pallof Press","Cavo o elastico","Se vuoi anti-rotazione invece di rotazione"],
       ["Push-Up","Push-Up Declino","Fit box","Quando superi 15 rip stabili"],
       ["Push-Up","TRX Push-Up","TRX","Per aggiungere instabilità"],
+      ["Trazioni Supine","Lat Machine presa supina","Lat machine","Se non riesci ancora a gestire il peso corporeo"],
     ]},
     {type:"p", content:"Schema semplice: settimane 1-4 tieni tutto uguale; settimane 5-8 valuti se un accessorio e stagnante; dopo 8-12 settimane o dopo un deload puoi ruotare 2-3 accessori. I fondamentali restano."},
   ]},
@@ -2348,14 +2343,14 @@ function displayExerciseName(name) {
   return name;
 }
 var MAX_PROGRESS_EX = ["Push-Up","Trazioni Supine"];
-var ACCESSORY_PROGRESS_EX = ["Squat Bulgaro","Face Pull","Curl Bicipiti","Hyperextension","Fitball Hamstring Curl","Tricipiti Cavo"];
+var ACCESSORY_PROGRESS_EX = ["Curl Bicipiti","Hyperextension","Fire Hydrant","Woodchop","Leg Curl al Cavo","Affondi"];
 var CORE_PROGRESS_EX = ["Slackline","Ab Wheel"];
 var CARDIO_KIND_LABEL = { run: "Corsa", ruck: "Rucking", hiit: "HIIT", circuit: "Circuito" };
-var CALIBRATION_BODYWEIGHT_EX = ["Push-Up","Trazioni","Trazioni Supine","Dip alle Parallele","Nordic Curl","Slackline","Ab Wheel","Fitball Hamstring Curl"];
+var CALIBRATION_BODYWEIGHT_EX = ["Push-Up","Trazioni","Trazioni Supine","Nordic Curl","Slackline","Ab Wheel","Fire Hydrant"];
 var CALIBRATION_SKIP_EX = ["HIIT tapis roulant","Rucking con zaino 15-20 kg","Circuito sacco + corde + slackline","Corsa leggera zona 2"];
 
 function usesElasticScale(exName) {
-  return exName === "Trazioni" || exName === "Trazioni Supine" || exName === "Dip alle Parallele";
+  return exName === "Trazioni" || exName === "Trazioni Supine";
 }
 
 function isTimeTrackedExercise(exName, serie) {
@@ -2462,10 +2457,10 @@ function getCalibrationType(exName, serie) {
   if (CALIBRATION_SKIP_EX.indexOf(exName) >= 0) return "none";
   if (exName === "Slackline") return "tempo";
   if (exName === "Nordic Curl") return "assistito";
-  if (exName === "Ab Wheel" || exName === "Fitball Hamstring Curl") return "body-control";
+  if (exName === "Ab Wheel") return "body-control";
   if (usesElasticScale(exName)) return "band-assist";
   if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || (serie || "").toLowerCase().indexOf("max") >= 0) return "bodyweight";
-  if (exName.indexOf("Cavo") >= 0 || exName === "Face Pull" || exName === "Woodchop") return "cable";
+  if (exName.indexOf("Cavo") >= 0 || exName === "Woodchop" || exName === "Pulley") return "cable";
   if (exName === "Squat Bulgaro" || exName === "Affondi" || exName === "Curl Bicipiti") return "dumbbell";
   return "weighted";
 }
@@ -2483,8 +2478,8 @@ function getCalibrationQuickInstruction(exName, serie) {
 
 function getCalibrationRestLabel(exName, rec) {
   if (rec) return "Riposa " + String(rec).toLowerCase() + ".";
-  var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","Front Squat","Pause Squat","Push Press","Stacco Sumo","Stacco Rumeno","Hip Thrust Bilanciere","T-bar Row","Dip alle Parallele"];
-  var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Squat Bulgaro","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino","Fitball Hamstring Curl","Face Pull","Alzate Laterali","French Press Manubri"];
+  var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","Front Squat","Pause Squat","Push Press","Stacco Sumo","Stacco Rumeno","T-bar Row","Pulley"];
+  var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino","Alzate Laterali","French Press Manubri","Leg Curl al Cavo"];
   if (heavy.indexOf(exName) >= 0) return "Riposa 2 minuti.";
   if (medium.indexOf(exName) >= 0) return "Riposa 90 secondi.";
   return "Riposa come da recupero previsto per questo esercizio.";
@@ -2771,20 +2766,20 @@ var APP_VERSION = typeof __APP_VERSION__ === "string" ? __APP_VERSION__ : "dev";
 var APP_BUILD_TIME = typeof __BUILD_TIME__ === "string" ? __BUILD_TIME__ : "";
 var V4_DAY_SPLIT_PLAN = {
   "Giorno 1": {
-    am: ["Squat", "Squat Bulgaro"],
-    pm: ["Hip Thrust Bilanciere", "Leg Curl al Cavo", "Ab Wheel"],
+    am: ["Squat", "Stacco Rumeno"],
+    pm: ["Leg Curl al Cavo", "Ab Wheel"],
   },
   "Giorno 2": {
-    am: ["Trazioni", "T-bar Row"],
-    pm: ["Panca", "Face Pull", "Curl Bicipiti"],
+    am: ["Trazioni", "Panca"],
+    pm: ["Pulley", "Curl Bicipiti"],
   },
   "Giorno 4": {
-    am: ["Stacco da Terra", "Stacco Rumeno"],
-    pm: ["Hip Thrust Bilanciere", "Affondi", "Hyperextension", "Fitball Hamstring Curl"],
+    am: ["Stacco da Terra", "Affondi"],
+    pm: ["Hyperextension", "Fire Hydrant"],
   },
   "Giorno 5": {
-    am: ["Military Press", "Trazioni Supine"],
-    pm: ["Push-Up", "Dip alle Parallele", "Tricipiti Cavo", "Woodchop"],
+    am: ["T-bar Row", "Military Press"],
+    pm: ["Push-Up", "Trazioni Supine", "Woodchop"],
   },
 };
 
