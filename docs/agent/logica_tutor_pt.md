@@ -29,7 +29,7 @@ L'app oggi ha due logiche diverse ma compatibili:
 - non vale per tutti gli esercizi: alcuni sono esclusi o gestiti come corpo libero / assistiti / tempo
 
 2. `Modalità guidata`
-- è spenta di default
+- è `ON` di default
 - si può attivare o disattivare da `Impostazioni`
 - affianca la seduta normale
 - usa RIR, storico e range per guidare recupero e progressione
@@ -186,7 +186,7 @@ Durante il recupero il timer può mostrare:
 
 Esempi:
 - `Prossimo: Serie 3 di 4 · Squat`
-- `Prossimo: Squat Bulgaro · preparare manubri`
+- `Prossimo: Affondi · preparare manubri`
 - `Prossimo: Ab Wheel · superset diretto, no pausa`
 
 ### Vibrazione
@@ -494,7 +494,6 @@ Esempi:
 - `+1 kg per manubrio`
 
 Esempi:
-- Squat Bulgaro
 - Affondi
 - Curl Bicipiti
 - Curl Martello
@@ -507,7 +506,6 @@ Esempi:
 Esempi:
 - Pulley
 - Lat Machine
-- Tricipiti Cavo
 - Woodchop
 - esercizi con `Cavo`
 
