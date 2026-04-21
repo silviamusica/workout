@@ -9088,7 +9088,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           }
           return score(a) - score(b);
         }).slice(0, 3);
-        var keyLiftNames = ["Squat", "Stacco da Terra", "Panca", "Military Press", "Trazioni", "Trazioni Supine", "Push-Up", "T-bar Row", "Dip alle Parallele", "Hip Thrust Bilanciere"];
+        var keyLiftNames = ["Squat", "Stacco da Terra", "Panca", "Military Press", "Trazioni", "Trazioni Supine", "Push-Up", "T-bar Row", "Stacco Rumeno", "Glute Bridge Bilanciere"];
         var keyLiftProgress = keyLiftNames.map(function(name) {
           return exProgress.find(function(item) { return item.name === name; }) || null;
         }).filter(Boolean);
