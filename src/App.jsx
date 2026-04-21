@@ -169,7 +169,7 @@ var EXERCISE_PATTERN_HELP = {
   hinge: "piega dal bacino",
   spinta: "movimento di spinta",
   tirata: "movimento di tirata",
-  core: "stabilita del tronco",
+  core: "stabilità del tronco",
   affondo_unilaterale: "lavoro su una gamba",
 };
 
@@ -196,7 +196,6 @@ var TH = {
   sage:    { n: "Obsidian",  bg: "#000000", cd: "#1C1C1E", tx: "#FFFFFF",  sub: "#8E8E93", hd: "linear-gradient(180deg,#1C1C1E,#000000)", htx: "#FFFFFF", dy: ["#0A84FF","#32D74B","#FF9F0A","#FF375F","#BF5AF2"], ok: "#32D74B", ac: "#0A84FF", sb: "#2C2C2E", st: "#32D74B" },
   night:   { n: "Grafite",   bg: "#0D0D0F", cd: "#1A1A1F", tx: "#E8E8ED", sub: "#6E6E73", hd: "linear-gradient(180deg,#1A1A1F,#0D0D0F)", htx: "#E8E8ED", dy: ["#636366","#48484A","#3A3A3C","#2C2C2E","#1C1C1E"], ok: "#48484A", ac: "#AEAEB2", sb: "#141416", st: "#636366" },
   mist:    { n: "Ghiaccio",  bg: "#F2F4F8", cd: "#FAFBFD", tx: "#222B3A", sub: "#7A8FA8", hd: "linear-gradient(135deg,#3D5470,#5C7A9E)", htx: "#E8EEF6", dy: ["#5C7A9E","#6A9E8C","#7A6EA8","#9E7A5C","#6A7A8A"], ok: "#5C7A9E", ac: "#C8A86A", sb: "#E8EDF5", st: "#5C7A9E" },
-  sand:    { n: "Sabbia",    bg: "#FAF7F2", cd: "#FFFEFB", tx: "#2E2820", sub: "#A0907A", hd: "linear-gradient(135deg,#7A6040,#A08060)", htx: "#F5EEE4", dy: ["#A07850","#8A9E6A","#6A8EA0","#B07888","#9A8A6A"], ok: "#A07850", ac: "#C0B060", sb: "#F4EFE6", st: "#8A7040" },
 };
 
 
@@ -220,7 +219,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"p","content":"Il Nordic Curl isola i femorali in modo eccellente senza sovraccaricare il sistema nervoso centrale come fanno i grandi multiarticolari."},
   {"type":"p","content":"La chiave e il tempo sotto tensione: rallenta la fase eccentrica (la discesa) quanto piu possibile — anche solo 20-30 gradi di discesa controllata hanno un impatto enorme sull'ipertrofia dei femorali."},
   {"type":"ul","content":["Le mani servono ad ammortizzare la caduta finale, non a spingerti su","Mantieni i femorali sempre in tensione senza rilassarli in cima (tensione continua)","Nel tempo, scendi sempre piu vicino al pavimento mantenendo il controllo"]}
-]}, "Leg Curl al Cavo": {"g": "Femorali", "c": "Cavigliera alla caviglia, cavo basso dietro di te. Prona a terra o in piedi appoggiata a un supporto. Fletti il ginocchio portando il tallone verso il gluteo. Controlla la discesa in 2 secondi.", "p": "Ginocchio fermo, bacino stabile. Non inarcare la lombare in flessione.", "t": ["Eccentrica lenta: 2-3 secondi in discesa", "Non usare slancio per portare su il tallone", "Se in piedi: appoggiati a un supporto per stabilita"]}, "Good Morning": {"g": "Erettori/Glutei/Femorali", "c": "Bilanciere sulle spalle. Piega avanti spingendo bacino indietro, ginocchia flesse.", "p": "Schiena NEUTRA sempre. Scendi fino a tensione femorali.", "t": ["Chiudi una porta col sedere", "Inizia con bilanciere scarico"], "lk": "https://youtu.be/7mrKMteISXs?si=4oBp31pGSjs8U_sc", "deep": [
+]}, "Leg Curl al Cavo": {"g": "Femorali", "c": "Cavigliera alla caviglia, cavo basso dietro di te. Prona a terra o in piedi appoggiata a un supporto. Fletti il ginocchio portando il tallone verso il gluteo. Controlla la discesa in 2 secondi.", "p": "Ginocchio fermo, bacino stabile. Non inarcare la lombare in flessione.", "t": ["Eccentrica lenta: 2-3 secondi in discesa", "Non usare slancio per portare su il tallone", "Se in piedi: appoggiati a un supporto per stabilità"]}, "Good Morning": {"g": "Erettori/Glutei/Femorali", "c": "Bilanciere sulle spalle. Piega avanti spingendo bacino indietro, ginocchia flesse.", "p": "Schiena NEUTRA sempre. Scendi fino a tensione femorali.", "t": ["Chiudi una porta col sedere", "Inizia con bilanciere scarico"], "lk": "https://youtu.be/7mrKMteISXs?si=4oBp31pGSjs8U_sc", "deep": [
   {"type":"p","content":"Il Good Morning e un esercizio di preparazione specifica per migliorare Squat e Stacco da terra. E un movimento Hip Dominant: il motore e il bacino che si spinge indietro, non la schiena che si piega."},
   {"type":"ul","content":["Mantieni le curve fisiologiche della colonna — non perdere mai la lordosi lombare","Inizia con bilanciere scarico o leggerissimo per imparare lo schema motorio","Questo esercizio rinforza i punti deboli (lombari e femorali) nel punto critico di squat e stacco"]},
   {"type":"p","content":"Manovra di Valsalva: inspira profondamente, blocca il respiro e gonfia la pancia prima di eseguire il movimento. Crea pressione intra-addominale che protegge le vertebre lombari sotto carico."}
@@ -238,7 +237,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
 "Marcia sul posto + affondi a corpo libero": {"g": "Warm-up Lower", "c": "Prima marcia sul posto per alzare la temperatura, poi affondi lenti a corpo libero per richiamare glutei e quadricipiti.", "p": "Ritmo progressivo, busto stabile negli affondi.", "t": ["Serve a scaldarti, non a farti bruciare le gambe", "Negli affondi mantieni controllo e passo medio", "Poi passa alle serie di avvicinamento"]},
 "Step-up alternato a corpo libero": {"g": "Warm-up Lower", "c": "Sali e scendi da un box basso alternando le gambe, senza peso.", "p": "Piede tutto sul box, spinta controllata, bacino stabile.", "t": ["Alza la temperatura senza impatto", "Richiama glutei e quadricipiti", "Mantieni un ritmo continuo e facile"]},
 "Band dislocate": {"g": "Warm-up Upper/Spalle", "c": "Con un elastico leggero, porta le braccia tese da davanti a dietro la testa e ritorno.", "p": "Gomiti tesi, spalle basse, movimento controllato.", "t": ["Usa un elastico leggero", "Apri il torace senza forzare dolore", "Ottimo prima di panca, military e trazioni"]},
-"Kettlebell halo": {"g": "Warm-up Upper/Spalle", "c": "Fai girare un kettlebell leggero intorno alla testa in entrambe le direzioni.", "p": "Addome attivo, costole giu, collo rilassato.", "t": ["Movimento lento e controllato", "Ottimo per mobilita spalle e torace", "Non usare carichi alti"]},
+"Kettlebell halo": {"g": "Warm-up Upper/Spalle", "c": "Fai girare un kettlebell leggero intorno alla testa in entrambe le direzioni.", "p": "Addome attivo, costole giu, collo rilassato.", "t": ["Movimento lento e controllato", "Ottimo per mobilità spalle e torace", "Non usare carichi alti"]},
 "Kettlebell swing leggero": {"g": "Warm-up Lower/Hinge", "c": "Swing esplosivo con kettlebell leggero per scaldare catena posteriore e alzare la temperatura.", "p": "Hip hinge pulito, schiena neutra, spinta di anche.", "t": ["Leggero: serve a scaldare, non ad allenare", "Poche ripetizioni pulite", "Se perdi il pattern, fermati"]},
 "Salto su fit box basso": {"g": "Warm-up Lower/Potenza", "c": "Salto controllato su un box basso, atterrando morbida e stabile.", "p": "Atterra silenziosa, ginocchia stabili, busto raccolto.", "t": ["Poche ripetizioni", "Serve a svegliare il sistema nervoso", "Usalo solo se ti senti fresca e coordinata"]},
 "TRX Y-T-W": {"g": "Warm-up Upper/Scapole", "c": "Con il TRX esegui tre micro-pattern consecutivi: Y, poi T, poi W, per attivare cuffia, trapezio medio-basso e scapole.", "p": "Corpo in linea, spalle basse, movimento lento senza strappi.", "t": ["Poche ripetizioni ma controllate", "Tieni fermo il tronco", "Meglio angolo facile che compensi"], "lk": "https://www.youtube.com/shorts/IIFg87UefgQ"},
@@ -248,7 +247,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"ul","content":["Plank laterale: gomito e avambraccio a terra, corpo in linea da testa a piedi — opponiti alla gravita impedendo al bacino di cedere verso il basso","Crunch incrociato: porta il gomito verso il ginocchio opposto — la rotazione parte dal busto, non dalle braccia","Russian twist: piedi sollevati = piu difficile; mantieni le braccia tese e ruota lentamente"]}
 ]}, "Plank": {"g": "Core completo", "c": "Avambracci a terra, gomiti sotto spalle, corpo in linea.", "p": "Glutei contratti, addome in dentro, collo neutro.", "t": ["Tira gomiti verso piedi senza muoverti", "Se tremi e normale"], "deep": [
   {"type":"p","content":"La posizione corretta si chiama Hollow: spalle leggermente in avanti e lontane dalle orecchie. Immagina di spingere il pavimento lontano da te con gli avambracci."},
-  {"type":"ul","content":["Bacino in retroversione: annulla la curva lombare","Glutei contratti: sono il pilastro della stabilita","Tensione attiva: tira mentalmente i gomiti verso i piedi senza muoverti"]},
+  {"type":"ul","content":["Bacino in retroversione: annulla la curva lombare","Glutei contratti: sono il pilastro della stabilità","Tensione attiva: tira mentalmente i gomiti verso i piedi senza muoverti"]},
   {"type":"p","content":"Se tremi, e normale: stai lavorando. Se la schiena cede o il sedere si alza, fermati e riparti."},
   {"type":"p","content":"Se fai fatica a trovare questa posizione, allena prima la Hollow Position da sdraiata: e lo stesso controllo del corpo riportato in verticale."},
   {"type":"link","label":"Video: Plank base","url":"https://www.youtube.com/watch?v=34b-sy3D9kI&pp=0gcJCdsKAYcqIYzv"},
@@ -285,7 +284,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"p","content":"Usa un supporto alto circa come il tuo ginocchio — troppo basso non da stimolo, troppo alto mette a rischio il ginocchio."},
   {"type":"ul","content":["Rimani il piu verticale possibile e spingiti verso l'alto dalla gamba sullo step","Porta anche il secondo piede sul supporto prima di scendere","Controlla la discesa: la fase eccentrica e dove avviene gran parte del lavoro muscolare","Rialzo piu alto = piu glutei; rialzo piu basso = piu quadricipiti"]},
   {"type":"p","content":"Richiede meno equilibrio rispetto agli affondi: ottimo per costruire confidenza con il lavoro su singola gamba. Aggiungi i manubri solo a forma perfetta."}
-]}, "Floor Press Manubri": {"g": "Pettorali/Tricipiti", "c": "A terra, manubri sopra. Scendi fino a gomiti a terra, spingi.", "p": "Scapole addotte.", "t": ["Pausa 1s a terra"], "lk": "https://www.youtube.com/watch?v=ON0D6MmOVDo"}, "Push-Up Declino": {"g": "Pettorali sup./Tricipiti", "c": "Push-up con piedi su panca. Scendi col petto, spingi.", "p": "Corpo in linea. Core contratto.", "t": ["Gomiti a 45 gradi"]}, "Stacco Rumeno": {"g": "Femorali/Glutei/Erettori", "c": "Bilanciere davanti, spingi bacino indietro lungo gambe. Risali.", "p": "Schiena neutra. Ginocchia poco flesse.", "t": ["Senti allungamento femorali"], "lk": "https://www.youtube.com/watch?v=sVyjYCOYyp4"}, "Front Squat": {"g": "Quadricipiti/Core/Glutei", "c": "Bilanciere clavicole, gomiti alti. Scendi, busto verticale.", "p": "Gomiti alti, petto fuori.", "t": ["Piu quadricipiti, meno schiena"]}, "Pause Squat": {"g": "Quadricipiti/Glutei", "c": "Squat con 2-3s fermo in buca, poi esplosione.", "p": "Come squat classico.", "t": ["15-20% meno carico"]}, "Push Press": {"g": "Deltoidi/Tricipiti/Gambe", "c": "Military press con leggera spinta esplosiva delle gambe.", "p": "Dip breve, esplosivo.", "t": ["Piu carico del military"]}, "Curl Martello": {"g": "Brachiale/Brachioradiale", "c": "Curl con presa neutra (palmi uno verso l'altro).", "p": "Gomiti fissi.", "t": ["Da spessore al braccio"]}, "Curl Concentrato": {"g": "Bicipiti (picco)", "c": "Seduta, gomito su coscia. Fletti manubrio.", "p": "Gomito fermo, braccio isolato.", "t": ["Lento, senza slancio"]}, "Kick Back Manubri": {"g": "Tricipiti", "c": "Piegata avanti, gomito 90 gradi. Estendi indietro.", "p": "Gomito fermo, busto stabile.", "t": ["1s in estensione completa"]}, "Overhead Extension": {"g": "Tricipiti (capo lungo)", "c": "Un manubrio 2 mani sopra testa. Fletti dietro, estendi.", "p": "Gomiti vicini orecchie.", "t": ["Enfasi capo lungo"]}, "Push-Up Diamante": {"g": "Tricipiti/Pettorali int.", "c": "Push-up con mani a diamante. Scendi, spingi.", "p": "Gomiti vicini al corpo.", "t": ["Ginocchia a terra se difficile"]}, "Stacco Sumo": {"g": "Quadricipiti/Glutei/Adduttori", "c": "Piedi molto larghi, punte fuori. Presa stretta.", "p": "Busto piu verticale.", "t": ["Meno stress lombare"]}, "Pendlay Row": {"g": "Dorsali/Trapezi", "c": "Rematore ma bilanciere parte da terra ogni rip.", "p": "Busto parallelo.", "t": ["Esplosione, appoggio controllato"]}, "Walking Lunge": {"g": "Quadricipiti/Glutei", "c": "Affondo camminando avanti.", "p": "Come affondo classico.", "t": ["Piu impegnativo per stabilita"]}, "Alzate Laterali": {"g": "Deltoide laterale", "c": "Manubri ai lati. Alza lateralmente fino a parallele.", "p": "Gomiti flessi. Non alzare spalle.", "t": ["Peso leggero - isolamento"]}, "Fire Hydrant": {"g": "Gluteo medio", "c": "Quattro zampe, alza ginocchio lateralmente.", "p": "Ginocchio 90 gradi. Bacino fermo.", "t": ["20 rip/lato, lento"]}, "Hip Thrust Singolo": {"g": "Grande gluteo", "c": "Schiena su panca, un piede a terra. Spingi anca su.", "p": "Spalle sulla panca, mento al petto.", "t": ["Gluteo stretto 1s in alto"]}, "Single Leg Deadlift": {"g": "Femorali/Glutei/Equilibrio", "c": "Su una gamba, manubrio in mano opposta. Piegati avanti.", "p": "Schiena neutra, anca livellata.", "t": ["Tocca piede se perdi equilibrio"]}, "Pulley": {"g": "Dorsali/Tirata upper", "c": "Seduta davanti alla carrucola BASSA. Afferra la barra/maniglie, tira verso lo sterno portando i gomiti indietro e le scapole insieme. Controlla il ritorno. Richiede carrucola bassa — senza, usa Rematore Manubri.", "p": "Schiena dritta, petto fuori, piedi ben piantati. Non inarcare la lombare.", "t": ["Tira con i dorsali, non con le braccia", "Le scapole si devono avvicinare alla fine del movimento", "Controlla la fase eccentrica: 2-3 secondi per tornare su"], "lk": "https://www.youtube.com/watch?v=d_Qz-_fBUek&pp=0gcJCdsKAYcqIYzv"}, "Lat Machine": {"g": "Dorsali/Tirata upper", "c": "Seduta alla carrucola alta con barra larga. Tira la barra verso il petto alto, portando i gomiti verso il basso e indietro. Controlla il ritorno sopra la testa.", "p": "Petto fuori, schiena leggermente inclinata indietro (non troppo). Presa poco piu larga delle spalle.", "t": ["Non tirare dietro la nuca: sempre davanti al petto", "Immagina di spingere i gomiti verso il pavimento", "Contrai i dorsali in basso, poi controlla la risalita"]}, "Tricipiti Cavo": {"g": "Tricipiti/Spinta upper", "c": "In piedi davanti alla carrucola alta, afferra la corda o la barra. Gomiti fermi ai fianchi, estendi le braccia verso il basso fino a blocco. Torna su controllando.", "p": "Busto leggermente inclinato avanti, gomiti incollati ai fianchi. Non oscillare con il corpo.", "t": ["Solo gli avambracci si muovono, il resto e fermo", "Stringi i tricipiti a fine estensione per 1 secondo", "Se usi la corda, apri le mani ai lati a fine movimento"]},
+]}, "Floor Press Manubri": {"g": "Pettorali/Tricipiti", "c": "A terra, manubri sopra. Scendi fino a gomiti a terra, spingi.", "p": "Scapole addotte.", "t": ["Pausa 1s a terra"], "lk": "https://www.youtube.com/watch?v=ON0D6MmOVDo"}, "Push-Up Declino": {"g": "Pettorali sup./Tricipiti", "c": "Push-up con piedi su panca. Scendi col petto, spingi.", "p": "Corpo in linea. Core contratto.", "t": ["Gomiti a 45 gradi"]}, "Stacco Rumeno": {"g": "Femorali/Glutei/Erettori", "c": "Bilanciere davanti, spingi bacino indietro lungo gambe. Risali.", "p": "Schiena neutra. Ginocchia poco flesse.", "t": ["Senti allungamento femorali"], "lk": "https://www.youtube.com/watch?v=sVyjYCOYyp4"}, "Front Squat": {"g": "Quadricipiti/Core/Glutei", "c": "Bilanciere clavicole, gomiti alti. Scendi, busto verticale.", "p": "Gomiti alti, petto fuori.", "t": ["Piu quadricipiti, meno schiena"]}, "Pause Squat": {"g": "Quadricipiti/Glutei", "c": "Squat con 2-3s fermo in buca, poi esplosione.", "p": "Come squat classico.", "t": ["15-20% meno carico"]}, "Push Press": {"g": "Deltoidi/Tricipiti/Gambe", "c": "Military press con leggera spinta esplosiva delle gambe.", "p": "Dip breve, esplosivo.", "t": ["Piu carico del military"]}, "Curl Martello": {"g": "Brachiale/Brachioradiale", "c": "Curl con presa neutra (palmi uno verso l'altro).", "p": "Gomiti fissi.", "t": ["Da spessore al braccio"]}, "Curl Concentrato": {"g": "Bicipiti (picco)", "c": "Seduta, gomito su coscia. Fletti manubrio.", "p": "Gomito fermo, braccio isolato.", "t": ["Lento, senza slancio"]}, "Kick Back Manubri": {"g": "Tricipiti", "c": "Piegata avanti, gomito 90 gradi. Estendi indietro.", "p": "Gomito fermo, busto stabile.", "t": ["1s in estensione completa"]}, "Overhead Extension": {"g": "Tricipiti (capo lungo)", "c": "Un manubrio 2 mani sopra testa. Fletti dietro, estendi.", "p": "Gomiti vicini orecchie.", "t": ["Enfasi capo lungo"]}, "Push-Up Diamante": {"g": "Tricipiti/Pettorali int.", "c": "Push-up con mani a diamante. Scendi, spingi.", "p": "Gomiti vicini al corpo.", "t": ["Ginocchia a terra se difficile"]}, "Stacco Sumo": {"g": "Quadricipiti/Glutei/Adduttori", "c": "Piedi molto larghi, punte fuori. Presa stretta.", "p": "Busto piu verticale.", "t": ["Meno stress lombare"]}, "Pendlay Row": {"g": "Dorsali/Trapezi", "c": "Rematore ma bilanciere parte da terra ogni rip.", "p": "Busto parallelo.", "t": ["Esplosione, appoggio controllato"]}, "Walking Lunge": {"g": "Quadricipiti/Glutei", "c": "Affondo camminando avanti.", "p": "Come affondo classico.", "t": ["Piu impegnativo per stabilità"]}, "Alzate Laterali": {"g": "Deltoide laterale", "c": "Manubri ai lati. Alza lateralmente fino a parallele.", "p": "Gomiti flessi. Non alzare spalle.", "t": ["Peso leggero - isolamento"]}, "Fire Hydrant": {"g": "Gluteo medio", "c": "Quattro zampe, alza ginocchio lateralmente.", "p": "Ginocchio 90 gradi. Bacino fermo.", "t": ["20 rip/lato, lento"]}, "Hip Thrust Singolo": {"g": "Grande gluteo", "c": "Schiena su panca, un piede a terra. Spingi anca su.", "p": "Spalle sulla panca, mento al petto.", "t": ["Gluteo stretto 1s in alto"]}, "Single Leg Deadlift": {"g": "Femorali/Glutei/Equilibrio", "c": "Su una gamba, manubrio in mano opposta. Piegati avanti.", "p": "Schiena neutra, anca livellata.", "t": ["Tocca piede se perdi equilibrio"]}, "Pulley": {"g": "Dorsali/Tirata upper", "c": "Seduta davanti alla carrucola BASSA. Afferra la barra/maniglie, tira verso lo sterno portando i gomiti indietro e le scapole insieme. Controlla il ritorno. Richiede carrucola bassa — senza, usa Rematore Manubri.", "p": "Schiena dritta, petto fuori, piedi ben piantati. Non inarcare la lombare.", "t": ["Tira con i dorsali, non con le braccia", "Le scapole si devono avvicinare alla fine del movimento", "Controlla la fase eccentrica: 2-3 secondi per tornare su"], "lk": "https://www.youtube.com/watch?v=d_Qz-_fBUek&pp=0gcJCdsKAYcqIYzv"}, "Lat Machine": {"g": "Dorsali/Tirata upper", "c": "Seduta alla carrucola alta con barra larga. Tira la barra verso il petto alto, portando i gomiti verso il basso e indietro. Controlla il ritorno sopra la testa.", "p": "Petto fuori, schiena leggermente inclinata indietro (non troppo). Presa poco piu larga delle spalle.", "t": ["Non tirare dietro la nuca: sempre davanti al petto", "Immagina di spingere i gomiti verso il pavimento", "Contrai i dorsali in basso, poi controlla la risalita"]}, "Tricipiti Cavo": {"g": "Tricipiti/Spinta upper", "c": "In piedi davanti alla carrucola alta, afferra la corda o la barra. Gomiti fermi ai fianchi, estendi le braccia verso il basso fino a blocco. Torna su controllando.", "p": "Busto leggermente inclinato avanti, gomiti incollati ai fianchi. Non oscillare con il corpo.", "t": ["Solo gli avambracci si muovono, il resto e fermo", "Stringi i tricipiti a fine estensione per 1 secondo", "Se usi la corda, apri le mani ai lati a fine movimento"]},
 "Hip Thrust Bilanciere": {"g": "Grande gluteo/Gluteo medio", "c": "Schiena sul bordo della panca, bilanciere sulle anche imbottito. Spingi le anche verso l'alto contraendo i glutei.", "p": "Mento al petto, spalle sulla panca, piedi a larghezza fianchi. Ginocchia a 90 gradi in cima.", "t": ["Gluteo stretto 1s in cima", "Non iperestendere la lombare", "Talloni premono sul pavimento"], "deep": [
   {"type":"p","content":"L'Hip Thrust col bilanciere e l'esercizio con il maggior picco di attivazione del grande gluteo in assoluto, superiore allo squat e allo stacco. Il range completo (anca sotto parallelo → anca estesa) massimizza lo stimolo muscolare."},
   {"type":"ul","content":["La panca deve essere a circa 40 cm di altezza — le spalle devono rimanere sul bordo, non scivolare","Imbottire il bilanciere con un cuscinetto o asciugamano per evitare pressione sull'osso iliaco","Piedi ben piantati, talloni premono attivamente verso il pavimento durante la spinta","Mento verso il petto per mantenere la colonna neutra — evita di alzare la testa"]},
@@ -313,7 +312,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
 ]},
 "Fitball Hamstring Curl": {"g": "Femorali/Glutei/Core", "c": "Sdraiata supina, talloni sulla fitball. Solleva le anche e porta la palla verso i glutei flettendo le ginocchia.", "p": "Anche alte durante tutto il movimento. Core e glutei contratti.", "t": ["Non far scendere le anche durante la flessione", "Movimento lento e controllato", "Piu difficile su una sola gamba"], "deep": [
   {"type":"p","content":"Il Fitball Hamstring Curl allena i femorali in modo eccellente combinando estensione dell'anca (come nello stacco) e flessione del ginocchio (come nel leg curl) nello stesso movimento."},
-  {"type":"ul","content":["Mantieni le anche estese e alte durante tutta la fase di flessione — abbassarle trasferisce il lavoro ai glutei e toglie stimolo ai femorali","La fitball crea instabilita: il core lavora isometricamente per tutta la durata dell'esercizio","Variante avanzata: unilaterale (una sola gamba sulla palla)"]},
+  {"type":"ul","content":["Mantieni le anche estese e alte durante tutta la fase di flessione — abbassarle trasferisce il lavoro ai glutei e toglie stimolo ai femorali","La fitball crea instabilità: il core lavora isometricamente per tutta la durata dell'esercizio","Variante avanzata: unilaterale (una sola gamba sulla palla)"]},
   {"type":"p","content":"E' un'alternativa efficace al Nordic Curl quando non si dispone di un supporto per bloccare i piedi. Bassa richiesta di attrezzatura, alto stimolo sui femorali."}
 ]},
 "Woodchop": {"g": "Obliqui/Core/Deltoidi", "c": "Con carrucola alta o elastico, ruota il busto diagonalmente dall'alto verso il basso (o basso verso l'alto).", "p": "Piedi larghi, ginocchia flesse. La rotazione parte dal busto, non dalle braccia.", "t": ["Le braccia restano tese e seguono la rotazione", "Non ruotare le anche — solo il busto", "Controlla il ritorno"], "deep": [
@@ -322,7 +321,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"p","content":"Esercizio ideale per atleti che vogliono migliorare la potenza rotazionale. Ottimo anche per chi pratica sport con gesti rotativi (tennis, golf, arti marziali)."}
 ]},
 "Slackline": {"g": "Equilibrio/Stabilizzatori/Core", "c": "Cammina o mantieni l'equilibrio su una fettuccia tesa tra due punti.", "p": "Ginocchia flesse, sguardo fisso, braccia aperte per bilanciare.", "t": ["Inizia con la linea bassa e corta", "Un passo alla volta, senza fretta", "Usa un appoggio laterale all'inizio"], "deep": [
-  {"type":"p","content":"La slackline sviluppa propriocezione, equilibrio e stabilita delle caviglie — qualita che si trasferiscono direttamente alla qualita tecnica di squat, stacco e tutti i movimenti unilaterali."},
+  {"type":"p","content":"La slackline sviluppa propriocezione, equilibrio e stabilità delle caviglie — qualità che si trasferiscono direttamente alla qualità tecnica di squat, stacco e tutti i movimenti unilaterali."},
   {"type":"ul","content":["Inizia con la fettuccia tesa bassa (30-40 cm dal suolo) e breve (5-6 metri)","Usa un corrimano laterale (albero o palo) per i primi tentativi","Porta il peso su una gamba alla volta, fletti il ginocchio della gamba di supporto","Lo sguardo fisso su un punto a circa 2 metri davanti a te e fondamentale per l'equilibrio"]},
   {"type":"p","content":"Non e solo un esercizio: e un modo divertente per allenare sistemi propriocettivi che normalmente non ricevono stimolo. Si integra bene come warm-up o come attivita di recupero attivo."}
 ]},
@@ -1111,7 +1110,7 @@ var PRINCIPLES_DEEP = [
       ["T-bar Row","Rematore Manubri","Manubri + panca","Per lavoro unilaterale"],
       ["Face Pull","Band Pull-Apart pesante","Elastico","Se il cavo alto e occupato"],
       ["Curl Bicipiti","Curl al cavo basso","Cavo basso","Per tensione costante"],
-      ["Affondi","Walking Lunge","Manubri","Per piu stabilita e lavoro globale"],
+      ["Affondi","Walking Lunge","Manubri","Per più stabilità e lavoro globale"],
       ["Affondi","Step-Up","Step + manubri","Se vuoi meno stress sul ginocchio posteriore"],
       ["Hyperextension","Cable Pull-Through","Cavo basso","Se vuoi meno stress lombare"],
       ["Fitball Hamstring Curl","TRX Hamstring Curl","TRX","Per una progressione piu fine"],
@@ -1119,7 +1118,7 @@ var PRINCIPLES_DEEP = [
       ["Tricipiti Cavo","Overhead Extension Cavo","Cavo basso","Angolo diverso"],
       ["Woodchop","Pallof Press","Cavo o elastico","Se vuoi anti-rotazione invece di rotazione"],
       ["Push-Up","Push-Up Declino","Fit box","Quando superi 15 rip stabili"],
-      ["Push-Up","TRX Push-Up","TRX","Per aggiungere instabilita"],
+      ["Push-Up","TRX Push-Up","TRX","Per aggiungere instabilità"],
     ]},
     {type:"p", content:"Schema semplice: settimane 1-4 tieni tutto uguale; settimane 5-8 valuti se un accessorio e stagnante; dopo 8-12 settimane o dopo un deload puoi ruotare 2-3 accessori. I fondamentali restano."},
   ]},
@@ -1192,88 +1191,22 @@ var PERSONAL_DATA_SECTIONS = [
       ]},
     ]
   },
-  {
-    t: "Il tuo piano alimentare (dott. Merlini, marzo 2026)",
-    d: [
-      {type:"bold-list", content:[
-        ["Calorie totali", "Circa 1600 kcal al giorno, pari a circa 28 kcal/kg su 57 kg."],
-        ["Carboidrati", "170-185 g al giorno, circa 2.98-3.25 g/kg."],
-        ["Proteine", "95-102 g al giorno, circa 1.67-1.79 g/kg."],
-        ["Lipidi", "Circa 50 g al giorno, circa 0.88 g/kg."],
-        ["Fibre", "Circa 30 g al giorno."],
-      ]},
-      {type:"p", content:"La distribuzione percentuale e circa 46% carboidrati, 26% proteine, 28% grassi. Rispetto a un piano standard e piu proteica e leggermente piu orientata alla ricomposizione corporea."},
-      {type:"bold-list", content:[
-        ["Proteine", "Sei nel range valido ma nella zona bassa. In deficit calorico sarebbe ideale stare piu vicina a 2.0-2.2 g/kg per proteggere meglio la massa magra."],
-        ["Distribuzione proteica", "L'obiettivo ideale sarebbe dividere le proteine in almeno 4 momenti giornalieri. Se non aggiungi uno spuntino proteico, rischi di concentrare troppo in pochi pasti."],
-        ["Metilfenidato", "Se riduce l'appetito, raggiungere il target proteico diventa piu difficile. Nei giorni peggiori un secondo shake puo aiutare senza richiedere un pasto solido."],
-        ["Carboidrati", "Sei al limite basso. Nei giorni con i pesi usa il lato alto del range per sostenere il glicogeno e la performance."],
-        ["Grassi", "0.88 g/kg: appena sopra la soglia di sicurezza. Non ridurli."],
-        ["Deficit", "Con un TDEE di circa 2077 kcal, il deficit e circa 475 kcal al giorno: leggermente aggressivo ma ancora gestibile se le prestazioni restano stabili."],
-        ["Creatina", "3 g al giorno e un dosaggio funzionale, anche se nella parte bassa del range ideale. Puo far salire il peso di 0.6-1.7 kg per acqua intramuscolare senza essere grasso."],
-        ["Omega-3", "Va verificato che la capsula fornisca davvero almeno 1 g combinato di EPA + DHA, non solo 1 g di olio totale."],
-        ["Dieta flexitariana", "Compatibile con l'ipertrofia. Quando scegli fonti vegetali serve piu attenzione alla quota proteica totale e per pasto."],
-        ["Giorno libero", "Utile per l'aderenza. Costanza imperfetta ma sostenibile batte perfezione insostenibile."],
-      ]},
-      {type:"p", content:"Gli indicatori piu utili da monitorare non sono solo il peso: BIA ripetuta, misure antropometriche, pliche se disponibili e performance in palestra."},
-    ]
-  },
-];
-
-var NUTRITION_CURRENT_PLAN = [
-  {
-    t: "Numeri del piano attuale",
-    d: [
-      {type:"bold-list", content:[
-        ["Calorie totali", "Circa 1600 kcal al giorno."],
-        ["Carboidrati", "170-185 g al giorno, circa 2.98-3.25 g/kg su 57 kg."],
-        ["Proteine", "95-102 g al giorno, circa 1.67-1.79 g/kg."],
-        ["Lipidi", "Circa 50 g al giorno, circa 0.88 g/kg."],
-        ["Fibre", "Circa 30 g al giorno."],
-      ]},
-      {type:"p", content:"Distribuzione indicativa: 46% carboidrati, 26% proteine, 28% grassi. Il piano e piu proteico del normotipo standard ed e coerente con un obiettivo di ricomposizione corporea."},
-    ]
-  },
-  {
-    t: "Struttura della giornata",
-    d: [
-      {type:"bold-list", content:[
-        ["Colazione", "Bevanda vegetale 200 ml + proteine in polvere 20 g + frutto + caffe + pane di segale 60 g. Alternativa: yogurt di soia 150 g + proteine 20 g + 4 fette Wasa + frutto + caffe."],
-        ["Spuntini", "Non obbligatori. Puoi spostare gli alimenti nel corso della giornata purche il totale resti coerente."],
-        ["Pranzo", "Fino a 60 g di cereale oppure 150 g patate oppure 85 g pane + fino a 150 g di secondo + verdure libere + fino a 2 cucchiai di olio EVO + 1 frutto."],
-        ["Cena", "Fino a 150 g patate oppure 85 g pane oppure 60 g riso + fino a 120-150 g di secondo + verdure a sazieta + fino a 1 cucchiaio di olio + 1 frutto."],
-        ["Integrazione", "Creatina monoidrato 3 g al giorno a colazione + omega-3 Enerzona RX 1 capsula al mattino."],
-      ]},
-    ]
-  },
-  {
-    t: "Punti di attenzione pratici",
-    d: [
-      {type:"bold-list", content:[
-        ["Proteine", "Sei nel range utile ma nella zona bassa. Nei giorni in cui mangi meno o hai poca fame, uno shake extra puo aiutarti a non scendere sotto il target."],
-        ["Carboidrati", "Nei giorni dei pesi usa il lato alto del range per sostenere meglio la performance."],
-        ["Deficit", "Con un TDEE di circa 2077 kcal, il deficit e attorno a 475 kcal: gestibile, ma da monitorare se la performance cala per 2 settimane di fila."],
-        ["Dieta flexitariana", "Compatibile con l'ipertrofia. Quando scegli fonti vegetali, serve solo piu attenzione alla quota proteica totale e per pasto."],
-        ["Cosa monitorare", "BIA ripetuta, misure antropometriche e performance in palestra valgono piu del solo peso sulla bilancia."],
-      ]},
-    ]
-  },
 ];
 
 var NUTRITION_PRINCIPLES = [
   {
     t: "Proteine: la priorità assoluta",
     d: [
-      { type:"p", content:"Range: 1.6-2.2 g/kg al giorno. Il tuo piano nutrizionale prevede circa 1.67-1.79 g/kg (95-102 g/giorno a 57 kg). In deficit calorico, avvicinarsi a 2.0 g/kg (114 g) preserva meglio la massa magra." },
-      { type:"p", content:"Distribuzione: almeno 4 pasti con 0.4-0.55 g/kg per pasto, cioe circa 23-31 g per pasto. L'effetto anabolico di un singolo pasto dura 5-6 ore: non serve mangiare ogni 2 ore, ma serve arrivare al totale giornaliero." },
-      { type:"p", content:"Fonti utili in una dieta pescetariana: uova, pesce, yogurt greco o skyr, ricotta, fiocchi di latte, tofu, tempeh, seitan, edamame e combinazioni legumi + cereali." },
+      { type:"p", content:"Range: 1.6-2.2 g/kg al giorno. In deficit calorico, avvicinarsi a 2.0 g/kg preserva meglio la massa magra." },
+      { type:"p", content:"Distribuzione: almeno 4 pasti con 0.4-0.55 g/kg per pasto. L'effetto anabolico di un singolo pasto dura 5-6 ore: non serve mangiare ogni 2 ore, ma serve arrivare al totale giornaliero." },
+      { type:"p", content:"Fonti utili: uova, pesce, yogurt greco o skyr, ricotta, fiocchi di latte, tofu, tempeh, seitan, edamame e combinazioni legumi + cereali." },
     ]
   },
   {
     t: "Carboidrati: carburante per la performance",
     d: [
-      { type:"p", content:"Il glicogeno muscolare e il carburante principale dell'allenamento ipertrofico. Qui 12RM significa un carico con cui riesci a fare circa 12 ripetizioni tirate, vicino al limite. In pratica: 3 serie cosi possono ridurre il glicogeno muscolare di circa il 26%; 6 serie di circa il 38%. Con carboidrati adeguati durante la giornata, il ripristino completo di solito avviene entro 24 ore." },
-      { type:"p", content:"Il tuo piano sta attorno a 170-185 g al giorno, cioe circa 2.98-3.25 g/kg. Nei giorni con i pesi conviene stare sul lato alto del range." },
+      { type:"p", content:"Il glicogeno muscolare e il carburante principale dell'allenamento ipertrofico. Con carboidrati adeguati durante la giornata, il ripristino completo di solito avviene entro 24 ore." },
+      { type:"p", content:"Nei giorni con i pesi conviene stare sul lato alto del range per sostenere meglio il glicogeno e la performance." },
       { type:"p", content:"Fonti pratiche: riso, pasta, patate, pane, avena, frutta e cereali integrali. Le fonti integrali aiutano fibra e sazieta, ma vicino all'allenamento puoi usare anche fonti piu facili da digerire." },
     ]
   },
@@ -1281,7 +1214,7 @@ var NUTRITION_PRINCIPLES = [
     t: "Grassi: equilibrio ormonale",
     d: [
       { type:"p", content:"I grassi completano il bilancio calorico dopo proteine e carboidrati. Non scendere sotto 0.8 g/kg: livelli troppo bassi possono alterare il profilo ormonale e peggiorare la sostenibilita della dieta." },
-      { type:"p", content:"Il tuo piano e attorno a 0.88 g/kg, quindi nella parte bassa ma ancora adeguata. Privilegia olio EVO, frutta secca, avocado e pesce grasso. Limita i grassi saturi delle fonti piu processate." },
+      { type:"p", content:"Privilegia olio EVO, frutta secca, avocado e pesce grasso. Limita i grassi saturi delle fonti piu processate." },
     ]
   },
   {
@@ -1290,7 +1223,7 @@ var NUTRITION_PRINCIPLES = [
       { type:"p", content:"La finestra anabolica esiste, ma e molto piu ampia di quanto si creda. Se hai mangiato 2-3 ore prima dell'allenamento, non c'e urgenza di mangiare entro 30 minuti." },
       { type:"bold-list", content:[
         ["Pre-workout", "1-2 ore prima: pasto con proteine + carboidrati."],
-        ["Post-workout", "Se hai mangiato poco prima di allenarti, non devi correre a mangiare subito: ti basta fare un pasto normale entro 3-4 ore con proteine + carboidrati. Se invece ti alleni a digiuno o sono gia passate molte ore dall'ultimo pasto, conviene mangiare prima: 20-30 g di proteine e una quota di carboidrati facili da gestire. In pratica: yogurt greco + frutta, shake + banana, oppure pranzo/cena completa se capita in quella finestra."],
+        ["Post-workout", "Se hai mangiato poco prima di allenarti, non devi correre a mangiare subito: ti basta fare un pasto normale entro 3-4 ore con proteine + carboidrati. Se invece ti alleni a digiuno o sono gia passate molte ore dall'ultimo pasto, conviene mangiare prima: 20-30 g di proteine e una quota di carboidrati facili da gestire."],
         ["Prima di dormire", "30-40 g di proteine lente come yogurt greco, skyr o fiocchi di latte se ti aiutano a raggiungere il totale giornaliero."],
       ]},
     ]
@@ -1307,10 +1240,10 @@ var NUTRITION_PRINCIPLES = [
     d: [
       { type:"p", content:"La maggior parte degli integratori non cambia i risultati in modo rilevante. I pochi davvero utili vanno letti come strumenti semplici, non come scorciatoie." },
       { type:"bold-list", content:[
-        ["Creatina monoidrato", "Resta il supplemento piu solido: 3-5 g al giorno, tutti i giorni. Nel tuo piano sono previsti 3 g, un dosaggio funzionale. Puo far salire il peso di 1-3% per acqua intramuscolare, ma e un aumento utile, non grasso."],
+        ["Creatina monoidrato", "Resta il supplemento piu solido: 3-5 g al giorno, tutti i giorni. Puo far salire il peso per acqua intramuscolare, ma e un aumento utile, non grasso."],
         ["Proteine whey", "Servono soprattutto quando il cibo non basta. Una dose da 20-30 g e pratica a colazione o nei giorni in cui l'appetito e basso."],
-        ["Omega-3", "Hanno senso se la capsula apporta davvero circa 1 g combinato di EPA + DHA."],
-        ["Caffeina", "Puo aiutare la performance, ma va usata con cautela se assumi gia altri stimolanti."],
+        ["Omega-3", "Hanno senso se apportano davvero circa 1 g combinato di EPA + DHA."],
+        ["Caffeina", "Puo aiutare la performance, ma va usata con cautela."],
         ["Multivitaminico", "Puo essere ragionevole in deficit calorico o se la dieta e poco varia."],
       ]},
       { type:"p", content:"Il resto, come BCAA, bruciagrassi o pre-workout complessi, ha prove deboli o nulle quando le basi della dieta sono gia a posto." },
@@ -1387,7 +1320,7 @@ var MUSC = [
   { n: "Bicipite femorale", z: "Posteriore", w: "Parte posteriore coscia", y: "Flessione ginocchio. Protegge il crociato.", mv: "Flette il ginocchio ed estende l'anca insieme ai glutei. Frena la discesa nei movimenti hip hinge.", ex: ["Nordic Curl","Stacco da Terra","Stacco Rumeno","Good Morning"] },
   { n: "Grande gluteo", z: "Posteriore", w: "Massa principale del sedere", y: "Il muscolo piu potente del corpo. Postura, corsa, salto.", mv: "Estende l'anca, spinge il bacino in avanti e produce forza in salita, corsa, salto e hip hinge.", ex: ["Squat","Stacco da Terra","Affondi","Hip Thrust Singolo","Good Morning","Hyperextension"] },
   { n: "Medio gluteo", z: "Laterale", w: "Lato esterno anca", y: "Abduzione e stabilizzazione anca. Previene collasso ginocchio.", mv: "Porta la gamba verso l'esterno e stabilizza il bacino quando stai su una gamba sola o cammini.", ex: ["Clamshell","Abduzione Laterale","Fire Hydrant","Affondi"] },
-  { n: "Soleo/Gemelli", z: "Posteriore", w: "Polpaccio", y: "Flessione plantare. Stabilita in squat e camminata.", mv: "Spingono il piede verso il basso e aiutano spinta, camminata, corsa ed equilibrio.", ex: ["Squat","Affondi","Step Up"] },
+  { n: "Soleo/Gemelli", z: "Posteriore", w: "Polpaccio", y: "Flessione plantare. Stabilità in squat e camminata.", mv: "Spingono il piede verso il basso e aiutano spinta, camminata, corsa ed equilibrio.", ex: ["Squat","Affondi","Step Up"] },
 ];
 
 /* === STRETCHING === */
@@ -1401,27 +1334,27 @@ var STR = {
   "Spalle": { img: "str_Spalle", d: "Braccio davanti al petto", h: "Porta un braccio teso orizzontalmente davanti al petto. Con l'altro braccio, premi SOPRA il gomito (non sotto) avvicinando il braccio teso al corpo. Tieni la spalla bassa, non alzarla verso l'orecchio. Sentirai l'allungamento nella parte posteriore della spalla.", t: "20s per lato, ripeti 2 volte", tm: 20 },
   "Tricipiti": { img: "str_Tricipiti", d: "Braccio dietro la testa", h: "Porta un braccio sopra la testa e piega il gomito, lasciando cadere la mano dietro la schiena tra le scapole. Con l'altra mano, afferra il gomito e spingi dolcemente verso il basso/dietro. Sentirai l'allungamento lungo la parte posteriore del braccio.", t: "20s per lato, ripeti 2 volte", tm: 20 },
   "Glutei": { img: "str_Glutei", d: "Figura a 4 (piriforme)", h: "Sdraiata supina, incrocia una caviglia sul ginocchio opposto formando un 4. Afferra con entrambe le mani la coscia della gamba che sta a terra e tirala verso il petto. Sentirai un allungamento profondo nel gluteo della gamba incrociata. Se non arrivi con le mani, usa un asciugamano.", t: "30s per lato, ripeti 2 volte", tm: 30 },
-  "Cat-Cow": { img: "w_CatCow", d: "Gatto-mucca (mobilita colonna)", h: "A quattro zampe, mani sotto le spalle, ginocchia sotto le anche. INSPIRA: inarca la schiena lasciando cadere la pancia verso il pavimento, testa su, coccige su (mucca). ESPIRA: arrotonda la schiena verso il soffitto, mento al petto, coccige in dentro (gatto). Alterna lentamente, sincronizzando col respiro.", t: "10 ripetizioni lente", tm: 60, lk: "https://www.youtube.com/watch?v=AVyXJ8xMNxA" },
-  "Dorsiflessione al muro": { d: "Dorsiflessione al muro", goal: "Ripristinare la dorsiflessione della caviglia per squat, affondi e cammino piu pulito.", h: "Piede a 10-12 cm dal muro. Spingi il ginocchio avanti e leggermente in fuori fino a toccare il muro, senza staccare il tallone.", t: "10 rip per lato", tm: 60, est: 120, cue: "Il tallone resta sempre pesante a terra. Se si alza, avvicina il piede al muro.", feel: "Parte anteriore della caviglia e tendine d'Achille.", breath: "Fluido", err: "Tallone che si alza o bacino che ruota.", reason: "Base di tutti i giorni. Se la caviglia non flette, il corpo compensa salendo sulle punte o piegando troppo il busto.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
+  "Cat-Cow": { img: "w_CatCow", d: "Gatto-mucca (mobilità colonna)", h: "A quattro zampe, mani sotto le spalle, ginocchia sotto le anche. INSPIRA: inarca la schiena lasciando cadere la pancia verso il pavimento, testa su, coccige su (mucca). ESPIRA: arrotonda la schiena verso il soffitto, mento al petto, coccige in dentro (gatto). Alterna lentamente, sincronizzando col respiro.", t: "10 ripetizioni lente", tm: 60, lk: "https://www.youtube.com/watch?v=AVyXJ8xMNxA" },
+  "Dorsiflessione al muro": { d: "Dorsiflessione al muro", goal: "Ripristinare la dorsiflessione della caviglia per squat, affondi e cammino piu pulito.", h: "Piede a 10-12 cm dal muro. Spingi il ginocchio avanti e leggermente in fuori fino a toccare il muro, senza staccare il tallone.", t: "30s per lato, 2 volte", tm: 60, est: 120, cue: "Il tallone resta sempre pesante a terra. Se si alza, avvicina il piede al muro.", feel: "Parte anteriore della caviglia e tendine d'Achille.", breath: "Fluido", err: "Tallone che si alza o bacino che ruota.", reason: "Base di tutti i giorni. Se la caviglia non flette, il corpo compensa salendo sulle punte o piegando troppo il busto.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
   "Alfredson eccentrico": { d: "Alfredson eccentric calf", goal: "Rinforzare il tendine d'Achille e migliorare la tolleranza del polpaccio al carico.", h: "Sali sullo scalino con entrambi i piedi. Togli un piede e scendi lentamente con uno solo in 3-4 secondi.", t: "2x10 per piede", tm: 90, est: 240, cue: "La discesa lenta e il punto chiave. Risali con due piedi, scendi con uno.", feel: "Polpaccio e tendine d'Achille nella fase di discesa.", breath: "Fluido", err: "Scendere veloce o rimbalzare sul fondo.", reason: "Inserito ogni giorno nel protocollo base per caviglia e tendine.", lk: "https://www.youtube.com/watch?v=WjQBJPuFkHI" },
   "90/90 hip mobility": { d: "90/90 hip mobility", goal: "Mobilizzare l'anca in rotazione interna ed esterna.", h: "Seduta a terra con entrambe le gambe piegate a 90 gradi. Ruota da un lato all'altro senza piegare la schiena o spingere con la lombare.", t: "8-10 passaggi per lato", tm: 90, est: 180, cue: "Busto alto e movimento che parte dalle anche, non dalla schiena.", feel: "Gluteo profondo davanti e interno coscia dietro, a seconda del lato.", breath: "Fluido", err: "Compensare ruotando la lombare o crollare col busto.", reason: "Base lower e giorni cardio. L'anca bloccata scarica il lavoro sulla lombare.", lk: "https://www.youtube.com/watch?v=z3EhjVHBxLM" },
-  "Calf Raises con pallina": { d: "Calf raises con pallina", goal: "Attivare adduttori e arco plantare insieme mentre lavori sul polpaccio.", h: "In piedi con una pallina tra i malleoli interni. Stringi la pallina e sali lentamente sulle punte, poi scendi controllando.", t: "2x15", tm: 75, est: 150, cue: "La pallina non deve cadere. Se la perdi, stai mollando adduttori e piede.", feel: "Polpacci e interno coscia.", breath: "Fluido", err: "Perdere la pallina o salire troppo in fretta.", reason: "Base lower. Integra stabilita dal piede fino all'anca.", lk: "" },
+  "Calf Raises con pallina": { d: "Calf raises con pallina", goal: "Attivare adduttori e arco plantare insieme mentre lavori sul polpaccio.", h: "In piedi con una pallina tra i malleoli interni. Stringi la pallina e sali lentamente sulle punte, poi scendi controllando.", t: "2x15", tm: 75, est: 150, cue: "La pallina non deve cadere. Se la perdi, stai mollando adduttori e piede.", feel: "Polpacci e interno coscia.", breath: "Fluido", err: "Perdere la pallina o salire troppo in fretta.", reason: "Base lower. Integra stabilità dal piede fino all'anca.", lk: "" },
   "T-spine rotation in quadrupedia": { d: "T-spine rotation in quadrupedia", goal: "Recuperare rotazione toracica senza chiedere movimento alla lombare.", h: "Quattro zampe, una mano dietro la testa. Ruota il gomito verso il soffitto e poi verso il basso tenendo il bacino fermo.", t: "8-10 rip per lato", tm: 75, est: 150, cue: "Le anche restano ferme. La rotazione deve arrivare dal torace.", feel: "Parte alta della schiena e apertura del petto.", breath: "Espira aprendo", err: "Muovere anche e lombare insieme al torace.", reason: "Base upper e giorni cardio. Una toracica rigida peggiora spalle e collo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
-  "Shoulder CARs": { d: "Shoulder CARs", goal: "Portare la spalla nel ROM completo in modo controllato.", h: "In piedi, braccio lungo il fianco. Disegna un cerchio grande e lento davanti, sopra, dietro e di nuovo giu senza muovere il tronco.", t: "5 cerchi per direzione per braccio", tm: 90, est: 180, cue: "Addome attivo e costole giu. Il corpo resta fermo, si muove solo la spalla.", feel: "Tensione controllata nei punti estremi della spalla.", breath: "Lento e continuo", err: "Inarcare la schiena o accelerare nel punto difficile.", reason: "Base upper. Mobilita la spalla prima di tirate e spinte.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
+  "Shoulder CARs": { d: "Shoulder CARs", goal: "Portare la spalla nel ROM completo in modo controllato.", h: "In piedi, braccio lungo il fianco. Disegna un cerchio grande e lento davanti, sopra, dietro e di nuovo giu senza muovere il tronco.", t: "5 cerchi per direzione per braccio", tm: 90, est: 180, cue: "Addome attivo e costole giu. Il corpo resta fermo, si muove solo la spalla.", feel: "Tensione controllata nei punti estremi della spalla.", breath: "Lento e continuo", err: "Inarcare la schiena o accelerare nel punto difficile.", reason: "Base upper. Mobilità della spalla prima di tirate e spinte.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
   "Ponte monopodalico": { img: "Hip Thrust Singolo", d: "Ponte monopodalico", goal: "Attivare gluteo ed estensione d'anca con bacino stabile su una gamba.", h: "Schiena a terra, un piede appoggiato e l'altro sollevato. Spingi il bacino in alto e tieni 2 secondi senza inarcare la schiena.", t: "2x8 per lato", tm: 75, est: 150, cue: "Fermati quando tronco, bacino e coscia sono in linea. Se senti la lombare, sei salita troppo.", feel: "Gluteo della gamba che spinge.", breath: "Espira salendo", err: "Usare la schiena al posto del gluteo o ruotare il bacino.", reason: "Base lower. Prepara squat, stacco e hip thrust.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
   "Standing Quad Pull": { img: "str_StandingQuadPull", d: "Standing quad pull", goal: "Allungare il quadricipite dopo il lavoro di squat e affondi. Riduce la rigidita del retto femorale che tira il bacino in avanti.", h: "In piedi, appoggiati al rack con una mano. Afferra la caviglia dietro di te e tira il tallone verso il gluteo. Ginocchia vicine.", t: "2x30s per lato", tm: 30, est: 120, cue: "Punta le dita del piede verso la testa (dorsiflessione): estende anche il tibiale anteriore, non solo il quadricipite.", feel: "Parte anteriore della coscia, dalla rotula fino all'anca.", breath: "Diaframmatica, espirazione lunga", err: "Inarcare la schiena per compensare: tieni il bacino neutro, gluteo contratto. Ginocchio che si apre lateralmente: tienilo in linea con l'anca.", reason: "Giorno 1 e 4: dopo squat, bulgaro e affondi i quadricipiti sono accorciati e pieni di sangue. Lo stretching li riporta alla lunghezza di riposo.", lk: "https://www.youtube.com/watch?v=UZ-GSxmr2zs&pp=ygUSU3RhbmRpbmcgUXVhZCBQdWxs" },
   "Half Kneeling Lunge": { img: "str_HalfKneelingLunge", d: "Half kneeling lunge", goal: "Allungare iliopsoas e retto femorale: i flessori profondi dell'anca. E l'esercizio piu importante per sbloccare l'anca da sedentarieta.", h: "Ginocchio a terra, l'altro piede avanti con il ginocchio sopra la caviglia. Spingi le anche avanti mantenendo il busto verticale.", t: "2x40s per lato", tm: 40, est: 160, cue: "Punta la fibbia della cintura verso l'orizzonte. Il bacino resta neutro, non in anteroversione. L'avanzamento delle anche e piccolo ma deve essere sentito.", feel: "Parte anteriore dell'anca della gamba dietro, in profondita. Se senti la lombare, hai perso il bacino.", breath: "Diaframmatica, espirazione completa", err: "Inarcare la lombare per andare piu avanti, inclinarsi col busto in avanti, ginocchio davanti che supera la punta del piede.", reason: "Presente in tutti i giorni lower e nel protocollo anca. I flessori dell'anca corti limitano la profondita dello squat e il lockout dell'hip thrust.", lk: "https://www.youtube.com/watch?v=dUgr_vjDWNw" },
   "Half Kneeling Lunge + Reach": { img: "str_HalfKneelingReach", d: "Half kneeling lunge + reach verticale", goal: "Estendere l'allungamento del half kneeling lunge a tutta la catena anteriore, dallo psoas fino al gran dorsale e agli obliqui.", h: "Dalla posizione del half kneeling lunge, alza il braccio dello stesso lato del ginocchio a terra verso il soffitto. Allunga come se volessi toccare il soffitto.", t: "2x30s per lato", tm: 30, est: 120, cue: "La mano sale, l'anca scende. Senti una linea di tensione continua dal ginocchio a terra fino alla punta delle dita in alto.", feel: "Psoas profondo, fianco, obliqui e dorsale dello stesso lato. Molto piu esteso del lunge semplice.", breath: "Diaframmatica, lenta", err: "Perdere il bacino neutro quando alzi il braccio o ruotare il busto. Il petto resta frontale.", reason: "Protocollo anca e giorni lower. Aggiunge la componente delle catene muscolari: non allunghi un muscolo solo, ma tutta la catena anteriore-laterale.", lk: "https://www.youtube.com/watch?v=jE63mBT_a9Q" },
   "Figure-Four Supino": { img: "str_FigureFourSupine", d: "Figure-four supino", goal: "Allungare i rotatori esterni dell'anca e il gluteo. I rotatori corti limitano la rotazione dell'anca e possono comprimere il nervo sciatico.", h: "Schiena a terra. Appoggia la caviglia sulla coscia opposta formando un 4. Afferra la coscia di sotto con entrambe le mani e tira verso il petto.", t: "2x40s per lato", tm: 40, est: 160, cue: "Mantieni il sacro a terra. Il ginocchio della gamba incrociata si apre lateralmente: non lo forzare verso il basso, lascia che la gravita e la trazione facciano il lavoro.", feel: "Gluteo profondo e parte posteriore-laterale dell'anca della gamba incrociata. Se senti il ginocchio, la posizione e sbagliata.", breath: "Diaframmatica, espira senza forzare", err: "Alzare il sacro da terra, forzare il ginocchio con la mano, testa che si solleva.", reason: "Giorno 1, 4 e protocollo anca. Dopo squat, stacco e hip thrust i rotatori esterni sono contratti.", lk: "https://www.youtube.com/watch?v=-g0nuyTHMrI" },
-  "Happy Baby": { img: "str_HappyBaby", d: "Happy baby", goal: "Allungare rotatori, adduttori, glutei e lombare in una posizione unica. Mobilita globale dell'anca in flessione, abduzione e rotazione esterna.", h: "Schiena a terra. Ginocchia verso le ascelle, mani che afferrano i piedi o le caviglie dall'esterno. Gomiti premono le ginocchia verso il basso.", t: "2x40s", tm: 40, est: 80, cue: "Micromovimenti: dondola il bacino lateralmente, 2-3 cm per lato. Ogni oscillazione porta l'allungamento su un punto diverso.", feel: "Inguine, interno coscia, gluteo profondo. La sensazione e distribuita, non puntiforme.", breath: "Diaframmatica, lenta", err: "Testa e spalle che si sollevano, tirare troppo forte con le braccia, lombare che si inarca.", reason: "Protocollo anca. E l'esercizio che lavora simultaneamente su piu limitazioni dell'anca. Ideale nei giorni cardio quando c'e piu tempo.", lk: "https://www.youtube.com/watch?v=h-Mmlos5hJY&pp=ygUSaGFwcHkgYmFieSBzdHJldGNo" },
+  "Happy Baby": { img: "str_HappyBaby", d: "Happy baby", goal: "Allungare rotatori, adduttori, glutei e lombare in una posizione unica. Mobilità globale dell'anca in flessione, abduzione e rotazione esterna.", h: "Schiena a terra. Ginocchia verso le ascelle, mani che afferrano i piedi o le caviglie dall'esterno. Gomiti premono le ginocchia verso il basso.", t: "2x40s", tm: 40, est: 80, cue: "Micromovimenti: dondola il bacino lateralmente, 2-3 cm per lato. Ogni oscillazione porta l'allungamento su un punto diverso.", feel: "Inguine, interno coscia, gluteo profondo. La sensazione e distribuita, non puntiforme.", breath: "Diaframmatica, lenta", err: "Testa e spalle che si sollevano, tirare troppo forte con le braccia, lombare che si inarca.", reason: "Protocollo anca. E l'esercizio che lavora simultaneamente su piu limitazioni dell'anca. Ideale nei giorni cardio quando c'e piu tempo.", lk: "https://www.youtube.com/watch?v=h-Mmlos5hJY&pp=ygUSaGFwcHkgYmFieSBzdHJldGNo" },
   "Doorway Pec Stretch": { img: "str_DoorwayPec", d: "Doorway pec stretch", goal: "Allungare il pettorale e il deltoide anteriore dopo spinta. Contrasta la chiusura delle spalle da postura seduta.", h: "Avambraccio appoggiato sul montante del rack o sullo stipite. Gomito a 90 gradi, all'altezza della spalla. Ruota il busto lontano dal braccio appoggiato.", t: "2x30s per lato", tm: 30, est: 120, cue: "La rotazione e del busto, non del braccio. Il braccio resta fermo, il petto si apre.", feel: "Petto, dalla parte vicina allo sterno fino alla spalla. Se senti la spalla davanti tirare in modo sgradevole, arretra la rotazione.", breath: "Espira lungo mentre apri il torace", err: "Gomito sopra la spalla o spingere la spalla in avanti per andare piu in la.", reason: "Giorno 2 e 5: dopo trazioni + panca e dopo push-up + dip. Il pettorale accorciato tira le spalle in avanti e peggiora la postura delle trazioni.", lk: "https://www.youtube.com/watch?v=CEQMx4zFwYs" },
-  "Overhead Lat Stretch": { img: "str_OverheadLat", d: "Overhead lat stretch", goal: "Allungare il gran dorsale dopo le tirate. Migliora la mobilita delle spalle in flessione.", h: "Mano alta sul rack, braccio teso. Spingi il fianco lontano dal rack, creando una curva laterale col corpo.", t: "2x30s per lato", tm: 30, est: 120, cue: "Il fianco si allontana, la mano resta ferma. Senti una linea di allungamento dal polso fino alla cresta iliaca.", feel: "Lato del tronco sotto l'ascella, lungo il dorsale fino al fianco.", breath: "Diaframmatica con espirazione completa", err: "Ruotare il busto o piegarsi dalla vita invece che dall'anca.", reason: "Giorno 2 e 5. Il gran dorsale e il muscolo piu grosso della schiena e dopo molte serie di tirata e accorciato e pieno di tensione.", lk: "https://www.youtube.com/watch?v=5HLQAVOvxNE" },
+  "Overhead Lat Stretch": { img: "str_OverheadLat", d: "Overhead lat stretch", goal: "Allungare il gran dorsale dopo le tirate. Migliora la mobilità delle spalle in flessione.", h: "Mano alta sul rack, braccio teso. Spingi il fianco lontano dal rack, creando una curva laterale col corpo.", t: "2x30s per lato", tm: 30, est: 120, cue: "Il fianco si allontana, la mano resta ferma. Senti una linea di allungamento dal polso fino alla cresta iliaca.", feel: "Lato del tronco sotto l'ascella, lungo il dorsale fino al fianco.", breath: "Diaframmatica con espirazione completa", err: "Ruotare il busto o piegarsi dalla vita invece che dall'anca.", reason: "Giorno 2 e 5. Il gran dorsale e il muscolo piu grosso della schiena e dopo molte serie di tirata e accorciato e pieno di tensione.", lk: "https://www.youtube.com/watch?v=5HLQAVOvxNE" },
   "Cross-Body Shoulder Stretch": { img: "str_CrossBodyShoulder", d: "Cross-body shoulder stretch", goal: "Allungare il deltoide posteriore e la capsula posteriore della spalla. Bilancia il lavoro delle tirate.", h: "Braccio teso davanti al petto. L'altra mano lo spinge verso il corpo, sopra il gomito.", t: "2x30s per lato", tm: 30, est: 120, cue: "La spalla del braccio che stiri resta bassa, non alzarla verso l'orecchio.", feel: "Parte posteriore della spalla, dietro il deltoide.", breath: "Respiro regolare", err: "Spingere sul gomito invece che sopra o alzare la spalla.", reason: "Giorno 2: dopo trazioni, T-bar row e panca. La capsula posteriore della spalla si irrigidisce con il volume di tirata.", lk: "https://www.youtube.com/watch?v=swvXpKN832E&pp=ygUbY3Jvc3MgYmFieSBzaG91ZGxlciBzdHJldGNo" },
   "Wrist Flexor/Extensor Stretch": { img: "str_WristStretch", d: "Wrist flexor/extensor stretch", goal: "Decomprimere polsi e avambracci dopo la presa prolungata su trazioni, row e bilanciere.", h: "Braccio teso davanti. Con l'altra mano, tira le dita verso di te e poi lontano da te. Lento.", t: "2x20s per direzione", tm: 20, est: 80, cue: "Il braccio resta completamente teso. Se pieghi il gomito, l'allungamento salta l'avambraccio.", feel: "Parte interna dell'avambraccio per i flessori e parte esterna per gli estensori.", breath: "Respiro facile", err: "Tirare troppo forte o fare solo una direzione.", reason: "Giorno 2: dopo trazioni e row la presa e distrutta. Riduce la rigidita che si accumula nei tendini dell'avambraccio.", lk: "https://www.youtube.com/watch?v=GkDeFSfcekU&pp=ygUXZmxleG9yLWV4dGVuc29yIHN0cmV0aGM%3D" },
   "Supine Assisted Leg Pull": { img: "str_Femorali", d: "Supine assisted leg pull", goal: "Allungare i femorali e il polpaccio. I femorali corti limitano l'hip hinge e tirano il bacino in retroversione.", h: "Schiena a terra. Avvolgi un elastico o un asciugamano intorno alla pianta del piede. Gamba tesa verso il soffitto. Tira delicatamente verso di te.", t: "2x40s per lato", tm: 40, est: 160, cue: "Il piede in dorsiflessione estende l'allungamento al polpaccio. Il bacino resta a terra, non si alza.", feel: "Parte posteriore della coscia, dal gluteo fino al cavo del ginocchio. Con dorsiflessione, anche il polpaccio.", breath: "Espira lentamente mentre tiri", err: "Piegare il ginocchio per salire di piu, sollevare il bacino da terra, bloccare il respiro.", reason: "Giorno 4: dopo stacco e stacco rumeno. I femorali hanno lavorato in allungamento sotto carico pesante.", lk: "https://www.youtube.com/watch?v=qcfHJBm1R2U&pp=ygUYc3VwaW5lIGFzc2lzdGVkIGxlZyBwdWxs" },
   "Cat-Cow Lento": { base: "Cat-Cow", img: "str_CatCowStretch", thumbPos: "center", thumbScale: 1.45, d: "Cat-cow lento", goal: "Mobilizzare la colonna vertebrale e decomprimere la lombare dopo il lavoro pesante di catena posteriore.", h: "Quattro zampe, mani sotto le spalle, ginocchia sotto le anche. Cat: arrotonda la schiena verso il soffitto, mento al petto. Cow: estendi la schiena, petto avanti, sguardo avanti. Lento, 3-4 secondi per fase.", t: "8-10 ripetizioni lente", tm: 60, est: 60, cue: "Muovi una vertebra alla volta, non tutto insieme. Senti ogni segmento della colonna che si flette e poi si estende.", feel: "Tutta la colonna, dalla lombare alla cervicale. Nella fase cat senti allungamento lombare, nella fase cow apertura toracica.", breath: "Inspira in estensione, espira in flessione", err: "Andare veloce o muovere solo testa e bacino lasciando il centro rigido.", reason: "Giorno 4: dopo stacco da terra e stacco rumeno la colonna e stata compressa sotto carico. Il cat-cow la decomprime senza carico.", lk: "https://www.youtube.com/watch?v=AVyXJ8xMNxA" },
   "Overhead Triceps Stretch": { img: "str_Tricipiti", d: "Overhead triceps stretch", goal: "Allungare il tricipite, soprattutto il capo lungo che attraversa sia il gomito che la spalla. Dopo military, push-up e dip e il muscolo piu affaticato.", h: "Braccio alzato, piega il gomito e porta la mano dietro la testa verso la scapola opposta. L'altra mano spinge delicatamente il gomito verso il basso e indietro.", t: "2x30s per lato", tm: 30, est: 120, cue: "Il gomito punta al soffitto, non in avanti. Se il gomito cade avanti, il capo lungo non si allunga.", feel: "Parte posteriore del braccio, dalla punta del gomito fino sotto l'ascella.", breath: "Respiro lento", err: "Spingere il gomito troppo forte o inarcare la schiena per compensare.", reason: "Giorno 5: dopo military press, push-up, dip e tricipiti cavo. Quattro esercizi che tassano i tricipiti.", lk: "https://www.youtube.com/watch?v=_IOHtPSYGbk&pp=ygUXb3ZlcmhlYWQgdHJpY2VwcyBzcmV0Y2g%3D" },
-  "Band Dislocate Lento": { img: "str_BandDislocateLento", thumbPos: "center top", thumbScale: 1.55, d: "Band dislocate lento", goal: "Mobilizzare l'intera articolazione della spalla attraverso il ROM completo. Contrasta la chiusura delle spalle post-spinta.", h: "Elastico leggero o asciugamano tenuto a braccia tese davanti. Passa l'elastico sopra la testa e dietro la schiena, poi torna avanti. Lento: 3-4 secondi per passaggio.", t: "8-10 ripetizioni lente", tm: 60, est: 60, cue: "Le braccia restano tese per tutto il percorso. Se devi piegare i gomiti, allarga la presa sull'elastico.", feel: "Parte anteriore delle spalle nel passaggio dietro, parte posteriore nel ritorno avanti. L'apertura toracica migliora passaggio dopo passaggio.", breath: "Fluido con il movimento", err: "Presa troppo stretta, inarcare la schiena nel punto piu alto o andare veloce.", reason: "Giorno 5: dopo esercizi di spinta e trazione. Resetta la mobilita della spalla in tutti i piani.", lk: "https://www.youtube.com/watch?v=qJz79bK7QS8&pp=ygUUYmFuZCBkaXNsb2NhdGUgbGVudG_SBwkJ2goBhyohjO8%3D" },
+  "Band Dislocate Lento": { img: "str_BandDislocateLento", thumbPos: "center top", thumbScale: 1.55, d: "Band dislocate lento", goal: "Mobilizzare l'intera articolazione della spalla attraverso il ROM completo. Contrasta la chiusura delle spalle post-spinta.", h: "Elastico leggero o asciugamano tenuto a braccia tese davanti. Passa l'elastico sopra la testa e dietro la schiena, poi torna avanti. Lento: 3-4 secondi per passaggio.", t: "8-10 ripetizioni lente", tm: 60, est: 60, cue: "Le braccia restano tese per tutto il percorso. Se devi piegare i gomiti, allarga la presa sull'elastico.", feel: "Parte anteriore delle spalle nel passaggio dietro, parte posteriore nel ritorno avanti. L'apertura toracica migliora passaggio dopo passaggio.", breath: "Fluido con il movimento", err: "Presa troppo stretta, inarcare la schiena nel punto piu alto o andare veloce.", reason: "Giorno 5: dopo esercizi di spinta e trazione. Resetta la mobilità della spalla in tutti i piani.", lk: "https://www.youtube.com/watch?v=qJz79bK7QS8&pp=ygUUYmFuZCBkaXNsb2NhdGUgbGVudG_SBwkJ2goBhyohjO8%3D" },
   "Couch Stretch": { img: "str_CouchStretch", thumbPos: "center 28%", thumbScale: 1.35, d: "Couch stretch", goal: "Allungamento profondo di retto femorale e flessori dell'anca. Piu intenso del half kneeling lunge perche aggiunge la flessione del ginocchio.", h: "Ginocchio a terra vicino al muro o alla panca, piede appoggiato al muro con la pianta verso il soffitto. L'altro piede davanti, ginocchio a 90 gradi. Raddrizza il busto.", t: "2x40s per lato", tm: 40, est: 160, cue: "Fibbia della cintura verso il soffitto: retroversione attiva del bacino. Se senti la lombare, stai in anteroversione.", feel: "Parte anteriore della coscia della gamba dietro, dal ginocchio fino all'anca. Molto piu intenso del quad pull in piedi.", breath: "Lenta, espirazione lunga", err: "Inarcare la schiena, ginocchio troppo lontano dal muro o forzare la posizione completa dal primo giorno.", reason: "Protocollo anca, settimane 5+. E la progressione del half kneeling lunge: aggiunge la flessione del ginocchio che allunga anche il retto femorale distalmente.", lk: "https://www.youtube.com/watch?v=TIJu5aWPke0&pp=ygUNQ291Y2ggU3RyZXRjaA%3D%3D" },
   "Leg Cradle Supino": { img: "str_ReclinedHipCradle", d: "Leg cradle supino", goal: "Allungare piriforme, glutei e adduttori in una posizione stabile e controllata.", h: "Schiena a terra. Solleva una gamba, afferra la tibia con entrambe le mani, una alla caviglia e una al ginocchio. Tira la tibia verso l'addome parallelamente al pavimento.", t: "2x30s per lato", tm: 30, est: 120, cue: "Il sacro resta a terra. La tibia si avvicina al corpo, non il corpo alla tibia.", feel: "Gluteo profondo e parte esterna dell'anca. Simile al figure-four ma con piu enfasi sugli adduttori.", breath: "Lenta", err: "Alzare la testa e le spalle o tirare il ginocchio invece della tibia.", reason: "Protocollo anca, settimane 5+. Complementa il figure-four aggiungendo l'abduzione dell'anca, che il figure-four non lavora.", lk: "https://www.youtube.com/watch?v=Rb7oHuWIBGI&pp=ygURTGVnIENyYWRsZSBzdXBpbmU%3D" },
   "Supported Low Lunge": { img: "str_SupportedLowLunge", d: "Supported low lunge", goal: "Allungare psoas e TFL in profondita, con possibilita di raggiungere anche gli adduttori nella variante wide stance.", h: "Mani a terra o su blocchi/step. Un piede avanti tra le mani. Gamba dietro lunga, ginocchio a terra. Spingi le anche verso il basso e in avanti.", t: "2x30s per lato", tm: 30, est: 120, cue: "Il peso affonda verso il pavimento. Le mani servono solo per equilibrio, non per sostenerti.", feel: "Inguine profondo e parte anteriore dell'anca della gamba dietro. Nella variante larga: anche interno coscia.", breath: "Fluida", err: "Busto che collassa sulle mani, ginocchio davanti che avanza oltre la caviglia o lombare che si inarca.", reason: "Protocollo anca, settimane 9+. E la posizione piu profonda di allungamento dei flessori dell'anca e richiede una base costruita con half kneeling lunge e couch stretch.", lk: "https://www.youtube.com/watch?v=-Rprn7V7qgo&pp=ygUTU3VwcG9ydGVkIExvdyBMdW5nZdIHCQnaCgGHKiGM7w%3D%3D" },
@@ -1496,7 +1429,7 @@ var DAYS = [
         { n: "Jumping jacks", img: "w_JumpingJacks", d: "5 minuti a ritmo sostenuto. Alternativa piu leggera.", tm: 300 },
       ]},
       { n: "Squat a corpo libero", img: "w_SquatBL", d: "2 serie da 8. Lento, concentrati sulla profondita e busto eretto. Prepara quadricipiti e glutei.", alt: [
-        { n: "Squat con pausa 2s in basso", d: "2 serie da 6. Scendi lento, tieni 2 secondi in fondo. Mobilita anca e caviglia." },
+        { n: "Squat con pausa 2s in basso", d: "2 serie da 6. Scendi lento, tieni 2 secondi in fondo. Mobilità anca e caviglia." },
       ]},
       { n: "Military press con bilanciere scarico", img: "w_MilitaryPress", d: "2 serie da 8. Bilanciere vuoto o bastone. Movimento completo: clavicole a sopra la testa. Scalda deltoidi e stabilizzatori.", alt: [
         { n: "Cerchi con le braccia + apertura", img: "w_CerchiApertura", d: "10 cerchi avanti, 10 indietro, poi 10 aperture laterali lente. Scalda cuffia dei rotatori e deltoidi." },
@@ -1526,7 +1459,7 @@ var DAYS = [
         { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti. Ginocchia al petto ad ogni passo. Opzione a basso impatto.", tm: 180 },
       ]},
       { n: "Cat-Cow", img: "w_CatCow", d: "10 ripetizioni lente. Mobilizza la colonna prima di caricarla con stacco e panca.", alt: [
-        { n: "Rotazioni toraciche", d: "In posizione quadrupedica, una mano dietro la testa. Ruota il gomito verso il soffitto per 8 rip per lato. Mobilita toracica specifica per stacco." },
+        { n: "Rotazioni toraciche", d: "In posizione quadrupedica, una mano dietro la testa. Ruota il gomito verso il soffitto per 8 rip per lato. Mobilità toracica specifica per stacco." },
       ]},
       { n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "5 per lato. Parti in affondo, mano a terra, ruota il busto aprendo l'altro braccio verso il soffitto. Allunga flessori anca, torace, anche, femorali.", alt: [
         { n: "Affondo con rotazione", d: "Passo avanti largo, mani a terra, poi ruota il braccio interno verso l'alto. 5 per lato. Simile ma piu semplice." },
@@ -1556,7 +1489,7 @@ var DAYS = [
         { n: "Fire hydrant", d: "10 per lato. A quattro zampe, solleva il ginocchio verso il lato. Stessa attivazione del gluteo medio." },
       ]},
       { n: "Affondi a corpo libero", img: "w_AffondiCorpoLibero", d: "10 totali (5 per gamba). Lenti, senza peso. Prepara quadricipiti e glutei.", alt: [
-        { n: "Squat bulgaro corpo libero", d: "6 per gamba. Piede posteriore su sedia bassa. Simula il pattern dell'affondo con piu stabilita." },
+        { n: "Squat bulgaro corpo libero", d: "6 per gamba. Piede posteriore su sedia bassa. Simula il pattern dell'affondo con più stabilità." },
       ]},
       { n: "Good morning senza peso", img: "w_GoodMorningSenzaPeso", d: "10 ripetizioni. Mani dietro la testa, piega avanti spingendo il bacino indietro. Attiva erettori e femorali.", alt: [
         { n: "Hip hinge con bastone", img: "w_HipHingeBastone", d: "Metti un bastone lungo la schiena (deve toccare testa, dorsali e sacro). Piega il bacino indietro. 10 rip. Impara lo schema senza caricare." },
@@ -1609,7 +1542,7 @@ var DAYS_V4 = [
       ritmo: "Recuperi 2-3 min su Squat. 2 min su Hip thrust. 90s-2 min su Leg curl al cavo. 90-120s sugli altri."
     },
     warmup: [
-      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Tallone a terra e ginocchio oltre la punta in controllo.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
+      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "30s per lato x2", cue: "Tallone a terra e ginocchio oltre la punta in controllo.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
       { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8 passaggi per lato", cue: "Busto verticale: il movimento parte solo dalle anche.", lk: "https://www.youtube.com/watch?v=z3EhjVHBxLM" },
       { n: "Alfredson eccentrico", phase: "mobility", gearTag: "Step / Fit box", p: "10 per piede", cue: "Sali con due piedi e scendi con uno solo, lento.", lk: "https://www.youtube.com/watch?v=WjQBJPuFkHI" },
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota solo il torace: il bacino resta fermo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
@@ -1640,7 +1573,7 @@ var DAYS_V4 = [
     warmup: [
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota solo il torace: il bacino resta fermo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
       { n: "Shoulder CARs", phase: "mobility", gearTag: "Corpo libero", p: "5 cerchi per direzione per braccio", cue: "Cerchi lentissimi, addome contratto.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
-      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Serve anche qui per appoggio e linea stabile.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
+      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "30s per lato x2", cue: "Serve anche qui per appoggio e linea stabile.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
       { n: "Band Pull-Apart con elastico", phase: "activation", img: "w_BandPullApart", gearTag: "Elastico", p: "15 rip", cue: "Scapole che si avvicinano alla fine del gesto.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
       { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "8 per lato", cue: "Bacino fermo e anti-rotazione vera.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
       { n: "Kettlebell swing leggero", phase: "circuit", gearTag: "Kettlebell", p: "10 rip", cue: "Hip hinge esplosivo, braccia solo ganci.", lk: "https://www.youtube.com/watch?v=YSxHifyI6s8" },
@@ -1660,7 +1593,7 @@ var DAYS_V4 = [
     cardioIntro: "Usa questo giorno come cardio opzionale o base a bassa intensita. Se Lower B ne risente, salta l'HIIT e tieni solo il rucking o il recupero attivo.",
     cardioGear: ["Tapis roulant oppure sacco + corde", "Zaino da rucking 15-20 kg", "Slackline"],
     cardioWhy: "Il cardio e limitato a 2 sessioni a settimana su giorni separati dai pesi per minimizzare l'interferenza con la crescita muscolare. La corsa ha un impatto negativo maggiore sull'ipertrofia rispetto al rucking per la componente eccentrica elevata: per questo il rucking e l'opzione preferita. L'HIIT e limitato a 1 volta a settimana perche puo sopprimere le vie di segnalazione anabolica (mTOR). Alternare alta e bassa intensita tra le due sessioni garantisce stimolo cardiovascolare senza compromettere il recupero dai pesi.",
-    cardioMobilityIntro: "Nei giorni cardio hai piu margine: usa qui il blocco completo di mobilita dal basso verso l'alto con piu calma.",
+    cardioMobilityIntro: "Nei giorni cardio hai piu margine: usa qui il blocco completo di mobilità dal basso verso l'alto con piu calma.",
     cardioOptions: [
       { icon: "🏃", label: "HIIT tapis roulant — 25 min", desc: "Opzionale, solo se recuperi bene. 5 min warm-up + 8x(30s sprint / 60s cammino) + 5 min cooldown. RPE 8-9 negli sprint. Se Lower B ne risente, salta.", duration: "25 min" },
       { icon: "🎒", label: "Rucking con zaino — 45-60 min", desc: "Base consigliata. Zaino 15-20 kg, alto e aderente. Salite e discese. Zona 2. Progressione: +1 kg ogni 2 settimane oppure +5 minuti. Mai entrambi.", duration: "45-60 min" },
@@ -1677,7 +1610,7 @@ var DAYS_V4 = [
       ritmo: "Recuperi 2-3 min su Stacco. 90s-2 min su Stacco Rumeno e Hip thrust. 90s-2 min su Affondi. 90s sugli accessori."
     },
     warmup: [
-      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Come Giorno 1: tallone a terra e controllo pieno.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
+      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "30s per lato x2", cue: "Come Giorno 1: tallone a terra e controllo pieno.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
       { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8 passaggi per lato", cue: "Anche mobili, schiena neutra.", lk: "https://www.youtube.com/watch?v=z3EhjVHBxLM" },
       { n: "Calf Raises con pallina", phase: "mobility", gearTag: "Pallina", p: "12 rip", cue: "Stringi la pallina per tutta salita e discesa.", lk: "https://www.drfitology.com/exercises/calves/bodyweight-standing-calf-raise" },
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota il torace, bacino fermo — prepara per lo stacco.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
@@ -1709,7 +1642,7 @@ var DAYS_V4 = [
     warmup: [
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Come Giorno 2: ruota il torace, non il bacino.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
       { n: "Shoulder CARs", phase: "mobility", gearTag: "Corpo libero", p: "5 cerchi per direzione per braccio", cue: "Cerchi lenti e completi senza compensi.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
-      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Anche qui serve una base stabile da terra.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
+      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "30s per lato x2", cue: "Anche qui serve una base stabile da terra.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
       { n: "Scapular Pull-Up", phase: "activation", img: "w_SospensioneAttivaSbarra", gearTag: "Sbarra", p: "5 rip", cue: "Depressione scapolare netta, braccia tese.", lk: "https://www.youtube.com/watch?v=fTbd3q-vwqU" },
       { n: "Band Pull-Apart con elastico", phase: "activation", img: "w_BandPullApart", gearTag: "Elastico", p: "15 rip", cue: "Scapole addotte in fondo, spalle basse.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
       { n: "Kettlebell swing leggero", phase: "circuit", gearTag: "Kettlebell", p: "10 rip", cue: "Esplosivita da anche e catena posteriore.", lk: "https://www.youtube.com/watch?v=YSxHifyI6s8" },
@@ -1730,7 +1663,7 @@ var DAYS_V4 = [
     cardioIntro: "Lavoro a bassa intensita. Scegli tra corsa leggera e rucking in base a come ti senti e a cosa hai fatto nel Giorno 3.",
     cardioGear: ["Scarpe da corsa", "Zaino da rucking 15-20 kg"],
     cardioWhy: "Il cardio e limitato a 2 sessioni a settimana su giorni separati dai pesi per minimizzare l'interferenza con la crescita muscolare. La corsa ha un impatto negativo maggiore sull'ipertrofia rispetto al rucking per la componente eccentrica elevata: per questo il rucking e l'opzione preferita. L'HIIT e limitato a 1 volta a settimana perche puo sopprimere le vie di segnalazione anabolica (mTOR). Alternare alta e bassa intensita tra le due sessioni garantisce stimolo cardiovascolare senza compromettere il recupero dai pesi.",
-    cardioMobilityIntro: "Qui usa il blocco completo di mobilita, con piu calma rispetto ai giorni pesi: caviglie, anche, torace e flessori.",
+    cardioMobilityIntro: "Qui usa il blocco completo di mobilità, con piu calma rispetto ai giorni pesi: caviglie, anche, torace e flessori.",
     cardioOptions: [
       { icon: "🏃", label: "Corsa leggera zona 2 — 30 min", desc: "Bassa intensita. FC 120-140. Cadenza 170+ passi/min. Devi poter parlare senza fiatone.", duration: "30 min" },
       { icon: "🎒", label: "Rucking con zaino — 45-75 min", desc: "Bassa intensita. Zona 2. Progressione: +5 min ogni 2 settimane. Se nel Giorno 3 hai fatto rucking, oggi preferisci la corsa.", duration: "45-75 min" },
@@ -1820,7 +1753,7 @@ var DAYS_BEGINNER = [
       { n: "Plank", s: "3x20-45s", rpe: "", note: "Ferma la serie quando perdi l'allineamento. Respira normalmente senza rilasciare la contrazione addominale.", rec: "60s", gear: "Tappetino", errori: "Bacino che cede verso il basso; anche che si alzano; spalle incassate; apnea" },
     ],
     str: ["Quadricipiti","Glutei","Pettorali","Dorsali"] },
-  { name: "Giorno 2", focus: "Riposo", rest: true, intro: { attrezzi: [], muscoli: [], obiettivi: ["Passeggiata leggera o mobilita facoltativa"], attenzione: ["Nessun allenamento strutturato"], ritmo: "Camminata facile, mobilita breve o riposo completo." }, warmup: [], ex: [], str: [] },
+  { name: "Giorno 2", focus: "Riposo", rest: true, intro: { attrezzi: [], muscoli: [], obiettivi: ["Passeggiata leggera o mobilità facoltativa"], attenzione: ["Nessun allenamento strutturato"], ritmo: "Camminata facile, mobilità breve o riposo completo." }, warmup: [], ex: [], str: [] },
   { name: "Giorno B", focus: "Full Body B — tirata + catena posteriore", dur: "4 esercizi", tEst: 50,
     intro: {
       attrezzi: ["Manubri, bilanciere, cavo o TRX", "Lat machine, cavo alto, barra + elastico o TRX", "Elastico leggero", "Corpo libero o manubri"],
@@ -1842,7 +1775,7 @@ var DAYS_BEGINNER = [
       { n: "Affondi", s: "3x10-12 per gamba", rpe: "8", note: "Base: affondi alternati o camminati. Setup: piedi su due binari, passo abbastanza lungo, piede davanti tutto a terra, busto stabile. Gomiti rilassati ai lati se usi manubri. Alternative: TRX reverse lunge o split squat al cavo.", rec: "90s", gear: "Corpo libero, manubri, TRX o cavo", errori: "Passo troppo corto; ginocchio anteriore che collassa; perdita di equilibrio; busto che oscilla" },
     ],
     str: ["Femorali","Glutei","Spalle","Flessori anca"] },
-  { name: "Giorno 4", focus: "Riposo", rest: true, intro: { attrezzi: [], muscoli: [], obiettivi: ["Passeggiata leggera o mobilita facoltativa"], attenzione: ["Nessun allenamento strutturato"], ritmo: "Camminata facile, mobilita breve o riposo completo." }, warmup: [], ex: [], str: [] },
+  { name: "Giorno 4", focus: "Riposo", rest: true, intro: { attrezzi: [], muscoli: [], obiettivi: ["Passeggiata leggera o mobilità facoltativa"], attenzione: ["Nessun allenamento strutturato"], ritmo: "Camminata facile, mobilità breve o riposo completo." }, warmup: [], ex: [], str: [] },
   { name: "Giorno C", focus: "Full Body C — glutei e accessori", dur: "5 esercizi", tEst: 55,
     intro: {
       attrezzi: ["Corpo libero, manubri o TRX", "Manubri + panca, tappetino, TRX o cavi", "Cavo basso, elastico o TRX", "Corpo libero, manubrio + panca, fitball o cavo", "Tappetino o fitball"],
@@ -1864,7 +1797,7 @@ var DAYS_BEGINNER = [
       { n: "Dead Bug", s: "3x8 per lato", rpe: "", note: "Base: dead bug. Setup: lombare aderente a terra, braccia verso il soffitto, ginocchia a 90°. Estendi braccio e gamba opposti lentamente. Alternative: dead bug con fitball tra mani e ginocchia o bird dog.", rec: "60s", gear: "Tappetino o fitball", errori: "Lombare che si stacca; movimento troppo veloce; respiro trattenuto; braccia e gambe fuori controllo" },
     ],
     str: ["Glutei","Quadricipiti","Pettorali","Dorsali"] },
-  { name: "Giorno 6", focus: "Riposo", rest: true, intro: { attrezzi: [], muscoli: [], obiettivi: ["Passeggiata leggera o mobilita facoltativa"], attenzione: ["Nessun allenamento strutturato"], ritmo: "Camminata facile, mobilita breve o riposo completo." }, warmup: [], ex: [], str: [] },
+  { name: "Giorno 6", focus: "Riposo", rest: true, intro: { attrezzi: [], muscoli: [], obiettivi: ["Passeggiata leggera o mobilità facoltativa"], attenzione: ["Nessun allenamento strutturato"], ritmo: "Camminata facile, mobilità breve o riposo completo." }, warmup: [], ex: [], str: [] },
   { name: "Giorno 7", focus: "Riposo", rest: true, intro: { attrezzi: [], muscoli: [], obiettivi: ["Se ti senti bene: camminata facile o stretching"], attenzione: ["Nessun allenamento strutturato"], ritmo: "Recupero generale. Niente HIIT, niente corsa." }, warmup: [], ex: [], str: [] },
 ];
 
@@ -3096,6 +3029,88 @@ export default function App() {
     return "single";
   }
 
+  var QUICK_TOGGLE_INFO = {
+    guided: {
+      label: "Coach attivo",
+      detail: "Aggiunge briefing pre-sessione, richiesta RIR dopo le serie e suggerimenti finali su come proseguire."
+    },
+    extra: {
+      label: "Info estese",
+      detail: "Se lo spegni, nella scheda restano solo le cose essenziali. Nasconde tecnica estesa, respirazione, guida completa ed errori."
+    },
+    flow: {
+      label: "Modalità flusso",
+      detail: "Riduce le distrazioni con checklist iniziale, prossimo passo nel timer, avanzamento automatico e sessione attiva solo sulla scheda."
+    },
+    barbell: {
+      label: "Peso bilanciere",
+      detail: "E il peso fisso della barra usata negli esercizi con bilanciere. L'app lo somma ai dischi per calcolare il carico totale."
+    },
+    cloud: {
+      label: "Cloud",
+      detail: "Se accedi, i dati vengono sincronizzati anche online oltre che sul dispositivo. Se trovi versioni diverse, scegli tu quale tenere."
+    },
+    data: {
+      label: "Dati",
+      detail: "Da qui puoi esportare backup, importare file e cancellare tutto. Il JSON e il formato piu sicuro per ripristinare l'app completa."
+    }
+  };
+
+  function getQuickToggleTooltipText(key, active) {
+    var info = QUICK_TOGGLE_INFO[key];
+    if (!info) return "";
+    return info.label + " · " + (active ? "attivo" : "disattivato");
+  }
+
+  function toggleSettingsInfo(key) {
+    setSettingsInfoOpen(function(current) { return current === key ? "" : key; });
+  }
+
+  function renderSettingsInfoInline(key) {
+    if (settingsInfoOpen !== key || !QUICK_TOGGLE_INFO[key]) return null;
+    return <div style={{ marginTop: 8, padding: "10px 12px", borderRadius: 10, background: dc + "10", border: "1px solid " + dc + "24", fontSize: 12, color: T.sub, lineHeight: 1.65 }}>
+      {QUICK_TOGGLE_INFO[key].detail}
+    </div>;
+  }
+
+  function setGuidedModeValue(next) {
+    saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, next);
+  }
+
+  function setExtraInfoEnabledValue(next) {
+    setExtraInfoEnabled(next);
+    try { localStorage.setItem("wt-extra-info", next ? "1" : "0"); } catch(e) {}
+  }
+
+  function setFlowModeEnabledValue(next) {
+    setFlowModeEnabled(next);
+    try { localStorage.setItem("wt-flow-mode", next ? "1" : "0"); } catch(e) {}
+  }
+
+  function setCompactModeValue(next) {
+    setCompactMode(next);
+    try { localStorage.setItem("wt-compact-mode", next ? "1" : "0"); } catch(e) {}
+  }
+
+  function showQuickToggleTooltip(key) {
+    setQuickToggleTooltip(key);
+    if (quickToggleTooltipRef.current) {
+      clearTimeout(quickToggleTooltipRef.current);
+    }
+    quickToggleTooltipRef.current = setTimeout(function() {
+      setQuickToggleTooltip(function(current) { return current === key ? "" : current; });
+      quickToggleTooltipRef.current = null;
+    }, 1400);
+  }
+
+  function hideQuickToggleTooltip(key) {
+    setQuickToggleTooltip(function(current) { return current === key ? "" : current; });
+    if (quickToggleTooltipRef.current) {
+      clearTimeout(quickToggleTooltipRef.current);
+      quickToggleTooltipRef.current = null;
+    }
+  }
+
   function estimateExerciseGroupMinutes(groupItems, activeMonth) {
     if (!groupItems || !groupItems.length) return 0;
     var total = groupItems.reduce(function(acc, item) {
@@ -3487,6 +3502,7 @@ export default function App() {
   }
   var [openStretchCard, setOpenStretchCard] = useState(null);
   var [warmupInfoOpen, setWarmupInfoOpen] = useState(null);
+  var [stretchInfoOpen, setStretchInfoOpen] = useState(null);
   var [warmupImageOpen, setWarmupImageOpen] = useState(null);
   var [openWarmupPhases, setOpenWarmupPhases] = useState({});
   var [showReg, setShowReg] = useState(null);
@@ -3508,6 +3524,8 @@ export default function App() {
   var [extraInfoEnabled, setExtraInfoEnabled] = useState(true);
   var [guidedPrompt, setGuidedPrompt] = useState(null);
   var [guidedFeedback, setGuidedFeedback] = useState("");
+  var [settingsInfoOpen, setSettingsInfoOpen] = useState("");
+  var [quickToggleTooltip, setQuickToggleTooltip] = useState("");
   var [guidedPromptSeenCount, setGuidedPromptSeenCount] = useState(function() {
     try {
       return parseInt(localStorage.getItem("wt-guided-prompt-seen") || "0") || 0;
@@ -3529,7 +3547,6 @@ export default function App() {
   var [fontScale, setFontScale] = useState(1.1);
   var [settingsOpen, setSettingsOpen] = useState(false);
   var [showWorkoutInfo, setShowWorkoutInfo] = useState(false);
-  var [showAdvancedSettings, setShowAdvancedSettings] = useState(false);
   var [exerciseWorkflowEnabled, setExerciseWorkflowEnabled] = useState(false);
   var [userName, setUserName] = useState("");
   var [userPhoto, setUserPhoto] = useState(null);
@@ -3567,7 +3584,11 @@ export default function App() {
   var timerDragMovedRef = useRef(false);
   var timerTapRef = useRef(0);
   var timerHandleTapRef = useRef(0);
+  var quickToggleTooltipRef = useRef(null);
   var autosaveFingerprintRef = useRef("");
+  var cloudSyncTimerRef = useRef(null);
+  var cloudSyncPendingRef = useRef(null);
+  var cloudSyncInFlightRef = useRef(false);
   var [autoBackupMsg, setAutoBackupMsg] = useState("");
   var [exportMenuOpen, setExportMenuOpen] = useState(false);
   var [exGearFilter, setExGearFilter] = useState("all");
@@ -3985,6 +4006,12 @@ export default function App() {
     if (mins === Math.round(mins)) return "~" + Math.round(mins) + " min";
     return "~" + String(mins).replace(".", ",") + " min";
   }
+  function getItemTimerSeconds(item) {
+    return item && (item.est || item.tm) ? (item.est || item.tm) : 0;
+  }
+  function getStretchPrimaryLine(item) {
+    return item && (item.p || item.t || item.s || item.goal || item.target || "") ? String(item.p || item.t || item.s || item.goal || item.target || "") : "";
+  }
   function stretchImgSrc(item) {
     if (!item) return null;
     if (item.img && WS_IMG[item.img]) return WS_IMG[item.img];
@@ -3999,6 +4026,7 @@ export default function App() {
       {items.map(function(item, si) {
         var imgSrc = stretchImgSrc(item);
         var status = getStretchStatus(dayName, sectionKey, item.key);
+        var timerSec = getItemTimerSeconds(item);
         var cardKey = dayName + "-" + sectionKey + "-" + si;
         var isOpen = openStretchCard === cardKey;
         var thumbScale = item.thumbScale || 1;
@@ -4016,18 +4044,18 @@ export default function App() {
               <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginBottom: 3 }}>
                 <div style={{ fontWeight: 800, fontSize: 12, color: T.st }}>{item.n}</div>
                 {status === "done" && <span style={{ padding: "2px 7px", borderRadius: 999, background: T.ok + "16", color: T.ok, fontSize: 9, fontWeight: 800 }}>Fatto</span>}
-                {status === "skip" && <span style={{ padding: "2px 7px", borderRadius: 999, background: "#C6282814", color: "#C62828", fontSize: 9, fontWeight: 800 }}>Saltato</span>}
               </div>
-              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginBottom: 6, whiteSpace: "normal", overflow: "visible", overflowWrap: "anywhere", wordBreak: "break-word" }}>
-                {isOpen ? getStretchFullPreviewText(item) : getStretchPreviewText(item)}
-              </div>
+              {!isOpen && getStretchPrimaryLine(item) && <div style={{ fontSize: 11, color: T.tx, lineHeight: 1.45, marginBottom: 4, fontWeight: 700, whiteSpace: "normal", overflow: "visible", overflowWrap: "anywhere", wordBreak: "break-word" }}>
+                {getStretchPrimaryLine(item)}
+              </div>}
+              {!isOpen && <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.5, marginBottom: 6, whiteSpace: "normal", overflow: "visible", overflowWrap: "anywhere", wordBreak: "break-word" }}>
+                {getStretchPreviewText(item)}
+              </div>}
               <div style={{ display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}>
                 {item.t && <span style={{ fontSize: 10, color: T.sub, fontStyle: "italic" }}>{item.t}</span>}
                 {getStretchMinutesLabel(item) && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{getStretchMinutesLabel(item)}</span>}
-                {item.lk && <EmbedLink url={item.lk} label="Video" size={10} color={dc} style={{ minHeight: 24 }} />}
-                {item.tm && <button onClick={function(e) { e.stopPropagation(); quickTimer(item.tm); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "2px 8px", border: "none", borderRadius: 999, background: dc, color: "#fff", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>{"⏱ " + fmtLabel(item.tm)}</button>}
+                {timerSec ? <button onClick={function(e) { e.stopPropagation(); quickTimer(timerSec); }} style={{ display: "flex", alignItems: "center", gap: 3, padding: "2px 8px", border: "none", borderRadius: 999, background: dc, color: "#fff", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>{"⏱ " + fmtLabel(timerSec)}</button> : null}
                 <button onClick={function(e) { e.stopPropagation(); setStretchStatus(dayName, sectionKey, item.key, "done"); }} style={{ minHeight: 36, padding: "0 12px", border: "1px solid " + T.ok + "35", borderRadius: 999, background: status === "done" ? T.ok : T.ok + "12", color: status === "done" ? "#fff" : T.ok, fontSize: 11, fontWeight: 800, cursor: "pointer", touchAction: "manipulation" }}>Fatto</button>
-                <button onClick={function(e) { e.stopPropagation(); setStretchStatus(dayName, sectionKey, item.key, "skip"); }} style={{ minHeight: 36, padding: "0 12px", border: "1px solid " + "#C62828" + "30", borderRadius: 999, background: status === "skip" ? "#C62828" : "#C62828" + "10", color: status === "skip" ? "#fff" : "#C62828", fontSize: 11, fontWeight: 800, cursor: "pointer", touchAction: "manipulation" }}>Saltato</button>
               </div>
             </div>
             <div style={{ fontSize: 13, color: T.st, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s", flexShrink: 0, marginTop: 2 }}>&#9662;</div>
@@ -4036,10 +4064,6 @@ export default function App() {
           {isOpen && <div style={{ padding: "0 11px 11px", display: "grid", gap: 10, borderTop: "1px solid " + T.bg, background: T.cd }}>
             {imgSrc && <img src={imgSrc} style={{ width: "100%", display: "block", borderRadius: 12, marginTop: 10 }} />}
             {item.d && <div style={{ marginTop: 10, padding: "10px 12px", borderRadius: 10, background: T.st + "10", border: "1px solid " + T.st + "20", fontSize: 12, color: T.tx, lineHeight: 1.6, whiteSpace: "normal", overflow: "visible", overflowWrap: "anywhere", wordBreak: "break-word" }}>{item.d}</div>}
-            {item.lk && <div style={{ background: T.sb, borderRadius: 12, padding: "11px 12px", border: "1px solid " + T.bg }}>
-              <div style={{ fontSize: 10, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Video</div>
-              <EmbedLink url={item.lk} label="Apri video" size={12} color={T.st} />
-            </div>}
             {(item.goal || item.target) && <div style={{ background: T.sb, borderRadius: 12, padding: "11px 12px", border: "1px solid " + T.bg }}>
               <div style={{ fontSize: 10, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Perché oggi</div>
               <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7, whiteSpace: "normal", overflow: "visible", overflowWrap: "anywhere", wordBreak: "break-word" }}>{item.reason || getStretchReason(dayName, sectionKey, item)}</div>
@@ -4064,7 +4088,7 @@ export default function App() {
               <div style={{ fontSize: 10, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Respirazione</div>
               <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7, whiteSpace: "normal", overflow: "visible", overflowWrap: "anywhere", wordBreak: "break-word" }}>{item.breath}</div>
             </div>}
-            {item.tm ? <button onClick={function() { quickTimer(item.tm); }} style={{ minHeight: 46, border: "none", borderRadius: 12, background: dc, color: "#fff", fontWeight: 800, fontSize: 13, cursor: "pointer" }}>{"▶ Avvia timer · " + fmtLabel(item.tm)}</button> : null}
+            {getItemTimerSeconds(item) ? <button onClick={function() { quickTimer(getItemTimerSeconds(item)); }} style={{ minHeight: 46, border: "none", borderRadius: 12, background: dc, color: "#fff", fontWeight: 800, fontSize: 13, cursor: "pointer" }}>{"▶ Avvia timer · " + fmtLabel(getItemTimerSeconds(item))}</button> : null}
           </div>}
         </div>;
       })}
@@ -4126,6 +4150,7 @@ export default function App() {
     var nextWorkflowEnabled = overrides && typeof overrides.exerciseWorkflowEnabled === "boolean" ? overrides.exerciseWorkflowEnabled : exerciseWorkflowEnabled;
     var nextExtraInfoEnabled = overrides && typeof overrides.extraInfoEnabled === "boolean" ? overrides.extraInfoEnabled : extraInfoEnabled;
     var nextFlowModeEnabled = overrides && typeof overrides.flowModeEnabled === "boolean" ? overrides.flowModeEnabled : flowModeEnabled;
+    var nextCompactMode = overrides && typeof overrides.compactMode === "boolean" ? overrides.compactMode : compactMode;
     var nextSplitDayPrefs = normalizeSplitDayPrefs(overrides && overrides.splitDayPrefs && typeof overrides.splitDayPrefs === "object" ? overrides.splitDayPrefs : splitDayPrefs);
     return {
       savedAt: new Date().toISOString(),
@@ -4148,6 +4173,7 @@ export default function App() {
         exerciseWorkflowEnabled: nextWorkflowEnabled,
         extraInfoEnabled: nextExtraInfoEnabled,
         flowModeEnabled: nextFlowModeEnabled,
+        compactMode: nextCompactMode,
         splitDayPrefs: nextSplitDayPrefs,
         guidedMode: !!sourceGuidedMode,
         guidedRecoveryEnabled: false,
@@ -4314,6 +4340,33 @@ export default function App() {
     if (!silent) setCloudStatus("Cloud sincronizzato.");
   }
 
+  function queueCloudSync(snapshot, options) {
+    var cfg = options || {};
+    if (!supabase || !cloudUser || cloudHydratedUserId !== cloudUser.id || cloudConflict) return;
+    cloudSyncPendingRef.current = snapshot || buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false);
+    if (cloudSyncTimerRef.current) {
+      clearTimeout(cloudSyncTimerRef.current);
+      cloudSyncTimerRef.current = null;
+    }
+    cloudSyncTimerRef.current = setTimeout(function() {
+      cloudSyncTimerRef.current = null;
+      if (cloudSyncInFlightRef.current || !cloudSyncPendingRef.current) return;
+      cloudSyncInFlightRef.current = true;
+      var pendingSnapshot = cloudSyncPendingRef.current;
+      pushSnapshotToCloud(pendingSnapshot, cloudUser.id, true).then(function() {
+        cloudSyncPendingRef.current = null;
+        setCloudStatus(cfg.successMessage || "Cloud sincronizzato.");
+      }).catch(function() {
+        setCloudStatus("Salvato in locale. Sync cloud in attesa.");
+      }).finally(function() {
+        cloudSyncInFlightRef.current = false;
+        if (cloudSyncPendingRef.current && !cloudSyncTimerRef.current) {
+          queueCloudSync(cloudSyncPendingRef.current, cfg);
+        }
+      });
+    }, cfg.immediate ? 120 : 900);
+  }
+
   async function hydrateFromCloudForUser(userId) {
     if (!supabase || !userId) return;
     setCloudBusy(true);
@@ -4436,6 +4489,7 @@ export default function App() {
     try {
       var snapshot = buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false);
       await pushSnapshotToCloud(snapshot, cloudUser.id, false);
+      cloudSyncPendingRef.current = null;
     } catch (err) {
       setCloudStatus("Sync cloud non riuscito: " + err.message);
     } finally {
@@ -4448,6 +4502,7 @@ export default function App() {
     setCloudBusy(true);
     try {
       await pushSnapshotToCloud(cloudConflict.localSnapshot, cloudConflict.userId, true);
+      cloudSyncPendingRef.current = null;
       setCloudHydratedUserId(cloudConflict.userId);
       setCloudConflict(null);
       setCloudConflictChoice("");
@@ -4467,8 +4522,8 @@ export default function App() {
     setCloudHydratedUserId(cloudConflict.userId);
     setCloudConflict(null);
     setCloudConflictChoice("");
-    setCloudStatus("Hai scaricato i dati presenti nel cloud.");
-    setAutoBackupMsg("Scelta completata. Ho caricato i dati presenti nel cloud.");
+    setCloudStatus("Dati cloud scaricati e applicati al dispositivo.");
+    setAutoBackupMsg("Operazione completata. Ho scaricato i dati dal cloud e li ho applicati all'app.");
     closeActionBoxes();
   }
 
@@ -4536,6 +4591,10 @@ export default function App() {
     try {
       var fm = localStorage.getItem("wt-flow-mode");
       setFlowModeEnabled(fm === "1");
+    } catch(e) {}
+    try {
+      var cm = localStorage.getItem("wt-compact-mode");
+      setCompactMode(cm === "1");
     } catch(e) {}
     try { localStorage.removeItem("wt-guided-recovery"); } catch(e) {}
     try {
@@ -4644,16 +4703,8 @@ export default function App() {
 
   useEffect(function() {
     if (!supabase || !cloudUser || cloudHydratedUserId !== cloudUser.id || cloudConflict) return;
-    var cancelled = false;
     var snapshot = buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false);
-    pushSnapshotToCloud(snapshot, cloudUser.id, true).then(function() {
-      if (!cancelled) setCloudStatus("Cloud sincronizzato.");
-    }).catch(function() {
-      if (!cancelled) setCloudStatus("Salvato in locale. Sync cloud in attesa.");
-    });
-    return function() {
-      cancelled = true;
-    };
+    queueCloudSync(snapshot);
   }, [
     logs,
     cardioLogs,
@@ -4670,10 +4721,24 @@ export default function App() {
     exerciseWorkflowEnabled,
     extraInfoEnabled,
     flowModeEnabled,
+    compactMode,
     splitDayPrefs,
     cloudUser,
-    cloudHydratedUserId
+    cloudHydratedUserId,
+    cloudConflict
   ]);
+
+  useEffect(function() {
+    function flushPendingCloudSync() {
+      if (document.visibilityState !== "hidden") return;
+      if (!cloudSyncPendingRef.current || !supabase || !cloudUser || cloudHydratedUserId !== cloudUser.id || cloudConflict) return;
+      queueCloudSync(cloudSyncPendingRef.current, { immediate: true, successMessage: "Cloud sincronizzato." });
+    }
+    document.addEventListener("visibilitychange", flushPendingCloudSync);
+    return function() {
+      document.removeEventListener("visibilitychange", flushPendingCloudSync);
+    };
+  }, [supabase, cloudUser, cloudHydratedUserId, cloudConflict]);
 
   var saveData = useCallback(function(nl, nc, np, nm, ng, bw, gr, overrides) {
     var nextLogs = nl || {};
@@ -4691,6 +4756,7 @@ export default function App() {
     var nextWorkflowEnabled = overrides && typeof overrides.exerciseWorkflowEnabled === "boolean" ? overrides.exerciseWorkflowEnabled : exerciseWorkflowEnabled;
     var nextExtraInfoEnabled = overrides && typeof overrides.extraInfoEnabled === "boolean" ? overrides.extraInfoEnabled : extraInfoEnabled;
     var nextFlowModeEnabled = overrides && typeof overrides.flowModeEnabled === "boolean" ? overrides.flowModeEnabled : flowModeEnabled;
+    var nextCompactMode = overrides && typeof overrides.compactMode === "boolean" ? overrides.compactMode : compactMode;
     var nextSplitDayPrefs = normalizeSplitDayPrefs(overrides && overrides.splitDayPrefs && typeof overrides.splitDayPrefs === "object" ? overrides.splitDayPrefs : splitDayPrefs);
     setLogs(nextLogs);
     setCardioLogs(nextCardioLogs);
@@ -4718,6 +4784,7 @@ export default function App() {
           exerciseWorkflowEnabled: nextWorkflowEnabled,
           extraInfoEnabled: nextExtraInfoEnabled,
           flowModeEnabled: nextFlowModeEnabled,
+          compactMode: nextCompactMode,
           splitDayPrefs: nextSplitDayPrefs
         }
       );
@@ -4758,7 +4825,7 @@ export default function App() {
         setAutoBackupMsg("Salvataggio locale non riuscito: spazio del browser probabilmente pieno. Esporta subito il JSON e ricarica la pagina dopo aver reimportato il backup piu recente.");
       }
     }
-  }, [guidedMode, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled, flowModeEnabled, splitDayPrefs, stretchLogs]);
+  }, [guidedMode, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled, flowModeEnabled, compactMode, splitDayPrefs, stretchLogs]);
 
   var persistCurrentSnapshot = useCallback(function(reason) {
     if (!ready) return false;
@@ -4782,6 +4849,7 @@ export default function App() {
           exerciseWorkflowEnabled: exerciseWorkflowEnabled,
           extraInfoEnabled: extraInfoEnabled,
           flowModeEnabled: flowModeEnabled,
+          compactMode: compactMode,
           splitDayPrefs: splitDayPrefs
         }
       );
@@ -4813,6 +4881,7 @@ export default function App() {
             exerciseWorkflowEnabled: exerciseWorkflowEnabled,
             extraInfoEnabled: extraInfoEnabled,
             flowModeEnabled: flowModeEnabled,
+            compactMode: compactMode,
             splitDayPrefs: splitDayPrefs
           }
         );
@@ -4834,7 +4903,7 @@ export default function App() {
         return false;
       }
     }
-  }, [ready, logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled, flowModeEnabled, splitDayPrefs]);
+  }, [ready, logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, userName, userPhoto, level, theme, fontScale, exerciseWorkflowEnabled, extraInfoEnabled, flowModeEnabled, compactMode, splitDayPrefs]);
 
   useEffect(function() {
     if (!ready) return;
@@ -5367,7 +5436,7 @@ export default function App() {
   function getWarmupSelectionHint(levelKey, dayIndex) {
     if (levelKey !== "v4") return "";
     if (dayIndex === 1 || dayIndex === 4) return "Nei giorni upper il circuito evita di pre-affaticare petto, dorsali e tricipiti: lavora piu da gambe, anche e sistema nervoso.";
-    return "Tempo target 12-15 minuti totali: mobilita, attivazione, 1 giro di circuito e serie di avvicinamento.";
+    return "Tempo target 12-15 minuti totali: mobilità, attivazione, 1 giro di circuito e serie di avvicinamento.";
   }
 
   function getApproachAdvice(dayIndex, exName) {
@@ -5726,6 +5795,8 @@ export default function App() {
       fontScale: fontScale,
       exerciseWorkflowEnabled: exerciseWorkflowEnabled,
       extraInfoEnabled: extraInfoEnabled,
+      flowModeEnabled: flowModeEnabled,
+      compactMode: compactMode,
       splitDayPrefs: normalizeSplitDayPrefs(splitDayPrefs),
       guidedMode: guidedMode,
       guidedRecoveryEnabled: false,
@@ -5759,6 +5830,8 @@ export default function App() {
       guidedRecoveryEnabled: "OFF",
       calibrationMode: calibrationMode ? "ON" : "OFF",
       extraInfoEnabled: extraInfoEnabled ? "ON" : "OFF",
+      flowModeEnabled: flowModeEnabled ? "ON" : "OFF",
+      compactMode: compactMode ? "Compatta" : "Completa",
       exerciseWorkflowEnabled: exerciseWorkflowEnabled ? "ON" : "OFF",
       splitDaysConfigured: Object.keys(splitDayPrefs || {}).filter(function(key) { return splitDayPrefs[key] === "split"; }).length,
       barbellWeight: barbellWeight
@@ -5777,6 +5850,7 @@ export default function App() {
     var importedWorkflow = typeof preferences.exerciseWorkflowEnabled === "boolean" ? preferences.exerciseWorkflowEnabled : null;
     var importedExtraInfo = typeof preferences.extraInfoEnabled === "boolean" ? preferences.extraInfoEnabled : null;
     var importedFlowMode = typeof preferences.flowModeEnabled === "boolean" ? preferences.flowModeEnabled : null;
+    var importedCompactMode = typeof preferences.compactMode === "boolean" ? preferences.compactMode : null;
     var importedSplitDayPrefs = preferences.splitDayPrefs && typeof preferences.splitDayPrefs === "object" ? normalizeSplitDayPrefs(preferences.splitDayPrefs) : null;
 
     setUserName(importedName);
@@ -5813,6 +5887,10 @@ export default function App() {
     if (importedFlowMode !== null) {
       setFlowModeEnabled(importedFlowMode);
       try { localStorage.setItem("wt-flow-mode", importedFlowMode ? "1" : "0"); } catch (e) {}
+    }
+    if (importedCompactMode !== null) {
+      setCompactMode(importedCompactMode);
+      try { localStorage.setItem("wt-compact-mode", importedCompactMode ? "1" : "0"); } catch (e) {}
     }
     if (importedSplitDayPrefs !== null) {
       setSplitDayPrefs(importedSplitDayPrefs);
@@ -6005,7 +6083,7 @@ export default function App() {
     var rirInfo = getSessionRepresentativeRir(entry.sets || []);
     return {
       short: restRange || (baseRestSec ? fmtLabel(baseRestSec) : "—"),
-      detail: "Recupero scheda: " + (restRange || (baseRestSec ? fmtLabel(baseRestSec) : "—"))
+      detail: "Recupero previsto: " + (restRange || (baseRestSec ? fmtLabel(baseRestSec) : "—"))
     };
   }
 
@@ -6736,7 +6814,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     if (exName === "Squat Bulgaro") {
       return "clamshell senza peso 8 per lato, poi fermati 15-20s prima della serie.";
     }
-    return "mobilita o respirazione molto leggera su un distretto lontano, poi fermati 15-20s prima della serie.";
+    return "mobilità o respirazione molto leggera su un distretto lontano, poi fermati 15-20s prima della serie.";
   }
 
   function shouldSuppressRepeatedRirFeedback(prevSet, rirValue) {
@@ -7748,7 +7826,6 @@ function isNearBodyweightElasticSession(exName, sets) {
             {meta.patternKey && <span title={EXERCISE_PATTERN_HELP[meta.patternKey] || ""} style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Pattern: " + EXERCISE_PATTERN_LABELS[meta.patternKey] + " · " + (EXERCISE_PATTERN_HELP[meta.patternKey] || "")}</span>}
             {exerciseWorkflowEnabled && <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Scheda: " + meta.cardStatus.replace("_", " ")}</span>}
             {exerciseWorkflowEnabled && <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Foto: " + meta.photoStatus}</span>}
-            {exerciseWorkflowEnabled && <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Video: " + meta.videoStatus}</span>}
           </div>}
           {imgs.map(function(src, ii) { return <img key={ii} src={src} style={{ width: "100%", borderRadius: 10, marginBottom: 12 }} />; })}
           <div style={{ background: T.sb, borderRadius: 10, padding: 12, marginBottom: 10 }}>
@@ -7792,7 +7869,6 @@ function isNearBodyweightElasticSession(exName, sets) {
               {(exInfoOpen === "Trazioni" || exInfoOpen === "Plank" || exInfoOpen === "Push-Up" || exInfoOpen === "Ab Wheel") && <button onClick={function() { pushNavSnapshot(); setExInfoOpen("Hollow Position"); }} style={{ marginTop: 10, fontSize: 11, color: dc, fontWeight: 700, background: dc + "12", border: "1px solid " + dc + "30", borderRadius: 8, padding: "6px 12px", cursor: "pointer" }}>→ Vedi Hollow Position</button>}
             </div>
           </details>}
-          {db.lk && <EmbedLink url={db.lk} label="▶ Video tutorial" size={12} style={{ marginBottom: 12 }} />}
           <button onClick={function() { setExInfoOpen(null); }} style={{ width: "100%", padding: 10, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", marginTop: 4 }}>Chiudi</button>
         </div>
       </div>
@@ -7971,7 +8047,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showPrinciples === 600 ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
                 </div>
                 {showPrinciples === 600 && <div style={{ padding: "6px 14px 14px", background: T.sb, display: "grid", gap: 10 }}>
-                  <p style={{ margin: 0, fontSize: 12, lineHeight: 1.7, color: T.sub }}>Usa questa tabella per confrontare rapidamente i pattern respiratori. Nei multiarticolari pesanti la priorita e la stabilita del tronco; negli esercizi piu semplici segui invece il ritmo del movimento.</p>
+                  <p style={{ margin: 0, fontSize: 12, lineHeight: 1.7, color: T.sub }}>Usa questa tabella per confrontare rapidamente i pattern respiratori. Nei multiarticolari pesanti la priorita e la stabilità del tronco; negli esercizi piu semplici segui invece il ritmo del movimento.</p>
                   <RichBlocks
                     accent={dc}
                     blocks={[{
@@ -8002,7 +8078,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); setCardioLogs({}); setStretchLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(true); setBarbellWeight(BARBELL_BASE_KG); setExtraInfoEnabled(true); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setGuidedFillerHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); setSplitDayPrefs({}); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); localStorage.removeItem("wt-barbell-weight"); localStorage.removeItem("wt-stretch-logs"); } catch(e) {} setAutoBackupMsg("Tutti i dati sono stati cancellati."); closeActionBoxes(); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setCardioLogs({}); setStretchLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(true); setBarbellWeight(BARBELL_BASE_KG); setExtraInfoEnabled(true); setFlowModeEnabled(false); setCompactMode(false); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setGuidedFillerHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); setSplitDayPrefs({}); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); localStorage.removeItem("wt-flow-mode"); localStorage.removeItem("wt-compact-mode"); localStorage.removeItem("wt-barbell-weight"); localStorage.removeItem("wt-stretch-logs"); } catch(e) {} setAutoBackupMsg("Tutti i dati sono stati cancellati."); closeActionBoxes(); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
           </div>
         </div>
       </div>}
@@ -8011,6 +8087,7 @@ function isNearBodyweightElasticSession(exName, sets) {
       {warmupInfoOpen && (function() {
         var item = warmupInfoOpen;
         var imgSrc = warmupImgSrc(item);
+        var timerSec = getItemTimerSeconds(item);
         return <div onClick={function() { setWarmupInfoOpen(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", zIndex: 240, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: "0 0 0 0" }}>
           <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: "16px 16px 0 0", maxWidth: 480, width: "100%", color: T.tx, maxHeight: "85dvh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
             <div style={{ padding: "16px 16px 0", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
@@ -8020,9 +8097,33 @@ function isNearBodyweightElasticSession(exName, sets) {
             <div style={{ overflowY: "auto", padding: "14px 16px 24px" }}>
               {imgSrc && <img src={imgSrc} style={{ width: "100%", borderRadius: 12, marginBottom: 14, display: "block" }} />}
               {item.d && <div style={{ fontSize: 13, color: T.sub, lineHeight: 1.7 }}>{item.d}</div>}
-              {item.tm && <div style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 8 }}>
-                <button onClick={function() { quickTimer(item.tm); setWarmupInfoOpen(null); }} style={{ minHeight: 40, padding: "0 16px", border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 800, cursor: "pointer" }}>{"⏱ Timer " + fmtLabel(item.tm)}</button>
-              </div>}
+              {timerSec ? <div style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 8 }}>
+                <button onClick={function() { quickTimer(timerSec); setWarmupInfoOpen(null); }} style={{ minHeight: 40, padding: "0 16px", border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 800, cursor: "pointer" }}>{"⏱ Timer " + fmtLabel(timerSec)}</button>
+              </div> : null}
+            </div>
+          </div>
+        </div>;
+      })()}
+
+      {/* Stretch item modal */}
+      {stretchInfoOpen && (function() {
+        var item = stretchInfoOpen;
+        var imgSrc = item.img && WS_IMG[item.img] ? WS_IMG[item.img] : "";
+        var timerSec = item.tm || 0;
+        return <div onClick={function() { setStretchInfoOpen(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", zIndex: 240, display: "flex", alignItems: "flex-end", justifyContent: "center", padding: "0 0 0 0" }}>
+          <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: "16px 16px 0 0", maxWidth: 480, width: "100%", color: T.tx, maxHeight: "85dvh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+            <div style={{ padding: "16px 16px 0", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
+              <div style={{ fontSize: 16, fontWeight: 800, color: T.tx }}>{item.name}</div>
+              <button onClick={function() { setStretchInfoOpen(null); }} style={{ width: 30, height: 30, border: "none", borderRadius: 10, background: T.bg, color: T.sub, fontSize: 16, fontWeight: 800, cursor: "pointer", lineHeight: 1, flexShrink: 0 }}>✕</button>
+            </div>
+            <div style={{ overflowY: "auto", padding: "14px 16px 24px" }}>
+              {imgSrc && <img src={imgSrc} style={{ width: "100%", borderRadius: 12, marginBottom: 14, display: "block" }} />}
+              {item.primary && <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, lineHeight: 1.6, marginBottom: 8 }}>{item.primary}</div>}
+              {item.detail && <div style={{ fontSize: 13, color: T.sub, lineHeight: 1.7 }}>{item.detail}</div>}
+              {item.timeLabel && <div style={{ fontSize: 11, color: T.sub, fontStyle: "italic", lineHeight: 1.6, marginTop: 8 }}>{item.timeLabel}</div>}
+              {timerSec ? <div style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 8 }}>
+                <button onClick={function() { quickTimer(timerSec); setStretchInfoOpen(null); }} style={{ minHeight: 40, padding: "0 16px", border: "none", borderRadius: 10, background: T.st, color: "#fff", fontSize: 13, fontWeight: 800, cursor: "pointer" }}>{"⏱ Timer " + fmtLabel(timerSec)}</button>
+              </div> : null}
             </div>
           </div>
         </div>;
@@ -8087,7 +8188,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </div>
               </div>
             </div>
-            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Scheda e modalità</div>
+            <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Scheda</div>
             <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", borderRadius: 10, background: dc + "12", border: "2px solid " + dc, marginBottom: 6 }}>
               <span style={{ fontSize: 18, flexShrink: 0 }}>💥</span>
               <div style={{ flex: 1, minWidth: 0 }}>
@@ -8096,63 +8197,12 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>
               <span style={{ fontSize: 10, background: dc, color: "#fff", padding: "2px 7px", borderRadius: 999, fontWeight: 800, flexShrink: 0 }}>attivo</span>
             </div>
-            {!isBasics && <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Coach attivo</div>
-                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Quando lo attivi, l'app aggiunge briefing pre-sessione, richiesta RIR dopo le serie e decisione finale su come proseguire.</div>
-                </div>
-                <button
-                  onClick={function() {
-                    var next = !guidedMode;
-                    saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, next);
-                  }}
-                  style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (guidedMode ? dc : T.sub + "30"), background: guidedMode ? dc : T.cd, color: guidedMode ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
-                >
-                  {guidedMode ? "ON" : "OFF"}
-                </button>
-              </div>
-            </div>}
-            {!isBasics && <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Info estese</div>
-                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Se la spegni, nella scheda restano solo le cose davvero essenziali: serie, ripetizioni, recupero, registrazione, storico utile e tutor. Nasconde respirazione, guida completa, tecnica estesa ed errori.</div>
-                </div>
-                <button
-                  onClick={function() {
-                    var next = !extraInfoEnabled;
-                    setExtraInfoEnabled(next);
-                    try { localStorage.setItem("wt-extra-info", next ? "1" : "0"); } catch(e) {}
-                  }}
-                  style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (extraInfoEnabled ? dc : T.sub + "30"), background: extraInfoEnabled ? dc : T.cd, color: extraInfoEnabled ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
-                >
-                  {extraInfoEnabled ? "ON" : "OFF"}
-                </button>
-              </div>
-            </div>}
-            {!isBasics && <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Modalita flusso</div>
-                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Riduce le distrazioni durante l'allenamento: checklist iniziale, prossimo passo nel timer, avanzamento automatico e sessione attiva solo sulla scheda.</div>
-                </div>
-                <button
-                  onClick={function() {
-                    var next = !flowModeEnabled;
-                    setFlowModeEnabled(next);
-                    try { localStorage.setItem("wt-flow-mode", next ? "1" : "0"); } catch(e) {}
-                  }}
-                  style={{ minWidth: 74, minHeight: 34, padding: "0 12px", borderRadius: 999, border: "1px solid " + (flowModeEnabled ? dc : T.sub + "30"), background: flowModeEnabled ? dc : T.cd, color: flowModeEnabled ? "#fff" : T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}
-                >
-                  {flowModeEnabled ? "ON" : "OFF"}
-                </button>
-              </div>
-            </div>}
             <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Attrezzatura</div>
             <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 6 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Peso bilanciere</div>
-              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6, marginBottom: 8 }}>Usato per gli esercizi con bilanciere. Nella registrazione inserisci solo i kg dei dischi; l'app somma automaticamente il bilanciere.</div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                <div style={{ fontSize: 13, fontWeight: 700, color: T.tx }}>Peso bilanciere</div>
+                <button onClick={function() { toggleSettingsInfo("barbell"); }} style={{ width: 20, height: 20, borderRadius: 999, border: "1px solid " + T.sub + "45", background: T.cd, color: T.sub, fontSize: 11, fontWeight: 900, cursor: "pointer", flexShrink: 0 }}>i</button>
+              </div>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <input
                   type="number"
@@ -8169,6 +8219,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                 />
                 <span style={{ fontSize: 12, color: T.sub, fontWeight: 700 }}>kg</span>
               </div>
+              {renderSettingsInfoInline("barbell")}
             </div>
             <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Come vedo l'app</div>
             {Object.keys(TH).map(function(k) { var v = TH[k]; return <button key={k} onClick={function() { setTheme(k); try { localStorage.setItem("wt-theme", k); } catch(e) {} }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", border: theme === k ? "2px solid " + v.dy[0] : "2px solid transparent", borderRadius: 10, background: v.bg, cursor: "pointer", width: "100%", marginBottom: 4 }}><div style={{ display: "flex", gap: 3 }}>{v.dy.slice(0,5).map(function(c,i) { return <div key={i} style={{ width: 14, height: 14, borderRadius: 4, background: c }} />; })}</div><span style={{ fontSize: 13, fontWeight: 600, color: v.tx }}>{v.n}</span>{theme === k && <span style={{ marginLeft: "auto", fontSize: 11, color: v.dy[0], fontWeight: 700 }}>✓ attivo</span>}</button>; })}
@@ -8181,15 +8232,13 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </button>;
               })}
             </div>
-            <button onClick={function() { setShowAdvancedSettings(function(v) { return !v; }); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, width: "100%", margin: "18px 0 8px", padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, color: T.tx, fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
-              <span>Opzioni avanzate</span>
-              <span style={{ color: T.sub, transform: showAdvancedSettings ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
-            </button>
-            {showAdvancedSettings && <>
             <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "8px 0 8px" }}>Cloud</div>
             <div style={{ background: T.sb, borderRadius: 12, padding: "12px 14px", marginBottom: 8 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>Sync con Supabase</div>
-              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6, marginBottom: 10 }}>I dati restano salvati anche in locale. Se cloud e dispositivo hanno backup diversi, prima scegli tu quale versione usare.</div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                <div style={{ fontSize: 13, fontWeight: 700, color: T.tx }}>Sync con Supabase</div>
+                <button onClick={function() { toggleSettingsInfo("cloud"); }} style={{ width: 20, height: 20, borderRadius: 999, border: "1px solid " + T.sub + "45", background: T.cd, color: T.sub, fontSize: 11, fontWeight: 900, cursor: "pointer", flexShrink: 0 }}>i</button>
+              </div>
+              {renderSettingsInfoInline("cloud")}
               {!cloudUser ? <>
                 <div style={{ display: "grid", gap: 8 }}>
                   <input
@@ -8227,8 +8276,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                 <div style={{ fontSize: 11, fontWeight: 800, color: "#C62828", textTransform: "uppercase", letterSpacing: 0.7 }}>Conflitto tra dispositivo e cloud</div>
                 <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
                   Seleziona quale versione vuoi tenere adesso. Finché non scegli, la sync automatica resta ferma.
-                  {getCloudConflictRecommendedChoice(cloudConflict) === "remote" && <span style={{ color: dc, fontWeight: 700 }}> Versione consigliata: cloud.</span>}
-                  {getCloudConflictRecommendedChoice(cloudConflict) === "local" && <span style={{ color: dc, fontWeight: 700 }}> Versione consigliata: questo dispositivo.</span>}
                 </div>
                 <div style={{ display: "grid", gap: 8 }}>
                   <button
@@ -8242,7 +8289,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                       <br />
                       {"Pesi: " + ((cloudConflict.localSummary && cloudConflict.localSummary.weightEntries) || 0) + " · Cardio: " + ((cloudConflict.localSummary && cloudConflict.localSummary.cardioEntries) || 0)}
                     </div>
-                    {getCloudConflictRecommendedChoice(cloudConflict) === "local" && <div style={{ marginTop: 6, fontSize: 10, fontWeight: 800, color: dc }}>Consigliato</div>}
                     {cloudConflictChoice === "local" && <div style={{ marginTop: 6, fontSize: 10, fontWeight: 800, color: dc }}>Selezionato</div>}
                   </button>
                   <button
@@ -8256,7 +8302,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                       <br />
                       {"Pesi: " + ((cloudConflict.remoteSummary && cloudConflict.remoteSummary.weightEntries) || 0) + " · Cardio: " + ((cloudConflict.remoteSummary && cloudConflict.remoteSummary.cardioEntries) || 0)}
                     </div>
-                    {getCloudConflictRecommendedChoice(cloudConflict) === "remote" && <div style={{ marginTop: 6, fontSize: 10, fontWeight: 800, color: dc }}>Consigliato</div>}
                     {cloudConflictChoice === "remote" && <div style={{ marginTop: 6, fontSize: 10, fontWeight: 800, color: dc }}>Selezionato</div>}
                   </button>
                 </div>
@@ -8286,11 +8331,11 @@ function isNearBodyweightElasticSession(exName, sets) {
             <div style={{ marginBottom: 8, padding: "10px 12px", borderRadius: 10, background: dc + "12", border: "1px solid " + dc + "22", fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
               Autosalvataggio attivo ogni 2 minuti e quando l'app va in background.
             </div>
-            <div style={{ marginBottom: 8, padding: "10px 12px", borderRadius: 10, background: T.sb, border: "1px solid " + T.bg, fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
-              <div><b style={{ color: T.tx }}>JSON</b>: backup completo dell'app. Mantiene log, impostazioni, calibrazione, RIR e struttura interna. È il formato più sicuro per ripristinare tutto.</div>
-              <div><b style={{ color: T.tx }}>CSV leggibile</b>: riepilogo facile da leggere o condividere. Serve soprattutto per controllare i dati, non per modificarli.</div>
-              <div><b style={{ color: T.tx }}>CSV modificabile</b>: tabella editabile da Excel o Numbers e poi reimportabile nell'app. Usalo se vuoi correggere o personalizzare i dati a mano.</div>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+              <button onClick={function() { toggleSettingsInfo("data"); }} style={{ width: 20, height: 20, borderRadius: 999, border: "1px solid " + T.sub + "45", background: T.cd, color: T.sub, fontSize: 11, fontWeight: 900, cursor: "pointer", flexShrink: 0 }}>i</button>
+              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>Backup, importazione e reset completo.</div>
             </div>
+            {renderSettingsInfoInline("data")}
             <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 8 }}>
               <div style={{ position: "relative" }}>
                 <button onClick={function() { setExportMenuOpen(function(v) { return !v; }); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", textAlign: "left", gap: 10, width: "100%", padding: "11px 14px", borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, cursor: "pointer", fontSize: 13, fontWeight: 600, color: T.tx }}>
@@ -8311,7 +8356,6 @@ function isNearBodyweightElasticSession(exName, sets) {
               <div><b style={{ color: T.tx }}>Versione app</b>: {APP_VERSION}</div>
               {APP_BUILD_TIME && <div><b style={{ color: T.tx }}>Build</b>: {new Date(APP_BUILD_TIME).toLocaleString("it-IT")}</div>}
             </div>
-            </>}
           </div>
           <div style={{ padding: "12px 20px calc(12px + env(safe-area-inset-bottom, 0px))", flexShrink: 0, borderTop: "1px solid " + T.bg, background: T.cd }}>
             <button onClick={function() { setSettingsOpen(false); }} style={{ width: "100%", padding: 10, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Chiudi</button>
@@ -8601,7 +8645,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           <div onClick={function() { var next = showTheorySection === "warmup" ? null : "warmup"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-warmup"); }} style={{ padding: "16px 18px 13px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "warmup" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
             <div>
               <div style={{ fontSize: 16, fontWeight: 800, color: showTheorySection === "warmup" ? dc : T.tx, marginBottom: 2 }}>🔥 Riscaldamento: 4 fasi complete</div>
-              <div style={{ fontSize: 12, color: T.sub }}>Mobilita, stabilita, circuito neurale e serie di avvicinamento in 12-15 minuti.</div>
+              <div style={{ fontSize: 12, color: T.sub }}>Mobilità, stabilità, circuito neurale e serie di avvicinamento in 12-15 minuti.</div>
             </div>
             <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showTheorySection === "warmup" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
           </div>
@@ -8610,14 +8654,14 @@ function isNearBodyweightElasticSession(exName, sets) {
               <div style={{ padding: "11px 12px", borderRadius: 12, background: dc + "0A", border: "1px solid " + dc + "18" }}>
                 <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 5 }}>La logica joint-by-joint</div>
                 <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.65 }}>
-                  Il corpo alterna distretti che chiedono soprattutto mobilita e distretti che chiedono soprattutto stabilita. Caviglia: mobilita. Ginocchio: stabilita. Anca: mobilita. Lombare: stabilita. Toracica: mobilita. Scapola: stabilita. Spalla: mobilita. Se una zona mobile si blocca, quella sopra o sotto compensa muovendosi dove non dovrebbe.
+                  Il corpo alterna distretti che chiedono soprattutto mobilità e distretti che chiedono soprattutto stabilità. Caviglia: mobilità. Ginocchio: stabilità. Anca: mobilità. Lombare: stabilità. Toracica: mobilità. Scapola: stabilità. Spalla: mobilità. Se una zona mobile si blocca, quella sopra o sotto compensa muovendosi dove non dovrebbe.
                 </div>
               </div>
               <div style={{ display: "grid", gap: 8 }}>
                 {[
-                  ["Ordine corretto", "Prima mobilita dinamica dal basso verso l'alto. Poi attivazione e stabilita. Poi un circuito neurale breve. Solo dopo fai le serie di avvicinamento del primo esercizio pesante."],
-                  ["Perche prima mobilita", "Se caviglia, anca o toracica sono rigide, il corpo usa compensi e rigidita inutile. Apri prima il ROM, poi insegni al corpo a controllarlo."],
-                  ["Perche poi stabilita", "Subito dopo la mobilita c'e una finestra utile: il corpo non puo piu contare solo sulla rigidita. Dead bug, shoulder tap, scapole e ponte monopodalico servono a fissare il nuovo assetto."],
+                  ["Ordine corretto", "Prima mobilità dinamica dal basso verso l'alto. Poi attivazione e stabilità. Poi un circuito neurale breve. Solo dopo fai le serie di avvicinamento del primo esercizio pesante."],
+                  ["Perche prima mobilità", "Se caviglia, anca o toracica sono rigide, il corpo usa compensi e rigidità inutile. Apri prima il ROM, poi insegni al corpo a controllarlo."],
+                  ["Perche poi stabilità", "Subito dopo la mobilità c'e una finestra utile: il corpo non puo piu contare solo sulla rigidità. Dead bug, shoulder tap, scapole e ponte monopodalico servono a fissare il nuovo assetto."],
                   ["Perche il circuito e corto", "Serve solo ad alzare frequenza cardiaca e attivazione nervosa. E un giro solo, senza fatica. Se parti gia stanca puoi saltarlo e passare direttamente all'avvicinamento."]
                 ].map(function(row, ri) {
                   return <div key={ri} style={{ background: T.sb, border: "1px solid " + T.bg, borderRadius: 10, padding: "10px 11px" }}>
@@ -8629,7 +8673,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               <div style={{ padding: "11px 12px", borderRadius: 12, background: "#8E6C420E", border: "1px solid #8E6C4220" }}>
                 <div style={{ fontSize: 11, fontWeight: 800, color: "#8E6C42", textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Schema pratico da seguire</div>
                 <div style={{ display: "grid", gap: 5, fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
-                  <div>Fase 1 · Mobilita: 4-5 minuti per aprire caviglie, anche, toracica e spalle.</div>
+                  <div>Fase 1 · Mobilità: 4-5 minuti per aprire caviglie, anche, toracica e spalle.</div>
                   <div>Fase 2 · Attivazione: 2-3 minuti di core e stabilizzatori specifici del giorno.</div>
                   <div>Fase 3 · Circuito neurale: 1 giro solo, continuo, senza arrivare a fiatone pesante.</div>
                   <div>Fase 4 · Avvicinamento: 2-3 o 3 serie leggere e progressive del primo gesto del giorno.</div>
@@ -8699,7 +8743,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                 {[
                   ["Cosa cercare", "Tensione 6-8 su 10, ma respiro ancora normale. Non serve cercare dolore per migliorare il ROM."],
                   ["Quando farlo", "Dopo i pesi come bonus facoltativo, oppure nei giorni cardio in una sezione dedicata. Niente stretching statico prima dei multiarticolari."],
-                  ["Come leggerlo nell'app", "Ogni posizione ha durata, cue essenziale, timer veloce e stato fatto/saltato. Nessun blocco: puoi fare tutto o solo il pezzo che oggi ti serve."]
+                  ["Come leggerlo nell'app", "Ogni posizione ha durata, cue essenziale, timer veloce e stato fatto. Nessun blocco: puoi fare tutto o solo il pezzo che oggi ti serve."]
                 ].map(function(row, ri) {
                   return <div key={ri} style={{ background: T.sb, border: "1px solid " + T.bg, borderRadius: 10, padding: "10px 11px" }}>
                     <div style={{ fontSize: 11, fontWeight: 800, color: dc, marginBottom: 3 }}>{row[0]}</div>
@@ -8836,8 +8880,8 @@ function isNearBodyweightElasticSession(exName, sets) {
 
         {<div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
           <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
-            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🥗 Cibo</div>
-            <div style={{ fontSize: 12, color: T.sub }}>Principi base e dieta attuale per supportare l'allenamento</div>
+            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🥗 Nutrizione</div>
+            <div style={{ fontSize: 12, color: T.sub }}>Principi base per supportare l'allenamento</div>
           </div>
           <div style={{ padding: "14px 16px 6px", fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Principi</div>
           <div style={{ padding: "0 16px 16px", display: "grid", gap: 8 }}>
@@ -8845,21 +8889,6 @@ function isNearBodyweightElasticSession(exName, sets) {
               var isOpen = showPrinciples === 200 + ii;
               return <div key={ii} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "30" : T.bg) }}>
                 <div onClick={function() { setShowPrinciples(isOpen ? null : 200 + ii); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
-                  <span style={{ fontSize: 13, fontWeight: isOpen ? 700 : 600, color: isOpen ? dc : T.tx, lineHeight: 1.3 }}>{item.t}</span>
-                  <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
-                </div>
-                {isOpen && <div style={{ padding: "4px 14px 14px", background: T.sb }}>
-                  <RichBlocks blocks={item.d} accent={dc} />
-                </div>}
-              </div>;
-            })}
-          </div>
-          <div style={{ padding: "0 16px 6px", fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Dieta attuale</div>
-          <div style={{ padding: "0 16px 16px", display: "grid", gap: 8 }}>
-            {NUTRITION_CURRENT_PLAN.map(function(item, ii) {
-              var isOpen = showPrinciples === 500 + ii;
-              return <div key={ii} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "30" : T.bg) }}>
-                <div onClick={function() { setShowPrinciples(isOpen ? null : 500 + ii); }} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
                   <span style={{ fontSize: 13, fontWeight: isOpen ? 700 : 600, color: isOpen ? dc : T.tx, lineHeight: 1.3 }}>{item.t}</span>
                   <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
                 </div>
@@ -9100,10 +9129,10 @@ function isNearBodyweightElasticSession(exName, sets) {
             <button onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === "progressi-help" ? null : "progressi-help"); }} style={{ width: 22, height: 22, borderRadius: "50%", border: "1px solid " + dc + "40", background: progTooltip === "progressi-help" ? dc : "transparent", color: progTooltip === "progressi-help" ? "#fff" : dc, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}>?</button>
           </div>
           {progTooltip === "progressi-help" && <div style={{ marginBottom: 10, padding: "10px 12px", borderRadius: 9, background: dc + "10", border: "1px solid " + dc + "20", fontSize: 11, color: T.sub, lineHeight: 1.7 }} onClick={function(e) { e.stopPropagation(); }}>
-            <div><b style={{ color: dc }}>Questa pagina</b> legge solo le sedute pesi del mese corrente.</div>
-            <div style={{ marginTop: 4 }}><b style={{ color: dc }}>Settimane</b> mostra quante sedute hai fatto e il lavoro totale accumulato.</div>
-            <div style={{ marginTop: 4 }}><b style={{ color: dc }}>Fondamentali</b> confronta subito ultima settimana, settimana prima e massimo del mese.</div>
-            <div style={{ marginTop: 4 }}><b style={{ color: dc }}>Andamento esercizi</b> ti fa vedere se l'ultima settimana e migliore, simile o peggiore della precedente.</div>
+            <div><b style={{ color: dc }}>Questa pagina</b> legge le sedute pesi del mese corrente.</div>
+            <div style={{ marginTop: 4 }}><b style={{ color: dc }}>Risultati chiave</b> mostra subito se stai salendo o no sui fondamentali.</div>
+            <div style={{ marginTop: 4 }}><b style={{ color: dc }}>Andamento esercizi</b> ti dice cosa provare nella prossima seduta.</div>
+            <div style={{ marginTop: 4 }}><b style={{ color: dc }}>Archivio</b> resta sotto, apribile solo quando ti serve correggere o ricontrollare.</div>
           </div>}
 
           {allEntries.length === 0 ? <div style={{ background: T.cd, borderRadius: 12, padding: 24, textAlign: "center" }}>
@@ -9133,19 +9162,23 @@ function isNearBodyweightElasticSession(exName, sets) {
             </div>}
 
             {/* Riepilogo settimane */}
-            <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-              <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg, display: "flex", alignItems: "center", gap: 8 }}>
-                <div style={{ fontSize: 14, fontWeight: 800, color: T.tx, flex: 1 }}>Settimane allenamento</div>
-                <button onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === "sess-help" ? null : "sess-help"); }} style={{ width: 22, height: 22, borderRadius: "50%", border: "1px solid " + dc + "40", background: progTooltip === "sess-help" ? dc : "transparent", color: progTooltip === "sess-help" ? "#fff" : dc, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}>?</button>
-              </div>
+            <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
+              <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Archivio settimane</div>
+                    <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Apri solo se vuoi ricontrollare o correggere le sedute salvate.</div>
+                  </div>
+                  <div style={{ fontSize: 11, fontWeight: 800, color: dc, flexShrink: 0 }}>Apri</div>
+                </div>
+              </summary>
               {progTooltip === "sess-help" && <div style={{ margin: "0 14px 10px", marginTop: 10, padding: "10px 12px", borderRadius: 9, background: dc + "10", border: "1px solid " + dc + "20", fontSize: 11, color: T.sub, lineHeight: 1.7 }} onClick={function(e) { e.stopPropagation(); }}>
                 <div style={{ fontWeight: 700, color: dc, marginBottom: 4 }}>Come leggere questa sezione</div>
                 <div><b>Barre colorate</b> — ogni barra = un allenamento pesi completato in quella settimana.</div>
                 <div style={{ marginTop: 4 }}><b>Numero a destra</b> — quanti allenamenti pesi hai fatto, su un massimo di {targetWeeklySessions}.</div>
-                <div style={{ marginTop: 4 }}><b>Volume kg·rip</b> — lavoro totale della settimana. Se sale nel tempo, in generale stai facendo piu lavoro.</div>
-                <div style={{ marginTop: 4 }}><b>Apri la settimana</b> — vedi data, giorno e dettaglio di ogni esercizio registrato.</div>
+                <div style={{ marginTop: 4 }}><b>Volume kg·rip</b> — lavoro totale della settimana.</div>
               </div>}
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ display: "flex", flexDirection: "column", borderTop: "1px solid " + T.bg }}>
                 {weeks.slice(0,8).map(function(wk, wi) {
                   var w = weekMap[wk];
                   var sess = w.sessions.size;
@@ -9260,10 +9293,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                                     </div>;
                                   })}
                                 </div>}
-                                {entry.noteVideoUrl && <div style={{ fontSize: 10, color: dc, lineHeight: 1.55, marginTop: 2, wordBreak: "break-all" }}>
-                                  <span style={{ fontWeight: 800, marginRight: 5 }}>Video:</span>
-                                  <a href={entry.noteVideoUrl} target="_blank" rel="noreferrer" style={{ color: dc }}>{entry.noteVideoUrl}</a>
-                                </div>}
                                 <details style={{ marginTop: 6 }}>
                                   <summary style={{ cursor: "pointer", fontSize: 10, fontWeight: 800, color: dc }}>Correggi nota e media</summary>
                                   <div style={{ display: "grid", gap: 8, marginTop: 8, padding: "8px 9px", borderRadius: 8, background: T.cd, border: "1px solid " + T.bg }}>
@@ -9281,22 +9310,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                                       placeholder="Correggi nota, tecnica, sensazioni, attrezzo..."
                                       rows={3}
                                       style={{ width: "100%", resize: "vertical", minHeight: 68, padding: "10px 11px", borderRadius: 8, border: "1px solid " + T.bg, background: T.sb, color: T.tx, fontSize: 12, lineHeight: 1.55, boxSizing: "border-box" }}
-                                    />
-                                    <input
-                                      type="url"
-                                      inputMode="url"
-                                      value={currentExerciseNoteVideo}
-                                      onChange={function(e) {
-                                        var value = e.target.value;
-                                        setExerciseNoteVideoDrafts(function(prev) {
-                                          var next = Object.assign({}, prev);
-                                          next[noteDraftKey] = value;
-                                          return next;
-                                        });
-                                        if (savedExerciseNoteKey === noteDraftKey) setSavedExerciseNoteKey("");
-                                      }}
-                                      placeholder="https://..."
-                                      style={{ width: "100%", padding: "10px 11px", borderRadius: 8, border: "1px solid " + T.bg, background: T.sb, color: T.tx, fontSize: 12, boxSizing: "border-box" }}
                                     />
                                     <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
                                       <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer", display: "inline-flex", alignItems: "center", opacity: currentExerciseNotePhotos.length >= 3 ? 0.5 : 1 }}>
@@ -9357,7 +9370,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   </details>;
                 })}
               </div>
-            </div>
+            </details>
 
             {keyLiftProgress.length > 0 && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
               <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
@@ -9446,28 +9459,15 @@ function isNearBodyweightElasticSession(exName, sets) {
 
             {/* Progressi per esercizio */}
             <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-              <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg, display: "flex", alignItems: "center", gap: 8 }}>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Andamento esercizi</div>
-                </div>
-                <button onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === "ex-help" ? null : "ex-help"); }} style={{ width: 22, height: 22, borderRadius: "50%", border: "1px solid " + dc + "40", background: progTooltip === "ex-help" ? dc : "transparent", color: progTooltip === "ex-help" ? "#fff" : dc, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}>?</button>
+              <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
+                <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Andamento esercizi</div>
+                <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Tocca un esercizio per vedere il confronto e cosa provare nella prossima seduta.</div>
               </div>
-              {progTooltip === "ex-help" && <div style={{ margin: "10px 14px", padding: "10px 12px", borderRadius: 9, background: dc + "10", border: "1px solid " + dc + "20", fontSize: 11, color: T.sub, lineHeight: 1.7 }} onClick={function(e) { e.stopPropagation(); }}>
-                <div style={{ fontWeight: 700, color: dc, marginBottom: 4 }}>Come leggere questa sezione</div>
-                <div><b>Numero a destra</b> — il risultato migliore dell'ultima settimana per quell'esercizio.</div>
-                <div style={{ marginTop: 4 }}><b style={{ color: T.ok }}>↑ verde</b> — meglio della settimana prima.</div>
-                <div style={{ marginTop: 4 }}><b style={{ color: T.sub }}>→ grigio</b> — simile alla settimana prima.</div>
-                <div style={{ marginTop: 4 }}><b style={{ color: "#C62828" }}>↓ rosso</b> — peggio della settimana prima. Non e sempre un problema: puo dipendere da fatica o recupero.</div>
-                <div style={{ marginTop: 4 }}><b>✦ nuovo</b> — hai appena iniziato a registrarlo, quindi non c'e ancora confronto.</div>
-                <div style={{ marginTop: 4 }}><b>Massimo</b> — il miglior risultato registrato in questo mese.</div>
-                <div style={{ marginTop: 4 }}><b>Settimane</b> — da quante settimane stai registrando quell'esercizio in questo mese.</div>
-              </div>}
               <div style={{ display: "flex", flexDirection: "column" }}>
                 {exActionItems.map(function(ex, ei) {
                   var trendColor = ex.trend === "up" ? T.ok : ex.trend === "down" ? "#C62828" : T.sub;
                   var trendIcon = ex.trend === "up" ? "↑" : ex.trend === "down" ? "↓" : ex.trend === "new" ? "✦" : "→";
                   var valLabel = ex.last ? ex.last.label : "—";
-                  var maxLabel = ex.maxEver ? ex.maxEver.label : "—";
                   var exTipId = "ex-" + ei;
                   var prevTrendLabel = ex.prev ? ex.prev.label : null;
                   var trendText = ex.trend === "up" ? ("Ultima settimana meglio della precedente" + (prevTrendLabel ? " (" + prevTrendLabel + " → " + valLabel + ")" : "")) :
@@ -9477,8 +9477,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                   return <div key={ei} style={{ borderBottom: ei < exProgress.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === exTipId ? null : exTipId); }} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", cursor: "pointer" }}>
                       <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 2 }}>{ex.name}</div>
-                        <div style={{ fontSize: 10, color: T.sub }}>{ex.weeks} {ex.weeks === 1 ? "settimana" : "settimane"} · max: {maxLabel}</div>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: T.tx, marginBottom: 4 }}>{ex.name}</div>
+                        <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.5 }}>
+                          {ex.prev ? ("Prima: " + ex.prev.label) : "Serve ancora un confronto"}
+                        </div>
                       </div>
                       <div style={{ fontSize: 15, fontWeight: 800, color: trendColor, minWidth: 64, textAlign: "right" }}>
                         <span style={{ fontSize: 13, marginRight: 3 }}>{trendIcon}</span>{valLabel}
@@ -9497,14 +9499,17 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>
             </div>
 
-            {rirProgress.length > 0 && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-              <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg, display: "flex", alignItems: "center", gap: 8 }}>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Andamento buffer / RIR</div>
-                  <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Media delle ripetizioni in riserva che hai registrato nelle serie.</div>
+            {rirProgress.length > 0 && <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
+              <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>RIR medio</div>
+                    <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Blocco secondario: aprilo solo se vuoi controllare il buffer registrato.</div>
+                  </div>
+                  <div style={{ fontSize: 11, fontWeight: 800, color: dc, flexShrink: 0 }}>Apri</div>
                 </div>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              </summary>
+              <div style={{ display: "flex", flexDirection: "column", borderTop: "1px solid " + T.bg }}>
                 {rirProgress.map(function(item, ii) {
                   var trendColor = item.trend === "up" ? T.ok : item.trend === "down" ? "#C62828" : T.sub;
                   var trendIcon = item.trend === "up" ? "↑" : item.trend === "down" ? "↓" : item.trend === "new" ? "✦" : "→";
@@ -9530,7 +9535,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   </div>;
                 })}
               </div>
-            </div>}
+            </details>}
           </>}
         </div>;
       })()}
@@ -9576,7 +9581,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                 <div style={{ fontWeight: 700, fontSize: 12 }}>{name}</div>
                 <div style={{ fontSize: 10, color: T.sub }}>{db.g}</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: 4 }}>
-                  {item.patternKey && <span title={EXERCISE_PATTERN_HELP[item.patternKey] || ""} style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{EXERCISE_PATTERN_LABELS[item.patternKey] + " · " + (EXERCISE_PATTERN_HELP[item.patternKey] || "")}</span>}
+                  {item.patternKey && <span style={{ padding: "2px 6px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 9, fontWeight: 800 }}>{EXERCISE_PATTERN_LABELS[item.patternKey]}</span>}
                 </div>
               </div>
               <div style={{ paddingRight: 12, color: T.sub, fontSize: 12 }}>&#8250;</div>
@@ -9585,7 +9590,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                 <img onClick={function(e) { e.stopPropagation(); setShowImg(null); }} src={EX_IMG[name]} style={{ width: 130, height: 130, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "zoom-out" }} />
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{db.c}</div>
-                  {db.lk && <EmbedLink url={db.lk} label="Video" size={10} style={{ marginTop: 4 }} />}
                 </div>
               </div>}
             </div>;
@@ -9612,25 +9616,19 @@ function isNearBodyweightElasticSession(exName, sets) {
             return items.map(function(w, wi) {
               var imgSrc = warmupImgSrc(w);
               var hasImg = !!imgSrc;
+              var timerSec = getItemTimerSeconds(w);
               return <div key={wi} style={{ background: T.cd, borderRadius: 8, marginBottom: 2, overflow: "hidden" }}>
-                <div onClick={function() { setShowImg(showImg === "wl" + wi ? null : "wl" + wi); }} style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
-                  {hasImg && <img src={imgSrc} style={{ width: 48, height: 48, objectFit: "cover", flexShrink: 0 }} />}
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  {hasImg && <img onClick={function(e) { e.stopPropagation(); setWarmupImageOpen({ src: imgSrc, name: w.n }); }} src={imgSrc} style={{ width: 48, height: 48, objectFit: "cover", flexShrink: 0, cursor: "zoom-in" }} />}
                   {!hasImg && <div style={{ width: 48, height: 48, background: dc + "12", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, flexShrink: 0, color: dc }}>&#128293;</div>}
                   <div style={{ padding: "6px 10px", flex: 1, minWidth: 0 }}>
-                    <div style={{ fontWeight: 700, fontSize: 12 }}>{w.n}</div>
-                    <div style={{ fontSize: 10, color: T.sub }}>{w.d.substring(0, 60) + (w.d.length > 60 ? "..." : "")}</div>
+                    <button onClick={function(e) { e.stopPropagation(); setWarmupInfoOpen(w); }} style={{ padding: 0, border: "none", background: "transparent", color: T.tx, fontWeight: 700, fontSize: 12, cursor: "pointer", textAlign: "left" }}>{w.n}</button>
+                    <div style={{ fontSize: 10, color: T.sub }}>{w.d.substring(0, 48) + (w.d.length > 48 ? "..." : "")}</div>
                   </div>
+                  {timerSec ? <div style={{ fontSize: 10, color: dc, fontWeight: 800, paddingRight: 8, whiteSpace: "nowrap" }}>{fmtLabel(timerSec)}</div> : null}
                   {!hasImg && <div style={{ paddingRight: 8, fontSize: 10, fontWeight: 800, color: "#C62828" }}>Foto mancante</div>}
-                  <div style={{ paddingRight: 12, color: T.sub, fontSize: 12 }}>&#9662;</div>
+                  <div style={{ paddingRight: 12, color: T.sub, fontSize: 12 }}>&#8250;</div>
                 </div>
-                {showImg === "wl" + wi && <div style={{ padding: "4px 10px 10px", display: "flex", gap: 8, alignItems: "flex-start" }}>
-                  {hasImg && <img onClick={function(e) { e.stopPropagation(); setShowImg(null); }} src={imgSrc} style={{ width: 130, height: 130, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "zoom-out" }} />}
-                  {!hasImg && <div style={{ width: 130, minHeight: 90, borderRadius: 8, flexShrink: 0, background: "#C6282810", border: "1px solid #C6282828", color: "#C62828", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", fontSize: 12, fontWeight: 800, padding: 10, boxSizing: "border-box" }}>Foto mancante</div>}
-                  <div style={{ flex: 1 }}>
-                    <DetailText text={w.d} accent={dc} size={11} soft={true} />
-                    {!hasImg && <div style={{ marginTop: 6, fontSize: 10, fontWeight: 800, color: "#C62828" }}>Foto mancante</div>}
-                  </div>
-                </div>}
               </div>;
             });
           })()}
@@ -9649,23 +9647,16 @@ function isNearBodyweightElasticSession(exName, sets) {
             var sd = STR[sn];
             var hasImg = sd.img && WS_IMG[sd.img];
             return <div key={si} style={{ background: T.cd, borderRadius: 8, marginBottom: 2, overflow: "hidden" }}>
-              <div onClick={function() { setShowImg(showImg === "sl" + si ? null : "sl" + si); }} style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
-                {hasImg && <img src={WS_IMG[sd.img]} style={{ width: 48, height: 48, objectFit: "cover", flexShrink: 0 }} />}
+              <div style={{ display: "flex", alignItems: "center" }}>
+                {hasImg && <img onClick={function(e) { e.stopPropagation(); setWarmupImageOpen({ src: WS_IMG[sd.img], name: sn }); }} src={WS_IMG[sd.img]} style={{ width: 48, height: 48, objectFit: "cover", flexShrink: 0, cursor: "zoom-in" }} />}
                 {!hasImg && <div style={{ width: 48, height: 48, background: T.st + "12", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, flexShrink: 0, color: T.st }}>&#129495;</div>}
                 <div style={{ padding: "6px 10px", flex: 1, minWidth: 0 }}>
-                  <div style={{ fontWeight: 700, fontSize: 12 }}>{sn}</div>
+                  <button onClick={function(e) { e.stopPropagation(); setStretchInfoOpen({ name: sn, img: sd.img, primary: sd.d, detail: sd.h, timeLabel: sd.t, tm: sd.tm || 0 }); }} style={{ padding: 0, border: "none", background: "transparent", color: T.tx, fontWeight: 700, fontSize: 12, cursor: "pointer", textAlign: "left" }}>{sn}</button>
                   <div style={{ fontSize: 10, color: T.st }}>{sd.d}</div>
                 </div>
-                <div style={{ paddingRight: 12, color: T.sub, fontSize: 12 }}>&#9662;</div>
+                {sd.tm ? <div style={{ fontSize: 10, color: T.st, fontWeight: 800, paddingRight: 8, whiteSpace: "nowrap" }}>{fmtLabel(sd.tm)}</div> : null}
+                <div style={{ paddingRight: 12, color: T.sub, fontSize: 12 }}>&#8250;</div>
               </div>
-              {showImg === "sl" + si && <div style={{ padding: "4px 10px 10px", display: "flex", gap: 8, alignItems: "flex-start" }}>
-                {hasImg && <img onClick={function(e) { e.stopPropagation(); setShowImg(null); }} src={WS_IMG[sd.img]} style={{ width: 130, height: 130, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "zoom-out" }} />}
-                <div style={{ flex: 1 }}>
-                  <DetailText text={sd.h} accent={T.st} size={11} soft={true} />
-                  <div style={{ fontSize: 10, color: T.sub, fontStyle: "italic", marginTop: 4 }}>{sd.t}</div>
-                  {sd.lk && <EmbedLink url={sd.lk} label="Video" size={10} color={T.st} style={{ marginTop: 4 }} />}
-                </div>
-              </div>}
             </div>;
           })}
         </div>}
@@ -9735,27 +9726,84 @@ function isNearBodyweightElasticSession(exName, sets) {
                 <div onClick={function() { setShowDayIntro(function(v) { return !v; }); }} style={{ padding: "12px 14px 10px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontSize: isBeginner ? 19 : 15, fontWeight: 900, color: T.tx, lineHeight: 1.25 }}>{dayData.focus}</div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginTop: 3 }}>
-                      <div style={{ fontSize: isBeginner ? 12 : 11, color: dc, fontWeight: 600 }}>~{estimatedDayMinutes || dayData.tEst} min</div>
-                      {!dayData.cardio && !dayData.rest && !isBasics && flowModeEnabled && !activeSession && <button
-                        onClick={function(e) { e.stopPropagation(); startWorkoutSession(); }}
-                        style={{ minHeight: 28, padding: "0 11px", border: "none", borderRadius: 999, background: T.ok, color: "#fff", fontSize: 10, fontWeight: 900, cursor: "pointer", whiteSpace: "nowrap" }}
+                    <div style={{ display: "grid", gap: 8, marginTop: 5 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                        <div style={{ fontSize: isBeginner ? 12 : 11, color: dc, fontWeight: 700, padding: "4px 8px", borderRadius: 999, background: dc + "12", border: "1px solid " + dc + "20" }}>{"~" + (estimatedDayMinutes || dayData.tEst) + " min"}</div>
+                        {!dayData.cardio && !dayData.rest && !isBasics && flowModeEnabled && !activeSession && <button
+                          onClick={function(e) { e.stopPropagation(); startWorkoutSession(); }}
+                          style={{ minHeight: 30, padding: "0 12px", border: "none", borderRadius: 999, background: T.ok, color: "#fff", fontSize: 10, fontWeight: 900, cursor: "pointer", whiteSpace: "nowrap" }}
+                        >
+                          Inizia allenamento
+                        </button>}
+                        {!dayData.cardio && !dayData.rest && !isBasics && flowModeEnabled && activeSession && <button
+                          onClick={function(e) { e.stopPropagation(); setSetupChecklistOpen(true); }}
+                          style={{ minHeight: 30, padding: "0 12px", border: "1px solid " + dc + "35", borderRadius: 999, background: dc + "10", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}
+                        >
+                          Checklist setup
+                        </button>}
+                      </div>
+                      {!dayData.cardio && !dayData.rest && !isBasics && <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", justifyContent: "space-between" }}>
+                        <div style={{ display: "inline-flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                        {[{
+                          key: "guided",
+                          icon: "🧭",
+                          active: guidedMode,
+                          label: "Coach attivo",
+                          onToggle: function() { setGuidedModeValue(!guidedMode); },
+                          fontSize: 12
+                        }, {
+                          key: "extra",
+                          icon: "i",
+                          active: extraInfoEnabled,
+                          label: "Info estese",
+                          onToggle: function() { setExtraInfoEnabledValue(!extraInfoEnabled); },
+                          fontSize: 13
+                        }, {
+                          key: "flow",
+                          icon: "⇄",
+                          active: flowModeEnabled,
+                          label: "Modalità flusso",
+                          onToggle: function() { setFlowModeEnabledValue(!flowModeEnabled); },
+                          fontSize: 12
+                        }].map(function(toggle) {
+                          return <div key={toggle.key} style={{ display: "inline-flex" }}>
+                            <button
+                              onClick={function(e) { e.stopPropagation(); showQuickToggleTooltip(toggle.key); toggle.onToggle(); }}
+                              onMouseEnter={function(e) { e.stopPropagation(); showQuickToggleTooltip(toggle.key); }}
+                              onMouseLeave={function(e) { e.stopPropagation(); hideQuickToggleTooltip(toggle.key); }}
+                              onBlur={function() { hideQuickToggleTooltip(toggle.key); }}
+                              aria-label={toggle.label + ": " + (toggle.active ? "attivo" : "disattivato")}
+                              style={{ width: 28, height: 28, border: "1px solid " + (toggle.active ? dc + "65" : T.sub + "28"), borderRadius: 999, background: toggle.active ? dc + "18" : "transparent", color: toggle.active ? dc : T.sub, fontSize: toggle.fontSize, fontWeight: 900, cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: toggle.active ? ("0 0 0 2px " + dc + "14") : "none" }}
+                            >
+                              {toggle.icon}
+                            </button>
+                          </div>;
+                        })}
+                        </div>
+                        <div
+                        onClick={function(e) { e.stopPropagation(); }}
+                        style={{ display: "inline-flex", alignItems: "center", borderRadius: 999, border: "1px solid " + T.sub + "30", overflow: "hidden", background: "transparent" }}
                       >
-                        Inizia allenamento
-                      </button>}
-                      {!dayData.cardio && !dayData.rest && !isBasics && flowModeEnabled && activeSession && <button
-                        onClick={function(e) { e.stopPropagation(); setSetupChecklistOpen(true); }}
-                        style={{ minHeight: 28, padding: "0 11px", border: "1px solid " + dc + "35", borderRadius: 999, background: dc + "10", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}
-                      >
-                        Checklist setup
-                      </button>}
-                      {!dayData.cardio && !dayData.rest && !isBasics && <button
-                        onClick={function(e) { e.stopPropagation(); setCompactMode(function(v) { return !v; }); }}
-                        style={{ minHeight: 26, padding: "0 10px", border: "1px solid " + (compactMode ? dc + "70" : T.sub + "30"), borderRadius: 999, background: compactMode ? dc + "20" : "transparent", color: compactMode ? dc : T.sub, boxShadow: compactMode ? ("0 0 0 2px " + dc + "18, 0 0 14px " + dc + "25") : "none", fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap", display: "inline-flex", alignItems: "center", gap: 5 }}
-                      >
-                        <span style={{ fontSize: 11, lineHeight: 1 }}>◫</span>
-                        <span>Vista compatta</span>
-                      </button>}
+                        <button
+                          onClick={function(e) { e.stopPropagation(); setCompactModeValue(false); }}
+                          aria-pressed={!compactMode}
+                          style={{ minHeight: 26, padding: "0 10px", border: "none", borderRight: "1px solid " + T.sub + "20", background: compactMode ? "transparent" : dc, color: compactMode ? T.sub : "#fff", fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}
+                        >
+                          Completa
+                        </button>
+                        <button
+                          onClick={function(e) { e.stopPropagation(); setCompactModeValue(true); }}
+                          aria-pressed={compactMode}
+                          style={{ minHeight: 26, padding: "0 10px", border: "none", background: compactMode ? dc : "transparent", color: compactMode ? "#fff" : T.sub, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}
+                        >
+                          Compatta
+                        </button>
+                        </div>
+                        {quickToggleTooltip && <div style={{ width: "100%", marginTop: 2, padding: "8px 10px", borderRadius: 10, background: dc + "10", border: "1px solid " + dc + "24", color: T.sub, fontSize: 11, lineHeight: 1.55 }}>
+                          <div style={{ fontWeight: 800, color: dc, marginBottom: 3 }}>{getQuickToggleTooltipText(quickToggleTooltip, quickToggleTooltip === "guided" ? guidedMode : quickToggleTooltip === "extra" ? extraInfoEnabled : flowModeEnabled)}</div>
+                          <div>{QUICK_TOGGLE_INFO[quickToggleTooltip] ? QUICK_TOGGLE_INFO[quickToggleTooltip].detail : ""}</div>
+                        </div>}
+                      </div>}
                     </div>
                   </div>
                   <div style={{ fontSize: 13, color: dc, transform: showDayIntro ? "rotate(180deg)" : "none", transition: "transform 0.2s", flexShrink: 0 }}>&#9662;</div>
@@ -9821,8 +9869,8 @@ function isNearBodyweightElasticSession(exName, sets) {
                             ? "Per gli esercizi segnati sotto la calibrazione e gia attiva. Registra la serie e l'app ti guida subito a trovare il tuo riferimento iniziale."
                             : "Per gli esercizi segnati sotto la ricalibrazione e gia attiva. Registra la serie e l'app ti guida subito a confermare o aggiornare il riferimento.")
                         : dayCalibration.length === 1
-                          ? (dayCalibration[0].reason + " Se vuoi farla adesso, attiva la modalita calibrazione.")
-                          : "Gli esercizi qui sotto sono quelli che oggi hanno davvero bisogno di calibrazione. Se vuoi farla adesso, attiva la modalita calibrazione."}
+                          ? (dayCalibration[0].reason + " Se vuoi farla adesso, attiva la modalità calibrazione.")
+                          : "Gli esercizi qui sotto sono quelli che oggi hanno davvero bisogno di calibrazione. Se vuoi farla adesso, attiva la modalità calibrazione."}
                     </div>
                     {!calibrationMode && dayCalibration.length > 0 && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55, marginTop: 6 }}>
                       {"Da calibrare oggi: " + dayCalibration.map(function(item) { return item.name; }).join(", ")}
@@ -9891,25 +9939,31 @@ function isNearBodyweightElasticSession(exName, sets) {
                           1 giro solo, nessuna pausa tra gli esercizi. Alla fine fai 30 secondi di respiro. Se oggi sei gia scarica, puoi saltare il circuito.
                         </div>
                         <div style={{ display: "grid", gap: 8, marginTop: 8 }}>
-                          {group.items.map(function(item, itemIndex) {
-                            var itemImgSrc = warmupImgSrc(item);
-                            var hasItemImg = !!itemImgSrc;
-                            return <div key={item.n + "-" + itemIndex} style={{ display: "flex", gap: 8, alignItems: "center", padding: "8px 9px", borderRadius: 8, background: T.cd, border: "1px solid " + T.bg }}>
+	                          {group.items.map(function(item, itemIndex) {
+	                            var itemImgSrc = warmupImgSrc(item);
+	                            var hasItemImg = !!itemImgSrc;
+	                            var timerSec = getItemTimerSeconds(item);
+	                            var warmItemInfo = warmupInfo(item.d, item.tm);
+	                            var compactHint = item.cue || item.h || warmItemInfo.objective || warmItemInfo.notes || "";
+	                            return <div key={item.n + "-" + itemIndex} style={{ display: "flex", gap: 8, alignItems: "center", padding: "8px 9px", borderRadius: 8, background: T.cd, border: "1px solid " + T.bg }}>
                               {hasItemImg
                                 ? <img onClick={function(e) { e.stopPropagation(); setWarmupImageOpen({ src: itemImgSrc, name: item.n }); }} src={itemImgSrc} style={{ width: 48, height: 48, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "zoom-in" }} />
                                 : <div style={{ width: 48, height: 48, borderRadius: 8, background: dc + "12", color: dc, fontSize: 10, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", lineHeight: 1.2, flexShrink: 0 }}>NO FOTO</div>}
-                              <div style={{ minWidth: 0, flex: 1 }}>
-                                <button onClick={function(e) { e.stopPropagation(); setWarmupInfoOpen(item); }} style={{ padding: 0, border: "none", background: "transparent", color: T.tx, fontSize: 11, fontWeight: 800, cursor: "pointer", textAlign: "left" }}>{item.n}</button>
-                                <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.5, marginTop: 2 }}>{item.p || ""}</div>
-                              </div>
-                            </div>;
-                          })}
+	                              <div style={{ minWidth: 0, flex: 1 }}>
+	                                <button onClick={function(e) { e.stopPropagation(); setWarmupInfoOpen(item); }} style={{ padding: 0, border: "none", background: "transparent", color: T.tx, fontSize: 11, fontWeight: 800, cursor: "pointer", textAlign: "left" }}>{item.n}</button>
+	                                <div style={{ fontSize: 10, color: T.tx, lineHeight: 1.45, marginTop: 2, fontWeight: 700 }}>{item.p || ""}</div>
+	                                {compactHint && <div style={{ fontSize: 10, color: T.sub, lineHeight: 1.45, marginTop: 2 }}>{compactHint}</div>}
+	                                {timerSec ? <button onClick={function(e) { e.stopPropagation(); quickTimer(timerSec); }} style={{ marginTop: 6, display: "inline-flex", alignItems: "center", gap: 3, padding: "2px 8px", border: "none", borderRadius: 999, background: dc, color: "#fff", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>{"⏱ " + fmtLabel(timerSec)}</button> : null}
+	                              </div>
+	                            </div>;
+	                          })}
                         </div>
                       </div> : group.items.map(function(active, itemIndex) {
                     var wi = dayData.warmup.indexOf(active);
-                    var warm = warmupInfo(active.d, active.tm);
-                    var paramsLabel = active.p || active.t || active.s || warm.execution;
-                    var cueLabel = active.cue || active.h || active.d || warm.objective || warm.notes;
+	                    var warm = warmupInfo(active.d, active.tm);
+	                    var timerSec = getItemTimerSeconds(active);
+	                    var paramsLabel = active.p || active.t || active.s || warm.execution;
+                    var cueLabel = active.cue || active.h || warm.objective || warm.notes;
                     var activeImgSrc = warmupImgSrc(active);
                     var hasActiveImg = !!activeImgSrc;
                     return <div key={wi} style={{ borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "20", padding: 10 }}>
@@ -9920,16 +9974,17 @@ function isNearBodyweightElasticSession(exName, sets) {
                             <button onClick={function(e) { e.stopPropagation(); setWarmupInfoOpen(active); }} style={{ padding: 0, border: "none", background: "transparent", color: T.tx, fontSize: 12, fontWeight: 700, cursor: "pointer", textAlign: "left" }}>{active.n}</button>
                             <span style={{ padding: "3px 8px", borderRadius: 999, border: "1px solid " + dc + "28", background: T.cd, color: dc, fontSize: 10, fontWeight: 700, flexShrink: 0 }}>{getWarmupGearBadge(active).label}</span>
                           </div>
-                          <div style={{ display: "grid", gap: 5 }}>
-                            {paramsLabel && <div style={{ fontSize: 12, lineHeight: 1.55, color: T.tx, fontWeight: 700 }}>{paramsLabel}</div>}
-                            {cueLabel && <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>{cueLabel}</div>}
+                          <div style={{ display: "grid", gap: 4 }}>
+                            {paramsLabel && <div style={{ fontSize: 12, lineHeight: 1.5, color: T.tx, fontWeight: 700 }}>{paramsLabel}</div>}
+                            {cueLabel && <div style={{ fontSize: 11, lineHeight: 1.5, color: T.sub }}>{cueLabel}</div>}
                           </div>
-                          <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 8, flexWrap: "wrap" }}>
-                            {hasActiveImg
-                              ? <img onClick={function(e) { e.stopPropagation(); setWarmupImageOpen({ src: activeImgSrc, name: active.n }); }} src={activeImgSrc} style={{ width: 56, height: 56, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "zoom-in" }} />
-                              : <div style={{ padding: "6px 8px", borderRadius: 999, background: "#C6282810", border: "1px solid #C6282828", color: "#C62828", fontSize: 10, fontWeight: 800 }}>Foto mancante</div>}
-                            {!hasActiveImg && <div style={{ fontSize: 10, fontWeight: 800, color: "#C62828" }}>Foto mancante</div>}
-                          </div>
+	                          <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 8, flexWrap: "wrap" }}>
+	                            {hasActiveImg
+	                              ? <img onClick={function(e) { e.stopPropagation(); setWarmupImageOpen({ src: activeImgSrc, name: active.n }); }} src={activeImgSrc} style={{ width: 56, height: 56, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "zoom-in" }} />
+	                              : <div style={{ padding: "6px 8px", borderRadius: 999, background: "#C6282810", border: "1px solid #C6282828", color: "#C62828", fontSize: 10, fontWeight: 800 }}>Foto mancante</div>}
+	                            {timerSec ? <button onClick={function(e) { e.stopPropagation(); quickTimer(timerSec); }} style={{ display: "inline-flex", alignItems: "center", gap: 3, padding: "5px 9px", border: "none", borderRadius: 999, background: dc, color: "#fff", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>{"⏱ " + fmtLabel(timerSec)}</button> : null}
+	                            {!hasActiveImg && <div style={{ fontSize: 10, fontWeight: 800, color: "#C62828" }}>Foto mancante</div>}
+	                          </div>
                         </div>
                       </div>
                     </div>;
@@ -10038,7 +10093,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
                       {dayData.intro && dayData.intro.obiettivi && dayData.intro.obiettivi[0]
                         ? dayData.intro.obiettivi[0]
-                        : "Passeggiata leggera o mobilita facoltativa."}
+                        : "Passeggiata leggera o mobilità facoltativa."}
                     </div>
                   </div>
                   <div style={{ padding: "10px 12px", borderRadius: 10, background: T.sb }}>
@@ -10179,6 +10234,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginTop: isBeginner ? 5 : 3 }}>
                       {ex.s && <span style={{ fontSize: isBeginner ? 14 : 12, color: isBeginner ? dc : T.tx, fontWeight: 800, letterSpacing: 0.1 }}>{fmtSerie(ex.s)}</span>}
                       {!isBeginner && ex.rpe ? <span onClick={function(e) { e.stopPropagation(); setRpeOpen(true); }} style={{ cursor: "pointer", color: dc, fontSize: 10, fontWeight: 700, textDecoration: "underline dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, whiteSpace: "nowrap" }}>{formatEffortLabel(ex.rpe, ex.s)}</span> : ""}
+                      {!isBeginner && ((rowSupersetMeta && rowSupersetMeta.role === "a" && rowSupersetMeta.rest) || restSec) ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 700, whiteSpace: "nowrap" }}>{"rec " + fmtLabel(rowSupersetMeta && rowSupersetMeta.role === "a" ? rowSupersetMeta.rest : restSec)}</span> : null}
                       {!isBeginner && (function() {
                         if (rowSupersetMeta) return null;
                         var mins = estimateExerciseMinutes(rawEx, ex);
@@ -10222,7 +10278,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                 {rowImg && showImg === ("ex-thumb-" + i) && <div style={{ padding: "0 14px 12px", background: isX ? T.sb : "transparent" }}>
                   <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg, background: T.cd, padding: 10 }}>
                     <img onClick={function() { setShowImg(null); }} src={rowImg} style={{ width: "100%", display: "block", borderRadius: 10, cursor: "zoom-out" }} />
-                    {db && db.lk && <EmbedLink url={db.lk} label="▶ Video tutorial" size={11} style={{ marginTop: 8 }} />}
                   </div>
                 </div>}
                 {isX && db && (function() {
@@ -10255,6 +10310,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   var approach = getApproachAdvice(safeDayIdx, ex.n);
                   var objective = getExerciseObjective(ex.s, ex.note || rawEx.note || "");
                   var sessionSuggestion = getGuidedSessionSuggestion(ex.n, ex.s);
+                  var progressGuide = getProgressActionGuide(ex.n, ex.s);
                   var progColor = prog ? (prog.tone === "up" ? T.ok : prog.tone === "mid" ? dc : prog.tone === "hold" ? "#C62828" : T.sub) : dc;
                   var errorList = (mergedEx.errori || "").split(/\s*;\s*/).filter(Boolean);
                   var exSkills = getExerciseCompetencies(ex.n);
@@ -10282,6 +10338,30 @@ function isNearBodyweightElasticSession(exName, sets) {
                       <span style={{ color: T.sub, fontWeight: 700 }}>{flowSupersetMeta.partner}</span>
                     </div>}
 
+                    {!isBasics && pastSessions.length > 0 && <div style={{ marginBottom: 10, borderRadius: 12, background: T.sb, border: "1px solid " + T.bg, padding: compactExerciseCard ? "8px 10px" : "10px 12px" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                        <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, flex: 1 }}>Ultima sessione · {formatDateItalian(pastSessions[hPage].date)}</div>
+                        {pastSessions.length > 1 && <div style={{ display: "flex", gap: 4 }}>
+                          <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.min(hPage + 1, pastSessions.length - 1); return n; }); }} disabled={hPage >= pastSessions.length - 1} style={{ width: 24, height: 24, border: "1px solid " + T.bg, borderRadius: 5, background: T.cd, color: hPage >= pastSessions.length - 1 ? T.sub + "40" : T.sub, cursor: hPage >= pastSessions.length - 1 ? "default" : "pointer", fontSize: 12 }}>‹</button>
+                          <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.max(hPage - 1, 0); return n; }); }} disabled={hPage === 0} style={{ width: 24, height: 24, border: "1px solid " + T.bg, borderRadius: 5, background: T.cd, color: hPage === 0 ? T.sub + "40" : T.sub, cursor: hPage === 0 ? "default" : "pointer", fontSize: 12 }}>›</button>
+                        </div>}
+                      </div>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                        {pastSessions[hPage].sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) {
+                          return <div key={si} style={{ display: "flex", alignItems: "center", gap: 5, borderRadius: 7, background: T.cd, border: "1px solid " + T.bg, padding: "4px 8px" }}>
+                            <span style={{ fontSize: 10, fontWeight: 800, color: dc }}>{s.si + 1}</span>
+                            <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{formatSetResult(ex.n, s, isBW, isTimeTrackedExercise(ex.n, ex.s))}</span>
+                          </div>;
+                        })}
+                      </div>
+                    </div>}
+
+                    {!isBasics && progressGuide && progressGuide.tone === "up" && <div style={{ marginBottom: 10, borderRadius: 12, background: T.ok + "14", border: "2px solid " + T.ok + "45", padding: compactExerciseCard ? "10px 11px" : "12px 13px" }}>
+                      <div style={{ fontSize: 10, fontWeight: 900, color: T.ok, textTransform: "uppercase", letterSpacing: 1, marginBottom: 5 }}>Prossima seduta</div>
+                      <div style={{ fontSize: 14, fontWeight: 900, color: T.tx, lineHeight: 1.4 }}>{progressGuide.action}</div>
+                      <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55, marginTop: 5 }}>{progressGuide.detail}</div>
+                    </div>}
+
                     {!isBasics && !compactMode && guidedMode && sessionSuggestion && <div style={{ marginBottom: 10, borderRadius: 12, background: gc + "0A", border: "1px solid " + gc + "22", padding: compactExerciseCard ? "9px 11px" : "11px 13px" }}>
                       <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, marginBottom: 4 }}>{sessionSuggestion.title}</div>
                       <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{sessionSuggestion.detail}</div>
@@ -10300,35 +10380,7 @@ function isNearBodyweightElasticSession(exName, sets) {
 
                     {isBasics && <div style={{ marginBottom: 12, borderRadius: 12, padding: "10px 11px", background: dc + "08", border: "1px solid " + dc + "22" }}>
                       <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Cosa guardare</div>
-                      <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6, marginBottom: errorList.length > 0 ? 8 : 0 }}>{db.c}</div>
-                      {errorList.length > 0 && <>
-                        <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Attenzione a</div>
-                        <div style={{ display: "grid", gap: 4 }}>
-                        {errorList.map(function(err, ei) { return <div key={ei} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
-                          <span style={{ color: dc, fontSize: 10, lineHeight: 1.6 }}>•</span>
-                          <span style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{err}</span>
-                        </div>; })}
-                        </div>
-                      </>}
-                    </div>}
-
-                    {/* === ULTIMA SESSIONE (sempre visibile) === */}
-                    {!isBasics && pastSessions.length > 0 && <div style={{ marginBottom: 8, borderRadius: 12, background: T.sb, border: "1px solid " + T.bg, padding: compactExerciseCard ? "8px 10px" : "10px 12px" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-                        <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, flex: 1 }}>Ultima sessione · {formatDateItalian(pastSessions[hPage].date)}</div>
-                        {pastSessions.length > 1 && <div style={{ display: "flex", gap: 4 }}>
-                          <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.min(hPage + 1, pastSessions.length - 1); return n; }); }} disabled={hPage >= pastSessions.length - 1} style={{ width: 24, height: 24, border: "1px solid " + T.bg, borderRadius: 5, background: T.cd, color: hPage >= pastSessions.length - 1 ? T.sub + "40" : T.sub, cursor: hPage >= pastSessions.length - 1 ? "default" : "pointer", fontSize: 12 }}>‹</button>
-                          <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.max(hPage - 1, 0); return n; }); }} disabled={hPage === 0} style={{ width: 24, height: 24, border: "1px solid " + T.bg, borderRadius: 5, background: T.cd, color: hPage === 0 ? T.sub + "40" : T.sub, cursor: hPage === 0 ? "default" : "pointer", fontSize: 12 }}>›</button>
-                        </div>}
-                      </div>
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
-                        {pastSessions[hPage].sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) {
-                          return <div key={si} style={{ display: "flex", alignItems: "center", gap: 5, borderRadius: 7, background: T.cd, border: "1px solid " + T.bg, padding: "4px 8px" }}>
-                            <span style={{ fontSize: 10, fontWeight: 800, color: dc }}>{s.si + 1}</span>
-                            <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{formatSetResult(ex.n, s, isBW, isTimeTrackedExercise(ex.n, ex.s))}</span>
-                          </div>;
-                        })}
-                      </div>
+                      <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>{db.c}</div>
                     </div>}
 
                     {/* === REGISTRA SERIE === */}
@@ -10496,16 +10548,11 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>}
 
                     {/* === DETTAGLI (collassato): storico · tecnica · note === */}
-                    {!isBasics && !compactMode && extraInfoEnabled && <details style={{ marginTop: 0, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
+                    {!isBasics && !compactMode && <details style={{ marginTop: 0, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
                       <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 12px", fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ flex: 1 }}>Tecnica, note e storico</span><span style={{ fontSize: 12 }}>›</span>
+                        <span style={{ flex: 1 }}>Dettagli esercizio</span><span style={{ fontSize: 12 }}>›</span>
                       </summary>
                     <div style={{ padding: "10px 11px", display: "grid", gap: 10 }}>
-                      <div style={{ background: T.cd, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
-                        <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Recupero scheda</div>
-                        <div style={{ fontSize: 18, fontWeight: 900, color: T.tx }}>{restSec ? fmtLabel(restSec) : (flowSupersetMeta && flowSupersetMeta.role === "a" ? "Diretto" : (rawEx.rec || "—"))}</div>
-                      </div>
-
                       {(calibrationEnabled && calibrationNeed.needed) && <div style={{ background: effectiveCalibrationMode ? "#FFB30010" : "#C6282810", borderRadius: 10, border: "1px solid " + (effectiveCalibrationMode ? "#FFB30030" : "#C6282830"), padding: "10px 11px" }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 5 }}>
                           <div style={{ fontSize: 10, fontWeight: 800, color: effectiveCalibrationMode ? "#A66A00" : "#C62828", textTransform: "uppercase", letterSpacing: 0.7 }}>🎯 {calibrationNeed.initial ? "Calibrazione da fare" : "Ricalibrazione da fare"}</div>
@@ -10516,7 +10563,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                         <div style={{ fontSize: 11, lineHeight: 1.55, color: T.sub }}>
                           {effectiveCalibrationMode
                             ? getCalibrationQuickInstruction(ex.n, ex.s)
-                            : (calibrationNeed.reason + " Attiva la modalita calibrazione per farla ora.")}
+                            : (calibrationNeed.reason + " Attiva la modalità calibrazione per farla ora.")}
                         </div>
                       </div>}
 
@@ -10543,29 +10590,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                         </div>}
                       </div>}
 
-                      <details style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
-                        <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 11px", fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Tecnica essenziale</summary>
-                        <div style={{ padding: "0 11px 11px", display: "grid", gap: 8 }}>
-                          <div style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{renderGlossaryText(db.c || "", dc)}</div>
-                          {db.t && db.t.length > 0 && <div style={{ display: "grid", gap: 5 }}>
-                            {db.t.map(function(tip, ti) { return <div key={ti} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: dc + "08", border: "1px solid " + dc + "12", borderRadius: 8, padding: "7px 9px" }}>
-                              <span style={{ color: dc, fontSize: 10, lineHeight: 1.6 }}>•</span>
-                              <span style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{tip}</span>
-                            </div>; })}
-                          </div>}
-                        </div>
-                      </details>
-
-                      {errorList.length > 0 && <details style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
-                        <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 11px", fontSize: 11, fontWeight: 800, color: "#C62828", textTransform: "uppercase", letterSpacing: 0.8 }}>Attenzione a</summary>
-                        <div style={{ padding: "0 11px 11px", display: "grid", gap: 4 }}>
-                          {errorList.map(function(err, ei) { return <div key={ei} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
-                            <span style={{ color: "#C62828", fontSize: 10, lineHeight: 1.6 }}>•</span>
-                            <span style={{ fontSize: 11, lineHeight: 1.6, color: T.sub }}>{err}</span>
-                          </div>; })}
-                        </div>
-                      </details>}
-
                       {/* Note esercizio — dentro dettagli */}
                       <div style={{ borderRadius: 10, padding: "10px 11px", background: T.cd, border: "1px solid " + T.bg }}>
                         <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Note sessione</div>
@@ -10579,18 +10603,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                           placeholder="Panca instabile, spalla ok, ultima serie sporca..."
                           rows={3}
                           style={{ width: "100%", resize: "vertical", minHeight: 64, padding: "8px 10px", borderRadius: 8, border: "1px solid " + T.bg, background: T.sb, color: T.tx, fontSize: 12, lineHeight: 1.55, boxSizing: "border-box" }}
-                        />
-                        <input
-                          type="url"
-                          inputMode="url"
-                          value={currentExerciseNoteVideo}
-                          onChange={function(e) {
-                            var value = e.target.value;
-                            setExerciseNoteVideoDrafts(function(prev) { var next = Object.assign({}, prev); next[noteDraftKey] = value; return next; });
-                            if (savedExerciseNoteKey === noteDraftKey) setSavedExerciseNoteKey("");
-                          }}
-                          placeholder="Link video personale o YouTube: https://..."
-                          style={{ width: "100%", marginTop: 8, padding: "8px 10px", borderRadius: 8, border: "1px solid " + T.bg, background: T.sb, color: T.tx, fontSize: 12, boxSizing: "border-box" }}
                         />
                         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center", marginTop: 8 }}>
                           <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer", display: "inline-flex", alignItems: "center", opacity: currentExerciseNotePhotos.length >= 3 ? 0.5 : 1 }}>
@@ -10651,45 +10663,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                           </button>
                         </div>
                       </div>
-
-                      <div style={{ background: T.cd, borderRadius: 10, border: "1px solid " + T.bg, padding: "10px 11px" }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 5 }}>
-                          <span style={{ fontSize: 13 }}>📚</span>
-                          <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Scheda completa esercizio</div>
-                        </div>
-                        <button
-                          onClick={function(e) {
-                            e.stopPropagation();
-                            navigateToTab("exercises");
-                            setCatSec("ex");
-                            setExInfoOpen(ex.n);
-                            window.scrollTo({ top: 0, behavior: "smooth" });
-                          }}
-                          style={{ minHeight: 40, padding: "0 12px", border: "1px solid " + dc + "30", borderRadius: 8, background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer" }}
-                        >
-                          Apri in Esercizi →
-                        </button>
-                      </div>
                     </div>
                     </details>}
 
-                    {!isBasics && compactMode && pastSessions.length > 0 && <div style={{ marginTop: 4, borderRadius: 10, border: "1px solid " + T.bg, background: T.sb, padding: "8px 10px" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-                        <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, flex: 1 }}>Ultima sessione · {formatDateItalian(pastSessions[hPage].date)}</div>
-                        {pastSessions.length > 1 && <div style={{ display: "flex", gap: 4 }}>
-                          <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.min(hPage + 1, pastSessions.length - 1); return n; }); }} disabled={hPage >= pastSessions.length - 1} style={{ width: 24, height: 24, border: "1px solid " + T.bg, borderRadius: 5, background: T.cd, color: hPage >= pastSessions.length - 1 ? T.sub + "40" : T.sub, cursor: hPage >= pastSessions.length - 1 ? "default" : "pointer", fontSize: 12 }}>‹</button>
-                          <button onClick={function(e) { e.stopPropagation(); setHistPage(function(p) { var n = Object.assign({}, p); n[i] = Math.max(hPage - 1, 0); return n; }); }} disabled={hPage === 0} style={{ width: 24, height: 24, border: "1px solid " + T.bg, borderRadius: 5, background: T.cd, color: hPage === 0 ? T.sub + "40" : T.sub, cursor: hPage === 0 ? "default" : "pointer", fontSize: 12 }}>›</button>
-                        </div>}
-                      </div>
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
-                        {pastSessions[hPage].sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) {
-                          return <div key={si} style={{ display: "flex", alignItems: "center", gap: 5, borderRadius: 7, background: T.cd, border: "1px solid " + T.bg, padding: "4px 8px" }}>
-                            <span style={{ fontSize: 10, fontWeight: 800, color: dc }}>{s.si + 1}</span>
-                            <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{formatSetResult(ex.n, s, isBW, isTimeTrackedExercise(ex.n, ex.s))}</span>
-                          </div>;
-                        })}
-                      </div>
-                    </div>}
                   </div>;
                 })()}
               </div>;
@@ -10753,17 +10729,17 @@ function isNearBodyweightElasticSession(exName, sets) {
               <div style={{ padding: "14px 14px 10px", borderBottom: "1px solid " + T.bg }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
                   <span style={{ fontSize: 18 }}>🧘</span>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>{workoutSelectedDay.name} · Mobilita</div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>{workoutSelectedDay.name} · Mobilità</div>
                 </div>
                 <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
-                  {workoutSelectedDay.cardioMobilityIntro || "Nei giorni cardio trovi qui sotto il blocco completo di mobilita associato al giorno."}
+                  {workoutSelectedDay.cardioMobilityIntro || "Nei giorni cardio trovi qui sotto il blocco completo di mobilità associato al giorno."}
                 </div>
               </div>
               <div style={{ padding: "12px 14px 16px", display: "grid", gap: 12 }}>
                 <div id="section-hip-bonus" style={{ background: "#8E6C4210", borderRadius: 12, border: "1px solid #8E6C4220", padding: "12px" }}>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, marginBottom: 4 }}>
                     <div>
-                      <div style={{ fontSize: 11, fontWeight: 800, color: "#8E6C42", textTransform: "uppercase", letterSpacing: 0.8 }}>Mobilita giorno cardio</div>
+                      <div style={{ fontSize: 11, fontWeight: 800, color: "#8E6C42", textTransform: "uppercase", letterSpacing: 0.8 }}>Mobilità giorno cardio</div>
                       <div style={{ fontSize: 11, color: T.sub, marginTop: 2 }}>{(function() { var stats = getStretchSectionStats(workoutSelectedDay.name, "cardio-hip", CARDIO_MOBILITY_BASE); return stats.items.length + " esercizi · " + stats.totalLabel + (stats.completed ? " · " + stats.completed + "/" + stats.items.length + " fatti" : ""); })()}</div>
                     </div>
                     <button onClick={function() { goToTheoryAnchor("teoria", "principi", "theory-section-warmup", "warmup"); }} style={{ minHeight: 28, padding: "0 10px", borderRadius: 999, border: "1px solid #8E6C4228", background: T.cd, color: "#8E6C42", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Perche farlo</button>
