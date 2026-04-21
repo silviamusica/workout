@@ -40,7 +40,7 @@ Obiettivo: testo operativo, leggibile al volo da telefono. L'agente usa questo f
 |---|---|---|
 | Push-Up | 6-8 rip facili | Prime ripetizioni pulite, niente fatica. |
 | Affondi saltati alternati | 5 per lato | Atterraggio morbido e ginocchia in linea. |
-| Trazioni con elastico | 3-4 rip facili | Solo attivazione: elastico leggero e scapole vive. |
+| Trazioni prone con elastico | 3-4 rip facili | Solo attivazione: presa prone, elastico leggero e scapole vive. |
 
 #### Avvicinamento al primo lift
 
@@ -169,7 +169,7 @@ Scarico → circa 50% → 70-80%. Devono preparare, non stancare.
 
 #### Avvicinamento al primo lift
 
-**Serie avvicinamento trazioni** — 2-3 mini-serie progressive con elastico  
+**Serie avvicinamento trazioni prone** — 2-3 mini-serie progressive con elastico  
 Mini-serie progressive per entrare nella tirata senza stancarti.
 
 ---

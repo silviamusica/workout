@@ -1618,7 +1618,7 @@ var DAYS_V4 = [
       { n: "Dead Bug", phase: "activation", img: "Dead Bug", gearTag: "Corpo libero", p: "5 per lato", cue: "Lombare incollata al pavimento per tutta la serie.", lk: "https://www.youtube.com/watch?v=I5xbsA71v1A" },
       { n: "Push-Up", phase: "circuit", gearTag: "Corpo libero", p: "6-8 rip facili", cue: "Prime ripetizioni pulite, niente fatica.", lk: "https://www.nerdfitness.com/blog/proper-push-up/" },
       { n: "Affondi saltati alternati", phase: "circuit", gearTag: "Corpo libero", p: "5 per lato", cue: "Atterraggio morbido e ginocchia in linea.", lk: "https://www.youtube.com/watch?v=45qaTeoPGRw" },
-      { n: "Trazioni con elastico", phase: "circuit", gearTag: "Sbarra + elastico", p: "3-4 rip facili", cue: "Solo attivazione: elastico leggero e scapole vive.", lk: "https://www.youtube.com/watch?v=9mVNP1_kDBs" },
+      { n: "Trazioni prone con elastico", phase: "circuit", gearTag: "Sbarra + elastico", p: "3-4 rip facili", cue: "Solo attivazione: presa prone, elastico leggero e scapole vive.", lk: "https://www.youtube.com/watch?v=9mVNP1_kDBs" },
       { n: "Serie avvicinamento squat", phase: "approach", img: "w_SerieAvvSquat", gearTag: "Bilanciere", p: "3 serie progressive", cue: "Scarico → circa 50% → 70-80%. Devono preparare, non stancare." },
     ],
     ex: [
@@ -1646,7 +1646,7 @@ var DAYS_V4 = [
       { n: "Kettlebell swing leggero", phase: "circuit", gearTag: "Kettlebell", p: "10 rip", cue: "Hip hinge esplosivo, braccia solo ganci.", lk: "https://www.youtube.com/watch?v=YSxHifyI6s8" },
       { n: "Goblet squat con fermo in buca", phase: "circuit", gearTag: "Kettlebell", p: "5 rip con fermo 3s", cue: "Resta verticale e usa il fermo per aprire anche e caviglie.", lk: "https://www.youtube.com/watch?v=MeIiIdhvXT4" },
       { n: "Squat thrust", phase: "circuit", gearTag: "Corpo libero", p: "5 rip", cue: "Plank compatto: nessun push-up e nessun salto finale.", lk: "https://www.nasm.org/resource-center/exercise-library/squat-thrust-burpees" },
-      { n: "Serie avvicinamento trazioni", phase: "approach", img: "Trazioni", gearTag: "Sbarra + elastico", p: "2-3 mini-serie", cue: "Mini-serie progressive con elastico per entrare nella tirata senza stancarti." },
+      { n: "Serie avvicinamento trazioni prone", phase: "approach", img: "Trazioni", gearTag: "Sbarra + elastico", p: "2-3 mini-serie", cue: "Mini-serie progressive presa prone con elastico per entrare nella tirata senza stancarti." },
     ],
     ex: [
       { n: "Trazioni", s: "4x5-8", rpe: "8-9", note: "Double progression. Presa prona. Parti da braccia tese. Mento sopra sbarra. Discesa 2-3s. Ultimo set a cedimento tecnico controllato.", priority: true, rec: "2-3 min", gear: "Barra trazioni (+ elastico assist.)", errori: "Kipping/slancio; mento che si protende senza tirare; spalle alle orecchie; ROM incompleto" },
