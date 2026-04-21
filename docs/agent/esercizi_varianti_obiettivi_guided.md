@@ -279,6 +279,9 @@ Varianti da riconoscere:
 
 ## Mappa rapida accessori e loro obiettivo
 
+> **Nota 2026-04-21**: Hip Thrust Bilanciere, Squat Bulgaro, Dip alle Parallele, Tricipiti Cavo e Fitball Hamstring Curl non sono più nel programma V4 attivo. Le sezioni qui sotto li descrivono come pattern e varianti riconoscibili — restano utili per valutare sostituzioni o progressioni, ma non sono più da considerare scheda corrente.
+> Esercizio nuovo aggiunto: `Fire Hydrant` (abduzione anca in quadrupedia, G4, 3x15-20 per gamba).
+
 ### Hip Thrust / Glute Bridge
 
 Obiettivo:
@@ -347,6 +350,27 @@ Lettura corretta:
   - progressione vera di anti-estensione
 - `Pallof Press`
   - anti-rotazione
+
+### Fire Hydrant
+
+Pattern:
+- abduzione anca in quadrupedia
+- gluteo medio
+
+Obiettivo:
+- attivazione e ipertrofia del gluteo medio
+- stabilità del bacino
+- rinforzo unilaterale in catena chiusa
+
+Lettura corretta:
+- `Fire Hydrant` = esercizio accessorio di gluteo medio in G4
+- 3 serie x 15-20 rip per gamba, RPE 8
+- non va confuso con esercizi di hinge o squat: pattern completamente diverso
+- progressione via ripetizioni o aggiunta di carico alla caviglia
+
+Nota pratica:
+- fa parte del G4 nella scheda V4 dal 2026-04-21
+- la scheda tecnica completa con cue, errori e video è in `src/App.jsx` nel dizionario `EX["Fire Hydrant"]`
 
 ### Woodchop
 

@@ -138,9 +138,9 @@ Il programma attuale li copre tutti.
 
 I 4 lift prioritari sono allenati 2 volte a settimana con logiche diverse:
 
-- `Squat`: Giorno 1 pesante, con Squat Bulgaro come variante di volume unilaterale
-- `Stacco`: Giorno 4 pesante, con Stacco Rumeno come accessorio per femorali
-- `Trazioni`: Giorno 2 presa prona per forza, Giorno 5 presa neutra o supina per volume
+- `Squat`: Giorno 1 pesante, con Stacco Rumeno come complemento femorali nello stesso giorno
+- `Stacco`: Giorno 4 pesante, con Affondi e Hyperextension come accessori catena posteriore e monopodalico
+- `Trazioni`: Giorno 2 presa prona per forza, Giorno 5 presa supina per volume
 - `Push-Up`: Giorno 5 a corpo libero, con la Panca nel Giorno 2 come variante bilanciere dello stesso pattern di spinta
 
 Sono evidenziati per un motivo: vanno fatti sempre per primi nella sessione, quando il sistema nervoso e fresco e la tecnica e al massimo. Israetel spiega che oltre un certo volume per sessione la tecnica peggiora e l'allenamento diventa `volume spazzatura`, cioe serie che producono fatica senza stimolo di crescita.
@@ -151,7 +151,7 @@ Ferlito: il lavoro a buffer e fondamentale. Se alleni sempre la forza in modo ma
 
 Schoenfeld: la maggior parte dei set va eseguita a `RIR 1-2`. Il cedimento sistematico su tutti i set aumenta il rischio di overtraining e burnout, soprattutto sui multiarticolari.
 
-Il cedimento e riservato all'ultimo set dei compound prioritari e puo essere usato piu liberamente sui monoarticolari come curl, tricipiti, croci e face pull perche sono meno impattanti sul recupero.
+Il cedimento e riservato all'ultimo set dei compound prioritari e puo essere usato piu liberamente sui monoarticolari come curl e woodchop perche sono meno impattanti sul recupero.
 
 ### Perche il volume e quello e non di piu
 
@@ -361,29 +361,33 @@ Nota UI attuale:
 - cardio e protocollo anca sono accessibili in una sezione separata `Cardio e mobilità anca`
 - nei giorni pesi il protocollo anca compare come `Bonus mobilità anca` facoltativo dopo lo stretching finale
 
-### Giorno 1 — Lower A — Quadricipiti + Glutei
+### Giorno 1 — Lower A — Quadricipiti + Femorali
+
+**Aggiornamento 2026-04-21**: riscaldamento ristrutturato (no circuito, FMS spalle come placeholder, dorsiflessione come ripetizioni, Shoulder Tap al posto di Dead Bug); Hip Thrust e Squat Bulgaro rimossi; Stacco Rumeno spostato qui dal G4; tutte le serie principali portate a 5.
 
 **Riscaldamento**
 
-| # | Esercizio | Serie/Tempo | Note |
+| # | Esercizio | Serie/Reps | Note |
 |---|---|---|---|
-| Fase 1 | Dorsiflessione al muro | 8 rip per lato | Caviglia |
-| Fase 1 | 90/90 hip mobility | 8 passaggi per lato | Anca |
-| Fase 1 | Alfredson eccentrico | 10 per piede | Polpaccio e tendine |
-| Fase 2 | Ponte monopodalico | 6 per lato | Gluteo e stabilita bacino |
-| Fase 2 | Dead Bug | 5 per lato | Core anti-estensione |
-| Fase 3 | Push-Up → Affondi saltati alternati → Trazioni con elastico | 6-8 → 5/lato → 3-4 | 1 giro, continuo, zero fatica |
-| Fase 4 | Serie avvicinamento squat | 3 serie | Scarico → 50% → 70-80% |
+| Fase 1 — Mobilità | Dorsiflessione al muro | 12 rip per gamba, 2 serie | Caviglia |
+| Fase 1 — Mobilità | FMS Spalle | placeholder — foto e descrizione da aggiungere | Spalla |
+| Fase 2 — Attivazione | Ponte monopodalico | 6 per lato | Gluteo e stabilità bacino |
+| Fase 2 — Attivazione | Shoulder Tap | 8 per lato | Core anti-rotazione |
+| Fase 3 — Circuito | — | Rimosso nel G1 | Non presente in questo giorno |
+| Fase 4 — Avvicinamento | Serie avvicinamento squat | 2 serie | Bilanciere scarico con pausa in buca 3-5s, 6 rip per serie |
 
 **Esercizi**
 
 | # | Esercizio | Serie | Note |
 |---|---|---|---|
-| 1 | Squat | 4x6-8 | RPE 8-9, ultimo set a cedimento tecnico controllato |
-| 2 | Squat Bulgaro | 3x10-12 | RPE 8, per gamba |
-| 3 | Hip Thrust Bilanciere | 4x10-12 | RPE 8-9 |
-| 4 | Leg Curl al Cavo | 3x10-12 | RPE 8-9, eccentrica 2-3 secondi. Alternativa: Nordic Curl assistito |
-| 5 | Ab Wheel dalle ginocchia | 3x8-10 | RPE 8 |
+| 1 | Squat | 5x5-6 | RPE 8-9, ultimo set a cedimento tecnico controllato |
+| 2 | Stacco Rumeno | 5x10-12 | Accessorio femorali, eccentrica controllata, RPE 8-9 |
+| 3 | Leg Curl al Cavo | 4x10-12 | RPE 8-9, eccentrica 2-3 secondi. Alternativa: Nordic Curl assistito |
+| 4 | Ab Wheel dalle ginocchia | 4x8-10 | RPE 8 |
+
+**Esercizi rimossi rispetto alla versione precedente**:
+- Hip Thrust Bilanciere (rimosso)
+- Squat Bulgaro (rimosso, era stato anche spostato al G4 prima di essere eliminato)
 
 **Stretching**
 
@@ -403,27 +407,32 @@ Protocollo breve facoltativo dopo lo stretching finale:
 
 ### Giorno 2 — Upper A — Tirata + Petto
 
+**Aggiornamento 2026-04-21**: riscaldamento ristrutturato (FMS Spalle al posto di Shoulder CARs, no circuito); T-bar Row e Face Pull rimossi; Pulley aggiunto; tutte le serie portate a 5.
+
 **Riscaldamento**
 
-| # | Esercizio | Serie/Tempo | Note |
+| # | Esercizio | Serie/Reps | Note |
 |---|---|---|---|
-| Fase 1 | T-spine rotation in quadrupedia | 8 rip per lato | Mobilita toracica |
-| Fase 1 | Shoulder CARs | 5 cerchi per direzione per braccio | Mobilita spalla |
-| Fase 1 | Dorsiflessione al muro | 8 rip per lato | Appoggio stabile anche nei giorni upper |
-| Fase 2 | Band pull-apart con elastico | 15 rip | Attivazione scapolare |
-| Fase 2 | Shoulder Tap | 8 per lato | Core anti-rotazione |
-| Fase 3 | Kettlebell swing leggero → Goblet squat con fermo → Squat thrust | 10 → 5 → 5 | 1 giro, continuo, senza pre-affaticare l'upper |
-| Fase 4 | Serie avvicinamento trazioni | 2-3 mini-serie | Progressive con elastico |
+| Fase 1 — Mobilità | T-spine rotation in quadrupedia | 8 rip per lato | Mobilità toracica |
+| Fase 1 — Mobilità | FMS Spalle | placeholder — foto e descrizione da aggiungere | Spalla (ex Shoulder CARs) |
+| Fase 1 — Mobilità | Dorsiflessione al muro | 8 rip per lato | Appoggio stabile anche nei giorni upper |
+| Fase 2 — Attivazione | Band pull-apart con elastico | 15 rip | Attivazione scapolare |
+| Fase 2 — Attivazione | Shoulder Tap | 8 per lato | Core anti-rotazione |
+| Fase 3 — Circuito | — | Rimosso nel G2 | Non presente in questo giorno |
+| Fase 4 — Avvicinamento | Serie avvicinamento trazioni | 2-3 mini-serie | Progressive con elastico |
 
 **Esercizi**
 
 | # | Esercizio | Serie | Note |
 |---|---|---|---|
-| 1 | Trazioni | 4x5-8 | RPE 8-9, ultimo set a cedimento tecnico controllato |
-| 2 | T-bar Row | 4x8-10 | RPE 8-9 |
-| 3 | Panca | 4x8-10 | RPE 8-9, ultimo set a cedimento tecnico controllato |
-| 4 | Face Pull | 3x15 | RPE 9 |
-| 5 | Curl Bicipiti | 3x10-12 | RPE 9 |
+| 1 | Trazioni | 5x5-8 | RPE 8-9, presa prona, ultimo set a cedimento tecnico controllato |
+| 2 | Panca | 5x6-8 | RPE 8-9, ultimo set a cedimento tecnico controllato |
+| 3 | Pulley Basso | 5x10-12 | RPE 8-9, tirata con controllo scapolare |
+| 4 | Curl Bicipiti | 4x10-12 | RPE 9 |
+
+**Esercizi rimossi rispetto alla versione precedente**:
+- T-bar Row (rimosso dal G2, spostato a G5)
+- Face Pull (rimosso)
 
 **Stretching**
 
@@ -462,30 +471,36 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 - Half Kneeling Lunge
 - Figure-Four Supino
 
-### Giorno 4 — Lower B — Glutei + Femorali
+### Giorno 4 — Lower B — Stacco + Catena Posteriore
+
+**Aggiornamento 2026-04-21**: riscaldamento ristrutturato (FMS Spalle, no circuito); Hip Thrust, Stacco Rumeno, Squat Bulgaro e Fitball Hamstring Curl rimossi; Fire Hydrant aggiunto; tutte le serie principali portate a 5; tEst aggiornato a 85 min.
 
 **Riscaldamento**
 
-| # | Esercizio | Serie/Tempo | Note |
+| # | Esercizio | Serie/Reps | Note |
 |---|---|---|---|
-| Fase 1 | Dorsiflessione al muro | 8 rip per lato | Caviglia |
-| Fase 1 | 90/90 hip mobility | 8 passaggi per lato | Anca |
-| Fase 1 | Calf Raises con pallina | 12 rip | Piede e controllo adduttori |
-| Fase 2 | Ponte monopodalico | 6 per lato | Gluteo e stabilita bacino |
-| Fase 2 | Shoulder Tap | 6 per lato | Core anti-rotazione |
-| Fase 3 | Push-Up → Affondi saltati alternati → Burpee completo | 6-8 → 5/lato → 4-5 | 1 giro, continuo, controllo pieno |
-| Fase 4 | Serie avvicinamento stacco | 3 serie | Scarico → 50% → 70-80% |
+| Fase 1 — Mobilità | Dorsiflessione al muro | 8 rip per lato | Caviglia |
+| Fase 1 — Mobilità | 90/90 hip mobility | 8 passaggi per lato | Anca |
+| Fase 1 — Mobilità | Calf Raises con pallina | 12 rip | Piede e controllo adduttori |
+| Fase 2 — Attivazione | Ponte monopodalico | 6 per lato | Gluteo e stabilità bacino |
+| Fase 2 — Attivazione | Shoulder Tap | 6 per lato | Core anti-rotazione |
+| Fase 3 — Circuito | — | Rimosso nel G4 | Non presente in questo giorno |
+| Fase 4 — Avvicinamento | Serie avvicinamento stacco | 3 serie | Scarico → 50% → 70-80% |
 
 **Esercizi**
 
 | # | Esercizio | Serie | Note |
 |---|---|---|---|
-| 1 | Stacco da Terra | 3x4-6 | RPE 8-9, ultimo set solo a RIR 0-1 se tecnica stabile |
-| 2 | Stacco Rumeno | 3x10-12 | Accessorio femorali del giorno, RPE 8-9 |
-| 3 | Hip Thrust Bilanciere | 3x8-10 | Secondo lift glutei del giorno, RPE 8-9 |
-| 4 | Affondi | 3x10-12 per gamba | RPE 8-9 |
-| 5 | Hyperextension | 2-3x12-15 | Accessorio catena posteriore, RPE 8-9 |
-| 6 | Fitball Hamstring Curl | 3x10-12 | Bacino alto dall'inizio alla fine, RPE 8-9 |
+| 1 | Stacco da Terra | 5x4-5 | RPE 8-9, ultimo set solo a RIR 0-1 se tecnica stabile |
+| 2 | Affondi | 5x10-12 per gamba | RPE 8-9, manubri o bilanciere |
+| 3 | Hyperextension | 4x12-15 | Accessorio catena posteriore, RPE 8-9 |
+| 4 | Fire Hydrant | 3x15-20 per gamba | RPE 8, abduzione anca in quadrupedia, gluteo medio |
+
+**Esercizi rimossi rispetto alla versione precedente**:
+- Hip Thrust Bilanciere (rimosso)
+- Stacco Rumeno (spostato a G1)
+- Squat Bulgaro (era stato spostato qui da G1, poi rimosso)
+- Fitball Hamstring Curl (rimosso)
 
 **Stretching**
 
@@ -500,37 +515,42 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 
 Stesso blocco facoltativo del Giorno 1, mostrato dopo lo stretching finale.
 
-### Giorno 5 — Upper B — Spinta + Trazioni + Tricipiti
+### Giorno 5 — Upper B — Spinta + Tirata
+
+**Aggiornamento 2026-04-21**: riscaldamento ristrutturato (FMS Spalle al posto di Shoulder CARs, no circuito); T-bar Row spostato qui da G2; Military e T-bar a 5 serie; Push-Up e Trazioni Supine a 4 serie; Dip e Tricipiti Cavo rimossi; tEst aggiornato a 80 min.
 
 **Riscaldamento**
 
-| # | Esercizio | Serie/Tempo | Note |
+| # | Esercizio | Serie/Reps | Note |
 |---|---|---|---|
-| Fase 1 | T-spine rotation in quadrupedia | 8 rip per lato | Mobilita toracica |
-| Fase 1 | Shoulder CARs | 5 cerchi per direzione per braccio | Mobilita spalla |
-| Fase 1 | Dorsiflessione al muro | 8 rip per lato | Base stabile anche nel giorno upper |
-| Fase 2 | Scapular Pull-Up | 5 rip | Depressione scapolare |
-| Fase 2 | Band pull-apart con elastico | 15 rip | Attivazione scapolare |
-| Fase 3 | Kettlebell swing leggero → Affondi saltati alternati → Squat jump | 10 → 5/lato → 5 | 1 giro, continuo, solo sistema nervoso |
-| Fase 4 | Serie avvicinamento military press | 2-3 mini-serie | Bilanciere leggero e progressivo |
+| Fase 1 — Mobilità | T-spine rotation in quadrupedia | 8 rip per lato | Mobilità toracica |
+| Fase 1 — Mobilità | FMS Spalle | placeholder — foto e descrizione da aggiungere | Spalla (ex Shoulder CARs) |
+| Fase 1 — Mobilità | Dorsiflessione al muro | 8 rip per lato | Base stabile anche nel giorno upper |
+| Fase 2 — Attivazione | Scapular Pull-Up | 5 rip | Depressione scapolare |
+| Fase 2 — Attivazione | Band pull-apart con elastico | 15 rip | Attivazione scapolare |
+| Fase 3 — Circuito | — | Rimosso nel G5 | Non presente in questo giorno |
+| Fase 4 — Avvicinamento | Serie avvicinamento military press | 2-3 mini-serie | Bilanciere leggero e progressivo |
 
 **Esercizi**
 
 | # | Esercizio | Serie | Note |
 |---|---|---|---|
-| 1 | Military Press | 4x6-8 | RPE 8-9, ultimo set solo a RIR 0-1 se tecnica stabile |
-| 2 | Trazioni Supine | 3x5-8 | RPE 8, presa supina o neutra |
-| 3 | Push-Up | 3x8-15 | RIR 1-2 |
-| 4 | Dip alle Parallele | 3x6-10 | RIR 1-2 |
-| 5 | Tricipiti Cavo | 3x10-12 | RPE 8-9 |
-| 6 | Woodchop | 3x10-12 per lato | RPE 8-9 |
+| 1 | T-bar Row | 5x8-10 | RPE 8-9, tirata orizzontale prioritaria |
+| 2 | Military Press | 5x5-6 | RPE 8-9, ultimo set a RIR 0-1 se tecnica stabile |
+| 3 | Push-Up | 4x8-15 | RIR 1-2 |
+| 4 | Trazioni Supine | 4x5-8 | RPE 8, presa supina |
+| 5 | Woodchop | 3x10-12 per lato | RPE 8-9, cavo o elastico |
+
+**Esercizi rimossi rispetto alla versione precedente**:
+- Dip alle Parallele (rimosso)
+- Tricipiti Cavo (rimosso)
 
 **Stretching**
 
 | # | Esercizio | Note |
 |---|---|---|
-| 1 | Doorway Pec Stretch | Dopo push-up e dip |
-| 2 | Overhead Triceps Stretch | Tricipiti, costole giù |
+| 1 | Doorway Pec Stretch | Dopo push-up |
+| 2 | Overhead Triceps Stretch | Spalle e tricipiti |
 | 3 | Overhead Lat Stretch | Dorsali, utile dopo trazioni supine |
 | 4 | Band Dislocate Lento | Spalle e torace, elastico leggero |
 
@@ -571,10 +591,59 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 - In app, il cardio della V4 è consultabile in una sezione dedicata della scheda, separata dai tab-giorno pesi
 - Lo stretching finale ha timer rapido e stato `Fatto` / `Saltato`
 - Il riscaldamento mostra quattro fasi: `Mobilita`, `Attivazione`, `Circuito`, `Avvicinamento`
-- Il circuito e compatto, continuo e facoltativo se l'utente arriva gia stanca
+- **Attenzione**: il circuito (Fase 3) è stato rimosso dai giorni G1, G2, G4 e G5 nella versione attuale. La voce "Circuito" compare nell'UI ma non ha esercizi in questi giorni. Se in futuro si vuole reintrodurre, va verificato che la fase non sia pre-affaticante per il workout del giorno.
 - Il riscaldamento usa un solo stato `Fatto` per fase, non per singolo esercizio
 - Il protocollo anca non crea giorni nuovi: è `Bonus mobilità anca` nei giorni pesi e blocco dedicato nei giorni cardio
 - La definizione dipende soprattutto dalla dieta, non da una scheda separata gia presente in app
+- `FMS Spalle` è un placeholder in tutti i giorni upper e lower 1: la foto e la descrizione tecnica devono ancora essere fornite dall'utente
+- `Fire Hydrant` (abduzione anca in quadrupedia) è un esercizio nuovo in G4: scheda completa presente in `src/App.jsx` e nel CSV
+
+## Riepilogo cambiamenti 2026-04-21
+
+### Esercizi rimossi dal programma
+| Esercizio | Giorno | Motivo |
+|---|---|---|
+| Hip Thrust Bilanciere | G1, G4 | Rimosso da entrambi i giorni |
+| Squat Bulgaro | G1 (→ G4 → rimosso) | Prima spostato, poi eliminato |
+| Stacco Rumeno | G4 | Spostato a G1 come accessorio femorali |
+| Fitball Hamstring Curl | G4 | Rimosso |
+| T-bar Row | G2 | Spostato a G5 |
+| Face Pull | G2 | Rimosso |
+| Dip alle Parallele | G5 | Rimosso |
+| Tricipiti Cavo | G5 | Rimosso |
+
+### Esercizi aggiunti o spostati
+| Esercizio | Giorno | Nota |
+|---|---|---|
+| Stacco Rumeno | G1 (da G4) | Complemento femorali in Lower A |
+| T-bar Row | G5 (da G2) | Tirata orizzontale prioritaria in Upper B |
+| Pulley Basso | G2 | Nuovo, rimpiazza T-bar come volume tirata |
+| Fire Hydrant | G4 | Nuovo, 3x15-20 per gamba, gluteo medio |
+
+### Numero di serie aggiornato
+| Esercizio | Serie prima | Serie ora |
+|---|---|---|
+| Squat | 4 | 5 |
+| Stacco da Terra | 3 | 5 |
+| Trazioni (G2) | 4 | 5 |
+| Panca (G2) | 4 | 5 |
+| Pulley Basso (G2) | — | 5 (nuovo) |
+| Curl Bicipiti | 3 | 4 |
+| T-bar Row (G5) | 4 | 5 |
+| Military Press | 4 | 5 |
+| Push-Up (G5) | 3 | 4 |
+| Trazioni Supine (G5) | 3 | 4 |
+| Ab Wheel | 3 | 4 |
+| Affondi (G4) | 3 | 5 |
+| Hyperextension (G4) | 2-3 | 4 |
+| Leg Curl al Cavo (G1) | 3 | 4 |
+
+### Riscaldamento: struttura attuale
+- **Nessun giorno ha più il circuito (Fase 3)** nella versione attuale
+- `Shoulder CARs` sostituito da `FMS Spalle` (placeholder) in G2 e G5
+- `Dead Bug` sostituito da `Shoulder Tap` in G1
+- `Dorsiflessione al muro` in G1: da 8 rip per lato a **12 rip per gamba, 2 serie**
+- Serie avvicinamento squat (G1): 2 serie (bilanciere scarico, pausa in buca 3-5s, 6 rip)
 
 ## File di riferimento collegati
 

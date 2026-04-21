@@ -302,12 +302,12 @@ In questi casi deve parlare di:
 
 - `Push-Up`: se fai almeno 15 rip in tutte le serie per 2 sessioni consecutive → variante più difficile
 - `Trazioni` e `Trazioni Supine`: se fai almeno 8 rip in tutte le serie per 2 sessioni consecutive → zavorra `+1.25 kg`
-- `Dip alle Parallele`: se fai almeno 10 rip in tutte le serie per 2 sessioni consecutive → zavorra `+1.25 kg`
+
+Nota: `Dip alle Parallele` e `Fitball Hamstring Curl` non sono più nel programma attivo (rimossi 2026-04-21).
 
 ### Incrementi extra già previsti
 
 - `Hyperextension con Sacco` → `+1 kg nel sacco`
-- `Fitball Hamstring Curl` → `+1 rip per serie`
 
 ## 8. Dati salvati dall'app
 

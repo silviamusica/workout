@@ -347,13 +347,13 @@ Il recupero suggerito dipende da:
 L'app distingue 3 categorie:
 
 1. `Compound pesante`
-- esempi: Squat, Stacco, Panca, Military, Trazioni, Stacco Rumeno, Hip Thrust Bilanciere
+- esempi: Squat, Stacco, Panca, Military, Trazioni, Stacco Rumeno, T-bar Row, Pulley Basso
 
 2. `Accessorio composto`
 - multiarticolare non heavy
 
 3. `Monoarticolare`
-- curl, tricipiti cavo, alzate laterali, face pull, ecc.
+- curl, alzate laterali, woodchop, ecc.
 
 ### Regole attuali
 
@@ -517,8 +517,8 @@ Esempi:
 Soglie oggi codificate nella logica guidata:
 - `Push-Up`: se fai almeno `15 rip` in tutte le serie per `2 sessioni consecutive`, l'app suggerisce una variante più difficile, per esempio `Push-Up declino` o `diamante`
 - `Trazioni` e `Trazioni Supine`: se fai almeno `8 rip` in tutte le serie per `2 sessioni consecutive`, l'app suggerisce zavorra leggera `+1.25 kg`
-- `Dip alle Parallele`: se fai almeno `10 rip` in tutte le serie per `2 sessioni consecutive`, l'app suggerisce zavorra leggera `+1.25 kg`
-- `Fitball Hamstring Curl`: progressione a `+1 rip per serie`
+
+Nota: `Dip alle Parallele` e `Fitball Hamstring Curl` non sono più nel programma attivo V4 (rimossi in 2026-04-21).
 
 ### Elastico assistenza
 - `-1 tacca elastico`
