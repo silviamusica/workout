@@ -1641,7 +1641,7 @@ var DAYS_V4 = [
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota solo il torace: il bacino resta fermo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
       { n: "Shoulder CARs", phase: "mobility", gearTag: "Corpo libero", p: "5 cerchi per direzione per braccio", cue: "Cerchi lentissimi, addome contratto.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Serve anche qui per appoggio e linea stabile.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
-      { n: "Band Pull-Apart con elastico", phase: "activation", img: "w_CerchiApertura", gearTag: "Elastico", p: "15 rip", cue: "Scapole che si avvicinano alla fine del gesto.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
+      { n: "Band Pull-Apart con elastico", phase: "activation", img: "w_BandPullApart", gearTag: "Elastico", p: "15 rip", cue: "Scapole che si avvicinano alla fine del gesto.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
       { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "8 per lato", cue: "Bacino fermo e anti-rotazione vera.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
       { n: "Kettlebell swing leggero", phase: "circuit", gearTag: "Kettlebell", p: "10 rip", cue: "Hip hinge esplosivo, braccia solo ganci.", lk: "https://www.youtube.com/watch?v=YSxHifyI6s8" },
       { n: "Goblet squat con fermo in buca", phase: "circuit", gearTag: "Kettlebell", p: "5 rip con fermo 3s", cue: "Resta verticale e usa il fermo per aprire anche e caviglie.", lk: "https://www.youtube.com/watch?v=MeIiIdhvXT4" },
@@ -1711,7 +1711,7 @@ var DAYS_V4 = [
       { n: "Shoulder CARs", phase: "mobility", gearTag: "Corpo libero", p: "5 cerchi per direzione per braccio", cue: "Cerchi lenti e completi senza compensi.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Anche qui serve una base stabile da terra.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
       { n: "Scapular Pull-Up", phase: "activation", img: "w_SospensioneAttivaSbarra", gearTag: "Sbarra", p: "5 rip", cue: "Depressione scapolare netta, braccia tese.", lk: "https://www.youtube.com/watch?v=fTbd3q-vwqU" },
-      { n: "Band Pull-Apart con elastico", phase: "activation", img: "w_CerchiApertura", gearTag: "Elastico", p: "15 rip", cue: "Scapole addotte in fondo, spalle basse.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
+      { n: "Band Pull-Apart con elastico", phase: "activation", img: "w_BandPullApart", gearTag: "Elastico", p: "15 rip", cue: "Scapole addotte in fondo, spalle basse.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
       { n: "Kettlebell swing leggero", phase: "circuit", gearTag: "Kettlebell", p: "10 rip", cue: "Esplosivita da anche e catena posteriore.", lk: "https://www.youtube.com/watch?v=YSxHifyI6s8" },
       { n: "Affondi saltati alternati", phase: "circuit", gearTag: "Corpo libero", p: "5 per lato", cue: "Ritmo alto ma atterraggio morbido.", lk: "https://www.youtube.com/watch?v=45qaTeoPGRw" },
       { n: "Squat jump", phase: "circuit", gearTag: "Corpo libero", p: "5 rip", cue: "Salto esplosivo e atterraggio ammortizzato.", lk: "https://www.youtube.com/watch?v=A-cFYGvaXio" },
@@ -1832,7 +1832,7 @@ var DAYS_BEGINNER = [
     warmup: [
       { n: "Jumping jacks", img: "w_JumpingJacks", d: "2-3 minuti a ritmo leggero per entrare nella seduta.", tm: 180 },
       { n: "Good Morning senza peso", img: "w_GoodMorningSenzaPeso", d: "10 ripetizioni lente. Focus: sedere indietro, schiena neutra." },
-      { n: "Band Pull-Apart con elastico", img: "w_CerchiApertura", d: "2x15. Elastico leggero, braccia tese davanti al petto. Apri fino al petto e senti le scapole." },
+      { n: "Band Pull-Apart con elastico", img: "w_BandPullApart", d: "2x15. Elastico leggero, braccia tese davanti al petto. Apri fino al petto e senti le scapole." },
       { n: "Serie avvicinamento stacco rumeno", img: "w_SerieAvvStacco", d: "1-2 serie leggere e progressive del primo esercizio del giorno. Devono preparare il pattern, non affaticarti.", gear: "Manubri o bilanciere" },
     ],
     ex: [
