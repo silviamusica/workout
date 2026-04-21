@@ -1614,8 +1614,8 @@ var DAYS_V4 = [
     ],
     ex: [
       { n: "Stacco da Terra", s: "5x4-5", rpe: "8-9", note: "Setup: piedi larghezza anche, barra su meta piede, mani appena fuori gambe, braccia tese. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata (cifosi); barra lontana dal corpo; anche che salgono prima delle spalle; collo iperesteso" },
-      { n: "Affondi", s: "3x10-12 per gamba", rpe: "8-9", note: "Setup: piedi su due binari, passo abbastanza lungo, busto stabile. Alternativa: TRX reverse lunge.", rec: "90s-2 min", gear: "Manubri", errori: "Passo troppo corto; ginocchio post che non scende; busto che oscilla" },
-      { n: "Hyperextension", s: "2-3x12-15", rpe: "8-9", note: "Usala come accessorio, non come altro stacco. Glutei e femorali, non lombare. Alternativa: cable pull-through.", rec: "90s", gear: "Panca romana", errori: "Iperestensione lombare in alto; velocita eccessiva; collo iperesteso" },
+      { n: "Affondi", s: "5x10-12 per gamba", rpe: "8-9", note: "Setup: piedi su due binari, passo abbastanza lungo, busto stabile. Alternativa: TRX reverse lunge.", rec: "90s-2 min", gear: "Manubri", errori: "Passo troppo corto; ginocchio post che non scende; busto che oscilla" },
+      { n: "Hyperextension", s: "5x12-15", rpe: "8-9", note: "Usala come accessorio, non come altro stacco. Glutei e femorali, non lombare. Alternativa: cable pull-through.", rec: "90s", gear: "Panca romana", errori: "Iperestensione lombare in alto; velocita eccessiva; collo iperesteso" },
     ], str: ["Supine Assisted Leg Pull","Figure-Four Supino","Cat-Cow Lento","Half Kneeling Lunge"], hipBonus: true },
 
   { name: "Giorno 5", focus: "Upper B — Spinta + Trazioni + Tricipiti", dur: "6 esercizi", tEst: 65,
