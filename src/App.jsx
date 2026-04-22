@@ -1624,7 +1624,7 @@ var DAYS_V4 = [
     ex: [
       { n: "Alzate Laterali", s: "3x15-20", rpe: "6-7", note: "Manubri leggeri. Alza fino a parallelo al pavimento. Lento: 2s su, 2s giu. Spalle basse, non alzare i trapezi.", rec: "30-45s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
       { n: "Fire Hydrant", s: "3x20 per lato", rpe: "6-7", note: "Bacino che resta fermo — il range e piccolo e controllato. Non ruotare il busto per alzare il ginocchio piu in alto.", rec: "30s", gear: "Corpo libero (o elastico bacino)", errori: "Bacino che ruota; busto che oscilla per compensare" },
-      { n: "TRX Row lento", s: "3x12", rpe: "6-7", note: "Fermo 2s con scapole strette. Eccentrica 3s. Lavora i dorsali senza tassare la presa. Riduci l'inclinazione se il corpo non resta in linea.", rec: "45s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
+      { n: "TRX Row lento", s: "3x15-20", rpe: "6-7", note: "Fermo 2s con scapole strette. Eccentrica 3s. Lavora i dorsali senza tassare la presa. Riduci l'inclinazione se il corpo non resta in linea.", rec: "45s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
       { n: "Curl al Cavo Basso", s: "3x15", rpe: "6-7", note: "Peso molto leggero. Gomiti fermi, contrazione piena 1s in alto. Non usare slancio.", rec: "30s", gear: "Cavo basso", errori: "Slancio col busto; gomiti che avanzano; eccentrica veloce" },
       { n: "Band Pull-Apart con rotazione esterna", s: "3x20", rpe: "6-7", note: "Volume leggero extra. Pausa 1s a fine apertura con mani ruotate fuori. Non tirare con forza.", rec: "30s", gear: "Elastico", errori: "Tirare con forza; gomiti piegati; nessuna rotazione esterna finale" },
     ],
@@ -2415,6 +2415,10 @@ function usesElasticScale(exName) {
   );
 }
 
+function usesTrxLengthScale(exName) {
+  return false;
+}
+
 function isCalibrationAllowedDay(day) {
   return !!(day && !day.rest && !day.cardio && !day.light);
 }
@@ -2433,6 +2437,17 @@ function clampElasticTick(v) {
 function formatElasticTick(v) {
   var n = clampElasticTick(v);
   return n ? ("tacca elastico " + n) : "";
+}
+
+function clampTrxLength(v) {
+  var n = parseInt(v);
+  if (!n) return 0;
+  return Math.max(1, Math.min(20, n));
+}
+
+function formatTrxLength(v) {
+  var n = clampTrxLength(v);
+  return n ? ("lunghezza TRX " + n) : "";
 }
 
 var BARBELL_BASE_KG = 20;
@@ -2470,6 +2485,10 @@ function formatLoadAndReps(exName, w, r) {
   if (usesElasticScale(exName)) {
     var tick = formatElasticTick(w);
     return tick ? (tick + " × " + reps) : reps;
+  }
+  if (usesTrxLengthScale(exName)) {
+    var trxLength = formatTrxLength(w);
+    return trxLength ? (trxLength + " × " + reps) : reps;
   }
   var kg = parseFloat(w) || 0;
   return kg > 0 ? (kg + " kg × " + reps) : reps;
@@ -6401,7 +6420,7 @@ export default function App() {
         }, 0);
         var volume = sets.reduce(function(sum, setItem) {
           var reps = setItem.r === "max" ? 0 : (parseInt(setItem.r) || 0);
-          var kg = usesElasticScale(entry.exercise) ? 0 : (parseFloat(setItem.w) || 0);
+          var kg = (usesElasticScale(entry.exercise) || usesTrxLengthScale(entry.exercise)) ? 0 : (parseFloat(setItem.w) || 0);
           return sum + kg * reps;
         }, 0);
         rows.push([
@@ -6427,8 +6446,8 @@ export default function App() {
           "",
           "",
           ctx.note,
-          usesElasticScale(entry.exercise) ? "🟣" : (usesBarbellTotal(entry.exercise) ? "🟠" : "🔵"),
-          usesElasticScale(entry.exercise) ? "Elastico / assistenza" : (usesBarbellTotal(entry.exercise) ? "Bilanciere / carico principale" : "Pesi / corpo libero")
+          usesElasticScale(entry.exercise) ? "🟣" : (usesTrxLengthScale(entry.exercise) ? "🟢" : (usesBarbellTotal(entry.exercise) ? "🟠" : "🔵")),
+          usesElasticScale(entry.exercise) ? "Elastico / assistenza" : (usesTrxLengthScale(entry.exercise) ? "TRX / lunghezza" : (usesBarbellTotal(entry.exercise) ? "Bilanciere / carico principale" : "Pesi / corpo libero"))
         ]);
       });
 
@@ -6518,8 +6537,9 @@ export default function App() {
         var sets = (entry.sets || []).slice().sort(function(a, b) { return (a.si || 0) - (b.si || 0); });
         sets.forEach(function(setItem, idx) {
           var isElastic = usesElasticScale(entry.exercise);
-          var inputWeight = isElastic ? "" : storedWeightToPlateInput(entry.exercise, setItem.w, barbellWeight);
-          var totalWeight = isElastic ? "" : (parseFloat(setItem.w) || 0);
+          var isTrxLength = usesTrxLengthScale(entry.exercise);
+          var inputWeight = (isElastic || isTrxLength) ? "" : storedWeightToPlateInput(entry.exercise, setItem.w, barbellWeight);
+          var totalWeight = (isElastic || isTrxLength) ? "" : (parseFloat(setItem.w) || 0);
           rows.push([
             entry.date || "",
             ctx.program,
@@ -6538,7 +6558,7 @@ export default function App() {
             inputWeight === "" ? "" : inputWeight,
             usesBarbellTotal(entry.exercise) ? barbellWeight : "",
             totalWeight === "" ? "" : totalWeight,
-            isElastic ? "tacca" : "kg",
+            isElastic ? "tacca" : (isTrxLength ? "lunghezza" : "kg"),
             setItem.r === "max" ? "max" : (parseInt(setItem.r) || 0),
             normalizeRirValue(setItem.rir) || "",
             isElastic ? (clampElasticTick(setItem.w) || "") : "",
@@ -6546,8 +6566,8 @@ export default function App() {
             "",
             "",
             "",
-            isElastic ? "🟣" : (usesBarbellTotal(entry.exercise) ? "🟠" : "🔵"),
-            isElastic ? "Elastico / assistenza" : (usesBarbellTotal(entry.exercise) ? "Bilanciere / carico principale" : "Pesi / corpo libero")
+            isElastic ? "🟣" : (isTrxLength ? "🟢" : (usesBarbellTotal(entry.exercise) ? "🟠" : "🔵")),
+            isElastic ? "Elastico / assistenza" : (isTrxLength ? "TRX / lunghezza" : (usesBarbellTotal(entry.exercise) ? "Bilanciere / carico principale" : "Pesi / corpo libero"))
           ]);
         });
       });
@@ -6800,6 +6820,7 @@ export default function App() {
 
       var seriesIdx = Math.max(0, (parseInt(get("Serie")) || 1) - 1);
       var isElastic = usesElasticScale(activity);
+      var isTrxLength = usesTrxLengthScale(activity);
       var repsRaw = get("Ripetizioni/secondi");
       var repsValue = String(repsRaw).toLowerCase() === "max" ? "max" : (parseInt(repsRaw) || 0);
       var rirValue = normalizeRirValue(get("RIR"));
@@ -6812,6 +6833,8 @@ export default function App() {
 
       if (isElastic) {
         storedWeight = elasticTick || 0;
+      } else if (isTrxLength) {
+        storedWeight = inputWeightRaw || totalWeightRaw || 0;
       } else if (isFinite(totalWeightRaw)) {
         storedWeight = totalWeightRaw;
       } else if (isFinite(inputWeightRaw)) {
@@ -7756,6 +7779,11 @@ function isNearBodyweightElasticSession(exName, sets) {
         var tick = formatElasticTick(s.w);
         var base = tick ? (tick + "x" + reps) : reps;
         return rir ? (base + " · RIR " + rir) : base;
+      }
+      if (usesTrxLengthScale(exName)) {
+        var trxLength = formatTrxLength(s.w);
+        var trxBase = trxLength ? (trxLength + "x" + reps) : reps;
+        return rir ? (trxBase + " · RIR " + rir) : trxBase;
       }
       var kg = parseFloat(s.w) || 0;
       var weighted = kg > 0 ? (kg + "x" + reps) : reps;
@@ -9182,6 +9210,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           if (!sets.length) return null;
           var isBW = BW_EX.indexOf(name) >= 0;
           var isBand = usesElasticScale(name);
+          var isTrx = usesTrxLengthScale(name);
           var restMeta = getEntryRestSummary(entry);
           if (isBW) {
             var bwReps = sets.map(function(s) { return s.r === "max" ? 20 : (parseInt(s.r) || 0); }).filter(function(v) { return v > 0; });
@@ -9222,6 +9251,31 @@ function isNearBodyweightElasticSession(exName, sets) {
               totalReps: validBandSets.reduce(function(acc, s) { return acc + s.reps; }, 0),
               label: formatElasticTick(bestBandSet.tick) + " · " + formatCompactSetPattern(sets, false),
               shortLabel: formatElasticTick(bestBandSet.tick),
+              restLabel: restMeta.short,
+              restDetail: restMeta.detail,
+            };
+          }
+          if (isTrx) {
+            var validTrxSets = sets.map(function(s) {
+              return { length: clampTrxLength(s.w), reps: s.r === "max" ? 20 : (parseInt(s.r) || 0) };
+            }).filter(function(s) { return s.length > 0 && s.reps > 0; });
+            if (!validTrxSets.length) return null;
+            var trxScore = validTrxSets.reduce(function(acc, s) { return acc + (s.length * s.reps); }, 0);
+            var bestTrxSet = validTrxSets.reduce(function(best, s) {
+              if (!best) return s;
+              if (s.length > best.length) return s;
+              if (s.length === best.length && s.reps > best.reps) return s;
+              return best;
+            }, null);
+            return {
+              name: name,
+              isBW: false,
+              mixed: false,
+              score: trxScore,
+              primary: bestTrxSet.length,
+              totalReps: validTrxSets.reduce(function(acc, s) { return acc + s.reps; }, 0),
+              label: formatTrxLength(bestTrxSet.length) + " · " + formatCompactSetPattern(sets, false),
+              shortLabel: formatTrxLength(bestTrxSet.length),
               restLabel: restMeta.short,
               restDetail: restMeta.detail,
             };
@@ -9276,11 +9330,12 @@ function isNearBodyweightElasticSession(exName, sets) {
           return candidate.totalReps > current.totalReps ? candidate : current;
         }
         // Exercise progress: compute representative weekly session (not just max set)
-        var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Dip su Panca","Plank","Hollow Position","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Fire Hydrant","Fitball Hamstring Curl"];
+        var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Dip su Panca","Plank","Hollow Position","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Fire Hydrant","Fitball Hamstring Curl","TRX Row lento"];
         var exProgress = Object.keys(exMap).map(function(name) {
           var entries = exMap[name].sort(function(a,b) { return a.date.localeCompare(b.date); });
           var isBW = BW_EX.indexOf(name) >= 0;
           var isBand = usesElasticScale(name);
+          var isTrx = usesTrxLengthScale(name);
           var byWeek = {};
           entries.forEach(function(entry) {
             var wk = getWeekKey(entry.date);
@@ -9294,7 +9349,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           var trend = "new";
           if (last && prev) {
             if (last.mixed || prev.mixed) trend = "flat";
-            else if (isBW || isBand) trend = last.score > prev.score ? "up" : last.score < prev.score ? "down" : "flat";
+            else if (isBW || isBand || isTrx) trend = last.score > prev.score ? "up" : last.score < prev.score ? "down" : "flat";
             else if ((last.primary || 0) > (prev.primary || 0)) trend = "up";
             else if ((last.primary || 0) < (prev.primary || 0)) trend = "down";
             else trend = "flat";
@@ -9465,6 +9520,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                               var sortedSets = (entry.sets || []).slice().sort(function(a, b) { return (a.si || 0) - (b.si || 0); });
                               var isBW = BW_EX.indexOf(entry.exercise) >= 0;
                               var usesBand = usesElasticScale(entry.exercise);
+                              var usesTrxLength = usesTrxLengthScale(entry.exercise);
                               var isTimeExercise = isTimeTrackedExercise(entry.exercise, "");
                               var noteDraftKey = getHistoricExerciseNoteDraftKey(entry);
                               var currentExerciseNote = exerciseNoteDrafts[noteDraftKey] != null ? exerciseNoteDrafts[noteDraftKey] : (entry.note || "");
@@ -9486,14 +9542,14 @@ function isNearBodyweightElasticSession(exName, sets) {
                                           {"Serie " + (setItem.si + 1) + " · " + formatSetResult(entry.exercise, setItem, isBW, isTimeExercise)}
                                           {normalizeRirValue(setItem.rir) && <span style={{ color: T.sub, fontWeight: 600 }}>{" · RIR " + normalizeRirValue(setItem.rir)}</span>}
                                         </div>
-                                        <button onClick={function(e) { e.stopPropagation(); setEditing(progressEditId); setTmpW(usesBand ? String(clampElasticTick(setItem.w) || "") : String(storedWeightToPlateInput(entry.exercise, setItem.w, barbellWeight))); setTmpR(String(setItem.r)); setTmpRir(normalizeRirValue(setItem.rir)); }} style={{ fontSize: 10, color: T.sub, background: "none", border: "none", cursor: "pointer", padding: "2px 4px", fontWeight: 700 }}>modifica</button>
+                                        <button onClick={function(e) { e.stopPropagation(); setEditing(progressEditId); setTmpW(usesBand ? String(clampElasticTick(setItem.w) || "") : (usesTrxLength ? String(clampTrxLength(setItem.w) || "") : String(storedWeightToPlateInput(entry.exercise, setItem.w, barbellWeight)))); setTmpR(String(setItem.r)); setTmpRir(normalizeRirValue(setItem.rir)); }} style={{ fontSize: 10, color: T.sub, background: "none", border: "none", cursor: "pointer", padding: "2px 4px", fontWeight: 700 }}>modifica</button>
                                         <button onClick={function(e) { e.stopPropagation(); deleteHistoricSetEntry(entry, setItem.si); }} style={{ fontSize: 10, color: "#C62828", background: "none", border: "none", cursor: "pointer", padding: "2px 4px", fontWeight: 800 }}>elimina</button>
                                       </div>}
                                       {isEditingProgressSet && <div style={{ display: "grid", gap: 8 }}>
                                         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
                                           <label style={{ display: "grid", gap: 4 }}>
-                                            <span style={{ fontSize: 10, fontWeight: 800, color: T.sub }}>{usesBand ? "Tacca elastico" : (isBW ? "Corpo libero" : "Kg")}</span>
-                                            <input type="number" inputMode="numeric" min={usesBand ? 1 : 0} max={usesBand ? 10 : undefined} placeholder={usesBand ? "1-10" : "0"} value={isBW ? "0" : tmpW} disabled={isBW} onChange={function(e) { setTmpW(usesBand ? String(clampElasticTick(e.target.value) || "") : e.target.value); }} style={{ width: "100%", minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 15, textAlign: "center", background: isBW ? T.bg : T.cd, color: T.tx, WebkitTextFillColor: T.tx, caretColor: T.tx, opacity: isBW ? 0.7 : 1, fontWeight: 800, boxSizing: "border-box" }} />
+                                            <span style={{ fontSize: 10, fontWeight: 800, color: T.sub }}>{usesBand ? "Tacca elastico" : (usesTrxLength ? "Lunghezza TRX" : (isBW ? "Corpo libero" : "Kg"))}</span>
+                                            <input type="number" inputMode="numeric" min={(usesBand || usesTrxLength) ? 1 : 0} max={usesBand ? 10 : (usesTrxLength ? 20 : undefined)} placeholder={usesBand ? "1-10" : (usesTrxLength ? "1-20" : "0")} value={isBW ? "0" : tmpW} disabled={isBW} onChange={function(e) { setTmpW(usesBand ? String(clampElasticTick(e.target.value) || "") : (usesTrxLength ? String(clampTrxLength(e.target.value) || "") : e.target.value)); }} style={{ width: "100%", minWidth: 0, padding: "10px 8px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 15, textAlign: "center", background: isBW ? T.bg : T.cd, color: T.tx, WebkitTextFillColor: T.tx, caretColor: T.tx, opacity: isBW ? 0.7 : 1, fontWeight: 800, boxSizing: "border-box" }} />
                                           </label>
                                           <label style={{ display: "grid", gap: 4 }}>
                                             <span style={{ fontSize: 10, fontWeight: 800, color: T.sub }}>{isTimeExercise ? "Secondi" : "Ripetizioni"}</span>
@@ -9507,9 +9563,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                                             </select>
                                           </label>
                                         </div>
-                                        {!isBW && !usesBand && formatInputWeightHint(entry.exercise, tmpW, barbellWeight) && <div style={{ fontSize: 10, color: T.sub }}>{formatInputWeightHint(entry.exercise, tmpW, barbellWeight)}</div>}
+                                        {!isBW && !usesBand && !usesTrxLength && formatInputWeightHint(entry.exercise, tmpW, barbellWeight) && <div style={{ fontSize: 10, color: T.sub }}>{formatInputWeightHint(entry.exercise, tmpW, barbellWeight)}</div>}
                                         <div style={{ display: "flex", gap: 8 }}>
-                                          <button onClick={function(e) { e.stopPropagation(); saveHistoricSetEntry(entry, setItem.si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : plateInputToStoredWeight(entry.exercise, tmpW, barbellWeight)), tmpR, tmpRir); }} style={{ flex: 1, minHeight: 38, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 13, cursor: "pointer", fontWeight: 800 }}>Salva ✓</button>
+                                          <button onClick={function(e) { e.stopPropagation(); saveHistoricSetEntry(entry, setItem.si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : (usesTrxLength ? clampTrxLength(tmpW) : plateInputToStoredWeight(entry.exercise, tmpW, barbellWeight))), tmpR, tmpRir); }} style={{ flex: 1, minHeight: 38, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 13, cursor: "pointer", fontWeight: 800 }}>Salva ✓</button>
                                           <button onClick={function(e) { e.stopPropagation(); resetSetEditingState(); }} style={{ flex: 1, minHeight: 38, background: T.sb, color: T.sub, border: "1px solid " + T.bg, borderRadius: 8, fontSize: 13, cursor: "pointer", fontWeight: 800 }}>Annulla</button>
                                         </div>
                                       </div>}
@@ -10522,9 +10578,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </div>}
                 {isX && db && (function() {
                   // bodyweight detection: no kg field needed
-                  var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Dip su Panca","Plank","Hollow Position","Hollow Tuck","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Fire Hydrant","Cat-Cow","Inchworm","Dead bug","Glute Bridge","Fitball Hamstring Curl"];
+                  var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Dip su Panca","Plank","Hollow Position","Hollow Tuck","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Fire Hydrant","Cat-Cow","Inchworm","Dead bug","Glute Bridge","Fitball Hamstring Curl","TRX Row lento"];
                   var isBW = BW_EX.indexOf(ex.n) >= 0;
                   var usesBand = usesElasticScale(ex.n);
+                  var usesTrxLength = usesTrxLengthScale(ex.n);
                   // last session data for pre-fill
                   var allHist = getHist(ex.n);
                   var pastSessions = allHist.filter(function(h) { return h.date !== todayStr(); });
@@ -10645,9 +10702,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                               <div style={{ width: 26, height: 26, borderRadius: "50%", background: done ? T.ok : T.tx + "15", color: done ? "#fff" : T.sub, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0 }}>{done ? "✓" : si + 1}</div>
                               <div style={{ flex: 1, fontSize: 12, color: T.sub, fontWeight: 600 }}>
                                 {targetLabel}
-                                {isBW ? "" : usesBand ? (" · " + (sugg.w ? formatElasticTick(sugg.w) + " sugg." : "inserisci tacca")) : (" · " + (sugg.w ? (usesBarbellTotal(ex.n) ? formatInputWeightHint(ex.n, sugg.w, barbellWeight) + " sugg." : sugg.w + " kg sugg.") : (usesBarbellTotal(ex.n) ? "inserisci kg dischi" : "inserisci kg")))}
+                                {isBW ? "" : usesBand ? (" · " + (sugg.w ? formatElasticTick(sugg.w) + " sugg." : "inserisci tacca")) : usesTrxLength ? (" · " + (sugg.w ? formatTrxLength(sugg.w) + " sugg." : "inserisci lunghezza")) : (" · " + (sugg.w ? (usesBarbellTotal(ex.n) ? formatInputWeightHint(ex.n, sugg.w, barbellWeight) + " sugg." : sugg.w + " kg sugg.") : (usesBarbellTotal(ex.n) ? "inserisci kg dischi" : "inserisci kg")))}
                               </div>
-                              {done && !isE && <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(String(storedWeightToPlateInput(ex.n, lg.w, barbellWeight))); setTmpR(String(lg.r)); setTmpRir(normalizeRirValue(lg.rir)); }} style={{ fontSize: 10, color: T.sub, background: "none", border: "none", cursor: "pointer", padding: "0 4px", touchAction: "manipulation" }}>modifica</button>}
+                              {done && !isE && <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(usesBand ? String(clampElasticTick(lg.w) || "") : (usesTrxLength ? String(clampTrxLength(lg.w) || "") : String(storedWeightToPlateInput(ex.n, lg.w, barbellWeight)))); setTmpR(String(lg.r)); setTmpRir(normalizeRirValue(lg.rir)); }} style={{ fontSize: 10, color: T.sub, background: "none", border: "none", cursor: "pointer", padding: "0 4px", touchAction: "manipulation" }}>modifica</button>}
                             </div>
                             {/* Input or result */}
                             {isE ? (
@@ -10656,9 +10713,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                                   <div style={{ display: "grid", gridTemplateColumns: !isBW ? (showInlineRir ? "1fr 1fr 92px" : "1fr 1fr") : (showInlineRir ? "1fr 92px" : "1fr"), gap: 8, alignItems: "end" }}>
                                     {!isBW && <label style={{ display: "grid", gap: 4, minWidth: 0 }}>
                                       <span style={{ fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.7 }}>
-                                        {usesBand ? "Tacca elastico" : (usesBarbellTotal(ex.n) ? "Kg dischi" : "Kg")}
+                                        {usesBand ? "Tacca elastico" : (usesTrxLength ? "Lunghezza TRX" : (usesBarbellTotal(ex.n) ? "Kg dischi" : "Kg"))}
                                       </span>
-                                      <input type="number" inputMode="numeric" min={usesBand ? 1 : 0} max={usesBand ? 10 : undefined} placeholder={usesBand ? "1-10" : "0"} value={tmpW} onChange={function(e) { setTmpW(usesBand ? String(clampElasticTick(e.target.value) || "") : e.target.value); }} style={{ width: "100%", minWidth: 0, padding: "12px 10px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 17, textAlign: "center", background: T.cd, color: T.tx, WebkitTextFillColor: T.tx, caretColor: T.tx, opacity: 1, fontWeight: 800, boxSizing: "border-box" }} autoFocus />
+                                      <input type="number" inputMode="numeric" min={(usesBand || usesTrxLength) ? 1 : 0} max={usesBand ? 10 : (usesTrxLength ? 20 : undefined)} placeholder={usesBand ? "1-10" : (usesTrxLength ? "1-20" : "0")} value={tmpW} onChange={function(e) { setTmpW(usesBand ? String(clampElasticTick(e.target.value) || "") : (usesTrxLength ? String(clampTrxLength(e.target.value) || "") : e.target.value)); }} style={{ width: "100%", minWidth: 0, padding: "12px 10px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 17, textAlign: "center", background: T.cd, color: T.tx, WebkitTextFillColor: T.tx, caretColor: T.tx, opacity: 1, fontWeight: 800, boxSizing: "border-box" }} autoFocus />
                                     </label>}
                                     <label style={{ display: "grid", gap: 4, minWidth: 0 }}>
                                       <span style={{ fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.7 }}>
@@ -10679,7 +10736,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                                   <div style={{ display: "flex", gap: 8 }}>
                                     <button onClick={function(e) {
                                       e.stopPropagation();
-                                      var storedWeight = isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : plateInputToStoredWeight(ex.n, tmpW, barbellWeight));
+                                      var storedWeight = isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : (usesTrxLength ? clampTrxLength(tmpW) : plateInputToStoredWeight(ex.n, tmpW, barbellWeight)));
                                       beginLogSet(ex, dayIdx, si, storedWeight, tmpR, isBW, tmpRir);
                                       var nextAction = buildNextActionInfo(dayData, dayIdx, i, ex.n, si, sc);
                                       if (flowModeEnabled && !isBasics) {
@@ -10751,7 +10808,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                                     <button onClick={function(e) { e.stopPropagation(); setEditing(null); setTmpW(""); setTmpR(""); setTmpRir(""); }} style={{ minWidth: 84, minHeight: 42, background: T.bg, color: T.sub, border: "none", borderRadius: 8, fontSize: 13, cursor: "pointer", fontWeight: 700, touchAction: "manipulation" }}>Annulla</button>
                                   </div>
                                 </div>
-                                {!isBW && !usesBand && usesBarbellTotal(ex.n) && <div style={{ marginTop: 6, fontSize: 11, color: T.sub, lineHeight: 1.5 }}>
+                                {!isBW && !usesBand && !usesTrxLength && usesBarbellTotal(ex.n) && <div style={{ marginTop: 6, fontSize: 11, color: T.sub, lineHeight: 1.5 }}>
                                   {"Totale: " + plateInputToStoredWeight(ex.n, tmpW, barbellWeight) + " kg (bil. " + barbellWeight + " + dischi " + (parseFloat(tmpW) || 0) + ")"}
                                 </div>}
                               </div>
