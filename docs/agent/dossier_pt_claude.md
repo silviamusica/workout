@@ -163,128 +163,17 @@ Questo toggle non spegne il tutor:
 
 ## 5. Comportamento attuale della calibrazione
 
-### Quando la si vede
+Per il comportamento dettagliato della calibrazione leggere:
+- `logica_tutor_pt.md` → sezione **Calibrazione**
 
-La si vede solo se l'esercizio è:
-- senza riferimento
-- oppure da ricalibrare
-
-### Flusso
-
-Nella riga serie, in calibrazione, si inseriscono solo:
-- `kg` o `tacca elastico`
-- `ripetizioni`
-
-Sulla prima serie test non si inserisce lì il `RIR`.
-
-Dopo la spunta:
-- si apre il modale di calibrazione
-- chiede:
-  - quante erano davvero le ripetizioni pulite
-  - quante ripetizioni pulite restavano (`RIR / riserva`)
-  - se il test era `Troppo pesante`, `Giusta` o `Troppo facile`
-
-Nota:
-- dalla seconda serie in poi il `RIR` può essere inserito direttamente nella riga
-
-### Regole importanti
-
-- la serie viene salvata comunque
-- se è sotto il minimo del range, non diventa un riferimento valido
-- se è troppo sopra il range, non viene accettata come `ok`
-- esempio:
-  - range `6-8`
-  - se segni `12`
-  - l'app deve considerarlo troppo facile e suggerire aumento del carico o della difficoltà
-
-### Timer e recupero
-
-Il timer oggi:
-- è manuale
-- non deve bloccare la registrazione
-- può essere bloccato con il lucchetto per restare aperto e non essere sovrascritto
+Il dossier non duplica questo contenuto per evitare disallineamenti.
 
 ## 6. Comportamento attuale della modalità guidata
 
-### Briefing pre-sessione
+Per il comportamento dettagliato della modalità guidata leggere:
+- `logica_tutor_pt.md` → sezioni **Modalità guidata**, **Briefing pre-sessione**, **Prompt RIR dopo la serie**, **Recupero guidato**, **Decisione finale dopo l'ultima serie**
 
-Mostra:
-- tutti gli obiettivi del giorno
-- un suggerimento per ogni esercizio
-
-Stati gestiti:
-- nessun dato
-- sessione non uniforme
-- aumenta carico
-- resta così e prova 1 rip in più
-- consolida
-- chiuse ma troppo tirate
-
-### Prompt RIR
-
-Fuori dalla calibrazione:
-- se salvi una serie senza RIR già inserito
-- l'app chiede quante ripetizioni pulite sarebbero rimaste
-
-Bottoni:
-- `0`
-- `1`
-- `2`
-- `3`
-- `4+`
-
-Dalla seconda serie:
-- compare `= serie precedente`
-
-Prime volte:
-- compare un hint breve
-
-### Recupero guidato
-
-Usa 3 categorie:
-- compound pesante
-- accessorio composto
-- monoarticolare
-
-Tempi attuali:
-- `RIR 0` → `150s / 90s / 60s`
-- `RIR 1` → `120s / 75s / 60s`
-- `RIR 2` → `90s / 60s / 45s`
-- `RIR 3+` → `75s / 45s / 30s`
-
-Questa versione e piu corta della prima:
-- assume lavoro normale a `RIR 1-2`
-- non e costruita su cedimento sistematico
-- e pensata per un recupero pratico e piu rapido
-
-Compound pesanti attivi V4 (categoria heavy nel recupero guidato):
-`Squat · Stacco da Terra · Panca · Military Press · Trazioni · Trazioni Supine · Stacco Rumeno · T-bar Row · Pulley · Glute Bridge Bilanciere`
-
-Monoarticolari attivi V4 (categoria mono):
-`Curl Bicipiti · Woodchop · Fire Hydrant · Band Pull-Apart con rotazione esterna · Leg Curl al Cavo`
-
-Compound medi (default compound):
-`Affondi · Push-Up · Hyperextension · Ab Wheel`
-
-### Decisione finale
-
-Casi importanti gestiti:
-- top del range chiuso con margine → aumenta
-- top chiuso ma RIR medio troppo basso → consolida ancora
-- tutte nel range ma non al top → prova a fare più rip
-- pattern tipo `8-8-7-6` → fatica normale, peso calibrato bene
-- sotto il minimo → consolida o scala
-
-### Feedback sotto il minimo
-
-Se sei molto sotto il minimo, l'app non si limita a dire "non va bene".
-
-Suggerisce anche di quanto scalare:
-- bilanciere: `-2.5 kg`
-- manubri: `-1 kg per manubrio`
-- cavo: `-1 step`
-- elastico: più assistenza
-- corpo libero: variante più facile
+Il dossier non duplica questo contenuto per evitare disallineamenti.
 
 ## 7. Regole speciali da non dimenticare
 
@@ -329,6 +218,8 @@ Esiste anche:
 - `Esporta solo JSON`
 
 ## 8.bis. Esercizi attivi V4 (2026-04-22)
+
+> **Fonte unica di verità per la lista esercizi V4.** Se c'è conflitto tra questa sezione e altri file, questo dossier e il CSV (`workout_plan_v4.csv`) sono autorevoli. Il CSV è la documentazione scheda completa; questa sezione è la sintesi rapida per il PT.
 
 **Struttura settimana**: G1 Lower A · G2 Upper A · G3 Leggero · G4 Lower B · G5 Upper B · G6 Riposo · G7 Cardio B
 

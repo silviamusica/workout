@@ -543,9 +543,9 @@ Esempi:
 
 Esempi:
 - Pulley
-- Lat Machine
 - Woodchop
 - Curl al Cavo Basso
+- Leg Curl al Cavo
 - esercizi con `Cavo` nel nome (match automatico nel codice)
 
 ### Corpo libero
