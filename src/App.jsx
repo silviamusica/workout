@@ -2407,7 +2407,12 @@ var CALIBRATION_BODYWEIGHT_EX = ["Push-Up","Trazioni","Trazioni Supine","Ab Whee
 var CALIBRATION_SKIP_EX = ["HIIT tapis roulant","Rucking con zaino 15-20 kg","Circuito sacco + corde + slackline","Corsa leggera zona 2"];
 
 function usesElasticScale(exName) {
-  return exName === "Trazioni" || exName === "Trazioni Supine";
+  return (
+    exName === "Trazioni" ||
+    exName === "Trazioni Supine" ||
+    exName === "Band Pull-Apart con rotazione esterna" ||
+    exName === "Band Pull-Apart con elastico"
+  );
 }
 
 function isCalibrationAllowedDay(day) {
