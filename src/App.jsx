@@ -661,7 +661,7 @@ var INTRO_BASICS = [
       { type: "bold-list", content: [
         ["Sonno", "7-9 ore per notte. Durante il sonno viene rilasciato l'ormone della crescita (GH). Dormire poco dimezza i guadagni."],
         ["Proteine", "1.6-2.2g/kg al giorno. Il target del tuo piano nutrizionale è ~1.78 g/kg (100g). In deficit calorico, avvicinarsi a 2.0 g/kg (112g) preserva meglio la massa magra."],
-        ["Giorno 3 e Giorno 7", "Non sono giorni sprecati. Il Giorno 3 e volume complementare leggero (deltoide laterale, gluteo medio, mobilita anca): lavoro che i giorni pesi non raggiungono. Il Giorno 7 e cardio zona 2. Il tessuto connettivo recupera piu lentamente del muscolo."],
+        ["Giorno 3 e Cardio", "Non sono giorni sprecati. Il Giorno 3 e volume complementare leggero (deltoide laterale, gluteo medio, mobilita anca): lavoro che i giorni pesi non raggiungono. Il giorno Cardio e zona 2. Il tessuto connettivo recupera piu lentamente del muscolo."],
       ]},
       { type: "p", content: "Se dopo 2-3 settimane i carichi non crescono: controlla prima sonno e proteine prima di toccare il programma." },
     ]
@@ -939,7 +939,7 @@ var PRINCIPLES_DEEP = [
       "Lower A (Giorno 1) + Lower B (Giorno 4): quadricipiti, glutei, femorali con priorità diverse",
       "Upper A (Giorno 2) + Upper B (Giorno 5): spinta e tirata con distribuzione complementare",
       "Giorno 3 Leggero: volume complementare (deltoide laterale, gluteo medio) + protocollo anca completo",
-      "Giorno 7: cardio zona 2 — nessuna interferenza con il recupero muscolare",
+      "Cardio: zona 2 — nessuna interferenza con il recupero muscolare",
     ]},
   ]},
   { t: "Esercizi prioritari: cosa sono e come leggerli", d: [
@@ -958,7 +958,7 @@ var PRINCIPLES_DEEP = [
       ["Sonno", "7-9 ore. È durante il sonno profondo che viene rilasciato l'ormone della crescita. Dormire poco dimezza i guadagni."],
       ["Proteine", "1.8-2.2g/kg al giorno. Sono i mattoni per ricostruire il muscolo — senza di esse l'allenamento non si traduce in crescita."],
       ["Giorno 3 Leggero", "Non e un giorno di pesi. E volume complementare a bassa intensita (RPE 6-7) per deltoide laterale e gluteo medio, muscoli che i compound non raggiungono direttamente. Piu il protocollo anca completo."],
-      ["Giorno 7 Cardio", "Zona 2 a bassa intensita. Serve a gestire la fitness cardiovascolare senza interferire con il recupero muscolare."],
+      ["Cardio", "Zona 2 a bassa intensita. Serve a gestire la fitness cardiovascolare senza interferire con il recupero muscolare."],
     ]},
     {type:"p", content:"Se dopo 2-3 settimane i carichi non crescono: controlla prima il sonno e l'alimentazione prima di toccare il programma."}
   ]},
@@ -968,7 +968,7 @@ var PRINCIPLES_DEEP = [
     {type:"bold-list", content:[
       ["HIIT (Giorno 3 — settimane dispari)", "Intervalli brevi ad alta intensità. Efficace per il condizionamento. Non farlo la sera prima di Giorno 4 (Stacco da Terra)."],
       ["Rucking (Giorno 3 — settimane pari)", "Zaino 15-20 kg, 45-60 min. L'opzione con meno interferenza sull'ipertrofia."],
-      ["Zona 2 (Giorno 7)", "Corsa leggera o rucking a bassa intensità — puoi parlare senza fiatone. FC 120-140. Minima interferenza."],
+      ["Zona 2 (Cardio)", "Corsa leggera o rucking a bassa intensità — puoi parlare senza fiatone. FC 120-140. Minima interferenza."],
     ]},
     {type:"p", content:"Segnale di troppo cardio: i carichi in sala smettono di crescere per 2+ settimane. In quel caso riduci prima durata o intensità del cardio, non il volume dei pesi."}
   ]},
@@ -1550,7 +1550,7 @@ var DAYS = [
 
 /* === IPERTROFIA V4 — Upper/Lower 4+2 Cardio (da CSV programma) === */
 var DAYS_V4 = [
-  { name: "Giorno 1", focus: "Lower A — Quadricipiti + Femorali", dur: "4 esercizi", tEst: 80,
+  { name: "Giorno 1", focus: "Lower A — Squat + Femorali", dayLabel: "Lun", dur: "5 esercizi", tEst: 80,
     intro: {
       attrezzi: ["Bilanciere + rack + bumper", "Pad o asciugamano per Glute Bridge", "Cavo basso + cavigliera", "Ab wheel"],
       muscoli: ["Quadricipiti (Squat)", "Femorali/Glutei (Stacco Rumeno)", "Glutei in accorciamento (Glute Bridge)", "Femorali (Leg curl al cavo)", "Core (Ab wheel)"],
@@ -1570,13 +1570,13 @@ var DAYS_V4 = [
     ],
     ex: [
       { n: "Squat", s: "5x5-6", rpe: "8-9", note: "Setup: piedi larghezza spalle, punte 15-30 gradi, mani simmetriche, gomiti giu e leggermente dietro. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper + rack", errori: "Ginocchia che collassano dentro; busto che cade avanti in risalita; talloni che si alzano; schiena che si arrotonda in buca" },
-      { n: "Stacco Rumeno", s: "4x10-12", rpe: "8-9", note: "Accessorio femorali. Setup: piedi larghezza anche, ginocchia appena sbloccate, mani poco fuori cosce. Anca indietro e bilanciere vicino alle gambe. Alternativa: manubri o cable pull-through.", rec: "90s-2 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata; ginocchia troppo flesse; carico lontano dal corpo; anca che scende invece di andare indietro" },
+      { n: "Stacco Rumeno", s: "5x10-12", rpe: "8-9", note: "Accessorio femorali. Setup: piedi larghezza anche, ginocchia appena sbloccate, mani poco fuori cosce. Anca indietro e bilanciere vicino alle gambe. Alternativa: manubri o cable pull-through.", rec: "90s-2 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata; ginocchia troppo flesse; carico lontano dal corpo; anca che scende invece di andare indietro" },
       { n: "Glute Bridge Bilanciere", s: "4x10-12", rpe: "8-9", note: "Schiena a terra, bilanciere sulle anche (pad o asciugamano). Spingi il bacino in alto fino a estensione completa. Stringi i glutei 1s in alto. Tibia quasi verticale in cima.", rec: "90s", gear: "Bilanciere + bumper (+ pad o asciugamano)", errori: "Iperestendere la lombare in alto; piedi troppo lontani (femorali rubano lavoro ai glutei); non completare l'estensione in alto" },
       { n: "Leg Curl al Cavo", s: "4x10-12", rpe: "8-9", note: "Setup: cavigliera alla caviglia, cavo basso. Prona a terra o in piedi. Fletti il ginocchio portando il tallone verso il gluteo. Eccentrica 2-3 secondi. Alternativa piu avanzata: Nordic Curl assistito con elastico.", rec: "90s-2 min", gear: "Cavo basso + cavigliera", errori: "Slancio col bacino; eccentrica troppo veloce; lombare che si inarca" },
       { n: "Ab Wheel", s: "4x8-10", rpe: "8", note: "Dalle ginocchia. Costole giu e glutei attivi. Alternativa: TRX fallout o fitball rollout.", rec: "90s", gear: "Ab wheel", errori: "Lombare che si inarca; anche che non si estendono; range troppo corto" },
     ], str: ["Quadricipiti","Flessori anca","Glutei"] },
 
-  { name: "Giorno 2", focus: "Upper A — Tirata + Petto", dur: "4 esercizi", tEst: 85,
+  { name: "Giorno 2", focus: "Upper A — Trazioni + Panca + Pulley", dayLabel: "Mar", dur: "5 esercizi", tEst: 85,
     intro: {
       attrezzi: ["Barra trazioni", "Elastico assistenza", "Bilanciere + panca + rack", "Cavo basso + maniglie", "Elastico media resistenza", "Manubri"],
       muscoli: ["Dorsali/Bicipiti (Trazioni)", "Pettorali/Tricipiti (Panca)", "Dorsali/Scapole (Pulley)", "Deltoidi posteriori/Cuffia rotatori (Band Pull-Apart)", "Bicipiti (Curl)"],
@@ -1597,15 +1597,15 @@ var DAYS_V4 = [
       { n: "Panca", s: "5x6-8", rpe: "8-9", note: "Scapole addotte e basse. Arco lombare naturale. Gomiti a 45-75 gradi. Barra tocca linea capezzoli. Polsi dritti. Ultimo set a cedimento tecnico controllato.", rec: "2 min", gear: "Bilanciere + panca + rack", errori: "Rimbalzo sul petto; gomiti a 90 gradi; sedere che si alza; polsi piegati" },
       { n: "Pulley", s: "5x10-12", rpe: "8-9", note: "Carrucola bassa. Tira verso lo sterno portando i gomiti indietro e le scapole insieme. Eccentrica 2-3 secondi.", rec: "90s-2 min", gear: "Cavo basso + maniglie", errori: "Schiena che si inarca; slancio col busto; tirare con i bicipiti invece dei dorsali" },
       { n: "Band Pull-Apart con rotazione esterna", s: "3x15", rpe: "8", note: "Braccia tese davanti, apri fino al petto e ruota le mani verso fuori alla fine. Pausa 1s a fine ripetizione. Non e il band pull-apart leggero del riscaldamento: usa un elastico piu resistente.", rec: "60s", gear: "Elastico resistenza media", errori: "Piegare i gomiti per arrivare piu indietro; non completare la rotazione esterna; usare slancio" },
-      { n: "Curl Bicipiti", s: "4x10-12", rpe: "9", note: "Con manubri. Gomiti fissi ai fianchi. Supinazione. Eccentrica 2-3s.", rec: "90s", gear: "Manubri", errori: "Slancio col busto; gomiti che avanzano; fase eccentrica troppo veloce" },
+      { n: "Curl Bicipiti", s: "3x10-12", rpe: "9", note: "Con manubri. Gomiti fissi ai fianchi. Supinazione. Eccentrica 2-3s.", rec: "90s", gear: "Manubri", errori: "Slancio col busto; gomiti che avanzano; fase eccentrica troppo veloce" },
     ], str: ["Doorway Pec Stretch","Overhead Lat Stretch","Cross-Body Shoulder Stretch","Wrist Flexor/Extensor Stretch"], hipBonus: true },
 
-  { name: "Giorno 3", focus: "Leggero — Volume complementare + mobilità", light: true, tEst: 35,
+  { name: "Giorno 3", focus: "Leggero", dayLabel: "Mer", light: true, tEst: 35,
     intro: {
       attrezzi: ["Manubri leggeri", "Elastico", "TRX", "Cavo basso", "Tappetino"],
-      muscoli: ["Deltoide laterale (Alzate Laterali)", "Deltoide posteriore / cuffia (Band Pull-Apart)", "Gluteo medio (Fire Hydrant)", "Dorsali / scapole (TRX Row lento)", "Bicipiti (Curl al Cavo Basso)"],
+      muscoli: ["Deltoide laterale (Alzate Laterali)", "Deltoide posteriore / cuffia (Band Pull-Apart)", "Gluteo medio (Fire Hydrant)", "Dorsali / scapole (TRX Row lento)", "Quadricipiti / Glutei (Goblet Squat)"],
       obiettivi: ["Aggiungere volume complementare senza affaticare il sistema nervoso", "Curare controllo e qualità su muscoli che nei giorni pesanti non hanno volume diretto sufficiente", "Chiudere con il protocollo anca completo in un giorno senza compound pesanti"],
-      attenzione: ["RPE massimo 6-7: oggi non devi inseguire carico o cedimento", "Movimenti lenti e puliti: il valore del giorno 3 è qualità + volume facile", "Nel TRX Row e nel Fire Hydrant il controllo del corpo conta più della quantità"],
+      attenzione: ["RPE massimo 8 solo sulle Alzate Laterali: tutto il resto resta 6-7", "Movimenti lenti e puliti: il valore del giorno 3 e qualità + volume facile", "Nel TRX Row e nel Fire Hydrant il controllo del corpo conta piu della quantità"],
       ritmo: "Recuperi brevi: 30-45 secondi. Tieni il flusso alto ma senza sporcare la tecnica."
     },
     warmup: [
@@ -1614,7 +1614,7 @@ var DAYS_V4 = [
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota il torace senza muovere il bacino." },
       { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 rip per lato", cue: "Gluteo forte in alto, lombare ferma." },
     ],
-    lightIntro: "Non e un giorno di allenamento pesante. E volume complementare a bassa intensita: deltoide laterale, deltoide posteriore, gluteo medio e bicipiti. Sistema nervoso fresco, RPE massimo 6-7. Poi il protocollo anca completo.",
+    lightIntro: "Non e un giorno di allenamento pesante. E volume complementare a bassa intensita: deltoide laterale, deltoide posteriore, gluteo medio, dorsali/scapole e quadricipiti. Niente coach attivo, niente RIR e nessuna decisione finale. Poi il protocollo anca completo.",
     lightWarmup: [
       { n: "Dorsiflessione al muro", p: "8 rip/lato" },
       { n: "90/90 hip mobility", p: "8 passaggi/lato" },
@@ -1622,10 +1622,10 @@ var DAYS_V4 = [
       { n: "Ponte monopodalico", p: "6 rip/lato" },
     ],
     ex: [
-      { n: "Alzate Laterali", s: "3x15-20", rpe: "6-7", note: "Manubri leggeri. Alza fino a parallelo al pavimento. Lento: 2s su, 2s giu. Spalle basse, non alzare i trapezi.", rec: "30-45s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
+      { n: "Alzate Laterali", s: "3x15-20", rpe: "8", note: "Manubri leggeri. Alza fino a parallelo al pavimento. Lento: 2s su, 2s giu. Spalle basse, non alzare i trapezi.", rec: "30-45s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
       { n: "Fire Hydrant", s: "3x20 per lato", rpe: "6-7", note: "Bacino che resta fermo — il range e piccolo e controllato. Non ruotare il busto per alzare il ginocchio piu in alto.", rec: "30s", gear: "Corpo libero (o elastico bacino)", errori: "Bacino che ruota; busto che oscilla per compensare" },
       { n: "TRX Row lento", s: "3x15-20", rpe: "6-7", note: "Fermo 2s con scapole strette. Eccentrica 3s. Lavora i dorsali senza tassare la presa. Riduci l'inclinazione se il corpo non resta in linea.", rec: "45s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
-      { n: "Curl al Cavo Basso", s: "3x15", rpe: "6-7", note: "Peso molto leggero. Gomiti fermi, contrazione piena 1s in alto. Non usare slancio.", rec: "30s", gear: "Cavo basso", errori: "Slancio col busto; gomiti che avanzano; eccentrica veloce" },
+      { n: "Goblet Squat", s: "2x12", rpe: "6-7", note: "Manubrio al petto. Scendi parallelo. I gomiti spingono le ginocchia verso fuori. Alternativa: corpo libero squat.", rec: "45s", gear: "Manubrio leggero", errori: "Busto che cade avanti; schiena arrotondata; ginocchia che collassano" },
       { n: "Band Pull-Apart con rotazione esterna", s: "3x20", rpe: "6-7", note: "Volume leggero extra. Pausa 1s a fine apertura con mani ruotate fuori. Non tirare con forza.", rec: "30s", gear: "Elastico", errori: "Tirare con forza; gomiti piegati; nessuna rotazione esterna finale" },
     ],
     str: ["Half Kneeling Lunge","Half Kneeling Lunge + Reach","Couch Stretch","Figure-Four Supino","Happy Baby","Leg Cradle Supino","Supported Low Lunge"],
@@ -1641,7 +1641,18 @@ var DAYS_V4 = [
     lightHipNote: "Oggi e il giorno migliore per il protocollo anca completo: nessun compound pesante prima, sistema nervoso fresco. Durata: 8-10 minuti.",
   },
 
-  { name: "Giorno 4", focus: "Lower B — Stacco + Catena Posteriore", dur: "4 esercizi", tEst: 85,
+  { name: "Cardio", focus: "Corsa zona 2 / Rucking", dayLabel: "Gio", cardio: true, dur: "30-75 min", tEst: 45,
+    cardioIntro: "Recupero attivo tra il giorno leggero e il lower B. Scegli tra corsa leggera e rucking in base a come ti senti.",
+    cardioGear: ["Scarpe da corsa", "Zaino da rucking 15-20 kg"],
+    cardioWhy: "Questo giorno sostituisce il vecchio stacco in mezzo alla settimana: l'obiettivo e arrivare al lower B con piu recupero reale, mantenendo il cardio a bassa interferenza con i pesi.",
+    cardioMobilityIntro: "Dopo il cardio chiudi con 10 minuti di mobilita: dorsiflessione, 90/90, T-spine rotation, half kneeling lunge e figure-four.",
+    cardioOptions: [
+      { icon: "🏃", label: "Corsa leggera zona 2 — 30 min", desc: "Bassa intensita. FC 120-140. Devi poter parlare senza fiatone.", duration: "30 min" },
+      { icon: "🎒", label: "Rucking con zaino — 45-75 min", desc: "Bassa intensita. Zona 2. Progressione: +5 minuti ogni 2 settimane.", duration: "45-75 min" },
+    ]
+  },
+
+  { name: "Giorno 4", focus: "Lower B — Stacco + Catena Posteriore", dayLabel: "Ven", dur: "4 esercizi", tEst: 85,
     intro: {
       attrezzi: ["Bilanciere + bumper", "Manubri", "Panca", "Panca romana + sacco sabbia", "Fitball", "Elastico"],
       muscoli: ["Catena posteriore (Stacco, Hyperextension)", "Quadricipiti/Glutei (Affondi)", "Gluteo medio (Fire Hydrant)"],
@@ -1666,11 +1677,11 @@ var DAYS_V4 = [
       { n: "Fire Hydrant", s: "3x15-20", rpe: "8", note: "Per gamba. Quattro zampe, bacino completamente fermo. Pausa 1s in alto. Alternativa: con elastico sopra le ginocchia per piu resistenza.", rec: "60s", gear: "Corpo libero (o elastico)", errori: "Bacino che ruota o si inclina; ginocchio che perde i 90 gradi; movimento troppo veloce senza pausa" },
     ], str: ["Supine Assisted Leg Pull","Figure-Four Supino","Cat-Cow Lento","Half Kneeling Lunge"], hipBonus: true },
 
-  { name: "Giorno 5", focus: "Upper B — Spinta + Tirata", dur: "5 esercizi", tEst: 80,
+  { name: "Giorno 5", focus: "Upper B — T-bar + Military + Spinta + Tirata", dayLabel: "Sab", dur: "6 esercizi", tEst: 80,
     intro: {
       attrezzi: ["T-bar", "Bilanciere + rack", "Barra trazioni", "Elastico leggero", "Cavo alto o elastico"],
-      muscoli: ["Dorsali/Trapezi (T-bar Row)", "Deltoidi (Military Press)", "Pettorali/Core (Push-Up)", "Dorsali/Bicipiti (Trazioni Supine)", "Obliqui (Woodchop)"],
-      obiettivi: ["Costruire forza su T-bar Row e Military Press con double progression", "Seconda frequenza su Push-Up e Trazioni con variante supina", "Volume obliqui con Woodchop"],
+      muscoli: ["Dorsali/Trapezi (T-bar Row)", "Deltoidi (Military Press)", "Pettorali/Core (Push-Up)", "Dorsali/Bicipiti (Trazioni Supine)", "Obliqui (Woodchop)", "Deltoide Laterale (Alzate Laterali)"],
+      obiettivi: ["Costruire forza su T-bar Row e Military Press con double progression", "Seconda frequenza su Push-Up e Trazioni con variante supina", "Volume obliqui con Woodchop", "Aggiungere volume deltoide laterale con Alzate Laterali al RPE 8"],
       attenzione: ["T-bar: busto fisso a 45 gradi, tira verso ombelico, scapole addotte 1s", "Military press: core rigido, barra parte dalle clavicole, testa si sposta avanti al passaggio", "Push-up: corpo rigido, gomiti a 45 gradi, petto tocca terra"],
       ritmo: "Recuperi 2-3 min su T-bar e Military. 2 min su Push-Up e Trazioni Supine. 60-90s su Woodchop."
     },
@@ -1685,21 +1696,13 @@ var DAYS_V4 = [
     ex: [
       { n: "T-bar Row", s: "5x8-10", rpe: "8-9", note: "Busto a 45 gradi fisso. Tira verso ombelico. Presa neutra. Scapole addotte 1s.", priority: true, rec: "2 min", gear: "T-bar + bumper", errori: "Schiena arrotondata; slancio col busto; tirare con i bicipiti" },
       { n: "Military Press", s: "5x5-6", rpe: "8-9", note: "Setup: piedi larghezza anche, mani poco oltre spalle, gomiti leggermente avanti, glutei e addome attivi. Ultimo set solo a RIR 0-1 se tecnica stabile.", rec: "2-3 min", gear: "Bilanciere + rack", errori: "Iperestensione lombare; barra davanti al viso; gomiti che svasano; testa che arretra" },
-      { n: "Trazioni Supine", s: "4x5-8", rpe: "8", note: "Setup: presa supina o neutra circa larghezza spalle, spalle giu, gomiti verso le costole. Alternativa: lat machine presa supina.", rec: "2-3 min", gear: "Barra trazioni", errori: "Come trazioni Giorno 2; presa diversa per variazione angolare" },
       { n: "Push-Up", s: "4x8-15", rpe: "", note: "Setup: mani sotto o poco fuori spalle, corpo in linea, gomiti 30-45 gradi dal busto. RIR 1-2. Alternativa: TRX push-up o rialzo.", rec: "2 min", gear: "Corpo libero (rialzo se necessario)", errori: "Anche che cedono (banana); gomiti a 90 gradi; testa che penzola; ROM incompleto" },
       { n: "Woodchop", s: "3x10-12 per lato", rpe: "8-9", note: "Ruota il tronco senza strappare con le braccia.", rec: "60-90s", gear: "Cavo alto o elastico", errori: "Ruotare con le braccia anziche col tronco; peso eccessivo" },
+      { n: "Trazioni Supine", s: "4x5-8", rpe: "8", note: "Setup: presa supina o neutra circa larghezza spalle, spalle giu, gomiti verso le costole. Alternativa: lat machine presa supina.", rec: "2-3 min", gear: "Barra trazioni", errori: "Come trazioni Giorno 2; presa diversa per variazione angolare" },
+      { n: "Alzate Laterali", s: "2x15", rpe: "8", note: "Manubri leggeri. Alza fino a parallelo (spalle). RPE piu alto rispetto a Giorno 3. Pausa 1s in alto.", rec: "45s", gear: "Manubri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; eccentrica troppo veloce" },
     ], str: ["Doorway Pec Stretch","Overhead Triceps Stretch","Overhead Lat Stretch","Band Dislocate Lento"], hipBonus: true },
 
-  { name: "Giorno 7", focus: "Cardio B", cardio: true,
-    cardioIntro: "Lavoro a bassa intensita. Scegli tra corsa leggera e rucking in base a come ti senti e a cosa hai fatto nel Giorno 3.",
-    cardioGear: ["Scarpe da corsa", "Zaino da rucking 15-20 kg"],
-    cardioWhy: "Il cardio e limitato a 2 sessioni a settimana su giorni separati dai pesi per minimizzare l'interferenza con la crescita muscolare. La corsa ha un impatto negativo maggiore sull'ipertrofia rispetto al rucking per la componente eccentrica elevata: per questo il rucking e l'opzione preferita. L'HIIT e limitato a 1 volta a settimana perche puo sopprimere le vie di segnalazione anabolica (mTOR). Alternare alta e bassa intensita tra le due sessioni garantisce stimolo cardiovascolare senza compromettere il recupero dai pesi.",
-    cardioMobilityIntro: "Qui usa il blocco completo di mobilità, con piu calma rispetto ai giorni pesi: caviglie, anche, torace e flessori.",
-    cardioOptions: [
-      { icon: "🏃", label: "Corsa leggera zona 2 — 30 min", desc: "Bassa intensita. FC 120-140. Cadenza 170+ passi/min. Devi poter parlare senza fiatone.", duration: "30 min" },
-      { icon: "🎒", label: "Rucking con zaino — 45-75 min", desc: "Bassa intensita. Zona 2. Progressione: +5 min ogni 2 settimane. Se nel Giorno 3 hai fatto rucking, oggi preferisci la corsa.", duration: "45-75 min" },
-    ]
-  },
+  { name: "Riposo", focus: "Recupero", dayLabel: "Dom", rest: true },
 ];
 
 var DAYS_BASICS = [
@@ -2852,8 +2855,8 @@ var APP_VERSION = typeof __APP_VERSION__ === "string" ? __APP_VERSION__ : "dev";
 var APP_BUILD_TIME = typeof __BUILD_TIME__ === "string" ? __BUILD_TIME__ : "";
 var V4_DAY_SPLIT_PLAN = {
   "Giorno 1": {
-    am: ["Squat", "Stacco Rumeno"],
-    pm: ["Glute Bridge Bilanciere", "Leg Curl al Cavo", "Ab Wheel"],
+    am: ["Squat", "Stacco Rumeno", "Glute Bridge Bilanciere"],
+    pm: ["Leg Curl al Cavo", "Ab Wheel"],
   },
   "Giorno 2": {
     am: ["Trazioni", "Panca"],
@@ -2864,20 +2867,17 @@ var V4_DAY_SPLIT_PLAN = {
     pm: ["Hyperextension", "Fire Hydrant"],
   },
   "Giorno 5": {
-    am: ["T-bar Row", "Military Press", "Trazioni Supine"],
-    pm: ["Push-Up", "Woodchop"],
+    am: ["T-bar Row", "Military Press"],
+    pm: ["Trazioni Supine", "Push-Up", "Woodchop", "Alzate Laterali"],
   },
 };
 
 var FAST_MODE_SUPERSETS = {
-  "Giorno 1": [{ a: "Leg Curl al Cavo", b: "Ab Wheel", rest: 60 }],
+  "Giorno 1": [{ a: "Leg Curl al Cavo", b: "Ab Wheel", rest: 60, note: "4a serie Leg Curl da sola" }],
   "Giorno 2": [{ a: "Band Pull-Apart con rotazione esterna", b: "Curl Bicipiti", rest: 60 }],
-  "Giorno 3": [
-    { a: "Alzate Laterali", b: "Fire Hydrant", rest: 45 },
-    { a: "TRX Row lento", b: "Curl al Cavo Basso", rest: 45 },
-  ],
-  "Giorno 4": [{ a: "Hyperextension", b: "Fire Hydrant", rest: 60 }],
-  "Giorno 5": [{ a: "Push-Up", b: "Woodchop", rest: 75 }],
+  "Giorno 3": [],
+  "Giorno 4": [{ a: "Hyperextension", b: "Fire Hydrant", rest: 60, note: "4a serie Hyperextension da sola" }],
+  "Giorno 5": [{ a: "Push-Up", b: "Woodchop", rest: 45, note: "4a serie Push-Up da sola" }],
 };
 
 function getFastSupersetPair(dayName, exName) {
@@ -4330,13 +4330,6 @@ export default function App() {
     </div>;
   }
   function renderLightDay(day) {
-    var coachingTexts = {
-      "Alzate Laterali": { why: "Il deltoide laterale non ha lavoro diretto in nessun altro giorno. Il military press lo coinvolge parzialmente ma non lo isola. Oggi e l'unico momento della settimana in cui quel muscolo lavora come target principale.", focus: "Alza fino a parallelo al pavimento, non oltre. Gomiti leggermente piegati. Lento: 2s su, 2s giu.", attenzione: "Se le spalle salgono verso le orecchie stai usando il trapezio. Tieni le spalle basse." },
-      "Band Pull-Apart con rotazione esterna": { why: "Volume extra per deltoide posteriore e rotazione esterna. Nel G2 ne fai 3x15 come esercizio di lavoro. Oggi aggiungi volume leggero senza fatica.", focus: "Pausa di 1 secondo a fine apertura con le mani ruotate fuori.", attenzione: "Non tirare con forza. RPE 6-7: devi poterne fare altre 5-6 a fine serie." },
-      "Fire Hydrant": { why: "Il gluteo medio ha solo 3 serie nel G4. Oggi aggiungi volume. Il gluteo medio stabilizza il bacino in ogni movimento unilaterale.", focus: "Ginocchio che sale lateralmente, bacino che resta fermo.", attenzione: "Non ruotare il busto per portare il ginocchio piu in alto. Il range e piccolo e controllato." },
-      "TRX Row lento": { why: "Volume di tirata orizzontale senza tassare la presa. Nel G2 e G5 fai 10 serie di tirata pesante con presa forte. Oggi il TRX permette di lavorare i dorsali e le scapole senza che gli avambracci siano il fattore limitante.", focus: "Fermo 2s con le scapole strette alla fine di ogni ripetizione. Eccentrica lenta 3s.", attenzione: "Se il corpo non e in linea (anche che cedono) riduci l'inclinazione. Meglio meno inclinazione e tecnica perfetta." },
-      "Curl al Cavo Basso": { why: "Pump leggero sui bicipiti. Non e per la forza: e per il volume a bassa intensita che completa il lavoro indiretto delle tirate.", focus: "Gomiti fermi, contrazione piena in alto per 1 secondo.", attenzione: "Se devi usare slancio il peso e troppo alto. Il giorno leggero non e per l'ego." },
-    };
     return <div style={{ display: "grid", gap: 12 }}>
       <div style={{ background: T.cd, borderRadius: 14, border: "1px solid " + T.bg, overflow: "hidden" }}>
         <div style={{ padding: "14px 14px 10px", borderBottom: "1px solid " + T.bg }}>
@@ -4358,23 +4351,17 @@ export default function App() {
           </div>
         </div>}
         <div style={{ padding: "12px 14px 14px" }}>
-          <div style={{ fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Esercizi — RPE max 6-7 · 30 min</div>
+          <div style={{ fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Esercizi — RPE 6-8 · 30 min</div>
           <div style={{ display: "grid", gap: 10 }}>
             {(day.ex || []).map(function(ex, i) {
-              var ct = coachingTexts[ex.n] || null;
               return <div key={i} style={{ background: T.sb, borderRadius: 12, padding: "12px", border: "1px solid " + dc + "18" }}>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: ct ? 6 : 0 }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
                   <div>
                     <div style={{ fontSize: 13, fontWeight: 800, color: T.tx }}>{ex.n}</div>
                     <div style={{ fontSize: 11, color: dc, fontWeight: 700 }}>{ex.s} · rec {ex.rec}</div>
                   </div>
                   <div style={{ fontSize: 10, color: T.sub, textAlign: "right", whiteSpace: "nowrap" }}>RPE {ex.rpe}</div>
                 </div>
-                {ct && <div style={{ display: "grid", gap: 4 }}>
-                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}><span style={{ fontWeight: 700, color: T.tx }}>Perché oggi: </span>{ct.why}</div>
-                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}><span style={{ fontWeight: 700, color: T.tx }}>Focus: </span>{ct.focus}</div>
-                  <div style={{ fontSize: 11, color: "#B45309", lineHeight: 1.55 }}><span style={{ fontWeight: 700 }}>Attenzione: </span>{ct.attenzione}</div>
-                </div>}
               </div>;
             })}
           </div>
@@ -10405,7 +10392,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   <div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Esercizi</div>
                   <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>
                     {dayData.ex ? dayData.ex.length + " esercizi" : ""}
-                    {(splitPlanForDay || supersetPlanForDay) ? (isDaySplitActive ? " · split AM/PM" : isDaySupersetActive ? " · accessori in coppia" : " · sessione unica") : ""}
+                    {(splitPlanForDay || supersetPlanForDay) ? (isDaySplitActive ? " · split AM/PM" : isDaySupersetActive ? " · superset" : " · sessione unica") : ""}
                   </div>
                 </div>
                 <div style={{ fontSize: 13, color: dc, transform: showExSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
@@ -10415,7 +10402,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               <div style={{ borderRadius: 12, border: "1px solid " + dc + "22", background: dc + "08", padding: 12 }}>
                 <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Formato giornata</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(" + ((splitPlanForDay && supersetPlanForDay) ? 3 : 2) + ", minmax(0,1fr))", gap: 8 }}>
-                  {[{ key: "single", label: "Sessione unica", hint: "Tutto nello stesso allenamento.", enabled: true }, { key: "split", label: "Split in due", hint: "AM per i fondamentali, PM per accessori e core.", enabled: !!splitPlanForDay }, { key: "superset", label: "Accessori in coppia", hint: "I fondamentali restano singoli, gli accessori compatibili vanno in coppia.", enabled: !!supersetPlanForDay }].filter(function(option) { return option.enabled; }).map(function(option) {
+                  {[{ key: "single", label: "Sessione unica", hint: "Tutto nello stesso allenamento.", enabled: true }, { key: "split", label: "Split in due", hint: "AM per i fondamentali, PM per superset e core.", enabled: !!splitPlanForDay }, { key: "superset", label: "Superset", hint: "I fondamentali restano singoli, i blocchi compatibili vanno in superset.", enabled: !!supersetPlanForDay }].filter(function(option) { return option.enabled; }).map(function(option) {
                     var active = option.key === currentDayWorkoutFormat;
                     return <button
                       key={option.key}
@@ -10433,7 +10420,15 @@ function isNearBodyweightElasticSession(exName, sets) {
                   })}
                 </div>
                 {supersetPlanForDay && <div style={{ marginTop: 8, fontSize: 11, lineHeight: 1.55, color: T.sub, padding: "9px 10px", borderRadius: 10, background: T.cd, border: "1px solid " + T.bg }}>
-                  I fondamentali restano sempre singoli. La modalita coppia accorpa solo accessori e core che non ti rovinano tecnica e recupero.
+                  <div>I fondamentali restano singoli. I blocchi sotto vanno in superset:</div>
+                  <div style={{ marginTop: 6, display: "grid", gap: 3 }}>
+                    {supersetPlanForDay.map(function(pair, pairIndex) {
+                      return <div key={pairIndex}>
+                        <strong style={{ color: T.tx }}>{displayExerciseName(pair.a) + " + " + displayExerciseName(pair.b)}</strong>
+                        <span>{" · rec " + fmtLabel(pair.rest) + (pair.note ? " · " + pair.note : "")}</span>
+                      </div>;
+                    })}
+                  </div>
                 </div>}
               </div>
             </div>}
@@ -10503,7 +10498,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               var isExDone = !!(isBeginner && completedExercises[exDoneKey]);
               return <div key={i} id={"ex-row-" + i} style={{ borderBottom: "1px solid " + T.bg, opacity: isDimmed ? 0.38 : 1, transition: "opacity 0.25s" }}>
                 {!isBasics && rowSupersetMeta && rowSupersetMeta.role === "a" && <div style={{ padding: "12px 14px 8px", background: dc + "08", borderBottom: "1px solid " + T.bg }}>
-                  <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 8px", borderRadius: 999, background: dc + "12", color: dc, fontSize: 10, fontWeight: 900, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Coppia rapida</div>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 8px", borderRadius: 999, background: dc + "12", color: dc, fontSize: 10, fontWeight: 900, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Superset</div>
                   <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, lineHeight: 1.4 }}>{rowSupersetMeta.title}</div>
                   <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginTop: 3 }}>Recupero dopo la coppia: {fmtLabel(rowSupersetMeta.rest)}</div>
                   {!!supersetPairMinutes && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginTop: 2 }}>Tempo totale: ~{supersetPairMinutes} min</div>}
@@ -10624,14 +10619,14 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>}
 
                     {!isBasics && flowSupersetMeta && flowSupersetMeta.role === "a" && <div style={{ marginBottom: 10, borderRadius: 12, padding: "10px 12px", background: dc + "10", border: "1px solid " + dc + "25" }}>
-                      <div style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Coppia rapida</div>
+                      <div style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Superset</div>
                       <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, lineHeight: 1.4 }}>{flowSupersetMeta.title}</div>
                       <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55, marginTop: 4 }}>Fai i due esercizi di fila. Recupero solo dopo il secondo: {fmtLabel(flowSupersetMeta.rest)}.</div>
                       {!!supersetPairMinutes && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55, marginTop: 2 }}>Tempo totale: ~{supersetPairMinutes} min</div>}
                     </div>}
 
                     {!isBasics && flowSupersetMeta && <div style={{ marginBottom: 8, display: "inline-flex", alignItems: "center", gap: 6, padding: "6px 10px", borderRadius: 999, background: dc + "10", border: "1px solid " + dc + "25", color: dc, fontSize: 10, fontWeight: 800 }}>
-                      <span>{flowSupersetMeta.role === "a" ? "Coppia 1/2" : "Coppia 2/2"}</span>
+                      <span>{flowSupersetMeta.role === "a" ? "Superset 1/2" : "Superset 2/2"}</span>
                       <span style={{ color: T.sub, fontWeight: 700 }}>{flowSupersetMeta.partner}</span>
                     </div>}
 
