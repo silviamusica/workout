@@ -2848,6 +2848,10 @@ var V4_DAY_SPLIT_PLAN = {
 var FAST_MODE_SUPERSETS = {
   "Giorno 1": [{ a: "Leg Curl al Cavo", b: "Ab Wheel", rest: 60 }],
   "Giorno 2": [{ a: "Band Pull-Apart con rotazione esterna", b: "Curl Bicipiti", rest: 60 }],
+  "Giorno 3": [
+    { a: "Alzate Laterali", b: "Fire Hydrant", rest: 45 },
+    { a: "Band Pull-Apart con rotazione esterna", b: "Curl al Cavo Basso", rest: 45 },
+  ],
   "Giorno 4": [{ a: "Hyperextension", b: "Fire Hydrant", rest: 60 }],
   "Giorno 5": [{ a: "Push-Up", b: "Woodchop", rest: 75 }],
 };
