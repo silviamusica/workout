@@ -355,7 +355,9 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
 "Squat a corpo libero": {"g": "Quadricipiti/Glutei/Core", "c": "Scendi in squat a corpo libero fino al parallelo o fin dove controlli bene il movimento. Risali spingendo il pavimento.", "p": "Talloni a terra, busto stabile, ginocchia nella direzione dei piedi.", "t": ["Braccia avanti per equilibrio", "Scendi con controllo", "La profondita conta solo se resti stabile"], "lk": "https://www.youtube.com/shorts/CsPAsICeRsM"},
 "Push-Up ginocchia a terra": {"g": "Pettorali/Tricipiti/Core", "c": "Parti in appoggio su mani e ginocchia, con testa, schiena e anche sulla stessa linea. Scendi col petto verso il pavimento e spingi su senza far cedere pancia e bacino.", "p": "Addome attivo, glutei leggermente contratti, gomiti circa a 45 gradi.", "t": ["Meglio poco range ma pulito", "Se serve usa anche un rialzo", "Il bacino non deve scendere verso il pavimento"]},
 "Glute Bridge": {"g": "Glutei/Bacino", "c": "Supina, piedi a terra. Solleva il bacino fino ad allineare ginocchia, anche e spalle, poi scendi controllando.", "p": "In alto retroverti il bacino e stringi i glutei. Non iperestendere la lombare.", "t": ["Spingi dai talloni", "Pausa breve in alto", "Se senti solo la schiena, riduci il range"], "lk": "https://www.youtube.com/watch?v=sOrrVfRDVGc"},
-"Pallof Press": {"g": "Core anti-rotazione", "c": "In piedi o in ginocchio con elastico o cavo al lato. Spingi le braccia avanti e resisti alla rotazione del busto.", "p": "Costole giu, bacino fermo, busto frontale. Le braccia si muovono ma il tronco non gira.", "t": ["Poco carico, massimo controllo", "Espira mentre allontani le mani", "Se il busto ruota, alleggerisci"], "lk": "https://www.youtube.com/watch?v=qQOsWutOQoM"}
+"Pallof Press": {"g": "Core anti-rotazione", "c": "In piedi o in ginocchio con elastico o cavo al lato. Spingi le braccia avanti e resisti alla rotazione del busto.", "p": "Costole giu, bacino fermo, busto frontale. Le braccia si muovono ma il tronco non gira.", "t": ["Poco carico, massimo controllo", "Espira mentre allontani le mani", "Se il busto ruota, alleggerisci"], "lk": "https://www.youtube.com/watch?v=qQOsWutOQoM"},
+"TRX Row lento": {"g": "Dorsali/Romboidi/Scapole", "c": "TRX con maniglie all'altezza del petto. Inclinati indietro, corpo in linea. Tira verso il petto portando i gomiti indietro. Tieni 2s con scapole strette, poi scendi in 3s.", "p": "Corpo rigido in linea dall'inizio alla fine — le anche non cedono mai. Se il corpo non e in linea, riduci l'inclinazione.", "t": ["Fermo 2s con scapole addotte: e il punto chiave", "Eccentrica 3s per massimizzare il lavoro", "Piu sei inclinato indietro, piu e difficile"]},
+"Curl al Cavo Basso": {"g": "Bicipiti", "c": "Cavo basso con barra diritta o corda. Gomiti fermi ai fianchi, fletti le braccia portando il carico verso le spalle.", "p": "Busto fermo, gomiti incollati ai fianchi. Non oscillare. Contrazione piena 1s in alto.", "t": ["Non usare slancio: e un giorno leggero", "Gomiti che avanzano = stai barando", "Peso molto leggero: l'obiettivo e il pump, non la forza"]}
 };
 
 var EXERCISE_GUIDE_PLACEHOLDER_TITLE = "Scheda tecnica in preparazione.";
@@ -656,7 +658,7 @@ var INTRO_BASICS = [
       { type: "bold-list", content: [
         ["Sonno", "7-9 ore per notte. Durante il sonno viene rilasciato l'ormone della crescita (GH). Dormire poco dimezza i guadagni."],
         ["Proteine", "1.6-2.2g/kg al giorno. Il target del tuo piano nutrizionale è ~1.78 g/kg (100g). In deficit calorico, avvicinarsi a 2.0 g/kg (112g) preserva meglio la massa magra."],
-        ["Giorno 3 e Giorno 7", "Non sono giorni sprecati. Sono giornate con meno stress dei pesi, dedicate a cardio leggero o condizionamento e al recupero generale. Il tessuto connettivo recupera più lentamente del muscolo."],
+        ["Giorno 3 e Giorno 7", "Non sono giorni sprecati. Il Giorno 3 e volume complementare leggero (deltoide laterale, gluteo medio, mobilita anca): lavoro che i giorni pesi non raggiungono. Il Giorno 7 e cardio zona 2. Il tessuto connettivo recupera piu lentamente del muscolo."],
       ]},
       { type: "p", content: "Se dopo 2-3 settimane i carichi non crescono: controlla prima sonno e proteine prima di toccare il programma." },
     ]
@@ -933,7 +935,8 @@ var PRINCIPLES_DEEP = [
     {type:"ul", content:[
       "Lower A (Giorno 1) + Lower B (Giorno 4): quadricipiti, glutei, femorali con priorità diverse",
       "Upper A (Giorno 2) + Upper B (Giorno 5): spinta e tirata con distribuzione complementare",
-      "Giorno 3 e Giorno 7: cardio — nessuna interferenza con il recupero muscolare",
+      "Giorno 3 Leggero: volume complementare (deltoide laterale, gluteo medio) + protocollo anca completo",
+      "Giorno 7: cardio zona 2 — nessuna interferenza con il recupero muscolare",
     ]},
   ]},
   { t: "Esercizi prioritari: cosa sono e come leggerli", d: [
@@ -951,7 +954,8 @@ var PRINCIPLES_DEEP = [
     {type:"bold-list", content:[
       ["Sonno", "7-9 ore. È durante il sonno profondo che viene rilasciato l'ormone della crescita. Dormire poco dimezza i guadagni."],
       ["Proteine", "1.8-2.2g/kg al giorno. Sono i mattoni per ricostruire il muscolo — senza di esse l'allenamento non si traduce in crescita."],
-      ["Giorno 3 e Giorno 7", "Non sono giorni di pesi e non sono tempo perso: servono a gestire il cardio, recuperare meglio e arrivare piu fresca alle sedute con i carichi."],
+      ["Giorno 3 Leggero", "Non e un giorno di pesi. E volume complementare a bassa intensita (RPE 6-7) per deltoide laterale e gluteo medio, muscoli che i compound non raggiungono direttamente. Piu il protocollo anca completo."],
+      ["Giorno 7 Cardio", "Zona 2 a bassa intensita. Serve a gestire la fitness cardiovascolare senza interferire con il recupero muscolare."],
     ]},
     {type:"p", content:"Se dopo 2-3 settimane i carichi non crescono: controlla prima il sonno e l'alimentazione prima di toccare il programma."}
   ]},
@@ -1593,16 +1597,31 @@ var DAYS_V4 = [
       { n: "Curl Bicipiti", s: "4x10-12", rpe: "9", note: "Con manubri. Gomiti fissi ai fianchi. Supinazione. Eccentrica 2-3s.", rec: "90s", gear: "Manubri", errori: "Slancio col busto; gomiti che avanzano; fase eccentrica troppo veloce" },
     ], str: ["Doorway Pec Stretch","Overhead Lat Stretch","Cross-Body Shoulder Stretch","Wrist Flexor/Extensor Stretch"], hipBonus: true },
 
-  { name: "Giorno 3", focus: "Cardio A", cardio: true,
-    cardioIntro: "Usa questo giorno come cardio opzionale o base a bassa intensita. Se Lower B ne risente, salta l'HIIT e tieni solo il rucking o il recupero attivo.",
-    cardioGear: ["Tapis roulant oppure sacco + corde", "Zaino da rucking 15-20 kg", "Slackline"],
-    cardioWhy: "Il cardio e limitato a 2 sessioni a settimana su giorni separati dai pesi per minimizzare l'interferenza con la crescita muscolare. La corsa ha un impatto negativo maggiore sull'ipertrofia rispetto al rucking per la componente eccentrica elevata: per questo il rucking e l'opzione preferita. L'HIIT e limitato a 1 volta a settimana perche puo sopprimere le vie di segnalazione anabolica (mTOR). Alternare alta e bassa intensita tra le due sessioni garantisce stimolo cardiovascolare senza compromettere il recupero dai pesi.",
-    cardioMobilityIntro: "Nei giorni cardio hai piu margine: usa qui il blocco completo di mobilità dal basso verso l'alto con piu calma.",
-    cardioOptions: [
-      { icon: "🏃", label: "HIIT tapis roulant — 25 min", desc: "Opzionale, solo se recuperi bene. 5 min warm-up + 8x(30s sprint / 60s cammino) + 5 min cooldown. RPE 8-9 negli sprint. Se Lower B ne risente, salta.", duration: "25 min" },
-      { icon: "🎒", label: "Rucking con zaino — 45-60 min", desc: "Base consigliata. Zaino 15-20 kg, alto e aderente. Salite e discese. Zona 2. Progressione: +1 kg ogni 2 settimane oppure +5 minuti. Mai entrambi.", duration: "45-60 min" },
-      { icon: "💪", label: "Circuito sacco + corde + slackline — 25-30 min", desc: "Bonus: sostituisce HIIT quando vuoi variare. 3 round sacco 3 min + 4x30s battle rope + slackline 3x30s.", duration: "25-30 min" },
-    ]
+  { name: "Giorno 3", focus: "Leggero — Volume complementare + mobilità", light: true, tEst: 35,
+    lightIntro: "Non e un giorno di allenamento pesante. E volume complementare a bassa intensita: deltoide laterale, deltoide posteriore, gluteo medio e bicipiti. Sistema nervoso fresco, RPE massimo 6-7. Poi il protocollo anca completo.",
+    lightWarmup: [
+      { n: "Dorsiflessione al muro", p: "8 rip/lato" },
+      { n: "90/90 hip mobility", p: "8 passaggi/lato" },
+      { n: "T-spine rotation in quadrupedia", p: "8 rip/lato" },
+      { n: "Ponte monopodalico", p: "6 rip/lato" },
+    ],
+    ex: [
+      { n: "Alzate Laterali", s: "3x15-20", rpe: "6-7", note: "Manubri leggeri. Alza fino a parallelo al pavimento. Lento: 2s su, 2s giu. Spalle basse, non alzare i trapezi.", rec: "30-45s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
+      { n: "Band Pull-Apart con rotazione esterna", s: "2x20", rpe: "6-7", note: "Volume leggero extra. Pausa 1s a fine apertura con mani ruotate fuori. Non tirare con forza.", rec: "30s", gear: "Elastico", errori: "Tirare con forza; gomiti piegati; nessuna rotazione esterna finale" },
+      { n: "Fire Hydrant", s: "2x20 per lato", rpe: "6-7", note: "Bacino che resta fermo — il range e piccolo e controllato. Non ruotare il busto per alzare il ginocchio piu in alto.", rec: "30s", gear: "Corpo libero (o elastico bacino)", errori: "Bacino che ruota; busto che oscilla per compensare" },
+      { n: "TRX Row lento", s: "2x12", rpe: "6-7", note: "Fermo 2s con scapole strette. Eccentrica 3s. Lavora i dorsali senza tassare la presa. Riduci l'inclinazione se il corpo non resta in linea.", rec: "45s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
+      { n: "Curl al Cavo Basso", s: "2x15", rpe: "6-7", note: "Peso molto leggero. Gomiti fermi, contrazione piena 1s in alto. Non usare slancio.", rec: "30s", gear: "Cavo basso", errori: "Slancio col busto; gomiti che avanzano; eccentrica veloce" },
+    ],
+    lightHipProtocol: [
+      { n: "Half kneeling lunge", p: "2x40s/lato" },
+      { n: "Half kneeling lunge + reach verticale", p: "2x30s/lato" },
+      { n: "Couch stretch", p: "2x40s/lato" },
+      { n: "Figure-four supino", p: "2x40s/lato" },
+      { n: "Happy baby", p: "2x40s" },
+      { n: "Leg cradle supino", p: "2x30s/lato" },
+      { n: "Supported low lunge", p: "2x30s/lato" },
+    ],
+    lightHipNote: "Oggi e il giorno migliore per il protocollo anca completo: nessun compound pesante prima, sistema nervoso fresco. Durata: 8-10 minuti.",
   },
 
   { name: "Giorno 4", focus: "Lower B — Stacco + Catena Posteriore", dur: "4 esercizi", tEst: 85,
@@ -2473,7 +2492,7 @@ function getCalibrationType(exName, serie) {
   if (exName === "Nordic Curl") return "assistito";
   if (exName === "Ab Wheel") return "body-control";
   if (usesElasticScale(exName)) return "band-assist";
-  if (exName === "Band Pull-Apart con rotazione esterna") return "bodyweight";
+  if (exName === "Band Pull-Apart con rotazione esterna" || exName === "TRX Row lento") return "bodyweight";
   if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || (serie || "").toLowerCase().indexOf("max") >= 0) return "bodyweight";
   if (exName.indexOf("Cavo") >= 0 || exName === "Woodchop" || exName === "Pulley") return "cable";
   if (exName === "Squat Bulgaro" || exName === "Affondi" || exName === "Curl Bicipiti") return "dumbbell";
@@ -3019,7 +3038,7 @@ export default function App() {
   }
 
   function getWorkoutFormatForDay(day, dayIndex) {
-    if (level !== "v4" || !day || day.cardio || day.rest) return "single";
+    if (level !== "v4" || !day || day.cardio || day.light || day.rest) return "single";
     var prefKey = getDaySplitPrefKey(day, dayIndex);
     var stored = splitDayPrefs[prefKey];
     if (stored === "split" && V4_DAY_SPLIT_PLAN[day.name]) return "split";
@@ -3370,7 +3389,7 @@ export default function App() {
     setDismissedCalBanner(false);
   }
   function startWorkoutSession() {
-    if (!workoutSelectedWeightDay || workoutSelectedWeightDay.cardio || workoutSelectedWeightDay.rest) return;
+    if (!workoutSelectedWeightDay || workoutSelectedWeightDay.cardio || workoutSelectedWeightDay.light || workoutSelectedWeightDay.rest) return;
     var initialChecks = {};
     buildSetupChecklistItems(workoutSelectedWeightDay).forEach(function(item) {
       initialChecks[item.key] = false;
@@ -3611,7 +3630,7 @@ export default function App() {
   var T = TH[theme];
   var isBasics = false;
   var isBeginner = false;
-  var activeDays = DAYS_V4.filter(function(d) { return !d.cardio; });
+  var activeDays = DAYS_V4.filter(function(d) { return !d.cardio && !d.light; });
   var safeDayIdx = Math.min(dayIdx, activeDays.length - 1);
   var WORKFLOW_SEED_BY_SLUG = NEW_EXERCISE_WORKFLOW_SEED.reduce(function(acc, item) {
     acc[item.slug] = item;
@@ -3898,7 +3917,7 @@ export default function App() {
   var workoutSelectedDay = level === "v4"
     ? (workoutDayOptions.find(function(day) { return day.name === workoutDayName; }) || workoutDayOptions[0] || null)
     : dayData;
-  var workoutSelectedWeightIndex = workoutSelectedDay && !workoutSelectedDay.cardio
+  var workoutSelectedWeightIndex = workoutSelectedDay && !workoutSelectedDay.cardio && !workoutSelectedDay.light
     ? activeDays.findIndex(function(day) { return day && day.name === workoutSelectedDay.name; })
     : -1;
   var workoutSelectedWeightDay = workoutSelectedWeightIndex >= 0 ? activeDays[workoutSelectedWeightIndex] : null;
@@ -3910,7 +3929,7 @@ export default function App() {
   var isDaySupersetActive = currentDayWorkoutFormat === "superset";
   var estimatedDayMinutes = workoutSelectedWeightDay ? estimateDayMinutes(workoutSelectedWeightDay, month, currentDayWorkoutFormat) : 0;
   var dayExerciseGroups = buildDayExerciseGroups(workoutSelectedWeightDay, month, isDaySplitActive);
-  var isCurrentWeightDayComplete = !!workoutSelectedWeightDay && !workoutSelectedWeightDay.cardio && !workoutSelectedWeightDay.rest && isDayWorkoutComplete(logs, workoutSelectedWeightIndex);
+  var isCurrentWeightDayComplete = !!workoutSelectedWeightDay && !workoutSelectedWeightDay.cardio && !workoutSelectedWeightDay.light && !workoutSelectedWeightDay.rest && isDayWorkoutComplete(logs, workoutSelectedWeightIndex);
   var daySetupChecklistItems = buildSetupChecklistItems(workoutSelectedWeightDay);
   var activeOpenRawEx = dayData && dayData.ex && openEx !== null && dayData.ex[openEx] ? dayData.ex[openEx] : null;
   var activeOpenMergedEx = activeOpenRawEx ? (activeOpenRawEx.cable && activeOpenRawEx.free ? Object.assign({}, activeOpenRawEx, activeOpenRawEx.defaultFree ? activeOpenRawEx.free : activeOpenRawEx.cable) : activeOpenRawEx) : null;
@@ -4121,6 +4140,78 @@ export default function App() {
           })}
         </div>
       </div>
+    </div>;
+  }
+  function renderLightDay(day) {
+    var coachingTexts = {
+      "Alzate Laterali": { why: "Il deltoide laterale non ha lavoro diretto in nessun altro giorno. Il military press lo coinvolge parzialmente ma non lo isola. Oggi e l'unico momento della settimana in cui quel muscolo lavora come target principale.", focus: "Alza fino a parallelo al pavimento, non oltre. Gomiti leggermente piegati. Lento: 2s su, 2s giu.", attenzione: "Se le spalle salgono verso le orecchie stai usando il trapezio. Tieni le spalle basse." },
+      "Band Pull-Apart con rotazione esterna": { why: "Volume extra per deltoide posteriore e rotazione esterna. Nel G2 ne fai 3x15 come esercizio di lavoro. Oggi aggiungi volume leggero senza fatica.", focus: "Pausa di 1 secondo a fine apertura con le mani ruotate fuori.", attenzione: "Non tirare con forza. RPE 6-7: devi poterne fare altre 5-6 a fine serie." },
+      "Fire Hydrant": { why: "Il gluteo medio ha solo 3 serie nel G4. Oggi aggiungi volume. Il gluteo medio stabilizza il bacino in ogni movimento unilaterale.", focus: "Ginocchio che sale lateralmente, bacino che resta fermo.", attenzione: "Non ruotare il busto per portare il ginocchio piu in alto. Il range e piccolo e controllato." },
+      "TRX Row lento": { why: "Volume di tirata orizzontale senza tassare la presa. Nel G2 e G5 fai 10 serie di tirata pesante con presa forte. Oggi il TRX permette di lavorare i dorsali e le scapole senza che gli avambracci siano il fattore limitante.", focus: "Fermo 2s con le scapole strette alla fine di ogni ripetizione. Eccentrica lenta 3s.", attenzione: "Se il corpo non e in linea (anche che cedono) riduci l'inclinazione. Meglio meno inclinazione e tecnica perfetta." },
+      "Curl al Cavo Basso": { why: "Pump leggero sui bicipiti. Non e per la forza: e per il volume a bassa intensita che completa il lavoro indiretto delle tirate.", focus: "Gomiti fermi, contrazione piena in alto per 1 secondo.", attenzione: "Se devi usare slancio il peso e troppo alto. Il giorno leggero non e per l'ego." },
+    };
+    return <div style={{ display: "grid", gap: 12 }}>
+      <div style={{ background: T.cd, borderRadius: 14, border: "1px solid " + T.bg, overflow: "hidden" }}>
+        <div style={{ padding: "14px 14px 10px", borderBottom: "1px solid " + T.bg }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+            <span style={{ fontSize: 18 }}>🌿</span>
+            <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>{day.name} · {day.focus}</div>
+          </div>
+          {day.lightIntro && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>{day.lightIntro}</div>}
+        </div>
+        {day.lightWarmup && <div style={{ padding: "10px 14px", borderBottom: "1px solid " + T.bg }}>
+          <div style={{ fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Riscaldamento — 5 min</div>
+          <div style={{ display: "grid", gap: 4 }}>
+            {day.lightWarmup.map(function(item, i) {
+              return <div key={i} style={{ display: "flex", justifyContent: "space-between", fontSize: 12, color: T.tx }}>
+                <span>{item.n}</span>
+                <span style={{ color: T.sub }}>{item.p}</span>
+              </div>;
+            })}
+          </div>
+        </div>}
+        <div style={{ padding: "12px 14px 14px" }}>
+          <div style={{ fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Esercizi — RPE max 6-7 · 30 min</div>
+          <div style={{ display: "grid", gap: 10 }}>
+            {(day.ex || []).map(function(ex, i) {
+              var ct = coachingTexts[ex.n] || null;
+              return <div key={i} style={{ background: T.sb, borderRadius: 12, padding: "12px", border: "1px solid " + dc + "18" }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: ct ? 6 : 0 }}>
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 800, color: T.tx }}>{ex.n}</div>
+                    <div style={{ fontSize: 11, color: dc, fontWeight: 700 }}>{ex.s} · rec {ex.rec}</div>
+                  </div>
+                  <div style={{ fontSize: 10, color: T.sub, textAlign: "right", whiteSpace: "nowrap" }}>RPE {ex.rpe}</div>
+                </div>
+                {ct && <div style={{ display: "grid", gap: 4 }}>
+                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}><span style={{ fontWeight: 700, color: T.tx }}>Perché oggi: </span>{ct.why}</div>
+                  <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}><span style={{ fontWeight: 700, color: T.tx }}>Focus: </span>{ct.focus}</div>
+                  <div style={{ fontSize: 11, color: "#B45309", lineHeight: 1.55 }}><span style={{ fontWeight: 700 }}>Attenzione: </span>{ct.attenzione}</div>
+                </div>}
+              </div>;
+            })}
+          </div>
+        </div>
+      </div>
+      {day.lightHipProtocol && <div style={{ background: T.cd, borderRadius: 14, border: "1px solid " + T.bg, overflow: "hidden" }}>
+        <div style={{ padding: "14px 14px 10px", borderBottom: "1px solid " + T.bg }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+            <span style={{ fontSize: 18 }}>🧘</span>
+            <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Protocollo anca completo</div>
+          </div>
+          {day.lightHipNote && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>{day.lightHipNote}</div>}
+        </div>
+        <div style={{ padding: "12px 14px 14px" }}>
+          <div style={{ display: "grid", gap: 4 }}>
+            {day.lightHipProtocol.map(function(item, i) {
+              return <div key={i} style={{ display: "flex", justifyContent: "space-between", fontSize: 12, color: T.tx }}>
+                <span>{item.n}</span>
+                <span style={{ color: T.sub }}>{item.p}</span>
+              </div>;
+            })}
+          </div>
+        </div>
+      </div>}
     </div>;
   }
   var calibrationEnabled = !isBasics;
@@ -5750,7 +5841,7 @@ export default function App() {
 
   function estimateDayMinutes(day, activeMonth, workoutFormat) {
     if (!day || day.rest) return 0;
-    if (day.cardio) return day.tEst || 0;
+    if (day.cardio || day.light) return day.tEst || 0;
     var warmupMin = (day.warmup || []).reduce(function(acc, item) {
       return acc + estimateWarmupItemMinutes(item);
     }, 0);
@@ -6675,7 +6766,7 @@ export default function App() {
 
 function getGuidedExerciseClass(exName) {
   var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Front Squat","Pause Squat","Push Press","Stacco Sumo","Trazioni","Trazioni Supine","T-bar Row","Stacco Rumeno","Glute Bridge Bilanciere","Pulley"];
-  var mono = ["Curl Bicipiti","Curl Martello","Curl Concentrato","Alzate Laterali","Woodchop","French Press Manubri","Kick Back Manubri","Overhead Extension","Fire Hydrant","Leg Curl al Cavo","Clamshell","Abduzione Laterale","Addominali Obliqui","Band Pull-Apart con rotazione esterna"];
+  var mono = ["Curl Bicipiti","Curl Martello","Curl Concentrato","Alzate Laterali","Woodchop","French Press Manubri","Kick Back Manubri","Overhead Extension","Fire Hydrant","Leg Curl al Cavo","Clamshell","Abduzione Laterale","Addominali Obliqui","Band Pull-Apart con rotazione esterna","Curl al Cavo Basso"];
   if (heavy.indexOf(exName) >= 0) return "heavy";
   if (mono.indexOf(exName) >= 0) return "mono";
   return "compound";
@@ -6702,7 +6793,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     if (exName.indexOf("Cavo") >= 0 || exName === "Face Pull" || exName === "Woodchop" || exName === "Tricipiti Cavo" || exName === "Pulley" || exName === "Lat Machine") {
       return { kind: "step", amount: 1, label: "+1 scatto cavo" };
     }
-    if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || exName === "Push-Up" || exName === "Push-Up su rialzo" || exName === "Dip alle Parallele" || exName === "Fitball Hamstring Curl" || exName === "Ab Wheel" || exName === "Band Pull-Apart con rotazione esterna") {
+    if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || exName === "Push-Up" || exName === "Push-Up su rialzo" || exName === "Dip alle Parallele" || exName === "Fitball Hamstring Curl" || exName === "Ab Wheel" || exName === "Band Pull-Apart con rotazione esterna" || exName === "TRX Row lento") {
       return { kind: "reps", amount: 1, label: "+1 rip per serie" };
     }
     if (exName === "Hyperextension") return { kind: "kg", amount: 1, label: "+1 kg" };
@@ -9672,7 +9763,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                 onClick={function() {
                   if (activeSession) exitWorkoutSession("manual");
                   if (level === "v4") setWorkoutDayName(day.name);
-                  if (!day.cardio) {
+                  if (!day.cardio && !day.light) {
                     var nextIdx = activeDays.findIndex(function(item) { return item && item.name === day.name; });
                     if (nextIdx >= 0) setDayIdx(nextIdx);
                   }
@@ -9681,7 +9772,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                 }}
                 style={{ flex: level === "v4" ? "none" : (i < 4 ? 1 : "none"), padding: "7px 10px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}
               >
-                {day.name + (day.cardio ? " ❤️" : "")}
+                {day.name + (day.cardio ? " ❤️" : "") + (day.light ? " 🌿" : "")}
               </button>;
             })}
           </div>
@@ -9727,20 +9818,20 @@ function isNearBodyweightElasticSession(exName, sets) {
                     <div style={{ display: "grid", gap: 8, marginTop: 5 }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
                         <div style={{ fontSize: isBeginner ? 12 : 11, color: dc, fontWeight: 700, padding: "4px 8px", borderRadius: 999, background: dc + "12", border: "1px solid " + dc + "20" }}>{"~" + (estimatedDayMinutes || dayData.tEst) + " min"}</div>
-                        {!dayData.cardio && !dayData.rest && !isBasics && flowModeEnabled && !activeSession && <button
+                        {!dayData.cardio && !dayData.light && !dayData.rest && !isBasics && flowModeEnabled && !activeSession && <button
                           onClick={function(e) { e.stopPropagation(); startWorkoutSession(); }}
                           style={{ minHeight: 30, padding: "0 12px", border: "none", borderRadius: 999, background: T.ok, color: "#fff", fontSize: 10, fontWeight: 900, cursor: "pointer", whiteSpace: "nowrap" }}
                         >
                           Inizia allenamento
                         </button>}
-                        {!dayData.cardio && !dayData.rest && !isBasics && flowModeEnabled && activeSession && <button
+                        {!dayData.cardio && !dayData.light && !dayData.rest && !isBasics && flowModeEnabled && activeSession && <button
                           onClick={function(e) { e.stopPropagation(); setSetupChecklistOpen(true); }}
                           style={{ minHeight: 30, padding: "0 12px", border: "1px solid " + dc + "35", borderRadius: 999, background: dc + "10", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}
                         >
                           Checklist setup
                         </button>}
                       </div>
-                      {!dayData.cardio && !dayData.rest && !isBasics && <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", justifyContent: "space-between" }}>
+                      {!dayData.cardio && !dayData.light && !dayData.rest && !isBasics && <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", justifyContent: "space-between" }}>
                         <div style={{ display: "inline-flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                         {[{
                           key: "guided",
@@ -9844,7 +9935,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>;
             })()}
 
-            {!dayData.cardio && !dayData.rest && calibrationEnabled && !compactMode && (function() {
+            {!dayData.cardio && !dayData.light && !dayData.rest && calibrationEnabled && !compactMode && (function() {
               var dayCalibration = getDayCalibrationSuggestion(safeDayIdx);
               if (!dayCalibration) return null;
               if (dismissedCalBanner) return null;
@@ -9892,7 +9983,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             })()}
 
             {/* Warmup - collapsed (solo giorni non-cardio) */}
-            {!dayData.cardio && !dayData.rest && <div ref={function(el) { if (el) el._sectionKey = "intro"; }} id="section-warmup" style={{ borderBottom: "1px solid " + T.bg }}>
+            {!dayData.cardio && !dayData.light && !dayData.rest && <div ref={function(el) { if (el) el._sectionKey = "intro"; }} id="section-warmup" style={{ borderBottom: "1px solid " + T.bg }}>
               <div onClick={function() { var opening = !showIntro; setShowIntro(opening); if (opening) { setShowExSection(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-warmup"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showIntro ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
                 <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#128293;</div>
                 <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Riscaldamento</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{(function() { var groups = getWarmupGroups(dayData.warmup); var total = groups.reduce(function(s, g) { return s + g.items.length; }, 0); return groups.length + " fasi · " + total + " esercizi · 12-15 min"; })()}</div></div>
@@ -10107,7 +10198,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             </div>}
 
             {/* Exercises - collapsed (solo giorni non-cardio) */}
-            {!dayData.cardio && !dayData.rest && <div id="section-esercizi" style={{ borderBottom: "1px solid " + T.bg }}>
+            {!dayData.cardio && !dayData.light && !dayData.rest && <div id="section-esercizi" style={{ borderBottom: "1px solid " + T.bg }}>
               <div onClick={function() { var opening = !showExSection; setShowExSection(opening); if (opening) { setShowIntro(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-esercizi"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showExSection ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
                 <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#128170;</div>
                 <div style={{ flex: 1 }}>
@@ -10716,6 +10807,9 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>}
             </div>}
 
+          </div>}
+          {!isBasics && !isBeginner && workoutSelectedDay && workoutSelectedDay.light && <div style={{ padding: "12px 14px 16px" }}>
+            {renderLightDay(workoutSelectedDay)}
           </div>}
           {!isBasics && !isBeginner && workoutSelectedDay && workoutSelectedDay.cardio && <div style={{ display: "grid", gap: 12 }}>
             <div id="section-cardio-mobility" style={{ background: T.cd, borderRadius: "0 0 14px 14px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", overflow: "hidden" }}>

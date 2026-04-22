@@ -39,8 +39,9 @@ L'app oggi gestisce 3 livelli:
 
 3. `Ipertrofia avanzato`
 - programma V4
-- lower / upper / cardio / tecnica più ricco
+- lower / upper / leggero / cardio / riposo
 - è il livello con la logica tutor più completa
+- struttura settimana: G1 Lower A · G2 Upper A · G3 Leggero · G4 Lower B · G5 Upper B · G6 Riposo · G7 Cardio B
 
 ## 2. Cosa deve leggere prima l'agente PT
 
@@ -327,16 +328,27 @@ L'app esporta:
 Esiste anche:
 - `Esporta solo JSON`
 
-## 8.bis. Esercizi attivi V4 (2026-04-21)
+## 8.bis. Esercizi attivi V4 (2026-04-22)
 
-| Giorno | Esercizi |
-|---|---|
-| G1 Lower A | Squat · Stacco Rumeno · Glute Bridge Bilanciere · Leg Curl al Cavo · Ab Wheel |
-| G2 Upper A | Trazioni · Panca · Pulley · Band Pull-Apart con rotazione esterna · Curl Bicipiti |
-| G4 Lower B | Stacco da Terra · Affondi · Hyperextension · Fire Hydrant |
-| G5 Upper B | T-bar Row · Military Press · Push-Up · Trazioni Supine · Woodchop |
+**Struttura settimana**: G1 Lower A · G2 Upper A · G3 Leggero · G4 Lower B · G5 Upper B · G6 Riposo · G7 Cardio B
 
-Rimossi dal programma attivo (non devono comparire in suggerimenti o liste coaching):
+**Tipi giorno nell'app**:
+- `pesi` (default): G1, G2, G4, G5 — logica coach completa, tracking progressione
+- `light: true`: G3 — UI dedicata, niente RIR, niente briefing, niente decisione finale, timer fisso 30s
+- `cardio: true`: G7 — sezione cardio + mobilità
+- `rest`: G6 — riposo
+
+| Giorno | Tipo | Esercizi |
+|---|---|---|
+| G1 Lower A | pesi | Squat · Stacco Rumeno · Glute Bridge Bilanciere · Leg Curl al Cavo · Ab Wheel |
+| G2 Upper A | pesi | Trazioni · Panca · Pulley · Band Pull-Apart con rotazione esterna · Curl Bicipiti |
+| G3 Leggero | light | Alzate Laterali · Band Pull-Apart con rotazione esterna · Fire Hydrant · TRX Row lento · Curl al Cavo Basso |
+| G4 Lower B | pesi | Stacco da Terra · Affondi · Hyperextension · Fire Hydrant |
+| G5 Upper B | pesi | T-bar Row · Military Press · Push-Up · Trazioni Supine · Woodchop |
+| G6 | riposo | — |
+| G7 Cardio B | cardio | Corsa zona 2 / Rucking |
+
+Rimossi dal programma attivo (non devono comparire in suggerimenti o liste coaching pesi):
 - Hip Thrust Bilanciere
 - Squat Bulgaro
 - Fitball Hamstring Curl
@@ -345,12 +357,15 @@ Rimossi dal programma attivo (non devono comparire in suggerimenti o liste coach
 - Tricipiti Cavo
 - T-bar Row da G2 (spostato a G5)
 - Stacco Rumeno da G4 (spostato a G1)
+- Cardio A da G3 (sostituito da giorno leggero)
 
-Superset attivi per modalità rapida:
+Superset attivi per modalità rapida (solo giorni pesi):
 - G1: Leg Curl al Cavo + Ab Wheel
 - G2: Band Pull-Apart con rotazione esterna + Curl Bicipiti
 - G4: Hyperextension + Fire Hydrant
 - G5: Push-Up + Woodchop
+
+Nota: il G3 Leggero NON ha superset. Non è nella logica AM/PM split. Non alimenta i Progressi fondamentali.
 
 ## 9. Cosa deve verificare un agente PT
 

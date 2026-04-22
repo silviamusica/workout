@@ -4,12 +4,18 @@
 
 Dopo ogni modifica alla lista esercizi del programma V4, l'agente deve verificare che TUTTE le liste e funzioni della logica coach siano allineate. Ogni esercizio attivo deve essere presente nelle liste corrette. Ogni esercizio rimosso deve essere tolto.
 
-## Esercizi attualmente attivi nel V4 (aggiornato 2026-04-21)
+## Esercizi attualmente attivi nel V4 (aggiornato 2026-04-22)
 
+**Giorni pesi** (logica coach completa):
 G1: Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel
 G2: Trazioni, Panca, Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti
 G4: Stacco da Terra, Affondi, Hyperextension, Fire Hydrant
 G5: T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop
+
+**Giorno leggero G3** (tipo `light: true` — logica coach NON si applica):
+G3: Alzate Laterali, Band Pull-Apart con rotazione esterna, Fire Hydrant, TRX Row lento, Curl al Cavo Basso
+
+Gli esercizi del G3 NON devono essere in ACCESSORY_PROGRESS_EX, MAX_PROGRESS_EX, keyLiftNames, FAST_MODE_SUPERSETS, V4_DAY_SPLIT_PLAN.
 
 ## 10 punti da verificare
 
@@ -107,6 +113,18 @@ Deve contenere i fondamentali e compound pesanti attivi:
 `Squat, Stacco da Terra, Panca, Military Press, Trazioni, Trazioni Supine, Push-Up, T-bar Row, Stacco Rumeno, Glute Bridge Bilanciere`
 - Cerca: `var keyLiftNames`
 - Verifica: non deve contenere Dip alle Parallele, Hip Thrust Bilanciere
+- Verifica: non deve contenere esercizi del G3 Leggero (Alzate Laterali, TRX Row lento, Curl al Cavo Basso)
+
+### 14. Giorno leggero G3 (tipo `light: true`)
+Il giorno leggero ha regole proprie — verificare che il codice rispetti queste 6 regole:
+1. `light: true` nell'oggetto Giorno 3 in `DAYS_V4`
+2. `activeDays` filtra `!d.light` — G3 NON è nei giorni pesi
+3. `startWorkoutSession` ha `|| workoutSelectedWeightDay.light` nel guard — niente sessione guidata
+4. I bottoni "Inizia allenamento" e "Coach attivo" hanno `!dayData.light` nel check
+5. La sezione Esercizi pesi (`section-esercizi`) ha `!dayData.light` nel check
+6. `renderLightDay` viene chiamato quando `workoutSelectedDay.light` è true
+- Cerca: `day.light` nel codice
+- Verifica: nessun esercizio del G3 è in `ACCESSORY_PROGRESS_EX`, `MAX_PROGRESS_EX`, `keyLiftNames`, `V4_DAY_SPLIT_PLAN`, `FAST_MODE_SUPERSETS`
 
 ## Come eseguire la verifica
 

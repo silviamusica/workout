@@ -49,7 +49,7 @@ Regole fisse:
 
 Nei giorni lower il blocco ruota intorno a caviglia + anca + core/glutei + attivazione esplosiva non tassante.
 Nei giorni upper ruota intorno a toracica + spalla + controllo scapolare/core, evitando di pre-affaticare i muscoli che lavoreranno nelle serie vere.
-Nei giorni cardio c'e piu tempo: qui compare il blocco mobilita completo, piu lungo e meno compresso.
+Nel giorno leggero G3 il riscaldamento è abbreviato (5 min, senza circuito). Nel G7 Cardio B c'e piu tempo per il blocco mobilita completo.
 
 ### La struttura: Upper/Lower su 4 giorni
 
@@ -356,10 +356,16 @@ Il tasso di guadagno muscolare rallenta e i progressi di forza diventano piu len
 ## Scheda completa V4
 
 Nota UI attuale:
-- nella tab `Scheda` della V4 l'utente continua a lavorare sui 4 giorni pesi principali
-- per non rompere la struttura esistente, i giorni cardio `3` e `7` non sono stati trasformati in nuovi tab-giorno
-- cardio e protocollo anca sono accessibili in una sezione separata `Cardio e mobilità anca`
+- nella tab `Scheda` della V4 l'utente vede tutti i giorni inclusi G3 Leggero e G7 Cardio
+- il G3 Leggero (`light: true`) ha una UI dedicata: niente flow mode, niente RIR, niente briefing, niente decisione finale
+- il G7 Cardio B (`cardio: true`) resta gestito come prima con sezione cardio + mobilità
 - nei giorni pesi il protocollo anca compare come `Bonus mobilità anca` facoltativo dopo lo stretching finale
+
+**Struttura settimana**
+
+| Lun | Mar | Mer | Gio | Ven | Sab | Dom |
+|---|---|---|---|---|---|---|
+| G1 Lower A | G2 Upper A | G3 Leggero | G4 Lower B | G5 Upper B | Riposo | G7 Cardio |
 
 ### Giorno 1 — Lower A — Quadricipiti + Femorali
 
@@ -447,29 +453,49 @@ Protocollo breve facoltativo dopo lo stretching finale:
 
 Stesso blocco facoltativo del Giorno 1, mostrato dopo lo stretching finale.
 
-### Giorno 3 — Cardio A
+### Giorno 3 — Leggero (Volume complementare + mobilità)
 
-Nota:
-- questo giorno resta fuori dai tab-giorno principali per non rompere il tracking dei pesi
-- in app compare dentro la sezione dedicata `Cardio e mobilità anca`
+**Aggiornamento 2026-04-22**: il Giorno 3 Cardio A è sostituito da un giorno leggero dedicato a volume complementare e protocollo anca completo. Il G7 Cardio B resta invariato.
 
-**Cardio**
+Questo giorno colma tre lacune del programma:
+- deltoide laterale: zero serie dirette negli altri giorni
+- deltoide posteriore: solo 3 serie nel G2
+- gluteo medio: solo 3 serie nel G4
 
-| # | Opzione | Durata | Note |
-|---|---|---|---|
-| 1 | HIIT tapis roulant | 25 min | Settimane dispari. 5 min warmup + 8x(30s sprint / 60s cammino) + 5 min cooldown. RPE 8-9 sprint. Sessione alta intensita |
-| 2 | Rucking con zaino 15-20 kg | 45-60 min | Settimane pari. Salite e discese. Zaino alto e aderente. Zona 2. Progressione: +1 kg ogni 2 settimane OPPURE +5 min. Mai entrambi |
-| 3 | Circuito sacco + corde + slackline | 25-30 min | Bonus. Sostituisce HIIT quando vuoi variare. 3 round sacco 3 min + 4x30s battle rope + slackline 3x30s. Sessione alta intensita |
+**Tipo giorno**: `light` (nuovo tipo nell'app — niente RIR, niente briefing, niente decisione finale, timer fisso 30s)
 
-**Mobilita giorno cardio**
+**Riscaldamento** (5 minuti, senza circuito)
 
-Dopo il cardio, oppure in un secondo momento della giornata:
-- Dorsiflessione al muro
-- Alfredson eccentrico
-- 90/90 hip mobility
-- T-spine rotation in quadrupedia
-- Half Kneeling Lunge
-- Figure-Four Supino
+| Fase | Esercizio | Parametri |
+|---|---|---|
+| Mobilità | Dorsiflessione al muro | 8 rip/lato |
+| Mobilità | 90/90 hip mobility | 8 passaggi/lato |
+| Mobilità | T-spine rotation in quadrupedia | 8 rip/lato |
+| Attivazione | Ponte monopodalico | 6 rip/lato |
+
+**Esercizi** (RPE max 6-7 · 30 min)
+
+| # | Esercizio | Serie | RPE | Recupero | Note |
+|---|---|---|---|---|---|
+| 1 | Alzate Laterali | 3x15-20 | 6-7 | 30-45s | Manubri leggeri. Alza fino a parallelo. 2s su 2s giù |
+| 2 | Band Pull-Apart con rotazione esterna | 2x20 | 6-7 | 30s | Volume extra leggero. Pausa 1s con mani ruotate fuori |
+| 3 | Fire Hydrant | 2x20/lato | 6-7 | 30s | Bacino fermo. Range piccolo e controllato |
+| 4 | TRX Row lento | 2x12 | 6-7 | 45s | Fermo 2s scapole strette. Eccentrica 3s |
+| 5 | Curl al Cavo Basso | 2x15 | 6-7 | 30s | Peso molto leggero. Contrazione 1s in alto |
+
+**Protocollo anca completo** (8-10 minuti)
+
+Il giorno migliore per il protocollo anca intero: nessun compound pesante prima, sistema nervoso fresco.
+
+| # | Esercizio | Durata |
+|---|---|---|
+| 1 | Half kneeling lunge | 2x40s/lato |
+| 2 | Half kneeling lunge + reach verticale | 2x30s/lato |
+| 3 | Couch stretch | 2x40s/lato |
+| 4 | Figure-four supino | 2x40s/lato |
+| 5 | Happy baby | 2x40s |
+| 6 | Leg cradle supino | 2x30s/lato |
+| 7 | Supported low lunge | 2x30s/lato |
 
 ### Giorno 4 — Lower B — Stacco + Catena Posteriore
 
