@@ -12,6 +12,8 @@ import img_Cable_Hip_Thrust from "./images/exercises/cable hip thrust.webp";
 import img_Cable_Pull_Through from "./images/exercises/cable-pull-through.gif";
 import img_Croci_Manubri_a_Terra from "./images/exercises/Croci_Manubri_a_Terra.jpg";
 import img_Curl_Bicipiti from "./images/exercises/Curl_Bicipiti.jpg";
+import img_Curl_Cavo_Basso from "./images/exercises/curl-cavo-basso.gif";
+import img_Curl_Cavo_Basso_Singolo from "./images/exercises/curl-al-cavo-basso-singolo.gif";
 import img_Curl_Concentrato from "./images/exercises/Curl_Concentrato.jpg";
 import img_Curl_Martello from "./images/exercises/Curl_Martello.jpg";
 import img_Dip_su_Panca from "./images/exercises/Dip_su_Panca.jpg";
@@ -59,6 +61,7 @@ import img_T_bar_Row from "./images/exercises/t-bar-rows.gif";
 import img_TRX_Hip_Hinge from "./images/exercises/trx hip hinge.gif";
 import img_TRX_Reverse_Lunge from "./images/exercises/trx reverse lunge.jpg";
 import img_TRX_Row from "./images/exercises/trx-row.webp";
+import img_TRX_Row_Lento from "./images/exercises/TRX-Row-lento.gif";
 import img_TRX_Split_Squat from "./images/exercises/trx split squat.gif";
 import img_TRX_Squat from "./images/exercises/trx-squat - .jpeg";
 import img_Fitball_Hamstring_Curl from "./images/exercises/Fitball Hamstring Curl .jpg";
@@ -1598,6 +1601,19 @@ var DAYS_V4 = [
     ], str: ["Doorway Pec Stretch","Overhead Lat Stretch","Cross-Body Shoulder Stretch","Wrist Flexor/Extensor Stretch"], hipBonus: true },
 
   { name: "Giorno 3", focus: "Leggero — Volume complementare + mobilità", light: true, tEst: 35,
+    intro: {
+      attrezzi: ["Manubri leggeri", "Elastico", "TRX", "Cavo basso", "Tappetino"],
+      muscoli: ["Deltoide laterale (Alzate Laterali)", "Deltoide posteriore / cuffia (Band Pull-Apart)", "Gluteo medio (Fire Hydrant)", "Dorsali / scapole (TRX Row lento)", "Bicipiti (Curl al Cavo Basso)"],
+      obiettivi: ["Aggiungere volume complementare senza affaticare il sistema nervoso", "Curare controllo e qualità su muscoli che nei giorni pesanti non hanno volume diretto sufficiente", "Chiudere con il protocollo anca completo in un giorno senza compound pesanti"],
+      attenzione: ["RPE massimo 6-7: oggi non devi inseguire carico o cedimento", "Movimenti lenti e puliti: il valore del giorno 3 è qualità + volume facile", "Nel TRX Row e nel Fire Hydrant il controllo del corpo conta più della quantità"],
+      ritmo: "Recuperi brevi: 30-45 secondi. Tieni il flusso alto ma senza sporcare la tecnica."
+    },
+    warmup: [
+      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Tallone sempre giù: cerca range pulito, non slancio." },
+      { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8 passaggi per lato", cue: "Busto verticale: il movimento parte dalle anche." },
+      { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota il torace senza muovere il bacino." },
+      { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 rip per lato", cue: "Gluteo forte in alto, lombare ferma." },
+    ],
     lightIntro: "Non e un giorno di allenamento pesante. E volume complementare a bassa intensita: deltoide laterale, deltoide posteriore, gluteo medio e bicipiti. Sistema nervoso fresco, RPE massimo 6-7. Poi il protocollo anca completo.",
     lightWarmup: [
       { n: "Dorsiflessione al muro", p: "8 rip/lato" },
@@ -1612,6 +1628,7 @@ var DAYS_V4 = [
       { n: "TRX Row lento", s: "2x12", rpe: "6-7", note: "Fermo 2s con scapole strette. Eccentrica 3s. Lavora i dorsali senza tassare la presa. Riduci l'inclinazione se il corpo non resta in linea.", rec: "45s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
       { n: "Curl al Cavo Basso", s: "2x15", rpe: "6-7", note: "Peso molto leggero. Gomiti fermi, contrazione piena 1s in alto. Non usare slancio.", rec: "30s", gear: "Cavo basso", errori: "Slancio col busto; gomiti che avanzano; eccentrica veloce" },
     ],
+    str: ["Half Kneeling Lunge","Half Kneeling Lunge + Reach","Couch Stretch","Figure-Four Supino","Happy Baby","Leg Cradle Supino","Supported Low Lunge"],
     lightHipProtocol: [
       { n: "Half kneeling lunge", p: "2x40s/lato" },
       { n: "Half kneeling lunge + reach verticale", p: "2x30s/lato" },
@@ -2177,6 +2194,7 @@ var EX_IMG = {
   "Cable Pull-Through": img_Cable_Pull_Through,
   "Croci Manubri a Terra": img_Croci_Manubri_a_Terra,
   "Curl Bicipiti": img_Curl_Bicipiti,
+  "Curl al Cavo Basso": img_Curl_Cavo_Basso,
   "Curl Concentrato": img_Curl_Concentrato,
   "Curl Martello": img_Curl_Martello,
   "Dip su Panca": img_Dip_su_Panca,
@@ -2263,6 +2281,7 @@ var EX_IMG = {
   "One Arm Cable Row": img_One_Arm_Cable_Row,
   "TRX Reverse Lunge": img_TRX_Reverse_Lunge,
   "TRX Row": img_TRX_Row,
+  "TRX Row lento": img_TRX_Row_Lento,
   "TRX Split Squat": img_TRX_Split_Squat,
   "TRX Squat": img_TRX_Squat,
   "Tricipiti Cavo": img_Tricipiti_Cavo,
@@ -2333,6 +2352,7 @@ var SK_SHADOW = SK + "-shadow";
 
 var EX_EXTRA_IMG = {
   "Ab Wheel": [img_Ab_Wheel_Corretto],
+  "Curl al Cavo Basso": [img_Curl_Cavo_Basso_Singolo],
   "Hollow Position": [img_Hollow_Tuck, img_Hollow_Tuck_Advanced, img_Hollow_One_Leg, img_Hollow_Full],
   "Leg Curl al Cavo": [img_Leg_Curl_Cavo_In_Piedi],
 };
@@ -2355,7 +2375,11 @@ function parseSerie(str) {
   if (!str) return { sets: 3, reps: ["12"] };
   var m = str.replace(/\s/g, "").match(/(\d+)[xX](.+)/);
   if (!m) return { sets: 3, reps: ["12"] };
-  return { sets: parseInt(m[1]), reps: m[2] === "max" ? Array(parseInt(m[1])).fill("max") : m[2].split("-") };
+  var reps = m[2] === "max" ? Array(parseInt(m[1])).fill("max") : m[2].split("-");
+  var kind = "reps";
+  if (m[2] === "max") kind = "max";
+  else if (reps.length && reps.every(function(rep) { return /s$/i.test(String(rep || "")); })) kind = "time";
+  return { sets: parseInt(m[1]), reps: reps, kind: kind };
 }
 function todayStr() {
   var now = new Date();
@@ -2375,8 +2399,8 @@ function displayExerciseName(name) {
   if (name === "Hyperextension") return "Hyperextension con Sacco";
   return name;
 }
-var MAX_PROGRESS_EX = ["Push-Up","Trazioni Supine"];
-var ACCESSORY_PROGRESS_EX = ["Stacco Rumeno","Glute Bridge Bilanciere","Leg Curl al Cavo","Pulley","Curl Bicipiti","Affondi","Hyperextension","Fire Hydrant","Woodchop","Push-Up","Trazioni Supine","T-bar Row","Band Pull-Apart con rotazione esterna"];
+var MAX_PROGRESS_EX = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni"];
+var ACCESSORY_PROGRESS_EX = ["Stacco Rumeno","Glute Bridge Bilanciere","Leg Curl al Cavo","Pulley","Band Pull-Apart con rotazione esterna","Curl Bicipiti","Affondi","Hyperextension","Fire Hydrant","Push-Up","Trazioni Supine","Woodchop","T-bar Row","TRX Row lento","Curl al Cavo Basso","Alzate Laterali"];
 var CORE_PROGRESS_EX = ["Ab Wheel"];
 var CARDIO_KIND_LABEL = { run: "Corsa", ruck: "Rucking", hiit: "HIIT", circuit: "Circuito" };
 var CALIBRATION_BODYWEIGHT_EX = ["Push-Up","Trazioni","Trazioni Supine","Ab Wheel","Fire Hydrant"];
@@ -2384,6 +2408,10 @@ var CALIBRATION_SKIP_EX = ["HIIT tapis roulant","Rucking con zaino 15-20 kg","Ci
 
 function usesElasticScale(exName) {
   return exName === "Trazioni" || exName === "Trazioni Supine";
+}
+
+function isCalibrationAllowedDay(day) {
+  return !!(day && !day.rest && !day.cardio && !day.light);
 }
 
 function isTimeTrackedExercise(exName, serie) {
@@ -2800,8 +2828,8 @@ var APP_VERSION = typeof __APP_VERSION__ === "string" ? __APP_VERSION__ : "dev";
 var APP_BUILD_TIME = typeof __BUILD_TIME__ === "string" ? __BUILD_TIME__ : "";
 var V4_DAY_SPLIT_PLAN = {
   "Giorno 1": {
-    am: ["Squat", "Stacco Rumeno", "Glute Bridge Bilanciere"],
-    pm: ["Leg Curl al Cavo", "Ab Wheel"],
+    am: ["Squat", "Stacco Rumeno"],
+    pm: ["Glute Bridge Bilanciere", "Leg Curl al Cavo", "Ab Wheel"],
   },
   "Giorno 2": {
     am: ["Trazioni", "Panca"],
@@ -2812,8 +2840,8 @@ var V4_DAY_SPLIT_PLAN = {
     pm: ["Hyperextension", "Fire Hydrant"],
   },
   "Giorno 5": {
-    am: ["T-bar Row", "Military Press"],
-    pm: ["Push-Up", "Trazioni Supine", "Woodchop"],
+    am: ["T-bar Row", "Military Press", "Trazioni Supine"],
+    pm: ["Push-Up", "Woodchop"],
   },
 };
 
@@ -2821,7 +2849,7 @@ var FAST_MODE_SUPERSETS = {
   "Giorno 1": [{ a: "Leg Curl al Cavo", b: "Ab Wheel", rest: 60 }],
   "Giorno 2": [{ a: "Band Pull-Apart con rotazione esterna", b: "Curl Bicipiti", rest: 60 }],
   "Giorno 4": [{ a: "Hyperextension", b: "Fire Hydrant", rest: 60 }],
-  "Giorno 5": [{ a: "Push-Up", b: "Woodchop", rest: 45 }],
+  "Giorno 5": [{ a: "Push-Up", b: "Woodchop", rest: 75 }],
 };
 
 function getFastSupersetPair(dayName, exName) {
@@ -3038,7 +3066,7 @@ export default function App() {
   }
 
   function getWorkoutFormatForDay(day, dayIndex) {
-    if (level !== "v4" || !day || day.cardio || day.light || day.rest) return "single";
+    if (level !== "v4" || !day || day.cardio || day.rest) return "single";
     var prefKey = getDaySplitPrefKey(day, dayIndex);
     var stored = splitDayPrefs[prefKey];
     if (stored === "split" && V4_DAY_SPLIT_PLAN[day.name]) return "split";
@@ -3137,31 +3165,155 @@ export default function App() {
     return Math.max(5, Math.round(total / 5) * 5);
   }
 
+  function parseUpperDurationSeconds(text) {
+    var source = String(text || "").replace(/,/g, ".");
+    if (!source) return null;
+    var matches = [];
+    var re = /(\d+(?:\.\d+)?)\s*(min|m|s)\b/ig;
+    var match;
+    while ((match = re.exec(source))) {
+      var value = parseFloat(match[1]);
+      if (!isFinite(value)) continue;
+      var unit = String(match[2] || "").toLowerCase();
+      matches.push(unit === "s" ? value : value * 60);
+    }
+    if (!matches.length) return null;
+    return Math.round(Math.max.apply(null, matches));
+  }
+
+  function getTextMultiplier(text) {
+    var source = String(text || "").toLowerCase();
+    if (!source) return 1;
+    var multiplier = 1;
+    if (/per\s+(?:lato|gamba|braccio|piede|direzione)/i.test(source)) multiplier *= 2;
+    var xMatches = source.match(/x\s*(\d+)/gi) || [];
+    xMatches.forEach(function(token) {
+      var value = parseInt(String(token).replace(/[^\d]/g, ""), 10);
+      if (value > 1) multiplier *= value;
+    });
+    var repeatMatches = source.match(/ripeti\s+(\d+)\s+volte?/gi) || [];
+    repeatMatches.forEach(function(token) {
+      var value = parseInt(String(token).replace(/[^\d]/g, ""), 10);
+      if (value > 1) multiplier *= value;
+    });
+    var seriesMatch = source.match(/(\d+)\s*(?:mini[\s-]?serie|serie)/i);
+    if (seriesMatch) {
+      var seriesValue = parseInt(seriesMatch[1], 10);
+      if (seriesValue > 1) multiplier *= seriesValue;
+    }
+    return Math.max(1, multiplier);
+  }
+
+  function parseUpperRepCount(text) {
+    var source = String(text || "").toLowerCase();
+    if (!source) return null;
+    var rangeMatches = [];
+    var rangeRe = /(\d+)\s*-\s*(\d+)/g;
+    var rangeMatch;
+    while ((rangeMatch = rangeRe.exec(source))) {
+      rangeMatches.push(Math.max(parseInt(rangeMatch[1], 10) || 0, parseInt(rangeMatch[2], 10) || 0));
+    }
+    var directMatch = source.match(/(\d+)\s*(?:rip|ripetizioni|passaggi|cerchi)/i);
+    if (directMatch) return parseInt(directMatch[1], 10) || null;
+    if (rangeMatches.length) return Math.max.apply(null, rangeMatches);
+    return null;
+  }
+
+  function estimateTextDrivenSeconds(text, options) {
+    var source = String(text || "");
+    if (!source) return 0;
+    var durationSeconds = parseUpperDurationSeconds(source);
+    var multiplier = getTextMultiplier(source);
+    if (durationSeconds) return durationSeconds * multiplier;
+    var repCount = parseUpperRepCount(source);
+    if (repCount) {
+      var secondsPerRep = options && options.secondsPerRep ? options.secondsPerRep : 5;
+      var perRoundFloor = options && options.perRoundFloor ? options.perRoundFloor : 30;
+      return Math.max(perRoundFloor, repCount * secondsPerRep) * multiplier;
+    }
+    if (/mini[\s-]?serie/i.test(source)) {
+      var seriesMatch = source.match(/(\d+)\s*-\s*(\d+)|(\d+)\s*mini[\s-]?serie/i);
+      var upperSeries = seriesMatch
+        ? Math.max(parseInt(seriesMatch[2] || 0, 10) || 0, parseInt(seriesMatch[3] || 0, 10) || 0, parseInt(seriesMatch[1] || 0, 10) || 0)
+        : 2;
+      return Math.max(90, upperSeries * 45);
+    }
+    return options && options.fallbackSeconds ? options.fallbackSeconds : 90;
+  }
+
+  function estimateWarmupSectionMinutes(items) {
+    if (!items || !items.length) return 0;
+    var totalSeconds = items.reduce(function(acc, item) {
+      if (!item) return acc;
+      if (item.est) return acc + item.est;
+      if (item.tm) return acc + item.tm;
+      var descriptor = item.p || item.d || "";
+      return acc + estimateTextDrivenSeconds(descriptor, { secondsPerRep: 5, perRoundFloor: 35, fallbackSeconds: 90 });
+    }, 0);
+    return totalSeconds / 60;
+  }
+
+  function estimateStretchItemMinutes(name) {
+    var stretch = STR[name];
+    if (!stretch) return 1.5;
+    if (stretch.est) return stretch.est / 60;
+    if (stretch.t) return estimateTextDrivenSeconds(stretch.t, { secondsPerRep: 5, perRoundFloor: 40, fallbackSeconds: stretch.tm || 60 }) / 60;
+    if (stretch.tm) return stretch.tm / 60;
+    return 1.5;
+  }
+
+  function estimateStretchSectionMinutes(stretchItems) {
+    if (!stretchItems || !stretchItems.length) return 0;
+    var total = stretchItems.reduce(function(acc, item) {
+      return acc + estimateStretchItemMinutes(item);
+    }, 0);
+    return total;
+  }
+
+  function estimateSplitSessionMinutes(day, group, activeMonth) {
+    if (!day || !group || !group.items || !group.items.length) return 0;
+    var total = group.items.reduce(function(acc, item) {
+      return acc + estimateExerciseMinutes(item.rawEx, getExForMonthValue(item.rawEx, activeMonth));
+    }, 0);
+    total += Math.max(0, group.items.length - 1);
+    if (group.key === "am") total += estimateWarmupSectionMinutes(day.warmup || []);
+    if (group.key === "pm") total += 4;
+    return Math.max(5, Math.round(total / 5) * 5);
+  }
+
   function getExerciseTimeEstimateParts(rawEx, ex) {
     var p = parseSerie(ex.s);
     var sets = p.sets || 3;
+    var exName = String(ex && ex.n || "");
     var repsNums = (p.reps || []).map(function(rep) {
       if (rep === "max") return 10;
       if ((rep || "").indexOf("s") >= 0) return parseInt(rep) || 30;
       return parseInt(rep) || 0;
     }).filter(function(v) { return v > 0; });
     var topTarget = repsNums.length ? Math.max.apply(null, repsNums) : 10;
-    var classKey = getGuidedExerciseClass(ex.n);
+    var classKey = getGuidedExerciseClass(exName);
+    var unilateralMultiplier = /(per\s+(?:lato|gamba|braccio|piede))/i.test(String(ex.s || "")) ? 2 : 1;
+    var bodyweightLike = ["Trazioni","Trazioni Supine","Push-Up","Push-Up Declino","Dip su Panca","Ab Wheel","Plank","Shoulder Tap","Fire Hydrant"].indexOf(exName) >= 0;
+    var controlledTempo = ["TRX Row lento","Band Pull-Apart con rotazione esterna","Leg Curl al Cavo","Curl al Cavo Basso","Alzate Laterali","Hyperextension","Nordic Curl"].indexOf(exName) >= 0;
+    var explosiveOrLight = ["Band Pull-Apart con elastico","Band Pull-Apart con rotazione esterna","Fire Hydrant","Curl al Cavo Basso","Shoulder Tap"].indexOf(exName) >= 0;
     var secPerSet;
     if (p.kind === "time" || ex.n === "Plank") {
-      secPerSet = Math.max(45, topTarget + 20);
+      secPerSet = Math.max(45, topTarget + 20) * unilateralMultiplier;
     } else if (classKey === "heavy") {
-      secPerSet = topTarget <= 6 ? 75 : topTarget <= 8 ? 70 : 65;
+      secPerSet = (22 + topTarget * (bodyweightLike ? 6 : 5.5)) * unilateralMultiplier;
     } else if (classKey === "compound") {
-      secPerSet = topTarget <= 8 ? 58 : topTarget <= 12 ? 52 : 46;
+      secPerSet = (16 + topTarget * (bodyweightLike ? 5 : 4.5)) * unilateralMultiplier;
     } else {
-      secPerSet = topTarget <= 10 ? 42 : topTarget <= 15 ? 36 : 30;
+      secPerSet = (12 + topTarget * 3.4) * unilateralMultiplier;
     }
+    if (controlledTempo) secPerSet += 8 * unilateralMultiplier;
+    if (explosiveOrLight && classKey === "mono") secPerSet = Math.max(26 * unilateralMultiplier, secPerSet - 4);
+    secPerSet = Math.round(secPerSet);
     return {
       sets: sets,
       secPerSet: secPerSet,
       recSec: getExerciseRestSeconds(rawEx, ex) || 90,
-      setupSec: getExerciseSetupSeconds(ex.n) + 30
+      setupSec: getExerciseSetupSeconds(rawEx, ex) + 20
     };
   }
 
@@ -3188,6 +3340,13 @@ export default function App() {
 
   function estimateWorkoutMinutesForFormat(day, activeMonth, workoutFormat) {
     if (!day || !(day.ex && day.ex.length)) return 0;
+    if (workoutFormat === "split") {
+      var splitGroups = buildDayExerciseGroups(day, activeMonth, true);
+      var splitTotal = splitGroups.reduce(function(acc, group) {
+        return acc + estimateSplitSessionMinutes(day, group, activeMonth);
+      }, 0);
+      return splitTotal;
+    }
     if (workoutFormat !== "superset") {
       var singleTotal = (day.ex || []).reduce(function(acc, rawEx) {
         var exDef = getExForMonthValue(rawEx, activeMonth);
@@ -3284,7 +3443,7 @@ export default function App() {
     var supersetInfo = workoutFormat === "superset" ? getFastSupersetPair(day && day.name, exName) : null;
     if (supersetInfo && supersetInfo.role === "a" && sameExerciseName(supersetInfo.partner, nextEntry.ex.n)) {
       return {
-        label: displayExerciseName(nextEntry.ex.n) + " · superset diretto, no pausa",
+        label: displayExerciseName(nextEntry.ex.n) + " · coppia diretta, no pausa",
         immediate: true,
         nextIndex: nextEntry.index,
         filler: ""
@@ -3389,7 +3548,7 @@ export default function App() {
     setDismissedCalBanner(false);
   }
   function startWorkoutSession() {
-    if (!workoutSelectedWeightDay || workoutSelectedWeightDay.cardio || workoutSelectedWeightDay.light || workoutSelectedWeightDay.rest) return;
+    if (!workoutSelectedWeightDay || workoutSelectedWeightDay.cardio || workoutSelectedWeightDay.rest) return;
     var initialChecks = {};
     buildSetupChecklistItems(workoutSelectedWeightDay).forEach(function(item) {
       initialChecks[item.key] = false;
@@ -3630,7 +3789,7 @@ export default function App() {
   var T = TH[theme];
   var isBasics = false;
   var isBeginner = false;
-  var activeDays = DAYS_V4.filter(function(d) { return !d.cardio && !d.light; });
+  var activeDays = DAYS_V4.filter(function(d) { return !d.cardio && !d.rest; });
   var safeDayIdx = Math.min(dayIdx, activeDays.length - 1);
   var WORKFLOW_SEED_BY_SLUG = NEW_EXERCISE_WORKFLOW_SEED.reduce(function(acc, item) {
     acc[item.slug] = item;
@@ -3917,7 +4076,7 @@ export default function App() {
   var workoutSelectedDay = level === "v4"
     ? (workoutDayOptions.find(function(day) { return day.name === workoutDayName; }) || workoutDayOptions[0] || null)
     : dayData;
-  var workoutSelectedWeightIndex = workoutSelectedDay && !workoutSelectedDay.cardio && !workoutSelectedDay.light
+  var workoutSelectedWeightIndex = workoutSelectedDay && !workoutSelectedDay.cardio && !workoutSelectedDay.rest
     ? activeDays.findIndex(function(day) { return day && day.name === workoutSelectedDay.name; })
     : -1;
   var workoutSelectedWeightDay = workoutSelectedWeightIndex >= 0 ? activeDays[workoutSelectedWeightIndex] : null;
@@ -3929,7 +4088,7 @@ export default function App() {
   var isDaySupersetActive = currentDayWorkoutFormat === "superset";
   var estimatedDayMinutes = workoutSelectedWeightDay ? estimateDayMinutes(workoutSelectedWeightDay, month, currentDayWorkoutFormat) : 0;
   var dayExerciseGroups = buildDayExerciseGroups(workoutSelectedWeightDay, month, isDaySplitActive);
-  var isCurrentWeightDayComplete = !!workoutSelectedWeightDay && !workoutSelectedWeightDay.cardio && !workoutSelectedWeightDay.light && !workoutSelectedWeightDay.rest && isDayWorkoutComplete(logs, workoutSelectedWeightIndex);
+  var isCurrentWeightDayComplete = !!workoutSelectedWeightDay && !workoutSelectedWeightDay.cardio && !workoutSelectedWeightDay.rest && isDayWorkoutComplete(logs, workoutSelectedWeightIndex);
   var daySetupChecklistItems = buildSetupChecklistItems(workoutSelectedWeightDay);
   var activeOpenRawEx = dayData && dayData.ex && openEx !== null && dayData.ex[openEx] ? dayData.ex[openEx] : null;
   var activeOpenMergedEx = activeOpenRawEx ? (activeOpenRawEx.cable && activeOpenRawEx.free ? Object.assign({}, activeOpenRawEx, activeOpenRawEx.defaultFree ? activeOpenRawEx.free : activeOpenRawEx.cable) : activeOpenRawEx) : null;
@@ -5753,20 +5912,17 @@ export default function App() {
     var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","Front Squat","Pause Squat","Push Press","Stacco Sumo","Hip Thrust Bilanciere","T-bar Row","Dip alle Parallele"];
     var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Squat Bulgaro","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino","Fitball Hamstring Curl","Face Pull","Alzate Laterali","French Press Manubri","Stacco Rumeno"];
     var core = ["Plank","Ab Wheel","Addominali Obliqui","Shoulder Tap","Woodchop","Slackline"];
-    if (core.indexOf(exName) >= 0) return exName === "Plank" ? null : 30;
-    if (heavy.indexOf(exName) >= 0) return 120;
-    if (medium.indexOf(exName) >= 0) return 90;
-    return 60;
+    if (core.indexOf(exName) >= 0) return exName === "Plank" ? null : 45;
+    if (heavy.indexOf(exName) >= 0) return 150;
+    if (medium.indexOf(exName) >= 0) return 105;
+    return 75;
   }
 
   function getExerciseRestSeconds(rawEx, ex) {
     if (!rawEx || !ex) return null;
     if (rawEx.rec) {
-      var recText = String(rawEx.rec);
-      var s = recText.match(/(\d+)\s*s/i);
-      if (s) return parseInt(s[1]);
-      var m = recText.match(/(\d+(?:\.\d+)?)\s*min/i);
-      if (m) return Math.round(parseFloat(m[1]) * 60);
+      var parsedRec = parseUpperDurationSeconds(rawEx.rec);
+      if (parsedRec) return parsedRec;
     }
     return getRestTime(ex.n, ex.rpe);
   }
@@ -5779,74 +5935,51 @@ export default function App() {
 
   function estimateWarmupItemMinutes(item) {
     if (!item) return 0;
+    if (item.est) return item.est / 60;
     if (item.tm) return item.tm / 60;
-    var text = String(item.d || "");
-    var minMatch = text.match(/(\d+(?:\.\d+)?)\s*min/i);
-    if (minMatch) return parseFloat(minMatch[1]);
-    var secMatch = text.match(/(\d+)\s*s/i);
-    if (secMatch) return parseInt(secMatch[1]) / 60;
-    var repMatch = text.match(/(\d+)\s*(?:rip|ripetizioni)/i);
-    if (repMatch) {
-      var reps = parseInt(repMatch[1]) || 8;
-      return Math.max(0.75, Math.min(2, reps * 0.08));
-    }
-    return 1.5;
+    var text = String(item.p || item.d || "");
+    return estimateTextDrivenSeconds(text, { secondsPerRep: 5, perRoundFloor: 35, fallbackSeconds: 90 }) / 60;
   }
 
-  function getExerciseSetupSeconds(exName) {
-    var name = String(exName || "").toLowerCase();
-    if (!name) return 120;
-    if (name.indexOf("stacco da terra") >= 0) return 300;
-    if (name.indexOf("t-bar") >= 0 || name.indexOf("t bar") >= 0) return 300;
-    if (name.indexOf("hip thrust") >= 0) return 300;
-    if (name.indexOf("hyperextension") >= 0 || name.indexOf("panca romana") >= 0) return 120;
-    if (name.indexOf("stacco rumeno") >= 0) return 120;
-    if (name.indexOf("affondi") >= 0 || name.indexOf("walking lunge") >= 0) return 120;
+  function getExerciseSetupSeconds(rawEx, ex) {
+    var name = String(ex && ex.n || rawEx && rawEx.n || "").toLowerCase();
+    var gear = String(rawEx && rawEx.gear || ex && ex.gear || "").toLowerCase();
+    if (!name && !gear) return 90;
+    if (name.indexOf("stacco da terra") >= 0) return 210;
+    if (name.indexOf("t-bar") >= 0 || name.indexOf("t bar") >= 0) return 210;
+    if (name.indexOf("hip thrust") >= 0 || name.indexOf("glute bridge bilanciere") >= 0) return 210;
+    if (name.indexOf("panca") >= 0 || name.indexOf("military press") >= 0 || name.indexOf("squat") >= 0 || name.indexOf("front squat") >= 0 || name.indexOf("pause squat") >= 0) return 150;
+    if (name.indexOf("trazioni") >= 0 || gear.indexOf("barra trazioni") >= 0 || gear.indexOf("sbarra") >= 0) return 75;
+    if (name.indexOf("hyperextension") >= 0 || name.indexOf("panca romana") >= 0) return 90;
+    if (name.indexOf("stacco rumeno") >= 0) return 105;
+    if (name.indexOf("affondi") >= 0 || name.indexOf("walking lunge") >= 0 || name.indexOf("squat bulgaro") >= 0) return 90;
     if (
       name.indexOf("cavo") >= 0 ||
       name.indexOf("cavi") >= 0 ||
       name.indexOf("cable") >= 0 ||
       name.indexOf("face pull") >= 0 ||
       name.indexOf("woodchop") >= 0 ||
-      name.indexOf("pulley") >= 0
-    ) return 180;
-    return 120;
+      name.indexOf("pulley") >= 0 ||
+      gear.indexOf("cavo") >= 0
+    ) return 105;
+    if (gear.indexOf("manubri") >= 0 || name.indexOf("curl") >= 0 || name.indexOf("alzate laterali") >= 0) return 75;
+    if (gear.indexOf("trx") >= 0) return 75;
+    if (gear.indexOf("corpo libero") >= 0 || name.indexOf("plank") >= 0 || name.indexOf("push-up") >= 0 || name.indexOf("shoulder tap") >= 0 || name.indexOf("fire hydrant") >= 0) return 45;
+    return 90;
   }
 
   function estimateExerciseMinutes(rawEx, ex) {
-    var p = parseSerie(ex.s);
-    var sets = p.sets || 3;
-    var repsNums = (p.reps || []).map(function(rep) {
-      if (rep === "max") return 10;
-      if ((rep || "").indexOf("s") >= 0) return parseInt(rep) || 30;
-      return parseInt(rep) || 0;
-    }).filter(function(v) { return v > 0; });
-    var topTarget = repsNums.length ? Math.max.apply(null, repsNums) : 10;
-    var classKey = getGuidedExerciseClass(ex.n);
-    var secPerSet;
-    if (p.kind === "time" || ex.n === "Plank") {
-      secPerSet = Math.max(45, topTarget + 20);
-    } else if (classKey === "heavy") {
-      secPerSet = topTarget <= 6 ? 75 : topTarget <= 8 ? 70 : 65;
-    } else if (classKey === "compound") {
-      secPerSet = topTarget <= 8 ? 58 : topTarget <= 12 ? 52 : 46;
-    } else {
-      secPerSet = topTarget <= 10 ? 42 : topTarget <= 15 ? 36 : 30;
-    }
-    var recSec = getExerciseRestSeconds(rawEx, ex) || 90;
-    var setupSec = getExerciseSetupSeconds(ex.n) + 30;
-    var total = setupSec + sets * secPerSet + (sets - 1) * recSec;
+    var parts = getExerciseTimeEstimateParts(rawEx, ex);
+    var total = parts.setupSec + parts.sets * parts.secPerSet + (parts.sets - 1) * parts.recSec;
     return Math.max(2, Math.round(total / 60));
   }
 
   function estimateDayMinutes(day, activeMonth, workoutFormat) {
     if (!day || day.rest) return 0;
-    if (day.cardio || day.light) return day.tEst || 0;
-    var warmupMin = (day.warmup || []).reduce(function(acc, item) {
-      return acc + estimateWarmupItemMinutes(item);
-    }, 0);
+    if (day.cardio) return day.tEst || 0;
+    var warmupMin = estimateWarmupSectionMinutes(day.warmup || []);
     var exerciseMin = estimateWorkoutMinutesForFormat(day, activeMonth || month, workoutFormat || "single");
-    var stretchMin = Math.min(8, Math.max(4, (day.str || []).length * 1.25));
+    var stretchMin = estimateStretchSectionMinutes(day.str || []);
     var wrapUpMin = 2;
     return Math.max(15, Math.round((warmupMin + exerciseMin + stretchMin + wrapUpMin) / 5) * 5);
   }
@@ -6765,8 +6898,8 @@ export default function App() {
   }
 
 function getGuidedExerciseClass(exName) {
-  var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Front Squat","Pause Squat","Push Press","Stacco Sumo","Trazioni","Trazioni Supine","T-bar Row","Stacco Rumeno","Glute Bridge Bilanciere","Pulley"];
-  var mono = ["Curl Bicipiti","Curl Martello","Curl Concentrato","Alzate Laterali","Woodchop","French Press Manubri","Kick Back Manubri","Overhead Extension","Fire Hydrant","Leg Curl al Cavo","Clamshell","Abduzione Laterale","Addominali Obliqui","Band Pull-Apart con rotazione esterna","Curl al Cavo Basso"];
+  var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","T-bar Row","Stacco Rumeno","Glute Bridge Bilanciere","Pulley"];
+  var mono = ["Curl Bicipiti","Woodchop","Fire Hydrant","Band Pull-Apart con rotazione esterna","Leg Curl al Cavo","Alzate Laterali","Curl al Cavo Basso"];
   if (heavy.indexOf(exName) >= 0) return "heavy";
   if (mono.indexOf(exName) >= 0) return "mono";
   return "compound";
@@ -7109,7 +7242,9 @@ function isNearBodyweightElasticSession(exName, sets) {
         setCalibrationFeedback("Inserisci prima le ripetizioni della serie.");
         return;
       }
-      var calNeed = getCalibrationNeed(exObj.n, exObj.s);
+      var currentDay = activeDays[di];
+      var calibrationAllowed = isCalibrationAllowedDay(currentDay);
+      var calNeed = calibrationAllowed ? getCalibrationNeed(exObj.n, exObj.s) : { needed: false, initial: false, reason: "" };
       if (!effectiveCalibrationMode || !calNeed.needed) {
         var saved = saveSetEntry(exObj.n, di, si, w, r, null, rirValue);
         var specGuided = parseProgressSpec(exObj.s);
@@ -7478,7 +7613,7 @@ function isNearBodyweightElasticSession(exName, sets) {
   function getDayCalibrationSuggestion(di) {
     if (!calibrationEnabled) return null;
     var day = activeDays[di];
-    if (!day || !day.ex) return null;
+    if (!day || !day.ex || !isCalibrationAllowedDay(day)) return null;
     var needed = day.ex.map(function(rawEx) {
       var ex = getExForMonth(rawEx);
       var check = getCalibrationNeed(ex.n, ex.s);
@@ -9763,7 +9898,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                 onClick={function() {
                   if (activeSession) exitWorkoutSession("manual");
                   if (level === "v4") setWorkoutDayName(day.name);
-                  if (!day.cardio && !day.light) {
+                  if (!day.cardio && !day.rest) {
                     var nextIdx = activeDays.findIndex(function(item) { return item && item.name === day.name; });
                     if (nextIdx >= 0) setDayIdx(nextIdx);
                   }
@@ -9818,20 +9953,20 @@ function isNearBodyweightElasticSession(exName, sets) {
                     <div style={{ display: "grid", gap: 8, marginTop: 5 }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
                         <div style={{ fontSize: isBeginner ? 12 : 11, color: dc, fontWeight: 700, padding: "4px 8px", borderRadius: 999, background: dc + "12", border: "1px solid " + dc + "20" }}>{"~" + (estimatedDayMinutes || dayData.tEst) + " min"}</div>
-                        {!dayData.cardio && !dayData.light && !dayData.rest && !isBasics && flowModeEnabled && !activeSession && <button
+                        {!dayData.cardio && !dayData.rest && !isBasics && flowModeEnabled && !activeSession && <button
                           onClick={function(e) { e.stopPropagation(); startWorkoutSession(); }}
                           style={{ minHeight: 30, padding: "0 12px", border: "none", borderRadius: 999, background: T.ok, color: "#fff", fontSize: 10, fontWeight: 900, cursor: "pointer", whiteSpace: "nowrap" }}
                         >
                           Inizia allenamento
                         </button>}
-                        {!dayData.cardio && !dayData.light && !dayData.rest && !isBasics && flowModeEnabled && activeSession && <button
+                        {!dayData.cardio && !dayData.rest && !isBasics && flowModeEnabled && activeSession && <button
                           onClick={function(e) { e.stopPropagation(); setSetupChecklistOpen(true); }}
                           style={{ minHeight: 30, padding: "0 12px", border: "1px solid " + dc + "35", borderRadius: 999, background: dc + "10", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}
                         >
                           Checklist setup
                         </button>}
                       </div>
-                      {!dayData.cardio && !dayData.light && !dayData.rest && !isBasics && <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", justifyContent: "space-between" }}>
+                      {!dayData.cardio && !dayData.rest && !isBasics && <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", justifyContent: "space-between" }}>
                         <div style={{ display: "inline-flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                         {[{
                           key: "guided",
@@ -9935,7 +10070,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>;
             })()}
 
-            {!dayData.cardio && !dayData.light && !dayData.rest && calibrationEnabled && !compactMode && (function() {
+            {!dayData.cardio && !dayData.rest && calibrationEnabled && !compactMode && (function() {
               var dayCalibration = getDayCalibrationSuggestion(safeDayIdx);
               if (!dayCalibration) return null;
               if (dismissedCalBanner) return null;
@@ -9983,7 +10118,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             })()}
 
             {/* Warmup - collapsed (solo giorni non-cardio) */}
-            {!dayData.cardio && !dayData.light && !dayData.rest && <div ref={function(el) { if (el) el._sectionKey = "intro"; }} id="section-warmup" style={{ borderBottom: "1px solid " + T.bg }}>
+            {!dayData.cardio && !dayData.rest && <div ref={function(el) { if (el) el._sectionKey = "intro"; }} id="section-warmup" style={{ borderBottom: "1px solid " + T.bg }}>
               <div onClick={function() { var opening = !showIntro; setShowIntro(opening); if (opening) { setShowExSection(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-warmup"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showIntro ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
                 <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#128293;</div>
                 <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Riscaldamento</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{(function() { var groups = getWarmupGroups(dayData.warmup); var total = groups.reduce(function(s, g) { return s + g.items.length; }, 0); return groups.length + " fasi · " + total + " esercizi · 12-15 min"; })()}</div></div>
@@ -10198,14 +10333,14 @@ function isNearBodyweightElasticSession(exName, sets) {
             </div>}
 
             {/* Exercises - collapsed (solo giorni non-cardio) */}
-            {!dayData.cardio && !dayData.light && !dayData.rest && <div id="section-esercizi" style={{ borderBottom: "1px solid " + T.bg }}>
+            {!dayData.cardio && !dayData.rest && <div id="section-esercizi" style={{ borderBottom: "1px solid " + T.bg }}>
               <div onClick={function() { var opening = !showExSection; setShowExSection(opening); if (opening) { setShowIntro(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-esercizi"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showExSection ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
                 <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#128170;</div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Esercizi</div>
                   <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>
                     {dayData.ex ? dayData.ex.length + " esercizi" : ""}
-                    {(splitPlanForDay || supersetPlanForDay) ? (isDaySplitActive ? " · split AM/PM" : isDaySupersetActive ? " · superset" : " · sessione unica") : ""}
+                    {(splitPlanForDay || supersetPlanForDay) ? (isDaySplitActive ? " · split AM/PM" : isDaySupersetActive ? " · accessori in coppia" : " · sessione unica") : ""}
                   </div>
                 </div>
                 <div style={{ fontSize: 13, color: dc, transform: showExSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
@@ -10215,7 +10350,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               <div style={{ borderRadius: 12, border: "1px solid " + dc + "22", background: dc + "08", padding: 12 }}>
                 <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Formato giornata</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(" + ((splitPlanForDay && supersetPlanForDay) ? 3 : 2) + ", minmax(0,1fr))", gap: 8 }}>
-                  {[{ key: "single", label: "Sessione unica", hint: "Tutto nello stesso allenamento.", enabled: true }, { key: "split", label: "Split in due", hint: "AM per i fondamentali, PM per accessori e core.", enabled: !!splitPlanForDay }, { key: "superset", label: "Superset", hint: "Accoppia gli esercizi gia previsti per fare piu veloce.", enabled: !!supersetPlanForDay }].filter(function(option) { return option.enabled; }).map(function(option) {
+                  {[{ key: "single", label: "Sessione unica", hint: "Tutto nello stesso allenamento.", enabled: true }, { key: "split", label: "Split in due", hint: "AM per i fondamentali, PM per accessori e core.", enabled: !!splitPlanForDay }, { key: "superset", label: "Accessori in coppia", hint: "I fondamentali restano singoli, gli accessori compatibili vanno in coppia.", enabled: !!supersetPlanForDay }].filter(function(option) { return option.enabled; }).map(function(option) {
                     var active = option.key === currentDayWorkoutFormat;
                     return <button
                       key={option.key}
@@ -10232,12 +10367,17 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </button>;
                   })}
                 </div>
+                {supersetPlanForDay && <div style={{ marginTop: 8, fontSize: 11, lineHeight: 1.55, color: T.sub, padding: "9px 10px", borderRadius: 10, background: T.cd, border: "1px solid " + T.bg }}>
+                  I fondamentali restano sempre singoli. La modalita coppia accorpa solo accessori e core che non ti rovinano tecnica e recupero.
+                </div>}
               </div>
             </div>}
             {/* Exercises list */}
             {dayExerciseGroups.map(function(group, groupIndex) {
               var groupMinutes = isDaySupersetActive && workoutSelectedWeightDay
                 ? Math.max(5, Math.round(estimateWorkoutMinutesForFormat(workoutSelectedWeightDay, month, "superset") / 5) * 5)
+                : isDaySplitActive && workoutSelectedWeightDay
+                ? estimateSplitSessionMinutes(workoutSelectedWeightDay, group, month)
                 : estimateExerciseGroupMinutes(group.items, month);
               return <div key={group.key || groupIndex}>
                 {isDaySplitActive && group.items.length > 0 && <div style={{ padding: "12px 14px 8px", background: groupIndex === 0 ? "transparent" : T.sb }}>
@@ -10286,7 +10426,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                 : 0;
               var rowProgColor = prog ? (prog.tone === "up" ? T.ok : prog.tone === "hold" ? "#C62828" : T.sub) : T.sub;
               var rowSkills = getExerciseCompetencies(ex.n);
-              var calibrationNeed = getCalibrationNeed(ex.n, ex.s);
+              var calibrationNeed = isCalibrationAllowedDay(dayData)
+                ? getCalibrationNeed(ex.n, ex.s)
+                : { needed: false, initial: false, reason: "" };
               var calibrationProfile = calibrationProfiles[ex.n] || null;
               var rowImg = exImgs(ex.n)[0] || null;
 
@@ -10296,7 +10438,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               var isExDone = !!(isBeginner && completedExercises[exDoneKey]);
               return <div key={i} id={"ex-row-" + i} style={{ borderBottom: "1px solid " + T.bg, opacity: isDimmed ? 0.38 : 1, transition: "opacity 0.25s" }}>
                 {!isBasics && rowSupersetMeta && rowSupersetMeta.role === "a" && <div style={{ padding: "12px 14px 8px", background: dc + "08", borderBottom: "1px solid " + T.bg }}>
-                  <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 8px", borderRadius: 999, background: dc + "12", color: dc, fontSize: 10, fontWeight: 900, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Superset</div>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 8px", borderRadius: 999, background: dc + "12", color: dc, fontSize: 10, fontWeight: 900, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Coppia rapida</div>
                   <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, lineHeight: 1.4 }}>{rowSupersetMeta.title}</div>
                   <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginTop: 3 }}>Recupero dopo la coppia: {fmtLabel(rowSupersetMeta.rest)}</div>
                   {!!supersetPairMinutes && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginTop: 2 }}>Tempo totale: ~{supersetPairMinutes} min</div>}
@@ -10416,14 +10558,14 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>}
 
                     {!isBasics && flowSupersetMeta && flowSupersetMeta.role === "a" && <div style={{ marginBottom: 10, borderRadius: 12, padding: "10px 12px", background: dc + "10", border: "1px solid " + dc + "25" }}>
-                      <div style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Superset</div>
+                      <div style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Coppia rapida</div>
                       <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, lineHeight: 1.4 }}>{flowSupersetMeta.title}</div>
                       <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55, marginTop: 4 }}>Fai i due esercizi di fila. Recupero solo dopo il secondo: {fmtLabel(flowSupersetMeta.rest)}.</div>
                       {!!supersetPairMinutes && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55, marginTop: 2 }}>Tempo totale: ~{supersetPairMinutes} min</div>}
                     </div>}
 
                     {!isBasics && flowSupersetMeta && <div style={{ marginBottom: 8, display: "inline-flex", alignItems: "center", gap: 6, padding: "6px 10px", borderRadius: 999, background: dc + "10", border: "1px solid " + dc + "25", color: dc, fontSize: 10, fontWeight: 800 }}>
-                      <span>{flowSupersetMeta.role === "a" ? "Superset 1/2" : "Superset 2/2"}</span>
+                      <span>{flowSupersetMeta.role === "a" ? "Coppia 1/2" : "Coppia 2/2"}</span>
                       <span style={{ color: T.sub, fontWeight: 700 }}>{flowSupersetMeta.partner}</span>
                     </div>}
 
@@ -10631,7 +10773,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     {/* === TIMER RECUPERO — subito dopo le serie === */}
                     {!isBasics && showTimerBtns && <div style={{ display: "grid", gap: 6, marginBottom: 10 }}>
                       {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ width: "100%", minHeight: 52, border: "none", borderRadius: 12, background: tMode === "countdown" && tRunning ? (tWarning ? "#B91C1C" : T.ok) : T.ok, color: "#fff", fontWeight: 900, fontSize: 14, letterSpacing: 0.2, cursor: "pointer", boxShadow: tMode === "countdown" ? "0 10px 24px rgba(0,0,0,0.18)" : "none", animation: tMode === "countdown" && tWarning ? "timerBlink 1s infinite" : "none" }}>
-                        {flowSupersetMeta && flowSupersetMeta.role === "b" ? ("▶ RECUPERO DOPO SUPERSET · " + fmtLabel(restSec)) : ("▶ TIMER RECUPERO · " + fmtLabel(restSec))}
+                        {flowSupersetMeta && flowSupersetMeta.role === "b" ? ("▶ RECUPERO DOPO LA COPPIA · " + fmtLabel(restSec)) : ("▶ TIMER RECUPERO · " + fmtLabel(restSec))}
                       </button> : null}
                       {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ width: "100%", minHeight: 42, border: "none", borderRadius: 10, background: dc, color: "#fff", fontWeight: 800, fontSize: 12, cursor: "pointer" }}>{"▶ Timer lavoro · " + fmtLabel(workSec)}</button> : null}
                     </div>}
@@ -10807,9 +10949,6 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>}
             </div>}
 
-          </div>}
-          {!isBasics && !isBeginner && workoutSelectedDay && workoutSelectedDay.light && <div style={{ padding: "12px 14px 16px" }}>
-            {renderLightDay(workoutSelectedDay)}
           </div>}
           {!isBasics && !isBeginner && workoutSelectedDay && workoutSelectedDay.cardio && <div style={{ display: "grid", gap: 12 }}>
             <div id="section-cardio-mobility" style={{ background: T.cd, borderRadius: "0 0 14px 14px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", overflow: "hidden" }}>
