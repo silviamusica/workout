@@ -1623,10 +1623,10 @@ var DAYS_V4 = [
     ],
     ex: [
       { n: "Alzate Laterali", s: "3x15-20", rpe: "6-7", note: "Manubri leggeri. Alza fino a parallelo al pavimento. Lento: 2s su, 2s giu. Spalle basse, non alzare i trapezi.", rec: "30-45s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
-      { n: "Band Pull-Apart con rotazione esterna", s: "2x20", rpe: "6-7", note: "Volume leggero extra. Pausa 1s a fine apertura con mani ruotate fuori. Non tirare con forza.", rec: "30s", gear: "Elastico", errori: "Tirare con forza; gomiti piegati; nessuna rotazione esterna finale" },
-      { n: "Fire Hydrant", s: "2x20 per lato", rpe: "6-7", note: "Bacino che resta fermo — il range e piccolo e controllato. Non ruotare il busto per alzare il ginocchio piu in alto.", rec: "30s", gear: "Corpo libero (o elastico bacino)", errori: "Bacino che ruota; busto che oscilla per compensare" },
-      { n: "TRX Row lento", s: "2x12", rpe: "6-7", note: "Fermo 2s con scapole strette. Eccentrica 3s. Lavora i dorsali senza tassare la presa. Riduci l'inclinazione se il corpo non resta in linea.", rec: "45s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
-      { n: "Curl al Cavo Basso", s: "2x15", rpe: "6-7", note: "Peso molto leggero. Gomiti fermi, contrazione piena 1s in alto. Non usare slancio.", rec: "30s", gear: "Cavo basso", errori: "Slancio col busto; gomiti che avanzano; eccentrica veloce" },
+      { n: "Fire Hydrant", s: "3x20 per lato", rpe: "6-7", note: "Bacino che resta fermo — il range e piccolo e controllato. Non ruotare il busto per alzare il ginocchio piu in alto.", rec: "30s", gear: "Corpo libero (o elastico bacino)", errori: "Bacino che ruota; busto che oscilla per compensare" },
+      { n: "TRX Row lento", s: "3x12", rpe: "6-7", note: "Fermo 2s con scapole strette. Eccentrica 3s. Lavora i dorsali senza tassare la presa. Riduci l'inclinazione se il corpo non resta in linea.", rec: "45s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
+      { n: "Curl al Cavo Basso", s: "3x15", rpe: "6-7", note: "Peso molto leggero. Gomiti fermi, contrazione piena 1s in alto. Non usare slancio.", rec: "30s", gear: "Cavo basso", errori: "Slancio col busto; gomiti che avanzano; eccentrica veloce" },
+      { n: "Band Pull-Apart con rotazione esterna", s: "3x20", rpe: "6-7", note: "Volume leggero extra. Pausa 1s a fine apertura con mani ruotate fuori. Non tirare con forza.", rec: "30s", gear: "Elastico", errori: "Tirare con forza; gomiti piegati; nessuna rotazione esterna finale" },
     ],
     str: ["Half Kneeling Lunge","Half Kneeling Lunge + Reach","Couch Stretch","Figure-Four Supino","Happy Baby","Leg Cradle Supino","Supported Low Lunge"],
     lightHipProtocol: [
@@ -2850,7 +2850,7 @@ var FAST_MODE_SUPERSETS = {
   "Giorno 2": [{ a: "Band Pull-Apart con rotazione esterna", b: "Curl Bicipiti", rest: 60 }],
   "Giorno 3": [
     { a: "Alzate Laterali", b: "Fire Hydrant", rest: 45 },
-    { a: "Band Pull-Apart con rotazione esterna", b: "Curl al Cavo Basso", rest: 45 },
+    { a: "TRX Row lento", b: "Curl al Cavo Basso", rest: 45 },
   ],
   "Giorno 4": [{ a: "Hyperextension", b: "Fire Hydrant", rest: 60 }],
   "Giorno 5": [{ a: "Push-Up", b: "Woodchop", rest: 75 }],
