@@ -426,6 +426,39 @@ La `Modalità guidata` dell'app non e un coach intelligente generale. E una logi
 - non riscrive mesociclo, volumi o split
 - non valuta video o ROM reale
 
+## Esercizi del Giorno Leggero G3
+
+Questi esercizi appartengono al G3 (`light: true`). La logica coach NON si attiva su questo giorno. Le informazioni qui sotto servono solo se l'agente deve verificare la correttezza delle entry EX o la classificazione coach.
+
+### Alzate Laterali
+
+- **Pattern**: isolamento deltoide laterale
+- **Ruolo nel G3**: volume diretto su un distretto che i compound non raggiungono (military press coinvolge solo parzialmente il laterale)
+- **Classificazione coach**: `mono`, `+1 kg per manubrio`
+- **Calibrazione**: `dumbbell`
+- **Note tecniche**: RPE 6-7, mai sopra parallelo, spalle basse (non trapezio), 2s su 2s giù
+- **Progressione**: +1 kg per manubrio quando chiudi il top del range con margine — ma nel G3 non si usa la logica double progression
+- **Varianti possibili**: Alzate laterali al cavo basso (piu tensione costante), Alzate laterali con busto inclinato (enfasi posteriore)
+
+### TRX Row lento
+
+- **Pattern**: tirata orizzontale
+- **Ruolo nel G3**: volume dorsali/scapole senza affaticare la presa (in G2 e G5 ci sono già 10 serie di tirata pesante)
+- **Classificazione coach**: `compound` (default), `bodyweight`, `+1 rip`
+- **Calibrazione**: `bodyweight`
+- **Note tecniche**: fermo 2s con scapole strette, eccentrica 3s, corpo in linea rigida — se le anche cedono ridurre l'inclinazione
+- **Differenza da TRX Row standard**: l'enfasi è sull'eccentrica lenta e la pausa isometrica, non sulla velocità o il carico
+- **Progressione**: aumentare inclinazione (più difficile) o aumentare rip, ma nel G3 non si usa la logica double progression
+
+### Curl al Cavo Basso
+
+- **Pattern**: flessione gomito (bicipiti)
+- **Ruolo nel G3**: pump leggero a bassa intensità — completa il lavoro indiretto delle tirate
+- **Classificazione coach**: `mono`, `cable` (match automatico su `indexOf("Cavo")`), `+1 step`
+- **Calibrazione**: `cable`
+- **Note tecniche**: RPE 6-7, gomiti fermi ai fianchi, contrazione 1s in alto, peso molto leggero
+- **Differenza da Curl Bicipiti (G2)**: quello è manubri a RPE 9, questo è cavo a RPE 6-7 — scopo diverso
+
 ## Obiettivi della sessione guidata: come devono essere letti
 
 Quando l'agente controlla il blocco `Obiettivi della sessione`, deve verificare che:

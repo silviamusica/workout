@@ -209,8 +209,9 @@ La V4 usa ora due blocchi distinti:
 - ogni voce mostra durata, cue breve, timer rapido e dettagli
 
 2. `Mobilità anca`
-- nei giorni pesi compare come `Bonus mobilità anca`
-- nei giorni cardio compare dentro la sezione `Cardio e mobilità anca`
+- nei giorni pesi compare come `Bonus mobilità anca` (facoltativo, dopo stretching finale)
+- nel giorno leggero G3 compare come `Protocollo anca completo` (7 posizioni, 8-10 min) — è il giorno migliore perché non c'è compound pesante prima
+- nel giorno cardio G7 compare dentro la sezione mobilità
 - non crea nuovi tab-giorno e non rompe il tracking esistente dei pesi
 
 In piu, nei 4 giorni pesi il riscaldamento principale e ora strutturato in `4 fasi`:
@@ -258,15 +259,52 @@ Da evitare:
 
 ### Soluzione strutturale scelta
 
-Per non rompere la struttura V4:
-- i giorni cardio non sono stati trasformati in nuovi tab-giorno nella scheda principale
-- cardio e protocollo anca sono accessibili in una sezione dedicata della scheda
-- i 4 giorni pesi restano il flusso operativo principale
+La struttura settimana V4 ha 4 tipi giorno:
+- **pesi** (G1, G2, G4, G5): logica coach completa, tracking progressione, split AM/PM, superset
+- **light** (G3): UI dedicata `renderLightDay`, nessuna logica coach attiva
+- **cardio** (G7): sezione cardio + mobilità
+- **rest** (G6): riposo
+
+Il G3 Leggero non entra in `activeDays` — non rompe il tracking, non alimenta i Progressi, non attiva il coach.
+
+## Giorno leggero (G3)
+
+### Tipo giorno
+
+Il Giorno 3 ha `light: true`. Non è cardio, non è pesi, non è riposo.
+
+### Esercizi
+
+| # | Esercizio | Serie | RPE | Recupero |
+|---|---|---|---|---|
+| 1 | Alzate Laterali | 3x15-20 | 6-7 | 30-45s |
+| 2 | Band Pull-Apart con rotazione esterna | 2x20 | 6-7 | 30s |
+| 3 | Fire Hydrant | 2x20/lato | 6-7 | 30s |
+| 4 | TRX Row lento | 2x12 | 6-7 | 45s |
+| 5 | Curl al Cavo Basso | 2x15 | 6-7 | 30s |
+
+### Regole
+
+- RPE massimo: 6-7 (3-4 rip in riserva su ogni serie)
+- Il coach NON si attiva: niente RIR prompt, niente briefing, niente decisione finale
+- Timer: fisso 30s, non basato su RIR
+- Gli esercizi del G3 NON compaiono nei Progressi fondamentali
+- NON ha split AM/PM né superset
+- Protocollo anca completo (7 posizioni, 8-10 min) dopo gli esercizi
+
+### Classificazione esercizi G3 per il coach (se mai interrogato)
+
+- `Alzate Laterali`: mono, +1 kg per manubrio
+- `Band Pull-Apart con rotazione esterna`: mono, bodyweight, +1 rip
+- `Fire Hydrant`: mono (già attivo in G4), bodyweight, +1 rip
+- `TRX Row lento`: compound (default), bodyweight, +1 rip
+- `Curl al Cavo Basso`: mono, cable (match su indexOf("Cavo")), +1 step
 
 ## Briefing pre-sessione
 
 Il briefing appare nei giorni pesi normali:
 - non nei giorni cardio
+- non nel giorno leggero
 - non nei giorni di riposo
 - non nel livello `Tecniche preliminari`
 
@@ -507,7 +545,8 @@ Esempi:
 - Pulley
 - Lat Machine
 - Woodchop
-- esercizi con `Cavo`
+- Curl al Cavo Basso
+- esercizi con `Cavo` nel nome (match automatico nel codice)
 
 ### Corpo libero
 - `+1 rip per serie`
@@ -517,6 +556,7 @@ Esempi:
 - Ab Wheel
 - Fire Hydrant
 - Band Pull-Apart con rotazione esterna
+- TRX Row lento
 
 Soglie oggi codificate nella logica guidata:
 - `Push-Up`: se fai almeno `15 rip` in tutte le serie per `2 sessioni consecutive`, l'app suggerisce una variante più difficile, per esempio `Push-Up declino` o `diamante`
