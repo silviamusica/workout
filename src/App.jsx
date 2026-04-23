@@ -3773,6 +3773,8 @@ export default function App() {
   var [histIdx, setHistIdx] = useState(null);
   var [histPage, setHistPage] = useState({});
   var [progTooltip, setProgTooltip] = useState(null);
+  var [workoutFormatInfo, setWorkoutFormatInfo] = useState("");
+  var [theoryMainOpen, setTheoryMainOpen] = useState("");
   var [skillTooltip, setSkillTooltip] = useState(null);
   var [cableMode, setCableMode] = useState({});
   var [exerciseAltMode, setExerciseAltMode] = useState(function() {
@@ -8729,12 +8731,15 @@ function isNearBodyweightElasticSession(exName, sets) {
           </div>
 
         {/* Intro: Le basi dell'allenamento */}
-        {<div style={{ background: T.cd, borderRadius: 22, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 14px 30px rgba(0,0,0,0.06)" }}>
-          <div style={{ padding: "18px 18px 14px", borderBottom: "1px solid " + T.bg, background: "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
-            <div style={{ fontSize: 19, fontWeight: 900, color: T.tx, marginBottom: 4, letterSpacing: -0.2 }}>🔬 Le basi dell'allenamento</div>
-            <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55, maxWidth: 520 }}>Parti da qui per capire logica, struttura e principi pratici senza perderti nei dettagli.</div>
+        {<div id="theory-main-basics" style={{ background: T.cd, borderRadius: 22, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 14px 30px rgba(0,0,0,0.06)" }}>
+          <div onClick={function() { var next = theoryMainOpen === "basics" ? "" : "basics"; setTheoryMainOpen(next); if (next) scrollTopSoon("theory-main-basics"); }} style={{ padding: "18px 18px 14px", borderBottom: theoryMainOpen === "basics" ? "1px solid " + T.bg : "none", background: "linear-gradient(180deg," + T.cd + ", " + T.sb + ")", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+            <div>
+              <div style={{ fontSize: 19, fontWeight: 900, color: theoryMainOpen === "basics" ? dc : T.tx, marginBottom: 4, letterSpacing: -0.2 }}>🔬 Le basi dell'allenamento</div>
+              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55, maxWidth: 520 }}>Parti da qui per capire logica, struttura e principi pratici senza perderti nei dettagli.</div>
+            </div>
+            <span style={{ fontSize: 13, color: dc, flexShrink: 0, transform: theoryMainOpen === "basics" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
           </div>
-          <div style={{ padding: "16px 18px 18px", display: "grid", gap: 16 }}>
+          {theoryMainOpen === "basics" && <div style={{ padding: "16px 18px 18px", display: "grid", gap: 16 }}>
             <div style={{ display: "grid", gap: 6 }}>
             {introBasicsCards.map(function(card, ci) {
               var isOpen = showIntroCard === ci;
@@ -8856,15 +8861,18 @@ function isNearBodyweightElasticSession(exName, sets) {
                 })}
               </div>
             </div>
-          </div>
+          </div>}
         </div>}
 
-        {<div style={{ background: T.cd, borderRadius: 22, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 14px 30px rgba(0,0,0,0.06)" }}>
-          <div style={{ padding: "18px 18px 12px", borderBottom: "1px solid " + T.bg, background: "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
-            <div style={{ fontSize: 19, fontWeight: 900, color: T.tx, marginBottom: 4, letterSpacing: -0.2 }}>{theoryTitle}</div>
-            <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55, maxWidth: 540 }}>{theorySubtitle}</div>
+        {<div id="theory-main-principles" style={{ background: T.cd, borderRadius: 22, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 14px 30px rgba(0,0,0,0.06)" }}>
+          <div onClick={function() { var next = theoryMainOpen === "principles" ? "" : "principles"; setTheoryMainOpen(next); if (next) scrollTopSoon("theory-main-principles"); }} style={{ padding: "18px 18px 12px", borderBottom: theoryMainOpen === "principles" ? "1px solid " + T.bg : "none", background: "linear-gradient(180deg," + T.cd + ", " + T.sb + ")", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+            <div>
+              <div style={{ fontSize: 19, fontWeight: 900, color: theoryMainOpen === "principles" ? dc : T.tx, marginBottom: 4, letterSpacing: -0.2 }}>{theoryTitle}</div>
+              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55, maxWidth: 540 }}>{theorySubtitle}</div>
+            </div>
+            <span style={{ fontSize: 13, color: dc, flexShrink: 0, transform: theoryMainOpen === "principles" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
           </div>
-          <div style={{ padding: "0 18px 18px" }}>
+          {theoryMainOpen === "principles" && <div style={{ padding: "0 18px 18px" }}>
             <div>
               <div id="theory-section-skills" style={{ borderRadius: 16, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 14, background: T.cd, boxShadow: "0 8px 20px rgba(0,0,0,0.04)" }}>
                 <div onClick={function() { var next = showTheorySection === "skills" ? null : "skills"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-skills"); }} style={{ padding: "14px 16px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "skills" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
@@ -8959,7 +8967,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Termini base</div>
               {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
             </div>}
-          </div>
+          </div>}
         </div>}
 
         {!(isBasics || isBeginner) && <div id="theory-section-warmup" style={{ background: T.cd, borderRadius: 18, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 10px 24px rgba(0,0,0,0.05)" }}>
@@ -9084,12 +9092,15 @@ function isNearBodyweightElasticSession(exName, sets) {
           </div>}
         </div>}
 
-        {!(isBasics || isBeginner) && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-          <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
-            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🔒 Dati personali</div>
-            <div style={{ fontSize: 12, color: T.sub }}>BIA, composizione corporea e piano alimentare in una sezione separata.</div>
+        {!(isBasics || isBeginner) && <div id="theory-main-private" style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
+          <div onClick={function() { var next = theoryMainOpen === "private" ? "" : "private"; setTheoryMainOpen(next); if (next) scrollTopSoon("theory-main-private"); }} style={{ padding: "14px 16px 10px", borderBottom: theoryMainOpen === "private" ? "1px solid " + T.bg : "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+            <div>
+              <div style={{ fontSize: 16, fontWeight: 800, color: theoryMainOpen === "private" ? dc : T.tx, marginBottom: 2 }}>🔒 Dati personali</div>
+              <div style={{ fontSize: 12, color: T.sub }}>BIA, composizione corporea e piano alimentare in una sezione separata.</div>
+            </div>
+            <span style={{ fontSize: 13, color: dc, flexShrink: 0, transform: theoryMainOpen === "private" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
           </div>
-          {!privateUnlocked ? <div style={{ padding: "14px 16px 16px" }}>
+          {theoryMainOpen === "private" && (!privateUnlocked ? <div style={{ padding: "14px 16px 16px" }}>
             <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.65, marginBottom: 10 }}>Inserisci il codice per aprire questa sezione.</div>
             <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
               <input
@@ -9121,11 +9132,19 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </div>}
               </div>;
             })}
-          </div>}
+          </div>)}
         </div>}
 
         {/* === SEZIONE MUSCOLI (dentro Teoria) === */}
-        {<div>
+        {<div id="theory-main-muscles" style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
+          <div onClick={function() { var next = theoryMainOpen === "muscles" ? "" : "muscles"; setTheoryMainOpen(next); if (next) scrollTopSoon("theory-main-muscles"); }} style={{ padding: "14px 16px 12px", borderBottom: theoryMainOpen === "muscles" ? "1px solid " + T.bg : "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+            <div>
+              <div style={{ fontSize: 16, fontWeight: 800, color: theoryMainOpen === "muscles" ? dc : T.tx, marginBottom: 2 }}>🫀 Muscoli e mappa</div>
+              <div style={{ fontSize: 12, color: T.sub }}>Catene muscolari, mappa e dettagli dei singoli muscoli.</div>
+            </div>
+            <span style={{ fontSize: 13, color: dc, flexShrink: 0, transform: theoryMainOpen === "muscles" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+          </div>
+        {theoryMainOpen === "muscles" && <div style={{ padding: "12px 12px 14px" }}>
         {/* Intro armonia muscolare */}
         <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
           <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid " + T.bg }}>
@@ -9174,6 +9193,7 @@ function isNearBodyweightElasticSession(exName, sets) {
         {imgZoomOpen && <div onClick={function() { setImgZoomOpen(false); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.92)", zIndex: 300, display: "flex", alignItems: "center", justifyContent: "center", padding: 8, cursor: "zoom-out" }}>
           <img src={MUSCLE_IMG} alt="Muscoli" style={{ maxWidth: "100%", maxHeight: "95vh", borderRadius: 10, objectFit: "contain" }} />
         </div>}
+        </div>}
 
         {/* Dettaglio muscolo selezionato */}
         {MUSC.map(function(m, mi) { var isO = openMuscle === mi; if (!isO) return null; return <div key={mi} style={{ background: T.cd, borderRadius: 10, marginBottom: 4, overflow: "hidden" }}>
@@ -9199,11 +9219,15 @@ function isNearBodyweightElasticSession(exName, sets) {
         </div>; })}
         </div>}
 
-        {<div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-          <div style={{ padding: "14px 16px 10px", borderBottom: "1px solid " + T.bg }}>
-            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🥗 Nutrizione</div>
-            <div style={{ fontSize: 12, color: T.sub }}>Principi base per supportare l'allenamento</div>
+        {<div id="theory-main-nutrition" style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
+          <div onClick={function() { var next = theoryMainOpen === "nutrition" ? "" : "nutrition"; setTheoryMainOpen(next); if (next) scrollTopSoon("theory-main-nutrition"); }} style={{ padding: "14px 16px 10px", borderBottom: theoryMainOpen === "nutrition" ? "1px solid " + T.bg : "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+            <div>
+              <div style={{ fontSize: 16, fontWeight: 800, color: theoryMainOpen === "nutrition" ? dc : T.tx, marginBottom: 2 }}>🥗 Nutrizione</div>
+              <div style={{ fontSize: 12, color: T.sub }}>Principi base per supportare l'allenamento</div>
+            </div>
+            <span style={{ fontSize: 13, color: dc, flexShrink: 0, transform: theoryMainOpen === "nutrition" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
           </div>
+          {theoryMainOpen === "nutrition" && <div>
           <div style={{ padding: "14px 16px 6px", fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Principi</div>
           <div style={{ padding: "0 16px 16px", display: "grid", gap: 8 }}>
             {NUTRITION_PRINCIPLES.map(function(item, ii) {
@@ -9219,6 +9243,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>;
             })}
           </div>
+          </div>}
         </div>}
 
         </div>
@@ -9488,12 +9513,18 @@ function isNearBodyweightElasticSession(exName, sets) {
             <div style={{ fontSize: 14, fontWeight: 700, color: T.tx, marginBottom: 6 }}>Nessun dato ancora</div>
             <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Registra le serie dei giorni pesi nella Scheda e qui vedrai i tuoi progressi settimana per settimana.</div>
           </div> : <>
+            <div style={{ display: "flex", flexDirection: "column" }}>
 
-            {priorityGuides.length > 0 && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-              <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
-                <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Analisi guidata: cosa fare adesso</div>
-                <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6, marginTop: 3 }}>Priorita ricavate dai dati delle ultime sedute registrate.</div>
-              </div>
+            {priorityGuides.length > 0 && <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 2 }}>
+              <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Analisi guidata: cosa fare adesso</div>
+                    <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6, marginTop: 3 }}>Priorita ricavate dai dati delle ultime sedute registrate.</div>
+                  </div>
+                  <div style={{ fontSize: 11, fontWeight: 800, color: dc, flexShrink: 0 }}>Apri</div>
+                </div>
+              </summary>
               <div style={{ display: "grid", gap: 0 }}>
                 {priorityGuides.map(function(item, ii) {
                   var toneColor = item.guide.tone === "up" ? T.ok : item.guide.tone === "mid" ? "#B7791F" : item.guide.tone === "hold" ? "#C62828" : T.sub;
@@ -9507,15 +9538,15 @@ function isNearBodyweightElasticSession(exName, sets) {
                   </div>;
                 })}
               </div>
-            </div>}
+            </details>}
 
             {/* Riepilogo settimane */}
-            <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
+            <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 1 }}>
               <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Archivio settimane</div>
-                    <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Apri solo se vuoi ricontrollare o correggere le sedute salvate.</div>
+                    <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Archivio precedenti</div>
+                    <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Settimane e sedute salvate: apri per ricontrollare o correggere.</div>
                   </div>
                   <div style={{ fontSize: 11, fontWeight: 800, color: dc, flexShrink: 0 }}>Apri</div>
                 </div>
@@ -9721,11 +9752,16 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>
             </details>
 
-            {keyLiftProgress.length > 0 && <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-              <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
-                <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Fondamentali: risultati chiave</div>
-                <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Qui vedi subito il carico usato e le rip totali dei movimenti base, con confronto sulla settimana prima.</div>
-              </div>
+            {keyLiftProgress.length > 0 && <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 3 }}>
+              <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Fondamentali: risultati chiave</div>
+                    <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Carico, rip totali e confronto con la settimana prima.</div>
+                  </div>
+                  <div style={{ fontSize: 11, fontWeight: 800, color: dc, flexShrink: 0 }}>Apri</div>
+                </div>
+              </summary>
               <div style={{ display: "grid", gap: 0 }}>
                 {keyLiftProgress.map(function(item, ii) {
                   var trendColor = item.trend === "up" ? T.ok : item.trend === "down" ? "#C62828" : T.tx;
@@ -9804,14 +9840,19 @@ function isNearBodyweightElasticSession(exName, sets) {
                   </div>;
                 })}
               </div>
-            </div>}
+            </details>}
 
             {/* Progressi per esercizio */}
-            <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-              <div style={{ padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
-                <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Andamento esercizi</div>
-                <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Tocca un esercizio per vedere il confronto e cosa provare nella prossima seduta.</div>
-              </div>
+            <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 4 }}>
+              <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Andamento esercizi</div>
+                    <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Confronto esercizio per esercizio e prossima azione.</div>
+                  </div>
+                  <div style={{ fontSize: 11, fontWeight: 800, color: dc, flexShrink: 0 }}>Apri</div>
+                </div>
+              </summary>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 {exActionItems.map(function(ex, ei) {
                   var trendColor = ex.trend === "up" ? T.ok : ex.trend === "down" ? "#C62828" : T.sub;
@@ -9846,9 +9887,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                   </div>;
                 })}
               </div>
-            </div>
+            </details>
 
-            {rirProgress.length > 0 && <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
+            {rirProgress.length > 0 && <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 5 }}>
               <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
@@ -9885,6 +9926,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                 })}
               </div>
             </details>}
+            </div>
           </>}
         </div>;
       })()}
@@ -10503,34 +10545,44 @@ function isNearBodyweightElasticSession(exName, sets) {
               <div style={{ borderRadius: 12, border: "1px solid " + dc + "22", background: dc + "08", padding: 12 }}>
                 <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Formato giornata</div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(" + ((splitPlanForDay && supersetPlanForDay) ? 3 : 2) + ", minmax(0,1fr))", gap: 8 }}>
-                  {[{ key: "single", label: "Sessione unica", hint: "Tutto nello stesso allenamento.", enabled: true }, { key: "split", label: "Split in due", hint: "AM per i fondamentali, PM per superset e core.", enabled: !!splitPlanForDay }, { key: "superset", label: "Superset", hint: "I fondamentali restano singoli, i blocchi compatibili vanno in superset.", enabled: !!supersetPlanForDay }].filter(function(option) { return option.enabled; }).map(function(option) {
+                  {[{ key: "single", label: "Sessione unica", hint: "Tutto nello stesso allenamento.", enabled: true }, { key: "split", label: "Split in due", hint: "AM per i fondamentali, PM per accessori/superset e core.", enabled: !!splitPlanForDay }, { key: "superset", label: "Superset", hint: "I fondamentali restano singoli, i blocchi compatibili vanno in superset.", enabled: !!supersetPlanForDay }].filter(function(option) { return option.enabled; }).map(function(option) {
                     var active = option.key === currentDayWorkoutFormat;
-                    return <button
-                      key={option.key}
-                      onClick={function(e) {
-                        e.stopPropagation();
-                        var nextPrefs = Object.assign({}, splitDayPrefs);
-                        nextPrefs[splitPrefKey] = option.key;
-                        saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false, { splitDayPrefs: nextPrefs });
-                      }}
-                      style={{ textAlign: "left", minHeight: 64, padding: "10px 12px", borderRadius: 10, border: "1px solid " + (active ? dc + "55" : T.bg), background: active ? T.cd : T.sb, color: T.tx, cursor: "pointer" }}
-                    >
-                      <div style={{ fontSize: 12, fontWeight: 800, color: active ? dc : T.tx, marginBottom: 4 }}>{option.label}</div>
-                      <div style={{ fontSize: 11, lineHeight: 1.5, color: T.sub }}>{option.hint}</div>
-                    </button>;
+                    var infoActive = workoutFormatInfo === option.key;
+                    return <div key={option.key} style={{ position: "relative" }}>
+                      <button
+                        onClick={function(e) {
+                          e.stopPropagation();
+                          var nextPrefs = Object.assign({}, splitDayPrefs);
+                          nextPrefs[splitPrefKey] = option.key;
+                          setWorkoutFormatInfo("");
+                          saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false, { splitDayPrefs: nextPrefs });
+                        }}
+                        style={{ width: "100%", textAlign: "left", minHeight: 46, padding: "10px 34px 10px 12px", borderRadius: 10, border: "1px solid " + (active ? dc + "55" : T.bg), background: active ? T.cd : T.sb, color: T.tx, cursor: "pointer" }}
+                      >
+                        <div style={{ fontSize: 12, fontWeight: 800, color: active ? dc : T.tx }}>{option.label}</div>
+                      </button>
+                      <button
+                        onClick={function(e) {
+                          e.stopPropagation();
+                          setWorkoutFormatInfo(infoActive ? "" : option.key);
+                        }}
+                        aria-label={"Info " + option.label}
+                        style={{ position: "absolute", right: 8, top: 9, width: 24, height: 24, borderRadius: "50%", border: "1px solid " + dc + "45", background: infoActive ? dc : T.cd, color: infoActive ? "#fff" : dc, fontSize: 11, fontWeight: 900, cursor: "pointer" }}
+                      >?</button>
+                      {infoActive && <div style={{ position: "absolute", zIndex: 5, left: 0, right: 0, top: 52, padding: "9px 10px", borderRadius: 10, background: T.cd, border: "1px solid " + dc + "35", color: T.sub, fontSize: 11, lineHeight: 1.55, boxShadow: "0 12px 28px " + T.sh }} onClick={function(e) { e.stopPropagation(); }}>
+                        {option.hint}
+                        {option.key === "superset" && supersetPlanForDay && <div style={{ marginTop: 7, display: "grid", gap: 3 }}>
+                          {supersetPlanForDay.map(function(pair, pairIndex) {
+                            return <div key={pairIndex}>
+                              <strong style={{ color: T.tx }}>{displayExerciseName(pair.a) + " + " + displayExerciseName(pair.b)}</strong>
+                              <span>{" · rec " + fmtLabel(pair.rest) + (pair.note ? " · " + pair.note : "")}</span>
+                            </div>;
+                          })}
+                        </div>}
+                      </div>}
+                    </div>;
                   })}
                 </div>
-                {supersetPlanForDay && <div style={{ marginTop: 8, fontSize: 11, lineHeight: 1.55, color: T.sub, padding: "9px 10px", borderRadius: 10, background: T.cd, border: "1px solid " + T.bg }}>
-                  <div>I fondamentali restano singoli. I blocchi sotto vanno in superset:</div>
-                  <div style={{ marginTop: 6, display: "grid", gap: 3 }}>
-                    {supersetPlanForDay.map(function(pair, pairIndex) {
-                      return <div key={pairIndex}>
-                        <strong style={{ color: T.tx }}>{displayExerciseName(pair.a) + " + " + displayExerciseName(pair.b)}</strong>
-                        <span>{" · rec " + fmtLabel(pair.rest) + (pair.note ? " · " + pair.note : "")}</span>
-                      </div>;
-                    })}
-                  </div>
-                </div>}
               </div>
             </div>}
             {/* Exercises list */}
