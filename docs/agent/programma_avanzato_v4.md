@@ -389,7 +389,7 @@ Nota UI attuale:
 | 1 | Squat | 5x5-6 | RPE 8-9, ultimo set a cedimento tecnico controllato |
 | 2 | Stacco Rumeno | 5x10-12 | Accessorio femorali, eccentrica controllata, RPE 8-9 |
 | 3 | Leg Curl al Cavo | 4x10-12 | RPE 8-9, eccentrica 2-3 secondi. Alternativa: Nordic Curl assistito |
-| 4 | Ab Wheel dalle ginocchia | 4x8-10 | RPE 8 |
+| 4 | Ab Wheel dalle ginocchia | 5x8-10 | Prime 2 avvicinamento + 3 lavoro. RPE 8 sulle serie lavoro |
 
 **Esercizi rimossi rispetto alla versione precedente**:
 - Hip Thrust Bilanciere (rimosso)
@@ -434,7 +434,7 @@ Protocollo breve facoltativo dopo lo stretching finale:
 | 1 | Trazioni | 5x5-8 | RPE 8-9, presa prona, ultimo set a cedimento tecnico controllato |
 | 2 | Panca | 5x6-8 | RPE 8-9, ultimo set a cedimento tecnico controllato |
 | 3 | Pulley Basso | 5x10-12 | RPE 8-9, tirata con controllo scapolare |
-| 4 | Curl Bicipiti | 4x10-12 | RPE 9 |
+| 4 | Curl Bicipiti | 5x10-12 | Prime 2 avvicinamento + 3 lavoro. RPE 9 sulle serie lavoro |
 
 **Esercizi rimossi rispetto alla versione precedente**:
 - T-bar Row (rimosso dal G2, spostato a G5)
@@ -528,7 +528,7 @@ Il giorno migliore per il protocollo anca intero: nessun compound pesante prima,
 |---|---|---|---|
 | 1 | Stacco da Terra | 5x4-5 | RPE 8-9, ultimo set solo a RIR 0-1 se tecnica stabile |
 | 2 | Affondi | 5x10-12 per gamba | RPE 8-9, manubri o bilanciere |
-| 3 | Hyperextension | 4x12-15 | Accessorio catena posteriore, RPE 8-9 |
+| 3 | Hyperextension | 5x12-15 | Prime 2 avvicinamento + 3 lavoro. Accessorio catena posteriore, RPE 8-9 sulle serie lavoro |
 | 4 | Fire Hydrant | 3x15-20 per gamba | RPE 8, abduzione anca in quadrupedia, gluteo medio |
 
 **Esercizi rimossi rispetto alla versione precedente**:
@@ -682,14 +682,14 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 | Trazioni (G2) | 4 | 5 |
 | Panca (G2) | 4 | 5 |
 | Pulley Basso (G2) | — | 5 (nuovo) |
-| Curl Bicipiti | 3 | 4 |
+| Curl Bicipiti | 3 lavoro | 3 lavoro + 2 avvicinamento |
 | T-bar Row (G5) | 4 | 5 |
 | Military Press | 4 | 5 |
 | Push-Up (G5) | 3 | 4 |
 | Trazioni Supine (G5) | 3 | 4 |
-| Ab Wheel | 3 | 4 |
+| Ab Wheel | 3 lavoro | 3 lavoro + 2 avvicinamento |
 | Affondi (G4) | 3 | 5 |
-| Hyperextension (G4) | 2-3 | 4 |
+| Hyperextension (G4) | 2-3 lavoro | 3 lavoro + 2 avvicinamento |
 | Leg Curl al Cavo (G1) | 3 | 4 |
 
 ### Riscaldamento: struttura attuale

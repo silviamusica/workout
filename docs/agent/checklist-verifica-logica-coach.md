@@ -115,7 +115,27 @@ Deve contenere i fondamentali e compound pesanti attivi:
 - Verifica: non deve contenere Dip alle Parallele, Hip Thrust Bilanciere
 - Verifica: non deve contenere esercizi esclusivi del G3 Leggero (Alzate Laterali, Clamshell, Goblet Squat, TRX Row lento)
 
-### 14. Giorno leggero G3 (tipo `light: true`)
+### 14. Serie di avvicinamento escluse dalle progressioni
+Questi esercizi hanno 5 serie totali ma solo 3 serie lavoro:
+- `Ab Wheel`: 5x8-10, prime 2 avvicinamento
+- `Curl Bicipiti`: 5x10-12, prime 2 avvicinamento
+- `Hyperextension`: 5x12-15, prime 2 avvicinamento
+
+Verifiche:
+- Nel `DAYS_V4` devono avere `approachSets: 2`
+- In scheda devono mostrare il badge `2 avvicinamento + 3 lavoro`
+- In registrazione serie 1-2 devono essere etichettate `Avvicinamento`, serie 3-5 `Lavoro`
+- In `Progressi`, `getProgressAdvice`, `getStableLoadStallInfo` e analisi guidata devono usare solo le 3 serie lavoro
+- L'archivio deve continuare a mostrare tutte le serie salvate
+
+### 15. Cardio nei Progressi
+Il cardio del giovedì deve poter essere registrato anche senza compilare manualmente i campi:
+- Bottone `Segna fatto`
+- Salvataggio in `cardioLogs` con `completed: true`
+- Default minuti dalla durata del formato; rucking con default 15 kg se non compilato
+- Tab Progressi con sezione `Cardio registrato`, confronto con la seduta precedente e conteggio sedute
+
+### 16. Giorno leggero G3 (tipo `light: true`)
 Il giorno leggero ha regole proprie — verificare che il codice rispetti queste 6 regole:
 1. `light: true` nell'oggetto Giorno 3 in `DAYS_V4`
 2. `activeDays` filtra `!d.light` — G3 NON è nei giorni pesi

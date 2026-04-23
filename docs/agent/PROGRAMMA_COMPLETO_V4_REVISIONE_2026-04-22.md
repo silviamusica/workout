@@ -7,11 +7,11 @@
 
 | Giorno | Sigla | Tipo | Esercizi | Durata |
 |---|---|---|---|---|
-| **Lunedì** | G1 | Pesi — Lower A | Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel | ~75 min |
-| **Martedì** | G2 | Pesi — Upper A | Trazioni, Panca, Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti | ~70 min |
+| **Lunedì** | G1 | Pesi — Lower A | Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel | ~85 min |
+| **Martedì** | G2 | Pesi — Upper A | Trazioni, Panca, Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti | ~90 min |
 | **Mercoledì** | G3 | Leggero | Alzate Laterali, Band Pull-Apart, Fire Hydrant/Clamshell, Goblet Squat, TRX Row + Protocollo anca | ~35 min |
 | **Giovedì** | Cardio | Cardio programmato | Corsa 30 / HIIT upper+core / Corsa lunga / Rucking + Mobilità | 30-60 min |
-| **Venerdì** | G4 | Pesi — Lower B | Stacco da Terra, Affondi, Hyperextension, Fire Hydrant | ~85 min |
+| **Venerdì** | G4 | Pesi — Lower B | Stacco da Terra, Affondi, Hyperextension, Fire Hydrant | ~90 min |
 | **Sabato** | G5 | Pesi — Upper B | T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop, Alzate Laterali | ~80 min |
 | **Domenica** | Riposo | Recupero | — | — |
 
@@ -40,7 +40,7 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 
 ## 📍 GIORNO 1 — LOWER A (Lunedì)
 
-**Durata totale: ~75 minuti**
+**Durata totale: ~85 minuti**
 **Struttura:** Split AM/PM con superset nel blocco PM
 
 ### RISCALDAMENTO (12-15 min)
@@ -69,7 +69,7 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 | # | Esercizio | Serie | Range Rip | RPE | Recupero Tra | Superset Con | Note |
 |---|---|---|---|---|---|---|---|
 | **3** | **Leg Curl al Cavo** | 4 | 10-12 | 8-9 | 0s | → Ab Wheel | Eccentrica 2-3s. Esecuzione immediata, no pausa |
-| **—** | **Ab Wheel dalle ginocchia** | 4 | 8-10 | 8 | 60s | ← Leg Curl | Ritorno controllato. Se affaticato, appoggiati |
+| **—** | **Ab Wheel dalle ginocchia** | 5 | 8-10 | 8 | 60s | ← Leg Curl | Prime 2 avvicinamento + 3 lavoro. Ritorno controllato. Se affaticato, appoggiati |
 | | | | | | **Recupero tra superset** | **60 secondi** | |
 
 **Spiegazione superset:**
@@ -103,7 +103,7 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 
 ## 📍 GIORNO 2 — UPPER A (Martedì)
 
-**Durata totale: ~70 minuti**
+**Durata totale: ~90 minuti**
 **Struttura:** Split AM/PM con superset nel blocco PM
 
 ### RISCALDAMENTO (12-15 min)
@@ -135,7 +135,7 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 | **3** | **Pulley Basso** | 5 | 10-12 | 8-9 | 0s | — | Tirata verticale bassa, controllo scapolare. Non la parte del superset qui sotto |
 | | | | | | **Recupero tra Pulley e Band** | **90s** | Pulley è esercizio isolato prioritario |
 | **4** | **Band Pull-Apart con rotazione esterna** | 3 | 15 | 8 | 0s | → Curl Bicipiti | Pausa 1s con mani ruotate fuori. Elastico medio |
-| **—** | **Curl Bicipiti (manubri)** | 3 | 10-12 | 9 | 60s | ← Band Pull-Apart | Eccentrica controllata 2-3s |
+| **—** | **Curl Bicipiti (manubri)** | 5 | 10-12 | 9 | 60s | ← Band Pull-Apart | Prime 2 avvicinamento + 3 lavoro. Eccentrica controllata 2-3s |
 | | | | | | **Recupero tra superset** | **60 secondi** | |
 
 **Spiegazione superset:**
@@ -204,7 +204,7 @@ Questo protocollo è il cuore del G3 — il giorno migliore perché nessun compo
 
 ## 📍 GIORNO 4 — LOWER B (Giovedì)
 
-**Durata totale: ~70 minuti**
+**Durata totale: ~90 minuti**
 **Struttura:** Split AM/PM con superset nel blocco PM
 
 ### RISCALDAMENTO (12-15 min)
@@ -233,7 +233,7 @@ Questo protocollo è il cuore del G3 — il giorno migliore perché nessun compo
 
 | # | Esercizio | Serie | Range Rip | RPE | Recupero Tra | Superset Con | Note |
 |---|---|---|---|---|---|---|---|
-| **3** | **Hyperextension** | 4 | 12-15 | 8-9 | 0s | → Fire Hydrant | Accessorio catena posteriore. Esecuzione immediata |
+| **3** | **Hyperextension** | 5 | 12-15 | 8-9 | 0s | → Fire Hydrant | Prime 2 avvicinamento + 3 lavoro. Accessorio catena posteriore. Esecuzione immediata |
 | **—** | **Fire Hydrant** | 3 | 15-20/lato | 8 | 60s | ← Hyperextension | Abduzione anca in quadrupedia, gluteo medio, bacino fermo |
 | | | | | | **Recupero tra superset** | **60 secondi** | |
 
@@ -258,7 +258,7 @@ Questo protocollo è il cuore del G3 — il giorno migliore perché nessun compo
 
 ## 📍 GIORNO 5 — UPPER B (Sabato)
 
-**Durata totale: ~80 minuti**
+**Durata totale: ~90 minuti**
 **Struttura:** Split AM/PM con superset nel blocco PM
 
 ### RISCALDAMENTO (12-15 min)
@@ -378,9 +378,9 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 
 | Giorno | Superset | Esercizio 1 | Esercizio 2 | Recupero tra superset | Nota |
 |---|---|---|---|---|---|
-| **G1** | Superset 1 | Leg Curl al Cavo (10-12) | Ab Wheel (8-10) | **60s** | Sequenza: Leg Curl → Ab Wheel → 60s → ripeti |
-| **G2** | Superset 2 | Band Pull-Apart (20) | Curl Bicipiti (10-12) | **60s** | Sequenza: Band → Curl → 60s → ripeti. Pulley è esercizio separato |
-| **G4** | Superset 3 | Hyperextension (12-15) | Fire Hydrant (15-20/lato) | **60s** | Sequenza: Hyper → Fire Hydrant → 60s → ripeti |
+| **G1** | Superset 1 | Leg Curl al Cavo (10-12) | Ab Wheel (5 serie: 2 avv. + 3 lavoro) | **60s** | Sequenza: Leg Curl → Ab Wheel → 60s → ripeti |
+| **G2** | Superset 2 | Band Pull-Apart (20) | Curl Bicipiti (5 serie: 2 avv. + 3 lavoro) | **60s** | Sequenza: Band → Curl → 60s → ripeti. Pulley è esercizio separato |
+| **G4** | Superset 3 | Hyperextension (5 serie: 2 avv. + 3 lavoro) | Fire Hydrant (15-20/lato) | **60s** | Sequenza: Hyper → Fire Hydrant → 60s → ripeti |
 | **G5** | Superset 4 | Push-Up (8-15) | Woodchop (10-12/lato) | **45s** | Sequenza: Push-Up → Woodchop → 45s → ripeti. Trazioni Supine e Alzate Laterali restano separate |
 
 ---
@@ -422,9 +422,9 @@ Leggere il programma sopra e rispondere a questi punti:
 
 ## 3. Ripetizioni — Sono quelle giuste? ✓ / ✗
 
-- ❓ **G1:** Squat 5×5-6, Stacco Rumeno 5×10-12, Leg Curl 4×10-12, Ab Wheel 4×8-10 — Corretto?
-- ❓ **G2:** Trazioni 5×5-8, Panca 5×6-8, Pulley 5×10-12, Band 2×20, Curl 4×10-12 — Corretto?
-- ❓ **G4:** Stacco 5×4-5, Affondi 5×10-12/gamba, Hyper 4×12-15, Fire Hydrant 3×15-20/lato — Corretto?
+- ❓ **G1:** Squat 5×5-6, Stacco Rumeno 5×10-12, Leg Curl 4×10-12, Ab Wheel 5×8-10 (prime 2 avvicinamento) — Corretto?
+- ❓ **G2:** Trazioni 5×5-8, Panca 5×6-8, Pulley 5×10-12, Band 2×20, Curl 5×10-12 (prime 2 avvicinamento) — Corretto?
+- ❓ **G4:** Stacco 5×4-5, Affondi 5×10-12/gamba, Hyper 5×12-15 (prime 2 avvicinamento), Fire Hydrant 3×15-20/lato — Corretto?
 - ❓ **G5:** T-bar 5×8-10, Military 5×5-6, Push-Up 4×8-15, Trazioni Supine 4×5-8, Woodchop 3×10-12/lato — Corretto?
 
 ## 4. Tempi di recupero — Sono realistici? ✓ / ✗

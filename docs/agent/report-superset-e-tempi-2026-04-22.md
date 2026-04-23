@@ -51,18 +51,18 @@ Allineare app e documenti alla revisione finale V4, rinominando i blocchi rapidi
 
 ## Verifica tempi
 
-Tempi coerenti dopo il controllo:
+Tempi coerenti dopo il controllo, aggiornati il 2026-04-23 dopo l'inserimento delle serie di avvicinamento su Ab Wheel, Curl Bicipiti e Hyperextension:
 
-- G1: `~80 min`
-  - coerente con 3 blocchi singoli pesanti + 1 superset finale
-- G2: `~85 min`
-  - coerente con 3 esercizi principali + 1 superset finale
+- G1: `~85 min`
+  - coerente con 3 blocchi singoli pesanti + 1 superset finale, Ab Wheel a 5 serie totali
+- G2: `~90 min`
+  - coerente con 3 esercizi principali + 1 superset finale, Curl Bicipiti a 5 serie totali
 - G3: `~35 min`
   - coerente con lavoro leggero + protocollo anca separato
 - Cardio: `30-75 min` + mobilità `~10 min`
   - impostato `tEst ~45 min` come valore medio visibile in app
-- G4: `~85 min`
-  - coerente con stacco, affondi e superset finale
+- G4: `~90 min`
+  - coerente con stacco, affondi e superset finale, Hyperextension a 5 serie totali
 - G5: `~80 min`
   - coerente con 2 fondamentali, 1 trazione separata, 1 superset e chiusura alzate
 

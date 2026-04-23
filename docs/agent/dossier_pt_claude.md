@@ -258,6 +258,13 @@ Superset attivi per modalità rapida (solo giorni pesi):
 
 Nota: il G3 Leggero NON ha superset. Non è nella logica AM/PM split. Non alimenta i Progressi fondamentali.
 
+Serie di avvicinamento integrate nella scheda:
+- Ab Wheel: `5x8-10`, prime 2 serie avvicinamento + 3 serie lavoro
+- Curl Bicipiti: `5x10-12`, prime 2 serie avvicinamento + 3 serie lavoro
+- Hyperextension: `5x12-15`, prime 2 serie avvicinamento + 3 serie lavoro
+
+Nota controllo progressioni: le prime 2 serie vanno registrate e mostrate nello storico, ma non devono essere usate per decidere aumento carico/ripetizioni o stallo. I confronti della tab Progressi devono leggere solo le 3 serie lavoro.
+
 ### Cardio programmato
 
 Il cardio del giovedì usa una rotazione suggerita su 4 formati, tutti sempre selezionabili:
@@ -268,6 +275,8 @@ Il cardio del giovedì usa una rotazione suggerita su 4 formati, tutti sempre se
 | B | HIIT upper + core | 30 min | 30s/15s, niente sprint/salti/affondi |
 | C | Corsa zona 2 lunga | 50-60 min | spostare a domenica se penalizza lo stacco |
 | D | Rucking | 45-60 min | zaino 15-20 kg |
+
+Nota tracking cardio: l'app deve avere il flag `Segna fatto` per registrare rapidamente la seduta in `cardioLogs` e farla comparire nella tab Progressi. Se non vengono compilati minuti/kg, usare durata del formato come default e 15 kg per il rucking.
 
 ### Alternativa Clamshell
 

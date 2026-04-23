@@ -1548,7 +1548,7 @@ var DAYS = [
 
 /* === IPERTROFIA V4 — Upper/Lower 4+2 Cardio (da CSV programma) === */
 var DAYS_V4 = [
-  { name: "Giorno 1", focus: "Lower A — Squat + Femorali", dayLabel: "Lun", dur: "5 esercizi", tEst: 80,
+  { name: "Giorno 1", focus: "Lower A — Squat + Femorali", dayLabel: "Lun", dur: "5 esercizi", tEst: 85,
     intro: {
       attrezzi: ["Bilanciere + rack + bumper", "Pad o asciugamano per Glute Bridge", "Cavo basso + cavigliera", "Ab wheel"],
       muscoli: ["Quadricipiti (Squat)", "Femorali/Glutei (Stacco Rumeno)", "Glutei in accorciamento (Glute Bridge)", "Femorali (Leg curl al cavo)", "Core (Ab wheel)"],
@@ -1571,10 +1571,10 @@ var DAYS_V4 = [
       { n: "Stacco Rumeno", s: "5x10-12", rpe: "8-9", note: "Accessorio femorali. Setup: piedi larghezza anche, ginocchia appena sbloccate, mani poco fuori cosce. Anca indietro e bilanciere vicino alle gambe. Alternativa: manubri o cable pull-through.", rec: "90s-2 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata; ginocchia troppo flesse; carico lontano dal corpo; anca che scende invece di andare indietro" },
       { n: "Glute Bridge Bilanciere", s: "4x10-12", rpe: "8-9", note: "Schiena a terra, bilanciere sulle anche (pad o asciugamano). Spingi il bacino in alto fino a estensione completa. Stringi i glutei 1s in alto. Tibia quasi verticale in cima.", rec: "90s", gear: "Bilanciere + bumper (+ pad o asciugamano)", errori: "Iperestendere la lombare in alto; piedi troppo lontani (femorali rubano lavoro ai glutei); non completare l'estensione in alto" },
       { n: "Leg Curl al Cavo", s: "4x10-12", rpe: "8-9", note: "Setup: cavigliera alla caviglia, cavo basso. Prona a terra o in piedi. Fletti il ginocchio portando il tallone verso il gluteo. Eccentrica 2-3 secondi. Alternativa piu avanzata: Nordic Curl assistito con elastico.", rec: "90s-2 min", gear: "Cavo basso + cavigliera", errori: "Slancio col bacino; eccentrica troppo veloce; lombare che si inarca" },
-      { n: "Ab Wheel", s: "4x8-10", rpe: "8", note: "Dalle ginocchia. Costole giu e glutei attivi. Alternativa: TRX fallout o fitball rollout.", rec: "90s", gear: "Ab wheel", errori: "Lombare che si inarca; anche che non si estendono; range troppo corto" },
+      { n: "Ab Wheel", s: "5x8-10", approachSets: 2, rpe: "8", note: "5 serie totali: le prime 2 sono di avvicinamento, poi 3 serie di lavoro. Dalle ginocchia. Costole giu e glutei attivi. Alternativa: TRX fallout o fitball rollout.", rec: "90s", gear: "Ab wheel", errori: "Lombare che si inarca; anche che non si estendono; range troppo corto" },
     ], str: ["Quadricipiti","Flessori anca","Glutei"] },
 
-  { name: "Giorno 2", focus: "Upper A — Trazioni + Panca + Pulley", dayLabel: "Mar", dur: "5 esercizi", tEst: 85,
+  { name: "Giorno 2", focus: "Upper A — Trazioni + Panca + Pulley", dayLabel: "Mar", dur: "5 esercizi", tEst: 90,
     intro: {
       attrezzi: ["Barra trazioni", "Elastico assistenza", "Bilanciere + panca + rack", "Cavo basso + maniglie", "Elastico media resistenza", "Manubri"],
       muscoli: ["Dorsali/Bicipiti (Trazioni)", "Pettorali/Tricipiti (Panca)", "Dorsali/Scapole (Pulley)", "Deltoidi posteriori/Cuffia rotatori (Band Pull-Apart)", "Bicipiti (Curl)"],
@@ -1595,7 +1595,7 @@ var DAYS_V4 = [
       { n: "Panca", s: "5x6-8", rpe: "8-9", note: "Scapole addotte e basse. Arco lombare naturale. Gomiti a 45-75 gradi. Barra tocca linea capezzoli. Polsi dritti. Ultimo set a cedimento tecnico controllato.", rec: "2 min", gear: "Bilanciere + panca + rack", errori: "Rimbalzo sul petto; gomiti a 90 gradi; sedere che si alza; polsi piegati" },
       { n: "Pulley", s: "5x10-12", rpe: "8-9", note: "Carrucola bassa. Tira verso lo sterno portando i gomiti indietro e le scapole insieme. Eccentrica 2-3 secondi.", rec: "90s-2 min", gear: "Cavo basso + maniglie", errori: "Schiena che si inarca; slancio col busto; tirare con i bicipiti invece dei dorsali" },
       { n: "Band Pull-Apart con rotazione esterna", s: "3x15", rpe: "8", note: "Braccia tese davanti, apri fino al petto e ruota le mani verso fuori alla fine. Pausa 1s a fine ripetizione. Non e il band pull-apart leggero del riscaldamento: usa un elastico piu resistente.", rec: "60s", gear: "Elastico resistenza media", errori: "Piegare i gomiti per arrivare piu indietro; non completare la rotazione esterna; usare slancio" },
-      { n: "Curl Bicipiti", s: "3x10-12", rpe: "9", note: "Con manubri. Gomiti fissi ai fianchi. Supinazione. Eccentrica 2-3s.", rec: "90s", gear: "Manubri", errori: "Slancio col busto; gomiti che avanzano; fase eccentrica troppo veloce" },
+      { n: "Curl Bicipiti", s: "5x10-12", approachSets: 2, rpe: "9", note: "5 serie totali: le prime 2 sono di avvicinamento, poi 3 serie di lavoro. Con manubri. Gomiti fissi ai fianchi. Supinazione. Eccentrica 2-3s.", rec: "90s", gear: "Manubri", errori: "Slancio col busto; gomiti che avanzano; fase eccentrica troppo veloce" },
     ], str: ["Doorway Pec Stretch","Overhead Lat Stretch","Cross-Body Shoulder Stretch","Wrist Flexor/Extensor Stretch"], hipBonus: true },
 
   { name: "Giorno 3", focus: "Leggero", dayLabel: "Mer", light: true, tEst: 35,
@@ -1652,7 +1652,7 @@ var DAYS_V4 = [
     ]
   },
 
-  { name: "Giorno 4", focus: "Lower B — Stacco + Catena Posteriore", dayLabel: "Ven", dur: "4 esercizi", tEst: 85,
+  { name: "Giorno 4", focus: "Lower B — Stacco + Catena Posteriore", dayLabel: "Ven", dur: "4 esercizi", tEst: 90,
     intro: {
       attrezzi: ["Bilanciere + bumper", "Manubri", "Panca", "Panca romana + sacco sabbia", "Fitball", "Elastico"],
       muscoli: ["Catena posteriore (Stacco, Hyperextension)", "Quadricipiti/Glutei (Affondi)", "Gluteo medio (Fire Hydrant)"],
@@ -1673,7 +1673,7 @@ var DAYS_V4 = [
     ex: [
       { n: "Stacco da Terra", s: "5x4-5", rpe: "8-9", note: "Setup: piedi larghezza anche, barra su meta piede, mani appena fuori gambe, braccia tese. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata (cifosi); barra lontana dal corpo; anche che salgono prima delle spalle; collo iperesteso" },
       { n: "Affondi", s: "5x10-12 per gamba", rpe: "8-9", note: "Setup: piedi su due binari, passo abbastanza lungo, busto stabile. Alternativa: TRX reverse lunge.", rec: "90s-2 min", gear: "Manubri", errori: "Passo troppo corto; ginocchio post che non scende; busto che oscilla" },
-      { n: "Hyperextension", s: "4x12-15", rpe: "8-9", note: "Usala come accessorio, non come altro stacco. Glutei e femorali, non lombare. Alternativa: cable pull-through.", rec: "90s", gear: "Panca romana", errori: "Iperestensione lombare in alto; velocita eccessiva; collo iperesteso" },
+      { n: "Hyperextension", s: "5x12-15", approachSets: 2, rpe: "8-9", note: "5 serie totali: le prime 2 sono di avvicinamento, poi 3 serie di lavoro. Usala come accessorio, non come altro stacco. Glutei e femorali, non lombare. Alternativa: cable pull-through.", rec: "90s", gear: "Panca romana", errori: "Iperestensione lombare in alto; velocita eccessiva; collo iperesteso" },
       { n: "Fire Hydrant", s: "3x15-20", rpe: "8", note: "Per gamba. Quattro zampe, bacino completamente fermo. Pausa 1s in alto. Alternativa: con elastico sopra le ginocchia per piu resistenza.", rec: "60s", gear: "Corpo libero (o elastico)", errori: "Bacino che ruota o si inclina; ginocchio che perde i 90 gradi; movimento troppo veloce senza pausa" },
     ], str: ["Supine Assisted Leg Pull","Figure-Four Supino","Cat-Cow Lento","Half Kneeling Lunge"], hipBonus: true },
 
@@ -7054,11 +7054,13 @@ function isNearBodyweightElasticSession(exName, sets) {
   function getGuidedLastCompleteSession(exName, serie) {
     var spec = parseProgressSpec(serie);
     if (!spec || !spec.sets) return null;
+    var approachSets = getExerciseApproachSetsByName(exName);
+    var workSpec = getWorkSetSpec(spec, approachSets);
     var sessions = getAllHist(exName);
     for (var i = 0; i < sessions.length; i++) {
-      var normalized = normalizeSessionSets(sessions[i], spec.sets);
-      if (normalized.length === spec.sets) {
-        return { entry: sessions[i], sets: normalized, spec: spec };
+      var normalized = normalizeWorkSessionSets(sessions[i], spec, approachSets);
+      if (normalized.length === workSpec.sets) {
+        return { entry: sessions[i], sets: normalized, spec: workSpec };
       }
     }
     return null;
@@ -7067,10 +7069,12 @@ function isNearBodyweightElasticSession(exName, sets) {
   function getGuidedCompleteSessions(exName, serie, limit) {
     var spec = parseProgressSpec(serie);
     if (!spec || !spec.sets) return [];
+    var approachSets = getExerciseApproachSetsByName(exName);
+    var workSpec = getWorkSetSpec(spec, approachSets);
     return getAllHist(exName).map(function(entry) {
-      return { entry: entry, sets: normalizeSessionSets(entry, spec.sets), spec: spec };
+      return { entry: entry, sets: normalizeWorkSessionSets(entry, spec, approachSets), spec: workSpec };
     }).filter(function(item) {
-      return item.sets.length === spec.sets;
+      return item.sets.length === workSpec.sets;
     }).slice(0, limit || 3);
   }
 
@@ -7095,7 +7099,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     return getGuidedStableSessions(exName, serie, 6).length >= 2 ? "progression" : "exploration";
   }
 
-  function getExerciseSeriesSpecByName(exName) {
+  function getExercisePlanByName(exName) {
     var collections = [DAYS_V4];
     for (var ci = 0; ci < collections.length; ci++) {
       var days = collections[ci] || [];
@@ -7103,11 +7107,93 @@ function isNearBodyweightElasticSession(exName, sets) {
         var list = days[di] && days[di].ex ? days[di].ex : [];
         for (var ei = 0; ei < list.length; ei++) {
           var ex = getExForMonthValue(list[ei], month);
-          if (ex && ex.n === exName && ex.s) return ex.s;
+          if (ex && ex.n === exName) return ex;
         }
       }
     }
-    return "";
+    return null;
+  }
+
+  function getExerciseSeriesSpecByName(exName) {
+    var ex = getExercisePlanByName(exName);
+    return ex && ex.s ? ex.s : "";
+  }
+
+  function getExerciseApproachSetsByName(exName) {
+    var ex = getExercisePlanByName(exName);
+    return Math.max(0, parseInt(ex && ex.approachSets) || 0);
+  }
+
+  function getWorkSetTargetCount(spec, approachSets) {
+    return Math.max(0, (spec && spec.sets ? spec.sets : 0) - (parseInt(approachSets) || 0));
+  }
+
+  function normalizeWorkSessionSets(entry, spec, approachSets) {
+    var normalized = normalizeSessionSets(entry, spec && spec.sets, approachSets || 0);
+    var expected = getWorkSetTargetCount(spec, approachSets);
+    return normalized.length === expected ? normalized : [];
+  }
+
+  function getWorkSetSpec(spec, approachSets) {
+    if (!spec) return null;
+    return Object.assign({}, spec, { sets: getWorkSetTargetCount(spec, approachSets) });
+  }
+
+  function getApproachSetsLabel(count, totalSets) {
+    if (!count) return "";
+    var workSets = Math.max(0, (parseInt(totalSets) || 0) - count);
+    return count + " avvicinamento + " + workSets + " lavoro";
+  }
+
+  function defaultCardioMinutesFromOption(opt) {
+    var match = String((opt && opt.duration) || "").match(/(\d+)/);
+    return match ? parseInt(match[1], 10) : 30;
+  }
+
+  function defaultCardioKgFromOption(opt) {
+    return cardioOptionKind(opt) === "ruck" ? 15 : 0;
+  }
+
+  function getAllCardioEntriesForMonth() {
+    return Object.values(cardioLogs)
+      .filter(function(entry) { return entry && entry.month === month; })
+      .sort(function(a, b) { return b.date.localeCompare(a.date); });
+  }
+
+  function getCardioKindLabel(kind) {
+    return CARDIO_KIND_LABEL[kind] || "Cardio";
+  }
+
+  function getCardioProgressItems() {
+    var grouped = {};
+    getAllCardioEntriesForMonth().forEach(function(entry) {
+      var key = entry.label || getCardioKindLabel(entry.kind);
+      if (!grouped[key]) grouped[key] = [];
+      grouped[key].push(entry);
+    });
+    return Object.keys(grouped).map(function(label) {
+      var hist = grouped[label].sort(function(a, b) { return b.date.localeCompare(a.date); });
+      var latest = hist[0];
+      var prev = hist[1] || null;
+      var latestScore = cardioScore(latest);
+      var prevScore = cardioScore(prev);
+      var tone = !prev ? "empty" : latestScore > prevScore ? "up" : latestScore < prevScore ? "hold" : "mid";
+      return { label: label, latest: latest, prev: prev, tone: tone, count: hist.length };
+    }).sort(function(a, b) { return b.count - a.count; });
+  }
+
+  function formatCardioProgressDetail(item) {
+    if (!item || !item.latest) return "";
+    var latest = formatCardioSummary(item.latest) || "fatto";
+    if (!item.prev) return "Ultima: " + latest + ". Primo dato registrato.";
+    return "Ultima: " + latest + ". Prima: " + (formatCardioSummary(item.prev) || "fatto") + ".";
+  }
+
+  function getCardioToneColor(tone) {
+    if (tone === "up") return T.ok;
+    if (tone === "hold") return "#C62828";
+    if (tone === "mid") return dc;
+    return T.sub;
   }
 
   function getRecoveryFillerSuggestion(exName, restSec) {
@@ -7772,13 +7858,17 @@ function isNearBodyweightElasticSession(exName, sets) {
     }
     return { tone: "mid", label: "🟡 Stabile", short: latestSummary, detail: "Ultima: " + latestSummary + ". Molto simile alla precedente." };
   }
-  function saveCardioSession(di, opt) {
+  function saveCardioSession(di, opt, quickDone) {
     var kind = cardioOptionKind(opt);
     var draftKey = di + "_" + opt.label;
     var draft = cardioDrafts[draftKey] || {};
     var minutes = parseFloat(draft.minutes);
     var km = parseFloat(draft.km);
     var kg = parseFloat(draft.kg);
+    if (quickDone) {
+      if (!(minutes > 0)) minutes = defaultCardioMinutesFromOption(opt);
+      if (kind === "ruck" && !(kg > 0)) kg = defaultCardioKgFromOption(opt);
+    }
     if (!(minutes > 0)) return;
     if (kind === "ruck" && !(kg > 0)) return;
     var key = getCardioKey(di, opt.label);
@@ -7792,6 +7882,8 @@ function isNearBodyweightElasticSession(exName, sets) {
       minutes: minutes,
       km: km > 0 ? km : 0,
       kg: kg > 0 ? kg : 0,
+      completed: true,
+      quickDone: !!quickDone,
     };
     saveData(logs, next, calibrationProfiles, calibrationMode);
   }
@@ -7819,7 +7911,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     if (repM) return { kind: "range", sets: sets, min: parseInt(repM[1]) || 0, max: parseInt(repM[2] || repM[1]) || 0 };
     return null;
   }
-  function normalizeSessionSets(entry, expectedSets) {
+  function normalizeSessionSets(entry, expectedSets, skipSets) {
     if (!entry || !entry.sets || !entry.sets.length) return [];
     var sorted = entry.sets.slice().sort(function(a, b) { return (a.si || 0) - (b.si || 0); });
     if (expectedSets && sorted.length < expectedSets) return [];
@@ -7829,6 +7921,7 @@ function isNearBodyweightElasticSession(exName, sets) {
       }
       sorted = sorted.slice(0, expectedSets);
     }
+    if (skipSets) sorted = sorted.filter(function(s) { return (s.si || 0) >= skipSets; });
     return sorted;
   }
   function formatSessionSummary(exName, sets, isBW, isTime) {
@@ -7868,18 +7961,20 @@ function isNearBodyweightElasticSession(exName, sets) {
   function getProgressAdvice(exName, serie) {
     var spec = parseProgressSpec(serie);
     if (!spec) return null;
+    var approachSets = getExerciseApproachSetsByName(exName);
+    var workSpec = getWorkSetSpec(spec, approachSets);
     var sessions = getAllHist(exName);
     if (!sessions.length) return { tone: "empty", label: "⚪ Nessun dato", detail: "Registra una sessione completa per ricevere un consiglio.", short: "Nessun dato" };
     var complete = sessions.map(function(entry) {
-      return { entry: entry, sets: normalizeSessionSets(entry, spec.sets) };
-    }).filter(function(item) { return item.sets.length === spec.sets; });
+      return { entry: entry, sets: normalizeWorkSessionSets(entry, spec, approachSets) };
+    }).filter(function(item) { return item.sets.length === workSpec.sets; });
     if (!complete.length) return { tone: "empty", label: "⚪ Sessione incompleta", detail: "Mancano una o piu serie registrate rispetto al target.", short: "Sessione incompleta" };
     var latest = complete[0];
     var previous = complete[1] || null;
-    var isMax = spec.kind === "max" || MAX_PROGRESS_EX.indexOf(exName) >= 0;
+    var isMax = workSpec.kind === "max" || MAX_PROGRESS_EX.indexOf(exName) >= 0;
     var isCore = CORE_PROGRESS_EX.indexOf(exName) >= 0;
     var isAccessory = ACCESSORY_PROGRESS_EX.indexOf(exName) >= 0;
-    var isTime = spec.kind === "time";
+    var isTime = workSpec.kind === "time";
     if (isMax) {
       var latestTotal = latest.sets.reduce(function(acc, s) { return acc + (s.r === "max" ? 0 : (parseInt(s.r) || 0)); }, 0);
       if (!previous) return { tone: "empty", label: "⚪ Serve un'altra sessione", detail: "Ultima: " + formatSessionSummary(exName, latest.sets, true, false) + ". Serve un confronto per stimare la progressione.", short: "Serve un'altra sessione" };
@@ -7907,8 +8002,8 @@ function isNearBodyweightElasticSession(exName, sets) {
       var mixed = weights.some(function(w) { return w !== firstW; });
       if (mixed) return { tone: "empty", label: "⚪ Controlla tu", detail: "Ultima sessione non uniforme: " + formatSessionSummary(exName, latest.sets, false, isTime) + ".", short: "Carichi diversi nella stessa seduta", mixedSession: true };
     }
-    var allAtTop = reps.every(function(r) { return r >= spec.max; });
-    var allInRange = reps.every(function(r) { return r >= spec.min; });
+    var allAtTop = reps.every(function(r) { return r >= workSpec.max; });
+    var allInRange = reps.every(function(r) { return r >= workSpec.min; });
     var latestSummary = formatSessionSummary(exName, latest.sets, weights.length === 0, isTime);
     if (isCore) {
       if (allAtTop) {
@@ -7931,12 +8026,14 @@ function isNearBodyweightElasticSession(exName, sets) {
   function getStableLoadStallInfo(exName, serie) {
     var spec = parseProgressSpec(serie);
     if (!spec || spec.kind === "max" || spec.kind === "time") return null;
+    var approachSets = getExerciseApproachSetsByName(exName);
+    var workSpec = getWorkSetSpec(spec, approachSets);
     if (CORE_PROGRESS_EX.indexOf(exName) >= 0 || usesElasticScale(exName)) return null;
     var sessions = getAllHist(exName);
     if (!sessions.length) return null;
     var complete = sessions.map(function(entry) {
-      return { entry: entry, sets: normalizeSessionSets(entry, spec.sets) };
-    }).filter(function(item) { return item.sets.length === spec.sets; });
+      return { entry: entry, sets: normalizeWorkSessionSets(entry, spec, approachSets) };
+    }).filter(function(item) { return item.sets.length === workSpec.sets; });
     if (complete.length < 3) return null;
     var latestThree = complete.slice(0, 3);
     var loadValues = latestThree.map(function(item) {
@@ -9268,6 +9365,8 @@ function isNearBodyweightElasticSession(exName, sets) {
           return formatDateItalian(dateStr);
         }
         var allEntries = Object.values(logs).filter(function(entry) { return entry.month === month; });
+        var cardioEntries = getAllCardioEntriesForMonth();
+        var cardioProgressItems = getCardioProgressItems();
         // Per-exercise history (last best per week)
         var exMap = {};
         allEntries.forEach(function(entry) {
@@ -9292,6 +9391,9 @@ function isNearBodyweightElasticSession(exName, sets) {
         var weeks = Object.keys(weekMap).sort(function(a,b) { return b.localeCompare(a); });
         function getSessionProgressMetric(name, entry) {
           var sets = (entry && entry.sets ? entry.sets : []).slice().sort(function(a, b) { return (a.si || 0) - (b.si || 0); });
+          var plannedSpec = parseProgressSpec(getExerciseSeriesSpecByName(name));
+          var approachSets = getExerciseApproachSetsByName(name);
+          if (plannedSpec && approachSets) sets = normalizeWorkSessionSets(entry, plannedSpec, approachSets);
           if (!sets.length) return null;
           var isBW = BW_EX.indexOf(name) >= 0;
           var isBand = usesElasticScale(name);
@@ -9508,14 +9610,14 @@ function isNearBodyweightElasticSession(exName, sets) {
             <div style={{ marginTop: 4 }}><b style={{ color: dc }}>Archivio</b> resta sotto, apribile solo quando ti serve correggere o ricontrollare.</div>
           </div>}
 
-          {allEntries.length === 0 ? <div style={{ background: T.cd, borderRadius: 12, padding: 24, textAlign: "center" }}>
+          {allEntries.length === 0 && cardioEntries.length === 0 ? <div style={{ background: T.cd, borderRadius: 12, padding: 24, textAlign: "center" }}>
             <div style={{ fontSize: 32, marginBottom: 8 }}>🏋️</div>
             <div style={{ fontSize: 14, fontWeight: 700, color: T.tx, marginBottom: 6 }}>Nessun dato ancora</div>
-            <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Registra le serie dei giorni pesi nella Scheda e qui vedrai i tuoi progressi settimana per settimana.</div>
+            <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>Registra le serie dei giorni pesi o segna il cardio nella Scheda e qui vedrai i tuoi progressi settimana per settimana.</div>
           </div> : <>
             <div style={{ display: "flex", flexDirection: "column" }}>
 
-            {priorityGuides.length > 0 && <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 2 }}>
+            {priorityGuides.length > 0 && <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 3 }}>
               <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
@@ -9752,7 +9854,31 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>
             </details>
 
-            {keyLiftProgress.length > 0 && <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 3 }}>
+            {cardioProgressItems.length > 0 && <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 2 }}>
+              <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Cardio registrato</div>
+                    <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Sedute cardio segnate e confronto con la precedente.</div>
+                  </div>
+                  <div style={{ fontSize: 11, fontWeight: 800, color: dc, flexShrink: 0 }}>Apri</div>
+                </div>
+              </summary>
+              <div style={{ display: "grid", gap: 0 }}>
+                {cardioProgressItems.map(function(item, ii) {
+                  var toneColor = getCardioToneColor(item.tone);
+                  return <div key={item.label} style={{ padding: "11px 14px", borderBottom: ii < cardioProgressItems.length - 1 ? "1px solid " + T.bg : "none" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                      <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, flex: 1 }}>{item.label}</div>
+                      <div style={{ fontSize: 10, fontWeight: 800, color: toneColor, textTransform: "uppercase", letterSpacing: 0.6 }}>{item.count + " sedute"}</div>
+                    </div>
+                    <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.65 }}>{formatCardioProgressDetail(item)}</div>
+                  </div>;
+                })}
+              </div>
+            </details>}
+
+            {keyLiftProgress.length > 0 && <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 4 }}>
               <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
@@ -9843,7 +9969,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             </details>}
 
             {/* Progressi per esercizio */}
-            <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 4 }}>
+            <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 5 }}>
               <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
@@ -9889,7 +10015,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>
             </details>
 
-            {rirProgress.length > 0 && <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 5 }}>
+            {rirProgress.length > 0 && <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 6 }}>
               <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
@@ -10484,7 +10610,14 @@ function isNearBodyweightElasticSession(exName, sets) {
                       >
                         Salva sessione
                       </button>
+                      <button
+                        onClick={function() { saveCardioSession(dayIdx, opt, true); }}
+                        style={{ minHeight: 42, padding: "0 14px", border: "1px solid " + T.ok + "45", borderRadius: 10, background: T.ok + "12", color: T.ok, fontSize: 12, fontWeight: 900, cursor: "pointer" }}
+                      >
+                        ✓ Segna fatto
+                      </button>
                       {log && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5 }}>
+                        <span style={{ display: "inline-flex", alignItems: "center", gap: 4, marginRight: 6, padding: "2px 7px", borderRadius: 999, background: T.ok + "18", color: T.ok, fontSize: 10, fontWeight: 900 }}>✓ Fatto</span>
                         <span style={{ fontWeight: 700, color: T.tx }}>Oggi:</span> {formatCardioSummary(log)}
                       </div>}
                     </div>
@@ -10624,6 +10757,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               var currentExerciseNoteVideo = exerciseNoteVideoDrafts[noteDraftKey] != null ? exerciseNoteVideoDrafts[noteDraftKey] : ((tLog && tLog.noteVideoUrl) || "");
               var p = parseSerie(ex.s);
               var sc = p.sets;
+              var approachSetCount = Math.max(0, parseInt(ex.approachSets) || 0);
               var prog = getProgressAdvice(ex.n, ex.s);
               var isH = histIdx === i;
               var hData = isH ? getHist(ex.n) : [];
@@ -10682,6 +10816,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>
                     <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginTop: isBeginner ? 5 : 3 }}>
                       {ex.s && <span style={{ fontSize: isBeginner ? 14 : 12, color: isBeginner ? dc : T.tx, fontWeight: 800, letterSpacing: 0.1 }}>{fmtSerie(ex.s)}</span>}
+                      {approachSetCount > 0 && <span style={{ fontSize: 10, color: dc, fontWeight: 800, padding: "2px 7px", borderRadius: 999, background: dc + "12", border: "1px solid " + dc + "25", whiteSpace: "nowrap" }}>{getApproachSetsLabel(approachSetCount, sc)}</span>}
                       {!isBeginner && ex.rpe ? <span onClick={function(e) { e.stopPropagation(); setRpeOpen(true); }} style={{ cursor: "pointer", color: dc, fontSize: 10, fontWeight: 700, textDecoration: "underline dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, whiteSpace: "nowrap" }}>{formatEffortLabel(ex.rpe, ex.s)}</span> : ""}
                       {!isBeginner && ((rowSupersetMeta && rowSupersetMeta.role === "a" && rowSupersetMeta.rest) || restSec) ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 700, whiteSpace: "nowrap" }}>{"rec " + fmtLabel(rowSupersetMeta && rowSupersetMeta.role === "a" ? rowSupersetMeta.rest : restSec)}</span> : null}
                       {!isBeginner && (function() {
@@ -10850,6 +10985,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                           var tgt = p.reps[si] || p.reps[p.reps.length - 1];
                           var isTimeExercise = isTimeTrackedExercise(ex.n, ex.s);
                           var targetLabel = isTimeExercise ? ((String(tgt).replace(/s$/i, "") || tgt) + " s") : (tgt + " rip");
+                          var isApproachSet = si < approachSetCount;
                           var sugg = getSuggested(si);
                           var done = !!lg;
                           var showInlineRir = !effectiveCalibrationMode || si > 0 || !!(tLog && tLog.sets && tLog.sets.length > 0);
@@ -10858,6 +10994,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                             <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px" }}>
                               <div style={{ width: 26, height: 26, borderRadius: "50%", background: done ? T.ok : T.tx + "15", color: done ? "#fff" : T.sub, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0 }}>{done ? "✓" : si + 1}</div>
                               <div style={{ flex: 1, fontSize: 12, color: T.sub, fontWeight: 600 }}>
+                                <span style={{ display: "inline-flex", alignItems: "center", marginRight: 6, padding: "2px 6px", borderRadius: 999, background: isApproachSet ? T.bg : dc + "12", color: isApproachSet ? T.sub : dc, fontSize: 9, fontWeight: 900, textTransform: "uppercase", letterSpacing: 0.5 }}>{isApproachSet ? "Avvicinamento" : "Lavoro"}</span>
                                 {targetLabel}
                                 {isBW ? "" : usesBand ? (" · " + (sugg.w ? formatElasticTick(sugg.w) + " sugg." : "inserisci tacca")) : usesTrxLength ? (" · " + (sugg.w ? formatTrxLength(sugg.w) + " sugg." : "inserisci lunghezza")) : (" · " + (sugg.w ? (usesBarbellTotal(ex.n) ? formatInputWeightHint(ex.n, sugg.w, barbellWeight) + " sugg." : sugg.w + " kg sugg.") : (usesBarbellTotal(ex.n) ? "inserisci kg dischi" : "inserisci kg")))}
                               </div>
