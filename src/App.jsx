@@ -12,8 +12,6 @@ import img_Cable_Hip_Thrust from "./images/exercises/cable hip thrust.webp";
 import img_Cable_Pull_Through from "./images/exercises/cable-pull-through.gif";
 import img_Croci_Manubri_a_Terra from "./images/exercises/Croci_Manubri_a_Terra.jpg";
 import img_Curl_Bicipiti from "./images/exercises/Curl_Bicipiti.jpg";
-import img_Curl_Cavo_Basso from "./images/exercises/curl-cavo-basso.gif";
-import img_Curl_Cavo_Basso_Singolo from "./images/exercises/curl-al-cavo-basso-singolo.gif";
 import img_Curl_Concentrato from "./images/exercises/Curl_Concentrato.jpg";
 import img_Curl_Martello from "./images/exercises/Curl_Martello.jpg";
 import img_Dip_su_Panca from "./images/exercises/Dip_su_Panca.jpg";
@@ -280,7 +278,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"p","content":"Gestisci il focus muscolare con la posizione del corpo:"},
   {"type":"ul","content":["Passo corto + busto dritto = piu quadricipiti","Passo ampio + busto leggermente inclinato = piu glutei e femorali","Ginocchio anteriore sempre allineato con il piede — non lasciarlo collassare verso l'interno"]},
   {"type":"p","content":"Walking Lunge: avanza passo dopo passo — piu coordinazione rispetto all'affondo statico, ottimo per aumentare difficolta senza aggiungere peso."}
-]}, "Clamshell": {"g": "Gluteo medio/Piccolo gluteo", "c": "Su un fianco, ginocchia 90 gradi. Apri ginocchio superiore, chiudi.", "p": "Bacino stabile. Core attivo.", "t": ["2s in apertura massima", "Elastico per piu carico"], "deep": [
+]}, "Clamshell": {"g": "Gluteo medio", "c": "Decubito laterale, ginocchia 90 gradi, piedi uniti. Apri il ginocchio superiore come una conchiglia. Bacino fermo.", "p": "Pausa 1s in apertura. Range piccolo e controllato.", "t": ["Se il bacino ruota indietro stai compensando", "Piedi sempre uniti"], "lk": "https://www.youtube.com/watch?v=cjmFnOJkp7s", "deep": [
   {"type":"p","content":"Il Clamshell isola il gluteo medio con abduzione e rotazione esterna dell'anca. Il punto di forza non e il carico ma la tensione continua ad alta densita."},
   {"type":"ul","content":["Apertura rapida (concentrica esplosiva) + pausa isometrica 2-3s nel punto di massima apertura","Il bacino NON deve ruotare all'indietro: se si muove, stai compensando con i flessori dell'anca","Esegui ad alte ripetizioni (15-20) o con elastico per stress metabolico locale"]},
   {"type":"p","content":"E' un esercizio di attivazione e isolamento, non di forza massimale. Non affatica il sistema nervoso: perfetto per chiudere la seduta."}
@@ -360,7 +358,6 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
 "Glute Bridge": {"g": "Glutei/Bacino", "c": "Supina, piedi a terra. Solleva il bacino fino ad allineare ginocchia, anche e spalle, poi scendi controllando.", "p": "In alto retroverti il bacino e stringi i glutei. Non iperestendere la lombare.", "t": ["Spingi dai talloni", "Pausa breve in alto", "Se senti solo la schiena, riduci il range"], "lk": "https://www.youtube.com/watch?v=sOrrVfRDVGc"},
 "Pallof Press": {"g": "Core anti-rotazione", "c": "In piedi o in ginocchio con elastico o cavo al lato. Spingi le braccia avanti e resisti alla rotazione del busto.", "p": "Costole giu, bacino fermo, busto frontale. Le braccia si muovono ma il tronco non gira.", "t": ["Poco carico, massimo controllo", "Espira mentre allontani le mani", "Se il busto ruota, alleggerisci"], "lk": "https://www.youtube.com/watch?v=qQOsWutOQoM"},
 "TRX Row lento": {"g": "Dorsali/Romboidi/Scapole", "c": "TRX con maniglie all'altezza del petto. Inclinati indietro, corpo in linea. Tira verso il petto portando i gomiti indietro. Tieni 2s con scapole strette, poi scendi in 3s.", "p": "Corpo rigido in linea dall'inizio alla fine — le anche non cedono mai. Se il corpo non e in linea, riduci l'inclinazione.", "t": ["Fermo 2s con scapole addotte: e il punto chiave", "Eccentrica 3s per massimizzare il lavoro", "Piu sei inclinato indietro, piu e difficile"]},
-"Curl al Cavo Basso": {"g": "Bicipiti", "c": "Cavo basso con barra diritta o corda. Gomiti fermi ai fianchi, fletti le braccia portando il carico verso le spalle.", "p": "Busto fermo, gomiti incollati ai fianchi. Non oscillare. Contrazione piena 1s in alto.", "t": ["Non usare slancio: e un giorno leggero", "Gomiti che avanzano = stai barando", "Peso molto leggero: l'obiettivo e il pump, non la forza"]}
 };
 
 var EXERCISE_GUIDE_PLACEHOLDER_TITLE = "Scheda tecnica in preparazione.";
@@ -966,9 +963,10 @@ var PRINCIPLES_DEEP = [
     {type:"p", content:"Il cardio riduce l'ipertrofia se mal gestito — l'interferenza è reale. La durata della sessione è il fattore con la correlazione negativa più forte (r = 0.75). Tieni le sessioni cardio a max 45-60 minuti, max 2 a settimana, su giorni separati dai pesi."},
     {type:"p", content:"Tra i tipi di cardio, la corsa ha l'impatto negativo maggiore per la componente eccentrica elevata (danno muscolare aggiuntivo). Il rucking (cammino con zaino) è preferibile: cardio + lavoro isometrico sulla catena posteriore, senza eccesso eccentrico."},
     {type:"bold-list", content:[
-      ["HIIT (Giorno 3 — settimane dispari)", "Intervalli brevi ad alta intensità. Efficace per il condizionamento. Non farlo la sera prima di Giorno 4 (Stacco da Terra)."],
-      ["Rucking (Giorno 3 — settimane pari)", "Zaino 15-20 kg, 45-60 min. L'opzione con meno interferenza sull'ipertrofia."],
-      ["Zona 2 (Cardio)", "Corsa leggera o rucking a bassa intensità — puoi parlare senza fiatone. FC 120-140. Minima interferenza."],
+      ["Cardio A — Corsa 30 min zona 2", "FC 120-140, ritmo conversazionale. Formato breve a interferenza controllata."],
+      ["Cardio B — HIIT upper + core 30 min", "Timer 30s lavoro / 15s recupero, 4-5 giri. Niente sprint, salti, affondi, squat jump o salite."],
+      ["Cardio C — Corsa lunga zona 2", "50-60 min a FC 120-140. Da scegliere quando il recupero gambe e buono."],
+      ["Cardio D — Rucking", "Zaino 15-20 kg, 45-60 min. Opzione stabile e poco eccentrica."],
     ]},
     {type:"p", content:"Segnale di troppo cardio: i carichi in sala smettono di crescere per 2+ settimane. In quel caso riduci prima durata o intensità del cardio, non il volume dei pesi."}
   ]},
@@ -1623,10 +1621,10 @@ var DAYS_V4 = [
     ],
     ex: [
       { n: "Alzate Laterali", s: "3x15-20", rpe: "8", note: "Manubri leggeri. Alza fino a parallelo al pavimento. Lento: 2s su, 2s giu. Spalle basse, non alzare i trapezi.", rec: "30-45s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
-      { n: "Fire Hydrant", s: "3x20 per lato", rpe: "6-7", note: "Bacino che resta fermo — il range e piccolo e controllato. Non ruotare il busto per alzare il ginocchio piu in alto.", rec: "30s", gear: "Corpo libero (o elastico bacino)", errori: "Bacino che ruota; busto che oscilla per compensare" },
-      { n: "TRX Row lento", s: "3x15-20", rpe: "6-7", note: "Fermo 2s con scapole strette. Eccentrica 3s. Lavora i dorsali senza tassare la presa. Riduci l'inclinazione se il corpo non resta in linea.", rec: "45s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
+      { n: "Band Pull-Apart con rotazione esterna", s: "2x20", rpe: "6-7", note: "Volume leggero extra. Pausa 1s a fine apertura con mani ruotate fuori. Non tirare con forza.", rec: "30s", gear: "Elastico", errori: "Tirare con forza; gomiti piegati; nessuna rotazione esterna finale" },
+      { n: "Fire Hydrant", s: "2x20 per lato", rpe: "6-7", note: "Bacino che resta fermo — il range e piccolo e controllato. Non ruotare il busto per alzare il ginocchio piu in alto.", rec: "30s", gear: "Corpo libero (o elastico bacino)", errori: "Bacino che ruota; busto che oscilla per compensare", alt: { n: "Clamshell", s: "2x20 per lato", rpe: "6-7", note: "Decubito laterale, ginocchia a 90 gradi e piedi uniti. Apri il ginocchio superiore come una conchiglia. Bacino fermo, pausa 1s in apertura.", rec: "30s", gear: "Corpo libero o miniband", errori: "Bacino che ruota indietro; piedi che si separano; range troppo grande e non controllato" } },
       { n: "Goblet Squat", s: "2x12", rpe: "6-7", note: "Manubrio al petto. Scendi parallelo. I gomiti spingono le ginocchia verso fuori. Alternativa: corpo libero squat.", rec: "45s", gear: "Manubrio leggero", errori: "Busto che cade avanti; schiena arrotondata; ginocchia che collassano" },
-      { n: "Band Pull-Apart con rotazione esterna", s: "3x20", rpe: "6-7", note: "Volume leggero extra. Pausa 1s a fine apertura con mani ruotate fuori. Non tirare con forza.", rec: "30s", gear: "Elastico", errori: "Tirare con forza; gomiti piegati; nessuna rotazione esterna finale" },
+      { n: "TRX Row lento", s: "2x12", rpe: "6-7", note: "Fermo 2s con scapole strette. Eccentrica 3s. Lavora i dorsali senza tassare la presa. Riduci l'inclinazione se il corpo non resta in linea.", rec: "45s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
     ],
     str: ["Half Kneeling Lunge","Half Kneeling Lunge + Reach","Couch Stretch","Figure-Four Supino","Happy Baby","Leg Cradle Supino","Supported Low Lunge"],
     lightHipProtocol: [
@@ -1641,14 +1639,16 @@ var DAYS_V4 = [
     lightHipNote: "Oggi e il giorno migliore per il protocollo anca completo: nessun compound pesante prima, sistema nervoso fresco. Durata: 8-10 minuti.",
   },
 
-  { name: "Cardio", focus: "Corsa zona 2 / Rucking", dayLabel: "Gio", cardio: true, dur: "30-75 min", tEst: 45,
-    cardioIntro: "Recupero attivo tra il giorno leggero e il lower B. Scegli tra corsa leggera e rucking in base a come ti senti.",
-    cardioGear: ["Scarpe da corsa", "Zaino da rucking 15-20 kg"],
-    cardioWhy: "Questo giorno sostituisce il vecchio stacco in mezzo alla settimana: l'obiettivo e arrivare al lower B con piu recupero reale, mantenendo il cardio a bassa interferenza con i pesi.",
+  { name: "Cardio", focus: "Corsa zona 2 / Rucking / HIIT", dayLabel: "Gio", cardio: true, dur: "30-60 min", tEst: 45,
+    cardioIntro: "Recupero attivo tra il giorno leggero e il lower B. L'app suggerisce una rotazione su 4 settimane, ma puoi scegliere liberamente il formato del giovedi.",
+    cardioGear: ["Scarpe da corsa", "Zaino da rucking 15-20 kg", "Kettlebell leggero", "Tappetino", "Battle rope opzionale"],
+    cardioWhy: "Il cardio del giovedi deve sostenere fiato e recupero senza compromettere lo stacco del venerdi. La corsa lunga resta zona 2; l'HIIT e solo upper + core, senza sprint, salti o affondi.",
     cardioMobilityIntro: "Dopo il cardio chiudi con 10 minuti di mobilita: dorsiflessione, 90/90, T-spine rotation, half kneeling lunge e figure-four.",
     cardioOptions: [
-      { icon: "🏃", label: "Corsa leggera zona 2 — 30 min", desc: "Bassa intensita. FC 120-140. Devi poter parlare senza fiatone.", duration: "30 min" },
-      { icon: "🎒", label: "Rucking con zaino — 45-75 min", desc: "Bassa intensita. Zona 2. Progressione: +5 minuti ogni 2 settimane.", duration: "45-75 min" },
+      { icon: "🏃", label: "Corsa 30 min (zona 2)", desc: "Bassa intensita. FC 120-140. Devi poter parlare senza fiatone.", duration: "30 min", rotationLabel: "A" },
+      { icon: "⚡", label: "HIIT 30 min (upper + core)", desc: "Alta intensita controllata. 30s lavoro / 15s pausa, 4-5 giri. Niente sprint, salti, affondi o gambe pesanti.", duration: "30 min", rotationLabel: "B", hiit: true },
+      { icon: "🏃", label: "Corsa lunga 50-60 min (zona 2)", desc: "Bassa intensita e ritmo costante. Cadenza 170+ passi/min. Se lo stacco cala per 2+ settimane, spostala alla domenica.", duration: "50-60 min", rotationLabel: "C" },
+      { icon: "🎒", label: "Rucking 45-60 min", desc: "Bassa-media intensita. Zaino 15-20 kg. Progressione: +5 minuti ogni 2 settimane.", duration: "45-60 min", rotationLabel: "D" },
     ]
   },
 
@@ -2197,7 +2197,6 @@ var EX_IMG = {
   "Cable Pull-Through": img_Cable_Pull_Through,
   "Croci Manubri a Terra": img_Croci_Manubri_a_Terra,
   "Curl Bicipiti": img_Curl_Bicipiti,
-  "Curl al Cavo Basso": img_Curl_Cavo_Basso,
   "Curl Concentrato": img_Curl_Concentrato,
   "Curl Martello": img_Curl_Martello,
   "Dip su Panca": img_Dip_su_Panca,
@@ -2355,7 +2354,6 @@ var SK_SHADOW = SK + "-shadow";
 
 var EX_EXTRA_IMG = {
   "Ab Wheel": [img_Ab_Wheel_Corretto],
-  "Curl al Cavo Basso": [img_Curl_Cavo_Basso_Singolo],
   "Hollow Position": [img_Hollow_Tuck, img_Hollow_Tuck_Advanced, img_Hollow_One_Leg, img_Hollow_Full],
   "Leg Curl al Cavo": [img_Leg_Curl_Cavo_In_Piedi],
 };
@@ -2403,7 +2401,7 @@ function displayExerciseName(name) {
   return name;
 }
 var MAX_PROGRESS_EX = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni"];
-var ACCESSORY_PROGRESS_EX = ["Stacco Rumeno","Glute Bridge Bilanciere","Leg Curl al Cavo","Pulley","Band Pull-Apart con rotazione esterna","Curl Bicipiti","Affondi","Hyperextension","Fire Hydrant","Push-Up","Trazioni Supine","Woodchop","T-bar Row","TRX Row lento","Curl al Cavo Basso","Alzate Laterali"];
+var ACCESSORY_PROGRESS_EX = ["Stacco Rumeno","Glute Bridge Bilanciere","Leg Curl al Cavo","Pulley","Band Pull-Apart con rotazione esterna","Curl Bicipiti","Affondi","Hyperextension","Fire Hydrant","Push-Up","Trazioni Supine","Woodchop","T-bar Row"];
 var CORE_PROGRESS_EX = ["Ab Wheel"];
 var CARDIO_KIND_LABEL = { run: "Corsa", ruck: "Rucking", hiit: "HIIT", circuit: "Circuito" };
 var CALIBRATION_BODYWEIGHT_EX = ["Push-Up","Trazioni","Trazioni Supine","Ab Wheel","Fire Hydrant"];
@@ -2755,6 +2753,36 @@ function cardioFieldConfig(kind) {
   return [
     { key: "minutes", label: "Min", placeholder: "25", inputMode: "numeric" },
   ];
+}
+
+var CARDIO_ROTATION_START_DATE = "2026-04-20";
+var HIIT_WORK_SEC = 30;
+var HIIT_REST_SEC = 15;
+var HIIT_DEFAULT_ROUNDS = 4;
+var CARDIO_HIIT_EXERCISES = [
+  { n: "Kettlebell swing leggero", note: "Esplosivita anca, carico leggero, niente DOMS" },
+  { n: "Push-up", note: "Corpo libero, non a cedimento" },
+  { n: "Battle rope", note: "Se disponibile: braccia e core, zero impatto gambe" },
+  { n: "Plank", note: "Tenuta core" },
+  { n: "Shoulder tap", note: "Anti-rotazione" },
+  { n: "Mountain climber", note: "Core + cardio, impatto minimo su quad/femorali" },
+  { n: "Dead bug dinamico", note: "Core anti-estensione" },
+];
+
+function getProgramStartDateMs() {
+  try {
+    var stored = localStorage.getItem("wt-v4-program-start-date");
+    var parsed = stored ? Date.parse(stored) : NaN;
+    if (isFinite(parsed)) return parsed;
+  } catch (e) {}
+  return Date.parse(CARDIO_ROTATION_START_DATE);
+}
+
+function getSuggestedCardioRotationIndex() {
+  var startMs = getProgramStartDateMs();
+  var nowMs = Date.now();
+  if (!isFinite(startMs) || nowMs < startMs) return 0;
+  return Math.floor((nowMs - startMs) / (7 * 24 * 60 * 60 * 1000)) % 4;
 }
 
 /* === BREATHING RULES === */
@@ -3322,8 +3350,8 @@ export default function App() {
     var classKey = getGuidedExerciseClass(exName);
     var unilateralMultiplier = /(per\s+(?:lato|gamba|braccio|piede))/i.test(String(ex.s || "")) ? 2 : 1;
     var bodyweightLike = ["Trazioni","Trazioni Supine","Push-Up","Push-Up Declino","Dip su Panca","Ab Wheel","Plank","Shoulder Tap","Fire Hydrant"].indexOf(exName) >= 0;
-    var controlledTempo = ["TRX Row lento","Band Pull-Apart con rotazione esterna","Leg Curl al Cavo","Curl al Cavo Basso","Alzate Laterali","Hyperextension","Nordic Curl"].indexOf(exName) >= 0;
-    var explosiveOrLight = ["Band Pull-Apart con elastico","Band Pull-Apart con rotazione esterna","Fire Hydrant","Curl al Cavo Basso","Shoulder Tap"].indexOf(exName) >= 0;
+    var controlledTempo = ["TRX Row lento","Band Pull-Apart con rotazione esterna","Leg Curl al Cavo","Alzate Laterali","Hyperextension","Nordic Curl"].indexOf(exName) >= 0;
+    var explosiveOrLight = ["Band Pull-Apart con elastico","Band Pull-Apart con rotazione esterna","Fire Hydrant","Shoulder Tap"].indexOf(exName) >= 0;
     var secPerSet;
     if (p.kind === "time" || ex.n === "Plank") {
       secPerSet = Math.max(45, topTarget + 20) * unilateralMultiplier;
@@ -3747,6 +3775,14 @@ export default function App() {
   var [progTooltip, setProgTooltip] = useState(null);
   var [skillTooltip, setSkillTooltip] = useState(null);
   var [cableMode, setCableMode] = useState({});
+  var [exerciseAltMode, setExerciseAltMode] = useState(function() {
+    try {
+      return JSON.parse(localStorage.getItem("wt-exercise-alt-mode") || "{}") || {};
+    } catch (e) {
+      return {};
+    }
+  });
+  var [hiitTimer, setHiitTimer] = useState({ running: false, phase: "work", seconds: HIIT_WORK_SEC, round: 1, rounds: HIIT_DEFAULT_ROUNDS, exerciseIndex: 0 });
   var [completedExercises, setCompletedExercises] = useState({});
   var [fontScale, setFontScale] = useState(1.1);
   var [settingsOpen, setSettingsOpen] = useState(false);
@@ -3793,6 +3829,38 @@ export default function App() {
   var cloudSyncTimerRef = useRef(null);
   var cloudSyncPendingRef = useRef(null);
   var cloudSyncInFlightRef = useRef(false);
+
+  function setExerciseAltPreference(key, useAlt) {
+    setExerciseAltMode(function(prev) {
+      var next = Object.assign({}, prev, { [key]: !!useAlt });
+      try { localStorage.setItem("wt-exercise-alt-mode", JSON.stringify(next)); } catch (e) {}
+      return next;
+    });
+  }
+
+  function resetHiitTimer(rounds) {
+    setHiitTimer({ running: false, phase: "work", seconds: HIIT_WORK_SEC, round: 1, rounds: rounds || HIIT_DEFAULT_ROUNDS, exerciseIndex: 0 });
+  }
+
+  useEffect(function() {
+    if (!hiitTimer.running) return undefined;
+    var id = setInterval(function() {
+      setHiitTimer(function(prev) {
+        if (!prev.running) return prev;
+        if (prev.seconds > 1) return Object.assign({}, prev, { seconds: prev.seconds - 1 });
+        if (prev.phase === "work") return Object.assign({}, prev, { phase: "rest", seconds: HIIT_REST_SEC });
+        var nextExerciseIndex = prev.exerciseIndex + 1;
+        var nextRound = prev.round;
+        if (nextExerciseIndex >= CARDIO_HIIT_EXERCISES.length) {
+          nextExerciseIndex = 0;
+          nextRound += 1;
+        }
+        if (nextRound > prev.rounds) return Object.assign({}, prev, { running: false, phase: "done", seconds: 0 });
+        return Object.assign({}, prev, { phase: "work", seconds: HIIT_WORK_SEC, exerciseIndex: nextExerciseIndex, round: nextRound });
+      });
+    }, 1000);
+    return function() { clearInterval(id); };
+  }, [hiitTimer.running]);
   var [autoBackupMsg, setAutoBackupMsg] = useState("");
   var [exportMenuOpen, setExportMenuOpen] = useState(false);
   var [exGearFilter, setExGearFilter] = useState("all");
@@ -4311,15 +4379,20 @@ export default function App() {
       <div style={{ padding: "12px 14px 14px" }}>
         <div style={{ display: "grid", gap: 10 }}>
           {cardioDay.cardioOptions.map(function(opt, oi) {
-            return <div key={oi} style={{ background: T.sb, borderRadius: 12, padding: "12px", border: "1px solid " + dc + "18" }}>
+            var isSuggestedCardio = oi === getSuggestedCardioRotationIndex();
+            return <div key={oi} style={{ background: T.sb, borderRadius: 12, padding: "12px", border: "1px solid " + (isSuggestedCardio ? dc + "80" : dc + "18") }}>
               <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 5 }}>
                 <span style={{ fontSize: 20 }}>{opt.icon}</span>
-                <div>
-                  <div style={{ fontSize: 13, fontWeight: 800, color: T.tx }}>{opt.label}</div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                    <div style={{ fontSize: 13, fontWeight: 800, color: T.tx }}>{opt.label}</div>
+                    {isSuggestedCardio && <span style={{ fontSize: 9, fontWeight: 900, color: "#fff", background: dc, borderRadius: 999, padding: "2px 7px" }}>Suggerito</span>}
+                  </div>
                   <div style={{ fontSize: 10, color: dc, fontWeight: 700 }}>{opt.duration}</div>
                 </div>
               </div>
               <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>{opt.desc}</div>
+              {opt.hiit && <div style={{ marginTop: 7, fontSize: 10, color: T.sub, lineHeight: 1.5 }}>Circuito: 30s lavoro / 15s pausa, 4-5 giri. Niente sprint, salti o affondi.</div>}
               <div style={{ marginTop: 9, display: "flex", gap: 6, flexWrap: "wrap" }}>
                 <span style={{ fontSize: 10, fontWeight: 800, color: dc, background: dc + "10", border: "1px solid " + dc + "22", borderRadius: 999, padding: "3px 8px" }}>{opt.duration}</span>
               </div>
@@ -6918,7 +6991,7 @@ export default function App() {
 
 function getGuidedExerciseClass(exName) {
   var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","T-bar Row","Stacco Rumeno","Glute Bridge Bilanciere","Pulley"];
-  var mono = ["Curl Bicipiti","Woodchop","Fire Hydrant","Band Pull-Apart con rotazione esterna","Leg Curl al Cavo","Alzate Laterali","Curl al Cavo Basso"];
+  var mono = ["Curl Bicipiti","Woodchop","Fire Hydrant","Band Pull-Apart con rotazione esterna","Leg Curl al Cavo","Alzate Laterali"];
   if (heavy.indexOf(exName) >= 0) return "heavy";
   if (mono.indexOf(exName) >= 0) return "mono";
   return "compound";
@@ -8326,7 +8399,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); setCardioLogs({}); setStretchLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(true); setBarbellWeight(BARBELL_BASE_KG); setExtraInfoEnabled(true); setFlowModeEnabled(false); setCompactMode(false); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setGuidedFillerHint(""); setCardioDrafts({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); setSplitDayPrefs({}); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); localStorage.removeItem("wt-flow-mode"); localStorage.removeItem("wt-compact-mode"); localStorage.removeItem("wt-barbell-weight"); localStorage.removeItem("wt-stretch-logs"); } catch(e) {} setAutoBackupMsg("Tutti i dati sono stati cancellati."); closeActionBoxes(); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setCardioLogs({}); setStretchLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(true); setBarbellWeight(BARBELL_BASE_KG); setExtraInfoEnabled(true); setFlowModeEnabled(false); setCompactMode(false); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setGuidedFillerHint(""); setCardioDrafts({}); setExerciseAltMode({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); setSplitDayPrefs({}); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); localStorage.removeItem("wt-flow-mode"); localStorage.removeItem("wt-compact-mode"); localStorage.removeItem("wt-barbell-weight"); localStorage.removeItem("wt-stretch-logs"); localStorage.removeItem("wt-exercise-alt-mode"); } catch(e) {} setAutoBackupMsg("Tutti i dati sono stati cancellati."); closeActionBoxes(); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
           </div>
         </div>
       </div>}
@@ -10291,21 +10364,49 @@ function isNearBodyweightElasticSession(exName, sets) {
               </details>}
               {dayData.cardioOptions.map(function(opt, oi) {
                 var kind = cardioOptionKind(opt);
+                var suggestedCardioIndex = getSuggestedCardioRotationIndex();
+                var isSuggestedCardio = oi === suggestedCardioIndex;
                 var fieldCfg = cardioFieldConfig(kind);
                 var draftKey = dayIdx + "_" + opt.label;
                 var draft = cardioDrafts[draftKey] || {};
                 var log = getCardioLog(dayIdx, opt.label);
                 var cardioProg = getCardioProgress(dayIdx, opt.label);
                 var canSave = (parseFloat(draft.minutes) || 0) > 0 && (kind !== "ruck" || (parseFloat(draft.kg) || 0) > 0);
-                return <div key={oi} style={{ background: T.sb, borderRadius: 12, padding: "14px 16px", marginBottom: 10, border: "1px solid " + dc + "20" }}>
+                return <div key={oi} style={{ background: T.sb, borderRadius: 12, padding: "14px 16px", marginBottom: 10, border: "1px solid " + (isSuggestedCardio ? dc + "80" : dc + "20"), boxShadow: isSuggestedCardio ? "0 0 0 2px " + dc + "12" : "none" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
                     <span style={{ fontSize: 22 }}>{opt.icon}</span>
-                    <div>
-                      <div style={{ fontSize: 14, fontWeight: 700, color: T.tx }}>{opt.label}</div>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 7, flexWrap: "wrap" }}>
+                        <div style={{ fontSize: 14, fontWeight: 700, color: T.tx }}>{opt.label}</div>
+                        {isSuggestedCardio && <span style={{ fontSize: 10, fontWeight: 900, color: "#fff", background: dc, borderRadius: 999, padding: "3px 8px" }}>Suggerito</span>}
+                        {opt.rotationLabel && <span style={{ fontSize: 10, fontWeight: 800, color: dc, background: dc + "12", borderRadius: 999, padding: "3px 7px" }}>{"Settimana " + opt.rotationLabel}</span>}
+                      </div>
                       <div style={{ fontSize: 11, color: dc, fontWeight: 600 }}>{opt.duration}</div>
                     </div>
                   </div>
                   <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.65 }}>{opt.desc}</div>
+                  {opt.hiit && <div style={{ marginTop: 12, padding: "10px 12px", borderRadius: 12, background: dc + "08", border: "1px solid " + dc + "22" }}>
+                    <div style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Circuito HIIT 30s/15s</div>
+                    <div style={{ display: "grid", gap: 4, marginBottom: 10 }}>
+                      {CARDIO_HIIT_EXERCISES.map(function(item, hi) {
+                        var activeHiit = hiitTimer.exerciseIndex === hi && hiitTimer.phase !== "done";
+                        return <div key={item.n} style={{ display: "grid", gridTemplateColumns: "22px 1fr", gap: 7, alignItems: "start", fontSize: 11, color: activeHiit ? T.tx : T.sub, lineHeight: 1.45 }}>
+                          <span style={{ width: 20, height: 20, borderRadius: 999, background: activeHiit ? dc : T.bg, color: activeHiit ? "#fff" : T.sub, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 900 }}>{hi + 1}</span>
+                          <span><strong style={{ color: activeHiit ? dc : T.tx }}>{item.n}</strong>{" — " + item.note}</span>
+                        </div>;
+                      })}
+                    </div>
+                    <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+                      <div style={{ minWidth: 118, padding: "8px 10px", borderRadius: 10, background: T.cd, border: "1px solid " + dc + "20" }}>
+                        <div style={{ fontSize: 10, color: T.sub, fontWeight: 800, textTransform: "uppercase" }}>{hiitTimer.phase === "done" ? "Completato" : hiitTimer.phase === "work" ? "Lavoro" : "Pausa"}</div>
+                        <div style={{ fontSize: 22, color: dc, fontWeight: 900 }}>{fmtLabel(hiitTimer.seconds)}</div>
+                        <div style={{ fontSize: 10, color: T.sub }}>{"Giro " + Math.min(hiitTimer.round, hiitTimer.rounds) + "/" + hiitTimer.rounds}</div>
+                      </div>
+                      <button onClick={function() { setHiitTimer(function(prev) { return Object.assign({}, prev.phase === "done" ? { phase: "work", seconds: HIIT_WORK_SEC, round: 1, exerciseIndex: 0 } : prev, { running: !prev.running }); }); }} style={{ minHeight: 38, padding: "0 12px", border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 11, fontWeight: 900, cursor: "pointer" }}>{hiitTimer.running ? "Pausa timer" : "Avvia timer"}</button>
+                      <button onClick={function() { resetHiitTimer(4); }} style={{ minHeight: 38, padding: "0 12px", border: "1px solid " + dc + "30", borderRadius: 10, background: T.cd, color: dc, fontSize: 11, fontWeight: 900, cursor: "pointer" }}>Reset 4 giri</button>
+                      <button onClick={function() { resetHiitTimer(5); }} style={{ minHeight: 38, padding: "0 12px", border: "1px solid " + dc + "30", borderRadius: 10, background: T.cd, color: dc, fontSize: 11, fontWeight: 900, cursor: "pointer" }}>Reset 5 giri</button>
+                    </div>
+                  </div>}
                   <div style={{ marginTop: 12, paddingTop: 12, borderTop: "1px solid " + T.bg }}>
                     <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>
                       Registra sessione
@@ -10455,8 +10556,12 @@ function isNearBodyweightElasticSession(exName, sets) {
               var cableKey = dayIdx + "_" + i;
               var hasCableToggle = rawEx.cable && rawEx.free;
               var isCable = hasCableToggle ? (cableKey in cableMode ? cableMode[cableKey] : !rawEx.defaultFree) : false;
+              var altKey = "alt_" + dayIdx + "_" + i + "_" + rawEx.n;
+              var hasAltToggle = !!(rawEx.alt && dayData && dayData.name === "Giorno 3" && rawEx.n === "Fire Hydrant");
+              var isAlt = hasAltToggle && !!exerciseAltMode[altKey];
               var baseEx = hasCableToggle ? (isCable ? rawEx.cable : rawEx.free) : rawEx;
-              var mergedEx = Object.assign({}, rawEx, baseEx);
+              if (isAlt) baseEx = rawEx.alt;
+              var mergedEx = Object.assign({}, rawEx, baseEx, isAlt ? { alt: rawEx.alt } : {});
               var ex = getExForMonth(mergedEx);
               var db = EX[ex.n];
               var isX = openEx === i;
@@ -10521,6 +10626,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                       {rawEx.priority && <span style={{ fontSize: 9, background: dc + "18", color: dc, padding: "1px 6px", borderRadius: 4, fontWeight: 800, letterSpacing: 0.3 }}>★ PRIORITÀ</span>}
                       {hasV && <span style={{ fontSize: 9, background: dc + "20", color: dc, padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>{"M" + month}</span>}
                       {hasCableToggle && <span style={{ fontSize: 9, background: isCable ? dc + "20" : T.sub + "20", color: isCable ? dc : T.sub, padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>{isCable ? "🔌" : "💪"}</span>}
+                      {hasAltToggle && <span style={{ fontSize: 9, background: dc + "20", color: dc, padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>{isAlt ? "ALT" : "BASE"}</span>}
                     </div>
                     <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginTop: isBeginner ? 5 : 3 }}>
                       {ex.s && <span style={{ fontSize: isBeginner ? 14 : 12, color: isBeginner ? dc : T.tx, fontWeight: 800, letterSpacing: 0.1 }}>{fmtSerie(ex.s)}</span>}
@@ -10616,6 +10722,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                     {hasCableToggle && <div style={{ display: "flex", gap: 0, marginBottom: 10, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "40", alignSelf: "flex-start", width: "fit-content" }} onClick={function(e) { e.stopPropagation(); }}>
                       <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = true; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: isCable ? dc : "transparent", color: isCable ? "#fff" : T.sub }}>🔌 Cavi</button>
                       <button onClick={function() { setCableMode(function(prev) { var n = Object.assign({}, prev); n[cableKey] = false; return n; }); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: !isCable ? dc : "transparent", color: !isCable ? "#fff" : T.sub }}>💪 Libero</button>
+                    </div>}
+                    {hasAltToggle && <div style={{ display: "flex", gap: 0, marginBottom: 10, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "40", alignSelf: "flex-start", width: "fit-content" }} onClick={function(e) { e.stopPropagation(); }}>
+                      <button onClick={function() { setExerciseAltPreference(altKey, false); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: !isAlt ? dc : "transparent", color: !isAlt ? "#fff" : T.sub }}>Fire Hydrant</button>
+                      <button onClick={function() { setExerciseAltPreference(altKey, true); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: isAlt ? dc : "transparent", color: isAlt ? "#fff" : T.sub }}>Clamshell</button>
                     </div>}
 
                     {!isBasics && flowSupersetMeta && flowSupersetMeta.role === "a" && <div style={{ marginBottom: 10, borderRadius: 12, padding: "10px 12px", background: dc + "10", border: "1px solid " + dc + "25" }}>

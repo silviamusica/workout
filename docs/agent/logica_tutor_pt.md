@@ -211,7 +211,7 @@ La V4 usa ora due blocchi distinti:
 2. `Mobilità anca`
 - nei giorni pesi compare come `Bonus mobilità anca` (facoltativo, dopo stretching finale)
 - nel giorno leggero G3 compare come `Protocollo anca completo` (7 posizioni, 8-10 min) — è il giorno migliore perché non c'è compound pesante prima
-- nel giorno cardio G7 compare dentro la sezione mobilità
+- nel giorno cardio del giovedì compare dentro la sezione mobilità
 - non crea nuovi tab-giorno e non rompe il tracking esistente dei pesi
 
 In piu, nei 4 giorni pesi il riscaldamento principale e ora strutturato in `4 fasi`:
@@ -262,7 +262,7 @@ Da evitare:
 La struttura settimana V4 ha 4 tipi giorno:
 - **pesi** (G1, G2, G4, G5): logica coach completa, tracking progressione, split AM/PM, superset
 - **light** (G3): UI dedicata `renderLightDay`, nessuna logica coach attiva
-- **cardio** (G7): sezione cardio + mobilità
+- **cardio** (giovedì): sezione cardio + mobilità
 - **rest** (G6): riposo
 
 Il G3 Leggero non entra in `activeDays` — non rompe il tracking, non alimenta i Progressi, non attiva il coach.
@@ -277,28 +277,29 @@ Il Giorno 3 ha `light: true`. Non è cardio, non è pesi, non è riposo.
 
 | # | Esercizio | Serie | RPE | Recupero |
 |---|---|---|---|---|
-| 1 | Alzate Laterali | 3x15-20 | 6-7 | 30-45s |
+| 1 | Alzate Laterali | 3x15-20 | 8 | 30-45s |
 | 2 | Band Pull-Apart con rotazione esterna | 2x20 | 6-7 | 30s |
-| 3 | Fire Hydrant | 2x20/lato | 6-7 | 30s |
-| 4 | TRX Row lento | 2x12 | 6-7 | 45s |
-| 5 | Curl al Cavo Basso | 2x15 | 6-7 | 30s |
+| 3 | Fire Hydrant oppure Clamshell | 2x20/lato | 6-7 | 30s |
+| 4 | Goblet Squat | 2x12 | 6-7 | 45s |
+| 5 | TRX Row lento | 2x12 | 6-7 | 45s |
 
 ### Regole
 
-- RPE massimo: 6-7 (3-4 rip in riserva su ogni serie)
+- RPE massimo: 6-8 (Alzate Laterali a RPE 8; resto 6-7)
 - Il coach NON si attiva: niente RIR prompt, niente briefing, niente decisione finale
 - Timer: fisso 30s, non basato su RIR
 - Gli esercizi del G3 NON compaiono nei Progressi fondamentali
 - NON ha split AM/PM né superset
 - Protocollo anca completo (7 posizioni, 8-10 min) dopo gli esercizi
+- Fire Hydrant ha alternativa Clamshell solo nel G3; la scelta resta persistente in `localStorage` con chiave `wt-exercise-alt-mode`
 
 ### Classificazione esercizi G3 per il coach (se mai interrogato)
 
 - `Alzate Laterali`: mono, +1 kg per manubrio
 - `Band Pull-Apart con rotazione esterna`: mono, bodyweight, +1 rip
-- `Fire Hydrant`: mono (già attivo in G4), bodyweight, +1 rip
+- `Fire Hydrant` / `Clamshell`: mono, bodyweight, +1 rip
+- `Goblet Squat`: compound leggero, +1 kg manubrio/kettlebell
 - `TRX Row lento`: compound (default), bodyweight, +1 rip
-- `Curl al Cavo Basso`: mono, cable (match su indexOf("Cavo")), +1 step
 
 ## Briefing pre-sessione
 
@@ -544,7 +545,6 @@ Esempi:
 Esempi:
 - Pulley
 - Woodchop
-- Curl al Cavo Basso
 - Leg Curl al Cavo
 - esercizi con `Cavo` nel nome (match automatico nel codice)
 
@@ -625,6 +625,32 @@ L'app ha una modalità flusso pensata per ridurre le micro-decisioni tra una ser
 - avanzamento automatico alla card successiva a timer scaduto
 - vibrazione a fine countdown (`navigator.vibrate(200)`)
 - sessione attiva: nasconde tab non utili, resta visibile solo `Scheda`
+
+## Cardio: formati e rotazione
+
+Il giorno `Cardio` del giovedì ha 4 formati selezionabili. L'app evidenzia il formato suggerito in base alla rotazione settimanale, ma non blocca le altre opzioni.
+
+| Rotazione | Formato | Durata | Regola |
+|---|---|---|---|
+| A | Corsa 30 min zona 2 | 30 min | FC 120-140, parlato facile |
+| B | HIIT upper + core | 30 min | 30s lavoro / 15s pausa, 4-5 giri |
+| C | Corsa lunga zona 2 | 50-60 min | ritmo costante, cadenza 170+ |
+| D | Rucking | 45-60 min | zaino 15-20 kg |
+
+Il giovedì precede lo stacco: l'HIIT non deve includere sprint, box jump, burpee completo, affondi saltati, squat jump o corsa in salita.
+
+Il formato HIIT è solo cardio: niente tracking peso, niente RIR, niente coach. Il timer interno alterna lavoro `30s` e pausa `15s`.
+
+## Toggle G3: Fire Hydrant / Clamshell
+
+Nel G3 leggero il Fire Hydrant ha una sola alternativa persistente: `Clamshell`.
+
+| Esercizio | Serie | RPE | Recupero | Note |
+|---|---|---|---|---|
+| Fire Hydrant | 2x20/lato | 6-7 | 30s | abduzione anca in quadrupedia |
+| Clamshell | 2x20/lato | 6-7 | 30s | rotazione esterna anca in decubito laterale |
+
+La preferenza è salvata in `localStorage` (`wt-exercise-alt-mode`). Il Fire Hydrant del G4 non ha alternativa e resta sempre Fire Hydrant.
 
 ## File da controllare se si modifica la logica tutor
 

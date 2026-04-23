@@ -9,11 +9,30 @@
 |---|---|---|---|---|
 | **Lunedì** | G1 | Pesi — Lower A | Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel | ~75 min |
 | **Martedì** | G2 | Pesi — Upper A | Trazioni, Panca, Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti | ~70 min |
-| **Mercoledì** | G3 | Leggero | Alzate Laterali, Band Pull-Apart, Fire Hydrant, TRX Row, Curl Cavo Basso + Protocollo anca | ~35 min |
-| **Giovedì** | G4 | Pesi — Lower B | Stacco da Terra, Affondi, Hyperextension, Fire Hydrant | ~70 min |
-| **Venerdì** | G5 | Pesi — Upper B | T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop | ~75 min |
-| **Sabato** | G6 | Riposo | — | — |
-| **Domenica** | G7 | Cardio | Corsa zona 2 o Rucking + Mobilità | 30-75 min |
+| **Mercoledì** | G3 | Leggero | Alzate Laterali, Band Pull-Apart, Fire Hydrant/Clamshell, Goblet Squat, TRX Row + Protocollo anca | ~35 min |
+| **Giovedì** | Cardio | Cardio programmato | Corsa 30 / HIIT upper+core / Corsa lunga / Rucking + Mobilità | 30-60 min |
+| **Venerdì** | G4 | Pesi — Lower B | Stacco da Terra, Affondi, Hyperextension, Fire Hydrant | ~85 min |
+| **Sabato** | G5 | Pesi — Upper B | T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop, Alzate Laterali | ~80 min |
+| **Domenica** | Riposo | Recupero | — | — |
+
+---
+
+# CARDIO PROGRAMMATO — Giovedì
+
+L'app propone una rotazione A -> B -> C -> D, ma tutti i formati restano sempre selezionabili.
+
+| Rotazione | Formato | Durata | Intensità | Note |
+|---|---|---|---|---|
+| A | Corsa 30 min zona 2 | 30 min | Bassa | FC 120-140, puoi parlare senza fiatone |
+| B | HIIT upper + core | 30 min | Alta | 30s lavoro / 15s pausa, 4-5 giri |
+| C | Corsa lunga zona 2 | 50-60 min | Bassa | Ritmo costante, cadenza 170+ |
+| D | Rucking | 45-60 min | Bassa-media | Zaino 15-20 kg |
+
+HIIT consentito: kettlebell swing leggero, push-up, battle rope, plank, shoulder tap, mountain climber, dead bug dinamico.
+
+HIIT vietato il giovedì: sprint, box jump, burpee completo, affondi saltati, squat jump, corsa in salita.
+
+Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half kneeling lunge, figure-four.
 
 ---
 
@@ -160,8 +179,10 @@
 | 1 | **Alzate Laterali** | 3 | 15-20 | 8 | 30-45s | Manubri leggeri. Alza fino a parallelo. 2s su 2s giù. Niente slancio |
 | 2 | **Band Pull-Apart con rotazione esterna** | 2 | 20 | 6-7 | 30s | Volume extra leggero. Pausa 1s con mani ruotate fuori |
 | 3 | **Fire Hydrant** | 2 | 20/lato | 6-7 | 30s | Bacino fermo, range piccolo e controllato. Gluteo medio |
-| 4 | **TRX Row lento** | 2 | 12 | 6-7 | 45s | Fermo 2s con scapole strette. Eccentrica 3s in fuori |
-| 5 | **Goblet Squat** | 2 | 12 | 6-7 | 45s | Manubrio al petto. Gomiti verso fuori, busto stabile |
+| 4 | **Goblet Squat** | 2 | 12 | 6-7 | 45s | Manubrio al petto. Gomiti verso fuori, busto stabile |
+| 5 | **TRX Row lento** | 2 | 12 | 6-7 | 45s | Fermo 2s con scapole strette. Eccentrica 3s in fuori |
+
+**Alternativa G3**: il Fire Hydrant può essere alternato con **Clamshell** tramite toggle persistente nell'app. Stesse serie, RPE e recupero: 2x20/lato, RPE 6-7, 30s. Il Fire Hydrant del G4 resta fisso.
 
 ### PROTOCOLLO ANCA COMPLETO (8-10 min)
 
@@ -292,16 +313,18 @@ Questo protocollo è il cuore del G3 — il giorno migliore perché nessun compo
 
 ---
 
-## 📍 GIORNO 7 — CARDIO + MOBILITÀ (Domenica)
+## 📍 CARDIO PROGRAMMATO — Giovedì
 
-**Durata totale: 30-75 minuti (dipende da scelta)**
+**Durata totale: 30-60 minuti + mobilità**
 
-### CARDIO — Una opzione a scelta
+### CARDIO — Quattro opzioni selezionabili
 
 | Opzione | Durata | Zona FC | Note |
 |---|---|---|---|
-| **Corsa leggera** | 30 min | Zona 2 (120-140) | Bassa intensità. Cadenza 170+ passi/min. Puoi parlare senza fiatone |
-| **Rucking** | 45-75 min | Zona 2 | Zaino 15-20 kg. Progressione +5 min ogni 2 settimane. Se G3 ha avuto rucking, preferisci corsa |
+| **A — Corsa 30 min** | 30 min | Zona 2 (120-140) | Puoi parlare senza fiatone |
+| **B — HIIT upper + core** | 30 min | Alta controllata | 30s lavoro / 15s pausa, 4-5 giri, niente sprint o salti |
+| **C — Corsa lunga** | 50-60 min | Zona 2 (120-140) | Ritmo costante, cadenza 170+ passi/min |
+| **D — Rucking** | 45-60 min | Zona 2 | Zaino 15-20 kg, progressione +5 min ogni 2 settimane |
 
 ### MOBILITÀ POST-CARDIO (10 min)
 

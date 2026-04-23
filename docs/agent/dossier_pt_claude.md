@@ -41,7 +41,7 @@ L'app oggi gestisce 3 livelli:
 - programma V4
 - lower / upper / leggero / cardio / riposo
 - è il livello con la logica tutor più completa
-- struttura settimana: G1 Lower A · G2 Upper A · G3 Leggero · G4 Lower B · G5 Upper B · G6 Riposo · G7 Cardio B
+- struttura settimana: G1 Lower A · G2 Upper A · G3 Leggero · Cardio giovedì · G4 Lower B · G5 Upper B · Riposo
 
 ## 2. Cosa deve leggere prima l'agente PT
 
@@ -221,23 +221,23 @@ Esiste anche:
 
 > **Fonte unica di verità per la lista esercizi V4.** Se c'è conflitto tra questa sezione e altri file, questo dossier e il CSV (`workout_plan_v4.csv`) sono autorevoli. Il CSV è la documentazione scheda completa; questa sezione è la sintesi rapida per il PT.
 
-**Struttura settimana**: G1 Lower A · G2 Upper A · G3 Leggero · G4 Lower B · G5 Upper B · G6 Riposo · G7 Cardio B
+**Struttura settimana**: G1 Lower A · G2 Upper A · G3 Leggero · Cardio giovedì · G4 Lower B · G5 Upper B · Riposo
 
 **Tipi giorno nell'app**:
 - `pesi` (default): G1, G2, G4, G5 — logica coach completa, tracking progressione
 - `light: true`: G3 — UI dedicata, niente RIR, niente briefing, niente decisione finale, timer fisso 30s
-- `cardio: true`: G7 — sezione cardio + mobilità
+- `cardio: true`: giovedì — 4 formati selezionabili + mobilità
 - `rest`: G6 — riposo
 
 | Giorno | Tipo | Esercizi |
 |---|---|---|
 | G1 Lower A | pesi | Squat · Stacco Rumeno · Glute Bridge Bilanciere · Leg Curl al Cavo · Ab Wheel |
 | G2 Upper A | pesi | Trazioni · Panca · Pulley · Band Pull-Apart con rotazione esterna · Curl Bicipiti |
-| G3 Leggero | light | Alzate Laterali · Band Pull-Apart con rotazione esterna · Fire Hydrant · TRX Row lento · Curl al Cavo Basso |
+| G3 Leggero | light | Alzate Laterali · Band Pull-Apart con rotazione esterna · Fire Hydrant/Clamshell · Goblet Squat · TRX Row lento |
 | G4 Lower B | pesi | Stacco da Terra · Affondi · Hyperextension · Fire Hydrant |
 | G5 Upper B | pesi | T-bar Row · Military Press · Push-Up · Trazioni Supine · Woodchop |
 | G6 | riposo | — |
-| G7 Cardio B | cardio | Corsa zona 2 / Rucking |
+| Cardio giovedì | cardio | Corsa 30 zona 2 / HIIT upper+core / Corsa lunga zona 2 / Rucking |
 
 Rimossi dal programma attivo (non devono comparire in suggerimenti o liste coaching pesi):
 - Hip Thrust Bilanciere
@@ -257,6 +257,21 @@ Superset attivi per modalità rapida (solo giorni pesi):
 - G5: Push-Up + Woodchop
 
 Nota: il G3 Leggero NON ha superset. Non è nella logica AM/PM split. Non alimenta i Progressi fondamentali.
+
+### Cardio programmato
+
+Il cardio del giovedì usa una rotazione suggerita su 4 formati, tutti sempre selezionabili:
+
+| Rotazione | Formato | Durata | Vincolo |
+|---|---|---|---|
+| A | Corsa zona 2 breve | 30 min | FC 120-140 |
+| B | HIIT upper + core | 30 min | 30s/15s, niente sprint/salti/affondi |
+| C | Corsa zona 2 lunga | 50-60 min | spostare a domenica se penalizza lo stacco |
+| D | Rucking | 45-60 min | zaino 15-20 kg |
+
+### Alternativa Clamshell
+
+Nel G3 il Fire Hydrant può essere sostituito con Clamshell tramite toggle persistente. Stesse serie, RPE e recupero: `2x20/lato`, `RPE 6-7`, `30s`. Il G4 resta Fire Hydrant fisso.
 
 ## 9. Cosa deve verificare un agente PT
 

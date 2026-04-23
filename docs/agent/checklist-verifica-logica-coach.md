@@ -4,7 +4,7 @@
 
 Dopo ogni modifica alla lista esercizi del programma V4, l'agente deve verificare che TUTTE le liste e funzioni della logica coach siano allineate. Ogni esercizio attivo deve essere presente nelle liste corrette. Ogni esercizio rimosso deve essere tolto.
 
-## Esercizi attualmente attivi nel V4 (aggiornato 2026-04-22)
+## Esercizi attualmente attivi nel V4 (aggiornato 2026-04-23)
 
 **Giorni pesi** (logica coach completa):
 G1: Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel
@@ -13,7 +13,7 @@ G4: Stacco da Terra, Affondi, Hyperextension, Fire Hydrant
 G5: T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop
 
 **Giorno leggero G3** (tipo `light: true` — logica coach NON si applica):
-G3: Alzate Laterali, Band Pull-Apart con rotazione esterna, Fire Hydrant, TRX Row lento, Curl al Cavo Basso
+G3: Alzate Laterali, Band Pull-Apart con rotazione esterna, Fire Hydrant oppure Clamshell, Goblet Squat, TRX Row lento
 
 Gli esercizi del G3 NON devono essere in ACCESSORY_PROGRESS_EX, MAX_PROGRESS_EX, keyLiftNames, FAST_MODE_SUPERSETS, V4_DAY_SPLIT_PLAN.
 
@@ -113,7 +113,7 @@ Deve contenere i fondamentali e compound pesanti attivi:
 `Squat, Stacco da Terra, Panca, Military Press, Trazioni, Trazioni Supine, Push-Up, T-bar Row, Stacco Rumeno, Glute Bridge Bilanciere`
 - Cerca: `var keyLiftNames`
 - Verifica: non deve contenere Dip alle Parallele, Hip Thrust Bilanciere
-- Verifica: non deve contenere esercizi del G3 Leggero (Alzate Laterali, TRX Row lento, Curl al Cavo Basso)
+- Verifica: non deve contenere esercizi esclusivi del G3 Leggero (Alzate Laterali, Clamshell, Goblet Squat, TRX Row lento)
 
 ### 14. Giorno leggero G3 (tipo `light: true`)
 Il giorno leggero ha regole proprie — verificare che il codice rispetti queste 6 regole:

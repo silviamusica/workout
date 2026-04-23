@@ -450,14 +450,25 @@ Questi esercizi appartengono al G3 (`light: true`). La logica coach NON si attiv
 - **Differenza da TRX Row standard**: l'enfasi è sull'eccentrica lenta e la pausa isometrica, non sulla velocità o il carico
 - **Progressione**: aumentare inclinazione (più difficile) o aumentare rip, ma nel G3 non si usa la logica double progression
 
-### Curl al Cavo Basso
+### Goblet Squat
 
-- **Pattern**: flessione gomito (bicipiti)
-- **Ruolo nel G3**: pump leggero a bassa intensità — completa il lavoro indiretto delle tirate
-- **Classificazione coach**: `mono`, `cable` (match automatico su `indexOf("Cavo")`), `+1 step`
-- **Calibrazione**: `cable`
-- **Note tecniche**: RPE 6-7, gomiti fermi ai fianchi, contrazione 1s in alto, peso molto leggero
-- **Differenza da Curl Bicipiti (G2)**: quello è manubri a RPE 9, questo è cavo a RPE 6-7 — scopo diverso
+- **Pattern**: squat leggero
+- **Ruolo nel G3**: richiamo quadricipiti/glutei senza tassare il sistema nervoso prima del cardio e dello stacco
+- **Classificazione coach**: non rilevante nel G3 light
+- **Calibrazione**: non richiesta nel G3 light
+- **Note tecniche**: manubrio al petto, busto stabile, gomiti verso fuori, range controllato
+
+### Clamshell
+
+- **Pattern**: rotazione esterna anca in decubito laterale
+- **Ruolo nel G3**: alternativa al Fire Hydrant per gluteo medio, stesso distretto ma angolo diverso
+- **Serie/RPE/recupero**: 2x20/lato, RPE 6-7, 30s
+- **Classificazione coach**: non rilevante nel G3 light
+- **Calibrazione**: non richiesta nel G3 light
+- **Note tecniche**: ginocchia a 90 gradi, piedi uniti, apri il ginocchio superiore senza ruotare il bacino indietro
+- **Video**: https://www.youtube.com/watch?v=cjmFnOJkp7s
+
+Il toggle Clamshell esiste solo sul Fire Hydrant del G3. Il Fire Hydrant del G4 resta fisso.
 
 ## Obiettivi della sessione guidata: come devono essere letti
 

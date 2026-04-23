@@ -49,7 +49,7 @@ Regole fisse:
 
 Nei giorni lower il blocco ruota intorno a caviglia + anca + core/glutei + attivazione esplosiva non tassante.
 Nei giorni upper ruota intorno a toracica + spalla + controllo scapolare/core, evitando di pre-affaticare i muscoli che lavoreranno nelle serie vere.
-Nel giorno leggero G3 il riscaldamento è abbreviato (5 min, senza circuito). Nel G7 Cardio B c'e piu tempo per il blocco mobilita completo.
+Nel giorno leggero G3 il riscaldamento è abbreviato (5 min, senza circuito). Nel cardio programmato del giovedì resta disponibile il blocco mobilita completo.
 
 ### La struttura: Upper/Lower su 4 giorni
 
@@ -356,16 +356,16 @@ Il tasso di guadagno muscolare rallenta e i progressi di forza diventano piu len
 ## Scheda completa V4
 
 Nota UI attuale:
-- nella tab `Scheda` della V4 l'utente vede tutti i giorni inclusi G3 Leggero e G7 Cardio
+- nella tab `Scheda` della V4 l'utente vede tutti i giorni inclusi G3 Leggero e Cardio del giovedì
 - il G3 Leggero (`light: true`) ha una UI dedicata: niente flow mode, niente RIR, niente briefing, niente decisione finale
-- il G7 Cardio B (`cardio: true`) resta gestito come prima con sezione cardio + mobilità
+- il Cardio del giovedì (`cardio: true`) offre 4 formati selezionabili e resta gestito con sezione cardio + mobilità
 - nei giorni pesi il protocollo anca compare come `Bonus mobilità anca` facoltativo dopo lo stretching finale
 
 **Struttura settimana**
 
 | Lun | Mar | Mer | Gio | Ven | Sab | Dom |
 |---|---|---|---|---|---|---|
-| G1 Lower A | G2 Upper A | G3 Leggero | G4 Lower B | G5 Upper B | Riposo | G7 Cardio |
+| G1 Lower A | G2 Upper A | G3 Leggero | Cardio | G4 Lower B | G5 Upper B | Riposo |
 
 ### Giorno 1 — Lower A — Quadricipiti + Femorali
 
@@ -455,7 +455,7 @@ Stesso blocco facoltativo del Giorno 1, mostrato dopo lo stretching finale.
 
 ### Giorno 3 — Leggero (Volume complementare + mobilità)
 
-**Aggiornamento 2026-04-22**: il Giorno 3 Cardio A è sostituito da un giorno leggero dedicato a volume complementare e protocollo anca completo. Il G7 Cardio B resta invariato.
+**Aggiornamento 2026-04-22**: il Giorno 3 Cardio A è sostituito da un giorno leggero dedicato a volume complementare e protocollo anca completo. Il cardio è programmato il giovedì con 4 formati selezionabili.
 
 Questo giorno colma tre lacune del programma:
 - deltoide laterale: zero serie dirette negli altri giorni
@@ -473,15 +473,24 @@ Questo giorno colma tre lacune del programma:
 | Mobilità | T-spine rotation in quadrupedia | 8 rip/lato |
 | Attivazione | Ponte monopodalico | 6 rip/lato |
 
-**Esercizi** (RPE max 6-7 · 30 min)
+**Esercizi** (RPE 6-8 · 30 min)
 
 | # | Esercizio | Serie | RPE | Recupero | Note |
 |---|---|---|---|---|---|
-| 1 | Alzate Laterali | 3x15-20 | 6-7 | 30-45s | Manubri leggeri. Alza fino a parallelo. 2s su 2s giù |
+| 1 | Alzate Laterali | 3x15-20 | 8 | 30-45s | Manubri leggeri. Alza fino a parallelo. 2s su 2s giù |
 | 2 | Band Pull-Apart con rotazione esterna | 2x20 | 6-7 | 30s | Volume extra leggero. Pausa 1s con mani ruotate fuori |
 | 3 | Fire Hydrant | 2x20/lato | 6-7 | 30s | Bacino fermo. Range piccolo e controllato |
-| 4 | TRX Row lento | 2x12 | 6-7 | 45s | Fermo 2s scapole strette. Eccentrica 3s |
-| 5 | Curl al Cavo Basso | 2x15 | 6-7 | 30s | Peso molto leggero. Contrazione 1s in alto |
+| 4 | Goblet Squat | 2x12 | 6-7 | 45s | Manubrio al petto. Scendi parallelo. Gomiti verso fuori |
+| 5 | TRX Row lento | 2x12 | 6-7 | 45s | Fermo 2s scapole strette. Eccentrica 3s |
+
+**Alternativa G3**: Fire Hydrant può essere alternato con `Clamshell` tramite toggle nell'app.
+
+| Variante | Serie | RPE | Recupero | Note |
+|---|---|---|---|---|
+| Fire Hydrant | 2x20/lato | 6-7 | 30s | Abduzione anca in quadrupedia |
+| Clamshell | 2x20/lato | 6-7 | 30s | Decubito laterale, ginocchia 90°, piedi uniti, bacino fermo |
+
+Il Fire Hydrant del G4 resta invariato e non ha toggle alternativa.
 
 **Protocollo anca completo** (8-10 minuti)
 
@@ -584,7 +593,24 @@ Stesso blocco facoltativo del Giorno 1, mostrato dopo lo stretching finale.
 
 Stesso blocco facoltativo del Giorno 1, mostrato dopo lo stretching finale.
 
-### Giorno 7 — Cardio B
+### Cardio — Giovedì programmato
+
+**Aggiornamento 2026-04-23**: il cardio del giovedì usa 4 formati selezionabili, con rotazione suggerita A -> B -> C -> D. La rotazione è solo un suggerimento: l'utente può scegliere liberamente il formato del giorno.
+
+| Rotazione | Formato | Durata | Intensità | Note |
+|---|---|---|---|---|
+| A | Corsa 30 min zona 2 | 30 min | Bassa | FC 120-140, puoi parlare senza fiatone |
+| B | HIIT upper + core | 30 min | Alta | 30s lavoro / 15s pausa, 4-5 giri, niente gambe pesanti |
+| C | Corsa lunga zona 2 | 50-60 min | Bassa | Cadenza 170+ passi/min, ritmo costante |
+| D | Rucking | 45-60 min | Bassa-media | Zaino 15-20 kg, +5 min ogni 2 settimane |
+
+**HIIT consentito**: kettlebell swing leggero, push-up, battle rope se disponibile, plank, shoulder tap, mountain climber, dead bug dinamico.
+
+**HIIT vietato il giovedì**: sprint, box jump, burpee completo, affondi saltati, squat jump, corsa in salita.
+
+Se la corsa lunga fa calare lo stacco del venerdì per 2+ settimane consecutive, spostarla alla domenica e tenere il giovedì a 30 minuti.
+
+### Giorno cardio — Mobilità
 
 Nota:
 - questo giorno resta fuori dai tab-giorno principali per non rompere il tracking dei pesi
@@ -594,8 +620,10 @@ Nota:
 
 | # | Opzione | Durata | Note |
 |---|---|---|---|
-| 1 | Corsa leggera zona 2 | 30 min | Bassa intensita. FC 120-140. Cadenza 170+ passi/min. Puoi parlare senza fiatone |
-| 2 | Rucking con zaino 15-20 kg | 45-75 min | Bassa intensita. Zona 2. Progressione: +5 min ogni 2 settimane. Se nel Giorno 3 hai fatto rucking preferisci la corsa |
+| 1 | Corsa 30 min zona 2 | 30 min | Rotazione A. FC 120-140, puoi parlare senza fiatone |
+| 2 | HIIT upper + core | 30 min | Rotazione B. 30s lavoro / 15s pausa, 4-5 giri, niente sprint o salti |
+| 3 | Corsa lunga zona 2 | 50-60 min | Rotazione C. Ritmo costante, cadenza 170+ passi/min |
+| 4 | Rucking con zaino 15-20 kg | 45-60 min | Rotazione D. Progressione: +5 min ogni 2 settimane |
 
 **Mobilita giorno cardio**
 
