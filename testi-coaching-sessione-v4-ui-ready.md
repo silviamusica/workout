@@ -157,7 +157,7 @@ Scarico → circa 50% → 70-80%. Devono preparare, non stancare.
 | Esercizio | Dose | Cue |
 |---|---|---|
 | Band Pull-Apart con elastico | 15 rip | Scapole che si avvicinano alla fine del gesto. |
-| Shoulder Tap | 8 per lato | Bacino fermo e anti-rotazione vera. |
+| Shoulder Tap | 20 per lato | Bacino fermo e anti-rotazione vera. |
 
 #### Circuito
 
@@ -281,7 +281,7 @@ Mini-serie progressive per entrare nella tirata senza stancarti.
 | Esercizio | Dose | Cue |
 |---|---|---|
 | Ponte monopodalico | 6 per lato | Gluteo forte in alto, assetto fermo. |
-| Shoulder Tap | 6 per lato | Anti-rotazione: prepara il core per lo stacco. |
+| Shoulder Tap | 20 per lato | Anti-rotazione: prepara il core per lo stacco. |
 
 #### Circuito
 

@@ -1517,7 +1517,7 @@ var DAYS = [
       { n: "Croci Manubri a Terra", s: "4x12", rpe: "9", note: "8kg. Usa fitball come panca inclinata", v2: { n: "Push-Up Declino", s: "4xmax" }, v3: { n: "Floor Press Manubri", s: "4x10" }, v4: { n: "Croci Manubri a Terra", s: "4x10", note: "Pausa 2s in basso" } },
       { n: "Arnold Press", s: "4x12", rpe: "9", note: "8kg", v2: { n: "Alzate Laterali", s: "4x15" }, v3: { n: "Push Press", s: "4x8" }, v4: { n: "Arnold Press", s: "4x8", note: "Pesante" } },
       { n: "Addominali Obliqui", s: "3x15", rpe: "", note: "Russian twist o crunch laterale. CORE ALLA FINE." },
-      { n: "Shoulder Tap", s: "2x10", rpe: "", note: "Per lato. Bacino fermo. CORE ALLA FINE." },
+      { n: "Shoulder Tap", s: "2x20 per lato", rpe: "", note: "Bacino fermo. Sempre 20 ripetizioni per lato. CORE ALLA FINE." },
     ], str: ["Glutei","Flessori anca","Quadricipiti","Pettorali","Spalle"] },
   { name: "Giorno 5-6", focus: "Richiamo braccia + core + gambe", dur: "B1+B2: 4 esercizi", tEst: 45,
     intro: {
@@ -1563,7 +1563,7 @@ var DAYS_V4 = [
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota solo il torace: il bacino resta fermo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
       { n: "FMS spalle", phase: "mobility", gearTag: "Corpo libero", p: "5 per lato", cue: "Descrizione in arrivo." },
       { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 per lato", cue: "Gluteo stretto 2 secondi in alto, lombare ferma.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
-      { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "5 per lato", cue: "Lombare incollata al pavimento per tutta la serie.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
+      { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "20 rip per lato", cue: "Bacino fermo e anti-rotazione continua per 20 ripetizioni per lato.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
       { n: "Serie avvicinamento squat", phase: "approach", img: "w_SerieAvvSquat", gearTag: "Bilanciere", p: "2 serie tecnica", cue: "Bilanciere scarico. Pausa in buca 3-5 secondi. 6 ripetizioni per serie." },
     ],
     ex: [
@@ -1587,7 +1587,7 @@ var DAYS_V4 = [
       { n: "FMS spalle", phase: "mobility", gearTag: "Corpo libero", p: "5 per lato", cue: "Descrizione in arrivo." },
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "12 per gamba x2", cue: "Serve anche qui per appoggio e linea stabile.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
       { n: "Band Pull-Apart con elastico", phase: "activation", img: "w_BandPullApart", gearTag: "Elastico", p: "15 rip", cue: "Scapole che si avvicinano alla fine del gesto.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
-      { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "8 per lato", cue: "Bacino fermo e anti-rotazione vera.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
+      { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "20 rip per lato", cue: "Bacino fermo e anti-rotazione vera per 20 ripetizioni per lato.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
       { n: "Serie avvicinamento trazioni prone", phase: "approach", img: "Trazioni", gearTag: "Sbarra + elastico", p: "2-3 mini-serie", cue: "Mini-serie progressive presa prone con elastico per entrare nella tirata senza stancarti." },
     ],
     ex: [
@@ -1667,7 +1667,7 @@ var DAYS_V4 = [
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota il torace, bacino fermo — prepara per lo stacco.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
       { n: "FMS spalle", phase: "mobility", gearTag: "Corpo libero", p: "5 per lato", cue: "Descrizione in arrivo." },
       { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 per lato", cue: "Gluteo forte in alto, assetto fermo.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
-      { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "6 per lato", cue: "Anti-rotazione: prepara il core per lo stacco.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
+      { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "20 rip per lato", cue: "Anti-rotazione: prepara il core per lo stacco. Sempre 20 ripetizioni per lato.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
       { n: "Serie avvicinamento stacco", phase: "approach", img: "w_SerieAvvStacco", gearTag: "Bilanciere", p: "3 serie progressive", cue: "Scarico → circa 50% → 70-80%. L'ultima deve accendere il gesto, non tassarlo." },
     ],
     ex: [
@@ -5394,11 +5394,10 @@ export default function App() {
   function startRecoveryTimer(secs, flowInfo) {
     clearTimerSecondBuzz();
     try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {}
-    if (typeof window !== "undefined" && (window.innerWidth || 0) <= 640) {
-      setTMini(false);
-      setTPanel(true);
-      resetTimerPosition();
-    }
+    setTMini(false);
+    setTPanel(true);
+    setTFullscreen(false);
+    resetTimerPosition();
     setTRunning(false);
     clearInterval(intv.current);
     tAcc.current = 0;
@@ -5571,11 +5570,10 @@ export default function App() {
   function quickTimer(secs) {
     clearTimerSecondBuzz();
     try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {}
-    if (typeof window !== "undefined" && (window.innerWidth || 0) <= 640) {
-      setTMini(false);
-      setTPanel(true);
-      resetTimerPosition();
-    }
+    setTMini(false);
+    setTPanel(true);
+    setTFullscreen(false);
+    resetTimerPosition();
     setTRunning(false);
     clearInterval(intv.current);
     tAcc.current = 0;
@@ -5598,6 +5596,10 @@ export default function App() {
   function quickStopwatch() {
     clearTimerSecondBuzz();
     try { var c = getAC(); if (c && c.state === "suspended") c.resume(); } catch(e) {}
+    setTMini(false);
+    setTPanel(true);
+    setTFullscreen(false);
+    resetTimerPosition();
     setTRunning(false);
     clearInterval(intv.current);
     tAcc.current = 0;
@@ -10880,10 +10882,13 @@ function isNearBodyweightElasticSession(exName, sets) {
                   }
                   var hPage = histPage[i] || 0;
                   var lastSession = pastSessions[hPage] || null;
-                  // pre-fill helper: get suggested value for series si
+                  // pre-fill helper:
+                  // - serie 1: copia il riferimento della prima serie dell'ultimo allenamento
+                  // - serie successive: restano vuote, ma si puo copiare la serie sopra con un tap
                   function getSuggested(si) {
                     if (!lastSession) return { w: "", r: "", rir: "" };
-                    var s = lastSession.sets.find(function(s) { return s.si === si; });
+                    if (si > 0) return { w: "", r: "", rir: "" };
+                    var s = lastSession.sets.find(function(s) { return s.si === 0; }) || lastSession.sets[0] || null;
                     if (s) {
                       var suggestedWeight = s.w > 0 ? storedWeightToPlateInput(ex.n, s.w, barbellWeight) : "";
                       return { w: suggestedWeight === "" ? "" : String(suggestedWeight), r: String(s.r), rir: normalizeRirValue(s.rir) };
@@ -11091,9 +11096,8 @@ function isNearBodyweightElasticSession(exName, sets) {
                                         }
                                       } else {
                                         setTimeout(function() {
-                                          var nextSugg = getSuggested(si + 1);
                                           setEditing(i + "-" + (si + 1));
-                                          setTmpW(nextSugg.w);
+                                          setTmpW("");
                                           setTmpR("");
                                           setTmpRir("");
                                         }, 220);
@@ -11113,14 +11117,14 @@ function isNearBodyweightElasticSession(exName, sets) {
                             ) : (
                               <div style={{ padding: "0 10px 10px", display: "flex", flexDirection: "column", gap: 6 }}>
                                 <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(sugg.w); setTmpR(sugg.r); setTmpRir(sugg.rir || ""); }} style={{ width: "100%", minHeight: 52, border: "2px dashed " + dc + "50", borderRadius: 10, background: dc + "08", color: dc, fontWeight: 800, fontSize: 15, cursor: "pointer", touchAction: "manipulation" }}>
-                                  {sugg.r ? "▶ " + (isTimeExercise ? (sugg.r + " s") : (isBW ? sugg.r + " rip" : formatLoadAndReps(ex.n, usesBarbellTotal(ex.n) ? plateInputToStoredWeight(ex.n, sugg.w, barbellWeight) : sugg.w, sugg.r))) : "+ registra"}
+                                  {sugg.r ? "▶ " + (isTimeExercise ? (sugg.r + " s") : (isBW ? sugg.r + " rip" : formatLoadAndReps(ex.n, usesBarbellTotal(ex.n) ? plateInputToStoredWeight(ex.n, sugg.w, barbellWeight) : sugg.w, sugg.r))) : (si === 0 ? "+ registra" : "+ inserisci serie")}
                                 </button>
                                 {(function() {
                                   if (si === 0) return null;
                                   var prevLg = tLog ? tLog.sets.find(function(s) { return s.si === si - 1; }) : null;
                                   if (!prevLg) return null;
                                   return <button onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : prevLg.w, String(prevLg.r), isBW, prevLg.rir || ""); }} style={{ width: "100%", minHeight: 36, border: "1px solid " + T.sub + "30", borderRadius: 8, background: "transparent", color: T.sub, fontWeight: 700, fontSize: 12, cursor: "pointer", touchAction: "manipulation" }}>
-                                    {"↑ copia serie " + si + " · " + formatSetResult(ex.n, prevLg, isBW, isTimeExercise)}
+                                    {"↑ copia serie sopra · " + formatSetResult(ex.n, prevLg, isBW, isTimeExercise)}
                                   </button>;
                                 })()}
                               </div>

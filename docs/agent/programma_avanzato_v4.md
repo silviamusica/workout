@@ -378,7 +378,7 @@ Nota UI attuale:
 | Fase 1 — Mobilità | Dorsiflessione al muro | 12 rip per gamba, 2 serie | Caviglia |
 | Fase 1 — Mobilità | FMS Spalle | placeholder — foto e descrizione da aggiungere | Spalla |
 | Fase 2 — Attivazione | Ponte monopodalico | 6 per lato | Gluteo e stabilità bacino |
-| Fase 2 — Attivazione | Shoulder Tap | 8 per lato | Core anti-rotazione |
+| Fase 2 — Attivazione | Shoulder Tap | 20 per lato | Core anti-rotazione |
 | Fase 3 — Circuito | — | Rimosso nel G1 | Non presente in questo giorno |
 | Fase 4 — Avvicinamento | Serie avvicinamento squat | 2 serie | Bilanciere scarico con pausa in buca 3-5s, 6 rip per serie |
 
@@ -423,7 +423,7 @@ Protocollo breve facoltativo dopo lo stretching finale:
 | Fase 1 — Mobilità | FMS Spalle | placeholder — foto e descrizione da aggiungere | Spalla (ex Shoulder CARs) |
 | Fase 1 — Mobilità | Dorsiflessione al muro | 8 rip per lato | Appoggio stabile anche nei giorni upper |
 | Fase 2 — Attivazione | Band pull-apart con elastico | 15 rip | Attivazione scapolare |
-| Fase 2 — Attivazione | Shoulder Tap | 8 per lato | Core anti-rotazione |
+| Fase 2 — Attivazione | Shoulder Tap | 20 per lato | Core anti-rotazione |
 | Fase 3 — Circuito | — | Rimosso nel G2 | Non presente in questo giorno |
 | Fase 4 — Avvicinamento | Serie avvicinamento trazioni | 2-3 mini-serie | Progressive con elastico |
 
@@ -518,7 +518,7 @@ Il giorno migliore per il protocollo anca intero: nessun compound pesante prima,
 | Fase 1 — Mobilità | 90/90 hip mobility | 8 passaggi per lato | Anca |
 | Fase 1 — Mobilità | Calf Raises con pallina | 12 rip | Piede e controllo adduttori |
 | Fase 2 — Attivazione | Ponte monopodalico | 6 per lato | Gluteo e stabilità bacino |
-| Fase 2 — Attivazione | Shoulder Tap | 6 per lato | Core anti-rotazione |
+| Fase 2 — Attivazione | Shoulder Tap | 20 per lato | Core anti-rotazione |
 | Fase 3 — Circuito | — | Rimosso nel G4 | Non presente in questo giorno |
 | Fase 4 — Avvicinamento | Serie avvicinamento stacco | 3 serie | Scarico → 50% → 70-80% |
 

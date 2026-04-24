@@ -50,7 +50,7 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 | **Fase 1 — Mobilità** | Dorsiflessione al muro | 12 rip/lato, 2 serie | Caviglia: 2s in alto, 2s in basso |
 | **Fase 1 — Mobilità** | FMS Spalle | TBD (placeholder) | ❓ *Foto e descrizione tecnica da aggiungere* |
 | **Fase 2 — Attivazione** | Ponte monopodalico | 6 rip/lato | Gluteo e stabilità bacino |
-| **Fase 2 — Attivazione** | Shoulder Tap | 8 rip/lato | Core anti-rotazione |
+| **Fase 2 — Attivazione** | Shoulder Tap | 20 rip/lato | Core anti-rotazione |
 | **Fase 4 — Avvicinamento** | Serie avvicinamento Squat | 2 serie × 6 rip | Bilanciere scarico, pausa 3-5s in buca |
 
 ### BLOCCO AM (Esercizi principali)
@@ -114,7 +114,7 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 | **Fase 1 — Mobilità** | FMS Spalle | TBD (placeholder) | ❓ *Foto e descrizione tecnica da aggiungere* |
 | **Fase 1 — Mobilità** | Dorsiflessione al muro | 8 rip/lato | Appoggio stabile anche nei giorni upper |
 | **Fase 2 — Attivazione** | Band Pull-Apart con elastico | 15 rip | Attivazione scapolare; pausa 1s ogni 5 rip |
-| **Fase 2 — Attivazione** | Shoulder Tap | 8 rip/lato | Core anti-rotazione |
+| **Fase 2 — Attivazione** | Shoulder Tap | 20 rip/lato | Core anti-rotazione |
 | **Fase 4 — Avvicinamento** | Mini-serie Trazioni | 2-3 serie | Progressive con elastico: elastico forte → medio → leggero (niente cedimento) |
 
 ### BLOCCO AM (Esercizi principali)
@@ -215,7 +215,7 @@ Questo protocollo è il cuore del G3 — il giorno migliore perché nessun compo
 | **Fase 1 — Mobilità** | 90/90 Hip Mobility | 8 passaggi/lato | Anca |
 | **Fase 1 — Mobilità** | Calf Raises con pallina | 12 rip | Piede e controllo adduttori |
 | **Fase 2 — Attivazione** | Ponte monopodalico | 6 rip/lato | Gluteo e stabilità bacino |
-| **Fase 2 — Attivazione** | Shoulder Tap | 6 rip/lato | Core anti-rotazione |
+| **Fase 2 — Attivazione** | Shoulder Tap | 20 rip/lato | Core anti-rotazione |
 | **Fase 4 — Avvicinamento** | Serie avvicinamento Stacco | 3 serie | Scarico → 50% → 70-80%, 3-4 rip ciascuna |
 
 ### BLOCCO AM (Esercizi principali)
