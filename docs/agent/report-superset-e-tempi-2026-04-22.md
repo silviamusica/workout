@@ -21,7 +21,7 @@ Allineare app e documenti alla revisione finale V4, rinominando i blocchi rapidi
 - Accoppiamenti attivi confermati:
   - G1: `Leg Curl al Cavo + Ab Wheel` — recupero `60s` — nota `4a serie Leg Curl da sola`
   - G2: `Band Pull-Apart con rotazione esterna + Curl Bicipiti` — recupero `60s`
-  - G4: `Hyperextension + Fire Hydrant` — recupero `60s` — nota `4a serie Hyperextension da sola`
+  - G4: `Hyperextension + Abduzione laterale IR` — recupero `60s` — nota `4a serie Hyperextension da sola`
   - G5: `Push-Up + Woodchop` — recupero `45s` — nota `4a serie Push-Up da sola`
 - Split AM/PM corretto:
   - G1 PM contiene solo il superset
@@ -62,7 +62,7 @@ Tempi coerenti dopo il controllo, aggiornati il 2026-04-23 dopo l'inserimento de
 - Cardio: `30-75 min` + mobilità `~10 min`
   - impostato `tEst ~45 min` come valore medio visibile in app
 - G4: `~90 min`
-  - coerente con stacco, affondi e superset finale, Hyperextension a 5 serie totali
+  - coerente con stacco, split squat e superset finale, Hyperextension a 5 serie totali
 - G5: `~80 min`
   - coerente con 2 fondamentali, 1 trazione separata, 1 superset e chiusura alzate
 

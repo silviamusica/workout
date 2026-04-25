@@ -1,41 +1,21 @@
 # Contesto Agente
 
-Questa cartella contiene solo i file indispensabili per capire e modificare i programmi presenti nell'app.
+Questa cartella contiene i file indispensabili per capire e modificare i programmi dell'app.
 
-Per un controllo specifico della `V4`, usa questo unico ordine di lettura:
+## Ordine di lettura per controllo V4
 
-1. `logica_tutor_pt.md`
-2. `workout_plan_v4.csv`
-3. `esercizi_varianti_obiettivi_guided.md`
-4. `programma_avanzato_v4.md`
-5. `dossier_pt_claude.md`
+1. `logica_tutor_pt.md` — logica tutor: calibrazione, guidata, RIR, recuperi, progressione
+2. `workout_plan_v4.csv` — scheda CSV del programma V4
+3. `esercizi_varianti_obiettivi_guided.md` — pattern, varianti, regressioni, obiettivi, lettura guidata
+4. `programma_avanzato_v4.md` — teoria e struttura giorno per giorno
+5. `dossier_pt_claude.md` — dossier unico per agente PT: livelli, programmi, esercizi attivi
 
-1. `logica_tutor_pt.md`
-   Logica tutor attuale dell'app: calibrazione, modalità guidata, RIR, recuperi, progressione, export.
+## Altri file
 
-2. `workout_plan_v4.csv`
-   Scheda CSV del programma avanzato V4.
+- `tecniche_preliminari.md` — regole del livello Tecniche preliminari
+- `workout_plan_beginner.csv` — scheda principiante
+- `workout_plan_basics.csv` — scheda Tecniche preliminari
 
-3. `esercizi_varianti_obiettivi_guided.md`
-   Mappa operativa per il PT: pattern, varianti, regressioni, alternative, obiettivi per variante e lettura corretta della modalità guidata.
-
-4. `programma_avanzato_v4.md`
-   Logica completa del programma avanzato V4, teoria e struttura giorno per giorno.
-
-5. `dossier_pt_claude.md`
-   Dossier unico per agente PT esterno: livelli, programmi, logica tutor, calibrazione, guided mode, dati e file da controllare.
-
-6. `tecniche_preliminari.md`
-   Regole e vincoli del livello `Tecniche preliminari`, con focus su competenze, UI e collegamenti agli esercizi.
-
-7. `workout_plan_beginner.csv`
-   Scheda CSV del programma principiante.
-
-8. `workout_plan_basics.csv`
-   Scheda CSV del livello `Tecniche preliminari`.
-
-File applicativo principale:
+## File applicativo
 
 - `../../src/App.jsx`
-
-Questa cartella sostituisce i vecchi file sparsi in root.

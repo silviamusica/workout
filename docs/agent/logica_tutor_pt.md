@@ -186,7 +186,7 @@ Durante il recupero il timer può mostrare:
 
 Esempi:
 - `Prossimo: Serie 3 di 4 · Squat`
-- `Prossimo: Affondi · preparare manubri`
+- `Prossimo: Bulgarian Split Squat · preparare manubri e panca`
 - `Prossimo: Ab Wheel · superset diretto, no pausa`
 
 ### Vibrazione
@@ -279,7 +279,7 @@ Il Giorno 3 ha `light: true`. Non è cardio, non è pesi, non è riposo.
 |---|---|---|---|---|
 | 1 | Alzate Laterali | 3x15-20 | 8 | 30-45s |
 | 2 | Band Pull-Apart con rotazione esterna | 2x20 | 6-7 | 30s |
-| 3 | Fire Hydrant oppure Clamshell | 2x20/lato | 6-7 | 30s |
+| 3 | Abduzione laterale IR | 2x20/lato | 6-7 | 30s |
 | 4 | Goblet Squat | 2x12 | 6-7 | 45s |
 | 5 | TRX Row lento | 2x12 | 6-7 | 45s |
 
@@ -291,13 +291,13 @@ Il Giorno 3 ha `light: true`. Non è cardio, non è pesi, non è riposo.
 - Gli esercizi del G3 NON compaiono nei Progressi fondamentali
 - NON ha split AM/PM né superset
 - Protocollo anca completo (7 posizioni, 8-10 min) dopo gli esercizi
-- Fire Hydrant ha alternativa Clamshell solo nel G3; la scelta resta persistente in `localStorage` con chiave `wt-exercise-alt-mode`
+- Abduzione laterale IR ha alternativa Clamshell solo nel G3; la scelta resta persistente in `localStorage` con chiave `wt-exercise-alt-mode`
 
 ### Classificazione esercizi G3 per il coach (se mai interrogato)
 
 - `Alzate Laterali`: mono, +1 kg per manubrio
 - `Band Pull-Apart con rotazione esterna`: mono, bodyweight, +1 rip
-- `Fire Hydrant` / `Clamshell`: mono, bodyweight, +1 rip
+- `Abduzione laterale IR`: mono, bodyweight, +1 rip
 - `Goblet Squat`: compound leggero, +1 kg manubrio/kettlebell
 - `TRX Row lento`: compound (default), bodyweight, +1 rip
 
@@ -533,7 +533,7 @@ Esempi:
 - `+1 kg per manubrio`
 
 Esempi:
-- Affondi
+- Bulgarian Split Squat
 - Curl Bicipiti
 - Curl Martello
 - Press Manubri da Seduta
@@ -554,7 +554,7 @@ Esempi:
 Esempi:
 - Push-Up
 - Ab Wheel
-- Fire Hydrant
+- Abduzione laterale IR
 - Band Pull-Apart con rotazione esterna
 - TRX Row lento
 
@@ -605,7 +605,7 @@ L'app offre tre formati per ogni giorno pesi: sessione unica, split AM/PM, super
 |---|---|---|
 | G1 | Squat · Stacco Rumeno · Glute Bridge Bilanciere | Leg Curl al Cavo · Ab Wheel |
 | G2 | Trazioni · Panca | Pulley · Band Pull-Apart con rotazione esterna · Curl Bicipiti |
-| G4 | Stacco da Terra · Affondi | Hyperextension · Fire Hydrant |
+| G4 | Stacco da Terra · Bulgarian Split Squat | Hyperextension · Abduzione laterale IR |
 | G5 | T-bar Row · Military Press | Push-Up · Trazioni Supine · Woodchop |
 
 ### Superset (FAST_MODE_SUPERSETS)
@@ -614,7 +614,7 @@ L'app offre tre formati per ogni giorno pesi: sessione unica, split AM/PM, super
 |---|---|---|---|
 | G1 | Leg Curl al Cavo | Ab Wheel | 60s |
 | G2 | Band Pull-Apart con rotazione esterna | Curl Bicipiti | 60s |
-| G4 | Hyperextension | Fire Hydrant | 60s |
+| G4 | Hyperextension | Abduzione laterale IR | 60s |
 | G5 | Push-Up | Woodchop | 45s |
 
 ### Modalità flusso
@@ -641,16 +641,15 @@ Il giovedì precede lo stacco: l'HIIT non deve includere sprint, box jump, burpe
 
 Il formato HIIT è solo cardio: niente tracking peso, niente RIR, niente coach. Il timer interno alterna lavoro `30s` e pausa `15s`.
 
-## Toggle G3: Fire Hydrant / Clamshell
+## Gluteo medio G3/G4
 
-Nel G3 leggero il Fire Hydrant ha una sola alternativa persistente: `Clamshell`.
+Nel G3 leggero e nel G4 l'accessorio attivo è `Abduzione laterale IR`.
 
 | Esercizio | Serie | RPE | Recupero | Note |
 |---|---|---|---|---|
-| Fire Hydrant | 2x20/lato | 6-7 | 30s | abduzione anca in quadrupedia |
-| Clamshell | 2x20/lato | 6-7 | 30s | rotazione esterna anca in decubito laterale |
+| Abduzione laterale IR | 2x20/lato (G3) / 3x15-20/lato (G4) | 6-7 / 8 | 30s / 60s | fianco a terra, punta in giu, bacino fermo |
 
-La preferenza è salvata in `localStorage` (`wt-exercise-alt-mode`). Il Fire Hydrant del G4 non ha alternativa e resta sempre Fire Hydrant.
+Nel G3 il toggle persistente verso `Clamshell` resta attivo. Nel G4 questo blocco resta fisso su `Abduzione laterale IR`.
 
 ## File da controllare se si modifica la logica tutor
 

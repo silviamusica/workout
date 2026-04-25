@@ -11,9 +11,9 @@ Brief applicato: `/Users/silvia/Downloads/brief-cardio-programmato-clamshell.md`
 - HIIT upper + core inserito con circuito dedicato e timer automatico 30s lavoro / 15s pausa, selezionabile su 4 o 5 giri.
 - Vincoli HIIT esplicitati: niente sprint, salti, affondi, squat jump, corsa in salita o lavoro gambe pesante.
 - Mobilità post-cardio lasciata invariata.
-- G3 aggiornato a 11 serie totali: Alzate Laterali 3, Band Pull-Apart 2, Fire Hydrant/Clamshell 2, Goblet Squat 2, TRX Row lento 2.
-- Fire Hydrant del G3 ha toggle persistente verso Clamshell tramite `localStorage` (`wt-exercise-alt-mode`).
-- Fire Hydrant del G4 resta fisso e non ha alternativa.
+- G3 aggiornato a 11 serie totali: Alzate Laterali 3, Band Pull-Apart 2, Abduzione laterale IR/Clamshell 2, Goblet Squat 2, TRX Row lento 2.
+- Abduzione laterale IR del G3 ha toggle persistente verso Clamshell tramite `localStorage` (`wt-exercise-alt-mode`).
+- Nel G4 l'accessorio resta fisso su Abduzione laterale IR e non ha alternativa.
 - Liste progressione allineate: gli esercizi esclusivi G3 non entrano in `ACCESSORY_PROGRESS_EX`.
 - Cleanup eseguito: rimossi tutti i `workout-backup-*` precedenti, la cartella `backups/`, il backup storico `src/App.backup_pre_beginner_mode_2026-03-26.jsx`, il controllo brief vecchio del 2026-04-21 e gli asset/riferimenti del vecchio `Curl al Cavo Basso` non più attivo.
 

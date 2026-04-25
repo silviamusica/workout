@@ -184,7 +184,7 @@ L'app non deve parlare di `peso` dove non ha senso.
 Esempi:
 - `Push-Up`
 - `Ab Wheel`
-- `Fire Hydrant`
+- `Abduzione laterale IR`
 - `Band Pull-Apart con rotazione esterna`
 
 In questi casi deve parlare di:
@@ -221,6 +221,50 @@ Esiste anche:
 
 > **Fonte unica di verità per la lista esercizi V4.** Se c'è conflitto tra questa sezione e altri file, questo dossier e il CSV (`workout_plan_v4.csv`) sono autorevoli. Il CSV è la documentazione scheda completa; questa sezione è la sintesi rapida per il PT.
 
+## 8.ter. Documento Riassuntivo Esercizi PT
+
+Questa e la sintesi operativa piu rapida da dare a un agente PT. Include tutti gli esercizi attivi della V4, compresi riscaldamenti ricorrenti, mobilita anca quotidiana e cardio.
+
+### Giorni pesi
+
+| Giorno | Blocco | Esercizi attivi |
+|---|---|---|
+| G1 Lower A | Riscaldamento | Dorsiflessione al muro · 90/90 hip mobility · Alfredson eccentrico · Ponte monopodalico · Dead Bug · Push-Up · Affondi saltati alternati · Trazioni con elastico · Serie avvicinamento squat |
+| G1 Lower A | Lavoro | Squat · Stacco Rumeno · Glute Bridge Bilanciere · Leg Curl al Cavo · Ab Wheel |
+| G1 Lower A | Stretching | Standing Quad Pull · Half Kneeling Lunge · Figure-Four Supino |
+| G1 Lower A | Mobilita anca bonus | Half Kneeling Lunge · Half Kneeling Lunge + Reach · Figure-Four Supino · Posizione del quadrato · Happy Baby · Wall tibialis raises |
+| G2 Upper A | Riscaldamento | T-spine rotation in quadrupedia · Shoulder CARs · Dorsiflessione al muro · Band Pull-Apart con elastico · Shoulder Tap · Kettlebell swing leggero · Goblet squat con fermo in buca · Squat thrust · Serie avvicinamento trazioni |
+| G2 Upper A | Lavoro | Trazioni · Panca · Pulley · Band Pull-Apart con rotazione esterna · Curl Bicipiti |
+| G2 Upper A | Stretching | Doorway Pec Stretch · Overhead Lat Stretch · Cross-Body Shoulder Stretch · Wrist Flexor/Extensor Stretch |
+| G2 Upper A | Mobilita anca bonus | Half Kneeling Lunge · Half Kneeling Lunge + Reach · Figure-Four Supino · Posizione del quadrato · Happy Baby · Wall tibialis raises |
+| G4 Lower B | Riscaldamento | Dorsiflessione al muro · 90/90 hip mobility · Calf Raises con pallina · Ponte monopodalico · Shoulder Tap · Push-Up · Affondi saltati alternati · Burpee completo · Serie avvicinamento stacco |
+| G4 Lower B | Lavoro | Stacco da Terra · Bulgarian Split Squat · Hyperextension · Abduzione laterale IR |
+| G4 Lower B | Stretching | Supine Assisted Leg Pull · Figure-Four Supino · Cat-Cow Lento · Half Kneeling Lunge |
+| G4 Lower B | Mobilita anca bonus | Half Kneeling Lunge · Half Kneeling Lunge + Reach · Figure-Four Supino · Posizione del quadrato · Happy Baby · Wall tibialis raises |
+| G5 Upper B | Riscaldamento | T-spine rotation in quadrupedia · Shoulder CARs · Dorsiflessione al muro · Scapular Pull-Up · Band Pull-Apart con elastico · Kettlebell swing leggero · Affondi saltati alternati · Squat jump · Serie avvicinamento military press |
+| G5 Upper B | Lavoro | T-bar Row · Military Press · Push-Up · Trazioni Supine · Woodchop · Alzate Laterali |
+| G5 Upper B | Stretching | Doorway Pec Stretch · Overhead Triceps Stretch · Overhead Lat Stretch · Band Dislocate Lento |
+| G5 Upper B | Mobilita anca bonus | Half Kneeling Lunge · Half Kneeling Lunge + Reach · Figure-Four Supino · Posizione del quadrato · Happy Baby · Wall tibialis raises |
+
+### Giorno leggero e cardio
+
+| Giorno | Blocco | Esercizi attivi |
+|---|---|---|
+| G3 Leggero | Riscaldamento | Dorsiflessione al muro · 90/90 hip mobility · T-spine rotation in quadrupedia · Ponte monopodalico |
+| G3 Leggero | Lavoro | Alzate Laterali · Band Pull-Apart con rotazione esterna · Abduzione laterale IR · Goblet Squat · TRX Row lento |
+| G3 Leggero | Protocollo anca completo | Half Kneeling Lunge · Half Kneeling Lunge + Reach verticale · Couch Stretch · Figure-Four Supino · Happy Baby · Leg Cradle Supino · Supported Low Lunge · Posizione del quadrato · Wall tibialis raises |
+| Cardio giovedi | Formati | Corsa 30 min zona 2 · HIIT upper + core · Corsa lunga zona 2 · Rucking |
+| Cardio giovedi | Mobilita | Dorsiflessione al muro · Wall tibialis raises · 90/90 hip mobility · T-spine rotation in quadrupedia · Half Kneeling Lunge · Posizione del quadrato · Figure-Four Supino |
+
+### Punti chiave per il PT
+
+- `Bulgarian Split Squat` e il nome da usare per il monopodalico di G4.
+- `Abduzione laterale IR` sostituisce `Fire Hydrant` come accessorio gluteo medio attivo.
+- `Wall tibialis raises` e attivo nella mobilita quotidiana.
+- `Posizione del quadrato` e dentro il protocollo anca di ogni giorno.
+- Le 2 serie di avvicinamento esistono solo per `Ab Wheel`, `Curl Bicipiti`, `Hyperextension`.
+- I superset attivi sono: G1 `Leg Curl al Cavo + Ab Wheel`, G2 `Band Pull-Apart con rotazione esterna + Curl Bicipiti`, G4 `Hyperextension + Abduzione laterale IR`, G5 `Push-Up + Woodchop`.
+
 **Struttura settimana**: G1 Lower A · G2 Upper A · G3 Leggero · Cardio giovedì · G4 Lower B · G5 Upper B · Riposo
 
 **Tipi giorno nell'app**:
@@ -233,15 +277,15 @@ Esiste anche:
 |---|---|---|
 | G1 Lower A | pesi | Squat · Stacco Rumeno · Glute Bridge Bilanciere · Leg Curl al Cavo · Ab Wheel |
 | G2 Upper A | pesi | Trazioni · Panca · Pulley · Band Pull-Apart con rotazione esterna · Curl Bicipiti |
-| G3 Leggero | light | Alzate Laterali · Band Pull-Apart con rotazione esterna · Fire Hydrant/Clamshell · Goblet Squat · TRX Row lento |
-| G4 Lower B | pesi | Stacco da Terra · Affondi · Hyperextension · Fire Hydrant |
+| G3 Leggero | light | Alzate Laterali · Band Pull-Apart con rotazione esterna · Abduzione laterale IR · Goblet Squat · TRX Row lento |
+| G4 Lower B | pesi | Stacco da Terra · Bulgarian Split Squat · Hyperextension · Abduzione laterale IR |
 | G5 Upper B | pesi | T-bar Row · Military Press · Push-Up · Trazioni Supine · Woodchop |
 | G6 | riposo | — |
 | Cardio giovedì | cardio | Corsa 30 zona 2 / HIIT upper+core / Corsa lunga zona 2 / Rucking |
 
 Rimossi dal programma attivo (non devono comparire in suggerimenti o liste coaching pesi):
 - Hip Thrust Bilanciere
-- Squat Bulgaro
+- Bulgarian Split Squat
 - Fitball Hamstring Curl
 - Face Pull
 - Dip alle Parallele
@@ -253,7 +297,7 @@ Rimossi dal programma attivo (non devono comparire in suggerimenti o liste coach
 Superset attivi per modalità rapida (solo giorni pesi):
 - G1: Leg Curl al Cavo + Ab Wheel
 - G2: Band Pull-Apart con rotazione esterna + Curl Bicipiti
-- G4: Hyperextension + Fire Hydrant
+- G4: Hyperextension + Abduzione laterale IR
 - G5: Push-Up + Woodchop
 
 Nota: il G3 Leggero NON ha superset. Non è nella logica AM/PM split. Non alimenta i Progressi fondamentali.
@@ -280,7 +324,7 @@ Nota tracking cardio: l'app deve avere il flag `Segna fatto` per registrare rapi
 
 ### Alternativa Clamshell
 
-Nel G3 il Fire Hydrant può essere sostituito con Clamshell tramite toggle persistente. Stesse serie, RPE e recupero: `2x20/lato`, `RPE 6-7`, `30s`. Il G4 resta Fire Hydrant fisso.
+Nel G3 l'accessorio base è `Abduzione laterale IR` con toggle persistente verso `Clamshell` tramite `wt-exercise-alt-mode`. Nel G4 l'accessorio resta fisso su `Abduzione laterale IR`.
 
 ## 9. Cosa deve verificare un agente PT
 

@@ -65,9 +65,9 @@ Scarico → circa 50% → 70-80%. Devono preparare, non stancare.
 
 ---
 
-### Squat Bulgaro
+### Bulgarian Split Squat
 
-**Serie:** 3×10-12 · RPE 8  
+**Serie:** 3×12-15 · RPE 8
 **Recupero:** 90s-2 min  
 **Attrezzi:** Manubri + panca  
 **Alternativa:** TRX split squat
@@ -258,9 +258,9 @@ Mini-serie progressive per entrare nella tirata senza stancarti.
 
 **Durata stimata:** 75 min  
 **Attrezzi:** Bilanciere + bumper · Manubri · Panca · Panca romana + sacco sabbia · Fitball · Elastico  
-**Recuperi generali:** 2-3 min su Stacco · 90s-2 min su Stacco Rumeno e Hip thrust · 90s-2 min su Affondi · 90s sugli accessori
+**Recuperi generali:** 2-3 min su Stacco · 90s-2 min su Stacco Rumeno e Hip thrust · 90s-2 min su Bulgarian Split Squat · 90s sugli accessori
 
-> **Superset possibile:** Hyperextension con Sacco + Fitball Hamstring Curl back-to-back — catena posteriore da angoli diversi, interferenza minima. Utile se il tempo stringe.
+> **Superset possibile:** Hyperextension + Fitball Hamstring Curl back-to-back — catena posteriore da angoli diversi, interferenza minima. Utile se il tempo stringe.
 
 ---
 
@@ -346,9 +346,9 @@ Scarico → circa 50% → 70-80%. L'ultima deve accendere il gesto, non tassarlo
 
 ---
 
-### Affondi
+### Bulgarian Split Squat
 
-**Serie:** 3×10-12 per gamba · RPE 8-9  
+**Serie:** 3×12-15 per gamba · RPE 8-9
 **Recupero:** 90s-2 min  
 **Attrezzi:** Manubri  
 **Alternativa:** TRX reverse lunge
@@ -363,7 +363,7 @@ Scarico → circa 50% → 70-80%. L'ultima deve accendere il gesto, non tassarlo
 
 ---
 
-### Hyperextension con Sacco *(superset con Fitball Hamstring Curl)*
+### Hyperextension *(superset con Fitball Hamstring Curl)*
 
 **Serie:** 2-3×12-15 · RPE 8-9  
 **Recupero:** 90s (o diretto su Fitball se in superset)  

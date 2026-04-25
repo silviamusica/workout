@@ -9,9 +9,9 @@
 |---|---|---|---|---|
 | **Lunedì** | G1 | Pesi — Lower A | Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel | ~85 min |
 | **Martedì** | G2 | Pesi — Upper A | Trazioni, Panca, Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti | ~90 min |
-| **Mercoledì** | G3 | Leggero | Alzate Laterali, Band Pull-Apart, Fire Hydrant/Clamshell, Goblet Squat, TRX Row + Protocollo anca | ~35 min |
+| **Mercoledì** | G3 | Leggero | Alzate Laterali, Band Pull-Apart, Abduzione laterale IR, Goblet Squat, TRX Row + Protocollo anca | ~35 min |
 | **Giovedì** | Cardio | Cardio programmato | Corsa 30 / HIIT upper+core / Corsa lunga / Rucking + Mobilità | 30-60 min |
-| **Venerdì** | G4 | Pesi — Lower B | Stacco da Terra, Affondi, Hyperextension, Fire Hydrant | ~90 min |
+| **Venerdì** | G4 | Pesi — Lower B | Stacco da Terra, Bulgarian Split Squat, Hyperextension, Abduzione laterale IR | ~90 min |
 | **Sabato** | G5 | Pesi — Upper B | T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop, Alzate Laterali | ~80 min |
 | **Domenica** | Riposo | Recupero | — | — |
 
@@ -178,11 +178,11 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 |---|---|---|---|---|---|---|
 | 1 | **Alzate Laterali** | 3 | 15-20 | 8 | 30-45s | Manubri leggeri. Alza fino a parallelo. 2s su 2s giù. Niente slancio |
 | 2 | **Band Pull-Apart con rotazione esterna** | 2 | 20 | 6-7 | 30s | Volume extra leggero. Pausa 1s con mani ruotate fuori |
-| 3 | **Fire Hydrant** | 2 | 20/lato | 6-7 | 30s | Bacino fermo, range piccolo e controllato. Gluteo medio |
+| 3 | **Abduzione laterale IR** | 2 | 20/lato | 6-7 | 30s | Fianco a terra, punta in giu, bacino fermo. Gluteo medio |
 | 4 | **Goblet Squat** | 2 | 12 | 6-7 | 45s | Manubrio al petto. Gomiti verso fuori, busto stabile |
 | 5 | **TRX Row lento** | 2 | 12 | 6-7 | 45s | Fermo 2s con scapole strette. Eccentrica 3s in fuori |
 
-**Alternativa G3**: il Fire Hydrant può essere alternato con **Clamshell** tramite toggle persistente nell'app. Stesse serie, RPE e recupero: 2x20/lato, RPE 6-7, 30s. Il Fire Hydrant del G4 resta fisso.
+Nel G3 l'esercizio base è **Abduzione laterale IR** e il toggle alternativo resta **Clamshell**. Nel controllo agente il riferimento principale resta Abduzione laterale IR.
 
 ### PROTOCOLLO ANCA COMPLETO (8-10 min)
 
@@ -223,22 +223,22 @@ Questo protocollo è il cuore del G3 — il giorno migliore perché nessun compo
 | # | Esercizio | Serie | Range Rip | RPE | Recupero | Note |
 |---|---|---|---|---|---|---|
 | **1** | **Stacco da Terra** | 5 | 4-5 | 8-9 | 3-4 min | **LIFT PRIORITARIO** — Ultime serie: solo RIR 0-1 se tecnica stabile. Non cedimento grezzo |
-| **2** | **Affondi** | 5 | 10-12/gamba | 8-9 | 2-3 min | Manubri o bilanciere. Alternati: 10-12 dx → 10-12 sx → conteggio come 1 serie |
+| **2** | **Bulgarian Split Squat** | 5 | 12-15/gamba | 8-9 | 2-3 min | Piede dietro su panca, piede davanti tutto a terra. 12-15 dx → 12-15 sx → conteggio come 1 serie |
 
 **Filler recupero:**
 - Tra Stacco: Respirazione diaframmatica (5 cicli, 30-40s)
-- Tra Affondi: Ankle circles (20 cerchi ogni piede, 30s)
+- Tra Bulgarian Split Squat: Ankle circles (20 cerchi ogni piede, 30s)
 
-### BLOCCO PM — Superset 3: Hyperextension + Fire Hydrant
+### BLOCCO PM — Superset 3: Hyperextension + Abduzione laterale IR
 
 | # | Esercizio | Serie | Range Rip | RPE | Recupero Tra | Superset Con | Note |
 |---|---|---|---|---|---|---|---|
-| **3** | **Hyperextension** | 5 | 12-15 | 8-9 | 0s | → Fire Hydrant | Prime 2 avvicinamento + 3 lavoro. Accessorio catena posteriore. Esecuzione immediata |
-| **—** | **Fire Hydrant** | 3 | 15-20/lato | 8 | 60s | ← Hyperextension | Abduzione anca in quadrupedia, gluteo medio, bacino fermo |
+| **3** | **Hyperextension** | 5 | 12-15 | 8-9 | 0s | → Abduzione laterale IR | Prime 2 avvicinamento + 3 lavoro. Accessorio catena posteriore. Esecuzione immediata |
+| **—** | **Abduzione laterale IR** | 3 | 15-20/lato | 8 | 60s | ← Hyperextension | Fianco a terra, punta in giu, gluteo medio, bacino fermo |
 | | | | | | **Recupero tra superset** | **60 secondi** | |
 
 **Spiegazione superset:**
-- Hyperextension → subito Fire Hydrant (pattern opposto: estensione anca → abduzione anca)
+- Hyperextension → subito Abduzione laterale IR (pattern opposto: estensione anca → abduzione anca)
 - Pausa 60s prima di tornare a Hyperextension serie successiva
 
 ### STRETCHING FINALE (5-8 min)
@@ -363,7 +363,7 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 | 2 | 60s |
 | 3+ | 45s |
 
-### Per esercizi MONOARTICOLARI (Curl, Alzate Laterali, Woodchop, Fire Hydrant, Ab Wheel, ecc)
+### Per esercizi MONOARTICOLARI (Curl, Alzate Laterali, Woodchop, Abduzione laterale IR, Ab Wheel, ecc)
 
 | RIR | Tempo recupero |
 |---|---|
@@ -380,7 +380,7 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 |---|---|---|---|---|---|
 | **G1** | Superset 1 | Leg Curl al Cavo (10-12) | Ab Wheel (5 serie: 2 avv. + 3 lavoro) | **60s** | Sequenza: Leg Curl → Ab Wheel → 60s → ripeti |
 | **G2** | Superset 2 | Band Pull-Apart (20) | Curl Bicipiti (5 serie: 2 avv. + 3 lavoro) | **60s** | Sequenza: Band → Curl → 60s → ripeti. Pulley è esercizio separato |
-| **G4** | Superset 3 | Hyperextension (5 serie: 2 avv. + 3 lavoro) | Fire Hydrant (15-20/lato) | **60s** | Sequenza: Hyper → Fire Hydrant → 60s → ripeti |
+| **G4** | Superset 3 | Hyperextension (5 serie: 2 avv. + 3 lavoro) | Abduzione laterale IR (15-20/lato) | **60s** | Sequenza: Hyper → Abduzione laterale IR → 60s → ripeti |
 | **G5** | Superset 4 | Push-Up (8-15) | Woodchop (10-12/lato) | **45s** | Sequenza: Push-Up → Woodchop → 45s → ripeti. Trazioni Supine e Alzate Laterali restano separate |
 
 ---
@@ -393,7 +393,7 @@ I giorni pesi sono organizzati in **AM (esercizi pesanti)** e **PM (blocchi in s
 |---|---|---|
 | **G1** | Squat, Stacco Rumeno, Glute Bridge Bilanciere | Leg Curl + Ab Wheel (superset) |
 | **G2** | Trazioni, Panca | Pulley, Band Pull-Apart + Curl Bicipiti (superset) |
-| **G4** | Stacco da Terra, Affondi | Hyperextension + Fire Hydrant (superset) |
+| **G4** | Stacco da Terra, Bulgarian Split Squat | Hyperextension + Abduzione laterale IR (superset) |
 | **G5** | T-bar Row, Military Press | Trazioni Supine, Push-Up + Woodchop (superset), Alzate Laterali |
 
 ---
@@ -406,7 +406,7 @@ Leggere il programma sopra e rispondere a questi punti:
 
 - ❓ **G1:** "Leg Curl + Ab Wheel" rinominato **"Superset 1"** — Corretto?
 - ❓ **G2:** "Band Pull-Apart + Curl Bicipiti" rinominato **"Superset 2"** — Corretto?
-- ❓ **G4:** "Hyperextension + Fire Hydrant" rinominato **"Superset 3"** — Corretto?
+- ❓ **G4:** "Hyperextension + Abduzione laterale IR" rinominato **"Superset 3"** — Corretto?
 - ❓ **G5:** "Push-Up + Woodchop" rinominato **"Superset 4"** — Corretto?
 
 ## 2. Split AM/PM — Esercizi divisi correttamente? ✓ / ✗
@@ -415,8 +415,8 @@ Leggere il programma sopra e rispondere a questi punti:
 - ❓ **G1 PM:** Leg Curl + Ab Wheel in superset — Corretto?
 - ❓ **G2 AM:** Trazioni, Panca — Corretto?  
 - ❓ **G2 PM:** Pulley separato, poi Band Pull-Apart + Curl Bicipiti in superset — Corretto?
-- ❓ **G4 AM:** Stacco da Terra, Affondi — Corretto?
-- ❓ **G4 PM:** Hyperextension + Fire Hydrant in superset — Corretto?
+- ❓ **G4 AM:** Stacco da Terra, Bulgarian Split Squat — Corretto?
+- ❓ **G4 PM:** Hyperextension + Abduzione laterale IR in superset — Corretto?
 - ❓ **G5 AM:** T-bar Row, Military Press — Corretto?
 - ❓ **G5 PM:** Trazioni Supine separate, poi Push-Up + Woodchop in superset, poi Alzate Laterali — Corretto?
 
@@ -424,7 +424,7 @@ Leggere il programma sopra e rispondere a questi punti:
 
 - ❓ **G1:** Squat 5×5-6, Stacco Rumeno 5×10-12, Leg Curl 4×10-12, Ab Wheel 5×8-10 (prime 2 avvicinamento) — Corretto?
 - ❓ **G2:** Trazioni 5×5-8, Panca 5×6-8, Pulley 5×10-12, Band 2×20, Curl 5×10-12 (prime 2 avvicinamento) — Corretto?
-- ❓ **G4:** Stacco 5×4-5, Affondi 5×10-12/gamba, Hyper 5×12-15 (prime 2 avvicinamento), Fire Hydrant 3×15-20/lato — Corretto?
+- ❓ **G4:** Stacco 5×4-5, Bulgarian Split Squat 5×12-15/gamba, Hyper 5×12-15 (prime 2 avvicinamento), Abduzione laterale IR 3×15-20/lato — Corretto?
 - ❓ **G5:** T-bar 5×8-10, Military 5×5-6, Push-Up 4×8-15, Trazioni Supine 4×5-8, Woodchop 3×10-12/lato — Corretto?
 
 ## 4. Tempi di recupero — Sono realistici? ✓ / ✗

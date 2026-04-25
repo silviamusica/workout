@@ -139,7 +139,7 @@ Il programma attuale li copre tutti.
 I 4 lift prioritari sono allenati 2 volte a settimana con logiche diverse:
 
 - `Squat`: Giorno 1 pesante, con Stacco Rumeno come complemento femorali nello stesso giorno
-- `Stacco`: Giorno 4 pesante, con Affondi e Hyperextension come accessori catena posteriore e monopodalico
+- `Stacco`: Giorno 4 pesante, con Bulgarian Split Squat e Hyperextension come accessori catena posteriore e monopodalico
 - `Trazioni`: Giorno 2 presa prona per forza, Giorno 5 presa supina per volume
 - `Push-Up`: Giorno 5 a corpo libero, con la Panca nel Giorno 2 come variante bilanciere dello stesso pattern di spinta
 
@@ -479,18 +479,11 @@ Questo giorno colma tre lacune del programma:
 |---|---|---|---|---|---|
 | 1 | Alzate Laterali | 3x15-20 | 8 | 30-45s | Manubri leggeri. Alza fino a parallelo. 2s su 2s giù |
 | 2 | Band Pull-Apart con rotazione esterna | 2x20 | 6-7 | 30s | Volume extra leggero. Pausa 1s con mani ruotate fuori |
-| 3 | Fire Hydrant | 2x20/lato | 6-7 | 30s | Bacino fermo. Range piccolo e controllato |
+| 3 | Abduzione laterale IR | 2x20/lato | 6-7 | 30s | Fianco a terra, punta in giu, bacino fermo |
 | 4 | Goblet Squat | 2x12 | 6-7 | 45s | Manubrio al petto. Scendi parallelo. Gomiti verso fuori |
 | 5 | TRX Row lento | 2x12 | 6-7 | 45s | Fermo 2s scapole strette. Eccentrica 3s |
 
-**Alternativa G3**: Fire Hydrant può essere alternato con `Clamshell` tramite toggle nell'app.
-
-| Variante | Serie | RPE | Recupero | Note |
-|---|---|---|---|---|
-| Fire Hydrant | 2x20/lato | 6-7 | 30s | Abduzione anca in quadrupedia |
-| Clamshell | 2x20/lato | 6-7 | 30s | Decubito laterale, ginocchia 90°, piedi uniti, bacino fermo |
-
-Il Fire Hydrant del G4 resta invariato e non ha toggle alternativa.
+Nessun toggle G3: l'esercizio fisso ora è `Abduzione laterale IR`.
 
 **Protocollo anca completo** (8-10 minuti)
 
@@ -508,7 +501,7 @@ Il giorno migliore per il protocollo anca intero: nessun compound pesante prima,
 
 ### Giorno 4 — Lower B — Stacco + Catena Posteriore
 
-**Aggiornamento 2026-04-21**: riscaldamento ristrutturato (FMS Spalle, no circuito); Hip Thrust, Stacco Rumeno, Squat Bulgaro e Fitball Hamstring Curl rimossi; Fire Hydrant aggiunto; tutte le serie principali portate a 5; tEst aggiornato a 85 min.
+**Aggiornamento 2026-04-21**: riscaldamento ristrutturato (FMS Spalle, no circuito); Hip Thrust, Stacco Rumeno, Squat Bulgaro e Fitball Hamstring Curl rimossi; inserito lavoro mirato gluteo medio; tutte le serie principali portate a 5; tEst aggiornato a 85 min.
 
 **Riscaldamento**
 
@@ -527,9 +520,9 @@ Il giorno migliore per il protocollo anca intero: nessun compound pesante prima,
 | # | Esercizio | Serie | Note |
 |---|---|---|---|
 | 1 | Stacco da Terra | 5x4-5 | RPE 8-9, ultimo set solo a RIR 0-1 se tecnica stabile |
-| 2 | Affondi | 5x10-12 per gamba | RPE 8-9, manubri o bilanciere |
+| 2 | Bulgarian Split Squat | 5x12-15 per gamba | RPE 8-9, manubri + panca |
 | 3 | Hyperextension | 5x12-15 | Prime 2 avvicinamento + 3 lavoro. Accessorio catena posteriore, RPE 8-9 sulle serie lavoro |
-| 4 | Fire Hydrant | 3x15-20 per gamba | RPE 8, abduzione anca in quadrupedia, gluteo medio |
+| 4 | Abduzione laterale IR | 3x15-20 per lato | RPE 8, fianco a terra, punta in giu, gluteo medio |
 
 **Esercizi rimossi rispetto alla versione precedente**:
 - Hip Thrust Bilanciere (rimosso)
@@ -650,7 +643,7 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 - Il protocollo anca non crea giorni nuovi: è `Bonus mobilità anca` nei giorni pesi e blocco dedicato nei giorni cardio
 - La definizione dipende soprattutto dalla dieta, non da una scheda separata gia presente in app
 - `FMS Spalle` è un placeholder in tutti i giorni upper e lower 1: la foto e la descrizione tecnica devono ancora essere fornite dall'utente
-- `Fire Hydrant` (abduzione anca in quadrupedia) è un esercizio nuovo in G4: scheda completa presente in `src/App.jsx` e nel CSV
+- `Abduzione laterale IR` è l'accessorio gluteo medio di G4: scheda completa presente in `src/App.jsx` e nel CSV
 
 ## Riepilogo cambiamenti 2026-04-21
 
@@ -672,7 +665,7 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 | Stacco Rumeno | G1 (da G4) | Complemento femorali in Lower A |
 | T-bar Row | G5 (da G2) | Tirata orizzontale prioritaria in Upper B |
 | Pulley Basso | G2 | Nuovo, rimpiazza T-bar come volume tirata |
-| Fire Hydrant | G4 | Nuovo, 3x15-20 per gamba, gluteo medio |
+| Abduzione laterale IR | G4 | 3x15-20 per lato, gluteo medio |
 
 ### Numero di serie aggiornato
 | Esercizio | Serie prima | Serie ora |
@@ -688,7 +681,7 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 | Push-Up (G5) | 3 | 4 |
 | Trazioni Supine (G5) | 3 | 4 |
 | Ab Wheel | 3 lavoro | 3 lavoro + 2 avvicinamento |
-| Affondi (G4) | 3 | 5 |
+| Bulgarian Split Squat (G4) | 3 | 5 |
 | Hyperextension (G4) | 2-3 lavoro | 3 lavoro + 2 avvicinamento |
 | Leg Curl al Cavo (G1) | 3 | 4 |
 

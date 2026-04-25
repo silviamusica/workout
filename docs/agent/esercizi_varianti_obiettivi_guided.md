@@ -279,8 +279,8 @@ Varianti da riconoscere:
 
 ## Mappa rapida accessori e loro obiettivo
 
-> **Nota 2026-04-21**: Hip Thrust Bilanciere, Squat Bulgaro, Dip alle Parallele, Tricipiti Cavo e Fitball Hamstring Curl non sono più nel programma V4 attivo. Le sezioni qui sotto li descrivono come pattern e varianti riconoscibili — restano utili per valutare sostituzioni o progressioni, ma non sono più da considerare scheda corrente.
-> Esercizio nuovo aggiunto: `Fire Hydrant` (abduzione anca in quadrupedia, G4, 3x15-20 per gamba).
+> **Nota 2026-04-24**: Hip Thrust Bilanciere, Squat Bulgaro, Dip alle Parallele, Tricipiti Cavo e Fitball Hamstring Curl non sono più nel programma V4 attivo. Le sezioni qui sotto li descrivono come pattern e varianti riconoscibili — restano utili per valutare sostituzioni o progressioni, ma non sono più da considerare scheda corrente.
+> Esercizi attivi da considerare nel gluteo medio: `Abduzione laterale IR` in G3 e G4, con alternativa `Clamshell` solo nel G3.
 
 ### Hip Thrust / Glute Bridge
 
@@ -351,26 +351,26 @@ Lettura corretta:
 - `Pallof Press`
   - anti-rotazione
 
-### Fire Hydrant
+### Abduzione laterale IR
 
 Pattern:
-- abduzione anca in quadrupedia
+- abduzione anca con intrarotazione del femore
 - gluteo medio
 
 Obiettivo:
-- attivazione e ipertrofia del gluteo medio
+- attivazione e ipertrofia del gluteo medio, soprattutto fibre posteriori
 - stabilità del bacino
-- rinforzo unilaterale in catena chiusa
+- rinforzo unilaterale con controllo fine del bacino
 
 Lettura corretta:
-- `Fire Hydrant` = esercizio accessorio di gluteo medio in G4
-- 3 serie x 15-20 rip per gamba, RPE 8
-- non va confuso con esercizi di hinge o squat: pattern completamente diverso
+- `Abduzione laterale IR` = esercizio accessorio di gluteo medio attivo in G3 e G4
+- in G3 resta a `2x20/lato`, in G4 a `3x15-20/lato`
+- non va confuso con il Fire Hydrant classico: qui l'intrarotazione serve a caricare di più le fibre posteriori del gluteo medio
 - progressione via ripetizioni o aggiunta di carico alla caviglia
 
 Nota pratica:
-- fa parte del G4 nella scheda V4 dal 2026-04-21
-- la scheda tecnica completa con cue, errori e video è in `src/App.jsx` nel dizionario `EX["Fire Hydrant"]`
+- fa parte del G3 e del G4 nella scheda V4 attiva
+- la scheda tecnica completa con cue, errori e video è in `src/App.jsx` nel dizionario `EX["Abduzione laterale IR"]`
 
 ### Woodchop
 
@@ -461,14 +461,14 @@ Questi esercizi appartengono al G3 (`light: true`). La logica coach NON si attiv
 ### Clamshell
 
 - **Pattern**: rotazione esterna anca in decubito laterale
-- **Ruolo nel G3**: alternativa al Fire Hydrant per gluteo medio, stesso distretto ma angolo diverso
+- **Ruolo nel G3**: alternativa all'Abduzione laterale IR per gluteo medio, stesso distretto ma angolo diverso
 - **Serie/RPE/recupero**: 2x20/lato, RPE 6-7, 30s
 - **Classificazione coach**: non rilevante nel G3 light
 - **Calibrazione**: non richiesta nel G3 light
 - **Note tecniche**: ginocchia a 90 gradi, piedi uniti, apri il ginocchio superiore senza ruotare il bacino indietro
 - **Video**: https://www.youtube.com/watch?v=cjmFnOJkp7s
 
-Il toggle Clamshell esiste solo sul Fire Hydrant del G3. Il Fire Hydrant del G4 resta fisso.
+Il toggle Clamshell esiste solo sull'Abduzione laterale IR del G3. Nel G4 l'esercizio resta fisso su Abduzione laterale IR.
 
 ## Obiettivi della sessione guidata: come devono essere letti
 
