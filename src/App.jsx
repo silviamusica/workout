@@ -9387,7 +9387,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           if (!exMap[entry.exercise]) exMap[entry.exercise] = [];
           exMap[entry.exercise].push(entry);
         });
-        var targetWeeklySessions = isBeginner ? 3 : 4;
+        var targetWeeklySessions = Math.max(1, activeDays.length);
         // Weekly sessions (solo pesi)
         var weekMap = {};
         allEntries.forEach(function(entry) {
