@@ -603,7 +603,12 @@ Object.assign(EX["Goblet Squat"], {
   ]
 });
 
-Object.assign(EX["Leg Extension al Cavo"], {
+Object.assign(EX["Leg Extension al Cavo"] || (EX["Leg Extension al Cavo"] = {
+  g: "Quadricipiti",
+  c: "Cavigliera al cavo basso. Estendi il ginocchio in controllo fino a gamba quasi tesa, poi torna lentamente.",
+  p: "Femore fermo, busto stabile, appoggio saldo con l'altra mano.",
+  t: ["Si muove solo la tibia", "Pausa breve in chiusura", "Eccentrica lenta 2-3 secondi"]
+}), {
   guideDay: "G3 Leggero",
   guide: [
     { type: "p", content: "La Leg Extension al Cavo isola i quadricipiti senza caricare anche e glutei. Nel G3 serve a portare volume ai quad senza aggiungere altre serie di squat." },
@@ -8246,7 +8251,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     saveData(logs, next, calibrationProfiles, calibrationMode);
   }
   function unlockPrivateSection() {
-    if (String(privateCodeInput).trim() === "7792") {
+    if (String(privateCodeInput).trim() === "4444") {
       setPrivateUnlocked(true);
       setPrivateCodeError("");
       return;
