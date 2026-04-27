@@ -251,7 +251,7 @@ Questa e la sintesi operativa piu rapida da dare a un agente PT. Include tutti g
 | Giorno | Blocco | Esercizi attivi |
 |---|---|---|
 | G3 Leggero | Riscaldamento | Dorsiflessione al muro · 90/90 hip mobility · T-spine rotation in quadrupedia · Ponte monopodalico |
-| G3 Leggero | Lavoro | Alzate Laterali · Band Pull-Apart con rotazione esterna · Abduzione laterale IR · Goblet Squat · TRX Row lento · Push-Up · Leg Curl al Cavo |
+| G3 Leggero | Lavoro | Alzate Laterali · Goblet Squat · Band Pull-Apart con rotazione esterna · Abduzione laterale IR · Leg Extension al Cavo · TRX Row lento · Push-Up · Leg Curl al Cavo |
 | G3 Leggero | Protocollo anca completo | Half Kneeling Lunge · Half Kneeling Lunge + Reach verticale · Couch Stretch · Figure-Four Supino · Happy Baby · Leg Cradle Supino · Supported Low Lunge · Posizione del quadrato · Wall tibialis raises |
 | Cardio giovedi | Formati | Corsa 30 min zona 2 · HIIT upper + core · Corsa lunga zona 2 · Rucking |
 | Cardio giovedi | Mobilita | Dorsiflessione al muro · Wall tibialis raises · 90/90 hip mobility · T-spine rotation in quadrupedia · Half Kneeling Lunge · Posizione del quadrato · Figure-Four Supino |
@@ -277,7 +277,7 @@ Questa e la sintesi operativa piu rapida da dare a un agente PT. Include tutti g
 |---|---|---|
 | G1 Lower A | pesi | Squat · Stacco Rumeno · Glute Bridge Bilanciere · Leg Curl al Cavo · Ab Wheel |
 | G2 Upper A | pesi | Trazioni · Panca · Pulley · Band Pull-Apart con rotazione esterna · Curl Bicipiti · Alzate Laterali |
-| G3 Leggero | light | Alzate Laterali · Band Pull-Apart con rotazione esterna · Abduzione laterale IR · Goblet Squat · TRX Row lento · Push-Up · Leg Curl al Cavo |
+| G3 Leggero | light | Alzate Laterali · Goblet Squat · Band Pull-Apart con rotazione esterna · Abduzione laterale IR · Leg Extension al Cavo · TRX Row lento · Push-Up · Leg Curl al Cavo |
 | G4 Lower B | pesi | Stacco da Terra · Bulgarian Split Squat · Hyperextension · Abduzione laterale IR |
 | G5 Upper B | pesi | T-bar Row · Military Press · Push-Up · Trazioni Supine · Woodchop · Alzate Laterali |
 | G6 | riposo | — |
@@ -296,10 +296,14 @@ Rimossi dal programma attivo (non devono comparire in suggerimenti o liste coach
 Superset attivi per modalità rapida (solo giorni pesi):
 - G1: Leg Curl al Cavo + Ab Wheel
 - G2: Band Pull-Apart con rotazione esterna + Curl Bicipiti
+- G3: Alzate Laterali + Goblet Squat
+- G3: Band Pull-Apart con rotazione esterna + Abduzione laterale IR
+- G3: Leg Extension al Cavo + TRX Row lento
+- G3: Push-Up + Leg Curl al Cavo
 - G4: Hyperextension + Abduzione laterale IR
 - G5: Push-Up + Woodchop
 
-Nota: il G3 Leggero NON ha superset. Non è nella logica AM/PM split. Non alimenta i Progressi fondamentali.
+Nota: il G3 Leggero NON entra nella logica AM/PM split e non alimenta i Progressi fondamentali. Però la sua card usa superset automatici di default per comprimere i tempi.
 
 ### Cardio programmato
 

@@ -1605,13 +1605,13 @@ var DAYS_V4 = [
       { n: "Alzate Laterali", s: "2x15", rpe: "8", note: "Manubri leggeri. Due serie pulite, fuori dal superset. Alza fino a parallelo, pausa 1s in alto, niente slancio.", rec: "30s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
     ], str: ["Doorway Pec Stretch","Overhead Lat Stretch","Cross-Body Shoulder Stretch","Wrist Flexor/Extensor Stretch"], hipBonus: true },
 
-  { name: "Giorno 3", focus: "Leggero", dayLabel: "Mer", light: true, tEst: 45,
+  { name: "Giorno 3", focus: "Leggero", dayLabel: "Mer", light: true, tEst: 29,
     intro: {
-      attrezzi: ["Manubri leggeri", "Elastico", "TRX", "Cavo basso", "Tappetino"],
-      muscoli: ["Deltoide laterale (Alzate Laterali)", "Deltoide posteriore / cuffia (Band Pull-Apart)", "Gluteo medio (Abduzione laterale IR)", "Quadricipiti / Glutei (Goblet Squat)", "Dorsali / scapole (TRX Row lento)", "Petto (Push-Up)", "Femorali in flessione ginocchio (Leg Curl al Cavo)"],
-      obiettivi: ["Aggiungere volume complementare senza affaticare il sistema nervoso", "Portare petto, deltoidi e femorali ginocchio al minimo utile con serie leggere ma produttive", "Curare controllo e qualità su muscoli che nei giorni pesanti non hanno volume diretto sufficiente", "Chiudere con il protocollo anca completo in un giorno senza compound pesanti"],
-      attenzione: ["RPE massimo 8 su Alzate Laterali e Goblet Squat: il resto resta 6-7", "Push-Up e Leg Curl oggi sono volume leggero: tecnica pulita, niente fatica vera", "Nel TRX Row e nell'Abduzione laterale IR il controllo del corpo conta piu della quantità"],
-      ritmo: "Recuperi brevi: 30-45 secondi. Tieni il flusso alto ma senza sporcare la tecnica."
+      attrezzi: ["Manubri leggeri", "Elastico", "TRX", "Cavo basso + cavigliera", "Tappetino"],
+      muscoli: ["Deltoide laterale (Alzate Laterali)", "Quadricipiti / Glutei (Goblet Squat)", "Deltoide posteriore / cuffia (Band Pull-Apart)", "Gluteo medio (Abduzione laterale IR)", "Quadricipiti in isolamento (Leg Extension al Cavo)", "Dorsali / scapole (TRX Row lento)", "Petto (Push-Up)", "Femorali in flessione ginocchio (Leg Curl al Cavo)"],
+      obiettivi: ["Aggiungere volume complementare senza affaticare il sistema nervoso", "Portare petto, deltoidi, quadricipiti e femorali al minimo utile con serie leggere ma produttive", "Usare 4 superset automatici per tenere il G3 rapido e ordinato", "Chiudere con il protocollo anca completo in un giorno senza compound pesanti"],
+      attenzione: ["RPE massimo 8 su Alzate Laterali e Goblet Squat: il resto resta 6-7", "Push-Up, Leg Extension e Leg Curl oggi sono volume leggero: tecnica pulita, niente fatica vera", "Nel TRX Row e nell'Abduzione laterale IR il controllo del corpo conta piu della quantità"],
+      ritmo: "Superset automatici con recuperi brevi: 45s nel primo blocco, 30s negli altri. Tieni il flusso alto ma senza sporcare la tecnica."
     },
     warmup: [
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Tallone sempre giu: cerca range pulito, portando avanti i fianchi e non le spalle." },
@@ -1619,7 +1619,7 @@ var DAYS_V4 = [
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota il torace senza muovere il bacino." },
       { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 rip per lato", cue: "Gluteo forte in alto, lombare ferma." },
     ],
-    lightIntro: "Non e un giorno di allenamento pesante. E volume complementare a bassa intensita: deltoide laterale, deltoide posteriore, gluteo medio, dorsali/scapole e quadricipiti. Niente coach attivo, niente RIR e nessuna decisione finale. Poi il protocollo anca completo.",
+    lightIntro: "Non e un giorno di allenamento pesante. E volume complementare a bassa intensita organizzato in 4 superset automatici: deltoide laterale, deltoide posteriore, gluteo medio, quadricipiti, dorsali/scapole, petto e femorali. Niente coach attivo, niente RIR e nessuna decisione finale. Poi il protocollo anca completo.",
     lightWarmup: [
       { n: "Dorsiflessione al muro", p: "8 rip/lato · fianchi avanti, non spalle" },
       { n: "90/90 hip mobility", p: "8 passaggi/lato" },
@@ -1628,9 +1628,10 @@ var DAYS_V4 = [
     ],
     ex: [
       { n: "Alzate Laterali", s: "3x15-20", rpe: "8", note: "Manubri leggeri. Alza fino a parallelo al pavimento. Lento: 2s su, 2s giu. Spalle basse, non alzare i trapezi.", rec: "30-45s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
+      { n: "Goblet Squat", s: "3x12", rpe: "8", note: "Manubrio al petto. Scendi parallelo. I gomiti spingono le ginocchia verso fuori. Qui sale a RPE 8 per rendere produttive le 3 serie. Alternativa: corpo libero squat.", rec: "45s", gear: "Manubrio leggero", errori: "Busto che cade avanti; schiena arrotondata; ginocchia che collassano" },
       { n: "Band Pull-Apart con rotazione esterna", s: "3x20", rpe: "6-7", note: "Volume leggero extra. Pausa 1s a fine apertura con mani ruotate fuori. Non tirare con forza.", rec: "30s", gear: "Elastico", errori: "Tirare con forza; gomiti piegati; nessuna rotazione esterna finale" },
       { n: "Abduzione laterale IR", s: "2x20 per lato", rpe: "6-7", note: "Sdraiata sul fianco o in quadrupedia. Gamba sopra leggermente dietro la linea del corpo, ginocchio piegato a 90 gradi e punta verso il pavimento. Range piccolo, bacino fermo, pausa 1s in alto.", rec: "30s", gear: "Corpo libero", errori: "Bacino che ruota indietro; piede che si apre verso l'alto; slancio", alt: { n: "Clamshell", s: "2x20 per lato", rpe: "6-7", note: "Ginocchia piegate a 90 gradi, piedi uniti. Apri il ginocchio superiore senza ruotare il bacino indietro. Pausa 1s in apertura.", rec: "30s", gear: "Corpo libero", errori: "Bacino che ruota; piedi che si separano; slancio" } },
-      { n: "Goblet Squat", s: "3x12", rpe: "8", note: "Manubrio al petto. Scendi parallelo. I gomiti spingono le ginocchia verso fuori. Qui sale a RPE 8 per rendere produttive le 3 serie. Alternativa: corpo libero squat.", rec: "45s", gear: "Manubrio leggero", errori: "Busto che cade avanti; schiena arrotondata; ginocchia che collassano" },
+      { n: "Leg Extension al Cavo", s: "2x12-15", rpe: "7", note: "Cavigliera al cavo basso. Estendi il ginocchio in controllo, fermo breve in chiusura e ritorno lento. Volume tecnico leggero per i quadricipiti.", rec: "30s", gear: "Cavo basso + cavigliera", errori: "Slancio con l'anca; chiusura sporca; ritorno troppo veloce" },
       { n: "TRX Row lento", s: "2x12", rpe: "6-7", note: "Fermo 2s con scapole strette. Eccentrica 3s. Lavora i dorsali senza tassare la presa. Riduci l'inclinazione se il corpo non resta in linea.", rec: "45s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
       { n: "Push-Up", s: "2x10", rpe: "7", note: "Volume leggero per il petto. Tecnica perfetta, non a fatica: fermati con 3-4 rip in riserva. Corpo in linea e gomiti a 45 gradi.", rec: "30s", gear: "Corpo libero", errori: "Anche che cedono; gomiti troppo aperti; ROM accorciato" },
       { n: "Leg Curl al Cavo", s: "2x12", rpe: "7", note: "Volume leggero per i femorali in flessione di ginocchio. Eccentrica 2-3 secondi, nessuno slancio, fermati larga.", rec: "30s", gear: "Cavo basso + cavigliera", errori: "Slancio col bacino; eccentrica troppo veloce; lombare che si inarca" },
@@ -2918,7 +2919,12 @@ var V4_DAY_SPLIT_PLAN = {
 var FAST_MODE_SUPERSETS = {
   "Giorno 1": [{ a: "Leg Curl al Cavo", b: "Ab Wheel", rest: 60, note: "4a serie Leg Curl da sola" }],
   "Giorno 2": [{ a: "Band Pull-Apart con rotazione esterna", b: "Curl Bicipiti", rest: 60 }],
-  "Giorno 3": [],
+  "Giorno 3": [
+    { a: "Alzate Laterali", b: "Goblet Squat", rest: 45 },
+    { a: "Band Pull-Apart con rotazione esterna", b: "Abduzione laterale IR", rest: 30, note: "3a serie Band Pull-Apart da sola" },
+    { a: "Leg Extension al Cavo", b: "TRX Row lento", rest: 30 },
+    { a: "Push-Up", b: "Leg Curl al Cavo", rest: 30 }
+  ],
   "Giorno 4": [{ a: "Hyperextension", b: "Abduzione laterale IR", rest: 60, note: "4a serie Hyperextension da sola" }],
   "Giorno 5": [{ a: "Push-Up", b: "Woodchop", rest: 45, note: "4a serie Push-Up da sola" }],
 };
@@ -4420,6 +4426,10 @@ export default function App() {
     </div>;
   }
   function renderLightDay(day) {
+    var supersetPairs = FAST_MODE_SUPERSETS[day.name] || [];
+    function findLightEx(name) {
+      return (day.ex || []).find(function(item) { return sameExerciseName(item.n, name); }) || null;
+    }
     return <div style={{ display: "grid", gap: 12 }}>
       <div style={{ background: T.cd, borderRadius: 14, border: "1px solid " + T.bg, overflow: "hidden" }}>
         <div style={{ padding: "14px 14px 10px", borderBottom: "1px solid " + T.bg }}>
@@ -4441,8 +4451,32 @@ export default function App() {
           </div>
         </div>}
         <div style={{ padding: "12px 14px 14px" }}>
-          <div style={{ fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Esercizi — RPE 6-8 · 30 min</div>
-          <div style={{ display: "grid", gap: 10 }}>
+          <div style={{ fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>
+            {supersetPairs.length ? "Esercizi — superset automatici · ~30 min" : "Esercizi — RPE 6-8 · 30 min"}
+          </div>
+          {supersetPairs.length ? <div style={{ display: "grid", gap: 10 }}>
+            {supersetPairs.map(function(pair, i) {
+              var aEx = findLightEx(pair.a);
+              var bEx = findLightEx(pair.b);
+              var blockLabel = String.fromCharCode(65 + i);
+              return <div key={i} style={{ background: T.sb, borderRadius: 12, padding: "12px", border: "1px solid " + dc + "18" }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 8 }}>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: T.tx }}>Superset {blockLabel}</div>
+                  <div style={{ fontSize: 10, color: T.sub, textAlign: "right", whiteSpace: "nowrap" }}>rec {pair.rest}s</div>
+                </div>
+                {[aEx, bEx].filter(Boolean).map(function(ex, exIndex) {
+                  return <div key={ex.n} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, paddingTop: exIndex === 0 ? 0 : 8, marginTop: exIndex === 0 ? 0 : 8, borderTop: exIndex === 0 ? "none" : ("1px solid " + T.bg) }}>
+                    <div>
+                      <div style={{ fontSize: 13, fontWeight: 800, color: T.tx }}>{ex.n}</div>
+                      <div style={{ fontSize: 11, color: dc, fontWeight: 700 }}>{ex.s}</div>
+                    </div>
+                    <div style={{ fontSize: 10, color: T.sub, textAlign: "right", whiteSpace: "nowrap" }}>RPE {ex.rpe}</div>
+                  </div>;
+                })}
+                {!!pair.note && <div style={{ marginTop: 8, fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{pair.note}.</div>}
+              </div>;
+            })}
+          </div> : <div style={{ display: "grid", gap: 10 }}>
             {(day.ex || []).map(function(ex, i) {
               return <div key={i} style={{ background: T.sb, borderRadius: 12, padding: "12px", border: "1px solid " + dc + "18" }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
@@ -4454,7 +4488,7 @@ export default function App() {
                 </div>
               </div>;
             })}
-          </div>
+          </div>}
         </div>
       </div>
       {day.lightHipProtocol && <div style={{ background: T.cd, borderRadius: 14, border: "1px solid " + T.bg, overflow: "hidden" }}>

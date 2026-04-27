@@ -13,9 +13,9 @@ G4: Stacco da Terra, Bulgarian Split Squat, Hyperextension, Abduzione laterale I
 G5: T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop, Alzate Laterali
 
 **Giorno leggero G3** (tipo `light: true` — logica coach NON si applica):
-G3: Alzate Laterali, Band Pull-Apart con rotazione esterna, Abduzione laterale IR, Goblet Squat, TRX Row lento, Push-Up, Leg Curl al Cavo
+G3: Alzate Laterali, Goblet Squat, Band Pull-Apart con rotazione esterna, Abduzione laterale IR, Leg Extension al Cavo, TRX Row lento, Push-Up, Leg Curl al Cavo
 
-Gli esercizi esclusivi del G3 NON devono essere in MAX_PROGRESS_EX, keyLiftNames, FAST_MODE_SUPERSETS, V4_DAY_SPLIT_PLAN. Se un esercizio del G3 coincide con un giorno pesi attivo (es. Push-Up, Leg Curl al Cavo, Alzate Laterali), puo comparire nelle liste coach perche esiste anche fuori dal G3.
+Gli esercizi esclusivi del G3 NON devono essere in MAX_PROGRESS_EX, keyLiftNames, V4_DAY_SPLIT_PLAN. In `FAST_MODE_SUPERSETS` il G3 puo comparire solo con i suoi 4 superset automatici light. Se un esercizio del G3 coincide con un giorno pesi attivo (es. Push-Up, Leg Curl al Cavo, Alzate Laterali), puo comparire nelle liste coach perche esiste anche fuori dal G3.
 
 ## 10 punti da verificare
 
@@ -103,6 +103,10 @@ Ogni esercizio attivo con recupero ≥60s deve avere un filler:
 ### 12. FAST_MODE_SUPERSETS
 - G1: Leg Curl al Cavo + Ab Wheel (rest 60s)
 - G2: Band Pull-Apart con rotazione esterna + Curl Bicipiti (rest 60s)
+- G3: Alzate Laterali + Goblet Squat (rest 45s)
+- G3: Band Pull-Apart con rotazione esterna + Abduzione laterale IR (rest 30s, 3a serie Band da sola)
+- G3: Leg Extension al Cavo + TRX Row lento (rest 30s)
+- G3: Push-Up + Leg Curl al Cavo (rest 30s)
 - G4: Hyperextension + Abduzione laterale IR (rest 60s)
 - G5: Push-Up + Woodchop (rest 45s)
 - Cerca: `var FAST_MODE_SUPERSETS`
@@ -113,7 +117,7 @@ Deve contenere i fondamentali e compound pesanti attivi:
 `Squat, Stacco da Terra, Panca, Military Press, Trazioni, Trazioni Supine, Push-Up, T-bar Row, Stacco Rumeno, Glute Bridge Bilanciere`
 - Cerca: `var keyLiftNames`
 - Verifica: non deve contenere Dip alle Parallele, Hip Thrust Bilanciere
-- Verifica: non deve contenere esercizi esclusivi del G3 Leggero (Clamshell, Goblet Squat, TRX Row lento)
+- Verifica: non deve contenere esercizi esclusivi del G3 Leggero in `keyLiftNames` o `V4_DAY_SPLIT_PLAN` (Clamshell, Goblet Squat, TRX Row lento, Leg Extension al Cavo)
 
 ### 14. Cardio nei Progressi
 Il cardio del giovedì deve poter essere registrato anche senza compilare manualmente i campi:
@@ -131,7 +135,7 @@ Il giorno leggero ha regole proprie — verificare che il codice rispetti queste
 5. La sezione Esercizi pesi (`section-esercizi`) ha `!dayData.light` nel check
 6. `renderLightDay` viene chiamato quando `workoutSelectedDay.light` è true
 - Cerca: `day.light` nel codice
-- Verifica: nessun esercizio esclusivo del G3 è in `MAX_PROGRESS_EX`, `keyLiftNames`, `V4_DAY_SPLIT_PLAN`, `FAST_MODE_SUPERSETS`
+- Verifica: nessun esercizio esclusivo del G3 è in `MAX_PROGRESS_EX`, `keyLiftNames`, `V4_DAY_SPLIT_PLAN`; in `FAST_MODE_SUPERSETS` deve comparire solo dentro i 4 blocchi G3 light
 
 ## Come eseguire la verifica
 

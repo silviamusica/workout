@@ -9,7 +9,7 @@
 |---|---|---|---|---|
 | **Lunedì** | G1 | Pesi — Lower A | Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel | ~85 min |
 | **Martedì** | G2 | Pesi — Upper A | Trazioni, Panca, Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali | ~93 min |
-| **Mercoledì** | G3 | Leggero | Alzate Laterali, Band Pull-Apart, Abduzione laterale IR, Goblet Squat, TRX Row, Push-Up, Leg Curl al Cavo + Protocollo anca | ~45 min |
+| **Mercoledì** | G3 | Leggero | Alzate Laterali, Goblet Squat, Band Pull-Apart, Abduzione laterale IR, Leg Extension al Cavo, TRX Row, Push-Up, Leg Curl al Cavo + Protocollo anca | ~29-30 min |
 | **Giovedì** | Cardio | Cardio programmato | Corsa 30 / HIIT upper+core / Corsa lunga / Rucking + Mobilità | 30-60 min |
 | **Venerdì** | G4 | Pesi — Lower B | Stacco da Terra, Bulgarian Split Squat, Hyperextension, Abduzione laterale IR | ~90 min |
 | **Sabato** | G5 | Pesi — Upper B | T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop, Alzate Laterali | ~82 min |
@@ -162,8 +162,8 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 ## 📍 GIORNO 3 — LEGGERO (Mercoledì)
 
 **Tipo:** `light: true` — Niente coach, niente RIR, niente sessione guidata
-**Durata totale: ~45 minuti**
-**Struttura:** NO split AM/PM | NO superset | RPE 6-8
+**Durata totale: ~29-30 minuti**
+**Struttura:** 4 superset automatici | NO split AM/PM | RPE 6-8
 
 ### RISCALDAMENTO (5 min, senza circuito)
 
@@ -178,15 +178,23 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 
 | # | Esercizio | Serie | Range Rip | RPE | Recupero | Note |
 |---|---|---|---|---|---|---|
-| 1 | **Alzate Laterali** | 3 | 15-20 | 8 | 30-45s | Manubri leggeri. Alza fino a parallelo. 2s su 2s giù. Niente slancio |
-| 2 | **Band Pull-Apart con rotazione esterna** | 3 | 20 | 6-7 | 30s | Volume extra leggero. Pausa 1s con mani ruotate fuori |
-| 3 | **Abduzione laterale IR** | 2 | 20/lato | 6-7 | 30s | Fianco a terra, punta in giu, bacino fermo. Gluteo medio |
-| 4 | **Goblet Squat** | 3 | 12 | 8 | 45s | Manubrio al petto. Gomiti verso fuori, busto stabile |
-| 5 | **TRX Row lento** | 2 | 12 | 6-7 | 45s | Fermo 2s con scapole strette. Eccentrica 3s in fuori |
-| 6 | **Push-Up** | 2 | 10 | 7 | 30s | Corpo in linea. Volume tecnico leggero per petto e core |
-| 7 | **Leg Curl al Cavo** | 2 | 12 | 7 | 30s | Cavigliera al cavo basso. Femorali in flessione di ginocchio |
+| 1 | **Alzate Laterali** | 3 | 15-20 | 8 | 30-45s | Superset A con Goblet Squat |
+| 2 | **Goblet Squat** | 3 | 12 | 8 | 45s | Superset A con Alzate Laterali |
+| 3 | **Band Pull-Apart con rotazione esterna** | 3 | 20 | 6-7 | 30s | Superset B con Abduzione laterale IR. 3a serie da sola |
+| 4 | **Abduzione laterale IR** | 2 | 20/lato | 6-7 | 30s | Superset B con Band Pull-Apart |
+| 5 | **Leg Extension al Cavo** | 2 | 12-15 | 7 | 30s | Superset C con TRX Row lento |
+| 6 | **TRX Row lento** | 2 | 12 | 6-7 | 30s | Superset C con Leg Extension al Cavo |
+| 7 | **Push-Up** | 2 | 10 | 7 | 30s | Superset D con Leg Curl al Cavo |
+| 8 | **Leg Curl al Cavo** | 2 | 12 | 7 | 30s | Superset D con Push-Up |
 
 Nel G3 l'esercizio base è **Abduzione laterale IR** e il toggle alternativo resta **Clamshell**. Nel controllo agente il riferimento principale resta Abduzione laterale IR.
+
+### Superset automatici G3
+
+- **Superset A**: Alzate Laterali → Goblet Squat → `45s`
+- **Superset B**: Band Pull-Apart con rotazione esterna → Abduzione laterale IR → `30s`, poi 1 serie Band Pull-Apart da sola
+- **Superset C**: Leg Extension al Cavo → TRX Row lento → `30s`
+- **Superset D**: Push-Up → Leg Curl al Cavo → `30s`
 
 ### PROTOCOLLO ANCA COMPLETO (8-10 min)
 
@@ -202,7 +210,7 @@ Questo protocollo è il cuore del G3 — il giorno migliore perché nessun compo
 | 6 | Leg Cradle Supino | 2× 30s/lato | |
 | 7 | Supported Low Lunge | 2× 30s/lato | |
 
-**✅ Nota importante:** Il G3 NON ha tracking nei Progressi, niente briefing coach, niente RIR guidato. È un giorno di recupero attivo e mobilità.
+**✅ Nota importante:** Il G3 NON ha tracking nei Progressi, niente briefing coach, niente RIR guidato. È un giorno di recupero attivo e mobilità, con superset automatici mostrati di default nella card light.
 
 ---
 

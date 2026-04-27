@@ -270,146 +270,104 @@ Mini-serie progressive per entrare nella tirata senza stancarti.
 
 ---
 
-## Giorno 4 — Lower B — Glutei + Femorali
+## Giorno 4 — Lower B — Stacco + Catena Posteriore
 
-**Durata stimata:** 75 min  
-**Attrezzi:** Bilanciere + bumper · Manubri · Panca · Panca romana + sacco sabbia · Fitball · Elastico  
-**Recuperi generali:** 2-3 min su Stacco · 90s-2 min su Stacco Rumeno e Hip thrust · 90s-2 min su Bulgarian Split Squat · 90s sugli accessori
+**Durata stimata:** 85-90 min
+**Attrezzi:** Bilanciere + bumper · Manubri · Panca · Panca romana
+**Recuperi generali:** 2-3 min su Stacco · 90s-2 min su Bulgarian Split Squat · 90s su Hyperextension · 60s nel superset Hyperextension + Abduzione laterale IR
 
-> **Superset possibile:** Hyperextension + Fitball Hamstring Curl back-to-back — catena posteriore da angoli diversi, interferenza minima. Utile se il tempo stringe.
+> **Superset possibile:** Hyperextension + Abduzione laterale IR back-to-back. È il solo blocco rapido del G4.
 
 ---
 
 ### RISCALDAMENTO
 
-#### Mobilità — caviglia → spalla
+#### Mobilità — caviglia → anca → torace
 
 | Esercizio | Dose | Cue |
 |---|---|---|
-| Dorsiflessione al muro | 8 rip per lato | Come Giorno 1: tallone a terra e controllo pieno. |
-| 90/90 hip mobility | 8 passaggi per lato | Anche mobili, schiena neutra. |
-| Calf Raises con pallina | 12 rip | Stringi la pallina per tutta salita e discesa. |
-| T-spine rotation in quadrupedia | 8 rip per lato | Ruota il torace, bacino fermo — prepara per lo stacco. |
-| Shoulder CARs | 5 cerchi/direzione/braccio | Cerchi lentissimi, addome contratto. |
+| Dorsiflessione al muro | 8 rip per lato | Tallone a terra, fianchi avanti, niente spalle al muro. |
+| 90/90 hip mobility | 8 passaggi per lato | Anche mobili, busto alto, niente compensi lombari. |
+| Calf Raises con pallina | 12 rip | Stringi la pallina e controlla tutta la salita. |
+| T-spine rotation in quadrupedia | 8 rip per lato | Ruota il torace, bacino fermo. |
+| FMS spalle | 5 per lato | Mobilità controllata senza inarcare. |
 
 #### Attivazione
 
 | Esercizio | Dose | Cue |
 |---|---|---|
-| Ponte monopodalico | 6 per lato | Gluteo forte in alto, assetto fermo. |
-| Shoulder Tap | 20 per lato | Anti-rotazione: prepara il core per lo stacco. |
-
-#### Circuito
-
-| Esercizio | Dose | Cue |
-|---|---|---|
-| Push-Up | 6-8 rip facili | Solo attivazione e ritmo, non andare a fatica. |
-| Affondi saltati alternati | 5 per lato | Esplosivi ma controllati. |
-| Burpee completo | 4-5 rip | Plank solido: se cedi con la lombare, riduci. |
+| Ponte monopodalico | 6 per lato | Gluteo forte in alto, bacino fermo. |
+| Shoulder Tap | 20 per lato | Anti-rotazione vera, niente bacino che oscilla. |
 
 #### Avvicinamento al primo lift
 
-**Serie avvicinamento stacco** — 3 serie progressive  
-Scarico → circa 50% → 70-80%. L'ultima deve accendere il gesto, non tassarlo.
+**Serie avvicinamento stacco** — 3 serie progressive
+Scarico → circa 50% → 70-80%. L'ultima deve attivare il gesto, non tassarti.
 
 ---
 
 ### Stacco da Terra ★ PRIORITÀ
 
-**Serie:** 3×4-6 · RPE 8-9  
-**Recupero:** 2-3 min  
+**Serie:** 5×4-5 · RPE 8-9
+**Recupero:** 2-3 min
 **Attrezzi:** Bilanciere + bumper
 
 **Setup:** Piedi larghezza anche, barra su metà piede, mani appena fuori gambe, braccia tese. Ultimo set solo a RIR 0-1 se tecnica stabile.
 
-**Introduzione:** È il lift più pesante della settimana e oggi il focus è tutta la catena posteriore.  
-**Focus:** Barra vicina e spinta coordinata di gambe e anche.  
+**Introduzione:** È il lift più pesante della settimana e oggi il focus è tutta la catena posteriore.
+**Focus:** Barra vicina e spinta coordinata di gambe e anche.
 **Attenzione:** Se le anche scappano su da sole, il carico è oltre il tuo controllo.
 
-**Errori comuni:** Schiena arrotondata (cifosi) · barra lontana dal corpo · anche che salgono prima delle spalle · collo iperesteso
-
----
-
-### Stacco Rumeno
-
-**Serie:** 3×10-12 · RPE 8-9  
-**Recupero:** 90s-2 min  
-**Attrezzi:** Bilanciere + bumper
-
-**Setup:** Piedi larghezza anche, ginocchia appena sbloccate, mani poco fuori cosce. Anca indietro e bilanciere vicino alle gambe. Fermati quando perdi neutro o tensione utile sui femorali.
-
-**Introduzione:** Dopo lo stacco pesante, qui cerchi tensione pulita su femorali e glutei.  
-**Focus:** Bacino indietro e allungamento chiaro dei femorali.  
-**Attenzione:** Non scendere oltre il punto in cui perdi schiena neutra.
-
-**Errori comuni:** Schiena arrotondata · ginocchia troppo flesse · carico lontano dal corpo · anca che scende invece di andare indietro
-
----
-
-### Hip Thrust Bilanciere
-
-**Serie:** 3×8-10 · RPE 8-9  
-**Recupero:** 90s-2 min  
-**Attrezzi:** Bilanciere + bumper + panca
-
-**Setup:** Piedi larghezza bacino-spalle, tibia quasi verticale in alto. Versione più compatta e meno tassante rispetto al Giorno 1.
-
-**Introduzione:** Qui concentri il lavoro sul gluteo in chiusura dopo due hinge pesanti.  
-**Focus:** Fermati un istante in alto e senti il gluteo chiudere.  
-**Attenzione:** Se vai in iperestensione, stai rubando lavoro al gluteo.
-
-**Errori comuni:** Iperestensione lombare in alto · appoggio scapole troppo basso · piedi troppo vicini
+**Errori comuni:** Schiena arrotondata · barra lontana dal corpo · anche che salgono prima delle spalle · collo iperesteso
 
 ---
 
 ### Bulgarian Split Squat
 
-**Serie:** 3×12-15 per gamba · RPE 8-9
-**Recupero:** 90s-2 min  
-**Attrezzi:** Manubri  
+**Serie:** 5×12-15 per gamba · RPE 8-9
+**Recupero:** 90s-2 min
+**Attrezzi:** Manubri + panca
 **Alternativa:** TRX reverse lunge
 
-**Setup:** Piedi su due binari, passo abbastanza lungo, busto stabile.
+**Setup:** Piede posteriore in appoggio morbido, piede davanti tutto a terra, stance stabile su due binari.
 
-**Introduzione:** Questo aggiunge volume unilaterale e controllo dopo i compound posteriori.  
-**Focus:** Passo lungo, busto stabile, discesa controllata.  
+**Introduzione:** Aggiunge volume unilaterale dopo lo stacco e tiene alto il lavoro su gamba e gluteo senza altro carico sistemico pesante.
+**Focus:** Passo lungo, busto stabile, discesa controllata.
 **Attenzione:** Se il passo è troppo corto, sposti stress sul ginocchio invece che su gluteo e gamba.
 
-**Errori comuni:** Passo troppo corto · ginocchio post che non scende · busto che oscilla
+**Errori comuni:** Passo troppo corto · busto che oscilla · ROM accorciato · ginocchio che collassa
 
 ---
 
-### Hyperextension *(superset con Fitball Hamstring Curl)*
+### Hyperextension *(superset con Abduzione laterale IR)*
 
-**Serie:** 2-3×12-15 · RPE 8-9  
-**Recupero:** 90s (o diretto su Fitball se in superset)  
-**Attrezzi:** Panca romana  
-**Alternativa:** Cable pull-through
+**Serie:** 5×12-15 · RPE 8-9
+**Recupero:** diretto su Abduzione laterale IR, poi 60s
+**Attrezzi:** Panca romana
 
-**Setup:** Accessorio di rifinitura, non un altro stacco. Usa glutei e femorali, non cercare iperestensione lombare.
+**Setup:** Le prime 2 serie sono di avvicinamento, poi 3 serie lavoro. Usa glutei e femorali, non cercare iperestensione lombare.
 
-**Introduzione:** È un accessorio di rifinitura, non un altro stacco.  
-**Focus:** Risali coi glutei e fermati con il corpo in linea.  
+**Introduzione:** È un accessorio di rifinitura della catena posteriore, non un altro stacco.
+**Focus:** Risali coi glutei e fermati con il corpo in linea.
 **Attenzione:** Se chiudi inarcando la schiena, stai sbagliando target.
 
 **Errori comuni:** Iperestensione lombare in alto · velocità eccessiva · collo iperesteso
 
 ---
 
-### Fitball Hamstring Curl *(superset con Hyperextension)*
+### Abduzione laterale IR *(superset con Hyperextension)*
 
-**Serie:** 3×10-12 · RPE 8-9  
-**Recupero:** 90s dopo il secondo esercizio del superset  
-**Attrezzi:** Fitball  
-**Alternativa:** TRX hamstring curl
+**Serie:** 3×15-20 per lato · RPE 8
+**Recupero:** 60s dopo Hyperextension + Abduzione
+**Attrezzi:** Corpo libero
 
-**Setup:** Bacino alto dall'inizio alla fine.
+**Setup:** Sdraiata sul fianco, gamba sopra leggermente dietro il busto e punta verso il pavimento. Pausa 1s in alto.
 
-**Introduzione:** Chiudi i femorali da un angolo diverso e con più richiesta di controllo.  
-**Focus:** Bacino alto dall'inizio alla fine.  
-**Attenzione:** Se il bacino cade, la tensione utile sparisce.
+**Introduzione:** Chiude il G4 con lavoro mirato sul gluteo medio senza sporcare il recupero del giorno dopo.
+**Focus:** Bacino fermo e punta che resta leggermente in giù.
+**Attenzione:** Se il piede si apre o ruoti il bacino indietro, esci dal target.
 
-**Errori comuni:** Bacino che cade · piedi che scivolano · range incompleto
+**Errori comuni:** Bacino che ruota indietro · piede che si apre · slancio senza controllo
 
 ---
 

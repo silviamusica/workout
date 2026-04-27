@@ -291,7 +291,8 @@ Il Giorno 3 ha `light: true`. Non è cardio, non è pesi, non è riposo.
 - Il coach NON si attiva: niente RIR prompt, niente briefing, niente decisione finale
 - Timer: fisso 30s, non basato su RIR
 - Gli esercizi del G3 NON compaiono nei Progressi fondamentali
-- NON ha split AM/PM né superset
+- NON ha split AM/PM
+- Ha 4 superset automatici sempre visibili nella card light; non usa il toggle formato dei giorni pesi
 - Protocollo anca completo (7 posizioni, 8-10 min) dopo gli esercizi
 - Abduzione laterale IR ha alternativa Clamshell solo nel G3; la scelta resta persistente in `localStorage` con chiave `wt-exercise-alt-mode`
 
@@ -618,6 +619,10 @@ L'app offre tre formati per ogni giorno pesi: sessione unica, split AM/PM, super
 |---|---|---|---|
 | G1 | Leg Curl al Cavo | Ab Wheel | 60s |
 | G2 | Band Pull-Apart con rotazione esterna | Curl Bicipiti | 60s |
+| G3 | Alzate Laterali | Goblet Squat | 45s |
+| G3 | Band Pull-Apart con rotazione esterna | Abduzione laterale IR | 30s |
+| G3 | Leg Extension al Cavo | TRX Row lento | 30s |
+| G3 | Push-Up | Leg Curl al Cavo | 30s |
 | G4 | Hyperextension | Abduzione laterale IR | 60s |
 | G5 | Push-Up | Woodchop | 45s |
 
