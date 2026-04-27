@@ -434,7 +434,9 @@ Protocollo breve facoltativo dopo lo stretching finale:
 | 1 | Trazioni | 5x5-8 | RPE 8-9, presa prona, ultimo set a cedimento tecnico controllato |
 | 2 | Panca | 5x6-8 | RPE 8-9, ultimo set a cedimento tecnico controllato |
 | 3 | Pulley Basso | 5x10-12 | RPE 8-9, tirata con controllo scapolare |
-| 4 | Curl Bicipiti | 5x10-12 | Prime 2 avvicinamento + 3 lavoro. RPE 9 sulle serie lavoro |
+| 4 | Band Pull-Apart con rotazione esterna | 3x15 | RPE 8, pausa 1s con mani ruotate fuori. Va in superset con Curl |
+| 5 | Curl Bicipiti | 5x10-12 | Prime 2 avvicinamento + 3 lavoro. RPE 9 sulle serie lavoro |
+| 6 | Alzate Laterali | 2x15 | RPE 8, 30s recupero. Vanno nel blocco PM dopo il superset |
 
 **Esercizi rimossi rispetto alla versione precedente**:
 - T-bar Row (rimosso dal G2, spostato a G5)
@@ -473,17 +475,19 @@ Questo giorno colma tre lacune del programma:
 | Mobilità | T-spine rotation in quadrupedia | 8 rip/lato |
 | Attivazione | Ponte monopodalico | 6 rip/lato |
 
-**Esercizi** (RPE 6-8 · 30 min)
+**Esercizi** (RPE 6-8 · 40-45 min)
 
 | # | Esercizio | Serie | RPE | Recupero | Note |
 |---|---|---|---|---|---|
 | 1 | Alzate Laterali | 3x15-20 | 8 | 30-45s | Manubri leggeri. Alza fino a parallelo. 2s su 2s giù |
-| 2 | Band Pull-Apart con rotazione esterna | 2x20 | 6-7 | 30s | Volume extra leggero. Pausa 1s con mani ruotate fuori |
+| 2 | Band Pull-Apart con rotazione esterna | 3x20 | 6-7 | 30s | Volume extra leggero. Pausa 1s con mani ruotate fuori |
 | 3 | Abduzione laterale IR | 2x20/lato | 6-7 | 30s | Fianco a terra, punta in giu, bacino fermo |
-| 4 | Goblet Squat | 2x12 | 6-7 | 45s | Manubrio al petto. Scendi parallelo. Gomiti verso fuori |
+| 4 | Goblet Squat | 3x12 | 8 | 45s | Manubrio al petto. Scendi parallelo. Gomiti verso fuori |
 | 5 | TRX Row lento | 2x12 | 6-7 | 45s | Fermo 2s scapole strette. Eccentrica 3s |
+| 6 | Push-Up | 2x10 | 7 | 30s | Volume tecnico leggero per petto e core. Corpo in linea |
+| 7 | Leg Curl al Cavo | 2x12 | 7 | 30s | Cavigliera al cavo basso. Femorali in flessione di ginocchio |
 
-Nessun toggle G3: l'esercizio fisso ora è `Abduzione laterale IR`.
+Nel G3 l'esercizio base resta `Abduzione laterale IR`, con toggle persistente verso `Clamshell`.
 
 **Protocollo anca completo** (8-10 minuti)
 
@@ -545,7 +549,7 @@ Stesso blocco facoltativo del Giorno 1, mostrato dopo lo stretching finale.
 
 ### Giorno 5 — Upper B — Spinta + Tirata
 
-**Aggiornamento 2026-04-21**: riscaldamento ristrutturato (FMS Spalle al posto di Shoulder CARs, no circuito); T-bar Row spostato qui da G2; Military e T-bar a 5 serie; Push-Up e Trazioni Supine a 4 serie; Dip e Tricipiti Cavo rimossi; tEst aggiornato a 80 min.
+**Aggiornamento 2026-04-21**: riscaldamento ristrutturato (FMS Spalle al posto di Shoulder CARs, no circuito); T-bar Row spostato qui da G2; Military e T-bar a 5 serie; Push-Up e Trazioni Supine a 4 serie; Dip e Tricipiti Cavo rimossi; tEst aggiornato a 80-82 min.
 
 **Riscaldamento**
 
@@ -568,6 +572,7 @@ Stesso blocco facoltativo del Giorno 1, mostrato dopo lo stretching finale.
 | 3 | Push-Up | 4x8-15 | RIR 1-2 |
 | 4 | Trazioni Supine | 4x5-8 | RPE 8, presa supina |
 | 5 | Woodchop | 3x10-12 per lato | RPE 8-9, cavo o elastico |
+| 6 | Alzate Laterali | 3x15 | RPE 8, chiusura finale fuori dal superset |
 
 **Esercizi rimossi rispetto alla versione precedente**:
 - Dip alle Parallele (rimosso)

@@ -132,13 +132,13 @@ Scarico → circa 50% → 70-80%. Devono preparare, non stancare.
 
 ---
 
-## Giorno 2 — Upper A — Tirata + Petto
+## Giorno 2 — Upper A — Trazioni + Panca + Pulley
 
-**Durata stimata:** 65 min  
-**Attrezzi:** Barra trazioni · Elastico leggero · T-bar · Bilanciere + panca + rack · Cavo alto + corda · Manubri  
-**Recuperi generali:** 2-3 min su Trazioni · 2 min su T-bar e Panca · 60-90s su Face pull e Curl
+**Durata stimata:** 90-93 min
+**Attrezzi:** Barra trazioni · Elastico leggero · Bilanciere + panca + rack · Cavo basso · Manubri
+**Recuperi generali:** 2-3 min su Trazioni e Panca · 90s su Pulley · 60s nel superset Band Pull-Apart + Curl · 30s su Alzate Laterali
 
-> **Superset possibile:** Face Pull + Curl Bicipiti back-to-back — nessun antagonismo diretto, il recupero da uno è attivo per l'altro. Utile se il tempo stringe.
+> **Superset possibile:** Band Pull-Apart con rotazione esterna + Curl Bicipiti back-to-back. Pulley resta separato e le Alzate Laterali vanno dopo il superset.
 
 ---
 
@@ -190,19 +190,19 @@ Mini-serie progressive per entrare nella tirata senza stancarti.
 
 ---
 
-### T-bar Row
+### Pulley
 
-**Serie:** 4×8-10 · RPE 8-9  
-**Recupero:** 2 min  
-**Attrezzi:** T-bar + bumper
+**Serie:** 5×10-12 · RPE 8-9
+**Recupero:** 90s
+**Attrezzi:** Cavo basso + maniglie
 
-**Setup:** Busto a 45 gradi fisso. Tira verso ombelico. Presa neutra. Scapole addotte 1s.
+**Setup:** Carrucola bassa. Tira verso lo sterno portando i gomiti indietro. Scapole addotte 1s.
 
-**Introduzione:** Dopo la tirata verticale aggiungi spessore e controllo sulla tirata orizzontale.  
-**Focus:** Tronco fermo e scapole che si chiudono a fine ripetizione.  
-**Attenzione:** Se dondoli col busto, stai spostando lavoro dalla schiena allo slancio.
+**Introduzione:** Dopo la tirata verticale aggiungi volume orizzontale senza appesantire troppo la schiena bassa.
+**Focus:** Trazione pulita, torace alto e scapole che chiudono alla fine.
+**Attenzione:** Se inizi a dondolare col busto, il carico è oltre il controllo utile.
 
-**Errori comuni:** Schiena arrotondata · slancio col busto · tirare con i bicipiti
+**Errori comuni:** Schiena che si inarca · slancio del busto · tirare con le braccia
 
 ---
 
@@ -222,35 +222,51 @@ Mini-serie progressive per entrare nella tirata senza stancarti.
 
 ---
 
-### Face Pull *(superset con Curl)*
+### Band Pull-Apart con rotazione esterna *(superset con Curl)*
 
-**Serie:** 3×15 · RPE 9  
-**Recupero:** 60-90s (o diretto su Curl se in superset)  
-**Attrezzi:** Cavo alto + corda
+**Serie:** 3×15 · RPE 8
+**Recupero:** diretto su Curl
+**Attrezzi:** Elastico medio
 
-**Setup:** Cavo alto + corda. Tira verso le orecchie. Rotazione esterna in alto. Gomiti alti.
+**Setup:** Braccia tese. Apri fino al petto e ruota le mani fuori alla fine. Pausa 1s.
 
-**Introduzione:** Questo rimette ordine alle spalle dopo trazioni e panca pesante.  
-**Focus:** Tira verso il viso con gomiti alti e spalle ruotate fuori.  
-**Attenzione:** Se devi inclinarti per tirare, il carico è troppo.
+**Introduzione:** Tiene ordine alle spalle dopo trazioni e panca, senza rubare energie al resto della seduta.
+**Focus:** Mani ruotate fuori e scapole che si chiudono senza alzare le spalle.
+**Attenzione:** Se pieghi i gomiti o slanci, stai togliendo lavoro al deltoide posteriore.
 
-**Errori comuni:** Corpo che si inclina avanti · gomiti che scendono · nessuna rotazione esterna
+**Errori comuni:** Gomiti che si piegano · nessuna rotazione esterna · elastico troppo leggero
 
 ---
 
-### Curl Bicipiti *(superset con Face Pull)*
+### Curl Bicipiti *(superset con Band Pull-Apart)*
 
-**Serie:** 3×10-12 · RPE 9  
-**Recupero:** 90s dopo il secondo esercizio del superset  
+**Serie:** 5×10-12 · RPE 9
+**Recupero:** 60s dopo il secondo esercizio del superset
 **Attrezzi:** Manubri
 
-**Setup:** Gomiti fissi ai fianchi. Supinazione. Eccentrica 2-3s.
+**Setup:** Gomiti fissi ai fianchi. Supinazione. Eccentrica 2-3s. Prime 2 serie di avvicinamento, poi 3 serie lavoro.
 
 **Introduzione:** Qui isoli i bicipiti dopo che hanno già lavorato nelle tirate.  
 **Focus:** Gomiti fermi ed eccentrica lenta.  
 **Attenzione:** Se il busto partecipa, stai usando troppo peso.
 
 **Errori comuni:** Slancio col busto · gomiti che avanzano · fase eccentrica troppo veloce
+
+---
+
+### Alzate Laterali
+
+**Serie:** 2×15 · RPE 8
+**Recupero:** 30s
+**Attrezzi:** Manubri leggeri
+
+**Setup:** Alza fino a parallelo, gomiti morbidi, 1s in alto, spalle basse.
+
+**Introduzione:** Chiusura breve per portare il deltoide laterale al minimo utile settimanale.
+**Focus:** Movimento pulito e simmetrico, senza slancio.
+**Attenzione:** Se sali oltre il parallelo o stringi il collo, il gesto si sporca.
+
+**Errori comuni:** Spalle che salgono · slancio del busto · eccentrica troppo veloce
 
 ---
 
@@ -397,13 +413,13 @@ Scarico → circa 50% → 70-80%. L'ultima deve accendere il gesto, non tassarlo
 
 ---
 
-## Giorno 5 — Upper B — Spinta + Trazioni + Tricipiti
+## Giorno 5 — Upper B — T-bar + Military + Spinta + Tirata
 
-**Durata stimata:** 65 min  
-**Attrezzi:** Barra trazioni · Bilanciere + rack · Barra dip · Cavo alto + corda · Elastico leggero · Parete libera  
-**Recuperi generali:** 2 min su Push-up, Trazioni, Military · 90-120s su Dip · 60-90s su Tricipiti cavo e Woodchop
+**Durata stimata:** 80-82 min
+**Attrezzi:** Barra trazioni · Bilanciere + rack · T-bar · Cavo alto o elastico · Manubri · Elastico leggero
+**Recuperi generali:** 2-3 min su Military e Trazioni Supine · 2 min su T-bar e Push-Up · 45s nel superset Push-Up + Woodchop · 30-45s su Alzate Laterali
 
-> **Superset possibile:** Tricipiti Cavo + Woodchop back-to-back — nessun antagonismo, utile per comprimere il finale della seduta.
+> **Superset possibile:** Push-Up + Woodchop back-to-back. Trazioni Supine restano separate e le Alzate Laterali chiudono la seduta.
 
 ---
 
@@ -457,7 +473,7 @@ Bilanciere leggero e progressivo per entrare nel gesto fresco.
 
 ### Trazioni Supine
 
-**Serie:** 3×5-8 · RPE 8  
+**Serie:** 4×5-8 · RPE 8
 **Recupero:** 2-3 min  
 **Attrezzi:** Barra trazioni  
 **Alternativa:** Lat machine presa supina
@@ -474,7 +490,7 @@ Bilanciere leggero e progressivo per entrare nel gesto fresco.
 
 ### Push-Up
 
-**Serie:** 3×8-15 · RIR 1-2  
+**Serie:** 4×8-15 · RIR 1-2
 **Recupero:** 2 min  
 **Attrezzi:** Corpo libero (rialzo se necessario)  
 **Alternativa:** TRX push-up o rialzo
@@ -489,43 +505,26 @@ Bilanciere leggero e progressivo per entrare nel gesto fresco.
 
 ---
 
-### Dip alle Parallele
+### Alzate Laterali
 
-**Serie:** 3×6-10 · RIR 1-2  
-**Recupero:** 2 min  
-**Attrezzi:** Barra dip  
-**Alternativa:** Panca stretta o pushdown se le spalle danno fastidio
+**Serie:** 3×15 · RPE 8
+**Recupero:** 30-45s
+**Attrezzi:** Manubri leggeri
 
-**Setup:** Spalle basse, busto stabile, ROM controllato. Fermati prima di perdere posizione.
+**Setup:** Alza fino a parallelo, 1s in alto, spalle basse e collo libero.
 
-**Introduzione:** Qui carichi tricipiti e spinta in allungamento dopo che sono già ben caldi.  
-**Focus:** Scendi controllata e mantieni spalle basse.  
-**Attenzione:** Se perdi assetto o inizi a oscillare, fermati lì.
+**Introduzione:** Chiudi il G5 con volume pulito per il deltoide laterale.
+**Focus:** Movimento controllato e ampiezza costante dalla prima all'ultima serie.
+**Attenzione:** Se usi slancio o sali troppo, il lavoro va fuori target.
 
-**Errori comuni:** Spalle che salgono · oscillazione del corpo · discesa eccessiva
-
----
-
-### Tricipiti Cavo *(superset con Woodchop)*
-
-**Serie:** 3×10-12 · RPE 8-9  
-**Recupero:** 60-90s (o diretto su Woodchop se in superset)  
-**Attrezzi:** Cavo alto + corda
-
-**Setup:** Gomiti fermi vicino al fianco, polsi neutri.
-
-**Introduzione:** Serve a finire i tricipiti senza aggiungere altra fatica sistemica.  
-**Focus:** Gomiti fermi e chiusura forte in basso.  
-**Attenzione:** Se spingi col busto, il peso è troppo.
-
-**Errori comuni:** Gomiti che si muovono · busto che si inclina · usare lo slancio
+**Errori comuni:** Spalle verso le orecchie · slancio del busto · eccentrica veloce
 
 ---
 
-### Woodchop *(superset con Tricipiti Cavo)*
+### Woodchop *(superset con Push-Up)*
 
 **Serie:** 3×10-12 per lato · RPE 8-9  
-**Recupero:** 60-90s dopo il secondo esercizio del superset  
+**Recupero:** 45s dopo il secondo esercizio del superset
 **Attrezzi:** Cavo alto o elastico
 
 **Setup:** Ruota il tronco senza strappare con le braccia.

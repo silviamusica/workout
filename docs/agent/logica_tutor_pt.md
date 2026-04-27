@@ -278,14 +278,16 @@ Il Giorno 3 ha `light: true`. Non è cardio, non è pesi, non è riposo.
 | # | Esercizio | Serie | RPE | Recupero |
 |---|---|---|---|---|
 | 1 | Alzate Laterali | 3x15-20 | 8 | 30-45s |
-| 2 | Band Pull-Apart con rotazione esterna | 2x20 | 6-7 | 30s |
+| 2 | Band Pull-Apart con rotazione esterna | 3x20 | 6-7 | 30s |
 | 3 | Abduzione laterale IR | 2x20/lato | 6-7 | 30s |
-| 4 | Goblet Squat | 2x12 | 6-7 | 45s |
+| 4 | Goblet Squat | 3x12 | 8 | 45s |
 | 5 | TRX Row lento | 2x12 | 6-7 | 45s |
+| 6 | Push-Up | 2x10 | 7 | 30s |
+| 7 | Leg Curl al Cavo | 2x12 | 7 | 30s |
 
 ### Regole
 
-- RPE massimo: 6-8 (Alzate Laterali a RPE 8; resto 6-7)
+- RPE massimo: 6-8 (Alzate Laterali e Goblet Squat a RPE 8; Push-Up e Leg Curl al Cavo a RPE 7; il resto 6-7)
 - Il coach NON si attiva: niente RIR prompt, niente briefing, niente decisione finale
 - Timer: fisso 30s, non basato su RIR
 - Gli esercizi del G3 NON compaiono nei Progressi fondamentali
@@ -300,6 +302,8 @@ Il Giorno 3 ha `light: true`. Non è cardio, non è pesi, non è riposo.
 - `Abduzione laterale IR`: mono, bodyweight, +1 rip
 - `Goblet Squat`: compound leggero, +1 kg manubrio/kettlebell
 - `TRX Row lento`: compound (default), bodyweight, +1 rip
+- `Push-Up`: compound (default), bodyweight, +1 rip
+- `Leg Curl al Cavo`: mono, +1 scatto cavo
 
 ## Briefing pre-sessione
 
@@ -604,9 +608,9 @@ L'app offre tre formati per ogni giorno pesi: sessione unica, split AM/PM, super
 | Giorno | AM | PM |
 |---|---|---|
 | G1 | Squat · Stacco Rumeno · Glute Bridge Bilanciere | Leg Curl al Cavo · Ab Wheel |
-| G2 | Trazioni · Panca | Pulley · Band Pull-Apart con rotazione esterna · Curl Bicipiti |
+| G2 | Trazioni · Panca | Pulley · Band Pull-Apart con rotazione esterna · Curl Bicipiti · Alzate Laterali |
 | G4 | Stacco da Terra · Bulgarian Split Squat | Hyperextension · Abduzione laterale IR |
-| G5 | T-bar Row · Military Press | Push-Up · Trazioni Supine · Woodchop |
+| G5 | T-bar Row · Military Press | Push-Up · Trazioni Supine · Woodchop · Alzate Laterali |
 
 ### Superset (FAST_MODE_SUPERSETS)
 

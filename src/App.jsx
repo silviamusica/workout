@@ -1580,13 +1580,13 @@ var DAYS_V4 = [
       { n: "Ab Wheel", s: "5x8-10", approachSets: 2, rpe: "8", note: "5 serie totali: le prime 2 sono di avvicinamento, poi 3 serie di lavoro. Dalle ginocchia. Costole giu e glutei attivi. Alternativa: TRX fallout o fitball rollout.", rec: "90s", gear: "Ab wheel", errori: "Lombare che si inarca; anche che non si estendono; range troppo corto" },
     ], str: ["Quadricipiti","Flessori anca","Glutei"] },
 
-  { name: "Giorno 2", focus: "Upper A — Trazioni + Panca + Pulley", dayLabel: "Mar", dur: "5 esercizi", tEst: 90,
+  { name: "Giorno 2", focus: "Upper A — Trazioni + Panca + Pulley", dayLabel: "Mar", dur: "6 esercizi", tEst: 93,
     intro: {
       attrezzi: ["Barra trazioni", "Elastico assistenza", "Bilanciere + panca + rack", "Cavo basso + maniglie", "Elastico media resistenza", "Manubri"],
-      muscoli: ["Dorsali/Bicipiti (Trazioni)", "Pettorali/Tricipiti (Panca)", "Dorsali/Scapole (Pulley)", "Deltoidi posteriori/Cuffia rotatori (Band Pull-Apart)", "Bicipiti (Curl)"],
-      obiettivi: ["Costruire forza nelle Trazioni con double progression — priorita assoluta", "Aggiungere volume tirata orizzontale con Pulley", "Coprire rotazione esterna e deltoide posteriore con Band Pull-Apart"],
+      muscoli: ["Dorsali/Bicipiti (Trazioni)", "Pettorali/Tricipiti (Panca)", "Dorsali/Scapole (Pulley)", "Deltoidi posteriori/Cuffia rotatori (Band Pull-Apart)", "Deltoide laterale (Alzate Laterali)", "Bicipiti (Curl)"],
+      obiettivi: ["Costruire forza nelle Trazioni con double progression — priorita assoluta", "Aggiungere volume tirata orizzontale con Pulley", "Coprire rotazione esterna e deltoide posteriore con Band Pull-Apart", "Portare il deltoide laterale al minimo utile con 2 serie pulite di Alzate Laterali"],
       attenzione: ["Trazioni: parti da braccia TESE, scapole depresse PRIMA di tirare, mento sopra la sbarra, discesa controllata 2-3s", "Panca: scapole addotte e basse, gomiti a 45-75 gradi, barra tocca linea capezzoli", "Band Pull-Apart: braccia TESE, ruota le mani verso fuori alla fine, pausa 1s — non piegare i gomiti"],
-      ritmo: "Recuperi 2-3 min su Trazioni. 2 min su Panca. 90s-2 min su Pulley. 60s su Band Pull-Apart e Curl."
+      ritmo: "Recuperi 2-3 min su Trazioni. 2 min su Panca. 90s-2 min su Pulley. 60s nel superset Band Pull-Apart + Curl. 30s su Alzate Laterali."
     },
     warmup: [
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota solo il torace: il bacino resta fermo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
@@ -1602,14 +1602,15 @@ var DAYS_V4 = [
       { n: "Pulley", s: "5x10-12", rpe: "8-9", note: "Carrucola bassa. Tira verso lo sterno portando i gomiti indietro e le scapole insieme. Eccentrica 2-3 secondi.", rec: "90s-2 min", gear: "Cavo basso + maniglie", errori: "Schiena che si inarca; slancio col busto; tirare con i bicipiti invece dei dorsali" },
       { n: "Band Pull-Apart con rotazione esterna", s: "3x15", rpe: "8", note: "Braccia tese davanti, apri fino al petto e ruota le mani verso fuori alla fine. Pausa 1s a fine ripetizione. Non e il band pull-apart leggero del riscaldamento: usa un elastico piu resistente.", rec: "60s", gear: "Elastico resistenza media", errori: "Piegare i gomiti per arrivare piu indietro; non completare la rotazione esterna; usare slancio" },
       { n: "Curl Bicipiti", s: "5x10-12", approachSets: 2, rpe: "9", note: "5 serie totali: le prime 2 sono di avvicinamento, poi 3 serie di lavoro. Con manubri. Gomiti fissi ai fianchi. Supinazione. Eccentrica 2-3s.", rec: "90s", gear: "Manubri", errori: "Slancio col busto; gomiti che avanzano; fase eccentrica troppo veloce" },
+      { n: "Alzate Laterali", s: "2x15", rpe: "8", note: "Manubri leggeri. Due serie pulite, fuori dal superset. Alza fino a parallelo, pausa 1s in alto, niente slancio.", rec: "30s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
     ], str: ["Doorway Pec Stretch","Overhead Lat Stretch","Cross-Body Shoulder Stretch","Wrist Flexor/Extensor Stretch"], hipBonus: true },
 
-  { name: "Giorno 3", focus: "Leggero", dayLabel: "Mer", light: true, tEst: 35,
+  { name: "Giorno 3", focus: "Leggero", dayLabel: "Mer", light: true, tEst: 45,
     intro: {
       attrezzi: ["Manubri leggeri", "Elastico", "TRX", "Cavo basso", "Tappetino"],
-      muscoli: ["Deltoide laterale (Alzate Laterali)", "Deltoide posteriore / cuffia (Band Pull-Apart)", "Gluteo medio (Abduzione laterale IR)", "Dorsali / scapole (TRX Row lento)", "Quadricipiti / Glutei (Goblet Squat)"],
-      obiettivi: ["Aggiungere volume complementare senza affaticare il sistema nervoso", "Curare controllo e qualità su muscoli che nei giorni pesanti non hanno volume diretto sufficiente", "Chiudere con il protocollo anca completo in un giorno senza compound pesanti"],
-      attenzione: ["RPE massimo 8 solo sulle Alzate Laterali: tutto il resto resta 6-7", "Movimenti lenti e puliti: il valore del giorno 3 e qualità + volume facile", "Nel TRX Row e nell'Abduzione laterale IR il controllo del corpo conta piu della quantità"],
+      muscoli: ["Deltoide laterale (Alzate Laterali)", "Deltoide posteriore / cuffia (Band Pull-Apart)", "Gluteo medio (Abduzione laterale IR)", "Quadricipiti / Glutei (Goblet Squat)", "Dorsali / scapole (TRX Row lento)", "Petto (Push-Up)", "Femorali in flessione ginocchio (Leg Curl al Cavo)"],
+      obiettivi: ["Aggiungere volume complementare senza affaticare il sistema nervoso", "Portare petto, deltoidi e femorali ginocchio al minimo utile con serie leggere ma produttive", "Curare controllo e qualità su muscoli che nei giorni pesanti non hanno volume diretto sufficiente", "Chiudere con il protocollo anca completo in un giorno senza compound pesanti"],
+      attenzione: ["RPE massimo 8 su Alzate Laterali e Goblet Squat: il resto resta 6-7", "Push-Up e Leg Curl oggi sono volume leggero: tecnica pulita, niente fatica vera", "Nel TRX Row e nell'Abduzione laterale IR il controllo del corpo conta piu della quantità"],
       ritmo: "Recuperi brevi: 30-45 secondi. Tieni il flusso alto ma senza sporcare la tecnica."
     },
     warmup: [
@@ -1627,10 +1628,12 @@ var DAYS_V4 = [
     ],
     ex: [
       { n: "Alzate Laterali", s: "3x15-20", rpe: "8", note: "Manubri leggeri. Alza fino a parallelo al pavimento. Lento: 2s su, 2s giu. Spalle basse, non alzare i trapezi.", rec: "30-45s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
-      { n: "Band Pull-Apart con rotazione esterna", s: "2x20", rpe: "6-7", note: "Volume leggero extra. Pausa 1s a fine apertura con mani ruotate fuori. Non tirare con forza.", rec: "30s", gear: "Elastico", errori: "Tirare con forza; gomiti piegati; nessuna rotazione esterna finale" },
+      { n: "Band Pull-Apart con rotazione esterna", s: "3x20", rpe: "6-7", note: "Volume leggero extra. Pausa 1s a fine apertura con mani ruotate fuori. Non tirare con forza.", rec: "30s", gear: "Elastico", errori: "Tirare con forza; gomiti piegati; nessuna rotazione esterna finale" },
       { n: "Abduzione laterale IR", s: "2x20 per lato", rpe: "6-7", note: "Sdraiata sul fianco o in quadrupedia. Gamba sopra leggermente dietro la linea del corpo, ginocchio piegato a 90 gradi e punta verso il pavimento. Range piccolo, bacino fermo, pausa 1s in alto.", rec: "30s", gear: "Corpo libero", errori: "Bacino che ruota indietro; piede che si apre verso l'alto; slancio", alt: { n: "Clamshell", s: "2x20 per lato", rpe: "6-7", note: "Ginocchia piegate a 90 gradi, piedi uniti. Apri il ginocchio superiore senza ruotare il bacino indietro. Pausa 1s in apertura.", rec: "30s", gear: "Corpo libero", errori: "Bacino che ruota; piedi che si separano; slancio" } },
-      { n: "Goblet Squat", s: "2x12", rpe: "6-7", note: "Manubrio al petto. Scendi parallelo. I gomiti spingono le ginocchia verso fuori. Alternativa: corpo libero squat.", rec: "45s", gear: "Manubrio leggero", errori: "Busto che cade avanti; schiena arrotondata; ginocchia che collassano" },
+      { n: "Goblet Squat", s: "3x12", rpe: "8", note: "Manubrio al petto. Scendi parallelo. I gomiti spingono le ginocchia verso fuori. Qui sale a RPE 8 per rendere produttive le 3 serie. Alternativa: corpo libero squat.", rec: "45s", gear: "Manubrio leggero", errori: "Busto che cade avanti; schiena arrotondata; ginocchia che collassano" },
       { n: "TRX Row lento", s: "2x12", rpe: "6-7", note: "Fermo 2s con scapole strette. Eccentrica 3s. Lavora i dorsali senza tassare la presa. Riduci l'inclinazione se il corpo non resta in linea.", rec: "45s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
+      { n: "Push-Up", s: "2x10", rpe: "7", note: "Volume leggero per il petto. Tecnica perfetta, non a fatica: fermati con 3-4 rip in riserva. Corpo in linea e gomiti a 45 gradi.", rec: "30s", gear: "Corpo libero", errori: "Anche che cedono; gomiti troppo aperti; ROM accorciato" },
+      { n: "Leg Curl al Cavo", s: "2x12", rpe: "7", note: "Volume leggero per i femorali in flessione di ginocchio. Eccentrica 2-3 secondi, nessuno slancio, fermati larga.", rec: "30s", gear: "Cavo basso + cavigliera", errori: "Slancio col bacino; eccentrica troppo veloce; lombare che si inarca" },
     ],
     str: ["Half Kneeling Lunge","Half Kneeling Lunge + Reach","Couch Stretch","Figure-Four Supino","Happy Baby","Leg Cradle Supino","Supported Low Lunge"],
     lightHipProtocol: [
@@ -1683,7 +1686,7 @@ var DAYS_V4 = [
       { n: "Abduzione laterale IR", s: "3x15-20", rpe: "8", note: "Per lato. Sdraiata sul fianco, gamba sopra leggermente dietro il busto e punta verso il pavimento. Pausa 1s in alto.", rec: "60s", gear: "Corpo libero", errori: "Bacino che ruota indietro; piede che si apre; slancio senza controllo" },
     ], str: ["Supine Assisted Leg Pull","Figure-Four Supino","Cat-Cow Lento","Half Kneeling Lunge"], hipBonus: true },
 
-  { name: "Giorno 5", focus: "Upper B — T-bar + Military + Spinta + Tirata", dayLabel: "Sab", dur: "6 esercizi", tEst: 80,
+  { name: "Giorno 5", focus: "Upper B — T-bar + Military + Spinta + Tirata", dayLabel: "Sab", dur: "6 esercizi", tEst: 82,
     intro: {
       attrezzi: ["T-bar", "Bilanciere + rack", "Barra trazioni", "Elastico leggero", "Cavo alto o elastico"],
       muscoli: ["Dorsali/Trapezi (T-bar Row)", "Deltoidi (Military Press)", "Pettorali/Core (Push-Up)", "Dorsali/Bicipiti (Trazioni Supine)", "Obliqui (Woodchop)", "Deltoide Laterale (Alzate Laterali)"],
@@ -1705,7 +1708,7 @@ var DAYS_V4 = [
       { n: "Push-Up", s: "4x8-15", rpe: "", note: "Setup: mani sotto o poco fuori spalle, corpo in linea, gomiti 30-45 gradi dal busto. RIR 1-2. Alternativa: TRX push-up o rialzo.", rec: "2 min", gear: "Corpo libero (rialzo se necessario)", errori: "Anche che cedono (banana); gomiti a 90 gradi; testa che penzola; ROM incompleto" },
       { n: "Woodchop", s: "3x10-12 per lato", rpe: "8-9", note: "Ruota il tronco senza strappare con le braccia.", rec: "60-90s", gear: "Cavo alto o elastico", errori: "Ruotare con le braccia anziche col tronco; peso eccessivo" },
       { n: "Trazioni Supine", s: "4x5-8", rpe: "8", note: "Setup: presa supina o neutra circa larghezza spalle, spalle giu, gomiti verso le costole. Alternativa: lat machine presa supina.", rec: "2-3 min", gear: "Barra trazioni", errori: "Come trazioni Giorno 2; presa diversa per variazione angolare" },
-      { n: "Alzate Laterali", s: "2x15", rpe: "8", note: "Manubri leggeri. Alza fino a parallelo (spalle). RPE piu alto rispetto a Giorno 3. Pausa 1s in alto.", rec: "45s", gear: "Manubri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; eccentrica troppo veloce" },
+      { n: "Alzate Laterali", s: "3x15", rpe: "8", note: "Manubri leggeri. Alza fino a parallelo (spalle). RPE piu alto rispetto a Giorno 3. Pausa 1s in alto.", rec: "45s", gear: "Manubri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; eccentrica troppo veloce" },
     ], str: ["Doorway Pec Stretch","Overhead Triceps Stretch","Overhead Lat Stretch","Band Dislocate Lento"], hipBonus: true },
 
   { name: "Riposo", focus: "Recupero", dayLabel: "Dom", rest: true },
@@ -2413,7 +2416,7 @@ function displayExerciseName(name) {
   return name;
 }
 var MAX_PROGRESS_EX = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni"];
-var ACCESSORY_PROGRESS_EX = ["Stacco Rumeno","Glute Bridge Bilanciere","Leg Curl al Cavo","Pulley","Band Pull-Apart con rotazione esterna","Curl Bicipiti","Squat Bulgaro","Hyperextension","Abduzione laterale IR","Push-Up","Trazioni Supine","Woodchop","T-bar Row"];
+var ACCESSORY_PROGRESS_EX = ["Stacco Rumeno","Glute Bridge Bilanciere","Leg Curl al Cavo","Pulley","Band Pull-Apart con rotazione esterna","Curl Bicipiti","Squat Bulgaro","Hyperextension","Abduzione laterale IR","Push-Up","Trazioni Supine","Woodchop","T-bar Row","Alzate Laterali"];
 var CORE_PROGRESS_EX = ["Ab Wheel"];
 var CARDIO_KIND_LABEL = { run: "Corsa", ruck: "Rucking", hiit: "HIIT", circuit: "Circuito" };
 var CALIBRATION_BODYWEIGHT_EX = ["Push-Up","Trazioni","Trazioni Supine","Ab Wheel","Abduzione laterale IR"];
@@ -2900,7 +2903,7 @@ var V4_DAY_SPLIT_PLAN = {
   },
   "Giorno 2": {
     am: ["Trazioni", "Panca"],
-    pm: ["Pulley", "Band Pull-Apart con rotazione esterna", "Curl Bicipiti"],
+    pm: ["Pulley", "Band Pull-Apart con rotazione esterna", "Curl Bicipiti", "Alzate Laterali"],
   },
   "Giorno 4": {
     am: ["Stacco da Terra", "Squat Bulgaro"],

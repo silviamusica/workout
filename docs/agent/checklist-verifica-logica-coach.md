@@ -4,18 +4,18 @@
 
 Dopo ogni modifica alla lista esercizi del programma V4, l'agente deve verificare che TUTTE le liste e funzioni della logica coach siano allineate. Ogni esercizio attivo deve essere presente nelle liste corrette. Ogni esercizio rimosso deve essere tolto.
 
-## Esercizi attualmente attivi nel V4 (aggiornato 2026-04-23)
+## Esercizi attualmente attivi nel V4 (aggiornato 2026-04-27)
 
 **Giorni pesi** (logica coach completa):
 G1: Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel
-G2: Trazioni, Panca, Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti
+G2: Trazioni, Panca, Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali
 G4: Stacco da Terra, Bulgarian Split Squat, Hyperextension, Abduzione laterale IR
-G5: T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop
+G5: T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop, Alzate Laterali
 
 **Giorno leggero G3** (tipo `light: true` — logica coach NON si applica):
-G3: Alzate Laterali, Band Pull-Apart con rotazione esterna, Abduzione laterale IR, Goblet Squat, TRX Row lento
+G3: Alzate Laterali, Band Pull-Apart con rotazione esterna, Abduzione laterale IR, Goblet Squat, TRX Row lento, Push-Up, Leg Curl al Cavo
 
-Gli esercizi del G3 NON devono essere in ACCESSORY_PROGRESS_EX, MAX_PROGRESS_EX, keyLiftNames, FAST_MODE_SUPERSETS, V4_DAY_SPLIT_PLAN.
+Gli esercizi esclusivi del G3 NON devono essere in MAX_PROGRESS_EX, keyLiftNames, FAST_MODE_SUPERSETS, V4_DAY_SPLIT_PLAN. Se un esercizio del G3 coincide con un giorno pesi attivo (es. Push-Up, Leg Curl al Cavo, Alzate Laterali), puo comparire nelle liste coach perche esiste anche fuori dal G3.
 
 ## 10 punti da verificare
 
@@ -29,7 +29,7 @@ Deve contenere SOLO: Push-Up, Trazioni Supine
 
 ### 2. ACCESSORY_PROGRESS_EX
 Deve contenere tutti gli accessori attivi:
-`Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Pulley, Curl Bicipiti, Bulgarian Split Squat, Hyperextension, Abduzione laterale IR, Woodchop, Push-Up, Trazioni Supine, T-bar Row, Band Pull-Apart con rotazione esterna`
+`Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Pulley, Curl Bicipiti, Bulgarian Split Squat, Hyperextension, Abduzione laterale IR, Woodchop, Push-Up, Trazioni Supine, T-bar Row, Band Pull-Apart con rotazione esterna, Alzate Laterali`
 - Cerca: `var ACCESSORY_PROGRESS_EX`
 - Verifica: nessun esercizio rimosso (Squat Bulgaro, Face Pull, Fitball Hamstring Curl, Tricipiti Cavo, Dip, Hip Thrust)
 
@@ -95,9 +95,9 @@ Ogni esercizio attivo con recupero ≥60s deve avere un filler:
 
 ### 11. V4_DAY_SPLIT_PLAN
 - G1 AM: Squat, Stacco Rumeno, Glute Bridge Bilanciere — G1 PM: Leg Curl al Cavo, Ab Wheel
-- G2 AM: Trazioni, Panca — G2 PM: Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti
+- G2 AM: Trazioni, Panca — G2 PM: Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali
 - G4 AM: Stacco da Terra, Bulgarian Split Squat — G4 PM: Hyperextension, Abduzione laterale IR
-- G5 AM: T-bar Row, Military Press — G5 PM: Push-Up, Trazioni Supine, Woodchop
+- G5 AM: T-bar Row, Military Press — G5 PM: Push-Up, Trazioni Supine, Woodchop, Alzate Laterali
 - Cerca: `var V4_DAY_SPLIT_PLAN`
 
 ### 12. FAST_MODE_SUPERSETS
@@ -113,29 +113,16 @@ Deve contenere i fondamentali e compound pesanti attivi:
 `Squat, Stacco da Terra, Panca, Military Press, Trazioni, Trazioni Supine, Push-Up, T-bar Row, Stacco Rumeno, Glute Bridge Bilanciere`
 - Cerca: `var keyLiftNames`
 - Verifica: non deve contenere Dip alle Parallele, Hip Thrust Bilanciere
-- Verifica: non deve contenere esercizi esclusivi del G3 Leggero (Alzate Laterali, Clamshell, Goblet Squat, TRX Row lento)
+- Verifica: non deve contenere esercizi esclusivi del G3 Leggero (Clamshell, Goblet Squat, TRX Row lento)
 
-### 14. Serie di avvicinamento escluse dalle progressioni
-Questi esercizi hanno 5 serie totali ma solo 3 serie lavoro:
-- `Ab Wheel`: 5x8-10, prime 2 avvicinamento
-- `Curl Bicipiti`: 5x10-12, prime 2 avvicinamento
-- `Hyperextension`: 5x12-15, prime 2 avvicinamento
-
-Verifiche:
-- Nel `DAYS_V4` devono avere `approachSets: 2`
-- In scheda devono mostrare il badge `2 avvicinamento + 3 lavoro`
-- In registrazione serie 1-2 devono essere etichettate `Avvicinamento`, serie 3-5 `Lavoro`
-- In `Progressi`, `getProgressAdvice`, `getStableLoadStallInfo` e analisi guidata devono usare solo le 3 serie lavoro
-- L'archivio deve continuare a mostrare tutte le serie salvate
-
-### 15. Cardio nei Progressi
+### 14. Cardio nei Progressi
 Il cardio del giovedì deve poter essere registrato anche senza compilare manualmente i campi:
 - Bottone `Segna fatto`
 - Salvataggio in `cardioLogs` con `completed: true`
 - Default minuti dalla durata del formato; rucking con default 15 kg se non compilato
 - Tab Progressi con sezione `Cardio registrato`, confronto con la seduta precedente e conteggio sedute
 
-### 16. Giorno leggero G3 (tipo `light: true`)
+### 15. Giorno leggero G3 (tipo `light: true`)
 Il giorno leggero ha regole proprie — verificare che il codice rispetti queste 6 regole:
 1. `light: true` nell'oggetto Giorno 3 in `DAYS_V4`
 2. `activeDays` filtra `!d.light` — G3 NON è nei giorni pesi
@@ -144,7 +131,7 @@ Il giorno leggero ha regole proprie — verificare che il codice rispetti queste
 5. La sezione Esercizi pesi (`section-esercizi`) ha `!dayData.light` nel check
 6. `renderLightDay` viene chiamato quando `workoutSelectedDay.light` è true
 - Cerca: `day.light` nel codice
-- Verifica: nessun esercizio del G3 è in `ACCESSORY_PROGRESS_EX`, `MAX_PROGRESS_EX`, `keyLiftNames`, `V4_DAY_SPLIT_PLAN`, `FAST_MODE_SUPERSETS`
+- Verifica: nessun esercizio esclusivo del G3 è in `MAX_PROGRESS_EX`, `keyLiftNames`, `V4_DAY_SPLIT_PLAN`, `FAST_MODE_SUPERSETS`
 
 ## Come eseguire la verifica
 

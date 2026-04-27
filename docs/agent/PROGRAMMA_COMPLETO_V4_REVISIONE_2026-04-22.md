@@ -8,11 +8,11 @@
 | Giorno | Sigla | Tipo | Esercizi | Durata |
 |---|---|---|---|---|
 | **Lunedì** | G1 | Pesi — Lower A | Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel | ~85 min |
-| **Martedì** | G2 | Pesi — Upper A | Trazioni, Panca, Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti | ~90 min |
-| **Mercoledì** | G3 | Leggero | Alzate Laterali, Band Pull-Apart, Abduzione laterale IR, Goblet Squat, TRX Row + Protocollo anca | ~35 min |
+| **Martedì** | G2 | Pesi — Upper A | Trazioni, Panca, Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali | ~93 min |
+| **Mercoledì** | G3 | Leggero | Alzate Laterali, Band Pull-Apart, Abduzione laterale IR, Goblet Squat, TRX Row, Push-Up, Leg Curl al Cavo + Protocollo anca | ~45 min |
 | **Giovedì** | Cardio | Cardio programmato | Corsa 30 / HIIT upper+core / Corsa lunga / Rucking + Mobilità | 30-60 min |
 | **Venerdì** | G4 | Pesi — Lower B | Stacco da Terra, Bulgarian Split Squat, Hyperextension, Abduzione laterale IR | ~90 min |
-| **Sabato** | G5 | Pesi — Upper B | T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop, Alzate Laterali | ~80 min |
+| **Sabato** | G5 | Pesi — Upper B | T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop, Alzate Laterali | ~82 min |
 | **Domenica** | Riposo | Recupero | — | — |
 
 ---
@@ -103,7 +103,7 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 
 ## 📍 GIORNO 2 — UPPER A (Martedì)
 
-**Durata totale: ~90 minuti**
+**Durata totale: ~93 minuti**
 **Struttura:** Split AM/PM con superset nel blocco PM
 
 ### RISCALDAMENTO (12-15 min)
@@ -137,10 +137,12 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 | **4** | **Band Pull-Apart con rotazione esterna** | 3 | 15 | 8 | 0s | → Curl Bicipiti | Pausa 1s con mani ruotate fuori. Elastico medio |
 | **—** | **Curl Bicipiti (manubri)** | 5 | 10-12 | 9 | 60s | ← Band Pull-Apart | Prime 2 avvicinamento + 3 lavoro. Eccentrica controllata 2-3s |
 | | | | | | **Recupero tra superset** | **60 secondi** | |
+| **5** | **Alzate Laterali** | 2 | 15 | 8 | 30s | — | Chiusura PM fuori dal superset. Manubri leggeri, 1s in alto |
 
 **Spiegazione superset:**
 - Pulley resta separato → recupero pieno prima del superset
 - Band Pull-Apart + Curl Bicipiti = superset con pausa 60s
+- Alzate Laterali vanno nel PM dopo il superset, senza modificare il blocco rapido
 
 ### STRETCHING FINALE (5-8 min)
 
@@ -160,7 +162,7 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 ## 📍 GIORNO 3 — LEGGERO (Mercoledì)
 
 **Tipo:** `light: true` — Niente coach, niente RIR, niente sessione guidata
-**Durata totale: ~35 minuti**
+**Durata totale: ~45 minuti**
 **Struttura:** NO split AM/PM | NO superset | RPE 6-8
 
 ### RISCALDAMENTO (5 min, senza circuito)
@@ -172,15 +174,17 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 | T-spine Rotation in quadrupedia | 8 rip/lato | |
 | Ponte monopodalico | 6 rip/lato | |
 
-### ESERCIZI (30 min, RPE 6-8)
+### ESERCIZI (40-45 min, RPE 6-8)
 
 | # | Esercizio | Serie | Range Rip | RPE | Recupero | Note |
 |---|---|---|---|---|---|---|
 | 1 | **Alzate Laterali** | 3 | 15-20 | 8 | 30-45s | Manubri leggeri. Alza fino a parallelo. 2s su 2s giù. Niente slancio |
-| 2 | **Band Pull-Apart con rotazione esterna** | 2 | 20 | 6-7 | 30s | Volume extra leggero. Pausa 1s con mani ruotate fuori |
+| 2 | **Band Pull-Apart con rotazione esterna** | 3 | 20 | 6-7 | 30s | Volume extra leggero. Pausa 1s con mani ruotate fuori |
 | 3 | **Abduzione laterale IR** | 2 | 20/lato | 6-7 | 30s | Fianco a terra, punta in giu, bacino fermo. Gluteo medio |
-| 4 | **Goblet Squat** | 2 | 12 | 6-7 | 45s | Manubrio al petto. Gomiti verso fuori, busto stabile |
+| 4 | **Goblet Squat** | 3 | 12 | 8 | 45s | Manubrio al petto. Gomiti verso fuori, busto stabile |
 | 5 | **TRX Row lento** | 2 | 12 | 6-7 | 45s | Fermo 2s con scapole strette. Eccentrica 3s in fuori |
+| 6 | **Push-Up** | 2 | 10 | 7 | 30s | Corpo in linea. Volume tecnico leggero per petto e core |
+| 7 | **Leg Curl al Cavo** | 2 | 12 | 7 | 30s | Cavigliera al cavo basso. Femorali in flessione di ginocchio |
 
 Nel G3 l'esercizio base è **Abduzione laterale IR** e il toggle alternativo resta **Clamshell**. Nel controllo agente il riferimento principale resta Abduzione laterale IR.
 
@@ -204,7 +208,7 @@ Questo protocollo è il cuore del G3 — il giorno migliore perché nessun compo
 
 ## 📍 GIORNO 4 — LOWER B (Giovedì)
 
-**Durata totale: ~90 minuti**
+**Durata totale: ~82 minuti**
 **Struttura:** Split AM/PM con superset nel blocco PM
 
 ### RISCALDAMENTO (12-15 min)
@@ -291,7 +295,7 @@ Questo protocollo è il cuore del G3 — il giorno migliore perché nessun compo
 | **—** | **Woodchop (cavo o elastico)** | 3 | 10-12/lato | 8-9 | 45s | ← Push-Up | Spinta diagonale. Contrazione 1s in alto |
 | | | | | | **Recupero tra superset** | **45 secondi** | |
 | **4** | **Trazioni Supine** | 4 | 5-8 | 8 | 2-3 min | — | Presa supina. NON in superset. Recupero singolo |
-| **5** | **Alzate Laterali** | 2 | 15 | 8 | 30-45s | — | Ultimo esercizio. Nessun superset |
+| **5** | **Alzate Laterali** | 3 | 15 | 8 | 30-45s | — | Ultimo esercizio. Nessun superset |
 
 **Spiegazione superset:**
 - Push-Up → Woodchop, pausa 45s → serie successiva Push-Up
@@ -392,7 +396,7 @@ I giorni pesi sono organizzati in **AM (esercizi pesanti)** e **PM (blocchi in s
 | Giorno | AM | PM |
 |---|---|---|
 | **G1** | Squat, Stacco Rumeno, Glute Bridge Bilanciere | Leg Curl + Ab Wheel (superset) |
-| **G2** | Trazioni, Panca | Pulley, Band Pull-Apart + Curl Bicipiti (superset) |
+| **G2** | Trazioni, Panca | Pulley, Band Pull-Apart + Curl Bicipiti (superset), Alzate Laterali |
 | **G4** | Stacco da Terra, Bulgarian Split Squat | Hyperextension + Abduzione laterale IR (superset) |
 | **G5** | T-bar Row, Military Press | Trazioni Supine, Push-Up + Woodchop (superset), Alzate Laterali |
 
@@ -423,9 +427,9 @@ Leggere il programma sopra e rispondere a questi punti:
 ## 3. Ripetizioni — Sono quelle giuste? ✓ / ✗
 
 - ❓ **G1:** Squat 5×5-6, Stacco Rumeno 5×10-12, Leg Curl 4×10-12, Ab Wheel 5×8-10 (prime 2 avvicinamento) — Corretto?
-- ❓ **G2:** Trazioni 5×5-8, Panca 5×6-8, Pulley 5×10-12, Band 2×20, Curl 5×10-12 (prime 2 avvicinamento) — Corretto?
+- ❓ **G2:** Trazioni 5×5-8, Panca 5×6-8, Pulley 5×10-12, Band 3×15, Curl 5×10-12 (prime 2 avvicinamento), Alzate Laterali 2×15 — Corretto?
 - ❓ **G4:** Stacco 5×4-5, Bulgarian Split Squat 5×12-15/gamba, Hyper 5×12-15 (prime 2 avvicinamento), Abduzione laterale IR 3×15-20/lato — Corretto?
-- ❓ **G5:** T-bar 5×8-10, Military 5×5-6, Push-Up 4×8-15, Trazioni Supine 4×5-8, Woodchop 3×10-12/lato — Corretto?
+- ❓ **G5:** T-bar 5×8-10, Military 5×5-6, Push-Up 4×8-15, Trazioni Supine 4×5-8, Woodchop 3×10-12/lato, Alzate Laterali 3×15 — Corretto?
 
 ## 4. Tempi di recupero — Sono realistici? ✓ / ✗
 
