@@ -1554,7 +1554,7 @@ var DAYS = [
 
 /* === IPERTROFIA V4 — Upper/Lower 4+2 Cardio (da CSV programma) === */
 var DAYS_V4 = [
-  { name: "Giorno 1", focus: "Lower A — Squat + Femorali", dayLabel: "Lun", dur: "5 esercizi", tEst: 85,
+  { name: "Giorno 1", focus: "Lower A — Squat + Femorali", dayLabel: "Lun", dur: "5 esercizi", tEst: 68,
     intro: {
       attrezzi: ["Bilanciere + rack + bumper", "Pad o asciugamano per Glute Bridge", "Cavo basso + cavigliera", "Ab wheel"],
       muscoli: ["Quadricipiti (Squat)", "Femorali/Glutei (Stacco Rumeno)", "Glutei in accorciamento (Glute Bridge)", "Femorali (Leg curl al cavo)", "Core (Ab wheel)"],
@@ -1577,10 +1577,10 @@ var DAYS_V4 = [
       { n: "Stacco Rumeno", s: "5x10-12", rpe: "8-9", note: "Accessorio femorali. Setup: piedi larghezza anche, ginocchia appena sbloccate, mani poco fuori cosce. Anca indietro e bilanciere vicino alle gambe. Alternativa: manubri o cable pull-through.", rec: "90s-2 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata; ginocchia troppo flesse; carico lontano dal corpo; anca che scende invece di andare indietro" },
       { n: "Glute Bridge Bilanciere", s: "4x10-12", rpe: "8-9", note: "Schiena a terra, bilanciere sulle anche (pad o asciugamano). Spingi il bacino in alto fino a estensione completa. Stringi i glutei 1s in alto. Tibia quasi verticale in cima.", rec: "90s", gear: "Bilanciere + bumper (+ pad o asciugamano)", errori: "Iperestendere la lombare in alto; piedi troppo lontani (femorali rubano lavoro ai glutei); non completare l'estensione in alto" },
       { n: "Leg Curl al Cavo", s: "4x10-12", rpe: "8-9", note: "Setup: cavigliera alla caviglia, cavo basso. Prona a terra o in piedi. Fletti il ginocchio portando il tallone verso il gluteo. Eccentrica 2-3 secondi. Alternativa piu avanzata: Nordic Curl assistito con elastico.", rec: "90s-2 min", gear: "Cavo basso + cavigliera", errori: "Slancio col bacino; eccentrica troppo veloce; lombare che si inarca" },
-      { n: "Ab Wheel", s: "5x8-10", approachSets: 2, rpe: "8", note: "5 serie totali: le prime 2 sono di avvicinamento, poi 3 serie di lavoro. Dalle ginocchia. Costole giu e glutei attivi. Alternativa: TRX fallout o fitball rollout.", rec: "90s", gear: "Ab wheel", errori: "Lombare che si inarca; anche che non si estendono; range troppo corto" },
+      { n: "Ab Wheel", s: "4x8-10", rpe: "8", note: "Dalle ginocchia. Costole giu e glutei attivi per tutta la serie. Tutte le serie sono di lavoro. Alternativa: TRX fallout o fitball rollout.", rec: "90s", gear: "Ab wheel", errori: "Lombare che si inarca; anche che non si estendono; range troppo corto" },
     ], str: ["Quadricipiti","Flessori anca","Glutei"] },
 
-  { name: "Giorno 2", focus: "Upper A — Trazioni + Panca + Pulley", dayLabel: "Mar", dur: "6 esercizi", tEst: 93,
+  { name: "Giorno 2", focus: "Upper A — Trazioni + Panca + Pulley", dayLabel: "Mar", dur: "6 esercizi", tEst: 71,
     intro: {
       attrezzi: ["Barra trazioni", "Elastico assistenza", "Bilanciere + panca + rack", "Cavo basso + maniglie", "Elastico media resistenza", "Manubri"],
       muscoli: ["Dorsali/Bicipiti (Trazioni)", "Pettorali/Tricipiti (Panca)", "Dorsali/Scapole (Pulley)", "Deltoidi posteriori/Cuffia rotatori (Band Pull-Apart)", "Deltoide laterale (Alzate Laterali)", "Bicipiti (Curl)"],
@@ -1601,7 +1601,7 @@ var DAYS_V4 = [
       { n: "Panca", s: "5x6-8", rpe: "8-9", note: "Scapole addotte e basse. Arco lombare naturale. Gomiti a 45-75 gradi. Barra tocca linea capezzoli. Polsi dritti. Ultimo set a cedimento tecnico controllato.", rec: "2 min", gear: "Bilanciere + panca + rack", errori: "Rimbalzo sul petto; gomiti a 90 gradi; sedere che si alza; polsi piegati" },
       { n: "Pulley", s: "5x10-12", rpe: "8-9", note: "Carrucola bassa. Tira verso lo sterno portando i gomiti indietro e le scapole insieme. Eccentrica 2-3 secondi.", rec: "90s-2 min", gear: "Cavo basso + maniglie", errori: "Schiena che si inarca; slancio col busto; tirare con i bicipiti invece dei dorsali" },
       { n: "Band Pull-Apart con rotazione esterna", s: "3x15", rpe: "8", note: "Braccia tese davanti, apri fino al petto e ruota le mani verso fuori alla fine. Pausa 1s a fine ripetizione. Non e il band pull-apart leggero del riscaldamento: usa un elastico piu resistente.", rec: "60s", gear: "Elastico resistenza media", errori: "Piegare i gomiti per arrivare piu indietro; non completare la rotazione esterna; usare slancio" },
-      { n: "Curl Bicipiti", s: "5x10-12", approachSets: 2, rpe: "9", note: "5 serie totali: le prime 2 sono di avvicinamento, poi 3 serie di lavoro. Con manubri. Gomiti fissi ai fianchi. Supinazione. Eccentrica 2-3s.", rec: "90s", gear: "Manubri", errori: "Slancio col busto; gomiti che avanzano; fase eccentrica troppo veloce" },
+      { n: "Curl Bicipiti", s: "3x10-12", rpe: "9", note: "Con manubri. Gomiti fissi ai fianchi. Supinazione. Eccentrica 2-3s. Tutte le serie sono di lavoro.", rec: "90s", gear: "Manubri", errori: "Slancio col busto; gomiti che avanzano; fase eccentrica troppo veloce" },
       { n: "Alzate Laterali", s: "2x15", rpe: "8", note: "Manubri leggeri. Due serie pulite, fuori dal superset. Alza fino a parallelo, pausa 1s in alto, niente slancio.", rec: "30s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
     ], str: ["Doorway Pec Stretch","Overhead Lat Stretch","Cross-Body Shoulder Stretch","Wrist Flexor/Extensor Stretch"], hipBonus: true },
 
@@ -1662,7 +1662,7 @@ var DAYS_V4 = [
     ]
   },
 
-  { name: "Giorno 4", focus: "Lower B — Stacco + Catena Posteriore", dayLabel: "Ven", dur: "4 esercizi", tEst: 90,
+  { name: "Giorno 4", focus: "Lower B — Stacco + Catena Posteriore", dayLabel: "Ven", dur: "4 esercizi", tEst: 60,
     intro: {
       attrezzi: ["Bilanciere + bumper", "Manubri", "Panca", "Panca romana", "Fitball", "Elastico"],
       muscoli: ["Catena posteriore (Stacco, Hyperextension)", "Quadricipiti/Glutei (Bulgarian Split Squat)", "Gluteo medio (Abduzione laterale IR)"],
@@ -1682,12 +1682,12 @@ var DAYS_V4 = [
     ],
     ex: [
       { n: "Stacco da Terra", s: "5x4-5", rpe: "8-9", note: "Setup: piedi larghezza anche, barra su meta piede, mani appena fuori gambe, braccia tese. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata (cifosi); barra lontana dal corpo; anche che salgono prima delle spalle; collo iperesteso" },
-      { n: "Squat Bulgaro", s: "5x12-15 per gamba", rpe: "8-9", note: "Bulgarian split squat. Piede posteriore in appoggio morbido su panca, piede davanti tutto a terra, stance stabile su due binari. Alternativa: TRX split squat.", rec: "90s-2 min", gear: "Manubri + panca", errori: "Piede davanti troppo vicino; busto che oscilla; ROM accorciato; ginocchio che collassa" },
-      { n: "Hyperextension", s: "5x12-15", approachSets: 2, rpe: "8-9", note: "5 serie totali: le prime 2 sono di avvicinamento, poi 3 serie di lavoro. Usala come accessorio, non come altro stacco. Glutei e femorali, non lombare. Alternativa: cable pull-through.", rec: "90s", gear: "Panca romana", errori: "Iperestensione lombare in alto; velocita eccessiva; collo iperesteso" },
+      { n: "Squat Bulgaro", s: "5x10-12 per gamba", rpe: "8-9", note: "Bulgarian split squat. Piede posteriore in appoggio morbido su panca, piede davanti tutto a terra, stance stabile su due binari. Alternativa: TRX split squat.", rec: "90s-2 min", gear: "Manubri + panca", errori: "Piede davanti troppo vicino; busto che oscilla; ROM accorciato; ginocchio che collassa" },
+      { n: "Hyperextension", s: "4x12-15", rpe: "8-9", note: "Accessorio catena posteriore. Usala come accessorio, non come altro stacco. Glutei e femorali, non lombare. Tutte le serie sono di lavoro. Alternativa: cable pull-through.", rec: "90s", gear: "Panca romana", errori: "Iperestensione lombare in alto; velocita eccessiva; collo iperesteso" },
       { n: "Abduzione laterale IR", s: "3x15-20", rpe: "8", note: "Per lato. Sdraiata sul fianco, gamba sopra leggermente dietro il busto e punta verso il pavimento. Pausa 1s in alto.", rec: "60s", gear: "Corpo libero", errori: "Bacino che ruota indietro; piede che si apre; slancio senza controllo" },
     ], str: ["Supine Assisted Leg Pull","Figure-Four Supino","Cat-Cow Lento","Half Kneeling Lunge"], hipBonus: true },
 
-  { name: "Giorno 5", focus: "Upper B — T-bar + Military + Spinta + Tirata", dayLabel: "Sab", dur: "6 esercizi", tEst: 82,
+  { name: "Giorno 5", focus: "Upper B — T-bar + Military + Spinta + Tirata", dayLabel: "Sab", dur: "6 esercizi", tEst: 72,
     intro: {
       attrezzi: ["T-bar", "Bilanciere + rack", "Barra trazioni", "Elastico leggero", "Cavo alto o elastico"],
       muscoli: ["Dorsali/Trapezi (T-bar Row)", "Deltoidi (Military Press)", "Pettorali/Core (Push-Up)", "Dorsali/Bicipiti (Trazioni Supine)", "Obliqui (Woodchop)", "Deltoide Laterale (Alzate Laterali)"],

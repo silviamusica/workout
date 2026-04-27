@@ -389,11 +389,10 @@ Nota UI attuale:
 | 1 | Squat | 5x5-6 | RPE 8-9, ultimo set a cedimento tecnico controllato |
 | 2 | Stacco Rumeno | 5x10-12 | Accessorio femorali, eccentrica controllata, RPE 8-9 |
 | 3 | Leg Curl al Cavo | 4x10-12 | RPE 8-9, eccentrica 2-3 secondi. Alternativa: Nordic Curl assistito |
-| 4 | Ab Wheel dalle ginocchia | 5x8-10 | Prime 2 avvicinamento + 3 lavoro. RPE 8 sulle serie lavoro |
+| 4 | Ab Wheel dalle ginocchia | 4x8-10 | Tutte le serie di lavoro. RPE 8 |
 
 **Esercizi rimossi rispetto alla versione precedente**:
 - Hip Thrust Bilanciere (rimosso)
-- Squat Bulgaro (rimosso, era stato anche spostato al G4 prima di essere eliminato)
 
 **Stretching**
 
@@ -435,7 +434,7 @@ Protocollo breve facoltativo dopo lo stretching finale:
 | 2 | Panca | 5x6-8 | RPE 8-9, ultimo set a cedimento tecnico controllato |
 | 3 | Pulley Basso | 5x10-12 | RPE 8-9, tirata con controllo scapolare |
 | 4 | Band Pull-Apart con rotazione esterna | 3x15 | RPE 8, pausa 1s con mani ruotate fuori. Va in superset con Curl |
-| 5 | Curl Bicipiti | 5x10-12 | Prime 2 avvicinamento + 3 lavoro. RPE 9 sulle serie lavoro |
+| 5 | Curl Bicipiti | 3x10-12 | Tutte le serie di lavoro. RPE 9 |
 | 6 | Alzate Laterali | 2x15 | RPE 8, 30s recupero. Vanno nel blocco PM dopo il superset |
 
 **Esercizi rimossi rispetto alla versione precedente**:
@@ -513,7 +512,7 @@ Il giorno migliore per il protocollo anca intero: nessun compound pesante prima,
 
 ### Giorno 4 — Lower B — Stacco + Catena Posteriore
 
-**Aggiornamento 2026-04-21**: riscaldamento ristrutturato (FMS Spalle, no circuito); Hip Thrust, Stacco Rumeno, Squat Bulgaro e Fitball Hamstring Curl rimossi; inserito lavoro mirato gluteo medio; tutte le serie principali portate a 5; tEst aggiornato a 85 min.
+**Aggiornamento 2026-04-21**: riscaldamento ristrutturato (FMS Spalle, no circuito); Hip Thrust e Fitball Hamstring Curl rimossi; Stacco Rumeno spostato a G1; inserito lavoro mirato gluteo medio; tutte le serie principali portate a 5; tEst reale ~57-62 min.
 
 **Riscaldamento**
 
@@ -532,14 +531,13 @@ Il giorno migliore per il protocollo anca intero: nessun compound pesante prima,
 | # | Esercizio | Serie | Note |
 |---|---|---|---|
 | 1 | Stacco da Terra | 5x4-5 | RPE 8-9, ultimo set solo a RIR 0-1 se tecnica stabile |
-| 2 | Bulgarian Split Squat | 5x12-15 per gamba | RPE 8-9, manubri + panca |
-| 3 | Hyperextension | 5x12-15 | Prime 2 avvicinamento + 3 lavoro. Accessorio catena posteriore, RPE 8-9 sulle serie lavoro |
+| 2 | Bulgarian Split Squat | 5x10-12 per gamba | RPE 8-9, manubri + panca |
+| 3 | Hyperextension | 4x12-15 | Tutte le serie di lavoro. Accessorio catena posteriore, RPE 8-9 |
 | 4 | Abduzione laterale IR | 3x15-20 per lato | RPE 8, fianco a terra, punta in giu, gluteo medio |
 
 **Esercizi rimossi rispetto alla versione precedente**:
 - Hip Thrust Bilanciere (rimosso)
 - Stacco Rumeno (spostato a G1)
-- Squat Bulgaro (era stato spostato qui da G1, poi rimosso)
 - Fitball Hamstring Curl (rimosso)
 
 **Stretching**
@@ -557,7 +555,7 @@ Stesso blocco facoltativo del Giorno 1, mostrato dopo lo stretching finale.
 
 ### Giorno 5 — Upper B — Spinta + Tirata
 
-**Aggiornamento 2026-04-21**: riscaldamento ristrutturato (FMS Spalle al posto di Shoulder CARs, no circuito); T-bar Row spostato qui da G2; Military e T-bar a 5 serie; Push-Up e Trazioni Supine a 4 serie; Dip e Tricipiti Cavo rimossi; tEst aggiornato a 80-82 min.
+**Aggiornamento 2026-04-21**: riscaldamento ristrutturato (FMS Spalle al posto di Shoulder CARs, no circuito); T-bar Row spostato qui da G2; Military e T-bar a 5 serie; Push-Up e Trazioni Supine a 4 serie; Dip e Tricipiti Cavo rimossi; tEst reale ~69-75 min.
 
 **Riscaldamento**
 
@@ -664,7 +662,6 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 | Esercizio | Giorno | Motivo |
 |---|---|---|
 | Hip Thrust Bilanciere | G1, G4 | Rimosso da entrambi i giorni |
-| Squat Bulgaro | G1 (→ G4 → rimosso) | Prima spostato, poi eliminato |
 | Stacco Rumeno | G4 | Spostato a G1 come accessorio femorali |
 | Fitball Hamstring Curl | G4 | Rimosso |
 | T-bar Row | G2 | Spostato a G5 |
@@ -688,14 +685,14 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 | Trazioni (G2) | 4 | 5 |
 | Panca (G2) | 4 | 5 |
 | Pulley Basso (G2) | — | 5 (nuovo) |
-| Curl Bicipiti | 3 lavoro | 3 lavoro + 2 avvicinamento |
+| Curl Bicipiti | 3 lavoro | 3 lavoro |
 | T-bar Row (G5) | 4 | 5 |
 | Military Press | 4 | 5 |
 | Push-Up (G5) | 3 | 4 |
 | Trazioni Supine (G5) | 3 | 4 |
-| Ab Wheel | 3 lavoro | 3 lavoro + 2 avvicinamento |
+| Ab Wheel | 3 lavoro | 4 lavoro |
 | Bulgarian Split Squat (G4) | 3 | 5 |
-| Hyperextension (G4) | 2-3 lavoro | 3 lavoro + 2 avvicinamento |
+| Hyperextension (G4) | 2-3 lavoro | 4 lavoro |
 | Leg Curl al Cavo (G1) | 3 | 4 |
 
 ### Riscaldamento: struttura attuale

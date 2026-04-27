@@ -333,6 +333,41 @@ Lettura corretta:
 - `Split Squat al cavo`
   - variante con tensione continua e richiesta tronco elevata
 
+### Glute Bridge Bilanciere
+
+Pattern:
+- estensione d'anca
+- lockout glutei
+
+Obiettivo:
+- ipertrofia del gluteo massimo in accorciamento
+- costruire forza nel lockout senza trasformarlo in un hinge pesante
+
+Lettura corretta:
+- `Glute Bridge Bilanciere` = ponte a terra con bilanciere sulle anche
+- focus su gluteo massimo e chiusura completa dell'anca
+- meno ROM dell'hip thrust su panca, ma stesso picco di tensione al lockout
+
+Differenza dall'Hip Thrust:
+- `Glute Bridge Bilanciere`
+  - schiena a terra
+  - ROM piu corto
+  - setup piu semplice
+- `Hip Thrust con panca`
+  - schiena appoggiata in alto
+  - ROM maggiore
+  - progressione naturale se serve piu escursione
+
+Regressione:
+- `Glute Bridge` a corpo libero o con miniband
+
+Progressione:
+- `Hip Thrust con panca`
+
+Nota pratica:
+- non va letto come esercizio lombare
+- se la lombare si inarca in alto, il target si sposta e l'esecuzione peggiora
+
 ### Core
 
 Obiettivo:
@@ -457,6 +492,15 @@ Questi esercizi appartengono al G3 (`light: true`). La logica coach NON si attiv
 - **Classificazione coach**: non rilevante nel G3 light
 - **Calibrazione**: non richiesta nel G3 light
 - **Note tecniche**: manubrio al petto, busto stabile, gomiti verso fuori, range controllato
+
+### Leg Extension al Cavo
+
+- **Pattern**: estensione di ginocchio in isolamento
+- **Ruolo nel G3**: volume tecnico leggero sui quadricipiti, accoppiato al TRX Row per comprimere i tempi senza interferenza
+- **Classificazione coach**: non rilevante nel G3 light
+- **Calibrazione**: non richiesta nel G3 light
+- **Note tecniche**: cavigliera al cavo basso, estensione controllata del ginocchio, fermo breve in chiusura, ritorno lento
+- **Nota pratica**: nel G3 è usata nel `Superset C` con `TRX Row lento`
 
 ### Clamshell
 

@@ -7,12 +7,12 @@
 
 | Giorno | Sigla | Tipo | Esercizi | Durata |
 |---|---|---|---|---|
-| **Lunedì** | G1 | Pesi — Lower A | Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel | ~85 min |
-| **Martedì** | G2 | Pesi — Upper A | Trazioni, Panca, Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali | ~93 min |
+| **Lunedì** | G1 | Pesi — Lower A | Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel | ~65-70 min |
+| **Martedì** | G2 | Pesi — Upper A | Trazioni, Panca, Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali | ~68-74 min |
 | **Mercoledì** | G3 | Leggero | Alzate Laterali, Goblet Squat, Band Pull-Apart, Abduzione laterale IR, Leg Extension al Cavo, TRX Row, Push-Up, Leg Curl al Cavo + Protocollo anca | ~29-30 min |
 | **Giovedì** | Cardio | Cardio programmato | Corsa 30 / HIIT upper+core / Corsa lunga / Rucking + Mobilità | 30-60 min |
-| **Venerdì** | G4 | Pesi — Lower B | Stacco da Terra, Bulgarian Split Squat, Hyperextension, Abduzione laterale IR | ~90 min |
-| **Sabato** | G5 | Pesi — Upper B | T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop, Alzate Laterali | ~82 min |
+| **Venerdì** | G4 | Pesi — Lower B | Stacco da Terra, Bulgarian Split Squat, Hyperextension, Abduzione laterale IR | ~57-62 min |
+| **Sabato** | G5 | Pesi — Upper B | T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop, Alzate Laterali | ~69-75 min |
 | **Domenica** | Riposo | Recupero | — | — |
 
 ---
@@ -40,7 +40,7 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 
 ## 📍 GIORNO 1 — LOWER A (Lunedì)
 
-**Durata totale: ~85 minuti**
+**Durata totale: ~65-70 minuti**
 **Struttura:** Split AM/PM con superset nel blocco PM
 
 ### RISCALDAMENTO (12-15 min)
@@ -69,7 +69,7 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 | # | Esercizio | Serie | Range Rip | RPE | Recupero Tra | Superset Con | Note |
 |---|---|---|---|---|---|---|---|
 | **3** | **Leg Curl al Cavo** | 4 | 10-12 | 8-9 | 0s | → Ab Wheel | Eccentrica 2-3s. Esecuzione immediata, no pausa |
-| **—** | **Ab Wheel dalle ginocchia** | 5 | 8-10 | 8 | 60s | ← Leg Curl | Prime 2 avvicinamento + 3 lavoro. Ritorno controllato. Se affaticato, appoggiati |
+| **—** | **Ab Wheel dalle ginocchia** | 4 | 8-10 | 8 | 60s | ← Leg Curl | Tutte le serie di lavoro. Ritorno controllato. Se affaticato, appoggiati |
 | | | | | | **Recupero tra superset** | **60 secondi** | |
 
 **Spiegazione superset:**
@@ -103,7 +103,7 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 
 ## 📍 GIORNO 2 — UPPER A (Martedì)
 
-**Durata totale: ~93 minuti**
+**Durata totale: ~68-74 minuti**
 **Struttura:** Split AM/PM con superset nel blocco PM
 
 ### RISCALDAMENTO (12-15 min)
@@ -135,7 +135,7 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 | **3** | **Pulley Basso** | 5 | 10-12 | 8-9 | 0s | — | Tirata verticale bassa, controllo scapolare. Non la parte del superset qui sotto |
 | | | | | | **Recupero tra Pulley e Band** | **90s** | Pulley è esercizio isolato prioritario |
 | **4** | **Band Pull-Apart con rotazione esterna** | 3 | 15 | 8 | 0s | → Curl Bicipiti | Pausa 1s con mani ruotate fuori. Elastico medio |
-| **—** | **Curl Bicipiti (manubri)** | 5 | 10-12 | 9 | 60s | ← Band Pull-Apart | Prime 2 avvicinamento + 3 lavoro. Eccentrica controllata 2-3s |
+| **—** | **Curl Bicipiti (manubri)** | 3 | 10-12 | 9 | 60s | ← Band Pull-Apart | Tutte le serie di lavoro. Eccentrica controllata 2-3s |
 | | | | | | **Recupero tra superset** | **60 secondi** | |
 | **5** | **Alzate Laterali** | 2 | 15 | 8 | 30s | — | Chiusura PM fuori dal superset. Manubri leggeri, 1s in alto |
 
@@ -174,7 +174,7 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 | T-spine Rotation in quadrupedia | 8 rip/lato | |
 | Ponte monopodalico | 6 rip/lato | |
 
-### ESERCIZI (40-45 min, RPE 6-8)
+### ESERCIZI (~15-16 min, RPE 6-8)
 
 | # | Esercizio | Serie | Range Rip | RPE | Recupero | Note |
 |---|---|---|---|---|---|---|
@@ -214,9 +214,9 @@ Questo protocollo è il cuore del G3 — il giorno migliore perché nessun compo
 
 ---
 
-## 📍 GIORNO 4 — LOWER B (Giovedì)
+## 📍 GIORNO 4 — LOWER B (Venerdì)
 
-**Durata totale: ~82 minuti**
+**Durata totale: ~57-62 minuti**
 **Struttura:** Split AM/PM con superset nel blocco PM
 
 ### RISCALDAMENTO (12-15 min)
@@ -235,7 +235,7 @@ Questo protocollo è il cuore del G3 — il giorno migliore perché nessun compo
 | # | Esercizio | Serie | Range Rip | RPE | Recupero | Note |
 |---|---|---|---|---|---|---|
 | **1** | **Stacco da Terra** | 5 | 4-5 | 8-9 | 3-4 min | **LIFT PRIORITARIO** — Ultime serie: solo RIR 0-1 se tecnica stabile. Non cedimento grezzo |
-| **2** | **Bulgarian Split Squat** | 5 | 12-15/gamba | 8-9 | 2-3 min | Piede dietro su panca, piede davanti tutto a terra. 12-15 dx → 12-15 sx → conteggio come 1 serie |
+| **2** | **Bulgarian Split Squat** | 5 | 10-12/gamba | 8-9 | 2-3 min | Piede dietro su panca, piede davanti tutto a terra. 10-12 dx → 10-12 sx → conteggio come 1 serie |
 
 **Filler recupero:**
 - Tra Stacco: Respirazione diaframmatica (5 cicli, 30-40s)
@@ -245,7 +245,7 @@ Questo protocollo è il cuore del G3 — il giorno migliore perché nessun compo
 
 | # | Esercizio | Serie | Range Rip | RPE | Recupero Tra | Superset Con | Note |
 |---|---|---|---|---|---|---|---|
-| **3** | **Hyperextension** | 5 | 12-15 | 8-9 | 0s | → Abduzione laterale IR | Prime 2 avvicinamento + 3 lavoro. Accessorio catena posteriore. Esecuzione immediata |
+| **3** | **Hyperextension** | 4 | 12-15 | 8-9 | 0s | → Abduzione laterale IR | Tutte le serie di lavoro. Accessorio catena posteriore. Esecuzione immediata |
 | **—** | **Abduzione laterale IR** | 3 | 15-20/lato | 8 | 60s | ← Hyperextension | Fianco a terra, punta in giu, gluteo medio, bacino fermo |
 | | | | | | **Recupero tra superset** | **60 secondi** | |
 
@@ -270,7 +270,7 @@ Questo protocollo è il cuore del G3 — il giorno migliore perché nessun compo
 
 ## 📍 GIORNO 5 — UPPER B (Sabato)
 
-**Durata totale: ~90 minuti**
+**Durata totale: ~69-75 minuti**
 **Struttura:** Split AM/PM con superset nel blocco PM
 
 ### RISCALDAMENTO (12-15 min)
@@ -390,9 +390,9 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 
 | Giorno | Superset | Esercizio 1 | Esercizio 2 | Recupero tra superset | Nota |
 |---|---|---|---|---|---|
-| **G1** | Superset 1 | Leg Curl al Cavo (10-12) | Ab Wheel (5 serie: 2 avv. + 3 lavoro) | **60s** | Sequenza: Leg Curl → Ab Wheel → 60s → ripeti |
-| **G2** | Superset 2 | Band Pull-Apart (20) | Curl Bicipiti (5 serie: 2 avv. + 3 lavoro) | **60s** | Sequenza: Band → Curl → 60s → ripeti. Pulley è esercizio separato |
-| **G4** | Superset 3 | Hyperextension (5 serie: 2 avv. + 3 lavoro) | Abduzione laterale IR (15-20/lato) | **60s** | Sequenza: Hyper → Abduzione laterale IR → 60s → ripeti |
+| **G1** | Superset 1 | Leg Curl al Cavo (10-12) | Ab Wheel (4 serie lavoro) | **60s** | Sequenza: Leg Curl → Ab Wheel → 60s → ripeti |
+| **G2** | Superset 2 | Band Pull-Apart (20) | Curl Bicipiti (3 serie lavoro) | **60s** | Sequenza: Band → Curl → 60s → ripeti. Pulley è esercizio separato |
+| **G4** | Superset 3 | Hyperextension (4 serie lavoro) | Abduzione laterale IR (15-20/lato) | **60s** | Sequenza: Hyper → Abduzione laterale IR → 60s → ripeti |
 | **G5** | Superset 4 | Push-Up (8-15) | Woodchop (10-12/lato) | **45s** | Sequenza: Push-Up → Woodchop → 45s → ripeti. Trazioni Supine e Alzate Laterali restano separate |
 
 ---
@@ -434,9 +434,9 @@ Leggere il programma sopra e rispondere a questi punti:
 
 ## 3. Ripetizioni — Sono quelle giuste? ✓ / ✗
 
-- ❓ **G1:** Squat 5×5-6, Stacco Rumeno 5×10-12, Leg Curl 4×10-12, Ab Wheel 5×8-10 (prime 2 avvicinamento) — Corretto?
-- ❓ **G2:** Trazioni 5×5-8, Panca 5×6-8, Pulley 5×10-12, Band 3×15, Curl 5×10-12 (prime 2 avvicinamento), Alzate Laterali 2×15 — Corretto?
-- ❓ **G4:** Stacco 5×4-5, Bulgarian Split Squat 5×12-15/gamba, Hyper 5×12-15 (prime 2 avvicinamento), Abduzione laterale IR 3×15-20/lato — Corretto?
+- ❓ **G1:** Squat 5×5-6, Stacco Rumeno 5×10-12, Leg Curl 4×10-12, Ab Wheel 4×8-10 — Corretto?
+- ❓ **G2:** Trazioni 5×5-8, Panca 5×6-8, Pulley 5×10-12, Band 3×15, Curl 3×10-12, Alzate Laterali 2×15 — Corretto?
+- ❓ **G4:** Stacco 5×4-5, Bulgarian Split Squat 5×10-12/gamba, Hyper 4×12-15, Abduzione laterale IR 3×15-20/lato — Corretto?
 - ❓ **G5:** T-bar 5×8-10, Military 5×5-6, Push-Up 4×8-15, Trazioni Supine 4×5-8, Woodchop 3×10-12/lato, Alzate Laterali 3×15 — Corretto?
 
 ## 4. Tempi di recupero — Sono realistici? ✓ / ✗
@@ -445,7 +445,7 @@ Leggere il programma sopra e rispondere a questi punti:
 - ❓ **Superset:** 45-60s tra i cicli — Tempo sufficiente per recuperare prima di tornare all'esercizio 1?
 - ❓ **Filler recupero** (band pull-apart, respirazione, ecc): 30-40s — Consigliato? Utile nella pratica?
 
-## 5. Giorno leggero G3 — RPE 6-7 è l'obiettivo giusto? ✓ / ✗
+## 5. Giorno leggero G3 — RPE 6-8 con superset automatici è l'obiettivo giusto? ✓ / ✗
 
 - ❓ RPE 6-7 = margine di 3-4 rip in riserva. Così la seduta rimane davvero leggera?
 - ❓ Assenza totale di coach, RIR, e feedback sui carichi — OK? O serve feedback minimo?
@@ -460,7 +460,6 @@ Leggere il programma sopra e rispondere a questi punti:
 
 Questi esercizi sono stati rimossi dalla V4 attuale:
 - Hip Thrust Bilanciere (era G1 e G4)
-- Squat Bulgaro (era G1, poi spostato, poi rimosso)
 - Fitball Hamstring Curl (era G4)
 - Face Pull (era G2)
 - Tricipiti Cavo (era G5)

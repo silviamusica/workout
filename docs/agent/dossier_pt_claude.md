@@ -293,7 +293,7 @@ Rimossi dal programma attivo (non devono comparire in suggerimenti o liste coach
 - Stacco Rumeno da G4 (spostato a G1)
 - Cardio A da G3 (sostituito da giorno leggero)
 
-Superset attivi per modalità rapida (solo giorni pesi):
+Superset attivi nelle schede:
 - G1: Leg Curl al Cavo + Ab Wheel
 - G2: Band Pull-Apart con rotazione esterna + Curl Bicipiti
 - G3: Alzate Laterali + Goblet Squat
