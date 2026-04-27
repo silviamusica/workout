@@ -202,13 +202,27 @@ var TH = {
 };
 
 
-var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in mano. Rotola avanti, torna contraendo.", "p": "Ginocchia a terra, core contratto, glutei attivi, schiena neutra.", "t": ["Range ridotto all'inizio", "Glutei stretti per la lombare", "Core contratto anche nella fase di andata"], "lk": "https://www.youtube.com/watch?v=kISuoI7QCYk", "deep": [
+var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in mano. Rotola avanti, torna contraendo.", "p": "Ginocchia a terra, core contratto, glutei attivi, schiena neutra.", "t": ["Range ridotto all'inizio", "Glutei stretti per la lombare", "Core contratto anche nella fase di andata"], "lk": "https://www.youtube.com/watch?v=kISuoI7QCYk", "guideDay": "G1 Lower A", "guide": [
+  {"type":"p","content":"Cosa allena. Core anti-estensione: retto dell'addome, obliqui e trasverso. E una progressione del plank: piu la ruota si allontana, piu il core deve impedire alla lombare di cedere."},
+  {"type":"ul","content":["Ginocchia a terra su tappetino, anche sopra le ginocchia, mani sotto le spalle","Parti con leggera retroversione del bacino: costole chiuse e glutei contratti","La lombare non deve mai inarcarsi: il tuo vero limite e il punto in cui perderesti questa posizione"]},
+  {"type":"p","content":"Esecuzione. Rotola avanti allungando le braccia, poi torna pensando a tirare il pavimento verso di te con addome e costole chiuse. Non cercare il pavimento: cerca il massimo ROM che riesci a controllare senza banana lombare."},
+  {"type":"table","columns":["Errore","Correzione"],"rows":[["Lombare che si inarca","Riduci subito il ROM: vai solo fin dove la schiena resta neutra"],["Anche che cedono per prime","Parti con glutei e addome gia contratti"],["Movimento fatto con le braccia","Pensa alle braccia come barre rigide: il lavoro lo fa il core"],["Dolore lombare","Regredisci a plank o rollout piu corto per 2-3 settimane"]]},
+  {"type":"p","content":"Respirazione. Inspira in partenza, trattieni durante la discesa controllata, espira forte durante la risalita."},
+  {"type":"ul","content":["Video tecnica: https://www.youtube.com/watch?v=rqiTPl0Gojk","Video errori comuni: https://www.youtube.com/watch?v=Ejk4Fqkkx44"]}
+], "deep": [
   {"type":"p","content":"Inizia sempre da in ginocchio. Braccia e gambe vanno tenute sempre ben tese durante tutto il movimento."},
   {"type":"p","content":"Il segreto e tenere il bacino in retroversione (portato ben in avanti) e i glutei contratti: senza questo, se inarchi la schiena, l'esercizio diventa dannoso per la lombare. Tieni la schiena compatta e il mento basso per formare un blocco unico con tutto il tronco."},
   {"type":"p","content":"Avanza fino ad avere le braccia distese e il viso a pochi centimetri dal suolo, poi torna indietro in modo controllato."},
   {"type":"p","content":"Progressione consigliata: usa un muro davanti per limitare la corsa. Appoggia la rotella al muro a distanza progressivamente maggiore ogni settimana."},
   {"type":"link","label":"Video alternativa: rollout su fitball","url":"https://www.youtube.com/watch?v=frNdUPJYOIc"}
-]}, "Trazioni": {"g": "Dorsali/Bicipiti", "c": "Primo esercizio del giorno upper e lift prioritario. Le trazioni costruiscono dorsali e forza di trazione verticale. Vai per prima quando presa e scapole sono fresche.", "p": "Sali dritta come un ascensore: glutei contratti e costole chiuse. Il corpo resta una linea verticale; i gomiti scendono verso i fianchi, non il petto verso la barra.", "t": ["Scapole nelle tasche dei pantaloni prima di ogni ripetizione", "Se le spalle salgono verso le orecchie, la ripetizione e finita", "Meglio fermarti 1 rip prima che chiudere col trapezio"], "lk": "https://www.youtube.com/watch?v=u9lPTWFj4_8", "deep": [
+]}, "Trazioni": {"g": "Dorsali/Bicipiti", "c": "Primo esercizio del giorno upper e lift prioritario. Le trazioni costruiscono dorsali e forza di trazione verticale. Vai per prima quando presa e scapole sono fresche.", "p": "Sali dritta come un ascensore: glutei contratti e costole chiuse. Il corpo resta una linea verticale; i gomiti scendono verso i fianchi, non il petto verso la barra.", "t": ["Scapole nelle tasche dei pantaloni prima di ogni ripetizione", "Se le spalle salgono verso le orecchie, la ripetizione e finita", "Meglio fermarti 1 rip prima che chiudere col trapezio"], "lk": "https://www.youtube.com/watch?v=u9lPTWFj4_8", "guideDay": "G2 Upper A", "guide": [
+  {"type":"p","content":"Cosa allena. Dorsali, gran rotondo, romboidi, trapezio medio-basso e bicipiti. Nel G2 e la tirata verticale prioritaria del giorno."},
+  {"type":"ul","content":["Presa prona leggermente piu larga delle spalle","Parti sempre da dead hang completo con gomiti distesi","Prima di piegare i gomiti fai la fase 1: scapole giu, lontane dalle orecchie"]},
+  {"type":"p","content":"Esecuzione. Dopo la depressione scapolare, porta i gomiti verso i fianchi e sali in verticale come un ascensore. Il mento supera la barra senza protendere la testa in avanti. La discesa torna sempre a dead hang completo in 2-3 secondi."},
+  {"type":"table","columns":["Errore","Correzione"],"rows":[["Spalle alle orecchie","Cue: scapole nelle tasche posteriori. Se salgono, la rip e finita"],["Petto che avanza e lombare inarcata","Corpo in linea, glutei contratti, salita verticale"],["Kipping o slancio","Aumenta l'assistenza dell'elastico"],["ROM accorciato in basso","Ogni rip parte da gomiti distesi"]]},
+  {"type":"p","content":"Respirazione. Respiro rapido tra le rip. Sulle rip piu pesanti: inspira in basso al dead hang e trattieni durante la trazione."},
+  {"type":"ul","content":["Video tecnica: https://www.youtube.com/watch?v=eGo4IYlbE5g","Drill scapular pull-up: https://www.youtube.com/watch?v=lLsHTmXQpaU"]}
+], "deep": [
   {"type":"p","content":"Inizia da una sospensione attiva: abbassa le spalle prima ancora di tirare. La salita deve restare verticale, senza buttare il petto avanti e senza iperestendere la lombare per cercare il mento sopra la barra."},
   {"type":"p","content":"Pensa a un ascensore, non a un'altalena. Glutei contratti, costole chiuse e addome attivo: il mento supera la barra perche i gomiti scendono verso i fianchi, non perche il busto si inarca in avanti."},
   {"type":"p","content":"Se nelle ultime ripetizioni le spalle salgono verso le orecchie, fermati li: quella e gia la fine della serie utile. Prima di ogni ripetizione ripeti il cue 'scapole nelle tasche posteriori dei pantaloni'."},
@@ -222,7 +236,14 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"p","content":"Il Nordic Curl isola i femorali in modo eccellente senza sovraccaricare il sistema nervoso centrale come fanno i grandi multiarticolari."},
   {"type":"p","content":"La chiave e il tempo sotto tensione: rallenta la fase eccentrica (la discesa) quanto piu possibile — anche solo 20-30 gradi di discesa controllata hanno un impatto enorme sull'ipertrofia dei femorali."},
   {"type":"ul","content":["Le mani servono ad ammortizzare la caduta finale, non a spingerti su","Mantieni i femorali sempre in tensione senza rilassarli in cima (tensione continua)","Nel tempo, scendi sempre piu vicino al pavimento mantenendo il controllo"]}
-]}, "Leg Curl al Cavo": {"g": "Femorali", "c": "Cavigliera alla caviglia, cavo basso dietro di te. Prona a terra o in piedi appoggiata a un supporto. Fletti il ginocchio portando il tallone verso il gluteo. Controlla la discesa in 2 secondi.", "p": "Ginocchio fermo, bacino stabile. Non inarcare la lombare in flessione.", "t": ["Eccentrica lenta: 2-3 secondi in discesa", "Non usare slancio per portare su il tallone", "Se in piedi: appoggiati a un supporto per stabilità"]}, "Good Morning": {"g": "Erettori/Glutei/Femorali", "c": "Bilanciere sulle spalle. Piega avanti spingendo bacino indietro, ginocchia flesse.", "p": "Schiena NEUTRA sempre. Scendi fino a tensione femorali.", "t": ["Chiudi una porta col sedere", "Inizia con bilanciere scarico"], "lk": "https://youtu.be/7mrKMteISXs?si=4oBp31pGSjs8U_sc", "deep": [
+]}, "Leg Curl al Cavo": {"g": "Femorali", "c": "Cavigliera alla caviglia, cavo basso dietro di te. Prona a terra o in piedi appoggiata a un supporto. Fletti il ginocchio portando il tallone verso il gluteo. Controlla la discesa in 2 secondi.", "p": "Ginocchio fermo, bacino stabile. Non inarcare la lombare in flessione.", "t": ["Eccentrica lenta: 2-3 secondi in discesa", "Non usare slancio per portare su il tallone", "Se in piedi: appoggiati a un supporto per stabilità"], "guideDay": "G1 Lower A", "guide": [
+  {"type":"p","content":"Cosa allena. Femorali nella loro funzione di flessione del ginocchio. Completa lo stacco rumeno: stesso distretto, ma angolo diverso."},
+  {"type":"ul","content":["Cavo basso con cavigliera; tieniti a rack o struttura per stabilita","Il busto resta fermo e verticale","Si muove solo la tibia: il femore non va avanti e indietro"]},
+  {"type":"p","content":"Esecuzione. Porta il tallone verso il gluteo, tieni 1 secondo in chiusura, poi scendi in 2-3 secondi. L'eccentrica lenta e una parte chiave dello stimolo."},
+  {"type":"table","columns":["Errore","Correzione"],"rows":[["Busto che oscilla","Riduci il carico e blocca il tronco"],["Coscia che avanza","Cue: si muove solo la tibia"],["Eccentrica troppo veloce","Conta 2-3 secondi in discesa"],["Crampo femorale","Riduci carico e tieni il piede neutro"]]},
+  {"type":"p","content":"Respirazione. Espira durante la flessione, inspira durante la discesa controllata."},
+  {"type":"ul","content":["Video: https://www.youtube.com/watch?v=bMJHUlSJksc"]}
+]}, "Good Morning": {"g": "Erettori/Glutei/Femorali", "c": "Bilanciere sulle spalle. Piega avanti spingendo bacino indietro, ginocchia flesse.", "p": "Schiena NEUTRA sempre. Scendi fino a tensione femorali.", "t": ["Chiudi una porta col sedere", "Inizia con bilanciere scarico"], "lk": "https://youtu.be/7mrKMteISXs?si=4oBp31pGSjs8U_sc", "deep": [
   {"type":"p","content":"Il Good Morning e un esercizio di preparazione specifica per migliorare Squat e Stacco da terra. E un movimento Hip Dominant: il motore e il bacino che si spinge indietro, non la schiena che si piega."},
   {"type":"ul","content":["Mantieni le curve fisiologiche della colonna — non perdere mai la lordosi lombare","Inizia con bilanciere scarico o leggerissimo per imparare lo schema motorio","Questo esercizio rinforza i punti deboli (lombari e femorali) nel punto critico di squat e stacco"]},
   {"type":"p","content":"Manovra di Valsalva: inspira profondamente, blocca il respiro e gonfia la pancia prima di eseguire il movimento. Crea pressione intra-addominale che protegge le vertebre lombari sotto carico."}
@@ -256,17 +277,39 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"link","label":"Video: Plank base","url":"https://www.youtube.com/watch?v=34b-sy3D9kI&pp=0gcJCdsKAYcqIYzv"},
   {"type":"link","label":"Video alternativa: Plank laterale","url":"https://www.youtube.com/watch?v=2y5DeaQVeOY"},
   {"type":"link","label":"Video alternativa: Plank su fitball","url":"https://www.youtube.com/watch?v=qxhPI3Dm-BA"}
-]}, "Squat": {"g": "Quadricipiti/Glutei/Core", "c": "Bilanciere sulle spalle, piedi larghezza spalle. Scendi al parallelo, spingi su.", "p": "Petto fuori, schiena neutra, ginocchia seguono le punte.", "t": ["Cercare il meso piede, Micheal Jackson", "Aria dalla pancia inspirando lentamente", "Sentire la linea verticale della spinta", "Fermare al parallelo, anche al livello delle ginocchia", "Co-contrarre glutei + addominali"], "lk": "https://www.youtube.com/watch?v=tr5PgWEebNA", "deep": [
+]}, "Squat": {"g": "Quadricipiti/Glutei/Core", "c": "Bilanciere sulle spalle, piedi larghezza spalle. Scendi al parallelo, spingi su.", "p": "Petto fuori, schiena neutra, ginocchia seguono le punte.", "t": ["Cercare il meso piede, Micheal Jackson", "Aria dalla pancia inspirando lentamente", "Sentire la linea verticale della spinta", "Fermare al parallelo, anche al livello delle ginocchia", "Co-contrarre glutei + addominali"], "lk": "https://www.youtube.com/watch?v=tr5PgWEebNA", "guideDay": "G1 Lower A", "guide": [
+  {"type":"p","content":"Cosa allena. Quadricipiti, glutei, adduttori, femorali come stabilizzatori ed erettori spinali. Nel G1 e il fondamentale priorità assoluta."},
+  {"type":"ul","content":["Piedi circa larghezza spalle, punte aperte a circa 30 gradi","Barra in low bar: appoggiata su deltoidi posteriori e spina della scapola","Gomiti indietro e leggermente in alto, sguardo fisso a terra 2-3 metri davanti"]},
+  {"type":"p","content":"Discesa. Inspira profondo, Valsalva, siediti indietro e in basso. Le ginocchia vanno nella direzione delle punte e il cue dominante e ginocchia fuori. La piega dell'anca deve scendere sotto il ginocchio."},
+  {"type":"p","content":"Risalita. Pensa a hip drive: il sedere va verso l'alto. Il petto sale perche salgono le anche, non il contrario. Niente pausa in buca: sfrutta il cambio di direzione immediato."},
+  {"type":"table","columns":["Errore","Correzione"],"rows":[["Non arrivi sotto il parallelo","Apri di piu punte e ginocchia; se serve stance leggermente piu ampio"],["Peso sulle punte","Siediti piu indietro e mantieni il peso sul mesopiede"],["Ginocchia che collassano","Cue costante: ginocchia fuori. Se collassano ancora, il carico e troppo alto"],["Petto che cade avanti","Controlla la posizione low bar e pensa a spingere le anche in alto"]]},
+  {"type":"p","content":"Respirazione. Inspira in alto, trattieni per discesa e risalita, espira solo quasi completamente in piedi."},
+  {"type":"ul","content":["Video low bar: https://www.youtube.com/watch?v=nhoikoUEI8U","Video depth e knees out: https://www.youtube.com/watch?v=QhVC_AnZYYM"]}
+], "deep": [
   {"type":"p","content":"Guarda dritto o leggermente sopra, schiena con curve fisiologiche, sedere spinto indietro."},
   {"type":"ul","content":["Piedi poco piu larghi delle spalle, punte a circa 30 gradi verso fuori","Ginocchia spinte fuori durante tutta la discesa — non lasciarle collassare","Talloni sempre ancorati a terra","Scendi sotto il parallelo: sedere sotto il livello delle ginocchia"]},
   {"type":"p","content":"Nella risalita, mantieni la coordinazione testa-busto-sedere: non inclinare troppo il busto in avanti (togli lavoro ai glutei e lo carichi sulla schiena)."},
   {"type":"p","content":"Manovra di Valsalva: inspira profondo, blocca il respiro e gonfia la pancia prima di scendere. Espira solo dopo aver superato il punto critico della risalita."}
-]}, "Military Press": {"g": "Deltoidi/Tricipiti/Core", "c": "Bilanciere alle clavicole. Spingi sopra la testa, scendi controllando.", "p": "Piedi larghezza spalle, glutei e core contratti.", "t": ["Glutei stretti per stabilizzare", "Se lombare inarca: riduci carico"], "lk": "https://www.youtube.com/watch?v=K2qcToJDmXc"}, "Trazioni Supine": {"g": "Dorsali/Bicipiti/Romboidi", "c": "Presa neutra o supina. Tira su, mento sopra, scendi controllando.", "p": "Scapole depresse. Core attivo.", "t": ["Neutra o supina in base al comfort articolare", "Elastico per assistenza"], "lk": "https://www.youtube.com/watch?v=xBzKgvYBxI4"}, "Curl Bicipiti": {"g": "Bicipiti/Brachiale", "c": "Con manubri ai lati e presa supina. Fletti verso le spalle, poi scendi controllando.", "p": "Gomiti fissi ai lati. Niente dondolio.", "t": ["Si esegue con manubri", "Se dondoli: peso troppo", "Eccentrica 3s = piu stimolo"]}, "French Press Manubri": {"g": "Tricipiti", "c": "Su panca, manubri sopra. Fletti gomiti verso tempie, estendi.", "p": "Gomiti verso soffitto, fermi. Presa neutra.", "t": ["Gomiti paralleli", "Leggermente dietro la testa"]}, "Dip su Panca": {"g": "Tricipiti/Pettorali inf.", "c": "Mani su panca dietro. Scendi a 90 gradi gomiti, spingi su.", "p": "Gomiti indietro. Schiena vicina alla panca.", "t": ["Gambe tese = piu difficile", "Non sotto 90 gradi"]}, "Squat Bulgaro": {"g": "Quadricipiti/Glutei/Femorali", "c": "Piede posteriore su panca. Scendi a 90 gradi, spingi su.", "p": "Busto eretto. Ginocchio in linea con punta.", "t": ["Busto avanti = piu glutei", "Manubri ai lati per carico"], "deep": [
+]}, "Military Press": {"g": "Deltoidi/Tricipiti/Core", "c": "Bilanciere alle clavicole. Spingi sopra la testa, scendi controllando.", "p": "Piedi larghezza spalle, glutei e core contratti.", "t": ["Glutei stretti per stabilizzare", "Se lombare inarca: riduci carico"], "lk": "https://www.youtube.com/watch?v=K2qcToJDmXc"}, "Trazioni Supine": {"g": "Dorsali/Bicipiti/Romboidi", "c": "Presa neutra o supina. Tira su, mento sopra, scendi controllando.", "p": "Scapole depresse. Core attivo.", "t": ["Neutra o supina in base al comfort articolare", "Elastico per assistenza"], "lk": "https://www.youtube.com/watch?v=xBzKgvYBxI4"}, "Curl Bicipiti": {"g": "Bicipiti/Brachiale", "c": "Con manubri ai lati e presa supina. Fletti verso le spalle, poi scendi controllando.", "p": "Gomiti fissi ai lati. Niente dondolio.", "t": ["Si esegue con manubri", "Se dondoli: peso troppo", "Eccentrica 3s = piu stimolo"], "guideDay": "G2 Upper A", "guide": [
+  {"type":"p","content":"Cosa allena. Bicipite brachiale, brachiale e brachioradiale. Nel G2 arriva dopo trazioni e pulley per isolare il bicipite quando e gia pre-affaticato."},
+  {"type":"ul","content":["Piedi larghezza anche, presa supina, manubri ai lati","Gomiti incollati ai fianchi","Il busto resta fermo: il movimento e solo dell'avambraccio"]},
+  {"type":"p","content":"Esecuzione. Fletti i gomiti portando i manubri verso le spalle, contrai 1 secondo in alto e torna giu in 2-3 secondi. Il ROM utile finisce quando i gomiti vorrebbero avanzare."},
+  {"type":"table","columns":["Errore","Correzione"],"rows":[["Gomiti che avanzano","Fermali ai fianchi: oltre quel punto lavora il deltoide"],["Slancio col busto","Riduci 1-2 kg per manubrio"],["Eccentrica troppo veloce","Conta 3 secondi in discesa"],["Polsi che cedono","Polsi dritti e carico piu basso se serve"]]},
+  {"type":"p","content":"Respirazione. Espira in salita, inspira in discesa."},
+  {"type":"ul","content":["Video tecnica: https://www.youtube.com/watch?v=ykJmrZ5v0Oo"]}
+]}, "French Press Manubri": {"g": "Tricipiti", "c": "Su panca, manubri sopra. Fletti gomiti verso tempie, estendi.", "p": "Gomiti verso soffitto, fermi. Presa neutra.", "t": ["Gomiti paralleli", "Leggermente dietro la testa"]}, "Dip su Panca": {"g": "Tricipiti/Pettorali inf.", "c": "Mani su panca dietro. Scendi a 90 gradi gomiti, spingi su.", "p": "Gomiti indietro. Schiena vicina alla panca.", "t": ["Gambe tese = piu difficile", "Non sotto 90 gradi"]}, "Squat Bulgaro": {"g": "Quadricipiti/Glutei/Femorali", "c": "Piede posteriore su panca. Scendi a 90 gradi, spingi su.", "p": "Busto eretto. Ginocchio in linea con punta.", "t": ["Busto avanti = piu glutei", "Manubri ai lati per carico"], "deep": [
   {"type":"p","content":"Variante dell'affondo con il piede posteriore poggiato su un rialzo (panca, step, sedia). Valgono le stesse regole degli affondi: ginocchio posteriore sfiora terra senza urtarla."},
   {"type":"p","content":"Gestisci il focus muscolare:"},
   {"type":"ul","content":["Passo corto + busto verticale = piu quadricipiti","Passo piu lungo + busto inclinato = piu glutei e femorali","Ginocchio anteriore sempre allineato con il piede — non collassare verso l'interno"]},
   {"type":"p","content":"Richiede piu equilibrio dello squat classico. Inizia senza peso e aggiungi i manubri solo quando la forma e stabile."}
-]}, "Panca": {"g": "Pettorali/Tricipiti/Deltoidi", "c": "Su panca, bilanciere dal rack. Scendi al petto, spingi su.", "p": "Scapole addotte, arco toracico, piedi a terra.", "t": ["Scapole retratte sempre", "Tocca petto, non rimbalza"], "lk": "https://www.youtube.com/watch?v=TBlRSmcqnRA"}, "Stacco da Terra": {"g": "Catena posteriore completa", "c": "Piedi sotto sbarra. Petto fuori, schiena neutra, spingi pavimento.", "p": "Schiena NEUTRA sempre. Bilanciere rasente gambe.", "t": ["Spinta di gambe, non di schiena", "Bilanciere non si allontana MAI"], "lk": "https://www.youtube.com/watch?v=jQ5J60N1LVU", "deep": [
+]}, "Panca": {"g": "Pettorali/Tricipiti/Deltoidi", "c": "Su panca, bilanciere dal rack. Scendi al petto, spingi su.", "p": "Scapole addotte, arco toracico, piedi a terra.", "t": ["Scapole retratte sempre", "Tocca petto, non rimbalza"], "lk": "https://www.youtube.com/watch?v=TBlRSmcqnRA", "guideDay": "G2 Upper A", "guide": [
+  {"type":"p","content":"Cosa allena. Pettorale, deltoide anteriore e tricipiti. E il compound di spinta orizzontale del G2."},
+  {"type":"ul","content":["Cinque punti di contatto: testa, scapole, glutei sulla panca e piedi a terra","Scapole addotte e depresse: sono la piattaforma della panca","Presa chiusa, polsi dritti, barra sulla base del palmo"]},
+  {"type":"p","content":"Esecuzione. Unrack sopra le spalle. Scendi verso il petto basso con gomiti a circa 75 gradi dal busto. Tocca senza rimbalzare e spingi in alto e leggermente indietro: la traiettoria e una J rovesciata."},
+  {"type":"table","columns":["Errore","Correzione"],"rows":[["Scapole che si aprono","Reset completo del setup e cue: scapole strette dall'inizio alla fine"],["Gomiti a 90 gradi","Barra piu bassa sul petto e presa meno larga"],["Rimbalzo sul petto","Tocco fermo, poi spinta"],["Sedere che si alza","Leg drive verso il basso e leggermente avanti, non verso l'alto"],["Polsi piegati","Barra alla base del palmo"]]},
+  {"type":"p","content":"Respirazione. Inspira prima della discesa, trattieni durante discesa e prima parte della spinta, espira nella seconda meta della salita."},
+  {"type":"ul","content":["Video Rippetoe: https://www.youtube.com/watch?v=rxD321l2svE","Video scapole setup: https://www.youtube.com/watch?v=JJ5iCcKzg2Q"]}
+]}, "Stacco da Terra": {"g": "Catena posteriore completa", "c": "Piedi sotto sbarra. Petto fuori, schiena neutra, spingi pavimento.", "p": "Schiena NEUTRA sempre. Bilanciere rasente gambe.", "t": ["Spinta di gambe, non di schiena", "Bilanciere non si allontana MAI"], "lk": "https://www.youtube.com/watch?v=jQ5J60N1LVU", "deep": [
   {"type":"p","content":"Manovra di Valsalva: prima di staccare, inspira profondo, blocca il respiro e gonfia la pancia. Crea pressione intra-addominale che protegge le vertebre lombari dalle forze di taglio."},
   {"type":"ul","content":["Il bilanciere non si allontana MAI dalle gambe: rasenta tibie e cosce durante tutta la salita","La schiena mantiene le sue curve fisiologiche per tutta la durata — schiena tonda = pericolo","Non tirare con la schiena: spingi il pavimento via con i piedi"]},
   {"type":"p","content":"Se la schiena si arrotonda, il peso e troppo alto. Riduci e riparti con tecnica corretta."}
@@ -287,12 +330,26 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"p","content":"Usa un supporto alto circa come il tuo ginocchio — troppo basso non da stimolo, troppo alto mette a rischio il ginocchio."},
   {"type":"ul","content":["Rimani il piu verticale possibile e spingiti verso l'alto dalla gamba sullo step","Porta anche il secondo piede sul supporto prima di scendere","Controlla la discesa: la fase eccentrica e dove avviene gran parte del lavoro muscolare","Rialzo piu alto = piu glutei; rialzo piu basso = piu quadricipiti"]},
   {"type":"p","content":"Richiede meno equilibrio rispetto agli affondi: ottimo per costruire confidenza con il lavoro su singola gamba. Aggiungi i manubri solo a forma perfetta."}
-]}, "Floor Press Manubri": {"g": "Pettorali/Tricipiti", "c": "A terra, manubri sopra. Scendi fino a gomiti a terra, spingi.", "p": "Scapole addotte.", "t": ["Pausa 1s a terra"], "lk": "https://www.youtube.com/watch?v=ON0D6MmOVDo"}, "Push-Up Declino": {"g": "Pettorali sup./Tricipiti", "c": "Push-up con piedi su panca. Scendi col petto, spingi.", "p": "Corpo in linea. Core contratto.", "t": ["Gomiti a 45 gradi"]}, "Stacco Rumeno": {"g": "Femorali/Glutei/Erettori", "c": "Bilanciere davanti, spingi bacino indietro lungo gambe. Risali.", "p": "Schiena neutra. Ginocchia poco flesse.", "t": ["Senti allungamento femorali"], "lk": "https://www.youtube.com/watch?v=sVyjYCOYyp4"}, "Front Squat": {"g": "Quadricipiti/Core/Glutei", "c": "Bilanciere clavicole, gomiti alti. Scendi, busto verticale.", "p": "Gomiti alti, petto fuori.", "t": ["Piu quadricipiti, meno schiena"]}, "Pause Squat": {"g": "Quadricipiti/Glutei", "c": "Squat con 2-3s fermo in buca, poi esplosione.", "p": "Come squat classico.", "t": ["15-20% meno carico"]}, "Push Press": {"g": "Deltoidi/Tricipiti/Gambe", "c": "Military press con leggera spinta esplosiva delle gambe.", "p": "Dip breve, esplosivo.", "t": ["Piu carico del military"]}, "Curl Martello": {"g": "Brachiale/Brachioradiale", "c": "Curl con presa neutra (palmi uno verso l'altro).", "p": "Gomiti fissi.", "t": ["Da spessore al braccio"]}, "Curl Concentrato": {"g": "Bicipiti (picco)", "c": "Seduta, gomito su coscia. Fletti manubrio.", "p": "Gomito fermo, braccio isolato.", "t": ["Lento, senza slancio"]}, "Kick Back Manubri": {"g": "Tricipiti", "c": "Piegata avanti, gomito 90 gradi. Estendi indietro.", "p": "Gomito fermo, busto stabile.", "t": ["1s in estensione completa"]}, "Overhead Extension": {"g": "Tricipiti (capo lungo)", "c": "Un manubrio 2 mani sopra testa. Fletti dietro, estendi.", "p": "Gomiti vicini orecchie.", "t": ["Enfasi capo lungo"]}, "Push-Up Diamante": {"g": "Tricipiti/Pettorali int.", "c": "Push-up con mani a diamante. Scendi, spingi.", "p": "Gomiti vicini al corpo.", "t": ["Ginocchia a terra se difficile"]}, "Stacco Sumo": {"g": "Quadricipiti/Glutei/Adduttori", "c": "Piedi molto larghi, punte fuori. Presa stretta.", "p": "Busto piu verticale.", "t": ["Meno stress lombare"]}, "Pendlay Row": {"g": "Dorsali/Trapezi", "c": "Rematore ma bilanciere parte da terra ogni rip.", "p": "Busto parallelo.", "t": ["Esplosione, appoggio controllato"]}, "Walking Lunge": {"g": "Quadricipiti/Glutei", "c": "Affondo camminando avanti.", "p": "Come affondo classico.", "t": ["Piu impegnativo per stabilità"]}, "Alzate Laterali": {"g": "Deltoide laterale", "c": "Manubri ai lati. Alza lateralmente fino a parallele.", "p": "Gomiti flessi. Non alzare spalle.", "t": ["Peso leggero - isolamento"]}, "Abduzione laterale IR": {"g": "Gluteo medio (fibre posteriori)", "c": "Quadrupedia o decubito laterale. Alza la gamba lateralmente con ginocchio piegato a 90 gradi e punta del piede che guarda verso il pavimento (intrarotazione del femore). Alza fino a sentire il gluteo contrarsi, non oltre.", "p": "Range piccolo e controllato. Pausa 1s in alto.", "t": ["Se il bacino ruota stai compensando con la lombare", "Punta del piede verso il pavimento, non verso il soffitto", "Se senti il tensore della fascia lata (coscia laterale), ruota di piu la punta verso il basso"], "deep": [
+]}, "Floor Press Manubri": {"g": "Pettorali/Tricipiti", "c": "A terra, manubri sopra. Scendi fino a gomiti a terra, spingi.", "p": "Scapole addotte.", "t": ["Pausa 1s a terra"], "lk": "https://www.youtube.com/watch?v=ON0D6MmOVDo"}, "Push-Up Declino": {"g": "Pettorali sup./Tricipiti", "c": "Push-up con piedi su panca. Scendi col petto, spingi.", "p": "Corpo in linea. Core contratto.", "t": ["Gomiti a 45 gradi"]}, "Stacco Rumeno": {"g": "Femorali/Glutei/Erettori", "c": "Bilanciere davanti, spingi bacino indietro lungo gambe. Risali.", "p": "Schiena neutra. Ginocchia poco flesse.", "t": ["Senti allungamento femorali"], "lk": "https://www.youtube.com/watch?v=sVyjYCOYyp4", "guideDay": "G1 Lower A", "guide": [
+  {"type":"p","content":"Cosa allena. Femorali, glutei ed erettori spinali. Nel programma e l'accessorio principale per i femorali nella loro funzione di estensori d'anca."},
+  {"type":"ul","content":["Parti dal rack, non da terra","Piedi larghezza anche, presa doppia prona poco piu larga delle spalle","Ginocchia solo sbloccate: dopo lo sblocco iniziale quasi non si muovono piu"]},
+  {"type":"p","content":"Esecuzione. Spingi le anche indietro e tieni la barra incollata a cosce e tibie. Scendi solo fin dove riesci a mantenere l'estensione lombare. Risali portando le anche avanti e stringendo i glutei."},
+  {"type":"table","columns":["Errore","Correzione"],"rows":[["Barra lontana dalle gambe","Contrai i dorsali e pensa: barra incollata"],["Lombare che si arrotonda","Fermati prima: la profondita e individuale"],["Ginocchia che avanzano","Non stai facendo hip hinge: pensa anche indietro"],["Peso sulle punte","Sedere piu indietro e carico sui talloni"]]},
+  {"type":"p","content":"Respirazione. Un respiro per ripetizione: inspira in alto, trattieni durante discesa e risalita, espira solo in chiusura."},
+  {"type":"ul","content":["Video tecnica: https://www.youtube.com/watch?v=JCXUYuzwNrM","Video errori comuni: https://www.youtube.com/watch?v=MEK3MhsQYCU"]}
+]}, "Front Squat": {"g": "Quadricipiti/Core/Glutei", "c": "Bilanciere clavicole, gomiti alti. Scendi, busto verticale.", "p": "Gomiti alti, petto fuori.", "t": ["Piu quadricipiti, meno schiena"]}, "Pause Squat": {"g": "Quadricipiti/Glutei", "c": "Squat con 2-3s fermo in buca, poi esplosione.", "p": "Come squat classico.", "t": ["15-20% meno carico"]}, "Push Press": {"g": "Deltoidi/Tricipiti/Gambe", "c": "Military press con leggera spinta esplosiva delle gambe.", "p": "Dip breve, esplosivo.", "t": ["Piu carico del military"]}, "Curl Martello": {"g": "Brachiale/Brachioradiale", "c": "Curl con presa neutra (palmi uno verso l'altro).", "p": "Gomiti fissi.", "t": ["Da spessore al braccio"]}, "Curl Concentrato": {"g": "Bicipiti (picco)", "c": "Seduta, gomito su coscia. Fletti manubrio.", "p": "Gomito fermo, braccio isolato.", "t": ["Lento, senza slancio"]}, "Kick Back Manubri": {"g": "Tricipiti", "c": "Piegata avanti, gomito 90 gradi. Estendi indietro.", "p": "Gomito fermo, busto stabile.", "t": ["1s in estensione completa"]}, "Overhead Extension": {"g": "Tricipiti (capo lungo)", "c": "Un manubrio 2 mani sopra testa. Fletti dietro, estendi.", "p": "Gomiti vicini orecchie.", "t": ["Enfasi capo lungo"]}, "Push-Up Diamante": {"g": "Tricipiti/Pettorali int.", "c": "Push-up con mani a diamante. Scendi, spingi.", "p": "Gomiti vicini al corpo.", "t": ["Ginocchia a terra se difficile"]}, "Stacco Sumo": {"g": "Quadricipiti/Glutei/Adduttori", "c": "Piedi molto larghi, punte fuori. Presa stretta.", "p": "Busto piu verticale.", "t": ["Meno stress lombare"]}, "Pendlay Row": {"g": "Dorsali/Trapezi", "c": "Rematore ma bilanciere parte da terra ogni rip.", "p": "Busto parallelo.", "t": ["Esplosione, appoggio controllato"]}, "Walking Lunge": {"g": "Quadricipiti/Glutei", "c": "Affondo camminando avanti.", "p": "Come affondo classico.", "t": ["Piu impegnativo per stabilità"]}, "Alzate Laterali": {"g": "Deltoide laterale", "c": "Manubri ai lati. Alza lateralmente fino a parallele.", "p": "Gomiti flessi. Non alzare spalle.", "t": ["Peso leggero - isolamento"]}, "Abduzione laterale IR": {"g": "Gluteo medio (fibre posteriori)", "c": "Quadrupedia o decubito laterale. Alza la gamba lateralmente con ginocchio piegato a 90 gradi e punta del piede che guarda verso il pavimento (intrarotazione del femore). Alza fino a sentire il gluteo contrarsi, non oltre.", "p": "Range piccolo e controllato. Pausa 1s in alto.", "t": ["Se il bacino ruota stai compensando con la lombare", "Punta del piede verso il pavimento, non verso il soffitto", "Se senti il tensore della fascia lata (coscia laterale), ruota di piu la punta verso il basso"], "deep": [
   {"type":"p","content":"L'abduzione laterale con intrarotazione sposta il lavoro sul gluteo medio in modo molto diretto. La posizione sul fianco riduce i compensi di schiena e bacino, quindi il gesto resta piu leggibile e preciso."},
   {"type":"ul","content":["La gamba resta leggermente dietro la linea del busto per non far entrare troppo i flessori dell'anca","La punta ruota verso il basso: e il dettaglio che tiene il focus sul gluteo medio","Il range non deve essere enorme: conta mantenere tensione continua sul lato del gluteo"]},
   {"type":"p","content":"Errore tipico: aprire il petto e ruotare tutto il bacino all'indietro. Quando succede, sembra di alzare di piu la gamba ma il gluteo medio lavora meno e il gesto perde precisione."}
 ]}, "Hip Thrust Singolo": {"g": "Grande gluteo", "c": "Schiena su panca, un piede a terra. Spingi anca su.", "p": "Spalle sulla panca, mento al petto.", "t": ["Gluteo stretto 1s in alto"]}, "Single Leg Deadlift": {"g": "Femorali/Glutei/Equilibrio", "c": "Su una gamba, manubrio in mano opposta. Piegati avanti.", "p": "Schiena neutra, anca livellata.", "t": ["Tocca piede se perdi equilibrio"]}, "Pulley": {"g": "Dorsali/Tirata upper", "c": "Seduta davanti alla carrucola BASSA. Afferra la barra/maniglie, tira verso lo sterno portando i gomiti indietro e le scapole insieme. Controlla il ritorno. Richiede carrucola bassa — senza, usa Rematore Manubri.", "p": "Schiena dritta, petto fuori, piedi ben piantati. Non inarcare la lombare.", "t": ["Tira con i dorsali, non con le braccia", "Le scapole si devono avvicinare alla fine del movimento", "Controlla la fase eccentrica: 2-3 secondi per tornare su"], "lk": "https://www.youtube.com/watch?v=d_Qz-_fBUek&pp=0gcJCdsKAYcqIYzv"}, "Lat Machine": {"g": "Dorsali/Tirata upper", "c": "Seduta alla carrucola alta con barra larga. Tira la barra verso il petto alto, portando i gomiti verso il basso e indietro. Controlla il ritorno sopra la testa.", "p": "Petto fuori, schiena leggermente inclinata indietro (non troppo). Presa poco piu larga delle spalle.", "t": ["Non tirare dietro la nuca: sempre davanti al petto", "Immagina di spingere i gomiti verso il pavimento", "Contrai i dorsali in basso, poi controlla la risalita"]}, "Tricipiti Cavo": {"g": "Tricipiti/Spinta upper", "c": "In piedi davanti alla carrucola alta, afferra la corda o la barra. Gomiti fermi ai fianchi, estendi le braccia verso il basso fino a blocco. Torna su controllando.", "p": "Busto leggermente inclinato avanti, gomiti incollati ai fianchi. Non oscillare con il corpo.", "t": ["Solo gli avambracci si muovono, il resto e fermo", "Stringi i tricipiti a fine estensione per 1 secondo", "Se usi la corda, apri le mani ai lati a fine movimento"]},
-"Glute Bridge Bilanciere": {"g": "Grande gluteo", "c": "Schiena a terra, bilanciere sulle anche. Spingi il bacino in alto fino a estensione completa. Stringi i glutei 1s in alto.", "p": "Schiena a terra, piedi piantati, tibia quasi verticale in cima. Non iperestendere la lombare.", "t": ["Spingi i talloni verso il pavimento", "Stringi forte i glutei 1s in cima", "Se inarchi la schiena stai usando la lombare, non il gluteo"], "deep": [
+"Glute Bridge Bilanciere": {"g": "Grande gluteo", "c": "Schiena a terra, bilanciere sulle anche. Spingi il bacino in alto fino a estensione completa. Stringi i glutei 1s in alto.", "p": "Schiena a terra, piedi piantati, tibia quasi verticale in cima. Non iperestendere la lombare.", "t": ["Spingi i talloni verso il pavimento", "Stringi forte i glutei 1s in cima", "Se inarchi la schiena stai usando la lombare, non il gluteo"], "guideDay": "G1 Lower A", "guide": [
+  {"type":"p","content":"Cosa allena. Gluteo massimo in accorciamento, cioe al lockout. E la variante a terra dell'hip thrust: meno ROM, meno setup, stesso focus sulla chiusura completa dell'anca."},
+  {"type":"ul","content":["Schiena a terra, bilanciere sulle anche con pad o asciugamano","Piedi larghezza anche","La posizione giusta e quella in cui al lockout le tibie sono quasi verticali"]},
+  {"type":"p","content":"Esecuzione. Premi i talloni nel pavimento e spingi il bacino verso il soffitto. In alto il corpo forma una linea da spalle a ginocchia. Mantieni 1-2 secondi e scendi in 2-3 secondi senza rimbalzare."},
+  {"type":"table","columns":["Errore","Correzione"],"rows":[["Senti la lombare","Non andare oltre la linea retta: il bacino sale, la schiena non si inarca"],["Senti piu i femorali","Avvicina i piedi finche le tibie tornano quasi verticali"],["Bilanciere che scivola","Usa pad migliore e stabilizzalo con le mani"],["Rimbalzo a terra","Controlla la discesa e fai un micro stop"]]},
+  {"type":"p","content":"Respirazione. Espira durante la spinta in alto, inspira durante la discesa controllata."},
+  {"type":"ul","content":["Video tecnica: https://www.youtube.com/watch?v=ylBKfFa1ERk","Video errori bridge/thrust: https://www.youtube.com/watch?v=xDmFkJxPzeM"]}
+], "deep": [
   {"type":"p","content":"Il Glute Bridge col bilanciere carica il grande gluteo nel punto in cui produce la forza massima: il lockout in alto. A differenza di stacco rumeno e hyperextension che lavorano il gluteo in allungamento, qui lo stimolo e in accorciamento completo."},
   {"type":"ul","content":["Schiena completamente a terra — non servono panca o appoggio: la posizione e piu stabile e il focus resta sui glutei","Bilanciere imbottito con un pad o asciugamano sull'osso iliaco","Piedi larghezza bacino, talloni premono attivamente verso il pavimento","Tibia quasi verticale quando sei in cima: se i piedi sono troppo lontani i femorali rubano lavoro ai glutei"]},
   {"type":"p","content":"Errore comune: iperestendere la lombare in alto cercando di salire piu in alto. La colonna deve restare neutra: e il bacino che sale, non la schiena che si inarca. Se senti piu la lombare che i glutei, abbassa il range e riconcentrati sulla contrazione."}
@@ -360,9 +417,220 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
 "TRX Row lento": {"g": "Dorsali/Romboidi/Scapole", "c": "TRX con maniglie all'altezza del petto. Inclinati indietro, corpo in linea. Tira verso il petto portando i gomiti indietro. Tieni 2s con scapole strette, poi scendi in 3s.", "p": "Corpo rigido in linea dall'inizio alla fine — le anche non cedono mai. Se il corpo non e in linea, riduci l'inclinazione.", "t": ["Fermo 2s con scapole addotte: e il punto chiave", "Eccentrica 3s per massimizzare il lavoro", "Piu sei inclinato indietro, piu e difficile"]},
 };
 
+Object.assign(EX["Pulley"], {
+  guideDay: "G2 Upper A",
+  guide: [
+    { type: "p", content: "Il pulley basso allena dorsali, romboidi, trapezio medio, deltoide posteriore e bicipiti. E la tirata orizzontale del G2 e completa le trazioni lavorando da un angolo diverso." },
+    { type: "ul", content: ["Piedi sulle piastre, ginocchia leggermente piegate, petto alto", "Schiena verticale e lombare neutra", "Presa neutra stretta = piu lats; presa piu larga = piu romboidi e trapezio medio"] },
+    { type: "p", content: "Esecuzione. Tira la maniglia verso ombelico o alto addome portando i gomiti vicino ai fianchi. Stringi le scapole 1 secondo dietro e torna in 2-3 secondi senza lasciare che il peso ti trascini avanti." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Busto che oscilla avanti e indietro", "Riduci il carico: il tronco resta quasi fermo"], ["Tiri troppo in alto verso il petto", "Porta la maniglia verso ombelico o basso sterno"], ["Lombare che si arrotonda nel ritorno", "Mantieni petto aperto e allunga solo le scapole"], ["ROM corto senza chiusura dietro", "Cerca allungamento davanti e stretta completa dietro"]] },
+    { type: "p", content: "Respirazione. Espira nella tirata, inspira nel ritorno controllato." },
+    { type: "link", label: "Video tecnica: Pulley basso", url: "https://www.youtube.com/watch?v=GZbfZ033f74" },
+    { type: "link", label: "Video errori: Seated cable row", url: "https://www.youtube.com/watch?v=xQNrFHEMhI4" }
+  ]
+});
+
+Object.assign(EX["Band Pull-Apart con rotazione esterna"], {
+  guideDay: "G2 e G3",
+  guide: [
+    { type: "p", content: "Questa variante allena deltoide posteriore, romboidi, trapezio medio-basso e cuffia dei rotatori. Nel G2 e piu intensa; nel G3 diventa volume tecnico con piu rip e meno fatica." },
+    { type: "ul", content: ["Elastico davanti al petto, mani a larghezza spalle", "Braccia tese o quasi tese, spalle basse", "Busto fermo, costole giu"] },
+    { type: "p", content: "Esecuzione. Apri le braccia fino a portare l'elastico al petto avvicinando le scapole. Alla fine ruota le mani verso fuori come per mostrare i pollici dietro di te, mantieni 1 secondo e rientra lentamente." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Gomiti troppo piegati", "Mantieni le braccia lunghe e la leva costante"], ["Schiena che si inarca", "Stringi addome e glutei"], ["Rotazione finale assente", "Completa ogni rip con la piccola extra-rotazione delle mani"], ["Spalle che salgono", "Cue: spalle basse, lontane dalle orecchie"]] },
+    { type: "p", content: "Respirazione. Espira mentre apri e ruoti, inspira nel ritorno." }
+  ]
+});
+
+Object.assign(EX["Alzate Laterali"], {
+  guideDay: "G2 Upper A",
+  guide: [
+    { type: "p", content: "Le alzate laterali allenano soprattutto il deltoide laterale, con supporto di sovraspinato e trapezio superiore. Servono ad allargare la spalla e dare piu rotondita alla parte esterna del deltoide." },
+    { type: "ul", content: ["Piedi larghezza anche, busto neutro, manubri ai lati", "Gomiti leggermente piegati e quasi fissi", "Le mani restano ai lati del corpo, non dietro"] },
+    { type: "p", content: "Esecuzione. Solleva i manubri lateralmente fino a circa l'altezza delle spalle, con movimento lento e controllato. Mantieni i mignoli solo leggermente piu alti dei pollici, senza forzare la rotazione interna. Scendi in 2-3 secondi senza perdere tensione." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Slancio con busto o gambe", "Riduci il carico e mantieni il tronco fermo"], ["Spalle che salgono verso le orecchie", "Rilassa il trapezio e pensa ad allungare le braccia lontano dai fianchi"], ["Gomiti che si piegano troppo", "Mantieni quasi invariato l'angolo del gomito"], ["Braccia troppo avanti", "Alza nel piano laterale, non in una front raise mascherata"]] },
+    { type: "p", content: "Respirazione. Espira durante la salita, inspira durante la discesa." },
+    { type: "link", label: "Video tecnica: Alzate laterali", url: "https://www.youtube.com/watch?v=3VcKaXpzqRo" }
+  ]
+});
+
+Object.assign(EX["Stacco da Terra"], {
+  guideDay: "G4 Lower B",
+  guide: [
+    { type: "p", content: "Lo stacco convenzionale allena glutei, femorali, erettori spinali, dorsali in isometria, quadricipiti nella partenza, trapezio e avambracci. Nel G4 e il fondamentale assoluto del giorno." },
+    { type: "ul", content: ["Step 1: stance con piedi alla larghezza anche e barra sopra il centro del piede", "Step 2: afferra la barra senza piegare ancora le ginocchia", "Step 3: porta le tibie alla barra", "Step 4: petto alto senza muovere la barra", "Step 5: respira, trattieni e trascina la barra su per le gambe"] },
+    { type: "p", content: "Esecuzione. Spingi il pavimento con i piedi e mantieni la schiena ferma finche la barra supera le ginocchia. Al lockout il corpo e dritto, non in iperestensione. In discesa fai il contrario: anche indietro, barra attaccata alle cosce, poi piega di piu le ginocchia quando la barra ha superato le rotule." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Anche che salgono prima della barra", "Cue: spingi il pavimento, schiena ferma all'inizio"], ["Lombare che si arrotonda", "Petto piu alto e carico piu basso se non reggi la posizione"], ["Barra lontana dalle gambe", "Contrai i dorsali e trascina la barra sulle tibie"], ["Peso sulle punte", "Riporta la barra sul centro del piede e manda le anche indietro"], ["Iperestensione al lockout", "Finisci in piedi dritta, non inarcata"]] },
+    { type: "p", content: "Respirazione. Prendi aria in piedi, trattieni durante la ripetizione, espira solo dopo il lockout o dopo aver riappoggiato la barra." },
+    { type: "link", label: "Video tecnica: Deadlift 5 step", url: "https://www.youtube.com/watch?v=p2OPUi4xGrM" },
+    { type: "link", label: "Video errori: Deadlift", url: "https://www.youtube.com/watch?v=NYN3UGCYisk" }
+  ]
+});
+
+Object.assign(EX["Squat Bulgaro"], {
+  guideDay: "G4 Lower B",
+  guide: [
+    { type: "p", content: "Il Bulgarian Split Squat allena quadricipiti, glutei e adduttori con ROM piu ampio dell'affondo classico. Nel G4 e il principale lavoro unilaterale per gambe dopo lo stacco." },
+    { type: "ul", content: ["Piede anteriore stabile tutto a terra, a 60-80 cm dal rialzo", "Piede posteriore appoggiato morbido sulla panca con il collo del piede", "Manubri ai lati e busto leggermente inclinato avanti"] },
+    { type: "p", content: "Esecuzione. Scendi in 2-3 secondi finche il ginocchio posteriore sfiora quasi il pavimento e la coscia anteriore arriva almeno al parallelo. Risali spingendo il tallone davanti nel pavimento. La gamba dietro serve da appoggio, non da motore." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Peso sulle punte del piede davanti", "Allontana il piede dalla panca di 5-10 cm"], ["Ginocchio davanti che collassa", "Cue: ginocchio in fuori, nella direzione della punta"], ["ROM accorciato", "Riduci il rialzo e lavora piu in profondita controllata"], ["Perdita di equilibrio", "Tieni un supporto con una mano o usa TRX finche il pattern si stabilizza"], ["Lombare che si inarca in basso", "Chiudi le costole e riduci leggermente il rialzo posteriore"]] },
+    { type: "p", content: "Respirazione. Inspira in alto, trattieni o controlla la discesa, espira durante la risalita." },
+    { type: "link", label: "Video tecnica: Bulgarian Split Squat", url: "https://www.youtube.com/watch?v=2C-uNgKwPLE" },
+    { type: "link", label: "Video errori: Bulgarian Split Squat", url: "https://www.youtube.com/watch?v=GxsmYZCMRXI" }
+  ]
+});
+
+Object.assign(EX["Hyperextension"], {
+  guideDay: "G4 Lower B",
+  guide: [
+    { type: "p", content: "L'hyperextension rinforza erettori spinali, glutei e femorali prossimali. Dopo lo stacco aggiunge volume sulla catena posteriore senza dover ricaricare il bilanciere." },
+    { type: "ul", content: ["Pad a meta coscia, non sulle anche", "Piedi bloccati sotto il rullo, ginocchia leggermente sbloccate", "Sguardo al pavimento, collo neutro"] },
+    { type: "p", content: "Esecuzione. Scendi controllata finche il busto e circa perpendicolare al pavimento. Risali guidando col petto e fermati quando il corpo torna in linea con le cosce. Non andare oltre il parallelo: sopra quel punto non c'e piu stimolo utile e aumenti solo compressione lombare." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Vai sopra il parallelo", "Fermati quando il corpo e in linea con le cosce"], ["Discesa troppo veloce", "Conta 2-3 secondi in eccentrica"], ["Pad posizionato sulle anche", "Sposta il supporto piu in basso, a meta coscia"], ["Collo iperesteso", "Tieni lo sguardo al pavimento"], ["Slancio con le braccia o col carico", "Riduci il peso e torna a un gesto pulito"]] },
+    { type: "p", content: "Respirazione. Inspira in alto o in discesa, espira nella risalita controllata." },
+    { type: "link", label: "Video tecnica: Back extension", url: "https://www.youtube.com/watch?v=ph3pddpKzzw" },
+    { type: "link", label: "Video errori: Hyperextension", url: "https://www.youtube.com/watch?v=qtSGy0sJIqE" }
+  ]
+});
+
+Object.assign(EX["Abduzione laterale IR"], {
+  guideDay: "G3 e G4",
+  guide: [
+    { type: "p", content: "Cosa allena. Gluteo medio, soprattutto le fibre posteriori. Nel G3 e volume leggero tecnico; nel G4 arriva a fine seduta in superset con Hyperextension e diventa lavoro vero a RPE 8." },
+    { type: "ul", content: ["Posizione in quadrupedia o su un fianco", "Ginocchio piegato a 90 gradi", "Punta del piede verso il pavimento per mantenere l'intrarotazione del femore"] },
+    { type: "p", content: "Esecuzione. Alza la gamba lateralmente con range piccolo, circa 15-20 cm, senza ruotare il bacino. Fermati 1 secondo in alto e scendi controllata. Nel G4 il target e RPE 8: meno rip del G3 ma piu intenzione sul gluteo." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Senti soprattutto la coscia laterale", "Ruota di piu la punta del piede verso il basso"], ["Il bacino ruota", "Riduci il range: il movimento e solo della gamba"], ["Non senti il gluteo", "Allunga la pausa in alto a 2 secondi e resetta la posizione"], ["Range enorme ma senza controllo", "Taglia il ROM e mantieni tensione continua"]] },
+    { type: "p", content: "Respirazione. Continua e regolare, con espirazione durante la salita." },
+    { type: "link", label: "Video: Abduzione laterale IR", url: "https://www.youtube.com/watch?v=MaGQq_QMPFI" }
+  ]
+});
+
+Object.assign(EX["T-bar Row"], {
+  guideDay: "G5 Upper B",
+  guide: [
+    { type: "p", content: "Il T-bar Row allena dorsali, romboidi, trapezio medio, deltoide posteriore, bicipiti ed erettori spinali in isometria. Nel G5 e il compound pesante di tirata orizzontale." },
+    { type: "ul", content: ["Piedi larghezza spalle, ginocchia leggermente piegate", "Busto inclinato circa 45-60 gradi, schiena bloccata", "Presa stretta con V-handle o direttamente sulla barra"] },
+    { type: "p", content: "Esecuzione. Tira la barra verso sterno basso o addome alto, porta i gomiti indietro vicini ai fianchi e stringi le scapole 1 secondo in alto. Scendi in 2 secondi controllando l'allungamento. L'inclinazione del busto non cambia durante la serie." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Il busto si alza durante la trazione", "Riduci il peso e tieni il busto fermo a 45-60 gradi"], ["ROM incompleto in alto", "Scala il carico finche riesci a fare pausa con scapole strette"], ["Tiri solo con le braccia", "Pensa: prima scapole, poi gomiti"], ["Lombare che si arrotonda", "Petto alto e inclinazione leggermente piu verticale se serve"], ["Peso sulle punte", "Riporta il carico sui talloni"]] },
+    { type: "p", content: "Respirazione. Espira durante la trazione, inspira nella discesa. Se il set e pesante, puoi trattenere brevemente nella fase di tirata." },
+    { type: "link", label: "Video tecnica: T-bar row", url: "https://www.youtube.com/watch?v=j3Igk5nyZE4" },
+    { type: "link", label: "Video setup: Landmine row", url: "https://www.youtube.com/watch?v=xLXsEfMJJBE" }
+  ]
+});
+
+Object.assign(EX["Military Press"], {
+  guideDay: "G5 Upper B",
+  guide: [
+    { type: "p", content: "Il Military Press allena deltoide anteriore, tricipiti e trapezio al lockout. Nel G5 e il fondamentale di spinta verticale e richiede una traiettoria molto precisa della barra." },
+    { type: "ul", content: ["Presa appena fuori dalle spalle, barra alla base del palmo", "Gomiti leggermente davanti alla barra", "Glutei e addome contratti, ginocchia bloccate"] },
+    { type: "p", content: "Esecuzione. Prima della spinta fai un leggero lean back spingendo le anche avanti, senza inarcare la lombare. Poi spingi la barra verso il naso. Quando supera la fronte, spostati subito sotto la barra e chiudi il lockout sopra spalle e centro del piede." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Barra che curva intorno al mento", "Fai prima il lean back e poi punta al naso"], ["Non ti sposti sotto la barra", "Appena supera la fronte porta il petto avanti sotto il bilanciere"], ["Lombare che si inarca", "Stringi glutei e addome; se cedi, il peso e troppo alto"], ["Ginocchia che si piegano", "Bloccate: altrimenti diventa push press"], ["Polsi piegati", "Barra sulla base del palmo, non sulle dita"]] },
+    { type: "p", content: "Respirazione. Inspira con la barra al petto, trattieni durante la spinta e il lockout, espira in alto o in discesa." },
+    { type: "link", label: "Video tecnica: Press Rippetoe", url: "https://www.youtube.com/watch?v=8dacy5hjaE8" },
+    { type: "link", label: "Video bar path e lean back", url: "https://www.youtube.com/watch?v=eNFXEEdfQp4" }
+  ]
+});
+
+Object.assign(EX["Push-Up"], {
+  guideDay: "G3 e G5",
+  guide: [
+    { type: "p", content: "Il Push-Up allena pettorale, deltoide anteriore e tricipiti con il core che stabilizza il corpo intero. Nel G3 e volume leggero a RPE 7; nel G5 diventa lavoro vero a RPE 7-8." },
+    { type: "ul", content: ["Mani leggermente piu larghe delle spalle", "Corpo in linea da testa a piedi", "Glutei contratti, costole chiuse, addome attivo"] },
+    { type: "p", content: "Esecuzione. Scendi con i gomiti a circa 45 gradi dal busto fino a sfiorare il pavimento con il petto. Il corpo sale e scende come un unico blocco, senza onde con le anche. Spingi il pavimento lontano e chiudi bene la ripetizione." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Lombare a banana", "Contrai glutei e addome prima di partire"], ["Gomiti a 90 gradi", "Riporta i gomiti a circa 45 gradi"], ["Arriva il mento ma non il petto", "Cerca il petto a terra, non il collo lungo"], ["Anche che salgono prima del petto", "Corpo rigido; se perdi linea, usa la variante con ginocchia a terra"]] },
+    { type: "p", content: "Respirazione. Inspira nella discesa, espira nella spinta." },
+    { type: "link", label: "Video tecnica: Push-Up", url: "https://www.youtube.com/watch?v=IODxDxX7oi4" }
+  ]
+});
+
+Object.assign(EX["Trazioni Supine"], {
+  guideDay: "G5 Upper B",
+  guide: [
+    { type: "p", content: "Le Trazioni Supine allenano dorsali, bicipiti e trapezio basso. La presa supina coinvolge di piu i bicipiti e rende il gesto leggermente piu accessibile delle prone." },
+    { type: "ul", content: ["Presa supina alla larghezza spalle", "Parti da dead hang completo", "Prima fase sempre: scapole giu prima di piegare i gomiti"] },
+    { type: "p", content: "Esecuzione. Porta i gomiti verso i fianchi e indietro, resta vicina alla barra e sali finche il mento supera la sbarra. Torna giu in 2-3 secondi fino a gomiti completamente distesi." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Spalle che salgono", "Cue: scapole nelle tasche. Se salgono, la serie utile e finita"], ["ROM incompleto in basso", "Ogni rip torna a dead hang"], ["Corpo lontano dalla barra", "Pensa: petto verso la barra, stai vicina"], ["Kipping o slancio", "Corpo fermo e piu assistenza se serve"]] },
+    { type: "p", content: "Respirazione. Respiro rapido in alto tra le rip; sulle rip piu pesanti inspira al dead hang e trattieni durante la trazione." },
+    { type: "link", label: "Video tecnica: Chin-up", url: "https://www.youtube.com/watch?v=Hdc7Mw6BIEE" }
+  ]
+});
+
+Object.assign(EX["Woodchop"], {
+  guideDay: "G5 Upper B",
+  guide: [
+    { type: "p", content: "Il Woodchop allena obliqui, retto dell'addome e trasverso in rotazione controllata. Nel programma e il principale pattern di core rotazionale attivo." },
+    { type: "ul", content: ["Cavo alto per la variante high-to-low", "Fianco al cavo, piedi larghezza spalle", "Braccia quasi tese e ginocchia leggermente piegate"] },
+    { type: "p", content: "Esecuzione. Ruota il tronco tirando la corda dall'alto verso il basso e verso il lato opposto del corpo. Le braccia trasmettono la forza ma non la producono: pensa a ruotare il torace. Il ritorno dura circa 2 secondi, sotto controllo." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Tiri con le braccia", "Le braccia restano quasi tese: la forza viene dal tronco"], ["Piedi che si muovono o ruotano", "Piedi piantati e carico piu basso"], ["Ritorno troppo veloce", "Resisti 2 secondi in eccentrica"], ["Rotazione lombare percepita", "La rotazione viene da torace e anche, non dalla lombare"]] },
+    { type: "p", content: "Respirazione. Espira nella rotazione attiva, inspira nel ritorno." },
+    { type: "link", label: "Video tecnica: Woodchop alto-basso", url: "https://www.youtube.com/watch?v=pAplQXk3dkU" }
+  ]
+});
+
+Object.assign(EX["Alzate Laterali"], {
+  guideDay: "G2, G3 e G5",
+  guide: [
+    { type: "p", content: "Le alzate laterali allenano soprattutto il deltoide laterale, con supporto di sovraspinato e trapezio superiore. In G2 sono 2 serie pulite, in G3 3x15-20 controllate e in G5 3x15 a RPE 8 come volume extra specifico." },
+    { type: "ul", content: ["Piedi larghezza anche, busto neutro, manubri ai lati", "Gomiti leggermente piegati e quasi fissi", "Le mani restano ai lati del corpo, non dietro"] },
+    { type: "p", content: "Esecuzione. Solleva i manubri lateralmente fino a circa l'altezza delle spalle, con movimento lento e controllato. Mantieni i mignoli solo leggermente piu alti dei pollici, senza forzare la rotazione interna. Scendi in 2-3 secondi senza perdere tensione." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Slancio con busto o gambe", "Riduci il carico e mantieni il tronco fermo"], ["Spalle che salgono verso le orecchie", "Rilassa il trapezio e pensa ad allungare le braccia lontano dai fianchi"], ["Gomiti che si piegano troppo", "Mantieni quasi invariato l'angolo del gomito"], ["Braccia troppo avanti", "Alza nel piano laterale, non in una front raise mascherata"]] },
+    { type: "p", content: "Respirazione. Espira durante la salita, inspira durante la discesa." },
+    { type: "link", label: "Video tecnica: Alzate laterali", url: "https://www.youtube.com/watch?v=3VcKaXpzqRo" }
+  ]
+});
+
+Object.assign(EX["Leg Curl al Cavo"], {
+  guideDay: "G1 e G3",
+  guide: [
+    { type: "p", content: "Il Leg Curl al Cavo allena i femorali nella flessione del ginocchio. Nel G1 e accessorio piu carico; nel G3 e volume leggero per contrazione ed eccentrica pulita." },
+    { type: "ul", content: ["Cavo basso con cavigliera", "Tieni il rack o un supporto per stabilita", "Il femore resta fermo: si muove solo la tibia"] },
+    { type: "p", content: "Esecuzione. Porta il tallone verso il gluteo, mantieni 1 secondo in chiusura e torna giu in 2-3 secondi. Nel G3 il peso deve essere abbastanza basso da tenere l'eccentrica perfetta e zero slancio." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Busto che oscilla", "Riduci il carico e blocca il tronco"], ["Coscia che si muove avanti e indietro", "Cue: si muove solo la tibia"], ["Eccentrica troppo veloce", "Conta 2-3 secondi in discesa"], ["Crampo o tensione sporca", "Riduci carico e resetta la posizione del piede"]] },
+    { type: "p", content: "Respirazione. Espira durante la flessione, inspira nella discesa controllata." },
+    { type: "link", label: "Video: Leg curl al cavo", url: "https://www.youtube.com/watch?v=bMJHUlSJksc" }
+  ]
+});
+
+Object.assign(EX["Goblet Squat"], {
+  guideDay: "G3 Leggero",
+  guide: [
+    { type: "p", content: "Il Goblet Squat allena quadricipiti e glutei ed e uno dei migliori esercizi per correggere il pattern dello squat. Il carico davanti funziona da contrappeso e ti aiuta a restare piu verticale." },
+    { type: "ul", content: ["Tieni il kettlebell o manubrio alto al petto", "Piedi larghezza spalle, punte fuori 20-30 gradi", "Gomiti vicini al corpo in partenza"] },
+    { type: "p", content: "Esecuzione. Scendi attivamente, non lasciarti cadere. Le ginocchia vanno in fuori nella direzione delle punte e i gomiti possono aiutare ad aprirle. Nel G3 il fermo in buca di 2-3 secondi e parte dell'esercizio: stabilizza la posizione piu difficile." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Talloni che si alzano", "Lavora sulla dorsiflessione e usa un piccolo rialzo se necessario"], ["Lombare che si arrotonda in basso", "Apri di piu punte e ginocchia"], ["Busto che cade avanti", "Tieni il peso piu alto al petto e usa il contrappeso"], ["Ginocchia che collassano dentro", "Cue costante: ginocchia fuori anche in risalita"]] },
+    { type: "p", content: "Respirazione. Inspira prima di scendere, trattieni leggermente nel fermo e espira nella risalita." },
+    { type: "link", label: "Video tecnica: Goblet squat", url: "https://www.youtube.com/watch?v=QrMIz4UQWDU" },
+    { type: "link", label: "Video fermo in buca", url: "https://www.youtube.com/watch?v=MeIiIdhvXT4" }
+  ]
+});
+
+Object.assign(EX["Leg Extension al Cavo"], {
+  guideDay: "G3 Leggero",
+  guide: [
+    { type: "p", content: "La Leg Extension al Cavo isola i quadricipiti senza caricare anche e glutei. Nel G3 serve a portare volume ai quad senza aggiungere altre serie di squat." },
+    { type: "ul", content: ["Cavigliera al cavo basso", "Schiena al cavo e mano al rack per stabilita", "Una gamba di appoggio, una lavora"] },
+    { type: "p", content: "Esecuzione. Estendi il ginocchio portando il piede avanti fino a gamba dritta senza iperestendere. Fermati 1 secondo in alto e torna giu in 2-3 secondi. Il femore resta fermo: si muove solo la tibia." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Busto che oscilla", "Riduci il peso e tieniti meglio al supporto"], ["Ginocchio che va avanti e indietro", "Blocca il femore: si muove solo la tibia"], ["Eccentrica troppo veloce", "Conta 3 secondi in discesa"], ["Fastidio articolare al ginocchio", "Riduci carico e ROM; se persiste, elimina l'esercizio e confrontati col PT"]] },
+    { type: "p", content: "Respirazione. Espira nell'estensione, inspira nel ritorno controllato." },
+    { type: "link", label: "Video: Leg extension al cavo", url: "https://www.youtube.com/watch?v=wNFZ9FKZBOI" }
+  ]
+});
+
+Object.assign(EX["TRX Row lento"], {
+  guideDay: "G3 Leggero",
+  guide: [
+    { type: "p", content: "Il TRX Row lento allena dorsali, romboidi, trapezio medio e deltoide posteriore con poco stress su presa e lombare. Nel G3 il carico viene sostituito da fermo isometrico ed eccentrica lenta." },
+    { type: "ul", content: ["Corpo inclinato indietro: piu sei orizzontale, piu e difficile", "Corpo in linea da testa a talloni", "Braccia tese in partenza e scapole libere di allungarsi"] },
+    { type: "p", content: "Esecuzione. Tira il petto verso le mani, porta i gomiti ai lati del corpo e tieni 2 secondi con scapole strette. Scendi in 3 secondi fino a braccia distese. Nel G3 il fermo e obbligatorio: senza pausa perdi il senso dell'esercizio." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Anche che cedono", "Stringi glutei e addome; se serve riduci l'inclinazione"], ["Tiri solo con le braccia", "Pensa: prima scapole, poi gomiti"], ["Niente pausa in alto", "Blocca 2 secondi ogni rip"], ["Discesa troppo rapida", "Conta 3 secondi completi in eccentrica"]] },
+    { type: "p", content: "Respirazione. Espira nella tirata, inspira nella discesa." },
+    { type: "link", label: "Video: TRX Row", url: "https://www.youtube.com/watch?v=VTqCOOp8FRY" }
+  ]
+});
+
 var EXERCISE_GUIDE_PLACEHOLDER_TITLE = "Scheda tecnica in preparazione.";
 var EXERCISE_GUIDE_PLACEHOLDER_SUBTITLE = "Campi setup, esecuzione, cue tecnici ed errori da compilare.";
 var EXERCISE_GUIDE_PLACEHOLDER_DEEP = "Questa scheda e stata creata come struttura pronta da compilare. I contenuti tecnici dettagliati verranno aggiunti in un secondo momento.";
+var TECHNICAL_GUIDE_PDF = "/guida-tecnica-completa-v4.pdf";
 function splitGuideText(value) {
   return String(value || "")
     .split("\n")
@@ -3043,6 +3311,7 @@ export default function App() {
   var [showStr, setShowStr] = useState(false);
   var [showGuidedSection, setShowGuidedSection] = useState(false);
   var [showPrinciples, setShowPrinciples] = useState(false);
+  var [theoryPdfOpen, setTheoryPdfOpen] = useState(false);
   var [showIntroCard, setShowIntroCard] = useState(null);
   var [showMuscleIntro, setShowMuscleIntro] = useState(null);
   var [showExIntro, setShowExIntro] = useState(null);
@@ -5828,6 +6097,36 @@ export default function App() {
     return "Tempo target 12-15 minuti totali: mobilità, attivazione, 1 giro di circuito e serie di avvicinamento.";
   }
 
+  function normalizeRichBlockSignature(block) {
+    if (!block || typeof block !== "object") return String(block || "");
+    var copy = Object.assign({}, block);
+    if (copy.url && !copy.href) copy.href = copy.url;
+    delete copy.url;
+    return JSON.stringify(copy);
+  }
+
+  function dedupeRichBlocks(blocks) {
+    if (!Array.isArray(blocks)) return blocks;
+    var seen = {};
+    return blocks.filter(function(block) {
+      var signature = normalizeRichBlockSignature(block);
+      if (seen[signature]) return false;
+      seen[signature] = true;
+      return true;
+    });
+  }
+
+  function subtractRichBlocks(blocks, alreadyShown) {
+    if (!Array.isArray(blocks)) return blocks;
+    var seen = {};
+    (alreadyShown || []).forEach(function(block) {
+      seen[normalizeRichBlockSignature(block)] = true;
+    });
+    return blocks.filter(function(block) {
+      return !seen[normalizeRichBlockSignature(block)];
+    });
+  }
+
   function getApproachAdvice(dayIndex, exName) {
     if (exName === "Squat") {
       return {
@@ -5904,7 +6203,7 @@ export default function App() {
   }
 
   function RichBlocks(props) {
-    var blocks = props.blocks;
+    var blocks = dedupeRichBlocks(props.blocks);
     var ac = props.accent || dc;
     if (!blocks || !Array.isArray(blocks)) return <DetailText text={blocks} accent={ac} soft={props.soft} />;
     return <div style={{ display: "grid", gap: 10 }}>
@@ -5966,6 +6265,14 @@ export default function App() {
               </tbody>
             </table>
           </div>;
+        }
+        if (block.type === "link") {
+          var href = block.href || block.url;
+          if (!href) return null;
+          return <a key={bi} href={href} target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, width: "fit-content", padding: "8px 10px", borderRadius: 10, background: ac + "10", border: "1px solid " + ac + "24", color: ac, fontSize: 11, fontWeight: 800, textDecoration: "none" }}>
+            <span>↗</span>
+            <span>{block.label || href}</span>
+          </a>;
         }
         return null;
       })}
@@ -8282,6 +8589,10 @@ function isNearBodyweightElasticSession(exName, sets) {
     if (!db) return null;
     var meta = exCatalogByName[exInfoOpen] || null;
     var imgs = exImgs(exInfoOpen);
+    var guideBlocks = dedupeRichBlocks(db.guide || []);
+    var hasGuide = guideBlocks && guideBlocks.length > 0;
+    var deepBlocks = dedupeRichBlocks(subtractRichBlocks(db.deep || [], guideBlocks || []));
+    var hasDeep = deepBlocks && deepBlocks.length > 0;
     return (
       <div onClick={function() { setExInfoOpen(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 250, display: "flex", alignItems: "flex-start", justifyContent: "center", padding: 16, overflowY: "auto", WebkitOverflowScrolling: "touch" }}>
         <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, padding: 20, maxWidth: 420, width: "100%", color: T.tx, maxHeight: "calc(100dvh - 32px)", overflowY: "auto", WebkitOverflowScrolling: "touch", margin: "max(12px, env(safe-area-inset-top, 0px)) 0" }}>
@@ -8299,7 +8610,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             {exerciseWorkflowEnabled && <span style={{ padding: "4px 8px", borderRadius: 999, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800 }}>{"Foto: " + meta.photoStatus}</span>}
           </div>}
           {imgs.map(function(src, ii) { return <img key={ii} src={src} style={{ width: "100%", borderRadius: 10, marginBottom: 12 }} />; })}
-          <div style={{ background: T.sb, borderRadius: 10, padding: 12, marginBottom: 10 }}>
+          {!hasGuide && <div style={{ background: T.sb, borderRadius: 10, padding: 12, marginBottom: 10 }}>
             <div style={{ fontSize: 11, fontWeight: 800, color: dc, marginBottom: 6, textTransform: "uppercase", letterSpacing: 0.6 }}>Come si esegue</div>
             <DetailText text={db.c} accent={dc} soft={true} />
             <div style={{ fontSize: 11, fontWeight: 800, color: dc, margin: "12px 0 6px", textTransform: "uppercase", letterSpacing: 0.6 }}>Posizione</div>
@@ -8308,7 +8619,16 @@ function isNearBodyweightElasticSession(exName, sets) {
             <div style={{ display: "grid", gap: 6 }}>
               {db.t.map(function(tip, ti) { return <div key={ti} style={{ display: "flex", gap: 8, alignItems: "flex-start", background: dc + "08", border: "1px solid " + dc + "12", borderRadius: 8, padding: "8px 10px" }}><span style={{ color: dc, fontSize: 11, lineHeight: 1.5 }}>→</span><span style={{ fontSize: 12, lineHeight: 1.5, color: T.sub }}>{tip}</span></div>; })}
             </div>
-          </div>
+          </div>}
+          {hasGuide && <details style={{ marginBottom: 12, borderRadius: 10, overflow: "hidden", background: T.bg }} open>
+            <summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 11, fontWeight: 800, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 6, textTransform: "uppercase", letterSpacing: 0.6 }}>
+              <span>📘</span> {db.guideDay ? ("Guida tecnica " + db.guideDay) : "Guida tecnica"}
+            </summary>
+            <div style={{ padding: "0 12px 12px" }}>
+              <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55, margin: "2px 0 10px" }}>Scheda ordinata per consulto rapido durante l'allenamento: setup, esecuzione, errori e cue principali.</div>
+              <RichBlocks blocks={guideBlocks} accent={dc} />
+            </div>
+          </details>}
           {getBreath(exInfoOpen) && <details style={{ marginBottom: 12, borderRadius: 10, overflow: "hidden", background: T.bg }}>
             <summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 11, fontWeight: 800, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 6, textTransform: "uppercase", letterSpacing: 0.6 }}>
               <span>🫁</span> Come respirare in questo esercizio
@@ -8331,12 +8651,12 @@ function isNearBodyweightElasticSession(exName, sets) {
               })}
             </div>
           </div>}
-          {db.deep && <details style={{ marginBottom: 12, borderRadius: 10, overflow: "hidden", background: T.bg }} open>
+          {hasDeep && <details style={{ marginBottom: 12, borderRadius: 10, overflow: "hidden", background: T.bg }} open={!hasGuide}>
             <summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 11, fontWeight: 800, color: dc, listStyle: "none", display: "flex", alignItems: "center", gap: 6, textTransform: "uppercase", letterSpacing: 0.6 }}>
-              <span>📖</span> Approfondimento tecnico
+              <span>📖</span> {hasGuide ? "Note aggiuntive" : "Approfondimento tecnico"}
             </summary>
             <div style={{ padding: "0 12px 12px" }}>
-              <RichBlocks blocks={db.deep} accent={dc} />
+              <RichBlocks blocks={deepBlocks} accent={dc} />
               {(exInfoOpen === "Trazioni" || exInfoOpen === "Plank" || exInfoOpen === "Push-Up" || exInfoOpen === "Ab Wheel") && <button onClick={function() { pushNavSnapshot(); setExInfoOpen("Hollow Position"); }} style={{ marginTop: 10, fontSize: 11, color: dc, fontWeight: 700, background: dc + "12", border: "1px solid " + dc + "30", borderRadius: 8, padding: "6px 12px", cursor: "pointer" }}>→ Vedi Hollow Position</button>}
             </div>
           </details>}
@@ -9092,6 +9412,23 @@ function isNearBodyweightElasticSession(exName, sets) {
                       <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.65 }}>
                         La scheda funziona anche senza modalita guidata. Parti cosi: stesso peso in tutte le serie, recupero pieno, tecnica uguale dalla prima all'ultima ripetizione. Se stai nel range ma non chiudi il numero alto, tieni lo stesso peso. Se chiudi tutte le serie al numero alto con ancora margine, la volta dopo sali. Se il suggerimento guidato non torna con quello che hai sentito davvero nella serie, conta di piu la tecnica reale che il popup.
                       </div>
+                    </div>
+                  </div>}
+                  {!(isBasics || isBeginner) && <div style={{ padding: "12px 14px 0" }}>
+                    <div style={{ background: T.sb, border: "1px solid " + T.bg, borderRadius: 12, padding: "12px 13px" }}>
+                      <div style={{ fontSize: 12, fontWeight: 800, color: dc, marginBottom: 6 }}>Guida tecnica completa PDF</div>
+                      <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.65, marginBottom: 10 }}>
+                        Versione lunga consultabile del programma tecnico completo. Puoi aprirla in una nuova scheda oppure leggerla direttamente qui sotto.
+                      </div>
+                      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: theoryPdfOpen ? 10 : 0 }}>
+                        <a href={TECHNICAL_GUIDE_PDF} target="_blank" rel="noreferrer" style={{ minHeight: 34, display: "inline-flex", alignItems: "center", justifyContent: "center", padding: "0 12px", borderRadius: 10, background: dc, color: "#fff", fontSize: 11, fontWeight: 800, textDecoration: "none" }}>Apri PDF</a>
+                        <button onClick={function(e) { e.stopPropagation(); setTheoryPdfOpen(function(prev) { return !prev; }); }} style={{ minHeight: 34, padding: "0 12px", borderRadius: 10, border: "1px solid " + dc + "30", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>
+                          {theoryPdfOpen ? "Nascondi anteprima" : "Mostra anteprima"}
+                        </button>
+                      </div>
+                      {theoryPdfOpen && <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid " + T.bg, background: "#fff" }}>
+                        <iframe title="Guida tecnica completa V4" src={TECHNICAL_GUIDE_PDF + "#view=FitH"} style={{ width: "100%", height: 680, border: "none", display: "block" }} />
+                      </div>}
                     </div>
                   </div>}
                   {shortPrinciplesList.map(function(g, gi) {
@@ -10875,6 +11212,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                         var mins = estimateExerciseMinutes(rawEx, ex);
                         return mins ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 600 }}>{"~" + mins + " min"}</span> : null;
                       })()}
+                      {!isBeginner && db && (db.guide || db.deep) ? <button onClick={function(e) { e.stopPropagation(); if (exInfoOpen !== ex.n) pushNavSnapshot(); setExInfoOpen(ex.n); }} style={{ minHeight: 24, padding: "0 8px", borderRadius: 999, border: "1px solid " + dc + "30", background: dc + "10", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}>Scheda</button> : null}
                     </div>
                     {!isBeginner && <div style={{ marginTop: 5, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                     {calibrationEnabled && calibrationNeed.needed && <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid #C6282830", borderRadius: 999, padding: "3px 8px", background: "#C6282810", color: "#C62828" }}>
