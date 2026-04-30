@@ -126,7 +126,7 @@ import img_str_OverheadLat from "./images/warmup_stretch/overhead lat stretch  (
 import img_str_WallTibialisRaises from "./images/warmup_stretch/Wall tibialis raises.gif";
 import img_str_WristStretch from "./images/warmup_stretch/wrist stretch (1).gif";
 import img_w_BandPullApart from "./images/preliminary/band pull apart.gif";
-import img_w_BandPullApartCavo from "./images/preliminary/pull apart cavo.avif";
+import img_w_BandPullApartCavo from "./images/preliminary/pull apart cavo.jpg";
 import img_Bird_Dog from "./images/preliminary/Bird-Dog.gif";
 import img_Breathe_Brace from "./images/preliminary/abdominal-bracing-hold - .jpeg";
 import img_Dead_Bug from "./images/preliminary/dead bug.gif";
