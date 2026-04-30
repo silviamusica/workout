@@ -126,6 +126,7 @@ import img_str_OverheadLat from "./images/warmup_stretch/overhead lat stretch  (
 import img_str_WallTibialisRaises from "./images/warmup_stretch/Wall tibialis raises.gif";
 import img_str_WristStretch from "./images/warmup_stretch/wrist stretch (1).gif";
 import img_w_BandPullApart from "./images/preliminary/band pull apart.gif";
+import img_w_BandPullApartCavo from "./images/preliminary/pull apart cavo.avif";
 import img_Bird_Dog from "./images/preliminary/Bird-Dog.gif";
 import img_Breathe_Brace from "./images/preliminary/abdominal-bracing-hold - .jpeg";
 import img_Dead_Bug from "./images/preliminary/dead bug.gif";
@@ -277,7 +278,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"link","label":"Video: Plank base","url":"https://www.youtube.com/watch?v=34b-sy3D9kI&pp=0gcJCdsKAYcqIYzv"},
   {"type":"link","label":"Video alternativa: Plank laterale","url":"https://www.youtube.com/watch?v=2y5DeaQVeOY"},
   {"type":"link","label":"Video alternativa: Plank su fitball","url":"https://www.youtube.com/watch?v=qxhPI3Dm-BA"}
-]}, "Squat": {"g": "Quadricipiti/Glutei/Core", "c": "Bilanciere sulle spalle, piedi larghezza spalle. Scendi al parallelo, spingi su.", "p": "Petto fuori, schiena neutra, ginocchia seguono le punte.", "t": ["Cercare il meso piede, Micheal Jackson", "Aria dalla pancia inspirando lentamente", "Sentire la linea verticale della spinta", "Fermare al parallelo, anche al livello delle ginocchia", "Co-contrarre glutei + addominali"], "lk": "https://www.youtube.com/watch?v=tr5PgWEebNA", "guideDay": "G1 Lower A", "guide": [
+]}, "Squat": {"g": "Quadricipiti/Glutei/Core", "c": "Bilanciere sulle spalle, piedi larghezza spalle. Scendi al parallelo, spingi su.", "p": "Petto fuori, schiena neutra, ginocchia seguono le punte.", "t": ["Cercare arco plantare sotto il piede", "Cercare il mesopiede, Michael Jackson", "Aria dalla pancia inspirando lentamente", "Sentire la linea verticale della spinta", "Fermare al parallelo, anche al livello delle ginocchia", "Co-contrarre glutei + addominali"], "lk": "https://www.youtube.com/watch?v=tr5PgWEebNA", "guideDay": "G1 Lower A", "guide": [
   {"type":"p","content":"Cosa allena. Quadricipiti, glutei, adduttori, femorali come stabilizzatori ed erettori spinali. Nel G1 e il fondamentale priorità assoluta."},
   {"type":"ul","content":["Piedi circa larghezza spalle, punte aperte a circa 30 gradi","Barra in low bar: appoggiata su deltoidi posteriori e spina della scapola","Gomiti indietro e leggermente in alto, sguardo fisso a terra 2-3 metri davanti"]},
   {"type":"p","content":"Discesa. Inspira profondo, Valsalva, siediti indietro e in basso. Le ginocchia vanno nella direzione delle punte e il cue dominante e ginocchia fuori. La piega dell'anca deve scendere sotto il ginocchio."},
@@ -330,7 +331,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"p","content":"Usa un supporto alto circa come il tuo ginocchio — troppo basso non da stimolo, troppo alto mette a rischio il ginocchio."},
   {"type":"ul","content":["Rimani il piu verticale possibile e spingiti verso l'alto dalla gamba sullo step","Porta anche il secondo piede sul supporto prima di scendere","Controlla la discesa: la fase eccentrica e dove avviene gran parte del lavoro muscolare","Rialzo piu alto = piu glutei; rialzo piu basso = piu quadricipiti"]},
   {"type":"p","content":"Richiede meno equilibrio rispetto agli affondi: ottimo per costruire confidenza con il lavoro su singola gamba. Aggiungi i manubri solo a forma perfetta."}
-]}, "Floor Press Manubri": {"g": "Pettorali/Tricipiti", "c": "A terra, manubri sopra. Scendi fino a gomiti a terra, spingi.", "p": "Scapole addotte.", "t": ["Pausa 1s a terra"], "lk": "https://www.youtube.com/watch?v=ON0D6MmOVDo"}, "Push-Up Declino": {"g": "Pettorali sup./Tricipiti", "c": "Push-up con piedi su panca. Scendi col petto, spingi.", "p": "Corpo in linea. Core contratto.", "t": ["Gomiti a 45 gradi"]}, "Stacco Rumeno": {"g": "Femorali/Glutei/Erettori", "c": "Bilanciere davanti, spingi bacino indietro lungo gambe. Risali.", "p": "Schiena neutra. Ginocchia poco flesse.", "t": ["Senti allungamento femorali"], "lk": "https://www.youtube.com/watch?v=sVyjYCOYyp4", "guideDay": "G1 Lower A", "guide": [
+]}, "Floor Press Manubri": {"g": "Pettorali/Tricipiti", "c": "A terra, manubri sopra. Scendi fino a gomiti a terra, spingi.", "p": "Scapole addotte.", "t": ["Pausa 1s a terra"], "lk": "https://www.youtube.com/watch?v=ON0D6MmOVDo"}, "Push-Up Declino": {"g": "Pettorali sup./Tricipiti", "c": "Push-up con piedi su panca. Scendi col petto, spingi.", "p": "Corpo in linea. Core contratto.", "t": ["Gomiti a 45 gradi"]}, "Stacco Rumeno": {"g": "Femorali/Glutei/Erettori", "c": "Bilanciere davanti, spingi bacino indietro lungo gambe. Risali.", "p": "Schiena neutra. Ginocchia poco flesse.", "t": ["Sollevare il bilanciere come per uno stacco normale", "Sporgersi dal balcone", "Stare sopra", "Petto in fuori e addominali duri", "Andare fino a meta tibia"], "lk": "https://www.youtube.com/watch?v=sVyjYCOYyp4", "guideDay": "G1 Lower A", "guide": [
   {"type":"p","content":"Cosa allena. Femorali, glutei ed erettori spinali. Nel programma e l'accessorio principale per i femorali nella loro funzione di estensori d'anca."},
   {"type":"ul","content":["Parti dal rack, non da terra","Piedi larghezza anche, presa doppia prona poco piu larga delle spalle","Ginocchia solo sbloccate: dopo lo sblocco iniziale quasi non si muovono piu"]},
   {"type":"p","content":"Esecuzione. Spingi le anche indietro e tieni la barra incollata a cosce e tibie. Scendi solo fin dove riesci a mantenere l'estensione lombare. Risali portando le anche avanti e stringendo i glutei."},
@@ -1840,14 +1841,13 @@ var DAYS_V4 = [
       { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8 passaggi per lato", cue: "Busto verticale: il movimento parte solo dalle anche.", lk: "https://www.youtube.com/watch?v=z3EhjVHBxLM" },
       { n: "Alfredson eccentrico", phase: "mobility", gearTag: "Step / Fit box", p: "10 per piede", cue: "Sali con due piedi e scendi con uno solo, lento.", lk: "https://www.youtube.com/watch?v=WjQBJPuFkHI" },
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota solo il torace: il bacino resta fermo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
-      { n: "FMS spalle", phase: "mobility", gearTag: "Corpo libero", p: "5 per lato", cue: "Descrizione in arrivo." },
       { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 per lato", cue: "Gluteo stretto 2 secondi in alto, lombare ferma.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
       { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "20 rip per lato", cue: "Bacino fermo e anti-rotazione continua per 20 ripetizioni per lato.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
       { n: "Serie avvicinamento squat", phase: "approach", img: "w_SerieAvvSquat", gearTag: "Bilanciere", p: "2 serie tecnica", cue: "Bilanciere scarico. Pausa in buca 3-5 secondi. 6 ripetizioni per serie." },
     ],
     ex: [
-      { n: "Squat", s: "5x5-6", rpe: "8-9", note: "Setup: piedi larghezza spalle, punte 15-30 gradi, mani simmetriche, gomiti giu e leggermente dietro. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper + rack", errori: "Ginocchia che collassano dentro; busto che cade avanti in risalita; talloni che si alzano; schiena che si arrotonda in buca" },
-      { n: "Stacco Rumeno", s: "5x10-12", rpe: "8-9", note: "Accessorio femorali. Setup: piedi larghezza anche, ginocchia appena sbloccate, mani poco fuori cosce. Anca indietro e bilanciere vicino alle gambe. Alternativa: manubri o cable pull-through.", rec: "90s-2 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata; ginocchia troppo flesse; carico lontano dal corpo; anca che scende invece di andare indietro" },
+      { n: "Squat", s: "5x5-6", rpe: "8-9", note: "Setup: piedi larghezza spalle, punte 15-30 gradi, arco plantare attivo e peso sul mesopiede. Mani simmetriche, gomiti giu e leggermente dietro. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper + rack", errori: "Ginocchia che collassano dentro; busto che cade avanti in risalita; talloni che si alzano; schiena che si arrotonda in buca" },
+      { n: "Stacco Rumeno", s: "5x10-12", rpe: "8-9", note: "1) Sollevare il bilanciere come per uno stacco normale. 2) Sporgersi dal balcone. 3) Stare sopra. 4) Petto in fuori e addominali duri. 5) Andare fino a meta tibia.", rec: "90s-2 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata; ginocchia troppo flesse; carico lontano dal corpo; anca che scende invece di andare indietro" },
       { n: "Glute Bridge Bilanciere", s: "4x10-12", rpe: "8-9", note: "Schiena a terra, bilanciere sulle anche (pad o asciugamano). Spingi il bacino in alto fino a estensione completa. Stringi i glutei 1s in alto. Tibia quasi verticale in cima.", rec: "90s", gear: "Bilanciere + bumper (+ pad o asciugamano)", errori: "Iperestendere la lombare in alto; piedi troppo lontani (femorali rubano lavoro ai glutei); non completare l'estensione in alto" },
       { n: "Leg Curl al Cavo", s: "4x10-12", rpe: "8-9", note: "Setup: cavigliera alla caviglia, cavo basso. Prona a terra o in piedi. Fletti il ginocchio portando il tallone verso il gluteo. Eccentrica 2-3 secondi. Alternativa piu avanzata: Nordic Curl assistito con elastico.", rec: "90s-2 min", gear: "Cavo basso + cavigliera", errori: "Slancio col bacino; eccentrica troppo veloce; lombare che si inarca" },
       { n: "Ab Wheel", s: "4x8-10", rpe: "8", note: "Dalle ginocchia. Costole giu e glutei attivi per tutta la serie. Tutte le serie sono di lavoro. Alternativa: TRX fallout o fitball rollout.", rec: "90s", gear: "Ab wheel", errori: "Lombare che si inarca; anche che non si estendono; range troppo corto" },
@@ -1865,7 +1865,7 @@ var DAYS_V4 = [
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota solo il torace: il bacino resta fermo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
       { n: "FMS spalle", phase: "mobility", gearTag: "Corpo libero", p: "5 per lato", cue: "Descrizione in arrivo." },
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "12 per gamba x2", cue: "Serve anche qui per appoggio e linea stabile: porta avanti i fianchi, non le spalle.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
-      { n: "Band Pull-Apart con elastico", phase: "activation", img: "w_BandPullApart", gearTag: "Elastico", p: "15 rip", cue: "Scapole che si avvicinano alla fine del gesto.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
+      { n: "Band Pull-Apart al cavo", phase: "activation", gearTag: "Cavo", p: "15 rip", cue: "Scapole che si avvicinano alla fine del gesto.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
       { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "20 rip per lato", cue: "Bacino fermo e anti-rotazione vera per 20 ripetizioni per lato.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
       { n: "Serie avvicinamento trazioni prone", phase: "approach", img: "Trazioni", gearTag: "Sbarra + elastico", p: "2-3 mini-serie", cue: "Mini-serie progressive presa prone con elastico per entrare nella tirata senza stancarti." },
     ],
@@ -1973,7 +1973,7 @@ var DAYS_V4 = [
       { n: "FMS spalle", phase: "mobility", gearTag: "Corpo libero", p: "5 per lato", cue: "Descrizione in arrivo." },
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "12 per gamba x2", cue: "Anche qui serve una base stabile da terra: avanza coi fianchi, non con le spalle.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
       { n: "Scapular Pull-Up", phase: "activation", img: "w_SospensioneAttivaSbarra", gearTag: "Sbarra", p: "5 rip", cue: "Depressione scapolare netta, braccia tese.", lk: "https://www.youtube.com/watch?v=fTbd3q-vwqU" },
-      { n: "Band Pull-Apart con elastico", phase: "activation", img: "w_BandPullApart", gearTag: "Elastico", p: "15 rip", cue: "Scapole addotte in fondo, spalle basse.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
+      { n: "Band Pull-Apart al cavo", phase: "activation", gearTag: "Cavo", p: "15 rip", cue: "Scapole addotte in fondo, spalle basse.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
       { n: "Serie avvicinamento military press", phase: "approach", img: "w_MilitaryPress", gearTag: "Bilanciere", p: "2-3 mini-serie", cue: "Bilanciere leggero e progressivo per entrare nel gesto fresco." },
     ],
     ex: [
@@ -2082,7 +2082,7 @@ var DAYS_BEGINNER = [
     warmup: [
       { n: "Jumping jacks", img: "w_JumpingJacks", d: "2-3 minuti a ritmo leggero per entrare nella seduta.", tm: 180 },
       { n: "Good Morning senza peso", img: "w_GoodMorningSenzaPeso", d: "10 ripetizioni lente. Focus: sedere indietro, schiena neutra." },
-      { n: "Band Pull-Apart con elastico", img: "w_BandPullApart", d: "2x15. Elastico leggero, braccia tese davanti al petto. Apri fino al petto e senti le scapole." },
+      { n: "Band Pull-Apart al cavo", img: "w_BandPullApart", d: "2x15. Cavo regolato a media altezza, braccia tese davanti al petto. Apri fino al petto e senti le scapole." },
       { n: "Serie avvicinamento stacco rumeno", img: "w_SerieAvvStacco", d: "1-2 serie leggere e progressive del primo esercizio del giorno. Devono preparare il pattern, non affaticarti.", gear: "Manubri o bilanciere" },
     ],
     ex: [
@@ -2464,6 +2464,7 @@ var PRINCIPLES = [
 
 var EX_IMG = {
   "Band Pull-Apart con elastico": img_w_BandPullApart,
+  "Band Pull-Apart al cavo": img_w_BandPullApartCavo,
   "Band Pull-Apart con rotazione esterna": img_w_BandPullApart,
   "Bird Dog": img_Bird_Dog,
   "Breathing + Brace supino": img_Breathe_Brace,
