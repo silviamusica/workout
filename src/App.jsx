@@ -1891,6 +1891,7 @@ var DAYS_V4 = [
       { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8 passaggi per lato", cue: "Busto verticale: il movimento parte dalle anche." },
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota il torace senza muovere il bacino." },
       { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 rip per lato", cue: "Gluteo forte in alto, lombare ferma." },
+      { n: "Band Pull-Apart con elastico", phase: "activation", gearTag: "Elastico leggero", p: "15 rip", cue: "Braccia tese, scapole addotte in fondo, spalle basse." },
     ],
     lightIntro: "Non e un giorno di allenamento pesante. E volume complementare a bassa intensita organizzato in 4 superset automatici: deltoide laterale, deltoide posteriore, gluteo medio, quadricipiti, dorsali/scapole, petto e femorali. Niente coach attivo, niente RIR e nessuna decisione finale. Poi il protocollo anca completo.",
     lightWarmup: [
@@ -1898,6 +1899,7 @@ var DAYS_V4 = [
       { n: "90/90 hip mobility", p: "8 passaggi/lato" },
       { n: "T-spine rotation in quadrupedia", p: "8 rip/lato" },
       { n: "Ponte monopodalico", p: "6 rip/lato" },
+      { n: "Band Pull-Apart con elastico", p: "15 rip · braccia tese, scapole addotte" },
     ],
     ex: [
       { n: "Alzate Laterali", s: "3x15-20", rpe: "8", note: "Manubri leggeri. Alza fino a parallelo al pavimento. Lento: 2s su, 2s giu. Spalle basse, non alzare i trapezi.", rec: "30-45s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
@@ -2838,7 +2840,7 @@ function getCalibrationType(exName, serie) {
   if (usesElasticScale(exName)) return "band-assist";
   if (exName === "Band Pull-Apart con rotazione esterna" || exName === "TRX Row lento") return "bodyweight";
   if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || (serie || "").toLowerCase().indexOf("max") >= 0) return "bodyweight";
-  if (exName.indexOf("Cavo") >= 0 || exName === "Woodchop" || exName === "Pulley") return "cable";
+  if (exName.indexOf("Cavo") >= 0 || exName.indexOf("cavo") >= 0 || exName === "Woodchop" || exName === "Pulley") return "cable";
   if (exName === "Squat Bulgaro" || exName === "Affondi" || exName === "Curl Bicipiti") return "dumbbell";
   return "weighted";
 }
@@ -7382,7 +7384,7 @@ function isNearBodyweightElasticSession(exName, sets) {
   function getGuidedIncrementInfo(exName) {
     if (usesElasticScale(exName)) return { kind: "tick", amount: 1, label: "+1 tacca elastico" };
     if (exName === "Nordic Curl") return { kind: "assist", amount: 1, label: "meno assistenza o piu ROM" };
-    if (exName.indexOf("Cavo") >= 0 || exName === "Face Pull" || exName === "Woodchop" || exName === "Tricipiti Cavo" || exName === "Pulley" || exName === "Lat Machine") {
+    if (exName.indexOf("Cavo") >= 0 || exName.indexOf("cavo") >= 0 || exName === "Face Pull" || exName === "Woodchop" || exName === "Tricipiti Cavo" || exName === "Pulley" || exName === "Lat Machine") {
       return { kind: "step", amount: 1, label: "+1 scatto cavo" };
     }
     if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || exName === "Push-Up" || exName === "Push-Up su rialzo" || exName === "Dip alle Parallele" || exName === "Fitball Hamstring Curl" || exName === "Ab Wheel" || exName === "Band Pull-Apart con rotazione esterna" || exName === "TRX Row lento") {
