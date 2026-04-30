@@ -399,7 +399,7 @@ Obiettivo:
 
 Lettura corretta:
 - `Abduzione laterale IR` = esercizio accessorio di gluteo medio attivo in G3 e G4
-- in G3 resta a `2x20/lato`, in G4 a `3x15-20/lato`
+- in G3 resta a `3x20/lato`, in G4 a `3x15-20/lato`
 - non va confuso con il Fire Hydrant classico: qui l'intrarotazione serve a caricare di più le fibre posteriori del gluteo medio
 - progressione via ripetizioni o aggiunta di carico alla caviglia
 
@@ -506,7 +506,7 @@ Questi esercizi appartengono al G3 (`light: true`). La logica coach NON si attiv
 
 - **Pattern**: rotazione esterna anca in decubito laterale
 - **Ruolo nel G3**: alternativa all'Abduzione laterale IR per gluteo medio, stesso distretto ma angolo diverso
-- **Serie/RPE/recupero**: 2x20/lato, RPE 6-7, 30s
+- **Serie/RPE/recupero**: 3x20/lato, RPE 6-7, 30s
 - **Classificazione coach**: non rilevante nel G3 light
 - **Calibrazione**: non richiesta nel G3 light
 - **Note tecniche**: ginocchia a 90 gradi, piedi uniti, apri il ginocchio superiore senza ruotare il bacino indietro

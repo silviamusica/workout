@@ -279,12 +279,12 @@ Il Giorno 3 ha `light: true`. Non è cardio, non è pesi, non è riposo.
 |---|---|---|---|---|
 | 1 | Alzate Laterali | 3x15-20 | 8 | 30-45s |
 | 2 | Band Pull-Apart con rotazione esterna | 3x20 | 6-7 | 30s |
-| 3 | Abduzione laterale IR | 2x20/lato | 6-7 | 30s |
+| 3 | Abduzione laterale IR | 3x20/lato | 6-7 | 30s |
 | 4 | Goblet Squat | 3x12 | 8 | 45s |
-| 5 | Leg Extension al Cavo | 2x12-15 | 7 | 30s |
-| 6 | TRX Row lento | 2x12 | 6-7 | 30s |
-| 7 | Push-Up | 2x10 | 7 | 30s |
-| 8 | Leg Curl al Cavo | 2x12 | 7 | 30s |
+| 5 | Leg Extension al Cavo | 3x12-15 | 7 | 30s |
+| 6 | TRX Row lento | 3x12 | 6-7 | 30s |
+| 7 | Push-Up | 3x10 | 7 | 30s |
+| 8 | Leg Curl al Cavo | 3x12 | 7 | 30s |
 
 ### Regole
 
@@ -658,7 +658,7 @@ Nel G3 leggero e nel G4 l'accessorio attivo è `Abduzione laterale IR`.
 
 | Esercizio | Serie | RPE | Recupero | Note |
 |---|---|---|---|---|
-| Abduzione laterale IR | 2x20/lato (G3) / 3x15-20/lato (G4) | 6-7 / 8 | 30s / 60s | fianco a terra, punta in giu, bacino fermo |
+| Abduzione laterale IR | 3x20/lato (G3) / 3x15-20/lato (G4) | 6-7 / 8 | 30s / 60s | fianco a terra, punta in giu, bacino fermo |
 
 Nel G3 il toggle persistente verso `Clamshell` resta attivo. Nel G4 questo blocco resta fisso su `Abduzione laterale IR`.
 

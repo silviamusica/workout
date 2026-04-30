@@ -1880,7 +1880,7 @@ var DAYS_V4 = [
       { n: "Alzate Laterali", s: "2x15", rpe: "8", note: "Manubri leggeri. Due serie pulite, fuori dal superset. Alza fino a parallelo, pausa 1s in alto, niente slancio.", rec: "30s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
     ], str: ["Doorway Pec Stretch","Overhead Lat Stretch","Cross-Body Shoulder Stretch","Wrist Flexor/Extensor Stretch"], hipBonus: true },
 
-  { name: "Giorno 3", focus: "Leggero", dayLabel: "Mer", light: true, tEst: 29,
+  { name: "Giorno 3", focus: "Leggero", dayLabel: "Mer", light: true, tEst: 35,
     intro: {
       attrezzi: ["Manubri leggeri", "TRX", "Cavo basso + cavigliera", "Tappetino"],
       muscoli: ["Deltoide laterale (Alzate Laterali)", "Quadricipiti / Glutei (Goblet Squat)", "Deltoide posteriore / cuffia (Band Pull-Apart)", "Gluteo medio (Abduzione laterale IR)", "Quadricipiti in isolamento (Leg Extension al Cavo)", "Dorsali / scapole (TRX Row lento)", "Petto (Push-Up)", "Femorali in flessione ginocchio (Leg Curl al Cavo)"],
@@ -1907,11 +1907,11 @@ var DAYS_V4 = [
       { n: "Alzate Laterali", s: "3x15-20", rpe: "8", note: "Manubri leggeri. Alza fino a parallelo al pavimento. Lento: 2s su, 2s giu. Spalle basse, non alzare i trapezi.", rec: "30-45s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
       { n: "Goblet Squat", s: "3x12", rpe: "8", note: "Manubrio al petto. Scendi parallelo. I gomiti spingono le ginocchia verso fuori. Qui sale a RPE 8 per rendere produttive le 3 serie. Alternativa: corpo libero squat.", rec: "45s", gear: "Manubrio leggero", errori: "Busto che cade avanti; schiena arrotondata; ginocchia che collassano" },
       { n: "Band Pull-Apart al cavo", s: "3x20", rpe: "6-7", note: "Volume leggero extra. Cavo regolato a media altezza, pausa 1s a fine apertura con mani ruotate fuori. Non tirare con forza.", rec: "30s", gear: "Cavo", errori: "Tirare con forza; gomiti piegati; nessuna rotazione esterna finale" },
-      { n: "Abduzione laterale IR", s: "2x20 per lato", rpe: "6-7", note: "Sdraiata sul fianco o in quadrupedia. Gamba sopra leggermente dietro la linea del corpo, ginocchio piegato a 90 gradi e punta verso il pavimento. Range piccolo, bacino fermo, pausa 1s in alto.", rec: "30s", gear: "Corpo libero", errori: "Bacino che ruota indietro; piede che si apre verso l'alto; slancio", alt: { n: "Clamshell", s: "2x20 per lato", rpe: "6-7", note: "Ginocchia piegate a 90 gradi, piedi uniti. Apri il ginocchio superiore senza ruotare il bacino indietro. Pausa 1s in apertura.", rec: "30s", gear: "Corpo libero", errori: "Bacino che ruota; piedi che si separano; slancio" } },
-      { n: "Leg Curl al Cavo", s: "2x12", rpe: "7", note: "Volume leggero per i femorali in flessione di ginocchio. Eccentrica 2-3 secondi, nessuno slancio, fermati larga.", rec: "30s", gear: "Cavo basso + cavigliera", errori: "Slancio col bacino; eccentrica troppo veloce; lombare che si inarca" },
-      { n: "Leg Extension al Cavo", s: "2x12-15", rpe: "7", note: "Cavigliera al cavo basso. Estendi il ginocchio in controllo, fermo breve in chiusura e ritorno lento. Volume tecnico leggero per i quadricipiti.", rec: "30s", gear: "Cavo basso + cavigliera", errori: "Slancio con l'anca; chiusura sporca; ritorno troppo veloce" },
-      { n: "TRX Row lento", s: "2x12", rpe: "6-7", note: "Fermo 2s con scapole strette. Eccentrica 3s. Lavora i dorsali senza tassare la presa. Riduci l'inclinazione se il corpo non resta in linea.", rec: "30s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
-      { n: "Push-Up", s: "2x10", rpe: "7", note: "Volume leggero per il petto. Tecnica perfetta, non a fatica: fermati con 3-4 rip in riserva. Corpo in linea e gomiti a 45 gradi.", rec: "30s", gear: "Corpo libero", errori: "Anche che cedono; gomiti troppo aperti; ROM accorciato" },
+      { n: "Abduzione laterale IR", s: "3x20 per lato", rpe: "6-7", note: "Sdraiata sul fianco o in quadrupedia. Gamba sopra leggermente dietro la linea del corpo, ginocchio piegato a 90 gradi e punta verso il pavimento. Range piccolo, bacino fermo, pausa 1s in alto.", rec: "30s", gear: "Corpo libero", errori: "Bacino che ruota indietro; piede che si apre verso l'alto; slancio", alt: { n: "Clamshell", s: "3x20 per lato", rpe: "6-7", note: "Ginocchia piegate a 90 gradi, piedi uniti. Apri il ginocchio superiore senza ruotare il bacino indietro. Pausa 1s in apertura.", rec: "30s", gear: "Corpo libero", errori: "Bacino che ruota; piedi che si separano; slancio" } },
+      { n: "Leg Curl al Cavo", s: "3x12", rpe: "7", note: "Volume leggero per i femorali in flessione di ginocchio. Eccentrica 2-3 secondi, nessuno slancio, fermati larga.", rec: "30s", gear: "Cavo basso + cavigliera", errori: "Slancio col bacino; eccentrica troppo veloce; lombare che si inarca" },
+      { n: "Leg Extension al Cavo", s: "3x12-15", rpe: "7", note: "Cavigliera al cavo basso. Estendi il ginocchio in controllo, fermo breve in chiusura e ritorno lento. Volume tecnico leggero per i quadricipiti.", rec: "30s", gear: "Cavo basso + cavigliera", errori: "Slancio con l'anca; chiusura sporca; ritorno troppo veloce" },
+      { n: "TRX Row lento", s: "3x12", rpe: "6-7", note: "Fermo 2s con scapole strette. Eccentrica 3s. Lavora i dorsali senza tassare la presa. Riduci l'inclinazione se il corpo non resta in linea.", rec: "30s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
+      { n: "Push-Up", s: "3x10", rpe: "7", note: "Volume leggero per il petto. Tecnica perfetta, non a fatica: fermati con 3-4 rip in riserva. Corpo in linea e gomiti a 45 gradi.", rec: "30s", gear: "Corpo libero", errori: "Anche che cedono; gomiti troppo aperti; ROM accorciato" },
     ],
     str: ["Half Kneeling Lunge","Half Kneeling Lunge + Reach","Couch Stretch","Figure-Four Supino","Happy Baby","Leg Cradle Supino","Supported Low Lunge"],
     lightHipProtocol: [
@@ -3201,7 +3201,7 @@ var FAST_MODE_SUPERSETS = {
   "Giorno 2": [{ a: "Band Pull-Apart con rotazione esterna", b: "Curl Bicipiti", rest: 60 }],
   "Giorno 3": [
     { a: "Alzate Laterali", b: "Goblet Squat", rest: 45 },
-    { a: "Band Pull-Apart con rotazione esterna", b: "Abduzione laterale IR", rest: 30, note: "3a serie Band Pull-Apart da sola" },
+    { a: "Band Pull-Apart con rotazione esterna", b: "Abduzione laterale IR", rest: 30 },
     { a: "Leg Curl al Cavo", b: "Leg Extension al Cavo", rest: 30 },
     { a: "TRX Row lento", b: "Push-Up", rest: 30 }
   ],
@@ -4733,7 +4733,7 @@ export default function App() {
         </div>}
         <div style={{ padding: "12px 14px 14px" }}>
           <div style={{ fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>
-            {supersetPairs.length ? "Esercizi — superset automatici · ~30 min" : "Esercizi — RPE 6-8 · 30 min"}
+            {supersetPairs.length ? "Esercizi — superset automatici · ~35 min" : "Esercizi — RPE 6-8 · 30 min"}
           </div>
           {supersetPairs.length ? <div style={{ display: "grid", gap: 10 }}>
             {supersetPairs.map(function(pair, i) {

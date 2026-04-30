@@ -104,7 +104,7 @@ Ogni esercizio attivo con recupero ≥60s deve avere un filler:
 - G1: Leg Curl al Cavo + Ab Wheel (rest 60s)
 - G2: Band Pull-Apart con rotazione esterna + Curl Bicipiti (rest 60s)
 - G3: Alzate Laterali + Goblet Squat (rest 45s)
-- G3: Band Pull-Apart con rotazione esterna + Abduzione laterale IR (rest 30s, 3a serie Band da sola)
+- G3: Band Pull-Apart con rotazione esterna + Abduzione laterale IR (rest 30s)
 - G3: Leg Curl al Cavo + Leg Extension al Cavo (rest 30s)
 - G3: TRX Row lento + Push-Up (rest 30s)
 - G4: Hyperextension + Abduzione laterale IR (rest 60s)
