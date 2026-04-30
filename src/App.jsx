@@ -2466,6 +2466,7 @@ var EX_IMG = {
   "Band Pull-Apart con elastico": img_w_BandPullApart,
   "Band Pull-Apart al cavo": img_w_BandPullApartCavo,
   "Band Pull-Apart con rotazione esterna": img_w_BandPullApart,
+  "Band Pull-Apart al cavo con rotazione esterna": img_w_BandPullApart,
   "Bird Dog": img_Bird_Dog,
   "Breathing + Brace supino": img_Breathe_Brace,
   "Dead Bug": img_Dead_Bug,
