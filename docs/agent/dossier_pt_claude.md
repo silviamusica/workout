@@ -303,6 +303,8 @@ Superset attivi nelle schede:
 - G4: Hyperextension + Abduzione laterale IR
 - G5: Push-Up + Woodchop
 
+Nota asset G3: `Leg Extension al Cavo` ha ora foto dedicata in `src/images/exercises/standing-cable-leg-extension.jpeg`.
+
 Nota: il G3 Leggero NON entra nella logica AM/PM split e non alimenta i Progressi fondamentali. Però la sua card usa superset automatici di default per comprimere i tempi.
 
 ### Cardio programmato

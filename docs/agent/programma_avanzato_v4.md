@@ -488,6 +488,7 @@ Questo giorno colma tre lacune del programma:
 | 8 | Push-Up | 2x10 | 7 | 30s | Superset D con TRX Row lento |
 
 Nel G3 l'esercizio base resta `Abduzione laterale IR`, con toggle persistente verso `Clamshell`.
+La `Leg Extension al Cavo` ora ha asset foto dedicato in `src/images/exercises/standing-cable-leg-extension.jpeg`.
 
 **Superset automatici G3**
 
