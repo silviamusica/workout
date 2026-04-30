@@ -189,6 +189,7 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 
 Nel G3 l'esercizio base è **Abduzione laterale IR** e il toggle alternativo resta **Clamshell**. Nel controllo agente il riferimento principale resta Abduzione laterale IR.
 La **Leg Extension al Cavo** usa ora la foto dedicata `src/images/exercises/standing-cable-leg-extension.jpeg`.
+Il parser serie riconosce anche le entry `per lato`, quindi il completamento del G3 attiva correttamente l'export automatico al salvataggio dell'ultima serie.
 
 ### Superset automatici G3
 

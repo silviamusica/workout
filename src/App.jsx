@@ -5670,7 +5670,6 @@ export default function App() {
     var spec = parseProgressSpec(exDef.s);
     var nextEntry = getLog(exDef.n, pendingAutoAdvance.dayIdx);
     var nextSetIndex = getFirstIncompleteSetIndex(nextEntry, spec && spec.sets ? spec.sets : 1);
-    var suggested = getSuggestedSetForExercise(exDef.n, nextSetIndex);
     setOpenEx(pendingAutoAdvance.nextIndex);
     setShowExSection(true);
     setShowIntro(false);
@@ -5680,10 +5679,10 @@ export default function App() {
       next[pendingAutoAdvance.nextIndex] = 0;
       return next;
     });
-    setEditing(pendingAutoAdvance.nextIndex + "-" + nextSetIndex);
-    setTmpW(suggested.w);
-    setTmpR(suggested.r);
-    setTmpRir(suggested.rir || "");
+    setEditing(null);
+    setTmpW("");
+    setTmpR("");
+    setTmpRir("");
     setPendingAutoAdvance(null);
     setTimerFlowInfo(null);
     requestAnimationFrame(function() {
@@ -8268,7 +8267,7 @@ function isNearBodyweightElasticSession(exName, sets) {
   }
   function parseProgressSpec(str) {
     if (!str) return null;
-    var clean = str.toLowerCase().replace(/\s+/g, "").replace(/pergamba/g, "");
+    var clean = str.toLowerCase().replace(/\s+/g, "").replace(/pergamba/g, "").replace(/perlato/g, "");
     var m = clean.match(/^(\d+)[xX](.+)$/);
     if (!m) return null;
     var sets = parseInt(m[1]) || 0;
@@ -11494,12 +11493,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                                           exitWorkoutSession("completed");
                                         }
                                       } else {
-                                        setTimeout(function() {
-                                          setEditing(i + "-" + (si + 1));
-                                          setTmpW("");
-                                          setTmpR("");
-                                          setTmpRir("");
-                                        }, 220);
+                                        setEditing(null);
+                                        setTmpW("");
+                                        setTmpR("");
+                                        setTmpRir("");
                                       }
                                     }} style={{ flex: 1, minHeight: 42, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 14, cursor: "pointer", fontWeight: 800, touchAction: "manipulation" }}>Salva ✓</button>
                                     <button onClick={function(e) { e.stopPropagation(); setEditing(null); setTmpW(""); setTmpR(""); setTmpRir(""); }} style={{ minWidth: 84, minHeight: 42, background: T.bg, color: T.sub, border: "none", borderRadius: 8, fontSize: 13, cursor: "pointer", fontWeight: 700, touchAction: "manipulation" }}>Annulla</button>

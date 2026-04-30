@@ -296,6 +296,7 @@ Il Giorno 3 ha `light: true`. Non è cardio, non è pesi, non è riposo.
 - Ha 4 superset automatici sempre visibili nella card light; non usa il toggle formato dei giorni pesi
 - Protocollo anca completo (7 posizioni, 8-10 min) dopo gli esercizi
 - Abduzione laterale IR ha alternativa Clamshell solo nel G3; la scelta resta persistente in `localStorage` con chiave `wt-exercise-alt-mode`
+- Fix 2026-04-30: il parser serie riconosce anche le stringhe `per lato`, quindi l'ultima serie del G3 attiva correttamente l'export automatico
 
 ### Classificazione esercizi G3 per il coach (se mai interrogato)
 

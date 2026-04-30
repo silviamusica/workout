@@ -304,6 +304,7 @@ Superset attivi nelle schede:
 - G5: Push-Up + Woodchop
 
 Nota asset G3: `Leg Extension al Cavo` ha ora foto dedicata in `src/images/exercises/standing-cable-leg-extension.jpeg`.
+Nota tecnica G3: il parser serie ora riconosce anche le stringhe `per lato`, quindi l'ultima serie del giorno leggero chiude correttamente il backup/export automatico.
 
 Nota: il G3 Leggero NON entra nella logica AM/PM split e non alimenta i Progressi fondamentali. Però la sua card usa superset automatici di default per comprimere i tempi.
 
