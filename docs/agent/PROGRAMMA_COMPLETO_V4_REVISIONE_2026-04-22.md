@@ -9,7 +9,7 @@
 |---|---|---|---|---|
 | **Lunedì** | G1 | Pesi — Lower A | Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel | ~65-70 min |
 | **Martedì** | G2 | Pesi — Upper A | Trazioni, Panca, Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali | ~68-74 min |
-| **Mercoledì** | G3 | Leggero | Alzate Laterali, Goblet Squat, Band Pull-Apart, Abduzione laterale IR, Leg Extension al Cavo, TRX Row, Push-Up, Leg Curl al Cavo + Protocollo anca | ~29-30 min |
+| **Mercoledì** | G3 | Leggero | Alzate Laterali, Goblet Squat, Band Pull-Apart, Abduzione laterale IR, Leg Curl al Cavo, Leg Extension al Cavo, TRX Row, Push-Up + Protocollo anca | ~29-30 min |
 | **Giovedì** | Cardio | Cardio programmato | Corsa 30 / HIIT upper+core / Corsa lunga / Rucking + Mobilità | 30-60 min |
 | **Venerdì** | G4 | Pesi — Lower B | Stacco da Terra, Bulgarian Split Squat, Hyperextension, Abduzione laterale IR | ~57-62 min |
 | **Sabato** | G5 | Pesi — Upper B | T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop, Alzate Laterali | ~69-75 min |
@@ -182,10 +182,10 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 | 2 | **Goblet Squat** | 3 | 12 | 8 | 45s | Superset A con Alzate Laterali |
 | 3 | **Band Pull-Apart con rotazione esterna** | 3 | 20 | 6-7 | 30s | Superset B con Abduzione laterale IR. 3a serie da sola |
 | 4 | **Abduzione laterale IR** | 2 | 20/lato | 6-7 | 30s | Superset B con Band Pull-Apart |
-| 5 | **Leg Extension al Cavo** | 2 | 12-15 | 7 | 30s | Superset C con TRX Row lento |
-| 6 | **TRX Row lento** | 2 | 12 | 6-7 | 30s | Superset C con Leg Extension al Cavo |
-| 7 | **Push-Up** | 2 | 10 | 7 | 30s | Superset D con Leg Curl al Cavo |
-| 8 | **Leg Curl al Cavo** | 2 | 12 | 7 | 30s | Superset D con Push-Up |
+| 5 | **Leg Curl al Cavo** | 2 | 12 | 7 | 30s | Superset C con Leg Extension al Cavo |
+| 6 | **Leg Extension al Cavo** | 2 | 12-15 | 7 | 30s | Superset C con Leg Curl al Cavo |
+| 7 | **TRX Row lento** | 2 | 12 | 6-7 | 30s | Superset D con Push-Up |
+| 8 | **Push-Up** | 2 | 10 | 7 | 30s | Superset D con TRX Row lento |
 
 Nel G3 l'esercizio base è **Abduzione laterale IR** e il toggle alternativo resta **Clamshell**. Nel controllo agente il riferimento principale resta Abduzione laterale IR.
 
@@ -193,8 +193,8 @@ Nel G3 l'esercizio base è **Abduzione laterale IR** e il toggle alternativo res
 
 - **Superset A**: Alzate Laterali → Goblet Squat → `45s`
 - **Superset B**: Band Pull-Apart con rotazione esterna → Abduzione laterale IR → `30s`, poi 1 serie Band Pull-Apart da sola
-- **Superset C**: Leg Extension al Cavo → TRX Row lento → `30s`
-- **Superset D**: Push-Up → Leg Curl al Cavo → `30s`
+- **Superset C**: Leg Curl al Cavo → Leg Extension al Cavo → `30s`
+- **Superset D**: TRX Row lento → Push-Up → `30s`
 
 ### PROTOCOLLO ANCA COMPLETO (8-10 min)
 

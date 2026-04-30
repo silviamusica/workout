@@ -482,10 +482,10 @@ Questo giorno colma tre lacune del programma:
 | 2 | Goblet Squat | 3x12 | 8 | 45s | Superset A con Alzate Laterali |
 | 3 | Band Pull-Apart con rotazione esterna | 3x20 | 6-7 | 30s | Superset B con Abduzione laterale IR. 3a serie da sola |
 | 4 | Abduzione laterale IR | 2x20/lato | 6-7 | 30s | Superset B con Band Pull-Apart |
-| 5 | Leg Extension al Cavo | 2x12-15 | 7 | 30s | Superset C con TRX Row lento |
-| 6 | TRX Row lento | 2x12 | 6-7 | 30s | Superset C con Leg Extension al Cavo |
-| 7 | Push-Up | 2x10 | 7 | 30s | Superset D con Leg Curl al Cavo |
-| 8 | Leg Curl al Cavo | 2x12 | 7 | 30s | Superset D con Push-Up |
+| 5 | Leg Curl al Cavo | 2x12 | 7 | 30s | Superset C con Leg Extension al Cavo |
+| 6 | Leg Extension al Cavo | 2x12-15 | 7 | 30s | Superset C con Leg Curl al Cavo |
+| 7 | TRX Row lento | 2x12 | 6-7 | 30s | Superset D con Push-Up |
+| 8 | Push-Up | 2x10 | 7 | 30s | Superset D con TRX Row lento |
 
 Nel G3 l'esercizio base resta `Abduzione laterale IR`, con toggle persistente verso `Clamshell`.
 
@@ -493,8 +493,8 @@ Nel G3 l'esercizio base resta `Abduzione laterale IR`, con toggle persistente ve
 
 - Superset A: `Alzate Laterali + Goblet Squat` × 3 giri, recupero `45s`
 - Superset B: `Band Pull-Apart con rotazione esterna + Abduzione laterale IR` × 2 giri, poi `1` serie Band Pull-Apart da sola, recupero `30s`
-- Superset C: `Leg Extension al Cavo + TRX Row lento` × 2 giri, recupero `30s`
-- Superset D: `Push-Up + Leg Curl al Cavo` × 2 giri, recupero `30s`
+- Superset C: `Leg Curl al Cavo + Leg Extension al Cavo` × 2 giri, recupero `30s`
+- Superset D: `TRX Row lento + Push-Up` × 2 giri, recupero `30s`
 
 **Protocollo anca completo** (8-10 minuti)
 

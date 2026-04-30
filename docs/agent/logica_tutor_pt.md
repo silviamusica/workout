@@ -623,8 +623,8 @@ L'app offre tre formati per ogni giorno pesi: sessione unica, split AM/PM, super
 | G2 | Band Pull-Apart con rotazione esterna | Curl Bicipiti | 60s |
 | G3 | Alzate Laterali | Goblet Squat | 45s |
 | G3 | Band Pull-Apart con rotazione esterna | Abduzione laterale IR | 30s |
-| G3 | Leg Extension al Cavo | TRX Row lento | 30s |
-| G3 | Push-Up | Leg Curl al Cavo | 30s |
+| G3 | Leg Curl al Cavo | Leg Extension al Cavo | 30s |
+| G3 | TRX Row lento | Push-Up | 30s |
 | G4 | Hyperextension | Abduzione laterale IR | 60s |
 | G5 | Push-Up | Woodchop | 45s |
 
