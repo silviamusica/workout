@@ -11243,6 +11243,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                       var cnKey = "ex__" + ex.n;
                       var coachPhotoKey = getCoachNotePhotoKey(ex.n);
                       var blockDraftKey = "block__" + ex.n;
+                      var blockPhotoDraftKey = "block_photo__" + ex.n;
                       var savedTips = coachNotes[tipsKey] || (db && db.t) || [];
                       var savedNote = coachNotes[cnKey] || "";
                       var savedPhotos = normalizeExerciseNotePhotos(coachNotes[coachPhotoKey]);
@@ -11250,10 +11251,11 @@ function isNearBodyweightElasticSession(exName, sets) {
                       var allText = savedTips.concat(savedNote ? [savedNote] : []).join("\n");
                       var isEditingBlock = coachNoteDrafts[blockDraftKey] !== undefined;
                       var blockDraft = isEditingBlock ? coachNoteDrafts[blockDraftKey] : allText;
+                      var blockPhotoDrafts = coachNoteDrafts[blockPhotoDraftKey] !== undefined ? normalizeExerciseNotePhotos(coachNoteDrafts[blockPhotoDraftKey]) : savedPhotos;
                       return <div style={{ marginBottom: 10, borderRadius: 10, background: dc + "08", border: "1px solid " + dc + "20", padding: "9px 11px" }}>
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
                           <span style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Note di Andrea</span>
-                          {!isEditingBlock && <button onClick={function(e) { e.stopPropagation(); setCoachNoteDrafts(function(p) { return Object.assign({}, p, { [blockDraftKey]: allText }); }); }} style={{ padding: "2px 9px", border: "1px solid " + dc + "30", borderRadius: 6, background: dc + "08", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", touchAction: "manipulation" }}>Modifica</button>}
+                          {!isEditingBlock && <button onClick={function(e) { e.stopPropagation(); setCoachNoteDrafts(function(p) { return Object.assign({}, p, { [blockDraftKey]: allText, [blockPhotoDraftKey]: savedPhotos }); }); }} style={{ padding: "2px 9px", border: "1px solid " + dc + "30", borderRadius: 6, background: dc + "08", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", touchAction: "manipulation" }}>Modifica</button>}
                         </div>
                         {isEditingBlock ? <div style={{ display: "grid", gap: 6 }}>
                           <textarea
@@ -11263,9 +11265,80 @@ function isNearBodyweightElasticSession(exName, sets) {
                             rows={Math.max(4, blockDraft.split("\n").length + 1)}
                             style={{ width: "100%", resize: "vertical", padding: "7px 9px", border: "1px solid " + dc + "40", borderRadius: 8, background: T.cd, color: T.tx, fontSize: 12, lineHeight: 1.65, boxSizing: "border-box" }}
                           />
+                          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
+                            <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer", display: "inline-flex", alignItems: "center", opacity: blockPhotoDrafts.length >= 3 ? 0.5 : 1 }}>
+                              {blockPhotoDrafts.length ? "Aggiungi altra foto" : "Aggiungi foto"}
+                              <input
+                                type="file"
+                                accept="image/*"
+                                capture="environment"
+                                style={{ display: "none" }}
+                                disabled={blockPhotoDrafts.length >= 3}
+                                onChange={function(e) {
+                                  var file = e.target.files && e.target.files[0];
+                                  if (!file) return;
+                                  (async function() {
+                                    try {
+                                      var dataUrl = await readFileAsDataUrl(file);
+                                      var compressed = await compressImageDataUrl(dataUrl, 1280, 0.78);
+                                      setCoachNoteDrafts(function(prev) {
+                                        var next = Object.assign({}, prev);
+                                        var current = normalizeExerciseNotePhotos(next[blockPhotoDraftKey] !== undefined ? next[blockPhotoDraftKey] : savedPhotos);
+                                        next[blockPhotoDraftKey] = current.concat([compressed]).slice(0, 3);
+                                        return next;
+                                      });
+                                      setAutoBackupMsg("Foto pronta. Premi Salva per confermare.");
+                                    } catch (err) {
+                                      console.error("Coach note edit photo failed", err);
+                                      setAutoBackupMsg("Non sono riuscita a leggere o comprimere la foto.");
+                                    }
+                                  })();
+                                  e.target.value = "";
+                                }}
+                              />
+                            </label>
+                            {blockPhotoDrafts.length > 0 && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{blockPhotoDrafts.length + "/3 foto"}</span>}
+                          </div>
+                          {blockPhotoDrafts.length > 0 && <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                            {blockPhotoDrafts.map(function(photoSrc, photoIdx) {
+                              var zoomKey = "coach-top-" + ex.n + "-" + photoIdx;
+                              return <div key={zoomKey} style={{ width: 84 }}>
+                                <img onClick={function(e) { e.stopPropagation(); setShowImg(showImg === zoomKey ? null : zoomKey); }} src={photoSrc} alt={"Nota Andrea " + ex.n + " " + (photoIdx + 1)} style={{ width: 84, height: 84, objectFit: "cover", display: "block", borderRadius: 8, cursor: "zoom-in", border: "1px solid " + T.bg, background: T.sb }} />
+                                <button onClick={function(e) {
+                                  e.stopPropagation();
+                                  setCoachNoteDrafts(function(prev) {
+                                    var next = Object.assign({}, prev);
+                                    next[blockPhotoDraftKey] = normalizeExerciseNotePhotos(next[blockPhotoDraftKey] !== undefined ? next[blockPhotoDraftKey] : savedPhotos).filter(function(_, idx) { return idx !== photoIdx; });
+                                    return next;
+                                  });
+                                  if (showImg === zoomKey) setShowImg(null);
+                                }} style={{ width: "100%", marginTop: 6, minHeight: 28, padding: "0 8px", border: "1px solid " + T.bg, borderRadius: 999, background: T.sb, color: T.sub, fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Rimuovi</button>
+                              </div>;
+                            })}
+                          </div>}
+                          {blockPhotoDrafts.length > 0 && blockPhotoDrafts.map(function(photoSrc, photoIdx) {
+                            var zoomKey = "coach-top-" + ex.n + "-" + photoIdx;
+                            return showImg === zoomKey ? <div key={zoomKey + "-full"} style={{ paddingTop: 4 }}><img onClick={function(e) { e.stopPropagation(); setShowImg(null); }} src={photoSrc} alt={"Nota Andrea " + ex.n + " grande " + (photoIdx + 1)} style={{ width: "100%", display: "block", borderRadius: 8, cursor: "zoom-out", border: "1px solid " + T.bg }} /></div> : null;
+                          })}
                           <div style={{ display: "flex", gap: 6 }}>
-                            <button onClick={function(e) { e.stopPropagation(); var lines = blockDraft.split("\n").map(function(l) { return l.trim(); }).filter(Boolean); setCoachNotes(function(prev) { var next = Object.assign({}, prev, { [tipsKey]: lines, [cnKey]: "" }); persistCoachNotes(next); return next; }); setCoachNoteDrafts(function(p) { var n = Object.assign({}, p); delete n[blockDraftKey]; return n; }); }} style={{ flex: 1, minHeight: 32, border: "none", borderRadius: 8, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Salva</button>
-                            <button onClick={function(e) { e.stopPropagation(); setCoachNoteDrafts(function(p) { var n = Object.assign({}, p); delete n[blockDraftKey]; return n; }); }} style={{ minHeight: 32, padding: "0 12px", border: "1px solid " + T.bg, borderRadius: 8, background: T.bg, color: T.sub, fontSize: 12, fontWeight: 700, cursor: "pointer" }}>Annulla</button>
+                            <button onClick={function(e) {
+                              e.stopPropagation();
+                              var lines = blockDraft.split("\n").map(function(l) { return l.trim(); }).filter(Boolean);
+                              var cleanPhotos = normalizeExerciseNotePhotos(blockPhotoDrafts);
+                              setCoachNotes(function(prev) {
+                                var next = Object.assign({}, prev, { [tipsKey]: lines, [cnKey]: "", [coachPhotoKey]: cleanPhotos });
+                                persistCoachNotes(next);
+                                return next;
+                              });
+                              setCoachNoteDrafts(function(p) {
+                                var n = Object.assign({}, p);
+                                delete n[blockDraftKey];
+                                delete n[blockPhotoDraftKey];
+                                return n;
+                              });
+                              setAutoBackupMsg((lines.length || cleanPhotos.length) ? "Nota di Andrea salvata." : "Nota di Andrea rimossa.");
+                            }} style={{ flex: 1, minHeight: 32, border: "none", borderRadius: 8, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Salva</button>
+                            <button onClick={function(e) { e.stopPropagation(); setCoachNoteDrafts(function(p) { var n = Object.assign({}, p); delete n[blockDraftKey]; delete n[blockPhotoDraftKey]; return n; }); setShowImg(null); }} style={{ minHeight: 32, padding: "0 12px", border: "1px solid " + T.bg, borderRadius: 8, background: T.bg, color: T.sub, fontSize: 12, fontWeight: 700, cursor: "pointer" }}>Annulla</button>
                           </div>
                         </div> : <div style={{ display: "grid", gap: 5 }}>
                           {savedTips.map(function(tip, ti) {
@@ -11275,13 +11348,18 @@ function isNearBodyweightElasticSession(exName, sets) {
                             </div>;
                           })}
                           {savedNote ? <div style={{ fontSize: 12, color: T.tx, lineHeight: 1.6, fontStyle: "italic", marginTop: savedTips.length ? 4 : 0, paddingTop: savedTips.length ? 6 : 0, borderTop: savedTips.length ? "1px solid " + dc + "18" : "none" }}>{savedNote}</div> : null}
-                          {savedPhotos.length > 0 && <div style={{ display: "grid", gap: 8, marginTop: 6 }}>
+                          {savedPhotos.length > 0 && <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 6 }}>
                             {savedPhotos.map(function(photoSrc, photoIdx) {
-                              return <div key={coachPhotoKey + "-" + photoIdx} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb, padding: 8 }}>
-                                <img src={photoSrc} alt={"Nota Andrea " + ex.n + " " + (photoIdx + 1)} style={{ width: "100%", display: "block", borderRadius: 8 }} />
+                              var zoomKey = "coach-saved-" + ex.n + "-" + photoIdx;
+                              return <div key={zoomKey} style={{ width: 84 }}>
+                                <img onClick={function(e) { e.stopPropagation(); setShowImg(showImg === zoomKey ? null : zoomKey); }} src={photoSrc} alt={"Nota Andrea " + ex.n + " " + (photoIdx + 1)} style={{ width: 84, height: 84, objectFit: "cover", display: "block", borderRadius: 8, cursor: "zoom-in", border: "1px solid " + T.bg, background: T.sb }} />
                               </div>;
                             })}
                           </div>}
+                          {savedPhotos.length > 0 && savedPhotos.map(function(photoSrc, photoIdx) {
+                            var zoomKey = "coach-saved-" + ex.n + "-" + photoIdx;
+                            return showImg === zoomKey ? <div key={zoomKey + "-full"} style={{ marginTop: 6 }}><img onClick={function(e) { e.stopPropagation(); setShowImg(null); }} src={photoSrc} alt={"Nota Andrea " + ex.n + " grande " + (photoIdx + 1)} style={{ width: "100%", display: "block", borderRadius: 8, cursor: "zoom-out", border: "1px solid " + T.bg }} /></div> : null;
+                          })}
                         </div>}
                       </div>;
                     })()}
@@ -11301,6 +11379,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                       var currentCoachNotePhotos = coachNoteDrafts[photoDraftKey] !== undefined ? normalizeExerciseNotePhotos(coachNoteDrafts[photoDraftKey]) : normalizeExerciseNotePhotos(coachNotes[coachPhotoKey]);
                       var hasSavedCoachContent = !!(String(coachNotes[cnKey] || "").trim() || normalizeExerciseNotePhotos(coachNotes[coachPhotoKey]).length);
                       var hasCoachDraftChanges = coachNoteDrafts[newKey] !== undefined || coachNoteDrafts[photoDraftKey] !== undefined;
+                      if (hasSavedCoachContent && !hasCoachDraftChanges) return null;
                       return <div style={{ marginBottom: 10, borderRadius: 12, border: "1px solid " + dc + "30", background: T.sb, overflow: "hidden" }}>
                         <div style={{ padding: "8px 11px 6px", fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Note di Andrea</div>
                         <textarea
@@ -11328,12 +11407,12 @@ function isNearBodyweightElasticSession(exName, sets) {
                           </label>
                           {currentCoachNotePhotos.length > 0 && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{currentCoachNotePhotos.length + "/3 foto"}</span>}
                         </div>
-                        {currentCoachNotePhotos.length > 0 && <div style={{ padding: "8px 11px 0", display: "grid", gap: 8 }}>
+                        {currentCoachNotePhotos.length > 0 && <div style={{ padding: "8px 11px 0", display: "flex", flexWrap: "wrap", gap: 8 }}>
                           {currentCoachNotePhotos.map(function(photoSrc, photoIdx) {
-                            return <div key={photoDraftKey + "-" + photoIdx} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.cd, padding: 8 }}>
-                              <img src={photoSrc} alt={"Nota Andrea " + ex.n + " " + (photoIdx + 1)} style={{ width: "100%", display: "block", borderRadius: 8 }} />
+                            var zoomKey = "coach-draft-" + ex.n + "-" + photoIdx;
+                            return <div key={zoomKey} style={{ width: 84 }}>
+                              <img onClick={function(e) { e.stopPropagation(); setShowImg(showImg === zoomKey ? null : zoomKey); }} src={photoSrc} alt={"Nota Andrea " + ex.n + " " + (photoIdx + 1)} style={{ width: 84, height: 84, objectFit: "cover", display: "block", borderRadius: 8, cursor: "zoom-in", border: "1px solid " + T.bg, background: T.cd }} />
                               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginTop: 6 }}>
-                                <div style={{ fontSize: 10, color: T.sub }}>{"Foto " + (photoIdx + 1)}</div>
                                 <button onClick={function(e) {
                                   e.stopPropagation();
                                   setCoachNoteDrafts(function(prev) {
@@ -11341,11 +11420,16 @@ function isNearBodyweightElasticSession(exName, sets) {
                                     next[photoDraftKey] = normalizeExerciseNotePhotos(next[photoDraftKey] !== undefined ? next[photoDraftKey] : coachNotes[coachPhotoKey]).filter(function(_, idx) { return idx !== photoIdx; });
                                     return next;
                                   });
-                                }} style={{ minHeight: 28, padding: "0 10px", border: "1px solid " + T.bg, borderRadius: 999, background: T.sb, color: T.sub, fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Rimuovi</button>
+                                  if (showImg === zoomKey) setShowImg(null);
+                                }} style={{ width: "100%", minHeight: 28, padding: "0 10px", border: "1px solid " + T.bg, borderRadius: 999, background: T.sb, color: T.sub, fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Rimuovi</button>
                               </div>
                             </div>;
                           })}
                         </div>}
+                        {currentCoachNotePhotos.length > 0 && currentCoachNotePhotos.map(function(photoSrc, photoIdx) {
+                          var zoomKey = "coach-draft-" + ex.n + "-" + photoIdx;
+                          return showImg === zoomKey ? <div key={zoomKey + "-full"} style={{ padding: "8px 11px 0" }}><img onClick={function(e) { e.stopPropagation(); setShowImg(null); }} src={photoSrc} alt={"Nota Andrea " + ex.n + " grande " + (photoIdx + 1)} style={{ width: "100%", display: "block", borderRadius: 8, cursor: "zoom-out", border: "1px solid " + T.bg }} /></div> : null;
+                        })}
                         {(newVal.trim() || currentCoachNotePhotos.length > 0 || hasSavedCoachContent || hasCoachDraftChanges) && <div style={{ padding: "8px 11px 10px" }}>
                           <button onClick={function(e) {
                             e.stopPropagation();
@@ -11358,10 +11442,11 @@ function isNearBodyweightElasticSession(exName, sets) {
                             });
                             setCoachNoteDrafts(function(p) {
                               var n = Object.assign({}, p);
-                              n[newKey] = trimmed;
-                              n[photoDraftKey] = cleanPhotos;
+                              delete n[newKey];
+                              delete n[photoDraftKey];
                               return n;
                             });
+                            setShowImg(null);
                             setAutoBackupMsg((trimmed || cleanPhotos.length) ? "Nota di Andrea salvata." : "Nota di Andrea rimossa.");
                           }} style={{ width: "100%", minHeight: 34, border: "none", borderRadius: 8, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Salva nota</button>
                         </div>}
