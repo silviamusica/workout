@@ -11242,7 +11242,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                       var blockDraft = isEditingBlock ? coachNoteDrafts[blockDraftKey] : allText;
                       return <div style={{ marginBottom: 10, borderRadius: 10, background: dc + "08", border: "1px solid " + dc + "20", padding: "9px 11px" }}>
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
-                          <span style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Indicazioni coach</span>
+                          <span style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Note di Andrea</span>
                           {!isEditingBlock && <button onClick={function(e) { e.stopPropagation(); setCoachNoteDrafts(function(p) { return Object.assign({}, p, { [blockDraftKey]: allText }); }); }} style={{ padding: "2px 9px", border: "1px solid " + dc + "30", borderRadius: 6, background: dc + "08", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", touchAction: "manipulation" }}>Modifica</button>}
                         </div>
                         {isEditingBlock ? <div style={{ display: "grid", gap: 6 }}>
@@ -11280,11 +11280,11 @@ function isNearBodyweightElasticSession(exName, sets) {
                       var newKey = "new__" + ex.n;
                       var newVal = coachNoteDrafts[newKey] || "";
                       return <div style={{ marginBottom: 10, borderRadius: 12, border: "1px solid " + dc + "30", background: T.sb, overflow: "hidden" }}>
-                        <div style={{ padding: "8px 11px 6px", fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Aggiungi nota coach</div>
+                        <div style={{ padding: "8px 11px 6px", fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Note di Andrea</div>
                         <textarea
                           value={newVal}
                           onChange={function(e) { var v = e.target.value; setCoachNoteDrafts(function(p) { return Object.assign({}, p, { [newKey]: v }); }); }}
-                          placeholder={"Indicazioni del tuo coach per " + ex.n + "…"}
+                          placeholder={"Note di Andrea per " + ex.n + "…"}
                           rows={2}
                           style={{ width: "100%", resize: "vertical", minHeight: 52, padding: "6px 11px", border: "none", borderTop: "1px solid " + T.bg, background: T.sb, color: T.tx, fontSize: 12, lineHeight: 1.6, boxSizing: "border-box" }}
                         />
@@ -11312,16 +11312,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                           var done = !!lg;
                           var showInlineRir = !effectiveCalibrationMode || si > 0 || !!(tLog && tLog.sets && tLog.sets.length > 0);
                           return <div key={si} style={{ borderRadius: 10, border: "1px solid " + (done ? T.ok + "40" : T.bg), background: done ? T.ok + "0C" : T.sb, overflow: "hidden" }}>
-                            {/* Serie header */}
-                            <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px" }}>
-                              <div style={{ width: 26, height: 26, borderRadius: "50%", background: done ? T.ok : T.tx + "15", color: done ? "#fff" : T.sub, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0 }}>{done ? "✓" : si + 1}</div>
-                              <div style={{ flex: 1, fontSize: 12, color: T.sub, fontWeight: 600 }}>
-                                <span style={{ display: "inline-flex", alignItems: "center", marginRight: 6, padding: "2px 6px", borderRadius: 999, background: isApproachSet ? T.bg : dc + "12", color: isApproachSet ? T.sub : dc, fontSize: 9, fontWeight: 900, textTransform: "uppercase", letterSpacing: 0.5 }}>{isApproachSet ? "Avvicinamento" : "Lavoro"}</span>
-                                {targetLabel}
-                                {isBW ? "" : usesBand ? (" · " + (sugg.w ? formatElasticTick(sugg.w) + " sugg." : "inserisci tacca")) : usesTrxLength ? (" · " + (sugg.w ? formatTrxLength(sugg.w) + " sugg." : "inserisci lunghezza")) : (" · " + (sugg.w ? (usesBarbellTotal(ex.n) ? formatInputWeightHint(ex.n, sugg.w, barbellWeight) + " sugg." : sugg.w + " kg sugg.") : (usesBarbellTotal(ex.n) ? "inserisci kg dischi" : "inserisci kg")))}
-                              </div>
-                              {done && !isE && <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(usesBand ? String(clampElasticTick(lg.w) || "") : (usesTrxLength ? String(clampTrxLength(lg.w) || "") : String(storedWeightToPlateInput(ex.n, lg.w, barbellWeight)))); setTmpR(String(lg.r)); setTmpRir(normalizeRirValue(lg.rir)); }} style={{ fontSize: 10, color: T.sub, background: "none", border: "none", cursor: "pointer", padding: "0 4px", touchAction: "manipulation" }}>modifica</button>}
-                            </div>
                             {/* Input or result */}
                             {isE ? (
                               <div style={{ padding: "0 10px 10px" }}>
