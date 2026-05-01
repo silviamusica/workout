@@ -7947,9 +7947,32 @@ function isNearBodyweightElasticSession(exName, sets) {
   function getHistoricExerciseNoteDraftKey(entry) {
     return (entry.date || todayStr()) + "__d" + (entry.day || 0) + "__m" + (entry.month || month) + "__" + entry.exercise;
   }
+  function getCoachNotePhotoKey(en) { return "ex_photo__" + en; }
+  function getCoachNotePhotoDraftKey(en) { return "new_photo__" + en; }
   function normalizeExerciseNotePhotos(value) {
     if (Array.isArray(value)) return value.filter(Boolean).slice(0, 3);
     return value ? [value] : [];
+  }
+  function persistCoachNotes(nextCoachNotes) {
+    try { localStorage.setItem("wt-coach-notes", JSON.stringify(nextCoachNotes)); } catch(err) {}
+  }
+  async function handleCoachNotePhotoPick(en, file) {
+    if (!file) return;
+    try {
+      var dataUrl = await readFileAsDataUrl(file);
+      var compressed = await compressImageDataUrl(dataUrl, 1280, 0.78);
+      var draftKey = getCoachNotePhotoDraftKey(en);
+      setCoachNoteDrafts(function(prev) {
+        var next = Object.assign({}, prev);
+        var current = normalizeExerciseNotePhotos(next[draftKey]);
+        next[draftKey] = current.concat([compressed]).slice(0, 3);
+        return next;
+      });
+      setAutoBackupMsg("Foto pronta. Premi Salva nota per confermare.");
+    } catch (err) {
+      console.error("Coach note photo failed", err);
+      setAutoBackupMsg("Non sono riuscita a leggere o comprimere la foto.");
+    }
   }
   function resetSetEditingState() {
     setEditing(null);
@@ -11218,10 +11241,12 @@ function isNearBodyweightElasticSession(exName, sets) {
                     {!isBasics && (function() {
                       var tipsKey = "tips__" + ex.n;
                       var cnKey = "ex__" + ex.n;
+                      var coachPhotoKey = getCoachNotePhotoKey(ex.n);
                       var blockDraftKey = "block__" + ex.n;
                       var savedTips = coachNotes[tipsKey] || (db && db.t) || [];
                       var savedNote = coachNotes[cnKey] || "";
-                      if (!savedTips.length && !savedNote) return null;
+                      var savedPhotos = normalizeExerciseNotePhotos(coachNotes[coachPhotoKey]);
+                      if (!savedTips.length && !savedNote && !savedPhotos.length) return null;
                       var allText = savedTips.concat(savedNote ? [savedNote] : []).join("\n");
                       var isEditingBlock = coachNoteDrafts[blockDraftKey] !== undefined;
                       var blockDraft = isEditingBlock ? coachNoteDrafts[blockDraftKey] : allText;
@@ -11239,7 +11264,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                             style={{ width: "100%", resize: "vertical", padding: "7px 9px", border: "1px solid " + dc + "40", borderRadius: 8, background: T.cd, color: T.tx, fontSize: 12, lineHeight: 1.65, boxSizing: "border-box" }}
                           />
                           <div style={{ display: "flex", gap: 6 }}>
-                            <button onClick={function(e) { e.stopPropagation(); var lines = blockDraft.split("\n").map(function(l) { return l.trim(); }).filter(Boolean); setCoachNotes(function(prev) { var next = Object.assign({}, prev, { [tipsKey]: lines, [cnKey]: "" }); try { localStorage.setItem("wt-coach-notes", JSON.stringify(next)); } catch(err) {} return next; }); setCoachNoteDrafts(function(p) { var n = Object.assign({}, p); delete n[blockDraftKey]; return n; }); }} style={{ flex: 1, minHeight: 32, border: "none", borderRadius: 8, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Salva</button>
+                            <button onClick={function(e) { e.stopPropagation(); var lines = blockDraft.split("\n").map(function(l) { return l.trim(); }).filter(Boolean); setCoachNotes(function(prev) { var next = Object.assign({}, prev, { [tipsKey]: lines, [cnKey]: "" }); persistCoachNotes(next); return next; }); setCoachNoteDrafts(function(p) { var n = Object.assign({}, p); delete n[blockDraftKey]; return n; }); }} style={{ flex: 1, minHeight: 32, border: "none", borderRadius: 8, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Salva</button>
                             <button onClick={function(e) { e.stopPropagation(); setCoachNoteDrafts(function(p) { var n = Object.assign({}, p); delete n[blockDraftKey]; return n; }); }} style={{ minHeight: 32, padding: "0 12px", border: "1px solid " + T.bg, borderRadius: 8, background: T.bg, color: T.sub, fontSize: 12, fontWeight: 700, cursor: "pointer" }}>Annulla</button>
                           </div>
                         </div> : <div style={{ display: "grid", gap: 5 }}>
@@ -11250,6 +11275,13 @@ function isNearBodyweightElasticSession(exName, sets) {
                             </div>;
                           })}
                           {savedNote ? <div style={{ fontSize: 12, color: T.tx, lineHeight: 1.6, fontStyle: "italic", marginTop: savedTips.length ? 4 : 0, paddingTop: savedTips.length ? 6 : 0, borderTop: savedTips.length ? "1px solid " + dc + "18" : "none" }}>{savedNote}</div> : null}
+                          {savedPhotos.length > 0 && <div style={{ display: "grid", gap: 8, marginTop: 6 }}>
+                            {savedPhotos.map(function(photoSrc, photoIdx) {
+                              return <div key={coachPhotoKey + "-" + photoIdx} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb, padding: 8 }}>
+                                <img src={photoSrc} alt={"Nota Andrea " + ex.n + " " + (photoIdx + 1)} style={{ width: "100%", display: "block", borderRadius: 8 }} />
+                              </div>;
+                            })}
+                          </div>}
                         </div>}
                       </div>;
                     })()}
@@ -11262,8 +11294,13 @@ function isNearBodyweightElasticSession(exName, sets) {
                     {/* === NOTE COACH — nuovo inserimento === */}
                     {!isBasics && (function() {
                       var cnKey = "ex__" + ex.n;
+                      var coachPhotoKey = getCoachNotePhotoKey(ex.n);
                       var newKey = "new__" + ex.n;
-                      var newVal = coachNoteDrafts[newKey] || "";
+                      var photoDraftKey = getCoachNotePhotoDraftKey(ex.n);
+                      var newVal = coachNoteDrafts[newKey] !== undefined ? coachNoteDrafts[newKey] : (coachNotes[cnKey] || "");
+                      var currentCoachNotePhotos = coachNoteDrafts[photoDraftKey] !== undefined ? normalizeExerciseNotePhotos(coachNoteDrafts[photoDraftKey]) : normalizeExerciseNotePhotos(coachNotes[coachPhotoKey]);
+                      var hasSavedCoachContent = !!(String(coachNotes[cnKey] || "").trim() || normalizeExerciseNotePhotos(coachNotes[coachPhotoKey]).length);
+                      var hasCoachDraftChanges = coachNoteDrafts[newKey] !== undefined || coachNoteDrafts[photoDraftKey] !== undefined;
                       return <div style={{ marginBottom: 10, borderRadius: 12, border: "1px solid " + dc + "30", background: T.sb, overflow: "hidden" }}>
                         <div style={{ padding: "8px 11px 6px", fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Note di Andrea</div>
                         <textarea
@@ -11273,8 +11310,60 @@ function isNearBodyweightElasticSession(exName, sets) {
                           rows={2}
                           style={{ width: "100%", resize: "vertical", minHeight: 52, padding: "6px 11px", border: "none", borderTop: "1px solid " + T.bg, background: T.sb, color: T.tx, fontSize: 12, lineHeight: 1.6, boxSizing: "border-box" }}
                         />
-                        {newVal.trim() && <div style={{ padding: "6px 11px 10px" }}>
-                          <button onClick={function(e) { e.stopPropagation(); var trimmed = newVal.trim(); setCoachNotes(function(prev) { var next = Object.assign({}, prev, { [cnKey]: trimmed }); try { localStorage.setItem("wt-coach-notes", JSON.stringify(next)); } catch(err) {} return next; }); setCoachNoteDrafts(function(p) { var n = Object.assign({}, p); delete n[newKey]; return n; }); }} style={{ width: "100%", minHeight: 34, border: "none", borderRadius: 8, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Salva nota</button>
+                        <div style={{ padding: "8px 11px 0", display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
+                          <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer", display: "inline-flex", alignItems: "center", opacity: currentCoachNotePhotos.length >= 3 ? 0.5 : 1 }}>
+                            {currentCoachNotePhotos.length ? "Aggiungi altra foto" : "Aggiungi foto"}
+                            <input
+                              type="file"
+                              accept="image/*"
+                              capture="environment"
+                              style={{ display: "none" }}
+                              disabled={currentCoachNotePhotos.length >= 3}
+                              onChange={function(e) {
+                                var file = e.target.files && e.target.files[0];
+                                handleCoachNotePhotoPick(ex.n, file);
+                                e.target.value = "";
+                              }}
+                            />
+                          </label>
+                          {currentCoachNotePhotos.length > 0 && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{currentCoachNotePhotos.length + "/3 foto"}</span>}
+                        </div>
+                        {currentCoachNotePhotos.length > 0 && <div style={{ padding: "8px 11px 0", display: "grid", gap: 8 }}>
+                          {currentCoachNotePhotos.map(function(photoSrc, photoIdx) {
+                            return <div key={photoDraftKey + "-" + photoIdx} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.cd, padding: 8 }}>
+                              <img src={photoSrc} alt={"Nota Andrea " + ex.n + " " + (photoIdx + 1)} style={{ width: "100%", display: "block", borderRadius: 8 }} />
+                              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginTop: 6 }}>
+                                <div style={{ fontSize: 10, color: T.sub }}>{"Foto " + (photoIdx + 1)}</div>
+                                <button onClick={function(e) {
+                                  e.stopPropagation();
+                                  setCoachNoteDrafts(function(prev) {
+                                    var next = Object.assign({}, prev);
+                                    next[photoDraftKey] = normalizeExerciseNotePhotos(next[photoDraftKey] !== undefined ? next[photoDraftKey] : coachNotes[coachPhotoKey]).filter(function(_, idx) { return idx !== photoIdx; });
+                                    return next;
+                                  });
+                                }} style={{ minHeight: 28, padding: "0 10px", border: "1px solid " + T.bg, borderRadius: 999, background: T.sb, color: T.sub, fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Rimuovi</button>
+                              </div>
+                            </div>;
+                          })}
+                        </div>}
+                        {(newVal.trim() || currentCoachNotePhotos.length > 0 || hasSavedCoachContent || hasCoachDraftChanges) && <div style={{ padding: "8px 11px 10px" }}>
+                          <button onClick={function(e) {
+                            e.stopPropagation();
+                            var trimmed = newVal.trim();
+                            var cleanPhotos = normalizeExerciseNotePhotos(currentCoachNotePhotos);
+                            setCoachNotes(function(prev) {
+                              var next = Object.assign({}, prev, { [cnKey]: trimmed, [coachPhotoKey]: cleanPhotos });
+                              persistCoachNotes(next);
+                              return next;
+                            });
+                            setCoachNoteDrafts(function(p) {
+                              var n = Object.assign({}, p);
+                              n[newKey] = trimmed;
+                              n[photoDraftKey] = cleanPhotos;
+                              return n;
+                            });
+                            setAutoBackupMsg((trimmed || cleanPhotos.length) ? "Nota di Andrea salvata." : "Nota di Andrea rimossa.");
+                          }} style={{ width: "100%", minHeight: 34, border: "none", borderRadius: 8, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Salva nota</button>
                         </div>}
                       </div>;
                     })()}
