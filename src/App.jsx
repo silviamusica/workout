@@ -11529,6 +11529,10 @@ function isNearBodyweightElasticSession(exName, sets) {
               var currentExerciseNote = exerciseNoteDrafts[noteDraftKey] != null ? exerciseNoteDrafts[noteDraftKey] : ((tLog && tLog.note) || "");
               var currentExerciseNotePhotos = exerciseNotePhotoDrafts[noteDraftKey] !== undefined ? normalizeExerciseNotePhotos(exerciseNotePhotoDrafts[noteDraftKey]) : normalizeExerciseNotePhotos(tLog && (tLog.notePhotos || tLog.notePhoto));
               var currentExerciseNoteVideo = exerciseNoteVideoDrafts[noteDraftKey] != null ? exerciseNoteVideoDrafts[noteDraftKey] : ((tLog && tLog.noteVideoUrl) || "");
+              var savedExerciseNoteText = String((tLog && tLog.note) || "").trim();
+              var savedExerciseNotePhotos = normalizeExerciseNotePhotos(tLog && (tLog.notePhotos || tLog.notePhoto));
+              var savedExerciseNoteVideo = String((tLog && tLog.noteVideoUrl) || "").trim();
+              var hasSavedExerciseNoteContent = !!(savedExerciseNoteText || savedExerciseNotePhotos.length || savedExerciseNoteVideo);
               var p = parseSerie(ex.s);
               var sc = p.sets;
               var approachSetCount = Math.max(0, parseInt(ex.approachSets) || 0);
@@ -11599,6 +11603,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>}
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                    {!isBasics && hasSavedExerciseNoteContent && <div style={{ background: dc + "12", color: dc, fontSize: 9, fontWeight: 900, padding: "2px 7px", borderRadius: 999, textTransform: "uppercase", letterSpacing: 0.5 }}>Nota</div>}
                     {!isBasics && tLog && tLog.sets.length > 0 && <div style={{ background: T.ok, color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 8 }}>{tLog.sets.length + "/" + sc}</div>}
                     {!isBeginner && !rowSupersetMeta && (function() {
                       var mins = estimateExerciseMinutes(rawEx, ex);
@@ -12163,6 +12168,26 @@ function isNearBodyweightElasticSession(exName, sets) {
                           </div>;
                         })}
                       </div>
+                    </div>}
+
+                    {!isBasics && hasSavedExerciseNoteContent && <div style={{ marginTop: 10, borderRadius: 10, background: dc + "08", border: "1px solid " + dc + "20", padding: "10px 11px" }}>
+                      <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Nota sessione salvata</div>
+                      {savedExerciseNoteText && <div style={{ fontSize: 12, color: T.tx, lineHeight: 1.6 }}>{savedExerciseNoteText}</div>}
+                      {savedExerciseNotePhotos.length > 0 && <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: savedExerciseNoteText ? 8 : 0 }}>
+                        {savedExerciseNotePhotos.map(function(photoSrc, photoIdx) {
+                          var zoomKey = "session-saved-" + ex.n + "-" + photoIdx;
+                          return <div key={zoomKey} style={{ width: 84 }}>
+                            <img onClick={function(e) { e.stopPropagation(); setShowImg(showImg === zoomKey ? null : zoomKey); }} src={photoSrc} alt={"Nota sessione " + ex.n + " " + (photoIdx + 1)} style={{ width: 84, height: 84, objectFit: "cover", display: "block", borderRadius: 8, cursor: "zoom-in", border: "1px solid " + T.bg, background: T.sb }} />
+                          </div>;
+                        })}
+                      </div>}
+                      {savedExerciseNotePhotos.length > 0 && savedExerciseNotePhotos.map(function(photoSrc, photoIdx) {
+                        var zoomKey = "session-saved-" + ex.n + "-" + photoIdx;
+                        return showImg === zoomKey ? <div key={zoomKey + "-full"} style={{ marginTop: 8 }}><img onClick={function(e) { e.stopPropagation(); setShowImg(null); }} src={photoSrc} alt={"Nota sessione " + ex.n + " grande " + (photoIdx + 1)} style={{ width: "100%", display: "block", borderRadius: 8, cursor: "zoom-out", border: "1px solid " + T.bg }} /></div> : null;
+                      })}
+                      {savedExerciseNoteVideo && <div style={{ marginTop: (savedExerciseNoteText || savedExerciseNotePhotos.length) ? 8 : 0, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb, padding: 8 }}>
+                        <video src={savedExerciseNoteVideo} controls playsInline preload="metadata" style={{ width: "100%", display: "block", borderRadius: 8, background: "#000" }} />
+                      </div>}
                     </div>}
 
                     {/* === DETTAGLI (collassato): storico · tecnica · note === */}
