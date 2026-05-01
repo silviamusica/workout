@@ -3336,6 +3336,10 @@ export default function App() {
   var [showExIntro, setShowExIntro] = useState(null);
   var [showCompetency, setShowCompetency] = useState(null);
   var [showTheorySection, setShowTheorySection] = useState(null);
+  var [videoTrimPrompt, setVideoTrimPrompt] = useState(null);
+  var [videoTrimStartSec, setVideoTrimStartSec] = useState(0);
+  var [videoTrimEndSec, setVideoTrimEndSec] = useState(0);
+  var [videoTrimPreviewUrl, setVideoTrimPreviewUrl] = useState("");
 
   function openBreathModal(exName) {
     setBreathExercise(exName || null);
@@ -5318,6 +5322,24 @@ export default function App() {
     if (!cloudAuthReady || !cloudUser || cloudHydratedUserId === cloudUser.id) return;
     hydrateFromCloudForUser(cloudUser.id);
   }, [cloudAuthReady, cloudUser, cloudHydratedUserId]);
+
+  useEffect(function() {
+    if (!videoTrimPrompt || !videoTrimPrompt.file) {
+      setVideoTrimPreviewUrl(function(prev) {
+        if (prev) URL.revokeObjectURL(prev);
+        return "";
+      });
+      return;
+    }
+    var nextUrl = URL.createObjectURL(videoTrimPrompt.file);
+    setVideoTrimPreviewUrl(function(prev) {
+      if (prev) URL.revokeObjectURL(prev);
+      return nextUrl;
+    });
+    return function() {
+      URL.revokeObjectURL(nextUrl);
+    };
+  }, [videoTrimPrompt]);
 
   useEffect(function() {
     if ((isBasics || isBeginner) && glossTab === "termini") setGlossTab("principi");
@@ -7986,6 +8008,12 @@ function isNearBodyweightElasticSession(exName, sets) {
     if (type.indexOf("webm") >= 0) return "webm";
     return "bin";
   }
+  function fmtVideoTrimTime(sec) {
+    var total = Math.max(0, Math.floor(parseFloat(sec) || 0));
+    var mins = Math.floor(total / 60);
+    var secs = total % 60;
+    return mins + ":" + (secs < 10 ? "0" : "") + secs;
+  }
   function loadVideoMetadata(file) {
     return new Promise(function(resolve, reject) {
       var url = URL.createObjectURL(file);
@@ -8012,6 +8040,8 @@ function isNearBodyweightElasticSession(exName, sets) {
     var maxSide = cfg.maxSide || NOTE_VIDEO_MAX_SIDE;
     var bitrate = cfg.videoBitsPerSecond || NOTE_VIDEO_BITRATE;
     var frameRate = cfg.frameRate || 24;
+    var trimStartSec = Math.max(0, parseFloat(cfg.trimStartSec) || 0);
+    var trimEndSec = Math.max(trimStartSec, parseFloat(cfg.trimEndSec) || 0);
     var mimeType = getSupportedVideoRecorderMimeType();
     if (typeof MediaRecorder === "undefined" || !mimeType) throw new Error("video-compression-unsupported");
     var url = URL.createObjectURL(file);
@@ -8025,6 +8055,7 @@ function isNearBodyweightElasticSession(exName, sets) {
         video.onloadedmetadata = function() { resolve(); };
         video.onerror = function() { reject(new Error("video-load-failed")); };
       });
+      if (trimEndSec <= trimStartSec || trimEndSec > (video.duration || 0)) trimEndSec = video.duration || trimStartSec;
       var srcW = video.videoWidth || 0;
       var srcH = video.videoHeight || 0;
       if (!srcW || !srcH) throw new Error("video-dimensions-missing");
@@ -8047,11 +8078,31 @@ function isNearBodyweightElasticSession(exName, sets) {
       var recorderStream = new MediaStream(mixedTracks);
       var chunks = [];
       var rafId = 0;
+      var stopRequested = false;
       var drawFrame = function() {
         if (video.paused || video.ended) return;
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
         rafId = requestAnimationFrame(drawFrame);
       };
+      if (trimStartSec > 0) {
+        await new Promise(function(resolve, reject) {
+          var done = false;
+          var finish = function() {
+            if (done) return;
+            done = true;
+            video.onseeked = null;
+            video.onerror = null;
+            resolve();
+          };
+          video.onseeked = finish;
+          video.onerror = function() { reject(new Error("video-seek-failed")); };
+          try {
+            video.currentTime = trimStartSec;
+          } catch (err) {
+            reject(err);
+          }
+        });
+      }
       var blob = await new Promise(function(resolve, reject) {
         var recorder = new MediaRecorder(recorderStream, {
           mimeType: mimeType,
@@ -8066,10 +8117,21 @@ function isNearBodyweightElasticSession(exName, sets) {
         recorder.onstop = function() {
           resolve(new Blob(chunks, { type: mimeType }));
         };
-        video.onended = function() {
+        var stopRecording = function() {
+          if (stopRequested) return;
+          stopRequested = true;
           if (rafId) cancelAnimationFrame(rafId);
+          try { video.pause(); } catch (e) {}
           if (recorder.state !== "inactive") recorder.stop();
         };
+        video.onended = stopRecording;
+        var trimWatcher = setInterval(function() {
+          if (!video || video.ended) return;
+          if (video.currentTime >= trimEndSec - 0.03) {
+            clearInterval(trimWatcher);
+            stopRecording();
+          }
+        }, 80);
         recorder.start(250);
         video.play().then(function() {
           drawFrame();
@@ -8338,7 +8400,15 @@ function isNearBodyweightElasticSession(exName, sets) {
     try {
       var meta = await loadVideoMetadata(file);
       if (meta.duration > NOTE_VIDEO_MAX_SECONDS) {
-        setAutoBackupMsg("Video troppo lungo: massimo " + NOTE_VIDEO_MAX_SECONDS + " secondi.");
+        setVideoTrimPrompt({
+          noteKey: noteKey,
+          exerciseName: exerciseName,
+          file: file,
+          duration: meta.duration
+        });
+        setVideoTrimStartSec(0);
+        setVideoTrimEndSec(Math.min(meta.duration, NOTE_VIDEO_MAX_SECONDS));
+        setAutoBackupMsg("Seleziona il tratto da tenere prima del caricamento.");
         return "";
       }
       setAutoBackupMsg("Compressione video in corso...");
@@ -8388,6 +8458,65 @@ function isNearBodyweightElasticSession(exName, sets) {
   }
   async function uploadExerciseNoteVideoByKey(noteKey, exerciseName, file) {
     return uploadNoteVideoByKey(noteKey, exerciseName, file);
+  }
+  async function confirmVideoTrimUpload() {
+    if (!videoTrimPrompt || !videoTrimPrompt.file) return;
+    var trimStart = Math.max(0, Math.min(videoTrimStartSec, videoTrimEndSec));
+    var trimEnd = Math.max(trimStart, videoTrimEndSec);
+    var trimmedDuration = trimEnd - trimStart;
+    if (trimmedDuration <= 0) {
+      setAutoBackupMsg("Seleziona un intervallo video valido.");
+      return;
+    }
+    if (trimmedDuration > NOTE_VIDEO_MAX_SECONDS) {
+      setAutoBackupMsg("Il tratto scelto deve restare entro " + NOTE_VIDEO_MAX_SECONDS + " secondi.");
+      return;
+    }
+    var prompt = videoTrimPrompt;
+    setVideoTrimPrompt(null);
+    setExerciseNoteVideoUploadKey(prompt.noteKey);
+    try {
+      setAutoBackupMsg("Compressione video in corso...");
+      var uploadFile = await compressVideoFile(prompt.file, {
+        maxSide: NOTE_VIDEO_MAX_SIDE,
+        videoBitsPerSecond: NOTE_VIDEO_BITRATE,
+        frameRate: 24,
+        trimStartSec: trimStart,
+        trimEndSec: trimEnd
+      });
+      var uploadSizeMb = (uploadFile.size || 0) / (1024 * 1024);
+      if (uploadSizeMb > NOTE_VIDEO_MAX_MB) {
+        setAutoBackupMsg("Video ancora troppo pesante dopo ritaglio e compressione: massimo " + NOTE_VIDEO_MAX_MB + " MB.");
+        return;
+      }
+      var safeExercise = sanitizeMediaFileName(prompt.exerciseName || "exercise");
+      var safeFile = sanitizeMediaFileName(uploadFile.name || prompt.file.name || "clip.mp4") || "clip.mp4";
+      var path = [cloudUser.id, "exercise-notes", safeExercise, Date.now() + "-" + safeFile].join("/");
+      var uploadResult = await supabase.storage.from(NOTE_VIDEO_BUCKET).upload(path, uploadFile, {
+        cacheControl: "3600",
+        upsert: false,
+        contentType: uploadFile.type || "video/webm"
+      });
+      if (uploadResult.error) throw uploadResult.error;
+      var publicResult = supabase.storage.from(NOTE_VIDEO_BUCKET).getPublicUrl(path);
+      var publicUrl = publicResult && publicResult.data ? publicResult.data.publicUrl : "";
+      if (!publicUrl) throw new Error("video-url-missing");
+      var prevUrl = exerciseNoteVideoDrafts[prompt.noteKey] || "";
+      if (prevUrl && prevUrl !== publicUrl) deleteExerciseNoteVideoIfManaged(prevUrl);
+      setExerciseNoteVideoDrafts(function(prev) {
+        var next = Object.assign({}, prev);
+        next[prompt.noteKey] = publicUrl;
+        return next;
+      });
+      if (savedExerciseNoteKey === prompt.noteKey) setSavedExerciseNoteKey("");
+      setAutoBackupMsg("Video pronto. Premi Salva nota per confermare.");
+    } catch (err) {
+      console.error("Trimmed video upload failed", err);
+      if (err && err.message === "video-compression-unsupported") setAutoBackupMsg("Compressione video non supportata su questo browser.");
+      else setAutoBackupMsg("Upload video non riuscito.");
+    } finally {
+      setExerciseNoteVideoUploadKey("");
+    }
   }
   async function handleExerciseNoteVideoPick(di, en, file) {
     if (!file) return "";
@@ -8986,6 +9115,48 @@ function isNearBodyweightElasticSession(exName, sets) {
       </div>}
 
       <ExPopup />
+
+      {videoTrimPrompt && <div onClick={function() { setVideoTrimPrompt(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", zIndex: 260, display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}>
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, padding: 18, maxWidth: 480, width: "100%", color: T.tx, maxHeight: "88vh", overflowY: "auto" }}>
+          <div style={{ fontSize: 11, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Ritaglia video</div>
+          <div style={{ fontSize: 14, fontWeight: 800, marginBottom: 6 }}>Il video supera {NOTE_VIDEO_MAX_SECONDS}s</div>
+          <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6, marginBottom: 12 }}>Scegli il pezzo da tenere. Il tratto selezionato verra compresso e caricato.</div>
+          {videoTrimPreviewUrl && <video src={videoTrimPreviewUrl} controls playsInline preload="metadata" style={{ width: "100%", display: "block", borderRadius: 10, background: "#000", marginBottom: 12 }} />}
+          <div style={{ display: "grid", gap: 10 }}>
+            <div style={{ background: T.sb, borderRadius: 10, padding: "10px 11px", border: "1px solid " + T.bg }}>
+              <div style={{ display: "flex", justifyContent: "space-between", gap: 8, fontSize: 11, fontWeight: 700, color: T.tx, marginBottom: 6 }}>
+                <span>{"Inizio: " + fmtVideoTrimTime(videoTrimStartSec)}</span>
+                <span>{"Fine: " + fmtVideoTrimTime(videoTrimEndSec)}</span>
+              </div>
+              <input type="range" min="0" max={Math.max(0, Math.floor(videoTrimPrompt.duration || 0))} step="0.1" value={videoTrimStartSec} onChange={function(e) {
+                var nextStart = Math.max(0, Math.min(parseFloat(e.target.value) || 0, videoTrimEndSec));
+                setVideoTrimStartSec(nextStart);
+                if (videoTrimEndSec - nextStart > NOTE_VIDEO_MAX_SECONDS) setVideoTrimEndSec(nextStart + NOTE_VIDEO_MAX_SECONDS);
+              }} style={{ width: "100%" }} />
+              <input type="range" min="0" max={Math.max(0, Math.floor(videoTrimPrompt.duration || 0))} step="0.1" value={videoTrimEndSec} onChange={function(e) {
+                var rawEnd = parseFloat(e.target.value) || 0;
+                var nextEnd = Math.max(videoTrimStartSec, rawEnd);
+                if (nextEnd - videoTrimStartSec > NOTE_VIDEO_MAX_SECONDS) nextEnd = videoTrimStartSec + NOTE_VIDEO_MAX_SECONDS;
+                setVideoTrimEndSec(Math.min(nextEnd, videoTrimPrompt.duration || nextEnd));
+              }} style={{ width: "100%" }} />
+              <div style={{ marginTop: 8, fontSize: 10, color: T.sub }}>{"Durata selezionata: " + fmtVideoTrimTime(Math.max(0, videoTrimEndSec - videoTrimStartSec)) + " / max " + fmtVideoTrimTime(NOTE_VIDEO_MAX_SECONDS)}</div>
+            </div>
+            <div style={{ display: "flex", gap: 8 }}>
+              <button onClick={function() { setVideoTrimStartSec(0); setVideoTrimEndSec(Math.min(videoTrimPrompt.duration || NOTE_VIDEO_MAX_SECONDS, NOTE_VIDEO_MAX_SECONDS)); }} style={{ flex: 1, minHeight: 34, border: "1px solid " + T.bg, borderRadius: 8, background: T.sb, color: T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>Primi {NOTE_VIDEO_MAX_SECONDS}s</button>
+              <button onClick={function() {
+                var duration = videoTrimPrompt.duration || NOTE_VIDEO_MAX_SECONDS;
+                var start = Math.max(0, duration - NOTE_VIDEO_MAX_SECONDS);
+                setVideoTrimStartSec(start);
+                setVideoTrimEndSec(duration);
+              }} style={{ flex: 1, minHeight: 34, border: "1px solid " + T.bg, borderRadius: 8, background: T.sb, color: T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>Ultimi {NOTE_VIDEO_MAX_SECONDS}s</button>
+            </div>
+            <div style={{ display: "flex", gap: 8 }}>
+              <button onClick={function() { setVideoTrimPrompt(null); }} style={{ flex: 1, minHeight: 40, border: "1px solid " + T.bg, borderRadius: 10, background: T.sb, color: T.sub, fontSize: 13, fontWeight: 800, cursor: "pointer" }}>Annulla</button>
+              <button onClick={confirmVideoTrimUpload} style={{ flex: 1, minHeight: 40, border: "none", borderRadius: 10, background: dc, color: "#fff", fontSize: 13, fontWeight: 800, cursor: "pointer" }}>Usa questo tratto</button>
+            </div>
+          </div>
+        </div>
+      </div>}
 
       {glossTermOpen && <div onClick={function() { setGlossTermOpen(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 240, display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}>
         <div onClick={function(e) { e.stopPropagation(); }} style={{ background: T.cd, borderRadius: 16, padding: 18, maxWidth: 380, width: "100%", color: T.tx, boxShadow: "0 20px 60px rgba(0,0,0,0.18)" }}>
@@ -10477,7 +10648,21 @@ function isNearBodyweightElasticSession(exName, sets) {
                                       </label>
                                       {currentExerciseNotePhotos.length > 0 && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{currentExerciseNotePhotos.length + "/3 foto"}</span>}
                                       <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: exerciseNoteVideoUploadKey === noteDraftKey ? "progress" : "pointer", display: "inline-flex", alignItems: "center", opacity: currentExerciseNoteVideo ? 0.75 : 1 }}>
-                                        {exerciseNoteVideoUploadKey === noteDraftKey ? "Carico video..." : (currentExerciseNoteVideo ? "Sostituisci video" : "Aggiungi video")}
+                                        {exerciseNoteVideoUploadKey === noteDraftKey ? "Carico video..." : (currentExerciseNoteVideo ? "Video da libreria" : "Video da libreria")}
+                                        <input
+                                          type="file"
+                                          accept="video/*"
+                                          style={{ display: "none" }}
+                                          disabled={exerciseNoteVideoUploadKey === noteDraftKey}
+                                          onChange={function(e) {
+                                            var file = e.target.files && e.target.files[0];
+                                            handleHistoricExerciseNoteVideoPick(entry, file);
+                                            e.target.value = "";
+                                          }}
+                                        />
+                                      </label>
+                                      <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: exerciseNoteVideoUploadKey === noteDraftKey ? "progress" : "pointer", display: "inline-flex", alignItems: "center", opacity: currentExerciseNoteVideo ? 0.75 : 1 }}>
+                                        {exerciseNoteVideoUploadKey === noteDraftKey ? "Carico video..." : "Video da camera"}
                                         <input
                                           type="file"
                                           accept="video/*"
@@ -11574,7 +11759,21 @@ function isNearBodyweightElasticSession(exName, sets) {
                             </label>
                             {blockPhotoDrafts.length > 0 && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{blockPhotoDrafts.length + "/3 foto"}</span>}
                             <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: exerciseNoteVideoUploadKey === blockVideoDraftKey ? "progress" : "pointer", display: "inline-flex", alignItems: "center", opacity: blockVideoDraft ? 0.75 : 1 }}>
-                              {exerciseNoteVideoUploadKey === blockVideoDraftKey ? "Carico video..." : (blockVideoDraft ? "Sostituisci video" : "Aggiungi video")}
+                              {exerciseNoteVideoUploadKey === blockVideoDraftKey ? "Carico video..." : "Video da libreria"}
+                              <input
+                                type="file"
+                                accept="video/*"
+                                style={{ display: "none" }}
+                                disabled={exerciseNoteVideoUploadKey === blockVideoDraftKey}
+                                onChange={function(e) {
+                                  var file = e.target.files && e.target.files[0];
+                                  handleCoachNoteVideoPick(ex.n, file);
+                                  e.target.value = "";
+                                }}
+                              />
+                            </label>
+                            <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: exerciseNoteVideoUploadKey === blockVideoDraftKey ? "progress" : "pointer", display: "inline-flex", alignItems: "center", opacity: blockVideoDraft ? 0.75 : 1 }}>
+                              {exerciseNoteVideoUploadKey === blockVideoDraftKey ? "Carico video..." : "Video da camera"}
                               <input
                                 type="file"
                                 accept="video/*"
@@ -11723,7 +11922,21 @@ function isNearBodyweightElasticSession(exName, sets) {
                           </label>
                           {currentCoachNotePhotos.length > 0 && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{currentCoachNotePhotos.length + "/3 foto"}</span>}
                           <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: exerciseNoteVideoUploadKey === videoDraftKey ? "progress" : "pointer", display: "inline-flex", alignItems: "center", opacity: currentCoachNoteVideo ? 0.75 : 1 }}>
-                            {exerciseNoteVideoUploadKey === videoDraftKey ? "Carico video..." : (currentCoachNoteVideo ? "Sostituisci video" : "Aggiungi video")}
+                            {exerciseNoteVideoUploadKey === videoDraftKey ? "Carico video..." : "Video da libreria"}
+                            <input
+                              type="file"
+                              accept="video/*"
+                              style={{ display: "none" }}
+                              disabled={exerciseNoteVideoUploadKey === videoDraftKey}
+                              onChange={function(e) {
+                                var file = e.target.files && e.target.files[0];
+                                handleCoachNoteVideoPick(ex.n, file);
+                                e.target.value = "";
+                              }}
+                            />
+                          </label>
+                          <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: exerciseNoteVideoUploadKey === videoDraftKey ? "progress" : "pointer", display: "inline-flex", alignItems: "center", opacity: currentCoachNoteVideo ? 0.75 : 1 }}>
+                            {exerciseNoteVideoUploadKey === videoDraftKey ? "Carico video..." : "Video da camera"}
                             <input
                               type="file"
                               accept="video/*"
@@ -12032,7 +12245,21 @@ function isNearBodyweightElasticSession(exName, sets) {
                           </label>
                           {currentExerciseNotePhotos.length > 0 && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{currentExerciseNotePhotos.length + "/3 foto"}</span>}
                           <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: exerciseNoteVideoUploadKey === noteDraftKey ? "progress" : "pointer", display: "inline-flex", alignItems: "center", opacity: currentExerciseNoteVideo ? 0.75 : 1 }}>
-                            {exerciseNoteVideoUploadKey === noteDraftKey ? "Carico video..." : (currentExerciseNoteVideo ? "Sostituisci video" : "Aggiungi video")}
+                            {exerciseNoteVideoUploadKey === noteDraftKey ? "Carico video..." : "Video da libreria"}
+                            <input
+                              type="file"
+                              accept="video/*"
+                              style={{ display: "none" }}
+                              disabled={exerciseNoteVideoUploadKey === noteDraftKey}
+                              onChange={function(e) {
+                                var file = e.target.files && e.target.files[0];
+                                handleExerciseNoteVideoPick(dayIdx, ex.n, file);
+                                e.target.value = "";
+                              }}
+                            />
+                          </label>
+                          <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: exerciseNoteVideoUploadKey === noteDraftKey ? "progress" : "pointer", display: "inline-flex", alignItems: "center", opacity: currentExerciseNoteVideo ? 0.75 : 1 }}>
+                            {exerciseNoteVideoUploadKey === noteDraftKey ? "Carico video..." : "Video da camera"}
                             <input
                               type="file"
                               accept="video/*"
