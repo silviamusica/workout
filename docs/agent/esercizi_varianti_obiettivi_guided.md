@@ -471,9 +471,18 @@ Questi esercizi appartengono al G3 (`light: true`). La logica coach NON si attiv
 - **Ruolo nel G3**: volume diretto su un distretto che i compound non raggiungono (military press coinvolge solo parzialmente il laterale)
 - **Classificazione coach**: `mono`, `+1 kg per manubrio`
 - **Calibrazione**: `dumbbell`
-- **Note tecniche**: RPE 6-7, mai sopra parallelo, spalle basse (non trapezio), 2s su 2s giù
+- **Note tecniche**: 3 serie nominali, ma la prima è tecnica di avvicinamento. Serie 2-3 a RPE 7-8, mai sopra parallelo, spalle basse (non trapezio), 2s su 2s giù
 - **Progressione**: +1 kg per manubrio quando chiudi il top del range con margine — ma nel G3 non si usa la logica double progression
 - **Varianti possibili**: Alzate laterali al cavo basso (piu tensione costante), Alzate laterali con busto inclinato (enfasi posteriore)
+
+### Cable Pull-Apart con rotazione esterna
+
+- **Pattern**: tirata orizzontale leggera / deltoide posteriore + cuffia
+- **Ruolo nel G3**: richiamo tecnico leggero per deltoide posteriore e rotazione esterna senza usare elastico
+- **Classificazione coach**: `mono`, `cable`, `+1 step`
+- **Calibrazione**: `cable`
+- **Note tecniche**: 3 serie nominali, ma la prima è tecnica di avvicinamento. Serie 2-3 a RPE 7. Cavo alto, braccia tese all'altezza delle spalle, pausa 1s in apertura e mani ruotate verso fuori
+- **Nota pratica**: nel G3 è usato nel `Superset B` con `Abduzione laterale IR`; nel G2 è in superset con `Curl Bicipiti`
 
 ### TRX Row lento
 
@@ -501,6 +510,23 @@ Questi esercizi appartengono al G3 (`light: true`). La logica coach NON si attiv
 - **Calibrazione**: non richiesta nel G3 light
 - **Note tecniche**: cavigliera al cavo basso, estensione controllata del ginocchio, fermo breve in chiusura, ritorno lento
 - **Nota pratica**: nel G3 è usata nel `Superset C` con `TRX Row lento`
+
+### Push-Up
+
+- **Pattern**: spinta orizzontale a corpo libero
+- **Ruolo nel G3**: richiamo tecnico leggero di petto, tricipiti e core senza arrivare a fatica
+- **Classificazione coach**: `compound`, `bodyweight`, `+1 rip`
+- **Calibrazione**: `bodyweight`
+- **Note tecniche**: 3 serie nominali, ma la prima è tecnica di avvicinamento. Serie 2-3 a RPE 7, corpo in linea e 3-4 rip in riserva
+- **Nota pratica**: nel G3 è usato nel `Superset D` con `Leg Curl al Cavo`
+
+### Dead Bug
+
+- **Pattern**: core anti-estensione
+- **Ruolo nel G3**: chiusura finale fuori superset per stabilizzazione lombare e controllo del bacino
+- **Classificazione coach**: non rilevante nel G3 light
+- **Calibrazione**: non richiesta nel G3 light
+- **Note tecniche**: `2x8/lato`, `RPE 7`, lombare sempre aderente a terra, espira durante l'estensione di braccio e gamba opposti
 
 ### Clamshell
 

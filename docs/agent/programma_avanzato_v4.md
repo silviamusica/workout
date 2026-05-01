@@ -433,9 +433,9 @@ Protocollo breve facoltativo dopo lo stretching finale:
 | 1 | Trazioni | 5x5-8 | RPE 8-9, presa prona, ultimo set a cedimento tecnico controllato |
 | 2 | Panca | 5x6-8 | RPE 8-9, ultimo set a cedimento tecnico controllato |
 | 3 | Pulley Basso | 5x10-12 | RPE 8-9, tirata con controllo scapolare |
-| 4 | Band Pull-Apart con rotazione esterna | 3x15 | RPE 8, pausa 1s con mani ruotate fuori. Va in superset con Curl |
+| 4 | Cable Pull-Apart con rotazione esterna | 3x15 | RPE 8, pausa 1s con mani ruotate fuori. Va in superset con Curl |
 | 5 | Curl Bicipiti | 3x10-12 | Tutte le serie di lavoro. RPE 9 |
-| 6 | Alzate Laterali | 2x15 | RPE 8, 30s recupero. Vanno nel blocco PM dopo il superset |
+| 6 | Alzate Laterali | 3x15 | RPE 8, 30s recupero. Vanno nel blocco PM dopo il superset |
 
 **Esercizi rimossi rispetto alla versione precedente**:
 - T-bar Row (rimosso dal G2, spostato a G5)
@@ -474,28 +474,30 @@ Questo giorno colma tre lacune del programma:
 | Mobilità | T-spine rotation in quadrupedia | 8 rip/lato |
 | Attivazione | Ponte monopodalico | 6 rip/lato |
 
-**Esercizi** (RPE 6-8 · ~35 min con superset)
+**Esercizi** (RPE 7-8 · ~45 min con superset + Dead Bug finale)
 
 | # | Esercizio | Serie | RPE | Recupero | Note |
 |---|---|---|---|---|---|
 | 1 | Alzate Laterali | 3x15-20 | 8 | 30-45s | Superset A con Goblet Squat |
 | 2 | Goblet Squat | 3x12 | 8 | 45s | Superset A con Alzate Laterali |
-| 3 | Band Pull-Apart con rotazione esterna | 3x20 | 6-7 | 30s | Superset B con Abduzione laterale IR |
-| 4 | Abduzione laterale IR | 3x20/lato | 6-7 | 30s | Superset B con Band Pull-Apart |
-| 5 | Leg Curl al Cavo | 3x12 | 7 | 30s | Superset C con Leg Extension al Cavo |
-| 6 | Leg Extension al Cavo | 3x12-15 | 7 | 30s | Superset C con Leg Curl al Cavo |
-| 7 | TRX Row lento | 3x12 | 6-7 | 30s | Superset D con Push-Up |
-| 8 | Push-Up | 3x10 | 7 | 30s | Superset D con TRX Row lento |
+| 3 | Cable Pull-Apart con rotazione esterna | 3x20 | 7 | 30s | Superset B con Abduzione laterale IR |
+| 4 | Abduzione laterale IR | 3x20/lato | 7 | 30s | Superset B con Cable Pull-Apart |
+| 5 | Leg Extension al Cavo | 3x12-15 | 7 | 30s | Superset C con TRX Row lento |
+| 6 | TRX Row lento | 3x12 | 7 | 30s | Superset C con Leg Extension al Cavo |
+| 7 | Push-Up | 3x10 | 7 | 30s | Superset D con Leg Curl al Cavo |
+| 8 | Leg Curl al Cavo | 3x12 | 7 | 30s | Superset D con Push-Up |
+| 9 | Dead Bug | 2x8/lato | 7 | 45-60s | Fuori superset a fine blocco |
 
 Nel G3 l'esercizio base resta `Abduzione laterale IR`, con toggle persistente verso `Clamshell`.
 La `Leg Extension al Cavo` ora ha asset foto dedicato in `src/images/exercises/standing-cable-leg-extension.jpeg`.
+Le `3 serie` del G3 restano nominalmente tre, ma la prima e un set tecnico di avvicinamento; le serie 2-3 sono di lavoro a `RPE 7-8`.
 
 **Superset automatici G3**
 
 - Superset A: `Alzate Laterali + Goblet Squat` × 3 giri, recupero `45s`
-- Superset B: `Band Pull-Apart con rotazione esterna + Abduzione laterale IR` × 3 giri, recupero `30s`
-- Superset C: `Leg Curl al Cavo + Leg Extension al Cavo` × 3 giri, recupero `30s`
-- Superset D: `TRX Row lento + Push-Up` × 3 giri, recupero `30s`
+- Superset B: `Cable Pull-Apart con rotazione esterna + Abduzione laterale IR` × 3 giri, recupero `30s`
+- Superset C: `Leg Extension al Cavo + TRX Row lento` × 3 giri, recupero `30s`
+- Superset D: `Push-Up + Leg Curl al Cavo` × 3 giri, recupero `30s`
 
 **Protocollo anca completo** (8-10 minuti)
 

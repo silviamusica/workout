@@ -8,7 +8,7 @@
 | Giorno | Sigla | Tipo | Esercizi | Durata |
 |---|---|---|---|---|
 | **Lunedì** | G1 | Pesi — Lower A | Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel | ~65-70 min |
-| **Martedì** | G2 | Pesi — Upper A | Trazioni, Panca, Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali | ~68-74 min |
+| **Martedì** | G2 | Pesi — Upper A | Trazioni, Panca, Pulley, Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali | ~68-74 min |
 | **Mercoledì** | G3 | Leggero | Alzate Laterali, Goblet Squat, Band Pull-Apart, Abduzione laterale IR, Leg Curl al Cavo, Leg Extension al Cavo, TRX Row, Push-Up + Protocollo anca | ~35 min |
 | **Giovedì** | Cardio | Cardio programmato | Corsa 30 / HIIT upper+core / Corsa lunga / Rucking + Mobilità | 30-60 min |
 | **Venerdì** | G4 | Pesi — Lower B | Stacco da Terra, Bulgarian Split Squat, Hyperextension, Abduzione laterale IR | ~57-62 min |
@@ -128,20 +128,20 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 - Tra Trazioni: Retrazione scapolare passiva (5 cicli, 30s)
 - Tra Panca: Dead hang passivo (20-30s, se barra disponibile)
 
-### BLOCCO PM — Pulley separato + Superset 2: Band Pull-Apart + Curl Bicipiti
+### BLOCCO PM — Pulley separato + Superset 2: Cable Pull-Apart + Curl Bicipiti
 
 | # | Esercizio | Serie | Range Rip | RPE | Recupero Tra | Superset Con | Note |
 |---|---|---|---|---|---|---|---|
 | **3** | **Pulley Basso** | 5 | 10-12 | 8-9 | 0s | — | Tirata verticale bassa, controllo scapolare. Non la parte del superset qui sotto |
-| | | | | | **Recupero tra Pulley e Band** | **90s** | Pulley è esercizio isolato prioritario |
-| **4** | **Band Pull-Apart con rotazione esterna** | 3 | 15 | 8 | 0s | → Curl Bicipiti | Pausa 1s con mani ruotate fuori. Elastico medio |
-| **—** | **Curl Bicipiti (manubri)** | 3 | 10-12 | 9 | 60s | ← Band Pull-Apart | Tutte le serie di lavoro. Eccentrica controllata 2-3s |
+| | | | | | **Recupero tra Pulley e Cable Pull-Apart** | **90s** | Pulley è esercizio isolato prioritario |
+| **4** | **Cable Pull-Apart con rotazione esterna** | 3 | 15 | 8 | 0s | → Curl Bicipiti | Cavo alto, corda o doppio manico. Pausa 1s con mani ruotate fuori |
+| **—** | **Curl Bicipiti (manubri)** | 3 | 10-12 | 9 | 60s | ← Cable Pull-Apart | Tutte le serie di lavoro. Eccentrica controllata 2-3s |
 | | | | | | **Recupero tra superset** | **60 secondi** | |
 | **5** | **Alzate Laterali** | 2 | 15 | 8 | 30s | — | Chiusura PM fuori dal superset. Manubri leggeri, 1s in alto |
 
 **Spiegazione superset:**
 - Pulley resta separato → recupero pieno prima del superset
-- Band Pull-Apart + Curl Bicipiti = superset con pausa 60s
+- Cable Pull-Apart + Curl Bicipiti = superset con pausa 60s
 - Alzate Laterali vanno nel PM dopo il superset, senza modificare il blocco rapido
 
 ### STRETCHING FINALE (5-8 min)
@@ -162,7 +162,7 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 ## 📍 GIORNO 3 — LEGGERO (Mercoledì)
 
 **Tipo:** `light: true` — Niente coach, niente RIR, niente sessione guidata
-**Durata totale: ~35 minuti**
+**Durata totale: ~45 minuti**
 **Struttura:** 4 superset automatici | NO split AM/PM | RPE 6-8
 
 ### RISCALDAMENTO (5 min, senza circuito)
@@ -180,23 +180,25 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 |---|---|---|---|---|---|---|
 | 1 | **Alzate Laterali** | 3 | 15-20 | 8 | 30-45s | Superset A con Goblet Squat |
 | 2 | **Goblet Squat** | 3 | 12 | 8 | 45s | Superset A con Alzate Laterali |
-| 3 | **Band Pull-Apart con rotazione esterna** | 3 | 20 | 6-7 | 30s | Superset B con Abduzione laterale IR |
-| 4 | **Abduzione laterale IR** | 3 | 20/lato | 6-7 | 30s | Superset B con Band Pull-Apart |
-| 5 | **Leg Curl al Cavo** | 3 | 12 | 7 | 30s | Superset C con Leg Extension al Cavo |
-| 6 | **Leg Extension al Cavo** | 3 | 12-15 | 7 | 30s | Superset C con Leg Curl al Cavo |
-| 7 | **TRX Row lento** | 3 | 12 | 6-7 | 30s | Superset D con Push-Up |
-| 8 | **Push-Up** | 3 | 10 | 7 | 30s | Superset D con TRX Row lento |
+| 3 | **Cable Pull-Apart con rotazione esterna** | 3 | 20 | 7 | 30s | Superset B con Abduzione laterale IR |
+| 4 | **Abduzione laterale IR** | 3 | 20/lato | 7 | 30s | Superset B con Cable Pull-Apart |
+| 5 | **Leg Extension al Cavo** | 3 | 12-15 | 7 | 30s | Superset C con TRX Row lento |
+| 6 | **TRX Row lento** | 3 | 12 | 7 | 30s | Superset C con Leg Extension al Cavo |
+| 7 | **Push-Up** | 3 | 10 | 7 | 30s | Superset D con Leg Curl al Cavo |
+| 8 | **Leg Curl al Cavo** | 3 | 12 | 7 | 30s | Superset D con Push-Up |
+| 9 | **Dead Bug** | 2 | 8/lato | 7 | 45-60s | Singolo finale fuori superset |
 
 Nel G3 l'esercizio base è **Abduzione laterale IR** e il toggle alternativo resta **Clamshell**. Nel controllo agente il riferimento principale resta Abduzione laterale IR.
+Le `3 serie` del G3 restano nominalmente tre per tutti gli esercizi principali: la **prima è tecnica di avvicinamento**, le **serie 2-3 sono di lavoro** a `RPE 7-8`.
 La **Leg Extension al Cavo** usa ora la foto dedicata `src/images/exercises/standing-cable-leg-extension.jpeg`.
 Il parser serie riconosce anche le entry `per lato`, quindi il completamento del G3 attiva correttamente l'export automatico al salvataggio dell'ultima serie.
 
 ### Superset automatici G3
 
 - **Superset A**: Alzate Laterali → Goblet Squat → `45s`
-- **Superset B**: Band Pull-Apart con rotazione esterna → Abduzione laterale IR → `30s`
-- **Superset C**: Leg Curl al Cavo → Leg Extension al Cavo → `30s`
-- **Superset D**: TRX Row lento → Push-Up → `30s`
+- **Superset B**: Cable Pull-Apart con rotazione esterna → Abduzione laterale IR → `30s`
+- **Superset C**: Leg Extension al Cavo → TRX Row lento → `30s`
+- **Superset D**: Push-Up → Leg Curl al Cavo → `30s`
 
 ### PROTOCOLLO ANCA COMPLETO (8-10 min)
 
@@ -406,7 +408,7 @@ I giorni pesi sono organizzati in **AM (esercizi pesanti)** e **PM (blocchi in s
 | Giorno | AM | PM |
 |---|---|---|
 | **G1** | Squat, Stacco Rumeno, Glute Bridge Bilanciere | Leg Curl + Ab Wheel (superset) |
-| **G2** | Trazioni, Panca | Pulley, Band Pull-Apart + Curl Bicipiti (superset), Alzate Laterali |
+| **G2** | Trazioni, Panca | Pulley, Cable Pull-Apart + Curl Bicipiti (superset), Alzate Laterali |
 | **G4** | Stacco da Terra, Bulgarian Split Squat | Hyperextension + Abduzione laterale IR (superset) |
 | **G5** | T-bar Row, Military Press | Trazioni Supine, Push-Up + Woodchop (superset), Alzate Laterali |
 
@@ -419,7 +421,7 @@ Leggere il programma sopra e rispondere a questi punti:
 ## 1. Superset — Corretti i nomi? ✓ / ✗
 
 - ❓ **G1:** "Leg Curl + Ab Wheel" rinominato **"Superset 1"** — Corretto?
-- ❓ **G2:** "Band Pull-Apart + Curl Bicipiti" rinominato **"Superset 2"** — Corretto?
+- ❓ **G2:** "Cable Pull-Apart + Curl Bicipiti" rinominato **"Superset 2"** — Corretto?
 - ❓ **G4:** "Hyperextension + Abduzione laterale IR" rinominato **"Superset 3"** — Corretto?
 - ❓ **G5:** "Push-Up + Woodchop" rinominato **"Superset 4"** — Corretto?
 
@@ -428,7 +430,7 @@ Leggere il programma sopra e rispondere a questi punti:
 - ❓ **G1 AM:** Squat, Stacco Rumeno, Glute Bridge Bilanciere — Corretto? Manca qualcosa?
 - ❓ **G1 PM:** Leg Curl + Ab Wheel in superset — Corretto?
 - ❓ **G2 AM:** Trazioni, Panca — Corretto?  
-- ❓ **G2 PM:** Pulley separato, poi Band Pull-Apart + Curl Bicipiti in superset — Corretto?
+- ❓ **G2 PM:** Pulley separato, poi Cable Pull-Apart + Curl Bicipiti in superset — Corretto?
 - ❓ **G4 AM:** Stacco da Terra, Bulgarian Split Squat — Corretto?
 - ❓ **G4 PM:** Hyperextension + Abduzione laterale IR in superset — Corretto?
 - ❓ **G5 AM:** T-bar Row, Military Press — Corretto?

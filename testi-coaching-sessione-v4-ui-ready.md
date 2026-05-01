@@ -136,9 +136,9 @@ Scarico → circa 50% → 70-80%. Devono preparare, non stancare.
 
 **Durata stimata:** 90-93 min
 **Attrezzi:** Barra trazioni · Elastico leggero · Bilanciere + panca + rack · Cavo basso · Manubri
-**Recuperi generali:** 2-3 min su Trazioni e Panca · 90s su Pulley · 60s nel superset Band Pull-Apart + Curl · 30s su Alzate Laterali
+**Recuperi generali:** 2-3 min su Trazioni e Panca · 90s su Pulley · 60s nel superset Cable Pull-Apart + Curl · 30s su Alzate Laterali
 
-> **Superset possibile:** Band Pull-Apart con rotazione esterna + Curl Bicipiti back-to-back. Pulley resta separato e le Alzate Laterali vanno dopo il superset.
+> **Superset possibile:** Cable Pull-Apart con rotazione esterna + Curl Bicipiti back-to-back. Pulley resta separato e le Alzate Laterali vanno dopo il superset.
 
 ---
 
@@ -222,23 +222,23 @@ Mini-serie progressive per entrare nella tirata senza stancarti.
 
 ---
 
-### Band Pull-Apart con rotazione esterna *(superset con Curl)*
+### Cable Pull-Apart con rotazione esterna *(superset con Curl)*
 
 **Serie:** 3×15 · RPE 8
 **Recupero:** diretto su Curl
-**Attrezzi:** Elastico medio
+**Attrezzi:** Cavo alto + corda o doppio manico
 
-**Setup:** Braccia tese. Apri fino al petto e ruota le mani fuori alla fine. Pausa 1s.
+**Setup:** Braccia tese all'altezza delle spalle. Apri fino ai lati del corpo e ruota le mani fuori alla fine. Pausa 1s.
 
 **Introduzione:** Tiene ordine alle spalle dopo trazioni e panca, senza rubare energie al resto della seduta.
 **Focus:** Mani ruotate fuori e scapole che si chiudono senza alzare le spalle.
 **Attenzione:** Se pieghi i gomiti o slanci, stai togliendo lavoro al deltoide posteriore.
 
-**Errori comuni:** Gomiti che si piegano · nessuna rotazione esterna · elastico troppo leggero
+**Errori comuni:** Gomiti che si piegano · nessuna rotazione esterna · slancio per chiudere il gesto
 
 ---
 
-### Curl Bicipiti *(superset con Band Pull-Apart)*
+### Curl Bicipiti *(superset con Cable Pull-Apart)*
 
 **Serie:** 5×10-12 · RPE 9
 **Recupero:** 60s dopo il secondo esercizio del superset
@@ -256,7 +256,7 @@ Mini-serie progressive per entrare nella tirata senza stancarti.
 
 ### Alzate Laterali
 
-**Serie:** 2×15 · RPE 8
+**Serie:** 3×15 · RPE 8
 **Recupero:** 30s
 **Attrezzi:** Manubri leggeri
 

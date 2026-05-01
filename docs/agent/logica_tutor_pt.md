@@ -278,7 +278,7 @@ Il Giorno 3 ha `light: true`. Non è cardio, non è pesi, non è riposo.
 | # | Esercizio | Serie | RPE | Recupero |
 |---|---|---|---|---|
 | 1 | Alzate Laterali | 3x15-20 | 8 | 30-45s |
-| 2 | Band Pull-Apart con rotazione esterna | 3x20 | 6-7 | 30s |
+| 2 | Cable Pull-Apart con rotazione esterna | 3x20 | 7 | 30s |
 | 3 | Abduzione laterale IR | 3x20/lato | 6-7 | 30s |
 | 4 | Goblet Squat | 3x12 | 8 | 45s |
 | 5 | Leg Extension al Cavo | 3x12-15 | 7 | 30s |
@@ -301,7 +301,7 @@ Il Giorno 3 ha `light: true`. Non è cardio, non è pesi, non è riposo.
 ### Classificazione esercizi G3 per il coach (se mai interrogato)
 
 - `Alzate Laterali`: mono, +1 kg per manubrio
-- `Band Pull-Apart con rotazione esterna`: mono, bodyweight, +1 rip
+- `Cable Pull-Apart con rotazione esterna`: mono, cable, +1 step
 - `Abduzione laterale IR`: mono, bodyweight, +1 rip
 - `Goblet Squat`: compound leggero, +1 kg manubrio/kettlebell
 - `Leg Extension al Cavo`: mono, +1 scatto cavo
@@ -563,7 +563,7 @@ Esempi:
 - Push-Up
 - Ab Wheel
 - Abduzione laterale IR
-- Band Pull-Apart con rotazione esterna
+- Cable Pull-Apart con rotazione esterna
 - TRX Row lento
 
 Soglie oggi codificate nella logica guidata:
@@ -612,7 +612,7 @@ L'app offre tre formati per ogni giorno pesi: sessione unica, split AM/PM, super
 | Giorno | AM | PM |
 |---|---|---|
 | G1 | Squat · Stacco Rumeno · Glute Bridge Bilanciere | Leg Curl al Cavo · Ab Wheel |
-| G2 | Trazioni · Panca | Pulley · Band Pull-Apart con rotazione esterna · Curl Bicipiti · Alzate Laterali |
+| G2 | Trazioni · Panca | Pulley · Cable Pull-Apart con rotazione esterna · Curl Bicipiti · Alzate Laterali |
 | G4 | Stacco da Terra · Bulgarian Split Squat | Hyperextension · Abduzione laterale IR |
 | G5 | T-bar Row · Military Press | Push-Up · Trazioni Supine · Woodchop · Alzate Laterali |
 
@@ -621,11 +621,11 @@ L'app offre tre formati per ogni giorno pesi: sessione unica, split AM/PM, super
 | Giorno | A | B | Recupero dopo B |
 |---|---|---|---|
 | G1 | Leg Curl al Cavo | Ab Wheel | 60s |
-| G2 | Band Pull-Apart con rotazione esterna | Curl Bicipiti | 60s |
+| G2 | Cable Pull-Apart con rotazione esterna | Curl Bicipiti | 60s |
 | G3 | Alzate Laterali | Goblet Squat | 45s |
-| G3 | Band Pull-Apart con rotazione esterna | Abduzione laterale IR | 30s |
-| G3 | Leg Curl al Cavo | Leg Extension al Cavo | 30s |
-| G3 | TRX Row lento | Push-Up | 30s |
+| G3 | Cable Pull-Apart con rotazione esterna | Abduzione laterale IR | 30s |
+| G3 | Leg Extension al Cavo | TRX Row lento | 30s |
+| G3 | Push-Up | Leg Curl al Cavo | 30s |
 | G4 | Hyperextension | Abduzione laterale IR | 60s |
 | G5 | Push-Up | Woodchop | 45s |
 

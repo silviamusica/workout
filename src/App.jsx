@@ -366,10 +366,10 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"ul","content":["Inclinazione del busto a 45 gradi: piu verticale = piu trapezio; piu orizzontale = piu dorsale","Porta i gomiti il piu possibile verso il soffitto e indietro","Non usare lo slancio del busto: il movimento deve partire dalle scapole","Il petto puo appoggiarsi al supporto per isolare ancora di piu il dorsale"]},
   {"type":"p","content":"Particolarmente utile come alternativa al rematore bilanciere per chi ha difficolta a mantenere la schiena neutra con carichi elevati."}
 ]},
-"Band Pull-Apart con rotazione esterna": {"g": "Deltoidi posteriori/Cuffia rotatori/Romboidi", "c": "Braccia tese davanti, elastico a media resistenza. Apri fino al petto e ruota le mani verso fuori alla fine. Pausa 1s.", "p": "Braccia tese per tutto il movimento. Spalle basse. Non piegare i gomiti per arrivare piu indietro.", "t": ["Senti le scapole avvicinarsi a fine movimento", "La rotazione esterna finale e la parte piu importante", "Non usare slancio: movimento lento e controllato"], "deep": [
-  {"type":"p","content":"Non e il band pull-apart leggero del riscaldamento. Usa un elastico piu resistente e cerca la retrazione scapolare e la rotazione esterna complete."},
-  {"type":"ul","content":["Braccia completamente tese durante tutta l'apertura — i gomiti non devono piegarsi per 'barare' il range","A fine movimento le mani ruotano verso fuori (rotazione esterna): e qui che si attiva la cuffia dei rotatori","Pausa 1 secondo alla fine di ogni ripetizione: senti le scapole stringersi al centro"]},
-  {"type":"p","content":"Copre deltoide posteriore e rotazione esterna della spalla — il lavoro che tirate e spinte pesanti non raggiungono mai direttamente."}
+"Cable Pull-Apart con rotazione esterna": {"g": "Deltoide posteriore, infraspinato, piccolo rotondo, romboidi", "c": "Cavo alto, corda o doppio manico. Braccia tese davanti, altezza spalle. Apri lateralmente fino ai lati del corpo. Alla fine: ruota le mani verso fuori (pollici verso il soffitto). Pausa 1s.", "p": "Braccia tese per tutto il movimento. La rotazione finale e il punto dell'esercizio.", "t": ["Se i gomiti si piegano il peso e troppo alto", "Se non ruoti alla fine stai solo facendo un'apertura"], "deep": [
+  {"type":"p","content":"La meccanica e la stessa del pull-apart classico, ma il cavo mantiene tensione costante gia dall'inizio del range: e piu favorevole per deltoide posteriore e cuffia rispetto all'elastico."},
+  {"type":"ul","content":["Cavo alto con corda o doppio manico, posizione stabile in piedi","Braccia lunghe per tutto il movimento: se i gomiti si piegano il carico e troppo alto","Alla fine dell'apertura ruota le mani verso fuori e mantieni 1 secondo","Busto fermo e costole giu: niente slancio o compensi lombari"]},
+  {"type":"p","content":"Nel G2 e un lavoro accessorio vero per deltoide posteriore e rotazione esterna; nel G3 resta volume tecnico leggero ma con la stessa meccanica."}
 ]},
 "Face Pull": {"g": "Deltoidi posteriori/Romboidi/Cuffia rotatori", "c": "Carrucola alta, corda a due capi. Tira verso il viso aprendo le braccia verso l'esterno.", "p": "Busto eretto, gomiti alti paralleli al pavimento.", "t": ["Tira verso naso-fronte non verso il mento", "Apri le mani ai lati nel punto finale", "Movimento lento e controllato"], "lk": "https://youtube.com/shorts/V5V9s-nZIrk?si=QVFCxGb8bx-jmaNp", "deep": [
   {"type":"p","content":"Il Face Pull e fondamentale per la salute delle spalle: rinforza i rotatori esterni e i deltoidi posteriori, muscoli spesso negletti e responsabili di postura curva e dolori alla spalla."},
@@ -433,12 +433,12 @@ Object.assign(EX["Pulley"], {
   ]
 });
 
-Object.assign(EX["Band Pull-Apart con rotazione esterna"], {
+Object.assign(EX["Cable Pull-Apart con rotazione esterna"], {
   guideDay: "G2 e G3",
   guide: [
-    { type: "p", content: "Questa variante allena deltoide posteriore, romboidi, trapezio medio-basso e cuffia dei rotatori. Nel G2 e piu intensa; nel G3 diventa volume tecnico con piu rip e meno fatica." },
-    { type: "ul", content: ["Elastico davanti al petto, mani a larghezza spalle", "Braccia tese o quasi tese, spalle basse", "Busto fermo, costole giu"] },
-    { type: "p", content: "Esecuzione. Apri le braccia fino a portare l'elastico al petto avvicinando le scapole. Alla fine ruota le mani verso fuori come per mostrare i pollici dietro di te, mantieni 1 secondo e rientra lentamente." },
+    { type: "p", content: "Questa variante al cavo allena deltoide posteriore, romboidi, trapezio medio-basso e cuffia dei rotatori con tensione costante su tutto il ROM. Nel G2 e piu intensa; nel G3 resta volume tecnico." },
+    { type: "ul", content: ["Cavo alto con corda o doppio manico, mani all'altezza delle spalle", "Braccia tese o quasi tese, spalle basse", "Busto fermo, costole giu"] },
+    { type: "p", content: "Esecuzione. Apri lateralmente fino ad avere le mani ai lati del corpo. Alla fine ruota le mani verso fuori, mantieni 1 secondo e torna in controllo. La rotazione finale completa e il punto chiave dell'esercizio." },
     { type: "table", columns: ["Errore", "Correzione"], rows: [["Gomiti troppo piegati", "Mantieni le braccia lunghe e la leva costante"], ["Schiena che si inarca", "Stringi addome e glutei"], ["Rotazione finale assente", "Completa ogni rip con la piccola extra-rotazione delle mani"], ["Spalle che salgono", "Cue: spalle basse, lontane dalle orecchie"]] },
     { type: "p", content: "Respirazione. Espira mentre apri e ruoti, inspira nel ritorno." }
   ]
@@ -572,7 +572,7 @@ Object.assign(EX["Woodchop"], {
 Object.assign(EX["Alzate Laterali"], {
   guideDay: "G2, G3 e G5",
   guide: [
-    { type: "p", content: "Le alzate laterali allenano soprattutto il deltoide laterale, con supporto di sovraspinato e trapezio superiore. In G2 sono 2 serie pulite, in G3 3x15-20 controllate e in G5 3x15 a RPE 8 come volume extra specifico." },
+    { type: "p", content: "Le alzate laterali allenano soprattutto il deltoide laterale, con supporto di sovraspinato e trapezio superiore. In G2 sono 3 serie pulite, in G3 3x15-20 controllate e in G5 3x15 a RPE 8 come volume extra specifico." },
     { type: "ul", content: ["Piedi larghezza anche, busto neutro, manubri ai lati", "Gomiti leggermente piegati e quasi fissi", "Le mani restano ai lati del corpo, non dietro"] },
     { type: "p", content: "Esecuzione. Solleva i manubri lateralmente fino a circa l'altezza delle spalle, con movimento lento e controllato. Mantieni i mignoli solo leggermente piu alti dei pollici, senza forzare la rotazione interna. Scendi in 2-3 secondi senza perdere tensione." },
     { type: "table", columns: ["Errore", "Correzione"], rows: [["Slancio con busto o gambe", "Riduci il carico e mantieni il tronco fermo"], ["Spalle che salgono verso le orecchie", "Rilassa il trapezio e pensa ad allungare le braccia lontano dai fianchi"], ["Gomiti che si piegano troppo", "Mantieni quasi invariato l'angolo del gomito"], ["Braccia troppo avanti", "Alza nel piano laterale, non in una front raise mascherata"]] },
@@ -1855,19 +1855,19 @@ var DAYS_V4 = [
       { n: "Ab Wheel", s: "4x8-10", rpe: "8", note: "Dalle ginocchia. Costole giu e glutei attivi per tutta la serie. Tutte le serie sono di lavoro. Alternativa: TRX fallout o fitball rollout.", rec: "90s", gear: "Ab wheel", errori: "Lombare che si inarca; anche che non si estendono; range troppo corto" },
     ], str: ["Quadricipiti","Flessori anca","Glutei"] },
 
-  { name: "Giorno 2", focus: "Upper A — Trazioni + Panca + Pulley", dayLabel: "Mar", dur: "6 esercizi", tEst: 71,
+  { name: "Giorno 2", focus: "Upper A — Trazioni + Panca + Pulley", dayLabel: "Mar", dur: "6 esercizi", tEst: 73,
     intro: {
-      attrezzi: ["Barra trazioni", "Elastico assistenza", "Bilanciere + panca + rack", "Cavo basso + maniglie", "Elastico media resistenza", "Manubri"],
-      muscoli: ["Dorsali/Bicipiti (Trazioni)", "Pettorali/Tricipiti (Panca)", "Dorsali/Scapole (Pulley)", "Deltoidi posteriori/Cuffia rotatori (Band Pull-Apart)", "Deltoide laterale (Alzate Laterali)", "Bicipiti (Curl)"],
-      obiettivi: ["Costruire forza nelle Trazioni con double progression — priorita assoluta", "Aggiungere volume tirata orizzontale con Pulley", "Coprire rotazione esterna e deltoide posteriore con Band Pull-Apart", "Portare il deltoide laterale al minimo utile con 2 serie pulite di Alzate Laterali"],
-      attenzione: ["Trazioni: parti da braccia TESE, scapole depresse PRIMA di tirare, mento sopra la sbarra, discesa controllata 2-3s", "Panca: scapole addotte e basse, gomiti a 45-75 gradi, barra tocca linea capezzoli", "Band Pull-Apart: braccia TESE, ruota le mani verso fuori alla fine, pausa 1s — non piegare i gomiti"],
-      ritmo: "Recuperi 2-3 min su Trazioni. 2 min su Panca. 90s-2 min su Pulley. 60s nel superset Band Pull-Apart + Curl. 30s su Alzate Laterali."
+      attrezzi: ["Barra trazioni", "Elastico assistenza", "Bilanciere + panca + rack", "Cavo basso + maniglie", "Cavo alto + corda o doppio manico", "Manubri"],
+      muscoli: ["Dorsali/Bicipiti (Trazioni)", "Pettorali/Tricipiti (Panca)", "Dorsali/Scapole (Pulley)", "Deltoidi posteriori/Cuffia rotatori (Cable Pull-Apart)", "Deltoide laterale (Alzate Laterali)", "Bicipiti (Curl)"],
+      obiettivi: ["Costruire forza nelle Trazioni con double progression — priorita assoluta", "Aggiungere volume tirata orizzontale con Pulley", "Coprire rotazione esterna e deltoide posteriore con Cable Pull-Apart", "Portare il deltoide laterale al minimo utile con 3 serie pulite di Alzate Laterali"],
+      attenzione: ["Trazioni: parti da braccia TESE, scapole depresse PRIMA di tirare, mento sopra la sbarra, discesa controllata 2-3s", "Panca: scapole addotte e basse, gomiti a 45-75 gradi, barra tocca linea capezzoli", "Cable Pull-Apart: braccia TESE, ruota le mani verso fuori alla fine, pausa 1s — non piegare i gomiti"],
+      ritmo: "Recuperi 2-3 min su Trazioni. 2 min su Panca. 90s-2 min su Pulley. 60s nel superset Cable Pull-Apart + Curl. 30s su Alzate Laterali."
     },
     warmup: [
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota solo il torace: il bacino resta fermo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
       { n: "FMS spalle", phase: "mobility", gearTag: "Corpo libero", p: "5 per lato", cue: "Descrizione in arrivo." },
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "12 per gamba x2", cue: "Serve anche qui per appoggio e linea stabile: porta avanti i fianchi, non le spalle.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
-      { n: "Band Pull-Apart al cavo", phase: "activation", gearTag: "Cavo", p: "15 rip", cue: "Scapole che si avvicinano alla fine del gesto.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
+      { n: "Cable Pull-Apart con rotazione esterna", phase: "activation", gearTag: "Cavo", p: "15 rip", cue: "Scapole che si avvicinano alla fine del gesto.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
       { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "20 rip per lato", cue: "Bacino fermo e anti-rotazione vera per 20 ripetizioni per lato.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
       { n: "Serie avvicinamento trazioni prone", phase: "approach", img: "Trazioni", gearTag: "Sbarra + elastico", p: "2-3 mini-serie", cue: "Mini-serie progressive presa prone con elastico per entrare nella tirata senza stancarti." },
     ],
@@ -1875,17 +1875,17 @@ var DAYS_V4 = [
       { n: "Trazioni", s: "5x5-8", rpe: "8-9", note: "Double progression. Presa prona. Parti da braccia tese. Mento sopra sbarra. Discesa 2-3s. Ultimo set a cedimento tecnico controllato.", priority: true, rec: "2-3 min", gear: "Barra trazioni (+ elastico assist.)", errori: "Kipping/slancio; mento che si protende senza tirare; spalle alle orecchie; ROM incompleto" },
       { n: "Panca", s: "5x6-8", rpe: "8-9", note: "Scapole addotte e basse. Arco lombare naturale. Gomiti a 45-75 gradi. Barra tocca linea capezzoli. Polsi dritti. Ultimo set a cedimento tecnico controllato.", rec: "2 min", gear: "Bilanciere + panca + rack", errori: "Rimbalzo sul petto; gomiti a 90 gradi; sedere che si alza; polsi piegati" },
       { n: "Pulley", s: "5x10-12", rpe: "8-9", note: "Carrucola bassa. Tira verso lo sterno portando i gomiti indietro e le scapole insieme. Eccentrica 2-3 secondi.", rec: "90s-2 min", gear: "Cavo basso + maniglie", errori: "Schiena che si inarca; slancio col busto; tirare con i bicipiti invece dei dorsali" },
-      { n: "Band Pull-Apart con rotazione esterna", s: "3x15", rpe: "8", note: "Braccia tese davanti, apri fino al petto e ruota le mani verso fuori alla fine. Pausa 1s a fine ripetizione. Non e il band pull-apart leggero del riscaldamento: usa un elastico piu resistente.", rec: "60s", gear: "Elastico resistenza media", errori: "Piegare i gomiti per arrivare piu indietro; non completare la rotazione esterna; usare slancio" },
+      { n: "Cable Pull-Apart con rotazione esterna", s: "3x15", rpe: "8", note: "Cavo alto, corda o doppio manico. Braccia tese davanti all'altezza delle spalle. Apri lateralmente fino ai lati del corpo e ruota le mani verso fuori alla fine. Pausa 1s.", rec: "60s", gear: "Cavo alto + corda o doppio manico", errori: "Piegare i gomiti per arrivare piu indietro; non completare la rotazione esterna; usare slancio" },
       { n: "Curl Bicipiti", s: "3x10-12", rpe: "9", note: "Con manubri. Gomiti fissi ai fianchi. Supinazione. Eccentrica 2-3s. Tutte le serie sono di lavoro.", rec: "90s", gear: "Manubri", errori: "Slancio col busto; gomiti che avanzano; fase eccentrica troppo veloce" },
-      { n: "Alzate Laterali", s: "2x15", rpe: "8", note: "Manubri leggeri. Due serie pulite, fuori dal superset. Alza fino a parallelo, pausa 1s in alto, niente slancio.", rec: "30s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
+      { n: "Alzate Laterali", s: "3x15", rpe: "8", note: "Manubri leggeri. Tre serie pulite, fuori dal superset. Alza fino a parallelo, pausa 1s in alto, niente slancio.", rec: "30s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
     ], str: ["Doorway Pec Stretch","Overhead Lat Stretch","Cross-Body Shoulder Stretch","Wrist Flexor/Extensor Stretch"], hipBonus: true },
 
-  { name: "Giorno 3", focus: "Leggero", dayLabel: "Mer", light: true, tEst: 35,
+  { name: "Giorno 3", focus: "Leggero", dayLabel: "Mer", light: true, tEst: 45,
     intro: {
       attrezzi: ["Manubri leggeri", "TRX", "Cavo basso + cavigliera", "Tappetino"],
-      muscoli: ["Deltoide laterale (Alzate Laterali)", "Quadricipiti / Glutei (Goblet Squat)", "Deltoide posteriore / cuffia (Band Pull-Apart)", "Gluteo medio (Abduzione laterale IR)", "Quadricipiti in isolamento (Leg Extension al Cavo)", "Dorsali / scapole (TRX Row lento)", "Petto (Push-Up)", "Femorali in flessione ginocchio (Leg Curl al Cavo)"],
-      obiettivi: ["Aggiungere volume complementare senza affaticare il sistema nervoso", "Portare petto, deltoidi, quadricipiti e femorali al minimo utile con serie leggere ma produttive", "Usare 4 superset automatici per tenere il G3 rapido e ordinato", "Chiudere con il protocollo anca completo in un giorno senza compound pesanti"],
-      attenzione: ["RPE massimo 8 su Alzate Laterali e Goblet Squat: il resto resta 6-7", "Push-Up, Leg Extension e Leg Curl oggi sono volume leggero: tecnica pulita, niente fatica vera", "Nel TRX Row e nell'Abduzione laterale IR il controllo del corpo conta piu della quantità"],
+      muscoli: ["Deltoide laterale (Alzate Laterali)", "Quadricipiti / Glutei (Goblet Squat)", "Deltoide posteriore / cuffia (Cable Pull-Apart)", "Gluteo medio (Abduzione laterale IR)", "Quadricipiti in isolamento (Leg Extension al Cavo)", "Dorsali / scapole (TRX Row lento)", "Petto (Push-Up)", "Femorali in flessione ginocchio (Leg Curl al Cavo)", "Core anti-estensione (Dead Bug)"],
+      obiettivi: ["Aggiungere volume complementare senza affaticare il sistema nervoso", "Portare petto, deltoidi, quadricipiti e femorali al minimo utile con serie leggere ma produttive", "Usare 4 superset automatici per tenere il G3 rapido e ordinato", "Chiudere il blocco forza con Dead Bug per il core anti-estensione e poi protocollo anca completo"],
+      attenzione: ["G3 leggero: 3 serie per esercizio. La prima serie e di avvicinamento tecnico, le serie 2 e 3 sono di lavoro a RPE 7-8.", "Push-Up, Leg Extension e Leg Curl oggi sono volume leggero: tecnica pulita, niente fatica vera", "Nel TRX Row e nell'Abduzione laterale IR il controllo del corpo conta piu della quantità"],
       ritmo: "Superset automatici con recuperi brevi: 45s nel primo blocco, 30s negli altri. Tieni il flusso alto ma senza sporcare la tecnica."
     },
     warmup: [
@@ -1893,7 +1893,7 @@ var DAYS_V4 = [
       { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8 passaggi per lato", cue: "Busto verticale: il movimento parte dalle anche." },
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota il torace senza muovere il bacino." },
       { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 rip per lato", cue: "Gluteo forte in alto, lombare ferma." },
-      { n: "Band Pull-Apart con elastico", phase: "activation", gearTag: "Elastico leggero", p: "15 rip", cue: "Braccia tese, scapole addotte in fondo, spalle basse." },
+      { n: "Cable Pull-Apart con rotazione esterna", phase: "activation", gearTag: "Cavo", p: "15 rip", cue: "Braccia tese, scapole addotte in fondo, spalle basse." },
     ],
     lightIntro: "Non e un giorno di allenamento pesante. E volume complementare a bassa intensita organizzato in 4 superset automatici: deltoide laterale, deltoide posteriore, gluteo medio, quadricipiti, dorsali/scapole, petto e femorali. Niente coach attivo, niente RIR e nessuna decisione finale. Poi il protocollo anca completo.",
     lightWarmup: [
@@ -1901,17 +1901,18 @@ var DAYS_V4 = [
       { n: "90/90 hip mobility", p: "8 passaggi/lato" },
       { n: "T-spine rotation in quadrupedia", p: "8 rip/lato" },
       { n: "Ponte monopodalico", p: "6 rip/lato" },
-      { n: "Band Pull-Apart con elastico", p: "15 rip · braccia tese, scapole addotte" },
+      { n: "Cable Pull-Apart con rotazione esterna", p: "15 rip · braccia tese, scapole addotte" },
     ],
     ex: [
-      { n: "Alzate Laterali", s: "3x15-20", rpe: "8", note: "Manubri leggeri. Alza fino a parallelo al pavimento. Lento: 2s su, 2s giu. Spalle basse, non alzare i trapezi.", rec: "30-45s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
-      { n: "Goblet Squat", s: "3x12", rpe: "8", note: "Manubrio al petto. Scendi parallelo. I gomiti spingono le ginocchia verso fuori. Qui sale a RPE 8 per rendere produttive le 3 serie. Alternativa: corpo libero squat.", rec: "45s", gear: "Manubrio leggero", errori: "Busto che cade avanti; schiena arrotondata; ginocchia che collassano" },
-      { n: "Band Pull-Apart al cavo", s: "3x20", rpe: "6-7", note: "Volume leggero extra. Cavo regolato a media altezza, pausa 1s a fine apertura con mani ruotate fuori. Non tirare con forza.", rec: "30s", gear: "Cavo", errori: "Tirare con forza; gomiti piegati; nessuna rotazione esterna finale" },
-      { n: "Abduzione laterale IR", s: "3x20 per lato", rpe: "6-7", note: "Sdraiata sul fianco o in quadrupedia. Gamba sopra leggermente dietro la linea del corpo, ginocchio piegato a 90 gradi e punta verso il pavimento. Range piccolo, bacino fermo, pausa 1s in alto.", rec: "30s", gear: "Corpo libero", errori: "Bacino che ruota indietro; piede che si apre verso l'alto; slancio", alt: { n: "Clamshell", s: "3x20 per lato", rpe: "6-7", note: "Ginocchia piegate a 90 gradi, piedi uniti. Apri il ginocchio superiore senza ruotare il bacino indietro. Pausa 1s in apertura.", rec: "30s", gear: "Corpo libero", errori: "Bacino che ruota; piedi che si separano; slancio" } },
-      { n: "Leg Curl al Cavo", s: "3x12", rpe: "7", note: "Volume leggero per i femorali in flessione di ginocchio. Eccentrica 2-3 secondi, nessuno slancio, fermati larga.", rec: "30s", gear: "Cavo basso + cavigliera", errori: "Slancio col bacino; eccentrica troppo veloce; lombare che si inarca" },
-      { n: "Leg Extension al Cavo", s: "3x12-15", rpe: "7", note: "Cavigliera al cavo basso. Estendi il ginocchio in controllo, fermo breve in chiusura e ritorno lento. Volume tecnico leggero per i quadricipiti.", rec: "30s", gear: "Cavo basso + cavigliera", errori: "Slancio con l'anca; chiusura sporca; ritorno troppo veloce" },
-      { n: "TRX Row lento", s: "3x12", rpe: "6-7", note: "Fermo 2s con scapole strette. Eccentrica 3s. Lavora i dorsali senza tassare la presa. Riduci l'inclinazione se il corpo non resta in linea.", rec: "30s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
-      { n: "Push-Up", s: "3x10", rpe: "7", note: "Volume leggero per il petto. Tecnica perfetta, non a fatica: fermati con 3-4 rip in riserva. Corpo in linea e gomiti a 45 gradi.", rec: "30s", gear: "Corpo libero", errori: "Anche che cedono; gomiti troppo aperti; ROM accorciato" },
+      { n: "Alzate Laterali", s: "3x15-20", approachSets: 1, rpe: "8", note: "Manubri leggeri. Prima serie di avvicinamento tecnico, poi 2 serie di lavoro. Alza fino a parallelo al pavimento. Lento: 2s su, 2s giu. Spalle basse, non alzare i trapezi.", rec: "30-45s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
+      { n: "Goblet Squat", s: "3x12", approachSets: 1, rpe: "8", note: "Manubrio al petto. Prima serie di avvicinamento tecnico, poi 2 serie di lavoro. Scendi parallelo. I gomiti spingono le ginocchia verso fuori. Alternativa: corpo libero squat.", rec: "45s", gear: "Manubrio leggero", errori: "Busto che cade avanti; schiena arrotondata; ginocchia che collassano" },
+      { n: "Cable Pull-Apart con rotazione esterna", s: "3x20", approachSets: 1, rpe: "7", note: "Volume leggero extra. Cavo alto, corda o doppio manico. Prima serie di avvicinamento tecnico, poi 2 serie di lavoro. Pausa 1s a fine apertura con mani ruotate fuori.", rec: "30s", gear: "Cavo alto + corda o doppio manico", errori: "Tirare con forza; gomiti piegati; nessuna rotazione esterna finale" },
+      { n: "Abduzione laterale IR", s: "3x20 per lato", approachSets: 1, rpe: "7", note: "Sdraiata sul fianco o in quadrupedia. Prima serie di avvicinamento tecnico, poi 2 serie di lavoro. Gamba sopra leggermente dietro la linea del corpo, ginocchio piegato a 90 gradi e punta verso il pavimento. Range piccolo, bacino fermo, pausa 1s in alto.", rec: "30s", gear: "Corpo libero", errori: "Bacino che ruota indietro; piede che si apre verso l'alto; slancio", alt: { n: "Clamshell", s: "3x20 per lato", approachSets: 1, rpe: "7", note: "Prima serie di avvicinamento tecnico, poi 2 serie di lavoro. Ginocchia piegate a 90 gradi, piedi uniti. Apri il ginocchio superiore senza ruotare il bacino indietro. Pausa 1s in apertura.", rec: "30s", gear: "Corpo libero", errori: "Bacino che ruota; piedi che si separano; slancio" } },
+      { n: "Leg Extension al Cavo", s: "3x12-15", approachSets: 1, rpe: "7", note: "Cavigliera al cavo basso. Prima serie di avvicinamento tecnico, poi 2 serie di lavoro. Estendi il ginocchio in controllo, fermo breve in chiusura e ritorno lento.", rec: "30s", gear: "Cavo basso + cavigliera", errori: "Slancio con l'anca; chiusura sporca; ritorno troppo veloce" },
+      { n: "TRX Row lento", s: "3x12", approachSets: 1, rpe: "7", note: "Prima serie di avvicinamento tecnico, poi 2 serie di lavoro. Fermo 2s con scapole strette. Eccentrica 3s. Riduci l'inclinazione se il corpo non resta in linea.", rec: "30s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
+      { n: "Push-Up", s: "3x10", approachSets: 1, rpe: "7", note: "Prima serie di avvicinamento tecnico, poi 2 serie di lavoro. Tecnica perfetta, non a fatica: fermati con 3-4 rip in riserva. Corpo in linea e gomiti a 45 gradi.", rec: "30s", gear: "Corpo libero", errori: "Anche che cedono; gomiti troppo aperti; ROM accorciato" },
+      { n: "Leg Curl al Cavo", s: "3x12", approachSets: 1, rpe: "7", note: "Prima serie di avvicinamento tecnico, poi 2 serie di lavoro. Eccentrica 2-3 secondi, nessuno slancio, fermati larga.", rec: "30s", gear: "Cavo basso + cavigliera", errori: "Slancio col bacino; eccentrica troppo veloce; lombare che si inarca" },
+      { n: "Dead Bug", s: "2x8 per lato", rpe: "7", note: "Core anti-estensione leggero. Lombare sempre aderente a terra, espira estendendo e muovi lentamente braccio e gamba opposti.", rec: "45-60s", gear: "Tappetino", errori: "Lombare che si stacca; fretta; bacino che ruota" },
     ],
     str: ["Half Kneeling Lunge","Half Kneeling Lunge + Reach","Couch Stretch","Figure-Four Supino","Happy Baby","Leg Cradle Supino","Supported Low Lunge"],
     lightHipProtocol: [
@@ -1977,7 +1978,7 @@ var DAYS_V4 = [
       { n: "FMS spalle", phase: "mobility", gearTag: "Corpo libero", p: "5 per lato", cue: "Descrizione in arrivo." },
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "12 per gamba x2", cue: "Anche qui serve una base stabile da terra: avanza coi fianchi, non con le spalle.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
       { n: "Scapular Pull-Up", phase: "activation", img: "w_SospensioneAttivaSbarra", gearTag: "Sbarra", p: "5 rip", cue: "Depressione scapolare netta, braccia tese.", lk: "https://www.youtube.com/watch?v=fTbd3q-vwqU" },
-      { n: "Band Pull-Apart al cavo", phase: "activation", gearTag: "Cavo", p: "15 rip", cue: "Scapole addotte in fondo, spalle basse.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
+      { n: "Cable Pull-Apart con rotazione esterna", phase: "activation", gearTag: "Cavo", p: "15 rip", cue: "Scapole addotte in fondo, spalle basse.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
       { n: "Serie avvicinamento military press", phase: "approach", img: "w_MilitaryPress", gearTag: "Bilanciere", p: "2-3 mini-serie", cue: "Bilanciere leggero e progressivo per entrare nel gesto fresco." },
     ],
     ex: [
@@ -2086,7 +2087,7 @@ var DAYS_BEGINNER = [
     warmup: [
       { n: "Jumping jacks", img: "w_JumpingJacks", d: "2-3 minuti a ritmo leggero per entrare nella seduta.", tm: 180 },
       { n: "Good Morning senza peso", img: "w_GoodMorningSenzaPeso", d: "10 ripetizioni lente. Focus: sedere indietro, schiena neutra." },
-      { n: "Band Pull-Apart al cavo", img: "w_BandPullApart", d: "2x15. Cavo regolato a media altezza, braccia tese davanti al petto. Apri fino al petto e senti le scapole." },
+      { n: "Cable Pull-Apart con rotazione esterna", img: "w_BandPullApart", d: "2x15. Cavo regolato a media altezza, braccia tese davanti al petto. Apri fino ai lati del corpo e ruota le mani verso fuori alla fine." },
       { n: "Serie avvicinamento stacco rumeno", img: "w_SerieAvvStacco", d: "1-2 serie leggere e progressive del primo esercizio del giorno. Devono preparare il pattern, non affaticarti.", gear: "Manubri o bilanciere" },
     ],
     ex: [
@@ -2468,9 +2469,7 @@ var PRINCIPLES = [
 
 var EX_IMG = {
   "Band Pull-Apart con elastico": img_w_BandPullApart,
-  "Band Pull-Apart al cavo": img_w_BandPullApartCavo,
-  "Band Pull-Apart con rotazione esterna": img_w_BandPullApart,
-  "Band Pull-Apart al cavo con rotazione esterna": img_w_BandPullApart,
+  "Cable Pull-Apart con rotazione esterna": img_w_BandPullApartCavo,
   "Bird Dog": img_Bird_Dog,
   "Breathing + Brace supino": img_Breathe_Brace,
   "Dead Bug": img_Dead_Bug,
@@ -2689,6 +2688,8 @@ function sameExerciseName(a, b) {
   var splitAliases = ["Affondi", "Split Squat", "Squat Bulgaro", "Bulgarian Split Squat"];
   if (splitAliases.indexOf(aa) >= 0 && splitAliases.indexOf(bb) >= 0) return true;
   if ((aa === "Fire Hydrant" && bb === "Abduzione laterale IR") || (aa === "Abduzione laterale IR" && bb === "Fire Hydrant")) return true;
+  var pullApartAliases = ["Band Pull-Apart con rotazione esterna", "Band Pull-Apart al cavo", "Cable Pull-Apart con rotazione esterna"];
+  if (pullApartAliases.indexOf(aa) >= 0 && pullApartAliases.indexOf(bb) >= 0) return true;
   return false;
 }
 function displayExerciseName(name) {
@@ -2697,7 +2698,7 @@ function displayExerciseName(name) {
   return name;
 }
 var MAX_PROGRESS_EX = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni"];
-var ACCESSORY_PROGRESS_EX = ["Stacco Rumeno","Glute Bridge Bilanciere","Leg Curl al Cavo","Pulley","Band Pull-Apart con rotazione esterna","Curl Bicipiti","Squat Bulgaro","Hyperextension","Abduzione laterale IR","Push-Up","Trazioni Supine","Woodchop","T-bar Row","Alzate Laterali"];
+var ACCESSORY_PROGRESS_EX = ["Stacco Rumeno","Glute Bridge Bilanciere","Leg Curl al Cavo","Pulley","Cable Pull-Apart con rotazione esterna","Curl Bicipiti","Squat Bulgaro","Hyperextension","Abduzione laterale IR","Push-Up","Trazioni Supine","Woodchop","T-bar Row","Alzate Laterali"];
 var CORE_PROGRESS_EX = ["Ab Wheel"];
 var CARDIO_KIND_LABEL = { run: "Corsa", ruck: "Rucking", hiit: "HIIT", circuit: "Circuito" };
 var CALIBRATION_BODYWEIGHT_EX = ["Push-Up","Trazioni","Trazioni Supine","Ab Wheel","Abduzione laterale IR"];
@@ -2706,9 +2707,7 @@ var CALIBRATION_SKIP_EX = ["HIIT tapis roulant","Rucking con zaino 15-20 kg","Ci
 function usesElasticScale(exName) {
   return (
     exName === "Trazioni" ||
-    exName === "Trazioni Supine" ||
-    exName === "Band Pull-Apart con rotazione esterna" ||
-    exName === "Band Pull-Apart con elastico"
+    exName === "Trazioni Supine"
   );
 }
 
@@ -2841,9 +2840,9 @@ function getCalibrationType(exName, serie) {
   if (exName === "Nordic Curl") return "assistito";
   if (exName === "Ab Wheel") return "body-control";
   if (usesElasticScale(exName)) return "band-assist";
-  if (exName === "Band Pull-Apart con rotazione esterna" || exName === "TRX Row lento") return "bodyweight";
+  if (exName === "TRX Row lento") return "bodyweight";
   if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || (serie || "").toLowerCase().indexOf("max") >= 0) return "bodyweight";
-  if (exName.indexOf("Cavo") >= 0 || exName.indexOf("cavo") >= 0 || exName === "Woodchop" || exName === "Pulley") return "cable";
+  if (exName === "Cable Pull-Apart con rotazione esterna" || exName.indexOf("Cavo") >= 0 || exName.indexOf("cavo") >= 0 || exName === "Woodchop" || exName === "Pulley") return "cable";
   if (exName === "Squat Bulgaro" || exName === "Affondi" || exName === "Curl Bicipiti") return "dumbbell";
   return "weighted";
 }
@@ -3184,7 +3183,7 @@ var V4_DAY_SPLIT_PLAN = {
   },
   "Giorno 2": {
     am: ["Trazioni", "Panca"],
-    pm: ["Pulley", "Band Pull-Apart con rotazione esterna", "Curl Bicipiti", "Alzate Laterali"],
+    pm: ["Pulley", "Cable Pull-Apart con rotazione esterna", "Curl Bicipiti", "Alzate Laterali"],
   },
   "Giorno 4": {
     am: ["Stacco da Terra", "Squat Bulgaro"],
@@ -3198,12 +3197,12 @@ var V4_DAY_SPLIT_PLAN = {
 
 var FAST_MODE_SUPERSETS = {
   "Giorno 1": [{ a: "Leg Curl al Cavo", b: "Ab Wheel", rest: 60, note: "4a serie Leg Curl da sola" }],
-  "Giorno 2": [{ a: "Band Pull-Apart con rotazione esterna", b: "Curl Bicipiti", rest: 60 }],
+  "Giorno 2": [{ a: "Cable Pull-Apart con rotazione esterna", b: "Curl Bicipiti", rest: 60 }],
   "Giorno 3": [
     { a: "Alzate Laterali", b: "Goblet Squat", rest: 45 },
-    { a: "Band Pull-Apart con rotazione esterna", b: "Abduzione laterale IR", rest: 30 },
-    { a: "Leg Curl al Cavo", b: "Leg Extension al Cavo", rest: 30 },
-    { a: "TRX Row lento", b: "Push-Up", rest: 30 }
+    { a: "Cable Pull-Apart con rotazione esterna", b: "Abduzione laterale IR", rest: 30 },
+    { a: "Leg Extension al Cavo", b: "TRX Row lento", rest: 30 },
+    { a: "Push-Up", b: "Leg Curl al Cavo", rest: 30 }
   ],
   "Giorno 4": [{ a: "Hyperextension", b: "Abduzione laterale IR", rest: 60, note: "4a serie Hyperextension da sola" }],
   "Giorno 5": [{ a: "Push-Up", b: "Woodchop", rest: 45, note: "4a serie Push-Up da sola" }],
@@ -3308,7 +3307,7 @@ export default function App() {
   var [showDayIntro, setShowDayIntro] = useState(false);
   var [dismissedCalBanner, setDismissedCalBanner] = useState(false);
   var [compactMode, setCompactMode] = useState(false);
-  var [flowModeEnabled, setFlowModeEnabled] = useState(false);
+  var [flowModeEnabled, setFlowModeEnabled] = useState(true);
   var [activeSession, setActiveSession] = useState(false);
   var [setupChecklistOpen, setSetupChecklistOpen] = useState(false);
   var [setupChecklistState, setSetupChecklistState] = useState({});
@@ -3652,8 +3651,8 @@ export default function App() {
     var classKey = getGuidedExerciseClass(exName);
     var unilateralMultiplier = /(per\s+(?:lato|gamba|braccio|piede))/i.test(String(ex.s || "")) ? 2 : 1;
     var bodyweightLike = ["Trazioni","Trazioni Supine","Push-Up","Push-Up Declino","Dip su Panca","Ab Wheel","Plank","Shoulder Tap","Abduzione laterale IR"].indexOf(exName) >= 0;
-    var controlledTempo = ["TRX Row lento","Band Pull-Apart con rotazione esterna","Leg Curl al Cavo","Alzate Laterali","Hyperextension","Nordic Curl"].indexOf(exName) >= 0;
-    var explosiveOrLight = ["Band Pull-Apart con elastico","Band Pull-Apart con rotazione esterna","Abduzione laterale IR","Shoulder Tap"].indexOf(exName) >= 0;
+    var controlledTempo = ["TRX Row lento","Cable Pull-Apart con rotazione esterna","Leg Curl al Cavo","Alzate Laterali","Hyperextension","Nordic Curl"].indexOf(exName) >= 0;
+    var explosiveOrLight = ["Band Pull-Apart con elastico","Cable Pull-Apart con rotazione esterna","Abduzione laterale IR","Shoulder Tap"].indexOf(exName) >= 0;
     var secPerSet;
     if (p.kind === "time" || ex.n === "Plank") {
       secPerSet = Math.max(45, topTarget + 20) * unilateralMultiplier;
@@ -4044,6 +4043,8 @@ export default function App() {
   var [logs, setLogs] = useState({});
   var [cardioLogs, setCardioLogs] = useState({});
   var [stretchLogs, setStretchLogs] = useState({});
+  var [coachNotes, setCoachNotes] = useState({});
+  var [coachNoteDrafts, setCoachNoteDrafts] = useState({});
   var [exerciseNoteDrafts, setExerciseNoteDrafts] = useState({});
   var [exerciseNotePhotoDrafts, setExerciseNotePhotoDrafts] = useState({});
   var [exerciseNoteVideoDrafts, setExerciseNoteVideoDrafts] = useState({});
@@ -5073,6 +5074,7 @@ export default function App() {
       if (remoteSavedAt && (!localSavedAt || remoteSavedAt > localSavedAt)) {
         applyPersistedSnapshot(remote.payload);
         setCloudStatus("Backup cloud caricato.");
+        setAutoBackupMsg("Dati scaricati dal cloud e applicati all'app.");
       } else if (localSavedAt) {
         try {
           var localState = localSnapshot || buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false);
@@ -5158,6 +5160,7 @@ export default function App() {
       var snapshot = buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false);
       await pushSnapshotToCloud(snapshot, cloudUser.id, false);
       cloudSyncPendingRef.current = null;
+      setAutoBackupMsg("Dati salvati nel cloud con successo.");
     } catch (err) {
       setCloudStatus("Sync cloud non riuscito: " + err.message);
     } finally {
@@ -5258,11 +5261,15 @@ export default function App() {
     } catch(e) {}
     try {
       var fm = localStorage.getItem("wt-flow-mode");
-      setFlowModeEnabled(fm === "1");
+      setFlowModeEnabled(fm === null ? true : fm === "1");
     } catch(e) {}
     try {
       var cm = localStorage.getItem("wt-compact-mode");
       setCompactMode(cm === "1");
+    } catch(e) {}
+    try {
+      var cnStored = localStorage.getItem("wt-coach-notes");
+      if (cnStored) { var parsedCN = JSON.parse(cnStored); if (parsedCN && typeof parsedCN === "object") setCoachNotes(parsedCN); }
     } catch(e) {}
     try { localStorage.removeItem("wt-guided-recovery"); } catch(e) {}
     try {
@@ -7362,7 +7369,7 @@ export default function App() {
 
 function getGuidedExerciseClass(exName) {
   var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","T-bar Row","Stacco Rumeno","Glute Bridge Bilanciere","Pulley"];
-  var mono = ["Curl Bicipiti","Woodchop","Abduzione laterale IR","Band Pull-Apart con rotazione esterna","Leg Curl al Cavo","Alzate Laterali"];
+  var mono = ["Curl Bicipiti","Woodchop","Abduzione laterale IR","Cable Pull-Apart con rotazione esterna","Leg Curl al Cavo","Alzate Laterali"];
   if (heavy.indexOf(exName) >= 0) return "heavy";
   if (mono.indexOf(exName) >= 0) return "mono";
   return "compound";
@@ -7386,10 +7393,10 @@ function isNearBodyweightElasticSession(exName, sets) {
   function getGuidedIncrementInfo(exName) {
     if (usesElasticScale(exName)) return { kind: "tick", amount: 1, label: "+1 tacca elastico" };
     if (exName === "Nordic Curl") return { kind: "assist", amount: 1, label: "meno assistenza o piu ROM" };
-    if (exName.indexOf("Cavo") >= 0 || exName.indexOf("cavo") >= 0 || exName === "Face Pull" || exName === "Woodchop" || exName === "Tricipiti Cavo" || exName === "Pulley" || exName === "Lat Machine") {
+    if (exName === "Cable Pull-Apart con rotazione esterna" || exName.indexOf("Cavo") >= 0 || exName.indexOf("cavo") >= 0 || exName === "Face Pull" || exName === "Woodchop" || exName === "Tricipiti Cavo" || exName === "Pulley" || exName === "Lat Machine") {
       return { kind: "step", amount: 1, label: "+1 scatto cavo" };
     }
-    if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || exName === "Push-Up" || exName === "Push-Up su rialzo" || exName === "Dip alle Parallele" || exName === "Fitball Hamstring Curl" || exName === "Ab Wheel" || exName === "Band Pull-Apart con rotazione esterna" || exName === "TRX Row lento") {
+    if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || exName === "Push-Up" || exName === "Push-Up su rialzo" || exName === "Dip alle Parallele" || exName === "Fitball Hamstring Curl" || exName === "Ab Wheel" || exName === "TRX Row lento") {
       return { kind: "reps", amount: 1, label: "+1 rip per serie" };
     }
     if (exName === "Hyperextension") return { kind: "kg", amount: 1, label: "+1 kg" };
@@ -10658,68 +10665,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                           Checklist setup
                         </button>}
                       </div>
-                      {!dayData.cardio && !dayData.rest && !isBasics && <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", justifyContent: "space-between" }}>
-                        <div style={{ display: "inline-flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-                        {[{
-                          key: "guided",
-                          icon: "🧭",
-                          active: guidedMode,
-                          label: "Coach attivo",
-                          onToggle: function() { setGuidedModeValue(!guidedMode); },
-                          fontSize: 12
-                        }, {
-                          key: "extra",
-                          icon: "i",
-                          active: extraInfoEnabled,
-                          label: "Info estese",
-                          onToggle: function() { setExtraInfoEnabledValue(!extraInfoEnabled); },
-                          fontSize: 13
-                        }, {
-                          key: "flow",
-                          icon: "⇄",
-                          active: flowModeEnabled,
-                          label: "Modalità flusso",
-                          onToggle: function() { setFlowModeEnabledValue(!flowModeEnabled); },
-                          fontSize: 12
-                        }].map(function(toggle) {
-                          return <div key={toggle.key} style={{ display: "inline-flex" }}>
-                            <button
-                              onClick={function(e) { e.stopPropagation(); showQuickToggleTooltip(toggle.key); toggle.onToggle(); }}
-                              onMouseEnter={function(e) { e.stopPropagation(); showQuickToggleTooltip(toggle.key); }}
-                              onMouseLeave={function(e) { e.stopPropagation(); hideQuickToggleTooltip(toggle.key); }}
-                              onBlur={function() { hideQuickToggleTooltip(toggle.key); }}
-                              aria-label={toggle.label + ": " + (toggle.active ? "attivo" : "disattivato")}
-                              style={{ width: 28, height: 28, border: "1px solid " + (toggle.active ? dc + "65" : T.sub + "28"), borderRadius: 999, background: toggle.active ? dc + "18" : "transparent", color: toggle.active ? dc : T.sub, fontSize: toggle.fontSize, fontWeight: 900, cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", boxShadow: toggle.active ? ("0 0 0 2px " + dc + "14") : "none" }}
-                            >
-                              {toggle.icon}
-                            </button>
-                          </div>;
-                        })}
-                        </div>
-                        <div
-                        onClick={function(e) { e.stopPropagation(); }}
-                        style={{ display: "inline-flex", alignItems: "center", borderRadius: 999, border: "1px solid " + T.sub + "30", overflow: "hidden", background: "transparent" }}
-                      >
-                        <button
-                          onClick={function(e) { e.stopPropagation(); setCompactModeValue(false); }}
-                          aria-pressed={!compactMode}
-                          style={{ minHeight: 26, padding: "0 10px", border: "none", borderRight: "1px solid " + T.sub + "20", background: compactMode ? "transparent" : dc, color: compactMode ? T.sub : "#fff", fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}
-                        >
-                          Completa
-                        </button>
-                        <button
-                          onClick={function(e) { e.stopPropagation(); setCompactModeValue(true); }}
-                          aria-pressed={compactMode}
-                          style={{ minHeight: 26, padding: "0 10px", border: "none", background: compactMode ? dc : "transparent", color: compactMode ? "#fff" : T.sub, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}
-                        >
-                          Compatta
-                        </button>
-                        </div>
-                        {quickToggleTooltip && <div style={{ width: "100%", marginTop: 2, padding: "8px 10px", borderRadius: 10, background: dc + "10", border: "1px solid " + dc + "24", color: T.sub, fontSize: 11, lineHeight: 1.55 }}>
-                          <div style={{ fontWeight: 800, color: dc, marginBottom: 3 }}>{getQuickToggleTooltipText(quickToggleTooltip, quickToggleTooltip === "guided" ? guidedMode : quickToggleTooltip === "extra" ? extraInfoEnabled : flowModeEnabled)}</div>
-                          <div>{QUICK_TOGGLE_INFO[quickToggleTooltip] ? QUICK_TOGGLE_INFO[quickToggleTooltip].detail : ""}</div>
-                        </div>}
-                      </div>}
                     </div>
                   </div>
                   <div style={{ fontSize: 13, color: dc, transform: showDayIntro ? "rotate(180deg)" : "none", transition: "transform 0.2s", flexShrink: 0 }}>&#9662;</div>
@@ -10817,9 +10762,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                 <div style={{ fontSize: 13, color: dc, transform: showIntro ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
               {showIntro && <div style={{ padding: "0 14px 14px" }}><div style={{ background: T.sb, borderRadius: 10, padding: 12 }}>
-                {getWarmupSelectionHint(level, dayIdx) && <div style={{ marginBottom: 10, padding: "10px 12px", borderRadius: 8, background: dc + "0B", border: "1px solid " + dc + "1A", fontSize: 11, color: T.sub, lineHeight: 1.6 }}>
-                  <b style={{ color: dc }}>Schema del giorno:</b> {getWarmupSelectionHint(level, dayIdx)}
-                </div>}
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                   {getWarmupGroups(dayData.warmup).map(function(group, groupIndex) {
                     var phaseDone = isWarmupDone(dayData.name, group.phase);
@@ -10884,7 +10826,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                     var hasActiveImg = !!activeImgSrc;
                     return <div key={wi} style={{ borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "20", padding: 10 }}>
                       <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-                        <div style={{ width: 24, height: 24, borderRadius: 6, background: dc, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, flexShrink: 0, marginTop: 2 }}>{itemIndex + 1}</div>
+                        {hasActiveImg
+                          ? <img onClick={function(e) { e.stopPropagation(); setWarmupImageOpen({ src: activeImgSrc, name: active.n }); }} src={activeImgSrc} style={{ width: 48, height: 48, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "zoom-in" }} />
+                          : <div style={{ width: 48, height: 48, borderRadius: 8, background: dc + "12", color: dc, fontSize: 10, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", lineHeight: 1.2, flexShrink: 0 }}>NO FOTO</div>}
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ display: "flex", alignItems: "flex-start", gap: 8, justifyContent: "space-between", marginBottom: 4 }}>
                             <button onClick={function(e) { e.stopPropagation(); setWarmupInfoOpen(active); }} style={{ padding: 0, border: "none", background: "transparent", color: T.tx, fontSize: 12, fontWeight: 700, cursor: "pointer", textAlign: "left" }}>{active.n}</button>
@@ -10894,13 +10838,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                             {paramsLabel && <div style={{ fontSize: 12, lineHeight: 1.5, color: T.tx, fontWeight: 700 }}>{paramsLabel}</div>}
                             {cueLabel && <div style={{ fontSize: 11, lineHeight: 1.5, color: T.sub }}>{cueLabel}</div>}
                           </div>
-	                          <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 8, flexWrap: "wrap" }}>
-	                            {hasActiveImg
-	                              ? <img onClick={function(e) { e.stopPropagation(); setWarmupImageOpen({ src: activeImgSrc, name: active.n }); }} src={activeImgSrc} style={{ width: 56, height: 56, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "zoom-in" }} />
-	                              : <div style={{ padding: "6px 8px", borderRadius: 999, background: "#C6282810", border: "1px solid #C6282828", color: "#C62828", fontSize: 10, fontWeight: 800 }}>Foto mancante</div>}
-	                            {timerSec ? <button onClick={function(e) { e.stopPropagation(); quickTimer(timerSec); }} style={{ display: "inline-flex", alignItems: "center", gap: 3, padding: "5px 9px", border: "none", borderRadius: 999, background: dc, color: "#fff", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>{"⏱ " + fmtLabel(timerSec)}</button> : null}
-	                            {!hasActiveImg && <div style={{ fontSize: 10, fontWeight: 800, color: "#C62828" }}>Foto mancante</div>}
-	                          </div>
+                          {timerSec ? <button onClick={function(e) { e.stopPropagation(); quickTimer(timerSec); }} style={{ marginTop: 6, display: "inline-flex", alignItems: "center", gap: 3, padding: "5px 9px", border: "none", borderRadius: 999, background: dc, color: "#fff", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>{"⏱ " + fmtLabel(timerSec)}</button> : null}
                         </div>
                       </div>
                     </div>;
@@ -11073,49 +11011,11 @@ function isNearBodyweightElasticSession(exName, sets) {
                 <div style={{ fontSize: 13, color: dc, transform: showExSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
             {showExSection && <div>
-            {(splitPlanForDay || supersetPlanForDay) && <div style={{ padding: "12px 14px 6px" }}>
-              <div style={{ borderRadius: 12, border: "1px solid " + dc + "22", background: dc + "08", padding: 12 }}>
-                <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Formato giornata</div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(" + ((splitPlanForDay && supersetPlanForDay) ? 3 : 2) + ", minmax(0,1fr))", gap: 8 }}>
-                  {[{ key: "single", label: "Sessione unica", hint: "Tutto nello stesso allenamento.", enabled: true }, { key: "split", label: "Split in due", hint: "AM per i fondamentali, PM per accessori/superset e core.", enabled: !!splitPlanForDay }, { key: "superset", label: "Superset", hint: "I fondamentali restano singoli, i blocchi compatibili vanno in superset.", enabled: !!supersetPlanForDay }].filter(function(option) { return option.enabled; }).map(function(option) {
-                    var active = option.key === currentDayWorkoutFormat;
-                    var infoActive = workoutFormatInfo === option.key;
-                    return <div key={option.key} style={{ position: "relative" }}>
-                      <button
-                        onClick={function(e) {
-                          e.stopPropagation();
-                          var nextPrefs = Object.assign({}, splitDayPrefs);
-                          nextPrefs[splitPrefKey] = option.key;
-                          setWorkoutFormatInfo("");
-                          saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false, { splitDayPrefs: nextPrefs });
-                        }}
-                        style={{ width: "100%", textAlign: "left", minHeight: 46, padding: "10px 34px 10px 12px", borderRadius: 10, border: "1px solid " + (active ? dc + "55" : T.bg), background: active ? T.cd : T.sb, color: T.tx, cursor: "pointer" }}
-                      >
-                        <div style={{ fontSize: 12, fontWeight: 800, color: active ? dc : T.tx }}>{option.label}</div>
-                      </button>
-                      <button
-                        onClick={function(e) {
-                          e.stopPropagation();
-                          setWorkoutFormatInfo(infoActive ? "" : option.key);
-                        }}
-                        aria-label={"Info " + option.label}
-                        style={{ position: "absolute", right: 8, top: 9, width: 24, height: 24, borderRadius: "50%", border: "1px solid " + dc + "45", background: infoActive ? dc : T.cd, color: infoActive ? "#fff" : dc, fontSize: 11, fontWeight: 900, cursor: "pointer" }}
-                      >?</button>
-                      {infoActive && <div style={{ position: "absolute", zIndex: 5, left: 0, right: 0, top: 52, padding: "9px 10px", borderRadius: 10, background: T.cd, border: "1px solid " + dc + "35", color: T.sub, fontSize: 11, lineHeight: 1.55, boxShadow: "0 12px 28px " + T.sh }} onClick={function(e) { e.stopPropagation(); }}>
-                        {option.hint}
-                        {option.key === "superset" && supersetPlanForDay && <div style={{ marginTop: 7, display: "grid", gap: 3 }}>
-                          {supersetPlanForDay.map(function(pair, pairIndex) {
-                            return <div key={pairIndex}>
-                              <strong style={{ color: T.tx }}>{displayExerciseName(pair.a) + " + " + displayExerciseName(pair.b)}</strong>
-                              <span>{" · rec " + fmtLabel(pair.rest) + (pair.note ? " · " + pair.note : "")}</span>
-                            </div>;
-                          })}
-                        </div>}
-                      </div>}
-                    </div>;
-                  })}
-                </div>
-              </div>
+            {(splitPlanForDay || supersetPlanForDay) && <div style={{ padding: "8px 14px 4px", display: "flex", gap: 6, flexWrap: "wrap" }}>
+              {[{ key: "single", label: "Unica" }, { key: "split", label: "Split AM/PM", enabled: !!splitPlanForDay }, { key: "superset", label: "Superset", enabled: !!supersetPlanForDay }].filter(function(o) { return o.enabled !== false; }).map(function(option) {
+                var active = option.key === currentDayWorkoutFormat;
+                return <button key={option.key} onClick={function(e) { e.stopPropagation(); var nextPrefs = Object.assign({}, splitDayPrefs); nextPrefs[splitPrefKey] = option.key; saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false, { splitDayPrefs: nextPrefs }); }} style={{ padding: "4px 11px", border: "1px solid " + (active ? dc + "80" : T.bg), borderRadius: 999, background: active ? dc + "15" : T.sb, color: active ? dc : T.sub, fontSize: 11, fontWeight: active ? 800 : 600, cursor: "pointer" }}>{option.label}</button>;
+              })}
             </div>}
             {/* Exercises list */}
             {dayExerciseGroups.map(function(group, groupIndex) {
@@ -11193,7 +11093,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginTop: 3 }}>Recupero dopo la coppia: {fmtLabel(rowSupersetMeta.rest)}</div>
                   {!!supersetPairMinutes && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginTop: 2 }}>Tempo totale: ~{supersetPairMinutes} min</div>}
                 </div>}
-                <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); if (opening) { setHistPage(function(p) { var n = Object.assign({}, p); n[i] = 0; return n; }); setTimeout(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 50); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
+                <div onClick={function(e) { var opening = !isX; setOpenEx(opening ? i : null); setHistIdx(null); setEditing(null); setShowReg(null); setShowImg(null); setTmpW(""); setTmpR(""); setTmpRir(""); if (opening) { setHistPage(function(p) { var n = Object.assign({}, p); n[i] = 0; return n; }); setTimeout(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 50); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
                   {isBeginner && <div
                     onClick={function(e) { e.stopPropagation(); setCompletedExercises(function(prev) { var next = Object.assign({}, prev); if (next[exDoneKey]) { delete next[exDoneKey]; } else { next[exDoneKey] = true; } return next; }); }}
                     style={{ width: 28, height: 28, borderRadius: "50%", border: "2px solid " + (isExDone ? T.ok : dc + "50"), background: isExDone ? T.ok : "transparent", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, transition: "background 0.2s, border-color 0.2s", cursor: "pointer" }}
@@ -11223,9 +11123,8 @@ function isNearBodyweightElasticSession(exName, sets) {
                         var mins = estimateExerciseMinutes(rawEx, ex);
                         return mins ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 600 }}>{"~" + mins + " min"}</span> : null;
                       })()}
-                      {!isBeginner && db && (db.guide || db.deep) ? <button onClick={function(e) { e.stopPropagation(); if (exInfoOpen !== ex.n) pushNavSnapshot(); setExInfoOpen(ex.n); }} style={{ minHeight: 24, padding: "0 8px", borderRadius: 999, border: "1px solid " + dc + "30", background: dc + "10", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}>Scheda</button> : null}
                     </div>
-                    {!isBeginner && <div style={{ marginTop: 5, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                    {!isBeginner && !compactMode && <div style={{ marginTop: 4, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                     {calibrationEnabled && calibrationNeed.needed && <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid #C6282830", borderRadius: 999, padding: "3px 8px", background: "#C6282810", color: "#C62828" }}>
                       <span>{calibrationNeed.initial ? "Calibrazione" : "Ricalibra"}</span>
                     </span>}
@@ -11238,23 +11137,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>}
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                    {!isBasics && <button
-                      onClick={function(e) {
-                        e.stopPropagation();
-                        setOpenEx(i);
-                        setHistIdx(null);
-                        setEditing(null);
-                        setShowImg(null);
-                        setShowReg(i);
-                        setTimeout(function() {
-                          var el = document.getElementById("reg-block-" + i);
-                          if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
-                        }, 50);
-                      }}
-                      style={{ minHeight: 28, padding: "0 9px", border: "1px solid " + dc + "30", borderRadius: 999, background: dc + "10", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}
-                    >
-                      Registra
-                    </button>}
                     {!isBasics && tLog && tLog.sets.length > 0 && <div style={{ background: T.ok, color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 8 }}>{tLog.sets.length + "/" + sc}</div>}
                     <div style={{ fontSize: 14, color: T.sub, transform: isX ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
                   </div>
@@ -11348,32 +11230,69 @@ function isNearBodyweightElasticSession(exName, sets) {
                       </div>
                     </div>}
 
-                    {!isBasics && progressGuide && progressGuide.tone === "up" && <div style={{ marginBottom: 10, borderRadius: 12, background: T.ok + "14", border: "2px solid " + T.ok + "45", padding: compactExerciseCard ? "10px 11px" : "12px 13px" }}>
-                      <div style={{ fontSize: 10, fontWeight: 900, color: T.ok, textTransform: "uppercase", letterSpacing: 1, marginBottom: 5 }}>Prossima seduta</div>
-                      <div style={{ fontSize: 14, fontWeight: 900, color: T.tx, lineHeight: 1.4 }}>{progressGuide.action}</div>
-                      <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55, marginTop: 5 }}>{progressGuide.detail}</div>
-                    </div>}
-
-                    {!isBasics && !compactMode && guidedMode && sessionSuggestion && <div style={{ marginBottom: 10, borderRadius: 12, background: gc + "0A", border: "1px solid " + gc + "22", padding: compactExerciseCard ? "9px 11px" : "11px 13px" }}>
-                      <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, marginBottom: 4 }}>{sessionSuggestion.title}</div>
-                      <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{sessionSuggestion.detail}</div>
-                    </div>}
-
-                    {/* === COACH SESSIONE BREVE === */}
-                    {!isBasics && !compactMode && <div style={{ marginBottom: 10, borderRadius: 12, background: dc + "0C", border: "1px solid " + dc + "28", padding: compactExerciseCard ? "9px 11px" : "11px 13px" }}>
-                      <div style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>🧭 Coach sessione</div>
-                      {db.t && db.t.slice(0, 3).map(function(tip, ti) {
-                        return <div key={ti} style={{ display: "flex", gap: 8, alignItems: "flex-start", marginBottom: ti < Math.min(db.t.length, 2) - 1 ? 5 : 0 }}>
-                          <span style={{ color: dc, fontSize: 11, lineHeight: 1.55, flexShrink: 0 }}>→</span>
-                          <span style={{ fontSize: 12, lineHeight: 1.55, color: T.tx, fontWeight: 600 }}>{tip}</span>
-                        </div>;
-                      })}
-                    </div>}
+                    {!isBasics && (function() {
+                      var tipsKey = "tips__" + ex.n;
+                      var cnKey = "ex__" + ex.n;
+                      var blockDraftKey = "block__" + ex.n;
+                      var savedTips = coachNotes[tipsKey] || (db && db.t) || [];
+                      var savedNote = coachNotes[cnKey] || "";
+                      if (!savedTips.length && !savedNote) return null;
+                      var allText = savedTips.concat(savedNote ? [savedNote] : []).join("\n");
+                      var isEditingBlock = coachNoteDrafts[blockDraftKey] !== undefined;
+                      var blockDraft = isEditingBlock ? coachNoteDrafts[blockDraftKey] : allText;
+                      return <div style={{ marginBottom: 10, borderRadius: 10, background: dc + "08", border: "1px solid " + dc + "20", padding: "9px 11px" }}>
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
+                          <span style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Indicazioni coach</span>
+                          {!isEditingBlock && <button onClick={function(e) { e.stopPropagation(); setCoachNoteDrafts(function(p) { return Object.assign({}, p, { [blockDraftKey]: allText }); }); }} style={{ padding: "2px 9px", border: "1px solid " + dc + "30", borderRadius: 6, background: dc + "08", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", touchAction: "manipulation" }}>Modifica</button>}
+                        </div>
+                        {isEditingBlock ? <div style={{ display: "grid", gap: 6 }}>
+                          <textarea
+                            value={blockDraft}
+                            autoFocus
+                            onChange={function(e) { var v = e.target.value; setCoachNoteDrafts(function(p) { return Object.assign({}, p, { [blockDraftKey]: v }); }); }}
+                            rows={Math.max(4, blockDraft.split("\n").length + 1)}
+                            style={{ width: "100%", resize: "vertical", padding: "7px 9px", border: "1px solid " + dc + "40", borderRadius: 8, background: T.cd, color: T.tx, fontSize: 12, lineHeight: 1.65, boxSizing: "border-box" }}
+                          />
+                          <div style={{ display: "flex", gap: 6 }}>
+                            <button onClick={function(e) { e.stopPropagation(); var lines = blockDraft.split("\n").map(function(l) { return l.trim(); }).filter(Boolean); setCoachNotes(function(prev) { var next = Object.assign({}, prev, { [tipsKey]: lines, [cnKey]: "" }); try { localStorage.setItem("wt-coach-notes", JSON.stringify(next)); } catch(err) {} return next; }); setCoachNoteDrafts(function(p) { var n = Object.assign({}, p); delete n[blockDraftKey]; return n; }); }} style={{ flex: 1, minHeight: 32, border: "none", borderRadius: 8, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Salva</button>
+                            <button onClick={function(e) { e.stopPropagation(); setCoachNoteDrafts(function(p) { var n = Object.assign({}, p); delete n[blockDraftKey]; return n; }); }} style={{ minHeight: 32, padding: "0 12px", border: "1px solid " + T.bg, borderRadius: 8, background: T.bg, color: T.sub, fontSize: 12, fontWeight: 700, cursor: "pointer" }}>Annulla</button>
+                          </div>
+                        </div> : <div style={{ display: "grid", gap: 5 }}>
+                          {savedTips.map(function(tip, ti) {
+                            return <div key={ti} style={{ display: "flex", gap: 7, alignItems: "flex-start" }}>
+                              <span style={{ color: dc, fontSize: 12, lineHeight: 1.55, flexShrink: 0, fontWeight: 900 }}>→</span>
+                              <span style={{ fontSize: 12, lineHeight: 1.55, color: T.tx, fontWeight: 600 }}>{tip}</span>
+                            </div>;
+                          })}
+                          {savedNote ? <div style={{ fontSize: 12, color: T.tx, lineHeight: 1.6, fontStyle: "italic", marginTop: savedTips.length ? 4 : 0, paddingTop: savedTips.length ? 6 : 0, borderTop: savedTips.length ? "1px solid " + dc + "18" : "none" }}>{savedNote}</div> : null}
+                        </div>}
+                      </div>;
+                    })()}
 
                     {isBasics && <div style={{ marginBottom: 12, borderRadius: 12, padding: "10px 11px", background: dc + "08", border: "1px solid " + dc + "22" }}>
                       <div style={{ fontSize: 10, fontWeight: 800, color: dc, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Cosa guardare</div>
                       <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6 }}>{db.c}</div>
                     </div>}
+
+                    {/* === NOTE COACH — nuovo inserimento === */}
+                    {!isBasics && (function() {
+                      var cnKey = "ex__" + ex.n;
+                      var newKey = "new__" + ex.n;
+                      var newVal = coachNoteDrafts[newKey] || "";
+                      return <div style={{ marginBottom: 10, borderRadius: 12, border: "1px solid " + dc + "30", background: T.sb, overflow: "hidden" }}>
+                        <div style={{ padding: "8px 11px 6px", fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Aggiungi nota coach</div>
+                        <textarea
+                          value={newVal}
+                          onChange={function(e) { var v = e.target.value; setCoachNoteDrafts(function(p) { return Object.assign({}, p, { [newKey]: v }); }); }}
+                          placeholder={"Indicazioni del tuo coach per " + ex.n + "…"}
+                          rows={2}
+                          style={{ width: "100%", resize: "vertical", minHeight: 52, padding: "6px 11px", border: "none", borderTop: "1px solid " + T.bg, background: T.sb, color: T.tx, fontSize: 12, lineHeight: 1.6, boxSizing: "border-box" }}
+                        />
+                        {newVal.trim() && <div style={{ padding: "6px 11px 10px" }}>
+                          <button onClick={function(e) { e.stopPropagation(); var trimmed = newVal.trim(); setCoachNotes(function(prev) { var next = Object.assign({}, prev, { [cnKey]: trimmed }); try { localStorage.setItem("wt-coach-notes", JSON.stringify(next)); } catch(err) {} return next; }); setCoachNoteDrafts(function(p) { var n = Object.assign({}, p); delete n[newKey]; return n; }); }} style={{ width: "100%", minHeight: 34, border: "none", borderRadius: 8, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Salva nota</button>
+                        </div>}
+                      </div>;
+                    })()}
 
                     {/* === REGISTRA SERIE === */}
                     {!isBasics && <div id={"reg-block-" + i} style={{ marginBottom: 8, borderRadius: 12, padding: compactExerciseCard ? "8px" : "10px", background: dc + "08", border: "2px solid " + dc + "28" }}>
@@ -11507,8 +11426,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                                 </div>}
                               </div>
                             ) : done ? (
-                              <div style={{ padding: "0 10px 10px" }}>
-                                <div style={{ fontSize: 15, fontWeight: 800, color: T.ok }}>{formatSetResult(ex.n, lg, isBW, isTimeExercise)}</div>
+                              <div style={{ padding: "0 10px 10px", display: "flex", alignItems: "center", gap: 8 }}>
+                                <div style={{ fontSize: 15, fontWeight: 800, color: T.ok, flex: 1 }}>{formatSetResult(ex.n, lg, isBW, isTimeExercise)}</div>
+                                <button onClick={function(e) { e.stopPropagation(); var t = todayStr(); var k = t + "_d" + dayIdx + "_m" + month + "_" + ex.n; var nl = Object.assign({}, logs); if (nl[k]) { nl[k] = Object.assign({}, nl[k], { sets: nl[k].sets.filter(function(s) { return s.si !== si; }) }); saveData(nl, cardioLogs, calibrationProfiles, calibrationMode, guidedMode); } }} style={{ width: 28, height: 28, border: "1px solid " + T.bg, borderRadius: 8, background: T.bg, color: T.sub, fontSize: 14, fontWeight: 700, cursor: "pointer", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", touchAction: "manipulation" }}>✕</button>
                               </div>
                             ) : (
                               <div style={{ padding: "0 10px 10px", display: "flex", flexDirection: "column", gap: 6 }}>
@@ -11530,20 +11450,18 @@ function isNearBodyweightElasticSession(exName, sets) {
                       </div>
                     </div>}
 
-                    {/* === TIMER RECUPERO — subito dopo le serie === */}
-                    {!isBasics && showTimerBtns && <div style={{ display: "grid", gap: 6, marginBottom: 10 }}>
-                      {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ width: "100%", minHeight: 52, border: "none", borderRadius: 12, background: tMode === "countdown" && tRunning ? (tWarning ? "#B91C1C" : T.ok) : T.ok, color: "#fff", fontWeight: 900, fontSize: 14, letterSpacing: 0.2, cursor: "pointer", boxShadow: tMode === "countdown" ? "0 10px 24px rgba(0,0,0,0.18)" : "none", animation: tMode === "countdown" && tWarning ? "timerBlink 1s infinite" : "none" }}>
-                        {flowSupersetMeta && flowSupersetMeta.role === "b" ? ("▶ RECUPERO DOPO LA COPPIA · " + fmtLabel(restSec)) : ("▶ TIMER RECUPERO · " + fmtLabel(restSec))}
-                      </button> : null}
-                      {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ width: "100%", minHeight: 42, border: "none", borderRadius: 10, background: dc, color: "#fff", fontWeight: 800, fontSize: 12, cursor: "pointer" }}>{"▶ Timer lavoro · " + fmtLabel(workSec)}</button> : null}
-                    </div>}
-
                     {/* === DETTAGLI (collassato): storico · tecnica · note === */}
                     {!isBasics && !compactMode && <details style={{ marginTop: 0, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb }}>
                       <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 12px", fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, display: "flex", alignItems: "center", gap: 6 }}>
                         <span style={{ flex: 1 }}>Dettagli esercizio</span><span style={{ fontSize: 12 }}>›</span>
                       </summary>
                     <div style={{ padding: "10px 11px", display: "grid", gap: 10 }}>
+                      {showTimerBtns && <div style={{ display: "grid", gap: 6 }}>
+                        {restSec ? <button onClick={function() { quickTimer(restSec); }} style={{ width: "100%", minHeight: 44, border: "none", borderRadius: 10, background: tMode === "countdown" && tRunning ? (tWarning ? "#B91C1C" : T.ok) : T.ok, color: "#fff", fontWeight: 800, fontSize: 13, cursor: "pointer", animation: tMode === "countdown" && tWarning ? "timerBlink 1s infinite" : "none" }}>
+                          {flowSupersetMeta && flowSupersetMeta.role === "b" ? ("▶ Recupero dopo la coppia · " + fmtLabel(restSec)) : ("▶ Timer recupero · " + fmtLabel(restSec))}
+                        </button> : null}
+                        {workSec ? <button onClick={function() { quickTimer(workSec); }} style={{ width: "100%", minHeight: 38, border: "none", borderRadius: 10, background: dc, color: "#fff", fontWeight: 800, fontSize: 12, cursor: "pointer" }}>{"▶ Timer lavoro · " + fmtLabel(workSec)}</button> : null}
+                      </div>}
                       {(calibrationEnabled && calibrationNeed.needed) && <div style={{ background: effectiveCalibrationMode ? "#FFB30010" : "#C6282810", borderRadius: 10, border: "1px solid " + (effectiveCalibrationMode ? "#FFB30030" : "#C6282830"), padding: "10px 11px" }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 5 }}>
                           <div style={{ fontSize: 10, fontWeight: 800, color: effectiveCalibrationMode ? "#A66A00" : "#C62828", textTransform: "uppercase", letterSpacing: 0.7 }}>🎯 {calibrationNeed.initial ? "Calibrazione da fare" : "Ricalibrazione da fare"}</div>

@@ -8,12 +8,12 @@ Dopo ogni modifica alla lista esercizi del programma V4, l'agente deve verificar
 
 **Giorni pesi** (logica coach completa):
 G1: Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel
-G2: Trazioni, Panca, Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali
+G2: Trazioni, Panca, Pulley, Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali
 G4: Stacco da Terra, Bulgarian Split Squat, Hyperextension, Abduzione laterale IR
 G5: T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop, Alzate Laterali
 
 **Giorno leggero G3** (tipo `light: true` — logica coach NON si applica):
-G3: Alzate Laterali, Goblet Squat, Band Pull-Apart con rotazione esterna, Abduzione laterale IR, Leg Curl al Cavo, Leg Extension al Cavo, TRX Row lento, Push-Up
+G3: Alzate Laterali, Goblet Squat, Cable Pull-Apart con rotazione esterna, Abduzione laterale IR, Leg Extension al Cavo, TRX Row lento, Push-Up, Leg Curl al Cavo, Dead Bug
 
 Gli esercizi esclusivi del G3 NON devono essere in MAX_PROGRESS_EX, keyLiftNames, V4_DAY_SPLIT_PLAN. In `FAST_MODE_SUPERSETS` il G3 puo comparire solo con i suoi 4 superset automatici light. Se un esercizio del G3 coincide con un giorno pesi attivo (es. Push-Up, Leg Curl al Cavo, Alzate Laterali), puo comparire nelle liste coach perche esiste anche fuori dal G3.
 
@@ -29,7 +29,7 @@ Deve contenere SOLO: Push-Up, Trazioni Supine
 
 ### 2. ACCESSORY_PROGRESS_EX
 Deve contenere tutti gli accessori attivi:
-`Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Pulley, Curl Bicipiti, Bulgarian Split Squat, Hyperextension, Abduzione laterale IR, Woodchop, Push-Up, Trazioni Supine, T-bar Row, Band Pull-Apart con rotazione esterna, Alzate Laterali`
+`Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Pulley, Curl Bicipiti, Bulgarian Split Squat, Hyperextension, Abduzione laterale IR, Woodchop, Push-Up, Trazioni Supine, T-bar Row, Cable Pull-Apart con rotazione esterna, Alzate Laterali`
 - Cerca: `var ACCESSORY_PROGRESS_EX`
 - Verifica: nessun esercizio rimosso (Squat Bulgaro, Face Pull, Fitball Hamstring Curl, Tricipiti Cavo, Dip, Hip Thrust)
 
@@ -56,7 +56,7 @@ Deve contenere: Squat, Panca, Military Press, Stacco da Terra, Stacco Rumeno, Gl
 
 ### 7. getGuidedExerciseClass
 - heavy: Squat, Stacco da Terra, Panca, Military Press, Trazioni, Trazioni Supine, T-bar Row, Stacco Rumeno, Glute Bridge Bilanciere, Pulley
-- mono: Curl Bicipiti, Woodchop, Abduzione laterale IR, Band Pull-Apart con rotazione esterna, Leg Curl al Cavo
+- mono: Curl Bicipiti, Woodchop, Abduzione laterale IR, Leg Curl al Cavo
 - compound (default): Bulgarian Split Squat, Push-Up, Hyperextension, Ab Wheel
 - Cerca: `function getGuidedExerciseClass`
 - Verifica: non deve contenere Hip Thrust Bilanciere, Tricipiti Cavo, Face Pull
@@ -67,7 +67,7 @@ Ogni esercizio attivo deve avere il tipo corretto:
 - cable: Pulley, Leg Curl al Cavo, Woodchop
 - dumbbell: Bulgarian Split Squat, Curl Bicipiti
 - band-assist: Trazioni, Trazioni Supine
-- bodyweight: Push-Up, Ab Wheel, Abduzione laterale IR, Band Pull-Apart con rotazione esterna
+- bodyweight: Push-Up, Ab Wheel, Abduzione laterale IR
 - body-control: Ab Wheel
 - Cerca: `function getCalibrationType`
 
@@ -76,7 +76,7 @@ Ogni esercizio attivo deve avere l'incremento corretto:
 - +2.5 kg: Squat, Panca, Military, Stacco, Stacco Rumeno, Glute Bridge Bilanciere, T-bar Row (default weighted)
 - +1 kg per manubrio: Bulgarian Split Squat, Curl Bicipiti
 - +1 scatto cavo: Pulley, Leg Curl al Cavo, Woodchop
-- +1 rip per serie: Push-Up, Ab Wheel, Abduzione laterale IR, Band Pull-Apart con rotazione esterna
+- +1 rip per serie: Push-Up, Ab Wheel, Abduzione laterale IR
 - +1 tacca elastico: Trazioni, Trazioni Supine
 - +1 kg: Hyperextension
 - Cerca: `function getGuidedIncrementInfo`
@@ -95,18 +95,18 @@ Ogni esercizio attivo con recupero ≥60s deve avere un filler:
 
 ### 11. V4_DAY_SPLIT_PLAN
 - G1 AM: Squat, Stacco Rumeno, Glute Bridge Bilanciere — G1 PM: Leg Curl al Cavo, Ab Wheel
-- G2 AM: Trazioni, Panca — G2 PM: Pulley, Band Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali
+- G2 AM: Trazioni, Panca — G2 PM: Pulley, Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali
 - G4 AM: Stacco da Terra, Bulgarian Split Squat — G4 PM: Hyperextension, Abduzione laterale IR
 - G5 AM: T-bar Row, Military Press — G5 PM: Push-Up, Trazioni Supine, Woodchop, Alzate Laterali
 - Cerca: `var V4_DAY_SPLIT_PLAN`
 
 ### 12. FAST_MODE_SUPERSETS
 - G1: Leg Curl al Cavo + Ab Wheel (rest 60s)
-- G2: Band Pull-Apart con rotazione esterna + Curl Bicipiti (rest 60s)
+- G2: Cable Pull-Apart con rotazione esterna + Curl Bicipiti (rest 60s)
 - G3: Alzate Laterali + Goblet Squat (rest 45s)
-- G3: Band Pull-Apart con rotazione esterna + Abduzione laterale IR (rest 30s)
-- G3: Leg Curl al Cavo + Leg Extension al Cavo (rest 30s)
-- G3: TRX Row lento + Push-Up (rest 30s)
+- G3: Cable Pull-Apart con rotazione esterna + Abduzione laterale IR (rest 30s)
+- G3: Leg Extension al Cavo + TRX Row lento (rest 30s)
+- G3: Push-Up + Leg Curl al Cavo (rest 30s)
 - G4: Hyperextension + Abduzione laterale IR (rest 60s)
 - G5: Push-Up + Woodchop (rest 45s)
 - Cerca: `var FAST_MODE_SUPERSETS`
