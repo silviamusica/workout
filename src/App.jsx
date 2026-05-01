@@ -4564,7 +4564,6 @@ export default function App() {
     var blocks = [];
     if (item.target) blocks.push("Target: " + item.target + ".");
     if (item.h) blocks.push(item.h);
-    if (item.breath) blocks.push("Respirazione: " + item.breath + ".");
     if (item.err) blocks.push("Attenzione: " + item.err + ".");
     return blocks.join(" ");
   }
@@ -4661,10 +4660,6 @@ export default function App() {
             {item.err && <div style={{ background: "#C628280A", borderRadius: 12, padding: "11px 12px", border: "1px solid #C6282820" }}>
               <div style={{ fontSize: 10, fontWeight: 800, color: "#C62828", textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Attenzione</div>
               <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7, whiteSpace: "normal", overflow: "visible", overflowWrap: "anywhere", wordBreak: "break-word" }}>{item.err}</div>
-            </div>}
-            {item.breath && <div style={{ background: T.sb, borderRadius: 12, padding: "11px 12px", border: "1px solid " + T.bg }}>
-              <div style={{ fontSize: 10, fontWeight: 800, color: T.st, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Respirazione</div>
-              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.7, whiteSpace: "normal", overflow: "visible", overflowWrap: "anywhere", wordBreak: "break-word" }}>{item.breath}</div>
             </div>}
             {getItemTimerSeconds(item) ? <button onClick={function() { quickTimer(getItemTimerSeconds(item)); }} style={{ minHeight: 46, border: "none", borderRadius: 12, background: dc, color: "#fff", fontWeight: 800, fontSize: 13, cursor: "pointer" }}>{"▶ Avvia timer · " + fmtLabel(getItemTimerSeconds(item))}</button> : null}
           </div>}
@@ -11069,8 +11064,6 @@ function isNearBodyweightElasticSession(exName, sets) {
               var showTimerBtns = restSec || workSec;
               var repeatHint = rawEx.repeatHint || null;
               var repeatColor = repeatHint ? (repeatHint.tone === "up" ? "#2E7D32" : repeatHint.tone === "down" ? "#C62828" : dc) : dc;
-              var rowBreath = getBreath(ex.n);
-              var rowBreathColor = T.sub;
               var rowSupersetMeta = isDaySupersetActive ? getSupersetBlockForExercise(dayData && dayData.name, ex.n) : null;
               var supersetPairMinutes = rowSupersetMeta && rowSupersetMeta.role === "a"
                 ? estimateSupersetPairMinutes(dayData && dayData.name, getFastSupersetPair(dayData && dayData.name, ex.n).pair, month)
@@ -11124,12 +11117,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                     {calibrationEnabled && calibrationNeed.needed && <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid #C6282830", borderRadius: 999, padding: "3px 8px", background: "#C6282810", color: "#C62828" }}>
                       <span>{calibrationNeed.initial ? "Calibrazione" : "Ricalibra"}</span>
                     </span>}
-                    {rowBreath && <>
-                      <span onClick={function(e) { e.stopPropagation(); openBreathModal(ex.n); }} style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid " + rowBreathColor + "40", borderRadius: 999, padding: "3px 8px", background: rowBreathColor + "10", color: rowBreathColor, cursor: "pointer" }}>
-                        <span>🫁</span>
-                        <span>{BREATH_TYPE_LABEL[rowBreath.type]}</span>
-                      </span>
-                    </>}
                     </div>}
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
@@ -11175,8 +11162,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                     }
                     return { w: "", r: "", rir: "" };
                   }
-                  var br = getBreath(ex.n);
-                  var bColor = br ? (BREATH_TYPE_COLOR[br.type] || dc) : dc;
                   var approach = getApproachAdvice(safeDayIdx, ex.n);
                   var objective = getExerciseObjective(ex.s, ex.note || rawEx.note || "");
                   var sessionSuggestion = getGuidedSessionSuggestion(ex.n, ex.s);
