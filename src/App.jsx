@@ -78,6 +78,7 @@ import img_TRX_High_Row from "./images/exercises/TRX High Row.gif";
 import img_Tricipiti_Cavo from "./images/exercises/cavi tricipiti.jpg";
 import img_Trazioni_Facilitate_con_Elastico from "./images/exercises/band assisted pull up.gif";
 import img_Hollow_Position from "./images/exercises/Hollow-Position-Muscoli-Coinvolti-1 - -.jpeg";
+import img_Hollow_Barchetta from "./images/exercises/hollow-barchetta.png";
 import img_Hollow_Tuck from "./images/exercises/Hollow-position-tuck-1 - -.jpeg";
 import img_Hollow_Tuck_Advanced from "./images/exercises/Hollow-position-tuck-advanced-1 - -.jpeg";
 import img_Hollow_One_Leg from "./images/exercises/Hollow-position-one-leg-1 - -.jpeg";
@@ -1883,8 +1884,8 @@ var DAYS_V4 = [
   { name: "Giorno 3", focus: "Leggero", dayLabel: "Mer", light: true, tEst: 45,
     intro: {
       attrezzi: ["Manubri leggeri", "TRX", "Cavo basso + cavigliera", "Tappetino"],
-      muscoli: ["Deltoide laterale (Alzate Laterali)", "Quadricipiti / Glutei (Goblet Squat)", "Deltoide posteriore / cuffia (Cable Pull-Apart)", "Gluteo medio (Abduzione laterale IR)", "Quadricipiti in isolamento (Leg Extension al Cavo)", "Dorsali / scapole (TRX Row lento)", "Petto (Push-Up)", "Femorali in flessione ginocchio (Leg Curl al Cavo)", "Core anti-estensione (Dead Bug)"],
-      obiettivi: ["Aggiungere volume complementare senza affaticare il sistema nervoso", "Portare petto, deltoidi, quadricipiti e femorali al minimo utile con serie leggere ma produttive", "Usare 4 superset automatici per tenere il G3 rapido e ordinato", "Chiudere il blocco forza con Dead Bug per il core anti-estensione e poi protocollo anca completo"],
+      muscoli: ["Deltoide laterale (Alzate Laterali)", "Quadricipiti / Glutei (Goblet Squat)", "Deltoide posteriore / cuffia (Cable Pull-Apart)", "Gluteo medio (Abduzione laterale IR)", "Quadricipiti in isolamento (Leg Extension al Cavo)", "Dorsali / scapole (TRX Row lento)", "Petto (Push-Up)", "Femorali in flessione ginocchio (Leg Curl al Cavo)", "Core isometrico (Hollow Position)"],
+      obiettivi: ["Aggiungere volume complementare senza affaticare il sistema nervoso", "Portare petto, deltoidi, quadricipiti e femorali al minimo utile con serie leggere ma produttive", "Usare 4 superset automatici per tenere il G3 rapido e ordinato", "Chiudere il blocco forza con Hollow Position per il core isometrico e poi protocollo anca completo"],
       attenzione: ["G3 leggero: 3 serie per esercizio. La prima serie e di avvicinamento tecnico, le serie 2 e 3 sono di lavoro a RPE 7-8.", "Push-Up, Leg Extension e Leg Curl oggi sono volume leggero: tecnica pulita, niente fatica vera", "Nel TRX Row e nell'Abduzione laterale IR il controllo del corpo conta piu della quantità"],
       ritmo: "Superset automatici con recuperi brevi: 45s nel primo blocco, 30s negli altri. Tieni il flusso alto ma senza sporcare la tecnica."
     },
@@ -1912,7 +1913,7 @@ var DAYS_V4 = [
       { n: "TRX Row lento", s: "3x12", approachSets: 1, rpe: "7", note: "Prima serie di avvicinamento tecnico, poi 2 serie di lavoro. Fermo 2s con scapole strette. Eccentrica 3s. Riduci l'inclinazione se il corpo non resta in linea.", rec: "30s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
       { n: "Push-Up", s: "3x10", approachSets: 1, rpe: "7", note: "Prima serie di avvicinamento tecnico, poi 2 serie di lavoro. Tecnica perfetta, non a fatica: fermati con 3-4 rip in riserva. Corpo in linea e gomiti a 45 gradi.", rec: "30s", gear: "Corpo libero", errori: "Anche che cedono; gomiti troppo aperti; ROM accorciato" },
       { n: "Leg Curl al Cavo", s: "3x12", approachSets: 1, rpe: "7", note: "Prima serie di avvicinamento tecnico, poi 2 serie di lavoro. Eccentrica 2-3 secondi, nessuno slancio, fermati larga.", rec: "30s", gear: "Cavo basso + cavigliera", errori: "Slancio col bacino; eccentrica troppo veloce; lombare che si inarca" },
-      { n: "Dead Bug", s: "2x8 per lato", rpe: "7", note: "Core anti-estensione leggero. Lombare sempre aderente a terra, espira estendendo e muovi lentamente braccio e gamba opposti.", rec: "45-60s", gear: "Tappetino", errori: "Lombare che si stacca; fretta; bacino che ruota" },
+      { n: "Hollow Position", s: "2x30s", rpe: "7", note: "Core isometrico. Lombare incollata a terra, soleva scapole e piedi. Progressione: Tuck → Advanced Tuck → One Leg → Full. Se perdi la lombare regredisci.", rec: "45-60s", gear: "Tappetino", errori: "Lombare che si stacca; trattenere il respiro; gambe troppo alte" },
     ],
     str: ["Half Kneeling Lunge","Half Kneeling Lunge + Reach","Couch Stretch","Figure-Four Supino","Happy Baby","Leg Cradle Supino","Supported Low Lunge"],
     lightHipProtocol: [
@@ -2521,7 +2522,7 @@ var EX_IMG = {
   "Glute Bridge Bilanciere": img_Glute_Bridge_Bilanciere,
   "Good Morning": img_Good_Morning,
   "Hip Thrust Singolo": img_Hip_Thrust_Singolo,
-  "Hollow Position": img_Hollow_Position,
+  "Hollow Position": img_Hollow_Barchetta,
   "Hyperextension": img_Hyperextension,
   "Kick Back Manubri": img_Kick_Back_Manubri,
   "Lat Machine": img_Lat_Machine,
@@ -11118,11 +11119,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                       {approachSetCount > 0 && <span style={{ fontSize: 10, color: dc, fontWeight: 800, padding: "2px 7px", borderRadius: 999, background: dc + "12", border: "1px solid " + dc + "25", whiteSpace: "nowrap" }}>{getApproachSetsLabel(approachSetCount, sc)}</span>}
                       {!isBeginner && ex.rpe ? <span onClick={function(e) { e.stopPropagation(); setRpeOpen(true); }} style={{ cursor: "pointer", color: dc, fontSize: 10, fontWeight: 700, textDecoration: "underline dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, whiteSpace: "nowrap" }}>{formatEffortLabel(ex.rpe, ex.s)}</span> : ""}
                       {!isBeginner && ((rowSupersetMeta && rowSupersetMeta.role === "a" && rowSupersetMeta.rest) || restSec) ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 700, whiteSpace: "nowrap" }}>{"rec " + fmtLabel(rowSupersetMeta && rowSupersetMeta.role === "a" ? rowSupersetMeta.rest : restSec)}</span> : null}
-                      {!isBeginner && (function() {
-                        if (rowSupersetMeta) return null;
-                        var mins = estimateExerciseMinutes(rawEx, ex);
-                        return mins ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 600 }}>{"~" + mins + " min"}</span> : null;
-                      })()}
                     </div>
                     {!isBeginner && !compactMode && <div style={{ marginTop: 4, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                     {calibrationEnabled && calibrationNeed.needed && <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid #C6282830", borderRadius: 999, padding: "3px 8px", background: "#C6282810", color: "#C62828" }}>
@@ -11138,6 +11134,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     {!isBasics && tLog && tLog.sets.length > 0 && <div style={{ background: T.ok, color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 8 }}>{tLog.sets.length + "/" + sc}</div>}
+                    {!isBeginner && !rowSupersetMeta && (function() {
+                      var mins = estimateExerciseMinutes(rawEx, ex);
+                      return mins ? <span style={{ fontSize: 12, color: T.sub, fontWeight: 700, whiteSpace: "nowrap" }}>{"~" + mins + " min"}</span> : null;
+                    })()}
                     <div style={{ fontSize: 14, color: T.sub, transform: isX ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
                   </div>
                 </div>

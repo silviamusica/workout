@@ -13,7 +13,7 @@ G4: Stacco da Terra, Bulgarian Split Squat, Hyperextension, Abduzione laterale I
 G5: T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop, Alzate Laterali
 
 **Giorno leggero G3** (tipo `light: true` — logica coach NON si applica):
-G3: Alzate Laterali, Goblet Squat, Cable Pull-Apart con rotazione esterna, Abduzione laterale IR, Leg Extension al Cavo, TRX Row lento, Push-Up, Leg Curl al Cavo, Dead Bug
+G3: Alzate Laterali, Goblet Squat, Cable Pull-Apart con rotazione esterna, Abduzione laterale IR, Leg Extension al Cavo, TRX Row lento, Push-Up, Leg Curl al Cavo, Hollow Position
 
 Gli esercizi esclusivi del G3 NON devono essere in MAX_PROGRESS_EX, keyLiftNames, V4_DAY_SPLIT_PLAN. In `FAST_MODE_SUPERSETS` il G3 puo comparire solo con i suoi 4 superset automatici light. Se un esercizio del G3 coincide con un giorno pesi attivo (es. Push-Up, Leg Curl al Cavo, Alzate Laterali), puo comparire nelle liste coach perche esiste anche fuori dal G3.
 

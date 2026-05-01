@@ -251,7 +251,7 @@ Questa e la sintesi operativa piu rapida da dare a un agente PT. Include tutti g
 | Giorno | Blocco | Esercizi attivi |
 |---|---|---|
 | G3 Leggero | Riscaldamento | Dorsiflessione al muro · 90/90 hip mobility · T-spine rotation in quadrupedia · Ponte monopodalico |
-| G3 Leggero | Lavoro | Alzate Laterali · Goblet Squat · Cable Pull-Apart con rotazione esterna · Abduzione laterale IR · Leg Extension al Cavo · TRX Row lento · Push-Up · Leg Curl al Cavo · Dead Bug |
+| G3 Leggero | Lavoro | Alzate Laterali · Goblet Squat · Cable Pull-Apart con rotazione esterna · Abduzione laterale IR · Leg Extension al Cavo · TRX Row lento · Push-Up · Leg Curl al Cavo · Hollow Position |
 | G3 Leggero | Protocollo anca completo | Half Kneeling Lunge · Half Kneeling Lunge + Reach verticale · Couch Stretch · Figure-Four Supino · Happy Baby · Leg Cradle Supino · Supported Low Lunge · Posizione del quadrato · Wall tibialis raises |
 | Cardio giovedi | Formati | Corsa 30 min zona 2 · HIIT upper + core · Corsa lunga zona 2 · Rucking |
 | Cardio giovedi | Mobilita | Dorsiflessione al muro · Wall tibialis raises · 90/90 hip mobility · T-spine rotation in quadrupedia · Half Kneeling Lunge · Posizione del quadrato · Figure-Four Supino |

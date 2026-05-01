@@ -474,7 +474,7 @@ Questo giorno colma tre lacune del programma:
 | Mobilità | T-spine rotation in quadrupedia | 8 rip/lato |
 | Attivazione | Ponte monopodalico | 6 rip/lato |
 
-**Esercizi** (RPE 7-8 · ~45 min con superset + Dead Bug finale)
+**Esercizi** (RPE 7-8 · ~45 min con superset + Hollow Position finale)
 
 | # | Esercizio | Serie | RPE | Recupero | Note |
 |---|---|---|---|---|---|
@@ -486,7 +486,7 @@ Questo giorno colma tre lacune del programma:
 | 6 | TRX Row lento | 3x12 | 7 | 30s | Superset C con Leg Extension al Cavo |
 | 7 | Push-Up | 3x10 | 7 | 30s | Superset D con Leg Curl al Cavo |
 | 8 | Leg Curl al Cavo | 3x12 | 7 | 30s | Superset D con Push-Up |
-| 9 | Dead Bug | 2x8/lato | 7 | 45-60s | Fuori superset a fine blocco |
+| 9 | Hollow Position | 2x30s | 7 | 45-60s | Fuori superset a fine blocco. Progressione: Tuck → Advanced Tuck → One Leg → Full |
 
 Nel G3 l'esercizio base resta `Abduzione laterale IR`, con toggle persistente verso `Clamshell`.
 La `Leg Extension al Cavo` ora ha asset foto dedicato in `src/images/exercises/standing-cable-leg-extension.jpeg`.
