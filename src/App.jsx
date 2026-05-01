@@ -158,6 +158,13 @@ import img_w_TrazioniConElastico from "./images/warmup_stretch/Trazioni con elas
 import img_muscle_map from "./images/muscle_map.jpg";
 import { supabase } from "./supabaseClient";
 
+var NOTE_VIDEO_BUCKET = import.meta.env.VITE_SUPABASE_NOTE_MEDIA_BUCKET || "note-media";
+var NOTE_VIDEO_SOURCE_MAX_MB = 120;
+var NOTE_VIDEO_MAX_MB = 25;
+var NOTE_VIDEO_MAX_SECONDS = 20;
+var NOTE_VIDEO_MAX_SIDE = 720;
+var NOTE_VIDEO_BITRATE = 1200000;
+
 import { useState, useEffect, useCallback, useRef } from "react";
 import {
   EXERCISE_CARD_STATUS,
@@ -4049,6 +4056,7 @@ export default function App() {
   var [exerciseNoteDrafts, setExerciseNoteDrafts] = useState({});
   var [exerciseNotePhotoDrafts, setExerciseNotePhotoDrafts] = useState({});
   var [exerciseNoteVideoDrafts, setExerciseNoteVideoDrafts] = useState({});
+  var [exerciseNoteVideoUploadKey, setExerciseNoteVideoUploadKey] = useState("");
   var [savedExerciseNoteKey, setSavedExerciseNoteKey] = useState("");
   var [calibrationMode, setCalibrationMode] = useState(false);
   var [calibrationProfiles, setCalibrationProfiles] = useState({});
@@ -7949,6 +7957,153 @@ function isNearBodyweightElasticSession(exName, sets) {
   }
   function getCoachNotePhotoKey(en) { return "ex_photo__" + en; }
   function getCoachNotePhotoDraftKey(en) { return "new_photo__" + en; }
+  function getCoachNoteVideoKey(en) { return "ex_video__" + en; }
+  function getCoachNoteVideoDraftKey(en) { return "new_video__" + en; }
+  function sanitizeMediaFileName(name) {
+    return String(name || "video")
+      .toLowerCase()
+      .replace(/[^a-z0-9._-]+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+  function getSupportedVideoRecorderMimeType() {
+    if (typeof MediaRecorder === "undefined" || !MediaRecorder.isTypeSupported) return "";
+    var candidates = [
+      "video/webm;codecs=vp9,opus",
+      "video/webm;codecs=vp8,opus",
+      "video/webm",
+      "video/mp4;codecs=h264,mp4a.40.2",
+      "video/mp4"
+    ];
+    for (var i = 0; i < candidates.length; i++) {
+      if (MediaRecorder.isTypeSupported(candidates[i])) return candidates[i];
+    }
+    return "";
+  }
+  function getVideoExtensionForMimeType(mimeType) {
+    var type = String(mimeType || "").toLowerCase();
+    if (type.indexOf("mp4") >= 0) return "mp4";
+    if (type.indexOf("webm") >= 0) return "webm";
+    return "bin";
+  }
+  function loadVideoMetadata(file) {
+    return new Promise(function(resolve, reject) {
+      var url = URL.createObjectURL(file);
+      var video = document.createElement("video");
+      video.preload = "metadata";
+      video.onloadedmetadata = function() {
+        var meta = {
+          duration: isFinite(video.duration) ? video.duration : 0,
+          width: video.videoWidth || 0,
+          height: video.videoHeight || 0
+        };
+        URL.revokeObjectURL(url);
+        resolve(meta);
+      };
+      video.onerror = function() {
+        URL.revokeObjectURL(url);
+        reject(new Error("video-metadata-failed"));
+      };
+      video.src = url;
+    });
+  }
+  async function compressVideoFile(file, options) {
+    var cfg = options || {};
+    var maxSide = cfg.maxSide || NOTE_VIDEO_MAX_SIDE;
+    var bitrate = cfg.videoBitsPerSecond || NOTE_VIDEO_BITRATE;
+    var frameRate = cfg.frameRate || 24;
+    var mimeType = getSupportedVideoRecorderMimeType();
+    if (typeof MediaRecorder === "undefined" || !mimeType) throw new Error("video-compression-unsupported");
+    var url = URL.createObjectURL(file);
+    var video = document.createElement("video");
+    video.preload = "auto";
+    video.muted = true;
+    video.playsInline = true;
+    video.src = url;
+    try {
+      await new Promise(function(resolve, reject) {
+        video.onloadedmetadata = function() { resolve(); };
+        video.onerror = function() { reject(new Error("video-load-failed")); };
+      });
+      var srcW = video.videoWidth || 0;
+      var srcH = video.videoHeight || 0;
+      if (!srcW || !srcH) throw new Error("video-dimensions-missing");
+      var scale = Math.min(1, maxSide / Math.max(srcW, srcH));
+      var width = Math.max(2, Math.round(srcW * scale));
+      var height = Math.max(2, Math.round(srcH * scale));
+      if (width % 2) width -= 1;
+      if (height % 2) height -= 1;
+      var canvas = document.createElement("canvas");
+      canvas.width = Math.max(2, width);
+      canvas.height = Math.max(2, height);
+      var ctx = canvas.getContext("2d");
+      if (!ctx || !canvas.captureStream) throw new Error("video-compression-unsupported");
+      var canvasStream = canvas.captureStream(frameRate);
+      var mixedTracks = canvasStream.getVideoTracks();
+      var sourceStream = video.captureStream ? video.captureStream() : (video.mozCaptureStream ? video.mozCaptureStream() : null);
+      if (sourceStream) {
+        sourceStream.getAudioTracks().forEach(function(track) { mixedTracks.push(track); });
+      }
+      var recorderStream = new MediaStream(mixedTracks);
+      var chunks = [];
+      var rafId = 0;
+      var drawFrame = function() {
+        if (video.paused || video.ended) return;
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        rafId = requestAnimationFrame(drawFrame);
+      };
+      var blob = await new Promise(function(resolve, reject) {
+        var recorder = new MediaRecorder(recorderStream, {
+          mimeType: mimeType,
+          videoBitsPerSecond: bitrate
+        });
+        recorder.ondataavailable = function(evt) {
+          if (evt.data && evt.data.size) chunks.push(evt.data);
+        };
+        recorder.onerror = function(evt) {
+          reject((evt && evt.error) || new Error("video-record-failed"));
+        };
+        recorder.onstop = function() {
+          resolve(new Blob(chunks, { type: mimeType }));
+        };
+        video.onended = function() {
+          if (rafId) cancelAnimationFrame(rafId);
+          if (recorder.state !== "inactive") recorder.stop();
+        };
+        recorder.start(250);
+        video.play().then(function() {
+          drawFrame();
+        }).catch(reject);
+      });
+      if (!blob || !blob.size) throw new Error("video-compression-empty");
+      var ext = getVideoExtensionForMimeType(mimeType);
+      var baseName = sanitizeMediaFileName(String(file.name || "clip").replace(/\.[^.]+$/, "")) || "clip";
+      return new File([blob], baseName + "-compressed." + ext, {
+        type: mimeType,
+        lastModified: Date.now()
+      });
+    } finally {
+      try { video.pause(); } catch (e) {}
+      URL.revokeObjectURL(url);
+    }
+  }
+  function getSupabaseStoragePathFromUrl(url, bucket) {
+    var marker = "/storage/v1/object/public/" + bucket + "/";
+    var raw = String(url || "");
+    var idx = raw.indexOf(marker);
+    if (idx < 0) return "";
+    return decodeURIComponent(raw.slice(idx + marker.length).split("?")[0] || "");
+  }
+  async function deleteExerciseNoteVideoIfManaged(url) {
+    if (!supabase || !url) return;
+    var path = getSupabaseStoragePathFromUrl(url, NOTE_VIDEO_BUCKET);
+    if (!path) return;
+    try {
+      await supabase.storage.from(NOTE_VIDEO_BUCKET).remove([path]);
+    } catch (err) {
+      console.error("Exercise note video delete failed", err);
+    }
+  }
   function normalizeExerciseNotePhotos(value) {
     if (Array.isArray(value)) return value.filter(Boolean).slice(0, 3);
     return value ? [value] : [];
@@ -8029,6 +8184,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     var cleanNote = String(noteText || "").trim();
     var cleanVideoUrl = String(videoUrl || "").trim();
     var cleanPhotos = normalizeExerciseNotePhotos(photoData);
+    if ((existing.noteVideoUrl || "") && existing.noteVideoUrl !== cleanVideoUrl) deleteExerciseNoteVideoIfManaged(existing.noteVideoUrl);
     nextLogs[k] = Object.assign({}, existing, {
       note: cleanNote,
       notePhoto: cleanPhotos[0] || null,
@@ -8067,6 +8223,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     var cleanNote = String(noteText || "").trim();
     var cleanVideoUrl = String(videoUrl || "").trim();
     var cleanPhotos = normalizeExerciseNotePhotos(photoData);
+    if ((existing.noteVideoUrl || "") && existing.noteVideoUrl !== cleanVideoUrl) deleteExerciseNoteVideoIfManaged(existing.noteVideoUrl);
     nextLogs[key] = Object.assign({}, existing, {
       note: cleanNote,
       notePhoto: cleanPhotos[0] || null,
@@ -8161,6 +8318,88 @@ function isNearBodyweightElasticSession(exName, sets) {
   async function handleHistoricExerciseNotePhotoPick(entry, file) {
     if (!file) return;
     return handleExerciseNotePhotoPickByKey(getHistoricExerciseNoteDraftKey(entry), file);
+  }
+  async function uploadNoteVideoByKey(noteKey, exerciseName, file) {
+    if (!file) return "";
+    if (!supabase) {
+      setAutoBackupMsg("Supabase non configurato: il video non puo essere caricato.");
+      return "";
+    }
+    if (!cloudUser || !cloudUser.id) {
+      setAutoBackupMsg("Per caricare un video fai prima accesso cloud.");
+      return "";
+    }
+    var fileSizeMb = (file.size || 0) / (1024 * 1024);
+    if (fileSizeMb > NOTE_VIDEO_SOURCE_MAX_MB) {
+      setAutoBackupMsg("Video troppo pesante: massimo " + NOTE_VIDEO_SOURCE_MAX_MB + " MB in ingresso.");
+      return "";
+    }
+    setExerciseNoteVideoUploadKey(noteKey);
+    try {
+      var meta = await loadVideoMetadata(file);
+      if (meta.duration > NOTE_VIDEO_MAX_SECONDS) {
+        setAutoBackupMsg("Video troppo lungo: massimo " + NOTE_VIDEO_MAX_SECONDS + " secondi.");
+        return "";
+      }
+      setAutoBackupMsg("Compressione video in corso...");
+      var uploadFile = await compressVideoFile(file, {
+        maxSide: NOTE_VIDEO_MAX_SIDE,
+        videoBitsPerSecond: NOTE_VIDEO_BITRATE,
+        frameRate: 24
+      });
+      var uploadSizeMb = (uploadFile.size || 0) / (1024 * 1024);
+      if (uploadSizeMb > NOTE_VIDEO_MAX_MB) {
+        setAutoBackupMsg("Video ancora troppo pesante dopo la compressione: massimo " + NOTE_VIDEO_MAX_MB + " MB.");
+        return "";
+      }
+      var safeExercise = sanitizeMediaFileName(exerciseName || "exercise");
+      var safeFile = sanitizeMediaFileName(uploadFile.name || file.name || "clip.mp4") || "clip.mp4";
+      var path = [cloudUser.id, "exercise-notes", safeExercise, Date.now() + "-" + safeFile].join("/");
+      var uploadResult = await supabase.storage.from(NOTE_VIDEO_BUCKET).upload(path, uploadFile, {
+        cacheControl: "3600",
+        upsert: false,
+        contentType: uploadFile.type || "video/webm"
+      });
+      if (uploadResult.error) throw uploadResult.error;
+      var publicResult = supabase.storage.from(NOTE_VIDEO_BUCKET).getPublicUrl(path);
+      var publicUrl = publicResult && publicResult.data ? publicResult.data.publicUrl : "";
+      if (!publicUrl) throw new Error("video-url-missing");
+      var prevUrl = exerciseNoteVideoDrafts[noteKey] || "";
+      if (prevUrl && prevUrl !== publicUrl) deleteExerciseNoteVideoIfManaged(prevUrl);
+      setExerciseNoteVideoDrafts(function(prev) {
+        var next = Object.assign({}, prev);
+        next[noteKey] = publicUrl;
+        return next;
+      });
+      if (savedExerciseNoteKey === noteKey) setSavedExerciseNoteKey("");
+      setAutoBackupMsg("Video pronto. Premi Salva nota per confermare.");
+      return publicUrl;
+    } catch (err) {
+      console.error("Exercise note video upload failed", err);
+      if (err && err.message === "video-compression-unsupported") {
+        setAutoBackupMsg("Compressione video non supportata su questo browser.");
+      } else {
+        setAutoBackupMsg("Upload video non riuscito.");
+      }
+      return "";
+    } finally {
+      setExerciseNoteVideoUploadKey("");
+    }
+  }
+  async function uploadExerciseNoteVideoByKey(noteKey, exerciseName, file) {
+    return uploadNoteVideoByKey(noteKey, exerciseName, file);
+  }
+  async function handleExerciseNoteVideoPick(di, en, file) {
+    if (!file) return "";
+    return uploadExerciseNoteVideoByKey(getExerciseNoteDraftKey(en, di), en, file);
+  }
+  async function handleHistoricExerciseNoteVideoPick(entry, file) {
+    if (!file) return "";
+    return uploadExerciseNoteVideoByKey(getHistoricExerciseNoteDraftKey(entry), entry && entry.exercise, file);
+  }
+  async function handleCoachNoteVideoPick(en, file) {
+    if (!file) return "";
+    return uploadNoteVideoByKey(getCoachNoteVideoDraftKey(en), en, file);
   }
   function getHist(en) { return Object.values(logs).filter(function(l) { return sameExerciseName(l.exercise, en); }).sort(function(a,b) { return b.date.localeCompare(a.date); }).slice(0, 10); }
   function getAllHist(en) { return Object.values(logs).filter(function(l) { return sameExerciseName(l.exercise, en) && l.month === month; }).sort(function(a,b) { var c = b.date.localeCompare(a.date); return c || ((b.day || 0) - (a.day || 0)); }); }
@@ -10200,6 +10439,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                                     </div>;
                                   })}
                                 </div>}
+                                {entry.noteVideoUrl && <div style={{ marginTop: 6, borderRadius: 8, overflow: "hidden", border: "1px solid " + T.bg, background: T.cd, padding: 6 }}>
+                                  <video src={entry.noteVideoUrl} controls playsInline preload="metadata" style={{ display: "block", width: "min(220px, 100%)", borderRadius: 6, background: "#000" }} />
+                                </div>}
                                 <details style={{ marginTop: 6 }}>
                                   <summary style={{ cursor: "pointer", fontSize: 10, fontWeight: 800, color: dc }}>Correggi nota e media</summary>
                                   <div style={{ display: "grid", gap: 8, marginTop: 8, padding: "8px 9px", borderRadius: 8, background: T.cd, border: "1px solid " + T.bg }}>
@@ -10234,6 +10476,31 @@ function isNearBodyweightElasticSession(exName, sets) {
                                         />
                                       </label>
                                       {currentExerciseNotePhotos.length > 0 && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{currentExerciseNotePhotos.length + "/3 foto"}</span>}
+                                      <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: exerciseNoteVideoUploadKey === noteDraftKey ? "progress" : "pointer", display: "inline-flex", alignItems: "center", opacity: currentExerciseNoteVideo ? 0.75 : 1 }}>
+                                        {exerciseNoteVideoUploadKey === noteDraftKey ? "Carico video..." : (currentExerciseNoteVideo ? "Sostituisci video" : "Aggiungi video")}
+                                        <input
+                                          type="file"
+                                          accept="video/*"
+                                          capture="environment"
+                                          style={{ display: "none" }}
+                                          disabled={exerciseNoteVideoUploadKey === noteDraftKey}
+                                          onChange={function(e) {
+                                            var file = e.target.files && e.target.files[0];
+                                            handleHistoricExerciseNoteVideoPick(entry, file);
+                                            e.target.value = "";
+                                          }}
+                                        />
+                                      </label>
+                                      {currentExerciseNoteVideo && <button onClick={function(e) {
+                                        e.stopPropagation();
+                                        deleteExerciseNoteVideoIfManaged(currentExerciseNoteVideo);
+                                        setExerciseNoteVideoDrafts(function(prev) {
+                                          var next = Object.assign({}, prev);
+                                          next[noteDraftKey] = "";
+                                          return next;
+                                        });
+                                        if (savedExerciseNoteKey === noteDraftKey) setSavedExerciseNoteKey("");
+                                      }} style={{ minHeight: 32, padding: "0 12px", border: "1px solid " + T.bg, borderRadius: 999, background: T.sb, color: T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>Rimuovi video</button>}
                                     </div>
                                     {currentExerciseNotePhotos.length > 0 && <div style={{ display: "grid", gap: 8 }}>
                                       {currentExerciseNotePhotos.map(function(photoSrc, photoIdx) {
@@ -10253,6 +10520,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                                           </div>
                                         </div>;
                                       })}
+                                    </div>}
+                                    {currentExerciseNoteVideo && <div style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb, padding: 8 }}>
+                                      <video src={currentExerciseNoteVideo} controls playsInline preload="metadata" style={{ width: "100%", display: "block", borderRadius: 8, background: "#000" }} />
+                                      <div style={{ fontSize: 10, color: T.sub, marginTop: 6 }}>Video ricodificato nel browser prima dell'upload.</div>
                                     </div>}
                                     <div style={{ display: "flex", gap: 8 }}>
                                       <button onClick={function(e) {
@@ -11242,20 +11513,24 @@ function isNearBodyweightElasticSession(exName, sets) {
                       var tipsKey = "tips__" + ex.n;
                       var cnKey = "ex__" + ex.n;
                       var coachPhotoKey = getCoachNotePhotoKey(ex.n);
+                      var coachVideoKey = getCoachNoteVideoKey(ex.n);
                       var blockDraftKey = "block__" + ex.n;
                       var blockPhotoDraftKey = "block_photo__" + ex.n;
+                      var blockVideoDraftKey = "block_video__" + ex.n;
                       var savedTips = coachNotes[tipsKey] || (db && db.t) || [];
                       var savedNote = coachNotes[cnKey] || "";
                       var savedPhotos = normalizeExerciseNotePhotos(coachNotes[coachPhotoKey]);
-                      if (!savedTips.length && !savedNote && !savedPhotos.length) return null;
+                      var savedVideo = String(coachNotes[coachVideoKey] || "").trim();
+                      if (!savedTips.length && !savedNote && !savedPhotos.length && !savedVideo) return null;
                       var allText = savedTips.concat(savedNote ? [savedNote] : []).join("\n");
                       var isEditingBlock = coachNoteDrafts[blockDraftKey] !== undefined;
                       var blockDraft = isEditingBlock ? coachNoteDrafts[blockDraftKey] : allText;
                       var blockPhotoDrafts = coachNoteDrafts[blockPhotoDraftKey] !== undefined ? normalizeExerciseNotePhotos(coachNoteDrafts[blockPhotoDraftKey]) : savedPhotos;
+                      var blockVideoDraft = exerciseNoteVideoDrafts[blockVideoDraftKey] != null ? String(exerciseNoteVideoDrafts[blockVideoDraftKey] || "") : savedVideo;
                       return <div style={{ marginBottom: 10, borderRadius: 10, background: dc + "08", border: "1px solid " + dc + "20", padding: "9px 11px" }}>
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
                           <span style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Note di Andrea</span>
-                          {!isEditingBlock && <button onClick={function(e) { e.stopPropagation(); setCoachNoteDrafts(function(p) { return Object.assign({}, p, { [blockDraftKey]: allText, [blockPhotoDraftKey]: savedPhotos }); }); }} style={{ padding: "2px 9px", border: "1px solid " + dc + "30", borderRadius: 6, background: dc + "08", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", touchAction: "manipulation" }}>Modifica</button>}
+                          {!isEditingBlock && <button onClick={function(e) { e.stopPropagation(); setCoachNoteDrafts(function(p) { return Object.assign({}, p, { [blockDraftKey]: allText, [blockPhotoDraftKey]: savedPhotos }); }); setExerciseNoteVideoDrafts(function(prev) { var next = Object.assign({}, prev); next[blockVideoDraftKey] = savedVideo; return next; }); }} style={{ padding: "2px 9px", border: "1px solid " + dc + "30", borderRadius: 6, background: dc + "08", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", touchAction: "manipulation" }}>Modifica</button>}
                         </div>
                         {isEditingBlock ? <div style={{ display: "grid", gap: 6 }}>
                           <textarea
@@ -11298,6 +11573,30 @@ function isNearBodyweightElasticSession(exName, sets) {
                               />
                             </label>
                             {blockPhotoDrafts.length > 0 && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{blockPhotoDrafts.length + "/3 foto"}</span>}
+                            <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: exerciseNoteVideoUploadKey === blockVideoDraftKey ? "progress" : "pointer", display: "inline-flex", alignItems: "center", opacity: blockVideoDraft ? 0.75 : 1 }}>
+                              {exerciseNoteVideoUploadKey === blockVideoDraftKey ? "Carico video..." : (blockVideoDraft ? "Sostituisci video" : "Aggiungi video")}
+                              <input
+                                type="file"
+                                accept="video/*"
+                                capture="environment"
+                                style={{ display: "none" }}
+                                disabled={exerciseNoteVideoUploadKey === blockVideoDraftKey}
+                                onChange={function(e) {
+                                  var file = e.target.files && e.target.files[0];
+                                  handleCoachNoteVideoPick(ex.n, file);
+                                  e.target.value = "";
+                                }}
+                              />
+                            </label>
+                            {blockVideoDraft && <button onClick={function(e) {
+                              e.stopPropagation();
+                              deleteExerciseNoteVideoIfManaged(blockVideoDraft);
+                              setExerciseNoteVideoDrafts(function(prev) {
+                                var next = Object.assign({}, prev);
+                                next[blockVideoDraftKey] = "";
+                                return next;
+                              });
+                            }} style={{ minHeight: 32, padding: "0 12px", border: "1px solid " + T.bg, borderRadius: 999, background: T.sb, color: T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>Rimuovi video</button>}
                           </div>
                           {blockPhotoDrafts.length > 0 && <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                             {blockPhotoDrafts.map(function(photoSrc, photoIdx) {
@@ -11320,13 +11619,19 @@ function isNearBodyweightElasticSession(exName, sets) {
                             var zoomKey = "coach-top-" + ex.n + "-" + photoIdx;
                             return showImg === zoomKey ? <div key={zoomKey + "-full"} style={{ paddingTop: 4 }}><img onClick={function(e) { e.stopPropagation(); setShowImg(null); }} src={photoSrc} alt={"Nota Andrea " + ex.n + " grande " + (photoIdx + 1)} style={{ width: "100%", display: "block", borderRadius: 8, cursor: "zoom-out", border: "1px solid " + T.bg }} /></div> : null;
                           })}
+                          {blockVideoDraft && <div style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb, padding: 8 }}>
+                            <video src={blockVideoDraft} controls playsInline preload="metadata" style={{ width: "100%", display: "block", borderRadius: 8, background: "#000" }} />
+                            <div style={{ fontSize: 10, color: T.sub, marginTop: 6 }}>Video ricodificato nel browser prima dell'upload.</div>
+                          </div>}
                           <div style={{ display: "flex", gap: 6 }}>
                             <button onClick={function(e) {
                               e.stopPropagation();
                               var lines = blockDraft.split("\n").map(function(l) { return l.trim(); }).filter(Boolean);
                               var cleanPhotos = normalizeExerciseNotePhotos(blockPhotoDrafts);
+                              var cleanVideo = String(blockVideoDraft || "").trim();
                               setCoachNotes(function(prev) {
-                                var next = Object.assign({}, prev, { [tipsKey]: lines, [cnKey]: "", [coachPhotoKey]: cleanPhotos });
+                                if ((prev[coachVideoKey] || "") && prev[coachVideoKey] !== cleanVideo) deleteExerciseNoteVideoIfManaged(prev[coachVideoKey]);
+                                var next = Object.assign({}, prev, { [tipsKey]: lines, [cnKey]: "", [coachPhotoKey]: cleanPhotos, [coachVideoKey]: cleanVideo });
                                 persistCoachNotes(next);
                                 return next;
                               });
@@ -11336,9 +11641,14 @@ function isNearBodyweightElasticSession(exName, sets) {
                                 delete n[blockPhotoDraftKey];
                                 return n;
                               });
-                              setAutoBackupMsg((lines.length || cleanPhotos.length) ? "Nota di Andrea salvata." : "Nota di Andrea rimossa.");
+                              setExerciseNoteVideoDrafts(function(prev) {
+                                var next = Object.assign({}, prev);
+                                delete next[blockVideoDraftKey];
+                                return next;
+                              });
+                              setAutoBackupMsg((lines.length || cleanPhotos.length || cleanVideo) ? "Nota di Andrea salvata." : "Nota di Andrea rimossa.");
                             }} style={{ flex: 1, minHeight: 32, border: "none", borderRadius: 8, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Salva</button>
-                            <button onClick={function(e) { e.stopPropagation(); setCoachNoteDrafts(function(p) { var n = Object.assign({}, p); delete n[blockDraftKey]; delete n[blockPhotoDraftKey]; return n; }); setShowImg(null); }} style={{ minHeight: 32, padding: "0 12px", border: "1px solid " + T.bg, borderRadius: 8, background: T.bg, color: T.sub, fontSize: 12, fontWeight: 700, cursor: "pointer" }}>Annulla</button>
+                            <button onClick={function(e) { e.stopPropagation(); setCoachNoteDrafts(function(p) { var n = Object.assign({}, p); delete n[blockDraftKey]; delete n[blockPhotoDraftKey]; return n; }); setExerciseNoteVideoDrafts(function(prev) { var next = Object.assign({}, prev); delete next[blockVideoDraftKey]; return next; }); setShowImg(null); }} style={{ minHeight: 32, padding: "0 12px", border: "1px solid " + T.bg, borderRadius: 8, background: T.bg, color: T.sub, fontSize: 12, fontWeight: 700, cursor: "pointer" }}>Annulla</button>
                           </div>
                         </div> : <div style={{ display: "grid", gap: 5 }}>
                           {savedTips.map(function(tip, ti) {
@@ -11360,6 +11670,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                             var zoomKey = "coach-saved-" + ex.n + "-" + photoIdx;
                             return showImg === zoomKey ? <div key={zoomKey + "-full"} style={{ marginTop: 6 }}><img onClick={function(e) { e.stopPropagation(); setShowImg(null); }} src={photoSrc} alt={"Nota Andrea " + ex.n + " grande " + (photoIdx + 1)} style={{ width: "100%", display: "block", borderRadius: 8, cursor: "zoom-out", border: "1px solid " + T.bg }} /></div> : null;
                           })}
+                          {savedVideo && <div style={{ marginTop: 6, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb, padding: 8 }}>
+                            <video src={savedVideo} controls playsInline preload="metadata" style={{ width: "100%", display: "block", borderRadius: 8, background: "#000" }} />
+                          </div>}
                         </div>}
                       </div>;
                     })()}
@@ -11373,12 +11686,15 @@ function isNearBodyweightElasticSession(exName, sets) {
                     {!isBasics && (function() {
                       var cnKey = "ex__" + ex.n;
                       var coachPhotoKey = getCoachNotePhotoKey(ex.n);
+                      var coachVideoKey = getCoachNoteVideoKey(ex.n);
                       var newKey = "new__" + ex.n;
                       var photoDraftKey = getCoachNotePhotoDraftKey(ex.n);
+                      var videoDraftKey = getCoachNoteVideoDraftKey(ex.n);
                       var newVal = coachNoteDrafts[newKey] !== undefined ? coachNoteDrafts[newKey] : (coachNotes[cnKey] || "");
                       var currentCoachNotePhotos = coachNoteDrafts[photoDraftKey] !== undefined ? normalizeExerciseNotePhotos(coachNoteDrafts[photoDraftKey]) : normalizeExerciseNotePhotos(coachNotes[coachPhotoKey]);
-                      var hasSavedCoachContent = !!(String(coachNotes[cnKey] || "").trim() || normalizeExerciseNotePhotos(coachNotes[coachPhotoKey]).length);
-                      var hasCoachDraftChanges = coachNoteDrafts[newKey] !== undefined || coachNoteDrafts[photoDraftKey] !== undefined;
+                      var currentCoachNoteVideo = exerciseNoteVideoDrafts[videoDraftKey] != null ? String(exerciseNoteVideoDrafts[videoDraftKey] || "") : String(coachNotes[coachVideoKey] || "");
+                      var hasSavedCoachContent = !!(String(coachNotes[cnKey] || "").trim() || normalizeExerciseNotePhotos(coachNotes[coachPhotoKey]).length || String(coachNotes[coachVideoKey] || "").trim());
+                      var hasCoachDraftChanges = coachNoteDrafts[newKey] !== undefined || coachNoteDrafts[photoDraftKey] !== undefined || exerciseNoteVideoDrafts[videoDraftKey] !== undefined;
                       if (hasSavedCoachContent && !hasCoachDraftChanges) return null;
                       return <div style={{ marginBottom: 10, borderRadius: 12, border: "1px solid " + dc + "30", background: T.sb, overflow: "hidden" }}>
                         <div style={{ padding: "8px 11px 6px", fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Note di Andrea</div>
@@ -11406,6 +11722,30 @@ function isNearBodyweightElasticSession(exName, sets) {
                             />
                           </label>
                           {currentCoachNotePhotos.length > 0 && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{currentCoachNotePhotos.length + "/3 foto"}</span>}
+                          <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: exerciseNoteVideoUploadKey === videoDraftKey ? "progress" : "pointer", display: "inline-flex", alignItems: "center", opacity: currentCoachNoteVideo ? 0.75 : 1 }}>
+                            {exerciseNoteVideoUploadKey === videoDraftKey ? "Carico video..." : (currentCoachNoteVideo ? "Sostituisci video" : "Aggiungi video")}
+                            <input
+                              type="file"
+                              accept="video/*"
+                              capture="environment"
+                              style={{ display: "none" }}
+                              disabled={exerciseNoteVideoUploadKey === videoDraftKey}
+                              onChange={function(e) {
+                                var file = e.target.files && e.target.files[0];
+                                handleCoachNoteVideoPick(ex.n, file);
+                                e.target.value = "";
+                              }}
+                            />
+                          </label>
+                          {currentCoachNoteVideo && <button onClick={function(e) {
+                            e.stopPropagation();
+                            deleteExerciseNoteVideoIfManaged(currentCoachNoteVideo);
+                            setExerciseNoteVideoDrafts(function(prev) {
+                              var next = Object.assign({}, prev);
+                              next[videoDraftKey] = "";
+                              return next;
+                            });
+                          }} style={{ minHeight: 32, padding: "0 12px", border: "1px solid " + T.bg, borderRadius: 999, background: T.sb, color: T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>Rimuovi video</button>}
                         </div>
                         {currentCoachNotePhotos.length > 0 && <div style={{ padding: "8px 11px 0", display: "flex", flexWrap: "wrap", gap: 8 }}>
                           {currentCoachNotePhotos.map(function(photoSrc, photoIdx) {
@@ -11430,13 +11770,21 @@ function isNearBodyweightElasticSession(exName, sets) {
                           var zoomKey = "coach-draft-" + ex.n + "-" + photoIdx;
                           return showImg === zoomKey ? <div key={zoomKey + "-full"} style={{ padding: "8px 11px 0" }}><img onClick={function(e) { e.stopPropagation(); setShowImg(null); }} src={photoSrc} alt={"Nota Andrea " + ex.n + " grande " + (photoIdx + 1)} style={{ width: "100%", display: "block", borderRadius: 8, cursor: "zoom-out", border: "1px solid " + T.bg }} /></div> : null;
                         })}
+                        {currentCoachNoteVideo && <div style={{ padding: "8px 11px 0" }}>
+                          <div style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.cd, padding: 8 }}>
+                            <video src={currentCoachNoteVideo} controls playsInline preload="metadata" style={{ width: "100%", display: "block", borderRadius: 8, background: "#000" }} />
+                            <div style={{ fontSize: 10, color: T.sub, marginTop: 6 }}>Video ricodificato nel browser prima dell'upload.</div>
+                          </div>
+                        </div>}
                         {(newVal.trim() || currentCoachNotePhotos.length > 0 || hasSavedCoachContent || hasCoachDraftChanges) && <div style={{ padding: "8px 11px 10px" }}>
                           <button onClick={function(e) {
                             e.stopPropagation();
                             var trimmed = newVal.trim();
                             var cleanPhotos = normalizeExerciseNotePhotos(currentCoachNotePhotos);
+                            var cleanVideo = String(currentCoachNoteVideo || "").trim();
                             setCoachNotes(function(prev) {
-                              var next = Object.assign({}, prev, { [cnKey]: trimmed, [coachPhotoKey]: cleanPhotos });
+                              if ((prev[coachVideoKey] || "") && prev[coachVideoKey] !== cleanVideo) deleteExerciseNoteVideoIfManaged(prev[coachVideoKey]);
+                              var next = Object.assign({}, prev, { [cnKey]: trimmed, [coachPhotoKey]: cleanPhotos, [coachVideoKey]: cleanVideo });
                               persistCoachNotes(next);
                               return next;
                             });
@@ -11446,8 +11794,13 @@ function isNearBodyweightElasticSession(exName, sets) {
                               delete n[photoDraftKey];
                               return n;
                             });
+                            setExerciseNoteVideoDrafts(function(prev) {
+                              var next = Object.assign({}, prev);
+                              delete next[videoDraftKey];
+                              return next;
+                            });
                             setShowImg(null);
-                            setAutoBackupMsg((trimmed || cleanPhotos.length) ? "Nota di Andrea salvata." : "Nota di Andrea rimossa.");
+                            setAutoBackupMsg((trimmed || cleanPhotos.length || cleanVideo) ? "Nota di Andrea salvata." : "Nota di Andrea rimossa.");
                           }} style={{ width: "100%", minHeight: 34, border: "none", borderRadius: 8, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Salva nota</button>
                         </div>}
                       </div>;
@@ -11678,6 +12031,31 @@ function isNearBodyweightElasticSession(exName, sets) {
                             />
                           </label>
                           {currentExerciseNotePhotos.length > 0 && <span style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{currentExerciseNotePhotos.length + "/3 foto"}</span>}
+                          <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: exerciseNoteVideoUploadKey === noteDraftKey ? "progress" : "pointer", display: "inline-flex", alignItems: "center", opacity: currentExerciseNoteVideo ? 0.75 : 1 }}>
+                            {exerciseNoteVideoUploadKey === noteDraftKey ? "Carico video..." : (currentExerciseNoteVideo ? "Sostituisci video" : "Aggiungi video")}
+                            <input
+                              type="file"
+                              accept="video/*"
+                              capture="environment"
+                              style={{ display: "none" }}
+                              disabled={exerciseNoteVideoUploadKey === noteDraftKey}
+                              onChange={function(e) {
+                                var file = e.target.files && e.target.files[0];
+                                handleExerciseNoteVideoPick(dayIdx, ex.n, file);
+                                e.target.value = "";
+                              }}
+                            />
+                          </label>
+                          {currentExerciseNoteVideo && <button onClick={function(e) {
+                            e.stopPropagation();
+                            deleteExerciseNoteVideoIfManaged(currentExerciseNoteVideo);
+                            setExerciseNoteVideoDrafts(function(prev) {
+                              var next = Object.assign({}, prev);
+                              next[noteDraftKey] = "";
+                              return next;
+                            });
+                            if (savedExerciseNoteKey === noteDraftKey) setSavedExerciseNoteKey("");
+                          }} style={{ minHeight: 32, padding: "0 12px", border: "1px solid " + T.bg, borderRadius: 999, background: T.sb, color: T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer" }}>Rimuovi video</button>}
                         </div>
                         {currentExerciseNotePhotos.length > 0 && <div style={{ display: "grid", gap: 8, marginTop: 8 }}>
                           {currentExerciseNotePhotos.map(function(photoSrc, photoIdx) {
@@ -11697,6 +12075,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                               </div>
                             </div>;
                           })}
+                        </div>}
+                        {currentExerciseNoteVideo && <div style={{ marginTop: 8, borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, background: T.sb, padding: 8 }}>
+                          <video src={currentExerciseNoteVideo} controls playsInline preload="metadata" style={{ width: "100%", display: "block", borderRadius: 8, background: "#000" }} />
+                          <div style={{ fontSize: 10, color: T.sub, marginTop: 6 }}>Video ricodificato nel browser prima dell'upload.</div>
                         </div>}
                         <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
                           <button
