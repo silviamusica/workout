@@ -22,7 +22,7 @@ Obiettivo: testo operativo, leggibile al volo da telefono. L'agente usa questo f
 | Esercizio | Dose | Cue |
 |---|---|---|
 | Dorsiflessione al muro | 8 rip per lato | Tallone a terra e ginocchio oltre la punta in controllo. |
-| 90/90 hip mobility | 8 passaggi per lato | Busto verticale: il movimento parte solo dalle anche. |
+| Posizione del quadrato | 2x30-40s per lato | Busto alto, anche pesanti a terra, niente spinta sulle ginocchia. |
 | Alfredson eccentrico | 10 per piede | Sali con due piedi e scendi con uno solo, lento. |
 | T-spine rotation in quadrupedia | 8 rip per lato | Ruota solo il torace: il bacino resta fermo. |
 | Shoulder CARs | 5 cerchi/direzione/braccio | Cerchi lentissimi, addome contratto. |
@@ -287,10 +287,9 @@ Mini-serie progressive per entrare nella tirata senza stancarti.
 | Esercizio | Dose | Cue |
 |---|---|---|
 | Dorsiflessione al muro | 8 rip per lato | Tallone a terra, fianchi avanti, niente spalle al muro. |
-| 90/90 hip mobility | 8 passaggi per lato | Anche mobili, busto alto, niente compensi lombari. |
+| Posizione del quadrato | 2x30-40s per lato | Anche aperte, busto alto, niente compensi lombari. |
 | Calf Raises con pallina | 12 rip | Stringi la pallina e controlla tutta la salita. |
 | T-spine rotation in quadrupedia | 8 rip per lato | Ruota il torace, bacino fermo. |
-| FMS spalle | 5 per lato | Mobilità controllata senza inarcare. |
 
 #### Attivazione
 

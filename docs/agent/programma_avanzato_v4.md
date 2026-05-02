@@ -470,7 +470,7 @@ Questo giorno colma tre lacune del programma:
 | Fase | Esercizio | Parametri |
 |---|---|---|
 | Mobilità | Dorsiflessione al muro | 8 rip/lato |
-| Mobilità | 90/90 hip mobility | 8 passaggi/lato |
+| Mobilità | Posizione del quadrato | 2x30-40s/lato |
 | Mobilità | T-spine rotation in quadrupedia | 8 rip/lato |
 | Attivazione | Ponte monopodalico | 6 rip/lato |
 
@@ -522,7 +522,7 @@ Il giorno migliore per il protocollo anca intero: nessun compound pesante prima,
 | # | Esercizio | Serie/Reps | Note |
 |---|---|---|---|
 | Fase 1 — Mobilità | Dorsiflessione al muro | 8 rip per lato | Caviglia |
-| Fase 1 — Mobilità | 90/90 hip mobility | 8 passaggi per lato | Anca |
+| Fase 1 — Mobilità | Posizione del quadrato | 2x30-40s per lato | Anca |
 | Fase 1 — Mobilità | Calf Raises con pallina | 12 rip | Piede e controllo adduttori |
 | Fase 2 — Attivazione | Ponte monopodalico | 6 per lato | Gluteo e stabilità bacino |
 | Fase 2 — Attivazione | Shoulder Tap | 20 per lato | Core anti-rotazione |
@@ -637,7 +637,7 @@ Nota:
 Dopo il cardio, oppure in un secondo momento della giornata:
 - Dorsiflessione al muro
 - Alfredson eccentrico
-- 90/90 hip mobility
+- Posizione del quadrato
 - T-spine rotation in quadrupedia
 - Half Kneeling Lunge
 - Figure-Four Supino

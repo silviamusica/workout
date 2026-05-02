@@ -122,7 +122,7 @@ import img_str_CouchStretch from "./images/warmup_stretch/Couch Stretch.webp";
 import img_str_CrossBodyShoulder from "./images/warmup_stretch/cross body shoulder stretch .webp";
 import img_str_BandDislocateLento from "./images/warmup_stretch/band dislocate lento.gif";
 import img_str_DoorwayPec from "./images/warmup_stretch/doorway pec stretch  (1).gif";
-import img_str_FireLogPose from "./images/warmup_stretch/Fire log pose.webp";
+import img_str_FireLogPose from "./images/warmup_stretch/Posizione-del-quadrato.gif";
 import img_str_HalfKneelingLunge from "./images/warmup_stretch/half kneeling lunge (1).gif";
 import img_str_OverheadLat from "./images/warmup_stretch/overhead lat stretch  (1).gif";
 import img_str_WallTibialisRaises from "./images/warmup_stretch/Wall tibialis raises.gif";
@@ -1638,7 +1638,6 @@ var STR = {
   "Dorsiflessione al muro": { d: "Dorsiflessione al muro", goal: "Ripristinare la dorsiflessione della caviglia per squat, affondi e cammino piu pulito.", h: "Piede a 10-12 cm dal muro. Spingi il ginocchio avanti e leggermente in fuori fino a toccare il muro, senza staccare il tallone.", t: "30s per lato, 2 volte", tm: 60, est: 120, cue: "Il tallone resta sempre pesante a terra. Avvicina i fianchi al muro, non le spalle. Se il tallone si alza, avvicina il piede al muro.", feel: "Parte anteriore della caviglia e tendine d'Achille.", breath: "Fluido", err: "Tallone che si alza o bacino che ruota.", reason: "Base di tutti i giorni. Se la caviglia non flette, il corpo compensa salendo sulle punte o piegando troppo il busto.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
   "Wall tibialis raises": { img: "str_WallTibialisRaises", d: "Wall tibialis raises", goal: "Rinforzare il tibiale anteriore e migliorare il controllo della punta del piede in dorsiflessione.", h: "Schiena o glutei vicini al muro, talloni a terra qualche centimetro avanti. Solleva le punte dei piedi verso le tibie, poi scendi lentamente senza perdere controllo.", t: "2x15-20", tm: 75, est: 150, cue: "Muovi le punte dei piedi verso di te senza dondolare il busto. Il peso resta sui talloni.", feel: "Parte anteriore della tibia.", breath: "Fluido", err: "Slancio col busto, ginocchia che crollano o ritorno troppo veloce.", reason: "Completa la dorsiflessione al muro: mobilità piu controllo attivo del tibiale.", lk: "" },
   "Alfredson eccentrico": { d: "Alfredson eccentric calf", goal: "Rinforzare il tendine d'Achille e migliorare la tolleranza del polpaccio al carico.", h: "Sali sullo scalino con entrambi i piedi. Togli un piede e scendi lentamente con uno solo in 3-4 secondi.", t: "2x10 per piede", tm: 90, est: 240, cue: "La discesa lenta e il punto chiave. Risali con due piedi, scendi con uno.", feel: "Polpaccio e tendine d'Achille nella fase di discesa.", breath: "Fluido", err: "Scendere veloce o rimbalzare sul fondo.", reason: "Inserito ogni giorno nel protocollo base per caviglia e tendine.", lk: "https://www.youtube.com/watch?v=WjQBJPuFkHI" },
-  "90/90 hip mobility": { d: "90/90 hip mobility", goal: "Mobilizzare l'anca in rotazione interna ed esterna.", h: "Seduta a terra con entrambe le gambe piegate a 90 gradi. Ruota da un lato all'altro senza piegare la schiena o spingere con la lombare.", t: "8-10 passaggi per lato", tm: 90, est: 180, cue: "Busto alto e movimento che parte dalle anche, non dalla schiena.", feel: "Gluteo profondo davanti e interno coscia dietro, a seconda del lato.", breath: "Fluido", err: "Compensare ruotando la lombare o crollare col busto.", reason: "Base lower e giorni cardio. L'anca bloccata scarica il lavoro sulla lombare.", lk: "https://www.youtube.com/watch?v=z3EhjVHBxLM" },
   "Calf Raises con pallina": { d: "Calf raises con pallina", goal: "Attivare adduttori e arco plantare insieme mentre lavori sul polpaccio.", h: "In piedi con una pallina tra i malleoli interni. Stringi la pallina e sali lentamente sulle punte, poi scendi controllando.", t: "2x15", tm: 75, est: 150, cue: "La pallina non deve cadere. Se la perdi, stai mollando adduttori e piede.", feel: "Polpacci e interno coscia.", breath: "Fluido", err: "Perdere la pallina o salire troppo in fretta.", reason: "Base lower. Integra stabilità dal piede fino all'anca.", lk: "" },
   "T-spine rotation in quadrupedia": { d: "T-spine rotation in quadrupedia", goal: "Recuperare rotazione toracica senza chiedere movimento alla lombare.", h: "Quattro zampe, una mano dietro la testa. Ruota il gomito verso il soffitto e poi verso il basso tenendo il bacino fermo.", t: "8-10 rip per lato", tm: 75, est: 150, cue: "Le anche restano ferme. La rotazione deve arrivare dal torace.", feel: "Parte alta della schiena e apertura del petto.", breath: "Espira aprendo", err: "Muovere anche e lombare insieme al torace.", reason: "Base upper e giorni cardio. Una toracica rigida peggiora spalle e collo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
   "Shoulder CARs": { d: "Shoulder CARs", goal: "Portare la spalla nel ROM completo in modo controllato.", h: "In piedi, braccio lungo il fianco. Disegna un cerchio grande e lento davanti, sopra, dietro e di nuovo giu senza muovere il tronco.", t: "5 cerchi per direzione per braccio", tm: 90, est: 180, cue: "Addome attivo e costole giu. Il corpo resta fermo, si muove solo la spalla.", feel: "Tensione controllata nei punti estremi della spalla.", breath: "Lento e continuo", err: "Inarcare la schiena o accelerare nel punto difficile.", reason: "Base upper. Mobilità della spalla prima di tirate e spinte.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
@@ -1675,7 +1674,7 @@ var CARDIO_MOBILITY_BASE = [
   { n: "Dorsiflessione al muro" },
   { n: "Wall tibialis raises" },
   { n: "Alfredson eccentrico" },
-  { n: "90/90 hip mobility" },
+  { n: "Posizione del quadrato" },
   { n: "T-spine rotation in quadrupedia" },
   { n: "Half Kneeling Lunge" },
   { n: "Posizione del quadrato" },
@@ -1849,7 +1848,7 @@ var DAYS_V4 = [
     },
     warmup: [
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "12 per gamba x2", cue: "Tallone a terra, ginocchio avanti: avvicina i fianchi, non le spalle.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
-      { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8 passaggi per lato", cue: "Busto verticale: il movimento parte solo dalle anche.", lk: "https://www.youtube.com/watch?v=z3EhjVHBxLM" },
+      { n: "Posizione del quadrato", phase: "mobility", gearTag: "Corpo libero", p: "2x30-40s per lato", cue: "Busto alto, anche pesanti a terra e nessuna spinta sulle ginocchia." },
       { n: "Alfredson eccentrico", phase: "mobility", gearTag: "Step / Fit box", p: "10 per piede", cue: "Sali con due piedi e scendi con uno solo, lento.", lk: "https://www.youtube.com/watch?v=WjQBJPuFkHI" },
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota solo il torace: il bacino resta fermo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
       { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 per lato", cue: "Gluteo stretto 2 secondi in alto, lombare ferma.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
@@ -1899,7 +1898,7 @@ var DAYS_V4 = [
     },
     warmup: [
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Tallone sempre giu: cerca range pulito, portando avanti i fianchi e non le spalle." },
-      { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8 passaggi per lato", cue: "Busto verticale: il movimento parte dalle anche." },
+      { n: "Posizione del quadrato", phase: "mobility", gearTag: "Corpo libero", p: "2x30-40s per lato", cue: "Busto alto, piedi attivi e anche che si rilassano senza compensi." },
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota il torace senza muovere il bacino." },
       { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 rip per lato", cue: "Gluteo forte in alto, lombare ferma." },
       { n: "Cable Pull-Apart con rotazione esterna", phase: "activation", gearTag: "Cavo", p: "15 rip", cue: "Braccia tese, scapole addotte in fondo, spalle basse." },
@@ -1907,7 +1906,7 @@ var DAYS_V4 = [
     lightIntro: "Non e un giorno di allenamento pesante. E volume complementare a bassa intensita organizzato in 4 superset automatici: deltoide laterale, deltoide posteriore, gluteo medio, quadricipiti, dorsali/scapole, petto e femorali. Niente coach attivo, niente RIR e nessuna decisione finale. Poi il protocollo anca completo.",
     lightWarmup: [
       { n: "Dorsiflessione al muro", p: "8 rip/lato · fianchi avanti, non spalle" },
-      { n: "90/90 hip mobility", p: "8 passaggi/lato" },
+      { n: "Posizione del quadrato", p: "2x30-40s/lato" },
       { n: "T-spine rotation in quadrupedia", p: "8 rip/lato" },
       { n: "Ponte monopodalico", p: "6 rip/lato" },
       { n: "Cable Pull-Apart con rotazione esterna", p: "15 rip · braccia tese, scapole addotte" },
@@ -1940,7 +1939,7 @@ var DAYS_V4 = [
     cardioIntro: "Recupero attivo tra il giorno leggero e il lower B. L'app suggerisce una rotazione su 4 settimane, ma puoi scegliere liberamente il formato del giovedi.",
     cardioGear: ["Scarpe da corsa", "Zaino da rucking 15-20 kg", "Kettlebell leggero", "Tappetino", "Battle rope opzionale"],
     cardioWhy: "Il cardio del giovedi deve sostenere fiato e recupero senza compromettere lo stacco del venerdi. La corsa lunga resta zona 2; l'HIIT e solo upper + core, senza sprint, salti o affondi.",
-    cardioMobilityIntro: "Dopo il cardio chiudi con 10 minuti di mobilita: dorsiflessione, 90/90, T-spine rotation, half kneeling lunge e figure-four.",
+    cardioMobilityIntro: "Dopo il cardio chiudi con 10 minuti di mobilita: dorsiflessione, posizione del quadrato, T-spine rotation, half kneeling lunge e figure-four.",
     cardioOptions: [
       { icon: "🏃", label: "Corsa 30 min (zona 2)", desc: "Bassa intensita. FC 120-140. Devi poter parlare senza fiatone.", duration: "30 min", rotationLabel: "A" },
       { icon: "⚡", label: "HIIT 30 min (upper + core)", desc: "Alta intensita controllata. 30s lavoro / 15s pausa, 4-5 giri. Niente sprint, salti, affondi o gambe pesanti.", duration: "30 min", rotationLabel: "B", hiit: true },
@@ -1959,10 +1958,9 @@ var DAYS_V4 = [
     },
     warmup: [
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "12 per gamba x2", cue: "Come Giorno 1: tallone a terra, controllo pieno, fianchi avanti.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
-      { n: "90/90 hip mobility", phase: "mobility", gearTag: "Corpo libero", p: "8 passaggi per lato", cue: "Anche mobili, schiena neutra.", lk: "https://www.youtube.com/watch?v=z3EhjVHBxLM" },
+      { n: "Posizione del quadrato", phase: "mobility", gearTag: "Corpo libero", p: "2x30-40s per lato", cue: "Anche aperte, busto neutro e nessuna forzatura sulle ginocchia." },
       { n: "Calf Raises con pallina", phase: "mobility", gearTag: "Pallina", p: "12 rip", cue: "Stringi la pallina per tutta salita e discesa.", lk: "https://www.drfitology.com/exercises/calves/bodyweight-standing-calf-raise" },
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota il torace, bacino fermo — prepara per lo stacco.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
-      { n: "FMS spalle", phase: "mobility", gearTag: "Corpo libero", p: "5 per lato", cue: "Descrizione in arrivo." },
       { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 per lato", cue: "Gluteo forte in alto, assetto fermo.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
       { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "20 rip per lato", cue: "Anti-rotazione: prepara il core per lo stacco. Sempre 20 ripetizioni per lato.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
       { n: "Serie avvicinamento stacco", phase: "approach", img: "w_SerieAvvStacco", gearTag: "Bilanciere", p: "3 serie progressive", cue: "Scarico → circa 50% → 70-80%. L'ultima deve accendere il gesto, non tassarlo." },
@@ -2507,7 +2505,7 @@ var EX_IMG = {
   "Marcia con ginocchia alte": img_w_MarciaGinocchiaAlte,
   "Marcia sul posto + affondi a corpo libero": img_w_AffondiCorpoLiberoAlt,
   "Dorsiflessione al muro": img_w_DorsiflessioneMuro,
-  "90/90 hip mobility": img_w_9090HipMobility,
+  "Posizione del quadrato": img_str_FireLogPose,
   "Affondi saltati alternati": img_w_AffondiSaltatiAlternati,
   "Alfredson eccentrico": img_w_AlfredsonEccentrico,
   "Step-up alternato a corpo libero": img_Step_Up,

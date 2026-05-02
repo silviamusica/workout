@@ -229,7 +229,7 @@ Questa e la sintesi operativa piu rapida da dare a un agente PT. Include tutti g
 
 | Giorno | Blocco | Esercizi attivi |
 |---|---|---|
-| G1 Lower A | Riscaldamento | Dorsiflessione al muro · 90/90 hip mobility · Alfredson eccentrico · Ponte monopodalico · Dead Bug · Push-Up · Affondi saltati alternati · Trazioni con elastico · Serie avvicinamento squat |
+| G1 Lower A | Riscaldamento | Dorsiflessione al muro · Posizione del quadrato · Alfredson eccentrico · Ponte monopodalico · Dead Bug · Push-Up · Affondi saltati alternati · Trazioni con elastico · Serie avvicinamento squat |
 | G1 Lower A | Lavoro | Squat · Stacco Rumeno · Glute Bridge Bilanciere · Leg Curl al Cavo · Ab Wheel |
 | G1 Lower A | Stretching | Standing Quad Pull · Half Kneeling Lunge · Figure-Four Supino |
 | G1 Lower A | Mobilita anca bonus | Half Kneeling Lunge · Half Kneeling Lunge + Reach · Figure-Four Supino · Posizione del quadrato · Happy Baby · Wall tibialis raises |
@@ -237,7 +237,7 @@ Questa e la sintesi operativa piu rapida da dare a un agente PT. Include tutti g
 | G2 Upper A | Lavoro | Trazioni · Panca · Pulley · Cable Pull-Apart con rotazione esterna · Curl Bicipiti · Alzate Laterali |
 | G2 Upper A | Stretching | Doorway Pec Stretch · Overhead Lat Stretch · Cross-Body Shoulder Stretch · Wrist Flexor/Extensor Stretch |
 | G2 Upper A | Mobilita anca bonus | Half Kneeling Lunge · Half Kneeling Lunge + Reach · Figure-Four Supino · Posizione del quadrato · Happy Baby · Wall tibialis raises |
-| G4 Lower B | Riscaldamento | Dorsiflessione al muro · 90/90 hip mobility · Calf Raises con pallina · Ponte monopodalico · Shoulder Tap · Push-Up · Affondi saltati alternati · Burpee completo · Serie avvicinamento stacco |
+| G4 Lower B | Riscaldamento | Dorsiflessione al muro · Posizione del quadrato · Calf Raises con pallina · Ponte monopodalico · Shoulder Tap · Push-Up · Affondi saltati alternati · Burpee completo · Serie avvicinamento stacco |
 | G4 Lower B | Lavoro | Stacco da Terra · Bulgarian Split Squat · Hyperextension · Abduzione laterale IR |
 | G4 Lower B | Stretching | Supine Assisted Leg Pull · Figure-Four Supino · Cat-Cow Lento · Half Kneeling Lunge |
 | G4 Lower B | Mobilita anca bonus | Half Kneeling Lunge · Half Kneeling Lunge + Reach · Figure-Four Supino · Posizione del quadrato · Happy Baby · Wall tibialis raises |
@@ -250,11 +250,11 @@ Questa e la sintesi operativa piu rapida da dare a un agente PT. Include tutti g
 
 | Giorno | Blocco | Esercizi attivi |
 |---|---|---|
-| G3 Leggero | Riscaldamento | Dorsiflessione al muro · 90/90 hip mobility · T-spine rotation in quadrupedia · Ponte monopodalico |
+| G3 Leggero | Riscaldamento | Dorsiflessione al muro · Posizione del quadrato · T-spine rotation in quadrupedia · Ponte monopodalico |
 | G3 Leggero | Lavoro | Alzate Laterali · Goblet Squat · Cable Pull-Apart con rotazione esterna · Abduzione laterale IR · Leg Extension al Cavo · TRX Row lento · Push-Up · Leg Curl al Cavo · Hollow Position |
 | G3 Leggero | Protocollo anca completo | Half Kneeling Lunge · Half Kneeling Lunge + Reach verticale · Couch Stretch · Figure-Four Supino · Happy Baby · Leg Cradle Supino · Supported Low Lunge · Posizione del quadrato · Wall tibialis raises |
 | Cardio giovedi | Formati | Corsa 30 min zona 2 · HIIT upper + core · Corsa lunga zona 2 · Rucking |
-| Cardio giovedi | Mobilita | Dorsiflessione al muro · Wall tibialis raises · 90/90 hip mobility · T-spine rotation in quadrupedia · Half Kneeling Lunge · Posizione del quadrato · Figure-Four Supino |
+| Cardio giovedi | Mobilita | Dorsiflessione al muro · Wall tibialis raises · Posizione del quadrato · T-spine rotation in quadrupedia · Half Kneeling Lunge · Figure-Four Supino |
 
 ### Punti chiave per il PT
 

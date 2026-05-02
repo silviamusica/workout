@@ -32,7 +32,7 @@ HIIT consentito: kettlebell swing leggero, push-up, battle rope, plank, shoulder
 
 HIIT vietato il giovedì: sprint, box jump, burpee completo, affondi saltati, squat jump, corsa in salita.
 
-Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half kneeling lunge, figure-four.
+Mobilità post-cardio invariata: dorsiflessione, Posizione del quadrato, T-spine rotation, half kneeling lunge, figure-four.
 
 ---
 
@@ -170,7 +170,7 @@ Mobilità post-cardio invariata: dorsiflessione, 90/90, T-spine rotation, half k
 | Esercizio | Reps/Durata | |
 |---|---|---|
 | Dorsiflessione al muro | 8 rip/lato | |
-| 90/90 Hip Mobility | 8 passaggi/lato | |
+| Posizione del quadrato | 2x30-40s/lato | |
 | T-spine Rotation in quadrupedia | 8 rip/lato | |
 | Ponte monopodalico | 6 rip/lato | |
 
@@ -228,7 +228,7 @@ Questo protocollo è il cuore del G3 — il giorno migliore perché nessun compo
 | Fase | Esercizio | Serie/Reps | Note |
 |---|---|---|---|
 | **Fase 1 — Mobilità** | Dorsiflessione al muro | 8 rip/lato | Caviglia |
-| **Fase 1 — Mobilità** | 90/90 Hip Mobility | 8 passaggi/lato | Anca |
+| **Fase 1 — Mobilità** | Posizione del quadrato | 2x30-40s/lato | Anca |
 | **Fase 1 — Mobilità** | Calf Raises con pallina | 12 rip | Piede e controllo adduttori |
 | **Fase 2 — Attivazione** | Ponte monopodalico | 6 rip/lato | Gluteo e stabilità bacino |
 | **Fase 2 — Attivazione** | Shoulder Tap | 20 rip/lato | Core anti-rotazione |
@@ -350,7 +350,7 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 |---|---|---|
 | 1 | Dorsiflessione al muro | 2× 8 rip/lato |
 | 2 | Alfredson eccentrico (per tibiale/polpaccio) | 2× 15s/lato |
-| 3 | 90/90 Hip Mobility | 2× 8 passaggi/lato |
+| 3 | Posizione del quadrato | 2x30-40s/lato |
 | 4 | T-spine Rotation in quadrupedia | 2× 8 rip/lato |
 | 5 | Half Kneeling Lunge | 2× 30s/lato |
 | 6 | Figure-Four Supino | 2× 40s/lato |
