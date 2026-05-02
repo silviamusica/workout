@@ -12185,7 +12185,17 @@ function isNearBodyweightElasticSession(exName, sets) {
                               </div>
                             ) : done ? (
                               <div style={{ padding: "0 10px 10px", display: "flex", alignItems: "center", gap: 8 }}>
-                                <div style={{ fontSize: 15, fontWeight: 800, color: T.ok, flex: 1 }}>{formatSetResult(ex.n, lg, isBW, isTimeExercise)}</div>
+                                <div style={{ fontSize: 15, fontWeight: 800, color: T.ok, flex: 1 }}>
+                                  {formatSetResult(ex.n, lg, isBW, isTimeExercise)}
+                                  {normalizeRirValue(lg.rir) && <span style={{ color: T.sub, fontWeight: 700, fontSize: 12 }}>{" · RIR " + normalizeRirValue(lg.rir)}</span>}
+                                </div>
+                                <button onClick={function(e) {
+                                  e.stopPropagation();
+                                  setEditing(i + "-" + si);
+                                  setTmpW(usesBand ? String(clampElasticTick(lg.w) || "") : (usesTrxLength ? String(clampTrxLength(lg.w) || "") : String(storedWeightToPlateInput(ex.n, lg.w, barbellWeight))));
+                                  setTmpR(String(lg.r));
+                                  setTmpRir(normalizeRirValue(lg.rir));
+                                }} style={{ minWidth: 58, height: 28, border: "1px solid " + T.bg, borderRadius: 8, background: T.bg, color: T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0, padding: "0 8px", touchAction: "manipulation" }}>Modifica</button>
                                 <button onClick={function(e) { e.stopPropagation(); var t = todayStr(); var k = t + "_d" + dayIdx + "_m" + month + "_" + ex.n; var nl = Object.assign({}, logs); if (nl[k]) { nl[k] = Object.assign({}, nl[k], { sets: nl[k].sets.filter(function(s) { return s.si !== si; }) }); saveData(nl, cardioLogs, calibrationProfiles, calibrationMode, guidedMode); } }} style={{ width: 28, height: 28, border: "1px solid " + T.bg, borderRadius: 8, background: T.bg, color: T.sub, fontSize: 14, fontWeight: 700, cursor: "pointer", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", touchAction: "manipulation" }}>✕</button>
                               </div>
                             ) : (
