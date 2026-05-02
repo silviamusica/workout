@@ -250,7 +250,7 @@ Questo protocollo è il cuore del G3 — il giorno migliore perché nessun compo
 | # | Esercizio | Serie | Range Rip | RPE | Recupero Tra | Superset Con | Note |
 |---|---|---|---|---|---|---|---|
 | **3** | **Hyperextension** | 4 | 12-15 | 8-9 | 0s | → Abduzione laterale IR | Tutte le serie di lavoro. Accessorio catena posteriore. Esecuzione immediata |
-| **—** | **Abduzione laterale IR** | 3 | 15-20/lato | 8 | 60s | ← Hyperextension | Fianco a terra, punta in giu, gluteo medio, bacino fermo |
+| **—** | **Abduzione laterale IR** | 4 | 12-15/lato | 8 | 60s | ← Hyperextension | Fianco a terra, punta in giu, gluteo medio, bacino fermo |
 | | | | | | **Recupero tra superset** | **60 secondi** | |
 
 **Spiegazione superset:**
@@ -396,7 +396,7 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 |---|---|---|---|---|---|
 | **G1** | Superset 1 | Leg Curl al Cavo (10-12) | Ab Wheel (4 serie lavoro) | **60s** | Sequenza: Leg Curl → Ab Wheel → 60s → ripeti |
 | **G2** | Superset 2 | Band Pull-Apart (20) | Curl Bicipiti (3 serie lavoro) | **60s** | Sequenza: Band → Curl → 60s → ripeti. Pulley è esercizio separato |
-| **G4** | Superset 3 | Hyperextension (4 serie lavoro) | Abduzione laterale IR (15-20/lato) | **60s** | Sequenza: Hyper → Abduzione laterale IR → 60s → ripeti |
+| **G4** | Superset 3 | Hyperextension (4 serie lavoro) | Abduzione laterale IR (12-15/lato) | **60s** | Sequenza: Hyper → Abduzione laterale IR → 60s → ripeti |
 | **G5** | Superset 4 | Push-Up (8-15) | Woodchop (10-12/lato) | **45s** | Sequenza: Push-Up → Woodchop → 45s → ripeti. Trazioni Supine e Alzate Laterali restano separate |
 
 ---
@@ -440,7 +440,7 @@ Leggere il programma sopra e rispondere a questi punti:
 
 - ❓ **G1:** Squat 5×5-6, Stacco Rumeno 5×10-12, Leg Curl 4×10-12, Ab Wheel 4×8-10 — Corretto?
 - ❓ **G2:** Trazioni 5×5-8, Panca 5×6-8, Pulley 5×10-12, Band 3×15, Curl 3×10-12, Alzate Laterali 2×15 — Corretto?
-- ❓ **G4:** Stacco 5×4-5, Bulgarian Split Squat 5×10-12/gamba, Hyper 4×12-15, Abduzione laterale IR 3×15-20/lato — Corretto?
+- ❓ **G4:** Stacco 5×4-5, Bulgarian Split Squat 5×10-12/gamba, Hyper 4×12-15, Abduzione laterale IR 4×12-15/lato — Corretto?
 - ❓ **G5:** T-bar 5×8-10, Military 5×5-6, Push-Up 4×8-15, Trazioni Supine 4×5-8, Woodchop 3×10-12/lato, Alzate Laterali 3×15 — Corretto?
 
 ## 4. Tempi di recupero — Sono realistici? ✓ / ✗

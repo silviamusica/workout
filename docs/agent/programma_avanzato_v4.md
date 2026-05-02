@@ -536,7 +536,7 @@ Il giorno migliore per il protocollo anca intero: nessun compound pesante prima,
 | 1 | Stacco da Terra | 5x4-5 | RPE 8-9, ultimo set solo a RIR 0-1 se tecnica stabile |
 | 2 | Bulgarian Split Squat | 5x10-12 per gamba | RPE 8-9, manubri + panca |
 | 3 | Hyperextension | 4x12-15 | Tutte le serie di lavoro. Accessorio catena posteriore, RPE 8-9 |
-| 4 | Abduzione laterale IR | 3x15-20 per lato | RPE 8, fianco a terra, punta in giu, gluteo medio |
+| 4 | Abduzione laterale IR | 4x12-15 per lato | RPE 8, fianco a terra, punta in giu, gluteo medio |
 
 **Esercizi rimossi rispetto alla versione precedente**:
 - Hip Thrust Bilanciere (rimosso)
@@ -678,7 +678,7 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 | Stacco Rumeno | G1 (da G4) | Complemento femorali in Lower A |
 | T-bar Row | G5 (da G2) | Tirata orizzontale prioritaria in Upper B |
 | Pulley Basso | G2 | Nuovo, rimpiazza T-bar come volume tirata |
-| Abduzione laterale IR | G4 | 3x15-20 per lato, gluteo medio |
+| Abduzione laterale IR | G4 | 4x12-15 per lato, gluteo medio |
 
 ### Numero di serie aggiornato
 | Esercizio | Serie prima | Serie ora |

@@ -356,7 +356,7 @@ Scarico → circa 50% → 70-80%. L'ultima deve attivare il gesto, non tassarti.
 
 ### Abduzione laterale IR *(superset con Hyperextension)*
 
-**Serie:** 3×15-20 per lato · RPE 8
+**Serie:** 4×12-15 per lato · RPE 8
 **Recupero:** 60s dopo Hyperextension + Abduzione
 **Attrezzi:** Corpo libero
 
