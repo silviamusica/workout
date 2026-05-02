@@ -10642,10 +10642,25 @@ function isNearBodyweightElasticSession(exName, sets) {
                                     />
                                     <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
                                       <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer", display: "inline-flex", alignItems: "center", opacity: currentExerciseNotePhotos.length >= 3 ? 0.5 : 1 }}>
-                                        {currentExerciseNotePhotos.length ? "Aggiungi altra foto" : "Aggiungi foto"}
+                                        Foto da libreria
                                         <input
                                           type="file"
                                           accept="image/*"
+                                          style={{ display: "none" }}
+                                          disabled={currentExerciseNotePhotos.length >= 3}
+                                          onChange={function(e) {
+                                            var file = e.target.files && e.target.files[0];
+                                            handleHistoricExerciseNotePhotoPick(entry, file);
+                                            e.target.value = "";
+                                          }}
+                                        />
+                                      </label>
+                                      <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer", display: "inline-flex", alignItems: "center", opacity: currentExerciseNotePhotos.length >= 3 ? 0.5 : 1 }}>
+                                        Foto da camera
+                                        <input
+                                          type="file"
+                                          accept="image/*"
+                                          capture="environment"
                                           style={{ display: "none" }}
                                           disabled={currentExerciseNotePhotos.length >= 3}
                                           onChange={function(e) {
@@ -11920,7 +11935,21 @@ function isNearBodyweightElasticSession(exName, sets) {
                         />
                         <div style={{ padding: "8px 11px 0", display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
                           <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer", display: "inline-flex", alignItems: "center", opacity: currentCoachNotePhotos.length >= 3 ? 0.5 : 1 }}>
-                            {currentCoachNotePhotos.length ? "Aggiungi altra foto" : "Aggiungi foto"}
+                            Foto da libreria
+                            <input
+                              type="file"
+                              accept="image/*"
+                              style={{ display: "none" }}
+                              disabled={currentCoachNotePhotos.length >= 3}
+                              onChange={function(e) {
+                                var file = e.target.files && e.target.files[0];
+                                handleCoachNotePhotoPick(ex.n, file);
+                                e.target.value = "";
+                              }}
+                            />
+                          </label>
+                          <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer", display: "inline-flex", alignItems: "center", opacity: currentCoachNotePhotos.length >= 3 ? 0.5 : 1 }}>
+                            Foto da camera
                             <input
                               type="file"
                               accept="image/*"
@@ -12264,10 +12293,25 @@ function isNearBodyweightElasticSession(exName, sets) {
                         />
                         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center", marginTop: 8 }}>
                           <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer", display: "inline-flex", alignItems: "center", opacity: currentExerciseNotePhotos.length >= 3 ? 0.5 : 1 }}>
-                            {currentExerciseNotePhotos.length ? "Aggiungi altra foto" : "Aggiungi foto"}
+                            Foto da libreria
                             <input
                               type="file"
                               accept="image/*"
+                              style={{ display: "none" }}
+                              disabled={currentExerciseNotePhotos.length >= 3}
+                              onChange={function(e) {
+                                var file = e.target.files && e.target.files[0];
+                                handleExerciseNotePhotoPick(dayIdx, ex.n, file);
+                                e.target.value = "";
+                              }}
+                            />
+                          </label>
+                          <label style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer", display: "inline-flex", alignItems: "center", opacity: currentExerciseNotePhotos.length >= 3 ? 0.5 : 1 }}>
+                            Foto da camera
+                            <input
+                              type="file"
+                              accept="image/*"
+                              capture="environment"
                               style={{ display: "none" }}
                               disabled={currentExerciseNotePhotos.length >= 3}
                               onChange={function(e) {
