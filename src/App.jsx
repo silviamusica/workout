@@ -7980,6 +7980,8 @@ function isNearBodyweightElasticSession(exName, sets) {
   function getCoachNotePhotoDraftKey(en) { return "new_photo__" + en; }
   function getCoachNoteVideoKey(en) { return "ex_video__" + en; }
   function getCoachNoteVideoDraftKey(en) { return "new_video__" + en; }
+  function getWorkoutIntroNoteKey(dayName) { return "day_note__" + dayName; }
+  function getWorkoutIntroNoteDraftKey(dayName) { return "day_note_draft__" + dayName; }
   function sanitizeMediaFileName(name) {
     return String(name || "video")
       .toLowerCase()
@@ -11133,6 +11135,77 @@ function isNearBodyweightElasticSession(exName, sets) {
                 Salva ed esporta JSON
               </button>
             </div>}
+
+            {!dayData.rest && (function() {
+              var introNoteKey = getWorkoutIntroNoteKey(dayData.name);
+              var introDraftKey = getWorkoutIntroNoteDraftKey(dayData.name);
+              var savedIntroNote = String(coachNotes[introNoteKey] || "").trim();
+              var introDraftValue = coachNoteDrafts[introDraftKey] !== undefined ? coachNoteDrafts[introDraftKey] : savedIntroNote;
+              var isEditingIntroNote = coachNoteDrafts[introDraftKey] !== undefined;
+              return <div style={{ padding: "10px 14px 0" }}>
+                {!savedIntroNote && !isEditingIntroNote && <button
+                  onClick={function(e) {
+                    e.stopPropagation();
+                    setCoachNoteDrafts(function(prev) {
+                      return Object.assign({}, prev, { [introDraftKey]: savedIntroNote });
+                    });
+                  }}
+                  style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "30", background: dc + "08", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer" }}
+                >
+                  Aggiungi nota allenamento
+                </button>}
+                {(savedIntroNote || isEditingIntroNote) && <div style={{ borderRadius: 12, border: "1px solid " + dc + "20", background: dc + "08", overflow: "hidden" }}>
+                  <div style={{ padding: "8px 11px 6px", display: "flex", alignItems: "center", gap: 8 }}>
+                    <div style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8, flex: 1 }}>Nota allenamento</div>
+                    {!isEditingIntroNote && <button onClick={function(e) {
+                      e.stopPropagation();
+                      setCoachNoteDrafts(function(prev) {
+                        return Object.assign({}, prev, { [introDraftKey]: savedIntroNote });
+                      });
+                    }} style={{ padding: "2px 9px", border: "1px solid " + dc + "30", borderRadius: 6, background: dc + "08", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", touchAction: "manipulation" }}>Modifica</button>}
+                  </div>
+                  {isEditingIntroNote ? <div style={{ padding: "0 11px 11px", display: "grid", gap: 8 }}>
+                    <textarea
+                      value={introDraftValue}
+                      onChange={function(e) {
+                        var value = e.target.value;
+                        setCoachNoteDrafts(function(prev) {
+                          return Object.assign({}, prev, { [introDraftKey]: value });
+                        });
+                      }}
+                      placeholder={"Nota rapida per " + dayData.name + "…"}
+                      rows={3}
+                      style={{ width: "100%", resize: "vertical", minHeight: 64, padding: "8px 10px", borderRadius: 8, border: "1px solid " + T.bg, background: T.sb, color: T.tx, fontSize: 12, lineHeight: 1.55, boxSizing: "border-box" }}
+                    />
+                    <div style={{ display: "flex", gap: 6 }}>
+                      <button onClick={function(e) {
+                        e.stopPropagation();
+                        var cleanNote = String(introDraftValue || "").trim();
+                        setCoachNotes(function(prev) {
+                          var next = Object.assign({}, prev, { [introNoteKey]: cleanNote });
+                          persistCoachNotes(next);
+                          return next;
+                        });
+                        setCoachNoteDrafts(function(prev) {
+                          var next = Object.assign({}, prev);
+                          delete next[introDraftKey];
+                          return next;
+                        });
+                        setAutoBackupMsg(cleanNote ? "Nota allenamento salvata." : "Nota allenamento rimossa.");
+                      }} style={{ flex: 1, minHeight: 32, border: "none", borderRadius: 8, background: dc, color: "#fff", fontSize: 12, fontWeight: 800, cursor: "pointer" }}>Salva</button>
+                      <button onClick={function(e) {
+                        e.stopPropagation();
+                        setCoachNoteDrafts(function(prev) {
+                          var next = Object.assign({}, prev);
+                          delete next[introDraftKey];
+                          return next;
+                        });
+                      }} style={{ minHeight: 32, padding: "0 12px", border: "1px solid " + T.bg, borderRadius: 8, background: T.bg, color: T.sub, fontSize: 12, fontWeight: 700, cursor: "pointer" }}>Annulla</button>
+                    </div>
+                  </div> : <div style={{ padding: "0 11px 11px", fontSize: 12, color: T.tx, lineHeight: 1.65, whiteSpace: "pre-wrap" }}>{savedIntroNote}</div>}
+                </div>}
+              </div>;
+            })()}
 
             {/* Day intro schematic */}
             {(function() {
