@@ -12078,7 +12078,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                           var isApproachSet = si < approachSetCount;
                           var sugg = getSuggested(si);
                           var done = !!lg;
-                          var showInlineRir = !effectiveCalibrationMode || si > 0 || !!(tLog && tLog.sets && tLog.sets.length > 0);
+                          var showInlineRir = true;
                           return <div key={si} style={{ borderRadius: 10, border: "1px solid " + (done ? T.ok + "40" : T.bg), background: done ? T.ok + "0C" : T.sb, overflow: "hidden" }}>
                             {/* Input or result */}
                             {isE ? (
