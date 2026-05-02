@@ -12114,32 +12114,8 @@ function isNearBodyweightElasticSession(exName, sets) {
                                       beginLogSet(ex, dayIdx, si, storedWeight, tmpR, isBW, tmpRir);
                                       var nextAction = buildNextActionInfo(dayData, dayIdx, i, ex.n, si, sc);
                                       if (flowModeEnabled && !isBasics) {
-                                        if (nextAction && nextAction.immediate && typeof nextAction.nextIndex === "number") {
-                                          setTimerFlowInfo({ nextLabel: nextAction.label, filler: nextAction.filler || "" });
-                                          setPendingAutoAdvance({
-                                            dayIdx: dayIdx,
-                                            nextIndex: nextAction.nextIndex
-                                          });
-                                          setTMode("countdown");
-                                          setTTarget(0);
-                                          setTMs(0);
-                                          setTRunning(false);
-                                        } else if (restSec) {
-                                          setPendingAutoAdvance(nextAction && typeof nextAction.nextIndex === "number" ? {
-                                            dayIdx: dayIdx,
-                                            nextIndex: nextAction.nextIndex
-                                          } : null);
-                                          startRecoveryTimer(restSec, {
-                                            nextLabel: nextAction ? nextAction.label : "",
-                                            filler: nextAction ? (nextAction.filler || "") : ""
-                                          });
-                                        } else {
-                                          setTimerFlowInfo(nextAction ? { nextLabel: nextAction.label, filler: nextAction.filler || "" } : null);
-                                          setPendingAutoAdvance(nextAction && typeof nextAction.nextIndex === "number" ? {
-                                            dayIdx: dayIdx,
-                                            nextIndex: nextAction.nextIndex
-                                          } : null);
-                                        }
+                                        setTimerFlowInfo(nextAction ? { nextLabel: nextAction.label, filler: nextAction.filler || "" } : null);
+                                        setPendingAutoAdvance(null);
                                       }
                                       if (si === sc - 1) {
                                         setEditing(null);
