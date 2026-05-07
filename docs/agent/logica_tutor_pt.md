@@ -261,11 +261,11 @@ Da evitare:
 
 La struttura settimana V4 ha 4 tipi giorno:
 - **pesi** (G1, G2, G4, G5): logica coach completa, tracking progressione, split AM/PM, superset
-- **light** (G3): UI dedicata `renderLightDay`, nessuna logica coach attiva
+- **light** (G3): giorno leggero, ma dentro la stessa sezione `Esercizi`/`Registra` degli altri giorni
 - **cardio** (giovedì): sezione cardio + mobilità
 - **rest** (G6): riposo
 
-Il G3 Leggero non entra in `activeDays` — non rompe il tracking, non alimenta i Progressi, non attiva il coach.
+Il G3 Leggero entra in `activeDays` insieme agli altri giorni non-cardio/non-riposo, quindi l'utente può aprire le card standard e registrare le serie manualmente.
 
 ## Giorno leggero (G3)
 
@@ -277,9 +277,9 @@ Il Giorno 3 ha `light: true`. Non è cardio, non è pesi, non è riposo.
 
 | # | Esercizio | Serie | RPE | Recupero |
 |---|---|---|---|---|
-| 1 | Alzate Laterali | 3x15-20 | 8 | 30-45s |
-| 2 | Cable Pull-Apart con rotazione esterna | 3x20 | 7 | 30s |
-| 3 | Abduzione laterale IR | 3x20/lato | 6-7 | 30s |
+| 1 | Alzate Laterali | 3x15 | 8 | 30-45s |
+| 2 | Cable Pull-Apart con rotazione esterna | 3x15 | 7 | 30s |
+| 3 | Abduzione laterale IR | 3x15/lato | 6-7 | 30s |
 | 4 | Goblet Squat | 3x12 | 8 | 45s |
 | 5 | Leg Extension al Cavo | 3x12-15 | 7 | 30s |
 | 6 | TRX Row lento | 3x12 | 6-7 | 30s |
@@ -289,11 +289,12 @@ Il Giorno 3 ha `light: true`. Non è cardio, non è pesi, non è riposo.
 ### Regole
 
 - RPE massimo: 6-8 (Alzate Laterali e Goblet Squat a RPE 8; Push-Up e Leg Curl al Cavo a RPE 7; il resto 6-7)
-- Il coach NON si attiva: niente RIR prompt, niente briefing, niente decisione finale
-- Timer: fisso 30s, non basato su RIR
+- Su Alzate Laterali, Cable Pull-Apart con rotazione esterna e Abduzione laterale IR il tempo e `2-1-2`: se non regge sulle ultime rip, si riducono rip o peso; non si accelera
+- Il giorno resta `light: true`, quindi `isCalibrationAllowedDay(day)` lo esclude dalla calibrazione automatica
+- L'utente puo comunque registrare manualmente peso, ripetizioni e RIR dalle card standard
 - Gli esercizi del G3 NON compaiono nei Progressi fondamentali
 - NON ha split AM/PM
-- Ha 4 superset automatici sempre visibili nella card light; non usa il toggle formato dei giorni pesi
+- Ha 4 superset automatici come logica organizzativa del blocco leggero
 - Protocollo anca completo (7 posizioni, 8-10 min) dopo gli esercizi
 - Abduzione laterale IR ha alternativa Clamshell solo nel G3; la scelta resta persistente in `localStorage` con chiave `wt-exercise-alt-mode`
 - Fix 2026-04-30: il parser serie riconosce anche le stringhe `per lato`, quindi l'ultima serie del G3 attiva correttamente l'export automatico
@@ -659,7 +660,7 @@ Nel G3 leggero e nel G4 l'accessorio attivo è `Abduzione laterale IR`.
 
 | Esercizio | Serie | RPE | Recupero | Note |
 |---|---|---|---|---|
-| Abduzione laterale IR | 3x20/lato (G3) / 3x15-20/lato (G4) | 6-7 / 8 | 30s / 60s | fianco a terra, punta in giu, bacino fermo |
+| Abduzione laterale IR | 3x15/lato (G3) / 4x12-15/lato (G4) | 6-7 / 8 | 30s / 60s | fianco a terra, punta in giu, bacino fermo |
 
 Nel G3 il toggle persistente verso `Clamshell` resta attivo. Nel G4 questo blocco resta fisso su `Abduzione laterale IR`.
 

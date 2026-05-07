@@ -127,15 +127,14 @@ Il cardio del giovedì deve poter essere registrato anche senza compilare manual
 - Tab Progressi con sezione `Cardio registrato`, confronto con la seduta precedente e conteggio sedute
 
 ### 15. Giorno leggero G3 (tipo `light: true`)
-Il giorno leggero ha regole proprie — verificare che il codice rispetti queste 6 regole:
+Il giorno leggero ha regole proprie — verificare che il codice rispetti queste 5 regole:
 1. `light: true` nell'oggetto Giorno 3 in `DAYS_V4`
-2. `activeDays` filtra `!d.light` — G3 NON è nei giorni pesi
-3. `startWorkoutSession` ha `|| workoutSelectedWeightDay.light` nel guard — niente sessione guidata
-4. I bottoni "Inizia allenamento" e "Coach attivo" hanno `!dayData.light` nel check
-5. La sezione Esercizi pesi (`section-esercizi`) ha `!dayData.light` nel check
-6. `renderLightDay` viene chiamato quando `workoutSelectedDay.light` è true
-- Cerca: `day.light` nel codice
-- Verifica: nessun esercizio esclusivo del G3 è in `MAX_PROGRESS_EX`, `keyLiftNames`, `V4_DAY_SPLIT_PLAN`; in `FAST_MODE_SUPERSETS` deve comparire solo dentro i 4 blocchi G3 light
+2. `activeDays` include anche G3 (`!d.cardio && !d.rest`) quindi il giorno è selezionabile come gli altri pesi
+3. La sezione `section-esercizi` resta attiva anche sul G3: l'utente deve poter aprire le card standard e registrare serie, peso, ripetizioni e RIR
+4. `isCalibrationAllowedDay(day)` esclude ancora i giorni `light`, quindi G3 non entra nella calibrazione automatica
+5. I superset del G3 restano definiti solo in `FAST_MODE_SUPERSETS["Giorno 3"]`
+- Cerca: `day.light`, `activeDays`, `section-esercizi`, `isCalibrationAllowedDay`, `FAST_MODE_SUPERSETS`
+- Verifica: nessun esercizio esclusivo del G3 è in `MAX_PROGRESS_EX`, `keyLiftNames`, `V4_DAY_SPLIT_PLAN`
 
 ## Come eseguire la verifica
 

@@ -269,7 +269,7 @@ Questa e la sintesi operativa piu rapida da dare a un agente PT. Include tutti g
 
 **Tipi giorno nell'app**:
 - `pesi` (default): G1, G2, G4, G5 — logica coach completa, tracking progressione
-- `light: true`: G3 — UI dedicata, niente RIR, niente briefing, niente decisione finale, timer fisso 30s
+- `light: true`: G3 — giorno leggero nel flusso standard `Esercizi`/`Registra`, senza calibrazione coach dedicata
 - `cardio: true`: giovedì — 4 formati selezionabili + mobilità
 - `rest`: G6 — riposo
 
@@ -277,7 +277,7 @@ Questa e la sintesi operativa piu rapida da dare a un agente PT. Include tutti g
 |---|---|---|
 | G1 Lower A | pesi | Squat · Stacco Rumeno · Glute Bridge Bilanciere · Leg Curl al Cavo · Ab Wheel |
 | G2 Upper A | pesi | Trazioni · Panca · Pulley · Cable Pull-Apart con rotazione esterna · Curl Bicipiti · Alzate Laterali |
-| G3 Leggero | light | Alzate Laterali · Goblet Squat · Cable Pull-Apart con rotazione esterna · Abduzione laterale IR · Leg Extension al Cavo · TRX Row lento · Push-Up · Leg Curl al Cavo · Dead Bug |
+| G3 Leggero | light | Alzate Laterali · Goblet Squat · Cable Pull-Apart con rotazione esterna · Abduzione laterale IR · Leg Extension al Cavo · TRX Row lento · Push-Up · Leg Curl al Cavo · Hollow Position |
 | G4 Lower B | pesi | Stacco da Terra · Bulgarian Split Squat · Hyperextension · Abduzione laterale IR |
 | G5 Upper B | pesi | T-bar Row · Military Press · Push-Up · Trazioni Supine · Woodchop · Alzate Laterali |
 | G6 | riposo | — |
@@ -305,7 +305,7 @@ Superset attivi nelle schede:
 
 Nota asset G3: `Leg Extension al Cavo` ha ora foto dedicata in `src/images/exercises/standing-cable-leg-extension.jpeg`.
 Nota tecnica G3: il parser serie ora riconosce anche le stringhe `per lato`, quindi l'ultima serie del giorno leggero chiude correttamente il backup/export automatico.
-Nota serie G3: le `3 serie` restano nominali, ma la `prima` è tecnica di avvicinamento; le `serie 2-3` sono di lavoro a `RPE 7-8`.
+Nota serie G3: le `3 serie` restano nominali, ma la `prima` è tecnica di avvicinamento; le `serie 2-3` sono di lavoro a `RPE 7-8`. Su Alzate Laterali, Cable Pull-Apart con rotazione esterna e Abduzione laterale IR il tempo è `2-1-2`: se non regge fino in fondo, si riducono rip o peso e non si accelera.
 
 Nota: il G3 Leggero NON entra nella logica AM/PM split e non alimenta i Progressi fondamentali. Però la sua card usa superset automatici di default per comprimere i tempi.
 

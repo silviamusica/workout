@@ -399,7 +399,7 @@ Obiettivo:
 
 Lettura corretta:
 - `Abduzione laterale IR` = esercizio accessorio di gluteo medio attivo in G3 e G4
-- in G3 resta a `3x20/lato`, in G4 a `3x15-20/lato`
+- in G3 resta a `3x15/lato`, in G4 a `4x12-15/lato`
 - non va confuso con il Fire Hydrant classico: qui l'intrarotazione serve a caricare di più le fibre posteriori del gluteo medio
 - progressione via ripetizioni o aggiunta di carico alla caviglia
 

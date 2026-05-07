@@ -357,7 +357,7 @@ Il tasso di guadagno muscolare rallenta e i progressi di forza diventano piu len
 
 Nota UI attuale:
 - nella tab `Scheda` della V4 l'utente vede tutti i giorni inclusi G3 Leggero e Cardio del giovedì
-- il G3 Leggero (`light: true`) ha una UI dedicata: niente flow mode, niente RIR, niente briefing, niente decisione finale
+- il G3 Leggero (`light: true`) mantiene logica light ma in app passa dalla sezione standard `Esercizi`/`Registra`, così l'utente può inserire peso, ripetizioni e RIR come negli altri giorni
 - il Cardio del giovedì (`cardio: true`) offre 4 formati selezionabili e resta gestito con sezione cardio + mobilità
 - nei giorni pesi il protocollo anca compare come `Bonus mobilità anca` facoltativo dopo lo stretching finale
 
@@ -463,7 +463,7 @@ Questo giorno colma tre lacune del programma:
 - deltoide posteriore: solo 3 serie nel G2
 - gluteo medio: solo 3 serie nel G4
 
-**Tipo giorno**: `light` (nuovo tipo nell'app — niente RIR, niente briefing, niente decisione finale, timer fisso 30s)
+**Tipo giorno**: `light` (giorno leggero con superset organizzativi; nell'app usa comunque la sezione standard `Esercizi`/`Registra`)
 
 **Riscaldamento** (5 minuti, senza circuito)
 
@@ -478,10 +478,10 @@ Questo giorno colma tre lacune del programma:
 
 | # | Esercizio | Serie | RPE | Recupero | Note |
 |---|---|---|---|---|---|
-| 1 | Alzate Laterali | 3x15-20 | 8 | 30-45s | Superset A con Goblet Squat |
+| 1 | Alzate Laterali | 3x15 | 8 | 30-45s | Superset A con Goblet Squat |
 | 2 | Goblet Squat | 3x12 | 8 | 45s | Superset A con Alzate Laterali |
-| 3 | Cable Pull-Apart con rotazione esterna | 3x20 | 7 | 30s | Superset B con Abduzione laterale IR |
-| 4 | Abduzione laterale IR | 3x20/lato | 7 | 30s | Superset B con Cable Pull-Apart |
+| 3 | Cable Pull-Apart con rotazione esterna | 3x15 | 7 | 30s | Superset B con Abduzione laterale IR |
+| 4 | Abduzione laterale IR | 3x15/lato | 7 | 30s | Superset B con Cable Pull-Apart |
 | 5 | Leg Extension al Cavo | 3x12-15 | 7 | 30s | Superset C con TRX Row lento |
 | 6 | TRX Row lento | 3x12 | 7 | 30s | Superset C con Leg Extension al Cavo |
 | 7 | Push-Up | 3x10 | 7 | 30s | Superset D con Leg Curl al Cavo |
@@ -491,6 +491,7 @@ Questo giorno colma tre lacune del programma:
 Nel G3 l'esercizio base resta `Abduzione laterale IR`, con toggle persistente verso `Clamshell`.
 La `Leg Extension al Cavo` ora ha asset foto dedicato in `src/images/exercises/standing-cable-leg-extension.jpeg`.
 Le `3 serie` del G3 restano nominalmente tre, ma la prima e un set tecnico di avvicinamento; le serie 2-3 sono di lavoro a `RPE 7-8`.
+Su Alzate Laterali, Cable Pull-Apart con rotazione esterna e Abduzione laterale IR il tempo e `2-1-2`: `2s` concentrica, `1s` tenuta, `2s` eccentrica. Se non riesci a mantenere il tempo sulle ultime rip, riduci le rip o riduci il peso. Mai accelerare per finire la serie.
 
 **Superset automatici G3**
 

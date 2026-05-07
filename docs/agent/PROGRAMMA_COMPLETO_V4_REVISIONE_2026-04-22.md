@@ -161,7 +161,7 @@ Mobilità post-cardio invariata: dorsiflessione, Posizione del quadrato, T-spine
 
 ## 📍 GIORNO 3 — LEGGERO (Mercoledì)
 
-**Tipo:** `light: true` — Niente coach, niente RIR, niente sessione guidata
+**Tipo:** `light: true` — Giorno leggero a bassa intensità. In app usa comunque la sezione standard `Esercizi`/`Registra`, ma senza logica di calibrazione dedicata.
 **Durata totale: ~45 minuti**
 **Struttura:** 4 superset automatici | NO split AM/PM | RPE 6-8
 
@@ -178,10 +178,10 @@ Mobilità post-cardio invariata: dorsiflessione, Posizione del quadrato, T-spine
 
 | # | Esercizio | Serie | Range Rip | RPE | Recupero | Note |
 |---|---|---|---|---|---|---|
-| 1 | **Alzate Laterali** | 3 | 15-20 | 8 | 30-45s | Superset A con Goblet Squat |
+| 1 | **Alzate Laterali** | 3 | 15 | 8 | 30-45s | Superset A con Goblet Squat |
 | 2 | **Goblet Squat** | 3 | 12 | 8 | 45s | Superset A con Alzate Laterali |
-| 3 | **Cable Pull-Apart con rotazione esterna** | 3 | 20 | 7 | 30s | Superset B con Abduzione laterale IR |
-| 4 | **Abduzione laterale IR** | 3 | 20/lato | 7 | 30s | Superset B con Cable Pull-Apart |
+| 3 | **Cable Pull-Apart con rotazione esterna** | 3 | 15 | 7 | 30s | Superset B con Abduzione laterale IR |
+| 4 | **Abduzione laterale IR** | 3 | 15/lato | 7 | 30s | Superset B con Cable Pull-Apart |
 | 5 | **Leg Extension al Cavo** | 3 | 12-15 | 7 | 30s | Superset C con TRX Row lento |
 | 6 | **TRX Row lento** | 3 | 12 | 7 | 30s | Superset C con Leg Extension al Cavo |
 | 7 | **Push-Up** | 3 | 10 | 7 | 30s | Superset D con Leg Curl al Cavo |
@@ -190,6 +190,7 @@ Mobilità post-cardio invariata: dorsiflessione, Posizione del quadrato, T-spine
 
 Nel G3 l'esercizio base è **Abduzione laterale IR** e il toggle alternativo resta **Clamshell**. Nel controllo agente il riferimento principale resta Abduzione laterale IR.
 Le `3 serie` del G3 restano nominalmente tre per tutti gli esercizi principali: la **prima è tecnica di avvicinamento**, le **serie 2-3 sono di lavoro** a `RPE 7-8`.
+Ogni ripetizione del G3 segue il tempo `2-1-2`: `2s` concentrica, `1s` tenuta, `2s` eccentrica. Se non riesci a mantenere il tempo sulle ultime rip, riduci le rip o riduci il peso. Mai accelerare per finire la serie.
 La **Leg Extension al Cavo** usa ora la foto dedicata `src/images/exercises/standing-cable-leg-extension.jpeg`.
 Il parser serie riconosce anche le entry `per lato`, quindi il completamento del G3 attiva correttamente l'export automatico al salvataggio dell'ultima serie.
 
@@ -214,7 +215,7 @@ Questo protocollo è il cuore del G3 — il giorno migliore perché nessun compo
 | 6 | Leg Cradle Supino | 2× 30s/lato | |
 | 7 | Supported Low Lunge | 2× 30s/lato | |
 
-**✅ Nota importante:** Il G3 NON ha tracking nei Progressi, niente briefing coach, niente RIR guidato. È un giorno di recupero attivo e mobilità, con superset automatici mostrati di default nella card light.
+**✅ Nota importante:** Il G3 resta un giorno leggero e non usa una card separata in alto: in app passa dalla stessa sezione `Esercizi` degli altri giorni, così l'utente può registrare peso, ripetizioni e RIR sulle singole serie. I superset automatici restano logica organizzativa del blocco, non un renderer dedicato.
 
 ---
 
