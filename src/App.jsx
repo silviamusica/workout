@@ -4717,11 +4717,7 @@ export default function App() {
   function renderLightDay(day) {
     var supersetPairs = FAST_MODE_SUPERSETS[day.name] || [];
     function findLightEx(name) {
-      var items = day.ex || [];
-      for (var i = 0; i < items.length; i++) {
-        if (sameExerciseName(items[i].n, name)) return { ex: items[i], index: i };
-      }
-      return null;
+      return (day.ex || []).find(function(item) { return sameExerciseName(item.n, name); }) || null;
     }
     return <div style={{ display: "grid", gap: 12 }}>
       <div style={{ background: T.cd, borderRadius: 14, border: "1px solid " + T.bg, overflow: "hidden" }}>
@@ -4757,27 +4753,13 @@ export default function App() {
                   <div style={{ fontSize: 13, fontWeight: 800, color: T.tx }}>Superset {blockLabel}</div>
                   <div style={{ fontSize: 10, color: T.sub, textAlign: "right", whiteSpace: "nowrap" }}>rec {pair.rest}s</div>
                 </div>
-                {[aEx, bEx].filter(Boolean).map(function(entry, exIndex) {
-                  var ex = entry.ex;
+                {[aEx, bEx].filter(Boolean).map(function(ex, exIndex) {
                   return <div key={ex.n} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, paddingTop: exIndex === 0 ? 0 : 8, marginTop: exIndex === 0 ? 0 : 8, borderTop: exIndex === 0 ? "none" : ("1px solid " + T.bg) }}>
-                    <div style={{ minWidth: 0 }}>
+                    <div>
                       <div style={{ fontSize: 13, fontWeight: 800, color: T.tx }}>{ex.n}</div>
                       <div style={{ fontSize: 11, color: dc, fontWeight: 700 }}>{ex.s}</div>
                     </div>
-                    <div style={{ display: "grid", gap: 6, justifyItems: "end", flexShrink: 0 }}>
-                      <div style={{ fontSize: 10, color: T.sub, textAlign: "right", whiteSpace: "nowrap" }}>RPE {ex.rpe}</div>
-                      <button onClick={function(e) {
-                        e.stopPropagation();
-                        setShowExSection(true);
-                        setShowIntro(false);
-                        setShowStr(false);
-                        setOpenEx(entry.index);
-                        requestAnimationFrame(function() {
-                          var el = document.getElementById("ex-row-" + entry.index);
-                          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-                        });
-                      }} style={{ minHeight: 28, padding: "0 10px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}>Registra</button>
-                    </div>
+                    <div style={{ fontSize: 10, color: T.sub, textAlign: "right", whiteSpace: "nowrap" }}>RPE {ex.rpe}</div>
                   </div>;
                 })}
                 {!!pair.note && <div style={{ marginTop: 8, fontSize: 11, color: T.sub, lineHeight: 1.55 }}>{pair.note}.</div>}
@@ -4787,24 +4769,11 @@ export default function App() {
             {(day.ex || []).map(function(ex, i) {
               return <div key={i} style={{ background: T.sb, borderRadius: 12, padding: "12px", border: "1px solid " + dc + "18" }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
-                  <div style={{ minWidth: 0 }}>
+                  <div>
                     <div style={{ fontSize: 13, fontWeight: 800, color: T.tx }}>{ex.n}</div>
                     <div style={{ fontSize: 11, color: dc, fontWeight: 700 }}>{ex.s} · rec {ex.rec}</div>
                   </div>
-                  <div style={{ display: "grid", gap: 6, justifyItems: "end", flexShrink: 0 }}>
-                    <div style={{ fontSize: 10, color: T.sub, textAlign: "right", whiteSpace: "nowrap" }}>RPE {ex.rpe}</div>
-                    <button onClick={function(e) {
-                      e.stopPropagation();
-                      setShowExSection(true);
-                      setShowIntro(false);
-                      setShowStr(false);
-                      setOpenEx(i);
-                      requestAnimationFrame(function() {
-                        var el = document.getElementById("ex-row-" + i);
-                        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-                      });
-                    }} style={{ minHeight: 28, padding: "0 10px", borderRadius: 999, border: "1px solid " + dc + "35", background: dc + "10", color: dc, fontSize: 10, fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" }}>Registra</button>
-                  </div>
+                  <div style={{ fontSize: 10, color: T.sub, textAlign: "right", whiteSpace: "nowrap" }}>RPE {ex.rpe}</div>
                 </div>
               </div>;
             })}
@@ -11598,10 +11567,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                   </div>
                 </div>
               </div>
-            </div>}
-
-            {dayData.light && <div style={{ padding: "12px 14px 0" }}>
-              {renderLightDay(dayData)}
             </div>}
 
             {/* Exercises - collapsed (solo giorni non-cardio) */}
