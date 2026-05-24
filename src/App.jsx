@@ -2756,34 +2756,79 @@ function formatTrxLength(v) {
 var BARBELL_BASE_KG = 20;
 var BARBELL_MIN_KG = 0;
 var BARBELL_TOTAL_EX = ["Squat","Panca","Military Press","Stacco da Terra","Stacco Rumeno","Front Squat","Pause Squat","Push Press","Stacco Sumo","Rematore Bilanciere","Pendlay Row","Good Morning","Glute Bridge Bilanciere"];
+var LOAD_MODE_BARBELL = "barbell";
+var LOAD_MODE_DUMBBELLS = "dumbbells";
 
 function usesBarbellTotal(exName) {
   if (exName === "T-bar Row") return false;
   return BARBELL_TOTAL_EX.indexOf(exName) >= 0;
 }
 
-function plateInputToStoredWeight(exName, inputWeight, barbellBase) {
-  var kg = parseFloat(inputWeight) || 0;
-  var base = typeof barbellBase === "number" ? barbellBase : BARBELL_BASE_KG;
-  return usesBarbellTotal(exName) ? (kg + base) : kg;
+function getExerciseLoadModes(exName) {
+  var gear = classifyExerciseGear(exName) || [];
+  var modes = [];
+  if (gear.indexOf("bilanciere") >= 0) modes.push(LOAD_MODE_BARBELL);
+  if (gear.indexOf("manubri") >= 0) modes.push(LOAD_MODE_DUMBBELLS);
+  return modes;
 }
 
-function storedWeightToPlateInput(exName, storedWeight, barbellBase) {
+function getDefaultLoadMode(exName) {
+  var modes = getExerciseLoadModes(exName);
+  if (modes.indexOf(LOAD_MODE_BARBELL) >= 0) return LOAD_MODE_BARBELL;
+  if (modes.indexOf(LOAD_MODE_DUMBBELLS) >= 0) return LOAD_MODE_DUMBBELLS;
+  return "";
+}
+
+function normalizeExerciseLoadPrefs(sourcePrefs) {
+  var next = {};
+  Object.keys(sourcePrefs || {}).forEach(function(exName) {
+    var item = sourcePrefs[exName];
+    if (!item || typeof item !== "object") return;
+    var mode = item.mode === LOAD_MODE_DUMBBELLS ? LOAD_MODE_DUMBBELLS : (item.mode === LOAD_MODE_BARBELL ? LOAD_MODE_BARBELL : "");
+    var weight = parseFloat(item.weight);
+    next[exName] = {
+      mode: mode || getDefaultLoadMode(exName),
+      weight: isFinite(weight) && weight >= 0 ? weight : 0
+    };
+  });
+  return next;
+}
+
+function getStoredSetLoadMode(exName, setEntry, exerciseLoadPrefs) {
+  if (setEntry && setEntry.m === LOAD_MODE_DUMBBELLS) return LOAD_MODE_DUMBBELLS;
+  if (setEntry && setEntry.m === LOAD_MODE_BARBELL) return LOAD_MODE_BARBELL;
+  var pref = exerciseLoadPrefs && exerciseLoadPrefs[exName];
+  if (pref && (pref.mode === LOAD_MODE_BARBELL || pref.mode === LOAD_MODE_DUMBBELLS)) return pref.mode;
+  return getDefaultLoadMode(exName);
+}
+
+function usesBarbellTotalForMode(exName, loadMode) {
+  return loadMode !== LOAD_MODE_DUMBBELLS && usesBarbellTotal(exName);
+}
+
+function plateInputToStoredWeight(exName, inputWeight, barbellBase, loadMode) {
+  var kg = parseFloat(inputWeight) || 0;
+  var base = typeof barbellBase === "number" ? barbellBase : BARBELL_BASE_KG;
+  return usesBarbellTotalForMode(exName, loadMode) ? (kg + base) : kg;
+}
+
+function storedWeightToPlateInput(exName, storedWeight, barbellBase, loadMode) {
   var kg = parseFloat(storedWeight) || 0;
-  if (!usesBarbellTotal(exName)) return kg;
+  if (!usesBarbellTotalForMode(exName, loadMode)) return kg;
   var base = typeof barbellBase === "number" ? barbellBase : BARBELL_BASE_KG;
   return Math.max(0, kg - base);
 }
 
-function formatInputWeightHint(exName, inputWeight, barbellBase) {
+function formatInputWeightHint(exName, inputWeight, barbellBase, loadMode) {
   var kg = parseFloat(inputWeight);
   if (!isFinite(kg) || kg <= 0) return "";
-  if (!usesBarbellTotal(exName)) return kg + " kg";
+  if (loadMode === LOAD_MODE_DUMBBELLS) return kg + " kg per manubrio";
+  if (!usesBarbellTotalForMode(exName, loadMode)) return kg + " kg";
   var base = typeof barbellBase === "number" ? barbellBase : BARBELL_BASE_KG;
   return kg + " kg dischi · " + (kg + base) + " kg tot";
 }
 
-function formatLoadAndReps(exName, w, r) {
+function formatLoadAndReps(exName, w, r, loadMode) {
   var reps = (r === "max" ? "max" : (parseInt(r) || 0)) + " rip";
   if (usesElasticScale(exName)) {
     var tick = formatElasticTick(w);
@@ -2794,7 +2839,9 @@ function formatLoadAndReps(exName, w, r) {
     return trxLength ? (trxLength + " × " + reps) : reps;
   }
   var kg = parseFloat(w) || 0;
-  return kg > 0 ? (kg + " kg × " + reps) : reps;
+  if (kg <= 0) return reps;
+  if (loadMode === LOAD_MODE_DUMBBELLS) return kg + " kg/manubrio × " + reps;
+  return kg + " kg × " + reps;
 }
 
 function normalizeRirValue(v) {
@@ -2812,12 +2859,13 @@ function numericRirValue(v) {
   return isFinite(n) ? n : null;
 }
 
-function formatSetResult(exName, setEntry, isBW, isTime) {
+function formatSetResult(exName, setEntry, isBW, isTime, exerciseLoadPrefs) {
   if (!setEntry) return "";
   var timed = isTime || isTimeTrackedExercise(exName);
+  var loadMode = getStoredSetLoadMode(exName, setEntry, exerciseLoadPrefs);
   var base = timed
     ? ((setEntry.r === "max" ? "max" : (parseInt(setEntry.r) || 0)) + " s")
-    : (isBW ? (setEntry.r + " rip") : formatLoadAndReps(exName, setEntry.w, setEntry.r));
+    : (isBW ? (setEntry.r + " rip") : formatLoadAndReps(exName, setEntry.w, setEntry.r, loadMode));
   var rir = normalizeRirValue(setEntry.rir);
   return rir ? (base + " · RIR " + rir) : base;
 }
@@ -4068,6 +4116,13 @@ export default function App() {
   var [calibrationFeedback, setCalibrationFeedback] = useState("");
   var [guidedMode, setGuidedMode] = useState(true);
   var [barbellWeight, setBarbellWeight] = useState(BARBELL_BASE_KG);
+  var [exerciseLoadPrefs, setExerciseLoadPrefs] = useState(function() {
+    try {
+      return normalizeExerciseLoadPrefs(JSON.parse(localStorage.getItem("wt-exercise-load-prefs") || "{}") || {});
+    } catch (e) {
+      return {};
+    }
+  });
   var [extraInfoEnabled, setExtraInfoEnabled] = useState(true);
   var [guidedPrompt, setGuidedPrompt] = useState(null);
   var [guidedFeedback, setGuidedFeedback] = useState("");
@@ -4151,6 +4206,16 @@ export default function App() {
     setExerciseAltMode(function(prev) {
       var next = Object.assign({}, prev, { [key]: !!useAlt });
       try { localStorage.setItem("wt-exercise-alt-mode", JSON.stringify(next)); } catch (e) {}
+      return next;
+    });
+  }
+
+  function setExerciseLoadPreference(exName, patch) {
+    setExerciseLoadPrefs(function(prev) {
+      var current = prev[exName] || { mode: getDefaultLoadMode(exName), weight: 0 };
+      var nextEntry = Object.assign({}, current, patch || {});
+      var next = Object.assign({}, prev, { [exName]: nextEntry });
+      try { localStorage.setItem("wt-exercise-load-prefs", JSON.stringify(next)); } catch (e) {}
       return next;
     });
   }
@@ -4828,6 +4893,7 @@ export default function App() {
     var nextFlowModeEnabled = overrides && typeof overrides.flowModeEnabled === "boolean" ? overrides.flowModeEnabled : flowModeEnabled;
     var nextCompactMode = overrides && typeof overrides.compactMode === "boolean" ? overrides.compactMode : compactMode;
     var nextSplitDayPrefs = normalizeSplitDayPrefs(overrides && overrides.splitDayPrefs && typeof overrides.splitDayPrefs === "object" ? overrides.splitDayPrefs : splitDayPrefs);
+    var nextExerciseLoadPrefs = normalizeExerciseLoadPrefs(overrides && overrides.exerciseLoadPrefs && typeof overrides.exerciseLoadPrefs === "object" ? overrides.exerciseLoadPrefs : exerciseLoadPrefs);
     return {
       savedAt: new Date().toISOString(),
       logs: sourceLogs || {},
@@ -4851,6 +4917,7 @@ export default function App() {
         flowModeEnabled: nextFlowModeEnabled,
         compactMode: nextCompactMode,
         splitDayPrefs: nextSplitDayPrefs,
+        exerciseLoadPrefs: nextExerciseLoadPrefs,
         guidedMode: !!sourceGuidedMode,
         guidedRecoveryEnabled: false,
         calibrationMode: !!sourceCalibrationMode,
@@ -4993,7 +5060,8 @@ export default function App() {
         exerciseWorkflowEnabled: typeof importedPreferences.exerciseWorkflowEnabled === "boolean" ? importedPreferences.exerciseWorkflowEnabled : undefined,
         extraInfoEnabled: typeof importedPreferences.extraInfoEnabled === "boolean" ? importedPreferences.extraInfoEnabled : undefined,
         flowModeEnabled: typeof importedPreferences.flowModeEnabled === "boolean" ? importedPreferences.flowModeEnabled : undefined,
-        splitDayPrefs: importedPreferences.splitDayPrefs
+        splitDayPrefs: importedPreferences.splitDayPrefs,
+        exerciseLoadPrefs: importedPreferences.exerciseLoadPrefs
       }
     );
     setStretchLogs(importedStretchLogs);
@@ -5233,6 +5301,7 @@ export default function App() {
             if (typeof parsed.preferences.extraInfoEnabled === "boolean") setExtraInfoEnabled(parsed.preferences.extraInfoEnabled);
             if (typeof parsed.preferences.flowModeEnabled === "boolean") setFlowModeEnabled(parsed.preferences.flowModeEnabled);
             if (parsed.preferences.splitDayPrefs && typeof parsed.preferences.splitDayPrefs === "object") setSplitDayPrefs(normalizeSplitDayPrefs(parsed.preferences.splitDayPrefs));
+            if (parsed.preferences.exerciseLoadPrefs && typeof parsed.preferences.exerciseLoadPrefs === "object") setExerciseLoadPrefs(normalizeExerciseLoadPrefs(parsed.preferences.exerciseLoadPrefs));
           }
         } else if (parsed && typeof parsed === "object") {
           setLogs(normalizeImportedWorkoutLogs(parsed, level));
@@ -5262,6 +5331,10 @@ export default function App() {
     try { var th = localStorage.getItem("wt-theme"); if (th && TH[th]) setTheme(th); else localStorage.removeItem("wt-theme"); } catch(e) {}
     try { var fs = parseFloat(localStorage.getItem("wt-fontscale")); if (fs >= 0.9 && fs <= 1.5) setFontScale(fs); } catch(e) {}
     try { setExerciseWorkflowEnabled(localStorage.getItem("wt-exercise-workflow") === "1"); } catch(e) {}
+    try {
+      var loadPrefsStored = localStorage.getItem("wt-exercise-load-prefs");
+      if (loadPrefsStored) setExerciseLoadPrefs(normalizeExerciseLoadPrefs(JSON.parse(loadPrefsStored) || {}));
+    } catch(e) {}
     try {
       var ei = localStorage.getItem("wt-extra-info");
       setExtraInfoEnabled(ei == null ? true : ei === "1");
@@ -5403,7 +5476,7 @@ export default function App() {
 
   useEffect(function() {
     if (!supabase || !cloudUser || cloudHydratedUserId !== cloudUser.id || cloudConflict) return;
-    var snapshot = buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false);
+    var snapshot = buildPersistedStatePayload(logs, cardioLogs, stretchLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false, { exerciseLoadPrefs: exerciseLoadPrefs });
     queueCloudSync(snapshot);
   }, [
     logs,
@@ -5413,6 +5486,7 @@ export default function App() {
     calibrationMode,
     guidedMode,
     barbellWeight,
+    exerciseLoadPrefs,
     userName,
     userPhoto,
     level,
@@ -5458,6 +5532,7 @@ export default function App() {
     var nextFlowModeEnabled = overrides && typeof overrides.flowModeEnabled === "boolean" ? overrides.flowModeEnabled : flowModeEnabled;
     var nextCompactMode = overrides && typeof overrides.compactMode === "boolean" ? overrides.compactMode : compactMode;
     var nextSplitDayPrefs = normalizeSplitDayPrefs(overrides && overrides.splitDayPrefs && typeof overrides.splitDayPrefs === "object" ? overrides.splitDayPrefs : splitDayPrefs);
+    var nextExerciseLoadPrefs = normalizeExerciseLoadPrefs(overrides && overrides.exerciseLoadPrefs && typeof overrides.exerciseLoadPrefs === "object" ? overrides.exerciseLoadPrefs : exerciseLoadPrefs);
     setLogs(nextLogs);
     setCardioLogs(nextCardioLogs);
     setCalibrationProfiles(nextProfiles);
@@ -5465,6 +5540,7 @@ export default function App() {
     setGuidedMode(nextGuided);
     setBarbellWeight(nextBarbell);
     setSplitDayPrefs(nextSplitDayPrefs);
+    setExerciseLoadPrefs(nextExerciseLoadPrefs);
     try {
       var snapshot = buildPersistedStatePayload(
         nextLogs,
@@ -5485,13 +5561,15 @@ export default function App() {
           extraInfoEnabled: nextExtraInfoEnabled,
           flowModeEnabled: nextFlowModeEnabled,
           compactMode: nextCompactMode,
-          splitDayPrefs: nextSplitDayPrefs
+          splitDayPrefs: nextSplitDayPrefs,
+          exerciseLoadPrefs: nextExerciseLoadPrefs
         }
       );
       var raw = JSON.stringify(snapshot);
       localStorage.setItem(SK, raw);
       localStorage.removeItem(SK_SHADOW);
       localStorage.setItem("wt-barbell-weight", String(nextBarbell));
+      localStorage.setItem("wt-exercise-load-prefs", JSON.stringify(nextExerciseLoadPrefs));
       localStorage.removeItem("wt-guided-recovery");
     } catch(e) {
       try {
@@ -5513,12 +5591,14 @@ export default function App() {
           exerciseWorkflowEnabled: nextWorkflowEnabled,
           extraInfoEnabled: nextExtraInfoEnabled,
           flowModeEnabled: nextFlowModeEnabled,
-          splitDayPrefs: nextSplitDayPrefs
+          splitDayPrefs: nextSplitDayPrefs,
+          exerciseLoadPrefs: nextExerciseLoadPrefs
         }
       );
         localStorage.setItem(SK, JSON.stringify(lightSnapshot));
         localStorage.removeItem(SK_SHADOW);
         localStorage.setItem("wt-barbell-weight", String(nextBarbell));
+        localStorage.setItem("wt-exercise-load-prefs", JSON.stringify(nextExerciseLoadPrefs));
         localStorage.removeItem("wt-guided-recovery");
         setAutoBackupMsg("Spazio browser quasi pieno: ho salvato una copia locale alleggerita senza foto. I dati di allenamento restano salvati.");
       } catch(lightErr) {
@@ -7800,7 +7880,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     return { avgs: avgs, warn: latestTwoLow };
   }
 
-  function saveSetEntry(en, di, si, w, r, customProfiles, rirValue) {
+  function saveSetEntry(en, di, si, w, r, customProfiles, rirValue, loadMode) {
     var t = todayStr();
     var k = t + "_d" + di + "_m" + month + "_" + en;
     var wasComplete = isDayWorkoutComplete(logs, di);
@@ -7808,6 +7888,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     if (!nl[k]) nl[k] = { date: t, day: di, month: month, exercise: en, sets: [] };
     var x = nl[k].sets.findIndex(function(s) { return s.si === si; });
     var entry = { si: si, w: parseFloat(w) || 0, r: r === "max" ? r : (parseInt(r) || 0), rir: normalizeRirValue(rirValue) };
+    if (loadMode === LOAD_MODE_BARBELL || loadMode === LOAD_MODE_DUMBBELLS) entry.m = loadMode;
     if (x >= 0) nl[k].sets[x] = entry; else nl[k].sets.push(entry);
     saveData(nl, cardioLogs, customProfiles || calibrationProfiles, calibrationMode, guidedMode);
     if (!wasComplete && isDayWorkoutComplete(nl, di)) autoExportCompletedSession(nl, di);
@@ -7817,7 +7898,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     setTmpRir("");
     return nl;
   }
-  function beginLogSet(exObj, di, si, w, r, isBW, rirValue) {
+  function beginLogSet(exObj, di, si, w, r, isBW, rirValue, loadMode) {
     try {
       if (!r || String(r).trim() === "") {
         setCalibrationFeedback("Inserisci prima le ripetizioni della serie.");
@@ -7827,7 +7908,7 @@ function isNearBodyweightElasticSession(exName, sets) {
       var calibrationAllowed = isCalibrationAllowedDay(currentDay);
       var calNeed = calibrationAllowed ? getCalibrationNeed(exObj.n, exObj.s) : { needed: false, initial: false, reason: "" };
       if (!effectiveCalibrationMode || !calNeed.needed) {
-        var saved = saveSetEntry(exObj.n, di, si, w, r, null, rirValue);
+        var saved = saveSetEntry(exObj.n, di, si, w, r, null, rirValue, loadMode);
         var specGuided = parseProgressSpec(exObj.s);
         var underMinMsg = getUnderMinPerformanceMessage(exObj.n, exObj.s, r, di, si);
         var savedEntry = saved ? saved[getGuidedTodayKey(di, exObj.n)] : null;
@@ -7862,11 +7943,11 @@ function isNearBodyweightElasticSession(exName, sets) {
         return saved;
       }
       var calType = getCalibrationType(exObj.n, exObj.s);
-      if (calType === "none") return saveSetEntry(exObj.n, di, si, w, r, null, rirValue);
+      if (calType === "none") return saveSetEntry(exObj.n, di, si, w, r, null, rirValue, loadMode);
       var todayEntry = logs[getGuidedTodayKey(di, exObj.n)];
       var alreadyTestedToday = !!(todayEntry && todayEntry.sets && todayEntry.sets.length);
       if (si > 0 || alreadyTestedToday) {
-        var savedFollowup = saveSetEntry(exObj.n, di, si, w, r, null, rirValue);
+        var savedFollowup = saveSetEntry(exObj.n, di, si, w, r, null, rirValue, loadMode);
         setCalibrationFeedback("Serie salvata. In calibrazione usa solo la prima serie utile come test; le altre servono solo da registrazione.");
         return savedFollowup;
       }
@@ -8237,7 +8318,7 @@ function isNearBodyweightElasticSession(exName, sets) {
     setTmpR("");
     setTmpRir("");
   }
-  function saveHistoricSetEntry(entry, si, w, r, rirValue) {
+  function saveHistoricSetEntry(entry, si, w, r, rirValue, loadMode) {
     if (!entry || !entry.exercise) return logs;
     var key = (entry.date || todayStr()) + "_d" + (entry.day || 0) + "_m" + (entry.month || month) + "_" + entry.exercise;
     var nextLogs = Object.assign({}, logs);
@@ -8256,6 +8337,7 @@ function isNearBodyweightElasticSession(exName, sets) {
       r: r === "max" ? r : (parseInt(r) || 0),
       rir: normalizeRirValue(rirValue)
     };
+    if (loadMode === LOAD_MODE_BARBELL || loadMode === LOAD_MODE_DUMBBELLS) nextEntry.m = loadMode;
     if (idx >= 0) nextSets[idx] = nextEntry;
     else nextSets.push(nextEntry);
     nextSets.sort(function(a, b) { return (a.si || 0) - (b.si || 0); });
@@ -8715,7 +8797,8 @@ function isNearBodyweightElasticSession(exName, sets) {
         return rir ? (trxBase + " · RIR " + rir) : trxBase;
       }
       var kg = parseFloat(s.w) || 0;
-      var weighted = kg > 0 ? (kg + "x" + reps) : reps;
+      var loadMode = getStoredSetLoadMode(exName, s, exerciseLoadPrefs);
+      var weighted = kg > 0 ? (loadMode === LOAD_MODE_DUMBBELLS ? (kg + "/man.x" + reps) : (kg + "x" + reps)) : reps;
       return rir ? (weighted + " · RIR " + rir) : weighted;
     }).join(" · ");
   }
@@ -9327,7 +9410,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 20px", color: T.sub }}>Tutti i dati verranno cancellati: serie, pesi, ripetizioni.</p>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={function() { setResetOpen(false); }} style={{ flex: 1, padding: 12, border: "1px solid " + T.sub + "30", borderRadius: 10, background: "transparent", color: T.tx, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Annulla</button>
-            <button onClick={function() { setLogs({}); setCardioLogs({}); setStretchLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(true); setBarbellWeight(BARBELL_BASE_KG); setExtraInfoEnabled(true); setFlowModeEnabled(false); setCompactMode(false); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setGuidedFillerHint(""); setCardioDrafts({}); setExerciseAltMode({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); setSplitDayPrefs({}); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); localStorage.removeItem("wt-flow-mode"); localStorage.removeItem("wt-compact-mode"); localStorage.removeItem("wt-barbell-weight"); localStorage.removeItem("wt-stretch-logs"); localStorage.removeItem("wt-exercise-alt-mode"); } catch(e) {} setAutoBackupMsg("Tutti i dati sono stati cancellati."); closeActionBoxes(); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
+            <button onClick={function() { setLogs({}); setCardioLogs({}); setStretchLogs({}); setCalibrationProfiles({}); setCalibrationMode(true); setGuidedMode(true); setBarbellWeight(BARBELL_BASE_KG); setExerciseLoadPrefs({}); setExtraInfoEnabled(true); setFlowModeEnabled(false); setCompactMode(false); setGuidedPrompt(null); setGuidedFeedback(""); setGuidedRestHint(""); setGuidedFillerHint(""); setCardioDrafts({}); setExerciseAltMode({}); setUserName(""); setUserPhoto(null); setTheme("sage"); setFontScale(1.1); setLevel("v4"); setExerciseWorkflowEnabled(false); setSplitDayPrefs({}); try { localStorage.removeItem(SK); localStorage.removeItem(SK_SHADOW); localStorage.removeItem("wt-username"); localStorage.removeItem("wt-userphoto"); localStorage.removeItem("wt-theme"); localStorage.removeItem("wt-fontscale"); localStorage.removeItem("wt-level"); localStorage.removeItem("wt-exercise-workflow"); localStorage.removeItem("wt-extra-info"); localStorage.removeItem("wt-flow-mode"); localStorage.removeItem("wt-compact-mode"); localStorage.removeItem("wt-barbell-weight"); localStorage.removeItem("wt-stretch-logs"); localStorage.removeItem("wt-exercise-alt-mode"); localStorage.removeItem("wt-exercise-load-prefs"); } catch(e) {} setAutoBackupMsg("Tutti i dati sono stati cancellati."); closeActionBoxes(); }} style={{ flex: 1, padding: 12, border: "none", borderRadius: 10, background: "#C62828", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Cancella tutto</button>
           </div>
         </div>
       </div>}
@@ -10578,10 +10661,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                                     return <div key={entry.exercise + "-set-" + setItem.si} style={{ border: "1px solid " + T.bg, borderRadius: 8, padding: "7px 8px", background: T.cd }}>
                                       {!isEditingProgressSet && <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                                         <div style={{ flex: 1, minWidth: 0, fontSize: 10, color: T.tx, fontWeight: 700 }}>
-                                          {"Serie " + (setItem.si + 1) + " · " + formatSetResult(entry.exercise, setItem, isBW, isTimeExercise)}
+                                          {"Serie " + (setItem.si + 1) + " · " + formatSetResult(entry.exercise, setItem, isBW, isTimeExercise, exerciseLoadPrefs)}
                                           {normalizeRirValue(setItem.rir) && <span style={{ color: T.sub, fontWeight: 600 }}>{" · RIR " + normalizeRirValue(setItem.rir)}</span>}
                                         </div>
-                                        <button onClick={function(e) { e.stopPropagation(); setEditing(progressEditId); setTmpW(usesBand ? String(clampElasticTick(setItem.w) || "") : (usesTrxLength ? String(clampTrxLength(setItem.w) || "") : String(storedWeightToPlateInput(entry.exercise, setItem.w, barbellWeight)))); setTmpR(String(setItem.r)); setTmpRir(normalizeRirValue(setItem.rir)); }} style={{ fontSize: 10, color: T.sub, background: "none", border: "none", cursor: "pointer", padding: "2px 4px", fontWeight: 700 }}>modifica</button>
+                                        <button onClick={function(e) { e.stopPropagation(); var historicMode = getStoredSetLoadMode(entry.exercise, setItem, exerciseLoadPrefs); setEditing(progressEditId); setTmpW(usesBand ? String(clampElasticTick(setItem.w) || "") : (usesTrxLength ? String(clampTrxLength(setItem.w) || "") : String(storedWeightToPlateInput(entry.exercise, setItem.w, barbellWeight, historicMode)))); setTmpR(String(setItem.r)); setTmpRir(normalizeRirValue(setItem.rir)); }} style={{ fontSize: 10, color: T.sub, background: "none", border: "none", cursor: "pointer", padding: "2px 4px", fontWeight: 700 }}>modifica</button>
                                         <button onClick={function(e) { e.stopPropagation(); deleteHistoricSetEntry(entry, setItem.si); }} style={{ fontSize: 10, color: "#C62828", background: "none", border: "none", cursor: "pointer", padding: "2px 4px", fontWeight: 800 }}>elimina</button>
                                       </div>}
                                       {isEditingProgressSet && <div style={{ display: "grid", gap: 8 }}>
@@ -10602,9 +10685,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                                             </select>
                                           </label>
                                         </div>
-                                        {!isBW && !usesBand && !usesTrxLength && formatInputWeightHint(entry.exercise, tmpW, barbellWeight) && <div style={{ fontSize: 10, color: T.sub }}>{formatInputWeightHint(entry.exercise, tmpW, barbellWeight)}</div>}
+                                        {!isBW && !usesBand && !usesTrxLength && formatInputWeightHint(entry.exercise, tmpW, barbellWeight, getStoredSetLoadMode(entry.exercise, setItem, exerciseLoadPrefs)) && <div style={{ fontSize: 10, color: T.sub }}>{formatInputWeightHint(entry.exercise, tmpW, barbellWeight, getStoredSetLoadMode(entry.exercise, setItem, exerciseLoadPrefs))}</div>}
                                         <div style={{ display: "flex", gap: 8 }}>
-                                          <button onClick={function(e) { e.stopPropagation(); saveHistoricSetEntry(entry, setItem.si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : (usesTrxLength ? clampTrxLength(tmpW) : plateInputToStoredWeight(entry.exercise, tmpW, barbellWeight))), tmpR, tmpRir); }} style={{ flex: 1, minHeight: 38, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 13, cursor: "pointer", fontWeight: 800 }}>Salva ✓</button>
+                                          <button onClick={function(e) { e.stopPropagation(); var historicMode = getStoredSetLoadMode(entry.exercise, setItem, exerciseLoadPrefs); saveHistoricSetEntry(entry, setItem.si, isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : (usesTrxLength ? clampTrxLength(tmpW) : plateInputToStoredWeight(entry.exercise, tmpW, barbellWeight, historicMode))), tmpR, tmpRir, historicMode); }} style={{ flex: 1, minHeight: 38, background: dc, color: "#fff", border: "none", borderRadius: 8, fontSize: 13, cursor: "pointer", fontWeight: 800 }}>Salva ✓</button>
                                           <button onClick={function(e) { e.stopPropagation(); resetSetEditingState(); }} style={{ flex: 1, minHeight: 38, background: T.sb, color: T.sub, border: "1px solid " + T.bg, borderRadius: 8, fontSize: 13, cursor: "pointer", fontWeight: 800 }}>Annulla</button>
                                         </div>
                                       </div>}
@@ -11655,6 +11738,14 @@ function isNearBodyweightElasticSession(exName, sets) {
                 : { needed: false, initial: false, reason: "" };
               var calibrationProfile = calibrationProfiles[ex.n] || null;
               var rowImg = exImgs(ex.n)[0] || null;
+              var exerciseLoadModes = getExerciseLoadModes(ex.n);
+              var currentLoadPref = exerciseLoadPrefs[ex.n] || { mode: getDefaultLoadMode(ex.n), weight: 0 };
+              var currentLoadMode = currentLoadPref.mode || getDefaultLoadMode(ex.n);
+              var currentLoadWeight = parseFloat(currentLoadPref.weight) || 0;
+              var showExerciseLoadPicker = exerciseLoadModes.length > 0;
+              var currentLoadBadge = currentLoadWeight > 0
+                ? (currentLoadMode === LOAD_MODE_DUMBBELLS ? (currentLoadWeight + " kg/man.") : (usesBarbellTotalForMode(ex.n, currentLoadMode) ? (currentLoadWeight + " kg tot") : (currentLoadWeight + " kg")))
+                : "";
 
               var anyOpen = openEx !== null;
               var isDimmed = anyOpen && !isX;
@@ -11689,6 +11780,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>
                     <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginTop: isBeginner ? 5 : 3 }}>
                       {ex.s && <span style={{ fontSize: isBeginner ? 14 : 12, color: isBeginner ? dc : T.tx, fontWeight: 800, letterSpacing: 0.1 }}>{fmtSerie(ex.s)}</span>}
+                      {!isBeginner && currentLoadBadge && <span style={{ fontSize: 10, color: dc, fontWeight: 800, padding: "2px 7px", borderRadius: 999, background: dc + "12", border: "1px solid " + dc + "25", whiteSpace: "nowrap" }}>{currentLoadBadge}</span>}
                       {approachSetCount > 0 && <span style={{ fontSize: 10, color: dc, fontWeight: 800, padding: "2px 7px", borderRadius: 999, background: dc + "12", border: "1px solid " + dc + "25", whiteSpace: "nowrap" }}>{getApproachSetsLabel(approachSetCount, sc)}</span>}
                       {!isBeginner && ex.rpe ? <span onClick={function(e) { e.stopPropagation(); setRpeOpen(true); }} style={{ cursor: "pointer", color: dc, fontSize: 10, fontWeight: 700, textDecoration: "underline dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, whiteSpace: "nowrap" }}>{formatEffortLabel(ex.rpe, ex.s)}</span> : ""}
                       {!isBeginner && ((rowSupersetMeta && rowSupersetMeta.role === "a" && rowSupersetMeta.rest) || restSec) ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 700, whiteSpace: "nowrap" }}>{"rec " + fmtLabel(rowSupersetMeta && rowSupersetMeta.role === "a" ? rowSupersetMeta.rest : restSec)}</span> : null}
@@ -11720,6 +11812,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                   var isBW = BW_EX.indexOf(ex.n) >= 0;
                   var usesBand = usesElasticScale(ex.n);
                   var usesTrxLength = usesTrxLengthScale(ex.n);
+                  var loadModes = getExerciseLoadModes(ex.n);
+                  var loadPref = exerciseLoadPrefs[ex.n] || { mode: getDefaultLoadMode(ex.n), weight: 0 };
+                  var selectedLoadMode = loadPref.mode || getDefaultLoadMode(ex.n);
+                  var selectedLoadWeight = parseFloat(loadPref.weight) || 0;
                   // last session data for pre-fill
                   var allHist = getHist(ex.n);
                   var pastSessions = allHist.filter(function(h) { return h.date !== todayStr(); });
@@ -11738,8 +11834,12 @@ function isNearBodyweightElasticSession(exName, sets) {
                     if (si > 0) return { w: "", r: "", rir: "" };
                     var s = lastSession.sets.find(function(s) { return s.si === 0; }) || lastSession.sets[0] || null;
                     if (s) {
-                      var suggestedWeight = s.w > 0 ? storedWeightToPlateInput(ex.n, s.w, barbellWeight) : "";
+                      var suggestedMode = getStoredSetLoadMode(ex.n, s, exerciseLoadPrefs);
+                      var suggestedWeight = s.w > 0 ? storedWeightToPlateInput(ex.n, s.w, barbellWeight, suggestedMode) : "";
                       return { w: suggestedWeight === "" ? "" : String(suggestedWeight), r: String(s.r), rir: normalizeRirValue(s.rir) };
+                    }
+                    if (!isBW && !usesBand && !usesTrxLength && selectedLoadWeight > 0) {
+                      return { w: String(storedWeightToPlateInput(ex.n, selectedLoadWeight, barbellWeight, selectedLoadMode)), r: "", rir: "" };
                     }
                     return { w: "", r: "", rir: "" };
                   }
@@ -11764,6 +11864,20 @@ function isNearBodyweightElasticSession(exName, sets) {
                     {hasAltToggle && <div style={{ display: "flex", gap: 0, marginBottom: 10, borderRadius: 8, overflow: "hidden", border: "1px solid " + dc + "40", alignSelf: "flex-start", width: "fit-content" }} onClick={function(e) { e.stopPropagation(); }}>
                       <button onClick={function() { setExerciseAltPreference(altKey, false); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: !isAlt ? dc : "transparent", color: !isAlt ? "#fff" : T.sub }}>Abduzione laterale IR</button>
                       <button onClick={function() { setExerciseAltPreference(altKey, true); }} style={{ padding: "5px 12px", border: "none", fontSize: 11, fontWeight: 700, cursor: "pointer", background: isAlt ? dc : "transparent", color: isAlt ? "#fff" : T.sub }}>Clamshell</button>
+                    </div>}
+                    {loadModes.length > 0 && !usesBand && !usesTrxLength && !isBW && <div style={{ marginBottom: 10, borderRadius: 12, padding: "10px 12px", background: T.cd, border: "1px solid " + T.bg }}>
+                      <div style={{ fontSize: 10, fontWeight: 900, color: T.sub, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 8 }}>Attrezzo e peso</div>
+                      {loadModes.length > 1 && <div style={{ display: "flex", gap: 6, marginBottom: 8 }}>
+                        {loadModes.map(function(modeKey) {
+                          var activeMode = selectedLoadMode === modeKey;
+                          return <button key={modeKey} type="button" onClick={function() { setExerciseLoadPreference(ex.n, { mode: modeKey }); }} style={{ flex: 1, minHeight: 34, border: "1px solid " + (activeMode ? dc : T.bg), borderRadius: 8, background: activeMode ? dc : T.sb, color: activeMode ? "#fff" : T.sub, fontSize: 12, fontWeight: 800, cursor: "pointer" }}>{modeKey === LOAD_MODE_DUMBBELLS ? "Manubri" : "Bilanciere"}</button>;
+                        })}
+                      </div>}
+                      <label style={{ display: "grid", gap: 5 }}>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: T.tx }}>{selectedLoadMode === LOAD_MODE_DUMBBELLS ? "Kg per manubrio" : (usesBarbellTotalForMode(ex.n, selectedLoadMode) ? "Peso totale bilanciere" : "Kg")}</span>
+                        <input type="number" inputMode="decimal" min="0" step="0.5" value={selectedLoadWeight || ""} onChange={function(e) { setExerciseLoadPreference(ex.n, { weight: parseFloat(e.target.value) || 0 }); }} style={{ width: "100%", padding: "10px 12px", border: "1px solid " + dc + "35", borderRadius: 8, fontSize: 15, fontWeight: 700, background: T.sb, color: T.tx, boxSizing: "border-box" }} />
+                      </label>
+                      {selectedLoadMode === LOAD_MODE_BARBELL && usesBarbellTotalForMode(ex.n, selectedLoadMode) && selectedLoadWeight > 0 && <div style={{ marginTop: 6, fontSize: 10, color: T.sub }}>Dischi: {Math.max(0, selectedLoadWeight - barbellWeight)} kg · bilanciere base: {barbellWeight} kg</div>}
                     </div>}
 
                     {!isBasics && flowSupersetMeta && flowSupersetMeta.role === "a" && <div style={{ marginBottom: 10, borderRadius: 12, padding: "10px 12px", background: dc + "10", border: "1px solid " + dc + "25" }}>
@@ -11790,7 +11904,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                         {pastSessions[hPage].sets.sort(function(a,b) { return a.si - b.si; }).map(function(s, si) {
                           return <div key={si} style={{ display: "flex", alignItems: "center", gap: 5, borderRadius: 7, background: T.cd, border: "1px solid " + T.bg, padding: "4px 8px" }}>
                             <span style={{ fontSize: 10, fontWeight: 800, color: dc }}>{s.si + 1}</span>
-                            <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{formatSetResult(ex.n, s, isBW, isTimeTrackedExercise(ex.n, ex.s))}</span>
+                            <span style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{formatSetResult(ex.n, s, isBW, isTimeTrackedExercise(ex.n, ex.s), exerciseLoadPrefs)}</span>
                           </div>;
                         })}
                       </div>
@@ -12160,7 +12274,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                                   <div style={{ display: "grid", gridTemplateColumns: !isBW ? (showInlineRir ? "1fr 1fr 92px" : "1fr 1fr") : (showInlineRir ? "1fr 92px" : "1fr"), gap: 8, alignItems: "end" }}>
                                     {!isBW && <label style={{ display: "grid", gap: 4, minWidth: 0 }}>
                                       <span style={{ fontSize: 10, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 0.7 }}>
-                                        {usesBand ? "Tacca elastico" : (usesTrxLength ? "Lunghezza TRX" : (usesBarbellTotal(ex.n) ? "Kg dischi" : "Kg"))}
+                                        {usesBand ? "Tacca elastico" : (usesTrxLength ? "Lunghezza TRX" : (selectedLoadMode === LOAD_MODE_DUMBBELLS ? "Kg/manubrio" : (usesBarbellTotalForMode(ex.n, selectedLoadMode) ? "Kg dischi" : "Kg")))}
                                       </span>
                                       <input type="number" inputMode="numeric" min={(usesBand || usesTrxLength) ? 1 : 0} max={usesBand ? 10 : (usesTrxLength ? 20 : undefined)} placeholder={usesBand ? "1-10" : (usesTrxLength ? "1-20" : "0")} value={tmpW} onChange={function(e) { setTmpW(usesBand ? String(clampElasticTick(e.target.value) || "") : (usesTrxLength ? String(clampTrxLength(e.target.value) || "") : e.target.value)); }} style={{ width: "100%", minWidth: 0, padding: "12px 10px", border: "2px solid " + dc + "60", borderRadius: 8, fontSize: 17, textAlign: "center", background: T.cd, color: T.tx, WebkitTextFillColor: T.tx, caretColor: T.tx, opacity: 1, fontWeight: 800, boxSizing: "border-box" }} autoFocus />
                                     </label>}
@@ -12183,8 +12297,8 @@ function isNearBodyweightElasticSession(exName, sets) {
                                   <div style={{ display: "flex", gap: 8 }}>
                                     <button onClick={function(e) {
                                       e.stopPropagation();
-                                      var storedWeight = isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : (usesTrxLength ? clampTrxLength(tmpW) : plateInputToStoredWeight(ex.n, tmpW, barbellWeight)));
-                                      beginLogSet(ex, dayIdx, si, storedWeight, tmpR, isBW, tmpRir);
+                                      var storedWeight = isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : (usesTrxLength ? clampTrxLength(tmpW) : plateInputToStoredWeight(ex.n, tmpW, barbellWeight, selectedLoadMode)));
+                                      beginLogSet(ex, dayIdx, si, storedWeight, tmpR, isBW, tmpRir, selectedLoadMode);
                                       var nextAction = buildNextActionInfo(dayData, dayIdx, i, ex.n, si, sc);
                                       if (flowModeEnabled && !isBasics) {
                                         setTimerFlowInfo(nextAction ? { nextLabel: nextAction.label, filler: nextAction.filler || "" } : null);
@@ -12229,19 +12343,20 @@ function isNearBodyweightElasticSession(exName, sets) {
                                   </div>
                                 </div>
                                 {!isBW && !usesBand && !usesTrxLength && usesBarbellTotal(ex.n) && <div style={{ marginTop: 6, fontSize: 11, color: T.sub, lineHeight: 1.5 }}>
-                                  {"Totale: " + plateInputToStoredWeight(ex.n, tmpW, barbellWeight) + " kg (bil. " + barbellWeight + " + dischi " + (parseFloat(tmpW) || 0) + ")"}
+                                  {"Totale: " + plateInputToStoredWeight(ex.n, tmpW, barbellWeight, selectedLoadMode) + " kg (bil. " + barbellWeight + " + dischi " + (parseFloat(tmpW) || 0) + ")"}
                                 </div>}
                               </div>
                             ) : done ? (
                               <div style={{ padding: "0 10px 10px", display: "flex", alignItems: "center", gap: 8 }}>
                                 <div style={{ fontSize: 15, fontWeight: 800, color: T.ok, flex: 1 }}>
-                                  {formatSetResult(ex.n, lg, isBW, isTimeExercise)}
+                                  {formatSetResult(ex.n, lg, isBW, isTimeExercise, exerciseLoadPrefs)}
                                   {normalizeRirValue(lg.rir) && <span style={{ color: T.sub, fontWeight: 700, fontSize: 12 }}>{" · RIR " + normalizeRirValue(lg.rir)}</span>}
                                 </div>
                                 <button onClick={function(e) {
                                   e.stopPropagation();
+                                  var logLoadMode = getStoredSetLoadMode(ex.n, lg, exerciseLoadPrefs);
                                   setEditing(i + "-" + si);
-                                  setTmpW(usesBand ? String(clampElasticTick(lg.w) || "") : (usesTrxLength ? String(clampTrxLength(lg.w) || "") : String(storedWeightToPlateInput(ex.n, lg.w, barbellWeight))));
+                                  setTmpW(usesBand ? String(clampElasticTick(lg.w) || "") : (usesTrxLength ? String(clampTrxLength(lg.w) || "") : String(storedWeightToPlateInput(ex.n, lg.w, barbellWeight, logLoadMode))));
                                   setTmpR(String(lg.r));
                                   setTmpRir(normalizeRirValue(lg.rir));
                                 }} style={{ minWidth: 58, height: 28, border: "1px solid " + T.bg, borderRadius: 8, background: T.bg, color: T.sub, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0, padding: "0 8px", touchAction: "manipulation" }}>Modifica</button>
@@ -12250,14 +12365,14 @@ function isNearBodyweightElasticSession(exName, sets) {
                             ) : (
                               <div style={{ padding: "0 10px 10px", display: "flex", flexDirection: "column", gap: 6 }}>
                                 <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(sugg.w); setTmpR(sugg.r); setTmpRir(sugg.rir || ""); }} style={{ width: "100%", minHeight: 52, border: "2px dashed " + dc + "50", borderRadius: 10, background: dc + "08", color: dc, fontWeight: 800, fontSize: 15, cursor: "pointer", touchAction: "manipulation" }}>
-                                  {sugg.r ? "▶ " + (isTimeExercise ? (sugg.r + " s") : (isBW ? sugg.r + " rip" : formatLoadAndReps(ex.n, usesBarbellTotal(ex.n) ? plateInputToStoredWeight(ex.n, sugg.w, barbellWeight) : sugg.w, sugg.r))) : (si === 0 ? "+ registra" : "+ inserisci serie")}
+                                  {sugg.r ? "▶ " + (isTimeExercise ? (sugg.r + " s") : (isBW ? sugg.r + " rip" : formatLoadAndReps(ex.n, usesBarbellTotalForMode(ex.n, selectedLoadMode) ? plateInputToStoredWeight(ex.n, sugg.w, barbellWeight, selectedLoadMode) : sugg.w, sugg.r, selectedLoadMode))) : (si === 0 ? "+ registra" : "+ inserisci serie")}
                                 </button>
                                 {(function() {
                                   if (si === 0) return null;
                                   var prevLg = tLog ? tLog.sets.find(function(s) { return s.si === si - 1; }) : null;
                                   if (!prevLg) return null;
-                                  return <button onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : prevLg.w, String(prevLg.r), isBW, prevLg.rir || ""); }} style={{ width: "100%", minHeight: 36, border: "1px solid " + T.sub + "30", borderRadius: 8, background: "transparent", color: T.sub, fontWeight: 700, fontSize: 12, cursor: "pointer", touchAction: "manipulation" }}>
-                                    {"↑ copia serie sopra · " + formatSetResult(ex.n, prevLg, isBW, isTimeExercise)}
+                                  return <button onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : prevLg.w, String(prevLg.r), isBW, prevLg.rir || "", getStoredSetLoadMode(ex.n, prevLg, exerciseLoadPrefs)); }} style={{ width: "100%", minHeight: 36, border: "1px solid " + T.sub + "30", borderRadius: 8, background: "transparent", color: T.sub, fontWeight: 700, fontSize: 12, cursor: "pointer", touchAction: "manipulation" }}>
+                                    {"↑ copia serie sopra · " + formatSetResult(ex.n, prevLg, isBW, isTimeExercise, exerciseLoadPrefs)}
                                   </button>;
                                 })()}
                               </div>
