@@ -2758,6 +2758,36 @@ var BARBELL_MIN_KG = 0;
 var BARBELL_TOTAL_EX = ["Squat","Panca","Military Press","Stacco da Terra","Stacco Rumeno","Front Squat","Pause Squat","Push Press","Stacco Sumo","Rematore Bilanciere","Pendlay Row","Good Morning","Glute Bridge Bilanciere"];
 var LOAD_MODE_BARBELL = "barbell";
 var LOAD_MODE_DUMBBELLS = "dumbbells";
+var EXERCISE_LOAD_MODE_OPTIONS = {
+  "Squat": [LOAD_MODE_BARBELL, LOAD_MODE_DUMBBELLS],
+  "Stacco Rumeno": [LOAD_MODE_BARBELL, LOAD_MODE_DUMBBELLS],
+  "Push Press": [LOAD_MODE_BARBELL, LOAD_MODE_DUMBBELLS],
+  "Military Press": [LOAD_MODE_BARBELL, LOAD_MODE_DUMBBELLS],
+  "Panca": [LOAD_MODE_BARBELL],
+  "Front Squat": [LOAD_MODE_BARBELL],
+  "Pause Squat": [LOAD_MODE_BARBELL],
+  "Stacco da Terra": [LOAD_MODE_BARBELL],
+  "Stacco Sumo": [LOAD_MODE_BARBELL],
+  "Rematore Bilanciere": [LOAD_MODE_BARBELL],
+  "Pendlay Row": [LOAD_MODE_BARBELL],
+  "Good Morning": [LOAD_MODE_BARBELL],
+  "Glute Bridge Bilanciere": [LOAD_MODE_BARBELL],
+  "Press Manubri da Seduta": [LOAD_MODE_DUMBBELLS],
+  "Arnold Press": [LOAD_MODE_DUMBBELLS],
+  "Alzate Laterali": [LOAD_MODE_DUMBBELLS],
+  "Curl Bicipiti": [LOAD_MODE_DUMBBELLS],
+  "Curl Martello": [LOAD_MODE_DUMBBELLS],
+  "Floor Press Manubri": [LOAD_MODE_DUMBBELLS],
+  "French Press Manubri": [LOAD_MODE_DUMBBELLS],
+  "Overhead Extension": [LOAD_MODE_DUMBBELLS],
+  "Rematore Manubri": [LOAD_MODE_DUMBBELLS],
+  "Single Leg Deadlift": [LOAD_MODE_DUMBBELLS],
+  "Walking Lunge": [LOAD_MODE_DUMBBELLS],
+  "Affondi": [LOAD_MODE_DUMBBELLS],
+  "Squat Bulgaro": [LOAD_MODE_DUMBBELLS],
+  "Kick Back Manubri": [LOAD_MODE_DUMBBELLS],
+  "Croci Manubri a Terra": [LOAD_MODE_DUMBBELLS]
+};
 
 function usesBarbellTotal(exName) {
   if (exName === "T-bar Row") return false;
@@ -2765,11 +2795,7 @@ function usesBarbellTotal(exName) {
 }
 
 function getExerciseLoadModes(exName) {
-  var gear = classifyExerciseGear(exName) || [];
-  var modes = [];
-  if (gear.indexOf("bilanciere") >= 0) modes.push(LOAD_MODE_BARBELL);
-  if (gear.indexOf("manubri") >= 0) modes.push(LOAD_MODE_DUMBBELLS);
-  return modes;
+  return EXERCISE_LOAD_MODE_OPTIONS[exName] ? EXERCISE_LOAD_MODE_OPTIONS[exName].slice() : [];
 }
 
 function getDefaultLoadMode(exName) {
