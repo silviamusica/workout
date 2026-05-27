@@ -11752,9 +11752,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     {!isBasics && !simplifiedWorkoutUi && hasSavedExerciseNoteContent && <div style={{ background: dc + "12", color: dc, fontSize: 9, fontWeight: 900, padding: "2px 7px", borderRadius: 999, textTransform: "uppercase", letterSpacing: 0.5 }}>Nota</div>}
                     {!isBasics && tLog && tLog.sets.length > 0 && <div style={{ background: T.ok, color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 8 }}>{tLog.sets.length + "/" + sc}</div>}
-                    {!isBeginner && !rowSupersetMeta && (function() {
+                    {!isBeginner && (function() {
                       var mins = estimateExerciseMinutes(rawEx, ex);
-                      return mins ? <span style={{ fontSize: 12, color: T.sub, fontWeight: 700, whiteSpace: "nowrap" }}>{"~" + mins + " min"}</span> : null;
+                      return mins ? <span style={{ fontSize: 11, color: T.sub, fontWeight: 600, whiteSpace: "nowrap" }}>{"~" + mins + "'"}</span> : null;
                     })()}
                     <div style={{ fontSize: 14, color: T.sub, transform: isX ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
                   </div>
