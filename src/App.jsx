@@ -11857,9 +11857,8 @@ function isNearBodyweightElasticSession(exName, sets) {
                             var done = !!lg;
                             var loggedBarbellBase = lg ? getStoredSetBarbellBase(ex.n, lg, barbellWeight, exerciseLoadPrefs) : barbellWeight;
                             return <div key={si} style={{ borderRadius: 10, border: "1px solid " + (done ? T.ok + "35" : T.bg), background: done ? T.ok + "0C" : T.sb, overflow: "hidden" }}>
-                              <div style={{ padding: "8px 9px 7px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
+                              <div style={{ padding: "8px 9px 7px" }}>
                                 <div style={{ fontSize: 11, fontWeight: 800, color: T.tx }}>{"Serie " + (si + 1)}</div>
-                                <div style={{ fontSize: 10, color: T.sub, fontWeight: 700 }}>{targetLabel}</div>
                               </div>
                               {isE ? <div style={{ padding: "0 9px 9px" }}>
                                 <div style={{ display: "grid", gap: 7 }}>
@@ -11909,12 +11908,20 @@ function isNearBodyweightElasticSession(exName, sets) {
                                   setTmpR(String(lg.r));
                                   setTmpRir(getStoredSetRpeValue(lg) || normalizeRirValue(lg.rir));
                                   setTmpBarbellBase(logBarbellBase);
-                                }} style={{ minWidth: 52, height: 26, border: "1px solid " + T.bg, borderRadius: 8, background: T.bg, color: T.sub, fontSize: 10, fontWeight: 800, cursor: "pointer", flexShrink: 0, padding: "0 8px" }}>Mod.</button>
+                                }} style={{ width: 28, height: 26, border: "1px solid " + T.bg, borderRadius: 8, background: T.bg, color: T.sub, fontSize: 13, fontWeight: 800, cursor: "pointer", flexShrink: 0, padding: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>✏️</button>
                                 <button onClick={function(e) { e.stopPropagation(); var t = todayStr(); var k = t + "_d" + dayIdx + "_m" + month + "_" + ex.n; var nl = Object.assign({}, logs); if (nl[k]) { nl[k] = Object.assign({}, nl[k], { sets: nl[k].sets.filter(function(s) { return s.si !== si; }) }); saveData(nl, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false); } }} style={{ width: 26, height: 26, border: "1px solid " + T.bg, borderRadius: 8, background: T.bg, color: T.sub, fontSize: 13, fontWeight: 700, cursor: "pointer", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>✕</button>
-                              </div> : <div style={{ padding: "0 9px 9px" }}>
+                              </div> : <div style={{ padding: "0 9px 9px", display: "flex", flexDirection: "column", gap: 5 }}>
                                 <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(sugg.w); setTmpR(sugg.r); setTmpRir(sugg.rir || ""); setTmpBarbellBase(sugg.bb || barbellWeight); }} style={{ width: "100%", minHeight: 42, border: "1px dashed " + dc + "55", borderRadius: 9, background: dc + "08", color: dc, fontWeight: 800, fontSize: 13, cursor: "pointer" }}>
                                   {done ? "Modifica" : (si === 0 ? "Registra serie" : "Inserisci serie")}
                                 </button>
+                                {(function() {
+                                  if (si === 0) return null;
+                                  var prevLg = tLog ? tLog.sets.find(function(s) { return s.si === si - 1; }) : null;
+                                  if (!prevLg) return null;
+                                  return <button onClick={function(e) { e.stopPropagation(); beginLogSet(ex, dayIdx, si, isBW ? 0 : prevLg.w, String(prevLg.r), isBW, prevLg.rir || "", getStoredSetLoadMode(ex.n, prevLg, exerciseLoadPrefs), getStoredSetBarbellBase(ex.n, prevLg, barbellWeight, exerciseLoadPrefs)); }} style={{ width: "100%", minHeight: 34, border: "1px solid " + T.sub + "30", borderRadius: 8, background: "transparent", color: T.sub, fontWeight: 700, fontSize: 11, cursor: "pointer", touchAction: "manipulation" }}>
+                                    {"↑ copia serie sopra · " + formatSetResult(ex.n, prevLg, isBW, isTimeExercise, exerciseLoadPrefs)}
+                                  </button>;
+                                })()}
                               </div>}
                             </div>;
                           })}
@@ -12483,7 +12490,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                             ) : (
                               <div style={{ padding: "0 10px 10px", display: "flex", flexDirection: "column", gap: 6 }}>
                                 <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(sugg.w); setTmpR(sugg.r); setTmpRir(sugg.rir || ""); }} style={{ width: "100%", minHeight: 52, border: "2px dashed " + dc + "50", borderRadius: 10, background: dc + "08", color: dc, fontWeight: 800, fontSize: 15, cursor: "pointer", touchAction: "manipulation" }}>
-                                  {sugg.r ? "▶ " + (isTimeExercise ? (sugg.r + " s") : (isBW ? sugg.r + " rip" : formatLoadAndReps(ex.n, usesBarbellTotalForMode(ex.n, selectedLoadMode) ? plateInputToStoredWeight(ex.n, sugg.w, barbellWeight, selectedLoadMode) : sugg.w, sugg.r, selectedLoadMode))) : (si === 0 ? "+ registra" : "+ inserisci serie")}
+                                  {si === 0 ? "+ registra" : "+ inserisci serie"}
                                 </button>
                                 {(function() {
                                   if (si === 0) return null;
