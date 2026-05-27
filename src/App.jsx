@@ -10224,7 +10224,7 @@ function isNearBodyweightElasticSession(exName, sets) {
 
         return <div id="progressi-top" style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }} onClick={function() { setProgTooltip(null); }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, padding: "4px 0 8px" }}>
-            <div style={{ fontSize: 18, fontWeight: 900, color: T.tx, flex: 1 }}>📊 Progressi</div>
+            <div style={{ fontSize: 14, fontWeight: 900, color: T.tx, flex: 1 }}>📊 Progressi</div>
             <button onClick={function(e) { e.stopPropagation(); setProgTooltip(progTooltip === "progressi-help" ? null : "progressi-help"); }} style={{ width: 22, height: 22, borderRadius: "50%", border: "1px solid " + dc + "40", background: progTooltip === "progressi-help" ? dc : "transparent", color: progTooltip === "progressi-help" ? "#fff" : dc, fontSize: 11, fontWeight: 800, cursor: "pointer", flexShrink: 0 }}>?</button>
           </div>
           {progTooltip === "progressi-help" && <div style={{ marginBottom: 10, padding: "10px 12px", borderRadius: 9, background: dc + "10", border: "1px solid " + dc + "20", fontSize: 11, color: T.sub, lineHeight: 1.7 }} onClick={function(e) { e.stopPropagation(); }}>
@@ -10241,11 +10241,11 @@ function isNearBodyweightElasticSession(exName, sets) {
           </div> : <>
             <div style={{ display: "flex", flexDirection: "column" }}>
 
-            {priorityGuides.length > 0 && <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 3 }}>
-              <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
+            {priorityGuides.length > 0 && <details style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 8, order: 3 }}>
+              <summary style={{ listStyle: "none", cursor: "pointer", padding: "8px 12px 7px", borderBottom: "1px solid " + T.bg }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Analisi guidata: cosa fare adesso</div>
+                    <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, textTransform: "uppercase", letterSpacing: 0.6 }}>Analisi guidata: cosa fare adesso</div>
                     <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.6, marginTop: 3 }}>Priorita ricavate dai dati delle ultime sedute registrate.</div>
                   </div>
                   <div style={{ fontSize: 11, fontWeight: 800, color: dc, flexShrink: 0 }}>Apri</div>
@@ -10254,7 +10254,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               <div style={{ display: "grid", gap: 0 }}>
                 {priorityGuides.map(function(item, ii) {
                   var toneColor = item.guide.tone === "up" ? T.ok : item.guide.tone === "mid" ? "#B7791F" : item.guide.tone === "hold" ? "#C62828" : T.sub;
-                  return <div key={item.name} style={{ padding: "11px 14px", borderBottom: ii < priorityGuides.length - 1 ? "1px solid " + T.bg : "none" }}>
+                  return <div key={item.name} style={{ padding: "8px 12px", borderBottom: ii < priorityGuides.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
                       <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, flex: 1 }}>{getExerciseDisplayName(item.name)}</div>
                       <div style={{ fontSize: 10, fontWeight: 800, color: toneColor, textTransform: "uppercase", letterSpacing: 0.6 }}>{item.guide.title}</div>
@@ -10267,11 +10267,11 @@ function isNearBodyweightElasticSession(exName, sets) {
             </details>}
 
             {/* Riepilogo settimane */}
-            <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 1 }}>
-              <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px" }}>
+            <details style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 8, order: 1 }}>
+              <summary style={{ listStyle: "none", cursor: "pointer", padding: "8px 12px 7px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Archivio precedenti</div>
+                    <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, textTransform: "uppercase", letterSpacing: 0.6 }}>Archivio precedenti</div>
                     <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Settimane e sedute salvate: apri per ricontrollare o correggere.</div>
                   </div>
                   <div style={{ fontSize: 11, fontWeight: 800, color: dc, flexShrink: 0 }}>Apri</div>
@@ -10294,7 +10294,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     return cmp !== 0 ? cmp : ((a.day || 0) - (b.day || 0));
                   });
                   return <details key={wk} style={{ borderBottom: wi < weeks.length - 1 ? "1px solid " + T.bg : "none" }}>
-                    <summary style={{ listStyle: "none", cursor: "pointer", padding: "10px 14px" }}>
+                    <summary style={{ listStyle: "none", cursor: "pointer", padding: "7px 12px" }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ fontSize: 12, fontWeight: 700, color: T.tx }}>{fmtWeek(wk)}</div>
@@ -10539,11 +10539,11 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>
             </details>
 
-            {cardioProgressItems.length > 0 && <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 2 }}>
-              <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
+            {cardioProgressItems.length > 0 && <details style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 8, order: 2 }}>
+              <summary style={{ listStyle: "none", cursor: "pointer", padding: "8px 12px 7px", borderBottom: "1px solid " + T.bg }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Cardio registrato</div>
+                    <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, textTransform: "uppercase", letterSpacing: 0.6 }}>Cardio registrato</div>
                     <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Sedute cardio segnate e confronto con la precedente.</div>
                   </div>
                   <div style={{ fontSize: 11, fontWeight: 800, color: dc, flexShrink: 0 }}>Apri</div>
@@ -10552,7 +10552,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               <div style={{ display: "grid", gap: 0 }}>
                 {cardioProgressItems.map(function(item, ii) {
                   var toneColor = getCardioToneColor(item.tone);
-                  return <div key={item.label} style={{ padding: "11px 14px", borderBottom: ii < cardioProgressItems.length - 1 ? "1px solid " + T.bg : "none" }}>
+                  return <div key={item.label} style={{ padding: "8px 12px", borderBottom: ii < cardioProgressItems.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
                       <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, flex: 1 }}>{item.label}</div>
                       <div style={{ fontSize: 10, fontWeight: 800, color: toneColor, textTransform: "uppercase", letterSpacing: 0.6 }}>{item.count + " sedute"}</div>
@@ -10563,11 +10563,11 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>
             </details>}
 
-            {keyLiftProgress.length > 0 && <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 4 }}>
-              <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
+            {keyLiftProgress.length > 0 && <details style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 8, order: 4 }}>
+              <summary style={{ listStyle: "none", cursor: "pointer", padding: "8px 12px 7px", borderBottom: "1px solid " + T.bg }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Fondamentali: risultati chiave</div>
+                    <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, textTransform: "uppercase", letterSpacing: 0.6 }}>Fondamentali: risultati chiave</div>
                     <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Carico, rip totali e confronto con la settimana prima.</div>
                   </div>
                   <div style={{ fontSize: 11, fontWeight: 800, color: dc, flexShrink: 0 }}>Apri</div>
@@ -10629,10 +10629,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                   var indicatorPrefix = "";
                   if (item.isBand && showNeutralIndicator) indicatorPrefix = "→ ";
                   else if (!showNeutralIndicator && trendIcon) indicatorPrefix = trendIcon + " ";
-                  return <div key={item.name} style={{ padding: "11px 14px", borderBottom: ii < keyLiftProgress.length - 1 ? "1px solid " + T.bg : "none" }}>
+                  return <div key={item.name} style={{ padding: "8px 12px", borderBottom: ii < keyLiftProgress.length - 1 ? "1px solid " + T.bg : "none" }}>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 10, alignItems: "start", marginBottom: 10 }}>
-                      <div style={{ fontSize: 15, fontWeight: 800, color: T.tx, lineHeight: 1.3 }}>{getExerciseDisplayName(item.name)}</div>
-                      <div style={{ fontSize: 18, fontWeight: 900, color: trendColor, whiteSpace: "nowrap", textAlign: "right" }}>
+                      <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, lineHeight: 1.3 }}>{getExerciseDisplayName(item.name)}</div>
+                      <div style={{ fontSize: 15, fontWeight: 900, color: trendColor, whiteSpace: "nowrap", textAlign: "right" }}>
                         {indicatorPrefix}{topIndicator}
                       </div>
                     </div>
@@ -10654,11 +10654,11 @@ function isNearBodyweightElasticSession(exName, sets) {
             </details>}
 
             {/* Progressi per esercizio */}
-            <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 5 }}>
-              <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px", borderBottom: "1px solid " + T.bg }}>
+            <details style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 8, order: 5 }}>
+              <summary style={{ listStyle: "none", cursor: "pointer", padding: "8px 12px 7px", borderBottom: "1px solid " + T.bg }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>Andamento esercizi</div>
+                    <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, textTransform: "uppercase", letterSpacing: 0.6 }}>Andamento esercizi</div>
                     <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Confronto esercizio per esercizio e prossima azione.</div>
                   </div>
                   <div style={{ fontSize: 11, fontWeight: 800, color: dc, flexShrink: 0 }}>Apri</div>
@@ -10683,7 +10683,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                           {ex.prev ? ("Prima: " + ex.prev.label) : "Serve ancora un confronto"}
                         </div>
                       </div>
-                      <div style={{ fontSize: 15, fontWeight: 800, color: trendColor, minWidth: 64, textAlign: "right" }}>
+                      <div style={{ fontSize: 13, fontWeight: 800, color: trendColor, minWidth: 56, textAlign: "right" }}>
                         <span style={{ fontSize: 13, marginRight: 3 }}>{trendIcon}</span>{valLabel}
                       </div>
                     </div>
@@ -10700,11 +10700,11 @@ function isNearBodyweightElasticSession(exName, sets) {
               </div>
             </details>
 
-            {rirProgress.length > 0 && <details style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10, order: 6 }}>
-              <summary style={{ listStyle: "none", cursor: "pointer", padding: "12px 14px 10px" }}>
+            {rirProgress.length > 0 && <details style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 8, order: 6 }}>
+              <summary style={{ listStyle: "none", cursor: "pointer", padding: "8px 12px 7px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 14, fontWeight: 800, color: T.tx }}>RIR medio</div>
+                    <div style={{ fontSize: 12, fontWeight: 800, color: T.tx, textTransform: "uppercase", letterSpacing: 0.6 }}>RIR medio</div>
                     <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>Blocco secondario: aprilo solo se vuoi controllare il buffer registrato.</div>
                   </div>
                   <div style={{ fontSize: 11, fontWeight: 800, color: dc, flexShrink: 0 }}>Apri</div>
@@ -10723,7 +10723,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                           {item.prev !== null ? (" · prima: " + item.prev) : ""}
                         </div>
                       </div>
-                      <div style={{ fontSize: 14, fontWeight: 800, color: trendColor, minWidth: 46, textAlign: "right" }}>
+                      <div style={{ fontSize: 13, fontWeight: 800, color: trendColor, minWidth: 46, textAlign: "right" }}>
                         <span style={{ fontSize: 13, marginRight: 3 }}>{trendIcon}</span>{item.last}
                       </div>
                     </div>
