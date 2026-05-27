@@ -12396,6 +12396,22 @@ function isNearBodyweightElasticSession(exName, sets) {
                                       </div>
                                     </div>}
                                   </div>
+                                  {(function() {
+                                    if (si === 0) return null;
+                                    var prevLg = tLog ? tLog.sets.find(function(s) { return s.si === si - 1; }) : null;
+                                    if (!prevLg) return null;
+                                    return <div style={{ marginBottom: 8 }}>
+                                      <button onClick={function(e) { 
+                                        e.stopPropagation(); 
+                                        var logLoadMode = getStoredSetLoadMode(ex.n, prevLg, exerciseLoadPrefs);
+                                        setTmpW(usesBand ? String(clampElasticTick(prevLg.w) || "") : (usesTrxLength ? String(clampTrxLength(prevLg.w) || "") : String(storedWeightToPlateInput(ex.n, prevLg.w, barbellWeight, logLoadMode))));
+                                        setTmpR(String(prevLg.r));
+                                        setTmpRir(normalizeRirValue(prevLg.rir));
+                                      }} style={{ width: "100%", minHeight: 38, border: "1px solid " + dc + "40", borderRadius: 8, background: dc + "08", color: dc, fontWeight: 700, fontSize: 12, cursor: "pointer", touchAction: "manipulation" }}>
+                                        {"↑ Copia dalla serie sopra · " + formatSetResult(ex.n, prevLg, isBW, isTimeExercise, exerciseLoadPrefs)}
+                                      </button>
+                                    </div>;
+                                  })()}
                                   <div style={{ display: "flex", gap: 8 }}>
                                     <button onClick={function(e) {
                                       e.stopPropagation();
