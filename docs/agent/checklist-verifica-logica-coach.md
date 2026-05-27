@@ -1,153 +1,125 @@
-# Checklist verifica logica coach — da eseguire dopo ogni modifica alla scheda
+# Checklist verifica logica coach
 
-## Istruzione
+Da eseguire dopo ogni modifica alla scheda V4 o alla logica tutor.
 
-Dopo ogni modifica alla lista esercizi del programma V4, l'agente deve verificare che TUTTE le liste e funzioni della logica coach siano allineate. Ogni esercizio attivo deve essere presente nelle liste corrette. Ogni esercizio rimosso deve essere tolto.
+Fonte primaria:
+- `../../src/App.jsx`
 
-## Esercizi attualmente attivi nel V4 (aggiornato 2026-04-27)
+## Esercizi attivi V4
 
-**Giorni pesi** (logica coach completa):
-G1: Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel
-G2: Trazioni, Panca, Pulley, Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali
-G4: Stacco da Terra, Bulgarian Split Squat, Hyperextension, Abduzione laterale IR
-G5: T-bar Row, Military Press, Push-Up, Trazioni Supine, Woodchop, Alzate Laterali
+### Giorni pesi
 
-**Giorno leggero G3** (tipo `light: true` — logica coach NON si applica):
-G3: Alzate Laterali, Goblet Squat, Cable Pull-Apart con rotazione esterna, Abduzione laterale IR, Leg Extension al Cavo, TRX Row lento, Push-Up, Leg Curl al Cavo, Hollow Position
+- G1: Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel
+- G2: Trazioni, Panca, Pulley, Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali
+- G4: Stacco da Terra, Squat Bulgaro, Hyperextension, Abduzione laterale IR
+- G5: T-bar Row, Military Press, Push-Up, Woodchop, Trazioni Supine, Alzate Laterali
 
-Gli esercizi esclusivi del G3 NON devono essere in MAX_PROGRESS_EX, keyLiftNames, V4_DAY_SPLIT_PLAN. In `FAST_MODE_SUPERSETS` il G3 puo comparire solo con i suoi 4 superset automatici light. Se un esercizio del G3 coincide con un giorno pesi attivo (es. Push-Up, Leg Curl al Cavo, Alzate Laterali), puo comparire nelle liste coach perche esiste anche fuori dal G3.
+### Giorno leggero G3
 
-## 10 punti da verificare
+- G3: Alzate Laterali, Goblet Squat, Cable Pull-Apart con rotazione esterna, Abduzione laterale IR, Leg Extension al Cavo, TRX Row lento, Push-Up, Leg Curl al Cavo, Hollow Position
 
-Per ogni punto: cercare la riga nel codice, confrontare con la lista esercizi attivi, segnalare discrepanze.
+Gli esercizi esclusivi del G3 non devono finire in split AM/PM o Progressi fondamentali.
 
-### 1. MAX_PROGRESS_EX
-Deve contenere SOLO: Push-Up, Trazioni Supine
-(non è la lista dei fondamentali — è per esercizi a corpo libero senza peso fisso)
-- Cerca: `var MAX_PROGRESS_EX`
-- Verifica: nessun esercizio aggiunto che non sia BW senza peso
+## Cose da verificare
 
-### 2. ACCESSORY_PROGRESS_EX
-Deve contenere tutti gli accessori attivi:
-`Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Pulley, Curl Bicipiti, Bulgarian Split Squat, Hyperextension, Abduzione laterale IR, Woodchop, Push-Up, Trazioni Supine, T-bar Row, Cable Pull-Apart con rotazione esterna, Alzate Laterali`
-- Cerca: `var ACCESSORY_PROGRESS_EX`
-- Verifica: nessun esercizio rimosso (Squat Bulgaro, Face Pull, Fitball Hamstring Curl, Tricipiti Cavo, Dip, Hip Thrust)
+### 1. Liste progressione
 
-### 3. CORE_PROGRESS_EX
-Deve contenere: Ab Wheel (solo)
-- Cerca: `var CORE_PROGRESS_EX`
-- Verifica: Slackline non presente
+- `MAX_PROGRESS_EX`: Squat, Stacco da Terra, Panca, Military Press, Trazioni
+- `ACCESSORY_PROGRESS_EX`: Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Pulley, Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Squat Bulgaro, Hyperextension, Abduzione laterale IR, Push-Up, Trazioni Supine, Woodchop, T-bar Row, Alzate Laterali
+- `CORE_PROGRESS_EX`: Ab Wheel
 
-### 4. CALIBRATION_BODYWEIGHT_EX
-Deve contenere: Push-Up, Trazioni, Trazioni Supine, Ab Wheel, Abduzione laterale IR
-- Cerca: `var CALIBRATION_BODYWEIGHT_EX`
-- Verifica: non deve contenere Nordic Curl, Slackline, Dip alle Parallele, Fitball Hamstring Curl
+### 2. Calibrazione
 
-### 5. usesElasticScale
-Deve contenere: Trazioni, Trazioni Supine (solo)
-- Cerca: `function usesElasticScale`
-- Verifica: nessun altro aggiunto
+- `CALIBRATION_BODYWEIGHT_EX`: Push-Up, Trazioni, Trazioni Supine, Ab Wheel, Abduzione laterale IR
+- `usesElasticScale`: solo Trazioni, Trazioni Supine
+- `isCalibrationAllowedDay(day)`: deve escludere `cardio`, `rest`, `light`
 
-### 6. BARBELL_TOTAL_EX
-Deve contenere: Squat, Panca, Military Press, Stacco da Terra, Stacco Rumeno, Glute Bridge Bilanciere
-(più varianti legacy: Front Squat, Pause Squat, Push Press, Stacco Sumo, Rematore Bilanciere, Pendlay Row, Good Morning)
-- Cerca: `var BARBELL_TOTAL_EX`
-- Verifica: Glute Bridge Bilanciere presente
+### 3. Barbell e tipi calibrazione
 
-### 7. getGuidedExerciseClass
-- heavy: Squat, Stacco da Terra, Panca, Military Press, Trazioni, Trazioni Supine, T-bar Row, Stacco Rumeno, Glute Bridge Bilanciere, Pulley
-- mono: Curl Bicipiti, Woodchop, Abduzione laterale IR, Leg Curl al Cavo
-- compound (default): Bulgarian Split Squat, Push-Up, Hyperextension, Ab Wheel
-- Cerca: `function getGuidedExerciseClass`
-- Verifica: non deve contenere Hip Thrust Bilanciere, Tricipiti Cavo, Face Pull
+- `BARBELL_TOTAL_EX` deve includere: Squat, Panca, Military Press, Stacco da Terra, Stacco Rumeno, Glute Bridge Bilanciere
+- `EXERCISE_LOAD_MODE_OPTIONS` deve riflettere gli esercizi con preferenza esplicita di attrezzo/carico:
+  - misti `bilanciere/manubri`: Squat, Stacco Rumeno, Push Press, Military Press
+  - solo `bilanciere`: Panca, Front Squat, Pause Squat, Stacco da Terra, Stacco Sumo, Rematore Bilanciere, Pendlay Row, Good Morning, Glute Bridge Bilanciere
+  - solo `manubri`: Press Manubri da Seduta, Arnold Press, Alzate Laterali, Curl Bicipiti, Curl Martello, Floor Press Manubri, French Press Manubri, Overhead Extension, Rematore Manubri, Single Leg Deadlift, Walking Lunge, Affondi, Squat Bulgaro, Kick Back Manubri, Croci Manubri a Terra
+- `getExerciseLoadModes` non deve dipendere da helper definiti solo dentro il componente React
+- `getStoredSetLoadMode` deve leggere:
+  - `setEntry.m` se presente
+  - altrimenti `exerciseLoadPrefs[exercise].mode`
+  - altrimenti il default della mappa globale
+- `getCalibrationType`:
+  - `weighted`: Squat, Panca, Military Press, Stacco da Terra, Stacco Rumeno, Glute Bridge Bilanciere, T-bar Row, Hyperextension
+  - `dumbbell`: Squat Bulgaro, Curl Bicipiti, Alzate Laterali
+  - `cable`: Pulley, Leg Curl al Cavo, Woodchop, Cable Pull-Apart con rotazione esterna, Leg Extension al Cavo
+  - `band-assist`: Trazioni, Trazioni Supine
+  - `bodyweight`: Push-Up, Ab Wheel, Abduzione laterale IR, TRX Row lento, Hollow Position
 
-### 8. getCalibrationType
-Ogni esercizio attivo deve avere il tipo corretto:
-- weighted: Squat, Panca, Military Press, Stacco da Terra, Stacco Rumeno, Glute Bridge Bilanciere, T-bar Row, Hyperextension, Bulgarian Split Squat→dumbbell, Curl Bicipiti→dumbbell
-- cable: Pulley, Leg Curl al Cavo, Woodchop
-- dumbbell: Bulgarian Split Squat, Curl Bicipiti
-- band-assist: Trazioni, Trazioni Supine
-- bodyweight: Push-Up, Ab Wheel, Abduzione laterale IR
-- body-control: Ab Wheel
-- Cerca: `function getCalibrationType`
+### 4. Classificazione guided
 
-### 9. getGuidedIncrementInfo
-Ogni esercizio attivo deve avere l'incremento corretto:
-- +2.5 kg: Squat, Panca, Military, Stacco, Stacco Rumeno, Glute Bridge Bilanciere, T-bar Row (default weighted)
-- +1 kg per manubrio: Bulgarian Split Squat, Curl Bicipiti
-- +1 scatto cavo: Pulley, Leg Curl al Cavo, Woodchop
-- +1 rip per serie: Push-Up, Ab Wheel, Abduzione laterale IR
-- +1 tacca elastico: Trazioni, Trazioni Supine
-- +1 kg: Hyperextension
-- Cerca: `function getGuidedIncrementInfo`
+- `getGuidedExerciseClass`
+  - `heavy`: Squat, Stacco da Terra, Panca, Military Press, Trazioni, Trazioni Supine, T-bar Row, Stacco Rumeno, Glute Bridge Bilanciere, Pulley
+  - `mono`: Curl Bicipiti, Woodchop, Abduzione laterale IR, Cable Pull-Apart con rotazione esterna, Leg Curl al Cavo, Alzate Laterali
+  - `compound`: il resto dei giorni pesi
 
-### 10. getRecoveryFillerSuggestion
-Ogni esercizio attivo con recupero ≥60s deve avere un filler:
-- Squat → band pull-apart leggero
-- Stacco da Terra / Stacco Rumeno → respirazione diaframmatica
-- Panca → retrazione scapolare
-- Military Press → dead hang passivo
-- Glute Bridge Bilanciere → cat-cow lento
-- Bulgarian Split Squat → ankle circles
-- Tutti gli altri → filler generico
-- Cerca: `function getRecoveryFillerSuggestion`
-- Verifica: non deve contenere Hip Thrust Bilanciere, Squat Bulgaro
+### 5. Incrementi guided
 
-### 11. V4_DAY_SPLIT_PLAN
-- G1 AM: Squat, Stacco Rumeno, Glute Bridge Bilanciere — G1 PM: Leg Curl al Cavo, Ab Wheel
-- G2 AM: Trazioni, Panca — G2 PM: Pulley, Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali
-- G4 AM: Stacco da Terra, Bulgarian Split Squat — G4 PM: Hyperextension, Abduzione laterale IR
-- G5 AM: T-bar Row, Military Press — G5 PM: Push-Up, Trazioni Supine, Woodchop, Alzate Laterali
-- Cerca: `var V4_DAY_SPLIT_PLAN`
+- `+2.5 kg`: weighted di default
+- `+1 kg`: Hyperextension
+- `+1 kg per manubrio`: Squat Bulgaro, Curl Bicipiti, Alzate Laterali
+- `+1 scatto cavo`: Pulley, Leg Curl al Cavo, Woodchop, Cable Pull-Apart con rotazione esterna, Leg Extension al Cavo
+- `+1 tacca elastico`: Trazioni, Trazioni Supine
+- `+1 rip per serie`: Push-Up, Ab Wheel, Abduzione laterale IR, TRX Row lento
 
-### 12. FAST_MODE_SUPERSETS
-- G1: Leg Curl al Cavo + Ab Wheel (rest 60s)
-- G2: Cable Pull-Apart con rotazione esterna + Curl Bicipiti (rest 60s)
-- G3: Alzate Laterali + Goblet Squat (rest 45s)
-- G3: Cable Pull-Apart con rotazione esterna + Abduzione laterale IR (rest 30s)
-- G3: Leg Extension al Cavo + TRX Row lento (rest 30s)
-- G3: Push-Up + Leg Curl al Cavo (rest 30s)
-- G4: Hyperextension + Abduzione laterale IR (rest 60s)
-- G5: Push-Up + Woodchop (rest 45s)
-- Cerca: `var FAST_MODE_SUPERSETS`
-- Verifica: non deve contenere Face Pull, Fitball Hamstring Curl, Tricipiti Cavo
+### 6. Split e superset
 
-### 13. keyLiftNames (tab Progressi)
-Deve contenere i fondamentali e compound pesanti attivi:
-`Squat, Stacco da Terra, Panca, Military Press, Trazioni, Trazioni Supine, Push-Up, T-bar Row, Stacco Rumeno, Glute Bridge Bilanciere`
-- Cerca: `var keyLiftNames`
-- Verifica: non deve contenere Dip alle Parallele, Hip Thrust Bilanciere
-- Verifica: non deve contenere esercizi esclusivi del G3 Leggero in `keyLiftNames` o `V4_DAY_SPLIT_PLAN` (Clamshell, Goblet Squat, TRX Row lento, Leg Extension al Cavo)
+- `V4_DAY_SPLIT_PLAN`
+  - G1 AM: Squat, Stacco Rumeno, Glute Bridge Bilanciere
+  - G1 PM: Leg Curl al Cavo, Ab Wheel
+  - G2 AM: Trazioni, Panca
+  - G2 PM: Pulley, Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali
+  - G4 AM: Stacco da Terra, Squat Bulgaro
+  - G4 PM: Hyperextension, Abduzione laterale IR
+  - G5 AM: T-bar Row, Military Press
+  - G5 PM: Trazioni Supine, Push-Up, Woodchop, Alzate Laterali
 
-### 14. Cardio nei Progressi
-Il cardio del giovedì deve poter essere registrato anche senza compilare manualmente i campi:
-- Bottone `Segna fatto`
-- Salvataggio in `cardioLogs` con `completed: true`
-- Default minuti dalla durata del formato; rucking con default 15 kg se non compilato
-- Tab Progressi con sezione `Cardio registrato`, confronto con la seduta precedente e conteggio sedute
+- `FAST_MODE_SUPERSETS`
+  - G1: Leg Curl al Cavo + Ab Wheel
+  - G2: Cable Pull-Apart con rotazione esterna + Curl Bicipiti
+  - G3: Alzate Laterali + Goblet Squat
+  - G3: Cable Pull-Apart con rotazione esterna + Abduzione laterale IR
+  - G3: Leg Extension al Cavo + TRX Row lento
+  - G3: Push-Up + Leg Curl al Cavo
+  - G4: Hyperextension + Abduzione laterale IR
+  - G5: Push-Up + Woodchop
 
-### 15. Giorno leggero G3 (tipo `light: true`)
-Il giorno leggero ha regole proprie — verificare che il codice rispetti queste 5 regole:
-1. `light: true` nell'oggetto Giorno 3 in `DAYS_V4`
-2. `activeDays` include anche G3 (`!d.cardio && !d.rest`) quindi il giorno è selezionabile come gli altri pesi
-3. La sezione `section-esercizi` resta attiva anche sul G3: l'utente deve poter aprire le card standard e registrare serie, peso, ripetizioni e RIR
-4. `isCalibrationAllowedDay(day)` esclude ancora i giorni `light`, quindi G3 non entra nella calibrazione automatica
-5. I superset del G3 restano definiti solo in `FAST_MODE_SUPERSETS["Giorno 3"]`
-- Cerca: `day.light`, `activeDays`, `section-esercizi`, `isCalibrationAllowedDay`, `FAST_MODE_SUPERSETS`
-- Verifica: nessun esercizio esclusivo del G3 è in `MAX_PROGRESS_EX`, `keyLiftNames`, `V4_DAY_SPLIT_PLAN`
+### 7. Progressi
 
-## Come eseguire la verifica
+- `keyLiftNames`: Squat, Stacco da Terra, Panca, Military Press, Trazioni, Trazioni Supine, Push-Up, T-bar Row, Stacco Rumeno, Glute Bridge Bilanciere
+- gli esercizi esclusivi del G3 non devono comparire qui
+
+### 8. Giorno leggero G3
+
+Verificare che:
+
+1. il giorno abbia `light: true`
+2. entri in `activeDays`
+3. usi le card standard `Esercizi`/`Registra`
+4. resti fuori dalla calibrazione automatica
+5. usi solo i superset definiti in `FAST_MODE_SUPERSETS["Giorno 3"]`
+
+### 9. Persistenza preferenze attrezzo/peso
+
+Verificare che:
+
+1. `exerciseLoadPrefs` venga letto da `localStorage`
+2. `exerciseLoadPrefs` venga risalvato in `localStorage`
+3. `exerciseLoadPrefs` entri nello snapshot tramite `preferences.exerciseLoadPrefs`
+4. il reset totale rimuova anche `wt-exercise-load-prefs`
+5. i set storici possano conservare `m: "barbell"` o `m: "dumbbells"` senza rompere riepiloghi e progressi
+
+## Procedura
 
 Per ogni punto:
-1. Cerca la riga nel codice
-2. Confronta con la lista esercizi attivi scritta sopra
-3. Segnala: esercizi presenti che non dovrebbero esserci, esercizi mancanti che dovrebbero esserci
-4. Correggi nel codice
-5. Conferma la correzione
-
-## Quando eseguire la verifica
-
-- Dopo ogni aggiunta di esercizio
-- Dopo ogni rimozione di esercizio
-- Dopo ogni spostamento di esercizio tra giorni
-- Prima di ogni rilascio/export del backup
+1. cerca la costante o funzione nel codice
+2. confronta con la lista sopra
+3. segnala mismatch o esercizi legacy rimasti dentro
+4. correggi codice e documenti insieme

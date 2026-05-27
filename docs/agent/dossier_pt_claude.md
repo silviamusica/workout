@@ -1,25 +1,23 @@
 # Dossier Completo Per Agente PT
 
-Questo file serve come riferimento unico per un agente PT esterno, per esempio Claude.
+Questo file serve come riferimento operativo rapido per un agente PT esterno.
 
 Obiettivo:
 - capire cosa fa davvero l'app oggi
-- leggere in modo coerente programmi, logiche tutor, calibrazione e dati
 - evitare suggerimenti incoerenti rispetto al comportamento reale dell'app
+- sapere quali file leggere prima di proporre modifiche
 
-File applicativo principale:
+Fonte primaria:
 - `../../src/App.jsx`
 
-File dati programma:
-- `./workout_plan_v4.csv`
-- `./workout_plan_beginner.csv`
-- `./workout_plan_basics.csv`
-
-File descrittivi:
+Fonti secondarie da tenere coerenti:
 - `./logica_tutor_pt.md`
+- `./workout_plan_v4.csv`
 - `./esercizi_varianti_obiettivi_guided.md`
 - `./programma_avanzato_v4.md`
-- `./tecniche_preliminari.md`
+
+Nota:
+- oggi `workout_plan_v4.csv` e `programma_avanzato_v4.md` non sono perfettamente allineati in tutti i dettagli; se c'e dubbio, prevale sempre `src/App.jsx`
 
 ## 1. Livelli presenti nell'app
 
@@ -28,64 +26,24 @@ L'app oggi gestisce 3 livelli:
 1. `Tecniche preliminari`
 - livello pre-principiante
 - centrato su competenze base e controllo tecnico
-- niente progressi
-- niente calibrazione
-- niente andamento carichi
 
 2. `Principiante`
 - full body su 3 giorni
 - costruzione basi muscolari e motorie
-- teoria semplificata
 
 3. `Ipertrofia avanzato`
-- programma V4
-- lower / upper / leggero / cardio / riposo
-- è il livello con la logica tutor più completa
-- struttura settimana: G1 Lower A · G2 Upper A · G3 Leggero · Cardio giovedì · G4 Lower B · G5 Upper B · Riposo
+- programma `V4`
+- struttura: `G1 Lower A · G2 Upper A · G3 Leggero · Cardio giovedi · G4 Lower B · G5 Upper B · Riposo`
+- e il livello con la logica tutor piu completa
 
-## 2. Cosa deve leggere prima l'agente PT
+## 2. Ordine di lettura per il PT
 
-Ordine consigliato:
-
-1. `logica_tutor_pt.md`
-- spiega coaching, calibrazione, guided mode, RIR, recuperi, decisioni finali
-
-2. `esercizi_varianti_obiettivi_guided.md`
-- serve per controllare pattern, varianti, regressioni, obiettivi tecnici e lettura coerente della guided mode
-
-3. `workout_plan_v4.csv`
-- è la fonte scheda più importante se il controllo riguarda la modalità avanzata
-
-4. `workout_plan_beginner.csv`
-- serve per verificare coerenza del livello principiante
-
-5. `workout_plan_basics.csv`
-- serve per verificare il livello tecniche preliminari
-
-6. `programma_avanzato_v4.md`
-- contesto teorico e logica del V4
-
-7. `tecniche_preliminari.md`
-- vincoli e logica del livello preliminare
-
-## 2.bis. File nuovo per il controllo esercizi
-
-Se il controllo del PT riguarda:
-- correttezza delle varianti
-- obiettivo delle regressioni
-- sostituzioni per attrezzatura
-- priorita tecnica dei fondamentali
-- coerenza del briefing guidato
-
-il file di riferimento principale non deve essere solo il CSV.
-
-In quel caso il file da leggere subito e:
-- `esercizi_varianti_obiettivi_guided.md`
-
-Perche:
-- il CSV descrive la scheda
-- ma non esplicita bene la differenza tra variante, regressione e alternativa
-- e non basta da solo per controllare la guided mode
+1. `../../src/App.jsx`
+2. `logica_tutor_pt.md`
+3. `workout_plan_v4.csv` solo come supporto, non come fonte finale
+4. `esercizi_varianti_obiettivi_guided.md`
+5. `programma_avanzato_v4.md` solo come contesto teorico
+6. `tecniche_preliminari.md`
 
 ## 3. Logiche tutor presenti oggi
 
@@ -93,281 +51,197 @@ Le logiche tutor da conoscere sono 2:
 
 ### A. Calibrazione
 
-Serve a trovare o ricalibrare un riferimento iniziale di lavoro.
-
-Caratteristiche attuali:
 - si attiva manualmente
 - compare solo sugli esercizi che ne hanno davvero bisogno
-- non appare sugli esercizi già con riferimento valido e recente
-- scatta se:
-  - manca uno storico utile
-  - manca un profilo di calibrazione
-  - l'ultima calibrazione è vecchia oltre 14 giorni
-  - oppure l'ultima registrazione dell'esercizio è vecchia oltre 14 giorni
+- non si applica ai giorni `light` o `cardio`
+- il riferimento salvato scade se calibrazione o ultimo log utile hanno piu di 14 giorni
 
-Nella scheda:
-- il blocco/pulsante di calibrazione appare solo se quell'esercizio è da calibrare
-- non compare più il pannello tipo `punto zero salvato` sugli esercizi già sistemati
+### B. Modalita guidata
 
-### B. Modalità guidata
-
-Serve a guidare la sessione anche fuori dalla calibrazione.
-
-Stato attuale:
-- è `ON` di default
-- si può attivare o spegnere in `Impostazioni`
-- se un backup vecchio non contiene il flag, l'app la considera spenta
+- e `ON` di default
+- si puo spegnere da `Impostazioni`
+- se un backup vecchio non contiene il flag, l'app la considera `ON`
 
 Fa queste cose:
 - briefing pre-sessione
 - richiesta RIR dopo le serie
 - recupero guidato
-- feedback immediato se sei sotto il minimo
+- feedback se resti sotto il minimo del range
 - decisione finale a fine esercizio
-- storico RIR
 
-## 4. Impostazioni importanti da conoscere
+## 4. Impostazioni importanti
 
-### Modalità guidata
+### Modalita guidata
 
-In `Impostazioni` c'è un toggle dedicato.
-
-Comportamento:
 - `ON` = briefing, RIR, recuperi guidati, decisioni finali
-- `OFF` = scheda più semplice, senza tutor attivo
+- `OFF` = scheda piu semplice, senza tutor attivo
 
 ### Info aggiuntive esercizi
 
-Esiste un secondo toggle:
-- `Info aggiuntive esercizi`
-
-Serve per alleggerire la scheda.
-
-Se è `OFF`, l'app nasconde:
+Se e `OFF`, l'app nasconde:
 - respirazione
 - guida completa
 - tecnica estesa
 - errori
 - storico tecnico esteso
 
-Se è `ON`, riappare tutta la parte estesa.
+Il toggle non spegne il tutor.
 
-Questo toggle non spegne il tutor:
-- lascia visibili le parti fondamentali
-- serie
-- ripetizioni
-- recupero
-- registrazione
-- feedback tutor
-- storico essenziale utile
-
-## 5. Comportamento attuale della calibrazione
-
-Per il comportamento dettagliato della calibrazione leggere:
-- `logica_tutor_pt.md` → sezione **Calibrazione**
-
-Il dossier non duplica questo contenuto per evitare disallineamenti.
-
-## 6. Comportamento attuale della modalità guidata
-
-Per il comportamento dettagliato della modalità guidata leggere:
-- `logica_tutor_pt.md` → sezioni **Modalità guidata**, **Briefing pre-sessione**, **Prompt RIR dopo la serie**, **Recupero guidato**, **Decisione finale dopo l'ultima serie**
-
-Il dossier non duplica questo contenuto per evitare disallineamenti.
-
-## 7. Regole speciali da non dimenticare
-
-### Bodyweight e assistiti
-
-L'app non deve parlare di `peso` dove non ha senso.
-
-Esempi:
-- `Push-Up`
-- `Ab Wheel`
-- `Abduzione laterale IR`
-- `Cable Pull-Apart con rotazione esterna`
-
-In questi casi deve parlare di:
-- variante
-- difficoltà
-- riferimento
-
-### Soglie bodyweight già codificate
-
-- `Push-Up`: se fai almeno 15 rip in tutte le serie per 2 sessioni consecutive → variante più difficile
-- `Trazioni` e `Trazioni Supine`: se fai almeno 8 rip in tutte le serie per 2 sessioni consecutive → zavorra `+1.25 kg`
-
-### Incrementi extra già previsti
-
-- `Hyperextension` → `+1 kg`
-
-## 8. Dati salvati dall'app
+## 5. Dati salvati dall'app
 
 Nel backup JSON l'app salva:
 - `logs`
 - `cardioLogs`
+- `stretchLogs`
 - `calibrationProfiles`
 - `calibrationMode`
 - `guidedMode`
+- `preferences.exerciseLoadPrefs`
 
-L'app esporta:
-- JSON completo
-- CSV leggibile
+### Preferenze attrezzo e peso per esercizio
 
-Esiste anche:
-- `Esporta solo JSON`
+L'app ora salva una preferenza separata per alcuni esercizi dove cambia il significato del carico.
 
-## 8.bis. Esercizi attivi V4 (2026-04-22)
+Chiavi da conoscere:
+- `barbell`
+- `dumbbells`
 
-> **Fonte unica di verità per la lista esercizi V4.** Se c'è conflitto tra questa sezione e altri file, questo dossier e il CSV (`workout_plan_v4.csv`) sono autorevoli. Il CSV è la documentazione scheda completa; questa sezione è la sintesi rapida per il PT.
+Interpretazione:
+- `barbell`:
+  - su molti esercizi il dato utente puo essere mostrato come `peso totale`
+  - nei campi di registrazione puo apparire come `kg dischi`, sommati al `barbellWeight` globale
+- `dumbbells`:
+  - il valore va letto come `kg per manubrio`
 
-## 8.ter. Documento Riassuntivo Esercizi PT
+Ordine di priorita reale del dato:
+1. `setEntry.m` sulla singola serie, se presente
+2. `preferences.exerciseLoadPrefs[exercise].mode`
+3. default hardcoded in `src/App.jsx`
 
-Questa e la sintesi operativa piu rapida da dare a un agente PT. Include tutti gli esercizi attivi della V4, compresi riscaldamenti ricorrenti, mobilita anca quotidiana e cardio.
+## 6. V4 attiva oggi
 
-### Giorni pesi
+### G1 Lower A
 
-| Giorno | Blocco | Esercizi attivi |
-|---|---|---|
-| G1 Lower A | Riscaldamento | Dorsiflessione al muro · Posizione del quadrato · Alfredson eccentrico · Ponte monopodalico · Dead Bug · Push-Up · Affondi saltati alternati · Trazioni con elastico · Serie avvicinamento squat |
-| G1 Lower A | Lavoro | Squat · Stacco Rumeno · Glute Bridge Bilanciere · Leg Curl al Cavo · Ab Wheel |
-| G1 Lower A | Stretching | Standing Quad Pull · Half Kneeling Lunge · Figure-Four Supino |
-| G1 Lower A | Mobilita anca bonus | Half Kneeling Lunge · Half Kneeling Lunge + Reach · Figure-Four Supino · Posizione del quadrato · Happy Baby · Wall tibialis raises |
-| G2 Upper A | Riscaldamento | T-spine rotation in quadrupedia · Shoulder CARs · Dorsiflessione al muro · Band Pull-Apart con elastico · Shoulder Tap · Kettlebell swing leggero · Goblet squat con fermo in buca · Squat thrust · Serie avvicinamento trazioni |
-| G2 Upper A | Lavoro | Trazioni · Panca · Pulley · Cable Pull-Apart con rotazione esterna · Curl Bicipiti · Alzate Laterali |
-| G2 Upper A | Stretching | Doorway Pec Stretch · Overhead Lat Stretch · Cross-Body Shoulder Stretch · Wrist Flexor/Extensor Stretch |
-| G2 Upper A | Mobilita anca bonus | Half Kneeling Lunge · Half Kneeling Lunge + Reach · Figure-Four Supino · Posizione del quadrato · Happy Baby · Wall tibialis raises |
-| G4 Lower B | Riscaldamento | Dorsiflessione al muro · Posizione del quadrato · Calf Raises con pallina · Ponte monopodalico · Shoulder Tap · Push-Up · Affondi saltati alternati · Burpee completo · Serie avvicinamento stacco |
-| G4 Lower B | Lavoro | Stacco da Terra · Bulgarian Split Squat · Hyperextension · Abduzione laterale IR |
-| G4 Lower B | Stretching | Supine Assisted Leg Pull · Figure-Four Supino · Cat-Cow Lento · Half Kneeling Lunge |
-| G4 Lower B | Mobilita anca bonus | Half Kneeling Lunge · Half Kneeling Lunge + Reach · Figure-Four Supino · Posizione del quadrato · Happy Baby · Wall tibialis raises |
-| G5 Upper B | Riscaldamento | T-spine rotation in quadrupedia · Shoulder CARs · Dorsiflessione al muro · Scapular Pull-Up · Band Pull-Apart con elastico · Kettlebell swing leggero · Affondi saltati alternati · Squat jump · Serie avvicinamento military press |
-| G5 Upper B | Lavoro | T-bar Row · Military Press · Push-Up · Trazioni Supine · Woodchop · Alzate Laterali |
-| G5 Upper B | Stretching | Doorway Pec Stretch · Overhead Triceps Stretch · Overhead Lat Stretch · Band Dislocate Lento |
-| G5 Upper B | Mobilita anca bonus | Half Kneeling Lunge · Half Kneeling Lunge + Reach · Figure-Four Supino · Posizione del quadrato · Happy Baby · Wall tibialis raises |
+- Riscaldamento: Dorsiflessione al muro, Posizione del quadrato, Alfredson eccentrico, T-spine rotation in quadrupedia, Ponte monopodalico, Shoulder Tap, Serie avvicinamento squat
+- Lavoro: Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel
+- Stretching: Quadricipiti, Flessori anca, Glutei
+- Split: AM `Squat, Stacco Rumeno, Glute Bridge Bilanciere` | PM `Leg Curl al Cavo, Ab Wheel`
+- Superset rapido: `Leg Curl al Cavo + Ab Wheel`
 
-### Giorno leggero e cardio
+### G2 Upper A
 
-| Giorno | Blocco | Esercizi attivi |
-|---|---|---|
-| G3 Leggero | Riscaldamento | Dorsiflessione al muro · Posizione del quadrato · T-spine rotation in quadrupedia · Ponte monopodalico |
-| G3 Leggero | Lavoro | Alzate Laterali · Goblet Squat · Cable Pull-Apart con rotazione esterna · Abduzione laterale IR · Leg Extension al Cavo · TRX Row lento · Push-Up · Leg Curl al Cavo · Hollow Position |
-| G3 Leggero | Protocollo anca completo | Half Kneeling Lunge · Half Kneeling Lunge + Reach verticale · Couch Stretch · Figure-Four Supino · Happy Baby · Leg Cradle Supino · Supported Low Lunge · Posizione del quadrato · Wall tibialis raises |
-| Cardio giovedi | Formati | Corsa 30 min zona 2 · HIIT upper + core · Corsa lunga zona 2 · Rucking |
-| Cardio giovedi | Mobilita | Dorsiflessione al muro · Wall tibialis raises · Posizione del quadrato · T-spine rotation in quadrupedia · Half Kneeling Lunge · Figure-Four Supino |
+- Riscaldamento: T-spine rotation in quadrupedia, FMS spalle, Dorsiflessione al muro, Cable Pull-Apart con rotazione esterna, Shoulder Tap, Serie avvicinamento trazioni prone
+- Lavoro: Trazioni, Panca, Pulley, Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali
+- Stretching: Doorway Pec Stretch, Overhead Lat Stretch, Cross-Body Shoulder Stretch, Wrist Flexor/Extensor Stretch
+- Split: AM `Trazioni, Panca` | PM `Pulley, Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali`
+- Superset rapido: `Cable Pull-Apart con rotazione esterna + Curl Bicipiti`
 
-### Punti chiave per il PT
+### G3 Leggero
 
-- `Bulgarian Split Squat` e il nome da usare per il monopodalico di G4.
-- `Squat Bulgaro` era il nome precedente dello stesso esercizio; il nome corretto attuale e `Bulgarian Split Squat`.
-- `Abduzione laterale IR` sostituisce `Fire Hydrant` come accessorio gluteo medio attivo.
-- `Wall tibialis raises` e attivo nella mobilita quotidiana.
-- `Posizione del quadrato` e dentro il protocollo anca di ogni giorno.
-- I superset attivi sono: G1 `Leg Curl al Cavo + Ab Wheel`, G2 `Cable Pull-Apart con rotazione esterna + Curl Bicipiti`, G4 `Hyperextension + Abduzione laterale IR`, G5 `Push-Up + Woodchop`.
+- Tipo giorno: `light: true`
+- Riscaldamento: Dorsiflessione al muro, Posizione del quadrato, T-spine rotation in quadrupedia, Ponte monopodalico, Cable Pull-Apart con rotazione esterna
+- Lavoro: Alzate Laterali, Goblet Squat, Cable Pull-Apart con rotazione esterna, Abduzione laterale IR, Leg Extension al Cavo, TRX Row lento, Push-Up, Leg Curl al Cavo, Hollow Position
+- Protocollo anca completo: Half Kneeling Lunge, Half Kneeling Lunge + Reach verticale, Couch Stretch, Figure-Four Supino, Happy Baby, Leg Cradle Supino, Supported Low Lunge
+- Superset automatici:
+  - Alzate Laterali + Goblet Squat
+  - Cable Pull-Apart con rotazione esterna + Abduzione laterale IR
+  - Leg Extension al Cavo + TRX Row lento
+  - Push-Up + Leg Curl al Cavo
 
-**Struttura settimana**: G1 Lower A · G2 Upper A · G3 Leggero · Cardio giovedì · G4 Lower B · G5 Upper B · Riposo
+Regole chiave:
+- il G3 entra in `activeDays`
+- usa le card standard `Esercizi`/`Registra`
+- non entra nella calibrazione automatica
+- non alimenta i Progressi fondamentali
+- il toggle alternativo esiste solo per `Abduzione laterale IR` -> `Clamshell`
 
-**Tipi giorno nell'app**:
-- `pesi` (default): G1, G2, G4, G5 — logica coach completa, tracking progressione
-- `light: true`: G3 — giorno leggero nel flusso standard `Esercizi`/`Registra`, senza calibrazione coach dedicata
-- `cardio: true`: giovedì — 4 formati selezionabili + mobilità
-- `rest`: G6 — riposo
+### Cardio giovedi
 
-| Giorno | Tipo | Esercizi |
-|---|---|---|
-| G1 Lower A | pesi | Squat · Stacco Rumeno · Glute Bridge Bilanciere · Leg Curl al Cavo · Ab Wheel |
-| G2 Upper A | pesi | Trazioni · Panca · Pulley · Cable Pull-Apart con rotazione esterna · Curl Bicipiti · Alzate Laterali |
-| G3 Leggero | light | Alzate Laterali · Goblet Squat · Cable Pull-Apart con rotazione esterna · Abduzione laterale IR · Leg Extension al Cavo · TRX Row lento · Push-Up · Leg Curl al Cavo · Hollow Position |
-| G4 Lower B | pesi | Stacco da Terra · Bulgarian Split Squat · Hyperextension · Abduzione laterale IR |
-| G5 Upper B | pesi | T-bar Row · Military Press · Push-Up · Trazioni Supine · Woodchop · Alzate Laterali |
-| G6 | riposo | — |
-| Cardio giovedì | cardio | Corsa 30 zona 2 / HIIT upper+core / Corsa lunga zona 2 / Rucking |
+Formati attivi:
+- Corsa 30 min zona 2
+- HIIT upper + core 30 min
+- Corsa lunga 50-60 min zona 2
+- Rucking 45-60 min
 
-Rimossi dal programma attivo (non devono comparire in suggerimenti o liste coaching pesi):
-- Hip Thrust Bilanciere
-- Fitball Hamstring Curl
-- Face Pull
-- Dip alle Parallele
-- Tricipiti Cavo
-- T-bar Row da G2 (spostato a G5)
-- Stacco Rumeno da G4 (spostato a G1)
-- Cardio A da G3 (sostituito da giorno leggero)
+Note chiave:
+- la rotazione A -> B -> C -> D e solo suggerita
+- l'HIIT esclude sprint, salti e affondi
+- la seduta si registra in `cardioLogs`
 
-Superset attivi nelle schede:
-- G1: Leg Curl al Cavo + Ab Wheel
-- G2: Cable Pull-Apart con rotazione esterna + Curl Bicipiti
-- G3: Alzate Laterali + Goblet Squat
-- G3: Cable Pull-Apart con rotazione esterna + Abduzione laterale IR
-- G3: Leg Extension al Cavo + TRX Row lento
-- G3: Push-Up + Leg Curl al Cavo
-- G4: Hyperextension + Abduzione laterale IR
-- G5: Push-Up + Woodchop
+### G4 Lower B
 
-Nota asset G3: `Leg Extension al Cavo` ha ora foto dedicata in `src/images/exercises/standing-cable-leg-extension.jpeg`.
-Nota tecnica G3: il parser serie ora riconosce anche le stringhe `per lato`, quindi l'ultima serie del giorno leggero chiude correttamente il backup/export automatico.
-Nota serie G3: le `3 serie` restano nominali, ma la `prima` è tecnica di avvicinamento; le `serie 2-3` sono di lavoro a `RPE 7-8`. Su Alzate Laterali, Cable Pull-Apart con rotazione esterna e Abduzione laterale IR il tempo è `2-1-2`: se non regge fino in fondo, si riducono rip o peso e non si accelera.
+- Riscaldamento: Dorsiflessione al muro, Posizione del quadrato, Calf Raises con pallina, T-spine rotation in quadrupedia, Ponte monopodalico, Shoulder Tap, Serie avvicinamento stacco
+- Lavoro: Stacco da Terra, Squat Bulgaro, Hyperextension, Abduzione laterale IR
+- Stretching: Supine Assisted Leg Pull, Figure-Four Supino, Cat-Cow Lento, Half Kneeling Lunge
+- Split: AM `Stacco da Terra, Squat Bulgaro` | PM `Hyperextension, Abduzione laterale IR`
+- Superset rapido: `Hyperextension + Abduzione laterale IR`
 
-Nota: il G3 Leggero NON entra nella logica AM/PM split e non alimenta i Progressi fondamentali. Però la sua card usa superset automatici di default per comprimere i tempi.
+### G5 Upper B
 
-### Cardio programmato
+- Riscaldamento: T-spine rotation in quadrupedia, FMS spalle, Dorsiflessione al muro, Scapular Pull-Up, Cable Pull-Apart con rotazione esterna, Serie avvicinamento military press
+- Lavoro: T-bar Row, Military Press, Push-Up, Woodchop, Trazioni Supine, Alzate Laterali
+- Stretching: Doorway Pec Stretch, Overhead Triceps Stretch, Overhead Lat Stretch, Band Dislocate Lento
+- Split: AM `T-bar Row, Military Press` | PM `Trazioni Supine, Push-Up, Woodchop, Alzate Laterali`
+- Superset rapido: `Push-Up + Woodchop`
 
-Il cardio del giovedì usa una rotazione suggerita su 4 formati, tutti sempre selezionabili:
+## 7. Punti chiave per il PT
 
-| Rotazione | Formato | Durata | Vincolo |
-|---|---|---|---|
-| A | Corsa zona 2 breve | 30 min | FC 120-140 |
-| B | HIIT upper + core | 30 min | 30s/15s, niente sprint/salti/affondi |
-| C | Corsa zona 2 lunga | 50-60 min | spostare a domenica se penalizza lo stacco |
-| D | Rucking | 45-60 min | zaino 15-20 kg |
+- `MAX_PROGRESS_EX` oggi contiene: Squat, Stacco da Terra, Panca, Military Press, Trazioni
+- `ACCESSORY_PROGRESS_EX` contiene gli accessori attivi dei giorni pesi, compresi Push-Up, Trazioni Supine, T-bar Row e Alzate Laterali
+- `CALIBRATION_BODYWEIGHT_EX` contiene: Push-Up, Trazioni, Trazioni Supine, Ab Wheel, Abduzione laterale IR
+- `keyLiftNames` nella tab Progressi contiene: Squat, Stacco da Terra, Panca, Military Press, Trazioni, Trazioni Supine, Push-Up, T-bar Row, Stacco Rumeno, Glute Bridge Bilanciere
+- esiste una mappa esplicita `EXERCISE_LOAD_MODE_OPTIONS` per gli esercizi che supportano scelta attrezzo/peso
 
-Nota tracking cardio: l'app deve avere il flag `Segna fatto` per registrare rapidamente la seduta in `cardioLogs` e farla comparire nella tab Progressi. Se non vengono compilati minuti/kg, usare durata del formato come default e 15 kg per il rucking.
+### Esercizi con scelta attrezzo/carico esplicita
 
-### Alternativa Clamshell
+Misti `bilanciere/manubri`:
+- Squat
+- Stacco Rumeno
+- Push Press
+- Military Press
 
-Nel G3 l'accessorio base è `Abduzione laterale IR` con toggle persistente verso `Clamshell` tramite `wt-exercise-alt-mode`. Nel G4 l'accessorio resta fisso su `Abduzione laterale IR`.
+Solo `bilanciere`:
+- Panca
+- Front Squat
+- Pause Squat
+- Stacco da Terra
+- Stacco Sumo
+- Rematore Bilanciere
+- Pendlay Row
+- Good Morning
+- Glute Bridge Bilanciere
 
-## 9. Cosa deve verificare un agente PT
+Solo `manubri`:
+- Press Manubri da Seduta
+- Arnold Press
+- Alzate Laterali
+- Curl Bicipiti
+- Curl Martello
+- Floor Press Manubri
+- French Press Manubri
+- Overhead Extension
+- Rematore Manubri
+- Single Leg Deadlift
+- Walking Lunge
+- Affondi
+- Squat Bulgaro
+- Kick Back Manubri
+- Croci Manubri a Terra
 
-Quando controlla l'app, l'agente dovrebbe verificare:
+## 8. File da aggiornare insieme
 
-### Programmi
-- coerenza del CSV V4 con la UI
-- coerenza del Beginner con la UI
-- coerenza del Basics con la UI
-
-### Tutor
-- se i suggerimenti rispettano davvero range, RIR e recuperi
-- se la progressione proposta è coerente con double progression
-- se la calibrazione non promuove come valido un set troppo facile o troppo duro
-
-### UX
-- se la modalità guidata è chiara ma non invasiva
-- se il toggle `Info aggiuntive` riduce davvero il rumore
-- se l'utente capisce subito quando un esercizio ha bisogno di calibrazione
-
-## 10. File consigliati da aggiornare insieme
-
-Se si modifica la logica tutor o i programmi, i file da mantenere coerenti sono:
+Se si modifica la logica tutor o i programmi, mantenere coerenti:
 - `../../src/App.jsx`
 - `./logica_tutor_pt.md`
 - `./workout_plan_v4.csv`
-- `./workout_plan_beginner.csv`
-- `./workout_plan_basics.csv`
+- `./dossier_pt_claude.md`
+- `./checklist-verifica-logica-coach.md`
 
-Se si modifica il livello preliminare:
-- `./tecniche_preliminari.md`
+## 9. Sintesi finale per il PT
 
-Se si modifica il programma avanzato:
-- `./programma_avanzato_v4.md`
-
-## 11. Sintesi finale per Claude/PT
-
-Se vuoi dare un'istruzione secca al tuo agente PT, la sintesi è questa:
-
-- l'app ha 3 livelli: basics, beginner, advanced
-- la logica coaching vera è soprattutto nella modalità avanzata
-- oggi la modalità guidata è `ON` di default
-- la calibrazione compare solo se manca un riferimento o è scaduto
-- esiste anche una modalità per nascondere le info non essenziali
-- il riferimento tecnico principale resta `src/App.jsx`
-- i documenti in `docs/agent` sono il contesto minimo da leggere prima di dare suggerimenti
+- la fonte vera resta `src/App.jsx`
+- la V4 attiva oggi include G3 leggero dentro il flusso standard, non come card separata
+- la modalita guidata e `ON` di default
+- la calibrazione compare solo se serve e non si applica al G3
+- il cardio del giovedi e tracciato separatamente in `cardioLogs`
+- alcuni esercizi ora hanno una preferenza persistente `attrezzo + peso`, quindi `kg`, `kg tot` e `kg per manubrio` non sono equivalenti

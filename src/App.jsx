@@ -15,6 +15,7 @@ import img_Curl_Bicipiti from "./images/exercises/Curl_Bicipiti.jpg";
 import img_Curl_Concentrato from "./images/exercises/Curl_Concentrato.jpg";
 import img_Curl_Martello from "./images/exercises/Curl_Martello.jpg";
 import img_Dip_su_Panca from "./images/exercises/Dip_su_Panca.jpg";
+import img_Donkey_Kicks from "./images/exercises/donkey_kicks.png";
 import img_Floor_Press_Manubri from "./images/exercises/Floor_Press_Manubri.jpg";
 import img_French_Press_Manubri from "./images/exercises/French_Press_Manubri.jpg";
 import img_Front_Squat from "./images/exercises/Front_Squat.jpg";
@@ -26,6 +27,8 @@ import img_Lat_Machine from "./images/exercises/Lat machine .jpeg";
 import img_Leg_Extension_Cavo from "./images/exercises/standing-cable-leg-extension.jpeg";
 import img_Leg_Curl_Cavo_In_Piedi from "./images/exercises/legcurlcavi.jpeg";
 import img_Leg_Curl_Cavo_Sdraiato from "./images/exercises/legculr cavi sdraiati-.jpeg";
+import img_Monster_Walk from "./images/exercises/monster_walk.jpeg";
+import img_Wall_Sit from "./images/exercises/wallsit.jpeg";
 import img_Military_Press from "./images/exercises/Military_Press.jpg";
 import img_Nordic_Curl from "./images/exercises/Nordic_Curl.jpg";
 import img_Overhead_Extension from "./images/exercises/Overhead_Extension.jpg";
@@ -120,6 +123,7 @@ import img_str_SupportedLowLunge from "./images/warmup_stretch/Supported Low Lun
 import img_str_CatCowStretch from "./images/warmup_stretch/cat-cow-stretch.gif";
 import img_str_CouchStretch from "./images/warmup_stretch/Couch Stretch.webp";
 import img_str_CrossBodyShoulder from "./images/warmup_stretch/cross body shoulder stretch .webp";
+import img_str_StretchingDorsale from "./images/warmup_stretch/STRETCHING DORSALE.jpg";
 import img_str_BandDislocateLento from "./images/warmup_stretch/band dislocate lento.gif";
 import img_str_DoorwayPec from "./images/warmup_stretch/doorway pec stretch  (1).gif";
 import img_str_FireLogPose from "./images/warmup_stretch/Posizione-del-quadrato.gif";
@@ -254,7 +258,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"table","columns":["Errore","Correzione"],"rows":[["Busto che oscilla","Riduci il carico e blocca il tronco"],["Coscia che avanza","Cue: si muove solo la tibia"],["Eccentrica troppo veloce","Conta 2-3 secondi in discesa"],["Crampo femorale","Riduci carico e tieni il piede neutro"]]},
   {"type":"p","content":"Respirazione. Espira durante la flessione, inspira durante la discesa controllata."},
   {"type":"ul","content":["Video: https://www.youtube.com/watch?v=bMJHUlSJksc"]}
-]}, "Good Morning": {"g": "Erettori/Glutei/Femorali", "c": "Bilanciere sulle spalle. Piega avanti spingendo bacino indietro, ginocchia flesse.", "p": "Schiena NEUTRA sempre. Scendi fino a tensione femorali.", "t": ["Chiudi una porta col sedere", "Inizia con bilanciere scarico"], "lk": "https://youtu.be/7mrKMteISXs?si=4oBp31pGSjs8U_sc", "deep": [
+]}, "Wall Sit": {"g": "Quadricipiti/Core", "c": "Schiena appoggiata al muro, piedi poco avanti rispetto alle ginocchia. Scendi fino a circa 90 gradi e mantieni la posizione piu a lungo possibile senza perdere altezza.", "p": "Pressione piena sui piedi, lombare neutra contro il muro e ginocchia in linea con le punte.", "t": ["Se perdi altezza o il bacino scappa, la serie e finita", "Respira corto ma continuo: non andare in apnea", "Tieni tibie quasi verticali e peso distribuito su tutto il piede"]}, "Monster Walk": {"g": "Core/Spalle/Anca", "c": "Dalla stazione eretta scendi con le mani a terra, cammina in avanti fino a plank lungo e poi torna indietro in controllo. Movimento continuo, corpo compatto.", "p": "Addome attivo, bacino fermo e spalle che spingono il pavimento. Fai passi piccoli con le mani senza lasciare cedere la lombare.", "t": ["Mantieni il core attivo in tutto il walkout", "Se la lombare cede, accorcia il range", "Torna indietro con controllo senza piegare le ginocchia per scappare dal lavoro"]}, "Donkey Kicks": {"g": "Glutei/Core", "c": "In quadrupedia, mani sotto le spalle e ginocchia sotto le anche. Spingi un piede verso il soffitto mantenendo il ginocchio piegato a 90 gradi e alterna le gambe a ogni ripetizione.", "p": "Bacino fermo, addome attivo e movimento corto ma pulito. Cerca il gluteo, non la lombare.", "t": ["Ogni ripetizione alterna una gamba e poi l'altra", "Non inarcare la schiena per alzare di piu il tallone", "Mantieni la tibia verticale e la pianta del piede attiva"]}, "Good Morning": {"g": "Erettori/Glutei/Femorali", "c": "Bilanciere sulle spalle. Piega avanti spingendo bacino indietro, ginocchia flesse.", "p": "Schiena NEUTRA sempre. Scendi fino a tensione femorali.", "t": ["Chiudi una porta col sedere", "Inizia con bilanciere scarico"], "lk": "https://youtu.be/7mrKMteISXs?si=4oBp31pGSjs8U_sc", "deep": [
   {"type":"p","content":"Il Good Morning e un esercizio di preparazione specifica per migliorare Squat e Stacco da terra. E un movimento Hip Dominant: il motore e il bacino che si spinge indietro, non la schiena che si piega."},
   {"type":"ul","content":["Mantieni le curve fisiologiche della colonna — non perdere mai la lordosi lombare","Inizia con bilanciere scarico o leggerissimo per imparare lo schema motorio","Questo esercizio rinforza i punti deboli (lombari e femorali) nel punto critico di squat e stacco"]},
   {"type":"p","content":"Manovra di Valsalva: inspira profondamente, blocca il respiro e gonfia la pancia prima di eseguire il movimento. Crea pressione intra-addominale che protegge le vertebre lombari sotto carico."}
@@ -599,6 +603,39 @@ Object.assign(EX["Leg Curl al Cavo"], {
     { type: "table", columns: ["Errore", "Correzione"], rows: [["Busto che oscilla", "Riduci il carico e blocca il tronco"], ["Coscia che si muove avanti e indietro", "Cue: si muove solo la tibia"], ["Eccentrica troppo veloce", "Conta 2-3 secondi in discesa"], ["Crampo o tensione sporca", "Riduci carico e resetta la posizione del piede"]] },
     { type: "p", content: "Respirazione. Espira durante la flessione, inspira nella discesa controllata." },
     { type: "link", label: "Video: Leg curl al cavo", url: "https://www.youtube.com/watch?v=bMJHUlSJksc" }
+  ]
+});
+
+Object.assign(EX["Wall Sit"], {
+  guideDay: "G1 e G3",
+  guide: [
+    { type: "p", content: "Il Wall Sit e una tenuta isometrica per quadricipiti e core. Nella scheda sostituisce il leg curl come finisher semplice da tracciare a tempo e senza setup." },
+    { type: "ul", content: ["Schiena piena al muro per tutta la serie", "Cosce circa parallele e ginocchia in linea con le punte", "Conta i secondi utili: se sali di quota, la serie e finita"] },
+    { type: "p", content: "Setup. Porta i piedi poco avanti rispetto alle ginocchia e scendi fino a circa 90 gradi. Le tibie restano quasi verticali, il peso distribuito su tutto il piede e il busto non si stacca mai dal muro." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Salire poco alla volta durante la tenuta", "Chiudi la serie appena perdi altezza"], ["Ginocchia che collassano dentro", "Spingi leggermente fuori e tieni il piede pieno a terra"], ["Spinta solo sulle punte", "Resta appoggiata anche su tallone e mesopiede"], ["Apnea lunga fino a perdere assetto", "Respiri brevi e continui mantenendo il brace"]] },
+    { type: "p", content: "Respirazione. Non fare una valsalva lunga. Usa piccoli respiri controllati senza perdere pressione addominale ne posizione." }
+  ]
+});
+
+Object.assign(EX["Monster Walk"], {
+  guideDay: "G1 Lower A",
+  guide: [
+    { type: "p", content: "Il Monster Walk qui e usato come finisher dinamico di core e cingolo scapolare al posto dell'Ab Wheel. Deve restare pulito: movimento lungo solo finche mantieni addome e bacino sotto controllo." },
+    { type: "ul", content: ["Parti in piedi, mani a terra e cammina avanti fino a plank lungo", "Spalle attive e costole giu per tutto il tratto avanti", "Rientra con piccoli passi delle mani senza perdere la linea del tronco"] },
+    { type: "p", content: "Setup. Piedi sotto le anche, piega il busto quanto basta per appoggiare le mani. Da li avanza lentamente con le mani fino al tuo range utile e poi torna indietro. Ogni andata e ritorno conta come una ripetizione." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Lombare che cede in avanti", "Accorcia subito il range e stringi glutei e addome"], ["Passi troppo lunghi e veloci", "Fai passi brevi e continui"], ["Spalle passive vicino alle orecchie", "Spingi il pavimento e mantieni scapole attive"], ["Ritorno fatto piegando troppo le ginocchia", "Rientra con controllo, non scappare dalla tensione"]] },
+    { type: "p", content: "Respirazione. Inspira in modo breve mentre avanzi, espira mentre rientri mantenendo il brace." }
+  ]
+});
+
+Object.assign(EX["Donkey Kicks"], {
+  guideDay: "G4 Lower B",
+  guide: [
+    { type: "p", content: "I Donkey Kicks nel G4 sostituiscono l'abduzione laterale IR come richiamo glutei a corpo libero in superset con Hyperextension. Qui contano controllo del bacino e sensazione sul gluteo, non altezza del tallone." },
+    { type: "ul", content: ["Parti in quadrupedia con mani sotto spalle e ginocchia sotto anche", "Ginocchio piegato a 90 gradi per tutta la serie", "Alterna le gambe: 20 ripetizioni totali = 10 per lato"] },
+    { type: "p", content: "Esecuzione. Spingi il piede verso l'alto senza cambiare assetto del tronco. Fermati quando senti che per salire di piu dovresti muovere la lombare. Torna giu in controllo e passa subito all'altra gamba." },
+    { type: "table", columns: ["Errore", "Correzione"], rows: [["Lombare che si inarca", "Riduci il range e stringi addome e gluteo"], ["Bacino che ruota", "Mantieni le creste iliache parallele al pavimento"], ["Slancio o ritmo troppo veloce", "Pausa breve in alto e ritorno controllato"], ["Piede molle", "Tieni il piede attivo come se spingessi il soffitto"]] },
+    { type: "p", content: "Respirazione. Espira quando spingi il piede verso l'alto, inspira mentre riporti il ginocchio sotto l'anca." }
   ]
 });
 
@@ -1641,24 +1678,24 @@ var STR = {
   "Calf Raises con pallina": { d: "Calf raises con pallina", goal: "Attivare adduttori e arco plantare insieme mentre lavori sul polpaccio.", h: "In piedi con una pallina tra i malleoli interni. Stringi la pallina e sali lentamente sulle punte, poi scendi controllando.", t: "2x15", tm: 75, est: 150, cue: "La pallina non deve cadere. Se la perdi, stai mollando adduttori e piede.", feel: "Polpacci e interno coscia.", breath: "Fluido", err: "Perdere la pallina o salire troppo in fretta.", reason: "Base lower. Integra stabilità dal piede fino all'anca.", lk: "" },
   "T-spine rotation in quadrupedia": { d: "T-spine rotation in quadrupedia", goal: "Recuperare rotazione toracica senza chiedere movimento alla lombare.", h: "Quattro zampe, una mano dietro la testa. Ruota il gomito verso il soffitto e poi verso il basso tenendo il bacino fermo.", t: "8-10 rip per lato", tm: 75, est: 150, cue: "Le anche restano ferme. La rotazione deve arrivare dal torace.", feel: "Parte alta della schiena e apertura del petto.", breath: "Espira aprendo", err: "Muovere anche e lombare insieme al torace.", reason: "Base upper e giorni cardio. Una toracica rigida peggiora spalle e collo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
   "Shoulder CARs": { d: "Shoulder CARs", goal: "Portare la spalla nel ROM completo in modo controllato.", h: "In piedi, braccio lungo il fianco. Disegna un cerchio grande e lento davanti, sopra, dietro e di nuovo giu senza muovere il tronco.", t: "5 cerchi per direzione per braccio", tm: 90, est: 180, cue: "Addome attivo e costole giu. Il corpo resta fermo, si muove solo la spalla.", feel: "Tensione controllata nei punti estremi della spalla.", breath: "Lento e continuo", err: "Inarcare la schiena o accelerare nel punto difficile.", reason: "Base upper. Mobilità della spalla prima di tirate e spinte.", lk: "https://www.youtube.com/watch?v=PwoDf1Mzlwo" },
-  "Ponte monopodalico": { img: "Hip Thrust Singolo", d: "Ponte monopodalico", goal: "Attivare gluteo ed estensione d'anca con bacino stabile su una gamba.", h: "Schiena a terra, un piede appoggiato e l'altro sollevato. Spingi il bacino in alto e tieni 2 secondi senza inarcare la schiena.", t: "2x8 per lato", tm: 75, est: 150, cue: "Fermati quando tronco, bacino e coscia sono in linea. Se senti la lombare, sei salita troppo.", feel: "Gluteo della gamba che spinge.", breath: "Espira salendo", err: "Usare la schiena al posto del gluteo o ruotare il bacino.", reason: "Base lower. Prepara squat, stacco e hip thrust.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
-  "Standing Quad Pull": { img: "str_StandingQuadPull", d: "Standing quad pull", goal: "Allungare il quadricipite dopo il lavoro di squat e affondi. Riduce la rigidita del retto femorale che tira il bacino in avanti.", h: "In piedi, appoggiati al rack con una mano. Afferra la caviglia dietro di te e tira il tallone verso il gluteo. Ginocchia vicine.", t: "2x30s per lato", tm: 30, est: 120, cue: "Punta le dita del piede verso la testa (dorsiflessione): estende anche il tibiale anteriore, non solo il quadricipite.", feel: "Parte anteriore della coscia, dalla rotula fino all'anca.", breath: "Diaframmatica, espirazione lunga", err: "Inarcare la schiena per compensare: tieni il bacino neutro, gluteo contratto. Ginocchio che si apre lateralmente: tienilo in linea con l'anca.", reason: "Giorno 1 e 4: dopo squat, bulgaro e affondi i quadricipiti sono accorciati e pieni di sangue. Lo stretching li riporta alla lunghezza di riposo.", lk: "https://www.youtube.com/watch?v=UZ-GSxmr2zs&pp=ygUSU3RhbmRpbmcgUXVhZCBQdWxs" },
-  "Half Kneeling Lunge": { img: "str_HalfKneelingLunge", d: "Half kneeling lunge", goal: "Allungare iliopsoas e retto femorale: i flessori profondi dell'anca. E l'esercizio piu importante per sbloccare l'anca da sedentarieta.", h: "Ginocchio a terra, l'altro piede avanti con il ginocchio sopra la caviglia. Spingi le anche avanti mantenendo il busto verticale.", t: "2x40s per lato", tm: 40, est: 160, cue: "Punta la fibbia della cintura verso l'orizzonte. Il bacino resta neutro, non in anteroversione. L'avanzamento delle anche e piccolo ma deve essere sentito.", feel: "Parte anteriore dell'anca della gamba dietro, in profondita. Se senti la lombare, hai perso il bacino.", breath: "Diaframmatica, espirazione completa", err: "Inarcare la lombare per andare piu avanti, inclinarsi col busto in avanti, ginocchio davanti che supera la punta del piede.", reason: "Presente in tutti i giorni lower e nel protocollo anca. I flessori dell'anca corti limitano la profondita dello squat e il lockout dell'hip thrust.", lk: "https://www.youtube.com/watch?v=dUgr_vjDWNw" },
-  "Half Kneeling Lunge + Reach": { img: "str_HalfKneelingReach", d: "Half kneeling lunge + reach verticale", goal: "Estendere l'allungamento del half kneeling lunge a tutta la catena anteriore, dallo psoas fino al gran dorsale e agli obliqui.", h: "Dalla posizione del half kneeling lunge, alza il braccio dello stesso lato del ginocchio a terra verso il soffitto. Allunga come se volessi toccare il soffitto.", t: "2x30s per lato", tm: 30, est: 120, cue: "La mano sale, l'anca scende. Senti una linea di tensione continua dal ginocchio a terra fino alla punta delle dita in alto.", feel: "Psoas profondo, fianco, obliqui e dorsale dello stesso lato. Molto piu esteso del lunge semplice.", breath: "Diaframmatica, lenta", err: "Perdere il bacino neutro quando alzi il braccio o ruotare il busto. Il petto resta frontale.", reason: "Protocollo anca e giorni lower. Aggiunge la componente delle catene muscolari: non allunghi un muscolo solo, ma tutta la catena anteriore-laterale.", lk: "https://www.youtube.com/watch?v=jE63mBT_a9Q" },
-  "Figure-Four Supino": { img: "str_FigureFourSupine", d: "Figure-four supino", goal: "Allungare i rotatori esterni dell'anca e il gluteo. I rotatori corti limitano la rotazione dell'anca e possono comprimere il nervo sciatico.", h: "Schiena a terra. Appoggia la caviglia sulla coscia opposta formando un 4. Afferra la coscia di sotto con entrambe le mani e tira verso il petto.", t: "2x40s per lato", tm: 40, est: 160, cue: "Mantieni il sacro a terra. Il ginocchio della gamba incrociata si apre lateralmente: non lo forzare verso il basso, lascia che la gravita e la trazione facciano il lavoro.", feel: "Gluteo profondo e parte posteriore-laterale dell'anca della gamba incrociata. Se senti il ginocchio, la posizione e sbagliata.", breath: "Diaframmatica, espira senza forzare", err: "Alzare il sacro da terra, forzare il ginocchio con la mano, testa che si solleva.", reason: "Giorno 1, 4 e protocollo anca. Dopo squat, stacco e hip thrust i rotatori esterni sono contratti.", lk: "https://www.youtube.com/watch?v=-g0nuyTHMrI" },
+  "Ponte monopodalico": { img: "Hip Thrust Singolo", d: "Ponte monopodalico", goal: "Attivare gluteo ed estensione d'anca con bacino stabile su una gamba.", h: "Schiena a terra, un piede appoggiato e l'altro sollevato. Spingi il bacino in alto e tieni 2 secondi senza inarcare la schiena.", t: "2x10 per lato", tm: 75, est: 150, cue: "Fermati quando tronco, bacino e coscia sono in linea. Se senti la lombare, sei salita troppo.", feel: "Gluteo della gamba che spinge.", breath: "Espira salendo", err: "Usare la schiena al posto del gluteo o ruotare il bacino.", reason: "Base lower. Prepara squat, stacco e hip thrust.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
+  "Standing Quad Pull": { img: "str_StandingQuadPull", d: "Standing quad pull", goal: "Allungare il quadricipite dopo il lavoro di squat e affondi. Riduce la rigidita del retto femorale che tira il bacino in avanti.", h: "In piedi, appoggiati al rack con una mano. Afferra la caviglia dietro di te e tira il tallone verso il gluteo. Ginocchia vicine.", t: "1x30s per lato", tm: 30, est: 60, cue: "Punta le dita del piede verso la testa (dorsiflessione): estende anche il tibiale anteriore, non solo il quadricipite.", feel: "Parte anteriore della coscia, dalla rotula fino all'anca.", breath: "Diaframmatica, espirazione lunga", err: "Inarcare la schiena per compensare: tieni il bacino neutro, gluteo contratto. Ginocchio che si apre lateralmente: tienilo in linea con l'anca.", reason: "Giorno 1 e 4: dopo squat, bulgaro e affondi i quadricipiti sono accorciati e pieni di sangue. Lo stretching li riporta alla lunghezza di riposo.", lk: "https://www.youtube.com/watch?v=UZ-GSxmr2zs&pp=ygUSU3RhbmRpbmcgUXVhZCBQdWxs" },
+  "Half Kneeling Lunge": { img: "str_HalfKneelingLunge", d: "Half kneeling lunge", goal: "Allungare iliopsoas e retto femorale: i flessori profondi dell'anca. E l'esercizio piu importante per sbloccare l'anca da sedentarieta.", h: "Ginocchio a terra, l'altro piede avanti con il ginocchio sopra la caviglia. Spingi le anche avanti mantenendo il busto verticale.", t: "1x40s per lato", tm: 40, est: 80, cue: "Punta la fibbia della cintura verso l'orizzonte. Il bacino resta neutro, non in anteroversione. L'avanzamento delle anche e piccolo ma deve essere sentito.", feel: "Parte anteriore dell'anca della gamba dietro, in profondita. Se senti la lombare, hai perso il bacino.", breath: "Diaframmatica, espirazione completa", err: "Inarcare la lombare per andare piu avanti, inclinarsi col busto in avanti, ginocchio davanti che supera la punta del piede.", reason: "Presente in tutti i giorni lower e nel protocollo anca. I flessori dell'anca corti limitano la profondita dello squat e il lockout dell'hip thrust.", lk: "https://www.youtube.com/watch?v=dUgr_vjDWNw" },
+  "Half Kneeling Lunge + Reach": { img: "str_HalfKneelingReach", d: "Half kneeling lunge + reach verticale", goal: "Estendere l'allungamento del half kneeling lunge a tutta la catena anteriore, dallo psoas fino al gran dorsale e agli obliqui.", h: "Dalla posizione del half kneeling lunge, alza il braccio dello stesso lato del ginocchio a terra verso il soffitto. Allunga come se volessi toccare il soffitto.", t: "1x30s per lato", tm: 30, est: 60, cue: "La mano sale, l'anca scende. Senti una linea di tensione continua dal ginocchio a terra fino alla punta delle dita in alto.", feel: "Psoas profondo, fianco, obliqui e dorsale dello stesso lato. Molto piu esteso del lunge semplice.", breath: "Diaframmatica, lenta", err: "Perdere il bacino neutro quando alzi il braccio o ruotare il busto. Il petto resta frontale.", reason: "Protocollo anca e giorni lower. Aggiunge la componente delle catene muscolari: non allunghi un muscolo solo, ma tutta la catena anteriore-laterale.", lk: "https://www.youtube.com/watch?v=jE63mBT_a9Q" },
+  "Figure-Four Supino": { img: "str_FigureFourSupine", d: "Figure-four supino", goal: "Allungare i rotatori esterni dell'anca e il gluteo. I rotatori corti limitano la rotazione dell'anca e possono comprimere il nervo sciatico.", h: "Schiena a terra. Appoggia la caviglia sulla coscia opposta formando un 4. Afferra la coscia di sotto con entrambe le mani e tira verso il petto.", t: "1x40s per lato", tm: 40, est: 80, cue: "Mantieni il sacro a terra. Il ginocchio della gamba incrociata si apre lateralmente: non lo forzare verso il basso, lascia che la gravita e la trazione facciano il lavoro.", feel: "Gluteo profondo e parte posteriore-laterale dell'anca della gamba incrociata. Se senti il ginocchio, la posizione e sbagliata.", breath: "Diaframmatica, espira senza forzare", err: "Alzare il sacro da terra, forzare il ginocchio con la mano, testa che si solleva.", reason: "Giorno 1, 4 e protocollo anca. Dopo squat, stacco e hip thrust i rotatori esterni sono contratti.", lk: "https://www.youtube.com/watch?v=-g0nuyTHMrI" },
   "Posizione del quadrato": { img: "str_FireLogPose", d: "Posizione del quadrato", goal: "Aprire glutei profondi, rotatori esterni e capsula dell'anca in una posizione simmetrica.", h: "Seduta a terra, porta una tibia davanti e l'altra sopra in modo che le due gambe formino un quadrato. Piedi attivi, busto alto e bacino pesante a terra. Respira e lascia che le anche si rilassino.", t: "2x30-40s per lato", tm: 40, est: 160, cue: "Non forzare le ginocchia verso il basso. Lavora da busto alto e anche che si appoggiano, non dalle spalle che crollano avanti.", feel: "Gluteo profondo, lato esterno anca e parte posteriore del bacino.", breath: "Diaframmatica, lenta", err: "Schiena che si incurva, spalle che collassano avanti, ginocchia spinte con le mani.", reason: "Protocollo anca quotidiano: migliora la rotazione esterna e la tolleranza di entrambe le anche contemporaneamente.", lk: "" },
-  "Happy Baby": { img: "str_HappyBaby", d: "Happy baby", goal: "Allungare rotatori, adduttori, glutei e lombare in una posizione unica. Mobilità globale dell'anca in flessione, abduzione e rotazione esterna.", h: "Schiena a terra. Ginocchia verso le ascelle, mani che afferrano i piedi o le caviglie dall'esterno. Gomiti premono le ginocchia verso il basso.", t: "2x40s", tm: 40, est: 80, cue: "Micromovimenti: dondola il bacino lateralmente, 2-3 cm per lato. Ogni oscillazione porta l'allungamento su un punto diverso.", feel: "Inguine, interno coscia, gluteo profondo. La sensazione e distribuita, non puntiforme.", breath: "Diaframmatica, lenta", err: "Testa e spalle che si sollevano, tirare troppo forte con le braccia, lombare che si inarca.", reason: "Protocollo anca. E l'esercizio che lavora simultaneamente su piu limitazioni dell'anca. Ideale nei giorni cardio quando c'e piu tempo.", lk: "https://www.youtube.com/watch?v=h-Mmlos5hJY&pp=ygUSaGFwcHkgYmFieSBzdHJldGNo" },
-  "Doorway Pec Stretch": { img: "str_DoorwayPec", d: "Doorway pec stretch", goal: "Allungare il pettorale e il deltoide anteriore dopo spinta. Contrasta la chiusura delle spalle da postura seduta.", h: "Avambraccio appoggiato sul montante del rack o sullo stipite. Gomito a 90 gradi, all'altezza della spalla. Ruota il busto lontano dal braccio appoggiato.", t: "2x30s per lato", tm: 30, est: 120, cue: "La rotazione e del busto, non del braccio. Il braccio resta fermo, il petto si apre.", feel: "Petto, dalla parte vicina allo sterno fino alla spalla. Se senti la spalla davanti tirare in modo sgradevole, arretra la rotazione.", breath: "Espira lungo mentre apri il torace", err: "Gomito sopra la spalla o spingere la spalla in avanti per andare piu in la.", reason: "Giorno 2 e 5: dopo trazioni + panca e dopo push-up + dip. Il pettorale accorciato tira le spalle in avanti e peggiora la postura delle trazioni.", lk: "https://www.youtube.com/watch?v=CEQMx4zFwYs" },
-  "Overhead Lat Stretch": { img: "str_OverheadLat", d: "Overhead lat stretch", goal: "Allungare il gran dorsale dopo le tirate. Migliora la mobilità delle spalle in flessione.", h: "Mano alta sul rack, braccio teso. Spingi il fianco lontano dal rack, creando una curva laterale col corpo.", t: "2x30s per lato", tm: 30, est: 120, cue: "Il fianco si allontana, la mano resta ferma. Senti una linea di allungamento dal polso fino alla cresta iliaca.", feel: "Lato del tronco sotto l'ascella, lungo il dorsale fino al fianco.", breath: "Diaframmatica con espirazione completa", err: "Ruotare il busto o piegarsi dalla vita invece che dall'anca.", reason: "Giorno 2 e 5. Il gran dorsale e il muscolo piu grosso della schiena e dopo molte serie di tirata e accorciato e pieno di tensione.", lk: "https://www.youtube.com/watch?v=5HLQAVOvxNE" },
-  "Cross-Body Shoulder Stretch": { img: "str_CrossBodyShoulder", d: "Cross-body shoulder stretch", goal: "Allungare il deltoide posteriore e la capsula posteriore della spalla. Bilancia il lavoro delle tirate.", h: "Braccio teso davanti al petto. L'altra mano lo spinge verso il corpo, sopra il gomito.", t: "2x30s per lato", tm: 30, est: 120, cue: "La spalla del braccio che stiri resta bassa, non alzarla verso l'orecchio.", feel: "Parte posteriore della spalla, dietro il deltoide.", breath: "Respiro regolare", err: "Spingere sul gomito invece che sopra o alzare la spalla.", reason: "Giorno 2: dopo trazioni, T-bar row e panca. La capsula posteriore della spalla si irrigidisce con il volume di tirata.", lk: "https://www.youtube.com/watch?v=swvXpKN832E&pp=ygUbY3Jvc3MgYmFieSBzaG91ZGxlciBzdHJldGNo" },
-  "Wrist Flexor/Extensor Stretch": { img: "str_WristStretch", d: "Wrist flexor/extensor stretch", goal: "Decomprimere polsi e avambracci dopo la presa prolungata su trazioni, row e bilanciere.", h: "Braccio teso davanti. Con l'altra mano, tira le dita verso di te e poi lontano da te. Lento.", t: "2x20s per direzione", tm: 20, est: 80, cue: "Il braccio resta completamente teso. Se pieghi il gomito, l'allungamento salta l'avambraccio.", feel: "Parte interna dell'avambraccio per i flessori e parte esterna per gli estensori.", breath: "Respiro facile", err: "Tirare troppo forte o fare solo una direzione.", reason: "Giorno 2: dopo trazioni e row la presa e distrutta. Riduce la rigidita che si accumula nei tendini dell'avambraccio.", lk: "https://www.youtube.com/watch?v=GkDeFSfcekU&pp=ygUXZmxleG9yLWV4dGVuc29yIHN0cmV0aGM%3D" },
-  "Supine Assisted Leg Pull": { img: "str_Femorali", d: "Supine assisted leg pull", goal: "Allungare i femorali e il polpaccio. I femorali corti limitano l'hip hinge e tirano il bacino in retroversione.", h: "Schiena a terra. Avvolgi un elastico o un asciugamano intorno alla pianta del piede. Gamba tesa verso il soffitto. Tira delicatamente verso di te.", t: "2x40s per lato", tm: 40, est: 160, cue: "Il piede in dorsiflessione estende l'allungamento al polpaccio. Il bacino resta a terra, non si alza.", feel: "Parte posteriore della coscia, dal gluteo fino al cavo del ginocchio. Con dorsiflessione, anche il polpaccio.", breath: "Espira lentamente mentre tiri", err: "Piegare il ginocchio per salire di piu, sollevare il bacino da terra, bloccare il respiro.", reason: "Giorno 4: dopo stacco e stacco rumeno. I femorali hanno lavorato in allungamento sotto carico pesante.", lk: "https://www.youtube.com/watch?v=qcfHJBm1R2U&pp=ygUYc3VwaW5lIGFzc2lzdGVkIGxlZyBwdWxs" },
+  "Happy Baby": { img: "str_HappyBaby", d: "Happy baby", goal: "Allungare rotatori, adduttori, glutei e lombare in una posizione unica. Mobilità globale dell'anca in flessione, abduzione e rotazione esterna.", h: "Schiena a terra. Ginocchia verso le ascelle, mani che afferrano i piedi o le caviglie dall'esterno. Gomiti premono le ginocchia verso il basso.", t: "1x40s", tm: 40, est: 40, cue: "Micromovimenti: dondola il bacino lateralmente, 2-3 cm per lato. Ogni oscillazione porta l'allungamento su un punto diverso.", feel: "Inguine, interno coscia, gluteo profondo. La sensazione e distribuita, non puntiforme.", breath: "Diaframmatica, lenta", err: "Testa e spalle che si sollevano, tirare troppo forte con le braccia, lombare che si inarca.", reason: "Protocollo anca. E l'esercizio che lavora simultaneamente su piu limitazioni dell'anca. Ideale nei giorni cardio quando c'e piu tempo.", lk: "https://www.youtube.com/watch?v=h-Mmlos5hJY&pp=ygUSaGFwcHkgYmFieSBzdHJldGNo" },
+  "Doorway Pec Stretch": { img: "str_DoorwayPec", d: "Doorway pec stretch", goal: "Allungare il pettorale e il deltoide anteriore dopo spinta. Contrasta la chiusura delle spalle da postura seduta.", h: "Avambraccio appoggiato sul montante del rack o sullo stipite. Gomito a 90 gradi, all'altezza della spalla. Ruota il busto lontano dal braccio appoggiato.", t: "1x30s per lato", tm: 30, est: 60, cue: "La rotazione e del busto, non del braccio. Se vuoi sentire anche il bicipite tieni il braccio il piu disteso possibile, senza flettere il gomito oltre il setup.", feel: "Petto, deltoide anteriore e, con braccio meno flesso, anche parte anteriore del bicipite. Se senti la spalla davanti tirare in modo sgradevole, arretra la rotazione.", breath: "Espira lungo mentre apri il torace", err: "Gomito sopra la spalla o spingere la spalla in avanti per andare piu in la.", reason: "Giorno 2 e 5: dopo trazioni + panca e dopo push-up + dip. Il pettorale accorciato tira le spalle in avanti e peggiora la postura delle trazioni.", lk: "https://www.youtube.com/watch?v=CEQMx4zFwYs" },
+  "Overhead Lat Stretch": { img: "str_OverheadLat", d: "Overhead lat stretch", goal: "Allungare il gran dorsale dopo le tirate. Migliora la mobilità delle spalle in flessione.", h: "Mano alta sul rack, braccio teso. Spingi il fianco lontano dal rack, creando una curva laterale col corpo.", t: "1x30s per lato", tm: 30, est: 60, cue: "Il fianco si allontana, la mano resta ferma. Senti una linea di allungamento dal polso fino alla cresta iliaca.", feel: "Lato del tronco sotto l'ascella, lungo il dorsale fino al fianco.", breath: "Diaframmatica con espirazione completa", err: "Ruotare il busto o piegarsi dalla vita invece che dall'anca.", reason: "Giorno 2 e 5. Il gran dorsale e il muscolo piu grosso della schiena e dopo molte serie di tirata e accorciato e pieno di tensione.", lk: "https://www.youtube.com/watch?v=5HLQAVOvxNE" },
+  "Stretching Dorsale": { img: "str_StretchingDorsale", d: "Stretching dorsale", goal: "Allungare gran dorsale, gran rotondo e catena posteriore della spalla dopo tirate e press sopra la testa.", h: "Porta un braccio piegato dietro la testa e aiutati con l'altra mano a guidare il gomito. Mantieni il petto fermo e cerca lunghezza dal tricipite fino al fianco.", t: "1x30s per lato", tm: 30, est: 60, cue: "Non aprire troppo le costole. Cerca allungamento lungo il lato del tronco e sotto l'ascella, non compressione cervicale.", feel: "Dorsale alto, lato del torace, zona sotto l'ascella e parte lunga del tricipite.", breath: "Lenta con espirazione completa", err: "Inarcare la schiena, tirare il collo in avanti o spingere il gomito con aggressivita.", reason: "Giorno 2: aggiunge un allungamento piu diretto della catena dorsale alta dopo trazioni e pulley, senza ripetere il cross-body della spalla.", lk: "" },
+  "Wrist Flexor/Extensor Stretch": { img: "str_WristStretch", d: "Wrist flexor/extensor stretch", goal: "Decomprimere polsi e avambracci dopo la presa prolungata su trazioni, row e bilanciere.", h: "Braccio teso davanti. Con l'altra mano, tira le dita verso di te e poi lontano da te. Lento.", t: "1x20s per direzione", tm: 20, est: 40, cue: "Il braccio resta completamente teso. Se pieghi il gomito, l'allungamento salta l'avambraccio.", feel: "Parte interna dell'avambraccio per i flessori e parte esterna per gli estensori.", breath: "Respiro facile", err: "Tirare troppo forte o fare solo una direzione.", reason: "Giorno 2: dopo trazioni e row la presa e distrutta. Riduce la rigidita che si accumula nei tendini dell'avambraccio.", lk: "https://www.youtube.com/watch?v=GkDeFSfcekU&pp=ygUXZmxleG9yLWV4dGVuc29yIHN0cmV0aGM%3D" },
+  "Supine Assisted Leg Pull": { img: "str_Femorali", d: "Supine assisted leg pull", goal: "Allungare i femorali e il polpaccio. I femorali corti limitano l'hip hinge e tirano il bacino in retroversione.", h: "Schiena a terra. Avvolgi un elastico o un asciugamano intorno alla pianta del piede. Gamba tesa verso il soffitto. Tira delicatamente verso di te.", t: "1x40s per lato", tm: 40, est: 80, cue: "Il piede in dorsiflessione estende l'allungamento al polpaccio. Il bacino resta a terra, non si alza.", feel: "Parte posteriore della coscia, dal gluteo fino al cavo del ginocchio. Con dorsiflessione, anche il polpaccio.", breath: "Espira lentamente mentre tiri", err: "Piegare il ginocchio per salire di piu, sollevare il bacino da terra, bloccare il respiro.", reason: "Giorno 4: dopo stacco e stacco rumeno. I femorali hanno lavorato in allungamento sotto carico pesante.", lk: "https://www.youtube.com/watch?v=qcfHJBm1R2U&pp=ygUYc3VwaW5lIGFzc2lzdGVkIGxlZyBwdWxs" },
   "Cat-Cow Lento": { base: "Cat-Cow", img: "str_CatCowStretch", thumbPos: "center", thumbScale: 1.45, d: "Cat-cow lento", goal: "Mobilizzare la colonna vertebrale e decomprimere la lombare dopo il lavoro pesante di catena posteriore.", h: "Quattro zampe, mani sotto le spalle, ginocchia sotto le anche. Cat: arrotonda la schiena verso il soffitto, mento al petto. Cow: estendi la schiena, petto avanti, sguardo avanti. Lento, 3-4 secondi per fase.", t: "8-10 ripetizioni lente", tm: 60, est: 60, cue: "Muovi una vertebra alla volta, non tutto insieme. Senti ogni segmento della colonna che si flette e poi si estende.", feel: "Tutta la colonna, dalla lombare alla cervicale. Nella fase cat senti allungamento lombare, nella fase cow apertura toracica.", breath: "Inspira in estensione, espira in flessione", err: "Andare veloce o muovere solo testa e bacino lasciando il centro rigido.", reason: "Giorno 4: dopo stacco da terra e stacco rumeno la colonna e stata compressa sotto carico. Il cat-cow la decomprime senza carico.", lk: "https://www.youtube.com/watch?v=AVyXJ8xMNxA" },
-  "Overhead Triceps Stretch": { img: "str_Tricipiti", d: "Overhead triceps stretch", goal: "Allungare il tricipite, soprattutto il capo lungo che attraversa sia il gomito che la spalla. Dopo military, push-up e dip e il muscolo piu affaticato.", h: "Braccio alzato, piega il gomito e porta la mano dietro la testa verso la scapola opposta. L'altra mano spinge delicatamente il gomito verso il basso e indietro.", t: "2x30s per lato", tm: 30, est: 120, cue: "Il gomito punta al soffitto, non in avanti. Se il gomito cade avanti, il capo lungo non si allunga.", feel: "Parte posteriore del braccio, dalla punta del gomito fino sotto l'ascella.", breath: "Respiro lento", err: "Spingere il gomito troppo forte o inarcare la schiena per compensare.", reason: "Giorno 5: dopo military press, push-up, dip e tricipiti cavo. Quattro esercizi che tassano i tricipiti.", lk: "https://www.youtube.com/watch?v=_IOHtPSYGbk&pp=ygUXb3ZlcmhlYWQgdHJpY2VwcyBzcmV0Y2g%3D" },
+  "Overhead Triceps Stretch": { img: "str_Tricipiti", d: "Overhead triceps stretch", goal: "Allungare il tricipite, soprattutto il capo lungo che attraversa sia il gomito che la spalla. Dopo military, push-up e dip e il muscolo piu affaticato.", h: "Braccio alzato, piega il gomito e porta la mano dietro la testa verso la scapola opposta. L'altra mano spinge delicatamente il gomito verso il basso e indietro.", t: "1x30s per lato", tm: 30, est: 60, cue: "Il gomito punta al soffitto, non in avanti. Se il gomito cade avanti, il capo lungo non si allunga.", feel: "Parte posteriore del braccio, dalla punta del gomito fino sotto l'ascella.", breath: "Respiro lento", err: "Spingere il gomito troppo forte o inarcare la schiena per compensare.", reason: "Giorno 5: dopo military press, push-up, dip e tricipiti cavo. Quattro esercizi che tassano i tricipiti.", lk: "https://www.youtube.com/watch?v=_IOHtPSYGbk&pp=ygUXb3ZlcmhlYWQgdHJpY2VwcyBzcmV0Y2g%3D" },
   "Band Dislocate Lento": { img: "str_BandDislocateLento", thumbPos: "center top", thumbScale: 1.55, d: "Band dislocate lento", goal: "Mobilizzare l'intera articolazione della spalla attraverso il ROM completo. Contrasta la chiusura delle spalle post-spinta.", h: "Elastico leggero o asciugamano tenuto a braccia tese davanti. Passa l'elastico sopra la testa e dietro la schiena, poi torna avanti. Lento: 3-4 secondi per passaggio.", t: "8-10 ripetizioni lente", tm: 60, est: 60, cue: "Le braccia restano tese per tutto il percorso. Se devi piegare i gomiti, allarga la presa sull'elastico.", feel: "Parte anteriore delle spalle nel passaggio dietro, parte posteriore nel ritorno avanti. L'apertura toracica migliora passaggio dopo passaggio.", breath: "Fluido con il movimento", err: "Presa troppo stretta, inarcare la schiena nel punto piu alto o andare veloce.", reason: "Giorno 5: dopo esercizi di spinta e trazione. Resetta la mobilità della spalla in tutti i piani.", lk: "https://www.youtube.com/watch?v=qJz79bK7QS8&pp=ygUUYmFuZCBkaXNsb2NhdGUgbGVudG_SBwkJ2goBhyohjO8%3D" },
-  "Couch Stretch": { img: "str_CouchStretch", thumbPos: "center 28%", thumbScale: 1.35, d: "Couch stretch", goal: "Allungamento profondo di retto femorale e flessori dell'anca. Piu intenso del half kneeling lunge perche aggiunge la flessione del ginocchio.", h: "Ginocchio a terra vicino al muro o alla panca, piede appoggiato al muro con la pianta verso il soffitto. L'altro piede davanti, ginocchio a 90 gradi. Raddrizza il busto.", t: "2x40s per lato", tm: 40, est: 160, cue: "Fibbia della cintura verso il soffitto: retroversione attiva del bacino. Se senti la lombare, stai in anteroversione.", feel: "Parte anteriore della coscia della gamba dietro, dal ginocchio fino all'anca. Molto piu intenso del quad pull in piedi.", breath: "Lenta, espirazione lunga", err: "Inarcare la schiena, ginocchio troppo lontano dal muro o forzare la posizione completa dal primo giorno.", reason: "Protocollo anca, settimane 5+. E la progressione del half kneeling lunge: aggiunge la flessione del ginocchio che allunga anche il retto femorale distalmente.", lk: "https://www.youtube.com/watch?v=TIJu5aWPke0&pp=ygUNQ291Y2ggU3RyZXRjaA%3D%3D" },
-  "Leg Cradle Supino": { img: "str_ReclinedHipCradle", d: "Leg cradle supino", goal: "Allungare piriforme, glutei e adduttori in una posizione stabile e controllata.", h: "Schiena a terra. Solleva una gamba, afferra la tibia con entrambe le mani, una alla caviglia e una al ginocchio. Tira la tibia verso l'addome parallelamente al pavimento.", t: "2x30s per lato", tm: 30, est: 120, cue: "Il sacro resta a terra. La tibia si avvicina al corpo, non il corpo alla tibia.", feel: "Gluteo profondo e parte esterna dell'anca. Simile al figure-four ma con piu enfasi sugli adduttori.", breath: "Lenta", err: "Alzare la testa e le spalle o tirare il ginocchio invece della tibia.", reason: "Protocollo anca, settimane 5+. Complementa il figure-four aggiungendo l'abduzione dell'anca, che il figure-four non lavora.", lk: "https://www.youtube.com/watch?v=Rb7oHuWIBGI&pp=ygURTGVnIENyYWRsZSBzdXBpbmU%3D" },
-  "Supported Low Lunge": { img: "str_SupportedLowLunge", d: "Supported low lunge", goal: "Allungare psoas e TFL in profondita, con possibilita di raggiungere anche gli adduttori nella variante wide stance.", h: "Mani a terra o su blocchi/step. Un piede avanti tra le mani. Gamba dietro lunga, ginocchio a terra. Spingi le anche verso il basso e in avanti.", t: "2x30s per lato", tm: 30, est: 120, cue: "Il peso affonda verso il pavimento. Le mani servono solo per equilibrio, non per sostenerti.", feel: "Inguine profondo e parte anteriore dell'anca della gamba dietro. Nella variante larga: anche interno coscia.", breath: "Fluida", err: "Busto che collassa sulle mani, ginocchio davanti che avanza oltre la caviglia o lombare che si inarca.", reason: "Protocollo anca, settimane 9+. E la posizione piu profonda di allungamento dei flessori dell'anca e richiede una base costruita con half kneeling lunge e couch stretch.", lk: "https://www.youtube.com/watch?v=-Rprn7V7qgo&pp=ygUTU3VwcG9ydGVkIExvdyBMdW5nZdIHCQnaCgGHKiGM7w%3D%3D" },
+  "Couch Stretch": { img: "str_CouchStretch", thumbPos: "center 28%", thumbScale: 1.35, d: "Couch stretch", goal: "Allungamento profondo di retto femorale e flessori dell'anca. Piu intenso del half kneeling lunge perche aggiunge la flessione del ginocchio.", h: "Ginocchio a terra vicino al muro o alla panca, piede appoggiato al muro con la pianta verso il soffitto. L'altro piede davanti, ginocchio a 90 gradi. Raddrizza il busto.", t: "1x40s per lato", tm: 40, est: 80, cue: "Fibbia della cintura verso il soffitto: retroversione attiva del bacino. Se senti la lombare, stai in anteroversione.", feel: "Parte anteriore della coscia della gamba dietro, dal ginocchio fino all'anca. Molto piu intenso del quad pull in piedi.", breath: "Lenta, espirazione lunga", err: "Inarcare la schiena, ginocchio troppo lontano dal muro o forzare la posizione completa dal primo giorno.", reason: "Protocollo anca, settimane 5+. E la progressione del half kneeling lunge: aggiunge la flessione del ginocchio che allunga anche il retto femorale distalmente.", lk: "https://www.youtube.com/watch?v=TIJu5aWPke0&pp=ygUNQ291Y2ggU3RyZXRjaA%3D%3D" },
+  "Leg Cradle Supino": { img: "str_ReclinedHipCradle", d: "Leg cradle supino", goal: "Allungare piriforme, glutei e adduttori in una posizione stabile e controllata.", h: "Schiena a terra. Solleva una gamba, afferra la tibia con entrambe le mani, una alla caviglia e una al ginocchio. Tira la tibia verso l'addome parallelamente al pavimento.", t: "1x30s per lato", tm: 30, est: 60, cue: "Il sacro resta a terra. La tibia si avvicina al corpo, non il corpo alla tibia.", feel: "Gluteo profondo e parte esterna dell'anca. Simile al figure-four ma con piu enfasi sugli adduttori.", breath: "Lenta", err: "Alzare la testa e le spalle o tirare il ginocchio invece della tibia.", reason: "Protocollo anca, settimane 5+. Complementa il figure-four aggiungendo l'abduzione dell'anca, che il figure-four non lavora.", lk: "https://www.youtube.com/watch?v=Rb7oHuWIBGI&pp=ygURTGVnIENyYWRsZSBzdXBpbmU%3D" },
+  "Supported Low Lunge": { img: "str_SupportedLowLunge", d: "Supported low lunge", goal: "Allungare psoas e TFL in profondita, con possibilita di raggiungere anche gli adduttori nella variante wide stance.", h: "Mani a terra o su blocchi/step. Un piede avanti tra le mani. Gamba dietro lunga, ginocchio a terra. Spingi le anche verso il basso e in avanti.", t: "1x30s per lato", tm: 30, est: 60, cue: "Il peso affonda verso il pavimento. Le mani servono solo per equilibrio, non per sostenerti.", feel: "Inguine profondo e parte anteriore dell'anca della gamba dietro. Nella variante larga: anche interno coscia.", breath: "Fluida", err: "Busto che collassa sulle mani, ginocchio davanti che avanza oltre la caviglia o lombare che si inarca.", reason: "Protocollo anca, settimane 9+. E la posizione piu profonda di allungamento dei flessori dell'anca e richiede una base costruita con half kneeling lunge e couch stretch.", lk: "https://www.youtube.com/watch?v=-Rprn7V7qgo&pp=ygUTU3VwcG9ydGVkIExvdyBMdW5nZdIHCQnaCgGHKiGM7w%3D%3D" },
 };
 
 var HIP_PROTOCOL_BASE = [
@@ -1751,7 +1788,7 @@ var DAYS = [
       { n: "Addominali Obliqui", s: "3x15", rpe: "", note: "Russian twist o crunch laterale. CORE ALLA FINE." },
       { n: "Plank", s: "3x45s", rpe: "", note: "CORE ALLA FINE." },
       { n: "Hollow Position", s: "3x30s", rpe: "", note: "Inizia con Hollow Tuck se serve. Lombare incollata a terra. CORE ALLA FINE." },
-    ], str: ["Standing Quad Pull","Half Kneeling Lunge","Figure-Four Supino"], hipBonus: true },
+    ], str: ["Standing Quad Pull","Half Kneeling Lunge","Figure-Four Supino"] },
   { name: "Mercoledi", focus: "Spinta upper + stacco + tirata", dur: "B1+B2+B3: 7 esercizi", tEst: 55,
     intro: {
       muscoli: ["Pettorali, tricipiti, deltoidi anteriori (panca)", "Catena posteriore completa — glutei, femorali, erettori (stacco)", "Dorsali, trapezi, bicipiti (rematore bilanciere)", "Core (plank)"],
@@ -1840,75 +1877,70 @@ var DAYS = [
 var DAYS_V4 = [
   { name: "Giorno 1", focus: "Lower A — Squat + Femorali", dayLabel: "Lun", dur: "5 esercizi", tEst: 68,
     intro: {
-      attrezzi: ["Bilanciere + rack + bumper", "Pad o asciugamano per Glute Bridge", "Cavo basso + cavigliera", "Ab wheel"],
-      muscoli: ["Quadricipiti (Squat)", "Femorali/Glutei (Stacco Rumeno)", "Glutei in accorciamento (Glute Bridge)", "Femorali (Leg curl al cavo)", "Core (Ab wheel)"],
-      obiettivi: ["Costruire forza sullo Squat con double progression", "Lavorare il gluteo in allungamento (Stacco Rumeno) e in accorciamento (Glute Bridge)", "Rinforzare i femorali con Leg Curl controllato"],
-      attenzione: ["Squat: ginocchia FUORI, Valsalva, parallelo minimo se la tecnica resta pulita", "Glute Bridge: tibia quasi verticale in cima, NON iperestendere la lombare — squeeze glutei 1s", "Leg curl al cavo: bacino fermo, niente slancio, eccentrica lenta 2-3 secondi"],
-      ritmo: "Recuperi 2-3 min su Squat. 90s su Stacco Rumeno e Glute Bridge. 90s-2 min su Leg curl al cavo. 90s su Ab wheel."
+      attrezzi: ["Bilanciere + rack + bumper", "Pad o asciugamano per Glute Bridge", "Muro libero", "Corpo libero"],
+      muscoli: ["Quadricipiti (Squat)", "Femorali/Glutei (Stacco Rumeno)", "Glutei in accorciamento (Glute Bridge)", "Quadricipiti in isometria (Wall Sit)", "Core e cingolo scapolare (Monster Walk)"],
+      obiettivi: ["Costruire forza sullo Squat con double progression", "Lavorare il gluteo in allungamento (Stacco Rumeno) e in accorciamento (Glute Bridge)", "Chiudere il giorno con Wall Sit e Monster Walk per quadricipiti e core senza setup aggiuntivo"],
+      attenzione: ["Squat: ginocchia FUORI, Valsalva, parallelo minimo se la tecnica resta pulita", "Glute Bridge: tibia quasi verticale in cima, NON iperestendere la lombare — squeeze glutei 1s", "Wall Sit: resta a circa 90 gradi, schiena piena sul muro e chiudi la serie quando perdi altezza", "Monster Walk: passi delle mani brevi, addome attivo e niente cedimento lombare"],
+      ritmo: "Recuperi 2-3 min su Squat. 90s su Stacco Rumeno e Glute Bridge. 60-90s su Wall Sit e Monster Walk."
     },
     warmup: [
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "12 per gamba x2", cue: "Tallone a terra, ginocchio avanti: avvicina i fianchi, non le spalle.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
       { n: "Posizione del quadrato", phase: "mobility", gearTag: "Corpo libero", p: "2x30-40s per lato", cue: "Busto alto, anche pesanti a terra e nessuna spinta sulle ginocchia." },
       { n: "Alfredson eccentrico", phase: "mobility", gearTag: "Step / Fit box", p: "10 per piede", cue: "Sali con due piedi e scendi con uno solo, lento.", lk: "https://www.youtube.com/watch?v=WjQBJPuFkHI" },
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota solo il torace: il bacino resta fermo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
-      { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 per lato", cue: "Gluteo stretto 2 secondi in alto, lombare ferma.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
+      { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "10 per lato", cue: "Gluteo stretto 2 secondi in alto, lombare ferma.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
       { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "20 rip per lato", cue: "Bacino fermo e anti-rotazione continua per 20 ripetizioni per lato.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
-      { n: "Serie avvicinamento squat", phase: "approach", img: "w_SerieAvvSquat", gearTag: "Bilanciere", p: "2 serie tecnica", cue: "Bilanciere scarico. Pausa in buca 3-5 secondi. 6 ripetizioni per serie." },
+      { n: "Serie avvicinamento squat", phase: "approach", img: "w_SerieAvvSquat", gearTag: "Bilanciere", p: "1 serie al 50%", cue: "Una sola serie a circa meta del carico di lavoro. Deve preparare il gesto senza tassarti." },
     ],
     ex: [
-      { n: "Squat", s: "5x5-6", rpe: "8-9", note: "Setup: piedi larghezza spalle, punte 15-30 gradi, arco plantare attivo e peso sul mesopiede. Mani simmetriche, gomiti giu e leggermente dietro. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper + rack", errori: "Ginocchia che collassano dentro; busto che cade avanti in risalita; talloni che si alzano; schiena che si arrotonda in buca" },
+      { n: "Squat", s: "4x6", rpe: "8-9", note: "Setup: piedi larghezza spalle, punte 15-30 gradi, arco plantare attivo e peso sul mesopiede. Mani simmetriche, gomiti giu e leggermente dietro. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper + rack", errori: "Ginocchia che collassano dentro; busto che cade avanti in risalita; talloni che si alzano; schiena che si arrotonda in buca" },
       { n: "Stacco Rumeno", s: "5x10-12", rpe: "8-9", note: "1) Sollevare il bilanciere come per uno stacco normale. 2) Sporgersi dal balcone. 3) Stare sopra. 4) Petto in fuori e addominali duri. 5) Andare fino a meta tibia.", rec: "90s-2 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata; ginocchia troppo flesse; carico lontano dal corpo; anca che scende invece di andare indietro" },
       { n: "Glute Bridge Bilanciere", s: "4x10-12", rpe: "8-9", note: "Schiena a terra, bilanciere sulle anche (pad o asciugamano). Spingi il bacino in alto fino a estensione completa. Stringi i glutei 1s in alto. Tibia quasi verticale in cima.", rec: "90s", gear: "Bilanciere + bumper (+ pad o asciugamano)", errori: "Iperestendere la lombare in alto; piedi troppo lontani (femorali rubano lavoro ai glutei); non completare l'estensione in alto" },
-      { n: "Leg Curl al Cavo", s: "4x10-12", rpe: "8-9", note: "Setup: cavigliera alla caviglia, cavo basso. Prona a terra o in piedi. Fletti il ginocchio portando il tallone verso il gluteo. Eccentrica 2-3 secondi. Alternativa piu avanzata: Nordic Curl assistito con elastico.", rec: "90s-2 min", gear: "Cavo basso + cavigliera", errori: "Slancio col bacino; eccentrica troppo veloce; lombare che si inarca" },
-      { n: "Ab Wheel", s: "4x8-10", rpe: "8", note: "Dalle ginocchia. Costole giu e glutei attivi per tutta la serie. Tutte le serie sono di lavoro. Alternativa: TRX fallout o fitball rollout.", rec: "90s", gear: "Ab wheel", errori: "Lombare che si inarca; anche che non si estendono; range troppo corto" },
+      { n: "Wall Sit", s: "3xmax", rpe: "9", note: "Schiena appoggiata al muro, cosce circa parallele e tibie quasi verticali. Tieni la posizione finche riesci a mantenere altezza e assetto puliti. Conta i secondi, non le ripetizioni.", rec: "60-90s", gear: "Muro libero", errori: "Salire poco alla volta durante la serie; ginocchia che collassano dentro; lombare che si stacca dal muro" },
+      { n: "Monster Walk", s: "3x8-10", rpe: "8", note: "Dalla stazione eretta cammina con le mani in avanti fino a plank lungo e torna indietro in controllo. Ogni andata e ritorno conta come una ripetizione. Fermati se perdi addome o linea del tronco.", rec: "60-90s", gear: "Corpo libero", errori: "Lombare che cede; passi delle mani troppo lunghi; ritorno frettoloso senza controllo" },
     ], str: ["Quadricipiti","Flessori anca","Glutei"] },
 
-  { name: "Giorno 2", focus: "Upper A — Trazioni + Panca + Pulley", dayLabel: "Mar", dur: "6 esercizi", tEst: 73,
+  { name: "Giorno 2", focus: "Upper A — Trazioni + Panca + Pulley", dayLabel: "Mar", dur: "4 esercizi", tEst: 58,
     intro: {
-      attrezzi: ["Barra trazioni", "Elastico assistenza", "Bilanciere + panca + rack", "Cavo basso + maniglie", "Cavo alto + corda o doppio manico", "Manubri"],
-      muscoli: ["Dorsali/Bicipiti (Trazioni)", "Pettorali/Tricipiti (Panca)", "Dorsali/Scapole (Pulley)", "Deltoidi posteriori/Cuffia rotatori (Cable Pull-Apart)", "Deltoide laterale (Alzate Laterali)", "Bicipiti (Curl)"],
-      obiettivi: ["Costruire forza nelle Trazioni con double progression — priorita assoluta", "Aggiungere volume tirata orizzontale con Pulley", "Coprire rotazione esterna e deltoide posteriore con Cable Pull-Apart", "Portare il deltoide laterale al minimo utile con 3 serie pulite di Alzate Laterali"],
-      attenzione: ["Trazioni: parti da braccia TESE, scapole depresse PRIMA di tirare, mento sopra la sbarra, discesa controllata 2-3s", "Panca: scapole addotte e basse, gomiti a 45-75 gradi, barra tocca linea capezzoli", "Cable Pull-Apart: braccia TESE, ruota le mani verso fuori alla fine, pausa 1s — non piegare i gomiti"],
-      ritmo: "Recuperi 2-3 min su Trazioni. 2 min su Panca. 90s-2 min su Pulley. 60s nel superset Cable Pull-Apart + Curl. 30s su Alzate Laterali."
+      attrezzi: ["Barra trazioni", "Elastico assistenza", "Bilanciere + panca + rack", "Cavo basso + maniglie", "Manubri"],
+      muscoli: ["Dorsali/Bicipiti (Trazioni)", "Pettorali/Tricipiti (Panca)", "Dorsali/Scapole (Pulley)", "Deltoidi/Tricipiti (Arnold Press)"],
+      obiettivi: ["Costruire forza nelle Trazioni con double progression — priorita assoluta", "Spingere forte sulla Panca con tecnica pulita", "Aggiungere volume di tirata orizzontale con Pulley senza allungare troppo la seduta", "Inserire una spinta spalle controllata con Arnold Press a intensita moderata"],
+      attenzione: ["Trazioni: parti da braccia TESE, scapole depresse PRIMA di tirare, mento sopra la sbarra, discesa controllata 2-3s", "Panca: scapole addotte e basse, gomiti a 45-75 gradi, barra tocca linea capezzoli", "Pulley: petto aperto, niente slancio col busto e scapole che si chiudono alla fine", "Arnold Press: ruota senza slancio, costole giu e niente inarcamento lombare"],
+      ritmo: "Recuperi 2-3 min su Trazioni. 2 min su Panca. 90s-2 min su Pulley. 90s su Arnold Press."
     },
     warmup: [
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota solo il torace: il bacino resta fermo.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
       { n: "FMS spalle", phase: "mobility", gearTag: "Corpo libero", p: "5 per lato", cue: "Descrizione in arrivo." },
-      { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "12 per gamba x2", cue: "Serve anche qui per appoggio e linea stabile: porta avanti i fianchi, non le spalle.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
-      { n: "Cable Pull-Apart con rotazione esterna", phase: "activation", gearTag: "Cavo", p: "15 rip", cue: "Scapole che si avvicinano alla fine del gesto.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
-      { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "20 rip per lato", cue: "Bacino fermo e anti-rotazione vera per 20 ripetizioni per lato.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
-      { n: "Serie avvicinamento trazioni prone", phase: "approach", img: "Trazioni", gearTag: "Sbarra + elastico", p: "2-3 mini-serie", cue: "Mini-serie progressive presa prone con elastico per entrare nella tirata senza stancarti." },
+      { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "20 rip per lato", cue: "Bacino fermo e anti-rotazione vera per 20 ripetizioni per lato.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY", alt: [{ n: "Plank su tavoletta", d: "Alternativa: plank su tavoletta o superficie instabile. 2 serie da 20-30 secondi mantenendo addome e glutei attivi." }] },
     ],
     ex: [
       { n: "Trazioni", s: "5x5-8", rpe: "8-9", note: "Double progression. Presa prona. Parti da braccia tese. Mento sopra sbarra. Discesa 2-3s. Ultimo set a cedimento tecnico controllato.", priority: true, rec: "2-3 min", gear: "Barra trazioni (+ elastico assist.)", errori: "Kipping/slancio; mento che si protende senza tirare; spalle alle orecchie; ROM incompleto" },
       { n: "Panca", s: "5x6-8", rpe: "8-9", note: "Scapole addotte e basse. Arco lombare naturale. Gomiti a 45-75 gradi. Barra tocca linea capezzoli. Polsi dritti. Ultimo set a cedimento tecnico controllato.", rec: "2 min", gear: "Bilanciere + panca + rack", errori: "Rimbalzo sul petto; gomiti a 90 gradi; sedere che si alza; polsi piegati" },
       { n: "Pulley", s: "5x10-12", rpe: "8-9", note: "Carrucola bassa. Tira verso lo sterno portando i gomiti indietro e le scapole insieme. Eccentrica 2-3 secondi.", rec: "90s-2 min", gear: "Cavo basso + maniglie", errori: "Schiena che si inarca; slancio col busto; tirare con i bicipiti invece dei dorsali" },
-      { n: "Cable Pull-Apart con rotazione esterna", s: "3x15", rpe: "8", note: "Cavo alto, corda o doppio manico. Braccia tese davanti all'altezza delle spalle. Apri lateralmente fino ai lati del corpo e ruota le mani verso fuori alla fine. Pausa 1s.", rec: "60s", gear: "Cavo alto + corda o doppio manico", errori: "Piegare i gomiti per arrivare piu indietro; non completare la rotazione esterna; usare slancio" },
-      { n: "Curl Bicipiti", s: "3x10-12", rpe: "9", note: "Con manubri. Gomiti fissi ai fianchi. Supinazione. Eccentrica 2-3s. Tutte le serie sono di lavoro.", rec: "90s", gear: "Manubri", errori: "Slancio col busto; gomiti che avanzano; fase eccentrica troppo veloce" },
-      { n: "Alzate Laterali", s: "3x15", rpe: "8", note: "Manubri leggeri. Tre serie pulite, fuori dal superset. Alza fino a parallelo, pausa 1s in alto, niente slancio.", rec: "30s", gear: "Manubri leggeri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; slancio" },
-    ], str: ["Doorway Pec Stretch","Overhead Lat Stretch","Cross-Body Shoulder Stretch","Wrist Flexor/Extensor Stretch"], hipBonus: true },
+      { n: "Arnold Press", s: "4x10", rpe: "7.5", note: "Manubri al mento con palmi verso di te. Spingi ruotando i polsi fino a distendere sopra la testa. Movimento pulito, niente slancio.", rec: "90s", gear: "Manubri", errori: "Inarcare la lombare; chiudere la rotazione troppo presto; usare slancio con il busto" },
+    ], str: ["Doorway Pec Stretch","Overhead Lat Stretch","Stretching Dorsale"] },
 
   { name: "Giorno 3", focus: "Leggero", dayLabel: "Mer", light: true, tEst: 45,
     intro: {
-      attrezzi: ["Manubri leggeri", "TRX", "Cavo basso + cavigliera", "Tappetino"],
-      muscoli: ["Deltoide laterale (Alzate Laterali)", "Quadricipiti / Glutei (Goblet Squat)", "Deltoide posteriore / cuffia (Cable Pull-Apart)", "Gluteo medio (Abduzione laterale IR)", "Quadricipiti in isolamento (Leg Extension al Cavo)", "Dorsali / scapole (TRX Row lento)", "Petto (Push-Up)", "Femorali in flessione ginocchio (Leg Curl al Cavo)", "Core isometrico (Hollow Position)"],
-      obiettivi: ["Aggiungere volume complementare senza affaticare il sistema nervoso", "Portare petto, deltoidi, quadricipiti e femorali al minimo utile con serie leggere ma produttive", "Usare 4 superset automatici per tenere il G3 rapido e ordinato", "Chiudere il blocco forza con Hollow Position per il core isometrico e poi protocollo anca completo"],
-      attenzione: ["G3 leggero: 3 serie per esercizio. La prima serie e di avvicinamento tecnico, le serie 2 e 3 sono di lavoro a RPE 7-8.", "Push-Up, Leg Extension e Leg Curl oggi sono volume leggero: tecnica pulita, niente fatica vera", "Nel TRX Row e nell'Abduzione laterale IR il controllo del corpo conta piu della quantità"],
+      attrezzi: ["Manubri leggeri", "TRX", "Cavo basso + cavigliera", "Muro libero", "Tappetino"],
+      muscoli: ["Deltoide laterale (Alzate Laterali)", "Quadricipiti / Glutei (Goblet Squat)", "Deltoide posteriore / cuffia (Cable Pull-Apart)", "Gluteo medio (Abduzione laterale IR)", "Quadricipiti in isolamento (Leg Extension al Cavo)", "Dorsali / scapole (TRX Row lento)", "Petto (Push-Up)", "Quadricipiti in isometria (Wall Sit)", "Core isometrico (Hollow Position)"],
+      obiettivi: ["Aggiungere volume complementare senza affaticare il sistema nervoso", "Portare petto, deltoidi e quadricipiti al minimo utile con serie leggere ma produttive", "Usare 4 superset automatici per tenere il G3 rapido e ordinato", "Chiudere il blocco forza con Hollow Position per il core isometrico e poi protocollo anca completo"],
+      attenzione: ["G3 leggero: 3 serie per esercizio. La prima serie e di avvicinamento tecnico, le serie 2 e 3 sono di lavoro a RPE 7-8.", "Push-Up, Leg Extension e Wall Sit oggi sono volume leggero: tecnica pulita, niente fatica vera", "Nel TRX Row e nell'Abduzione laterale IR il controllo del corpo conta piu della quantità"],
       ritmo: "Superset automatici con recuperi brevi: 45s nel primo blocco, 30s negli altri. Tieni il flusso alto ma senza sporcare la tecnica."
     },
     warmup: [
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Tallone sempre giu: cerca range pulito, portando avanti i fianchi e non le spalle." },
       { n: "Posizione del quadrato", phase: "mobility", gearTag: "Corpo libero", p: "2x30-40s per lato", cue: "Busto alto, piedi attivi e anche che si rilassano senza compensi." },
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota il torace senza muovere il bacino." },
-      { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 rip per lato", cue: "Gluteo forte in alto, lombare ferma." },
+      { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "10 rip per lato", cue: "Gluteo forte in alto, lombare ferma." },
       { n: "Cable Pull-Apart con rotazione esterna", phase: "activation", gearTag: "Cavo", p: "15 rip", cue: "Braccia tese, scapole addotte in fondo, spalle basse." },
     ],
-    lightIntro: "Non e un giorno di allenamento pesante. E volume complementare a bassa intensita organizzato in 4 superset automatici: deltoide laterale, deltoide posteriore, gluteo medio, quadricipiti, dorsali/scapole, petto e femorali. Ogni ripetizione nel giorno leggero segue il tempo 2-1-2: 2 secondi in salita, 1 secondo di tenuta, 2 secondi in discesa. Se non riesci a mantenere il tempo sulle ultime rip, riduci le rip o riduci il peso. Mai accelerare per finire la serie. Niente coach attivo e nessuna decisione finale. Poi il protocollo anca completo.",
+    lightIntro: "Non e un giorno di allenamento pesante. E volume complementare a bassa intensita organizzato in 4 superset automatici: deltoide laterale, deltoide posteriore, gluteo medio, quadricipiti, dorsali/scapole, petto e core/quadricipiti isometrici. Ogni ripetizione nel giorno leggero segue il tempo 2-1-2: 2 secondi in salita, 1 secondo di tenuta, 2 secondi in discesa. Se non riesci a mantenere il tempo sulle ultime rip, riduci le rip o riduci il peso. Mai accelerare per finire la serie. Niente coach attivo e nessuna decisione finale. Poi il protocollo anca completo.",
     lightWarmup: [
       { n: "Dorsiflessione al muro", p: "8 rip/lato · fianchi avanti, non spalle" },
       { n: "Posizione del quadrato", p: "2x30-40s/lato" },
       { n: "T-spine rotation in quadrupedia", p: "8 rip/lato" },
-      { n: "Ponte monopodalico", p: "6 rip/lato" },
+      { n: "Ponte monopodalico", p: "10 rip/lato" },
       { n: "Cable Pull-Apart con rotazione esterna", p: "15 rip · braccia tese, scapole addotte" },
     ],
     ex: [
@@ -1919,18 +1951,18 @@ var DAYS_V4 = [
       { n: "Leg Extension al Cavo", s: "3x12-15", approachSets: 1, rpe: "7", note: "Cavigliera al cavo basso. Prima serie di avvicinamento tecnico, poi 2 serie di lavoro. Estendi il ginocchio in controllo, fermo breve in chiusura e ritorno lento.", rec: "30s", gear: "Cavo basso + cavigliera", errori: "Slancio con l'anca; chiusura sporca; ritorno troppo veloce" },
       { n: "TRX Row lento", s: "3x12", approachSets: 1, rpe: "7", note: "Prima serie di avvicinamento tecnico, poi 2 serie di lavoro. Fermo 2s con scapole strette. Eccentrica 3s. Riduci l'inclinazione se il corpo non resta in linea.", rec: "30s", gear: "TRX", errori: "Anche che cedono; eccentrica troppo veloce; nessuna pausa in contrazione" },
       { n: "Push-Up", s: "3x10", approachSets: 1, rpe: "7", note: "Prima serie di avvicinamento tecnico, poi 2 serie di lavoro. Tecnica perfetta, non a fatica: fermati con 3-4 rip in riserva. Corpo in linea e gomiti a 45 gradi.", rec: "30s", gear: "Corpo libero", errori: "Anche che cedono; gomiti troppo aperti; ROM accorciato" },
-      { n: "Leg Curl al Cavo", s: "3x12", approachSets: 1, rpe: "7", note: "Prima serie di avvicinamento tecnico, poi 2 serie di lavoro. Eccentrica 2-3 secondi, nessuno slancio, fermati larga.", rec: "30s", gear: "Cavo basso + cavigliera", errori: "Slancio col bacino; eccentrica troppo veloce; lombare che si inarca" },
+      { n: "Wall Sit", s: "3xmax", approachSets: 1, rpe: "7", note: "Prima serie di avvicinamento tecnico piu corta, poi 2 serie di lavoro. Schiena al muro, cosce circa parallele e durata massima solo finche mantieni altezza e assetto puliti.", rec: "30s", gear: "Muro libero", errori: "Scivolare verso l'alto durante la serie; ginocchia che collassano; trattenere il respiro fino a perdere assetto" },
       { n: "Hollow Position", s: "2x30s", rpe: "7", note: "Core isometrico. Lombare incollata a terra, soleva scapole e piedi. Progressione: Tuck → Advanced Tuck → One Leg → Full. Se perdi la lombare regredisci.", rec: "45-60s", gear: "Tappetino", errori: "Lombare che si stacca; trattenere il respiro; gambe troppo alte" },
     ],
     str: ["Half Kneeling Lunge","Half Kneeling Lunge + Reach","Couch Stretch","Figure-Four Supino","Happy Baby","Leg Cradle Supino","Supported Low Lunge"],
     lightHipProtocol: [
-      { n: "Half kneeling lunge", p: "2x40s/lato" },
-      { n: "Half kneeling lunge + reach verticale", p: "2x30s/lato" },
-      { n: "Couch stretch", p: "2x40s/lato" },
-      { n: "Figure-four supino", p: "2x40s/lato" },
-      { n: "Happy baby", p: "2x40s" },
-      { n: "Leg cradle supino", p: "2x30s/lato" },
-      { n: "Supported low lunge", p: "2x30s/lato" },
+      { n: "Half kneeling lunge", p: "1x40s/lato" },
+      { n: "Half kneeling lunge + reach verticale", p: "1x30s/lato" },
+      { n: "Couch stretch", p: "1x40s/lato" },
+      { n: "Figure-four supino", p: "1x40s/lato" },
+      { n: "Happy baby", p: "1x40s" },
+      { n: "Leg cradle supino", p: "1x30s/lato" },
+      { n: "Supported low lunge", p: "1x30s/lato" },
     ],
     lightHipNote: "Oggi e il giorno migliore per il protocollo anca completo: nessun compound pesante prima, sistema nervoso fresco. Durata: 8-10 minuti.",
   },
@@ -1951,51 +1983,49 @@ var DAYS_V4 = [
   { name: "Giorno 4", focus: "Lower B — Stacco + Catena Posteriore", dayLabel: "Ven", dur: "4 esercizi", tEst: 60,
     intro: {
       attrezzi: ["Bilanciere + bumper", "Manubri", "Panca", "Panca romana", "Fitball", "Elastico"],
-      muscoli: ["Catena posteriore (Stacco, Hyperextension)", "Quadricipiti/Glutei (Bulgarian Split Squat)", "Gluteo medio (Abduzione laterale IR)"],
-      obiettivi: ["Costruire forza nello Stacco da terra con poche serie ma pesanti", "Aggiungere volume su catena posteriore e gambe con Bulgarian Split Squat e Hyperextension", "Chiudere con lavoro mirato sul gluteo medio"],
-      attenzione: ["Stacco: barra SEMPRE vicina al corpo, anche e spalle salgono insieme, collo neutro", "Bulgarian Split Squat: piede dietro in appoggio morbido, stance stabile su due binari, ginocchio segue la punta", "Hyperextension: usa glutei e femorali, non cercare iperestensione lombare", "Abduzione laterale IR: punta leggermente verso il basso, bacino fermo, pausa 1s in alto"],
-      ritmo: "Recuperi 2-3 min su Stacco. 90s-2 min su Bulgarian Split Squat. 90s su Hyperextension. 60s su Abduzione laterale IR."
+      muscoli: ["Catena posteriore (Stacco, Hyperextension)", "Quadricipiti/Glutei (Bulgarian Split Squat)", "Glutei/Core (Donkey Kicks)"],
+      obiettivi: ["Costruire forza nello Stacco da terra con poche serie ma pesanti", "Aggiungere volume su catena posteriore e gambe con Bulgarian Split Squat e Hyperextension", "Chiudere con un superset glutei semplice e pulito a corpo libero"],
+      attenzione: ["Stacco: barra SEMPRE vicina al corpo, anche e spalle salgono insieme, collo neutro", "Bulgarian Split Squat: piede dietro in appoggio morbido, stance stabile su due binari, ginocchio segue la punta", "Hyperextension: 12 ripetizioni pulite senza peso, usa glutei e femorali e non cercare iperestensione lombare", "Donkey Kicks: alterna le gambe senza muovere il bacino e senza compensare con la lombare"],
+      ritmo: "Recuperi 2-3 min su Stacco. 90s-2 min su Bulgarian Split Squat. Superset Hyperextension + Donkey Kicks con 60s dopo la coppia."
     },
     warmup: [
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "12 per gamba x2", cue: "Come Giorno 1: tallone a terra, controllo pieno, fianchi avanti.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
       { n: "Posizione del quadrato", phase: "mobility", gearTag: "Corpo libero", p: "2x30-40s per lato", cue: "Anche aperte, busto neutro e nessuna forzatura sulle ginocchia." },
       { n: "Calf Raises con pallina", phase: "mobility", gearTag: "Pallina", p: "12 rip", cue: "Stringi la pallina per tutta salita e discesa.", lk: "https://www.drfitology.com/exercises/calves/bodyweight-standing-calf-raise" },
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Ruota il torace, bacino fermo — prepara per lo stacco.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
-      { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "6 per lato", cue: "Gluteo forte in alto, assetto fermo.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
+      { n: "Ponte monopodalico", phase: "activation", img: "Hip Thrust Singolo", gearTag: "Corpo libero", p: "10 per lato", cue: "Gluteo forte in alto, assetto fermo.", lk: "https://www.youtube.com/watch?v=AVAXhy6pl7o" },
       { n: "Shoulder Tap", phase: "activation", img: "Shoulder Tap", gearTag: "Corpo libero", p: "20 rip per lato", cue: "Anti-rotazione: prepara il core per lo stacco. Sempre 20 ripetizioni per lato.", lk: "https://www.youtube.com/watch?v=aqU5ep3sMjY" },
-      { n: "Serie avvicinamento stacco", phase: "approach", img: "w_SerieAvvStacco", gearTag: "Bilanciere", p: "3 serie progressive", cue: "Scarico → circa 50% → 70-80%. L'ultima deve accendere il gesto, non tassarlo." },
+      { n: "Serie avvicinamento stacco", phase: "approach", img: "w_SerieAvvStacco", gearTag: "Bilanciere", p: "1 serie al 50%", cue: "Una sola serie a circa meta del carico di lavoro. Deve preparare il gesto senza tassarti." },
     ],
     ex: [
       { n: "Stacco da Terra", s: "5x4-5", rpe: "8-9", note: "Setup: piedi larghezza anche, barra su meta piede, mani appena fuori gambe, braccia tese. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata (cifosi); barra lontana dal corpo; anche che salgono prima delle spalle; collo iperesteso" },
-      { n: "Squat Bulgaro", s: "5x10-12 per gamba", rpe: "8-9", note: "Bulgarian split squat. Piede posteriore in appoggio morbido su panca, piede davanti tutto a terra, stance stabile su due binari. Alternativa: TRX split squat.", rec: "90s-2 min", gear: "Manubri + panca", errori: "Piede davanti troppo vicino; busto che oscilla; ROM accorciato; ginocchio che collassa" },
-      { n: "Hyperextension", s: "4x12-15", rpe: "8-9", note: "Accessorio catena posteriore. Usala come accessorio, non come altro stacco. Glutei e femorali, non lombare. Tutte le serie sono di lavoro. Alternativa: cable pull-through.", rec: "90s", gear: "Panca romana", errori: "Iperestensione lombare in alto; velocita eccessiva; collo iperesteso" },
-      { n: "Abduzione laterale IR", s: "4x12-15", rpe: "8", note: "Per lato. Sdraiata sul fianco, gamba sopra leggermente dietro il busto e punta verso il pavimento. Pausa 1s in alto.", rec: "60s", gear: "Corpo libero", errori: "Bacino che ruota indietro; piede che si apre; slancio senza controllo" },
-    ], str: ["Supine Assisted Leg Pull","Figure-Four Supino","Cat-Cow Lento","Half Kneeling Lunge"], hipBonus: true },
+      { n: "Squat Bulgaro", s: "3x10-12 per gamba", rpe: "8-9", note: "Bulgarian split squat. Piede posteriore in appoggio morbido su panca, piede davanti tutto a terra, stance stabile su due binari. Alternativa: TRX split squat.", rec: "90s-2 min", gear: "Manubri + panca", errori: "Piede davanti troppo vicino; busto che oscilla; ROM accorciato; ginocchio che collassa" },
+      { n: "Hyperextension", s: "4x12", rpe: "8", note: "Accessorio catena posteriore a corpo libero. 12 ripetizioni pulite senza peso, usando glutei e femorali piu della lombare. In superset con Donkey Kicks.", rec: "60s", gear: "Panca romana", errori: "Iperestensione lombare in alto; velocita eccessiva; collo iperesteso" },
+      { n: "Donkey Kicks", s: "4x20 totali", rpe: "8", note: "In quadrupedia. Alterna le gambe a ogni ripetizione: 20 totali = 10 per lato. Cerca il gluteo tenendo il bacino fermo. In superset con Hyperextension.", rec: "60s", gear: "Corpo libero", errori: "Lombare che si inarca; bacino che ruota; slancio senza controllo" },
+    ], str: ["Supine Assisted Leg Pull","Figure-Four Supino","Half Kneeling Lunge"] },
 
-  { name: "Giorno 5", focus: "Upper B — T-bar + Military + Spinta + Tirata", dayLabel: "Sab", dur: "6 esercizi", tEst: 72,
+  { name: "Giorno 5", focus: "Upper B — T-bar + Military + Spinta + Tirata", dayLabel: "Sab", dur: "5 esercizi", tEst: 64,
     intro: {
       attrezzi: ["T-bar", "Bilanciere + rack", "Barra trazioni", "Elastico leggero", "Cavo alto o elastico"],
-      muscoli: ["Dorsali/Trapezi (T-bar Row)", "Deltoidi (Military Press)", "Pettorali/Core (Push-Up)", "Dorsali/Bicipiti (Trazioni Supine)", "Obliqui (Woodchop)", "Deltoide Laterale (Alzate Laterali)"],
-      obiettivi: ["Costruire forza su T-bar Row e Military Press con double progression", "Seconda frequenza su Push-Up e Trazioni con variante supina", "Volume obliqui con Woodchop", "Aggiungere volume deltoide laterale con Alzate Laterali al RPE 8"],
+      muscoli: ["Dorsali/Trapezi (T-bar Row)", "Pettorali/Core (Push-Up)", "Deltoidi (Military Press)", "Dorsali/Bicipiti (Trazioni Supine)", "Obliqui (Woodchop)"],
+      obiettivi: ["Costruire forza su T-bar Row e Military Press con double progression", "Seconda frequenza su Push-Up e Trazioni con variante supina", "Chiudere con un superset Trazioni Supine + Woodchop per densita e controllo"],
       attenzione: ["T-bar: busto fisso a 45 gradi, tira verso ombelico, scapole addotte 1s", "Military press: core rigido, barra parte dalle clavicole, testa si sposta avanti al passaggio", "Push-up: corpo rigido, gomiti a 45 gradi, petto tocca terra"],
-      ritmo: "Recuperi 2-3 min su T-bar e Military. 2 min su Push-Up e Trazioni Supine. 60-90s su Woodchop."
+      ritmo: "Recuperi 2 min su T-bar e Push-Up. 2-3 min su Military. Superset Trazioni Supine + Woodchop con 45s dopo la coppia."
     },
     warmup: [
       { n: "T-spine rotation in quadrupedia", phase: "mobility", gearTag: "Corpo libero", p: "8 rip per lato", cue: "Come Giorno 2: ruota il torace, non il bacino.", lk: "https://www.youtube.com/watch?v=J0BO4tlEsXQ" },
       { n: "FMS spalle", phase: "mobility", gearTag: "Corpo libero", p: "5 per lato", cue: "Descrizione in arrivo." },
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "12 per gamba x2", cue: "Anche qui serve una base stabile da terra: avanza coi fianchi, non con le spalle.", lk: "https://www.youtube.com/watch?v=XISJxwVSLDs" },
       { n: "Scapular Pull-Up", phase: "activation", img: "w_SospensioneAttivaSbarra", gearTag: "Sbarra", p: "5 rip", cue: "Depressione scapolare netta, braccia tese.", lk: "https://www.youtube.com/watch?v=fTbd3q-vwqU" },
-      { n: "Cable Pull-Apart con rotazione esterna", phase: "activation", gearTag: "Cavo", p: "15 rip", cue: "Scapole addotte in fondo, spalle basse.", lk: "https://www.drfitology.com/exercises/shoulders/band-pull-apart" },
-      { n: "Serie avvicinamento military press", phase: "approach", img: "w_MilitaryPress", gearTag: "Bilanciere", p: "2-3 mini-serie", cue: "Bilanciere leggero e progressivo per entrare nel gesto fresco." },
+      { n: "Serie avvicinamento military press", phase: "approach", img: "w_MilitaryPress", gearTag: "Bilanciere", p: "1 serie con bilanciere scarico", cue: "Una sola serie con bilanciere scarico per entrare nel gesto senza tassarti." },
     ],
     ex: [
       { n: "T-bar Row", s: "5x8-10", rpe: "8-9", note: "Busto a 45 gradi fisso. Tira verso ombelico. Presa neutra. Scapole addotte 1s.", priority: true, rec: "2 min", gear: "T-bar + bumper", errori: "Schiena arrotondata; slancio col busto; tirare con i bicipiti" },
-      { n: "Military Press", s: "5x5-6", rpe: "8-9", note: "Setup: piedi larghezza anche, mani poco oltre spalle, gomiti leggermente avanti, glutei e addome attivi. Ultimo set solo a RIR 0-1 se tecnica stabile.", rec: "2-3 min", gear: "Bilanciere + rack", errori: "Iperestensione lombare; barra davanti al viso; gomiti che svasano; testa che arretra" },
       { n: "Push-Up", s: "4x8-15", rpe: "", note: "Setup: mani sotto o poco fuori spalle, corpo in linea, gomiti 30-45 gradi dal busto. RIR 1-2. Alternativa: TRX push-up o rialzo.", rec: "2 min", gear: "Corpo libero (rialzo se necessario)", errori: "Anche che cedono (banana); gomiti a 90 gradi; testa che penzola; ROM incompleto" },
-      { n: "Woodchop", s: "3x10-12 per lato", rpe: "8-9", note: "Ruota il tronco senza strappare con le braccia.", rec: "60-90s", gear: "Cavo alto o elastico", errori: "Ruotare con le braccia anziche col tronco; peso eccessivo" },
+      { n: "Military Press", s: "5x5-6", rpe: "8-9", note: "Setup: piedi larghezza anche, mani poco oltre spalle, gomiti leggermente avanti, glutei e addome attivi. Ultimo set solo a RIR 0-1 se tecnica stabile.", rec: "2-3 min", gear: "Bilanciere + rack", errori: "Iperestensione lombare; barra davanti al viso; gomiti che svasano; testa che arretra" },
       { n: "Trazioni Supine", s: "4x5-8", rpe: "8", note: "Setup: presa supina o neutra circa larghezza spalle, spalle giu, gomiti verso le costole. Alternativa: lat machine presa supina.", rec: "2-3 min", gear: "Barra trazioni", errori: "Come trazioni Giorno 2; presa diversa per variazione angolare" },
-      { n: "Alzate Laterali", s: "3x15", rpe: "8", note: "Manubri leggeri. Alza fino a parallelo (spalle). RPE piu alto rispetto a Giorno 3. Pausa 1s in alto.", rec: "45s", gear: "Manubri", errori: "Spalle che salgono verso le orecchie; andare sopra il parallelo; eccentrica troppo veloce" },
-    ], str: ["Doorway Pec Stretch","Overhead Triceps Stretch","Overhead Lat Stretch","Band Dislocate Lento"], hipBonus: true },
+      { n: "Woodchop", s: "3x10-12 per lato", rpe: "8-9", note: "Ruota il tronco senza strappare con le braccia. In superset con Trazioni Supine.", rec: "45s", gear: "Cavo alto o elastico", errori: "Ruotare con le braccia anziche col tronco; peso eccessivo" },
+    ], str: ["Doorway Pec Stretch","Overhead Triceps Stretch","Overhead Lat Stretch"] },
 
   { name: "Riposo", focus: "Recupero", dayLabel: "Dom", rest: true },
 ];
@@ -2532,10 +2562,12 @@ var EX_IMG = {
   "Hyperextension": img_Hyperextension,
   "Kick Back Manubri": img_Kick_Back_Manubri,
   "Lat Machine": img_Lat_Machine,
+  "Donkey Kicks": img_Donkey_Kicks,
   "Half-Kneeling Single Arm Cable Press": img_Half_Kneeling_Single_Arm_Cable_Press,
   "Leg Extension al Cavo": img_Leg_Extension_Cavo,
   "Leg Curl al Cavo": img_Leg_Curl_Cavo_Sdraiato,
   "Military Press": img_Military_Press,
+  "Monster Walk": img_Monster_Walk,
   "Nordic Curl": img_Nordic_Curl,
   "Overhead Extension": img_Overhead_Extension,
   "Panca": img_Panca,
@@ -2584,6 +2616,7 @@ var EX_IMG = {
   "TRX Squat": img_TRX_Squat,
   "Tricipiti Cavo": img_Tricipiti_Cavo,
   "Walking Lunge": img_Walking_Lunge,
+  "Wall Sit": img_Wall_Sit,
   "Woodchop": img_Woodchop,
   "Dip alle Parallele": img_Dip_alle_Parallele,
   "T-bar Row": img_T_bar_Row,
@@ -2634,6 +2667,7 @@ var WS_IMG = {
   "str_CatCowStretch": img_str_CatCowStretch,
   "str_CouchStretch": img_str_CouchStretch,
   "str_CrossBodyShoulder": img_str_CrossBodyShoulder,
+  "str_StretchingDorsale": img_str_StretchingDorsale,
   "str_DoorwayPec": img_str_DoorwayPec,
   "str_FireLogPose": img_str_FireLogPose,
   "str_FigureFourSupine": img_str_FigureFourSupine,
@@ -2705,10 +2739,10 @@ function displayExerciseName(name) {
   return name;
 }
 var MAX_PROGRESS_EX = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni"];
-var ACCESSORY_PROGRESS_EX = ["Stacco Rumeno","Glute Bridge Bilanciere","Leg Curl al Cavo","Pulley","Cable Pull-Apart con rotazione esterna","Curl Bicipiti","Squat Bulgaro","Hyperextension","Abduzione laterale IR","Push-Up","Trazioni Supine","Woodchop","T-bar Row","Alzate Laterali"];
+var ACCESSORY_PROGRESS_EX = ["Stacco Rumeno","Glute Bridge Bilanciere","Wall Sit","Pulley","Cable Pull-Apart con rotazione esterna","Curl Bicipiti","Squat Bulgaro","Hyperextension","Abduzione laterale IR","Donkey Kicks","Push-Up","Trazioni Supine","Woodchop","T-bar Row","Alzate Laterali"];
 var CORE_PROGRESS_EX = ["Ab Wheel"];
 var CARDIO_KIND_LABEL = { run: "Corsa", ruck: "Rucking", hiit: "HIIT", circuit: "Circuito" };
-var CALIBRATION_BODYWEIGHT_EX = ["Push-Up","Trazioni","Trazioni Supine","Ab Wheel","Abduzione laterale IR"];
+var CALIBRATION_BODYWEIGHT_EX = ["Push-Up","Trazioni","Trazioni Supine","Ab Wheel","Abduzione laterale IR","Donkey Kicks","Wall Sit"];
 var CALIBRATION_SKIP_EX = ["HIIT tapis roulant","Rucking con zaino 15-20 kg","Circuito sacco + corde + slackline","Corsa leggera zona 2"];
 
 function usesElasticScale(exName) {
@@ -2727,7 +2761,7 @@ function isCalibrationAllowedDay(day) {
 }
 
 function isTimeTrackedExercise(exName, serie) {
-  if (exName === "Plank") return true;
+  if (exName === "Plank" || exName === "Wall Sit") return true;
   return !!(serie && /\d+s/i.test(String(serie)));
 }
 
@@ -2942,7 +2976,7 @@ function getCalibrationQuickInstruction(exName, serie) {
 function getCalibrationRestLabel(exName, rec) {
   if (rec) return "Riposa " + String(rec).toLowerCase() + ".";
   var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","Front Squat","Pause Squat","Push Press","Stacco Sumo","Stacco Rumeno","T-bar Row","Pulley"];
-  var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino","Alzate Laterali","French Press Manubri","Leg Curl al Cavo"];
+  var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino","Alzate Laterali","French Press Manubri","Wall Sit"];
   if (heavy.indexOf(exName) >= 0) return "Riposa 2 minuti.";
   if (medium.indexOf(exName) >= 0) return "Riposa 90 secondi.";
   return "Riposa come da recupero previsto per questo esercizio.";
@@ -3202,6 +3236,7 @@ var BREATH_RULES = {
   "Hyperextension":     { type:"anatomic-push", short:"Inspira scendendo · espira risalendo",         inhale:"Scendendo (eccentrica)", exhale:"Risalendo contraendo glutei e dorsali" },
   "Nordic Curl":        { type:"anatomic-push", short:"Inspira scendendo · espira risalendo",         inhale:"Scendendo (eccentrica controllata)", exhale:"Risalendo (concentrica)" },
   "Leg Curl al Cavo":   { type:"anatomic-push", short:"Inspira scendendo · espira flettendo",        inhale:"Estendendo il ginocchio (eccentrica)", exhale:"Flettendo il ginocchio verso il gluteo (concentrica)" },
+  "Wall Sit":           { type:"continuous-brace", short:"Respira corto e continuo",                  inhale:"Piccoli atti inspiratori mantenendo il brace", exhale:"Espiri brevi senza perdere pressione o altezza" },
   "Squat Bulgaro":      { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo (eccentrica)", exhale:"Spingendo verso l'alto (concentrica)" },
   "Affondi":            { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo (eccentrica)", exhale:"Spingendo verso l'alto (concentrica)" },
   "Walking Lunge":      { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo ad ogni passo", exhale:"Spingendo verso l'alto" },
@@ -3223,6 +3258,7 @@ var BREATH_RULES = {
   "Clamshell":          { type:"iso",           short:"Respirazione continua · addome contratto",     inhale:"Regolare, a ritmo costante", exhale:"Espira nell'apertura massima (concentrica)" },
   "Abduzione Laterale": { type:"iso",           short:"Respirazione continua · addome contratto",     inhale:"Regolare, a ritmo costante", exhale:"Espira alzando la gamba (concentrica)" },
   "Abduzione laterale IR": { type:"iso",        short:"Respirazione continua · addome contratto",     inhale:"Regolare, a ritmo costante", exhale:"Espira alzando la gamba (concentrica)" },
+  "Donkey Kicks":       { type:"iso",           short:"Espira spingendo · bacino fermo",              inhale:"Inspira tornando sotto l'anca", exhale:"Espira mentre spingi il piede verso l'alto" },
   "Hip Thrust Bilanciere": { type:"anatomic-push", short:"Inspira in basso · espira salendo",         inhale:"In basso, prima di partire", exhale:"Salendo e stringendo i glutei in alto" },
   "Ab Wheel":           { type:"anatomic-push", short:"Inspira avanzando · espira rientrando",        inhale:"Controllando la discesa in avanti, core sempre attivo", exhale:"Tornando indietro senza perdere tensione addominale" },
   "Plank":              { type:"iso",           short:"Respiro lento e profondo · mai in apnea",      inhale:"Respiro toracico lento e profondo", exhale:"Espira lentamente, addome sempre contratto" },
@@ -3260,33 +3296,33 @@ var APP_BUILD_TIME = typeof __BUILD_TIME__ === "string" ? __BUILD_TIME__ : "";
 var V4_DAY_SPLIT_PLAN = {
   "Giorno 1": {
     am: ["Squat", "Stacco Rumeno", "Glute Bridge Bilanciere"],
-    pm: ["Leg Curl al Cavo", "Ab Wheel"],
+    pm: ["Wall Sit", "Monster Walk"],
   },
   "Giorno 2": {
     am: ["Trazioni", "Panca"],
-    pm: ["Pulley", "Cable Pull-Apart con rotazione esterna", "Curl Bicipiti", "Alzate Laterali"],
+    pm: ["Pulley", "Arnold Press"],
   },
   "Giorno 4": {
     am: ["Stacco da Terra", "Squat Bulgaro"],
-    pm: ["Hyperextension", "Abduzione laterale IR"],
+    pm: ["Hyperextension", "Donkey Kicks"],
   },
   "Giorno 5": {
-    am: ["T-bar Row", "Military Press"],
-    pm: ["Trazioni Supine", "Push-Up", "Woodchop", "Alzate Laterali"],
+    am: ["T-bar Row", "Push-Up", "Military Press"],
+    pm: ["Trazioni Supine", "Woodchop"],
   },
 };
 
 var FAST_MODE_SUPERSETS = {
-  "Giorno 1": [{ a: "Leg Curl al Cavo", b: "Ab Wheel", rest: 60, note: "4a serie Leg Curl da sola" }],
-  "Giorno 2": [{ a: "Cable Pull-Apart con rotazione esterna", b: "Curl Bicipiti", rest: 60 }],
+  "Giorno 1": [{ a: "Wall Sit", b: "Monster Walk", rest: 60 }],
+  "Giorno 2": [],
   "Giorno 3": [
     { a: "Alzate Laterali", b: "Goblet Squat", rest: 45 },
     { a: "Cable Pull-Apart con rotazione esterna", b: "Abduzione laterale IR", rest: 30 },
     { a: "Leg Extension al Cavo", b: "TRX Row lento", rest: 30 },
-    { a: "Push-Up", b: "Leg Curl al Cavo", rest: 30 }
+    { a: "Push-Up", b: "Wall Sit", rest: 30 }
   ],
-  "Giorno 4": [{ a: "Hyperextension", b: "Abduzione laterale IR", rest: 60, note: "4a serie Hyperextension da sola" }],
-  "Giorno 5": [{ a: "Push-Up", b: "Woodchop", rest: 45, note: "4a serie Push-Up da sola" }],
+  "Giorno 4": [{ a: "Hyperextension", b: "Donkey Kicks", rest: 60 }],
+  "Giorno 5": [{ a: "Trazioni Supine", b: "Woodchop", rest: 45 }],
 };
 
 function getFastSupersetPair(dayName, exName) {
@@ -3318,8 +3354,9 @@ var FLOW_FILLERS = {
   "Trazioni Supine": "2 scapular pull-up leggere",
   "Military Press": "glutei stretti e 2 respiri",
   "Hip Thrust Bilanciere": "reset piedi e mento chiuso",
-  "Leg Curl al Cavo": "controlla cavigliera e cavo",
-  "Ab Wheel": "2 respiri e costole giu",
+  "Wall Sit": "trova un muro libero e resetta il timer",
+  "Monster Walk": "2 respiri, mani sotto le spalle e core attivo",
+  "Donkey Kicks": "resetta la quadrupedia e tieni il bacino fermo",
   "Face Pull": "spalle basse e polsi sciolti",
   "Curl Bicipiti": "apri le mani e rilassa avambracci",
   "Hyperextension": "1 respiro lungo e reset bacino",
@@ -3735,9 +3772,9 @@ export default function App() {
     var topTarget = repsNums.length ? Math.max.apply(null, repsNums) : 10;
     var classKey = getGuidedExerciseClass(exName);
     var unilateralMultiplier = /(per\s+(?:lato|gamba|braccio|piede))/i.test(String(ex.s || "")) ? 2 : 1;
-    var bodyweightLike = ["Trazioni","Trazioni Supine","Push-Up","Push-Up Declino","Dip su Panca","Ab Wheel","Plank","Shoulder Tap","Abduzione laterale IR"].indexOf(exName) >= 0;
-    var controlledTempo = ["TRX Row lento","Cable Pull-Apart con rotazione esterna","Leg Curl al Cavo","Alzate Laterali","Hyperextension","Nordic Curl"].indexOf(exName) >= 0;
-    var explosiveOrLight = ["Band Pull-Apart con elastico","Cable Pull-Apart con rotazione esterna","Abduzione laterale IR","Shoulder Tap"].indexOf(exName) >= 0;
+    var bodyweightLike = ["Trazioni","Trazioni Supine","Push-Up","Push-Up Declino","Dip su Panca","Ab Wheel","Plank","Shoulder Tap","Abduzione laterale IR","Donkey Kicks","Wall Sit","Monster Walk"].indexOf(exName) >= 0;
+    var controlledTempo = ["TRX Row lento","Cable Pull-Apart con rotazione esterna","Leg Curl al Cavo","Alzate Laterali","Hyperextension","Nordic Curl","Wall Sit"].indexOf(exName) >= 0;
+    var explosiveOrLight = ["Band Pull-Apart con elastico","Cable Pull-Apart con rotazione esterna","Abduzione laterale IR","Donkey Kicks","Shoulder Tap"].indexOf(exName) >= 0;
     var secPerSet;
     if (p.kind === "time" || ex.n === "Plank") {
       secPerSet = Math.max(45, topTarget + 20) * unilateralMultiplier;
@@ -4316,6 +4353,7 @@ export default function App() {
     "Curl Martello": ["manubri"],
     "Dip su Panca": ["corpo_libero","panca"],
     "Abduzione laterale IR": ["corpo_libero"],
+    "Donkey Kicks": ["corpo_libero"],
     "Front Squat": ["bilanciere"],
     "Good Morning": ["bilanciere"],
     "Hip Thrust Bilanciere": ["bilanciere","panca"],
@@ -4448,6 +4486,7 @@ export default function App() {
     "Addominali Obliqui": "core",
     "Clamshell": "core",
     "Abduzione laterale IR": "core",
+    "Donkey Kicks": "core",
     "Affondi": "affondo_unilaterale",
     "Walking Lunge": "affondo_unilaterale",
     "Squat Bulgaro": "affondo_unilaterale",
@@ -7500,7 +7539,7 @@ export default function App() {
 
 function getGuidedExerciseClass(exName) {
   var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","T-bar Row","Stacco Rumeno","Glute Bridge Bilanciere","Pulley"];
-  var mono = ["Curl Bicipiti","Woodchop","Abduzione laterale IR","Cable Pull-Apart con rotazione esterna","Leg Curl al Cavo","Alzate Laterali"];
+  var mono = ["Curl Bicipiti","Woodchop","Abduzione laterale IR","Donkey Kicks","Cable Pull-Apart con rotazione esterna","Wall Sit","Alzate Laterali"];
   if (heavy.indexOf(exName) >= 0) return "heavy";
   if (mono.indexOf(exName) >= 0) return "mono";
   return "compound";
@@ -10472,7 +10511,7 @@ function isNearBodyweightElasticSession(exName, sets) {
           return candidate.totalReps > current.totalReps ? candidate : current;
         }
         // Exercise progress: compute representative weekly session (not just max set)
-        var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Dip su Panca","Plank","Hollow Position","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Abduzione laterale IR","Fitball Hamstring Curl","TRX Row lento"];
+        var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Dip su Panca","Plank","Hollow Position","Shoulder Tap","Ab Wheel","Monster Walk","Nordic Curl","Addominali Obliqui","Clamshell","Abduzione laterale IR","Donkey Kicks","Fitball Hamstring Curl","TRX Row lento"];
         var exProgress = Object.keys(exMap).map(function(name) {
           var entries = exMap[name].sort(function(a,b) { return a.date.localeCompare(b.date); });
           var isBW = BW_EX.indexOf(name) >= 0;
@@ -11834,7 +11873,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </div>}
                 {isX && db && (function() {
                   // bodyweight detection: no kg field needed
-                  var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Dip su Panca","Plank","Hollow Position","Hollow Tuck","Shoulder Tap","Ab Wheel","Nordic Curl","Addominali Obliqui","Clamshell","Abduzione laterale IR","Cat-Cow","Inchworm","Dead bug","Glute Bridge","Fitball Hamstring Curl","TRX Row lento"];
+                  var BW_EX = ["Push-Up","Push-Up Declino","Push-Up Diamante","Dip su Panca","Plank","Hollow Position","Hollow Tuck","Shoulder Tap","Ab Wheel","Monster Walk","Nordic Curl","Addominali Obliqui","Clamshell","Abduzione laterale IR","Donkey Kicks","Cat-Cow","Inchworm","Dead bug","Glute Bridge","Fitball Hamstring Curl","TRX Row lento"];
                   var isBW = BW_EX.indexOf(ex.n) >= 0;
                   var usesBand = usesElasticScale(ex.n);
                   var usesTrxLength = usesTrxLengthScale(ex.n);
