@@ -9681,19 +9681,19 @@ function isNearBodyweightElasticSession(exName, sets) {
       </div>}
 
       {/* HEADER */}
-      <div style={{ background: T.cd, borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "14px 16px 0", color: T.tx }}>
+      <div style={{ background: T.cd, borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "7px 12px 0", color: T.tx }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", maxWidth: 600, margin: "0 auto" }}>
-          {/* Nome e foto utente */}
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div onClick={function() { if (!activeSession) setSettingsOpen(true); }} style={{ width: 34, height: 34, borderRadius: "50%", background: userPhoto ? "transparent" : "rgba(255,255,255,0.10)", border: "1.5px solid rgba(255,255,255,0.15)", overflow: "hidden", cursor: activeSession ? "default" : "pointer", opacity: activeSession ? 0.45 : 1, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16 }}>
+          {/* Avatar + nome */}
+          <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
+            <div onClick={function() { if (!activeSession) setSettingsOpen(true); }} style={{ width: 26, height: 26, borderRadius: "50%", background: userPhoto ? "transparent" : "rgba(255,255,255,0.10)", border: "1.5px solid rgba(255,255,255,0.15)", overflow: "hidden", cursor: activeSession ? "default" : "pointer", opacity: activeSession ? 0.45 : 1, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12 }}>
               {userPhoto ? <img src={userPhoto} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : "👤"}
             </div>
-            <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: -0.3 }}>{userName ? userName : "Allenamento"}</div>
+            <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: -0.2, color: T.sub }}>{userName ? userName : "Allenamento"}</div>
           </div>
-          {activeSession && <button onClick={function() { exitWorkoutSession("manual"); }} style={{ minHeight: 30, padding: "0 12px", borderRadius: 999, border: "1px solid rgba(255,255,255,0.18)", background: "rgba(255,255,255,0.12)", color: "#fff", fontSize: 11, fontWeight: 800, cursor: "pointer" }}>Esci dalla sessione</button>}
+          {activeSession && <button onClick={function() { exitWorkoutSession("manual"); }} style={{ minHeight: 26, padding: "0 10px", borderRadius: 999, border: "1px solid rgba(255,255,255,0.18)", background: "rgba(255,255,255,0.12)", color: "#fff", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Esci</button>}
         </div>
         {/* View tabs */}
-        <div style={{ display: "flex", gap: 1, maxWidth: 600, margin: "12px auto 0", alignItems: "stretch" }}>
+        <div style={{ display: "flex", gap: 1, maxWidth: 600, margin: "6px auto 0", alignItems: "stretch" }}>
           {activeSession ? [
             <button key="session-workout" onClick={function() { navigateToTab("workout", { resetHistory: true }); scrollTopSoon("workout-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 12, fontWeight: 700, color: T.tx, borderBottom: "2px solid " + dc, transition: "color 0.15s" }}>Scheda</button>
           ] : isBeginner ? (function() {
@@ -11173,9 +11173,9 @@ function isNearBodyweightElasticSession(exName, sets) {
                   resetWorkoutPanels();
                   scrollTopSoon("workout-top");
                 }}
-                style={{ flex: level === "v4" ? "none" : (i < 4 ? 1 : "none"), padding: "7px 10px", border: "none", borderRadius: "8px 8px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}
+                style={{ flex: level === "v4" ? "none" : (i < 4 ? 1 : "none"), padding: "5px 8px", border: "none", borderRadius: "7px 7px 0 0", cursor: "pointer", fontSize: 11, fontWeight: active ? 800 : 500, background: active ? dc : T.tx + "08", color: active ? "#fff" : T.sub, whiteSpace: "nowrap" }}
               >
-                {day.name + (day.cardio ? " ❤️" : "") + (day.light ? " 🌿" : "")}
+                {(level === "v4" ? day.name.replace("Giorno ", "G") : day.name) + (day.cardio ? " ❤️" : "") + (day.light ? " 🌿" : "")}
               </button>;
             })}
           </div>
@@ -11210,18 +11210,8 @@ function isNearBodyweightElasticSession(exName, sets) {
               var savedIntroNote = String(coachNotes[introNoteKey] || "").trim();
               var introDraftValue = coachNoteDrafts[introDraftKey] !== undefined ? coachNoteDrafts[introDraftKey] : savedIntroNote;
               var isEditingIntroNote = coachNoteDrafts[introDraftKey] !== undefined;
-              return <div style={{ padding: "10px 14px 0" }}>
-                {!savedIntroNote && !isEditingIntroNote && <button
-                  onClick={function(e) {
-                    e.stopPropagation();
-                    setCoachNoteDrafts(function(prev) {
-                      return Object.assign({}, prev, { [introDraftKey]: savedIntroNote });
-                    });
-                  }}
-                  style={{ minHeight: 32, padding: "0 12px", borderRadius: 999, border: "1px solid " + dc + "30", background: dc + "08", color: dc, fontSize: 11, fontWeight: 800, cursor: "pointer" }}
-                >
-                  Aggiungi nota allenamento
-                </button>}
+              return <div style={{ padding: "4px 14px 0" }}>
+                {!savedIntroNote && !isEditingIntroNote && null}
                 {(savedIntroNote || isEditingIntroNote) && <div style={{ borderRadius: 12, border: "1px solid " + dc + "20", background: dc + "08", overflow: "hidden" }}>
                   <div style={{ padding: "8px 11px 6px", display: "flex", alignItems: "center", gap: 8 }}>
                     <div style={{ fontSize: 10, fontWeight: 900, color: dc, textTransform: "uppercase", letterSpacing: 0.8, flex: 1 }}>Nota allenamento</div>
@@ -11280,11 +11270,9 @@ function isNearBodyweightElasticSession(exName, sets) {
               var intro = dayData.intro;
               if (!intro || typeof intro === "string") return null;
               if (simplifiedWorkoutUi) {
-                return <div style={{ borderBottom: "1px solid " + T.bg, padding: "12px 14px 10px" }}>
-                  <div style={{ fontSize: 15, fontWeight: 900, color: T.tx, lineHeight: 1.25 }}>{dayData.focus}</div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginTop: 6 }}>
-                    <div style={{ fontSize: 11, color: dc, fontWeight: 700, padding: "4px 8px", borderRadius: 999, background: dc + "12", border: "1px solid " + dc + "20" }}>{"~" + (estimatedDayMinutes || dayData.tEst) + " min"}</div>
-                  </div>
+                return <div style={{ borderBottom: "1px solid " + T.bg, padding: "7px 14px 6px", display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                  <div style={{ fontSize: 13, fontWeight: 900, color: T.tx, lineHeight: 1.25 }}>{dayData.focus}</div>
+                  <div style={{ fontSize: 10, color: dc, fontWeight: 700, padding: "2px 7px", borderRadius: 999, background: dc + "12", border: "1px solid " + dc + "20", whiteSpace: "nowrap" }}>{"~" + (estimatedDayMinutes || dayData.tEst) + " min"}</div>
                 </div>;
               }
               var sections = [
@@ -11294,14 +11282,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                 { key: "muscoli", label: "Gruppi muscolari", icon: "💪" },
               ];
               return <div style={{ borderBottom: "1px solid " + T.bg }}>
-                <div onClick={function() { setShowDayIntro(function(v) { return !v; }); }} style={{ padding: "12px 14px 10px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}>
-                  <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: isBeginner ? 19 : 15, fontWeight: 900, color: T.tx, lineHeight: 1.25 }}>{dayData.focus}</div>
-                      <div style={{ display: "grid", gap: 8, marginTop: 5 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                        <div style={{ fontSize: isBeginner ? 12 : 11, color: dc, fontWeight: 700, padding: "4px 8px", borderRadius: 999, background: dc + "12", border: "1px solid " + dc + "20" }}>{"~" + (estimatedDayMinutes || dayData.tEst) + " min"}</div>
-                      </div>
-                    </div>
+                <div onClick={function() { setShowDayIntro(function(v) { return !v; }); }} style={{ padding: "8px 14px 7px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                    <div style={{ fontSize: isBeginner ? 16 : 13, fontWeight: 900, color: T.tx, lineHeight: 1.25 }}>{dayData.focus}</div>
+                    <div style={{ fontSize: 10, color: dc, fontWeight: 700, padding: "2px 7px", borderRadius: 999, background: dc + "12", border: "1px solid " + dc + "20", whiteSpace: "nowrap" }}>{"~" + (estimatedDayMinutes || dayData.tEst) + " min"}</div>
                   </div>
                   <div style={{ fontSize: 13, color: dc, transform: showDayIntro ? "rotate(180deg)" : "none", transition: "transform 0.2s", flexShrink: 0 }}>&#9662;</div>
                 </div>
@@ -11392,9 +11376,9 @@ function isNearBodyweightElasticSession(exName, sets) {
 
             {/* Warmup - collapsed (solo giorni non-cardio) */}
             {!dayData.cardio && !dayData.rest && <div ref={function(el) { if (el) el._sectionKey = "intro"; }} id="section-warmup" style={{ borderBottom: "1px solid " + T.bg }}>
-              <div onClick={function() { var opening = !showIntro; setShowIntro(opening); if (opening) { setShowExSection(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-warmup"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showIntro ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
-                <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#128293;</div>
-                <div style={{ flex: 1 }}><div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Riscaldamento</div><div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{(function() { var groups = getWarmupGroups(dayData.warmup); var total = groups.reduce(function(s, g) { return s + g.items.length; }, 0); return groups.length + " fasi · " + total + " esercizi · 12-15 min"; })()}</div></div>
+              <div onClick={function() { var opening = !showIntro; setShowIntro(opening); if (opening) { setShowExSection(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-warmup"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "7px 12px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: showIntro ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
+                <span style={{ fontSize: 14, flexShrink: 0 }}>🔥</span>
+                <div style={{ flex: 1, fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>Riscaldamento <span style={{ fontWeight: 600, color: T.sub, textTransform: "none", letterSpacing: 0 }}>· 12-15 min</span></div>
                 <div style={{ fontSize: 13, color: dc, transform: showIntro ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
               {showIntro && <div style={{ padding: "0 14px 14px" }}><div style={{ background: T.sb, borderRadius: 10, padding: 12 }}>
@@ -11635,14 +11619,11 @@ function isNearBodyweightElasticSession(exName, sets) {
 
             {/* Exercises - collapsed (solo giorni non-cardio) */}
             {!dayData.cardio && !dayData.rest && <div id="section-esercizi" style={{ borderBottom: "1px solid " + T.bg }}>
-              <div onClick={function() { if (simplifiedWorkoutUi) return; var opening = !showExSection; setShowExSection(opening); if (opening) { setShowIntro(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-esercizi"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: simplifiedWorkoutUi ? "default" : "pointer", display: "flex", alignItems: "center", gap: 10, background: (showExSection || simplifiedWorkoutUi) ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
-                <div style={{ width: 30, height: 30, borderRadius: 8, background: dc, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>&#128170;</div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 1 }}>Esercizi</div>
-                  <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>
-                    {dayData.ex ? dayData.ex.length + " esercizi" : ""}
-                    {!simplifiedWorkoutUi && (splitPlanForDay || supersetPlanForDay) ? (isDaySplitActive ? " · split AM/PM" : isDaySupersetActive ? " · superset" : " · sessione unica") : ""}
-                  </div>
+              <div onClick={function() { if (simplifiedWorkoutUi) return; var opening = !showExSection; setShowExSection(opening); if (opening) { setShowIntro(false); setShowStr(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-esercizi"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "7px 12px", cursor: simplifiedWorkoutUi ? "default" : "pointer", display: "flex", alignItems: "center", gap: 8, background: (showExSection || simplifiedWorkoutUi) ? dc + "12" : dc + "06", borderLeft: "3px solid " + dc }}>
+                <span style={{ fontSize: 14, flexShrink: 0 }}>💪</span>
+                <div style={{ flex: 1, fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>
+                  Esercizi
+                  {!simplifiedWorkoutUi && (splitPlanForDay || supersetPlanForDay) && <span style={{ fontWeight: 600, color: T.sub, textTransform: "none", letterSpacing: 0 }}>{isDaySplitActive ? " · split AM/PM" : isDaySupersetActive ? " · superset" : ""}</span>}
                 </div>
                 {!simplifiedWorkoutUi && <div style={{ fontSize: 13, color: dc, transform: showExSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>}
               </div>
@@ -11749,28 +11730,24 @@ function isNearBodyweightElasticSession(exName, sets) {
                   {rowImg ? <img
                     src={rowImg}
                     onClick={function(e) { if (simplifiedWorkoutUi) return; e.stopPropagation(); setShowImg(showImg === ("ex-thumb-" + i) ? null : ("ex-thumb-" + i)); }}
-                    style={{ width: 48, height: 48, objectFit: "cover", borderRadius: 10, border: "1px solid " + T.bg, flexShrink: 0, cursor: simplifiedWorkoutUi ? "default" : "zoom-in", opacity: isExDone ? 0.45 : 1, transition: "opacity 0.2s" }}
-                  /> : <div style={{ width: 34, height: 34, borderRadius: 9, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: dc, flexShrink: 0, opacity: isExDone ? 0.45 : 1, transition: "opacity 0.2s" }}>{i + 1}</div>}
+                    style={{ width: 40, height: 40, objectFit: "cover", borderRadius: 8, border: "1px solid " + T.bg, flexShrink: 0, cursor: simplifiedWorkoutUi ? "default" : "zoom-in", opacity: isExDone ? 0.45 : 1, transition: "opacity 0.2s" }}
+                  /> : <div style={{ width: 28, height: 28, borderRadius: 7, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, color: dc, flexShrink: 0, opacity: isExDone ? 0.45 : 1, transition: "opacity 0.2s" }}>{i + 1}</div>}
                   <div style={{ flex: 1, minWidth: 0, opacity: isExDone ? 0.55 : 1, transition: "opacity 0.2s" }}>
-                    <div style={{ fontWeight: isBeginner ? 700 : 800, fontSize: isBeginner ? 15 : 14, display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap", textTransform: isBeginner ? "none" : "uppercase", letterSpacing: isBeginner ? 0 : 0.35, textDecoration: isExDone ? "line-through" : "none", textDecorationColor: T.sub }}>
-                      <ExName name={ex.n} />
-                      {rawEx.priority && <span style={{ fontSize: 9, background: dc + "18", color: dc, padding: "1px 6px", borderRadius: 4, fontWeight: 800, letterSpacing: 0.3 }}>★ PRIORITÀ</span>}
+                    <div style={{ display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap" }}>
+                      <span style={{ fontWeight: isBeginner ? 700 : 800, fontSize: isBeginner ? 14 : 13, textTransform: isBeginner ? "none" : "uppercase", letterSpacing: isBeginner ? 0 : 0.3, textDecoration: isExDone ? "line-through" : "none", textDecorationColor: T.sub }}>
+                        <ExName name={ex.n} />
+                      </span>
+                      {rawEx.priority && <span style={{ fontSize: 9, background: dc + "18", color: dc, padding: "1px 5px", borderRadius: 4, fontWeight: 800, letterSpacing: 0.3 }}>★</span>}
                       {hasV && <span style={{ fontSize: 9, background: dc + "20", color: dc, padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>{"M" + month}</span>}
                       {hasCableToggle && <span style={{ fontSize: 9, background: isCable ? dc + "20" : T.sub + "20", color: isCable ? dc : T.sub, padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>{isCable ? "🔌" : "💪"}</span>}
-                      {hasAltToggle && <span style={{ fontSize: 9, background: dc + "20", color: dc, padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>{isAlt ? "ALT" : "BASE"}</span>}
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginTop: isBeginner ? 5 : 3 }}>
-                      {ex.s && <span style={{ fontSize: isBeginner ? 14 : 12, color: isBeginner ? dc : T.tx, fontWeight: 800, letterSpacing: 0.1 }}>{fmtSerie(ex.s)}</span>}
-                      {!isBeginner && !simplifiedWorkoutUi && currentLoadBadge && <span style={{ fontSize: 10, color: dc, fontWeight: 800, padding: "2px 7px", borderRadius: 999, background: dc + "12", border: "1px solid " + dc + "25", whiteSpace: "nowrap" }}>{currentLoadBadge}</span>}
-                      {approachSetCount > 0 && <span style={{ fontSize: 10, color: dc, fontWeight: 800, padding: "2px 7px", borderRadius: 999, background: dc + "12", border: "1px solid " + dc + "25", whiteSpace: "nowrap" }}>{getApproachSetsLabel(approachSetCount, sc)}</span>}
-                      {!isBeginner && ex.rpe ? <span onClick={function(e) { if (simplifiedWorkoutUi) return; e.stopPropagation(); setRpeOpen(true); }} style={{ cursor: simplifiedWorkoutUi ? "default" : "pointer", color: dc, fontSize: 10, fontWeight: 700, textDecoration: simplifiedWorkoutUi ? "none" : "underline dotted", textDecorationColor: dc + "60", textUnderlineOffset: 2, whiteSpace: "nowrap" }}>{formatEffortLabel(ex.rpe, ex.s)}</span> : ""}
-                      {!isBeginner && ((rowSupersetMeta && rowSupersetMeta.role === "a" && rowSupersetMeta.rest) || restSec) ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 700, whiteSpace: "nowrap" }}>{"rec " + fmtLabel(rowSupersetMeta && rowSupersetMeta.role === "a" ? rowSupersetMeta.rest : restSec)}</span> : null}
+                    <div style={{ display: "flex", alignItems: "center", gap: 5, flexWrap: "wrap", marginTop: 2 }}>
+                      {ex.s && <span style={{ fontSize: isBeginner ? 13 : 11, color: isBeginner ? dc : T.tx, fontWeight: 700 }}>{fmtSerie(ex.s)}</span>}
+                      {!isBeginner && ex.rpe ? <span onClick={function(e) { if (simplifiedWorkoutUi) return; e.stopPropagation(); setRpeOpen(true); }} style={{ cursor: simplifiedWorkoutUi ? "default" : "pointer", color: dc, fontSize: 10, fontWeight: 700, whiteSpace: "nowrap" }}>{formatEffortLabel(ex.rpe, ex.s)}</span> : ""}
+                      {!isBeginner && ((rowSupersetMeta && rowSupersetMeta.role === "a" && rowSupersetMeta.rest) || restSec) ? <span style={{ fontSize: 10, color: T.sub, fontWeight: 600, whiteSpace: "nowrap" }}>{"rec " + fmtLabel(rowSupersetMeta && rowSupersetMeta.role === "a" ? rowSupersetMeta.rest : restSec)}</span> : null}
+                      {!isBeginner && !simplifiedWorkoutUi && currentLoadBadge && <span style={{ fontSize: 10, color: dc, fontWeight: 700, padding: "1px 6px", borderRadius: 999, background: dc + "12", border: "1px solid " + dc + "22", whiteSpace: "nowrap" }}>{currentLoadBadge}</span>}
+                      {calibrationEnabled && calibrationNeed.needed && <span style={{ fontSize: 9, fontWeight: 700, border: "1px solid #C6282830", borderRadius: 999, padding: "1px 6px", background: "#C6282810", color: "#C62828", whiteSpace: "nowrap" }}>{calibrationNeed.initial ? "Calibra" : "Ricalibra"}</span>}
                     </div>
-                    {!isBeginner && !compactMode && !simplifiedWorkoutUi && <div style={{ marginTop: 4, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-                    {calibrationEnabled && calibrationNeed.needed && <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, fontWeight: 700, border: "1px solid #C6282830", borderRadius: 999, padding: "3px 8px", background: "#C6282810", color: "#C62828" }}>
-                      <span>{calibrationNeed.initial ? "Calibrazione" : "Ricalibra"}</span>
-                    </span>}
-                    </div>}
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     {!isBasics && !simplifiedWorkoutUi && hasSavedExerciseNoteContent && <div style={{ background: dc + "12", color: dc, fontSize: 9, fontWeight: 900, padding: "2px 7px", borderRadius: 999, textTransform: "uppercase", letterSpacing: 0.5 }}>Nota</div>}
@@ -12712,21 +12689,9 @@ function isNearBodyweightElasticSession(exName, sets) {
             </div>}
 
             {!isBasics && !isBeginner && dayData && !dayData.cardio && !dayData.rest && ((dayData.str && dayData.str.length) || dayData.hipBonus) && <div id="section-stretching-inline" style={{ borderBottom: "1px solid " + T.bg }}>
-              <div onClick={function() { var opening = !showStr; setShowStr(opening); if (opening) { setShowIntro(false); setShowExSection(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-stretching-inline"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: showStr ? T.st + "12" : T.st + "06", borderLeft: "3px solid " + T.st }}>
-                <div style={{ width: 30, height: 30, borderRadius: 8, background: T.st, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", flexShrink: 0 }}>🧘</div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 800, fontSize: 11, color: T.st, textTransform: "uppercase", letterSpacing: 1 }}>Stretching</div>
-                  <div style={{ fontSize: 11, color: T.sub, marginTop: 1 }}>{(function() {
-                    var mainStats = getStretchSectionStats(dayData.name, "post", dayData.str || []);
-                    var parts = [];
-                    if (mainStats.items.length) parts.push(mainStats.items.length + " esercizi · " + mainStats.totalLabel);
-                    if (dayData.hipBonus) {
-                      var hipStats = getStretchSectionStats(dayData.name, "hip-bonus", HIP_PROTOCOL_BASE);
-                      parts.push("bonus anca · " + hipStats.totalLabel);
-                    }
-                    return parts.join(" · ");
-                  })()}</div>
-                </div>
+              <div onClick={function() { var opening = !showStr; setShowStr(opening); if (opening) { setShowIntro(false); setShowExSection(false); setOpenEx(null); requestAnimationFrame(function() { var el = document.getElementById("section-stretching-inline"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); } }} style={{ padding: "7px 12px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: showStr ? T.st + "12" : T.st + "06", borderLeft: "3px solid " + T.st }}>
+                <span style={{ fontSize: 14, flexShrink: 0 }}>🧘</span>
+                <div style={{ flex: 1, fontWeight: 800, fontSize: 11, color: T.st, textTransform: "uppercase", letterSpacing: 0.8 }}>Stretching <span style={{ fontWeight: 600, color: T.sub, textTransform: "none", letterSpacing: 0 }}>{(function() { var s = getStretchSectionStats(dayData.name, "post", dayData.str || []); return s.totalLabel ? "· " + s.totalLabel : ""; })()}</span></div>
                 <div style={{ fontSize: 13, color: T.st, transform: showStr ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>
               </div>
               {showStr && <div style={{ padding: "12px 14px 16px", display: "grid", gap: 12, background: T.st + "08" }}>
