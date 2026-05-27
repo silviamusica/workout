@@ -1970,6 +1970,193 @@ var DAYS_V4 = [
   { name: "Riposo", focus: "Recupero", dayLabel: "Dom", rest: true },
 ];
 
+var BASIC_COMPETENCIES = [
+  {
+    id: "brace",
+    img: "Breathing + Brace supino",
+    badge: "Prerequisito",
+    tone: "#C62828",
+    t: "1. Colonna neutra + brace addominale",
+    summary: "Imparare a tenere la schiena stabile e a creare pressione addominale prima di caricare.",
+    d: [
+      { type: "p", content: "Devi saper mantenere le curve naturali della colonna senza arrotondare e senza iperestendere, mentre l'addome si espande a 360 gradi e si indurisce come per ricevere un pugno." },
+      { type: "bold-list", content: [
+        ["Perche conta", "E la base di squat, stacchi, press e rematori. Se la colonna si muove e il brace manca, il carico si disperde e la forza non si trasferisce bene dal corpo al bilanciere."],
+        ["Ti serve in", "Squat, Stacco da Terra, Stacco Rumeno, Panca, Military Press, Rematore Bilanciere, Plank, Ab Wheel."],
+        ["Segnali giusti", "Addome duro davanti, ai lati e dietro. Schiena stabile anche in mezzo squat o in plank."],
+        ["Progressione", "Supino → quadrupedia → in piedi → mezzo squat. Devi ritrovare lo stesso brace in ogni posizione."],
+        ["Esercizi utili", "Breathing + Brace supino, brace in quadrupedia, brace in piedi, brace in mezzo squat, Plank, Dead Bug."],
+        ["Test rapido", "Metti le mani su pancia e fianchi: se il brace spinge le mani verso fuori a 360 gradi, stai facendo il gesto giusto."],
+      ]},
+    ]
+  },
+  {
+    id: "bacino",
+    img: "Pelvic Tilt a terra",
+    badge: "Prerequisito",
+    tone: "#C62828",
+    t: "2. Controllo del bacino",
+    summary: "Saper fare anteroversione e retroversione a comando senza compensi.",
+    d: [
+      { type: "p", content: "Devi distinguere anteroversione e retroversione del bacino senza muovere il torace. Ti serve per hip thrust, plank, ab wheel, squat profondo e lavoro del core." },
+      { type: "bold-list", content: [
+        ["Perche conta", "Il bacino decide come lavori con glutei, addome e lombare. Se non lo controlli, compensi con schiena e anche."],
+        ["Devi saper fare", "Anteroversione volontaria e retroversione volontaria, senza muovere spalle o torace."],
+        ["Ti serve in", "Glute Bridge, Plank, Hollow Position, Ab Wheel, Squat profondo, Hyperextension."],
+        ["Segnali giusti", "Riesci ad appiattire e poi ricreare il piccolo arco lombare a comando."],
+        ["Esercizi utili", "Pelvic Tilt a terra, Cat-Cow lento, Glute Bridge controllato, Hollow Position."],
+        ["Test rapido", "Da supina riesci a premere la lombare a terra e poi a ricreare spazio senza muovere spalle o gambe."],
+      ]},
+    ]
+  },
+  {
+    id: "core",
+    img: "Dead Bug",
+    badge: "Prerequisito",
+    tone: "#C62828",
+    t: "3. Core anti-movimento",
+    summary: "Trasmettere forza tra arti e carico senza far muovere il tronco dove non serve.",
+    d: [
+      { type: "p", content: "Qui il core non significa fare addominali per bruciare: significa tenere fermo il tronco mentre si muovono braccia, gambe o carico." },
+      { type: "bold-list", content: [
+        ["Perche conta", "Serve a trasmettere forza tra gambe, tronco e carico senza disperderla."],
+        ["Ti serve in", "Push-Up, Ab Wheel, Woodchop, Bird Dog, Dead Bug, Hip Thrust Singolo, Nordic Curl."],
+        ["Segnali giusti", "Bacino fermo, niente crolli nel plank, niente rotazioni involontarie."],
+        ["Esercizi utili", "Dead Bug, Bird Dog, Side Plank, Pallof Press, Ab Wheel, Woodchop."],
+        ["Indicatori oggettivi", "Dead Bug: 10 ripetizioni lente senza staccare la lombare. Bird Dog: bacino fermo e nessuna rotazione."],
+      ]},
+    ]
+  },
+  {
+    id: "hinge",
+    img: "Test del bastone",
+    badge: "Prerequisito",
+    tone: "#C62828",
+    t: "4. Hip hinge",
+    summary: "Piegarti dal bacino, non dalla schiena.",
+    d: [
+      { type: "p", content: "L'hip hinge significa piegarti dal bacino, non dalla schiena: il sedere va indietro, le tibie restano quasi verticali e la schiena mantiene le sue curve naturali senza muoversi troppo. Serve prima di caricare stacchi, rumeni e rematori piegati." },
+      { type: "bold-list", content: [
+        ["Perche conta", "E la skill piu importante della catena posteriore. Senza hip hinge scarichi il lavoro sulla lombare; con l'hinge corretto l'estensione d'anca viene davvero da glutei e femorali."],
+        ["Ti serve in", "Stacco da Terra, Stacco Rumeno, Good Morning, Hyperextension, T-bar Row e rematori piegati."],
+        ["Test 3 punti", "Il bastone deve restare sempre in contatto con testa, parte alta della schiena e osso sacro."],
+        ["Segnali giusti", "Senti femorali e glutei, non la lombare. I tre punti del bastone restano in contatto."],
+        ["Esercizi utili", "Hip hinge al muro, Test del bastone, Good Morning senza peso, Stacco Rumeno leggero."],
+        ["Indicatori oggettivi", "Hip hinge: 10 ripetizioni con bastone perfetto. Se perdi contatto, stai flettendo la schiena."],
+      ]},
+    ]
+  },
+  {
+    id: "scapole",
+    img: "Band Pull-Apart con elastico",
+    badge: "Parallela",
+    tone: "#2E7D32",
+    t: "5. Controllo scapolare",
+    summary: "Saper avvicinare le scapole e abbassare le spalle lontano dalle orecchie.",
+    d: [
+      { type: "p", content: "Serve in trazioni, rematori, panca, dip e military. Nei giorni upper questa competenza e gia attivata nel riscaldamento con Scapular Pull-Up, Band Pull-Apart e retrazione scapolare al muro." },
+      { type: "bold-list", content: [
+        ["Perche conta", "Le scapole sono la base dinamica delle spinte e delle tirate: non basta tenerle ferme, devi saperle controllare durante tutto il movimento."],
+        ["Ti serve in", "Trazioni, Trazioni Supine, T-bar Row, Panca, Military Press, Pulley."],
+        ["Segnali giusti", "Petto aperto, spalle basse, dorsali che lavorano piu del trapezio alto e parte alta della schiena che guida bene la tirata o la spinta."],
+        ["Esercizi utili", "Band Pull-Apart, retrazione scapolare al muro, Scapular Pull-Up."],
+        ["Indicatori oggettivi", "15 Band Pull-Apart puliti senza compensi e 10 retrazioni al muro senza alzare le spalle."],
+      ]},
+    ]
+  },
+  {
+    id: "squat",
+    img: "Goblet Squat",
+    badge: "Parallela",
+    tone: "#2E7D32",
+    t: "6. Squat pattern base",
+    summary: "Accosciarti con talloni a terra, ginocchia fuori e schiena stabile.",
+    d: [
+      { type: "p", content: "Prima di caricare uno squat devi saper raggiungere almeno il parallelo con controllo. Il drill piu utile e il goblet squat con pausa in buca, usando i gomiti per spingere delicatamente le ginocchia verso fuori." },
+      { type: "bold-list", content: [
+        ["Perche conta", "Lo squat pattern insegna equilibrio, profondita e gestione delle ginocchia. Senza questo, il carico arriva troppo presto."],
+        ["Ti serve in", "Squat, Goblet Squat, Affondi, Walking Lunge, Step Up."],
+        ["Segnali giusti", "Talloni a terra, ginocchia che seguono i piedi, schiena stabile anche in basso."],
+        ["Drill", "Goblet Squat con pausa in buca e gomiti che spingono le ginocchia verso fuori."],
+        ["Esercizi utili", "Squat a corpo libero, Goblet Squat, tenuta in buca con gomiti contro le ginocchia."],
+        ["Indicatori oggettivi", "Pausa di 3 secondi stabile in buca senza perdere equilibrio o posizione della schiena."],
+      ]},
+    ]
+  },
+  {
+    id: "patterns",
+    img: "Push-Up ginocchia a terra",
+    badge: "Parallela",
+    tone: "#2E7D32",
+    t: "7. Pattern base di spinta e tirata",
+    summary: "Spingere e tirare con posizione stabile, movimento completo e scapole sotto controllo.",
+    d: [
+      { type: "p", content: "Spinta e tirata si imparano con versioni facili e controllate. Prima corpo rigido e scapole stabili, poi eventualmente carichi o varianti piu difficili." },
+      { type: "bold-list", content: [
+        ["Perche conta", "Prima impari il gesto base, poi aggiungi difficolta. Se il pattern e sporco, il carico peggiora solo il difetto e rende meno efficiente il movimento."],
+        ["Ti serve in", "Push-Up, Floor Press Manubri, Panca, Trazioni, sospensioni attive, Pulley e rematori."],
+        ["Segnali giusti", "Push-Up facilitato con corpo rigido e petto che scende davvero; sospensione o tirate leggere con spalle basse e senza slancio."],
+        ["Esercizi utili", "Push-Up ginocchia a terra, Push-Up su rialzo, Floor Press Manubri, Sospensione attiva alla sbarra, Pulley leggero."],
+        ["Indicatori oggettivi", "Il movimento resta uguale dalla prima all'ultima ripetizione senza slancio o scorciatoie."],
+      ]},
+    ]
+  },
+];
+
+var EXERCISE_COMPETENCIES = {
+  "Squat": ["brace","bacino","squat"],
+  "Squat a corpo libero": ["brace","bacino","squat"],
+  "Goblet Squat": ["brace","bacino","squat"],
+  "Squat Bulgaro": ["brace","squat"],
+  "Affondi": ["brace","squat"],
+  "Walking Lunge": ["brace","squat"],
+  "Step Up": ["brace","squat"],
+  "Stacco da Terra": ["brace","hinge"],
+  "Stacco Rumeno": ["brace","hinge"],
+  "Test del bastone": ["hinge"],
+  "Good Morning senza peso": ["hinge"],
+  "Good Morning": ["brace","hinge"],
+  "Rematore Bilanciere": ["brace","hinge","scapole","patterns"],
+  "T-bar Row": ["hinge","scapole","patterns"],
+  "Rematore Manubri": ["hinge","scapole","patterns"],
+  "Pulley": ["scapole","patterns"],
+  "Lat Machine": ["scapole","patterns"],
+  "Face Pull": ["scapole"],
+  "Face Pull leggero con elastico": ["scapole"],
+  "Trazioni": ["brace","scapole","patterns"],
+  "Trazioni Supine": ["brace","scapole","patterns"],
+  "Scapular Pull-Up": ["scapole"],
+  "Band Pull-Apart con elastico": ["scapole"],
+  "Retrazione scapolare al muro": ["scapole"],
+  "Panca": ["brace","scapole","patterns"],
+  "Floor Press Manubri": ["brace","patterns"],
+  "Push-Up": ["brace","core","patterns"],
+  "Push-Up ginocchia a terra": ["brace","core","patterns"],
+  "Push-Up Declino": ["brace","core","patterns"],
+  "Push-Up Diamante": ["brace","core","patterns"],
+  "Military Press": ["brace"],
+  "Dip alle Parallele": ["scapole","patterns"],
+  "Tricipiti Cavo": ["scapole"],
+  "Curl Bicipiti": ["brace"],
+  "Hip Thrust Bilanciere": ["brace","bacino"],
+  "Glute Bridge": ["bacino"],
+  "Hip Thrust Singolo": ["bacino","core"],
+  "Nordic Curl": ["brace","core"],
+  "Hyperextension": ["brace","hinge"],
+  "Fitball Hamstring Curl": ["bacino","core"],
+  "Plank": ["brace","core"],
+  "Hollow Position": ["bacino","core"],
+  "Dead Bug": ["brace","core"],
+  "Bird Dog": ["core"],
+  "Ab Wheel": ["brace","bacino","core"],
+  "Woodchop": ["core"],
+  "Addominali Obliqui": ["core"],
+  "Pelvic Tilt a terra": ["bacino"],
+  "Breathing + Brace supino": ["brace"],
+  "Pallof Press": ["core"],
+  "Sospensione attiva alla sbarra": ["scapole","patterns"],
+};
+
 var PRINCIPLES = [
   { t: "Come regolarti senza modalita guidata", d: "Usa regole semplici. 1) Tieni lo stesso peso in tutte le serie. 2) Se il range e 6-8, il primo obiettivo e stare nel range con tecnica pulita. 3) Se chiudi tutte le serie al numero alto del range con ancora 1-2 ripetizioni in riserva, la volta dopo puoi salire. 4) Se resti dentro il range ma non chiudi tutte le serie al numero alto, tieni lo stesso peso e prova ad aggiungere ripetizioni. 5) Se scendi sotto il minimo del range, il carico e troppo alto oppure il recupero e stato troppo corto: non salire, consolida o alleggerisci. 6) Per i recuperi parti cosi: 2-3 minuti sui fondamentali pesanti, 90-120 secondi sugli accessori composti, 60-90 secondi sui monoarticolari. Questa base basta gia per autoregolarti bene." },
   { t: "Coach attivo: come leggerlo davvero", d: "Il coach attivo non e un ordine assoluto. E un promemoria automatico basato su ripetizioni, RIR e andamento della serie. Se il suggerimento non torna con la serie che hai appena fatto, usa prima il tuo giudizio e la tecnica reale. In pratica: se sei sotto il minimo del range, il carico e troppo alto o hai recuperato poco; se sei nel range ma non al top, resta li; se chiudi tutto al top con margine, puoi salire; se chiudi tutto al top ma sei a RIR 0-1, non salire ancora. Sugli esercizi senza peso fisso non ragionare in kg: ragiona in assistenza, variante, ampiezza o controllo." },
