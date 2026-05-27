@@ -1970,461 +1970,6 @@ var DAYS_V4 = [
   { name: "Riposo", focus: "Recupero", dayLabel: "Dom", rest: true },
 ];
 
-var DAYS_BASICS = [
-  { name: "Giorno A", focus: "Tecniche preliminari — brace, bacino, squat", dur: "5 esercizi", tEst: 40,
-    intro: {
-      attrezzi: ["Tappetino", "Manubrio leggero", "Parete libera"],
-      muscoli: ["Core", "Bacino", "Quadricipiti e glutei"],
-      obiettivi: ["Imparare brace e controllo del bacino", "Stabilizzare il tronco prima di caricare", "Costruire lo squat pattern di base"],
-      attenzione: ["Ogni ripetizione deve restare uguale alla prima", "Se perdi posizione fermati", "Non cercare fatica alta"],
-      ritmo: "Recuperi tranquilli: 60-90 secondi. Tecnica prima di tutto."
-    },
-    warmup: [
-      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 minuti per entrare nella seduta.", tm: 120 },
-    ],
-    ex: [
-      { n: "Breathing + Brace supino", s: "3x5", rpe: "", note: "5 respiri controllati per serie. Addome che spinge a 360 gradi.", rec: "60s", gear: "Tappetino", errori: "Pancia risucchiata; spalle rigide; torace che si alza troppo" },
-      { n: "Dead Bug", s: "3x8 per lato", rpe: "", note: "Lombare sempre a terra. Movimento lento.", rec: "60s", gear: "Tappetino", errori: "Lombare che si stacca; fretta; bacino che ruota" },
-      { n: "Squat a corpo libero", s: "3x8-10", rpe: "", note: "Talloni a terra. Ginocchia nella direzione dei piedi. Scendi solo fin dove controlli bene.", rec: "60-90s", gear: "Corpo libero", errori: "Talloni che si alzano; ginocchia che collassano; busto instabile" },
-      { n: "Goblet Squat", s: "3x8", rpe: "", note: "Peso leggero. Pausa 2-3 secondi in basso. I gomiti aiutano a spingere le ginocchia verso fuori.", rec: "90s", gear: "Manubrio leggero", errori: "Peso troppo alto; schiena che si chiude; movimento incoerente" },
-      { n: "Plank", s: "3x20-30s", rpe: "", note: "Gomiti sotto le spalle. Costole giu. Glutei attivi. Bacino neutro.", rec: "60s", gear: "Tappetino", errori: "Bacino che cede; sedere troppo alto; apnea" },
-    ],
-    str: ["Glutei","Quadricipiti","Flessori anca"] },
-  { name: "Giorno B", focus: "Tecniche preliminari — hip hinge e scapole", dur: "5 esercizi", tEst: 40,
-    intro: {
-      attrezzi: ["Bastone o manico di scopa", "Elastico leggero", "Barra o supporto", "Cavo alto con corda"],
-      muscoli: ["Femorali e glutei", "Dorsali e scapole", "Core"],
-      obiettivi: ["Imparare la cerniera d'anca", "Sentire scapole e dorsali prima delle braccia", "Pulire il pattern di tirata"],
-      attenzione: ["Il bastone non deve perdere contatto", "Le spalle non salgono verso le orecchie", "Niente slancio nelle tirate"],
-      ritmo: "Recuperi 60-90 secondi. Qualita del gesto prima del volume."
-    },
-    warmup: [
-      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 minuti leggeri.", tm: 120 },
-    ],
-    ex: [
-      { n: "Test del bastone", s: "3x6", rpe: "", note: "Poche ripetizioni precise. Il bastone resta in contatto con testa, dorsale alta e sacro.", rec: "60s", gear: "Bastone", errori: "Schiena che si muove; ginocchia troppo piegate; fretta" },
-      { n: "Good Morning senza peso", s: "3x10", rpe: "", note: "Movimento lento. Obiettivo: sedere indietro e schiena stabile.", rec: "60-90s", gear: "Corpo libero", errori: "Piegarti dalla schiena; sedere che scende; collo contratto" },
-      { n: "Scapular Pull-Up", s: "2x5", rpe: "", note: "Braccia tese. Movimento piccolo ma pulito. Regressione: piedi in appoggio su box, lat machine con sola depressione scapolare o elastico assistito.", rec: "60s", gear: "Barra trazioni", errori: "Gomiti che si piegano; spalle alle orecchie; slancio" },
-      { n: "Band Pull-Apart con elastico", s: "2x15", rpe: "", note: "Elastico leggero. Scapole addotte in fondo.", rec: "60s", gear: "Elastico leggero", errori: "Schiena che si inarca; trapezio alto dominante; elastico troppo duro" },
-      { n: "Face Pull", s: "2x12-15", rpe: "", note: "Cavo leggero. Tira verso il viso con gomiti larghi e spalle basse.", rec: "60s", gear: "Cavo alto + corda", errori: "Spalle che salgono; slancio; gomiti che scendono" },
-    ],
-    str: ["Femorali","Dorsali","Spalle"] },
-  { name: "Giorno C", focus: "Tecniche preliminari — spinta, tirata e core", dur: "5 esercizi", tEst: 40,
-    intro: {
-      attrezzi: ["Rialzo o panca", "Barra trazioni", "Tappetino", "Elastico o cavo"],
-      muscoli: ["Pettorali e tricipiti", "Scapole e dorsali", "Core", "Glutei"],
-      obiettivi: ["Pulire il pattern di spinta", "Pulire il pattern di tirata", "Integrare core e bacino nei movimenti"],
-      attenzione: ["Push-Up facilitato: corpo in linea anche con le ginocchia a terra", "Sbarra: prima impara a stare appesa bene, non a tirarti su", "Glute Bridge: no iperestensione lombare"],
-      ritmo: "Recuperi 60-90 secondi. Ti devi sentire lucida, non sfinita."
-    },
-    warmup: [
-      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 minuti per attivarti.", tm: 120 },
-    ],
-    ex: [
-      { n: "Push-Up ginocchia a terra", s: "3x6-10", rpe: "7", note: "Versione facilitata. Se serve usa anche un rialzo. Da testa a ginocchia devi restare in linea, senza piegarti in mezzo.", rec: "60-90s", gear: "Corpo libero o rialzo", errori: "Bacino che cede; testa che penzola; gomiti troppo larghi; movimento troppo corto" },
-      { n: "Sospensione attiva alla sbarra", s: "3x15-25s", rpe: "", note: "Appenditi con braccia tese. Spalle basse e pancia leggermente attiva. Non devi fare trazioni. Regressione: piedi in appoggio su box o tenuta attiva al lat machine/cavo alto.", rec: "60-90s", gear: "Barra trazioni", errori: "Spalle alle orecchie; corpo molle; partire a tirare con i gomiti" },
-      { n: "Bird Dog", s: "3x8 per lato", rpe: "", note: "Movimento lento. Bacino fermo.", rec: "60s", gear: "Tappetino", errori: "Bacino che ruota; slancio; gamba troppo alta" },
-      { n: "Glute Bridge", s: "3x10", rpe: "", note: "Retroversione in alto, glutei stretti, lombare neutra.", rec: "60s", gear: "Tappetino", errori: "Salire con la schiena; piedi troppo lontani; nessuna pausa in alto" },
-      { n: "Pallof Press", s: "3x8-10 per lato", rpe: "", note: "Elastico o cavo laterale. Spingi le mani avanti senza lasciare ruotare il busto.", rec: "60s", gear: "Elastico o cavo", errori: "Busto che gira; spalle che salgono; fretta" },
-    ],
-    str: ["Pettorali","Dorsali","Glutei"] },
-];
-
-var DAYS_BEGINNER = [
-  { name: "Giorno A", focus: "Full Body A — spinta + quadricipiti", dur: "5 esercizi", tEst: 55,
-    intro: {
-      attrezzi: ["Manubri, bilanciere o TRX", "Panca, tappetino, TRX o cavi", "Fitball o TRX", "Tappetino"],
-      muscoli: ["Quadricipiti e glutei", "Petto, spalle e tricipiti", "Schiena e bicipiti", "Femorali", "Core"],
-      obiettivi: ["Costruire i pattern base di squat, spinta orizzontale e tirata orizzontale", "Dare stimolo anche ai femorali fin dall'inizio", "Usare alternative semplici se manca un attrezzo senza perdere la logica della seduta"],
-      attenzione: ["Lascia sempre 1-2 ripetizioni in riserva", "Usa varianti TRX o cavi solo come alternative, non come obbligo", "Nello squat il peso resta sul mesopiede e le ginocchia seguono la direzione dei piedi"],
-      ritmo: "Recuperi 90s-2 min sugli esercizi principali, 60-90s sul core."
-    },
-    warmup: [
-      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "3 minuti. Alza la temperatura corporea e prepara anche e caviglie.", tm: 180 },
-      { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente per mobilizzare colonna e bacino." },
-      { n: "Serie avvicinamento squat", img: "w_SerieAvvicinamentoSquat", d: "1-3 mini-serie leggere prima del carico di lavoro.", gear: "Manubri o bilanciere" },
-    ],
-    ex: [
-      { n: "Squat", s: "3x8-10", rpe: "8", note: "Base: squat con manubri o bilanciere, 1-2 RIR. Setup: piedi larghezza spalle, punte 15-30°, ginocchia seguono le punte, peso sul mesopiede. Mani simmetriche; gomiti giu e leggermente dietro se usi il bilanciere. Alternative: TRX squat o goblet squat.", rec: "90s-2 min", gear: "Manubri, bilanciere o TRX", errori: "Profondita che si accorcia; ginocchia che collassano; talloni che si sollevano; schiena che perde assetto" },
-      { n: "Floor Press Manubri", s: "3x8-10", rpe: "8", note: "Su panca se disponibile per ROM completo. A terra il ROM e limitato. In alternativa push-up facilitati su rialzo.", rec: "90s", gear: "Manubri + panca (o tappetino)", errori: "Spalle sollevate dalla panca; gomiti troppo aperti a 90 gradi; ROM incoerente tra le ripetizioni" },
-      { n: "Rematore Manubri", s: "3x8-12", rpe: "8", note: "Base: rematore manubri. Setup: mano e ginocchio opposti in appoggio, piede a terra stabile, busto fermo. Mano neutra; tira il gomito verso il fianco senza alzare la spalla. Alternative: TRX row o pulley basso.", rec: "90s", gear: "Manubri + panca, TRX o pulley", errori: "Busto che oscilla; slancio col braccio; spalla che sale; gomito troppo largo" },
-      { n: "Glute Bridge su Fitball", s: "3x10-12", rpe: "8", note: "Base: supina con talloni sulla fitball e bacino alto. Spingi dai talloni e fermati 1 secondo in alto senza inarcare la lombare. Progressione: fitball hamstring curl. Alternativa: glute bridge a terra o TRX hamstring curl se gia controlli bene il bacino.", rec: "60-90s", gear: "Fitball o TRX", errori: "Bacino che crolla; spinta sulla lombare; piedi troppo lontani; nessuna pausa in alto" },
-      { n: "Plank", s: "3x20-45s", rpe: "", note: "Ferma la serie quando perdi l'allineamento. Respira normalmente senza rilasciare la contrazione addominale.", rec: "60s", gear: "Tappetino", errori: "Bacino che cede verso il basso; anche che si alzano; spalle incassate; apnea" },
-    ],
-    str: ["Quadricipiti","Glutei","Pettorali","Dorsali"] },
-  { name: "Giorno 2", focus: "Riposo", rest: true, intro: { attrezzi: [], muscoli: [], obiettivi: ["Passeggiata leggera o mobilità facoltativa"], attenzione: ["Nessun allenamento strutturato"], ritmo: "Camminata facile, mobilità breve o riposo completo." }, warmup: [], ex: [], str: [] },
-  { name: "Giorno B", focus: "Full Body B — tirata + catena posteriore", dur: "4 esercizi", tEst: 50,
-    intro: {
-      attrezzi: ["Manubri, bilanciere, cavo o TRX", "Lat machine, cavo alto, barra + elastico o TRX", "Elastico leggero", "Corpo libero o manubri"],
-      muscoli: ["Glutei e femorali", "Spalle", "Dorsali", "Gambe e glutei"],
-      obiettivi: ["Imparare il pattern di hip hinge", "Rinforzare tirata verticale e spinta verticale", "Avere gia una variante valida anche se manca lat machine o cavo"],
-      attenzione: ["Stacco rumeno: l'anca va indietro, non verso il basso", "Military press: glutei e addome attivi, testa passa sotto il carico", "Prima di tirare o spingere, prepara bene le scapole"],
-      ritmo: "Recuperi 90s-2 min sui primi tre esercizi, 90s sugli affondi."
-    },
-    warmup: [
-      { n: "Jumping jacks", img: "w_JumpingJacks", d: "2-3 minuti a ritmo leggero per entrare nella seduta.", tm: 180 },
-      { n: "Good Morning senza peso", img: "w_GoodMorningSenzaPeso", d: "10 ripetizioni lente. Focus: sedere indietro, schiena neutra." },
-      { n: "Cable Pull-Apart con rotazione esterna", img: "w_BandPullApart", d: "2x15. Cavo regolato a media altezza, braccia tese davanti al petto. Apri fino ai lati del corpo e ruota le mani verso fuori alla fine." },
-      { n: "Serie avvicinamento stacco rumeno", img: "w_SerieAvvStacco", d: "1-2 serie leggere e progressive del primo esercizio del giorno. Devono preparare il pattern, non affaticarti.", gear: "Manubri o bilanciere" },
-    ],
-    ex: [
-      { n: "Stacco Rumeno", s: "3x8-10", rpe: "8", note: "Base: stacco rumeno con manubri o bilanciere, 1-2 RIR. Setup: piedi larghezza anche, mani poco fuori cosce, gomiti tesi, ginocchia appena sbloccate. Anca indietro e carico vicino alle gambe. Alternative: cable pull-through o TRX hip hinge assistito.", rec: "90s-2 min", gear: "Manubri, bilanciere, cavo o TRX", errori: "Schiena arrotondata; ginocchia troppo flesse; carico lontano dal corpo; anca che scende invece di andare indietro" },
-      { n: "Military Press", s: "3x8-10", rpe: "8", note: "Base: military press con manubri o bilanciere. Setup: piedi larghezza anche, mani poco fuori spalle, gomiti leggermente avanti, polsi neutri, glutei e addome attivi. Alternative: press manubri da seduta o half-kneeling single arm cable press.", rec: "90s-2 min", gear: "Manubri, bilanciere o cavo", errori: "Lombare inarcata; gomiti troppo larghi; traiettoria non verticale; testa che non passa sotto il carico" },
-      { n: "Lat Machine", s: "3x8-12", rpe: "8", note: "Tira la barra al petto alto. Scapole depresse e addotte. Se non hai lat machine: trazioni negative (sali con sgabello e scendi in 3-5 secondi controllando).", rec: "90s", gear: "Lat machine o barra trazioni + elastico", errori: "Spalle che salgono alle orecchie; slancio col busto; ROM corto; tirare con le braccia anziche con la schiena" },
-      { n: "Affondi", s: "3x10-12 per gamba", rpe: "8", note: "Base: affondi alternati o camminati. Setup: piedi su due binari, passo abbastanza lungo, piede davanti tutto a terra, busto stabile. Gomiti rilassati ai lati se usi manubri. Alternative: TRX reverse lunge o split squat al cavo.", rec: "90s", gear: "Corpo libero, manubri, TRX o cavo", errori: "Passo troppo corto; ginocchio anteriore che collassa; perdita di equilibrio; busto che oscilla" },
-    ],
-    str: ["Femorali","Glutei","Spalle","Flessori anca"] },
-  { name: "Giorno 4", focus: "Riposo", rest: true, intro: { attrezzi: [], muscoli: [], obiettivi: ["Passeggiata leggera o mobilità facoltativa"], attenzione: ["Nessun allenamento strutturato"], ritmo: "Camminata facile, mobilità breve o riposo completo." }, warmup: [], ex: [], str: [] },
-  { name: "Giorno C", focus: "Full Body C — glutei e accessori", dur: "5 esercizi", tEst: 55,
-    intro: {
-      attrezzi: ["Corpo libero, manubri o TRX", "Manubri + panca, tappetino, TRX o cavi", "Cavo basso, elastico o TRX", "Corpo libero, manubrio + panca, fitball o cavo", "Tappetino o fitball"],
-      muscoli: ["Quadricipiti e glutei", "Petto e spalle anteriori", "Schiena", "Glutei", "Core"],
-      obiettivi: ["Dare piu focus a glutei e accessori senza rendere la seduta pesante", "Avere gia varianti pratiche con TRX, cavi e fitball", "Chiudere la settimana con lavoro tecnico e completo"],
-      attenzione: ["Squat bulgaro: prima controllo, poi carico", "Hip thrust: chiudi coi glutei, non con la lombare", "Dead bug: la lombare resta ferma a terra"],
-      ritmo: "Recuperi 90s sui multiarticolari, 60-90s sugli accessori e sul core."
-    },
-    warmup: [
-      { n: "Marcia con ginocchia alte", img: "w_MarciaGinocchiaAlte", d: "2 minuti per entrare nella seduta.", tm: 120 },
-      { n: "World's Greatest Stretch", img: "w_WorldsGreatestStretch", d: "4 per lato. Prima completi lo stretch, poi passi al resto del warm-up." },
-      { n: "Cat-Cow", img: "w_CatCow", d: "8 ripetizioni lente per preparare la colonna e il bacino." },
-    ],
-    ex: [
-      { n: "Squat Bulgaro", s: "3x8-10 per gamba", rpe: "8", note: "Base: squat bulgaro. Setup: piede davanti tutto a terra, piede dietro in appoggio morbido, piedi su due binari. Mani ai lati o ai manici TRX; ginocchio davanti segue la punta. Alternative: TRX split squat o step-up.", rec: "90s", gear: "Corpo libero, manubri o TRX", errori: "ROM che si accorcia; busto che oscilla; ginocchio che collassa; piede davanti instabile" },
-      { n: "Floor Press Manubri", s: "3x8-10", rpe: "8", note: "Su panca inclinata se disponibile per enfatizzare il pettorale alto. Altrimenti floor press a terra. Alternative: Push-Up su rialzo o cable chest press.", rec: "90s", gear: "Manubri + panca inclinata (o tappetino)", errori: "Spalle che si sollevano; slancio; ROM non uniforme tra le ripetizioni" },
-      { n: "Pulley", s: "3x8-12", rpe: "8", note: "Base: pulley basso o rematore elastico. Setup: petto alto, mani neutre o poco prone, gomiti 30-45° dal busto, spalle basse. Alternative: TRX row o one arm cable row.", rec: "90s", gear: "Cavo basso, elastico o TRX", errori: "Busto che si muove avanti-indietro; gomiti troppo larghi; spalle che salgono" },
-      { n: "Hip Thrust Bilanciere", s: "3x10-15", rpe: "8", note: "Base: hip thrust o glute bridge. Setup: piedi larghezza bacino-spalle, tibia quasi verticale in alto, mani fermano il carico, mento leggermente chiuso. Chiudi coi glutei, non con la lombare. Alternative: fitball glute bridge o hip thrust al cavo.", rec: "90s", gear: "Corpo libero, manubrio + panca, fitball o cavo", errori: "Salire con la lombare; ROM corto; discesa troppo veloce; no squeeze in alto" },
-      { n: "Dead Bug", s: "3x8 per lato", rpe: "", note: "Base: dead bug. Setup: lombare aderente a terra, braccia verso il soffitto, ginocchia a 90°. Estendi braccio e gamba opposti lentamente. Alternative: dead bug con fitball tra mani e ginocchia o bird dog.", rec: "60s", gear: "Tappetino o fitball", errori: "Lombare che si stacca; movimento troppo veloce; respiro trattenuto; braccia e gambe fuori controllo" },
-    ],
-    str: ["Glutei","Quadricipiti","Pettorali","Dorsali"] },
-  { name: "Giorno 6", focus: "Riposo", rest: true, intro: { attrezzi: [], muscoli: [], obiettivi: ["Passeggiata leggera o mobilità facoltativa"], attenzione: ["Nessun allenamento strutturato"], ritmo: "Camminata facile, mobilità breve o riposo completo." }, warmup: [], ex: [], str: [] },
-  { name: "Giorno 7", focus: "Riposo", rest: true, intro: { attrezzi: [], muscoli: [], obiettivi: ["Se ti senti bene: camminata facile o stretching"], attenzione: ["Nessun allenamento strutturato"], ritmo: "Recupero generale. Niente HIIT, niente corsa." }, warmup: [], ex: [], str: [] },
-];
-
-var BEGINNER_PRINCIPLES_DEEP = [
-  { t: "Obiettivo della fase principiante", d: [
-      { type: "p", content: "Qui non devi inseguire fatica o cardio: devi costruire tecnica, continuita e un po di massa magra." },
-      { type: "p", content: "Il risultato atteso non e diventare grossa, ma piu stabile, piu tonica e piu sicura sui movimenti base." },
-    ]},
-  { t: "Come funziona la scheda", d: [
-      { type: "p", content: "Alleni tutto il corpo 3 volte a settimana, a giorni alterni, con volume moderato e multiarticolari semplici." },
-      { type: "p", content: "L'idea e ripetere bene gli stessi pattern abbastanza spesso da impararli e progredire senza confusione." },
-    ]},
-  { t: "Cosa fa davvero la differenza", d: [
-      { type: "p", content: "Chiudi quasi tutte le serie con 1-2 ripetizioni in riserva, rispetta i recuperi e prova a migliorare poco alla volta." },
-      { type: "p", content: "Le priorita vere sono poche: presenza costante, tecnica pulita, proteine adeguate e sonno." },
-    ]},
-];
-
-var BEGINNER_PRINCIPLES = [
-  { t: "Come leggere 3x8-10", d: "Vuol dire 3 serie con lo stesso peso. Parti dal numero basso del range e quando chiudi tutte le serie al numero alto con tecnica pulita, alza poco il carico." },
-  { t: "Recuperi", d: "Sugli esercizi principali stai circa tra 90 secondi e 2 minuti. Sugli esercizi piu leggeri basta spesso 60-90 secondi." },
-  { t: "Buffer", d: "Fermati quasi sempre con 1-2 ripetizioni buone ancora disponibili. Se devi sporcare la tecnica, la serie e gia finita." },
-  { t: "Cardio", d: "Qui non serve cardio strutturato. Nei giorni off bastano camminate leggere e recupero buono." },
-];
-
-var BEGINNER_INTRO_BASICS = [
-  {
-    icon: "🌱",
-    title: "Da dove partire",
-    summary: "All'inizio conta imparare bene i movimenti e allenarti con continuita.",
-    body: [
-      { type: "bold-list", content: [
-        ["Cosa conta subito", "Presenza regolare, tecnica pulita, recuperi rispettati e carichi gestibili."],
-        ["Cosa evitare", "Cedimento continuo, troppe varianti e regole inutili."],
-      ]},
-    ]
-  },
-  {
-    icon: "📐",
-    title: "Serie, ripetizioni e recupero",
-    summary: "Le uniche regole che ti servono per leggere la scheda.",
-    body: [
-      { type: "bold-list", content: [
-        ["3x8-10", "3 serie da 8 a 10 ripetizioni con lo stesso peso."],
-        ["Recupero", "90s-2 min sugli esercizi principali, 60-90s sugli esercizi piu leggeri."],
-        ["Peso", "Deve permetterti di muoverti bene e lasciare 1-2 ripetizioni in riserva."],
-      ]},
-    ]
-  },
-  {
-    icon: "⚖️",
-    title: "Buffer e progressione",
-    summary: "Non devi andare al massimo: devi migliorare poco alla volta.",
-    body: [
-      { type: "bold-list", content: [
-        ["Progressione", "Prima prova ad aggiungere una ripetizione. Poi, quando il range e stabile, alza leggermente il peso."],
-        ["Regola pratica", "Tecnica prima, carico dopo."],
-      ]},
-    ]
-  },
-  {
-    icon: "🥗",
-    title: "Recupero e proteine",
-    summary: "Allenamento, sonno e proteine devono andare insieme.",
-    body: [
-      { type: "bold-list", content: [
-        ["Proteine", "Come base pratica, resta nel range di circa 1.8-2.5 g per kg di massa magra."],
-        ["Sonno", "Dormire bene ti aiuta a recuperare e a migliorare di settimana in settimana."],
-      ]},
-    ]
-  },
-];
-
-var BASIC_COMPETENCIES = [
-  {
-    id: "brace",
-    img: "Breathing + Brace supino",
-    badge: "Prerequisito",
-    tone: "#C62828",
-    t: "1. Colonna neutra + brace addominale",
-    summary: "Imparare a tenere la schiena stabile e a creare pressione addominale prima di caricare.",
-    d: [
-      { type: "p", content: "Devi saper mantenere le curve naturali della colonna senza arrotondare e senza iperestendere, mentre l'addome si espande a 360 gradi e si indurisce come per ricevere un pugno." },
-      { type: "bold-list", content: [
-        ["Perche conta", "E la base di squat, stacchi, press e rematori. Se la colonna si muove e il brace manca, il carico si disperde e la forza non si trasferisce bene dal corpo al bilanciere."],
-        ["Ti serve in", "Squat, Stacco da Terra, Stacco Rumeno, Panca, Military Press, Rematore Bilanciere, Plank, Ab Wheel."],
-        ["Segnali giusti", "Addome duro davanti, ai lati e dietro. Schiena stabile anche in mezzo squat o in plank."],
-        ["Progressione", "Supino → quadrupedia → in piedi → mezzo squat. Devi ritrovare lo stesso brace in ogni posizione."],
-        ["Esercizi utili", "Breathing + Brace supino, brace in quadrupedia, brace in piedi, brace in mezzo squat, Plank, Dead Bug."],
-        ["Test rapido", "Metti le mani su pancia e fianchi: se il brace spinge le mani verso fuori a 360 gradi, stai facendo il gesto giusto."],
-      ]},
-    ]
-  },
-  {
-    id: "bacino",
-    img: "Pelvic Tilt a terra",
-    badge: "Prerequisito",
-    tone: "#C62828",
-    t: "2. Controllo del bacino",
-    summary: "Saper fare anteroversione e retroversione a comando senza compensi.",
-    d: [
-      { type: "p", content: "Devi distinguere anteroversione e retroversione del bacino senza muovere il torace. Ti serve per hip thrust, plank, ab wheel, squat profondo e lavoro del core." },
-      { type: "bold-list", content: [
-        ["Perche conta", "Il bacino decide come lavori con glutei, addome e lombare. Se non lo controlli, compensi con schiena e anche."],
-        ["Devi saper fare", "Anteroversione volontaria e retroversione volontaria, senza muovere spalle o torace."],
-        ["Ti serve in", "Glute Bridge, Plank, Hollow Position, Ab Wheel, Squat profondo, Hyperextension."],
-        ["Segnali giusti", "Riesci ad appiattire e poi ricreare il piccolo arco lombare a comando."],
-        ["Esercizi utili", "Pelvic Tilt a terra, Cat-Cow lento, Glute Bridge controllato, Hollow Position."],
-        ["Test rapido", "Da supina riesci a premere la lombare a terra e poi a ricreare spazio senza muovere spalle o gambe."],
-      ]},
-    ]
-  },
-  {
-    id: "core",
-    img: "Dead Bug",
-    badge: "Prerequisito",
-    tone: "#C62828",
-    t: "3. Core anti-movimento",
-    summary: "Trasmettere forza tra arti e carico senza far muovere il tronco dove non serve.",
-    d: [
-      { type: "p", content: "Qui il core non significa fare addominali per bruciare: significa tenere fermo il tronco mentre si muovono braccia, gambe o carico." },
-      { type: "bold-list", content: [
-        ["Perche conta", "Serve a trasmettere forza tra gambe, tronco e carico senza disperderla."],
-        ["Ti serve in", "Push-Up, Ab Wheel, Woodchop, Bird Dog, Dead Bug, Hip Thrust Singolo, Nordic Curl."],
-        ["Segnali giusti", "Bacino fermo, niente crolli nel plank, niente rotazioni involontarie."],
-        ["Esercizi utili", "Dead Bug, Bird Dog, Side Plank, Pallof Press, Ab Wheel, Woodchop."],
-        ["Indicatori oggettivi", "Dead Bug: 10 ripetizioni lente senza staccare la lombare. Bird Dog: bacino fermo e nessuna rotazione."],
-      ]},
-    ]
-  },
-  {
-    id: "hinge",
-    img: "Test del bastone",
-    badge: "Prerequisito",
-    tone: "#C62828",
-    t: "4. Hip hinge",
-    summary: "Piegarti dal bacino, non dalla schiena.",
-    d: [
-      { type: "p", content: "L'hip hinge significa piegarti dal bacino, non dalla schiena: il sedere va indietro, le tibie restano quasi verticali e la schiena mantiene le sue curve naturali senza muoversi troppo. Serve prima di caricare stacchi, rumeni e rematori piegati." },
-      { type: "bold-list", content: [
-        ["Perche conta", "E la skill piu importante della catena posteriore. Senza hip hinge scarichi il lavoro sulla lombare; con l'hinge corretto l'estensione d'anca viene davvero da glutei e femorali."],
-        ["Ti serve in", "Stacco da Terra, Stacco Rumeno, Good Morning, Hyperextension, T-bar Row e rematori piegati."],
-        ["Test 3 punti", "Il bastone deve restare sempre in contatto con testa, parte alta della schiena e osso sacro."],
-        ["Segnali giusti", "Senti femorali e glutei, non la lombare. I tre punti del bastone restano in contatto."],
-        ["Esercizi utili", "Hip hinge al muro, Test del bastone, Good Morning senza peso, Stacco Rumeno leggero."],
-        ["Indicatori oggettivi", "Hip hinge: 10 ripetizioni con bastone perfetto. Se perdi contatto, stai flettendo la schiena."],
-      ]},
-    ]
-  },
-  {
-    id: "scapole",
-    img: "Band Pull-Apart con elastico",
-    badge: "Parallela",
-    tone: "#2E7D32",
-    t: "5. Controllo scapolare",
-    summary: "Saper avvicinare le scapole e abbassare le spalle lontano dalle orecchie.",
-    d: [
-      { type: "p", content: "Serve in trazioni, rematori, panca, dip e military. Nei giorni upper questa competenza e gia attivata nel riscaldamento con Scapular Pull-Up, Band Pull-Apart e retrazione scapolare al muro." },
-      { type: "bold-list", content: [
-        ["Perche conta", "Le scapole sono la base dinamica delle spinte e delle tirate: non basta tenerle ferme, devi saperle controllare durante tutto il movimento."],
-        ["Ti serve in", "Trazioni, Trazioni Supine, T-bar Row, Panca, Military Press, Pulley."],
-        ["Segnali giusti", "Petto aperto, spalle basse, dorsali che lavorano piu del trapezio alto e parte alta della schiena che guida bene la tirata o la spinta."],
-        ["Esercizi utili", "Band Pull-Apart, retrazione scapolare al muro, Scapular Pull-Up."],
-        ["Indicatori oggettivi", "15 Band Pull-Apart puliti senza compensi e 10 retrazioni al muro senza alzare le spalle."],
-      ]},
-    ]
-  },
-  {
-    id: "squat",
-    img: "Goblet Squat",
-    badge: "Parallela",
-    tone: "#2E7D32",
-    t: "6. Squat pattern base",
-    summary: "Accosciarti con talloni a terra, ginocchia fuori e schiena stabile.",
-    d: [
-      { type: "p", content: "Prima di caricare uno squat devi saper raggiungere almeno il parallelo con controllo. Il drill piu utile e il goblet squat con pausa in buca, usando i gomiti per spingere delicatamente le ginocchia verso fuori." },
-      { type: "bold-list", content: [
-        ["Perche conta", "Lo squat pattern insegna equilibrio, profondita e gestione delle ginocchia. Senza questo, il carico arriva troppo presto."],
-        ["Ti serve in", "Squat, Goblet Squat, Affondi, Walking Lunge, Step Up."],
-        ["Segnali giusti", "Talloni a terra, ginocchia che seguono i piedi, schiena stabile anche in basso."],
-        ["Drill", "Goblet Squat con pausa in buca e gomiti che spingono le ginocchia verso fuori."],
-        ["Esercizi utili", "Squat a corpo libero, Goblet Squat, tenuta in buca con gomiti contro le ginocchia."],
-        ["Indicatori oggettivi", "Pausa di 3 secondi stabile in buca senza perdere equilibrio o posizione della schiena."],
-      ]},
-    ]
-  },
-  {
-    id: "patterns",
-    img: "Push-Up ginocchia a terra",
-    badge: "Parallela",
-    tone: "#2E7D32",
-    t: "7. Pattern base di spinta e tirata",
-    summary: "Spingere e tirare con posizione stabile, movimento completo e scapole sotto controllo.",
-    d: [
-      { type: "p", content: "Spinta e tirata si imparano con versioni facili e controllate. Prima corpo rigido e scapole stabili, poi eventualmente carichi o varianti piu difficili." },
-      { type: "bold-list", content: [
-        ["Perche conta", "Prima impari il gesto base, poi aggiungi difficolta. Se il pattern e sporco, il carico peggiora solo il difetto e rende meno efficiente il movimento."],
-        ["Ti serve in", "Push-Up, Floor Press Manubri, Panca, Trazioni, sospensioni attive, Pulley e rematori."],
-        ["Segnali giusti", "Push-Up facilitato con corpo rigido e petto che scende davvero; sospensione o tirate leggere con spalle basse e senza slancio."],
-        ["Esercizi utili", "Push-Up ginocchia a terra, Push-Up su rialzo, Floor Press Manubri, Sospensione attiva alla sbarra, Pulley leggero."],
-        ["Indicatori oggettivi", "Il movimento resta uguale dalla prima all'ultima ripetizione senza slancio o scorciatoie."],
-      ]},
-    ]
-  },
-];
-
-var EXERCISE_COMPETENCIES = {
-  "Squat": ["brace","bacino","squat"],
-  "Squat a corpo libero": ["brace","bacino","squat"],
-  "Goblet Squat": ["brace","bacino","squat"],
-  "Squat Bulgaro": ["brace","squat"],
-  "Affondi": ["brace","squat"],
-  "Walking Lunge": ["brace","squat"],
-  "Step Up": ["brace","squat"],
-  "Stacco da Terra": ["brace","hinge"],
-  "Stacco Rumeno": ["brace","hinge"],
-  "Test del bastone": ["hinge"],
-  "Good Morning senza peso": ["hinge"],
-  "Good Morning": ["brace","hinge"],
-  "Rematore Bilanciere": ["brace","hinge","scapole","patterns"],
-  "T-bar Row": ["hinge","scapole","patterns"],
-  "Rematore Manubri": ["hinge","scapole","patterns"],
-  "Pulley": ["scapole","patterns"],
-  "Lat Machine": ["scapole","patterns"],
-  "Face Pull": ["scapole"],
-  "Face Pull leggero con elastico": ["scapole"],
-  "Trazioni": ["brace","scapole","patterns"],
-  "Trazioni Supine": ["brace","scapole","patterns"],
-  "Scapular Pull-Up": ["scapole"],
-  "Band Pull-Apart con elastico": ["scapole"],
-  "Retrazione scapolare al muro": ["scapole"],
-  "Panca": ["brace","scapole","patterns"],
-  "Floor Press Manubri": ["brace","patterns"],
-  "Push-Up": ["brace","core","patterns"],
-  "Push-Up ginocchia a terra": ["brace","core","patterns"],
-  "Push-Up Declino": ["brace","core","patterns"],
-  "Push-Up Diamante": ["brace","core","patterns"],
-  "Military Press": ["brace"],
-  "Dip alle Parallele": ["scapole","patterns"],
-  "Tricipiti Cavo": ["scapole"],
-  "Curl Bicipiti": ["brace"],
-  "Hip Thrust Bilanciere": ["brace","bacino"],
-  "Glute Bridge": ["bacino"],
-  "Hip Thrust Singolo": ["bacino","core"],
-  "Nordic Curl": ["brace","core"],
-  "Hyperextension": ["brace","hinge"],
-  "Fitball Hamstring Curl": ["bacino","core"],
-  "Plank": ["brace","core"],
-  "Hollow Position": ["bacino","core"],
-  "Dead Bug": ["brace","core"],
-  "Bird Dog": ["core"],
-  "Ab Wheel": ["brace","bacino","core"],
-  "Woodchop": ["core"],
-  "Addominali Obliqui": ["core"],
-  "Pelvic Tilt a terra": ["bacino"],
-  "Breathing + Brace supino": ["brace"],
-  "Pallof Press": ["core"],
-  "Sospensione attiva alla sbarra": ["scapole","patterns"],
-};
-
-var PRELIM_INTRO_BASICS = [
-  {
-    icon: "🎯",
-    title: "A cosa serve questo livello",
-    summary: "Non e ancora una scheda per spingere: e il passaggio in cui impari i movimenti che ti serviranno dopo.",
-    body: [
-      { type: "p", content: "Qui costruisci le tecniche preliminari: colonna neutra, brace, controllo del bacino, hip hinge, scapole e pattern base di spinta e tirata." },
-      { type: "bold-list", content: [
-        ["Obiettivo", "Diventare stabile e precisa prima di cercare carichi veri."],
-        ["Cosa non conta", "Fatica alta, tanti esercizi o numeri grandi."],
-      ]},
-    ]
-  },
-  {
-    icon: "🧱",
-    title: "Come usare questo livello",
-    summary: "Poche ripetizioni, molto controllo, recuperi tranquilli.",
-    body: [
-      { type: "bold-list", content: [
-        ["Regola", "Se perdi posizione, la serie finisce."],
-        ["Volume", "Poco ma ripetuto spesso. La priorita e imparare il gesto."],
-        ["Passaggio", "Quando le tecniche sono stabili, passi al livello Principiante."],
-      ]},
-    ]
-  },
-  {
-    icon: "➡️",
-    title: "Quando sei pronta per il livello dopo",
-    summary: "Non serve perfezione assoluta: serve una base solida e ripetibile.",
-    body: [
-      { type: "p", content: "Se riesci a mantenere buona posizione e controllo nei test rapidi delle 4 competenze prerequisito, puoi passare alla scheda Principiante senza fretta." },
-    ]
-  },
-];
-
-var PRELIM_PRINCIPLES_DEEP = [
-  { t: "Come usare le tecniche preliminari", d: [
-      { type: "p", content: "Questo livello serve a costruire automatismi: respirazione, posizione stabile del corpo, controllo di bacino e scapole, cerniera d'anca e pattern di base. Non devi cercare sfinimento." },
-      { type: "p", content: "Ogni esercizio e utile solo se il gesto resta pulito dalla prima all'ultima ripetizione. Appena la tecnica cambia, fermati." },
-      { type: "bold-list", content: [
-        ["Perche e importante", "Queste competenze rendono piu sicuri e piu efficaci tutti gli esercizi del livello Principiante e della scheda avanzata."],
-        ["Come leggere i link", "Quando in un esercizio vedi una tecnica preliminare, significa che quel gesto dipende proprio da quella competenza."],
-      ]},
-      { type: "table", columns:["Ordine","Tecnica","Indicatore"], rows:[
-        ["1","Brace + breathing","Addome a 360 gradi, non pancia in dentro"],
-        ["2","Controllo del bacino","Sai fare anteroversione e retroversione a comando"],
-        ["3","Dead Bug / Bird Dog","10 rip lente senza perdere lombare o bacino"],
-        ["4","Hip hinge","10 rip con bastone perfetto sui 3 punti"],
-        ["5","Scapole: Band Pull-Apart + muro","15 band pull-apart puliti e 10 retrazioni al muro senza compensi"],
-        ["6","Squat base","Pausa di 3 secondi stabile in buca"],
-        ["7","Push / Pull base","Movimento uguale dalla prima all'ultima ripetizione"],
-      ]},
-      { type: "p", content: "Se questi punti sono abbastanza solidi, puoi iniziare a gestire carichi veri nella scheda Principiante." },
-    ]},
-  { t: "Quando passare a Principiante", d: [
-      { type: "p", content: "Passa al livello Principiante quando i 4 prerequisiti sono abbastanza stabili: brace, hip hinge, controllo del bacino e squat pattern. Non serve perfezione, ma serve ripetibilita." },
-      { type: "p", content: "Se nei test rapidi delle competenze riesci a mantenere una buona posizione senza pensarci troppo, la base c'e." },
-    ]},
-];
-
-var PRELIM_PRINCIPLES = [
-  { t: "Regola principale", d: "In questo livello conta solo una cosa: tecnica pulita e ripetibile. Se perdi posizione, il set e finito anche se avresti energia per continuare." },
-  { t: "Perche queste competenze contano", d: "Brace, bacino, hip hinge, scapole, squat pattern, spinta e tirata non sono teoria astratta: sono i pezzi che rendono sicuri e utili gli esercizi veri della scheda principiante e avanzata." },
-  { t: "Ordine pratico", d: "Procedi cosi: brace, dead bug o bird dog, hip hinge, glute bridge, scapole, pallof press, squat base, push-up. Quando questi passaggi sono stabili, puoi passare ai carichi veri con piu sicurezza." },
-  { t: "Recuperi", d: "Recupera senza fretta: in genere 60-90 secondi. Non stai allenando il fiatone, stai allenando il controllo." },
-  { t: "Quando passare al livello dopo", d: "Quando brace, hip hinge, controllo del bacino e squat pattern sono stabili nei test rapidi e nei movimenti base, puoi passare a Principiante." },
-];
-
 var PRINCIPLES = [
   { t: "Come regolarti senza modalita guidata", d: "Usa regole semplici. 1) Tieni lo stesso peso in tutte le serie. 2) Se il range e 6-8, il primo obiettivo e stare nel range con tecnica pulita. 3) Se chiudi tutte le serie al numero alto del range con ancora 1-2 ripetizioni in riserva, la volta dopo puoi salire. 4) Se resti dentro il range ma non chiudi tutte le serie al numero alto, tieni lo stesso peso e prova ad aggiungere ripetizioni. 5) Se scendi sotto il minimo del range, il carico e troppo alto oppure il recupero e stato troppo corto: non salire, consolida o alleggerisci. 6) Per i recuperi parti cosi: 2-3 minuti sui fondamentali pesanti, 90-120 secondi sugli accessori composti, 60-90 secondi sui monoarticolari. Questa base basta gia per autoregolarti bene." },
   { t: "Coach attivo: come leggerlo davvero", d: "Il coach attivo non e un ordine assoluto. E un promemoria automatico basato su ripetizioni, RIR e andamento della serie. Se il suggerimento non torna con la serie che hai appena fatto, usa prima il tuo giudizio e la tecnica reale. In pratica: se sei sotto il minimo del range, il carico e troppo alto o hai recuperato poco; se sei nel range ma non al top, resta li; se chiudi tutto al top con margine, puoi salire; se chiudi tutto al top ma sei a RIR 0-1, non salire ancora. Sugli esercizi senza peso fisso non ragionare in kg: ragiona in assistenza, variante, ampiezza o controllo." },
@@ -4261,8 +3806,6 @@ export default function App() {
   var feedbackCardsRef = useRef(null);
 
   var T = TH[theme];
-  var isBasics = false;
-  var isBeginner = false;
   var activeDays = DAYS_V4.filter(function(d) { return !d.cardio && !d.rest; });
   var safeDayIdx = Math.min(dayIdx, activeDays.length - 1);
   var WORKFLOW_SEED_BY_SLUG = NEW_EXERCISE_WORKFLOW_SEED.reduce(function(acc, item) {
@@ -4463,7 +4006,7 @@ export default function App() {
     var slug = slugifyExerciseName(name);
     if (WORKFLOW_SEED_BY_SLUG[slug] && WORKFLOW_SEED_BY_SLUG[slug].attrezzi && WORKFLOW_SEED_BY_SLUG[slug].attrezzi.length) return WORKFLOW_SEED_BY_SLUG[slug].attrezzi;
     if (EX_GEAR_OVERRIDES[name]) return EX_GEAR_OVERRIDES[name];
-    var pools = [DAYS_V4, DAYS_BEGINNER, DAYS_BASICS];
+    var pools = [DAYS_V4];
     var text = name;
     pools.forEach(function(list) {
       list.forEach(function(day) {
@@ -4865,15 +4408,15 @@ export default function App() {
     </div>;
   }
   var simplifiedWorkoutUi = level === "v4";
-  var calibrationEnabled = !isBasics && !simplifiedWorkoutUi;
+  var calibrationEnabled = !simplifiedWorkoutUi;
   var effectiveCalibrationMode = calibrationEnabled && calibrationMode;
   var dc = T.ok;
   var gc = "#0F766E";
-  var introBasicsCards = isBasics ? PRELIM_INTRO_BASICS : isBeginner ? BEGINNER_INTRO_BASICS : INTRO_BASICS;
-  var deepPrinciplesList = isBasics ? PRELIM_PRINCIPLES_DEEP : isBeginner ? BEGINNER_PRINCIPLES_DEEP : PRINCIPLES_DEEP;
-  var shortPrinciplesList = isBasics ? PRELIM_PRINCIPLES : isBeginner ? BEGINNER_PRINCIPLES : PRINCIPLES;
-  var theoryTitle = isBasics ? "🎯 Tecniche preliminari" : isBeginner ? "📚 Teoria principiante" : "📚 Teoria e Glossario";
-  var theorySubtitle = isBasics ? "Solo le competenze di base da padroneggiare prima della scheda principiante." : isBeginner ? "Solo i principi utili per costruire le basi e partire bene." : "Principi di allenamento e termini tecnici";
+  var introBasicsCards = INTRO_BASICS;
+  var deepPrinciplesList = PRINCIPLES_DEEP;
+  var shortPrinciplesList = PRINCIPLES;
+  var theoryTitle = "📚 Teoria e Glossario";
+  var theorySubtitle = "Principi di allenamento e termini tecnici";
 
   function getExForMonth(raw) {
     if (month === 1) return { n: raw.n, s: raw.s, rpe: raw.rpe, note: raw.note || "" };
@@ -5412,12 +4955,6 @@ export default function App() {
     };
   }, [videoTrimPrompt]);
 
-  useEffect(function() {
-    if ((isBasics || isBeginner) && glossTab === "termini") setGlossTab("principi");
-  }, [isBasics, isBeginner, glossTab]);
-  useEffect(function() {
-    if (isBasics && tab === "progressi") setTab("workout");
-  }, [isBasics, tab]);
   useEffect(function() {
     if (!autoBackupMsg) return;
     var tm = setTimeout(function() { setAutoBackupMsg(""); }, 5000);
@@ -9404,7 +8941,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                 </div>}
               </div>
             </div>}
-            {!(isBasics || isBeginner) && glossTab === "termini" && <div>
+            {glossTab === "termini" && <div>
               {GLOSS.map(function(g, gi) { return <details key={gi} style={{ marginBottom: 6, borderRadius: 10, overflow: "hidden", background: T.sb, border: "1px solid " + dc + "12" }}><summary style={{ padding: "10px 12px", cursor: "pointer", fontSize: 13, fontWeight: 700, color: dc, listStyle: "none" }}>{g.t}</summary><div style={{ padding: "0 12px 12px" }}><DetailText text={g.d} accent={dc} soft={true} /></div></details>; })}
             </div>}
           </div>
@@ -9696,21 +9233,10 @@ function isNearBodyweightElasticSession(exName, sets) {
         <div style={{ display: "flex", gap: 1, maxWidth: 600, margin: "6px auto 0", alignItems: "stretch" }}>
           {activeSession ? [
             <button key="session-workout" onClick={function() { navigateToTab("workout", { resetHistory: true }); scrollTopSoon("workout-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 12, fontWeight: 700, color: T.tx, borderBottom: "2px solid " + dc, transition: "color 0.15s" }}>Scheda</button>
-          ] : isBeginner ? (function() {
-            var beginnerTabs = [
-              { label: "Scheda", key: "workout", onClick: function() { navigateToTab("workout"); scrollTopSoon("workout-top"); } },
-              { label: "Teoria", key: "teoria", onClick: function() { navigateToTab("teoria"); scrollTopSoon("teoria-top"); } },
-            ];
-            return beginnerTabs.map(function(bt) {
-              var active = tab === bt.key;
-              return <button key={bt.key} onClick={bt.onClick} style={{ flex: 1, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, color: active ? T.tx : T.sub, borderBottom: active ? "2px solid " + dc : "2px solid transparent", transition: "color 0.15s" }}>{bt.label}</button>;
-            });
-          })() : (function() {
-            return [
-              <button key="back" onClick={function() { goBack(); }} disabled={tabHistory.length === 0} title="Torna alla schermata precedente" aria-label="Torna alla schermata precedente" style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: tabHistory.length > 0 ? "pointer" : "default", fontSize: 16, color: tabHistory.length > 0 ? T.tx : T.sub + "40", borderBottom: "2px solid transparent", transition: "color 0.15s" }}>‹</button>,
-              (isBasics ? ["Scheda", "Teoria", "Esercizi"] : ["Scheda", "Progressi", "Teoria", "Esercizi"]).map(function(t) { var keys = {"Scheda":"workout","Progressi":"progressi","Teoria":"teoria","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { navigateToTab(keys[t]); scrollTopSoon(keys[t] + "-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, color: active ? T.tx : T.sub, borderBottom: active ? "2px solid " + dc : "2px solid transparent", letterSpacing: active ? 0.1 : 0, transition: "color 0.15s" }}>{t}</button>; })
-            ];
-          })()}
+          ] : [
+            <button key="back" onClick={function() { goBack(); }} disabled={tabHistory.length === 0} title="Torna alla schermata precedente" aria-label="Torna alla schermata precedente" style={{ width: 32, flexShrink: 0, padding: "8px 0", border: "none", background: "transparent", cursor: tabHistory.length > 0 ? "pointer" : "default", fontSize: 16, color: tabHistory.length > 0 ? T.tx : T.sub + "40", borderBottom: "2px solid transparent", transition: "color 0.15s" }}>‹</button>,
+            ["Scheda", "Progressi", "Teoria", "Esercizi"].map(function(t) { var keys = {"Scheda":"workout","Progressi":"progressi","Teoria":"teoria","Esercizi":"exercises"}; var active = tab === keys[t]; return <button key={t} onClick={function() { navigateToTab(keys[t]); scrollTopSoon(keys[t] + "-top"); }} style={{ flex: 1, padding: "8px 0", border: "none", background: "transparent", cursor: "pointer", fontSize: 12, fontWeight: active ? 700 : 500, color: active ? T.tx : T.sub, borderBottom: active ? "2px solid " + dc : "2px solid transparent", letterSpacing: active ? 0.1 : 0, transition: "color 0.15s" }}>{t}</button>; })
+          ]}
         </div>
       </div>
 
@@ -11623,6 +11149,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                 <span style={{ fontSize: 14, flexShrink: 0 }}>💪</span>
                 <div style={{ flex: 1, fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>
                   Esercizi
+                  {workoutSelectedWeightDay && <span style={{ fontWeight: 600, color: T.sub, textTransform: "none", letterSpacing: 0 }}>{" · ~" + Math.max(5, Math.round(estimateWorkoutMinutesForFormat(workoutSelectedWeightDay, month, currentDayWorkoutFormat) / 5) * 5) + " min"}</span>}
                   {!simplifiedWorkoutUi && (splitPlanForDay || supersetPlanForDay) && <span style={{ fontWeight: 600, color: T.sub, textTransform: "none", letterSpacing: 0 }}>{isDaySplitActive ? " · split AM/PM" : isDaySupersetActive ? " · superset" : ""}</span>}
                 </div>
                 {!simplifiedWorkoutUi && <div style={{ fontSize: 13, color: dc, transform: showExSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>}
@@ -11712,7 +11239,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               var anyOpen = simplifiedWorkoutUi ? false : openEx !== null;
               var isDimmed = anyOpen && !isX;
               var exDoneKey = dayIdx + "_" + i;
-              var isExDone = !!(isBeginner && completedExercises[exDoneKey]);
+              var isExDone = false;
               return <div key={i} id={"ex-row-" + i} style={{ borderBottom: "1px solid " + T.bg, opacity: isDimmed ? 0.38 : 1, transition: "opacity 0.25s" }}>
                 {!simplifiedWorkoutUi && !isBasics && rowSupersetMeta && rowSupersetMeta.role === "a" && <div style={{ padding: "12px 14px 8px", background: dc + "08", borderBottom: "1px solid " + T.bg }}>
                   <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 8px", borderRadius: 999, background: dc + "12", color: dc, fontSize: 10, fontWeight: 900, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 6 }}>Superset</div>
@@ -11721,12 +11248,6 @@ function isNearBodyweightElasticSession(exName, sets) {
                   {!!supersetPairMinutes && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginTop: 2 }}>Tempo totale: ~{supersetPairMinutes} min</div>}
                 </div>}
                 <div onClick={function(e) { var opening = !isX; setHistIdx(null); setEditing(null); setShowImg(null); setTmpW(""); setTmpR(""); setTmpRir(""); setTmpBarbellBase(BARBELL_BASE_KG); if (simplifiedWorkoutUi) { setShowReg(opening ? i : null); if (opening) { setTimeout(function() { var el = document.getElementById("reg-block-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 50); } return; } setShowReg(null); setOpenEx(opening ? i : null); if (opening) { setHistPage(function(p) { var n = Object.assign({}, p); n[i] = 0; return n; }); setTimeout(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 50); } }} style={{ padding: simplifiedWorkoutUi ? "8px 12px" : "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
-                  {isBeginner && <div
-                    onClick={function(e) { e.stopPropagation(); setCompletedExercises(function(prev) { var next = Object.assign({}, prev); if (next[exDoneKey]) { delete next[exDoneKey]; } else { next[exDoneKey] = true; } return next; }); }}
-                    style={{ width: 28, height: 28, borderRadius: "50%", border: "2px solid " + (isExDone ? T.ok : dc + "50"), background: isExDone ? T.ok : "transparent", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, transition: "background 0.2s, border-color 0.2s", cursor: "pointer" }}
-                  >
-                    {isExDone && <svg width="13" height="10" viewBox="0 0 13 10" fill="none"><polyline points="1,5 5,9 12,1" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
-                  </div>}
                   {rowImg ? <img
                     src={rowImg}
                     onClick={function(e) { if (simplifiedWorkoutUi) return; e.stopPropagation(); setShowImg(showImg === ("ex-thumb-" + i) ? null : ("ex-thumb-" + i)); }}
@@ -11734,7 +11255,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   /> : <div style={{ width: 28, height: 28, borderRadius: 7, background: dc + "18", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, color: dc, flexShrink: 0, opacity: isExDone ? 0.45 : 1, transition: "opacity 0.2s" }}>{i + 1}</div>}
                   <div style={{ flex: 1, minWidth: 0, opacity: isExDone ? 0.55 : 1, transition: "opacity 0.2s" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap" }}>
-                      <span style={{ fontWeight: isBeginner ? 700 : 800, fontSize: isBeginner ? 14 : 13, textTransform: isBeginner ? "none" : "uppercase", letterSpacing: isBeginner ? 0 : 0.3, textDecoration: isExDone ? "line-through" : "none", textDecorationColor: T.sub }}>
+                      <span style={{ fontWeight: 800, fontSize: 13, textTransform: "uppercase", letterSpacing: 0.3, textDecoration: isExDone ? "line-through" : "none", textDecorationColor: T.sub }}>
                         <ExName name={ex.n} />
                       </span>
                       {rawEx.priority && <span style={{ fontSize: 9, background: dc + "18", color: dc, padding: "1px 5px", borderRadius: 4, fontWeight: 800, letterSpacing: 0.3 }}>★</span>}
@@ -11752,7 +11273,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     {!isBasics && !simplifiedWorkoutUi && hasSavedExerciseNoteContent && <div style={{ background: dc + "12", color: dc, fontSize: 9, fontWeight: 900, padding: "2px 7px", borderRadius: 999, textTransform: "uppercase", letterSpacing: 0.5 }}>Nota</div>}
                     {!isBasics && tLog && tLog.sets.length > 0 && <div style={{ background: T.ok, color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 8 }}>{tLog.sets.length + "/" + sc}</div>}
-                    {!isBeginner && (function() {
+                    {(function() {
                       var mins = estimateExerciseMinutes(rawEx, ex);
                       return mins ? <span style={{ fontSize: 11, color: T.sub, fontWeight: 600, whiteSpace: "nowrap" }}>{"~" + mins + "'"}</span> : null;
                     })()}
@@ -11811,7 +11332,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   var guidedRirSummary = getExerciseRirHistorySummary(ex.n);
                   var allSetsLogged = !!(tLog && tLog.sets && sc > 0 && tLog.sets.length >= sc);
                   var flowSuperset = flowModeEnabled && isDaySupersetActive ? getFastSupersetPair(dayData && dayData.name, ex.n) : null;
-                  var compactExerciseCard = !isBasics && compactMode;
+                  var compactExerciseCard = compactMode;
                   if (simplifiedWorkoutUi) {
                     var simpleCoachKey = "ex__" + ex.n;
                     var simpleCoachDraftKey = "new__" + ex.n;
@@ -11996,7 +11517,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                       </div>
                     </div>}
 
-                    {!isBasics && (function() {
+                    {(function() {
                       var tipsKey = "tips__" + ex.n;
                       var cnKey = "ex__" + ex.n;
                       var coachPhotoKey = getCoachNotePhotoKey(ex.n);
@@ -12184,7 +11705,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                     </div>}
 
                     {/* === NOTE COACH — nuovo inserimento === */}
-                    {!isBasics && (function() {
+                    {(function() {
                       var cnKey = "ex__" + ex.n;
                       var coachPhotoKey = getCoachNotePhotoKey(ex.n);
                       var coachVideoKey = getCoachNoteVideoKey(ex.n);
@@ -12402,7 +11923,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                                       var storedWeight = isBW ? 0 : (usesBand ? clampElasticTick(tmpW) : (usesTrxLength ? clampTrxLength(tmpW) : plateInputToStoredWeight(ex.n, tmpW, barbellWeight, selectedLoadMode)));
                                       beginLogSet(ex, dayIdx, si, storedWeight, tmpR, isBW, tmpRir, selectedLoadMode);
                                       var nextAction = buildNextActionInfo(dayData, dayIdx, i, ex.n, si, sc);
-                                      if (flowModeEnabled && !isBasics) {
+                                      if (flowModeEnabled) {
                                         setTimerFlowInfo(nextAction ? { nextLabel: nextAction.label, filler: nextAction.filler || "" } : null);
                                         setPendingAutoAdvance(null);
                                       }
