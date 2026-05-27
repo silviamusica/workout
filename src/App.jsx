@@ -9429,32 +9429,30 @@ function isNearBodyweightElasticSession(exName, sets) {
 
       {/* === TEORIA TAB === */}
       {tab === "teoria" && <div style={{ maxWidth: 680, margin: "0 auto", padding: "0 0 100px" }}>
-        <div id="teoria-top" style={{ padding: "16px 12px 0" }}>
-          <div style={{ background: T.cd, borderRadius: 16, border: "1px solid " + T.bg, padding: "14px 16px", marginBottom: 14 }}>
-            <div style={{ fontSize: 18, fontWeight: 900, color: T.tx, marginBottom: 4 }}>📚 Teoria</div>
-            <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.6 }}>
-              Tutto in una sola pagina: basi, concetti, muscoli e alimentazione. Apri solo la sezione che ti serve.
-            </div>
+        <div id="teoria-top" style={{ padding: "8px 12px 0" }}>
+          <div style={{ background: T.cd, borderRadius: 10, border: "1px solid " + T.bg, padding: "9px 12px", marginBottom: 8 }}>
+            <div style={{ fontSize: 13, fontWeight: 900, color: T.tx, marginBottom: 2 }}>📚 Teoria</div>
+            <div style={{ fontSize: 11, color: T.sub }}>Basi, concetti, muscoli e alimentazione — apri solo la sezione che ti serve.</div>
           </div>
 
         {/* Intro: Le basi dell'allenamento */}
-        {<div id="theory-main-basics" style={{ background: T.cd, borderRadius: 22, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 14px 30px rgba(0,0,0,0.06)" }}>
-          <div onClick={function() { var next = theoryMainOpen === "basics" ? "" : "basics"; setTheoryMainOpen(next); if (next) scrollTopSoon("theory-main-basics"); }} style={{ padding: "18px 18px 14px", borderBottom: theoryMainOpen === "basics" ? "1px solid " + T.bg : "none", background: "linear-gradient(180deg," + T.cd + ", " + T.sb + ")", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+        {<div id="theory-main-basics" style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 8, border: "1px solid " + T.bg }}>
+          <div onClick={function() { var next = theoryMainOpen === "basics" ? "" : "basics"; setTheoryMainOpen(next); if (next) scrollTopSoon("theory-main-basics"); }} style={{ padding: "10px 12px 8px", borderBottom: theoryMainOpen === "basics" ? "1px solid " + T.bg : "none", background: "linear-gradient(180deg," + T.cd + ", " + T.sb + ")", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
             <div>
-              <div style={{ fontSize: 19, fontWeight: 900, color: theoryMainOpen === "basics" ? dc : T.tx, marginBottom: 4, letterSpacing: -0.2 }}>🔬 Le basi dell'allenamento</div>
-              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55, maxWidth: 520 }}>Parti da qui per capire logica, struttura e principi pratici senza perderti nei dettagli.</div>
+              <div style={{ fontSize: 13, fontWeight: 900, color: theoryMainOpen === "basics" ? dc : T.tx, marginBottom: 2, letterSpacing: -0.1 }}>🔬 Le basi dell'allenamento</div>
+              <div style={{ fontSize: 11, color: T.sub }}>Logica, struttura e principi pratici.</div>
             </div>
             <span style={{ fontSize: 13, color: dc, flexShrink: 0, transform: theoryMainOpen === "basics" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
           </div>
-          {theoryMainOpen === "basics" && <div style={{ padding: "16px 18px 18px", display: "grid", gap: 16 }}>
+          {theoryMainOpen === "basics" && <div style={{ padding: "10px 12px 12px", display: "grid", gap: 10 }}>
             <div style={{ display: "grid", gap: 6 }}>
             {introBasicsCards.map(function(card, ci) {
               var isOpen = showIntroCard === ci;
               return <div key={ci} id={"intro-card-" + ci} style={{ borderRadius: 14, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "26" : T.bg), background: isOpen ? T.sb : T.cd, boxShadow: isOpen ? "0 10px 22px rgba(0,0,0,0.05)" : "none", transition: "box-shadow 0.18s, border-color 0.18s" }}>
-                <div onClick={function() { var next = isOpen ? null : ci; setShowIntroCard(next); if (next !== null) scrollTopSoon("intro-card-" + ci); }} style={{ padding: "14px 14px 13px", cursor: "pointer", display: "flex", alignItems: "flex-start", gap: 12, background: isOpen ? dc + "0A" : "transparent" }}>
-                  <span style={{ fontSize: 22, lineHeight: 1, flexShrink: 0, marginTop: 1 }}>{card.icon}</span>
+                <div onClick={function() { var next = isOpen ? null : ci; setShowIntroCard(next); if (next !== null) scrollTopSoon("intro-card-" + ci); }} style={{ padding: "9px 10px 8px", cursor: "pointer", display: "flex", alignItems: "flex-start", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
+                  <span style={{ fontSize: 17, lineHeight: 1, flexShrink: 0, marginTop: 1 }}>{card.icon}</span>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 14, fontWeight: 800, color: isOpen ? dc : T.tx, lineHeight: 1.3, marginBottom: 4 }}>{card.title}</div>
+                    <div style={{ fontSize: 12, fontWeight: 800, color: isOpen ? dc : T.tx, lineHeight: 1.3, marginBottom: 2 }}>{card.title}</div>
                     <div style={{ fontSize: 11.5, color: T.sub, lineHeight: 1.55 }}>{card.summary}</div>
                   </div>
                   <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s", marginTop: 4 }}>▾</span>
@@ -9511,16 +9509,16 @@ function isNearBodyweightElasticSession(exName, sets) {
             })}
             </div>
             <div style={{ borderTop: "1px solid " + T.bg, paddingTop: 14 }}>
-              <div style={{ fontSize: 15, fontWeight: 900, color: T.tx, marginBottom: 3 }}>💪 Come è strutturato l'allenamento</div>
+              <div style={{ fontSize: 12, fontWeight: 900, color: T.tx, marginBottom: 2 }}>💪 Come è strutturato l'allenamento</div>
               <div style={{ fontSize: 12, color: T.sub, marginBottom: 12, lineHeight: 1.55, maxWidth: 520 }}>Qui trovi la logica della scheda: cosa viene prima, cosa viene dopo e come leggere i diversi tipi di esercizio.</div>
               <div style={{ display: "grid", gap: 6 }}>
                 {INTRO_ESERCIZI.map(function(card, ci) {
                   var isOpen = showExIntro === ci;
                   return <div key={ci} id={"theory-exercise-intro-card-" + ci} style={{ borderRadius: 14, overflow: "hidden", border: "1px solid " + (isOpen ? dc + "26" : T.bg), background: isOpen ? T.sb : T.cd, boxShadow: isOpen ? "0 10px 22px rgba(0,0,0,0.05)" : "none" }}>
-                    <div onClick={function() { var next = isOpen ? null : ci; setShowExIntro(next); if (next !== null) scrollTopSoon("theory-exercise-intro-card-" + ci); }} style={{ padding: "14px 14px 13px", cursor: "pointer", display: "flex", alignItems: "flex-start", gap: 12, background: isOpen ? dc + "0A" : "transparent" }}>
-                      <span style={{ fontSize: 22, lineHeight: 1, flexShrink: 0, marginTop: 1 }}>{card.icon}</span>
+                    <div onClick={function() { var next = isOpen ? null : ci; setShowExIntro(next); if (next !== null) scrollTopSoon("theory-exercise-intro-card-" + ci); }} style={{ padding: "9px 10px 8px", cursor: "pointer", display: "flex", alignItems: "flex-start", gap: 10, background: isOpen ? dc + "0A" : "transparent" }}>
+                      <span style={{ fontSize: 17, lineHeight: 1, flexShrink: 0, marginTop: 1 }}>{card.icon}</span>
                       <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ fontSize: 14, fontWeight: 800, color: isOpen ? dc : T.tx, lineHeight: 1.3, marginBottom: 4 }}>{card.title}</div>
+                        <div style={{ fontSize: 12, fontWeight: 800, color: isOpen ? dc : T.tx, lineHeight: 1.3, marginBottom: 2 }}>{card.title}</div>
                         <div style={{ fontSize: 11.5, color: T.sub, lineHeight: 1.55 }}>{card.summary}</div>
                       </div>
                       <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s", marginTop: 4 }}>▾</span>
@@ -9571,18 +9569,18 @@ function isNearBodyweightElasticSession(exName, sets) {
           </div>}
         </div>}
 
-        {<div id="theory-main-principles" style={{ background: T.cd, borderRadius: 22, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 14px 30px rgba(0,0,0,0.06)" }}>
-          <div onClick={function() { var next = theoryMainOpen === "principles" ? "" : "principles"; setTheoryMainOpen(next); if (next) scrollTopSoon("theory-main-principles"); }} style={{ padding: "18px 18px 12px", borderBottom: theoryMainOpen === "principles" ? "1px solid " + T.bg : "none", background: "linear-gradient(180deg," + T.cd + ", " + T.sb + ")", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+        {<div id="theory-main-principles" style={{ background: T.cd, borderRadius: 12, overflow: "hidden", marginBottom: 8, border: "1px solid " + T.bg }}>
+          <div onClick={function() { var next = theoryMainOpen === "principles" ? "" : "principles"; setTheoryMainOpen(next); if (next) scrollTopSoon("theory-main-principles"); }} style={{ padding: "10px 12px 8px", borderBottom: theoryMainOpen === "principles" ? "1px solid " + T.bg : "none", background: "linear-gradient(180deg," + T.cd + ", " + T.sb + ")", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
             <div>
-              <div style={{ fontSize: 19, fontWeight: 900, color: theoryMainOpen === "principles" ? dc : T.tx, marginBottom: 4, letterSpacing: -0.2 }}>{theoryTitle}</div>
-              <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.55, maxWidth: 540 }}>{theorySubtitle}</div>
+              <div style={{ fontSize: 13, fontWeight: 900, color: theoryMainOpen === "principles" ? dc : T.tx, marginBottom: 2, letterSpacing: -0.1 }}>{theoryTitle}</div>
+              <div style={{ fontSize: 11, color: T.sub }}>{theorySubtitle}</div>
             </div>
             <span style={{ fontSize: 13, color: dc, flexShrink: 0, transform: theoryMainOpen === "principles" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
           </div>
-          {theoryMainOpen === "principles" && <div style={{ padding: "0 18px 18px" }}>
+          {theoryMainOpen === "principles" && <div style={{ padding: "0 12px 10px" }}>
             <div>
-              <div id="theory-section-skills" style={{ borderRadius: 16, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 14, background: T.cd, boxShadow: "0 8px 20px rgba(0,0,0,0.04)" }}>
-                <div onClick={function() { var next = showTheorySection === "skills" ? null : "skills"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-skills"); }} style={{ padding: "14px 16px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "skills" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
+              <div id="theory-section-skills" style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 8, background: T.cd }}>
+                <div onClick={function() { var next = showTheorySection === "skills" ? null : "skills"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-skills"); }} style={{ padding: "9px 12px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "skills" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
                   <span style={{ fontSize: 13, fontWeight: 800, color: showTheorySection === "skills" ? dc : T.tx, lineHeight: 1.3 }}>🎯 Tecniche preliminari</span>
                   <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showTheorySection === "skills" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
                 </div>
@@ -9614,8 +9612,8 @@ function isNearBodyweightElasticSession(exName, sets) {
                   })}
                 </div>}
               </div>
-              <div id="theory-section-concepts" style={{ borderRadius: 16, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 14, background: T.cd, boxShadow: "0 8px 20px rgba(0,0,0,0.04)" }}>
-                <div onClick={function() { var next = showTheorySection === "concepts" ? null : "concepts"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-concepts"); }} style={{ padding: "14px 16px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "concepts" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
+              <div id="theory-section-concepts" style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 8, background: T.cd }}>
+                <div onClick={function() { var next = showTheorySection === "concepts" ? null : "concepts"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-concepts"); }} style={{ padding: "9px 12px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "concepts" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
                   <span style={{ fontSize: 13, fontWeight: 800, color: showTheorySection === "concepts" ? dc : T.tx, lineHeight: 1.3 }}>{"🧠 Concetti fondamentali"}</span>
                   <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showTheorySection === "concepts" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
                 </div>
@@ -9636,8 +9634,8 @@ function isNearBodyweightElasticSession(exName, sets) {
                   })}
                 </div>}
               </div>
-              <div id="theory-section-guide" style={{ borderRadius: 16, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 14, background: T.cd, boxShadow: "0 8px 20px rgba(0,0,0,0.04)" }}>
-                <div onClick={function() { var next = showTheorySection === "guide" ? null : "guide"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-guide"); }} style={{ padding: "14px 16px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "guide" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
+              <div id="theory-section-guide" style={{ borderRadius: 10, overflow: "hidden", border: "1px solid " + T.bg, marginBottom: 8, background: T.cd }}>
+                <div onClick={function() { var next = showTheorySection === "guide" ? null : "guide"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-guide"); }} style={{ padding: "9px 12px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "guide" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
                   <span style={{ fontSize: 13, fontWeight: 800, color: showTheorySection === "guide" ? dc : T.tx, lineHeight: 1.3 }}>{"🗂️ Come leggere la scheda"}</span>
                   <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showTheorySection === "guide" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
                 </div>
@@ -9694,8 +9692,8 @@ function isNearBodyweightElasticSession(exName, sets) {
         {<div id="theory-section-warmup" style={{ background: T.cd, borderRadius: 18, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 10px 24px rgba(0,0,0,0.05)" }}>
           <div onClick={function() { var next = showTheorySection === "warmup" ? null : "warmup"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-warmup"); }} style={{ padding: "16px 18px 13px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "warmup" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
             <div>
-              <div style={{ fontSize: 16, fontWeight: 800, color: showTheorySection === "warmup" ? dc : T.tx, marginBottom: 2 }}>🔥 Riscaldamento: 4 fasi complete</div>
-              <div style={{ fontSize: 12, color: T.sub }}>Mobilità, stabilità, circuito neurale e serie di avvicinamento in 12-15 minuti.</div>
+              <div style={{ fontSize: 13, fontWeight: 800, color: showTheorySection === "warmup" ? dc : T.tx, marginBottom: 1 }}>🔥 Riscaldamento: 4 fasi complete</div>
+              <div style={{ fontSize: 11, color: T.sub }}>Mobilità, stabilità, avvicinamento · 12-15 min</div>
             </div>
             <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showTheorySection === "warmup" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
           </div>
@@ -9736,8 +9734,8 @@ function isNearBodyweightElasticSession(exName, sets) {
         {<div id="theory-section-breathing" style={{ background: T.cd, borderRadius: 18, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 10px 24px rgba(0,0,0,0.05)" }}>
           <div onClick={function() { var next = showTheorySection === "breathing" ? null : "breathing"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-breathing"); }} style={{ padding: "16px 18px 13px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "breathing" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
             <div>
-              <div style={{ fontSize: 16, fontWeight: 800, color: showTheorySection === "breathing" ? dc : T.tx, marginBottom: 2 }}>🫁 Respirazione esercizi</div>
-              <div style={{ fontSize: 12, color: T.sub }}>Tabella unica: come respirare nei principali esercizi</div>
+              <div style={{ fontSize: 13, fontWeight: 800, color: showTheorySection === "breathing" ? dc : T.tx, marginBottom: 1 }}>🫁 Respirazione esercizi</div>
+              <div style={{ fontSize: 11, color: T.sub }}>Come respirare nei principali esercizi</div>
             </div>
             <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showTheorySection === "breathing" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
           </div>
@@ -9776,8 +9774,8 @@ function isNearBodyweightElasticSession(exName, sets) {
         {<div id="theory-section-hipmobility" style={{ background: T.cd, borderRadius: 18, overflow: "hidden", marginBottom: 14, border: "1px solid " + T.bg, boxShadow: "0 10px 24px rgba(0,0,0,0.05)" }}>
           <div onClick={function() { var next = showTheorySection === "hipmobility" ? null : "hipmobility"; if (next !== showTheorySection) pushNavSnapshot(); setShowTheorySection(next); if (next) scrollTopSoon("theory-section-hipmobility"); }} style={{ padding: "16px 18px 13px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: showTheorySection === "hipmobility" ? dc + "10" : "linear-gradient(180deg," + T.cd + ", " + T.sb + ")" }}>
             <div>
-              <div style={{ fontSize: 16, fontWeight: 800, color: showTheorySection === "hipmobility" ? dc : T.tx, marginBottom: 2 }}>🦴 Mobilità anca</div>
-              <div style={{ fontSize: 12, color: T.sub }}>Perche conta per squat, stacco e hip thrust e come usare il protocollo senza rompere la scheda.</div>
+              <div style={{ fontSize: 13, fontWeight: 800, color: showTheorySection === "hipmobility" ? dc : T.tx, marginBottom: 1 }}>🦴 Mobilità anca</div>
+              <div style={{ fontSize: 11, color: T.sub }}>Squat, stacco, hip thrust</div>
             </div>
             <span style={{ fontSize: 11, color: dc, flexShrink: 0, transform: showTheorySection === "hipmobility" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
           </div>
@@ -9814,10 +9812,10 @@ function isNearBodyweightElasticSession(exName, sets) {
         </div>}
 
         {<div id="theory-main-private" style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-          <div onClick={function() { var next = theoryMainOpen === "private" ? "" : "private"; setTheoryMainOpen(next); if (next) scrollTopSoon("theory-main-private"); }} style={{ padding: "14px 16px 10px", borderBottom: theoryMainOpen === "private" ? "1px solid " + T.bg : "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+          <div onClick={function() { var next = theoryMainOpen === "private" ? "" : "private"; setTheoryMainOpen(next); if (next) scrollTopSoon("theory-main-private"); }} style={{ padding: "9px 12px 8px", borderBottom: theoryMainOpen === "private" ? "1px solid " + T.bg : "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
             <div>
-              <div style={{ fontSize: 16, fontWeight: 800, color: theoryMainOpen === "private" ? dc : T.tx, marginBottom: 2 }}>🔒 Dati personali</div>
-              <div style={{ fontSize: 12, color: T.sub }}>BIA, composizione corporea e piano alimentare in una sezione separata.</div>
+              <div style={{ fontSize: 13, fontWeight: 800, color: theoryMainOpen === "private" ? dc : T.tx, marginBottom: 1 }}>🔒 Dati personali</div>
+              <div style={{ fontSize: 11, color: T.sub }}>Composizione corporea e piano alimentare</div>
             </div>
             <span style={{ fontSize: 13, color: dc, flexShrink: 0, transform: theoryMainOpen === "private" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
           </div>
@@ -9858,18 +9856,18 @@ function isNearBodyweightElasticSession(exName, sets) {
 
         {/* === SEZIONE MUSCOLI (dentro Teoria) === */}
         {<div id="theory-main-muscles" style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-          <div onClick={function() { var next = theoryMainOpen === "muscles" ? "" : "muscles"; setTheoryMainOpen(next); if (next) scrollTopSoon("theory-main-muscles"); }} style={{ padding: "14px 16px 12px", borderBottom: theoryMainOpen === "muscles" ? "1px solid " + T.bg : "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+          <div onClick={function() { var next = theoryMainOpen === "muscles" ? "" : "muscles"; setTheoryMainOpen(next); if (next) scrollTopSoon("theory-main-muscles"); }} style={{ padding: "9px 12px 8px", borderBottom: theoryMainOpen === "muscles" ? "1px solid " + T.bg : "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
             <div>
-              <div style={{ fontSize: 16, fontWeight: 800, color: theoryMainOpen === "muscles" ? dc : T.tx, marginBottom: 2 }}>🫀 Muscoli e mappa</div>
-              <div style={{ fontSize: 12, color: T.sub }}>Catene muscolari, mappa e dettagli dei singoli muscoli.</div>
+              <div style={{ fontSize: 13, fontWeight: 800, color: theoryMainOpen === "muscles" ? dc : T.tx, marginBottom: 1 }}>🫀 Muscoli e mappa</div>
+              <div style={{ fontSize: 11, color: T.sub }}>Catene muscolari e mappa</div>
             </div>
             <span style={{ fontSize: 13, color: dc, flexShrink: 0, transform: theoryMainOpen === "muscles" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
           </div>
         {theoryMainOpen === "muscles" && <div style={{ padding: "12px 12px 14px" }}>
         {/* Intro armonia muscolare */}
         <div style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-          <div style={{ padding: "14px 16px 12px", borderBottom: "1px solid " + T.bg }}>
-            <div style={{ fontSize: 16, fontWeight: 800, color: T.tx, marginBottom: 2 }}>🫀 Come funzionano i muscoli insieme</div>
+          <div style={{ padding: "9px 12px 8px", borderBottom: "1px solid " + T.bg }}>
+            <div style={{ fontSize: 13, fontWeight: 800, color: T.tx, marginBottom: 1 }}>🫀 Come funzionano i muscoli insieme</div>
             <div style={{ fontSize: 12, color: T.sub, lineHeight: 1.5 }}>{INTRO_MUSCLES.intro}</div>
           </div>
           <div style={{ padding: "12px 16px 16px", display: "grid", gap: 6 }}>
@@ -9941,10 +9939,10 @@ function isNearBodyweightElasticSession(exName, sets) {
         </div>}
 
         {<div id="theory-main-nutrition" style={{ background: T.cd, borderRadius: 16, overflow: "hidden", marginBottom: 10 }}>
-          <div onClick={function() { var next = theoryMainOpen === "nutrition" ? "" : "nutrition"; setTheoryMainOpen(next); if (next) scrollTopSoon("theory-main-nutrition"); }} style={{ padding: "14px 16px 10px", borderBottom: theoryMainOpen === "nutrition" ? "1px solid " + T.bg : "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+          <div onClick={function() { var next = theoryMainOpen === "nutrition" ? "" : "nutrition"; setTheoryMainOpen(next); if (next) scrollTopSoon("theory-main-nutrition"); }} style={{ padding: "9px 12px 8px", borderBottom: theoryMainOpen === "nutrition" ? "1px solid " + T.bg : "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
             <div>
-              <div style={{ fontSize: 16, fontWeight: 800, color: theoryMainOpen === "nutrition" ? dc : T.tx, marginBottom: 2 }}>🥗 Nutrizione</div>
-              <div style={{ fontSize: 12, color: T.sub }}>Principi base per supportare l'allenamento</div>
+              <div style={{ fontSize: 13, fontWeight: 800, color: theoryMainOpen === "nutrition" ? dc : T.tx, marginBottom: 1 }}>🥗 Nutrizione</div>
+              <div style={{ fontSize: 11, color: T.sub }}>Principi base per supportare l'allenamento</div>
             </div>
             <span style={{ fontSize: 13, color: dc, flexShrink: 0, transform: theoryMainOpen === "nutrition" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
           </div>
@@ -10745,10 +10743,10 @@ function isNearBodyweightElasticSession(exName, sets) {
       {/* === EXERCISES TAB === */}
       {tab === "exercises" && <div id="exercises-top" style={{ maxWidth: 600, margin: "0 auto", padding: "12px 12px 100px" }}>
         {/* Esercizi header */}
-        <div id="exercise-section-ex" onClick={function() { var next = catSec === "ex" ? null : "ex"; if (next !== catSec) pushNavSnapshot(); setCatSec(next); if (next) scrollTopSoon("exercise-section-ex"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
+        <div id="exercise-section-ex" onClick={function() { var next = catSec === "ex" ? null : "ex"; if (next !== catSec) pushNavSnapshot(); setCatSec(next); if (next) scrollTopSoon("exercise-section-ex"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "8px 10px", background: T.cd, borderRadius: 8, marginBottom: 4 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 16 }}>{"\uD83D\uDCAA"}</span>
-            <span style={{ fontSize: 14, fontWeight: 800, color: dc }}>{"Esercizi (" + exEntries.length + ")"}</span>
+            <span style={{ fontSize: 12, fontWeight: 800, color: dc }}>{"Esercizi (" + exEntries.length + ")"}</span>
           </div>
           <div style={{ fontSize: 14, color: T.sub, transform: catSec === "ex" ? "rotate(180deg)" : "none" }}>&#9662;</div>
         </div>
@@ -10799,13 +10797,13 @@ function isNearBodyweightElasticSession(exName, sets) {
         </div>}
 
         {/* Riscaldamento header */}
-        <div id="exercise-section-wu" onClick={function() { var next = catSec === "wu" ? null : "wu"; if (next !== catSec) pushNavSnapshot(); setCatSec(next); if (next) scrollTopSoon("exercise-section-wu"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
+        <div id="exercise-section-wu" onClick={function() { var next = catSec === "wu" ? null : "wu"; if (next !== catSec) pushNavSnapshot(); setCatSec(next); if (next) scrollTopSoon("exercise-section-wu"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "8px 10px", background: T.cd, borderRadius: 8, marginBottom: 4 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 16 }}>&#128293;</span>
             {(function() {
               var seen = {}; var count = 0;
               DAYS.forEach(function(d) { d.warmup.forEach(function(w) { if (!seen[w.n]) { seen[w.n] = true; count++; } }); });
-              return <span style={{ fontSize: 14, fontWeight: 800, color: dc }}>{"Riscaldamento (" + count + ")"}</span>;
+              return <span style={{ fontSize: 12, fontWeight: 800, color: dc }}>{"Riscaldamento (" + count + ")"}</span>;
             })()}
           </div>
           <div style={{ fontSize: 14, color: T.sub, transform: catSec === "wu" ? "rotate(180deg)" : "none" }}>&#9662;</div>
@@ -10837,7 +10835,7 @@ function isNearBodyweightElasticSession(exName, sets) {
         </div>}
 
         {/* Stretching header */}
-        <div id="exercise-section-st" onClick={function() { var next = catSec === "st" ? null : "st"; if (next !== catSec) pushNavSnapshot(); setCatSec(next); if (next) scrollTopSoon("exercise-section-st"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "12px 14px", background: T.cd, borderRadius: 10, marginBottom: 4 }}>
+        <div id="exercise-section-st" onClick={function() { var next = catSec === "st" ? null : "st"; if (next !== catSec) pushNavSnapshot(); setCatSec(next); if (next) scrollTopSoon("exercise-section-st"); }} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", padding: "8px 10px", background: T.cd, borderRadius: 8, marginBottom: 4 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 16 }}>&#129495;</span>
             <span style={{ fontSize: 14, fontWeight: 800, color: T.st }}>{"Stretching (" + Object.keys(STR).length + ")"}</span>
