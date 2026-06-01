@@ -9971,6 +9971,24 @@ function isNearBodyweightElasticSession(exName, sets) {
       {/* === PROGRESSI TAB === */}
       {tab === "progressi" && (function() {
         // Build weekly stats from logs
+        function shiftSessionDate(sessionDate, sessionDay, deltaDays) {
+          var d = new Date(sessionDate);
+          d.setDate(d.getDate() + deltaDays);
+          var newDate = d.toISOString().split("T")[0];
+          var nl = Object.assign({}, logs);
+          var keysToMove = Object.keys(nl).filter(function(k) {
+            var e = nl[k];
+            return e && e.date === sessionDate && e.day === sessionDay;
+          });
+          if (!keysToMove.length) return;
+          keysToMove.forEach(function(oldKey) {
+            var entry = Object.assign({}, nl[oldKey], { date: newDate });
+            var newKey = newDate + "_d" + entry.day + "_m" + entry.month + "_" + entry.exercise;
+            delete nl[oldKey];
+            nl[newKey] = entry;
+          });
+          saveData(nl, cardioLogs, calibrationProfiles, calibrationMode, guidedMode);
+        }
         function getWeekKey(dateStr) {
           var d = new Date(dateStr);
           var day = d.getDay() || 7;
@@ -10326,6 +10344,10 @@ function isNearBodyweightElasticSession(exName, sets) {
                               <div style={{ minWidth: 0, flex: 1 }}>
                                 <div style={{ fontSize: 12, fontWeight: 800, color: T.tx }}>{dayLabel}</div>
                                 <div style={{ fontSize: 10, color: T.sub, marginTop: 2 }}>{dateLabel + " · " + session.entries.length + " esercizi"}</div>
+                                <div style={{ display: "flex", gap: 5, marginTop: 5 }} onClick={function(e) { e.stopPropagation(); e.preventDefault(); }}>
+                                  <button onClick={function(e) { e.stopPropagation(); e.preventDefault(); shiftSessionDate(session.date, session.day, -7); }} style={{ fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 6, border: "1px solid " + T.bg, background: T.cd, color: T.sub, cursor: "pointer" }}>← sett. prec.</button>
+                                  <button onClick={function(e) { e.stopPropagation(); e.preventDefault(); shiftSessionDate(session.date, session.day, +7); }} style={{ fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 6, border: "1px solid " + T.bg, background: T.cd, color: T.sub, cursor: "pointer" }}>sett. succ. →</button>
+                                </div>
                               </div>
                               <div style={{ color: dc, fontSize: 13, fontWeight: 800, flexShrink: 0 }}>Apri</div>
                             </div>
