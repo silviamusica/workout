@@ -3236,7 +3236,8 @@ export default function App() {
     var prefKey = getDaySplitPrefKey(day, dayIndex);
     var stored = splitDayPrefs[prefKey];
     if (stored === "split" && V4_DAY_SPLIT_PLAN[day.name]) return "split";
-    if (stored === "superset" && FAST_MODE_SUPERSETS[day.name] && FAST_MODE_SUPERSETS[day.name].length) return "superset";
+    if (stored === "single") return "single";
+    if (stored === "superset" || (!stored && FAST_MODE_SUPERSETS[day.name] && FAST_MODE_SUPERSETS[day.name].length)) return "superset";
     return "single";
   }
 
@@ -4289,10 +4290,10 @@ export default function App() {
   var splitPlanForDay = level === "v4" && workoutSelectedWeightDay ? V4_DAY_SPLIT_PLAN[workoutSelectedWeightDay.name] || null : null;
   var supersetPlanForDay = level === "v4" && workoutSelectedWeightDay ? FAST_MODE_SUPERSETS[workoutSelectedWeightDay.name] || null : null;
   var splitPrefKey = workoutSelectedWeightDay ? getDaySplitPrefKey(workoutSelectedWeightDay, workoutSelectedWeightIndex) : "";
-  var forceSupersetWorkoutUi = level === "v4";
-  var currentDayWorkoutFormat = forceSupersetWorkoutUi ? "superset" : getWorkoutFormatForDay(workoutSelectedWeightDay, workoutSelectedWeightIndex);
-  var isDaySplitActive = forceSupersetWorkoutUi ? false : currentDayWorkoutFormat === "split";
-  var isDaySupersetActive = forceSupersetWorkoutUi ? true : currentDayWorkoutFormat === "superset";
+  var forceSupersetWorkoutUi = false;
+  var currentDayWorkoutFormat = getWorkoutFormatForDay(workoutSelectedWeightDay, workoutSelectedWeightIndex);
+  var isDaySplitActive = currentDayWorkoutFormat === "split";
+  var isDaySupersetActive = currentDayWorkoutFormat === "superset" || (level === "v4" && currentDayWorkoutFormat !== "single");
   var estimatedDayMinutes = workoutSelectedWeightDay ? estimateDayMinutes(workoutSelectedWeightDay, month, currentDayWorkoutFormat) : 0;
   var dayExerciseGroups = buildDayExerciseGroups(workoutSelectedWeightDay, month, isDaySplitActive);
   var isCurrentWeightDayComplete = !!workoutSelectedWeightDay && !workoutSelectedWeightDay.cardio && !workoutSelectedWeightDay.rest && isDayWorkoutComplete(logs, workoutSelectedWeightIndex);
@@ -11354,15 +11355,15 @@ function isNearBodyweightElasticSession(exName, sets) {
                 <div style={{ flex: 1, fontWeight: 800, fontSize: 11, color: dc, textTransform: "uppercase", letterSpacing: 0.8 }}>
                   Esercizi
                   {workoutSelectedWeightDay && <span style={{ fontWeight: 600, color: T.sub, textTransform: "none", letterSpacing: 0 }}>{" · ~" + Math.max(5, Math.round(estimateWorkoutMinutesForFormat(workoutSelectedWeightDay, month, currentDayWorkoutFormat) / 5) * 5) + " min"}</span>}
-                  {!simplifiedWorkoutUi && (splitPlanForDay || supersetPlanForDay) && <span style={{ fontWeight: 600, color: T.sub, textTransform: "none", letterSpacing: 0 }}>{isDaySplitActive ? " · split AM/PM" : isDaySupersetActive ? " · superset" : ""}</span>}
+                  {(splitPlanForDay || supersetPlanForDay) && <span style={{ fontWeight: 600, color: T.sub, textTransform: "none", letterSpacing: 0 }}>{isDaySplitActive ? " · split AM/PM" : isDaySupersetActive ? " · superset" : " · completo"}</span>}
                 </div>
                 {!simplifiedWorkoutUi && <div style={{ fontSize: 13, color: dc, transform: showExSection ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>&#9662;</div>}
               </div>
             {(showExSection || simplifiedWorkoutUi) && <div>
-            {!simplifiedWorkoutUi && (splitPlanForDay || supersetPlanForDay) && <div style={{ padding: "8px 14px 4px", display: "flex", gap: 6, flexWrap: "wrap" }}>
-              {[{ key: "single", label: "Unica" }, { key: "split", label: "Split AM/PM", enabled: !!splitPlanForDay }, { key: "superset", label: "Superset", enabled: !!supersetPlanForDay }].filter(function(o) { return o.enabled !== false; }).map(function(option) {
+            {(splitPlanForDay || supersetPlanForDay) && <div style={{ padding: "6px 12px 4px", display: "flex", gap: 6, flexWrap: "wrap" }}>
+              {[{ key: "single", label: "Completo" }, { key: "superset", label: "Superset", enabled: !!supersetPlanForDay }, { key: "split", label: "Split AM/PM", enabled: !!splitPlanForDay }].filter(function(o) { return o.enabled !== false; }).map(function(option) {
                 var active = option.key === currentDayWorkoutFormat;
-                return <button key={option.key} onClick={function(e) { e.stopPropagation(); var nextPrefs = Object.assign({}, splitDayPrefs); nextPrefs[splitPrefKey] = option.key; saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false, { splitDayPrefs: nextPrefs }); }} style={{ padding: "4px 11px", border: "1px solid " + (active ? dc + "80" : T.bg), borderRadius: 999, background: active ? dc + "15" : T.sb, color: active ? dc : T.sub, fontSize: 11, fontWeight: active ? 800 : 600, cursor: "pointer" }}>{option.label}</button>;
+                return <button key={option.key} onClick={function(e) { e.stopPropagation(); var nextPrefs = Object.assign({}, splitDayPrefs); nextPrefs[splitPrefKey] = option.key; saveData(logs, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false, { splitDayPrefs: nextPrefs }); }} style={{ padding: "3px 10px", border: "1px solid " + (active ? dc + "80" : T.bg), borderRadius: 999, background: active ? dc + "15" : T.sb, color: active ? dc : T.sub, fontSize: 11, fontWeight: active ? 800 : 600, cursor: "pointer" }}>{option.label}</button>;
               })}
             </div>}
             {/* Exercises list */}
@@ -11614,7 +11615,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                                 <button onClick={function(e) { e.stopPropagation(); var t = todayStr(); var k = t + "_d" + dayIdx + "_m" + month + "_" + ex.n; var nl = Object.assign({}, logs); if (nl[k]) { nl[k] = Object.assign({}, nl[k], { sets: nl[k].sets.filter(function(s) { return s.si !== si; }) }); saveData(nl, cardioLogs, calibrationProfiles, calibrationMode, guidedMode, barbellWeight, false); } }} style={{ width: 26, height: 26, border: "1px solid " + T.bg, borderRadius: 8, background: T.bg, color: T.sub, fontSize: 13, fontWeight: 700, cursor: "pointer", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>✕</button>
                               </div> : <div style={{ padding: "0 9px 9px", display: "flex", flexDirection: "column", gap: 5 }}>
                                 <button onClick={function(e) { e.stopPropagation(); setEditing(i + "-" + si); setTmpW(sugg.w); setTmpR(sugg.r); setTmpRir(sugg.rir || ""); setTmpBarbellBase(sugg.bb || barbellWeight); }} style={{ width: "100%", minHeight: 42, border: "1px dashed " + dc + "55", borderRadius: 9, background: dc + "08", color: dc, fontWeight: 800, fontSize: 13, cursor: "pointer" }}>
-                                  {done ? "Modifica" : (si === 0 ? "Registra serie" : "Inserisci serie")}
+                                  {done ? "Modifica" : (si === 0 && sugg.w ? ("+ " + (isBW ? "corpo libero" : (sugg.w + (usesBand ? " tacca" : (usesTrxLength ? " TRX" : " kg"))))) : (si === 0 ? "Registra serie" : "Inserisci serie"))}
                                 </button>
                                 {(function() {
                                   if (si === 0) return null;
