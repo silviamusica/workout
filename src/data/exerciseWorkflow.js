@@ -184,7 +184,7 @@ export var EXISTING_COVERED_EXERCISES = [
   "Military Press",
   "Lat Machine",
   "Affondi",
-  "Squat Bulgaro",
+  "Bulgarian Split Squat",
   "Pulley",
   "Hip Thrust Bilanciere",
   "Dead Bug",
