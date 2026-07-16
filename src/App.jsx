@@ -725,6 +725,34 @@ EX["Wall Sit"] = mergeExerciseGuideWithSeed(EX["Wall Sit"], {
   alternativa: "Plank isometrico per variabilità del core"
 });
 
+EX["Sliding Leg Curl"] = mergeExerciseGuideWithSeed(EX["Sliding Leg Curl"] || {}, {
+  obiettivo: "Isolare i femorali come alternativa al leg curl macchina, con basso stress articolare.",
+  muscoli: "Femorali (bicipite femorale)",
+  muscoli_secondari: "Glutei, polpacci",
+  setup: "Supino con talloni su sliders/asciugamani o dischi scorrevoli su pavimento liscio; braccia a terra per stabilita.",
+  esecuzione: "Parti con anche estese, porta i talloni verso i glutei piegando le ginocchia concentrandoti sull'attivazione dei femorali; torna lentamente in estensione (eccentrica controllata).",
+  respirazione: "Inspira nella fase di ritorno (allungamento), espira nella fase di contrazione. Evitare apnea.",
+  cueTecnici: { movimento: "Controlla l'eccentrica 2-3s", bacino: "Mantieni il bacino in appoggio, non sollevare il tratto lombare" },
+  erroriComuni: ["Sollevare il bacino durante la tirata","Usare slancio anziche i femorali","Eccentrica troppo veloce"],
+  comeCapire: "Se senti i femorali lavorare profondamente e non la parte bassa della schiena, l'esecuzione e corretta.",
+  quandoAumentare: "Aumenta carico o ripetizioni quando tutte le serie sono completate a RIR >= 2, mantenendo controllo dell'eccentrica.",
+  varianti: { facilitata: "Curl nordico assistito o fitball hamstring curl", avanzata: "Single leg sliding curl con un tallone a terra" }
+});
+
+EX["Standing Calf Raise"] = mergeExerciseGuideWithSeed(EX["Standing Calf Raise"] || {}, {
+  obiettivo: "Lavorare il gastrocnemio e il soleo per forza e resistenza dei polpacci.",
+  muscoli: "Gastrocnemio, Soleo",
+  muscoli_secondari: "Tibiali anteriori (stabilita)",
+  setup: "In piedi su un gradino o blocco con il tallone libero, carico bilanciere o manubri a seconda della necessita.",
+  esecuzione: "Sollevare i talloni fino alla massima contrazione, pausa 1s in alto, poi scendere fino al massimo allungamento. Movimento controllato in salita e discesa.",
+  respirazione: "Inspira nella fase di discesa, espira nella fase di salita; evitare apnea.",
+  cueTecnici: { piedi: "Distribuire il peso al centro del piede", gomiti: "morbidi se si usano manubri" },
+  erroriComuni: ["Rimbalzo usando ginocchia","Parzializzare troppo il movimento","Non sfruttare tutto l'arco di movimento"],
+  comeCapire: "Senti contrazione alta dei polpacci in cima e buon allungamento in basso; la pausa di 1s in alto dovrebbe essere chiara.",
+  quandoAumentare: "Aumenta carico quando tutte le serie si completano con RIR >= 2 mantenendo full ROM.",
+  varianti: { facilitata: "Standing calf raise a corpo libero su piano", avanzata: "Single leg calf raise o con carico" }
+});
+
 EX["Monster Walk"] = mergeExerciseGuideWithSeed(EX["Monster Walk"], {
   obiettivo: "Attivazione e resistenza del cingolo dell'anca e gluteo medio con tensione continua.",
   muscoli: "Gluteo medio, Glutei",
@@ -1932,32 +1960,31 @@ var DAYS_V4 = [
   { name: "Riposo", focus: "Recupero", dayLabel: "Dom", rest: true },
 ];
 
-// V2 "Metabolico" — mesociclo metabolico focalizzato su densita', conditioning
-// Regole generali: 4-6 settimane, RIR 2-3, niente cedimento volontario, evitare Valsalva,
-// progressione conservativa a doppia progressione (aumenti piccoli, priorita tecnica).
+  // V2 "Metabolico" — Recovery Hypertrophy block
+  // Rules: 4-6 settimane, RIR 2-3, nessun cedimento volontario, respirazione continua, doppia progressione conservativa
 var DAYS_V2 = [
-  { name: "Giorno 1", focus: "Recovery Hypertrophy — Lower A", dayLabel: "Lun", dur: "5 esercizi", tEst: 45,
+  { name: "Giorno 1", focus: "Lower A", dayLabel: "Lun", dur: "5 esercizi", tEst: 45,
     intro: {
       attrezzi: ["Bilanciere leggero","Manubri","Corpo libero","Elastico"],
       muscoli: ["Quadricipiti","Glutei","Core"],
       obiettivi: ["Mantenere massa muscolare con bassa pressione intra-addominale","Esecuzione controllata, RIR 2-3, nessun cedimento"],
       attenzione: ["Respirazione continua, evitare Valsalva prolungata","Progressione conservativa: double progression"],
-      ritmo: "Serie controllate, recuperi completi secondo regole del blocco"
+      ritmo: "Serie controllate, recuperi appropriati"
     },
     warmup: [
       { n: "Dorsiflessione al muro", phase: "mobility", gearTag: "Corpo libero", p: "10 per gamba" },
-      { n: "Hip hinge a corpo libero", phase: "activation", gearTag: "Corpo libero", p: "8-10" },
-      { n: "Serie avvicinamento squat (leggero)", phase: "approach", gearTag: "Bilanciere", p: "1 serie leggera" }
+      { n: "Hip Hinge a corpo libero", phase: "activation", gearTag: "Corpo libero", p: "8-10" },
+      { n: "Serie di avvicinamento Squat", phase: "approach", gearTag: "Bilanciere", p: "1 serie leggera" }
     ],
     ex: [
-      { n: "Squat", s: "4x8", rpe: "7-8", note: "60-70% carico abituale. RIR 2-3, tecnica perfetta, nessun cedimento.", priority: true, rec: "2:00", gear: "Bilanciere + rack" },
-      { n: "Affondi", s: "4x12", rpe: "7", note: "Unilaterale. RIR 2.", rec: "90s", gear: "Manubri" },
-      { n: "Hyperextension", s: "4x15", rpe: "7", note: "Contrai glutei 1s in alto. Non iperestendere.", rec: "60s" },
-      { n: "Wall Sit", s: "3x45-60s", rpe: "7", note: "Respirazione continua. Mai apnea.", rec: "60s" },
-      { n: "Monster Walk", s: "3x15 per lato", rpe: "7", note: "Tensione continua dell'elastico.", rec: "60s", gear: "Elastico" }
+      { n: "Squat", s: "4x8", rpe: "7-8", note: "circa 60-70% del carico abituale · respirazione continua · RIR 2-3 · nessun cedimento · tecnica perfetta", priority: true, rec: "2:00", gear: "Bilanciere + rack" },
+      { n: "Affondi", s: "4x12", rpe: "7", note: "Unilaterale · RIR 2", rec: "90s", gear: "Manubri" },
+      { n: "Hyperextension", s: "4x15", rpe: "7", note: "Contrazione dei glutei in alto. Non iperestendere la schiena.", rec: "60s" },
+      { n: "Sliding Leg Curl", s: "4x12", rpe: "7", note: "Alternativa al Leg Curl. Utilizzare sliders, asciugamani oppure dischi scorrevoli. Eccentrica lenta.", rec: "60s", gear: "Sliders/Asciugamani" },
+      { n: "Monster Walk", s: "3x15 passi per lato", rpe: "7", note: "Elastico sempre in tensione.", rec: "60s", gear: "Elastico" }
     ], str: ["Quadricipiti","Glutei"] },
 
-  { name: "Giorno 2", focus: "Recovery Hypertrophy — Upper A", dayLabel: "Mar", dur: "5 esercizi", tEst: 45,
+  { name: "Giorno 2", focus: "Upper A", dayLabel: "Mar", dur: "5 esercizi", tEst: 45,
     intro: {
       attrezzi: ["Panca","Manubri","Sbarra/Lat Machine","Elastico"],
       muscoli: ["Pettorali","Dorsali","Deltoidi"],
@@ -1966,55 +1993,54 @@ var DAYS_V2 = [
       ritmo: "Recuperi completi su composti principali"
     },
     warmup: [
-      { n: "T-spine rotation", phase: "mobility", gearTag: "Corpo libero", p: "8 per lato" },
-      { n: "Serie avvicinamento panca (leggera)", phase: "approach", gearTag: "Bilanciere", p: "1 serie leggera" }
+      { n: "T-Spine Rotation", phase: "mobility", gearTag: "Corpo libero", p: "8 per lato" },
+      { n: "Serie avvicinamento Panca", phase: "approach", gearTag: "Bilanciere", p: "1 serie leggera" }
     ],
     ex: [
-      { n: "Trazioni", s: "4x6-8", rpe: "7-8", note: "Double progression. RIR 2.", rec: "2:00", gear: "Barra trazioni" },
-      { n: "Panca", s: "4x8", rpe: "7-8", note: "RIR 2. Tecnica controllata.", rec: "2:00", gear: "Bilanciere + panca" },
+      { n: "Trazioni", s: "4x6-8", rpe: "8", note: "RIR 2", rec: "2:00", gear: "Barra trazioni" },
+      { n: "Panca", s: "4x8", rpe: "8", note: "RIR 2", rec: "2:00", gear: "Bilanciere + panca" },
       { n: "Rematore Manubri", s: "4x10-12", rpe: "7", note: "Eccentrica controllata 2-3s.", rec: "90s" },
       { n: "Arnold Press", s: "3x10-12", rpe: "7", note: "Controllo spalle, evitare slancio.", rec: "60-90s" },
-      { n: "Woodchop", s: "3x12 per lato", rpe: "7", note: "Controllo rotazione.", rec: "60s" }
+      { n: "Curl Manubri", s: "3x12", rpe: "7", note: "RIR 2 su tutte le serie.", rec: "60s" }
     ], str: ["Pettorali","Dorsali","Deltoidi"] },
 
-  { name: "Riposo", focus: "Recupero attivo / Mobilità", dayLabel: "Mer", rest: true },
+  { name: "Giorno 3", focus: "Riposo / Mobilità", dayLabel: "Mer", rest: true },
 
-  { name: "Giorno 4", focus: "Recovery Hypertrophy — Lower B", dayLabel: "Ven", dur: "5 esercizi", tEst: 50,
+  { name: "Giorno 4", focus: "Lower B", dayLabel: "Ven", dur: "5 esercizi", tEst: 50,
     intro: {
-      attrezzi: ["Manubri","Macchina leg extension","Corpo libero","Elastico"],
+      attrezzi: ["Manubri","Panca","Corpo libero","Elastico"],
       muscoli: ["Quadricipiti","Glutei","Core"],
       obiettivi: ["Volume ipertrofico a basso stress intra-addominale","Evitare serie pesanti e ripetizioni basse"],
       attenzione: ["Nessuno stacco pesante o lavoro 3-5 rip.", "RIR 2-3 su tutte le serie"]
     },
     warmup: [
       { n: "Ponte monopodalico", phase: "activation", gearTag: "Corpo libero", p: "8 per lato" },
-      { n: "Serie avvicinamento step-up (leggero)", phase: "approach", gearTag: "Corpo libero", p: "1 serie leggera" }
+      { n: "Serie avvicinamento Step-Up", phase: "approach", gearTag: "Corpo libero", p: "1 serie leggera" }
     ],
     ex: [
       { n: "Step Up", s: "4x12", rpe: "7", note: "Piede sul rialzo, spingi controllando.", rec: "90s", gear: "Box/step + manubri" },
-      { n: "Squat Bulgaro", s: "4x10-12", rpe: "7", note: "Controllo e range completo.", rec: "90s" },
-      { n: "Leg Extension al Cavo", s: "4x15", rpe: "7", note: "Isolare quadricipiti, eccentrica controllata.", rec: "60-90s" },
-      { n: "Donkey Kicks", s: "4x15 per lato", rpe: "7", note: "Contrazione glutei, core stabile.", rec: "60s" },
-      { n: "Monster Walk", s: "3x15 per lato", rpe: "7", note: "Tensione continua dell'elastico.", rec: "60s" }
+      { n: "Bulgarian Split Squat", s: "4x10-12", rpe: "7", note: "Controllo e range completo.", rec: "90s" },
+      { n: "Hip Thrust Bilanciere", s: "4x10", rpe: "7", note: "Contrazione dei glutei di 1 secondo. Respirazione continua. Nessuna iperestensione lombare.", rec: "90s", gear: "Bilanciere + panca" },
+      { n: "Wall Sit", s: "3x45-60\"", rpe: "7", note: "Respirazione continua. Mai apnea.", rec: "60s" },
+      { n: "Standing Calf Raise", s: "4x15-20", rpe: "7", note: "Movimento completo. Pausa di un secondo in alto. Massimo allungamento in basso.", rec: "60s" }
     ], str: ["Quadricipiti","Glutei"] },
 
-  { name: "Giorno 5", focus: "Recovery Hypertrophy — Upper B", dayLabel: "Sab", dur: "5 esercizi", tEst: 45,
+  { name: "Giorno 5", focus: "Upper B", dayLabel: "Sab", dur: "5 esercizi", tEst: 45,
     intro: {
       attrezzi: ["Manubri","Sbarra","Cavo","Corpo libero"],
       muscoli: ["Spinta/Tirata","Spalle","Core"],
       obiettivi: ["Mantenere massa e tecnica con basso stress addominale"],
-      attenzione: ["RIR 2, niente push press; military press controllata" ]
+      attenzione: ["RIR 2. Mai cedimento.", "Respirazione continua"]
     },
     warmup: [
-      { n: "T-spine rotation", phase: "mobility", gearTag: "Corpo libero", p: "8 per lato" },
-      { n: "Band Pull-Apart", phase: "mobility", gearTag: "Elastico", p: "10" }
+      { n: "T-Spine Rotation", phase: "mobility", gearTag: "Corpo libero", p: "8 per lato" },
+      { n: "Band Pull Apart", phase: "mobility", gearTag: "Elastico", p: "10" }
     ],
     ex: [
-      { n: "Trazioni Supine", s: "4x8", rpe: "7", note: "Presa inversa. RIR 2.", rec: "90-120s" },
+      { n: "Trazioni presa inversa", s: "4x8", rpe: "7", note: "Presa inversa. RIR 2.", rec: "90-120s" },
       { n: "Push-Up", s: "4x10-15", rpe: "7", note: "Core attivo, forma perfetta.", rec: "60-90s" },
       { n: "Military Press", s: "4x8-10", rpe: "7", note: "Stretta e controllata. Evitare slancio.", rec: "90s" },
-      { n: "Rematore Manubri", s: "4x10", rpe: "7", note: "Eccentrica controllata.", rec: "90s" },
-      { n: "Addominali Obliqui", s: "4x15", rpe: "7", note: "Obliqui/rotazione controllata.", rec: "60s" }
+      { n: "Obliqui", s: "4x15", rpe: "7", note: "Controllo e respirazione.", rec: "60s" }
     ], str: ["Dorsali","Pettorali","Deltoidi"] }
 ];
 
@@ -6493,7 +6519,7 @@ export default function App() {
   }
 
   function getProgramLabel(key) {
-    if (key === "v2") return "Recovery Hypertrophy – 4-6 settimane";
+    if (key === "v2") return "Recovery Hypertrophy – Blocco 4-6 settimane";
     if (key === "v1" || key === "v4") return "V1";
     return "";
   }
@@ -9240,7 +9266,7 @@ function isNearBodyweightElasticSession(exName, sets) {
             <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Scheda</div>
             {[
               { key: "v1", icon: "💥", title: "V1", detail: "Programma attuale", subtitle: "4 giorni pesi + G3 leggero" },
-              { key: "v2", icon: "🧱", title: "Recovery Hypertrophy – 4-6 settimane" }
+                { key: "v2", icon: "🧱", title: "Recovery Hypertrophy – Blocco 4-6 settimane", detail: "Programma temporaneo progettato per mantenere massa muscolare e forza riducendo la pressione intra-addominale. Tutti gli esercizi sono selezionati per minimizzare il rischio di recidive emorroidarie senza interrompere il percorso di crescita muscolare." }
             ].map(function(option) {
               var active = level === option.key;
               return <button
