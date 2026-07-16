@@ -312,7 +312,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
   {"type":"table","columns":["Errore","Correzione"],"rows":[["Gomiti che avanzano","Fermali ai fianchi: oltre quel punto lavora il deltoide"],["Slancio col busto","Riduci 1-2 kg per manubrio"],["Eccentrica troppo veloce","Conta 3 secondi in discesa"],["Polsi che cedono","Polsi dritti e carico piu basso se serve"]]},
   {"type":"p","content":"Respirazione. Espira in salita, inspira in discesa."},
   {"type":"ul","content":["Video tecnica: https://www.youtube.com/watch?v=ykJmrZ5v0Oo"]}
-]}, "French Press Manubri": {"g": "Tricipiti", "c": "Su panca, manubri sopra. Fletti gomiti verso tempie, estendi.", "p": "Gomiti verso soffitto, fermi. Presa neutra.", "t": ["Gomiti paralleli", "Leggermente dietro la testa"]}, "Dip su Panca": {"g": "Tricipiti/Pettorali inf.", "c": "Mani su panca dietro. Scendi a 90 gradi gomiti, spingi su.", "p": "Gomiti indietro. Schiena vicina alla panca.", "t": ["Gambe tese = piu difficile", "Non sotto 90 gradi"]}, "Squat Bulgaro": {"g": "Quadricipiti/Glutei/Femorali", "c": "Piede posteriore su panca. Scendi a 90 gradi, spingi su.", "p": "Busto eretto. Ginocchio in linea con punta.", "t": ["Busto avanti = piu glutei", "Manubri ai lati per carico"], "deep": [
+]}, "French Press Manubri": {"g": "Tricipiti", "c": "Su panca, manubri sopra. Fletti gomiti verso tempie, estendi.", "p": "Gomiti verso soffitto, fermi. Presa neutra.", "t": ["Gomiti paralleli", "Leggermente dietro la testa"]}, "Dip su Panca": {"g": "Tricipiti/Pettorali inf.", "c": "Mani su panca dietro. Scendi a 90 gradi gomiti, spingi su.", "p": "Gomiti indietro. Schiena vicina alla panca.", "t": ["Gambe tese = piu difficile", "Non sotto 90 gradi"]}, "Bulgarian Split Squat": {"g": "Quadricipiti/Glutei/Femorali", "c": "Piede posteriore su panca. Scendi a 90 gradi, spingi su.", "p": "Busto eretto. Ginocchio in linea con punta.", "t": ["Busto avanti = piu glutei", "Manubri ai lati per carico"], "deep": [
   {"type":"p","content":"Variante dell'affondo con il piede posteriore poggiato su un rialzo (panca, step, sedia). Valgono le stesse regole degli affondi: ginocchio posteriore sfiora terra senza urtarla."},
   {"type":"p","content":"Gestisci il focus muscolare:"},
   {"type":"ul","content":["Passo corto + busto verticale = piu quadricipiti","Passo piu lungo + busto inclinato = piu glutei e femorali","Ginocchio anteriore sempre allineato con il piede — non collassare verso l'interno"]},
@@ -433,7 +433,7 @@ var EX = {"Ab Wheel": {"g": "Core/Addominali", "c": "Inginocchiata, rotella in m
 "Band Pull-Apart al cavo": {"g": "Deltoidi posteriori/Romboidi/Cuffia rotatori", "c": "Cavo regolato a media altezza. Prendi le maniglie o la corda con braccia tese davanti al petto. Apri le braccia fino al petto ruotando le mani verso fuori alla fine. Pausa 1s.", "p": "Braccia tese per tutto il movimento. Spalle basse, non alzare i trapezi. Non piegare i gomiti per arrivare piu indietro.", "t": ["Senti le scapole avvicinarsi a fine movimento", "La rotazione esterna finale e la parte piu importante", "Non usare slancio: movimento lento e controllato"], "lk": "https://www.drfitology.com/exercises/shoulders/band-pull-apart"},
 };
 
-Object.assign(EX["Pulley"], {
+assignExerciseGuide("Pulley", {
   guideDay: "G2 Upper A",
   guide: [
     { type: "p", content: "Il pulley basso allena dorsali, romboidi, trapezio medio, deltoide posteriore e bicipiti. E la tirata orizzontale del G2 e completa le trazioni lavorando da un angolo diverso." },
@@ -446,7 +446,7 @@ Object.assign(EX["Pulley"], {
   ]
 });
 
-Object.assign(EX["Cable Pull-Apart con rotazione esterna"], {
+assignExerciseGuide("Cable Pull-Apart con rotazione esterna", {
   guideDay: "G2 e G3",
   guide: [
     { type: "p", content: "Questa variante al cavo allena deltoide posteriore, romboidi, trapezio medio-basso e cuffia dei rotatori con tensione costante su tutto il ROM. Nel G2 e piu intensa; nel G3 resta volume tecnico." },
@@ -457,7 +457,7 @@ Object.assign(EX["Cable Pull-Apart con rotazione esterna"], {
   ]
 });
 
-Object.assign(EX["Alzate Laterali"], {
+assignExerciseGuide("Alzate Laterali", {
   guideDay: "G2 Upper A",
   guide: [
     { type: "p", content: "Le alzate laterali allenano soprattutto il deltoide laterale, con supporto di sovraspinato e trapezio superiore. Servono ad allargare la spalla e dare piu rotondita alla parte esterna del deltoide." },
@@ -469,7 +469,7 @@ Object.assign(EX["Alzate Laterali"], {
   ]
 });
 
-Object.assign(EX["Stacco da Terra"], {
+assignExerciseGuide("Stacco da Terra", {
   guideDay: "G4 Lower B",
   guide: [
     { type: "p", content: "Lo stacco convenzionale allena glutei, femorali, erettori spinali, dorsali in isometria, quadricipiti nella partenza, trapezio e avambracci. Nel G4 e il fondamentale assoluto del giorno." },
@@ -482,7 +482,7 @@ Object.assign(EX["Stacco da Terra"], {
   ]
 });
 
-Object.assign(EX["Squat Bulgaro"], {
+assignExerciseGuide("Squat Bulgaro", {
   guideDay: "G4 Lower B",
   guide: [
     { type: "p", content: "Il Bulgarian Split Squat allena quadricipiti, glutei e adduttori con ROM piu ampio dell'affondo classico. Nel G4 e il principale lavoro unilaterale per gambe dopo lo stacco." },
@@ -495,7 +495,7 @@ Object.assign(EX["Squat Bulgaro"], {
   ]
 });
 
-Object.assign(EX["Hyperextension"], {
+assignExerciseGuide("Hyperextension", {
   guideDay: "G4 Lower B",
   guide: [
     { type: "p", content: "L'hyperextension rinforza erettori spinali, glutei e femorali prossimali. Dopo lo stacco aggiunge volume sulla catena posteriore senza dover ricaricare il bilanciere." },
@@ -508,7 +508,7 @@ Object.assign(EX["Hyperextension"], {
   ]
 });
 
-Object.assign(EX["Abduzione laterale IR"], {
+assignExerciseGuide("Abduzione laterale IR", {
   guideDay: "G3 e G4",
   guide: [
     { type: "p", content: "Cosa allena. Gluteo medio, soprattutto le fibre posteriori. Nel G3 e volume leggero tecnico; nel G4 arriva a fine seduta in superset con Hyperextension e diventa lavoro vero a RPE 8." },
@@ -520,7 +520,7 @@ Object.assign(EX["Abduzione laterale IR"], {
   ]
 });
 
-Object.assign(EX["T-bar Row"], {
+assignExerciseGuide("T-bar Row", {
   guideDay: "G5 Upper B",
   guide: [
     { type: "p", content: "Il T-bar Row allena dorsali, romboidi, trapezio medio, deltoide posteriore, bicipiti ed erettori spinali in isometria. Nel G5 e il compound pesante di tirata orizzontale." },
@@ -533,7 +533,7 @@ Object.assign(EX["T-bar Row"], {
   ]
 });
 
-Object.assign(EX["Military Press"], {
+assignExerciseGuide("Military Press", {
   guideDay: "G5 Upper B",
   guide: [
     { type: "p", content: "Il Military Press allena deltoide anteriore, tricipiti e trapezio al lockout. Nel G5 e il fondamentale di spinta verticale e richiede una traiettoria molto precisa della barra." },
@@ -546,7 +546,7 @@ Object.assign(EX["Military Press"], {
   ]
 });
 
-Object.assign(EX["Push-Up"], {
+assignExerciseGuide("Push-Up", {
   guideDay: "G3 e G5",
   guide: [
     { type: "p", content: "Il Push-Up allena pettorale, deltoide anteriore e tricipiti con il core che stabilizza il corpo intero. Nel G3 e volume leggero a RPE 7; nel G5 diventa lavoro vero a RPE 7-8." },
@@ -558,7 +558,7 @@ Object.assign(EX["Push-Up"], {
   ]
 });
 
-Object.assign(EX["Trazioni Supine"], {
+assignExerciseGuide("Trazioni Supine", {
   guideDay: "G5 Upper B",
   guide: [
     { type: "p", content: "Le Trazioni Supine allenano dorsali, bicipiti e trapezio basso. La presa supina coinvolge di piu i bicipiti e rende il gesto leggermente piu accessibile delle prone." },
@@ -570,7 +570,7 @@ Object.assign(EX["Trazioni Supine"], {
   ]
 });
 
-Object.assign(EX["Woodchop"], {
+assignExerciseGuide("Woodchop", {
   guideDay: "G5 Upper B",
   guide: [
     { type: "p", content: "Il Woodchop allena obliqui, retto dell'addome e trasverso in rotazione controllata. Nel programma e il principale pattern di core rotazionale attivo." },
@@ -582,7 +582,7 @@ Object.assign(EX["Woodchop"], {
   ]
 });
 
-Object.assign(EX["Alzate Laterali"], {
+assignExerciseGuide("Alzate Laterali", {
   guideDay: "G2, G3 e G5",
   guide: [
     { type: "p", content: "Le alzate laterali allenano soprattutto il deltoide laterale, con supporto di sovraspinato e trapezio superiore. In G2 sono 3 serie pulite, in G3 3x15 controllate con tempo 2-1-2 e in G5 3x15 a RPE 8 come volume extra specifico." },
@@ -594,7 +594,7 @@ Object.assign(EX["Alzate Laterali"], {
   ]
 });
 
-Object.assign(EX["Leg Curl al Cavo"], {
+assignExerciseGuide("Leg Curl al Cavo", {
   guideDay: "G1 e G3",
   guide: [
     { type: "p", content: "Il Leg Curl al Cavo allena i femorali nella flessione del ginocchio. Nel G1 e accessorio piu carico; nel G3 e volume leggero per contrazione ed eccentrica pulita." },
@@ -606,7 +606,7 @@ Object.assign(EX["Leg Curl al Cavo"], {
   ]
 });
 
-Object.assign(EX["Wall Sit"], {
+assignExerciseGuide("Wall Sit", {
   guideDay: "G1 e G3",
   guide: [
     { type: "p", content: "Il Wall Sit e una tenuta isometrica per quadricipiti e core. Nella scheda sostituisce il leg curl come finisher semplice da tracciare a tempo e senza setup." },
@@ -617,7 +617,7 @@ Object.assign(EX["Wall Sit"], {
   ]
 });
 
-Object.assign(EX["Monster Walk"], {
+assignExerciseGuide("Monster Walk", {
   guideDay: "G1 Lower A",
   guide: [
     { type: "p", content: "Il Monster Walk qui e usato come finisher dinamico di core e cingolo scapolare al posto dell'Ab Wheel. Deve restare pulito: movimento lungo solo finche mantieni addome e bacino sotto controllo." },
@@ -628,7 +628,7 @@ Object.assign(EX["Monster Walk"], {
   ]
 });
 
-Object.assign(EX["Donkey Kicks"], {
+assignExerciseGuide("Donkey Kicks", {
   guideDay: "G4 Lower B",
   guide: [
     { type: "p", content: "I Donkey Kicks nel G4 sostituiscono l'abduzione laterale IR come richiamo glutei a corpo libero in superset con Hyperextension. Qui contano controllo del bacino e sensazione sul gluteo, non altezza del tallone." },
@@ -639,7 +639,7 @@ Object.assign(EX["Donkey Kicks"], {
   ]
 });
 
-Object.assign(EX["Goblet Squat"], {
+assignExerciseGuide("Goblet Squat", {
   guideDay: "G3 Leggero",
   guide: [
     { type: "p", content: "Il Goblet Squat allena quadricipiti e glutei ed e uno dei migliori esercizi per correggere il pattern dello squat. Il carico davanti funziona da contrappeso e ti aiuta a restare piu verticale." },
@@ -669,7 +669,7 @@ Object.assign(EX["Leg Extension al Cavo"] || (EX["Leg Extension al Cavo"] = {
   ]
 });
 
-Object.assign(EX["TRX Row lento"], {
+assignExerciseGuide("TRX Row lento", {
   guideDay: "G3 Leggero",
   guide: [
     { type: "p", content: "Il TRX Row lento allena dorsali, romboidi, trapezio medio e deltoide posteriore con poco stress su presa e lombare. Nel G3 il carico viene sostituito da fermo isometrico ed eccentrica lenta." },
@@ -780,7 +780,7 @@ EX["Step Up"] = mergeExerciseGuideWithSeed(EX["Step Up"], {
   regressione: "Usa box piu basso o gestisci con solo corpo libero" 
 });
 
-EX["Squat Bulgaro"] = mergeExerciseGuideWithSeed(EX["Squat Bulgaro"], {
+EX["Bulgarian Split Squat"] = mergeExerciseGuideWithSeed(EX["Bulgarian Split Squat"], {
   obiettivo: "Lavoro unilaterale per quadricipiti e glutei preservando stabilita e controllo.",
   muscoli: "Quadricipiti, Glutei",
   muscoli_secondari: "Femorali, Core",
@@ -793,6 +793,7 @@ EX["Squat Bulgaro"] = mergeExerciseGuideWithSeed(EX["Squat Bulgaro"], {
   regressione: "Riduci ROM o appoggia una mano per equilibrio",
   alternativa: "Affondo bulgaro assistito o split squat camminato" 
 });
+EX["Squat Bulgaro"] = EX["Bulgarian Split Squat"];
 
 EX["Donkey Kicks"] = mergeExerciseGuideWithSeed(EX["Donkey Kicks"], {
   obiettivo: "Isolare e mantenere attività del grande gluteo con basso stress lombare.",
@@ -819,6 +820,178 @@ EX["Arnold Press"] = mergeExerciseGuideWithSeed(EX["Arnold Press"], {
   erroriComuni: ["Slancio col busto", "Arco lombare eccessivo", "Uso eccessivo di impulso"],
   progressione: "Aumenta peso quando tutte le serie sono completate con RIR >=2 e senza perdere la traiettoria." 
 });
+
+// Additional recovery block seeds: ensure all required fields are present for each exercise used in the Metabolico block
+EX["Trazioni"] = mergeExerciseGuideWithSeed(EX["Trazioni"] || {}, {
+  Nome: "Trazioni (Pull-Up)",
+  Serie: "4",
+  Ripetizioni: "6-8",
+  Recupero: "90s",
+  RIR: "2",
+  Note: "Priorità in giornata upper. Double progression consigliata.",
+  Respirazione: "Inspira in basso, trattieni leggermente e espira durante la fase di salita; evitare apnea prolungata.",
+  FocusTecnico: ["Scapole depresse prima della trazione", "Salire verticale, mento sopra la sbarra"],
+  ErroriComuni: ["Kipping involontario", "Scapole alte durante la salita", "Uso eccessivo delle braccia invece dei dorsali"],
+  MuscoliPrincipali: ["Grande dorsale","Romboidi"],
+  MuscoliSecondari: ["Bicipiti","Trapezio medio"],
+  Descrizione: "Trazione verticale a corpo libero. Partire da dead hang e tirare fino a che il mento supera la barra.",
+  QuandoAumentareIlPeso: "Aumentare carico/assistenza solo se tutte le serie sono completate a RIR >= 2 con tecnica pulita.",
+  Varianti: { assistita: "Trazioni con elastico", supine: "Trazioni supine (pres. inversa)" }
+});
+
+EX["Panca piana"] = mergeExerciseGuideWithSeed(EX["Panca piana"] || EX["Panca"], {
+  Nome: "Panca piana",
+  Serie: "4",
+  Ripetizioni: "8",
+  Recupero: "90s",
+  RIR: "2",
+  Note: "Scapole retratte, arco toracico mantenuto. Evitare scatti e rimbalzi.",
+  Respirazione: "Inspira prima della discesa, trattieni durante la parte difficile, espira nella seconda metà della salita.",
+  FocusTecnico: ["Scapole addotte e depresse","Punti di contatto stabili"],
+  ErroriComuni: ["Rimbalzo sul petto","Sedere che si alza","Polsi piegati"],
+  MuscoliPrincipali: ["Grande pettorale"],
+  MuscoliSecondari: ["Tricipiti","Deltoide anteriore"],
+  Descrizione: "Spinta orizzontale bilanciere su panca. Controllo e traiettoria a J reversa.",
+  QuandoAumentareIlPeso: "Aumentare solo quando tutte le serie richieste sono completate a RIR >=2 mantenendo tecnica.",
+  Varianti: { manubri: "Floor press manubri / panca con manubri" }
+});
+
+EX["Rematore Manubri"] = mergeExerciseGuideWithSeed(EX["Rematore Manubri"] || {}, {
+  Nome: "Rematore con manubri",
+  Serie: "4",
+  Ripetizioni: "10-12",
+  Recupero: "90s",
+  RIR: "2",
+  Note: "Eccentrica controllata 2-3s; stringere scapola in alto.",
+  Respirazione: "Inspira nella fase eccentrica, espira tirando il manubrio verso il fianco.",
+  FocusTecnico: ["Busto stabile","Gomito che guida la trazione"],
+  ErroriComuni: ["Slancio del busto","Non completare escursione scapolare"],
+  MuscoliPrincipali: ["Grande dorsale","Romboidi"],
+  MuscoliSecondari: ["Bicipiti","Trapezio"],
+  Descrizione: "Remata unilaterale con appoggio su panca; tirare verso il fianco, non verso il petto.",
+  QuandoAumentareIlPeso: "Aumentare solo quando tutte le serie sono pulite a RIR >=2.",
+  Varianti: { bilanciere: "Rematore bilanciere", cavo: "One arm cable row" }
+});
+
+EX["Curl Manubri"] = mergeExerciseGuideWithSeed(EX["Curl Manubri"] || EX["Curl Bicipiti"], {
+  Nome: "Curl con manubri",
+  Serie: "3",
+  Ripetizioni: "12",
+  Recupero: "60s",
+  RIR: "2",
+  Note: "Controllo eccentrico 2-3s. Mantenere gomiti fermi ai lati.",
+  Respirazione: "Espira in salita, inspira in discesa.",
+  FocusTecnico: ["Gomiti fissi","Nessun dondolio"],
+  ErroriComuni: ["Slancio del busto","Gomiti che avanzano"],
+  MuscoliPrincipali: ["Bicipiti"],
+  MuscoliSecondari: ["Brachiale","Brachioradiale"],
+  Descrizione: "Isolazione bicipiti a presa supina o neutra secondo variante.",
+  QuandoAumentareIlPeso: "Aumentare quando tutte le serie sono completate con RIR >=2 senza compensi.",
+  Varianti: { martello: "Curl martello", concentrato: "Curl concentrato" }
+});
+
+EX["Hip Thrust Bilanciere"] = mergeExerciseGuideWithSeed(EX["Hip Thrust Bilanciere"] || {}, {
+  Nome: "Hip Thrust con bilanciere",
+  Serie: "4",
+  Ripetizioni: "10",
+  Recupero: "90s",
+  RIR: "2",
+  Note: "Pausa 1s in massima contrazione; non iperestendere la lombare.",
+  Respirazione: "Espira nella fase di chiusura dell'anca, inspira nella discesa.",
+  FocusTecnico: ["Mento verso il petto","Talloni che spingono"],
+  ErroriComuni: ["Ipersoltamento lombare","Scivolamento bilanciere"],
+  MuscoliPrincipali: ["Grande gluteo"],
+  MuscoliSecondari: ["Femoral"],
+  Descrizione: "Estensione d'anca con carico su bacino, massima attivazione glutei in lockout.",
+  QuandoAumentareIlPeso: "Aumenta carico quando tutte le serie richieste sono completate a RIR >=2.",
+  Varianti: { singolo: "Hip thrust singolo", ponte: "Glute bridge bilanciere" }
+});
+
+EX["Trazioni presa inversa"] = mergeExerciseGuideWithSeed(EX["Trazioni presa inversa"] || EX["Trazioni Supine"], {
+  Nome: "Trazioni presa inversa (supine)",
+  Serie: "4",
+  Ripetizioni: "8",
+  Recupero: "90s",
+  RIR: "2",
+  Note: "Maggiore componente bicipitale; tecnica identica a trazioni, attenzione al gomito.",
+  Respirazione: "Inspira in basso e espira nella salita.",
+  FocusTecnico: ["Scapole depresse","Tirare con i dorsali non solo con le braccia"],
+  ErroriComuni: ["Eccessiva supinazione forzata","Slancio del corpo"],
+  MuscoliPrincipali: ["Dorsali","Bicipiti"],
+  MuscoliSecondari: ["Romboidi"],
+  Descrizione: "Trazione con presa supina o neutra, piu facile per chi ha meno forza di supinazione.",
+  QuandoAumentareIlPeso: "Aumentare carico o ridurre assistenza quando tutte le serie sono completate con RIR >=2.",
+  Varianti: { presa_neutra: "Trazioni neutre", presa_prona: "Trazioni prona" }
+});
+
+EX["Push-Up"] = mergeExerciseGuideWithSeed(EX["Push-Up"] || {}, {
+  Nome: "Push-Up",
+  Serie: "4",
+  Ripetizioni: "10-15",
+  Recupero: "60s",
+  RIR: "2",
+  Note: "Core attivo; mantenere margine di 2 ripetizioni prima del cedimento.",
+  Respirazione: "Inspira scendendo, espira spingendo.",
+  FocusTecnico: ["Core contratto","Gomiti a 45 gradi"],
+  ErroriComuni: ["Anca che cade","Flessione del collo"],
+  MuscoliPrincipali: ["Grande pettorale","Tricipiti"],
+  MuscoliSecondari: ["Deltoide anteriore","Core"],
+  Descrizione: "Spinta a corpo libero sul pavimento; variante base della panca.",
+  QuandoAumentareIlPeso: "Aumentare difficoltà (declino o carico) solo se tutte le serie sono pulite a RIR >=2.",
+  Varianti: { ginocchia: "Push-up su ginocchia", declino: "Push-up declino" }
+});
+
+EX["Military Press"] = mergeExerciseGuideWithSeed(EX["Military Press"] || EX["Press_Manubri"], {
+  Nome: "Military Press",
+  Serie: "4",
+  Ripetizioni: "8-10",
+  Recupero: "90s",
+  RIR: "2",
+  Note: "Controllo e nessun slancio; piedi fermi e core attivo.",
+  Respirazione: "Inspira in basso, espira nella spinta; evitare iperestensione lombare.",
+  FocusTecnico: ["Linea spalla-anca allineata","Baricentro stabile"],
+  ErroriComuni: ["Arco lombare eccessivo","Uso di gambe per spinta"],
+  MuscoliPrincipali: ["Deltoide anteriore","Deltoide laterale"],
+  MuscoliSecondari: ["Tricipiti","Core"],
+  Descrizione: "Spinta verticale dalla spalla con bilanciere o manubri.",
+  QuandoAumentareIlPeso: "Aumenta quando tutte le serie sono completate a RIR >=2 senza perdere la tecnica.",
+  Varianti: { seduto: "Press seduto con manubri", push_press: "Push press per lavoro piu esplosivo" }
+});
+
+EX["Obliqui (Woodchop)"] = mergeExerciseGuideWithSeed(EX["Obliqui (Woodchop)"] || EX["Woodchop"], {
+  Nome: "Woodchop (Obliqui)",
+  Serie: "4",
+  Ripetizioni: "15 per lato",
+  Recupero: "60s",
+  RIR: "2",
+  Note: "Controllo e respirazione; evitare slancio eccessivo.",
+  Respirazione: "Espira sulla fase di rotazione concentrica.",
+  FocusTecnico: ["Rotazione dal busto","Core attivo"],
+  ErroriComuni: ["Movimento con le braccia invece del tronco","Iperestensione lombare"],
+  MuscoliPrincipali: ["Obliqui"],
+  MuscoliSecondari: ["Trasverso dell'addome","Core"],
+  Descrizione: "Rotazione anti-rotazionale con cavo o elastico per obliqui e core.",
+  QuandoAumentareIlPeso: "Aumentare resistenza o carico solo se mantiene il controllo tecnico.",
+  Varianti: { cavo: "Woodchop al cavo", elastico: "Woodchop con elastico" }
+});
+
+EX["Hyperextension"] = mergeExerciseGuideWithSeed(EX["Hyperextension"] || {}, {
+  Nome: "Hyperextension",
+  Serie: "4",
+  Ripetizioni: "12-15",
+  Recupero: "60s",
+  RIR: "2",
+  Note: "Contrazione dei glutei in alto; non iperestendere la schiena.",
+  Respirazione: "Espira arrivando in alto, inspira in discesa.",
+  FocusTecnico: ["Schiena neutra","Contrazione glutei in alto"],
+  ErroriComuni: ["Iperestensione lombare","Movimento esplosivo"],
+  MuscoliPrincipali: ["Erettori spinali","Glutei"],
+  MuscoliSecondari: ["Femorali"],
+  Descrizione: "Estensione del busto su panca romana per rinforzo catena posteriore.",
+  QuandoAumentareIlPeso: "Aumenta carico solo se la tecnica rimane perfetta e la lombare non compensa.",
+  Varianti: { corpo_libero: "Hyperextension a corpo libero", carico: "Con disco al petto" }
+});
+
 
 var EXERCISE_GUIDE_PLACEHOLDER_TITLE = "Scheda tecnica in preparazione.";
 var EXERCISE_GUIDE_PLACEHOLDER_SUBTITLE = "Campi setup, esecuzione, cue tecnici ed errori da compilare.";
@@ -926,6 +1099,11 @@ function mergeExerciseGuideWithSeed(existing, seed) {
   if ((!next.deep || isPlaceholderDeep(next.deep)) && deep.length) next.deep = deep;
   if (!next.lk && seed.videoUrl) next.lk = seed.videoUrl;
   return next;
+}
+
+function assignExerciseGuide(name, patch) {
+  if (!EX[name] || typeof EX[name] !== "object") EX[name] = {};
+  Object.assign(EX[name], patch || {});
 }
 
 NEW_EXERCISE_WORKFLOW_SEED.forEach(function(seed) {
@@ -1204,7 +1382,7 @@ var INTRO_ESERCIZI = [
           pattern: "Spinta verticale — lower body",
           muscoli: "Quadricipiti · Glutei · Femorali · Core · Erettori",
           perche: "Il movimento più completo per la parte inferiore del corpo. Insegna al corpo a generare forza dal basso verso l'alto con tutto il peso sulle spalle. Migliora postura, equilibrio e forza funzionale.",
-          varianti: "Front Squat (più quad), Pause Squat (forza nel punto critico), Squat Bulgaro (lavoro unilaterale)",
+          varianti: "Front Squat (più quad), Pause Squat (forza nel punto critico), Bulgarian Split Squat (lavoro unilaterale)",
           errore: "Non scendere abbastanza. Il parallelo è il minimo — sotto il parallelo attivi meglio i glutei.",
         },
         {
@@ -1792,7 +1970,7 @@ var MUSC = [
   { n: "Obliqui", z: "Laterale", w: "Ai lati dell'addome", y: "Rotazione e anti-rotazione del tronco.", mv: "Ruotano il busto, lo inclinano lateralmente e resistono alle rotazioni indesiderate.", ex: ["Addominali Obliqui","Plank","Shoulder Tap"] },
   { n: "Bicipite braccio", z: "Anteriore", w: "Parte anteriore braccio", y: "Flessione gomito. Coinvolto in ogni tirata.", mv: "Piega il gomito e aiuta la supinazione dell'avambraccio. Lavora in tutte le tirate dove il braccio si chiude.", ex: ["Curl Bicipiti","Curl Martello","Trazioni Supine","Rematore Manubri"] },
   { n: "Tricipite braccio", z: "Posteriore", w: "Parte posteriore braccio - 3 capi", y: "Estensione gomito. 2/3 del volume del braccio.", mv: "Estende il gomito e aiuta a bloccare il braccio in tutte le spinte.", ex: ["French Press Manubri","Dip su Panca","Push-Up Diamante","Panca","Military Press"] },
-  { n: "Quadricipite", z: "Anteriore", w: "Parte anteriore coscia - 4 capi", y: "Estensione ginocchio. Motore di squat, affondi, scale.", mv: "Estende il ginocchio e controlla la discesa in squat, affondi e step-up.", ex: ["Squat","Front Squat","Squat Bulgaro","Affondi","Step Up"] },
+  { n: "Quadricipite", z: "Anteriore", w: "Parte anteriore coscia - 4 capi", y: "Estensione ginocchio. Motore di squat, affondi, scale.", mv: "Estende il ginocchio e controlla la discesa in squat, affondi e step-up.", ex: ["Squat","Front Squat","Bulgarian Split Squat","Affondi","Step Up"] },
   { n: "Bicipite femorale", z: "Posteriore", w: "Parte posteriore coscia", y: "Flessione ginocchio. Protegge il crociato.", mv: "Flette il ginocchio ed estende l'anca insieme ai glutei. Frena la discesa nei movimenti hip hinge.", ex: ["Nordic Curl","Stacco da Terra","Stacco Rumeno","Good Morning"] },
   { n: "Grande gluteo", z: "Posteriore", w: "Massa principale del sedere", y: "Il muscolo piu potente del corpo. Postura, corsa, salto.", mv: "Estende l'anca, spinge il bacino in avanti e produce forza in salita, corsa, salto e hip hinge.", ex: ["Squat","Stacco da Terra","Affondi","Hip Thrust Singolo","Good Morning","Hyperextension"] },
   { n: "Medio gluteo", z: "Laterale", w: "Lato esterno anca", y: "Abduzione e stabilizzazione anca. Previene collasso ginocchio.", mv: "Porta la gamba verso l'esterno e stabilizza il bacino quando stai su una gamba sola o cammini.", ex: ["Clamshell","Abduzione Laterale","Abduzione laterale IR","Affondi"] },
@@ -1929,7 +2107,7 @@ var DAYS_V4 = [
     ],
     ex: [
       { n: "Stacco da Terra", s: "5x4-5", rpe: "8-9", note: "Setup: piedi larghezza anche, barra su meta piede, mani appena fuori gambe, braccia tese. Ultimo set solo a RIR 0-1 se tecnica stabile.", priority: true, rec: "2-3 min", gear: "Bilanciere + bumper", errori: "Schiena arrotondata (cifosi); barra lontana dal corpo; anche che salgono prima delle spalle; collo iperesteso" },
-      { n: "Squat Bulgaro", s: "3x10-12 per gamba", rpe: "8-9", note: "Bulgarian split squat. Piede posteriore in appoggio morbido su panca, piede davanti tutto a terra, stance stabile su due binari. Alternativa: TRX split squat.", rec: "90s-2 min", gear: "Manubri + panca", errori: "Piede davanti troppo vicino; busto che oscilla; ROM accorciato; ginocchio che collassa" },
+      { n: "Bulgarian Split Squat", s: "3x10-12 per gamba", rpe: "8-9", note: "Bulgarian split squat. Piede posteriore in appoggio morbido su panca, piede davanti tutto a terra, stance stabile su due binari. Alternativa: TRX split squat.", rec: "90s-2 min", gear: "Manubri + panca", errori: "Piede davanti troppo vicino; busto che oscilla; ROM accorciato; ginocchio che collassa" },
       { n: "Hyperextension", s: "4x12", rpe: "8", note: "Accessorio catena posteriore a corpo libero. 12 ripetizioni pulite senza peso, usando glutei e femorali piu della lombare. In superset con Donkey Kicks.", rec: "60s", gear: "Panca romana", errori: "Iperestensione lombare in alto; velocita eccessiva; collo iperesteso" },
       { n: "Donkey Kicks", s: "4x20 totali", rpe: "8", note: "In quadrupedia. Alterna le gambe a ogni ripetizione: 20 totali = 10 per lato. Cerca il gluteo tenendo il bacino fermo. In superset con Hyperextension.", rec: "60s", gear: "Corpo libero", errori: "Lombare che si inarca; bacino che ruota; slancio senza controllo" },
     ], str: ["Supine Assisted Leg Pull","Figure-Four Supino","Half Kneeling Lunge"] },
@@ -1977,11 +2155,11 @@ var DAYS_V2 = [
       { n: "Serie di avvicinamento Squat", phase: "approach", gearTag: "Bilanciere", p: "1 serie leggera" }
     ],
     ex: [
-      { n: "Squat", s: "4x8", rpe: "7-8", note: "circa 60-70% del carico abituale · respirazione continua · RIR 2-3 · nessun cedimento · tecnica perfetta", priority: true, rec: "2:00", gear: "Bilanciere + rack" },
-      { n: "Affondi", s: "4x12", rpe: "7", note: "Unilaterale · RIR 2", rec: "90s", gear: "Manubri" },
-      { n: "Hyperextension", s: "4x15", rpe: "7", note: "Contrazione dei glutei in alto. Non iperestendere la schiena.", rec: "60s" },
-      { n: "Sliding Leg Curl", s: "4x12", rpe: "7", note: "Alternativa al Leg Curl. Utilizzare sliders, asciugamani oppure dischi scorrevoli. Eccentrica lenta.", rec: "60s", gear: "Sliders/Asciugamani" },
-      { n: "Monster Walk", s: "3x15 passi per lato", rpe: "7", note: "Elastico sempre in tensione.", rec: "60s", gear: "Elastico" }
+      { n: "Squat", s: "4x8", rpe: "", note: "60-70% del carico abituale · RIR 2-3 · respirazione continua · nessun cedimento", rec: "120s", priority: true, gear: "Bilanciere + rack" },
+      { n: "Affondi", s: "4x12", rpe: "", note: "Controllati · spinta con la gamba anteriore", rec: "90s", gear: "Manubri" },
+      { n: "Hyperextension", s: "4x15", rpe: "", note: "Contrazione dei glutei in alto · no iperestensione lombare", rec: "60s" },
+      { n: "Sliding Leg Curl", s: "4x12", rpe: "", note: "Eccentrica lenta (3s) · alternativa al leg curl", rec: "60s", gear: "Sliders/Asciugamani" },
+      { n: "Monster Walk", s: "3x15 passi/lato", rpe: "", note: "Elastico sempre in tensione", rec: "60s", gear: "Elastico" }
     ], str: ["Quadricipiti","Glutei"] },
 
   { name: "Giorno 2", focus: "Upper A", dayLabel: "Mar", dur: "5 esercizi", tEst: 45,
@@ -1997,11 +2175,11 @@ var DAYS_V2 = [
       { n: "Serie avvicinamento Panca", phase: "approach", gearTag: "Bilanciere", p: "1 serie leggera" }
     ],
     ex: [
-      { n: "Trazioni", s: "4x6-8", rpe: "8", note: "RIR 2", rec: "2:00", gear: "Barra trazioni" },
-      { n: "Panca", s: "4x8", rpe: "8", note: "RIR 2", rec: "2:00", gear: "Bilanciere + panca" },
-      { n: "Rematore Manubri", s: "4x10-12", rpe: "7", note: "Eccentrica controllata 2-3s.", rec: "90s" },
-      { n: "Arnold Press", s: "3x10-12", rpe: "7", note: "Controllo spalle, evitare slancio.", rec: "60-90s" },
-      { n: "Curl Manubri", s: "3x12", rpe: "7", note: "RIR 2 su tutte le serie.", rec: "60s" }
+      { n: "Trazioni", s: "4x6-8", rpe: "", note: "RIR 2", rec: "90s", gear: "Barra trazioni" },
+      { n: "Panca piana", s: "4x8", rpe: "", note: "RIR 2", rec: "90s", gear: "Bilanciere + panca" },
+      { n: "Rematore Manubri", s: "4x10-12", rpe: "", note: "Controllo scapolare", rec: "90s" },
+      { n: "Arnold Press", s: "3x10-12", rpe: "", note: "Movimento fluido", rec: "60s" },
+      { n: "Curl Manubri", s: "3x12", rpe: "", note: "Controllato", rec: "60s" }
     ], str: ["Pettorali","Dorsali","Deltoidi"] },
 
   { name: "Giorno 3", focus: "Riposo / Mobilità", dayLabel: "Mer", rest: true },
@@ -2018,11 +2196,10 @@ var DAYS_V2 = [
       { n: "Serie avvicinamento Step-Up", phase: "approach", gearTag: "Corpo libero", p: "1 serie leggera" }
     ],
     ex: [
-      { n: "Step Up", s: "4x12", rpe: "7", note: "Piede sul rialzo, spingi controllando.", rec: "90s", gear: "Box/step + manubri" },
-      { n: "Bulgarian Split Squat", s: "4x10-12", rpe: "7", note: "Controllo e range completo.", rec: "90s" },
-      { n: "Hip Thrust Bilanciere", s: "4x10", rpe: "7", note: "Contrazione dei glutei di 1 secondo. Respirazione continua. Nessuna iperestensione lombare.", rec: "90s", gear: "Bilanciere + panca" },
-      { n: "Wall Sit", s: "3x45-60\"", rpe: "7", note: "Respirazione continua. Mai apnea.", rec: "60s" },
-      { n: "Standing Calf Raise", s: "4x15-20", rpe: "7", note: "Movimento completo. Pausa di un secondo in alto. Massimo allungamento in basso.", rec: "60s" }
+      { n: "Step Up", s: "4x12", rpe: "", note: "Spinta solo con la gamba sulla panca", rec: "90s", gear: "Box/step + manubri" },
+      { n: "Hip Thrust Bilanciere", s: "4x10", rpe: "", note: "Pausa di 1 s in massima contrazione", rec: "90s", gear: "Bilanciere + panca" },
+      { n: "Wall Sit", s: "3x45-60s", rpe: "", note: "Respirazione continua", rec: "60s" },
+      { n: "Standing Calf Raise", s: "4x15-20", rpe: "", note: "ROM completo · pausa 1s in alto", rec: "60s" }
     ], str: ["Quadricipiti","Glutei"] },
 
   { name: "Giorno 5", focus: "Upper B", dayLabel: "Sab", dur: "5 esercizi", tEst: 45,
@@ -2037,10 +2214,10 @@ var DAYS_V2 = [
       { n: "Band Pull Apart", phase: "mobility", gearTag: "Elastico", p: "10" }
     ],
     ex: [
-      { n: "Trazioni presa inversa", s: "4x8", rpe: "7", note: "Presa inversa. RIR 2.", rec: "90-120s" },
-      { n: "Push-Up", s: "4x10-15", rpe: "7", note: "Core attivo, forma perfetta.", rec: "60-90s" },
-      { n: "Military Press", s: "4x8-10", rpe: "7", note: "Stretta e controllata. Evitare slancio.", rec: "90s" },
-      { n: "Obliqui", s: "4x15", rpe: "7", note: "Controllo e respirazione.", rec: "60s" }
+      { n: "Trazioni presa inversa", s: "4x8", rpe: "", note: "Presa inversa · RIR 2", rec: "90s" },
+      { n: "Push-Up", s: "4x10-15", rpe: "", note: "Fermarsi con 2 ripetizioni di margine", rec: "60s" },
+      { n: "Military Press", s: "4x8-10", rpe: "", note: "Nessun slancio", rec: "90s" },
+      { n: "Woodchop", s: "4x15 per lato", rpe: "", note: "Movimento controllato (obliqui)", rec: "60s" }
     ], str: ["Dorsali","Pettorali","Deltoidi"] }
 ];
 
@@ -2181,7 +2358,7 @@ var EXERCISE_COMPETENCIES = {
   "Squat": ["brace","bacino","squat"],
   "Squat a corpo libero": ["brace","bacino","squat"],
   "Goblet Squat": ["brace","bacino","squat"],
-  "Squat Bulgaro": ["brace","squat"],
+  "Bulgarian Split Squat": ["brace","squat"],
   "Affondi": ["brace","squat"],
   "Walking Lunge": ["brace","squat"],
   "Step Up": ["brace","squat"],
@@ -2341,7 +2518,7 @@ var EX_IMG = {
   "Single Leg Deadlift": img_Single_Leg_Deadlift,
   "Squat": img_Squat,
   "Squat a corpo libero": img_Squat_Bodyweight,
-  "Squat Bulgaro": img_Squat_Bulgaro,
+  "Bulgarian Split Squat": img_Squat_Bulgaro,
   "Stacco Rumeno": img_Stacco_Rumeno,
   "Stacco Sumo": img_Stacco_Sumo,
   "Stacco da Terra": img_Stacco_da_Terra,
@@ -2487,7 +2664,7 @@ function displayExerciseName(name) {
   return name;
 }
 var MAX_PROGRESS_EX = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni"];
-var ACCESSORY_PROGRESS_EX = ["Stacco Rumeno","Glute Bridge Bilanciere","Wall Sit","Pulley","Rematore Manubri","Affondi","Step Up","Monster Walk","Cable Pull-Apart con rotazione esterna","Curl Bicipiti","Squat Bulgaro","Hyperextension","Abduzione laterale IR","Donkey Kicks","Push-Up","Trazioni Supine","Woodchop","T-bar Row","Alzate Laterali","Leg Extension al Cavo","Arnold Press"];
+var ACCESSORY_PROGRESS_EX = ["Stacco Rumeno","Glute Bridge Bilanciere","Wall Sit","Pulley","Rematore Manubri","Affondi","Step Up","Monster Walk","Cable Pull-Apart con rotazione esterna","Curl Bicipiti","Bulgarian Split Squat","Hyperextension","Abduzione laterale IR","Donkey Kicks","Push-Up","Trazioni Supine","Woodchop","T-bar Row","Alzate Laterali","Leg Extension al Cavo","Arnold Press"];
 var CORE_PROGRESS_EX = ["Ab Wheel"];
 var CARDIO_KIND_LABEL = { run: "Corsa", ruck: "Rucking", hiit: "HIIT", circuit: "Circuito" };
 var CALIBRATION_BODYWEIGHT_EX = ["Push-Up","Trazioni","Trazioni Supine","Ab Wheel","Abduzione laterale IR","Donkey Kicks","Wall Sit"];
@@ -2567,7 +2744,7 @@ var EXERCISE_LOAD_MODE_OPTIONS = {
   "Single Leg Deadlift": [LOAD_MODE_DUMBBELLS],
   "Walking Lunge": [LOAD_MODE_DUMBBELLS],
   "Affondi": [LOAD_MODE_DUMBBELLS],
-  "Squat Bulgaro": [LOAD_MODE_DUMBBELLS],
+  "Bulgarian Split Squat": [LOAD_MODE_DUMBBELLS],
   "Kick Back Manubri": [LOAD_MODE_DUMBBELLS],
   "Croci Manubri a Terra": [LOAD_MODE_DUMBBELLS]
 };
@@ -2729,7 +2906,7 @@ function getCalibrationType(exName, serie) {
   if (exName === "TRX Row lento") return "bodyweight";
   if (CALIBRATION_BODYWEIGHT_EX.indexOf(exName) >= 0 || (serie || "").toLowerCase().indexOf("max") >= 0) return "bodyweight";
   if (exName === "Cable Pull-Apart con rotazione esterna" || exName.indexOf("Cavo") >= 0 || exName.indexOf("cavo") >= 0 || exName === "Woodchop" || exName === "Pulley") return "cable";
-  if (exName === "Squat Bulgaro" || exName === "Affondi" || exName === "Curl Bicipiti") return "dumbbell";
+  if (exName === "Bulgarian Split Squat" || exName === "Affondi" || exName === "Curl Bicipiti") return "dumbbell";
   return "weighted";
 }
 
@@ -3008,7 +3185,7 @@ var BREATH_RULES = {
   "Nordic Curl":        { type:"anatomic-push", short:"Inspira scendendo · espira risalendo",         inhale:"Scendendo (eccentrica controllata)", exhale:"Risalendo (concentrica)" },
   "Leg Curl al Cavo":   { type:"anatomic-push", short:"Inspira scendendo · espira flettendo",        inhale:"Estendendo il ginocchio (eccentrica)", exhale:"Flettendo il ginocchio verso il gluteo (concentrica)" },
   "Wall Sit":           { type:"continuous-brace", short:"Respira corto e continuo",                  inhale:"Piccoli atti inspiratori mantenendo il brace", exhale:"Espiri brevi senza perdere pressione o altezza" },
-  "Squat Bulgaro":      { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo (eccentrica)", exhale:"Spingendo verso l'alto (concentrica)" },
+  "Bulgarian Split Squat":      { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo (eccentrica)", exhale:"Spingendo verso l'alto (concentrica)" },
   "Affondi":            { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo (eccentrica)", exhale:"Spingendo verso l'alto (concentrica)" },
   "Walking Lunge":      { type:"anatomic-push", short:"Inspira scendendo · espira spingendo",         inhale:"Scendendo ad ogni passo", exhale:"Spingendo verso l'alto" },
   "Step Up":            { type:"anatomic-push", short:"Inspira preparandoti · espira salendo",        inhale:"Prima del passo sullo step", exhale:"Salendo e spingendo verso l'alto" },
@@ -3053,7 +3230,7 @@ var BREATH_COMPARE_ROWS = [
   ["Tricipiti Cavo", "Corrispondenza anatomica", "Nel ritorno", "Nell'estensione"],
   ["Dip alle Parallele", "Corrispondenza anatomica", "In discesa", "In spinta"],
   ["Face Pull", "Corrispondenza anatomica", "Nel ritorno", "Tirando verso il viso"],
-  ["Affondi / Squat Bulgaro", "Corrispondenza anatomica", "In discesa", "Risalendo"],
+  ["Affondi / Bulgarian Split Squat", "Corrispondenza anatomica", "In discesa", "Risalendo"],
   ["Nordic Curl", "Corrispondenza anatomica", "Nella discesa controllata", "Nella risalita"],
   ["Ab Wheel", "Corrispondenza anatomica + core continuo", "Controllando la discesa in avanti", "Tornando indietro, senza perdere tensione addominale"],
   ["Woodchop", "Corrispondenza anatomica", "Nel ritorno", "Nella rotazione attiva"],
@@ -3110,6 +3287,34 @@ var FLOW_FILLERS = {
 
 function getFlowFiller(exName) {
   return FLOW_FILLERS[exName] || "";
+}
+
+function logisticsTokensForExercise(raw, activeEx) {
+  var name = String((activeEx && activeEx.n) || (raw && raw.n) || "").toLowerCase();
+  var gear = String((raw && raw.gear) || "").toLowerCase();
+  var text = name + " " + gear;
+  var tokens = [];
+  function add(key, label) {
+    if (!tokens.some(function(t) { return t.key === key; })) tokens.push({ key: key, label: label });
+  }
+  if (/t-?bar|t bar/.test(text)) add("tbar", "T-bar");
+  if ((/bilanciere|barbell|stacco|squat|military press|hip thrust/.test(text) || name === "panca") && !/bodyweight|corpo libero/.test(text)) add("barbell", "bilanciere e dischi");
+  if (/rack/.test(text)) add("rack", "rack");
+  if (/panca romana|hyperextension/.test(text)) add("roman_bench", "panca romana");
+  if ((/panca|bench|hip thrust/.test(text) && !/panca romana/.test(text)) || /bench/.test(text)) add("bench", "panca");
+  if (/barra dip|parallele/.test(text)) add("dip_bar", "barra dip/parallele");
+  if (/lat machine/.test(text)) add("lat_machine", "lat machine");
+  if (/cavo|cavi|cable|carrucola|pulley|face pull|woodchop/.test(text)) add("cable", "carrucola/cavo");
+  if (/corda/.test(text)) add("rope", "corda");
+  if (/cavigliera/.test(text)) add("ankle_strap", "cavigliera");
+  if (/manubri|manubrio|dumbbell/.test(text)) add("dumbbells", "manubri");
+  if (/barra trazioni|trazioni|sbarra/.test(text)) add("pullup_bar", "sbarra trazioni");
+  if (/elastico|band/.test(text)) add("band", "elastico");
+  if (/tappetino|mat/.test(text)) add("mat", "tappetino");
+  if (/fitball/.test(text)) add("fitball", "fitball");
+  if (/ab wheel/.test(text)) add("ab_wheel", "ab wheel");
+  if (/trx/.test(text)) add("trx", "TRX");
+  return tokens;
 }
 
 function getSetupActionFromGear(rawEx, exDef) {
@@ -4116,7 +4321,7 @@ export default function App() {
     "Pulley": ["cavi","trx"],
     "Floor Press Manubri": ["manubri","panca"],
     "Panca": ["bilanciere","panca"],
-    "Squat Bulgaro": ["corpo_libero","manubri","panca"],
+    "Bulgarian Split Squat": ["corpo_libero","manubri","panca"],
     "Affondi": ["corpo_libero","manubri"],
     "Woodchop": ["cavi","elastico"],
     "Pallof Press": ["cavi","elastico"],
@@ -4220,7 +4425,7 @@ export default function App() {
     "Donkey Kicks": "core",
     "Affondi": "affondo_unilaterale",
     "Walking Lunge": "affondo_unilaterale",
-    "Squat Bulgaro": "affondo_unilaterale",
+    "Bulgarian Split Squat": "affondo_unilaterale",
     "Step Up": "affondo_unilaterale",
     "Single Leg Deadlift": "affondo_unilaterale",
     "TRX Reverse Lunge": "affondo_unilaterale",
@@ -6232,7 +6437,7 @@ export default function App() {
 
   function getRestTime(exName, rpe) {
     var heavy = ["Squat","Stacco da Terra","Panca","Military Press","Trazioni","Trazioni Supine","Front Squat","Pause Squat","Push Press","Stacco Sumo","Hip Thrust Bilanciere","T-bar Row","Dip alle Parallele"];
-    var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Squat Bulgaro","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino","Fitball Hamstring Curl","Face Pull","Alzate Laterali","French Press Manubri","Stacco Rumeno"];
+    var medium = ["Rematore Bilanciere","Rematore Manubri","Nordic Curl","Good Morning","Hyperextension","Affondi","Bulgarian Split Squat","Pendlay Row","Walking Lunge","Push-Up","Floor Press Manubri","Push-Up Declino","Fitball Hamstring Curl","Face Pull","Alzate Laterali","French Press Manubri","Stacco Rumeno"];
     var core = ["Plank","Ab Wheel","Addominali Obliqui","Shoulder Tap","Woodchop","Slackline"];
     if (core.indexOf(exName) >= 0) return exName === "Plank" ? null : 45;
     if (heavy.indexOf(exName) >= 0) return 150;
@@ -6278,7 +6483,7 @@ export default function App() {
     if (name.indexOf("trazioni") >= 0 || gear.indexOf("barra trazioni") >= 0 || gear.indexOf("sbarra") >= 0) return 75;
     if (name.indexOf("hyperextension") >= 0 || name.indexOf("panca romana") >= 0) return 90;
     if (name.indexOf("stacco rumeno") >= 0) return 105;
-    if (name.indexOf("affondi") >= 0 || name.indexOf("walking lunge") >= 0 || name.indexOf("squat bulgaro") >= 0) return 90;
+    if (name.indexOf("affondi") >= 0 || name.indexOf("walking lunge") >= 0 || name.indexOf("squat bulgaro") >= 0 || name.indexOf("bulgarian split squat") >= 0) return 90;
     if (
       name.indexOf("cavo") >= 0 ||
       name.indexOf("cavi") >= 0 ||
@@ -6400,6 +6605,7 @@ export default function App() {
     var importedFlowMode = typeof preferences.flowModeEnabled === "boolean" ? preferences.flowModeEnabled : null;
     var importedCompactMode = typeof preferences.compactMode === "boolean" ? preferences.compactMode : null;
     var importedSplitDayPrefs = preferences.splitDayPrefs && typeof preferences.splitDayPrefs === "object" ? normalizeSplitDayPrefs(preferences.splitDayPrefs) : null;
+    var importedGuidedRecovery = null;
 
     setUserName(importedName);
     try {
@@ -6519,7 +6725,7 @@ export default function App() {
   }
 
   function getProgramLabel(key) {
-    if (key === "v2") return "Recovery Hypertrophy – Blocco 4-6 settimane";
+    if (key === "v2") return "recupero";
     if (key === "v1" || key === "v4") return "V1";
     return "";
   }
@@ -7259,7 +7465,7 @@ function isNearBodyweightElasticSession(exName, sets) {
       return { kind: "reps", amount: 1, label: "+1 rip per serie" };
     }
     if (exName === "Hyperextension") return { kind: "kg", amount: 1, label: "+1 kg" };
-    if (exName === "Squat Bulgaro" || exName === "Affondi" || exName === "Curl Bicipiti" || exName === "Curl Martello" || exName === "Press Manubri da Seduta" || exName === "Alzate Laterali") {
+    if (exName === "Bulgarian Split Squat" || exName === "Affondi" || exName === "Curl Bicipiti" || exName === "Curl Martello" || exName === "Press Manubri da Seduta" || exName === "Alzate Laterali") {
       return { kind: "kg", amount: 1, label: "+1 kg per manubrio" };
     }
     return { kind: "kg", amount: 2.5, label: "+2.5 kg" };
@@ -9266,9 +9472,10 @@ function isNearBodyweightElasticSession(exName, sets) {
             <div style={{ fontSize: 11, fontWeight: 800, color: T.sub, textTransform: "uppercase", letterSpacing: 1, margin: "16px 0 8px" }}>Scheda</div>
             {[
               { key: "v1", icon: "💥", title: "V1", detail: "Programma attuale", subtitle: "4 giorni pesi + G3 leggero" },
-                { key: "v2", icon: "🧱", title: "Recovery Hypertrophy – Blocco 4-6 settimane", detail: "Programma temporaneo progettato per mantenere massa muscolare e forza riducendo la pressione intra-addominale. Tutti gli esercizi sono selezionati per minimizzare il rischio di recidive emorroidarie senza interrompere il percorso di crescita muscolare." }
+                { key: "v2", icon: "🧱", title: "recupero", detail: "" }
             ].map(function(option) {
               var active = level === option.key;
+              var label = option.detail ? (option.title + " · " + option.detail) : option.title;
               return <button
                 key={option.key}
                 onClick={function() {
@@ -9282,7 +9489,7 @@ function isNearBodyweightElasticSession(exName, sets) {
               >
                 <span style={{ fontSize: 18, flexShrink: 0 }}>{option.icon}</span>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: active ? dc : T.tx }}>{option.title + " · " + option.detail}</div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: active ? dc : T.tx }}>{label}</div>
                   <div style={{ fontSize: 11, color: T.sub }}>{option.subtitle}</div>
                 </div>
                 <span style={{ fontSize: 10, background: active ? dc : T.bg, color: active ? "#fff" : T.sub, padding: "2px 7px", borderRadius: 999, fontWeight: 800, flexShrink: 0 }}>{active ? "attivo" : "seleziona"}</span>
@@ -11519,7 +11726,7 @@ function isNearBodyweightElasticSession(exName, sets) {
                   <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginTop: 3 }}>Recupero dopo la coppia: {fmtLabel(rowSupersetMeta.rest)}</div>
                   {!!supersetPairMinutes && <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5, marginTop: 2 }}>Tempo totale: ~{supersetPairMinutes} min</div>}
                 </div>}
-                <div onClick={function(e) { var opening = !isX; setHistIdx(null); setEditing(null); setShowImg(null); setTmpW(""); setTmpR(""); setTmpRir(""); setTmpBarbellBase(BARBELL_BASE_KG); if (simplifiedWorkoutUi) { setShowReg(opening ? i : null); if (opening) { setTimeout(function() { var el = document.getElementById("reg-block-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 50); } return; } setShowReg(null); setOpenEx(opening ? i : null); if (opening) { setHistPage(function(p) { var n = Object.assign({}, p); n[i] = 0; return n; }); setTimeout(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 50); } }} style={{ padding: simplifiedWorkoutUi ? "8px 12px" : "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
+                  <div onClick={function(e) { var opening = !isX; setHistIdx(null); setEditing(null); setShowImg(null); setTmpW(""); setTmpR(""); setTmpRir(""); setTmpBarbellBase(BARBELL_BASE_KG); if (simplifiedWorkoutUi) { setShowReg(opening ? i : null); if (opening) { setTimeout(function() { var el = document.getElementById("reg-block-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 50); } setOpenEx(opening ? i : null); return; } setShowReg(null); setOpenEx(opening ? i : null); if (opening) { setHistPage(function(p) { var n = Object.assign({}, p); n[i] = 0; return n; }); setTimeout(function() { var el = document.getElementById("ex-row-" + i); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 50); } }} style={{ padding: simplifiedWorkoutUi ? "8px 12px" : "10px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 8, background: isX ? T.sb : "transparent" }}>
                   {rowImg ? <img
                     src={rowImg}
                     onClick={function(e) { if (simplifiedWorkoutUi) return; e.stopPropagation(); setShowImg(showImg === ("ex-thumb-" + i) ? null : ("ex-thumb-" + i)); }}
