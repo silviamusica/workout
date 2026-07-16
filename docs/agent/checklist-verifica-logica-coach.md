@@ -10,7 +10,7 @@ Fonte primaria:
 ### Giorni pesi
 
 - G1: Squat, Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Ab Wheel
-- G2: Trazioni, Panca, Pulley, Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali
+- G2: Trazioni, Panca, Pulley (alias: Rematore Manubri), Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali
 - G4: Stacco da Terra, Squat Bulgaro, Hyperextension, Abduzione laterale IR
 - G5: T-bar Row, Military Press, Push-Up, Woodchop, Trazioni Supine, Alzate Laterali
 
@@ -25,7 +25,7 @@ Gli esercizi esclusivi del G3 non devono finire in split AM/PM o Progressi fonda
 ### 1. Liste progressione
 
 - `MAX_PROGRESS_EX`: Squat, Stacco da Terra, Panca, Military Press, Trazioni
-- `ACCESSORY_PROGRESS_EX`: Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Pulley, Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Squat Bulgaro, Hyperextension, Abduzione laterale IR, Push-Up, Trazioni Supine, Woodchop, T-bar Row, Alzate Laterali
+- `ACCESSORY_PROGRESS_EX`: Stacco Rumeno, Glute Bridge Bilanciere, Leg Curl al Cavo, Pulley (alias: Rematore Manubri), Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Squat Bulgaro, Hyperextension, Abduzione laterale IR, Push-Up, Trazioni Supine, Woodchop, T-bar Row, Alzate Laterali
 - `CORE_PROGRESS_EX`: Ab Wheel
 
 ### 2. Calibrazione
@@ -49,7 +49,7 @@ Gli esercizi esclusivi del G3 non devono finire in split AM/PM o Progressi fonda
 - `getCalibrationType`:
   - `weighted`: Squat, Panca, Military Press, Stacco da Terra, Stacco Rumeno, Glute Bridge Bilanciere, T-bar Row, Hyperextension
   - `dumbbell`: Squat Bulgaro, Curl Bicipiti, Alzate Laterali
-  - `cable`: Pulley, Leg Curl al Cavo, Woodchop, Cable Pull-Apart con rotazione esterna, Leg Extension al Cavo
+  - `cable`: Pulley (alias: Rematore Manubri), Leg Curl al Cavo, Woodchop, Cable Pull-Apart con rotazione esterna, Leg Extension al Cavo
   - `band-assist`: Trazioni, Trazioni Supine
   - `bodyweight`: Push-Up, Ab Wheel, Abduzione laterale IR, TRX Row lento, Hollow Position
 

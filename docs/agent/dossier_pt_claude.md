@@ -131,9 +131,9 @@ Ordine di priorita reale del dato:
 ### G2 Upper A
 
 - Riscaldamento: T-spine rotation in quadrupedia, FMS spalle, Dorsiflessione al muro, Cable Pull-Apart con rotazione esterna, Shoulder Tap, Serie avvicinamento trazioni prone
-- Lavoro: Trazioni, Panca, Pulley, Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali
+- Lavoro: Trazioni, Panca, Pulley (alias: Rematore Manubri), Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali
 - Stretching: Doorway Pec Stretch, Overhead Lat Stretch, Cross-Body Shoulder Stretch, Wrist Flexor/Extensor Stretch
-- Split: AM `Trazioni, Panca` | PM `Pulley, Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali`
+- Split: AM `Trazioni, Panca` | PM `Pulley (alias: Rematore Manubri), Cable Pull-Apart con rotazione esterna, Curl Bicipiti, Alzate Laterali`
 - Superset rapido: `Cable Pull-Apart con rotazione esterna + Curl Bicipiti`
 
 ### G3 Leggero

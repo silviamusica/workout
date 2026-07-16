@@ -1,4 +1,4 @@
-# Documento Per Agente — Programma V4
+# Documento Per Agente — Programma V1
 
 Questo documento raccoglie in un unico posto:
 - la logica del programma
@@ -6,13 +6,13 @@ Questo documento raccoglie in un unico posto:
 - i principi teorici da mantenere coerenti
 - la scheda completa giorno per giorno
 
-Obiettivo: fornire a un agente o collaboratore un riferimento unico, leggibile e coerente con la V4 attuale dell'app.
+Obiettivo: fornire a un agente o collaboratore un riferimento unico, leggibile e coerente con la V1 attuale dell'app.
 
 ## Stato attuale del programma
 
-- Programma attivo: `V4`
+- Programma attivo: `V1`
 - Struttura: `Upper/Lower` su 4 giorni pesi
-- Il cardio non compare come giorno separato nella tab `Scheda`, ma ora esiste una sezione dedicata `Cardio e mobilità anca`
+- Il cardio non compare come giorno della scheda attiva V1
 - Obiettivo principale: `ipertrofia con forte componente di forza applicata sui fondamentali`
 - La `definizione` non e una scheda separata gia presente nell'app: dipende soprattutto da dieta, proteine, recupero e gestione del volume
 
@@ -49,7 +49,7 @@ Regole fisse:
 
 Nei giorni lower il blocco ruota intorno a caviglia + anca + core/glutei + attivazione esplosiva non tassante.
 Nei giorni upper ruota intorno a toracica + spalla + controllo scapolare/core, evitando di pre-affaticare i muscoli che lavoreranno nelle serie vere.
-Nel giorno leggero G3 il riscaldamento è abbreviato (5 min, senza circuito). Nel cardio programmato del giovedì resta disponibile il blocco mobilita completo.
+Nel giorno leggero G3 il riscaldamento è abbreviato (5 min, senza circuito).
 
 ### La struttura: Upper/Lower su 4 giorni
 
@@ -353,19 +353,18 @@ Il tasso di guadagno muscolare rallenta e i progressi di forza diventano piu len
 - Il ciclo mestruale puo influenzare la singola giornata, non la media
 - Il peso sulla bilancia potrebbe non scendere nei primi mesi per effetto della creatina, che puo aggiungere circa `0.6-1.7 kg` di acqua intramuscolare, oltre all'aumento di muscolo
 
-## Scheda completa V4
+## Scheda completa V1
 
 Nota UI attuale:
-- nella tab `Scheda` della V4 l'utente vede tutti i giorni inclusi G3 Leggero e Cardio del giovedì
+- nella tab `Scheda` della V1 l'utente vede i giorni pesi incluso G3 Leggero
 - il G3 Leggero (`light: true`) mantiene logica light ma in app passa dalla sezione standard `Esercizi`/`Registra`, così l'utente può inserire peso, ripetizioni e RIR come negli altri giorni
-- il Cardio del giovedì (`cardio: true`) offre 4 formati selezionabili e resta gestito con sezione cardio + mobilità
 - nei giorni pesi il protocollo anca compare come `Bonus mobilità anca` facoltativo dopo lo stretching finale
 
 **Struttura settimana**
 
 | Lun | Mar | Mer | Gio | Ven | Sab | Dom |
 |---|---|---|---|---|---|---|
-| G1 Lower A | G2 Upper A | G3 Leggero | Cardio | G4 Lower B | G5 Upper B | Riposo |
+| G1 Lower A | G2 Upper A | G3 Leggero | G4 Lower B | G5 Upper B | Riposo |
 
 ### Giorno 1 — Lower A — Quadricipiti + Femorali
 
@@ -412,7 +411,7 @@ Protocollo breve facoltativo dopo lo stretching finale:
 
 ### Giorno 2 — Upper A — Tirata + Petto
 
-**Aggiornamento 2026-04-21**: riscaldamento ristrutturato (FMS Spalle al posto di Shoulder CARs, no circuito); T-bar Row e Face Pull rimossi; Pulley aggiunto; tutte le serie portate a 5.
+**Aggiornamento 2026-04-21**: riscaldamento ristrutturato (FMS Spalle al posto di Shoulder CARs, no circuito); T-bar Row e Face Pull rimossi; Pulley (alias: Rematore Manubri) aggiunto; tutte le serie portate a 5.
 
 **Riscaldamento**
 
@@ -432,7 +431,7 @@ Protocollo breve facoltativo dopo lo stretching finale:
 |---|---|---|---|
 | 1 | Trazioni | 5x5-8 | RPE 8-9, presa prona, ultimo set a cedimento tecnico controllato |
 | 2 | Panca | 5x6-8 | RPE 8-9, ultimo set a cedimento tecnico controllato |
-| 3 | Pulley Basso | 5x10-12 | RPE 8-9, tirata con controllo scapolare |
+| 3 | Pulley Basso (alias: Rematore Manubri) | 5x10-12 | RPE 8-9, tirata con controllo scapolare |
 | 4 | Cable Pull-Apart con rotazione esterna | 3x15 | RPE 8, pausa 1s con mani ruotate fuori. Va in superset con Curl |
 | 5 | Curl Bicipiti | 3x10-12 | Tutte le serie di lavoro. RPE 9 |
 | 6 | Alzate Laterali | 3x15 | RPE 8, 30s recupero. Vanno nel blocco PM dopo il superset |
@@ -678,7 +677,7 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 |---|---|---|
 | Stacco Rumeno | G1 (da G4) | Complemento femorali in Lower A |
 | T-bar Row | G5 (da G2) | Tirata orizzontale prioritaria in Upper B |
-| Pulley Basso | G2 | Nuovo, rimpiazza T-bar come volume tirata |
+| Pulley Basso (alias: Rematore Manubri) | G2 | Nuovo, rimpiazza T-bar come volume tirata |
 | Abduzione laterale IR | G4 | 4x12-15 per lato, gluteo medio |
 
 ### Numero di serie aggiornato
@@ -688,7 +687,7 @@ Dopo il cardio, oppure in un secondo momento della giornata:
 | Stacco da Terra | 3 | 5 |
 | Trazioni (G2) | 4 | 5 |
 | Panca (G2) | 4 | 5 |
-| Pulley Basso (G2) | — | 5 (nuovo) |
+| Pulley Basso (G2) (alias: Rematore Manubri) | — | 5 (nuovo) |
 | Curl Bicipiti | 3 lavoro | 3 lavoro |
 | T-bar Row (G5) | 4 | 5 |
 | Military Press | 4 | 5 |
