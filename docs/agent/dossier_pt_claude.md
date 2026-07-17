@@ -12,6 +12,7 @@ Fonte primaria:
 
 Fonti secondarie da tenere coerenti:
 - `./logica_tutor_pt.md`
+- `./workout_plan_metabolico.csv`
 - `./workout_plan_v4.csv`
 - `./esercizi_varianti_obiettivi_guided.md`
 - `./programma_avanzato_v4.md`
@@ -32,18 +33,27 @@ L'app oggi gestisce 3 livelli:
 - costruzione basi muscolari e motorie
 
 3. `Ipertrofia avanzato`
-- programma `V4`
+- programma `V1`
 - struttura: `G1 Lower A · G2 Upper A · G3 Leggero · Cardio giovedi · G4 Lower B · G5 Upper B · Riposo`
 - e il livello con la logica tutor piu completa
+
+In `Impostazioni` e disponibile anche una seconda scheda:
+
+4. `Recovery Hypertrophy`
+- programma `V2`
+- blocco `4-6 settimane`
+- obiettivo: mantenere forza e massa muscolare riducendo la pressione intra-addominale
+- regole chiave: `RIR 2-3`, nessun cedimento, respirazione continua, evitare Valsalva prolungata, double progression
 
 ## 2. Ordine di lettura per il PT
 
 1. `../../src/App.jsx`
 2. `logica_tutor_pt.md`
-3. `workout_plan_v4.csv` solo come supporto, non come fonte finale
-4. `esercizi_varianti_obiettivi_guided.md`
-5. `programma_avanzato_v4.md` solo come contesto teorico
-6. `tecniche_preliminari.md`
+3. `workout_plan_metabolico.csv` per la V2 `Recovery Hypertrophy`
+4. `workout_plan_v4.csv` solo come supporto per la V1, non come fonte finale
+5. `esercizi_varianti_obiettivi_guided.md`
+6. `programma_avanzato_v4.md` solo come contesto teorico
+7. `tecniche_preliminari.md`
 
 ## 3. Logiche tutor presenti oggi
 
@@ -118,7 +128,9 @@ Ordine di priorita reale del dato:
 2. `preferences.exerciseLoadPrefs[exercise].mode`
 3. default hardcoded in `src/App.jsx`
 
-## 6. V4 attiva oggi
+## 6. Programmi attivi oggi
+
+### V1 attiva oggi
 
 ### G1 Lower A
 
@@ -183,6 +195,69 @@ Note chiave:
 - Stretching: Doorway Pec Stretch, Overhead Triceps Stretch, Overhead Lat Stretch, Band Dislocate Lento
 - Split: AM `T-bar Row, Military Press` | PM `Trazioni Supine, Push-Up, Woodchop, Alzate Laterali`
 - Superset rapido: `Push-Up + Woodchop`
+
+### V2 `Recovery Hypertrophy` disponibile in Impostazioni
+
+Regole del blocco:
+- durata `4-6 settimane`
+- obiettivo: mantenere forza e massa muscolare riducendo la pressione intra-addominale
+- `RIR 2-3` su tutti gli esercizi
+- nessun cedimento
+- respirazione continua
+- evitare Valsalva prolungata
+- double progression
+- aumentare il carico solo quando tutte le serie sono completate con tecnica perfetta
+
+#### Giorno 1 — Lower A
+
+- Squat `4x8` `120s`
+- Split Squat `4x12` `90s`
+- Stacco Rumeno `3x10` `90s`
+- Wall Sit `3x45-60s` `60s`
+- Monster Walk `3x15 passi/lato` `60s`
+
+Nota controllo PT:
+- nel testo originale della richiesta compariva `Affondi`, ma nell'app la versione finale approvata e corretta e `Split Squat`
+
+#### Giorno 2 — Upper A
+
+- Trazioni `4x6-8` `90s`
+- Panca Piana `4x8` `90s`
+- Rematore `4x10-12` `90s`
+- Arnold Press `3x10-12` `60s`
+- Curl Manubri `3x12` `60s`
+
+#### Giorno 4 — Lower B
+
+- Step Up `4x12` `90s`
+- Bulgarian Split Squat `4x10-12` `90s`
+- Hyperextension `4x15` `60s`
+- Slanci Glutei `4x15` `60s`
+- Standing Calf Raise `4x15-20` `60s`
+
+#### Giorno 5 — Upper B
+
+- Trazioni presa inversa `4x8` `90s`
+- Push-Up `4x10-15` `60s`
+- Military Press `4x8-10` `90s`
+- Obliqui `4x15 per lato` `60s`
+
+Metadati obbligatori salvati in `src/App.jsx` per ogni esercizio V2:
+- `Nome`
+- `Serie`
+- `Ripetizioni`
+- `Recupero`
+- `RIR`
+- `Descrizione`
+- `Note`
+- `Respirazione`
+- `FocusTecnico`
+- `ErroriComuni`
+- `MuscoliPrincipali`
+- `MuscoliSecondari`
+- `Progressione`
+- `QuandoAumentareIlPeso`
+- `Varianti`
 
 ## 7. Punti chiave per il PT
 

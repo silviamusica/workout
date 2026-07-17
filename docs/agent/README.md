@@ -15,10 +15,10 @@ Il resto serve come contesto o storico, non come fonte primaria.
 ## Ordine di lettura consigliato
 
 1. `../../src/App.jsx` — fonte reale dello stato attivo dell'app
-2. `dossier_pt_claude.md` — sintesi operativa V4 allineata al codice
+2. `dossier_pt_claude.md` — sintesi operativa V1/V2 allineata al codice
 3. `logica_tutor_pt.md` — logica coach, calibrazione, guided mode, split, superset, regole `light/cardio`
 4. `workout_plan_v4.csv` — scheda strutturata utile, ma da ricontrollare sempre contro `src/App.jsx`
-4a. `workout_plan_metabolico.csv` — scheda metabolica (v2) pensata per lavoro a densita e conditioning
+4a. `workout_plan_metabolico.csv` — scheda `Recovery Hypertrophy` (V2) per blocco 4-6 settimane
 5. `esercizi_varianti_obiettivi_guided.md` — pattern, varianti, regressioni e lettura guided
 6. `programma_avanzato_v4.md` — teoria e razionale del V4; non sempre aggiornato riga per riga
 7. `../../testi-coaching-sessione-v4-ui-ready.md` — testi coaching/stretching per la UI
